@@ -1,0 +1,799 @@
+[
+  {
+    "subscriptionBuffID": "1",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "188&-15",
+    "displayOrder": "1"
+  },
+  {
+    "subscriptionBuffID": "2",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "189&40",
+    "displayOrder": "2"
+  },
+  {
+    "subscriptionBuffID": "3",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "190&-10",
+    "displayOrder": "3"
+  },
+  {
+    "subscriptionBuffID": "4",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "191&-2",
+    "displayOrder": "4"
+  },
+  {
+    "subscriptionBuffID": "5",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "67&10",
+    "displayOrder": "5"
+  },
+  {
+    "subscriptionBuffID": "6",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "86&10",
+    "displayOrder": "6"
+  },
+  {
+    "subscriptionBuffID": "7",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "87&10",
+    "displayOrder": "7"
+  },
+  {
+    "subscriptionBuffID": "8",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "90&10",
+    "displayOrder": "8"
+  },
+  {
+    "subscriptionBuffID": "9",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "103&5",
+    "displayOrder": "9"
+  },
+  {
+    "subscriptionBuffID": "10",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "49&611+100#614+100#617+100#620+100#660+100#653+100#626+100#637+100#634+100#629+100#632+100#633+100",
+    "displayOrder": "10"
+  },
+  {
+    "subscriptionBuffID": "11",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "129&150",
+    "displayOrder": "11"
+  },
+  {
+    "subscriptionBuffID": "12",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "130&150",
+    "displayOrder": "12"
+  },
+  {
+    "subscriptionBuffID": "13",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "135&5",
+    "displayOrder": "13"
+  },
+  {
+    "subscriptionBuffID": "14",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "60&100",
+    "displayOrder": "14"
+  },
+  {
+    "subscriptionBuffID": "15",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "200&34",
+    "displayOrder": "15"
+  },
+  {
+    "subscriptionBuffID": "79",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "198&34",
+    "displayOrder": "16"
+  },
+  {
+    "subscriptionBuffID": "88",
+    "subscriptionTypeID": "3",
+    "tier": "10",
+    "effects": "199&50000",
+    "displayOrder": "18"
+  },
+  {
+    "subscriptionBuffID": "16",
+    "subscriptionTypeID": "1",
+    "tier": "10",
+    "effects": "82&25",
+    "displayOrder": "17"
+  },
+  {
+    "subscriptionBuffID": "17",
+    "seriesID": "0",
+    "requiredMembers": "1",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "186&600",
+    "displayOrder": "1"
+  },
+  {
+    "subscriptionBuffID": "18",
+    "seriesID": "0",
+    "requiredMembers": "7",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "186&1200",
+    "displayOrder": "1"
+  },
+  {
+    "subscriptionBuffID": "19",
+    "seriesID": "0",
+    "requiredMembers": "15",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "186&1800",
+    "displayOrder": "1"
+  },
+  {
+    "subscriptionBuffID": "20",
+    "seriesID": "1",
+    "requiredMembers": "1",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "187&-5",
+    "displayOrder": "2"
+  },
+  {
+    "subscriptionBuffID": "21",
+    "seriesID": "1",
+    "requiredMembers": "7",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "187&-10",
+    "displayOrder": "2"
+  },
+  {
+    "subscriptionBuffID": "22",
+    "seriesID": "2",
+    "requiredMembers": "1",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "104&10",
+    "displayOrder": "2"
+  },
+  {
+    "subscriptionBuffID": "23",
+    "seriesID": "2",
+    "requiredMembers": "7",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "104&20",
+    "displayOrder": "2"
+  },
+  {
+    "subscriptionBuffID": "24",
+    "seriesID": "2",
+    "requiredMembers": "15",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "104&30",
+    "displayOrder": "2"
+  },
+  {
+    "subscriptionBuffID": "25",
+    "seriesID": "2",
+    "requiredMembers": "25",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "104&50",
+    "displayOrder": "2"
+  },
+  {
+    "subscriptionBuffID": "26",
+    "seriesID": "3",
+    "requiredMembers": "3",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "131&1",
+    "displayOrder": "3"
+  },
+  {
+    "subscriptionBuffID": "27",
+    "seriesID": "3",
+    "requiredMembers": "9",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "131&2",
+    "displayOrder": "3"
+  },
+  {
+    "subscriptionBuffID": "28",
+    "seriesID": "3",
+    "requiredMembers": "18",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "131&3",
+    "displayOrder": "3"
+  },
+  {
+    "subscriptionBuffID": "29",
+    "seriesID": "3",
+    "requiredMembers": "25",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "131&5",
+    "displayOrder": "3"
+  },
+  {
+    "subscriptionBuffID": "30",
+    "seriesID": "4",
+    "requiredMembers": "3",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "132&1",
+    "displayOrder": "4"
+  },
+  {
+    "subscriptionBuffID": "31",
+    "seriesID": "4",
+    "requiredMembers": "9",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "132&2",
+    "displayOrder": "4"
+  },
+  {
+    "subscriptionBuffID": "32",
+    "seriesID": "4",
+    "requiredMembers": "18",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "132&3",
+    "displayOrder": "4"
+  },
+  {
+    "subscriptionBuffID": "33",
+    "seriesID": "4",
+    "requiredMembers": "25",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "132&5",
+    "displayOrder": "4"
+  },
+  {
+    "subscriptionBuffID": "34",
+    "seriesID": "5",
+    "requiredMembers": "3",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "133&1",
+    "displayOrder": "5"
+  },
+  {
+    "subscriptionBuffID": "35",
+    "seriesID": "5",
+    "requiredMembers": "9",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "133&2",
+    "displayOrder": "5"
+  },
+  {
+    "subscriptionBuffID": "36",
+    "seriesID": "5",
+    "requiredMembers": "18",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "133&3",
+    "displayOrder": "5"
+  },
+  {
+    "subscriptionBuffID": "37",
+    "seriesID": "5",
+    "requiredMembers": "25",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "133&5",
+    "displayOrder": "5"
+  },
+  {
+    "subscriptionBuffID": "38",
+    "seriesID": "6",
+    "requiredMembers": "3",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "134&1",
+    "displayOrder": "6"
+  },
+  {
+    "subscriptionBuffID": "39",
+    "seriesID": "6",
+    "requiredMembers": "9",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "134&2",
+    "displayOrder": "6"
+  },
+  {
+    "subscriptionBuffID": "40",
+    "seriesID": "6",
+    "requiredMembers": "18",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "134&3",
+    "displayOrder": "6"
+  },
+  {
+    "subscriptionBuffID": "41",
+    "seriesID": "6",
+    "requiredMembers": "25",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "134&5",
+    "displayOrder": "6"
+  },
+  {
+    "subscriptionBuffID": "42",
+    "seriesID": "7",
+    "requiredMembers": "5",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "1&20",
+    "displayOrder": "7",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "43",
+    "seriesID": "7",
+    "requiredMembers": "12",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "1&30",
+    "displayOrder": "7",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "44",
+    "seriesID": "7",
+    "requiredMembers": "21",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "1&50",
+    "displayOrder": "7",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "45",
+    "seriesID": "7",
+    "requiredMembers": "30",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "1&100",
+    "displayOrder": "7",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "46",
+    "seriesID": "8",
+    "requiredMembers": "5",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "51&10",
+    "displayOrder": "8",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "47",
+    "seriesID": "8",
+    "requiredMembers": "12",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "51&20",
+    "displayOrder": "8",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "48",
+    "seriesID": "8",
+    "requiredMembers": "21",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "51&30",
+    "displayOrder": "8",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "49",
+    "seriesID": "8",
+    "requiredMembers": "30",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "51&50",
+    "displayOrder": "8",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "50",
+    "seriesID": "9",
+    "requiredMembers": "5",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "52&10",
+    "displayOrder": "9",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "51",
+    "seriesID": "9",
+    "requiredMembers": "12",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "52&20",
+    "displayOrder": "9",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "52",
+    "seriesID": "9",
+    "requiredMembers": "21",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "52&25",
+    "displayOrder": "9",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "53",
+    "seriesID": "10",
+    "requiredMembers": "5",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "192&1",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "54",
+    "seriesID": "10",
+    "requiredMembers": "12",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "192&2",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "55",
+    "seriesID": "10",
+    "requiredMembers": "21",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "192&3",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "56",
+    "seriesID": "10",
+    "requiredMembers": "30",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "192&5",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "80",
+    "seriesID": "16",
+    "requiredMembers": "5",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "197&1",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "81",
+    "seriesID": "16",
+    "requiredMembers": "12",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "197&2",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "82",
+    "seriesID": "16",
+    "requiredMembers": "21",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "197&3",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "83",
+    "seriesID": "16",
+    "requiredMembers": "30",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "197&5",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "84",
+    "seriesID": "17",
+    "requiredMembers": "5",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "194&10",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "85",
+    "seriesID": "17",
+    "requiredMembers": "12",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "194&20",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "86",
+    "seriesID": "17",
+    "requiredMembers": "21",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "194&30",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "87",
+    "seriesID": "17",
+    "requiredMembers": "30",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "194&50",
+    "displayOrder": "10",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "57",
+    "seriesID": "11",
+    "requiredMembers": "3",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "15&20",
+    "displayOrder": "11"
+  },
+  {
+    "subscriptionBuffID": "58",
+    "seriesID": "11",
+    "requiredMembers": "9",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "15&40",
+    "displayOrder": "11"
+  },
+  {
+    "subscriptionBuffID": "59",
+    "seriesID": "11",
+    "requiredMembers": "18",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "15&60",
+    "displayOrder": "11"
+  },
+  {
+    "subscriptionBuffID": "60",
+    "seriesID": "11",
+    "requiredMembers": "30",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "15&100",
+    "displayOrder": "11"
+  },
+  {
+    "subscriptionBuffID": "61",
+    "seriesID": "12",
+    "requiredMembers": "3",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "16&20",
+    "displayOrder": "12"
+  },
+  {
+    "subscriptionBuffID": "62",
+    "seriesID": "12",
+    "requiredMembers": "9",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "16&40",
+    "displayOrder": "12"
+  },
+  {
+    "subscriptionBuffID": "63",
+    "seriesID": "12",
+    "requiredMembers": "18",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "16&60",
+    "displayOrder": "12"
+  },
+  {
+    "subscriptionBuffID": "64",
+    "seriesID": "12",
+    "requiredMembers": "30",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "16&100",
+    "displayOrder": "12"
+  },
+  {
+    "subscriptionBuffID": "65",
+    "seriesID": "13",
+    "requiredMembers": "1",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "121&125",
+    "displayOrder": "13"
+  },
+  {
+    "subscriptionBuffID": "66",
+    "seriesID": "13",
+    "requiredMembers": "7",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "121&250",
+    "displayOrder": "13"
+  },
+  {
+    "subscriptionBuffID": "67",
+    "seriesID": "13",
+    "requiredMembers": "15",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "121&500",
+    "displayOrder": "13"
+  },
+  {
+    "subscriptionBuffID": "68",
+    "seriesID": "13",
+    "requiredMembers": "25",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "121&1000",
+    "displayOrder": "13"
+  },
+  {
+    "subscriptionBuffID": "69",
+    "seriesID": "14",
+    "requiredMembers": "1",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "506&50",
+    "displayOrder": "14",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "70",
+    "seriesID": "14",
+    "requiredMembers": "7",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "506&100",
+    "displayOrder": "14",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "71",
+    "seriesID": "14",
+    "requiredMembers": "15",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "506&150",
+    "displayOrder": "14",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "72",
+    "seriesID": "14",
+    "requiredMembers": "25",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "506&250",
+    "displayOrder": "14",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "73",
+    "seriesID": "15",
+    "requiredMembers": "5",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "22&10",
+    "displayOrder": "15",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "74",
+    "seriesID": "15",
+    "requiredMembers": "12",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "22&15",
+    "displayOrder": "15",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "75",
+    "seriesID": "15",
+    "requiredMembers": "21",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "22&20",
+    "displayOrder": "15",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "76",
+    "seriesID": "15",
+    "requiredMembers": "30",
+    "subscriptionTypeID": "2",
+    "tier": "1",
+    "effects": "22&25",
+    "displayOrder": "15",
+    "saveInBattleLog": "1"
+  },
+  {
+    "subscriptionBuffID": "77",
+    "subscriptionTypeID": "3",
+    "tier": "20",
+    "effects": "195&1",
+    "displayOrder": "1"
+  },
+  {
+    "subscriptionBuffID": "78",
+    "subscriptionTypeID": "3",
+    "tier": "20",
+    "effects": "196&1",
+    "displayOrder": "2"
+  },
+  {
+    "subscriptionBuffID": "89",
+    "subscriptionTypeID": "3",
+    "tier": "20",
+    "effects": "284&20",
+    "displayOrder": "3"
+  },
+  {
+    "subscriptionBuffID": "90",
+    "subscriptionTypeID": "3",
+    "tier": "20",
+    "effects": "708&1",
+    "displayOrder": "4"
+  }
+]

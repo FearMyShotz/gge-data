@@ -1,0 +1,150 @@
+{
+  "EmpireEx": {
+    "name": "generic_country_international",
+    "id": 121
+  },
+  "EmpireEx_2": {
+    "name": "generic_country_DE",
+    "id": 163
+  },
+  "EmpireEx_3": {
+    "name": "generic_country_FR",
+    "id": 164
+  },
+  "EmpireEx_4": {
+    "name": "generic_country_CZ",
+    "id": 165
+  },
+  "EmpireEx_5": {
+    "name": "generic_country_PL",
+    "id": 166
+  },
+  "EmpireEx_6": {
+    "name": "generic_language_pt",
+    "id": 185
+  },
+  "EmpireEx_7": {
+    "name": "generic_country_international",
+    "id": 186
+  },
+  "EmpireEx_8": {
+    "name": "generic_country_ES",
+    "id": 188
+  },
+  "EmpireEx_9": {
+    "name": "generic_country_IT",
+    "id": 189
+  },
+  "EmpireEx_10": {
+    "name": "generic_country_TR",
+    "id": 190
+  },
+  "EmpireEx_11": {
+    "name": "generic_country_NL",
+    "id": 191
+  },
+  "EmpireEx_12": {
+    "name": "generic_country_HU",
+    "id": 192
+  },
+  "EmpireEx_13": {
+    "name": "generic_language_skn",
+    "id": 193
+  },
+  "EmpireEx_14": {
+    "name": "generic_country_RU",
+    "id": 195
+  },
+  "EmpireEx_15": {
+    "name": "generic_country_RO",
+    "id": 197
+  },
+  "EmpireEx_16": {
+    "name": "generic_country_BG",
+    "id": 198
+  },
+  "EmpireEx_17": {
+    "name": "generic_country_HU",
+    "id": 199
+  },
+  "EmpireEx_18": {
+    "name": "generic_country_SK",
+    "id": 200
+  },
+  "EmpireEx_19": {
+    "name": "generic_country_GB",
+    "id": 201
+  },
+  "EmpireEx_20": {
+    "name": "generic_country_BR",
+    "id": 202
+  },
+  "EmpireEx_21": {
+    "name": "generic_country_US",
+    "id": 203
+  },
+  "EmpireEx_22": {
+    "name": "generic_country_AU",
+    "id": 208
+  },
+  "EmpireEx_24": {
+    "name": "generic_country_JP",
+    "id": 210
+  },
+  "EmpireEx_25": {
+    "name": "generic_country_HIS",
+    "id": 212
+  },
+  "EmpireEx_26": {
+    "name": "generic_country_IN",
+    "id": 213
+  },
+  "EmpireEx_27": {
+    "name": "generic_country_CN",
+    "id": 216
+  },
+  "EmpireEx_28": {
+    "name": "generic_country_GR",
+    "id": 255
+  },
+  "EmpireEx_29": {
+    "name": "generic_country_LT",
+    "id": 256
+  },
+  "EmpireEx_32": {
+    "name": "generic_country_SA",
+    "id": 265
+  },
+  "EmpireEx_33": {
+    "name": "generic_country_AE",
+    "id": 266
+  },
+  "EmpireEx_34": {
+    "name": "generic_country_EG",
+    "id": 267
+  },
+  "EmpireEx_35": {
+    "name": "generic_country_ARAB",
+    "id": 268
+  },
+  "EmpireEx_36": {
+    "name": "generic_country_ASIA",
+    "id": 459
+  },
+  "EmpireEx_37": {
+    "name": "generic_country_HANT",
+    "id": 462
+  },
+  "EmpireEx_38": {
+    "name": "generic_country_ES",
+    "id": 704
+  },
+  "EmpireEx_43": {
+    "name": "generic_country_international",
+    "id": 831
+  },
+  "EmpireEx_46": {
+    "name": "generic_country_world",
+    "id": 879
+  }
+}
