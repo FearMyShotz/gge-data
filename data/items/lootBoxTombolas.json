@@ -12066,5 +12066,1517 @@
     "rewardCategory": "4",
     "rewardIDs": "8623",
     "shares": "100"
+  },
+  {
+    "entryID": "813",
+    "tombolaID": "20005",
+    "rewardCategory": "1",
+    "rewardIDs": "8629",
+    "shares": "700000"
+  },
+  {
+    "entryID": "814",
+    "tombolaID": "20005",
+    "rewardCategory": "1",
+    "rewardIDs": "8675",
+    "shares": "200000"
+  },
+  {
+    "entryID": "815",
+    "tombolaID": "20005",
+    "rewardCategory": "1",
+    "rewardIDs": "8676",
+    "shares": "90000"
+  },
+  {
+    "entryID": "816",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8677",
+    "shares": "800"
+  },
+  {
+    "entryID": "817",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8678",
+    "shares": "800"
+  },
+  {
+    "entryID": "818",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8679",
+    "shares": "172"
+  },
+  {
+    "entryID": "819",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8680",
+    "shares": "172"
+  },
+  {
+    "entryID": "820",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8681",
+    "shares": "172"
+  },
+  {
+    "entryID": "821",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8682",
+    "shares": "172"
+  },
+  {
+    "entryID": "822",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8683",
+    "shares": "172"
+  },
+  {
+    "entryID": "823",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8684",
+    "shares": "172"
+  },
+  {
+    "entryID": "824",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8685",
+    "shares": "172"
+  },
+  {
+    "entryID": "825",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8686",
+    "shares": "172"
+  },
+  {
+    "entryID": "826",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8687",
+    "shares": "172"
+  },
+  {
+    "entryID": "827",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8688",
+    "shares": "172"
+  },
+  {
+    "entryID": "828",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8689",
+    "shares": "172"
+  },
+  {
+    "entryID": "829",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8690",
+    "shares": "172"
+  },
+  {
+    "entryID": "830",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8691",
+    "shares": "172"
+  },
+  {
+    "entryID": "831",
+    "tombolaID": "20005",
+    "rewardCategory": "2",
+    "rewardIDs": "8692",
+    "shares": "172"
+  },
+  {
+    "entryID": "832",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8694",
+    "shares": "700"
+  },
+  {
+    "entryID": "833",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8695",
+    "shares": "700"
+  },
+  {
+    "entryID": "834",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8696",
+    "shares": "150"
+  },
+  {
+    "entryID": "835",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8697",
+    "shares": "150"
+  },
+  {
+    "entryID": "836",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8698",
+    "shares": "150"
+  },
+  {
+    "entryID": "837",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8699",
+    "shares": "150"
+  },
+  {
+    "entryID": "838",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8700",
+    "shares": "150"
+  },
+  {
+    "entryID": "839",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8701",
+    "shares": "150"
+  },
+  {
+    "entryID": "840",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8702",
+    "shares": "150"
+  },
+  {
+    "entryID": "841",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8703",
+    "shares": "150"
+  },
+  {
+    "entryID": "842",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8704",
+    "shares": "150"
+  },
+  {
+    "entryID": "843",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8705",
+    "shares": "150"
+  },
+  {
+    "entryID": "844",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8706",
+    "shares": "150"
+  },
+  {
+    "entryID": "845",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8707",
+    "shares": "150"
+  },
+  {
+    "entryID": "846",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8708",
+    "shares": "150"
+  },
+  {
+    "entryID": "847",
+    "tombolaID": "20005",
+    "rewardCategory": "3",
+    "rewardIDs": "8709",
+    "shares": "150"
+  },
+  {
+    "entryID": "848",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8711",
+    "shares": "200"
+  },
+  {
+    "entryID": "849",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8712",
+    "shares": "200"
+  },
+  {
+    "entryID": "850",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8713",
+    "shares": "200"
+  },
+  {
+    "entryID": "851",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8714",
+    "shares": "200"
+  },
+  {
+    "entryID": "852",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8715",
+    "shares": "200"
+  },
+  {
+    "entryID": "853",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8716",
+    "shares": "108"
+  },
+  {
+    "entryID": "854",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8717",
+    "shares": "108"
+  },
+  {
+    "entryID": "855",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8718",
+    "shares": "108"
+  },
+  {
+    "entryID": "856",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8719",
+    "shares": "108"
+  },
+  {
+    "entryID": "857",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8720",
+    "shares": "108"
+  },
+  {
+    "entryID": "858",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8721",
+    "shares": "108"
+  },
+  {
+    "entryID": "859",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8722",
+    "shares": "108"
+  },
+  {
+    "entryID": "860",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8723",
+    "shares": "108"
+  },
+  {
+    "entryID": "861",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8724",
+    "shares": "108"
+  },
+  {
+    "entryID": "862",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8725",
+    "shares": "108"
+  },
+  {
+    "entryID": "863",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8726",
+    "shares": "108"
+  },
+  {
+    "entryID": "864",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8727",
+    "shares": "108"
+  },
+  {
+    "entryID": "865",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8728",
+    "shares": "108"
+  },
+  {
+    "entryID": "866",
+    "tombolaID": "20005",
+    "rewardCategory": "4",
+    "rewardIDs": "8729",
+    "shares": "108"
+  },
+  {
+    "entryID": "867",
+    "tombolaID": "20006",
+    "rewardCategory": "1",
+    "rewardIDs": "8629",
+    "shares": "580000"
+  },
+  {
+    "entryID": "868",
+    "tombolaID": "20006",
+    "rewardCategory": "1",
+    "rewardIDs": "8675",
+    "shares": "250000"
+  },
+  {
+    "entryID": "869",
+    "tombolaID": "20006",
+    "rewardCategory": "1",
+    "rewardIDs": "8676",
+    "shares": "150000"
+  },
+  {
+    "entryID": "870",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8677",
+    "shares": "1400"
+  },
+  {
+    "entryID": "871",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8678",
+    "shares": "1400"
+  },
+  {
+    "entryID": "872",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8679",
+    "shares": "300"
+  },
+  {
+    "entryID": "873",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8680",
+    "shares": "300"
+  },
+  {
+    "entryID": "874",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8681",
+    "shares": "300"
+  },
+  {
+    "entryID": "875",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8682",
+    "shares": "300"
+  },
+  {
+    "entryID": "876",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8683",
+    "shares": "300"
+  },
+  {
+    "entryID": "877",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8684",
+    "shares": "300"
+  },
+  {
+    "entryID": "878",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8685",
+    "shares": "300"
+  },
+  {
+    "entryID": "879",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8686",
+    "shares": "300"
+  },
+  {
+    "entryID": "880",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8687",
+    "shares": "300"
+  },
+  {
+    "entryID": "881",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8688",
+    "shares": "300"
+  },
+  {
+    "entryID": "882",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8689",
+    "shares": "300"
+  },
+  {
+    "entryID": "883",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8690",
+    "shares": "300"
+  },
+  {
+    "entryID": "884",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8691",
+    "shares": "300"
+  },
+  {
+    "entryID": "885",
+    "tombolaID": "20006",
+    "rewardCategory": "2",
+    "rewardIDs": "8692",
+    "shares": "300"
+  },
+  {
+    "entryID": "886",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8694",
+    "shares": "1400"
+  },
+  {
+    "entryID": "887",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8695",
+    "shares": "1400"
+  },
+  {
+    "entryID": "888",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8696",
+    "shares": "300"
+  },
+  {
+    "entryID": "889",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8697",
+    "shares": "300"
+  },
+  {
+    "entryID": "890",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8698",
+    "shares": "300"
+  },
+  {
+    "entryID": "891",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8699",
+    "shares": "300"
+  },
+  {
+    "entryID": "892",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8700",
+    "shares": "300"
+  },
+  {
+    "entryID": "893",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8701",
+    "shares": "300"
+  },
+  {
+    "entryID": "894",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8702",
+    "shares": "300"
+  },
+  {
+    "entryID": "895",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8703",
+    "shares": "300"
+  },
+  {
+    "entryID": "896",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8704",
+    "shares": "300"
+  },
+  {
+    "entryID": "897",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8705",
+    "shares": "300"
+  },
+  {
+    "entryID": "898",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8706",
+    "shares": "300"
+  },
+  {
+    "entryID": "899",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8707",
+    "shares": "300"
+  },
+  {
+    "entryID": "900",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8708",
+    "shares": "300"
+  },
+  {
+    "entryID": "901",
+    "tombolaID": "20006",
+    "rewardCategory": "3",
+    "rewardIDs": "8709",
+    "shares": "300"
+  },
+  {
+    "entryID": "902",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8711",
+    "shares": "480"
+  },
+  {
+    "entryID": "903",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8712",
+    "shares": "480"
+  },
+  {
+    "entryID": "904",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8713",
+    "shares": "480"
+  },
+  {
+    "entryID": "905",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8714",
+    "shares": "480"
+  },
+  {
+    "entryID": "906",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8715",
+    "shares": "480"
+  },
+  {
+    "entryID": "907",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8716",
+    "shares": "258"
+  },
+  {
+    "entryID": "908",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8717",
+    "shares": "258"
+  },
+  {
+    "entryID": "909",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8718",
+    "shares": "258"
+  },
+  {
+    "entryID": "910",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8719",
+    "shares": "258"
+  },
+  {
+    "entryID": "911",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8720",
+    "shares": "258"
+  },
+  {
+    "entryID": "912",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8721",
+    "shares": "258"
+  },
+  {
+    "entryID": "913",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8722",
+    "shares": "258"
+  },
+  {
+    "entryID": "914",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8723",
+    "shares": "258"
+  },
+  {
+    "entryID": "915",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8724",
+    "shares": "258"
+  },
+  {
+    "entryID": "916",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8725",
+    "shares": "258"
+  },
+  {
+    "entryID": "917",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8726",
+    "shares": "258"
+  },
+  {
+    "entryID": "918",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8727",
+    "shares": "258"
+  },
+  {
+    "entryID": "919",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8728",
+    "shares": "258"
+  },
+  {
+    "entryID": "920",
+    "tombolaID": "20006",
+    "rewardCategory": "4",
+    "rewardIDs": "8729",
+    "shares": "258"
+  },
+  {
+    "entryID": "921",
+    "tombolaID": "20007",
+    "rewardCategory": "1",
+    "rewardIDs": "8629",
+    "shares": "420000"
+  },
+  {
+    "entryID": "922",
+    "tombolaID": "20007",
+    "rewardCategory": "1",
+    "rewardIDs": "8675",
+    "shares": "290000"
+  },
+  {
+    "entryID": "923",
+    "tombolaID": "20007",
+    "rewardCategory": "1",
+    "rewardIDs": "8676",
+    "shares": "250000"
+  },
+  {
+    "entryID": "924",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8677",
+    "shares": "2400"
+  },
+  {
+    "entryID": "925",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8678",
+    "shares": "2400"
+  },
+  {
+    "entryID": "926",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8679",
+    "shares": "515"
+  },
+  {
+    "entryID": "927",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8680",
+    "shares": "515"
+  },
+  {
+    "entryID": "928",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8681",
+    "shares": "515"
+  },
+  {
+    "entryID": "929",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8682",
+    "shares": "515"
+  },
+  {
+    "entryID": "930",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8683",
+    "shares": "515"
+  },
+  {
+    "entryID": "931",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8684",
+    "shares": "515"
+  },
+  {
+    "entryID": "932",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8685",
+    "shares": "515"
+  },
+  {
+    "entryID": "933",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8686",
+    "shares": "515"
+  },
+  {
+    "entryID": "934",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8687",
+    "shares": "515"
+  },
+  {
+    "entryID": "935",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8688",
+    "shares": "515"
+  },
+  {
+    "entryID": "936",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8689",
+    "shares": "515"
+  },
+  {
+    "entryID": "937",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8690",
+    "shares": "515"
+  },
+  {
+    "entryID": "938",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8691",
+    "shares": "515"
+  },
+  {
+    "entryID": "939",
+    "tombolaID": "20007",
+    "rewardCategory": "2",
+    "rewardIDs": "8692",
+    "shares": "515"
+  },
+  {
+    "entryID": "940",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8694",
+    "shares": "2800"
+  },
+  {
+    "entryID": "941",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8695",
+    "shares": "2800"
+  },
+  {
+    "entryID": "942",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8696",
+    "shares": "600"
+  },
+  {
+    "entryID": "943",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8697",
+    "shares": "600"
+  },
+  {
+    "entryID": "944",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8698",
+    "shares": "600"
+  },
+  {
+    "entryID": "945",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8699",
+    "shares": "600"
+  },
+  {
+    "entryID": "946",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8700",
+    "shares": "600"
+  },
+  {
+    "entryID": "947",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8701",
+    "shares": "600"
+  },
+  {
+    "entryID": "948",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8702",
+    "shares": "600"
+  },
+  {
+    "entryID": "949",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8703",
+    "shares": "600"
+  },
+  {
+    "entryID": "950",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8704",
+    "shares": "600"
+  },
+  {
+    "entryID": "951",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8705",
+    "shares": "600"
+  },
+  {
+    "entryID": "952",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8706",
+    "shares": "600"
+  },
+  {
+    "entryID": "953",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8707",
+    "shares": "600"
+  },
+  {
+    "entryID": "954",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8708",
+    "shares": "600"
+  },
+  {
+    "entryID": "955",
+    "tombolaID": "20007",
+    "rewardCategory": "3",
+    "rewardIDs": "8709",
+    "shares": "600"
+  },
+  {
+    "entryID": "956",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8711",
+    "shares": "1120"
+  },
+  {
+    "entryID": "957",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8712",
+    "shares": "1120"
+  },
+  {
+    "entryID": "958",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8713",
+    "shares": "1120"
+  },
+  {
+    "entryID": "959",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8714",
+    "shares": "1120"
+  },
+  {
+    "entryID": "960",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8715",
+    "shares": "1120"
+  },
+  {
+    "entryID": "961",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8716",
+    "shares": "600"
+  },
+  {
+    "entryID": "962",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8717",
+    "shares": "600"
+  },
+  {
+    "entryID": "963",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8718",
+    "shares": "600"
+  },
+  {
+    "entryID": "964",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8719",
+    "shares": "600"
+  },
+  {
+    "entryID": "965",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8720",
+    "shares": "600"
+  },
+  {
+    "entryID": "966",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8721",
+    "shares": "600"
+  },
+  {
+    "entryID": "967",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8722",
+    "shares": "600"
+  },
+  {
+    "entryID": "968",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8723",
+    "shares": "600"
+  },
+  {
+    "entryID": "969",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8724",
+    "shares": "600"
+  },
+  {
+    "entryID": "970",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8725",
+    "shares": "600"
+  },
+  {
+    "entryID": "971",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8726",
+    "shares": "600"
+  },
+  {
+    "entryID": "972",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8727",
+    "shares": "600"
+  },
+  {
+    "entryID": "973",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8728",
+    "shares": "600"
+  },
+  {
+    "entryID": "974",
+    "tombolaID": "20007",
+    "rewardCategory": "4",
+    "rewardIDs": "8729",
+    "shares": "600"
+  },
+  {
+    "entryID": "975",
+    "tombolaID": "20008",
+    "rewardCategory": "1",
+    "rewardIDs": "8629",
+    "shares": "150000"
+  },
+  {
+    "entryID": "976",
+    "tombolaID": "20008",
+    "rewardCategory": "1",
+    "rewardIDs": "8675",
+    "shares": "340000"
+  },
+  {
+    "entryID": "977",
+    "tombolaID": "20008",
+    "rewardCategory": "1",
+    "rewardIDs": "8676",
+    "shares": "270000"
+  },
+  {
+    "entryID": "978",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8677",
+    "shares": "9600"
+  },
+  {
+    "entryID": "979",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8678",
+    "shares": "9600"
+  },
+  {
+    "entryID": "980",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8679",
+    "shares": "2058"
+  },
+  {
+    "entryID": "981",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8680",
+    "shares": "2058"
+  },
+  {
+    "entryID": "982",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8681",
+    "shares": "2058"
+  },
+  {
+    "entryID": "983",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8682",
+    "shares": "2058"
+  },
+  {
+    "entryID": "984",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8683",
+    "shares": "2058"
+  },
+  {
+    "entryID": "985",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8684",
+    "shares": "2058"
+  },
+  {
+    "entryID": "986",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8685",
+    "shares": "2058"
+  },
+  {
+    "entryID": "987",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8686",
+    "shares": "2058"
+  },
+  {
+    "entryID": "988",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8687",
+    "shares": "2058"
+  },
+  {
+    "entryID": "989",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8688",
+    "shares": "2058"
+  },
+  {
+    "entryID": "990",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8689",
+    "shares": "2058"
+  },
+  {
+    "entryID": "991",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8690",
+    "shares": "2058"
+  },
+  {
+    "entryID": "992",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8691",
+    "shares": "2058"
+  },
+  {
+    "entryID": "993",
+    "tombolaID": "20008",
+    "rewardCategory": "2",
+    "rewardIDs": "8692",
+    "shares": "2058"
+  },
+  {
+    "entryID": "994",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8694",
+    "shares": "19200"
+  },
+  {
+    "entryID": "995",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8695",
+    "shares": "19200"
+  },
+  {
+    "entryID": "996",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8696",
+    "shares": "4115"
+  },
+  {
+    "entryID": "997",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8697",
+    "shares": "4115"
+  },
+  {
+    "entryID": "998",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8698",
+    "shares": "4115"
+  },
+  {
+    "entryID": "999",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8699",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1000",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8700",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1054",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8701",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1108",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8702",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1554",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8703",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1555",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8704",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1556",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8705",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1557",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8706",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1558",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8707",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1559",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8708",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1560",
+    "tombolaID": "20008",
+    "rewardCategory": "3",
+    "rewardIDs": "8709",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1561",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8711",
+    "shares": "7680"
+  },
+  {
+    "entryID": "1562",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8712",
+    "shares": "7680"
+  },
+  {
+    "entryID": "1563",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8713",
+    "shares": "7680"
+  },
+  {
+    "entryID": "1564",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8714",
+    "shares": "7680"
+  },
+  {
+    "entryID": "1565",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8715",
+    "shares": "7680"
+  },
+  {
+    "entryID": "1566",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8716",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1567",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8717",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1568",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8718",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1569",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8719",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1570",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8720",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1571",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8721",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1572",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8722",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1573",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8723",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1574",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8724",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1575",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8725",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1576",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8726",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1577",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8727",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1578",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8728",
+    "shares": "4115"
+  },
+  {
+    "entryID": "1579",
+    "tombolaID": "20008",
+    "rewardCategory": "4",
+    "rewardIDs": "8729",
+    "shares": "4115"
   }
 ]

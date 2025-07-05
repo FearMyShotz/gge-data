@@ -900,6 +900,7 @@
     "eventType": "PrivatePrimeTimeEvent",
     "minLevel": 6,
     "maxLevel": "99",
+    "onlyPayUser": "1",
     "isoChangeType": "2"
   },
   {
@@ -909,6 +910,7 @@
     "eventType": "ReactivationPrivatePrimeTimeEvent",
     "minLevel": 6,
     "maxLevel": "99",
+    "onlyPayUser": "1",
     "isoChangeType": "2"
   },
   {
