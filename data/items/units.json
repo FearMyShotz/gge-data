@@ -16500,7 +16500,7 @@
     "clientUsageEventID": "80,81",
     "deleteToolAfterBattle": "1",
     "fightType": "0",
-    "sortOrder": "108355"
+    "sortOrder": "108.355"
   },
   {
     "wodID": 511,
@@ -16522,7 +16522,7 @@
     "clientUsageEventID": "80,81",
     "deleteToolAfterBattle": "1",
     "fightType": "0",
-    "sortOrder": "108356"
+    "sortOrder": "108.356"
   },
   {
     "wodID": 512,
@@ -16544,7 +16544,7 @@
     "clientUsageEventID": "80,81",
     "deleteToolAfterBattle": "1",
     "fightType": "0",
-    "sortOrder": "108357"
+    "sortOrder": "108.357"
   },
   {
     "wodID": 106,
@@ -22501,6 +22501,7 @@
   {
     "wodID": 567,
     "comment1": "Offensive +number of waves",
+    "comment2": "standalone version (not craftable, hence no downgrade/upgrade id) of the SceatSuppAttWaves Tool for the Donation Event Global Leaderboard",
     "group": "Unit",
     "name": "Workshop",
     "type": "SceatSuppAttWaves",
@@ -23895,7 +23896,7 @@
     "samuraiTokenBooster": "6",
     "canBeUsedByNPC": "0",
     "typ": "Attack",
-    "slotTypes": "1,2,2009",
+    "slotTypes": "1,2,9",
     "allowedToAttack": "0+29",
     "allowedToTravel": "0+-1",
     "usageEventID": "80",
@@ -23916,7 +23917,7 @@
     "samuraiTokenBooster": "6",
     "canBeUsedByNPC": "0",
     "typ": "Attack",
-    "slotTypes": "1,2,2009",
+    "slotTypes": "1,2,9",
     "allowedToAttack": "0+29",
     "allowedToTravel": "0+-1",
     "usageEventID": "80",
@@ -23960,7 +23961,7 @@
     "khanTabletBooster": "7",
     "canBeUsedByNPC": "0",
     "typ": "Attack",
-    "slotTypes": "1,2,2009",
+    "slotTypes": "1,2,9",
     "allowedToAttack": "0+27#0+35",
     "allowedToTravel": "0+-1",
     "usageEventID": "5,72",
@@ -23982,7 +23983,7 @@
     "khanTabletBooster": "7",
     "canBeUsedByNPC": "0",
     "typ": "Attack",
-    "slotTypes": "1,2,2009",
+    "slotTypes": "1,2,9",
     "allowedToAttack": "0+27#0+35",
     "allowedToTravel": "0+-1",
     "usageEventID": "5,72",
@@ -24002,7 +24003,7 @@
     "ragePointBonus": "2",
     "canBeUsedByNPC": "0",
     "typ": "Attack",
-    "slotTypes": "1,2,2009",
+    "slotTypes": "1,2,9",
     "allowedToAttack": "0+35",
     "allowedToTravel": "0+-1",
     "usageEventID": "5,72",
@@ -24046,11 +24047,7 @@
     "fameBonus": "9",
     "canBeUsedByNPC": "0",
     "typ": "Attack",
-    "slotTypes": "1,2,2009",
-    "allowedToAttack": "0+21#0+34",
-    "allowedToTravel": "0+-1",
-    "usageEventID": "71,103",
-    "clientUsageEventID": "11,71,103",
+    "slotTypes": "1,2,9",
     "deleteToolAfterBattle": "1",
     "fightType": "0",
     "sortOrder": "105.22"
@@ -24068,7 +24065,7 @@
     "fameBonus": "9",
     "canBeUsedByNPC": "0",
     "typ": "Attack",
-    "slotTypes": "1,2,2009",
+    "slotTypes": "1,2,9",
     "allowedToAttack": "0+21#0+34",
     "allowedToTravel": "0+-1",
     "usageEventID": "71,103",

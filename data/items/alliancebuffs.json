@@ -1569,6 +1569,13 @@
     "effects": "19&100"
   },
   {
+    "allianceBuffID": "131",
+    "allianceBuffSeriesID": "6",
+    "level": "0",
+    "maxLevel": "30",
+    "availableInAllianceFunds": "0"
+  },
+  {
     "allianceBuffID": "132",
     "allianceBuffSeriesID": "6",
     "level": "1",

@@ -504,5 +504,20 @@
   {
     "skinID": "124",
     "name": "CitrusFortress"
+  },
+  {
+    "skinID": "125",
+    "name": "PirateCove",
+    "increasedSize": "1"
+  },
+  {
+    "skinID": "126",
+    "name": "BaronBaloon",
+    "increasedSize": "1"
+  },
+  {
+    "skinID": "127",
+    "name": "KegCastle",
+    "increasedSize": "1"
   }
 ]

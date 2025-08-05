@@ -284,5 +284,55 @@
     "tier": "5",
     "previousTierRequiredSkillPoints": "90",
     "minGeneralStarTier": "10"
+  },
+  {
+    "tierID": "47",
+    "generalID": "122",
+    "tier": "1",
+    "previousTierRequiredSkillPoints": "0"
+  },
+  {
+    "tierID": "48",
+    "generalID": "122",
+    "tier": "2",
+    "previousTierRequiredSkillPoints": "10"
+  },
+  {
+    "tierID": "49",
+    "generalID": "122",
+    "tier": "3",
+    "previousTierRequiredSkillPoints": "35"
+  },
+  {
+    "tierID": "50",
+    "generalID": "122",
+    "tier": "4",
+    "previousTierRequiredSkillPoints": "70"
+  },
+  {
+    "tierID": "51",
+    "generalID": "122",
+    "tier": "5",
+    "previousTierRequiredSkillPoints": "90",
+    "minGeneralStarTier": "10"
+  },
+  {
+    "tierID": "52",
+    "generalID": "123",
+    "tier": "1",
+    "previousTierRequiredSkillPoints": "0"
+  },
+  {
+    "tierID": "53",
+    "generalID": "123",
+    "tier": "2",
+    "previousTierRequiredSkillPoints": "10"
+  },
+  {
+    "tierID": "54",
+    "generalID": "123",
+    "tier": "3",
+    "previousTierRequiredSkillPoints": "35",
+    "minGeneralStarTier": "5"
   }
 ]
