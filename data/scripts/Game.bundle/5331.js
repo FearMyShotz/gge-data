@@ -2,111 +2,102 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./1.js");
-var o = require("./60.js");
-var a = require("./226.js");
-var s = require("./5332.js");
-var r = function () {
-  function OfferDescriptionVisualIsoObject() {
+var o = require("./1.js");
+var a = require("./6.js");
+var s = require("./60.js");
+var r = require("./4.js");
+var l = require("./227.js");
+var c = function () {
+  function OfferDescriptionVisualInterfaceButton() {
+    this._panelType = 0;
     this._isVisible = false;
+    this._offerStyle = 0;
     this._hiddenByABTest = false;
   }
-  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "name", {
+  Object.defineProperty(OfferDescriptionVisualInterfaceButton.prototype, "name", {
     get: function () {
-      return o.ClientConstOffer.OFFER_VISUAL_ISO_OBJECT;
+      return s.ClientConstOffer.OFFER_VISUAL_INTERFACE_BUTTON;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionVisualIsoObject.prototype.registerVisualParameter = function (e) {
+  OfferDescriptionVisualInterfaceButton.prototype.registerVisualParameter = function (e) {
     e.addEntry(this.name, this);
   };
-  OfferDescriptionVisualIsoObject.prototype.parseFromObjectParam = function (e) {
-    var t;
-    this._objectType = e.OT;
-    this._objectName = e.ON;
-    this._areaTypes = e.ATS;
-    this._iconForStates = [];
-    if (e.IFS) {
-      for (var i = 0, n = e.IFS; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && o.OS) {
-          for (var r = 0, l = o.OS; r < l.length; r++) {
-            var c = l[r];
-            if (c !== undefined) {
-              (t = new s.IconStateVO()).iconClassName = o.ICN;
-              t.offerState = a.PrivateOfferStateEnum.getEnumByStateId(c);
-              this._iconForStates.push(t);
-            }
-          }
-        }
-      }
-    }
+  OfferDescriptionVisualInterfaceButton.prototype.parseFromObjectParam = function (e) {
+    this._buttonType = e.BT;
+    this._panelType = a.int(e.PT);
+    this._tooltipId = e.TID;
+    this._offerStyle = e.OS ? 1 : 0;
     this._isVisible = false;
   };
-  OfferDescriptionVisualIsoObject.prototype.execute = function (e) {
-    this._isVisible = e.offerState === a.PrivateOfferStateEnum.QUEST_STARTED || e.offerState === a.PrivateOfferStateEnum.QUEST_PENDING || e.offerState === a.PrivateOfferStateEnum.OFFER_READY || e.offerState === a.PrivateOfferStateEnum.OFFER_PENDING;
-    if (this._hiddenByABTest) {
-      this._isVisible = false;
+  OfferDescriptionVisualInterfaceButton.prototype.execute = function (e) {
+    if (this._offerStyle && this._offerStyle == OfferDescriptionVisualInterfaceButton.OFFER_STYLE_OPEN_EMAIL_TRIGGER && e.offerState === l.PrivateOfferStateEnum.QUEST_STARTED) {
+      return false;
     }
-    if (l.Iso.data) {
-      l.Iso.data.updater.updateEventBuildings();
+    if (e.getAdditionalComponentByName(s.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE_SKIP) && !r.CastleModel.skipDiscountData.isBestOfferSoFar(e)) {
+      return true;
     }
-    return true;
-  };
-  OfferDescriptionVisualIsoObject.prototype.getIconClassNameForOfferState = function (e) {
-    if (this._iconForStates != null) {
-      for (var t = 0, i = this._iconForStates; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.offerState === e) {
-          return n.iconClassName;
+    if (e.offerState === l.PrivateOfferStateEnum.QUEST_STARTED || e.offerState === l.PrivateOfferStateEnum.QUEST_PENDING || e.offerState === l.PrivateOfferStateEnum.OFFER_READY || e.offerState === l.PrivateOfferStateEnum.OFFER_PENDING) {
+      if (!this._isVisible) {
+        var t = n.castAs(u.CastleLayoutManager.getInstance().getPanel(d.CastleStatusPanel), "CastleStatusPanel");
+        if (!t) {
+          console.warn("Can not add icon because status panel not there yet!");
+          return false;
+        }
+        this._statusIcon = new p.StatusIconPrivateOffer(this._buttonType, e, this._tooltipId, this._panelType);
+        if (this._statusIcon) {
+          t.addStatusIcon(this._panelType, this._statusIcon);
+          this._isVisible = true;
         }
       }
+    } else if (this._isVisible) {
+      var i = n.castAs(u.CastleLayoutManager.getInstance().getPanel(d.CastleStatusPanel), "CastleStatusPanel");
+      if (i && this._statusIcon) {
+        if (this._statusIcon) {
+          this._statusIcon.hide();
+          i.removeStatusIcon(this._panelType, this._statusIcon);
+          this._statusIcon.dispose();
+        }
+        this._isVisible = false;
+      }
     }
-    return null;
-  };
-  OfferDescriptionVisualIsoObject.prototype.toExecuteInState = function (e) {
+    if (this._hiddenByABTest) {
+      if (this._statusIcon) {
+        this._statusIcon.hide();
+      }
+      this._isVisible = false;
+    }
     return true;
   };
-  OfferDescriptionVisualIsoObject.prototype.isIsoObjectVisibleByArea = function (e) {
-    return !this._areaTypes || this._areaTypes.indexOf(e) > -1;
+  OfferDescriptionVisualInterfaceButton.prototype.toExecuteInState = function (e) {
+    return true;
   };
-  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "objectType", {
+  Object.defineProperty(OfferDescriptionVisualInterfaceButton.prototype, "hiddenByABTest", {
     get: function () {
-      return this._objectType;
+      return this._hiddenByABTest;
     },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "objectName", {
-    get: function () {
-      return this._objectName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "areaTypes", {
-    get: function () {
-      return this._areaTypes;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "isVisible", {
-    get: function () {
-      return this._isVisible;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "hiddenByABTest", {
     set: function (e) {
       this._hiddenByABTest = e;
     },
     enumerable: true,
     configurable: true
   });
-  return OfferDescriptionVisualIsoObject;
+  Object.defineProperty(OfferDescriptionVisualInterfaceButton.prototype, "isVisible", {
+    get: function () {
+      return this._isVisible;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  OfferDescriptionVisualInterfaceButton.__initialize_static_members = function () {
+    OfferDescriptionVisualInterfaceButton.OFFER_STYLE_OPEN_EMAIL_TRIGGER = 1;
+  };
+  return OfferDescriptionVisualInterfaceButton;
 }();
-exports.OfferDescriptionVisualIsoObject = r;
-var l = require("./33.js");
-n.classImplementsInterfaces(r, "IOfferDescriptionVisualParameter");
+exports.OfferDescriptionVisualInterfaceButton = c;
+var u = require("./17.js");
+var d = require("./473.js");
+var p = require("./5332.js");
+o.classImplementsInterfaces(c, "IOfferDescriptionVisualParameter");
+c.__initialize_static_members();

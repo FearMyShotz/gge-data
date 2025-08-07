@@ -2,45 +2,47 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./5148.js");
-var u = require("./10.js");
-var d = function (e) {
-  function TXCCommand() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./7.js");
+var c = require("./43.js");
+var u = require("./93.js");
+var d = require("./10.js");
+var p = function (e) {
+  function SSPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TXCCommand, e);
-  Object.defineProperty(TXCCommand.prototype, "cmdId", {
+  n.__extends(SSPCommand, e);
+  Object.defineProperty(SSPCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_COLLECT_TAX;
+      return l.ClientConstSF.S2C_GET_SOCIAL_PID;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  TXCCommand.prototype.executeCommand = function (e, t) {
+  SSPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case a.ERROR.ALL_OK:
+      case s.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        l.CastleModel.currencyData.parseGCU(i.gcu);
-        l.CastleModel.taxData.parse_TXI(i.txi);
-        var n = s.int(i.CT);
-        p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleGetTaxDialog, new c.CastleGetTaxDialogProperties(n));
+        h.CastleDialogHandler.getInstance().registerDialogsWithTypeAndDefaultValues(C.CastlePlayerInfoDialog, new u.CastlePlayerInfoDialogProperties(i.PID), c.CastleDialogConsts.DIALOG_TYPE_SINGLE);
+        break;
+      case s.ERROR.PLAYER_NOT_FOUND:
+        h.CastleDialogHandler.getInstance().registerDefaultDialogs(g.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("dialog_socialPlayerIsNoIngamePlayer_title"), r.Localize.text("dialog_socialPlayerIsNoIngamePlayer_copy")));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return TXCCommand;
-}(u.CastleCommand);
-exports.TXCCommand = d;
-var p = require("./9.js");
-var h = require("./5149.js");
-o.classImplementsInterfaces(d, "IExecCommand");
+  return SSPCommand;
+}(d.CastleCommand);
+exports.SSPCommand = p;
+var h = require("./9.js");
+var g = require("./38.js");
+var C = require("./94.js");
+a.classImplementsInterfaces(p, "IExecCommand");

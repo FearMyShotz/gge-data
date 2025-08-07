@@ -5,35 +5,32 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function RPCCommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function MECCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RPCCommand, e);
-  Object.defineProperty(RPCCommand.prototype, "cmdId", {
+  n.__extends(MECCommand, e);
+  Object.defineProperty(MECCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_CONSTRUCTION_ITEM_REPLACE;
+      return s.ClientConstSF.S2C_MARK_EXPIRED_CONSTRUCTION_ITEM_EVENT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  RPCCommand.prototype.executeCommand = function (e, t) {
+  MECCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.areaData.activeArea.updater.parseConstructionItems(i.CI);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return RPCCommand;
-}(l.CastleCommand);
-exports.RPCCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return MECCommand;
+}(r.CastleCommand);
+exports.MECCommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

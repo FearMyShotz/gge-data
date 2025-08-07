@@ -5,38 +5,38 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./10.js");
-var l = require("./1580.js");
-var c = require("./4890.js");
-var u = function (e) {
-  function HFLCommand() {
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function HCSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(HFLCommand, e);
-  Object.defineProperty(HFLCommand.prototype, "cmdId", {
+  n.__extends(HCSCommand, e);
+  Object.defineProperty(HCSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_HOSPITAL_FLAGS;
+      return s.ClientConstSF.S2C_CANCEL_HOSPITAL_SLOT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  HFLCommand.prototype.executeCommand = function (e, t) {
+  HCSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        var n = new c.HospitalFlagsVO();
-        n.parse_HFL(i);
-        this.controller.dispatchEvent(new l.CastleHospitalEvent(l.CastleHospitalEvent.HOSPITAL_FLAGS_RECEIVED, n));
+        r.CastleModel.militaryData.parse_SPL(i.spl);
+        r.CastleModel.militaryData.parse_GUI(i.gui);
+        break;
+      case a.ERROR.INVALID_PARAMETER_VALUE:
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return HFLCommand;
-}(r.CastleCommand);
-exports.HFLCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return HCSCommand;
+}(l.CastleCommand);
+exports.HCSCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

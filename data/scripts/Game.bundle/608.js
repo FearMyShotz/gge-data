@@ -3,21 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./188.js");
+var a = require("./7.js");
 var s = function (e) {
-  function CastleTitleMainDialogProperties(t = a.ClientConstTitle.GLORY_TITLE) {
-    var i = e.call(this) || this;
-    i._titleSystem = t;
+  function C2SReadMessagesVO(t) {
+    var i = this;
+    i.MID = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).MID = t;
     return i;
   }
-  n.__extends(CastleTitleMainDialogProperties, e);
-  Object.defineProperty(CastleTitleMainDialogProperties.prototype, "titleSystem", {
-    get: function () {
-      return this._titleSystem;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleTitleMainDialogProperties;
-}(o.BasicProperties);
-exports.CastleTitleMainDialogProperties = s;
+  n.__extends(C2SReadMessagesVO, e);
+  C2SReadMessagesVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_READ_MESSAGES;
+  };
+  return C2SReadMessagesVO;
+}(o.BasicCommandVO);
+exports.C2SReadMessagesVO = s;

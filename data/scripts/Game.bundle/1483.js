@@ -38,6 +38,6 @@ var l = function (e) {
     }
   };
   return GuardTowerVO;
-}(require("./771.js").ATowerVO);
+}(require("./773.js").ATowerVO);
 exports.GuardTowerVO = l;
 o.classImplementsInterfaces(l, "IShopVO", "ICostVO", "IInventoryVO");

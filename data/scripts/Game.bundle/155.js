@@ -81,5 +81,5 @@ var r = function (e) {
     configurable: true
   });
   return CollectableItemGenericCurrencyVO;
-}(require("./861.js").ACollectableItemCurrencyVO);
+}(require("./862.js").ACollectableItemCurrencyVO);
 exports.CollectableItemGenericCurrencyVO = r;

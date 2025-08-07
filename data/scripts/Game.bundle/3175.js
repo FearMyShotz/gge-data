@@ -3,59 +3,36 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./2.js");
-var s = require("./18.js");
-var r = require("./32.js");
-var l = require("./4.js");
-var c = require("./371.js");
-var u = require("./145.js");
-var d = require("./194.js");
-var p = function (e) {
-  function FriendInviteSurroundingsVE() {
+var a = require("./111.js");
+var s = require("./194.js");
+var r = function (e) {
+  function FogSurroundingsVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FriendInviteSurroundingsVE, e);
-  FriendInviteSurroundingsVE.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    h.CastleComponent.controller.addEventListener(r.CastleUserDataEvent.LEVEL_UP, this.bindFunction(this.onLevelUp));
+  n.__extends(FogSurroundingsVE, e);
+  FogSurroundingsVE.prototype.init = function (t) {
+    e.prototype.init.call(this, t);
   };
-  FriendInviteSurroundingsVE.prototype.removeEventListener = function () {
-    e.prototype.removeEventListener.call(this);
-    h.CastleComponent.controller.removeEventListener(r.CastleUserDataEvent.LEVEL_UP, this.bindFunction(this.onLevelUp));
+  FogSurroundingsVE.prototype.onAllDispClipsLoaded = function () {
+    e.prototype.onAllDispClipsLoaded.call(this);
+    this.dispComponent.dispContainer.scaleX = l.Iso.renderer.camera.scrollBounds.width / 2 * 1.1;
+    this.elementContainer.mouseEnabled = false;
   };
-  FriendInviteSurroundingsVE.prototype.createAdditionalClips = function () {
-    e.prototype.createAdditionalClips.call(this);
-    if (l.CastleModel.userData.userLevel < FriendInviteSurroundingsVE.ADVISE_LEVEL) {
-      this.additionalClips.addClips(u.IsoAdditionalClipEnum.EXCLAMATION_MARK2);
-    }
+  FogSurroundingsVE.prototype.getVELayerType = function () {
+    return a.IsoLayerEnum.FOG;
   };
-  Object.defineProperty(FriendInviteSurroundingsVE.prototype, "hasBuildingPlaceHolder", {
+  Object.defineProperty(FogSurroundingsVE.prototype, "hasBuildingPlaceHolder", {
     get: function () {
       return false;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.ASurroundingBuildingVE.prototype, "hasBuildingPlaceHolder").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.ASurroundingBuildingVE.prototype, "hasBuildingPlaceHolder").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  FriendInviteSurroundingsVE.prototype.onLevelUp = function (e) {
-    this.updateAdditionalClips();
-  };
-  FriendInviteSurroundingsVE.prototype.onMouseClick = function () {
-    if (!a.EnvGlobalsHandler.globals.isOnSpecialServer) {
-      if (a.EnvGlobalsHandler.globals.loginIsKeyBased || a.EnvGlobalsHandler.globals.urlVariables.nativeStore == a.BasicConstants.NATIVE_STORE_MICROSOFT) {
-        h.CastleComponent.dialogHandler.registerDefaultDialogs(g.CastleFriendListDialog);
-      } else {
-        h.CastleComponent.dialogHandler.registerDefaultDialogs(C.CastlePremiumMarketPlaceDialog, new c.CastlePremiumMarketPlaceDialogProperties(s.ClientConstCastle.CATEGORY_MARKETPLACE_INVITE_A_FRIEND));
-      }
-    }
-  };
-  FriendInviteSurroundingsVE.ADVISE_LEVEL = 20;
-  return FriendInviteSurroundingsVE;
-}(d.ASurroundingBuildingVE);
-exports.FriendInviteSurroundingsVE = p;
-var h = require("./14.js");
-var g = require("./759.js");
-var C = require("./315.js");
-o.classImplementsInterfaces(p, "ICollectableRendererList", "IIngameUICapable");
+  return FogSurroundingsVE;
+}(s.ASurroundingBuildingVE);
+exports.FogSurroundingsVE = r;
+var l = require("./34.js");
+o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

@@ -4,170 +4,88 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
-var s = require("./6.js");
-var r = require("./57.js");
+var s = require("./3.js");
+var r = require("./148.js");
 var l = require("./13.js");
 var c = require("./4.js");
 var u = require("./375.js");
 var d = require("./24.js");
-var p = require("./157.js");
+var p = require("./40.js");
 var h = require("./8.js");
-var g = require("./41.js");
-var C = function (e) {
-  function SamuraiDaimyoEventDialogContractsCategory(t, i) {
-    var n;
-    var o = this;
-    o._contractItems = [];
-    o._currentSelectedIndex = -1;
-    o._onContractSelected = new r.Signal();
-    CONSTRUCTOR_HACK;
-    (o = e.call(this, (n = new d.CastleGoodgameExternalClip(SamuraiDaimyoEventDialogContractsCategory.ASSET_CLIP_NAME, _.IsoHelper.view.getAssetFileURL(f.SamuraiDaimyoEventDialog.NAME))).currentshownDisplayObject, i) || this)._clip = n;
+var g = function (e) {
+  function SamuraiDaimyoEventDialogContractsItem(t, i, n) {
+    var o = e.call(this, null) || this;
+    o._disp = (o._clip = new d.CastleGoodgameExternalClip(SamuraiDaimyoEventDialogContractsItem.ASSET_CLIP_NAME, C.IsoHelper.view.getAssetFileURL(f.SamuraiDaimyoEventDialog.NAME))).currentshownDisplayObject;
     o._contractType = t;
-    h.ButtonHelper.initBasicButton(o._headerMC, 1);
-    m.CastleComponent.textFieldManager.registerTextField(o._headerMC.txt_name, new a.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId(t == u.SamuraiDaimyoDataXml.CONTRACT_TYPE_CASTLE ? "contracts_daimyoCastle" : "contracts_township"))).autoFitToBounds = true;
-    o._headerMC.mc_icon.gotoAndStop(t == u.SamuraiDaimyoDataXml.CONTRACT_TYPE_CASTLE ? 1 : 2);
+    o._progressVO = i;
+    o._onClickCallbackFunc = n;
+    o.init();
+    o.setSelection(false);
     return o;
   }
-  n.__extends(SamuraiDaimyoEventDialogContractsCategory, e);
-  SamuraiDaimyoEventDialogContractsCategory.prototype.destroy = function () {
+  n.__extends(SamuraiDaimyoEventDialogContractsItem, e);
+  SamuraiDaimyoEventDialogContractsItem.prototype.init = function () {
+    h.ButtonHelper.initBasicButton(this.disp, 1);
+    m.CrestHelper.setCrestGraphics(this.disp.mc_icon, c.CastleModel.otherPlayerData.getOwnerInfoVO(this.contractType == u.SamuraiDaimyoDataXml.CONTRACT_TYPE_CASTLE ? r.ClientConstNPCs.NPC_ID_DAIMYO_CASTLE : r.ClientConstNPCs.NPC_ID_DAIMYO_TOWNSHIP).crest);
+    _.CastleComponent.textFieldManager.registerTextField(this.disp.txt_name, this.getNameTextVO()).autoFitToBounds = true;
+    _.CastleComponent.textFieldManager.registerTextField(this.disp.txt_rank, this.getRankTextVO()).autoFitToBounds = true;
+  };
+  SamuraiDaimyoEventDialogContractsItem.prototype.destroy = function () {
     e.prototype.destroy.call(this);
     this._clip = null;
   };
-  SamuraiDaimyoEventDialogContractsCategory.prototype.onShow = function () {
-    e.prototype.onShow.call(this);
-    if (this._contractItems != null) {
-      for (var t = 0, i = this._contractItems; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.onShow();
-        }
-      }
-    }
-    this.updateItems();
-    this.expand(true, false);
+  SamuraiDaimyoEventDialogContractsItem.prototype.setSelection = function (e) {
+    this.disp.mc_selected.visible = e;
+    this.disp.mc_default.visible = !e;
   };
-  SamuraiDaimyoEventDialogContractsCategory.prototype.onHide = function () {
-    if (this._contractItems != null) {
-      for (var t = 0, i = this._contractItems; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.onHide();
-        }
-      }
-    }
-    e.prototype.onHide.call(this);
+  SamuraiDaimyoEventDialogContractsItem.prototype.getNameTextVO = function () {
+    return new a.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId(this.contractType == u.SamuraiDaimyoDataXml.CONTRACT_TYPE_CASTLE ? "contracts_category_daimyo_attack_header" : "contracts_category_township_defend_header"));
   };
-  SamuraiDaimyoEventDialogContractsCategory.prototype.updateItems = function () {
-    this._contractItems = [];
-    if (this._contractItems != null) {
-      for (var e = 0, t = this._contractItems; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.destroy();
-        }
-      }
-    }
-    var n = this.contractType == u.SamuraiDaimyoDataXml.CONTRACT_TYPE_CASTLE ? c.CastleModel.samuraiDaimyoData.server.contractsCastles : c.CastleModel.samuraiDaimyoData.server.contractsTownships;
-    var o = 0;
-    if (n != null) {
-      for (var a = 0, s = n; a < s.length; a++) {
-        var r = s[a];
-        if (r !== undefined) {
-          (i = new O.SamuraiDaimyoEventDialogContractsItem(this.contractType, r, this.bindFunction(this.onItemClicked))).onShow();
-          this.disp.contentMC.addChild(i.disp);
-          this._contractItems.push(i);
-          i.disp.x = 0;
-          i.disp.y = o;
-          o += i.disp.height + SamuraiDaimyoEventDialogContractsCategory.ITEM_PADDING_Y;
-        }
-      }
-    }
-    g.CastleMovieClipHelper.applyMaskFromMovieClip(this._contentMC, this._contentMC);
-    this._contentMC.visible = true;
+  SamuraiDaimyoEventDialogContractsItem.prototype.getRankTextVO = function () {
+    var e = [this.getXmlContractVO().rank, c.CastleModel.samuraiDaimyoData.xml.getContractSeriesIndex(this.contractType, this.progressVO.id) + 1, c.CastleModel.samuraiDaimyoData.xml.getContractSeries(this.contractType, this.progressVO.id).length];
+    return new a.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("rankAndStep", e));
   };
-  SamuraiDaimyoEventDialogContractsCategory.prototype.applyStateChange = function () {
-    e.prototype.applyStateChange.call(this);
-    this._headerMC.mc_arrow.gotoAndStop(this.isExpanded ? 2 : 1);
+  SamuraiDaimyoEventDialogContractsItem.prototype.getDescriptionTextVO = function () {
+    return new s.LocalizedTextVO(this.contractType == u.SamuraiDaimyoDataXml.CONTRACT_TYPE_CASTLE ? "contracts_category_daimyo_attack_desc" : "contracts_category_township_defend_desc");
   };
-  SamuraiDaimyoEventDialogContractsCategory.prototype.resetSelection = function () {
-    this._currentSelectedIndex = -1;
-    if (this._contractItems != null) {
-      for (var e = 0, t = this._contractItems; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.setSelection(false);
-        }
-      }
-    }
+  SamuraiDaimyoEventDialogContractsItem.prototype.getXmlContractVO = function () {
+    return c.CastleModel.samuraiDaimyoData.xml.getContractsList(this.contractType).get(this.progressVO.id);
   };
-  SamuraiDaimyoEventDialogContractsCategory.prototype.getSelectedItem = function () {
-    if (this._currentSelectedIndex >= 0) {
-      return this._contractItems[this._currentSelectedIndex];
+  SamuraiDaimyoEventDialogContractsItem.prototype.getXmlDaimyoAreaVO = function () {
+    var e = this.getXmlContractVO();
+    var t = c.CastleModel.samuraiDaimyoData.server.getArea(this.contractType, e.rank);
+    if (this.contractType == u.SamuraiDaimyoDataXml.CONTRACT_TYPE_CASTLE) {
+      return c.CastleModel.daimyoCastleXmlData.getDaimyoCastle(t.rank, t.level, t.eventAutoScalingCampID);
     } else {
-      return null;
+      return c.CastleModel.daimyoTownshipXmlData.getDaimyoTownship(t.rank, t.level, t.eventAutoScalingCampID);
     }
   };
-  SamuraiDaimyoEventDialogContractsCategory.prototype.onClick = function (t) {
+  SamuraiDaimyoEventDialogContractsItem.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    if (t.target == this._headerMC) {
-      this.expand(!this.isExpanded, false);
+    if (this._onClickCallbackFunc) {
+      this._onClickCallbackFunc(this);
     }
   };
-  SamuraiDaimyoEventDialogContractsCategory.prototype.onItemClicked = function (e) {
-    this._currentSelectedIndex = s.int(this._contractItems.indexOf(e));
-    if (this._contractItems != null) {
-      for (var t = 0, i = this._contractItems; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.setSelection(false);
-        }
-      }
-    }
-    e.setSelection(true);
-    this._onContractSelected.dispatch(this);
-  };
-  Object.defineProperty(SamuraiDaimyoEventDialogContractsCategory.prototype, "clip", {
+  Object.defineProperty(SamuraiDaimyoEventDialogContractsItem.prototype, "progressVO", {
     get: function () {
-      return this._clip;
+      return this._progressVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SamuraiDaimyoEventDialogContractsCategory.prototype, "contractType", {
+  Object.defineProperty(SamuraiDaimyoEventDialogContractsItem.prototype, "contractType", {
     get: function () {
       return this._contractType;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SamuraiDaimyoEventDialogContractsCategory.prototype, "onContractSelected", {
-    get: function () {
-      return this._onContractSelected;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SamuraiDaimyoEventDialogContractsCategory.prototype, "currentSelectedIndex", {
-    get: function () {
-      return this._currentSelectedIndex;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SamuraiDaimyoEventDialogContractsCategory.prototype, "contractItems", {
-    get: function () {
-      return this._contractItems;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SamuraiDaimyoEventDialogContractsCategory.ASSET_CLIP_NAME = "SamuraiDaimyoEvent_QuestItem";
-  SamuraiDaimyoEventDialogContractsCategory.ITEM_PADDING_Y = 4;
-  return SamuraiDaimyoEventDialogContractsCategory;
-}(p.ACollapsibleItem);
-exports.SamuraiDaimyoEventDialogContractsCategory = C;
-o.classImplementsInterfaces(C, "ICollectableRendererList", "ICollapsibleItem", "ILayoutable");
-var _ = require("./46.js");
-var m = require("./14.js");
-var f = require("./825.js");
-var O = require("./3746.js");
+  SamuraiDaimyoEventDialogContractsItem.ASSET_CLIP_NAME = "SamuraiDaimyoEvent_QuestItemSub";
+  return SamuraiDaimyoEventDialogContractsItem;
+}(p.CastleItemRenderer);
+exports.SamuraiDaimyoEventDialogContractsItem = g;
+var C = require("./46.js");
+var _ = require("./14.js");
+var m = require("./61.js");
+var f = require("./827.js");
+o.classImplementsInterfaces(g, "ICollectableRendererList");

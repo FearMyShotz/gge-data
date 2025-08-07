@@ -2,16 +2,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SBoosterInfoVO() {
-    return e.call(this) || this;
+var o = function (e) {
+  function CastleCostInfoDialogProperties(t, i, n = "", o = "", a = "") {
+    var s = this;
+    s.amount = 0;
+    CONSTRUCTOR_HACK;
+    (s = e.call(this) || this).functionOk = i;
+    s.amount = t;
+    s.copy = n;
+    s.timestring = o;
+    s.helpertext = a;
+    return s;
   }
-  n.__extends(C2SBoosterInfoVO, e);
-  C2SBoosterInfoVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_BOOSTER_INFO;
-  };
-  return C2SBoosterInfoVO;
-}(o.BasicCommandVO);
-exports.C2SBoosterInfoVO = s;
+  n.__extends(CastleCostInfoDialogProperties, e);
+  return CastleCostInfoDialogProperties;
+}(require("./2.js").BasicProperties);
+exports.CastleCostInfoDialogProperties = o;

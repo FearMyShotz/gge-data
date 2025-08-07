@@ -3,27 +3,27 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1209.js");
+var a = require("./173.js");
 var s = function (e) {
-  function CastleEquipmentMerchantEventBuyDialog() {
-    return e.call(this, CastleEquipmentMerchantEventBuyDialog.NAME) || this;
+  function EquipmentMerchantScrollItem(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(CastleEquipmentMerchantEventBuyDialog, e);
-  Object.defineProperty(CastleEquipmentMerchantEventBuyDialog.prototype, "dialogTitle", {
+  n.__extends(EquipmentMerchantScrollItem, e);
+  Object.defineProperty(EquipmentMerchantScrollItem.prototype, "dialogKey", {
     get: function () {
-      return "dialog_equipmentMerchantEventBuy_title";
+      return r.CastleEquipmentMerchantEventBuyDialog;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.AMerchantBuyDialog.prototype, "dialogTitle").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.AMerchantScrollItem.prototype, "dialogKey").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleEquipmentMerchantEventBuyDialog.__initialize_static_members = function () {
-    CastleEquipmentMerchantEventBuyDialog.NAME = "CastleEquipmentMerchantEventBuy";
+  EquipmentMerchantScrollItem.prototype.handleDiscount = function (t = true) {
+    e.prototype.handleDiscount.call(this, false);
   };
-  return CastleEquipmentMerchantEventBuyDialog;
-}(a.AMerchantBuyDialog);
-exports.CastleEquipmentMerchantEventBuyDialog = s;
-s.__initialize_static_members();
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  return EquipmentMerchantScrollItem;
+}(a.AMerchantScrollItem);
+exports.EquipmentMerchantScrollItem = s;
+var r = require("./4433.js");
+o.classImplementsInterfaces(s, "MovieClip");

@@ -8,13 +8,13 @@ var s = require("./6.js");
 var r = require("./7.js");
 var l = require("./10.js");
 var c = function (e) {
-  function BCQCommand() {
+  function RPVCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BCQCommand, e);
-  Object.defineProperty(BCQCommand.prototype, "cmdId", {
+  n.__extends(RPVCommand, e);
+  Object.defineProperty(RPVCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_BUY_CAMPAIGN_QUEST;
+      return r.ClientConstSF.S2C_REMOVE_PRIVATE_RESOURCE_VILLAGE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,7 +22,10 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  BCQCommand.prototype.exec = function (e) {
+  RPVCommand.prototype.executeCommand = function (t, i) {
+    return e.prototype.executeCommand.call(this, t, i);
+  };
+  RPVCommand.prototype.exec = function (e) {
     var t = s.int(e[0]);
     var i = e[1];
     switch (t) {
@@ -32,7 +35,7 @@ var c = function (e) {
         this.showErrorDialog(t, i);
     }
   };
-  return BCQCommand;
+  return RPVCommand;
 }(l.CastleCommand);
-exports.BCQCommand = c;
+exports.RPVCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

@@ -184,6 +184,6 @@ var h = function (e) {
 exports.ModernPackageShopBuyDialog = h;
 o.classImplementsInterfaces(h, "ICollectableRendererList");
 var g = require("./12.js");
-var C = require("./591.js");
+var C = require("./592.js");
 var _ = require("./1.js");
 var m = require("./20.js");

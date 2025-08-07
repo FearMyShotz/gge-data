@@ -33,5 +33,5 @@ var a = function (e) {
     this._buildingVO = null;
   };
   return ConstructionItemSlotSmall;
-}(require("./997.js").ConstructionItemSlot);
+}(require("./998.js").ConstructionItemSlot);
 exports.ConstructionItemSlotSmall = a;

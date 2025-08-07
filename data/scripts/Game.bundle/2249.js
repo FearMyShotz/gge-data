@@ -1,61 +1,26 @@
 var n = require("./257.js");
-var o = require("./1283.js");
+var o = require("./1282.js");
 var a = require("./2250.js");
-var s = require("./2251.js");
-var r = require("./1288.js");
-function Axios(e) {
-  this.defaults = e;
-  this.interceptors = {
-    request: new a(),
-    response: new a()
-  };
-}
-Axios.prototype.request = function request(e) {
-  if (typeof e == "string") {
-    (e = arguments[1] || {}).url = arguments[0];
-  } else {
-    e = e || {};
-  }
-  if ((e = r(this.defaults, e)).method) {
-    e.method = e.method.toLowerCase();
-  } else if (this.defaults.method) {
-    e.method = this.defaults.method.toLowerCase();
-  } else {
-    e.method = "get";
-  }
-  var t = [s, undefined];
-  var i = Promise.resolve(e);
-  this.interceptors.request.forEach(function unshiftRequestInterceptors(e) {
-    t.unshift(e.fulfilled, e.rejected);
-  });
-  this.interceptors.response.forEach(function pushResponseInterceptors(e) {
-    t.push(e.fulfilled, e.rejected);
-  });
-  while (t.length) {
-    i = i.then(t.shift(), t.shift());
-  }
+var s = require("./1288.js");
+function createInstance(e) {
+  var t = new a(e);
+  var i = o(a.prototype.request, t);
+  n.extend(i, a.prototype, t);
+  n.extend(i, t);
   return i;
+}
+var r = createInstance(require("./1285.js"));
+r.Axios = a;
+r.create = function create(e) {
+  return createInstance(s(r.defaults, e));
 };
-Axios.prototype.getUri = function getUri(e) {
-  e = r(this.defaults, e);
-  return o(e.url, e.params, e.paramsSerializer).replace(/^\?/, "");
+r.Cancel = require("./1289.js");
+r.CancelToken = require("./2264.js");
+r.isCancel = require("./1284.js");
+r.all = function all(e) {
+  return Promise.all(e);
 };
-n.forEach(["delete", "get", "head", "options"], function forEachMethodNoData(e) {
-  Axios.prototype[e] = function (t, i) {
-    return this.request(r(i || {}, {
-      method: e,
-      url: t,
-      data: (i || {}).data
-    }));
-  };
-});
-n.forEach(["post", "put", "patch"], function forEachMethodWithData(e) {
-  Axios.prototype[e] = function (t, i, n) {
-    return this.request(r(n || {}, {
-      method: e,
-      url: t,
-      data: i
-    }));
-  };
-});
-module.exports = Axios;
+r.spread = require("./2265.js");
+r.isAxiosError = require("./2266.js");
+module.exports = r;
+module.exports.default = r;

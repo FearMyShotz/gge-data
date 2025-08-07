@@ -387,6 +387,6 @@ var r = function (e) {
     configurable: true
   });
   return DummyMapobjectVO;
-}(require("./701.js").EmptyMapobjectVO);
+}(require("./703.js").EmptyMapobjectVO);
 exports.DummyMapobjectVO = r;
 o.classImplementsInterfaces(r, "IWorldmapObjectVO");

@@ -1,90 +1,57 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function BoosterVO(e, t, i = 0, n = 0) {
-    this._id = 0;
-    this._duration = 0;
-    this._level = 0;
-    this._purchaseCount = 0;
-    this._id = e;
-    this._duration = t;
-    this._level = i;
-    this._purchaseCount = n;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./6.js");
+var s = require("./3241.js");
+var r = function (e) {
+  function CollectableItemBoosterVO() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, 1) || this;
   }
-  BoosterVO.prototype.clone = function () {
-    return new BoosterVO(this.id, this.duration, this.level, this.purchaseCount);
+  n.__extends(CollectableItemBoosterVO, e);
+  CollectableItemBoosterVO.prototype.parseServerObject = function (t) {
+    e.prototype.parseServerObject.call(this, t);
+    this._boosterVO = new s.BoosterVO(t.ID, t.D);
   };
-  Object.defineProperty(BoosterVO.prototype, "isWoodBooster", {
-    get: function () {
-      return this.id == 0 || this.id == 3;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BoosterVO.prototype, "isStoneBooster", {
-    get: function () {
-      return this.id == 1 || this.id == 4;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BoosterVO.prototype, "isFoodBooster", {
-    get: function () {
-      return this.id == 2 || this.id == 5;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  BoosterVO.prototype.isMarauder = function () {
-    return this.id == 6;
+  CollectableItemBoosterVO.prototype.parseXmlObject = function (e) {
+    var t = e.split("+");
+    var i = a.int(t[0]);
+    var n = a.int(t[1]);
+    var o = a.int(t[2]);
+    this._boosterVO = new s.BoosterVO(i, n, o, 0);
   };
-  BoosterVO.prototype.isTaxcollector = function () {
-    return this.id == 8;
+  CollectableItemBoosterVO.prototype.clone = function () {
+    var t = e.prototype.clone.call(this);
+    t.boosterVO = this.boosterVO.clone();
+    return t;
   };
-  BoosterVO.prototype.isInstructor = function () {
-    return this.id == 10;
+  CollectableItemBoosterVO.prototype.isCombineAbleWith = function (e) {
+    return false;
   };
-  Object.defineProperty(BoosterVO.prototype, "id", {
+  CollectableItemBoosterVO.prototype.getTextfieldText = function () {
+    if (this.boosterVO) {
+      return o.TimeStringHelper.getShortTimeStringBySeconds(this.boosterVO.duration);
+    } else {
+      return "";
+    }
+  };
+  Object.defineProperty(CollectableItemBoosterVO.prototype, "boosterVO", {
     get: function () {
-      return this._id;
+      return this._boosterVO;
     },
     set: function (e) {
-      this._id = e;
+      this._boosterVO = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(BoosterVO.prototype, "duration", {
-    get: function () {
-      return this._duration;
-    },
-    set: function (e) {
-      this._duration = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BoosterVO.prototype, "level", {
-    get: function () {
-      return this._level;
-    },
-    set: function (e) {
-      this._level = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BoosterVO.prototype, "purchaseCount", {
-    get: function () {
-      return this._purchaseCount;
-    },
-    set: function (e) {
-      this._purchaseCount = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return BoosterVO;
-}();
-exports.BoosterVO = n;
+  CollectableItemBoosterVO.__initialize_static_members = function () {
+    CollectableItemBoosterVO.SERVER_KEY = "B";
+    CollectableItemBoosterVO.XML_KEY = "boosters";
+  };
+  return CollectableItemBoosterVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemBoosterVO = r;
+r.__initialize_static_members();

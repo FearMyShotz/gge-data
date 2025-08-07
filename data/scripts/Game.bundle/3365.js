@@ -3,103 +3,105 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
-var l = require("./5.js");
-var c = require("./3.js");
-var u = require("./3.js");
-var d = require("./3.js");
-var p = require("./3.js");
-var h = require("./39.js");
-var g = require("./1645.js");
-var C = require("./4.js");
-var _ = require("./270.js");
-var m = function (e) {
-  function CastleBuyMarauderDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleBuyMarauderDialog.ASSETNAME) || this;
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./51.js");
+var c = require("./106.js");
+var u = require("./240.js");
+var d = createjs.MovieClip;
+var p = createjs.Point;
+var h = function (e) {
+  function CastleMarauderPremiumShopVO() {
+    return e.call(this, "dialog_recuit_hireMarauder", "dialog_marauderHire_copy", s.BoosterConst.MARAUDER_COST_C2, "marauder") || this;
   }
-  n.__extends(CastleBuyMarauderDialog, e);
-  CastleBuyMarauderDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.dialogDisp.info_bonus.gotoAndStop(C.CastleModel.boostData.marauderVO.bonusIconFrame);
-    this.textFieldManager.registerTextField(this.dialogDisp.info_costs.txt_title, new d.LocalizedTextVO("costs"));
-    this.itxt_copy = this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new d.LocalizedTextVO("dialog_booster_renew_generic"));
-    this.itxt_copy.autoFitToBounds = true;
-    this.itxt_infocosts = this.textFieldManager.registerTextField(this.dialogDisp.info_costs.txt_value, new u.LocalizedNumberVO(0));
-    this.itxt_infotime = this.textFieldManager.registerTextField(this.dialogDisp.info_time.txt_value, new p.TextVO(""));
-    this.itxt_infobonus = this.textFieldManager.registerTextField(this.dialogDisp.info_bonus.txt_bonus, new p.TextVO(""));
-    this.itxt_rebuy1 = this.textFieldManager.registerTextField(this.dialogDisp.mc_rebuyDiscount.txt_value1, new p.TextVO(""));
-    this.itxt_rebuy2 = this.textFieldManager.registerTextField(this.dialogDisp.mc_rebuyDiscount.txt_value2, new p.TextVO(""));
-    this.dialogDisp.info_time.toolTipText = "dialog_buyMarauder_marauderTime";
-    this.dialogDisp.info_costs.toolTipText = h.ClientConstTextIds.C2;
-    this.dialogDisp.info_costs.mc_discount.visible = false;
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok, this.dialogDisp.btn_cancle]);
+  n.__extends(CastleMarauderPremiumShopVO, e);
+  Object.defineProperty(CastleMarauderPremiumShopVO.prototype, "bonusValue", {
+    get: function () {
+      return Math.round(s.BoosterConst.MARAUDER_BOOST * 100);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "bonusValue").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMarauderPremiumShopVO.prototype, "listSortPriority", {
+    get: function () {
+      return 20;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "listSortPriority").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMarauderPremiumShopVO.prototype, "duration", {
+    get: function () {
+      if (this.isActive) {
+        return o.TimeStringHelper.getCommaTimeStringFromSeconds(this.remainingTimeInSeconds, r.Localize.text);
+      } else {
+        return o.TimeStringHelper.getCommaTimeStringFromSeconds(s.BoosterConst.MARAUDER_DURATION, r.Localize.text);
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "duration").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleMarauderPremiumShopVO.prototype.clickedBuyButton = function () {
+    g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleBuyMarauderDialog);
   };
-  CastleBuyMarauderDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.initDelayedButtons([this.dialogDisp.btn_ok]);
-    if (C.CastleModel.boostData.marauderVO.isActive) {
-      this.itxt_copy.textContentVO.textId = "dialog_booster_renew_generic";
-      this.itxt_copy.textContentVO.textReplacements = [c.Localize.text("marauder")];
-    } else {
-      this.itxt_copy.textContentVO.textId = "dialog_buyMarauder_copy";
-      this.itxt_copy.textContentVO.textReplacements = [];
+  Object.defineProperty(CastleMarauderPremiumShopVO.prototype, "bonusIconFrame", {
+    get: function () {
+      return 5;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "bonusIconFrame").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleMarauderPremiumShopVO.prototype.createVisualMovieClip = function () {
+    var e = new d();
+    var t = c.CharacterHelper.createCharacterBig(l.ClientConstCharacter.CHAR_ID_MARAUDER, e, -1, -1, false, this.bindFunction(this.onLoadedIcon));
+    t.recycleAsset = false;
+    if (!t.isLoaded) {
+      e.visible = false;
     }
-    this.itxt_infotime.textContentVO.stringValue = s.TimeStringHelper.getTimeToString(l.BoosterConst.MARAUDER_DURATION, s.TimeStringHelper.ONE_TIME_FORMAT, c.Localize.text);
-    this.itxt_infocosts.textContentVO.numberValue = C.CastleModel.boostData.marauderVO.finalCostsC2;
-    f.CostHelper.setCostC2TextFieldColor(this.itxt_infocosts, C.CastleModel.boostData.marauderVO.finalCostsC2);
-    this.itxt_infobonus = this.textFieldManager.registerTextField(this.dialogDisp.info_bonus.txt_bonus, new d.LocalizedTextVO(C.CastleModel.boostData.marauderVO.bonusText[0], [C.CastleModel.boostData.marauderVO.bonusText[1]]));
-    this.itxt_rebuy1 = this.textFieldManager.registerTextField(this.dialogDisp.mc_rebuyDiscount.txt_value1, new d.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [C.CastleModel.boostData.marauderVO.rebuyDiscountString]));
-    this.itxt_rebuy2 = this.textFieldManager.registerTextField(this.dialogDisp.mc_rebuyDiscount.txt_value2, new d.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [C.CastleModel.boostData.marauderVO.rebuyDiscountString]));
-    this.addCharacterPic();
-    this.dialogDisp.info_bonus.mouseChildren = false;
-    this.dialogDisp.mc_rebuyDiscount.toolTipText = "dialog_rebuyBoost_percentTooltip";
-    this.dialogDisp.info_bonus.toolTipText = {
-      t: "dialog_buyMarauder_infoIcon",
-      p: [l.BoosterConst.MARAUDER_BOOST * 100]
-    };
-    var i = C.CastleModel.boostData.marauderVO.hasRebuyDiscount && !C.CastleModel.boosterSaleData.isBoosterOnSale(l.BoosterConst.MARAUDER);
-    this.dialogDisp.mc_rebuyDiscount.visible = i;
-    C.CastleModel.boosterSaleData.handleMc(this.dialogDisp.info_costs.mc_discount, l.BoosterConst.MARAUDER);
-    if (!this.dialogDisp.mc_rebuyDiscount.visible) {
-      this.dialogDisp.info_costs.x = this.dialogDisp.info_time.x;
-    }
+    e.addChild(t);
+    return e;
   };
-  CastleBuyMarauderDialog.prototype.addEventListenerOnShow = function () {
-    C.CastleModel.boosterSaleData.addEventListener(_.CastleBoosterSaleData.BOOSTER_SALE_UPDATE, this.bindFunction(this.onBoosterDataChanges));
+  CastleMarauderPremiumShopVO.prototype.createVisualMovieClipForBuyDialog = function () {
+    var e = new d();
+    e.addChild(c.CharacterHelper.createCharacterBig(l.ClientConstCharacter.CHAR_ID_MARAUDER, e, _.CastlePremiumMarketShopVO.MAX_BUY_DIALOG_ICON_WIDTH, _.CastlePremiumMarketShopVO.MAX_BUY_DIALOG_ICON_HEIGHT, false));
+    return e;
   };
-  CastleBuyMarauderDialog.prototype.removeEventListenerOnHide = function () {
-    C.CastleModel.boosterSaleData.removeEventListener(_.CastleBoosterSaleData.BOOSTER_SALE_UPDATE, this.bindFunction(this.onBoosterDataChanges));
-  };
-  CastleBuyMarauderDialog.prototype.onBoosterDataChanges = function (e) {
-    this.show();
-  };
-  CastleBuyMarauderDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_cancle:
-      case this.dialogDisp.btn_close:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_ok:
-        C.CastleModel.smartfoxClient.sendCommandVO(new g.C2SMarauderStartVO(C.CastleModel.boosterSaleData.getOfferId(l.BoosterConst.MARAUDER)));
-        this.hide();
-    }
-  };
-  CastleBuyMarauderDialog.prototype.addCharacterPic = function () {
-    a.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_CharHolder);
-    var e = C.CastleModel.boostData.marauderVO.createVisualMovieClipForBuyDialog();
-    this.dialogDisp.mc_CharHolder.addChild(e);
-  };
-  CastleBuyMarauderDialog.__initialize_static_members = function () {
-    CastleBuyMarauderDialog.NAME = "CastleBuyMarauderDialog";
-    CastleBuyMarauderDialog.ASSETNAME = "CastleBuyResourceBoostExt";
-  };
-  return CastleBuyMarauderDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleBuyMarauderDialog = m;
-var f = require("./66.js");
-r.classImplementsInterfaces(m, "ICollectableRendererList");
-m.__initialize_static_members();
+  Object.defineProperty(CastleMarauderPremiumShopVO.prototype, "offsetIcon", {
+    get: function () {
+      return new p(3, -3);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "offsetIcon").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMarauderPremiumShopVO.prototype, "id", {
+    get: function () {
+      return s.BoosterConst.MARAUDER;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "id").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleMarauderPremiumShopVO;
+}(u.CastleHeroDefaultBoosterShopVO);
+exports.CastleMarauderPremiumShopVO = h;
+var g = require("./9.js");
+var C = require("./3366.js");
+var _ = require("./204.js");
+a.classImplementsInterfaces(h, "IPremiumMarketShopVO", "IDefaultBoosterDataVO", "IBoosterDataVO");

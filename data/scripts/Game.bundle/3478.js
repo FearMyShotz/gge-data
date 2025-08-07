@@ -2,68 +2,53 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./3.js");
-var a = require("./13.js");
-var s = require("./4.js");
-var r = require("./1685.js");
-var l = function (e) {
-  function CastleCampaignRewardDialogProperties(t) {
-    var i = e.call(this) || this;
-    i._reward = s.CastleModel.rewardData.getListByIdArray(t.RIDS);
-    return i;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./67.js");
+var r = require("./19.js");
+var l = require("./8.js");
+var c = function (e) {
+  function CastleDailyQuestThresholdRewardDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleDailyQuestThresholdRewardDialog.NAME) || this;
   }
-  n.__extends(CastleCampaignRewardDialogProperties, e);
-  Object.defineProperty(CastleCampaignRewardDialogProperties.prototype, "reward", {
+  n.__extends(CastleDailyQuestThresholdRewardDialog, e);
+  CastleDailyQuestThresholdRewardDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.initBasicButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close]);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_dailyQuests_gotReward_title"));
+  };
+  CastleDailyQuestThresholdRewardDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_dailyQuests_gotReward_copy", [this.dialogProperties.threshold]));
+    for (var i = 1; i <= CastleDailyQuestThresholdRewardDialog.MAX_REWARDS; i++) {
+      this.dialogDisp.mc_rewardContainer["rewards" + i].visible = i == this.dialogProperties.rewardList.length;
+    }
+    u.CollectableRenderHelper.displayMultipleItemsComplete(this, new s.CollectableRenderClipsList(this.dialogDisp.mc_rewardContainer["rewards" + this.dialogProperties.rewardList.length], "item").addItemMcs("mc_item").addInfoBtns("parent.btn_info"), this.dialogProperties.rewardList, new r.CollectableRenderOptions(this.dialogProperties.renderProperties.collectableRenderOption, this.dialogProperties.renderProperties.rewardIconDimension), this.dialogProperties.renderProperties.preRenderFunc);
+  };
+  CastleDailyQuestThresholdRewardDialog.prototype.onClick = function (e) {
+    if (l.ButtonHelper.isButtonEnabled(e.target)) {
+      switch (e.target) {
+        case this.dialogDisp.btn_ok:
+        case this.dialogDisp.btn_close:
+          this.hide();
+      }
+    }
+  };
+  Object.defineProperty(CastleDailyQuestThresholdRewardDialog.prototype, "dialogProperties", {
     get: function () {
-      return this._reward;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BasicQuestRewardDialogProperties.prototype, "reward").set.call(this, e);
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleCampaignRewardDialogProperties.prototype, "crestFrameIndex", {
-    get: function () {
-      return c.CastleQuestData.CATEGORY_CAMPAIGN + 1;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BasicQuestRewardDialogProperties.prototype, "crestFrameIndex").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleCampaignRewardDialogProperties.prototype, "titleText", {
-    get: function () {
-      return a.TextHelper.toUpperCaseLocaSafe(o.Localize.text("dialog_questFinish_TimeLimitedCampaignComplete"));
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BasicQuestRewardDialogProperties.prototype, "titleText").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleCampaignRewardDialogProperties.prototype, "descriptionText", {
-    get: function () {
-      return o.Localize.text("dialog_questFinish_TimeLimitedCampaignComplete_description");
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BasicQuestRewardDialogProperties.prototype, "descriptionText").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleCampaignRewardDialogProperties.prototype, "randomEquipmentRewardList", {
-    get: function () {
-      return null;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BasicQuestRewardDialogProperties.prototype, "randomEquipmentRewardList").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleCampaignRewardDialogProperties;
-}(r.BasicQuestRewardDialogProperties);
-exports.CastleCampaignRewardDialogProperties = l;
-var c = require("./544.js");
+  CastleDailyQuestThresholdRewardDialog.__initialize_static_members = function () {
+    CastleDailyQuestThresholdRewardDialog.NAME = "CastleDailyQuestThresholdReward";
+    CastleDailyQuestThresholdRewardDialog.MAX_REWARDS = 4;
+  };
+  return CastleDailyQuestThresholdRewardDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleDailyQuestThresholdRewardDialog = c;
+var u = require("./25.js");
+o.classImplementsInterfaces(c, "ICollectableRendererList");
+c.__initialize_static_members();

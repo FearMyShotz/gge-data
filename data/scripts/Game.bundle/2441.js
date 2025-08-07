@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleTitleSelectionItemVO(t, i) {
+  function CastleTitleScrollItemVO(t, i) {
     var n = this;
     n._selected = false;
     CONSTRUCTOR_HACK;
@@ -11,21 +11,24 @@ var o = function (e) {
     n._selected = i;
     return n;
   }
-  n.__extends(CastleTitleSelectionItemVO, e);
-  Object.defineProperty(CastleTitleSelectionItemVO.prototype, "title", {
+  n.__extends(CastleTitleScrollItemVO, e);
+  Object.defineProperty(CastleTitleScrollItemVO.prototype, "title", {
     get: function () {
       return this._title;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTitleSelectionItemVO.prototype, "selected", {
+  Object.defineProperty(CastleTitleScrollItemVO.prototype, "selected", {
     get: function () {
       return this._selected;
+    },
+    set: function (e) {
+      this._selected = e;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleTitleSelectionItemVO;
+  return CastleTitleScrollItemVO;
 }(require("./2.js").ScrollItemVO);
-exports.CastleTitleSelectionItemVO = o;
+exports.CastleTitleScrollItemVO = o;

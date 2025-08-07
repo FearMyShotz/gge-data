@@ -3,52 +3,68 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = function (e) {
-  function ModernPackageShopBuyElementEnum(t, i, n) {
-    var a = e.call(this, t, o.BasicEnum.instantiationKey) || this;
-    a._clazz = i;
-    a._assetClipName = n;
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./1.js");
+var l = require("./3.js");
+var c = require("./16.js");
+var u = require("./2189.js");
+var d = require("./349.js");
+var p = function (e) {
+  function LordEffectItem(t, i = null, n = c.ClientConstColor.FONT_DEFAULT_COLOR, o = c.ClientConstColor.FONT_DEFAULT_COLOR) {
+    var a = this;
+    a.defaultFontColor = 0;
+    a.malusFontColor = 0;
+    CONSTRUCTOR_HACK;
+    (a = e.call(this, t, i) || this).defaultFontColor = n;
+    a.malusFontColor = o;
     return a;
   }
-  n.__extends(ModernPackageShopBuyElementEnum, e);
-  ModernPackageShopBuyElementEnum.getTypeByDataClass = function (e) {
-    return this.getByProperty(ModernPackageShopBuyElementEnum, "clazz", e, ModernPackageShopBuyElementEnum.COMMON_INFO);
+  n.__extends(LordEffectItem, e);
+  LordEffectItem.prototype.applyText = function (e, t = false, i = 0) {
+    this.itxt_effect = LordEffectItem.textFieldManager.registerTextField(this.disp.txt_text, new l.TextVO(e), new s.InternalGGSTextFieldConfigVO(true));
+    this._additionalBGHeight = i;
+    if (this.disp.mc_textBackground) {
+      this.disp.mc_textBackground.height = this.itxt_effect.textHeight + i;
+    }
+    this.itxt_effect.color = t ? this.malusFontColor : this.defaultFontColor;
+    if (this.disp.mc_arrow) {
+      this.disp.mc_arrow.gotoAndStop(t ? 2 : 1);
+    }
   };
-  Object.defineProperty(ModernPackageShopBuyElementEnum.prototype, "clazz", {
+  Object.defineProperty(LordEffectItem, "textFieldManager", {
     get: function () {
-      return this._clazz;
+      return a.GoodgameTextFieldManager.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ModernPackageShopBuyElementEnum.prototype, "assetClipName", {
+  Object.defineProperty(LordEffectItem.prototype, "height", {
     get: function () {
-      return this._assetClipName;
+      var e = this.disp.mc_textBackground ? this.disp.mc_textBackground.height : this.itxt_effect.textHeight + this.itxt_effect.y;
+      return e = this.disp.mc_source ? Math.max(e, 23) : e;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.MovieClipLayoutable.prototype, "height").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  ModernPackageShopBuyElementEnum.__initialize_static_members = function () {
-    ModernPackageShopBuyElementEnum.COMMON_INFO = new ModernPackageShopBuyElementEnum("commonInfo", c.ModernPackageShopBuyElementCommonInfo, "ShopElement_CommonInfo");
-    ModernPackageShopBuyElementEnum.COMMON_INFO_RELIC = new ModernPackageShopBuyElementEnum("commonInfoRelic", d.ModernPackageShopBuyElementCommonInfoRelic, "ShopElement_CommonInfoRelic");
-    ModernPackageShopBuyElementEnum.COMMON_INFO_BUNDLE = new ModernPackageShopBuyElementEnum("commonInfoBundle", u.ModernPackageShopBuyElementCommonInfoBundle, "ShopElement_CommonInfoBundle");
-    ModernPackageShopBuyElementEnum.AMOUNT = new ModernPackageShopBuyElementEnum("amount", s.ModernPackageShopBuyElementAmount, "ShopElement_Amount");
-    ModernPackageShopBuyElementEnum.COSTS = new ModernPackageShopBuyElementEnum("costs", p.ModernPackageShopBuyElementCosts, "ShopElement_Costs");
-    ModernPackageShopBuyElementEnum.INFO = new ModernPackageShopBuyElementEnum("info", h.ModernPackageShopBuyElementInfo, "ShopElement_Info");
-    ModernPackageShopBuyElementEnum.RELIC_INFO = new ModernPackageShopBuyElementEnum("relicInfo", g.ModernPackageShopBuyElementRelicInfo, "ShopElement_RelicInfo");
-    ModernPackageShopBuyElementEnum.BUNDLE_REWARDS = new ModernPackageShopBuyElementEnum("bundleRewards", l.ModernPackageShopBuyElementBundleRewards, "ShopElement_BundleRewards");
-    ModernPackageShopBuyElementEnum.BOTTOM_MENU = new ModernPackageShopBuyElementEnum("bottomMenu", r.ModernPackageShopBuyElementBottomMenu, "ShopElement_BottomMenu");
+  LordEffectItem.prototype.applySources = function (e) {
+    if (this.disp.mc_source) {
+      var t = this.itxt_effect ? this.itxt_effect.numLines : 0;
+      if (t == 1 && this.disp.mc_textBackground) {
+        this.disp.mc_textBackground.height = 23;
+      }
+      if (t == 1 && this.itxt_effect) {
+        this.itxt_effect.y = 4;
+      }
+      o.MovieClipHelper.clearMovieClip(this.disp.mc_source);
+      var i = new u.LordEffectSourceItem(e);
+      this.disp.mc_source.addChild(i.disp);
+    }
   };
-  return ModernPackageShopBuyElementEnum;
-}(require("./84.js").CastleEnum);
-exports.ModernPackageShopBuyElementEnum = a;
-var s = require("./2213.js");
-var r = require("./2214.js");
-var l = require("./2218.js");
-var c = require("./905.js");
-var u = require("./2219.js");
-var d = require("./2220.js");
-var p = require("./2221.js");
-var h = require("./2222.js");
-var g = require("./2223.js");
-a.__initialize_static_members();
+  return LordEffectItem;
+}(d.MovieClipLayoutable);
+exports.LordEffectItem = p;
+r.classImplementsInterfaces(p, "ILayoutable");

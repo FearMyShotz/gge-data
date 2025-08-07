@@ -2,152 +2,217 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./6.js");
-var l = require("./26.js");
-var c = require("./4.js");
-var u = require("./274.js");
-var d = require("./8.js");
-var p = require("./11.js");
-var h = createjs.Point;
-var g = function (e) {
-  function MultiEventRewardsDialog() {
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./1.js");
+var c = require("./1.js");
+var u = require("./5.js");
+var d = require("./3.js");
+var p = require("./3.js");
+var h = require("./6.js");
+var g = require("./21.js");
+var C = require("./26.js");
+var _ = require("./19.js");
+var m = require("./355.js");
+var f = require("./4.js");
+var O = require("./27.js");
+var E = require("./68.js");
+var y = require("./42.js");
+var b = require("./8.js");
+var D = createjs.Point;
+var I = function (e) {
+  function EventRewardScrollItem(t) {
+    var i = this;
+    i.iconSize = new D(44, 41);
+    i.rewardFramePlayer = 1;
+    i.rewardFrameAlliance = 2;
+    i.frameEmptySlot = 3;
+    i._collectableRenderList = [];
     CONSTRUCTOR_HACK;
-    return e.call(this, MultiEventRewardsDialog.NAME) || this;
+    return i = e.call(this, t) || this;
   }
-  n.__extends(MultiEventRewardsDialog, e);
-  MultiEventRewardsDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this._eventInfoClass = a.getDefinitionByName("MultiEventReward_Infos");
+  n.__extends(EventRewardScrollItem, e);
+  EventRewardScrollItem.prototype.show = function () {
+    e.prototype.show.call(this);
+    f.CastleModel.specialEventData.addEventListener(C.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.eventStarted));
+    f.CastleModel.specialEventData.addEventListener(C.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.eventEnded));
   };
-  MultiEventRewardsDialog.prototype.showLoaded = function (t = null) {
-    if (this.dialogProperties.events.length == 0) {
-      if (this.hasPreloaderDialog) {
-        this.layoutManager.hideDialog(C.CastleExternalPreloaderDialog);
-      }
-      this.hide();
-      return;
-    }
-    this.selectBackgroundSize();
-    this.positionOkButton();
-    this.createEventInfos();
-    this.initScrollList();
-    this.fillScrollList(this.dialogProperties.events);
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_yes, this.dialogDisp.btn_up, this.dialogDisp.btn_down]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("dialog_combinedReward_header"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new s.LocalizedTextVO("dialog_combinedReward_desc"));
-    e.prototype.showLoaded.call(this, t);
+  EventRewardScrollItem.prototype.hide = function () {
+    e.prototype.hide.call(this);
+    f.CastleModel.timerData.removeEventListener(g.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTickEverySecond));
+    f.CastleModel.specialEventData.removeEventListener(C.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.eventStarted));
+    f.CastleModel.specialEventData.removeEventListener(C.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.eventEnded));
+    this.destroyRewardList();
   };
-  MultiEventRewardsDialog.prototype.addEventListenerOnShow = function () {
-    e.prototype.addEventListenerOnShow.call(this);
-    c.CastleModel.specialEventData.addEventListener(l.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventUpdated));
-    c.CastleModel.specialEventData.addEventListener(l.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onEventUpdated));
-  };
-  MultiEventRewardsDialog.prototype.removeEventListenerOnHide = function () {
-    e.prototype.removeEventListenerOnHide.call(this);
-    c.CastleModel.specialEventData.removeEventListener(l.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventUpdated));
-    c.CastleModel.specialEventData.removeEventListener(l.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onEventUpdated));
-  };
-  MultiEventRewardsDialog.prototype.onEventUpdated = function (e) {
-    this.removeScrollList();
-    this.initScrollList();
-    this.fillScrollList(this.dialogProperties.events);
-  };
-  MultiEventRewardsDialog.prototype.updateVisibilityOfScrollbar = function () {
-    var e = this.dialogProperties.events.length > MultiEventRewardsDialog.EVENTS_PER_PAGE;
-    this.dialogDisp.btn_down.visible = e;
-    this.dialogDisp.btn_up.visible = e;
-    this.dialogDisp.mc_slider.btn_slider.visible = e;
-    this.dialogDisp.mc_slider.mc_sliderLine.visible = e;
-    this.dialogDisp.mc_slider.sliderbar_bg.visible = e;
-  };
-  MultiEventRewardsDialog.prototype.selectBackgroundSize = function () {
-    var e = r.int(this.dialogProperties.events.length > MultiEventRewardsDialog.EVENTS_PER_PAGE ? this.dialogDisp.background.totalFrames : this.dialogProperties.events.length);
-    this.dialogDisp.background.gotoAndStop(e);
-  };
-  MultiEventRewardsDialog.prototype.positionOkButton = function () {
-    var e = this.dialogDisp.background.placeholder_btnYes;
-    var t = new h(e.x, e.y);
-    var i = this.dialogDisp.background.localToGlobal(t);
-    i = this.dialogDisp.globalToLocal(i);
-    this.dialogDisp.btn_yes.x = i.x;
-    this.dialogDisp.btn_yes.y = i.y;
-  };
-  MultiEventRewardsDialog.prototype.initScrollList = function () {
-    var e = new u.BasicSliderVO(this.dialogDisp.mc_slider.mc_sliderLine, this.dialogDisp.mc_slider.btn_slider, this.dialogProperties.events.length, 0, this.dialogDisp.mc_slider);
-    this._scrollList = new m.MultiEventRewardScrollList(this.dialogDisp, null, e);
-    this._scrollList.hideButtons = true;
-    this._scrollList.scrollStep = 1;
-    this.updateVisibilityOfScrollbar();
-  };
-  MultiEventRewardsDialog.prototype.fillScrollList = function (e) {
-    if (e != null) {
-      for (var t = 0, i = e; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          this._scrollList.pushContent(n);
-        }
-      }
-    }
-    this._scrollList.scrollItemClass = _.EventRewardScrollItem;
-    this._scrollList.initList(0, false);
-  };
-  MultiEventRewardsDialog.prototype.removeScrollList = function () {
-    if (this._scrollList) {
-      this._scrollList.remove();
-      this._scrollList.clear();
-      this._scrollList = null;
+  EventRewardScrollItem.prototype.eventEnded = function (e) {
+    if (e.specialEventVO.eventId == this.vo.eventID) {
+      this.icon.basicButton = null;
     }
   };
-  MultiEventRewardsDialog.prototype.createEventInfos = function () {
-    if (this._infoMcs) {
-      while (this._infoMcs.length > 0) {
-        var e = this._infoMcs.pop();
-        e.parent.removeChild(e);
-      }
-    }
-    this._infoMcs = [];
-    var t;
-    for (var i = r.int(Math.min(this.dialogProperties.events.length, MultiEventRewardsDialog.EVENTS_PER_PAGE)), n = 0; n < i; n++) {
-      (t = new this._eventInfoClass()).name = "item" + n;
-      t.x = this.dialogDisp.event_placeholder.x;
-      t.y = this.dialogDisp.event_placeholder.y + n * (t.height + 3);
-      this.dialogDisp.addChild(t);
-      this._infoMcs.push(t);
+  EventRewardScrollItem.prototype.eventStarted = function (e) {
+    if (e.specialEventVO.eventId == this.vo.eventID) {
+      b.ButtonHelper.initBasicButton(this.icon);
     }
   };
-  Object.defineProperty(MultiEventRewardsDialog.prototype, "dialogProperties", {
+  EventRewardScrollItem.prototype.destroyRewardList = function () {
+    if (this.rewardComp) {
+      this.rewardComp.removeEventListener(r.ScrollItemEvent.ON_SCROLL, this.bindFunction(this.onRewardScroll));
+      this.rewardComp.destroy();
+    }
+    this.rewardComp = null;
+  };
+  Object.defineProperty(EventRewardScrollItem.prototype, "icon", {
     get: function () {
-      return this.properties;
+      return this.disp.icon_placeholder;
     },
     enumerable: true,
     configurable: true
   });
-  MultiEventRewardsDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    if (d.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_yes:
-          this.hide();
+  Object.defineProperty(EventRewardScrollItem.prototype, "iconContainer", {
+    get: function () {
+      return this.disp.icon_placeholder.icon_container;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EventRewardScrollItem.prototype.customFillItem = function () {
+    this.setupEventIcon();
+    this.updateEventState();
+    this.setupRewards();
+    this.textfieldManager.registerTextField(this.disp.txt_title, new p.LocalizedTextVO(this.vo.eventTitle)).verticalAlign = y.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+  };
+  EventRewardScrollItem.prototype.setupEventIcon = function () {
+    var e = m.EventIconHelper.createEventIconByEventID(this.vo.eventID, new D(this.icon.width, this.icon.height));
+    if (e) {
+      a.MovieClipHelper.clearMovieClip(this.iconContainer);
+      this.iconContainer.addChild(e);
+      b.ButtonHelper.initBasicButton(this.icon);
+      this.icon.mouseChildren = false;
+    }
+  };
+  EventRewardScrollItem.prototype.updateEventState = function () {
+    var e = f.CastleModel.specialEventData.getActiveEventByEventId(this.vo.eventID);
+    this.eventRunningInfoMc.visible = e != null;
+    this.eventEndedInfoMc.visible = e == null;
+    if (e) {
+      this.setupRunningEvent();
+    } else {
+      this.setupEndedEvent();
+    }
+  };
+  EventRewardScrollItem.prototype.setupRewards = function () {
+    this.destroyRewardList();
+    this.rewardComp = new T.PaginatedCollectableRenderListWrapper(this.disp, this.vo.rewards, this._collectableRenderList, EventRewardScrollItem.numVisibleItems, this.disp.btn_left, this.disp.btn_right, "item_", "mc_item", "parent.btn_info", "icon_container", "parent.txt_text", "parent.mc_textBackground", _.CollectableRenderOptions.SET_DEFAULT, this.iconSize);
+    this.rewardComp.addEventListener(r.ScrollItemEvent.ON_SCROLL, this.bindFunction(this.onRewardScroll));
+    this.setBackgroundForRewards();
+  };
+  EventRewardScrollItem.prototype.onRewardScroll = function (e) {
+    this.setBackgroundForRewards();
+  };
+  EventRewardScrollItem.prototype.setBackgroundForRewards = function () {
+    var e;
+    var t;
+    var i = 0;
+    for (var n = this.rewardComp.currentPage * EventRewardScrollItem.numVisibleItems, o = 0, a = n; a < n + EventRewardScrollItem.numVisibleItems; a++) {
+      (e = this.disp.getChildByName("item_" + o)).visible = true;
+      if (a >= this.vo.rewards.length) {
+        this.showEmptySlot(e);
+        o++;
+      } else {
+        this.resetSlot(e);
+        t = this.vo.rewards.getItemByIndex(a);
+        i = h.int(t.grantType == u.RewardConst.ALLIANCE ? this.rewardFrameAlliance : this.rewardFramePlayer);
+        e.frame.gotoAndStop(i);
+        o++;
       }
     }
   };
-  MultiEventRewardsDialog.prototype.hideLoaded = function (t = null) {
-    this.removeScrollList();
-    e.prototype.hideLoaded.call(this, t);
+  EventRewardScrollItem.prototype.resetSlot = function (e) {
+    e.btn_info.visible = true;
   };
-  MultiEventRewardsDialog.__initialize_static_members = function () {
-    MultiEventRewardsDialog.NAME = "MultiEventRewards";
-    MultiEventRewardsDialog.EVENTS_PER_PAGE = 4;
+  EventRewardScrollItem.prototype.showEmptySlot = function (e) {
+    a.MovieClipHelper.clearMovieClip(e.mc_item.icon_container);
+    e.txt_text.text = "";
+    e.btn_info.visible = false;
+    e.mc_textBackground.visible = false;
+    e.frame.gotoAndStop(this.frameEmptySlot);
   };
-  return MultiEventRewardsDialog;
-}(p.CastleExternalDialog);
-exports.MultiEventRewardsDialog = g;
-var C = require("./154.js");
-var _ = require("./3474.js");
-var m = require("./3475.js");
-o.classImplementsInterfaces(g, "ICollectableRendererList");
-g.__initialize_static_members();
+  EventRewardScrollItem.prototype.setupEndedEvent = function () {
+    b.ButtonHelper.enableButton(this.icon, false);
+    this.icon.useFilters(E.BitmapFilterHelper.NO_FILTER);
+    this.icon.toolTipText = "dialog_combinedReward_eventOver";
+    this.textfieldManager.registerTextField(this.eventEndedInfoMc.txt_event_ended, new p.LocalizedTextVO("dialog_combinedReward_eventOver"));
+    this.textfieldManager.registerTextField(this.eventEndedInfoMc.txt_rank_title, new p.LocalizedTextVO("rank"));
+    this.textfieldManager.registerTextField(this.eventEndedInfoMc.txt_points_title, new p.LocalizedTextVO("generic_points"));
+    var e = h.int(this.vo.topXCount > 0 ? this.vo.topXCount : this.vo.rank);
+    this.textfieldManager.registerTextField(this.eventEndedInfoMc.txt_rank, new d.LocalizedNumberVO(e));
+    this.textfieldManager.registerTextField(this.eventEndedInfoMc.txt_points, new d.LocalizedNumberVO(this.vo.score));
+  };
+  EventRewardScrollItem.prototype.setupRunningEvent = function () {
+    this.textfieldManager.registerTextField(this.eventRunningInfoMc.txt_description, new p.LocalizedTextVO("dialog_combinedReward_eventInProgress")).verticalAlign = y.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    this.icon.toolTipText = "panel_action_event";
+    b.ButtonHelper.enableButton(this.icon, true);
+    f.CastleModel.timerData.addEventListener(g.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTickEverySecond));
+    this.updateRemainingEventTime();
+  };
+  EventRewardScrollItem.prototype.onTickEverySecond = function (e) {
+    this.updateRemainingEventTime();
+  };
+  EventRewardScrollItem.prototype.updateRemainingEventTime = function () {
+    var e = f.CastleModel.specialEventData.getActiveEventByEventId(this.vo.eventID);
+    if (!e) {
+      f.CastleModel.timerData.removeEventListener(g.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTickEverySecond));
+      this.setupEndedEvent();
+      return;
+    }
+    var t = e.remainingEventTimeInSeconds;
+    O.CastleTimeStringHelper.setEventTime(this.eventRunningInfoMc.txt_remaining_time, t);
+  };
+  EventRewardScrollItem.prototype.onMouseClick = function (t) {
+    e.prototype.onMouseClick.call(this, t);
+    if (b.ButtonHelper.isButtonEnabled(t.target) && t.target == this.icon) {
+      var i = l.castAs(f.CastleModel.specialEventData.getActiveEventByEventId(this.vo.eventID), "ASpecialEventVO");
+      if (i) {
+        i.openDialog();
+      }
+    }
+  };
+  Object.defineProperty(EventRewardScrollItem.prototype, "eventEndedInfoMc", {
+    get: function () {
+      return this.disp.mc_event_complete_infos;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventRewardScrollItem.prototype, "eventRunningInfoMc", {
+    get: function () {
+      return this.disp.mc_running_event_infos;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventRewardScrollItem.prototype, "vo", {
+    get: function () {
+      return this.scrollItemVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventRewardScrollItem.prototype, "textfieldManager", {
+    get: function () {
+      return o.GoodgameTextFieldManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EventRewardScrollItem.__initialize_static_members = function () {
+    EventRewardScrollItem.numVisibleItems = 5;
+  };
+  return EventRewardScrollItem;
+}(s.ScrollItem);
+exports.EventRewardScrollItem = I;
+var T = require("./1061.js");
+c.classImplementsInterfaces(I, "MovieClip");
+I.__initialize_static_members();

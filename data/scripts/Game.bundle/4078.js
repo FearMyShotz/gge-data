@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
 var s = require("./4079.js");
-var r = require("./1677.js");
+var r = require("./1679.js");
 var l = require("./4.js");
 var c = require("./8.js");
 var u = function (e) {
@@ -105,7 +105,7 @@ var u = function (e) {
     CastleAchievementDialog.CAT_EVENTS = "CAT_EVENTS";
   };
   return CastleAchievementDialog;
-}(require("./114.js").CastleExternalSubLayerDialog);
+}(require("./112.js").CastleExternalSubLayerDialog);
 exports.CastleAchievementDialog = u;
 var d = require("./4080.js");
 var p = require("./4081.js");

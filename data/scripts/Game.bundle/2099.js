@@ -1,31 +1,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function SpecialEventSeasonLeagueComponent() {
-    this._isModeEnabled = false;
-    this._participatedOnEvent = false;
+var n = require("./0.js");
+var o = function (e) {
+  function CastleEventPackagePrimeSaleDialogProperties(t) {
+    var i = e.call(this) || this;
+    i._eventVO = t;
+    return i;
   }
-  SpecialEventSeasonLeagueComponent.prototype.parseServerData = function (e) {
-    this._isModeEnabled = !!e && !!e.KL;
-  };
-  Object.defineProperty(SpecialEventSeasonLeagueComponent.prototype, "isModeEnabled", {
+  n.__extends(CastleEventPackagePrimeSaleDialogProperties, e);
+  Object.defineProperty(CastleEventPackagePrimeSaleDialogProperties.prototype, "eventVO", {
     get: function () {
-      return this._isModeEnabled;
+      return this._eventVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SpecialEventSeasonLeagueComponent.prototype, "participatedOnEvent", {
-    get: function () {
-      return this._participatedOnEvent;
-    },
-    set: function (e) {
-      this._participatedOnEvent = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return SpecialEventSeasonLeagueComponent;
-}();
-exports.SpecialEventSeasonLeagueComponent = n;
+  return CastleEventPackagePrimeSaleDialogProperties;
+}(require("./2.js").BasicProperties);
+exports.CastleEventPackagePrimeSaleDialogProperties = o;

@@ -1,21 +1,41 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function HeroDecisionVO(t) {
-    var i = this;
-    i.HID = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).HID = t;
-    return i;
+var n = function () {
+  function AttackCounterVO() {
+    this._attackCount = 0;
+    this._attackCountThreshold = 0;
+    this._attackCountGrowthRate = 0;
   }
-  n.__extends(HeroDecisionVO, e);
-  HeroDecisionVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_HERO_DECISION_COMMAND;
+  AttackCounterVO.prototype.parseParamObject = function (e) {
+    if (e) {
+      this._attackCount = e[o.CommKeys.ATTACK_COUNT];
+      this._attackCountThreshold = e[o.CommKeys.ATTACK_COUNT_THRESHOLD];
+      this._attackCountGrowthRate = e[o.CommKeys.ATTACK_COUNT_GROWTH_RATE];
+    }
   };
-  return HeroDecisionVO;
-}(o.BasicCommandVO);
-exports.HeroDecisionVO = s;
+  Object.defineProperty(AttackCounterVO.prototype, "attackCount", {
+    get: function () {
+      return this._attackCount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AttackCounterVO.prototype, "attackCountThreshold", {
+    get: function () {
+      return this._attackCountThreshold;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AttackCounterVO.prototype, "attackCountGrowthRate", {
+    get: function () {
+      return this._attackCountGrowthRate;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AttackCounterVO;
+}();
+exports.AttackCounterVO = n;
+var o = require("./5.js");

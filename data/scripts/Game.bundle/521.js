@@ -2,17 +2,34 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleBookmarkPasserProperties(t, i = null, n = -1) {
-    var o = this;
-    o.messageID = 0;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SUnlockEventVO(t, i, n, o, a, s, r, l) {
+    var c = this;
+    c.SCID = 0;
+    c.SKID = 0;
+    c.W = 0;
+    c.S = 0;
+    c.F = 0;
+    c.C1 = 0;
+    c.IID = 0;
+    c.SC = 0;
     CONSTRUCTOR_HACK;
-    (o = e.call(this) || this).bookmarkVO = t;
-    o.checkButtonSubmitState = i;
-    o.messageID = n;
-    return o;
+    (c = e.call(this) || this).SCID = t;
+    c.SKID = i;
+    c.W = n;
+    c.S = o;
+    c.F = a;
+    c.C1 = s;
+    c.IID = r;
+    c.SC = l;
+    return c;
   }
-  n.__extends(CastleBookmarkPasserProperties, e);
-  return CastleBookmarkPasserProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleBookmarkPasserProperties = o;
+  n.__extends(C2SUnlockEventVO, e);
+  C2SUnlockEventVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_UNLOCK_EVENT;
+  };
+  return C2SUnlockEventVO;
+}(o.BasicCommandVO);
+exports.C2SUnlockEventVO = s;

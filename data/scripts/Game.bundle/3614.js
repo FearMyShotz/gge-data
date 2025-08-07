@@ -4,20 +4,21 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./116.js");
+var s = require("./114.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferChristmasDialog() {
-    return e.call(this, CastlePaymentRewardSpecialOfferChristmasDialog.NAME) || this;
+  function CastlePaymentRewardSpecialOfferDefenseDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastlePaymentRewardSpecialOfferDefenseDialog.NAME) || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferChristmasDialog, e);
-  CastlePaymentRewardSpecialOfferChristmasDialog.prototype.setTextIDs = function () {
+  n.__extends(CastlePaymentRewardSpecialOfferDefenseDialog, e);
+  CastlePaymentRewardSpecialOfferDefenseDialog.prototype.setTextIDs = function () {
     e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_christmas_title";
-    this.descriptionTextID = "dialog_primeday_christmas_description";
+    this.titleTextID = "dialog_primeday_defender_title";
+    this.descriptionTextID = "dialog_primeday_defender_description";
   };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferChristmasDialog.prototype, "skinType", {
+  Object.defineProperty(CastlePaymentRewardSpecialOfferDefenseDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_CHRISTMAS;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_DEFENSE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
@@ -25,8 +26,11 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferChristmasDialog.NAME = "CastlePaymentRewardSpecialOfferChristmas";
-  return CastlePaymentRewardSpecialOfferChristmasDialog;
+  CastlePaymentRewardSpecialOfferDefenseDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferDefenseDialog.NAME = "CastlePaymentRewardSpecialOfferDefense";
+  };
+  return CastlePaymentRewardSpecialOfferDefenseDialog;
 }(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferChristmasDialog = r;
+exports.CastlePaymentRewardSpecialOfferDefenseDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
+r.__initialize_static_members();

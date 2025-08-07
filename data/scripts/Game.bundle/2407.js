@@ -3,49 +3,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./203.js");
-var l = require("./8.js");
-var c = function (e) {
-  function CreatePersonalBookmarkSublayer(t) {
+var a = function (e) {
+  function CastleSelectableAllianceMemberScrollItem(t) {
     return e.call(this, t) || this;
   }
-  n.__extends(CreatePersonalBookmarkSublayer, e);
-  CreatePersonalBookmarkSublayer.prototype.show = function (t) {
-    this._currentBookmarkVO = t[0];
-    e.prototype.show.call(this, t);
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_friend, new s.LocalizedTextVO("Bookmarks_addBookmark_friendly_text"));
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_enemy, new s.LocalizedTextVO("Bookmarks_addBookmark_enemy_text"));
-    this.subLayerDisp.btn_friend.toolTipText = "Bookmarks_addBookmark_friendly_tooltip";
-    this.subLayerDisp.btn_enemy.toolTipText = "Bookmarks_addBookmark_enemy_tooltip";
-    l.ButtonHelper.initTwoStateButton(this.subLayerDisp.btn_friend);
-    l.ButtonHelper.initTwoStateButton(this.subLayerDisp.btn_enemy);
-    this.switchMarkedAsFriend(this._currentBookmarkVO.type);
+  n.__extends(CastleSelectableAllianceMemberScrollItem, e);
+  CastleSelectableAllianceMemberScrollItem.prototype.customFillItem = function () {
+    e.prototype.customFillItem.call(this);
+    this.itxt_might.textContentVO.numberValue = this.scrollItem.ownerInfoVO.might;
+    this.disp.btn_selected.actLikeButton = true;
+    this.disp.btn_selected.mouseChildren = false;
+    this.setCheckBoxState();
   };
-  CreatePersonalBookmarkSublayer.prototype.switchMarkedAsFriend = function (e) {
-    this._currentBookmarkVO.type = e;
-    var t = this._currentBookmarkVO.type == r.EWorldmapBookmarkType.PLAYER_FRIEND;
-    l.ButtonHelper.setButtonSelected(this.subLayerDisp.btn_friend, t);
-    l.ButtonHelper.setButtonSelected(this.subLayerDisp.btn_enemy, !t);
-  };
-  CreatePersonalBookmarkSublayer.prototype.onClick = function (t) {
-    if (l.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.subLayerDisp.btn_friend:
-          this.switchMarkedAsFriend(r.EWorldmapBookmarkType.PLAYER_FRIEND);
-          break;
-        case this.subLayerDisp.btn_enemy:
-          this.switchMarkedAsFriend(r.EWorldmapBookmarkType.PLAYER_ENEMY);
-      }
+  CastleSelectableAllianceMemberScrollItem.prototype.setCheckBoxState = function () {
+    if (this.scrollItem.selected) {
+      this.disp.btn_selected.gotoAndStop(2);
+      this.disp.btn_selected.toolTipText = "Bookmarks_alliance_participants_tooltip";
+    } else {
+      this.disp.btn_selected.gotoAndStop(1);
+      this.disp.btn_selected.toolTipText = "Bookmarks_alliance_setParticipants_header";
     }
   };
-  CreatePersonalBookmarkSublayer.prototype.showHelp = function () {
-    u.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("help_addBookmark_copy"));
+  CastleSelectableAllianceMemberScrollItem.prototype.onMouseClick = function (t) {
+    if (t.target == this.disp.btn_selected) {
+      this.scrollItem.selected = !this.scrollItem.selected;
+      this.setCheckBoxState();
+    }
+    e.prototype.onMouseClick.call(this, t);
   };
-  return CreatePersonalBookmarkSublayer;
-}(require("./34.js").CastleDialogSubLayer);
-exports.CreatePersonalBookmarkSublayer = c;
-var u = require("./9.js");
-o.classImplementsInterfaces(c, "ICollectableRendererList", "ISublayer");
+  return CastleSelectableAllianceMemberScrollItem;
+}(require("./1355.js").CastleAllianceMemberScrollItem);
+exports.CastleSelectableAllianceMemberScrollItem = a;
+o.classImplementsInterfaces(a, "MovieClip");

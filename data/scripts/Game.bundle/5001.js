@@ -7,13 +7,13 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./10.js");
 var l = function (e) {
-  function OOPCommand() {
+  function BSOCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(OOPCommand, e);
-  Object.defineProperty(OOPCommand.prototype, "cmdId", {
+  n.__extends(BSOCommand, e);
+  Object.defineProperty(BSOCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_OFFER_OFFER_PAY;
+      return s.ClientConstSF.S2C_BUY_BESTSELLER_OFFER;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -21,7 +21,7 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  OOPCommand.prototype.executeCommand = function (e, t) {
+  BSOCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         break;
@@ -30,7 +30,7 @@ var l = function (e) {
     }
     return false;
   };
-  return OOPCommand;
+  return BSOCommand;
 }(r.CastleCommand);
-exports.OOPCommand = l;
+exports.BSOCommand = l;
 o.classImplementsInterfaces(l, "IExecCommand");

@@ -1,27 +1,59 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function AccordionComponentProperties(e = AccordionComponentProperties.SCROLL_DURATION, t = AccordionComponentProperties.SCROLL_STEP_PIXELS, i = true, n = true, o = null, a = false) {
-    this.scrollDuration = AccordionComponentProperties.SCROLL_DURATION;
-    this.scrollStepPixels = AccordionComponentProperties.SCROLL_STEP_PIXELS;
-    this.isVertical = true;
-    this.onlyOneActiveItem = true;
-    this.scrollStrategy = null;
-    this.disableButtons = false;
-    this.scrollToOpened = false;
-    this.scrollDuration = e;
-    this.scrollStepPixels = t;
-    this.isVertical = i;
-    this.onlyOneActiveItem = n;
-    this.scrollStrategy = o;
-    this.disableButtons = a;
+var n = require("./1.js");
+var o = function () {
+  function GenericCollapsibleItemProperties(e, t = true, i = -1, n = -1, o = true) {
+    this._isVertical = false;
+    this._expandDuration = 0;
+    this._collapseDuration = 0;
+    this._isExpanded = false;
+    this._margin = e;
+    this._isVertical = t;
+    this._isExpanded = o;
+    this._expandDuration = i > -1 ? i : GenericCollapsibleItemProperties.DEFAULT_DURATION;
+    this._collapseDuration = n > -1 ? n : GenericCollapsibleItemProperties.DEFAULT_DURATION;
   }
-  AccordionComponentProperties.__initialize_static_members = function () {
-    AccordionComponentProperties.SCROLL_DURATION = 0.2;
-    AccordionComponentProperties.SCROLL_STEP_PIXELS = 20;
+  Object.defineProperty(GenericCollapsibleItemProperties.prototype, "margin", {
+    get: function () {
+      return this._margin;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(GenericCollapsibleItemProperties.prototype, "isVertical", {
+    get: function () {
+      return this._isVertical;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(GenericCollapsibleItemProperties.prototype, "expandDuration", {
+    get: function () {
+      return this._expandDuration;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(GenericCollapsibleItemProperties.prototype, "collapseDuration", {
+    get: function () {
+      return this._collapseDuration;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(GenericCollapsibleItemProperties.prototype, "isExpanded", {
+    get: function () {
+      return this._isExpanded;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  GenericCollapsibleItemProperties.__initialize_static_members = function () {
+    GenericCollapsibleItemProperties.DEFAULT_DURATION = 0.5;
   };
-  return AccordionComponentProperties;
+  return GenericCollapsibleItemProperties;
 }();
-exports.AccordionComponentProperties = n;
-n.__initialize_static_members();
+exports.GenericCollapsibleItemProperties = o;
+n.classImplementsInterfaces(o, "ICollapsibleItemProperties");
+o.__initialize_static_members();

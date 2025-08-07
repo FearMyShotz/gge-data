@@ -1,53 +1,101 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./4.js");
-var s = require("./339.js");
-var r = require("./1968.js");
-var l = function (e) {
-  function DaimyoCastleXmlData(t) {
-    var i = e.call(this) || this;
-    i.parseXML(t);
-    return i;
+var n = require("./6.js");
+var o = require("./55.js");
+var a = require("./22.js");
+var s = function () {
+  function XmlCurrencyVO() {
+    this._id = -1;
+    this._name = "";
+    this._jsonKey = "";
+    this._assetName = "";
+    this._softCap = -1;
+    this._hardCap = -1;
+    this._rareness = -1;
+    this._minutesSkipValue = -1;
+    this._tier = -1;
   }
-  n.__extends(DaimyoCastleXmlData, e);
-  DaimyoCastleXmlData.prototype.getXmlList = function (e) {
-    return e.daimyoCastles;
+  XmlCurrencyVO.prototype.parseXml = function (e) {
+    this._id = n.int(a.CastleXMLUtils.getIntAttribute("currencyID", e, -1));
+    this._name = a.CastleXMLUtils.getStringAttribute("Name", e, "");
+    this._jsonKey = a.CastleXMLUtils.getStringAttribute("JSONKey", e, "");
+    this._assetName = a.CastleXMLUtils.getStringAttribute("assetName", e, "");
+    this._tier = n.int(o.ClientConstUtils.getSuffixNumberFromString(this._name));
   };
-  DaimyoCastleXmlData.prototype.getNewNode = function () {
-    return new r.DaimyoXmlVO();
+  XmlCurrencyVO.prototype.parseXmlCaps = function (e) {
+    this._softCap = n.int(a.CastleXMLUtils.getIntAttribute("softCap", e, -1));
+    this._hardCap = n.int(a.CastleXMLUtils.getIntAttribute("hardCap", e, -1));
   };
-  DaimyoCastleXmlData.prototype.getDaimyoCastle = function (e, t, i) {
-    if (i != undefined && i > 0) {
-      return a.CastleModel.eventDifficultyScaling.getCampByEventAutoScalingCampID(i);
-    }
-    if (this._nodes != null) {
-      for (var n = 0, o = Array.from(this._nodes.values()); n < o.length; n++) {
-        var s = o[n];
-        if (s !== undefined && s.rank == e && (t == -1 || s.level == t)) {
-          return s;
-        }
-      }
-    }
-    return null;
+  XmlCurrencyVO.prototype.parseXmlRareness = function (e) {
+    this._rareness = n.int(a.CastleXMLUtils.getIntAttribute("rareness", e, -1));
   };
-  DaimyoCastleXmlData.prototype.getDaimyoCastleByID = function (e, t) {
-    if (t != undefined && t > 0) {
-      return a.CastleModel.eventDifficultyScaling.getCampByEventAutoScalingCampID(t);
-    }
-    if (this._nodes != null) {
-      for (var i = 0, n = Array.from(this._nodes.values()); i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && o.id == e) {
-          return o;
-        }
-      }
-    }
-    return null;
+  XmlCurrencyVO.prototype.parseXmlMinutesSkipValues = function (e) {
+    this._minutesSkipValue = n.int(a.CastleXMLUtils.getIntAttribute("MinutesSkipValue", e, -1));
   };
-  return DaimyoCastleXmlData;
-}(s.CastleXmlData);
-exports.DaimyoCastleXmlData = l;
-o.classImplementsInterfaces(l, "IUpdatable", "ICastleBasicData");
+  Object.defineProperty(XmlCurrencyVO.prototype, "id", {
+    get: function () {
+      return this._id;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlCurrencyVO.prototype, "name", {
+    get: function () {
+      return this._name;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlCurrencyVO.prototype, "jsonKey", {
+    get: function () {
+      return this._jsonKey;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlCurrencyVO.prototype, "assetName", {
+    get: function () {
+      return this._assetName;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlCurrencyVO.prototype, "softCap", {
+    get: function () {
+      return this._softCap;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlCurrencyVO.prototype, "hardCap", {
+    get: function () {
+      return this._hardCap;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlCurrencyVO.prototype, "rareness", {
+    get: function () {
+      return this._rareness;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlCurrencyVO.prototype, "minutesSkipValue", {
+    get: function () {
+      return this._minutesSkipValue;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlCurrencyVO.prototype, "tier", {
+    get: function () {
+      return this._tier;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return XmlCurrencyVO;
+}();
+exports.XmlCurrencyVO = s;

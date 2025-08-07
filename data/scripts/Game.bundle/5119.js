@@ -5,35 +5,32 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function SEICommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function SEACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SEICommand, e);
-  Object.defineProperty(SEICommand.prototype, "cmdId", {
+  n.__extends(SEACommand, e);
+  Object.defineProperty(SEACommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SPECIAL_EVENT_INFO;
+      return s.ClientConstSF.S2C_SEASON_EVENT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  SEICommand.prototype.executeCommand = function (e, t) {
+  SEACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.specialEventData.parse_SEI(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return true;
   };
-  return SEICommand;
-}(l.CastleCommand);
-exports.SEICommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return SEACommand;
+}(r.CastleCommand);
+exports.SEACommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

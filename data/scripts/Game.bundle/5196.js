@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GPFCommand() {
+  function GMLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GPFCommand, e);
-  Object.defineProperty(GPFCommand.prototype, "cmdId", {
+  n.__extends(GMLCommand, e);
+  Object.defineProperty(GMLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_DETAILPLAYERINFO;
+      return s.ClientConstSF.S2C_GET_MONUMENT_LIST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GPFCommand.prototype.executeCommand = function (e, t) {
+  GMLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.userData.parse_GPF(i);
+        r.CastleModel.userData.monumentList.parseGML(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GPFCommand;
+  return GMLCommand;
 }(l.CastleCommand);
-exports.GPFCommand = c;
+exports.GMLCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

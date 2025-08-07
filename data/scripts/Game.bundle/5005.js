@@ -4,38 +4,36 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./7.js");
-var l = require("./10.js");
-var c = function (e) {
-  function BPVCommand() {
+var s = require("./7.js");
+var r = require("./5006.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function RVECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BPVCommand, e);
-  Object.defineProperty(BPVCommand.prototype, "cmdId", {
+  n.__extends(RVECommand, e);
+  Object.defineProperty(RVECommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_BUY_PRIVATE_RESOURCE_VILLAGE;
+      return s.ClientConstSF.S2C_REDEEM_VOUCHER;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  BPVCommand.prototype.executeCommand = function (t, i) {
-    return e.prototype.executeCommand.call(this, t, i);
-  };
-  BPVCommand.prototype.exec = function (e) {
-    var t = s.int(e[0]);
-    var i = e[1];
-    switch (t) {
+  RVECommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
       case a.ERROR.ALL_OK:
+        l.CastleModel.privateOfferData.dispatchEvent(new r.CastleVoucherEvent(r.CastleVoucherEvent.VOUCHER_CODE_SUCCESS));
         break;
       default:
-        this.showErrorDialog(t, i);
+        l.CastleModel.privateOfferData.dispatchEvent(new r.CastleVoucherEvent(r.CastleVoucherEvent.VOUCHER_CODE_FAILED));
     }
+    return false;
   };
-  return BPVCommand;
-}(l.CastleCommand);
-exports.BPVCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return RVECommand;
+}(c.CastleCommand);
+exports.RVECommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

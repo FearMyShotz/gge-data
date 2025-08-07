@@ -7,15 +7,14 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
-var c = createjs.Point;
-var u = function (e) {
-  function GHWCommand() {
+var c = function (e) {
+  function GEMCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GHWCommand, e);
-  Object.defineProperty(GHWCommand.prototype, "cmdId", {
+  n.__extends(GEMCommand, e);
+  Object.defineProperty(GEMCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_HELLO_WORLD;
+      return s.ClientConstSF.S2C_GET_EMBLEM;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -23,23 +22,18 @@ var u = function (e) {
     enumerable: true,
     configurable: true
   });
-  GHWCommand.prototype.executeCommand = function (e, t) {
+  GEMCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        var n = r.CastleModel.areaData.activeArea;
-        if (n) {
-          r.CastleModel.areaData.changePosOfOwnArea(new c(i.X, i.Y));
-          r.CastleModel.worldmapCameraData.lastVisitedCastlePosition = n.areaInfo.absAreaPos;
-        }
-        r.CastleModel.worldmapCameraData.savedMapPosition = null;
+        r.CastleModel.userData.parse_GEM(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GHWCommand;
+  return GEMCommand;
 }(l.CastleCommand);
-exports.GHWCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+exports.GEMCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

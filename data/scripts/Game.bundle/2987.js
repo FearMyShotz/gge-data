@@ -3,23 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./62.js");
+var a = require("./262.js");
 var s = function (e) {
-  function CoalboostBuildingVE() {
+  function CattleFarmBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CoalboostBuildingVE, e);
-  Object.defineProperty(CoalboostBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(CattleFarmBuildingVE, e);
+  Object.defineProperty(CattleFarmBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourCoal;
+      return Library.CastleInterfaceElements.Icon_Beef;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.AResourceProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return CoalboostBuildingVE;
-}(a.ABasicBuildingVE);
-exports.CoalboostBuildingVE = s;
+  return CattleFarmBuildingVE;
+}(a.AResourceProductionBuildingVE);
+exports.CattleFarmBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

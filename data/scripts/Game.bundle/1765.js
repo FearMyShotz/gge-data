@@ -2,70 +2,101 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
+var o = require("./2.js");
+var a = require("./1.js");
 var s = require("./5.js");
 var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./4.js");
-var u = require("./1091.js");
-var d = function (e) {
-  function CastleAllianceNomadInvasionHighscoreDialog() {
+var l = require("./3.js");
+var c = require("./6.js");
+var u = require("./663.js");
+var d = require("./1716.js");
+var p = require("./4.js");
+var h = function (e) {
+  function KingdomGoodsTravelMinuteSkipProperties(t) {
+    var i = this;
+    i.kingdomID = 0;
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleAllianceNomadInvasionHighscoreDialog.ASSET_NAME) || this;
+    (i = e.call(this) || this).kingdomID = t;
+    return i;
   }
-  n.__extends(CastleAllianceNomadInvasionHighscoreDialog, e);
-  CastleAllianceNomadInvasionHighscoreDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.dialogDisp.mc_header.gotoAndStop(2);
-    this.dialogDisp.mc_scoreIcon.gotoAndStop(4);
-    this.dialogDisp.mc_scoreIcon.toolTipText = "dialog_nomadInvasion_nomadPoints";
-  };
-  CastleAllianceNomadInvasionHighscoreDialog.prototype.showLoaded = function (t = null) {
-    if (!CastleAllianceNomadInvasionHighscoreDialog.eventVO) {
-      this.hide();
-    }
-    e.prototype.showLoaded.call(this, t);
-  };
-  Object.defineProperty(CastleAllianceNomadInvasionHighscoreDialog.prototype, "helpTextId", {
+  n.__extends(KingdomGoodsTravelMinuteSkipProperties, e);
+  Object.defineProperty(KingdomGoodsTravelMinuteSkipProperties.prototype, "transferVO", {
     get: function () {
-      return "help_nomadInvasionAlliance_allianceScore";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleGenericAllianceHighscoreDialog.prototype, "helpTextId").set.call(this, e);
+      return p.CastleModel.kingdomData.getIncomingGoodsTransferByKingdomID(this.kingdomID);
     },
     enumerable: true,
     configurable: true
   });
-  CastleAllianceNomadInvasionHighscoreDialog.prototype.onGetHighscoreData = function (t) {
-    var i = l.int(CastleAllianceNomadInvasionHighscoreDialog.eventVO.leagueLevels(t.leagueId)[0]);
-    var n = l.int(CastleAllianceNomadInvasionHighscoreDialog.eventVO.leagueLevels(t.leagueId)[1]);
-    if (this.dialogProperties.highscoreType == s.HighscoreConst.ALLIANCE_NOMADINVASION_ALLIANCE) {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_leagueRange, new r.LocalizedTextVO("dialog_highscore_searchAlliance", [i])).autoFitToBounds = true;
-    } else {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_leagueRange, new r.LocalizedTextVO("levelrange_placeholder", [i, n])).autoFitToBounds = true;
-    }
-    e.prototype.onGetHighscoreData.call(this, t);
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getMinuteSkipCommand = function (e) {
+    return new d.C2SMinuteSkipKingdomTransferVO(e, this.transferVO.targetKingdomID, 2);
   };
-  CastleAllianceNomadInvasionHighscoreDialog.prototype.onRemoveSpecialEvent = function (e) {
-    if (e.specialEventVO.eventId == a.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE) {
-      this.hide();
-      this.destroy();
-    }
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getFullSkipCommand = function () {
+    return new u.C2SKingdomSkipTransferVO(this.transferVO.targetKingdomID, 2);
   };
-  Object.defineProperty(CastleAllianceNomadInvasionHighscoreDialog, "eventVO", {
+  KingdomGoodsTravelMinuteSkipProperties.prototype.isSkipAppliable = function () {
+    return !!this.transferVO && this.transferVO.remainingTimeInSeconds > 0;
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.isFreeSkipActive = function () {
+    return false;
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.isPrimeSaleActive = function () {
+    return false;
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getPrimeSaleDiscount = function () {
+    return 0;
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getNameText = function () {
+    return new r.LocalizedTextVO("dialog_season_sendResources");
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getAdditionalInfo = function () {
+    return new l.TextVO(this.kingdomVO.kingdomNameString);
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getIconFrame = function () {
+    return c.int(g.CastleMinuteSkipDialog.ICONFRAME_RESOURCE_TRANSFER);
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getIconToolTipText = function () {
+    return "dialog_season_sendResources";
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.displayPicture = function (e) {
+    var t = new Library.CastleInterfaceElements_Icons.Icon_ChangeWorld();
+    t.gotoAndStop(this.changeWorldIconFrame);
+    return e.addChild(t);
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getTotalTime = function () {
+    return this.transferVO.totalTravelTimeInSeconds;
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getRemainingTime = function () {
+    return this.transferVO.remainingTimeInSeconds;
+  };
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getSkipCost = function () {
+    return c.int(p.CastleModel.costsData.getFinalCostsC2(this.kingdomVO.skipResourceTravelC2Cost));
+  };
+  Object.defineProperty(KingdomGoodsTravelMinuteSkipProperties.prototype, "kingdomVO", {
     get: function () {
-      return c.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE);
+      return p.CastleModel.kingdomData.getKingdomVOByID(this.transferVO.targetKingdomID);
     },
     enumerable: true,
     configurable: true
   });
-  CastleAllianceNomadInvasionHighscoreDialog.__initialize_static_members = function () {
-    CastleAllianceNomadInvasionHighscoreDialog.NAME = "CastleAllianceNomadInvasionEventHighscore";
-    CastleAllianceNomadInvasionHighscoreDialog.ASSET_NAME = "CastleGenericAllianceHighscore_D";
+  Object.defineProperty(KingdomGoodsTravelMinuteSkipProperties.prototype, "changeWorldIconFrame", {
+    get: function () {
+      if (this.kingdomVO.kID == s.WorldIsland.KINGDOM_ID) {
+        return 8;
+      } else {
+        return this.kingdomVO.kID + 1;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getRemainingTimeUntilFreeSkip = function () {
+    return 0;
   };
-  return CastleAllianceNomadInvasionHighscoreDialog;
-}(u.CastleGenericAllianceHighscoreDialog);
-exports.CastleAllianceNomadInvasionHighscoreDialog = d;
-o.classImplementsInterfaces(d, "ICollectableRendererList");
-d.__initialize_static_members();
+  KingdomGoodsTravelMinuteSkipProperties.prototype.getRemainingPrimeSaleTime = function () {
+    return 0;
+  };
+  return KingdomGoodsTravelMinuteSkipProperties;
+}(o.BasicProperties);
+exports.KingdomGoodsTravelMinuteSkipProperties = h;
+var g = require("./208.js");
+a.classImplementsInterfaces(h, "IMinuteSkipProperties");

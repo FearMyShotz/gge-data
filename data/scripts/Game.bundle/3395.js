@@ -2,39 +2,82 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./1.js");
-var c = require("./4.js");
-var u = function (e) {
-  function OpenDungenTreasureChestOfferCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./3.js");
+var c = require("./522.js");
+var u = require("./1649.js");
+var d = createjs.Point;
+var p = function (e) {
+  function CastleAttackOrderReceivedDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  n.__extends(OpenDungenTreasureChestOfferCommand, e);
-  OpenDungenTreasureChestOfferCommand.prototype.execute = function (t = null) {
-    e.prototype.execute.call(this, t);
-    var i = t.offerID;
-    var n = c.CastleModel.privateOfferData.getOfferById(i);
-    if (n) {
-      s.CommandController.instance.executeCommand(d.IngameClientCommands.OPEN_PRIVATE_OFFER_DIALOG_COMMAND, n);
-    } else {
-      p.CastleDialogHandler.getInstance().registerDefaultDialogs(g.PrivateOfferFailedStandardDialog, new a.BasicStandardOkDialogProperties(o.BasicModel.languageData.getTextById("dungeonTreasureChestOfferFailed_title"), o.BasicModel.languageData.getTextById("dungeonTreasureChestOfferFailed_copy")));
-    }
-  };
-  Object.defineProperty(OpenDungenTreasureChestOfferCommand.prototype, "layoutManager", {
+  n.__extends(CastleAttackOrderReceivedDialog, e);
+  Object.defineProperty(CastleAttackOrderReceivedDialog.prototype, "isMessageObsolete", {
     get: function () {
-      return h.CastleLayoutManager.getInstance();
+      return Object.getOwnPropertyDescriptor(u.CastleAttackOrderCanceledDialog.prototype, "isMessageObsolete").get.call(this) || !this.dialogProperties.bookmarkVO.attackOrderDetails;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleAttackOrderCanceledDialog.prototype, "isMessageObsolete").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return OpenDungenTreasureChestOfferCommand;
-}(r.SimpleCommand);
-exports.OpenDungenTreasureChestOfferCommand = u;
-var d = require("./29.js");
-var p = require("./9.js");
-var h = require("./17.js");
-var g = require("./563.js");
-l.classImplementsInterfaces(u, "ISimpleCommand");
+  CastleAttackOrderReceivedDialog.prototype.initAttackOrderDetails = function () {
+    var e = this.dialogDisp.mc_details;
+    e.visible = true;
+    var t = this.dialogProperties.bookmarkVO.attackOrderDetails;
+    var i = t.attackDate;
+    var n = new l.TextVO(s.Localize.datetime(i, a.DateTimeStyle.SHORT, a.DateTimeStyle.NONE));
+    this.textFieldManager.registerTextField(e.txt_date, n);
+    var o = new l.TextVO(s.Localize.datetime(i, a.DateTimeStyle.NONE, a.DateTimeStyle.SHORT));
+    this.textFieldManager.registerTextField(e.txt_time, o);
+    var c = t.assignedAttackers.length > 1 ? "dialog_alliance_bookmarks_attackerAmount" : "dialog_alliance_bookmarks_attackerAmount_singular";
+    this.textFieldManager.registerTextField(e.mc_participants.txt_participants, new r.LocalizedTextVO(c, [t.assignedAttackers.length]));
+    e.mc_participants.actLikeButton = true;
+    e.mc_participants.mouseChildren = false;
+    e.mc_participants.toolTipText = "dialog_alliance_bookmarks_attackerList_tooltip";
+  };
+  CastleAttackOrderReceivedDialog.prototype.getPosition = function () {
+    return new d(this.dialogProperties.bookmarkVO.posX, this.dialogProperties.bookmarkVO.posY);
+  };
+  CastleAttackOrderReceivedDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.mc_details.mc_participants:
+        h.CastleDialogHandler.getInstance().registerDefaultDialogs(g.CastleBookmarkShowAttackersDialog, new c.CastleBookmarkPasserProperties(this.dialogProperties.bookmarkVO));
+    }
+  };
+  Object.defineProperty(CastleAttackOrderReceivedDialog.prototype, "copyTextId", {
+    get: function () {
+      return "dialog_alliance_bookmarks_attackMessage_copy";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleAttackOrderCanceledDialog.prototype, "copyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleAttackOrderReceivedDialog.prototype, "titleTextId", {
+    get: function () {
+      return "dialog_alliance_bookmarks_attackMessage_header";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleAttackOrderCanceledDialog.prototype, "titleTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleAttackOrderReceivedDialog.__initialize_static_members = function () {
+    CastleAttackOrderReceivedDialog.NAME = "CastleAttackOrderReceivedDialog";
+  };
+  return CastleAttackOrderReceivedDialog;
+}(u.CastleAttackOrderCanceledDialog);
+exports.CastleAttackOrderReceivedDialog = p;
+var h = require("./9.js");
+var g = require("./1362.js");
+o.classImplementsInterfaces(p, "ICollectableRendererList");
+p.__initialize_static_members();

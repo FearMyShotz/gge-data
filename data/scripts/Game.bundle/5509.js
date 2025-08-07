@@ -3,90 +3,60 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./3.js");
-var u = require("./3.js");
-var d = require("./6.js");
-var p = require("./21.js");
-var h = require("./26.js");
-var g = require("./4.js");
-var C = require("./27.js");
-var _ = function (e) {
-  function CastleThornkingEventTeaserDialog() {
-    return e.call(this, CastleThornkingEventTeaserDialog.NAME) || this;
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./277.js");
+var c = require("./4.js");
+var u = require("./8.js");
+var d = function (e) {
+  function CastleSamuraiInvasionEventTeaserDialog() {
+    return e.call(this, CastleSamuraiInvasionEventTeaserDialog.NAME) || this;
   }
-  n.__extends(CastleThornkingEventTeaserDialog, e);
-  CastleThornkingEventTeaserDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_okay]);
-    this.itxt_title = this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new c.LocalizedTextVO("message_header_thornking_start"));
-    this.itxt_title.autoFitToBounds = true;
-    this.itxt_title.verticalAlign = a.GGSVerticalAlign.MIDDLE;
-    this.itxt_desc = this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new c.LocalizedTextVO("dialog_thornking_message"));
-    this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.mc_timer.txt_time, new u.TextVO(""));
-    this.itxt_time.textAlign = o.GGSTextAlign.LEFT;
-    this.dialogDisp.mc_deco_hard.visible = false;
-    this.dialogDisp.mc_deco_normal.visible = false;
+  n.__extends(CastleSamuraiInvasionEventTeaserDialog, e);
+  CastleSamuraiInvasionEventTeaserDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    u.ButtonHelper.initBasicButton(this.dialogDisp.btn_goTo);
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_goTo.txt_text, new r.LocalizedTextVO("panel_action_event")).autoFitToBounds = true;
   };
-  CastleThornkingEventTeaserDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    e.prototype.applyProperties.call(this);
-    if (this.dialogProperties.specialEventID == l.TreasureMapsConst.MAP_ID_THORNKING_EASY) {
-      this.itxt_title.textContentVO.textId = "message_header_thornking_start";
-      this.itxt_desc.textContentVO.textId = "dialog_thornking_message";
-      this.dialogDisp.mc_deco_hard.visible = false;
-      this.dialogDisp.mc_deco_normal.visible = true;
-    } else if (this.dialogProperties.specialEventID == l.TreasureMapsConst.MAP_ID_THORNKING_HARD) {
-      this.itxt_title.textContentVO.textId = "message_header_thornking_start";
-      this.itxt_desc.textContentVO.textId = "dialog_thornking_message2";
-      this.dialogDisp.mc_deco_hard.visible = true;
-      this.dialogDisp.mc_deco_normal.visible = false;
-    }
-  };
-  CastleThornkingEventTeaserDialog.prototype.addEventListenerOnShow = function () {
-    e.prototype.addEventListenerOnShow.call(this);
-    g.CastleModel.timerData.addEventListener(p.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateEventTime));
-    g.CastleModel.specialEventData.addEventListener(h.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventRemoved));
-  };
-  CastleThornkingEventTeaserDialog.prototype.removeEventListenerOnHide = function () {
-    e.prototype.removeEventListenerOnHide.call(this);
-    g.CastleModel.timerData.removeEventListener(p.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateEventTime));
-    g.CastleModel.specialEventData.removeEventListener(h.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventRemoved));
-  };
-  CastleThornkingEventTeaserDialog.prototype.onUpdateEventTime = function (e) {
-    var t = 0;
+  CastleSamuraiInvasionEventTeaserDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
     var i = this.getEventVO();
-    if (i && this.itxt_time.textContentVO) {
-      t = d.int(i.remainingEventTimeInSeconds);
-    }
-    C.CastleTimeStringHelper.setEventTime(this.dialogDisp.mc_timer.txt_time, t);
-    C.CastleTimeStringHelper.setEventTimeToolTip(this.dialogDisp.mc_timer, t);
+    var n = !!i && i.daimyoInfoVO.isEnabled;
+    this.dialogDisp.mc_teaser1.visible = !n;
+    this.dialogDisp.mc_teaser2.visible = !n;
+    this.dialogDisp.mc_teaserDaimyo1.visible = n;
+    this.dialogDisp.mc_teaserDaimyo2.visible = n;
   };
-  CastleThornkingEventTeaserDialog.prototype.onClick = function (t) {
+  CastleSamuraiInvasionEventTeaserDialog.prototype.setText = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.LocalizedTextVO("dialog_samuraiInvasion_message_header"));
+    var e = this.getEventVO();
+    var t = "dialog_samuraiInvasion_message_copy";
+    if (e && e.daimyoInfoVO.isEnabled) {
+      t = "dialog_samuraiInvasionDaimyo_message_copy";
+    }
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new r.LocalizedTextVO(t)).autoFitToBounds = true;
+  };
+  CastleSamuraiInvasionEventTeaserDialog.prototype.getEventVO = function () {
+    if (c.CastleModel.specialEventData.isEventActive(s.EventConst.EVENTTYPE_SAMURAI_INVASION)) {
+      return c.CastleModel.specialEventData.getActiveEventByEventId(s.EventConst.EVENTTYPE_SAMURAI_INVASION);
+    } else {
+      return null;
+    }
+  };
+  CastleSamuraiInvasionEventTeaserDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
     switch (t.target) {
-      case this.dialogDisp.btn_okay:
-      case this.dialogDisp.btn_close:
-        this.hide();
+      case this.dialogDisp.btn_goTo:
+        var i = new h.CastleQuestConditionVO();
+        i.loadFromParamArray([l.ClientConstQuestCondition.QUESTTYPE_OPEN_SAMURAI_EVENT_DIALOG]);
+        o.CommandController.instance.executeCommand(p.IngameClientCommands.SHOW_HOW_TODO_QUESTCONDITION_COMMAND, [null, i]);
     }
   };
-  CastleThornkingEventTeaserDialog.prototype.getEventVO = function () {
-    return g.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_CRUSADE_THORNKING);
-  };
-  CastleThornkingEventTeaserDialog.prototype.onEventRemoved = function (e) {
-    this.hide();
-  };
-  Object.defineProperty(CastleThornkingEventTeaserDialog.prototype, "dialogProperties", {
-    get: function () {
-      return this.properties;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleThornkingEventTeaserDialog.NAME = "CastleThornkingEventTeaser";
-  return CastleThornkingEventTeaserDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleThornkingEventTeaserDialog = _;
-s.classImplementsInterfaces(_, "ICollectableRendererList");
+  CastleSamuraiInvasionEventTeaserDialog.NAME = "CastleSamuraiInvasionEventTeaser_Daimyo";
+  return CastleSamuraiInvasionEventTeaserDialog;
+}(require("./681.js").CastleBasicSpecialEventTeaserDialog);
+exports.CastleSamuraiInvasionEventTeaserDialog = d;
+var p = require("./29.js");
+var h = require("./1639.js");
+a.classImplementsInterfaces(d, "ICollectableRendererList");

@@ -94,7 +94,7 @@ var h = function (e) {
   };
   ABGAllianceCollectorPointDepletionInfoPanel.NAME = "ABGAllianceCollectorPointDepletionInfo";
   return ABGAllianceCollectorPointDepletionInfoPanel;
-}(require("./844.js").CastleExternalPanel);
+}(require("./845.js").CastleExternalPanel);
 exports.ABGAllianceCollectorPointDepletionInfoPanel = h;
-var g = require("./33.js");
+var g = require("./34.js");
 a.classImplementsInterfaces(h, "ICollectableRendererList");

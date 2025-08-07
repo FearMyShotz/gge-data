@@ -2,7 +2,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./676.js");
+var o = require("./678.js");
 var a = require("./4291.js");
 var s = function (e) {
   function CastleLegendSkillTree(t) {

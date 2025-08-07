@@ -2,77 +2,109 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./54.js");
-var r = require("./345.js");
-var l = require("./4.js");
-var c = function (e) {
-  function CastlePermanentCastleData() {
-    var t = this;
-    t._castles = new Map();
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./6.js");
+var l = require("./148.js");
+var c = require("./30.js");
+var u = require("./54.js");
+var d = require("./119.js");
+var p = require("./4.js");
+var h = function (e) {
+  function CastleOtherPlayerData() {
+    var t = e.call(this) || this;
+    o.BasicController.getInstance().addEventListener(a.CountryInstanceMappingEvent.PROCESS_COMPLETE, t.bindFunction(t.onNewLanguage));
+    t._ownOwnerInfo = new C.OwnWorldMapOwnerInfoVO();
+    t.resetOwnerInfo();
+    return t;
   }
-  n.__extends(CastlePermanentCastleData, e);
-  CastlePermanentCastleData.prototype.parseGPC = function (e) {
-    if (e) {
-      var t;
-      var i;
-      for (var n = e.A, o = 0, s = 0, r = 0; r < n.length; ++r) {
-        i = n[r];
-        o = a.int(i.AID);
-        s = a.int(i.KID);
-        t = this.getDicKey(o, s);
-        if (!this._castles.get(t)) {
-          this._castles.set(t, new u.CastlePermanentCastleVO());
-        }
-        this._castles.get(t).parseParamObject(i);
-      }
-    }
+  n.__extends(CastleOtherPlayerData, e);
+  CastleOtherPlayerData.prototype.reset = function () {
+    this.resetOwnerInfo();
+    this._ownOwnerInfo = new C.OwnWorldMapOwnerInfoVO();
   };
-  CastlePermanentCastleData.prototype.destroy = function () {
-    e.prototype.destroy.call(this);
-    if (this._castles != null) {
-      for (var t = 0, i = Array.from(this._castles.values()); t < i.length; t++) {
-        i[t].destroy();
-      }
-    }
-    this._castles = new Map();
+  CastleOtherPlayerData.prototype.resetOwnerInfo = function () {
+    this._ownerInfo = new Map();
+    g.CastleNPCOwnerFactory.generateStandardNPCOwner().forEach(this.bindFunction(this.addToOwnerList));
   };
-  CastlePermanentCastleData.prototype.getUnitBaseLocation = function (e) {
+  CastleOtherPlayerData.prototype.addToOwnerList = function (e, t, i) {
+    this.addOwnerInfo(e);
+  };
+  CastleOtherPlayerData.prototype.addOwnerInfo = function (e) {
+    this._ownerInfo.set(e.playerID, e);
+  };
+  CastleOtherPlayerData.prototype.addDummyPlayer = function (e) {
+    var t = _.WorldMapOwnerInfoVO.createDummy(e);
+    this.addOwnerInfo(t);
+  };
+  CastleOtherPlayerData.prototype.getOwnInfoVO = function () {
+    return this._ownOwnerInfo;
+  };
+  CastleOtherPlayerData.prototype.getOwnerInfoVO = function (e) {
     var t;
-    switch (e.unitBaseLocation) {
-      case r.UnitBaseLocationEnum.HOME_CASTLE:
-        t = l.CastleModel.userData.castleList.getHomeCastle();
-        break;
-      case r.UnitBaseLocationEnum.KINGDOM_CASTLE:
-        t = l.CastleModel.userData.castleList.getMainCastleByKingdomID(e.kingdomID);
-        break;
-      case r.UnitBaseLocationEnum.CONTROLLER:
-        t = e.isUnderConquerControl ? l.CastleModel.userData.castleList.getMainCastleByKingdomID(e.kingdomID) : e;
+    if (e == p.CastleModel.userData.playerID || e == l.ClientConstNPCs.NPC_ID_DAIMYO_TOWNSHIP) {
+      t = this.getOwnInfoVO();
+    } else if (!(t = this._ownerInfo.get(e))) {
+      if (d.PlayerHelper.isNPCPlayer(e)) {
+        t = g.CastleNPCOwnerFactory.getOwner(e);
+      }
+      if (t) {
+        this.addOwnerInfo(t);
+      }
     }
-    return this._castles.get(this.getDicKey(t.objectId, t.kingdomID));
+    return t;
   };
-  CastlePermanentCastleData.prototype.getCurrentCastle = function () {
-    var e = l.CastleModel.areaData.activeArea ? l.CastleModel.areaData.activeAreaInfo : null;
-    if (e) {
-      return this._castles.get(this.getDicKey(e.objectId, e.kingdomID));
-    } else {
+  CastleOtherPlayerData.prototype.parseOwnerInfo = function (e, t = -1) {
+    if (!e || !e.OID) {
       return null;
     }
+    if (t == -1) {
+      t = c.CachedTimer.getCachedTimer();
+    }
+    var i = r.int(e.OID);
+    if (d.PlayerHelper.isNPCPlayer(i)) {
+      return this.getOwnerInfoVO(i);
+    }
+    if (e.DUM) {
+      if (!this._ownerInfo.get(i)) {
+        this.addDummyPlayer(i);
+      }
+      return this._ownerInfo.get(i);
+    }
+    if (this._ownOwnerInfo && i == this._ownOwnerInfo.playerID) {
+      p.CastleModel.userData.allianceRank = parseInt(e.AR);
+      return this._ownOwnerInfo;
+    }
+    if (this._ownerInfo.get(i)) {
+      this._ownerInfo.get(i).fillFromParamObject(e, t);
+      return this._ownerInfo.get(i);
+    }
+    var n = new _.WorldMapOwnerInfoVO();
+    n.fillFromParamObject(e, t);
+    this.addOwnerInfo(n);
+    return n;
   };
-  CastlePermanentCastleData.prototype.getCastleByWorldAreaId = function (e, t) {
-    return this._castles.get(this.getDicKey(e, t));
+  CastleOtherPlayerData.prototype.parseOwnerInfoArray = function (e) {
+    if (e && e.length > 0) {
+      var t = c.CachedTimer.getCachedTimer();
+      if (e != null) {
+        for (var i = 0, n = e; i < n.length; i++) {
+          var o = n[i];
+          if (o !== undefined) {
+            this.parseOwnerInfo(o, t);
+          }
+        }
+      }
+    }
   };
-  CastlePermanentCastleData.prototype.getCastleByAreaInfo = function (e) {
-    return this._castles.get(this.getDicKey(e.objectId, e.kingdomID));
+  CastleOtherPlayerData.prototype.onNewLanguage = function (e) {
+    this.resetOwnerInfo();
   };
-  CastlePermanentCastleData.prototype.getDicKey = function (e, t) {
-    return t + "-" + e;
-  };
-  return CastlePermanentCastleData;
-}(s.CastleBasicData);
-exports.CastlePermanentCastleData = c;
-var u = require("./5567.js");
-o.classImplementsInterfaces(c, "IUpdatable");
+  return CastleOtherPlayerData;
+}(u.CastleBasicData);
+exports.CastleOtherPlayerData = h;
+var g = require("./387.js");
+var C = require("./5567.js");
+var _ = require("./316.js");
+s.classImplementsInterfaces(h, "IUpdatable");

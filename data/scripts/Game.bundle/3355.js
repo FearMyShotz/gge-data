@@ -1,50 +1,70 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function FestivalVO() {
-    this._festivalType = 0;
-    this._endTime = NaN;
-    this.boostAmount = 0;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./6.js");
+var c = require("./7.js");
+var u = require("./4.js");
+var d = require("./135.js");
+var p = require("./1349.js");
+var h = require("./1644.js");
+var g = require("./1645.js");
+var C = require("./1201.js");
+var _ = function (e) {
+  function BuyBoosterCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  FestivalVO.prototype.fillFromParamObject = function (e) {
-    if (e) {
-      this._festivalType = o.int(e.T);
-      this.parseDuration(e.RT);
-      this._activeFestivalVO = r.CastleModel.premiumData.getFestivalItemByID(this._festivalType);
-      if (this._activeFestivalVO) {
-        this.boostAmount = this._activeFestivalVO.boost;
+  n.__extends(BuyBoosterCommand, e);
+  BuyBoosterCommand.prototype.execute = function (e = null) {
+    var t = e;
+    var i = l.int(t.finalCostsC2);
+    if (u.CastleModel.currencyData.c2Amount < i) {
+      f.CastleDialogHandler.getInstance().registerDefaultDialogs(O.CastleNoMoneyC2Dialog, new d.CastleNoMoneyC2DialogProperties());
+    } else {
+      switch (t.id) {
+        case r.BoosterConst.INSTRUCTOR:
+          u.CastleModel.smartfoxClient.sendCommandVO(new h.C2SInstructorStartVO(u.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.INSTRUCTOR)));
+          break;
+        case r.BoosterConst.MARAUDER:
+          u.CastleModel.smartfoxClient.sendCommandVO(new g.C2SMarauderStartVO(u.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.MARAUDER)));
+          break;
+        case r.BoosterConst.OVERSEER_FOOD:
+          u.CastleModel.smartfoxClient.sendCommandVO(new C.C2SOverseerStartVO(m.CastlePremiumBoostData.BOOST_FOOD, u.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.OVERSEER_FOOD)));
+          break;
+        case r.BoosterConst.OVERSEER_STONE:
+          u.CastleModel.smartfoxClient.sendCommandVO(new C.C2SOverseerStartVO(m.CastlePremiumBoostData.BOOST_STONE, u.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.OVERSEER_STONE)));
+          break;
+        case r.BoosterConst.OVERSEER_WOOD:
+          u.CastleModel.smartfoxClient.sendCommandVO(new C.C2SOverseerStartVO(m.CastlePremiumBoostData.BOOST_WOOD, u.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.OVERSEER_WOOD)));
+          break;
+        case r.BoosterConst.OVERSEER_MEAD:
+          u.CastleModel.smartfoxClient.sendCommandVO(new C.C2SOverseerStartVO(m.CastlePremiumBoostData.BOOST_MEAD, u.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.OVERSEER_MEAD)));
+          break;
+        case r.BoosterConst.OVERSEER_BEEF:
+          u.CastleModel.smartfoxClient.sendCommandVO(new C.C2SOverseerStartVO(m.CastlePremiumBoostData.BOOST_BEEF, u.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.OVERSEER_BEEF)));
+          break;
+        case r.BoosterConst.OVERSEER_HONEY:
+          u.CastleModel.smartfoxClient.sendCommandVO(new C.C2SOverseerStartVO(m.CastlePremiumBoostData.BOOST_HONEY, u.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.OVERSEER_HONEY)));
+          break;
+        case r.BoosterConst.TAX:
+          var n = JSON.stringify({
+            PO: u.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.TAX)
+          });
+          o.BasicController.getInstance().sendServerMessageAndWait(c.ClientConstSF.C2S_BRIBE_TAX_COLLECTOR, [n], c.ClientConstSF.S2C_BRIBE_TAX_COLLECTOR);
+          break;
+        case r.BoosterConst.CARAVAN_OVERLOADER:
+          u.CastleModel.smartfoxClient.sendCommandVO(new p.C2SCaravanOverloaderStartVO(u.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.CARAVAN_OVERLOADER)));
       }
     }
   };
-  FestivalVO.prototype.parseDuration = function (e) {
-    this._endTime = Math.max(0, s.CachedTimer.getCachedTimer() + e * a.ClientConstTime.SEC_2_MILLISEC);
-  };
-  Object.defineProperty(FestivalVO.prototype, "isActive", {
-    get: function () {
-      return this.remainingTimeInSeconds > 0;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(FestivalVO.prototype, "activeFestivalVO", {
-    get: function () {
-      return this._activeFestivalVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(FestivalVO.prototype, "remainingTimeInSeconds", {
-    get: function () {
-      return Math.max(0, (this._endTime - s.CachedTimer.getCachedTimer()) * a.ClientConstTime.MILLISEC_2_SEC);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return FestivalVO;
-}();
-exports.FestivalVO = n;
-var o = require("./6.js");
-var a = require("./28.js");
-var s = require("./30.js");
-var r = require("./4.js");
+  return BuyBoosterCommand;
+}(a.SimpleCommand);
+exports.BuyBoosterCommand = _;
+var m = require("./402.js");
+var f = require("./9.js");
+var O = require("./138.js");
+s.classImplementsInterfaces(_, "ISimpleCommand");

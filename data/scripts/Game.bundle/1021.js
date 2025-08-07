@@ -3,96 +3,85 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
+var a = require("./1.js");
+var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./16.js");
-var c = require("./4.js");
-var u = require("./87.js");
-var d = require("./336.js");
-var p = require("./632.js");
-var h = function (e) {
-  function BasicMoatVO() {
-    var t = e.call(this) || this;
-    t._width = 1;
-    t._height = 1;
-    t._buildingState = u.IsoBuildingStateEnum.BUILD_COMPLETED;
-    t._hitPoints = 100;
-    t._rotationType = d.IsoObjectRotationEnum.NONE;
-    return t;
+var l = require("./6.js");
+var c = require("./16.js");
+var u = require("./22.js");
+var d = require("./4.js");
+var p = require("./633.js");
+var h = createjs.Point;
+var g = function (e) {
+  function BasicGateVO() {
+    var t = this;
+    t._gateBonus = 0;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(BasicMoatVO, e);
-  BasicMoatVO.prototype.parseXmlNode = function (t) {
+  n.__extends(BasicGateVO, e);
+  BasicGateVO.prototype.updateSpawnPoints = function () {
+    this._spawnPoints.length = 0;
+    if (this.rotation == 0) {
+      this._spawnPoints.push(new h(0, 1), new h(1, 1));
+    } else {
+      this._spawnPoints.push(new h(1, 0), new h(1, 1));
+    }
+  };
+  BasicGateVO.prototype.parseXmlNode = function (t) {
     e.prototype.parseXmlNode.call(this, t);
-    this._rotationType = d.IsoObjectRotationEnum._1FrameFor2Dir;
+    this._gateBonus = l.int(u.CastleXMLUtils.getIntAttribute("gateBonus", t));
   };
-  Object.defineProperty(BasicMoatVO.prototype, "isMoatAvailableByBuildOrder", {
+  BasicGateVO.prototype.getNameString = function () {
+    return this.group.toLowerCase() + "_name";
+  };
+  BasicGateVO.prototype.getShortInfoString = function () {
+    return this.group.toLowerCase() + "_short_info";
+  };
+  BasicGateVO.prototype.getUpgradeInfoString = function () {
+    return this.group.toLowerCase() + "_upgrade_info";
+  };
+  BasicGateVO.prototype.canUpgrade = function () {
+    return e.prototype.canUpgrade.call(this) && this.level < d.CastleModel.areaData.activeIsoData.objects.defences.currentWallLevel;
+  };
+  Object.defineProperty(BasicGateVO.prototype, "usesColorFourCrest", {
     get: function () {
-      var e = C.Iso.data.objects.defences.moat;
-      if (e) {
-        return this.level == e.level + 1 && e.buildingState != u.IsoBuildingStateEnum.UPGRADE_IN_PROGRESS;
-      } else {
-        return this.level == 1;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BasicMoatVO.prototype, "isAvailableByLevel", {
-    get: function () {
-      return this.isMoatAvailableByBuildOrder && Object.getOwnPropertyDescriptor(g.AShopVO.prototype, "isAvailableByLevel").get.call(this);
+      return this.level <= 1;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.ADefenceBuildingVO.prototype, "isAvailableByLevel").set.call(this, e);
+      Object.getOwnPropertyDescriptor(p.ADefenceBuildingVO.prototype, "usesColorFourCrest").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  BasicMoatVO.prototype.getNameString = function () {
-    return this.name.toLowerCase() + "_" + this.group.toLowerCase() + "_name";
-  };
-  BasicMoatVO.prototype.getShortInfoString = function () {
-    return this.name.toLowerCase() + "_" + this.group.toLowerCase() + "_short_info";
-  };
-  BasicMoatVO.prototype.getUpgradeInfoString = function () {
-    return "castlewall_upgrade_info";
-  };
-  BasicMoatVO.prototype.getVisualClassName = function () {
-    return e.prototype.getVisualClassName.call(this) + "_" + this.getAreaKingdomName();
-  };
-  BasicMoatVO.prototype.createInfoDialogItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Btn_Moat, "castlewall_upgrade_info", new r.LocalizedTextVO(a.GenericTextIds.VALUE_PERCENTAGE_ADD, [this.moatBonus]), l.ClientConstColor.FONT_DEFAULT_COLOR, true);
-  };
-  BasicMoatVO.prototype.getShopIconURL = function (e) {
-    return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(this.name + "_Moat_" + (e == "" ? this.getAreaKingdomName() : e));
-  };
-  BasicMoatVO.prototype.getShopIconName = function (t) {
-    return e.prototype.getVisualClassName.call(this) + "_" + (t == "" ? this.getAreaKingdomName() : t);
-  };
-  Object.defineProperty(BasicMoatVO.prototype, "destAreaData", {
+  Object.defineProperty(BasicGateVO.prototype, "innerSpawnPoint", {
     get: function () {
-      if (this.isoData) {
-        return this.isoData.areaData;
-      } else {
-        return c.CastleModel.areaData.activeArea;
-      }
+      return this.spawnPoints[0];
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(BasicMoatVO.prototype, "positions", {
+  Object.defineProperty(BasicGateVO.prototype, "outerSpawnPoint", {
     get: function () {
-      return this._positions;
-    },
-    set: function (e) {
-      this._positions = e;
+      return this.spawnPoints[1];
     },
     enumerable: true,
     configurable: true
   });
-  return BasicMoatVO;
+  BasicGateVO.prototype.createInfoPanelItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_UnitPercent, "dialog_defence_defenceBonusGate", new r.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [this.gateBonus]), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
+    if (this.decoPoints > 0) {
+      e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "protection_tt", new s.LocalizedNumberVO(this.decoPoints), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
+    }
+  };
+  Object.defineProperty(BasicGateVO.prototype, "gateBonus", {
+    get: function () {
+      return this._gateBonus;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return BasicGateVO;
 }(p.ADefenceBuildingVO);
-exports.BasicMoatVO = h;
-var g = require("./858.js");
-var C = require("./33.js");
-s.classImplementsInterfaces(h, "IShopVO", "ICostVO", "IInventoryVO");
+exports.BasicGateVO = g;
+a.classImplementsInterfaces(g, "IShopVO", "ICostVO", "IInventoryVO");

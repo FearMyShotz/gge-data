@@ -2,44 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./4512.js");
-var s = require("./79.js");
-var r = function (e) {
-  function ResearchExpertEventVO() {
-    CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+var o = function (e) {
+  function CastleRelicEnchanterPrimeSaleDialogProperties(t) {
+    var i = e.call(this) || this;
+    i._eventVO = t;
+    return i;
   }
-  n.__extends(ResearchExpertEventVO, e);
-  Object.defineProperty(ResearchExpertEventVO.prototype, "eventBuildingWOD", {
+  n.__extends(CastleRelicEnchanterPrimeSaleDialogProperties, e);
+  Object.defineProperty(CastleRelicEnchanterPrimeSaleDialogProperties.prototype, "eventVO", {
     get: function () {
-      return ResearchExpertEventVO.EVENT_BUILDING_WOD;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.ASpecialEventVO.prototype, "eventBuildingWOD").set.call(this, e);
+      return this._eventVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ResearchExpertEventVO.prototype, "eventBuildingNameId", {
-    get: function () {
-      return "eventBuilding_ResearchExpert";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.ASpecialEventVO.prototype, "eventBuildingNameId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ResearchExpertEventVO.prototype.openDialog = function (e = true) {
-    this.executeOpenDialog(e, l.CastleResearchExpertEventDialog, new a.CastleResearchExpertEventDialogProperties(this));
-  };
-  ResearchExpertEventVO.__initialize_static_members = function () {
-    ResearchExpertEventVO.EVENT_BUILDING_WOD = 299;
-  };
-  return ResearchExpertEventVO;
-}(s.ASpecialEventVO);
-exports.ResearchExpertEventVO = r;
-var l = require("./4513.js");
-o.classImplementsInterfaces(r, "IEventOverviewable");
-r.__initialize_static_members();
+  return CastleRelicEnchanterPrimeSaleDialogProperties;
+}(require("./2.js").BasicProperties);
+exports.CastleRelicEnchanterPrimeSaleDialogProperties = o;

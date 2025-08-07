@@ -3,23 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./262.js");
+var a = require("./62.js");
 var s = function (e) {
-  function OlivepressBuildingVE() {
+  function OilboostBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(OlivepressBuildingVE, e);
-  Object.defineProperty(OlivepressBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(OilboostBuildingVE, e);
+  Object.defineProperty(OilboostBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Oliveoil;
+      return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourOliveoil;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.AResourceProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return OlivepressBuildingVE;
-}(a.AResourceProductionBuildingVE);
-exports.OlivepressBuildingVE = s;
+  return OilboostBuildingVE;
+}(a.ABasicBuildingVE);
+exports.OilboostBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

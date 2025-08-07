@@ -1,149 +1,273 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./4.js");
-var l = function (e) {
-  function AGlobalLeaderBoardItem(t) {
-    return e.call(this, t) || this;
+var n = require("./57.js");
+var o = require("./3792.js");
+var a = require("./3793.js");
+var s = require("./3794.js");
+var r = require("./834.js");
+var l = require("./30.js");
+var c = require("./15.js");
+var u = require("./4.js");
+var d = function () {
+  function LeaderBoardDataProvider(e, t, i = -1) {
+    this._listType = 0;
+    this._leagueTypeID = -1;
+    this._maxResultsPerPage = 0;
+    this._currentScoreResults = [];
+    this._currentSearchResults = [];
+    this._currentRank = 1;
+    this._requestedRank = -1;
+    this._currentSearchIndex = 0;
+    this._requestedSearchIndex = 0;
+    this._totalNumberOfScores = 0;
+    this._listType = e;
+    this._maxResultsPerPage = t;
+    this._leagueTypeID = i;
+    this._onResultsUpdatedSignal = new n.Signal();
+    this._onErrorSignal = new n.Signal();
+    this._onWaitingSignal = new n.Signal();
   }
-  n.__extends(AGlobalLeaderBoardItem, e);
-  AGlobalLeaderBoardItem.prototype.updateWithData = function (e, t) {
-    this._data = e;
-    this._searchScoreID = t;
-    this.update();
+  LeaderBoardDataProvider.prototype.addEventListeners = function () {
+    this.getController().addEventListener(r.LeaderBoardEvent.LEADERBOARD_SCORE_DATA, this.bindFunction(this.onScoreDataReceived));
+    this.getController().addEventListener(r.LeaderBoardEvent.LEADERBOARD_SEARCH_DATA, this.bindFunction(this.onSearchDataReceived));
+    this.getController().addEventListener(r.LeaderBoardEvent.LEADERBOARD_DATA_ERROR, this.bindFunction(this.onErrorReceived));
   };
-  AGlobalLeaderBoardItem.prototype.updateWithRank = function (e) {
-    this._data = this.createRankOnlyData(e);
-    this._searchScoreID = "";
-    this.update();
+  LeaderBoardDataProvider.prototype.removeEventListeners = function () {
+    this.clearSearchResults();
+    this.getController().removeEventListener(r.LeaderBoardEvent.LEADERBOARD_SCORE_DATA, this.bindFunction(this.onScoreDataReceived));
+    this.getController().removeEventListener(r.LeaderBoardEvent.LEADERBOARD_SEARCH_DATA, this.bindFunction(this.onSearchDataReceived));
+    this.getController().removeEventListener(r.LeaderBoardEvent.LEADERBOARD_DATA_ERROR, this.bindFunction(this.onErrorReceived));
+    this._onErrorSignal.removeAll();
+    this._onResultsUpdatedSignal.removeAll();
+    this._onWaitingSignal.removeAll();
+    this._isWaitingForServer = false;
   };
-  AGlobalLeaderBoardItem.prototype.updateWithUnknown = function () {
-    this._data = {};
-    this._searchScoreID = "";
-    this.update();
+  LeaderBoardDataProvider.prototype.getTopPage = function () {
+    this._requestedRank = 1;
+    this._requestedSearchIndex = -1;
+    this.sendCommand(new o.C2SListLeaderboardScoresPageVO(this._listType, this._leagueTypeID, this._maxResultsPerPage, this._requestedRank));
   };
-  AGlobalLeaderBoardItem.prototype.updateWithNull = function () {
-    this._data = null;
-    this.update();
+  LeaderBoardDataProvider.prototype.getPreviousPage = function () {
+    this._requestedRank = Math.max((this._requestedRank > -1 ? this._requestedRank : this._currentRank) - this._maxResultsPerPage, 1);
+    this._requestedSearchIndex = -1;
+    this.sendCommand(new o.C2SListLeaderboardScoresPageVO(this._listType, this._leagueTypeID, this._maxResultsPerPage, this._requestedRank));
   };
-  AGlobalLeaderBoardItem.prototype.update = function () {};
-  AGlobalLeaderBoardItem.prototype.createRankOnlyData = function (e) {
-    return {
-      R: e
-    };
+  LeaderBoardDataProvider.prototype.getPageByRank = function (e) {
+    this._requestedRank = e;
+    this._requestedSearchIndex = -1;
+    this.sendCommand(new o.C2SListLeaderboardScoresPageVO(this._listType, this._leagueTypeID, this._maxResultsPerPage, this._requestedRank));
   };
-  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "rank", {
-    get: function () {
-      if (this._data) {
-        return this._data.R;
-      } else {
-        return -1;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "rankText", {
-    get: function () {
-      if (this.rank > -1) {
-        return s.Localize.number(this.rank);
-      } else {
-        return "???";
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "playerName", {
-    get: function () {
-      if (this._data && this._data.P) {
-        return this._data.P;
-      } else {
-        return "???";
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "allianceName", {
-    get: function () {
-      if (this._data) {
-        return this._data.A || "-";
-      } else {
-        return "???";
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "instanceId", {
-    get: function () {
-      if (this._data) {
-        return this._data.I;
-      } else {
-        return -1;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "points", {
-    get: function () {
-      if (this._data && this._data.S) {
-        return s.Localize.number(this._data.S);
-      } else {
-        return "???";
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "scoreID", {
-    get: function () {
-      if (this._data && this._data.SI) {
-        return this._data.SI;
-      } else {
-        return "";
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "serverName", {
-    get: function () {
-      var e = this;
-      var t = o.BasicModel.instanceProxy.instanceMap;
-      if (!AGlobalLeaderBoardItem.LOCA_ID_COUNT_MAP) {
-        AGlobalLeaderBoardItem.LOCA_ID_COUNT_MAP = new Map();
-        t.forEach(function (e) {
-          return AGlobalLeaderBoardItem.LOCA_ID_COUNT_MAP.set(e.instanceLocaId, (AGlobalLeaderBoardItem.LOCA_ID_COUNT_MAP.get(e.instanceLocaId) || 0) + 1);
+  LeaderBoardDataProvider.prototype.getNextPage = function () {
+    this._requestedSearchIndex = -1;
+    this._requestedRank = Math.min((this._requestedRank > -1 ? this._requestedRank : this._currentRank) + this._maxResultsPerPage, this._totalNumberOfScores);
+    this.sendCommand(new o.C2SListLeaderboardScoresPageVO(this._listType, this._leagueTypeID, this._maxResultsPerPage, this._requestedRank));
+  };
+  LeaderBoardDataProvider.prototype.getBottomPage = function () {
+    this._requestedRank = this._totalNumberOfScores - this._maxResultsPerPage + 1;
+    this._requestedSearchIndex = -1;
+    this.sendCommand(new o.C2SListLeaderboardScoresPageVO(this._listType, this._leagueTypeID, this._maxResultsPerPage, this._requestedRank));
+  };
+  LeaderBoardDataProvider.prototype.getCurrentPlayerPage = function () {
+    this._requestedRank = -1;
+    this._requestedSearchIndex = -1;
+    this.sendCommand(new a.C2SListLeaderboardScoresWindowVO(this._listType, this._leagueTypeID, this._maxResultsPerPage));
+  };
+  LeaderBoardDataProvider.prototype.searchLeaderBoard = function (e) {
+    if (e != "" && e != null) {
+      this.sendCommand(new s.C2SSearchLeaderboardScoresEventVO(this._listType, e));
+    }
+  };
+  LeaderBoardDataProvider.prototype.getCurrentSearchPage = function () {
+    this._requestedRank = -1;
+    this._requestedSearchIndex = this._currentSearchIndex;
+    this.sendCommand(new a.C2SListLeaderboardScoresWindowVO(this._listType, this._currentSearchResults[this._requestedSearchIndex].leagueTypeId, this._maxResultsPerPage, this._currentSearchResults[this._requestedSearchIndex].scoreId));
+  };
+  LeaderBoardDataProvider.prototype.getPreviousSearchPage = function () {
+    this._requestedSearchIndex = this._currentSearchIndex = this._currentSearchIndex == 0 ? this._currentSearchResults.length - 1 : this._currentSearchIndex - 1;
+    this.getCurrentSearchPage();
+  };
+  LeaderBoardDataProvider.prototype.getNextSearchPage = function () {
+    this._requestedSearchIndex = this._currentSearchIndex = this._currentSearchIndex == this._currentSearchResults.length - 1 ? 0 : this._currentSearchIndex + 1;
+    this.getCurrentSearchPage();
+  };
+  LeaderBoardDataProvider.prototype.clearSearchResults = function () {
+    this._requestedSearchIndex = -1;
+    this._currentSearchIndex = -1;
+    this._currentSearchResults = [];
+  };
+  LeaderBoardDataProvider.prototype.canScrollUp = function () {
+    return this._currentRank > 1;
+  };
+  LeaderBoardDataProvider.prototype.canScrollDown = function () {
+    return this._currentRank + this._maxResultsPerPage < this._totalNumberOfScores;
+  };
+  LeaderBoardDataProvider.prototype.sendCommand = function (e) {
+    if (!this.isWaitingForServer) {
+      this._onWaitingSignal.dispatch();
+      this._isWaitingForServer = true;
+      this._lastRequestTimestamp = l.CachedTimer.getCachedTimer();
+      u.CastleModel.smartfoxClient.sendCommandVO(e);
+    }
+  };
+  LeaderBoardDataProvider.prototype.onSearchDataReceived = function (e) {
+    var t = this;
+    if (this.listType == e.params.LT || this.leagueTypeID != (e.params.LID || -1)) {
+      this._isWaitingForServer = false;
+      this._currentSearchResults = [];
+      e.params.L.forEach(function (e) {
+        e.L.forEach(function (i) {
+          t._currentSearchResults.push({
+            leagueTypeId: e.LID,
+            scoreId: i
+          });
         });
-      }
-      var i;
-      var n = o.BasicModel.instanceProxy.instanceMap.find(function (t) {
-        return t.instanceId == e.instanceId;
       });
-      if (n) {
-        i = s.Localize.text(n.instanceLocaId);
-        if (AGlobalLeaderBoardItem.LOCA_ID_COUNT_MAP.get(n.instanceLocaId) > 1) {
-          i = i + ": " + n.instanceCountID;
-        }
+      this._requestedSearchIndex = this._currentSearchIndex = 0;
+      if (this._currentSearchResults.length > 0) {
+        this.getCurrentSearchPage();
       } else {
-        i = "???";
+        this.getCurrentPlayerPage();
       }
-      return i;
+    }
+  };
+  LeaderBoardDataProvider.prototype.onScoreDataReceived = function (e) {
+    if (this.listType == e.params.LT || this.leagueTypeID != (e.params.LID || -1)) {
+      this._isWaitingForServer = false;
+      this._currentScoreResults = e.params.L || [];
+      this._leagueTypeID = e.params.LID || this._leagueTypeID;
+      this._totalNumberOfScores = e.params.T;
+      if (this._currentScoreResults.length > 0) {
+        this._currentRank = this._currentScoreResults[0].R;
+      }
+      this.handlePendingRequest();
+      this._onResultsUpdatedSignal.dispatch(this._currentScoreResults);
+    }
+  };
+  LeaderBoardDataProvider.prototype.onErrorReceived = function (e) {
+    this._isWaitingForServer = false;
+    this._requestedSearchIndex = -1;
+    this._requestedRank = -1;
+    this._onErrorSignal.dispatch(e.params);
+  };
+  LeaderBoardDataProvider.prototype.handlePendingRequest = function () {
+    var e = this;
+    if (!this._isWaitingForServer) {
+      if (this._requestedRank > -1 && this._requestedRank != this._currentRank) {
+        this.getPageByRank(this._requestedRank);
+      } else if (this._requestedSearchIndex > -1) {
+        if (!this._currentScoreResults.some(function (t) {
+          return t.SI.toString() == e._currentSearchResults[e._requestedSearchIndex].scoreId;
+        })) {
+          this.getCurrentSearchPage();
+        }
+      }
+    }
+  };
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "isWaitingForServer", {
+    get: function () {
+      if (l.CachedTimer.getCachedTimer() - this._lastRequestTimestamp > LeaderBoardDataProvider.MAX_WAITTIME) {
+        this._isWaitingForServer = false;
+      }
+      return this._isWaitingForServer;
     },
     enumerable: true,
     configurable: true
   });
-  AGlobalLeaderBoardItem.prototype.isOwnPlayer = function () {
-    return this.playerName == r.CastleModel.userData.userName && this.instanceId == r.CastleModel.instanceProxy.selectedInstanceVO.instanceId;
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "listType", {
+    get: function () {
+      return this._listType;
+    },
+    set: function (e) {
+      this._listType = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "leagueTypeID", {
+    get: function () {
+      return this._leagueTypeID;
+    },
+    set: function (e) {
+      this._leagueTypeID = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "currentScoreResults", {
+    get: function () {
+      return this._currentScoreResults;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "currentSearchResults", {
+    get: function () {
+      return this._currentSearchResults;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "currentRank", {
+    get: function () {
+      return this._currentRank;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "requestedRank", {
+    get: function () {
+      return this._requestedRank;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "currentSearchIndex", {
+    get: function () {
+      return this._currentSearchIndex;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "totalNumberOfScores", {
+    get: function () {
+      return this._totalNumberOfScores;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "maxResultsPerPage", {
+    get: function () {
+      return this._maxResultsPerPage;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "onResultsUpdatedSignal", {
+    get: function () {
+      return this._onResultsUpdatedSignal;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "onErrorSignal", {
+    get: function () {
+      return this._onErrorSignal;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeaderBoardDataProvider.prototype, "onWaitingSignal", {
+    get: function () {
+      return this._onWaitingSignal;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  LeaderBoardDataProvider.prototype.getController = function () {
+    return c.CastleBasicController.getInstance();
   };
-  return AGlobalLeaderBoardItem;
-}(require("./40.js").CastleItemRenderer);
-exports.AGlobalLeaderBoardItem = l;
-a.classImplementsInterfaces(l, "ICollectableRendererList");
+  LeaderBoardDataProvider.MAX_WAITTIME = 1000;
+  return LeaderBoardDataProvider;
+}();
+exports.LeaderBoardDataProvider = d;

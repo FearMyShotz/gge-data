@@ -5,36 +5,35 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function LPLCommand() {
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function IPLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(LPLCommand, e);
-  Object.defineProperty(LPLCommand.prototype, "cmdId", {
+  n.__extends(IPLCommand, e);
+  Object.defineProperty(IPLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_LOGIN_POPUP_LIST;
+      return s.ClientConstSF.S2C_IGNORE_PLAYER;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  LPLCommand.prototype.executeCommand = function (e, t) {
+  IPLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        var n = !!i.P && i.P.length > 2;
-        c.CastlePopUpHelper.displayPopUps(i, n);
+        r.CastleModel.messageData.parse_IPS(i.ili.IPS);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return LPLCommand;
-}(r.CastleCommand);
-exports.LPLCommand = l;
-var c = require("./405.js");
-o.classImplementsInterfaces(l, "IExecCommand");
+  return IPLCommand;
+}(l.CastleCommand);
+exports.IPLCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

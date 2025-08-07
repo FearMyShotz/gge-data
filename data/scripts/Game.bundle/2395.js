@@ -3,206 +3,117 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./2.js");
-var c = require("./2.js");
-var u = require("./1.js");
-var d = require("./5.js");
-var p = require("./5.js");
-var h = require("./5.js");
-var g = require("./5.js");
-var C = require("./5.js");
-var _ = require("./3.js");
-var m = require("./3.js");
-var f = require("./3.js");
-var O = require("./44.js");
-var E = require("./4.js");
-var y = require("./222.js");
-var b = require("./8.js");
-var D = require("./517.js");
-var I = createjs.MovieClip;
-var T = createjs.Point;
-var v = function (e) {
-  function CastlePlayerInfoCastleListEntry(t) {
-    var i = this;
-    i.displayedFrame = 0;
-    i._castleButton = new I();
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./3.js");
+var c = require("./3.js");
+var u = require("./3.js");
+var d = require("./6.js");
+var p = require("./16.js");
+var h = require("./28.js");
+var g = require("./4.js");
+var C = require("./1351.js");
+var _ = require("./8.js");
+var m = function (e) {
+  function CastleMovementSetTimeDialog() {
     CONSTRUCTOR_HACK;
-    i = e.call(this, t) || this;
-    b.ButtonHelper.initBasicButtons([t.btn_bookmark, t.btn_jumptTo]);
-    i._bookmarkButton = new L.ButtonBookmarkComponent(t.btn_bookmark.basicButton);
-    return i;
+    return e.call(this, CastleMovementSetTimeDialog.NAME) || this;
   }
-  n.__extends(CastlePlayerInfoCastleListEntry, e);
-  CastlePlayerInfoCastleListEntry.prototype.customFillItem = function () {
-    e.prototype.customFillItem.call(this);
-    this.switchFrames();
-    this.setNameAndDistance();
-    this.setJumpToButton();
-    this.setBookmarkButton();
+  n.__extends(CastleMovementSetTimeDialog, e);
+  CastleMovementSetTimeDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.timeSelector = new C.TimeSelectionComponent(this.dialogDisp, "dialog_slowArmy_time_minTime_tooltip", "dialog_slowArmy_time_maxTime_tooltip", this.bindFunction(this.onTimeChanged));
+    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_cancel, this.dialogDisp.btn_ok, this.dialogDisp.btn_help, this.dialogDisp.btn_maxTime, this.dialogDisp.btn_reset]);
+    this.dialogDisp.btn_help.toolTipText = "generic_help";
+    this.dialogDisp.mc_cost.toolTipText = "gold";
+    this.dialogDisp.mc_cost.mouseChildren = false;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new u.LocalizedTextVO("dialog_slowArmy_header"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new u.LocalizedTextVO("dialog_slowArmy_desc"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_timeTitle, new u.LocalizedTextVO("dialog_slowArmy_arrivalTime"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_dateTitle, new u.LocalizedTextVO("dialog_slowArmy_arrivalDate"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_hoursTitle, new u.LocalizedTextVO("dialog_slowArmy_hours"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_minutesTitle, new u.LocalizedTextVO("dialog_slowArmy_minutes"));
+    this.txt_arrival = this.textFieldManager.registerTextField(this.dialogDisp.txt_arrival, new u.LocalizedTextVO("dialog_slowArmy_arrival"));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_reset.txt_value, new u.LocalizedTextVO("dialog_slowArmy_reset")).verticalAlign = o.GGSVerticalAlign.MIDDLE;
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_maxTime.txt_value, new u.LocalizedTextVO("dialog_slowArmy_maxDelay"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_costTitle, new u.LocalizedTextVO("cost"));
+    this.txt_cost = this.textFieldManager.registerTextField(this.dialogDisp.mc_cost.txt_cost, new c.LocalizedNumberVO(0));
   };
-  CastlePlayerInfoCastleListEntry.prototype.switchFrames = function () {
-    this.displayedFrame = CastlePlayerInfoCastleListEntry.CASTLE_FRAME;
-    if (M.instanceOfClass(this.castleVO, "VillageMapobjectVO")) {
-      this.displayedFrame = CastlePlayerInfoCastleListEntry.VILLAGE_FRAME;
-    } else if (M.instanceOfClass(this.castleVO, "KingstowerMapobjectVO")) {
-      this.displayedFrame = CastlePlayerInfoCastleListEntry.TOWER_FRAME;
-    } else if (M.instanceOfClass(this.castleVO, "MonumentMapobjectVO")) {
-      this.displayedFrame = CastlePlayerInfoCastleListEntry.MONUMENT_FRAME;
-    } else if (M.instanceOfClass(this.castleVO, "LaboratoryMapobjectVO")) {
-      this.displayedFrame = CastlePlayerInfoCastleListEntry.LABORATORY_FRAME;
-    } else if (M.instanceOfClass(this.castleVO, "ABGAllianceTowerMapobjectVO")) {
-      this.displayedFrame = CastlePlayerInfoCastleListEntry.OTHER_FRAME;
-    }
-    this.setCastleIcon(this.displayedFrame);
-    this.handleKingdomIcon();
-    this.dispItem.btn_jumptTo.gotoAndStop(this.displayedFrame);
+  CastleMovementSetTimeDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.timeSelector.show(this.dialogProperties.preselectedTime, this.dialogProperties.minDelayInSeconds, this.dialogProperties.maxDelayInSeconds);
   };
-  CastlePlayerInfoCastleListEntry.prototype.setCastleIcon = function (e) {
-    s.MovieClipHelper.clearMovieClip(this.dispItem.mc_leftIcons.mc_holder);
-    var t;
-    var i = this.castleVO;
-    t = E.CastleModel.userData.userLevel < E.CastleModel.kingdomData.getKingdomVOByID(i.kingdomID).minLevel ? "errorCode_12" : e == CastlePlayerInfoCastleListEntry.CASTLE_FRAME ? this.isJumpToButtonEnabled ? "panel_action_jumpTo" : i.ownerInfo.isRuin && M.instanceOfClass(i, "CastleMapobjectVO") ? "isRuin" : "not_unlocked" : "panel_action_jumpTo";
-    var n = e == CastlePlayerInfoCastleListEntry.CASTLE_FRAME ? CastlePlayerInfoCastleListEntry.ICON_SIZE_CASTLES : CastlePlayerInfoCastleListEntry.ICON_SIZE_VILLAGE;
-    this._castleButton = P.WorldmapObjectIconHelper.drawMapObjectIcon(i, n, true, false, this.isJumpToButtonEnabled, t);
-    this.dispItem.mc_leftIcons.mc_holder.addChild(this._castleButton);
+  CastleMovementSetTimeDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this, t);
+    this.timeSelector.hide();
   };
-  CastlePlayerInfoCastleListEntry.prototype.handleKingdomIcon = function () {
-    this.dispItem.mc_leftIcons.mc_kingdomIcon.mouseChildren = false;
-    D.KingdomCrestsAndSymbolsHelper.addSymbolToMC(this.dispItem.mc_leftIcons.mc_kingdomIcon, null, this.castleVO.kingdomID, new T(32, 32), 6178616);
-    switch (this.castleVO.kingdomID) {
-      case C.WorldIce.KINGDOM_ID:
-        this.dispItem.mc_leftIcons.mc_kingdomIcon.toolTipText = "kingdomName_Icecream";
-        break;
-      case d.WorldDessert.KINGDOM_ID:
-        this.dispItem.mc_leftIcons.mc_kingdomIcon.toolTipText = "kingdomName_Dessert";
-        break;
-      case p.WorldVolcano.KINGDOM_ID:
-        this.dispItem.mc_leftIcons.mc_kingdomIcon.toolTipText = "kingdomName_Volcano";
-        break;
-      case g.WorldIsland.KINGDOM_ID:
-        this.dispItem.mc_leftIcons.mc_kingdomIcon.toolTipText = "kingdomName_Eiland";
-        break;
-      case h.FactionConst.KINGDOM_ID:
-        this.dispItem.mc_leftIcons.mc_kingdomIcon.toolTipText = "kingdomName_Faction";
-        break;
-      default:
-        this.dispItem.mc_leftIcons.mc_kingdomIcon.toolTipText = O.SpecialServerHelper.checkTextIDForSkinText("kingdomName_Classic");
-    }
+  CastleMovementSetTimeDialog.prototype.onTimeChanged = function () {
+    var e = new Date();
+    e.setTime(this.timeSelector.selectedTime);
+    this.txt_arrival.textContentVO.textReplacements = [l.Localize.datetime(e, r.DateTimeStyle.SHORT, r.DateTimeStyle.NONE), l.Localize.datetime(e, r.DateTimeStyle.NONE, r.DateTimeStyle.SHORT)];
+    var t = e.getTime() - this.minimumTime >= h.ClientConstTime.SEC_2_MILLISEC;
+    var i = d.int(t ? s.TravelConst.SLOWDOWN_C2_COSTS : 0);
+    this.txt_cost.textContentVO.numberValue = i;
+    var n = g.CastleModel.currencyData.c2Amount >= i;
+    this.txt_cost.color = n ? p.ClientConstColor.FONT_DEFAULT_COLOR : p.ClientConstColor.FONT_INSUFFICIENT_COLOR;
+    _.ButtonHelper.enableButton(this.dialogDisp.btn_maxTime, this.timeSelector.canIncreaseTime());
   };
-  CastlePlayerInfoCastleListEntry.prototype.setNameAndDistance = function () {
-    var e = this.castleVO;
-    var t = E.CastleModel.userData.castleList.getMainCastleByKingdomID(e.kingdomID);
-    if (t) {
-      var i = Math.round(y.MapHelper.getShortestDistance(new T(e.absAreaPosX, e.absAreaPosY), new T(t.absAreaPosX, t.absAreaPosY)));
-      this.textFieldManager.registerTextField(this.dispItem.txt_distance, new m.LocalizedNumberVO(i), new o.InternalGGSTextFieldConfigVO(true));
-    } else {
-      this.textFieldManager.registerTextField(this.dispItem.txt_distance, new _.TextVO("-"), new o.InternalGGSTextFieldConfigVO(true));
-    }
-    this.textFieldManager.registerTextField(this.dispItem.txt_name, new _.TextVO(e.areaNameString), new o.InternalGGSTextFieldConfigVO(true));
-    this.dispItem.icon_distance.toolTipText = "distance";
-  };
-  CastlePlayerInfoCastleListEntry.prototype.setBookmarkButton = function () {
-    if (this.isJumpToButtonEnabled) {
-      this.disp.btn_bookmark.toolTipText = "ringmenu_markLocation";
-      this._bookmarkButton.targetWMO = this.castleVO;
-      this._bookmarkButton.initBookmarkButton(true);
-    } else {
-      b.ButtonHelper.enableButton(this.disp.btn_bookmark, false);
-      this.disp.btn_bookmark.toolTipText = this.getJumpToButtonToolTip();
-    }
-  };
-  CastlePlayerInfoCastleListEntry.prototype.setJumpToButton = function () {
-    b.ButtonHelper.enableButton(this.dispItem.btn_jumptTo, this.isJumpToButtonEnabled);
-    this.dispItem.btn_jumptTo.toolTipText = this.getJumpToButtonToolTip();
-  };
-  Object.defineProperty(CastlePlayerInfoCastleListEntry.prototype, "isJumpToButtonEnabled", {
-    get: function () {
-      return (!this.castleVO.ownerInfo.isRuin || !M.instanceOfClass(this.castleVO, "CastleMapobjectVO")) && E.CastleModel.userData.castleList.hasCastleInKingdom(this.castleVO.kingdomID) && !E.CastleModel.tutorialData.isTutorialActive;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastlePlayerInfoCastleListEntry.prototype.getJumpToButtonToolTip = function () {
-    if (this.castleVO.ownerInfo.isRuin) {
-      return "isRuin";
-    } else if (E.CastleModel.userData.castleList.hasCastleInKingdom(this.castleVO.kingdomID)) {
-      if (this.displayedFrame == CastlePlayerInfoCastleListEntry.CASTLE_FRAME) {
-        return "ringmenu_visit_castle";
-      } else {
-        return "panel_action_jumpTo";
-      }
-    } else {
-      return "not_unlocked";
-    }
-  };
-  CastlePlayerInfoCastleListEntry.prototype.villageIconToolTip = function () {
-    return f.Localize.text(l.GenericTextIds.VALUE_COORDS, [this.castleVO.absAreaPosX, this.castleVO.absAreaPosY]);
-  };
-  CastlePlayerInfoCastleListEntry.prototype.onMouseClick = function (t) {
-    if (b.ButtonHelper.isButtonEnabled(t.target)) {
+  CastleMovementSetTimeDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (_.ButtonHelper.isButtonEnabled(t.target)) {
       switch (t.target) {
-        case this.dispItem.btn_jumptTo:
-          A.CastleLayoutManager.getInstance().hideAllDialogs();
-          if (this.displayedFrame == CastlePlayerInfoCastleListEntry.VILLAGE_FRAME || M.instanceOfClass(this.castleVO, "KingstowerMapobjectVO") || M.instanceOfClass(this.castleVO, "UpgradableLandmarkMapobjectVO") || this.displayedFrame == CastlePlayerInfoCastleListEntry.OTHER_FRAME) {
-            c.CommandController.instance.executeCommand(S.IngameClientCommands.SWITCH_TO_WORLDMAP_COMMAND, this.castleVO);
-          } else {
-            c.CommandController.instance.executeCommand(S.IngameClientCommands.JOIN_AREA_WITHOUT_POSITION_SAVE_COMMAND, this.castleVO);
-          }
+        case this.dialogDisp.btn_close:
+        case this.dialogDisp.btn_cancel:
+          this.hide();
           break;
-        case this.dispItem.btn_bookmark:
-          this._bookmarkButton.onClick();
+        case this.dialogDisp.btn_ok:
+          this.acceptCurrentEditTime();
+          this.hide();
+          break;
+        case this.dialogDisp.btn_help:
+          f.CastleDialogHandler.getInstance().showHelper("", l.Localize.text("help_slowArmy"));
+          break;
+        case this.dialogDisp.btn_maxTime:
+          this.timeSelector.reset(this.maximumTime);
+          break;
+        case this.dialogDisp.btn_reset:
+          this.timeSelector.reset(this.minimumTime);
       }
-      e.prototype.onMouseClick.call(this, t);
     }
   };
-  Object.defineProperty(CastlePlayerInfoCastleListEntry.prototype, "layoutManager", {
+  Object.defineProperty(CastleMovementSetTimeDialog.prototype, "maximumTime", {
     get: function () {
-      return A.CastleLayoutManager.getInstance();
+      return new Date().getTime() + this.dialogProperties.maxDelayInSeconds * h.ClientConstTime.SEC_2_MILLISEC;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastlePlayerInfoCastleListEntry.prototype, "dispItem", {
+  Object.defineProperty(CastleMovementSetTimeDialog.prototype, "minimumTime", {
     get: function () {
-      return this._disp;
+      return new Date().getTime() + this.dialogProperties.minDelayInSeconds * h.ClientConstTime.SEC_2_MILLISEC;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastlePlayerInfoCastleListEntry.prototype, "castleVO", {
-    get: function () {
-      return this._scrollItemVO.worldMapobjectVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastlePlayerInfoCastleListEntry.prototype, "textFieldManager", {
-    get: function () {
-      return r.GoodgameTextFieldManager.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastlePlayerInfoCastleListEntry.__initialize_static_members = function () {
-    CastlePlayerInfoCastleListEntry.ICON_SIZE_VILLAGE = new T(38, 38);
-    CastlePlayerInfoCastleListEntry.ICON_SIZE_CASTLES = new T(41, 41);
+  CastleMovementSetTimeDialog.prototype.acceptCurrentEditTime = function () {
+    if (this.dialogProperties.timeWasSetCallback) {
+      this.dialogProperties.timeWasSetCallback(this.timeSelector.selectedTime);
+    }
   };
-  CastlePlayerInfoCastleListEntry.CASTLE_FRAME = 1;
-  CastlePlayerInfoCastleListEntry.VILLAGE_FRAME = 2;
-  CastlePlayerInfoCastleListEntry.TOWER_FRAME = 3;
-  CastlePlayerInfoCastleListEntry.MONUMENT_FRAME = 4;
-  CastlePlayerInfoCastleListEntry.LABORATORY_FRAME = 5;
-  CastlePlayerInfoCastleListEntry.OTHER_FRAME = 6;
-  return CastlePlayerInfoCastleListEntry;
-}(a.ScrollItem);
-exports.CastlePlayerInfoCastleListEntry = v;
-u.classImplementsInterfaces(v, "MovieClip");
-var S = require("./29.js");
-var A = require("./17.js");
-var L = require("./1354.js");
-var P = require("./70.js");
-var M = require("./1.js");
-v.__initialize_static_members();
+  Object.defineProperty(CastleMovementSetTimeDialog.prototype, "dialogProperties", {
+    get: function () {
+      return this.properties;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleMovementSetTimeDialog.__initialize_static_members = function () {
+    CastleMovementSetTimeDialog.NAME = "CastleMovementSetTime";
+  };
+  return CastleMovementSetTimeDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleMovementSetTimeDialog = m;
+var f = require("./9.js");
+a.classImplementsInterfaces(m, "ICollectableRendererList");
+m.__initialize_static_members();

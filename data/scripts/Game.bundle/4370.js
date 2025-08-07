@@ -12,7 +12,7 @@ var u = require("./42.js");
 var d = require("./8.js");
 var p = require("./149.js");
 var h = require("./136.js");
-var g = require("./1895.js");
+var g = require("./1897.js");
 var C = function (e) {
   function CastleAllianceTournamentRankListItem(t) {
     var i = this;

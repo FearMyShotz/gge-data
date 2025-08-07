@@ -2,45 +2,40 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./7.js");
-var c = require("./4.js");
-var u = require("./10.js");
-var d = function (e) {
-  function HDUCommand() {
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./834.js");
+var l = require("./15.js");
+var c = require("./10.js");
+var u = function (e) {
+  function SLSECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(HDUCommand, e);
-  Object.defineProperty(HDUCommand.prototype, "cmdId", {
+  n.__extends(SLSECommand, e);
+  Object.defineProperty(SLSECommand.prototype, "cmdId", {
     get: function () {
-      return l.ClientConstSF.S2C_DISMISS_HOSPITAL_UNITS;
+      return s.ClientConstSF.S2C_SEARCH_LEADERBOARD_SCORE_EVENT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  HDUCommand.prototype.executeCommand = function (e, t) {
+  SLSECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case s.ERROR.ALL_OK:
+      case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        c.CastleModel.militaryData.parse_GUI(i.gui);
-        break;
-      case s.ERROR.INVALID_AMOUNT:
-        p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_information"), r.Localize.text("alert_hospital_amountOutdated")));
-        break;
+        l.CastleBasicController.getInstance().dispatchEvent(new r.LeaderBoardEvent(r.LeaderBoardEvent.LEADERBOARD_SEARCH_DATA, i));
+        return true;
       default:
         this.showErrorDialog(e, t);
+        l.CastleBasicController.getInstance().dispatchEvent(new r.LeaderBoardEvent(r.LeaderBoardEvent.LEADERBOARD_DATA_ERROR, e));
     }
     return false;
   };
-  return HDUCommand;
-}(u.CastleCommand);
-exports.HDUCommand = d;
-var p = require("./9.js");
-var h = require("./38.js");
-a.classImplementsInterfaces(d, "IExecCommand");
+  return SLSECommand;
+}(c.CastleCommand);
+exports.SLSECommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

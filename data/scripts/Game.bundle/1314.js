@@ -8,7 +8,7 @@ var s = require("./3.js");
 var r = require("./6.js");
 var l = require("./44.js");
 var c = require("./165.js");
-var u = require("./682.js");
+var u = require("./684.js");
 var d = function (e) {
   function GemBonusVO() {
     var t = this;

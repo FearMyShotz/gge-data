@@ -2,22 +2,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CollectableItemAllianceCoinBoosterVO() {
-    CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+var o = require("./1.js");
+var a = require("./299.js");
+var s = function (e) {
+  function CollectableItemSamuraiBoosterVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemAllianceCoinBoosterVO, e);
-  CollectableItemAllianceCoinBoosterVO.prototype.getTooltipTextId = function () {
-    return "royalCoinsBooster_name";
+  n.__extends(CollectableItemSamuraiBoosterVE, e);
+  Object.defineProperty(CollectableItemSamuraiBoosterVE.prototype, "percentageIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements_Icons.Icon_SamuraiBooster;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.ACollectableItemPercentageBoosterVE.prototype, "percentageIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CollectableItemSamuraiBoosterVE.prototype.getBoosterTooltipId = function () {
+    return "dialog_samuraiBooster_boost_tt";
   };
-  CollectableItemAllianceCoinBoosterVO.prototype.getDescriptionTextId = function () {
-    return "royalCoinsBooster_short_info";
-  };
-  CollectableItemAllianceCoinBoosterVO.__initialize_static_members = function () {
-    CollectableItemAllianceCoinBoosterVO.SERVER_KEY = "ACB";
-  };
-  return CollectableItemAllianceCoinBoosterVO;
-}(require("./328.js").ACollectableItemPercentageBoosterVO);
-exports.CollectableItemAllianceCoinBoosterVO = o;
-o.__initialize_static_members();
+  return CollectableItemSamuraiBoosterVE;
+}(a.ACollectableItemPercentageBoosterVE);
+exports.CollectableItemSamuraiBoosterVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");

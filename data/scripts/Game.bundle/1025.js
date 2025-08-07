@@ -1,124 +1,163 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
+var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./6.js");
-var r = require("./69.js");
-var l = require("./85.js");
-var c = require("./4.js");
-var u = createjs.Point;
-var d = createjs.MouseEvent;
-var p = function () {
-  function AInventoryListItem(e, t) {
-    this.disp = e;
-    this.disp.btn_dismiss.toolTipText = "dialog_dismissUnit_tooltip";
-    this.tooltip = t;
-    this.infoAmountText = AInventoryListItem.textFieldManager.registerTextField(this.disp.item.mc_contentHolder.infoAmount.txt_value, new a.LocalizedNumberVO(0));
-    this.show();
+var a = require("./18.js");
+var s = require("./71.js");
+var r = require("./87.js");
+var l = require("./15.js");
+var c = require("./54.js");
+var u = require("./64.js");
+var d = require("./4.js");
+var p = createjs.Event;
+var h = function (e) {
+  function CastleBreweryData() {
+    var t = this;
+    t._percentForMead = 0;
+    t._stopAtFoodAmount = 0;
+    t._stopAtHoneyAmount = 0;
+    t.waitForExternalCommand = false;
+    t.server_production_freeze = false;
+    t._meadPrioSet = false;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  AInventoryListItem.prototype.show = function () {
-    this.disp.addEventListener(d.CLICK, this.bindFunction(this.onClick));
-    this.disp.addEventListener(d.MOUSE_OUT, this.bindFunction(this.onMouseOut));
-    this.disp.addEventListener(d.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-    if (o.currentBrowserInfo.isMobile) {
-      var e = this.disp.btn_dismiss;
-      if (e) {
-        e.scaleX = e.scaleY = 1.5;
-      }
-    }
-  };
-  AInventoryListItem.prototype.destroy = function () {
-    this.disp.removeEventListener(d.CLICK, this.bindFunction(this.onClick));
-    this.disp.removeEventListener(d.MOUSE_OUT, this.bindFunction(this.onMouseOut));
-    this.disp.removeEventListener(d.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-  };
-  Object.defineProperty(AInventoryListItem.prototype, "unitVO", {
-    get: function () {
-      return this._unitVO;
-    },
-    set: function (e) {
-      this._unitVO = e;
-      this.update();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AInventoryListItem.prototype.onClick = function (e) {
-    switch (e.target) {
-      case this.disp.item:
-        this.onClickUnit();
-        break;
-      case this.disp.btn_info:
-        this.onClickUnitInfo();
-        break;
-      case this.disp.btn_dismiss:
-        this.onClickDismissUnit();
-    }
-  };
-  AInventoryListItem.prototype.onMouseOver = function (e) {
-    if (this.unitVO) {
-      this.dismissButtonVisibility = true;
-      if (e.target == this.disp.item) {
-        this.tooltip.show(this.unitVO, this.disp);
-      }
-    }
-  };
-  AInventoryListItem.prototype.onMouseOut = function (e) {
-    this.tooltip.hide();
-    this.dismissButtonVisibility = false;
-  };
-  AInventoryListItem.prototype.onClickUnit = function () {
-    throw new r.AbstractMethodError();
-  };
-  AInventoryListItem.prototype.onClickUnitInfo = function () {
-    throw new r.AbstractMethodError();
-  };
-  AInventoryListItem.prototype.onClickDismissUnit = function () {
-    throw new r.AbstractMethodError();
-  };
-  Object.defineProperty(AInventoryListItem.prototype, "hasDismissButton", {
-    get: function () {
-      return true;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AInventoryListItem.prototype.update = function () {
-    if (this.unitVO) {
-      h.WodPicHelper.setCorrectUnitBackgroundPic(this.unitVO, this.disp.item.mc_bg, Library.CastleInterfaceElements.castleRecruitUnitBackground, Library.CastleInterfaceElements.castleRecruitUnitBackground_Berimond);
-      this.disp.visible = true;
-      this.tooltip.hide();
-      h.WodPicHelper.addUnitPic(this.unitVO, this.disp.item.mc_contentHolder.mc_content, s.int(this.disp.item.width / this.disp.item.scaleX), s.int(this.disp.item.height / this.disp.item.scaleY), c.CastleModel.userData.playerCrest.colorsTwo[0], c.CastleModel.userData.playerCrest.colorsTwo[1], 26, new u(12, 14));
-      this.disp.item.mc_contentHolder.infoAmount.visible = this.unitVO.inventoryAmount > 0;
-      this.infoAmountText = AInventoryListItem.textFieldManager.registerTextField(this.disp.item.mc_contentHolder.infoAmount.txt_value, new l.CastleLocalizedNumberVO(this.unitVO.inventoryAmount, {
-        compactThreshold: 10000,
-        compactFractionalDigits: 0
-      }));
-      this.dismissButtonVisibility = false;
+  n.__extends(CastleBreweryData, e);
+  CastleBreweryData.prototype.parse_ABPI = function (e, t = false) {
+    this.ex_percentForMead = 0;
+    this.ex_stopAtFoodAmount = 0;
+    this.ex_stopAtHoneyAmount = 0;
+    this.server_production_freeze = false;
+    this.meadPrioSet = !!e && !!e.bfl && e.bfl.PPOT == 1;
+    if (this.waitForExternalCommand && !t) {
+      this.parse_ABPI_extern(e);
     } else {
-      this.disp.visible = false;
+      this.parse_ABPI_intern(e);
+    }
+    this.waitForExternalCommand = false;
+  };
+  CastleBreweryData.prototype.parse_ABPI_intern = function (e) {
+    this._percentForMead = 0;
+    this._stopAtFoodAmount = 0;
+    this._stopAtHoneyAmount = 0;
+    this.server_production_freeze = false;
+    if (e !== undefined) {
+      this._percentForMead = e.PA.MEAD;
+      this._stopAtFoodAmount = e.MS.F;
+      this._stopAtHoneyAmount = e.MS.HONEY;
+      this.server_production_freeze = e.SRPF;
+      l.CastleBasicController.getInstance().dispatchEvent(new p(CastleBreweryData.ON_BREWERY_INFO, false, false));
     }
   };
-  Object.defineProperty(AInventoryListItem.prototype, "dismissButtonVisibility", {
-    set: function (e) {
-      if (this.disp.btn_dismiss && this.unitVO) {
-        this.disp.btn_dismiss.visible = this.unitVO.isDismissable && this.hasDismissButton && (e || o.currentBrowserInfo.isMobile);
+  CastleBreweryData.prototype.parse_ABPI_extern = function (e) {
+    if (e !== undefined) {
+      this.ex_percentForMead = e.PA.MEAD;
+      this.ex_stopAtFoodAmount = e.MS.F;
+      this.ex_stopAtHoneyAmount = e.MS.HONEY;
+      this.server_production_freeze = e.SRPF;
+      l.CastleBasicController.getInstance().dispatchEvent(new p(CastleBreweryData.ON_BREWERY_INFO_EXTERN, false, false));
+    }
+  };
+  CastleBreweryData.prototype.setBreweryBuildingData = function (e) {
+    if (this._breweryBuildingVO) {
+      this._breweryBuildingVO.removeEventListener(u.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onBreweryVOChanged));
+    }
+    this._breweryBuildingVO = e;
+    l.CastleBasicController.getInstance().dispatchEvent(new s.AreaDataEvent(s.AreaDataEvent.ON_BREWERY_BUILDING_DATA_SET));
+    if (this._breweryBuildingVO) {
+      this._breweryBuildingVO.addEventListener(u.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onBreweryVOChanged));
+    }
+  };
+  CastleBreweryData.prototype.onBreweryVOChanged = function (e) {
+    l.CastleBasicController.getInstance().dispatchEvent(new s.AreaDataEvent(s.AreaDataEvent.ON_BREWERY_BUILDING_DATA_SET));
+  };
+  Object.defineProperty(CastleBreweryData.prototype, "isMeadProductionActive", {
+    get: function () {
+      return !(d.CastleModel.areaData.activeArea.storage.getItem(C.CollectableEnum.MEAD).amount >= d.CastleModel.areaData.activeArea.storage.getItem(C.CollectableEnum.MEAD).maxAmount) && !(d.CastleModel.areaData.activeArea.storage.getItem(C.CollectableEnum.FOOD).amount <= d.CastleModel.breweryData.stopAtFoodAmount) && !(d.CastleModel.areaData.activeArea.storage.getItem(C.CollectableEnum.FOOD).amount <= 10) && !(d.CastleModel.areaData.activeArea.storage.getItem(C.CollectableEnum.HONEY).amount <= d.CastleModel.breweryData.stopAtHoneyAmount) && !(d.CastleModel.areaData.activeArea.storage.getItem(C.CollectableEnum.HONEY).amount <= 10) && this._percentForMead > 0 && !this.server_production_freeze;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleBreweryData.prototype, "meatProductionRate", {
+    get: function () {
+      return this.breweryBuildingVO.meadProduction * (this._percentForMead / 100);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleBreweryData.prototype, "isBreweryBuildingBuilt", {
+    get: function () {
+      return this.breweryBuildingVO.buildingState.isFunctionally;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleBreweryData.prototype, "breweryBuildingVO", {
+    get: function () {
+      if (this._breweryBuildingVO) {
+        return this._breweryBuildingVO;
+      } else {
+        return d.CastleModel.wodData.voSubList(g.CastleWodData.TYPE_BUILDING).get(a.ClientConstCastle.BREWERY_BUILDING_WOD);
       }
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AInventoryListItem, "textFieldManager", {
+  Object.defineProperty(CastleBreweryData.prototype, "isBreweryBuildingUnderConstruction", {
     get: function () {
-      return n.GoodgameTextFieldManager.getInstance();
+      return this.breweryBuildingVO.buildingState == r.IsoBuildingStateEnum.BUILD_IN_PROGRESS || this.breweryBuildingVO.buildingState == r.IsoBuildingStateEnum.BUILD_STOPPED;
     },
     enumerable: true,
     configurable: true
   });
-  return AInventoryListItem;
-}();
-exports.AInventoryListItem = p;
-var h = require("./63.js");
-o.classImplementsInterfaces(p, "IInventoryListItem");
+  Object.defineProperty(CastleBreweryData.prototype, "isAllowedToBuild", {
+    get: function () {
+      return this.breweryBuildingVO.isAvailableByLevelAndEffect;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleBreweryData.prototype, "percentForMead", {
+    get: function () {
+      return this._percentForMead;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleBreweryData.prototype, "stopAtFoodAmount", {
+    get: function () {
+      return this._stopAtFoodAmount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleBreweryData.prototype, "stopAtHoneyAmount", {
+    get: function () {
+      return this._stopAtHoneyAmount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleBreweryData.prototype, "meadPrioSet", {
+    get: function () {
+      return this._meadPrioSet;
+    },
+    set: function (e) {
+      this._meadPrioSet = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleBreweryData.prototype.reset = function () {
+    this.breweryBuildingVO.removeEventListener(u.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onBreweryVOChanged));
+  };
+  CastleBreweryData.ON_BREWERY_INFO = "ON_BREWERY_INFO";
+  CastleBreweryData.ON_BREWERY_INFO_EXTERN = "ON_BREWERY_INFO_EXTERN";
+  CastleBreweryData.RATIO_FACTOR = 100;
+  return CastleBreweryData;
+}(c.CastleBasicData);
+exports.CastleBreweryData = h;
+var g = require("./56.js");
+var C = require("./12.js");
+o.classImplementsInterfaces(h, "IUpdatable");

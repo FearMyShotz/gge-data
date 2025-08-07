@@ -33,7 +33,7 @@ var c = function (e) {
     CastleBuyLevelDialog.NAME = "CastleStandardYesNoWithCostsEx";
   };
   return CastleBuyLevelDialog;
-}(require("./612.js").CastleConfirmCostsDialog);
+}(require("./613.js").CastleConfirmCostsDialog);
 exports.CastleBuyLevelDialog = c;
 var u = require("./12.js");
 o.classImplementsInterfaces(c, "ICollectableRendererList");

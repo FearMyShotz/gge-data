@@ -3,171 +3,187 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./6.js");
-var l = require("./13.js");
-var c = require("./4.js");
-var u = require("./174.js");
-var d = require("./34.js");
-var p = createjs.Point;
-var h = function (e) {
-  function SeasonLeagueMainDialogPromotion(t) {
-    var i = e.call(this, t) || this;
-    i.init();
+var a = require("./6.js");
+var s = require("./57.js");
+var r = require("./4.js");
+var l = require("./174.js");
+var c = require("./40.js");
+var u = require("./47.js");
+var d = require("./626.js");
+var p = function (e) {
+  function SeasonLeagueMainDialogPromotionRanks(t) {
+    var i = this;
+    i._items = [];
+    i._currentSelectedId = -1;
+    i._onSelectionChanged = new s.Signal();
+    CONSTRUCTOR_HACK;
+    (i = e.call(this, t) || this).init();
     return i;
   }
-  n.__extends(SeasonLeagueMainDialogPromotion, e);
-  SeasonLeagueMainDialogPromotion.prototype.init = function () {
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_title, new s.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("dialog_seasonLeague_promotionRanks_header"))).autoFitToBounds = true;
-    this._ranks = new C.SeasonLeagueMainDialogPromotionRanks(this.subLayerDisp.mc_ranks);
-    y.ButtonHelper.initButtons([this.subLayerDisp.mc_promotion.btn_buy, this.subLayerDisp.mc_event.btn_buy], b.ClickFeedbackButtonHover);
+  n.__extends(SeasonLeagueMainDialogPromotionRanks, e);
+  SeasonLeagueMainDialogPromotionRanks.prototype.init = function () {
+    this._scrollComponent = new m(new u.SimpleScrollVO().initByParent(this.disp.mc_slider).addMouseWheelElements([this.disp]), new d.DynamicSizeScrollStrategyHorizontal(true));
+    this._scrollComponent.init(0, r.CastleModel.seasonLeagueData.xml.getNumberOfPromotions() - SeasonLeagueMainDialogPromotionRanks.NUMBER_OF_ITEMS);
+    for (var e = 0; e < SeasonLeagueMainDialogPromotionRanks.NUMBER_OF_ITEMS; ++e) {
+      this._items.push(new C.SeasonLeagueMainDialogPromotionRanksItem(this.disp.getChildByName("mc_item" + e)));
+    }
+    this._tooltip = new _.SeasonLeagueMainDialogPromotionTooltip(this.disp.mc_tooltip);
   };
-  SeasonLeagueMainDialogPromotion.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this.controller.addEventListener(u.SeasonLeagueEvent.ON_INFO_UPDATED, this.bindFunction(this.onSeasonInfoUpdated));
-    this.controller.addEventListener(u.SeasonLeagueEvent.ON_PASS_SEASON_BOUGHT, this.bindFunction(this.onSeasonInfoUpdated));
-    this.controller.addEventListener(u.SeasonLeagueEvent.ON_PASS_PROMOTION_BOUGHT, this.bindFunction(this.onSeasonInfoUpdated));
-    this.controller.addEventListener(u.SeasonLeagueEvent.ON_PASS_EVENT_BOUGHT, this.bindFunction(this.onSeasonInfoUpdated));
-    c.CastleModel.specialEventData.addEventListener(v.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveEvent));
-    this._ranks.onSelectionChanged.add(this.bindFunction(this.onSelectionChanged));
-    this._ranks.onShow();
-    this.updateAllInfos();
+  SeasonLeagueMainDialogPromotionRanks.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    this._scrollComponent.show();
+    this._tooltip.onShow();
+    if (this._items != null) {
+      for (var t = 0, i = this._items; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.onShow();
+        }
+      }
+    }
+    this._currentSelectedId = a.int(r.CastleModel.seasonLeagueData.getCurrentPlayerPromotion().id);
+    this._scrollComponent.scrollToPercent(0);
+    this._tooltip.setVisibility(false);
+    r.CastleModel.seasonLeagueData.server.requestKLH();
+    this.update();
   };
-  SeasonLeagueMainDialogPromotion.prototype.hide = function () {
-    this.controller.removeEventListener(u.SeasonLeagueEvent.ON_INFO_UPDATED, this.bindFunction(this.onSeasonInfoUpdated));
-    this.controller.removeEventListener(u.SeasonLeagueEvent.ON_PASS_SEASON_BOUGHT, this.bindFunction(this.onSeasonInfoUpdated));
-    this.controller.removeEventListener(u.SeasonLeagueEvent.ON_PASS_PROMOTION_BOUGHT, this.bindFunction(this.onSeasonInfoUpdated));
-    this.controller.removeEventListener(u.SeasonLeagueEvent.ON_PASS_EVENT_BOUGHT, this.bindFunction(this.onSeasonInfoUpdated));
-    c.CastleModel.specialEventData.removeEventListener(v.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveEvent));
-    this._ranks.onSelectionChanged.remove(this.bindFunction(this.onSelectionChanged));
-    this._ranks.onHide();
-    e.prototype.hide.call(this);
+  SeasonLeagueMainDialogPromotionRanks.prototype.onHide = function () {
+    this._scrollComponent.hide();
+    this._tooltip.onHide();
+    if (this._items != null) {
+      for (var t = 0, i = this._items; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.onHide();
+        }
+      }
+    }
+    e.prototype.onHide.call(this);
   };
-  SeasonLeagueMainDialogPromotion.prototype.updateAllInfos = function () {
-    S.MicroServiceRequestPreloader.hidePreloader();
-    this.updateRewards();
+  SeasonLeagueMainDialogPromotionRanks.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    h.CastleComponent.controller.addEventListener(l.SeasonLeagueEvent.ON_OWN_RANKS_UPDATED, this.bindFunction(this.onPlayerRankUpdated));
+    this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
+    if (this._items != null) {
+      for (var t = 0, i = this._items; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.onClickedSignal.add(this.bindFunction(this.onItemClicked));
+        }
+      }
+    }
   };
-  SeasonLeagueMainDialogPromotion.prototype.updateRewards = function () {
-    var e = a.Localize.text(c.CastleModel.seasonLeagueData.xml.getPromotion(this._ranks.currentSelectedId).getNameTextId());
-    var t = r.int(c.CastleModel.seasonLeagueData.xml.getHighestPromotion().id);
-    this.textFieldManager.registerTextField(this.subLayerDisp.mc_promotion.txt_copy, new s.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId(this._ranks.currentSelectedId == t ? "dialog_seasonLeague_promotionRanks_promotionRewardFinal_text" : "dialog_seasonLeague_promotionRanks_promotionReward_text", [e]))).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.subLayerDisp.mc_event.txt_copy, new s.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("dialog_seasonLeague_promotionRanks_evenEndReward_text", [e]))).autoFitToBounds = true;
-    var i = a.Localize.text(c.CastleModel.seasonLeagueData.server.passSeasonActive ? "status_active" : "status_inactive");
-    var n = a.Localize.text(c.CastleModel.seasonLeagueData.server.passEventActive ? "status_active" : "status_inactive");
-    var o = a.Localize.text(this.promotionPassActive ? "status_active" : "status_inactive");
-    this.subLayerDisp.mc_promotion.mc_info.toolTipText = a.Localize.text("dialog_seasonLeague_promotionRanks_promotionReward_tooltip", [i, o]);
-    this.subLayerDisp.mc_event.mc_info.toolTipText = a.Localize.text("dialog_seasonLeague_promotionRanks_evenEndReward_tooltip", [i, n]);
-    this.renderRewardColumn(this.subLayerDisp.mc_promotion, this.getCurrentPromotionRewardsVO(), false);
-    this.renderRewardColumn(this.subLayerDisp.mc_event, this.getCurrentEventRewardsVO(), true);
+  SeasonLeagueMainDialogPromotionRanks.prototype.removeEventListener = function () {
+    h.CastleComponent.controller.removeEventListener(l.SeasonLeagueEvent.ON_OWN_RANKS_UPDATED, this.bindFunction(this.onPlayerRankUpdated));
+    this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
+    if (this._items != null) {
+      for (var t = 0, i = this._items; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.onClickedSignal.remove(this.bindFunction(this.onItemClicked));
+        }
+      }
+    }
+    e.prototype.removeEventListener.call(this);
   };
-  Object.defineProperty(SeasonLeagueMainDialogPromotion.prototype, "promotionPassActive", {
+  SeasonLeagueMainDialogPromotionRanks.prototype.update = function () {
+    this.updateItems();
+    this._tooltip.update();
+  };
+  SeasonLeagueMainDialogPromotionRanks.prototype.updateItems = function () {
+    for (var e = 0; e < this._items.length; ++e) {
+      this._items[e].updateWithNewData(r.CastleModel.seasonLeagueData.xml.getPromotion(this._scrollComponent.currentValue + e + 1));
+    }
+    this.updateSelection();
+  };
+  SeasonLeagueMainDialogPromotionRanks.prototype.updateSelection = function (e = -1) {
+    if (e >= 0) {
+      this._currentSelectedId = e;
+    }
+    if (this._items != null) {
+      for (var t = 0, i = this._items; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.setSelection(this._currentSelectedId == n.promotionVO.id);
+        }
+      }
+    }
+  };
+  SeasonLeagueMainDialogPromotionRanks.prototype.getTooltipAlignByItemIndex = function (e) {
+    if (e <= 0) {
+      return _.SeasonLeagueMainDialogPromotionTooltip.ALIGN_LEFT;
+    } else if (e >= SeasonLeagueMainDialogPromotionRanks.NUMBER_OF_ITEMS - 1) {
+      return _.SeasonLeagueMainDialogPromotionTooltip.ALIGN_RIGHT;
+    } else {
+      return _.SeasonLeagueMainDialogPromotionTooltip.ALIGN_CENTER;
+    }
+  };
+  SeasonLeagueMainDialogPromotionRanks.prototype.onScroll = function () {
+    this._scrollComponent.scrollToValue(this._scrollComponent.currentValue, false);
+    this.updateItems();
+  };
+  SeasonLeagueMainDialogPromotionRanks.prototype.onItemClicked = function (e) {
+    if (e != this._currentSelectedId) {
+      this.updateSelection(e);
+      this.onSelectionChanged.dispatch();
+    }
+  };
+  SeasonLeagueMainDialogPromotionRanks.prototype.onMouseOver = function (t) {
+    e.prototype.onMouseOver.call(this, t);
+    for (var i = 0; i < this._items.length; ++i) {
+      var n = this._items[i];
+      if (t.target == n.disp && n.canShowTooltip()) {
+        this._tooltip.setVisibility(true);
+        this._tooltip.setPosition(n.disp.x, this.getTooltipAlignByItemIndex(i));
+      }
+    }
+  };
+  SeasonLeagueMainDialogPromotionRanks.prototype.onMouseOut = function (t) {
+    e.prototype.onMouseOut.call(this, t);
+    if (this._items != null) {
+      for (var i = 0, n = this._items; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined && t.target == o.disp) {
+          this._tooltip.setVisibility(false);
+        }
+      }
+    }
+  };
+  SeasonLeagueMainDialogPromotionRanks.prototype.onPlayerRankUpdated = function (e) {
+    this._tooltip.update();
+  };
+  Object.defineProperty(SeasonLeagueMainDialogPromotionRanks.prototype, "onSelectionChanged", {
     get: function () {
-      return c.CastleModel.seasonLeagueData.server.boughtPromoPassForPromoID(this._ranks.currentSelectedId);
+      return this._onSelectionChanged;
     },
     enumerable: true,
     configurable: true
   });
-  SeasonLeagueMainDialogPromotion.prototype.renderRewardColumn = function (e, t, i) {
-    e.mc_item0.mc_background.visible = false;
-    e.mc_item0.mc_overlay.visible = false;
-    e.mc_item1.mc_background.visible = false;
-    e.mc_item1.mc_overlay.visible = false;
-    e.mc_item0.mc_background_locked.visible = false;
-    e.mc_item1.mc_background_locked.visible = false;
-    this.renderRewards(t.normalRewards, e);
-    this.renderRewards(t.premiumRewards, e.mc_premiumRewards);
-    var n = t.premiumRewards.length > 0;
-    var o = i ? c.CastleModel.seasonLeagueData.server.passEventActive : this.promotionPassActive;
-    e.mc_check0.visible = t.hasCollectedNormal && n;
-    e.mc_check1.visible = t.hasCollectedPremium && n;
-    e.btn_buy.visible = !t.hasCollectedPremium && !o && !c.CastleModel.seasonLeagueData.server.passSeasonActive && n;
-    e.btn_buy.toolTipText = "dialog_seasonLeague_infoSection_seasonPassPurchase_button";
-    e.mc_promotionPass.visible = !i && !t.hasCollectedPremium && o && !c.CastleModel.seasonLeagueData.server.passSeasonActive && n;
-    e.mc_eventPass.visible = i && !t.hasCollectedPremium && o && !c.CastleModel.seasonLeagueData.server.passSeasonActive && n;
-    e.mc_seasonPass.visible = !t.hasCollectedPremium && c.CastleModel.seasonLeagueData.server.passSeasonActive && n;
-    var a = !o && !c.CastleModel.seasonLeagueData.server.passSeasonActive && n;
-    e.mc_premiumRewards.mc_item0.mc_overlay.toolTipText = i ? "dialog_seasonLeague_eventRewards_locked_tooltip" : "dialog_seasonLeague_promotionRewards_locked_tooltip";
-    e.mc_premiumRewards.mc_item1.mc_overlay.toolTipText = i ? "dialog_seasonLeague_eventRewards_locked_tooltip" : "dialog_seasonLeague_promotionRewards_locked_tooltip";
-    e.mc_premiumRewards.mc_item0.mc_overlay.visible = a;
-    e.mc_premiumRewards.mc_item0.mc_overlay.mouseChildren = false;
-    e.mc_premiumRewards.mc_item1.mc_overlay.mouseChildren = false;
-    e.mc_premiumRewards.mc_item0.mc_background_locked.visible = a;
-    e.mc_premiumRewards.mc_item1.mc_background_locked.visible = a;
-    e.mc_premiumRewards.mc_item1.mc_overlay.visible = a;
-    e.mc_premiumRewards.mc_item0.mc_background.visible = (o || c.CastleModel.seasonLeagueData.server.passSeasonActive) && n;
-    e.mc_premiumRewards.mc_item1.mc_background.visible = (o || c.CastleModel.seasonLeagueData.server.passSeasonActive) && n;
-  };
-  SeasonLeagueMainDialogPromotion.prototype.renderRewards = function (e, t) {
-    _.CollectableRenderHelper.displayMultipleItemsComplete(new O.CollectableRendererList(), new m.CollectableRenderClipsList(t, "mc_item").addItemMcs("mc_item").addInfoBtns("parent.btn_info").addBuildingLevelMc("parent.mc_buildingLevel"), e, new f.CollectableRenderOptions(f.CollectableRenderOptions.SET_ADVANCED, new p(55, 55)), function (e) {
-      e.getRenderer(f.CollectableRenderOptions.ICON_TRANSFORM).transform.offset.y = e.itemVE && e.itemVE.textfieldBackgroundVisible() ? 0 : 7;
-    });
-  };
-  SeasonLeagueMainDialogPromotion.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    var i = this._ranks.currentSelectedId > c.CastleModel.seasonLeagueData.server.promotionId;
-    switch (t.target) {
-      case this.subLayerDisp.mc_promotion.btn_buy:
-        E.CastleDialogHandler.getInstance().registerDialogs(A.SeasonLeagueBuyPassConfirmWithSeasonOptionDialog, new D.SeasonLeagueBuyPassConfirmDialogProperties(new I.CollectableItemSeasonLeaguePromotionPassVO(), i ? c.CastleModel.seasonLeagueData.currentSetting.seasonPassPromotionSalePrice : c.CastleModel.seasonLeagueData.currentSetting.seasonPassPromotionPrice, i ? c.CastleModel.seasonLeagueData.currentSetting.seasonPassSingleDiscount : 0, this._ranks.currentSelectedId, -1, -1));
-        break;
-      case this.subLayerDisp.mc_event.btn_buy:
-        E.CastleDialogHandler.getInstance().registerDialogs(A.SeasonLeagueBuyPassConfirmWithSeasonOptionDialog, new D.SeasonLeagueBuyPassConfirmDialogProperties(new T.CollectableItemSeasonLeagueEventPassVO(), c.CastleModel.seasonLeagueData.currentSetting.seasonPassEventSalePrice, c.CastleModel.seasonLeagueData.currentSetting.seasonPassSingleDiscount, this._ranks.currentSelectedId, -1, -1));
-    }
-  };
-  SeasonLeagueMainDialogPromotion.prototype.getCurrentPromotionRewardsVO = function () {
-    var e = r.int(c.CastleModel.seasonLeagueData.getActiveSeasonLeagueEventVO().rewardSetId);
-    var t = r.int(c.CastleModel.seasonLeagueData.server.promotionId);
-    var i = this._ranks.currentSelectedId;
-    var n = r.int(c.CastleModel.seasonLeagueData.getActiveSeasonLeagueEventVO().leaguetypeID);
-    var o = new g.SeasonLeaguePromotionRewardsComponentVO();
-    o.normalRewards = c.CastleModel.seasonLeagueData.xml.getPromotionRewards(e, i, false, n);
-    o.premiumRewards = c.CastleModel.seasonLeagueData.xml.getPromotionRewards(e, i, true, n);
-    o.hasCollectedNormal = i <= t;
-    o.hasCollectedPremium = o.hasCollectedNormal && (c.CastleModel.seasonLeagueData.server.boughtPromoPassForPromoID(this._ranks.currentSelectedId) || c.CastleModel.seasonLeagueData.server.passSeasonActive);
-    o.isUnlocked = c.CastleModel.seasonLeagueData.server.passSeasonActive;
-    return o;
-  };
-  SeasonLeagueMainDialogPromotion.prototype.getCurrentEventRewardsVO = function () {
-    var e = r.int(c.CastleModel.seasonLeagueData.getActiveSeasonLeagueEventVO().rewardSetId);
-    var t = c.CastleModel.seasonLeagueData.getActiveSeasonEventVO();
-    var i = r.int(t ? t.eventId : -1);
-    var n = this._ranks.currentSelectedId;
-    var o = new g.SeasonLeaguePromotionRewardsComponentVO();
-    o.normalRewards = c.CastleModel.seasonLeagueData.xml.getSeasonEventRewards(e, i, n, false);
-    o.premiumRewards = c.CastleModel.seasonLeagueData.xml.getSeasonEventRewards(e, i, n, true);
-    o.hasCollectedNormal = false;
-    o.hasCollectedPremium = false;
-    o.isUnlocked = c.CastleModel.seasonLeagueData.server.passSeasonActive;
-    return o;
-  };
-  SeasonLeagueMainDialogPromotion.prototype.onSeasonInfoUpdated = function (e) {
-    this.updateAllInfos();
-    this._ranks.update();
-  };
-  SeasonLeagueMainDialogPromotion.prototype.onRemoveEvent = function (e) {
-    if (e.specialEventVO.seasonLeague.isModeEnabled) {
-      this.updateAllInfos();
-    }
-  };
-  SeasonLeagueMainDialogPromotion.prototype.onSelectionChanged = function () {
-    this.updateRewards();
-  };
-  return SeasonLeagueMainDialogPromotion;
-}(d.CastleDialogSubLayer);
-exports.SeasonLeagueMainDialogPromotion = h;
-var g = require("./1067.js");
+  Object.defineProperty(SeasonLeagueMainDialogPromotionRanks.prototype, "currentSelectedId", {
+    get: function () {
+      return this._currentSelectedId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SeasonLeagueMainDialogPromotionRanks.NUMBER_OF_ITEMS = 5;
+  return SeasonLeagueMainDialogPromotionRanks;
+}(c.CastleItemRenderer);
+exports.SeasonLeagueMainDialogPromotionRanks = p;
+var h = require("./14.js");
+var g = require("./82.js");
 var C = require("./3544.js");
-var _ = require("./25.js");
-var m = require("./67.js");
-var f = require("./19.js");
-var O = require("./104.js");
-var E = require("./9.js");
-var y = require("./8.js");
-var b = require("./20.js");
-var D = require("./403.js");
-var I = require("./542.js");
-var T = require("./650.js");
-var v = require("./26.js");
-var S = require("./549.js");
-var A = require("./1709.js");
-o.classImplementsInterfaces(h, "ICollectableRendererList", "ISublayer");
+var _ = require("./3545.js");
+o.classImplementsInterfaces(p, "ICollectableRendererList");
+var m = function (e) {
+  function SeasonLeaguePromotionRanksSliderScrollComponent() {
+    return e !== null && e.apply(this, arguments) || this;
+  }
+  n.__extends(SeasonLeaguePromotionRanksSliderScrollComponent, e);
+  SeasonLeaguePromotionRanksSliderScrollComponent.prototype.onSliderLineClick = function (e) {
+    if (this.isEnabled) {
+      this.scrollToPercent(this.strategy.getPercentFactorOfMousePos(-this.scrollVO.sliderButton.width / 2));
+    }
+  };
+  return SeasonLeaguePromotionRanksSliderScrollComponent;
+}(g.ModernSliderScrollComponent);

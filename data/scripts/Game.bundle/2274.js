@@ -3,23 +3,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = function (e) {
-  function GDPRLinkComponent(t, i, n) {
-    return e.call(this, t, i, n) || this;
+var a = require("./7.js");
+var s = function (e) {
+  function C2SConfirmTermsAndConditionVO() {
+    return e.call(this) || this;
   }
-  n.__extends(GDPRLinkComponent, e);
-  GDPRLinkComponent.prototype.onClick = function (t, i) {
-    if (o.EnvironmentProvider.instance.current.data.languageCode == "ar") {
-      var n = "https://www.goodgamestudios.com/terms_ar/";
-      n += i;
-      var r = new a.URLRequest(n);
-      s.navigateToURL(r, "goodgamestudios");
-    } else {
-      e.prototype.onClick.call(this, t, i);
-    }
+  n.__extends(C2SConfirmTermsAndConditionVO, e);
+  C2SConfirmTermsAndConditionVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_CONFIRM_TERMS_AND_CONDITION;
   };
-  return GDPRLinkComponent;
-}(require("./2275.js").DarkDialogLinkComponent);
-exports.GDPRLinkComponent = r;
+  return C2SConfirmTermsAndConditionVO;
+}(o.BasicCommandVO);
+exports.C2SConfirmTermsAndConditionVO = s;

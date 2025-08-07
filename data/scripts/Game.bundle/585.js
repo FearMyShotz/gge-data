@@ -2,20 +2,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleChatEvent(t, i = null, n = false, o = false) {
-    var a = this;
-    a.params = [];
+var o = require("./2.js");
+var a = require("./6.js");
+var s = function (e) {
+  function CastleBasicAddUnitsDialogProperties(t, i, n = null, o = false, s = null, r = a.int(Number.MAX_VALUE), l = false) {
+    var c = this;
+    c.editMode = false;
+    c.maxAmount = 0;
+    c.maxAmountOnlyForSoldier = false;
+    c.targetAreaType = 0;
     CONSTRUCTOR_HACK;
-    (a = e.call(this, t, n, o) || this).params = i;
-    return a;
+    (c = e.call(this) || this).unitVO = t;
+    c.addItemFunction = i;
+    c.itemVO = n;
+    c.editMode = o;
+    c.itemContainer = s;
+    c.maxAmount = r;
+    c.maxAmountOnlyForSoldier = l;
+    return c;
   }
-  n.__extends(CastleChatEvent, e);
-  CastleChatEvent.__initialize_static_members = function () {
-    CastleChatEvent.NEW_CHAT_MESSAGE_ARRIVED = "newChatMessage";
-    CastleChatEvent.OPEN_CHAT = "openChat";
-  };
-  return CastleChatEvent;
-}(createjs.Event);
-exports.CastleChatEvent = o;
-o.__initialize_static_members();
+  n.__extends(CastleBasicAddUnitsDialogProperties, e);
+  return CastleBasicAddUnitsDialogProperties;
+}(o.BasicProperties);
+exports.CastleBasicAddUnitsDialogProperties = s;

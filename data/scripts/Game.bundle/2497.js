@@ -2,32 +2,57 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./4.js");
-var l = require("./747.js");
-var c = require("./14.js");
-var u = function (e) {
-  function CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects(t, i) {
-    return e.call(this, t, i, "CastleAlliance_Treasury_Item_Booster_TwoEffects") || this;
+var o = require("./22.js");
+var a = require("./4.js");
+var s = require("./165.js");
+var r = function (e) {
+  function AllianceBuffVO() {
+    var t = e.call(this) || this;
+    t.allianceBuffID = 0;
+    t.nextAllianceBuffID = 0;
+    t.seriesID = 0;
+    t.level = 0;
+    t.maxLevel = 0;
+    t.duration = 0;
+    t.requiredMemberBuffLevel = 0;
+    t.forgingCostC1 = 0;
+    t.availableInAllianceFunds = false;
+    t.requiredBuffID = -1;
+    t.resetOnEventEnd = -1;
+    t.isBattleground = false;
+    t.hiddenBattleGround = false;
+    return t;
   }
-  n.__extends(CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects, e);
-  CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects.prototype.updateText = function () {
-    e.prototype.updateText.call(this);
-    c.CastleComponent.textFieldManager.registerTextField(this.itemMc.txt_name1, new s.LocalizedTextVO("value_colon", [s.Localize.text("dialog_alliance_temporaryBoost_" + r.CastleModel.allianceBuffData.getAllianceBuffVoBySeriesIDAndLevel(this.buffVO.seriesID, 1).boni[1].effect.name)]));
-    c.CastleComponent.textFieldManager.registerTextField(this.itemMc.txt_amount1, this.getBoosterAmountText1());
-  };
-  CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects.prototype.getBoosterAmountText1 = function () {
-    if (l.AllianceBuffData.CUSTOMIZABLE_BUFFS.indexOf(this.buffVO.seriesID) > -1 && !this.allianceInfoVO.isTemporaryBoosterActive(this.buffVO.seriesID)) {
-      var t = r.CastleModel.allianceBuffData.getAllianceBuffVoBySeriesIDAndLevel(this.buffVO.seriesID, 1);
-      var i = s.Localize.text(o.GenericTextIds.VALUE_PERCENTAGE_ADD, [this.allianceInfoVO.getBoostValue(this.buffVO.seriesID, 1, t.boni[1].effect.effectType.type)]);
-      var n = s.Localize.text(o.GenericTextIds.VALUE_PERCENTAGE, [this.allianceInfoVO.getBoostValue(this.buffVO.seriesID, this.buffVO.maxLevel, t.boni[1].effect.effectType.type)]);
-      return new s.LocalizedTextVO("value_dash_split_paragraph", [i, n]);
+  n.__extends(AllianceBuffVO, e);
+  AllianceBuffVO.prototype.fillFromParamXml = function (e) {
+    this.level = parseInt(e.level || "");
+    this.maxLevel = parseInt(e.maxLevel || "");
+    this.allianceBuffID = parseInt(e.allianceBuffID || "");
+    this.seriesID = parseInt(e.allianceBuffSeriesID || "");
+    this.nextAllianceBuffID = parseInt(e.nextAllianceBuffID || "");
+    this.duration = parseInt(o.CastleXMLUtils.getValueOrDefault("duration", e, "-1"));
+    this.costsList = c.CollectableManager.parser.x2cList.createList(e, l.ClientConstCollectable.XML_PREFIX_COST);
+    this.forgingCostC1 = parseInt(o.CastleXMLUtils.getValueOrDefault("forgingCostC1", e, "0"));
+    this.requiredBuffID = parseInt(o.CastleXMLUtils.getValueOrDefault("requiredBuffID", e, "-1"));
+    this.availableInAllianceFunds = parseInt(o.CastleXMLUtils.getValueOrDefault("availableInAllianceFunds", e, "1")) == 1;
+    this.resetOnEventEnd = parseInt(o.CastleXMLUtils.getValueOrDefault("resetOnEventEnd", e, "-1"));
+    this.isBattleground = parseInt(o.CastleXMLUtils.getValueOrDefault("isBattleground", e, "0")) == 1;
+    this.hiddenBattleGround = parseInt(o.CastleXMLUtils.getValueOrDefault("hiddenBattleGround", e, "0")) == 1;
+    var t = o.CastleXMLUtils.getValueOrDefault("effects", e, "");
+    if (t != "") {
+      for (var i = 0, n = t.split(","); i < n.length; i++) {
+        var r = n[i];
+        if (r.length > 0) {
+          var u = r.split("&");
+          var d = a.CastleModel.effectsData.getEffectByID(parseInt(u[0]));
+          var p = new s.BonusVO().parseFromValueString(d, u[1]);
+          this._boni.push(p);
+        }
+      }
     }
-    return e.prototype.getBoosterAmountText.call(this);
   };
-  return CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects;
-}(require("./1387.js").CastleAllianceDialogTreasuryBoosterItemTemp);
-exports.CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects = u;
-a.classImplementsInterfaces(u, "ICollectableRendererList");
+  return AllianceBuffVO;
+}(require("./688.js").EffectsHandlerVO);
+exports.AllianceBuffVO = r;
+var l = require("./86.js");
+var c = require("./50.js");

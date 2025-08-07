@@ -2,13 +2,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleRandomDungeonEventDialogProperties(t) {
-    var i = e.call(this) || this;
-    i.eventVO = t;
-    return i;
+var o = require("./1.js");
+var a = function (e) {
+  function PrimeTimeSkinEventEventVO() {
+    var t = this;
+    t._skinName = "";
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleRandomDungeonEventDialogProperties, e);
-  return CastleRandomDungeonEventDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleRandomDungeonEventDialogProperties = o;
+  n.__extends(PrimeTimeSkinEventEventVO, e);
+  PrimeTimeSkinEventEventVO.prototype.parseBasicsFromParamObject = function (t) {
+    e.prototype.parseBasicsFromParamObject.call(this, t);
+    this._skinName = t.S;
+  };
+  Object.defineProperty(PrimeTimeSkinEventEventVO.prototype, "skinName", {
+    get: function () {
+      return this._skinName;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return PrimeTimeSkinEventEventVO;
+}(require("./79.js").ASpecialEventVO);
+exports.PrimeTimeSkinEventEventVO = a;
+o.classImplementsInterfaces(a, "IEventOverviewable");

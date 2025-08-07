@@ -9,6 +9,6 @@ var a = function (e) {
   }
   n.__extends(PremiumMoatVE, e);
   return PremiumMoatVE;
-}(require("./780.js").BasicMoatVE);
+}(require("./782.js").BasicMoatVE);
 exports.PremiumMoatVE = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

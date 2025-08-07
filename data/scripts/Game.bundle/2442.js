@@ -2,39 +2,30 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./3.js");
-var l = createjs.Point;
-var c = function (e) {
-  function CastleTitleSelectionItem(t) {
-    var i = this;
+var o = function (e) {
+  function CastleTitleSelectionItemVO(t, i) {
+    var n = this;
+    n._selected = false;
     CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).itxt_title = o.GoodgameTextFieldManager.getInstance().registerTextField(t.txt_titleName, new r.LocalizedTextVO(""));
-    i.itxt_title.mouseEnabled = false;
-    return i;
+    (n = e.call(this) || this)._title = t;
+    n._selected = i;
+    return n;
   }
-  n.__extends(CastleTitleSelectionItem, e);
-  CastleTitleSelectionItem.prototype.customFillItem = function () {
-    this.itxt_title.textContentVO.textId = this.selectionItemVO.title.textID;
-    this.disp.background.gotoAndStop(1 + (this.selectionItemVO.selected ? 1 : 0));
-    this.disp.toolTipText = this.selectionItemVO.selected ? "dialog_titleSelection_selected_tooltip" : "dialog_titleSelection_select_tooltip";
-    u.CastleTitleSystemHelper.setTitleSystemIcon(this.disp.icon_titleSystem, this.selectionItemVO.title.titleSystem, CastleTitleSelectionItem.SYSTEM_ICON_DIMENSION);
-  };
-  Object.defineProperty(CastleTitleSelectionItem.prototype, "selectionItemVO", {
+  n.__extends(CastleTitleSelectionItemVO, e);
+  Object.defineProperty(CastleTitleSelectionItemVO.prototype, "title", {
     get: function () {
-      return this._scrollItemVO;
+      return this._title;
     },
     enumerable: true,
     configurable: true
   });
-  CastleTitleSelectionItem.__initialize_static_members = function () {
-    CastleTitleSelectionItem.SYSTEM_ICON_DIMENSION = new l(25, 21.5);
-  };
-  return CastleTitleSelectionItem;
-}(a.ScrollItem);
-exports.CastleTitleSelectionItem = c;
-var u = require("./106.js");
-s.classImplementsInterfaces(c, "MovieClip");
-c.__initialize_static_members();
+  Object.defineProperty(CastleTitleSelectionItemVO.prototype, "selected", {
+    get: function () {
+      return this._selected;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleTitleSelectionItemVO;
+}(require("./2.js").ScrollItemVO);
+exports.CastleTitleSelectionItemVO = o;

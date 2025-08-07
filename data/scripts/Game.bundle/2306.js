@@ -1,22 +1,22 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CastleDelayCommandVO(e, t) {
-    this.isStackAble = false;
-    this.commandID = e;
-    this.isStackAble = t;
-    this.commandList = [];
-    this.paramList = [];
+var n = require("./0.js");
+var o = function (e) {
+  function OptionsDialogSublayerAccordionProperties(t, i) {
+    var n = e.call(this) || this;
+    n.sublayerID = t;
+    n._contentCreator = i;
+    return n;
   }
-  CastleDelayCommandVO.prototype.addCommand = function (e, t) {
-    if (!this.isStackAble) {
-      this.commandList = [];
-      this.paramList = [];
-    }
-    this.commandList.unshift(e);
-    this.paramList.unshift(t);
-  };
-  return CastleDelayCommandVO;
-}();
-exports.CastleDelayCommandVO = n;
+  n.__extends(OptionsDialogSublayerAccordionProperties, e);
+  Object.defineProperty(OptionsDialogSublayerAccordionProperties.prototype, "contentCreator", {
+    get: function () {
+      return this._contentCreator;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return OptionsDialogSublayerAccordionProperties;
+}(require("./2.js").BasicProperties);
+exports.OptionsDialogSublayerAccordionProperties = o;

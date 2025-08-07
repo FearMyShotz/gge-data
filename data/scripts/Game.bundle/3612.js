@@ -4,20 +4,20 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./116.js");
+var s = require("./114.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferBerimondDialog() {
-    return e.call(this, CastlePaymentRewardSpecialOfferBerimondDialog.NAME) || this;
+  function CastlePaymentRewardSpecialOfferBloodcrowDialog() {
+    return e.call(this, CastlePaymentRewardSpecialOfferBloodcrowDialog.NAME) || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferBerimondDialog, e);
-  CastlePaymentRewardSpecialOfferBerimondDialog.prototype.setTextIDs = function () {
+  n.__extends(CastlePaymentRewardSpecialOfferBloodcrowDialog, e);
+  CastlePaymentRewardSpecialOfferBloodcrowDialog.prototype.setTextIDs = function () {
     e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_berimond_title";
-    this.descriptionTextID = "dialog_primeday_berimond_description";
+    this.titleTextID = "dialog_primeday_bloodcrow_title";
+    this.descriptionTextID = "dialog_primeday_bloodcrow_description";
   };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferBerimondDialog.prototype, "skinType", {
+  Object.defineProperty(CastlePaymentRewardSpecialOfferBloodcrowDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_BERIMOND;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_BLOOD_CROW;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
@@ -25,11 +25,8 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferBerimondDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferBerimondDialog.NAME = "CastlePaymentRewardSpecialOfferBerimond";
-  };
-  return CastlePaymentRewardSpecialOfferBerimondDialog;
+  CastlePaymentRewardSpecialOfferBloodcrowDialog.NAME = "CastlePaymentRewardSpecialOfferBloodcrow";
+  return CastlePaymentRewardSpecialOfferBloodcrowDialog;
 }(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferBerimondDialog = r;
+exports.CastlePaymentRewardSpecialOfferBloodcrowDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
-r.__initialize_static_members();

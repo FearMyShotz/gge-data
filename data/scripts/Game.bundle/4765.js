@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function ABPICommand() {
+  function BRSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ABPICommand, e);
-  Object.defineProperty(ABPICommand.prototype, "cmdId", {
+  n.__extends(BRSCommand, e);
+  Object.defineProperty(BRSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_AREA_BUILDING_PRODUCTION_INFO;
+      return s.ClientConstSF.S2C_BOOST_RETURNSPEED_START;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,19 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  ABPICommand.prototype.executeCommand = function (e, t) {
+  BRSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.breweryData.parse_ABPI(i);
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.boostData.parse_BOI(i.boi);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return ABPICommand;
+  return BRSCommand;
 }(l.CastleCommand);
-exports.ABPICommand = c;
+exports.BRSCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

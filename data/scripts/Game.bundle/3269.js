@@ -2,24 +2,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./195.js");
-var s = function (e) {
-  function CollectableItemExtinguishFireVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CollectableItemExtinguishFireVO() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, 1) || this;
   }
-  n.__extends(CollectableItemExtinguishFireVE, e);
-  Object.defineProperty(CollectableItemExtinguishFireVE.prototype, "iconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements.Btn_repairAll;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CollectableItemExtinguishFireVE;
-}(a.ACollectableItemSimpleIconVE);
-exports.CollectableItemExtinguishFireVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  n.__extends(CollectableItemExtinguishFireVO, e);
+  CollectableItemExtinguishFireVO.prototype.getTooltipTextId = function () {
+    return "extinguishFire_name";
+  };
+  CollectableItemExtinguishFireVO.prototype.getDescriptionTextId = function () {
+    return "extinguishFire_short_info";
+  };
+  CollectableItemExtinguishFireVO.prototype.isCombineAbleWith = function (e) {
+    return false;
+  };
+  CollectableItemExtinguishFireVO.__initialize_static_members = function () {
+    CollectableItemExtinguishFireVO.SERVER_KEY = "EF";
+    CollectableItemExtinguishFireVO.XML_KEY = "extinguishFire";
+  };
+  return CollectableItemExtinguishFireVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemExtinguishFireVO = o;
+o.__initialize_static_members();

@@ -6,11 +6,11 @@ var o = require("./1.js");
 var a = require("./3.js");
 var s = require("./16.js");
 var r = function (e) {
-  function DragonHoardBuildingVO() {
+  function DragonBreathForgeBuildingVO() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DragonHoardBuildingVO, e);
-  DragonHoardBuildingVO.prototype.createInfoPanelItems = function (t) {
+  n.__extends(DragonBreathForgeBuildingVO, e);
+  DragonBreathForgeBuildingVO.prototype.createInfoPanelItems = function (t) {
     e.prototype.createInfoPanelItems.call(this, t);
     if (this.decoPoints > 0) {
       t.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new a.LocalizedNumberVO(this.decoPoints), s.ClientConstColor.FONT_DEFAULT_COLOR, true);
@@ -28,13 +28,13 @@ var r = function (e) {
       t.addInfoItem(i, n, o, s.ClientConstColor.FONT_DEFAULT_COLOR, true, false, false);
     });
   };
-  DragonHoardBuildingVO.prototype.createInfoDialogItems = function (t) {
+  DragonBreathForgeBuildingVO.prototype.createInfoDialogItems = function (t) {
     e.prototype.createInfoDialogItems.call(this, t);
   };
-  DragonHoardBuildingVO.prototype.parseAreaSpecificEffects = function () {
+  DragonBreathForgeBuildingVO.prototype.parseAreaSpecificEffects = function () {
     e.prototype.parseAreaSpecificEffects.call(this);
   };
-  return DragonHoardBuildingVO;
-}(require("./783.js").ACraftingBuildingVO);
-exports.DragonHoardBuildingVO = r;
+  return DragonBreathForgeBuildingVO;
+}(require("./785.js").ACraftingBuildingVO);
+exports.DragonBreathForgeBuildingVO = r;
 o.classImplementsInterfaces(r, "IShopVO", "ICostVO", "IInventoryVO");

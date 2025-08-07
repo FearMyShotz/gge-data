@@ -1,31 +1,23 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./6.js");
-var o = require("./22.js");
-var a = function () {
-  function GemColorVO() {
-    this._id = -1;
-    this._color = 0;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SExtractGemVO(t, i) {
+    var n = this;
+    n.EID = 0;
+    n.LID = 0;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this).EID = t;
+    n.LID = i;
+    return n;
   }
-  GemColorVO.prototype.parseXml = function (e) {
-    this._id = n.int(o.CastleXMLUtils.getIntAttribute("gemColorID", e, -1));
-    this._color = o.CastleXMLUtils.getUintAttribute("colorCode", e);
+  n.__extends(C2SExtractGemVO, e);
+  C2SExtractGemVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_EXTRACT_GEM;
   };
-  Object.defineProperty(GemColorVO.prototype, "id", {
-    get: function () {
-      return this._id;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GemColorVO.prototype, "color", {
-    get: function () {
-      return this._color;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return GemColorVO;
-}();
-exports.GemColorVO = a;
+  return C2SExtractGemVO;
+}(o.BasicCommandVO);
+exports.C2SExtractGemVO = s;

@@ -2,170 +2,159 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./71.js");
-var l = require("./4.js");
-var c = require("./1116.js");
-var u = require("./838.js");
-var d = require("./152.js");
-var p = function (e) {
-  function CastleSpecialResourcePanel(t) {
-    return e.call(this, t) || this;
+var o = require("./2.js");
+var a = require("./5.js");
+var s = require("./1.js");
+var r = require("./122.js");
+var l = require("./53.js");
+var c = require("./4.js");
+var u = function (e) {
+  function CastleLayoutIso() {
+    var t = this;
+    t._openEventPanelFlag = false;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleSpecialResourcePanel, e);
-  CastleSpecialResourcePanel.prototype.show = function () {
-    e.prototype.show.call(this);
-    this.controller.addEventListener(r.AreaDataEvent.ON_INFO_VALUES_CHANGED, this.bindFunction(this.onChangeCastleParameters));
-    this.onChangeResources();
+  n.__extends(CastleLayoutIso, e);
+  CastleLayoutIso.prototype.setLayout = function (t, i) {
+    this._context = t;
+    e.prototype.setLayout.call(this, t, i);
+    if (!t.isScreenActive(I.CastleIsoScreen)) {
+      t.changeScreen(I.CastleIsoScreen, null);
+    }
+    this.addPanels();
+    this._context = null;
   };
-  CastleSpecialResourcePanel.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    this.controller.removeEventListener(r.AreaDataEvent.ON_INFO_VALUES_CHANGED, this.bindFunction(this.onChangeCastleParameters));
-  };
-  CastleSpecialResourcePanel.prototype.updatePosition = function () {};
-  CastleSpecialResourcePanel.prototype.initResourceItems = function () {
-    if (l.CastleModel.areaData.activeStorage) {
-      this._availableSpecialResources = l.CastleModel.areaData.activeStorage.getReceivableSpecialResources();
-      for (var e = 0; e < this._availableSpecialResources.length; e++) {
-        var t = this._availableSpecialResources[e];
-        var i = new u.ResourcePanelItem(this.getSpecialResourceItemFrameForCollectableEnum(t));
-        i.resourceType = t;
-        var n = l.CastleModel.boostData.getOverseer(t);
-        i.isBoosted = !!n && n.isActive;
-        this.addResource(i);
+  CastleLayoutIso.prototype.addPanels = function () {
+    var e = this.getAreaData();
+    if (l.ABGHelper.isOnABGAndCollector && e.areaInfo.areaType == a.WorldConst.AREA_TYPE_METROPOL && e.isMyArea) {
+      this.context.showPanelRedirecter(p.ABGAllianceCollectorPointDepletionInfoPanel, null, false);
+    }
+    if (l.ABGHelper.isOnABGAndCollector && e.isMyArea) {
+      this.context.showPanelRedirecter(h.ABGAllianceCollectorPointPanel, null, false);
+    }
+    if (l.ABGHelper.isOnABGAndTower) {
+      this.context.showPanelRedirecter(g.ABGAllianceTowerPanel, null, false);
+      this.context.showPanelRedirecter(C.ABGAllianceTowerPointMalusInfoPanel, null, false);
+    }
+    if (e.areaInfo.areaType == a.WorldConst.AREA_TYPE_TREASURE_CAMP) {
+      if (this.isInBuildMode()) {
+        this.setByMyTreasureCampBuildMode();
+      } else {
+        this.setByMyTreasureCamp();
       }
-      this.populationContainer = new u.ResourcePanelItem(u.ResourcePanelItem.ICON_FRAME_POPULATION);
-      this.populationContainer.isBoosted = false;
-      this.populationContainer.isStorageBarVisible = false;
-      this.addResource(this.populationContainer);
-      this.onChangeResources();
+    } else if (e.isMyArea) {
+      if (e.isUnderConquerProcess) {
+        this.setByOtherCastle();
+      } else if (this.isInBuildMode()) {
+        this.setByMyCastleBuildMode();
+      } else {
+        this.setByMyCastle();
+      }
+    } else if (e.isUnderConquerProcessByMe) {
+      this.setByOccupiedCastle();
+    } else {
+      this.setByOtherCastle();
     }
   };
-  CastleSpecialResourcePanel.prototype.updateResources = function () {
-    var e = this;
-    var t = this._availableSpecialResources;
-    if (l.CastleModel.areaData.activeStorage) {
-      this._availableSpecialResources = l.CastleModel.areaData.activeStorage.getReceivableSpecialResources();
-      var i = t.filter(function (t) {
-        return e._availableSpecialResources.indexOf(t) < 0;
-      });
-      if (i.length > 0) {
-        this._resourceContainer.concat().forEach(function (t) {
-          if (i.indexOf(t.resourceType) >= 0) {
-            e.removeResource(t);
-          }
-        });
-      }
-      this._availableSpecialResources.filter(function (e) {
-        return t.indexOf(e) < 0;
-      }).forEach(function (t) {
-        var i = new u.ResourcePanelItem(e.getSpecialResourceItemFrameForCollectableEnum(t));
-        i.resourceType = t;
-        i.isBoosted = false;
-        e.addResource(i);
-      });
-      this.onChangeResources();
-      this.onChangeCastleParameters();
-    }
+  CastleLayoutIso.prototype.setByMyCastle = function () {
+    o.BasicDialogHandler.getInstance().blockDialogs = false;
+    this.context.showPanelRedirecter(f.CastleBuildingListPanel, null, false);
+    this.context.showPanelRedirecter(f.CastleBuildingListPanel, null, true);
+    this.addCorrectResourcePanel(this.context);
+    this.context.showPanelRedirecter(E.CastleOptionPanel, null, true);
+    this.context.addTutorialPanel();
+    this.context.dialogCastleSwitch = false;
+    this.context.showPanelRedirecter(_.CastleActionPanel, null, false);
   };
-  CastleSpecialResourcePanel.prototype.updateBoostIndicators = function () {
-    if (this._resourceContainer != null) {
-      for (var e = 0, t = this._resourceContainer; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined && i.isResourceContainer) {
-          var n = i;
-          var o = this.hasLaboratoryBoostFor(n.resourceType);
-          n.setBoostIndicator(o, o);
-        }
-      }
-    }
+  CastleLayoutIso.prototype.setByMyTreasureCamp = function () {
+    this.context.showPanelRedirecter(f.CastleBuildingListPanel, null, false);
+    this.context.showPanelRedirecter(f.CastleBuildingListPanel, null, true);
+    this.context.showPanelRedirecter(D.CastleResourcePanel_Season, null, false);
+    this.context.showPanelRedirecter(E.CastleOptionPanel, null, true);
+    this.context.showPanelRedirecter(m.CastleSeasonEventActionPanel, null, false);
   };
-  CastleSpecialResourcePanel.prototype.onChangeResources = function (e = null) {
-    if (this._resourceContainer != null) {
-      for (var t = 0, i = this._resourceContainer; t < i.length; t++) {
-        var n = i[t];
-        var a = o.castAs(n, "ResourcePanelItem");
-        if (a && a.resourceType) {
-          if (!l.CastleModel.areaData.activeStorage) {
-            return;
-          }
-          a.setValue(l.CastleModel.areaData.getActiveStorageItem(a.resourceType).amount);
-          a.setStorageBar(l.CastleModel.areaData.getActiveStorageItem(a.resourceType).filledInPercent);
-        }
-      }
-    }
+  CastleLayoutIso.prototype.setByOtherCastle = function () {
+    this.setByOccupiedCastle();
+    this.context.addTutorialPanel();
   };
-  CastleSpecialResourcePanel.prototype.updateElementsPositions = function () {
-    var e = s.int(this._totalContainerWidth * -0.5);
-    this.specialResourcePanel.head_left.x = e;
-    if (this._resourceContainer != null) {
-      for (var t = 0, i = this._resourceContainer; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          if (a.instanceOfClass(n, "ResourcePanelSublayerButton")) {
-            n.disp.x = e + n.disp.width / 2;
-            n.disp.y = 0 + n.disp.mc_boosted.height / 2;
-          } else {
-            n.disp.y = 0;
-            n.disp.x = e;
-          }
-          e += s.int(n.disp.width);
-        }
+  CastleLayoutIso.prototype.setByOccupiedCastle = function () {
+    o.BasicDialogHandler.getInstance().blockDialogs = false;
+    this.context.showPanelRedirecter(y.CastleOtherPlayerInfoPanel, null, false);
+    this.context.showPanelRedirecter(_.CastleActionPanel, null, false);
+  };
+  CastleLayoutIso.prototype.setByMyCastleBuildMode = function () {
+    o.BasicDialogHandler.getInstance().blockDialogs = false;
+    this.context.showPanelRedirecter(f.CastleBuildingListPanel, null, false);
+    this.context.showPanelRedirecter(f.CastleBuildingListPanel, null, true);
+    this.context.showPanelRedirecter(E.CastleOptionPanel, null, true);
+    this.addCorrectResourcePanel(this.context);
+    this.context.addTutorialPanel();
+    if (this.openEventPanelFlag) {
+      this.context.showPanelRedirecter(b.CastleEventBuildingPanel, this.eventBuildingPanelProperties, true);
+    } else {
+      var e = c.CastleModel.tutorialData;
+      if (!e.isInTutorial || !s.MobileHelper.isScreenTooSmall() || e.currentTutorialCommand !== "expandCastle") {
+        this.context.showPanelRedirecter(O.CastleDecoShopPanel, null, true);
       }
     }
-    this.specialResourcePanel.head_right.x = e;
-    this.specialResourcePanel.setChildIndex(this.specialResourcePanel.head_left, this.specialResourcePanel.numChildren - 1);
-    this.specialResourcePanel.setChildIndex(this.specialResourcePanel.head_right, this.specialResourcePanel.numChildren - 1);
+    this.context.showPanelRedirecter(_.CastleActionPanel, null, false);
   };
-  CastleSpecialResourcePanel.prototype.onMouseOver = function (t) {
-    e.prototype.onMouseOver.call(this, t);
-    if (t.target.resourceType) {
-      var i = t.target.resourceType;
-      this.showToolTip(this.getToolTipTypeForCollectableEnum(i), t.target);
-    }
-    switch (t.target) {
-      case this.populationContainer.disp:
-        this.showToolTip(d.ResourcePanelToolTipManager.TOOL_TIP_TYPE_INFO_POPULATION, this.populationContainer.disp);
-    }
+  CastleLayoutIso.prototype.setByMyTreasureCampBuildMode = function () {
+    this.context.showPanelRedirecter(f.CastleBuildingListPanel, null, false);
+    this.context.showPanelRedirecter(f.CastleBuildingListPanel, null, true);
+    this.context.showPanelRedirecter(E.CastleOptionPanel, null, true);
+    this.context.showPanelRedirecter(D.CastleResourcePanel_Season, null, false);
+    this.context.hidePanel(m.CastleSeasonEventActionPanel);
+    this.context.showPanelRedirecter(O.CastleDecoShopPanel, null, true);
   };
-  CastleSpecialResourcePanel.prototype.onChangeCastleParameters = function (e = null) {
-    if (l.CastleModel.areaData.activeStorage) {
-      this.populationContainer.setValue(l.CastleModel.areaData.activeCommonInfo.population);
-    }
+  CastleLayoutIso.prototype.getAreaData = function () {
+    return c.CastleModel.areaData.activeArea;
   };
-  CastleSpecialResourcePanel.prototype.destroy = function () {
-    if (this._resourceContainer != null) {
-      for (var t = 0, i = this._resourceContainer; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          this.removeResource(n);
-        }
-      }
-    }
-    this.removeResource(this.populationContainer);
-    this.populationContainer.dispose();
-    e.prototype.destroy.call(this);
+  CastleLayoutIso.prototype.isInBuildMode = function () {
+    return d.Iso.renderer.strategies.currentStrategy.isActive(r.IsoRenderStrategyEnum.BUILD_MODE);
   };
-  Object.defineProperty(CastleSpecialResourcePanel.prototype, "kingdomOverlayFrame", {
+  Object.defineProperty(CastleLayoutIso.prototype, "context", {
     get: function () {
-      return Object.getOwnPropertyDescriptor(c.CastleBaseResourcePanel.prototype, "kingdomOverlayFrame").get.call(this);
-    },
-    set: function (e) {},
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSpecialResourcePanel.prototype, "specialResourcePanel", {
-    get: function () {
-      return this.disp;
+      return this._context;
     },
     enumerable: true,
     configurable: true
   });
-  CastleSpecialResourcePanel.prototype.isAvailable = function () {
-    return this._availableSpecialResources.length > 0;
-  };
-  return CastleSpecialResourcePanel;
-}(c.CastleBaseResourcePanel);
-exports.CastleSpecialResourcePanel = p;
+  Object.defineProperty(CastleLayoutIso.prototype, "eventBuildingPanelProperties", {
+    get: function () {
+      return this._eventBuildingPanelProperties;
+    },
+    set: function (e) {
+      this._eventBuildingPanelProperties = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleLayoutIso.prototype, "openEventPanelFlag", {
+    get: function () {
+      return this._openEventPanelFlag;
+    },
+    set: function (e) {
+      this._openEventPanelFlag = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleLayoutIso;
+}(require("./1819.js").CastleBasicLayout);
+exports.CastleLayoutIso = u;
+var d = require("./34.js");
+var p = require("./4096.js");
+var h = require("./1853.js");
+var g = require("./1854.js");
+var C = require("./1855.js");
+var _ = require("./559.js");
+var m = require("./1862.js");
+var f = require("./1863.js");
+var O = require("./260.js");
+var E = require("./515.js");
+var y = require("./4137.js");
+var b = require("./4138.js");
+var D = require("./1818.js");
+var I = require("./1865.js");

@@ -2,27 +2,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./1.js");
-var o = require("./60.js");
-var a = require("./341.js");
-var s = require("./295.js");
-var r = require("./226.js");
-var l = function () {
-  function OfferDescriptionVisualQuestDialog() {
+var o = require("./1.js");
+var a = require("./60.js");
+var s = require("./341.js");
+var r = require("./4.js");
+var l = require("./295.js");
+var c = require("./227.js");
+var u = function () {
+  function OfferDescriptionVisualOfferDialog() {
     this._autoShow = false;
-    this._hasBeenAutoShown = false;
+    this.hasShownAutoShowDialog = false;
   }
-  Object.defineProperty(OfferDescriptionVisualQuestDialog.prototype, "name", {
+  Object.defineProperty(OfferDescriptionVisualOfferDialog.prototype, "name", {
     get: function () {
-      return o.ClientConstOffer.OFFER_VISUAL_QUEST_DIALOG;
+      return a.ClientConstOffer.OFFER_VISUAL_OFFER_DIALOG;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionVisualQuestDialog.prototype.registerVisualParameter = function (e) {
+  OfferDescriptionVisualOfferDialog.prototype.registerVisualParameter = function (e) {
     e.addEntry(this.name, this);
   };
-  OfferDescriptionVisualQuestDialog.prototype.parseFromObjectParam = function (e) {
-    this._dialogName = e.DN;
+  OfferDescriptionVisualOfferDialog.prototype.parseFromObjectParam = function (e) {
+    if (e.DN) {
+      this._dialogName = e.DN;
+    }
     if (e.AS != null) {
       this._autoShow = !!e.AS;
     } else {
@@ -32,44 +36,55 @@ var l = function () {
       this._dialogCustomization = e.DC;
     }
   };
-  OfferDescriptionVisualQuestDialog.prototype.execute = function (e) {
-    if (this._autoShow && !this._hasBeenAutoShown) {
-      var t = new s.PaymentPopupDialogInfoVO(this._dialogName, new a.CastlePrivateOfferDialogProperties(e), e.getPopupType(), true);
-      var i = u.CastlePrivateOfferDialogCreator.getPrivateOfferDialogClass(this._dialogName);
-      if (i) {
-        c.CastleDialogHandler.getInstance().registerDialogsWithType(i, t.properties, t.blockDialogs, t.priority, 0, t.type);
+  OfferDescriptionVisualOfferDialog.prototype.execute = function (e) {
+    if (e.offerState === c.PrivateOfferStateEnum.OFFER_READY && e.hasAutoAccept() && e.getCostsForOfferAcception().length <= 0) {
+      return true;
+    }
+    if (this._autoShow && !this.hasShownAutoShowDialog) {
+      var t = n.castAs(e.getAdditionalComponentByName(a.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE), "OfferDescriptionAdditionalPrimeSale");
+      var i = n.castAs(e.getAdditionalComponentByName(a.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE_UPGRADE), "OfferDescriptionAdditionalPrimeSaleUpgrade");
+      if (t && !t.primeSaleComponent.isAvailableInKingdom() || i && !i.primeSaleComponent.isAvailableInKingdom()) {
+        return false;
       }
-      this._hasBeenAutoShown = true;
+      if (e.getAdditionalComponentByName(a.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE_SKIP) && !r.CastleModel.skipDiscountData.isBestOfferSoFar(e)) {
+        return true;
+      }
+      var o = new l.PaymentPopupDialogInfoVO(this._dialogName, new s.CastlePrivateOfferDialogProperties(e), e.getPopupType(), true);
+      var u = p.CastlePrivateOfferDialogCreator.getPrivateOfferDialogClass(this._dialogName);
+      if (u) {
+        d.CastleDialogHandler.getInstance().registerDialogsWithType(u, o.properties, o.blockDialogs, o.priority, 0, o.type);
+      }
+      this.hasShownAutoShowDialog = true;
     }
     return true;
   };
-  OfferDescriptionVisualQuestDialog.prototype.toExecuteInState = function (e) {
-    return e === r.PrivateOfferStateEnum.QUEST_STARTED;
+  OfferDescriptionVisualOfferDialog.prototype.toExecuteInState = function (e) {
+    return e === c.PrivateOfferStateEnum.OFFER_PENDING || e === c.PrivateOfferStateEnum.OFFER_READY;
   };
-  Object.defineProperty(OfferDescriptionVisualQuestDialog.prototype, "autoShow", {
-    get: function () {
-      return this._autoShow;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(OfferDescriptionVisualQuestDialog.prototype, "dialogName", {
+  Object.defineProperty(OfferDescriptionVisualOfferDialog.prototype, "dialogName", {
     get: function () {
       return this._dialogName;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(OfferDescriptionVisualQuestDialog.prototype, "dialogCustomization", {
+  Object.defineProperty(OfferDescriptionVisualOfferDialog.prototype, "autoShow", {
+    get: function () {
+      return this._autoShow;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferDescriptionVisualOfferDialog.prototype, "dialogCustomization", {
     get: function () {
       return this._dialogCustomization;
     },
     enumerable: true,
     configurable: true
   });
-  return OfferDescriptionVisualQuestDialog;
+  return OfferDescriptionVisualOfferDialog;
 }();
-exports.OfferDescriptionVisualQuestDialog = l;
-var c = require("./9.js");
-var u = require("./665.js");
-n.classImplementsInterfaces(l, "IOfferDescriptionVisualParameter");
+exports.OfferDescriptionVisualOfferDialog = u;
+var d = require("./9.js");
+var p = require("./666.js");
+o.classImplementsInterfaces(u, "IOfferDescriptionVisualParameter");

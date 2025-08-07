@@ -53,6 +53,6 @@ var r = function (e) {
     }
   };
   return AdvancedTroopSelectionDefenceStrategy;
-}(require("./897.js").AdvancedTroopsSelectionStrategyBasics);
+}(require("./898.js").AdvancedTroopsSelectionStrategyBasics);
 exports.AdvancedTroopSelectionDefenceStrategy = r;
 o.classImplementsInterfaces(r, "IAdvancedTroopSelectionStrategy");

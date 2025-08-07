@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./279.js");
+var a = require("./278.js");
 var s = require("./69.js");
 var r = require("./26.js");
 var l = require("./4.js");
@@ -71,5 +71,5 @@ var u = function (e) {
   return ABasicScoreBarRewardListDialog;
 }(require("./11.js").CastleExternalDialog);
 exports.ABasicScoreBarRewardListDialog = u;
-var d = require("./3414.js");
+var d = require("./3415.js");
 o.classImplementsInterfaces(u, "ICollectableRendererList");

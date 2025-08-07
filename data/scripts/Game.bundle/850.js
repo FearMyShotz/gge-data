@@ -1,106 +1,17 @@
-module.exports = {
-  name: "@goodgamestudios/empire-createjs-assets",
-  version: "1.2.1055",
-  main: "generated/index.js",
-  types: "generated/index.d.ts",
-  description: "CreateJS Assets for Empire HTML5",
-  scripts: {
-    "--Build Steps--": "----------------------------------------------------------------------------------------------",
-    commitmsg: "git-jira-ticket-number",
-    compile_ALL_flas: "yarn export_fla_interface && yarn export_fla_itemassets",
-    export_fla_interface: "animate-export modules/assets/interface --output fla-export/interface --logLevel debug --batch-size 100 --timeout 2700000",
-    export_fla_itemassets: "animate-export modules/assets/itemassets --output fla-export/itemassets --logLevel debug --batch-size 100 --timeout 2700000",
-    export_modified_files: "node export_modified_files.js --useVersioning --enableModDate",
-    assets_cleanup: "node assets_cleanup.js",
-    analyze_assets_logs: "analyze-logs fla-export/ > fla-export/profile_details.txt",
-    generate_ALL_spritesheets: "yarn generate_spritesheets_interface && yarn generate_spritesheets_itemassets",
-    generate_spritesheets_interface: "generate-spritesheets fla-export/interface --output generated/interface",
-    generate_spritesheets_itemassets: "generate-spritesheets fla-export/itemassets --output generated/itemassets",
-    fix_spritesheet_url_references: "node fix_spritesheet_url_references.js",
-    generate_version_lists: "node generate_version_lists.js --fullExport true",
-    fix_hash_version: "node fix_assets_hash.js",
-    extract_exporter_version: "extract-exporter-version",
-    append_hash_version: "node append_version_to_files.js",
-    test_urls: "node testAssetUrls.js",
-    test_urls_min: "cross-env NODE_ENV=minimized node testAssetUrls.js",
-    "clean-up_typescript": "node clean-up_typescript.js",
-    generate_versions: "node generate_versions_files.js",
-    validate_versions: "validate-versions",
-    validate_logs: "validate-logs",
-    validate_reports: "validate-reports",
-    validate_assets_sources: "validate-assets-sources",
-    validate_declarations: "validate-declarations",
-    aggregate_monitoring: "aggregate-monitoring reports",
-    generate_typescript: "animate-export fla-export --output src --json",
-    generate_references: "node generate_references.js",
-    compile_typescript: "node --max_old_space_size=15000 ./node_modules/.bin/tsc | tsforgive 2376",
-    compile_typescript_declaration: "node --max_old_space_size=15000 ./node_modules/.bin/tsc --project tsconfig_declaration.json | tsforgive 2376",
-    compile_typescript_diff_files: "node compile_typescript_diff_files.js",
-    addBranchToVersion: "addBranchToVersion",
-    deploy: " node deploy.js",
-    "--Optimisation--": "----------------------------------------------------------------------------------------------",
-    optimize: "yarn optimize:code && yarn optimize:gzip && yarn optimize:image",
-    "optimize:versioned": "yarn optimize:code:version && yarn optimize:image:version",
-    "optimize:code": "node ./node_modules/gulp/bin/gulp.js code --gulpfile ./node_modules/@goodgamestudios/animate-export/gulpfile.js --cwd .",
-    "optimize:gzip": "node ./node_modules/gulp/bin/gulp.js gzip --gulpfile ./node_modules/@goodgamestudios/animate-export/gulpfile.js --cwd .",
-    "optimize:png": "node ./node_modules/gulp/bin/gulp.js png --gulpfile ./node_modules/@goodgamestudios/animate-export/gulpfile.js --cwd .",
-    "optimize:jpeg": "node ./node_modules/gulp/bin/gulp.js mozjpg --gulpfile ./node_modules/@goodgamestudios/animate-export/gulpfile.js --cwd .",
-    "optimize:webp": "node ./node_modules/gulp/bin/gulp.js webp:em --gulpfile ./node_modules/@goodgamestudios/animate-export/gulpfile.js --cwd .",
-    "optimize:sound": "node ./node_modules/gulp/bin/gulp.js sound:copy --gulpfile ./node_modules/@goodgamestudios/animate-export/gulpfile.js --cwd .",
-    "optimize:image": "yarn optimize:png && yarn optimize:webp",
-    "optimize:code:version": "cross-env NODE_ENV=versioned node ./node_modules/gulp/bin/gulp.js code --gulpfile ./node_modules/@goodgamestudios/animate-export/gulpfile.js --cwd .",
-    "optimize:image:version": "cross-env NODE_ENV=versioned yarn optimize:png && cross-env NODE_ENV=versioned yarn optimize:jpeg && cross-env NODE_ENV=versioned yarn optimize:webp",
-    "--Miscellaneous--": "----------------------------------------------------------------------------------------------",
-    "link-dependencies": "yarn link spritesheet-js",
-    "unlink-dependencies": "yarn unlink spritesheet-js",
-    test: "echo \"Error: no test specified\" && exit 1",
-    create_ssl: "openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem",
-    serve: "http-server generated -g -p 8181 --cors",
-    serve_assets: "http-server versioned -g -p 8181 --cors",
-    "serve-ssl": "http-server versioned -g -p 8181 --cors --ssl"
-  },
-  publishConfig: {
-    registry: "https://registry.npmjs.org"
-  },
-  repository: {
-    type: "git",
-    url: "git@source.services.ggs-net.com:Empire-HTML5/empire-createjs-assets.git"
-  },
-  author: "Goodgame Studios",
-  license: "SEE LICENSE IN LICENSE.md",
-  homepage: "https://source.services.ggs-net.com/Empire-HTML5/empire-createjs-assets#readme",
-  devDependencies: {
-    "@goodgamestudios/addbranchtoversion": "^1.0.0",
-    "@goodgamestudios/animate-export": "1.13.7",
-    "@goodgamestudios/createjs-utilities": "^1.35.0",
-    "@goodgamestudios/git-jira-ticket-number": "^1.1.1",
-    "@goodgamestudios/math-utilities": "~1.2.6",
-    async: "^2.6.0",
-    chalk: "^2.4.0",
-    "cross-env": "^5.1.4",
-    del: "^3.0.0",
-    "from-xml": "^0.1.6",
-    glob: "^7.1.1",
-    handlebars: "^4.0.6",
-    "http-server": "^0.10.0",
-    husky: "^0.14.3",
-    mkdirp: "^0.5.1",
-    "node-fetch": "^2.1.2",
-    ret: "~0.1.10",
-    rimraf: "^2.6.1",
-    shelljs: "^0.7.7",
-    "spritesheet-js": "^1.2.6",
-    tmp: "^0.0.31",
-    tsforgive: "^0.0.1",
-    typescript: "^2.9.2",
-    xxhashjs: "^0.2.2"
-  },
-  dependencies: {
-    minimist: "^1.2.0",
-    tslib: "^1.7.1"
-  },
-  resolutions: {
-    vinyl: "^2.2.1",
-    psl: "1.10.0"
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var n = require("./0.js");
+var o = function (e) {
+  function CastleSkipBuildingDialogProperties(t, i = -1) {
+    var n = this;
+    n.wodID = 0;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this).buildingConstructionCommandVO = t;
+    n.wodID = i;
+    return n;
   }
-};
+  n.__extends(CastleSkipBuildingDialogProperties, e);
+  return CastleSkipBuildingDialogProperties;
+}(require("./2.js").BasicProperties);
+exports.CastleSkipBuildingDialogProperties = o;

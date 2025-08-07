@@ -3,32 +3,43 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./87.js");
-var r = function (e) {
-  function RingMenuButtonRepair() {
+var a = require("./3.js");
+var s = require("./6.js");
+var r = require("./98.js");
+var l = function (e) {
+  function RingMenuButtonMove() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RingMenuButtonRepair, e);
-  RingMenuButtonRepair.prototype.init = function (t, i, n) {
+  n.__extends(RingMenuButtonMove, e);
+  RingMenuButtonMove.prototype.init = function (t, i, n) {
     e.prototype.init.call(this, t, i, n);
-    this._disp = i.btn_repair;
-    this._disp.visible = n.buildingVO.needsReparation;
-    switch (n.buildingVO.buildingState) {
-      case s.IsoBuildingStateEnum.DISASSEMBLE_IN_PROGRESS:
-      case s.IsoBuildingStateEnum.DISASSEMBLE_STOPPED:
-        this._disp.visible = false;
+    this._disp = i.btn_move;
+    this._disp.visible = n.vo.isMovable;
+    if (this._disp.visible) {
+      var o = 1;
+      if (n.vo.isInBuildingDistrict) {
+        o = s.int(n.buildingVO.districtTypeID) + 1;
+      }
+      this._disp.gotoAndStop(o);
     }
   };
-  RingMenuButtonRepair.prototype.onClick = function (e, t) {
-    l.Iso.controller.server.repairBuilding(this.targetBuilding.vo.objectId);
+  RingMenuButtonMove.prototype.onClick = function (e, t) {
+    var i = this.targetBuilding;
+    c.Iso.controller.viewUpdater.switchBuildModeInOwnCastle(true);
+    c.Iso.renderer.mouse.startDraggingTarget(i, false);
+    if (i.vo.isInBuildingDistrict) {
+      r.ARingMenuButton.layoutManager.hideAllDialogs();
+    }
   };
-  RingMenuButtonRepair.prototype.getAction = function () {
-    return a.int(c.RingMenuBuilding.ACTION_REPAIR);
+  RingMenuButtonMove.prototype.getInfoText = function () {
+    if (this.targetBuilding.vo.isInBuildingDistrict) {
+      return a.Localize.text("ringmenu_removeFromDistrict");
+    } else {
+      return a.Localize.text("ringmenu_move");
+    }
   };
-  return RingMenuButtonRepair;
-}(require("./98.js").ARingMenuButton);
-exports.RingMenuButtonRepair = r;
-var l = require("./33.js");
-var c = require("./369.js");
-o.classImplementsInterfaces(r, "IRingMenuButton");
+  return RingMenuButtonMove;
+}(r.ARingMenuButton);
+exports.RingMenuButtonMove = l;
+var c = require("./34.js");
+o.classImplementsInterfaces(l, "IRingMenuButton");

@@ -1,35 +1,38 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./118.js").getLogger("CastleArrayHelper");
-var o = function () {
-  function CastleArrayHelper() {}
-  CastleArrayHelper.toUintVector = function (e) {
-    n.warn("CastleArrayHelper::toUINTVector::  this not doing what it says...");
-    var t = [];
-    if (e) {
-      for (var i = 0; i < e.length; i++) {
-        t.push(e[i]);
-      }
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./1.js");
+var r = require("./3.js");
+var l = require("./60.js");
+var c = function (e) {
+  function PrivateOfferFailedStandardDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, new (a.getDefinitionByName("CastleStandardOk"))()) || this;
+  }
+  n.__extends(PrivateOfferFailedStandardDialog, e);
+  PrivateOfferFailedStandardDialog.prototype.applyProperties = function () {
+    if (this.offerProperties && this.offerProperties.offerVO) {
+      var t;
+      var i;
+      var n = this.offerProperties.offerVO.getVisualComponentByName(l.ClientConstOffer.OFFER_VISUAL_FAILED_DIALOG);
+      t = !n.dialogCustomization.T || n.dialogCustomization.T.length <= 0 ? r.Localize.text("dialog_privateOffer_whaleChest_offerend") : r.Localize.text(n.dialogCustomization.T);
+      i = !n.dialogCustomization.C || n.dialogCustomization.C.length <= 0 ? r.Localize.text("dialog_privateOffer_whaleChest_offerend_description") : r.Localize.text(n.dialogCustomization.C);
+      this.properties = new o.BasicStandardOkDialogProperties(t, i);
     }
-    return t;
+    e.prototype.applyProperties.call(this);
   };
-  CastleArrayHelper.toIntVector = function (e) {
-    n.warn("CastleArrayHelper::toINTVector::  this not doing what it says...");
-    var t = [];
-    if (e) {
-      for (var i = 0; i < e.length; i++) {
-        t.push(e[i]);
-      }
-    }
-    return t;
-  };
-  CastleArrayHelper.moveIndex = function (e, t, i) {
-    e.splice(i, 0, e.splice(t, 1)[0]);
-  };
-  return CastleArrayHelper;
-}();
-exports.CastleArrayHelper = o;
-exports.numericSort = function (e, t) {
-  return e - t;
-};
+  Object.defineProperty(PrivateOfferFailedStandardDialog.prototype, "offerProperties", {
+    get: function () {
+      return this.properties;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  PrivateOfferFailedStandardDialog.NAME = "PrivateOfferFailedStandardDialog";
+  return PrivateOfferFailedStandardDialog;
+}(require("./38.js").CastleStandardOkDialog);
+exports.PrivateOfferFailedStandardDialog = c;
+s.classImplementsInterfaces(c, "ICollectableRendererList");

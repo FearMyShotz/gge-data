@@ -1,76 +1,68 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function LogUnitVO(e, t = null, i = false) {
-    this._wodID = 0;
-    this._count = 0;
-    this._lost = 0;
-    this.isPreOrPostWave = false;
-    if (t) {
-      this.initAsSummary(t, i);
-    } else {
-      this.initByParams(e);
-    }
+var n = require("./0.js");
+var o = require("./5.js");
+var a = require("./5543.js");
+var s = require("./83.js");
+var r = require("./99.js");
+var l = function (e) {
+  function MessageUserVO() {
+    return e.call(this) || this;
   }
-  LogUnitVO.prototype.initByParams = function (e) {
-    this._wodID = o.int(e[LogUnitVO.WOD_ID]);
-    this._count = o.int(e[LogUnitVO.AMOUNT]);
-    this._lost = o.int(e[LogUnitVO.AMOUNT_LOST]);
+  n.__extends(MessageUserVO, e);
+  MessageUserVO.prototype.parseMessageHeader = function (e) {
+    this._subject = e;
   };
-  LogUnitVO.prototype.initAsSummary = function (e, t) {
-    this._wodID = o.int(e[0].wodID);
-    this._count = 0;
-    this._lost = 0;
-    var i;
-    var n = false;
-    if (e != null) {
-      for (var a = 0, s = e; a < s.length; a++) {
-        var r = s[a];
-        if (r !== undefined) {
-          if (r.isPreOrPostWave) {
-            this._count = r.count;
-            n = true;
-          } else if (!n) {
-            this._count += r.count;
-            if (t && i) {
-              this._count -= i.count + i.lost;
-            }
-            i = r;
-          }
-          this._lost += r.lost;
-        }
+  MessageUserVO.prototype.parseSubject = function () {
+    var e = this._subject;
+    return e = (e = e.replace(/\r/g, " ")).replace(/\n/g, " ");
+  };
+  MessageUserVO.prototype.parseSender = function () {
+    return this.senderName;
+  };
+  Object.defineProperty(MessageUserVO.prototype, "dialogInfo", {
+    get: function () {
+      return new s.DialogInfoVO(c.CastleReadDialog, new a.CastleReadDialogProperties(this));
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.AMessageVO.prototype, "dialogInfo").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessageUserVO.prototype, "additionalIconName", {
+    get: function () {
+      if (this.messageType == o.MessageConst.MESSAGE_TYPE_ALLIANCE_NEWSLETTER) {
+        return "CastleMessageIconsAlliance";
+      } else {
+        return "";
       }
-    }
-  };
-  Object.defineProperty(LogUnitVO.prototype, "wodID", {
-    get: function () {
-      return this._wodID;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.AMessageVO.prototype, "additionalIconName").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LogUnitVO.prototype, "count", {
+  Object.defineProperty(MessageUserVO.prototype, "body", {
     get: function () {
-      return this._count;
+      return this._body;
+    },
+    set: function (e) {
+      this._body = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LogUnitVO.prototype, "lost", {
+  Object.defineProperty(MessageUserVO.prototype, "ignoreAvailable", {
     get: function () {
-      return this._lost;
+      return this.messageType != o.MessageConst.MESSAGE_TYPE_ALLIANCE_NEWSLETTER;
     },
     enumerable: true,
     configurable: true
   });
-  LogUnitVO.__initialize_static_members = function () {
-    LogUnitVO.WOD_ID = 0;
-    LogUnitVO.AMOUNT = 1;
-    LogUnitVO.AMOUNT_LOST = 2;
-  };
-  return LogUnitVO;
-}();
-exports.LogUnitVO = n;
-var o = require("./6.js");
-n.__initialize_static_members();
+  return MessageUserVO;
+}(r.AMessageVO);
+exports.MessageUserVO = l;
+var c = require("./5544.js");

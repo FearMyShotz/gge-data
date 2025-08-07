@@ -2,74 +2,37 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = function (e) {
-  function FusionForgeHubDialogCatalysts(t) {
-    var i = this;
-    i._lists = [];
+var o = require("./2.js");
+var a = require("./6.js");
+var s = require("./7.js");
+var r = function (e) {
+  function C2SDecoForgeFuseEventVO(t, i, n, o, s, r, l, c, u) {
+    var d = this;
+    d.FCID = 0;
+    d.FFFP = 0;
+    d.FSUID = 0;
+    d.FSWID = 0;
+    d.FTOID = 0;
+    d.FTSID = 0;
+    d.FTAID = 0;
+    d.FTUID = 0;
+    d.FTWID = 0;
     CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).init();
-    return i;
+    (d = e.call(this) || this).FCID = c;
+    d.FFFP = a.int(u ? 1 : 0);
+    d.FSUID = i;
+    d.FSWID = t;
+    d.FTOID = l;
+    d.FTSID = n;
+    d.FTAID = o;
+    d.FTUID = r;
+    d.FTWID = s;
+    return d;
   }
-  n.__extends(FusionForgeHubDialogCatalysts, e);
-  FusionForgeHubDialogCatalysts.prototype.init = function () {
-    this.dialogDisp.mc_equipment.visible = false;
+  n.__extends(C2SDecoForgeFuseEventVO, e);
+  C2SDecoForgeFuseEventVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_DECO_FORGE_FUSE;
   };
-  FusionForgeHubDialogCatalysts.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this.updateCatalystLists();
-    if (this._lists != null) {
-      for (var i = 0, n = this._lists; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          o.onShow();
-          o.update();
-        }
-      }
-    }
-  };
-  FusionForgeHubDialogCatalysts.prototype.hide = function () {
-    if (this._lists != null) {
-      for (var t = 0, i = this._lists; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.onHide();
-        }
-      }
-    }
-    e.prototype.hide.call(this);
-  };
-  FusionForgeHubDialogCatalysts.prototype.updateCatalystLists = function () {
-    if (this._lists) {
-      if (this._lists != null) {
-        for (var e = 0, t = this._lists; e < t.length; e++) {
-          var i = t[e];
-          if (i !== undefined) {
-            i.destroy();
-          }
-        }
-      }
-      this._lists = null;
-    }
-    this._lists = [];
-    for (var n = 0; n < FusionForgeHubDialogCatalysts.LIST_PARAMS.length; ++n) {
-      this._lists.push(new r.FusionForgeHubDialogCatalystsList(this.dialogDisp.getChildByName(FusionForgeHubDialogCatalysts.LIST_PARAMS[n][0]), FusionForgeHubDialogCatalysts.LIST_PARAMS[n][1]));
-    }
-  };
-  Object.defineProperty(FusionForgeHubDialogCatalysts.prototype, "dialogDisp", {
-    get: function () {
-      return this.disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  FusionForgeHubDialogCatalysts.__initialize_static_members = function () {
-    FusionForgeHubDialogCatalysts.LIST_PARAMS = [["mc_deco", a.FusionConst.DECORATION_FORGE_ID]];
-  };
-  return FusionForgeHubDialogCatalysts;
-}(require("./34.js").CastleDialogSubLayer);
-exports.FusionForgeHubDialogCatalysts = s;
-var r = require("./2634.js");
-o.classImplementsInterfaces(s, "ICollectableRendererList", "ISublayer");
-s.__initialize_static_members();
+  return C2SDecoForgeFuseEventVO;
+}(o.BasicCommandVO);
+exports.C2SDecoForgeFuseEventVO = r;

@@ -2,15 +2,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleTreasureChestBuildingDialogProperties(t) {
-    var i = this;
-    i.objectID = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).objectID = t;
-    return i;
+var o = require("./1.js");
+var a = require("./3134.js");
+var s = require("./145.js");
+var r = function (e) {
+  function TreasureChestBuildingVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleTreasureChestBuildingDialogProperties, e);
-  return CastleTreasureChestBuildingDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleTreasureChestBuildingDialogProperties = o;
+  n.__extends(TreasureChestBuildingVE, e);
+  TreasureChestBuildingVE.prototype.createDisp = function () {
+    if (this.vo.isoData.areaData.isMyArea && !this.vo.isoData.areaData.isUnderConquerProcess) {
+      return e.prototype.createDisp.call(this);
+    }
+  };
+  TreasureChestBuildingVE.prototype.createAdditionalClips = function () {
+    e.prototype.createAdditionalClips.call(this);
+    this.additionalClips.addClips(s.IsoAdditionalClipEnum.EXCLAMATION_MARK2);
+  };
+  TreasureChestBuildingVE.prototype.onMouseClick = function () {
+    if (this.vo.isoData.areaData.isMyArea && !this.vo.isoData.areaData.isUnderConquerProcess) {
+      l.CastleComponent.dialogHandler.registerDefaultDialogs(c.CastleTreasureChestBuildingDialog, new a.CastleTreasureChestBuildingDialogProperties(this.vo.objectId));
+    }
+  };
+  return TreasureChestBuildingVE;
+}(require("./62.js").ABasicBuildingVE);
+exports.TreasureChestBuildingVE = r;
+var l = require("./14.js");
+var c = require("./3135.js");
+o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

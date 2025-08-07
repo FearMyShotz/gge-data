@@ -5,33 +5,35 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function MFSCommand() {
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function MCDCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MFSCommand, e);
-  Object.defineProperty(MFSCommand.prototype, "cmdId", {
+  n.__extends(MCDCommand, e);
+  Object.defineProperty(MCDCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_FORWARD_SPY_LOG;
+      return s.ClientConstSF.S2C_MESSAGE_RESTRICTION;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  MFSCommand.prototype.executeCommand = function (e, t) {
+  MCDCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-      case a.ERROR.ALREADY_HAS_SPY_REPORT:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.messageData.parse_MCD(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return MFSCommand;
-}(r.CastleCommand);
-exports.MFSCommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  return MCDCommand;
+}(l.CastleCommand);
+exports.MCDCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

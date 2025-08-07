@@ -3,36 +3,26 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./195.js");
-var r = function (e) {
-  function CollectableItemVipPointVE() {
+var a = require("./299.js");
+var s = function (e) {
+  function CollectableItemKhanMedalBoosterVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemVipPointVE, e);
-  CollectableItemVipPointVE.prototype.textfieldUpdate = function () {
-    this.textfieldSetTextAsNumber(this.vo.amount);
-  };
-  CollectableItemVipPointVE.prototype.textfieldBackgroundVisible = function () {
-    return true;
-  };
-  CollectableItemVipPointVE.prototype.tooltipCreate = function () {
-    return {
-      t: "dialog_buyVipPoints_pointAmount_v2",
-      p: [new a.LocalizedNumberVO(this.vo.amount)]
-    };
-  };
-  Object.defineProperty(CollectableItemVipPointVE.prototype, "iconClass", {
+  n.__extends(CollectableItemKhanMedalBoosterVE, e);
+  Object.defineProperty(CollectableItemKhanMedalBoosterVE.prototype, "percentageIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_VipPoints_Big;
+      return Library.CastleInterfaceElements_Icons.Icon_KhanMedalBooster;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(s.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.ACollectableItemPercentageBoosterVE.prototype, "percentageIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return CollectableItemVipPointVE;
-}(s.ACollectableItemSimpleIconVE);
-exports.CollectableItemVipPointVE = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList");
+  CollectableItemKhanMedalBoosterVE.prototype.getBoosterTooltipId = function () {
+    return "dialog_khanMedalBooster_boost_tt";
+  };
+  return CollectableItemKhanMedalBoosterVE;
+}(a.ACollectableItemPercentageBoosterVE);
+exports.CollectableItemKhanMedalBoosterVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");

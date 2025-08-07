@@ -7,14 +7,13 @@ var a = require("./5.js");
 var s = require("./3.js");
 var r = require("./6.js");
 var l = require("./18.js");
-var c = require("./106.js");
-var u = require("./112.js");
-var d = require("./318.js");
-var p = require("./181.js");
-var h = require("./4.js");
-var g = require("./35.js");
-var C = require("./346.js");
-var _ = function () {
+var c = require("./318.js");
+var u = require("./181.js");
+var d = require("./4.js");
+var p = require("./33.js");
+var h = require("./214.js");
+var g = require("./346.js");
+var C = function () {
   function CastleFightItemContainer(e, t, i, n = r.int(Number.MAX_VALUE), o = null, a = null) {
     this.unlockLevel = 0;
     this._maxItems = 0;
@@ -34,7 +33,7 @@ var _ = function () {
     var i;
     var n = 0;
     for (n = 0; n < this._itemTypes.length; n++) {
-      (i = new C.CastleFightItemVO()).slotType = r.int(this._itemTypes[n]);
+      (i = new g.CastleFightItemVO()).slotType = r.int(this._itemTypes[n]);
       i.itemLevel = r.int(this._itemLevel[n]);
       i.unlockLevel = this.unlockLevel;
       if (t) {
@@ -46,7 +45,7 @@ var _ = function () {
     }
     if (this.additionalItemTypes && this.requiredIDs) {
       for (n = 0; n < this.additionalItemTypes.length; n++) {
-        (i = new C.CastleFightItemVO()).slotType = r.int(this.additionalItemTypes[n]);
+        (i = new g.CastleFightItemVO()).slotType = r.int(this.additionalItemTypes[n]);
         i.unlockSkillID = r.int(this.requiredIDs[n]);
         if (t) {
           this._serverItems.push(i);
@@ -74,13 +73,13 @@ var _ = function () {
     }
   };
   CastleFightItemContainer.prototype.addToItems = function (e, t, i = -1) {
-    var n = h.CastleModel.wodData.createVObyWOD(e, f.CastleWodData.TYPE_UNIT);
+    var n = d.CastleModel.wodData.createVObyWOD(e, m.CastleWodData.TYPE_UNIT);
     for (var o = 0; o < this._items.length; o++) {
       var a = this._items[o];
       if (!a.unitVO && n.isToolForSlotType(a.slotType) && (o == i || i == -1)) {
         a.unitVO = n;
         a.unitVO.inventoryAmount = t;
-        a.outline = r.int(C.CastleFightItemVO.OUTLINE_NONE);
+        a.outline = r.int(g.CastleFightItemVO.OUTLINE_NONE);
         break;
       }
     }
@@ -116,7 +115,7 @@ var _ = function () {
     var i = 0;
     for (var n = 0; n < this._items.length; n++) {
       if ((t = this._items[n]).unitVO) {
-        var o = 1 + (e ? e.getEffectValue(g.EffectTypeEnum.EFFECT_TYPE_LOOT_VALUE_BOOST_UNIT, -1, -1, t.unitVO.wodId) / 100 : 0);
+        var o = 1 + (e ? e.getEffectValue(p.EffectTypeEnum.EFFECT_TYPE_LOOT_VALUE_BOOST_UNIT, -1, -1, t.unitVO.wodId) / 100 : 0);
         i += r.int(t.unitVO.lootValue * o * t.unitVO.inventoryAmount);
       }
     }
@@ -156,148 +155,172 @@ var _ = function () {
     var s;
     var r;
     var l;
-    var d;
-    var p;
-    var C = 0;
-    var _ = function () {
-      s = m._items[f];
+    var c = 0;
+    var u = function () {
+      s = g._items[C];
       if (n.instanceOfClass(s.unitVO, "SoldierUnitVO")) {
         r = s.unitVO;
-        l = e ? e.getEffectValue(g.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS_UNIT, -1, -1, r.wodId) : 0;
-        var _ = 0;
-        var O = undefined;
-        var E = 0;
-        O = e ? e.getUniqueBoni(false, g.EffectTypeEnum.EFFECT_TYPE_OFFENSIVE_RANGE_BONUS, -1, null, true) : null;
-        E = 0;
-        if (O) {
-          O.forEach(function (e) {
-            E += e.strength;
+        l = e ? e.getEffectValue(p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS_UNIT, -1, -1, r.wodId) : 0;
+        var u = 0;
+        var _ = undefined;
+        var m = 0;
+        _ = e ? e.getUniqueBoni(false, p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS, -1, null, true) : null;
+        m = 0;
+        if (_) {
+          _.forEach(function (e) {
+            m += e.strength;
           });
         }
-        _ += E;
+        u += m;
+        _ = e ? e.getUniqueBoni(false, p.EffectTypeEnum.EFFECT_TYPE_OFFENSIVE_RANGE_BONUS, -1, null, true) : null;
+        m = 0;
+        if (_) {
+          _.forEach(function (e) {
+            m += e.strength;
+          });
+        }
+        u += m;
         if (i) {
-          O = e ? e.getUniqueBoni(false, g.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_YARD, -1, null, true) : null;
-          E = 0;
-          if (O) {
-            O.forEach(function (e) {
-              E += e.strength;
+          _ = e ? e.getUniqueBoni(false, p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_YARD, -1, null, true) : null;
+          m = 0;
+          if (_) {
+            _.forEach(function (e) {
+              m += e.strength;
             });
           }
-          _ += E;
+          u += m;
         }
         if (o) {
-          O = e ? e.getUniqueBoni(false, g.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_FLANK, -1, null, true) : null;
-          E = 0;
-          if (O) {
-            O.forEach(function (e) {
-              E += e.strength;
+          _ = e ? e.getUniqueBoni(false, p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_FLANK, -1, null, true) : null;
+          m = 0;
+          if (_) {
+            _.forEach(function (e) {
+              m += e.strength;
             });
           }
-          _ += E;
+          u += m;
         }
         if (a) {
-          O = e ? e.getUniqueBoni(false, g.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_FLANK, -1, null, true) : null;
-          E = 0;
-          if (O) {
-            O.forEach(function (e) {
-              E += e.strength;
+          _ = e ? e.getUniqueBoni(false, p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_FLANK, -1, null, true) : null;
+          m = 0;
+          if (_) {
+            _.forEach(function (e) {
+              m += e.strength;
             });
           }
-          _ += E;
+          u += m;
         }
-        _ = 1 + _ / 100;
-        d = 0;
-        p = 1;
+        u = 1 + u / 100;
+        var f = 0;
         if (t) {
-          d = h.CastleModel.officerSchoolData.getBonusByEffectType(g.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS_UNIT, t.areaType, t.spaceID, r.wodId);
-          p += c.CastleTitleSystemHelper.getAttackBoost(u.PlayerHelper.isNPCPlayer(t.ownerInfo.playerID), t.areaType, t.spaceID) / 100;
+          f = d.CastleModel.officerSchoolData.getBonusByEffectType(p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS_UNIT, t.areaType, t.spaceID, r.wodId);
+        }
+        var O = 0;
+        if (t && t.ownerInfo && t.ownerInfo.isLegend) {
+          O = d.CastleModel.legendSkillData.getTotalValueOfLegendSkillEffect(h.CastleLegendSkillEffectsEnum.ATTACK_RANGE_BONUS) / 100;
+          O += d.CastleModel.legendSkillData.getTotalValueOfLegendSkillEffect(h.CastleLegendSkillEffectsEnum.ATTACK_BONUS) / 100;
+          if (i) {
+            O += d.CastleModel.legendSkillData.getTotalValueOfLegendSkillEffect(h.CastleLegendSkillEffectsEnum.ATTACK_YARD_BONUS) / 100;
+          }
         }
         if (r.buffedRangeAttack > 0) {
-          C += (r.buffedRangeAttack + l + d) * s.getAmount() * _ * p;
+          c += (r.buffedRangeAttack + l + f) * s.getAmount() * (u + O);
         }
       }
     };
-    var m = this;
-    for (var f = 0; f < this._items.length; f++) {
-      _();
+    var g = this;
+    for (var C = 0; C < this._items.length; C++) {
+      u();
     }
-    return C;
+    return c;
   };
   CastleFightItemContainer.prototype.getAttackMeleeValue = function (e = null, t = null, i = false, o = false, a = false) {
     var s;
     var r;
     var l;
-    var d;
-    var p;
-    var C = 0;
-    var _ = function () {
-      s = m._items[f];
+    var c = 0;
+    var u = function () {
+      s = g._items[C];
       if (n.instanceOfClass(s.unitVO, "SoldierUnitVO")) {
         r = s.unitVO;
-        l = e ? e.getEffectValue(g.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS_UNIT, -1, -1, r.wodId) : 0;
-        var _ = 0;
-        var O = undefined;
-        var E = 0;
-        O = e ? e.getUniqueBoni(false, g.EffectTypeEnum.EFFECT_TYPE_OFFENSIVE_MELEE_BONUS, -1, null, true) : null;
-        E = 0;
-        if (O) {
-          O.forEach(function (e) {
-            E += e.strength;
+        l = e ? e.getEffectValue(p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS_UNIT, -1, -1, r.wodId) : 0;
+        var u = 0;
+        var _ = undefined;
+        var m = 0;
+        _ = e ? e.getUniqueBoni(false, p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS, -1, null, true) : null;
+        m = 0;
+        if (_) {
+          _.forEach(function (e) {
+            m += e.strength;
           });
         }
-        _ += E;
+        u += m;
+        _ = e ? e.getUniqueBoni(false, p.EffectTypeEnum.EFFECT_TYPE_OFFENSIVE_MELEE_BONUS, -1, null, true) : null;
+        m = 0;
+        if (_) {
+          _.forEach(function (e) {
+            m += e.strength;
+          });
+        }
+        u += m;
         if (i) {
-          O = e ? e.getUniqueBoni(false, g.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_YARD, -1, null, true) : null;
-          E = 0;
-          if (O) {
-            O.forEach(function (e) {
-              E += e.strength;
+          _ = e ? e.getUniqueBoni(false, p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_YARD, -1, null, true) : null;
+          m = 0;
+          if (_) {
+            _.forEach(function (e) {
+              m += e.strength;
             });
           }
-          _ += E;
+          u += m;
         }
         if (o) {
-          O = e ? e.getUniqueBoni(false, g.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_FLANK, -1, null, true) : null;
-          E = 0;
-          if (O) {
-            O.forEach(function (e) {
-              E += e.strength;
+          _ = e ? e.getUniqueBoni(false, p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_FLANK, -1, null, true) : null;
+          m = 0;
+          if (_) {
+            _.forEach(function (e) {
+              m += e.strength;
             });
           }
-          _ += E;
+          u += m;
         }
         if (a) {
-          O = e ? e.getUniqueBoni(false, g.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_FRONT, -1, null, true) : null;
-          E = 0;
-          if (O) {
-            O.forEach(function (e) {
-              E += e.strength;
+          _ = e ? e.getUniqueBoni(false, p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_FRONT, -1, null, true) : null;
+          m = 0;
+          if (_) {
+            _.forEach(function (e) {
+              m += e.strength;
             });
           }
-          _ += E;
+          u += m;
         }
-        _ = 1 + _ / 100;
-        d = 0;
-        p = 1;
+        u = 1 + u / 100;
+        var f = 0;
         if (t) {
-          d = h.CastleModel.officerSchoolData.getBonusByEffectType(g.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS_UNIT, t.areaType, t.spaceID, r.wodId);
-          p += c.CastleTitleSystemHelper.getAttackBoost(u.PlayerHelper.isNPCPlayer(t.ownerInfo.playerID), t.areaType, t.spaceID) / 100;
+          f = d.CastleModel.officerSchoolData.getBonusByEffectType(p.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS_UNIT, t.areaType, t.spaceID, r.wodId);
+        }
+        var O = 0;
+        if (t && t.ownerInfo && t.ownerInfo.isLegend) {
+          O = d.CastleModel.legendSkillData.getTotalValueOfLegendSkillEffect(h.CastleLegendSkillEffectsEnum.ATTACK_MELEE_BONUS) / 100;
+          O += d.CastleModel.legendSkillData.getTotalValueOfLegendSkillEffect(h.CastleLegendSkillEffectsEnum.ATTACK_BONUS) / 100;
+          if (i) {
+            O += d.CastleModel.legendSkillData.getTotalValueOfLegendSkillEffect(h.CastleLegendSkillEffectsEnum.ATTACK_YARD_BONUS) / 100;
+          }
         }
         if (r.buffedMeleeAttack > 0) {
-          C += (r.buffedMeleeAttack + l + d) * s.getAmount() * _ * p;
+          c += (r.buffedMeleeAttack + l + f) * s.getAmount() * (u + O);
         }
       }
     };
-    var m = this;
-    for (var f = 0; f < this._items.length; f++) {
-      _();
+    var g = this;
+    for (var C = 0; C < this._items.length; C++) {
+      u();
     }
-    return C;
+    return c;
   };
   CastleFightItemContainer.prototype.getAllianceDefenceBoost = function (e) {
     var t;
     var i;
-    if (h.CastleModel.userData.isUserInMyAlliance(e.controllerWorldMapOwnerInfoVO) && e.kingdomID != a.FactionConst.KINGDOM_ID && h.CastleModel.allianceData && h.CastleModel.allianceData.myAllianceVO && (t = h.CastleModel.allianceData.myAllianceVO, (i = h.CastleModel.allianceBuffData.getAllianceBuffVoBySeriesIDAndLevel(o.AllianceConst.TYPE_TEMP_DEFENSE_POWER_BOOST, t.getBoostLevel(o.AllianceConst.TYPE_TEMP_DEFENSE_POWER_BOOST)).getBonusVOByEffectType(g.EffectTypeEnum.EFFECT_TYPE_DEFENSE_BONUS)) && i.effect.isForAreaType(e.areaType))) {
+    if (d.CastleModel.userData.isUserInMyAlliance(e.controllerWorldMapOwnerInfoVO) && e.kingdomID != a.FactionConst.KINGDOM_ID && d.CastleModel.allianceData && d.CastleModel.allianceData.myAllianceVO && (t = d.CastleModel.allianceData.myAllianceVO, (i = d.CastleModel.allianceBuffData.getAllianceBuffVoBySeriesIDAndLevel(o.AllianceConst.TYPE_TEMP_DEFENSE_POWER_BOOST, t.getBoostLevel(o.AllianceConst.TYPE_TEMP_DEFENSE_POWER_BOOST)).getBonusVOByEffectType(p.EffectTypeEnum.EFFECT_TYPE_DEFENSE_BONUS)) && i.effect.isForAreaType(e.areaType))) {
       return i.strength / 100;
     } else {
       return 0;
@@ -305,7 +328,7 @@ var _ = function () {
   };
   CastleFightItemContainer.prototype.getDefenceRangeValue = function (e, t) {
     var i = 0;
-    var o = e ? m.CastleEffectsHelper.getAccumulatedEquipmentBonusByEffectTypeForArea(e, g.EffectTypeEnum.EFFECT_TYPE_RANGE_BONUS, t.areaType).strength / 100 : 0;
+    var o = e ? _.CastleEffectsHelper.getAccumulatedEquipmentBonusByEffectTypeForArea(e, p.EffectTypeEnum.EFFECT_TYPE_RANGE_BONUS, t.areaType).strength / 100 : 0;
     var a = this.getAllianceDefenceBoost(t);
     for (var s = 0; s < this._items.length; s++) {
       var l = this._items[s];
@@ -318,7 +341,7 @@ var _ = function () {
   };
   CastleFightItemContainer.prototype.getDefenceMeleeValue = function (e, t) {
     var i = 0;
-    var o = e ? m.CastleEffectsHelper.getAccumulatedEquipmentBonusByEffectTypeForArea(e, g.EffectTypeEnum.EFFECT_TYPE_MELEE_BONUS, t.areaType).strength / 100 + 1 : 1;
+    var o = e ? _.CastleEffectsHelper.getAccumulatedEquipmentBonusByEffectTypeForArea(e, p.EffectTypeEnum.EFFECT_TYPE_MELEE_BONUS, t.areaType).strength / 100 + 1 : 1;
     var a = this.getAllianceDefenceBoost(t);
     for (var s = 0; s < this._items.length; s++) {
       var l = this._items[s];
@@ -336,7 +359,7 @@ var _ = function () {
       if (n.instanceOfClass(i.unitVO, "ToolUnitVO")) {
         var o = i.unitVO;
         e += o.offMeleeBonus * i.getAmount();
-        e += o.getBonusByEffect(d.ToolEffectType.ATTACK_BONUS) * i.getAmount();
+        e += o.getBonusByEffect(c.ToolEffectType.ATTACK_BONUS) * i.getAmount();
       }
     }
     return e;
@@ -348,7 +371,7 @@ var _ = function () {
       if (n.instanceOfClass(i.unitVO, "ToolUnitVO")) {
         var o = i.unitVO;
         e += o.offRangeBonus * i.getAmount();
-        e += o.getBonusByEffect(d.ToolEffectType.ATTACK_BONUS) * i.getAmount();
+        e += o.getBonusByEffect(c.ToolEffectType.ATTACK_BONUS) * i.getAmount();
       }
     }
     return e;
@@ -387,7 +410,7 @@ var _ = function () {
     for (var n = 0; n < this._items.length; n++) {
       var o = this._items[n];
       if (o.unitVO && (!e || o.unitVO.unitCategory != l.ClientConstCastle.UNIT_CATEGORY_TOOLS)) {
-        var a = t ? t.getEffectValue(g.EffectTypeEnum.EFFECT_TYPE_SPEED_BOOST_UNIT, -1, -1, o.unitVO.wodId) : 0;
+        var a = t ? t.getEffectValue(p.EffectTypeEnum.EFFECT_TYPE_SPEED_BOOST_UNIT, -1, -1, o.unitVO.wodId) : 0;
         var s = Math.ceil(o.unitVO.unitSpeed * ((100 + a) / 100));
         i = r.int(Math.min(i, s));
       }
@@ -489,7 +512,7 @@ var _ = function () {
     return false;
   };
   CastleFightItemContainer.prototype.exceedsSupportToolSlotLimit = function (e, t) {
-    return (!!e.isFree() || !e.isSameType(t)) && !!(t instanceof p.ToolUnitVO) && !!t.isSupportTool && !!this.containsUnitType(t);
+    return (!!e.isFree() || !e.isSameType(t)) && !!(t instanceof u.ToolUnitVO) && !!t.isSupportTool && !!this.containsUnitType(t);
   };
   Object.defineProperty(CastleFightItemContainer.prototype, "highlighted", {
     get: function () {
@@ -521,6 +544,6 @@ var _ = function () {
   };
   return CastleFightItemContainer;
 }();
-exports.CastleFightItemContainer = _;
-var m = require("./111.js");
-var f = require("./56.js");
+exports.CastleFightItemContainer = C;
+var _ = require("./110.js");
+var m = require("./56.js");

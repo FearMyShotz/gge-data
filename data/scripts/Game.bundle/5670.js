@@ -4,33 +4,66 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./6.js");
 var o = require("./22.js");
 var a = function () {
-  function XmlSeasonSettingVO() {
-    this.settingID = 0;
-    this.seasonPassEventEndPrice = 0;
-    this.seasonPassFullDiscount = 0;
-    this.seasonPassSingleDiscount = 0;
+  function XmlSeasonPromotionRewardVO() {
+    this._id = 0;
+    this._rewardSetId = 0;
+    this._rankId = 0;
+    this._rewardIds = [];
+    this._needsSeasonPass = false;
   }
-  XmlSeasonSettingVO.prototype.parseXml = function (e) {
-    this.settingID = n.int(o.CastleXMLUtils.getIntAttribute("settingID", e, -1));
-    this.seasonPassPromotionPrice = n.int(o.CastleXMLUtils.getIntAttribute("seasonPassPromotionPrice", e));
-    this.seasonPassEventEndPrice = n.int(o.CastleXMLUtils.getIntAttribute("seasonPassEventEndPrice", e));
-    this.seasonPassFullDiscount = n.int(o.CastleXMLUtils.getIntAttribute("seasonPassFullDiscount", e));
-    this.seasonPassSingleDiscount = n.int(o.CastleXMLUtils.getIntAttribute("seasonPassSingleDiscount", e));
+  XmlSeasonPromotionRewardVO.prototype.parseXml = function (e) {
+    this._id = n.int(o.CastleXMLUtils.getIntAttribute("id", e, -1));
+    this._rewardSetId = n.int(o.CastleXMLUtils.getIntAttribute("rewardSetID", e, -1));
+    this._rankId = n.int(o.CastleXMLUtils.getIntAttribute("rankID", e, -1));
+    this._rewardIds = o.CastleXMLUtils.createIntListFromAttribute("rewardIDs", e);
+    this._needsSeasonPass = o.CastleXMLUtils.getBooleanAttribute("needsSeasonPass", e);
+    this._leaguetypeID = o.CastleXMLUtils.getIntAttribute("leaguetypeID", e, 0);
   };
-  Object.defineProperty(XmlSeasonSettingVO.prototype, "seasonPassEventSalePrice", {
+  Object.defineProperty(XmlSeasonPromotionRewardVO.prototype, "id", {
     get: function () {
-      return Math.ceil(this.seasonPassEventEndPrice * (1 - this.seasonPassSingleDiscount / 100));
+      return this._id;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSeasonSettingVO.prototype, "seasonPassPromotionSalePrice", {
+  Object.defineProperty(XmlSeasonPromotionRewardVO.prototype, "rewardSetId", {
     get: function () {
-      return Math.ceil(this.seasonPassPromotionPrice * (1 - this.seasonPassSingleDiscount / 100));
+      return this._rewardSetId;
     },
     enumerable: true,
     configurable: true
   });
-  return XmlSeasonSettingVO;
+  Object.defineProperty(XmlSeasonPromotionRewardVO.prototype, "rankId", {
+    get: function () {
+      return this._rankId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlSeasonPromotionRewardVO.prototype, "rewardIds", {
+    get: function () {
+      return this._rewardIds;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlSeasonPromotionRewardVO.prototype, "needsSeasonPass", {
+    get: function () {
+      return this._needsSeasonPass;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlSeasonPromotionRewardVO.prototype, "leaguetypeID", {
+    get: function () {
+      return this._leaguetypeID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  XmlSeasonPromotionRewardVO.prototype.matchesLeagueType = function (e) {
+    return this._leaguetypeID == 0 || this._leaguetypeID == e;
+  };
+  return XmlSeasonPromotionRewardVO;
 }();
-exports.XmlSeasonSettingVO = a;
+exports.XmlSeasonPromotionRewardVO = a;

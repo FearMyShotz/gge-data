@@ -2,38 +2,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./4.js");
-var r = require("./42.js");
-var l = function (e) {
-  function CastleTreasureCompleteDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleTreasureCompleteDialog.NAME) || this;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./1.js");
+var c = require("./4.js");
+var u = function (e) {
+  function OpenWhaleChestOfferCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleTreasureCompleteDialog, e);
-  CastleTreasureCompleteDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_ok]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_treasureMap_mapComplete_title")).verticalAlign = r.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_treasureMap_mapComplete_copy"));
-  };
-  CastleTreasureCompleteDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    c.CrestHelper.setCrestGraphics(this.dialogDisp.bg.crest, s.CastleModel.userData.playerCrest);
-  };
-  CastleTreasureCompleteDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-        this.hide();
+  n.__extends(OpenWhaleChestOfferCommand, e);
+  OpenWhaleChestOfferCommand.prototype.execute = function (t = null) {
+    e.prototype.execute.call(this, t);
+    var i = t.offerID;
+    var n = c.CastleModel.privateOfferData.getOfferById(i);
+    if (n) {
+      s.CommandController.instance.executeCommand(d.IngameClientCommands.OPEN_PRIVATE_OFFER_DIALOG_COMMAND, n);
+    } else {
+      p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.PrivateOfferFailedStandardDialog, new a.BasicStandardOkDialogProperties(o.BasicModel.languageData.getTextById("dungeonTreasureChestOfferFailed_title"), o.BasicModel.languageData.getTextById("dungeonTreasureChestOfferFailed_copy")));
     }
   };
-  CastleTreasureCompleteDialog.__initialize_static_members = function () {
-    CastleTreasureCompleteDialog.NAME = "CastleTreasureComplete";
-  };
-  return CastleTreasureCompleteDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleTreasureCompleteDialog = l;
-var c = require("./61.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList");
-l.__initialize_static_members();
+  return OpenWhaleChestOfferCommand;
+}(r.SimpleCommand);
+exports.OpenWhaleChestOfferCommand = u;
+var d = require("./29.js");
+var p = require("./9.js");
+var h = require("./564.js");
+l.classImplementsInterfaces(u, "ISimpleCommand");

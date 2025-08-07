@@ -2,127 +2,91 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./102.js");
-var l = require("./4.js");
-var c = require("./8.js");
-var u = function (e) {
-  function CastleAllianceDialogTreasury(t) {
-    var i = this;
-    i._sublayers = new Map();
-    i._tabButtons = new Map();
-    i._currentTab = CastleAllianceDialogTreasury.TAB_STORAGE;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./3.js");
+var c = require("./1381.js");
+var u = require("./4.js");
+var d = require("./180.js");
+var p = require("./379.js");
+var h = function (e) {
+  function CastleChangeAnouncementDialog() {
     CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).init();
-    return i;
+    return e.call(this, CastleChangeAnouncementDialog.NAME) || this;
   }
-  n.__extends(CastleAllianceDialogTreasury, e);
-  CastleAllianceDialogTreasury.prototype.init = function () {
-    this._tabButtons = new Map();
-    this.initTabButton(CastleAllianceDialogTreasury.TAB_STORAGE, this.subLayerDisp.btn_tab_storage, "dialog_alliance_treasury_treasury_header");
-    this.initTabButton(CastleAllianceDialogTreasury.TAB_BOOSTER, this.subLayerDisp.btn_tab_booster, "dialog_alliance_treasury_alliBoosters_header");
-    this.initTabButton(CastleAllianceDialogTreasury.TAB_SUBSCRIPTIONS, this.subLayerDisp.btn_tab_subscriptions, "dialog_alliance_treasury_subscription_header");
-    c.ButtonHelper.enableButton(this.subLayerDisp.btn_tab_subscriptions, l.CastleModel.subscriptionData.isFeatureEnabled());
-    this._sublayers = new Map();
-    this._sublayers.set(CastleAllianceDialogTreasury.TAB_STORAGE, new h.CastleAllianceDialogTreasuryStorage(this.subLayerDisp.tab_storage));
-    this._sublayers.set(CastleAllianceDialogTreasury.TAB_BOOSTER, new p.CastleAllianceDialogTreasuryBooster(this.subLayerDisp.tab_booster));
-    this._sublayers.set(CastleAllianceDialogTreasury.TAB_SUBSCRIPTIONS, new g.CastleAllianceDialogTreasurySubscriptions(this.subLayerDisp.tab_subscriptions));
-    if (this._sublayers != null) {
-      for (var e = 0, t = Array.from(this._sublayers.values()); e < t.length; e++) {
-        t[e].onHide();
+  n.__extends(CastleChangeAnouncementDialog, e);
+  CastleChangeAnouncementDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_no, this.dialogDisp.btn_yes]);
+  };
+  CastleChangeAnouncementDialog.prototype.showLoaded = function (t = null) {
+    this._scrollComponent ||= new g.CastleTextScrollComponent(new d.CastleTextScrollVO(this.dialogDisp.txt_description, this.dialogDisp.mc_scrollHandle.btn_up, this.dialogDisp.mc_scrollHandle.btn_down, this.dialogDisp.mc_scrollHandle.btn_slider, this.dialogDisp.mc_scrollHandle.mc_sliderLine, [this.dialogDisp.mc_scrollHandle]));
+    this._scrollComponent.invisibleOnFit = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new r.LocalizedTextVO("dialog_alliance_changeAnouncement_copy"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_descTitle, new r.LocalizedTextVO("dialog_alliance_changeAnouncement_new"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.LocalizedTextVO("dialog_alliance_changeAnouncement"));
+    this.itxt_description = this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new l.TextVO(u.CastleModel.allianceData.myAllianceVO.anouncement));
+    this.itxt_description.maxChars = s.AllianceConst.DESCRIPTION_MAX_LENGTH;
+    this.itxt_description.selectable = true;
+    this._scrollComponent.scrollToStart();
+    new p.CastleFullScreenInputBlocker(this.dialogDisp.mc_block);
+    this._scrollComponent.onShow();
+    e.prototype.showLoaded.call(this, t);
+  };
+  CastleChangeAnouncementDialog.prototype.hideLoaded = function (t = null) {
+    this._scrollComponent.onHide();
+    e.prototype.hideLoaded.call(this, t);
+  };
+  CastleChangeAnouncementDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+      case this.dialogDisp.btn_no:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_yes:
+        this.sendDescription();
+        this.hide();
+    }
+  };
+  CastleChangeAnouncementDialog.prototype.onCursorOver = function (t) {
+    e.prototype.onCursorOver.call(this, t);
+    if (t.target == this.dialogDisp.txt_description) {
+      this.layoutManager.customCursor.hideCustomCursor();
+    }
+  };
+  CastleChangeAnouncementDialog.prototype.onCursorOut = function (t) {
+    e.prototype.onCursorOut.call(this, t);
+    if (t.target == this.dialogDisp.txt_description) {
+      this.layoutManager.customCursor.showCustomCursor();
+    }
+  };
+  CastleChangeAnouncementDialog.prototype.sendDescription = function () {
+    if (this.dialogProperties.allianceVO.anouncement != this.itxt_description.text) {
+      if (this.itxt_description.text == "") {
+        u.CastleModel.smartfoxClient.sendCommandVO(new c.C2SAllianceChangeDescriptionVO(o.TextValide.getValideSmartFoxJSONTextMessage(""), 0));
+      } else if (o.TextValide.isSmartFoxValide(this.itxt_description.text)) {
+        u.CastleModel.smartfoxClient.sendCommandVO(new c.C2SAllianceChangeDescriptionVO(o.TextValide.getValideSmartFoxJSONTextMessage(this.itxt_description.text), 0));
+      } else {
+        u.CastleModel.smartfoxClient.sendCommandVO(new c.C2SAllianceChangeDescriptionVO(o.TextValide.getCleanChatText(this.itxt_description.text), 0));
       }
     }
   };
-  CastleAllianceDialogTreasury.prototype.initTabButton = function (e, t, i) {
-    c.ButtonHelper.initBasicButton(t, 1.015);
-    this.textFieldManager.registerTextField(t.mc_selected.txt_text, new s.LocalizedTextVO(i)).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(t.mc_default.txt_text, new s.LocalizedTextVO(i)).autoFitToBounds = true;
-    this._tabButtons.set(e, t);
-  };
-  CastleAllianceDialogTreasury.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    l.CastleModel.allianceData.addEventListener(r.CastleAllianceDataEvent.MY_ALLIANCEDATA_UPDATED, this.bindFunction(this.onAllianceDataUpdate));
-    if (!this.getSublayer(this._currentTab).isShown) {
-      this.getSublayer(this._currentTab).onShow();
-    }
-    this.updateTabButtons();
-  };
-  CastleAllianceDialogTreasury.prototype.hide = function () {
-    this.getSublayer(this._currentTab).onHide();
-    l.CastleModel.allianceData.removeEventListener(r.CastleAllianceDataEvent.MY_ALLIANCEDATA_UPDATED, this.bindFunction(this.onAllianceDataUpdate));
-    e.prototype.hide.call(this);
-  };
-  CastleAllianceDialogTreasury.prototype.showHelp = function () {
-    d.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("help_allianceTreasury"));
-  };
-  CastleAllianceDialogTreasury.prototype.selectButton = function (e, t) {
-    e.mc_selected.visible = t;
-    e.mc_default.visible = !t;
-  };
-  CastleAllianceDialogTreasury.prototype.changeTab = function (e) {
-    this._currentTab = e;
-    if (this._sublayers != null) {
-      for (var t = 0, i = Array.from(this._sublayers.values()); t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.isShown) {
-          n.onHide();
-        }
-      }
-    }
-    this.getSublayer(this._currentTab).onShow();
-    this.updateTabButtons();
-  };
-  CastleAllianceDialogTreasury.prototype.updateTabButtons = function () {
-    if (this._tabButtons != null) {
-      for (var e = 0, t = Array.from(this._tabButtons.values()); e < t.length; e++) {
-        var i = t[e];
-        this.selectButton(i, false);
-      }
-    }
-    this.selectButton(this._tabButtons.get(this._currentTab), true);
-  };
-  CastleAllianceDialogTreasury.prototype.getSublayer = function (e) {
-    return this._sublayers.get(e);
-  };
-  CastleAllianceDialogTreasury.prototype.onClick = function (t) {
-    if (c.ButtonHelper.isButtonEnabled(t.target) && (e.prototype.onClick.call(this, t), this._tabButtons != null)) {
-      for (var i = 0, n = Array.from(this._tabButtons.keys()); i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          var a = this._tabButtons.get(o);
-          if (t.target == a) {
-            this.changeTab(o);
-            break;
-          }
-        }
-      }
-    }
-  };
-  CastleAllianceDialogTreasury.prototype.onAllianceDataUpdate = function (e) {
-    if (l.CastleModel.userData.isInAlliance) {
-      var t = this.getSublayer(this._currentTab);
-      if (t) {
-        t.update();
-      }
-    }
-  };
-  Object.defineProperty(CastleAllianceDialogTreasury.prototype, "allianceInfoVO", {
+  Object.defineProperty(CastleChangeAnouncementDialog.prototype, "dialogProperties", {
     get: function () {
-      return this._params[0];
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleAllianceDialogTreasury.TAB_STORAGE = "tab_storage";
-  CastleAllianceDialogTreasury.TAB_BOOSTER = "tab_booster";
-  CastleAllianceDialogTreasury.TAB_SUBSCRIPTIONS = "tab_subscriptions";
-  return CastleAllianceDialogTreasury;
-}(require("./34.js").CastleDialogSubLayer);
-exports.CastleAllianceDialogTreasury = u;
-var d = require("./9.js");
-var p = require("./2493.js");
-var h = require("./2498.js");
-var g = require("./2501.js");
-o.classImplementsInterfaces(u, "ICollectableRendererList", "ISublayer");
+  CastleChangeAnouncementDialog.__initialize_static_members = function () {
+    CastleChangeAnouncementDialog.NAME = "CastleChangeDescriptionEx";
+  };
+  return CastleChangeAnouncementDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleChangeAnouncementDialog = h;
+var g = require("./182.js");
+a.classImplementsInterfaces(h, "ICollectableRendererList");
+h.__initialize_static_members();

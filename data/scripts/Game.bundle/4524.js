@@ -3,71 +3,49 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./52.js");
-var s = require("./1045.js");
-var r = function (e) {
-  function CastleSeaQueenEventDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleSeaQueenEventDialog.NAME) || this;
+var a = require("./51.js");
+var s = require("./166.js");
+var r = require("./849.js");
+var l = function (e) {
+  function SeaqueenEventVO() {
+    var t = e.call(this) || this;
+    t.preloadedAssets = ["Event4TreasureMapShared1", "Event4TreasureMapShared2", "Event4TreasureMapShared3", "Event4TreasureMapShared4", "Event4TreasureMapShared5", "Event4TreasureMapShared6", "Event4TreasureMapShared7", "Event4TreasureMapShared8", "Event4TreasureMapShared9", "Event4TreasureMapShared10", "Event4TreasureMapShared11", "Event4TreasureMapShared12", "Event4TreasureMapShared13", "Event4TreasureMapShared14"];
+    t.hasFrame = false;
+    return t;
   }
-  n.__extends(CastleSeaQueenEventDialog, e);
-  Object.defineProperty(CastleSeaQueenEventDialog.prototype, "descriptionText", {
-    get: function () {
-      return "dialog_seasonEvent_4_camp_desc";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastleSpecialCurrencyMerchantDialog.prototype, "descriptionText").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSeaQueenEventDialog.prototype, "detailedDescriptionText", {
-    get: function () {
-      return "dialog_seasonEvent_4_camp_desc_detail";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastleSpecialCurrencyMerchantDialog.prototype, "detailedDescriptionText").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSeaQueenEventDialog.prototype, "merchantScrollItem", {
-    get: function () {
-      return u.CastleSeaQueenMerchantScrollItem;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastleSpecialCurrencyMerchantDialog.prototype, "merchantScrollItem").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSeaQueenEventDialog.prototype, "isEvent", {
-    get: function () {
-      return true;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastleSpecialCurrencyMerchantDialog.prototype, "isEvent").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSeaQueenEventDialog.prototype, "userSpecialCurrencies", {
-    get: function () {
-      var e = [];
-      e.push(new c.CollectableTypeVO(l.CollectableEnum.GENERIC_CURRENCY, a.ClientConstCurrency.ID_PEARL_RELIC));
-      return e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleSeaQueenEventDialog.__initialize_static_members = function () {
-    CastleSeaQueenEventDialog.NAME = "CastleSeaqueenEvent";
+  n.__extends(SeaqueenEventVO, e);
+  SeaqueenEventVO.prototype.parseParamObject = function (t) {
+    if (t.UL && t.UL.MID) {
+      this._mapID = t.UL.MID;
+    }
+    e.prototype.parseParamObject.call(this, t);
   };
-  return CastleSeaQueenEventDialog;
-}(s.CastleSpecialCurrencyMerchantDialog);
-exports.CastleSeaQueenEventDialog = r;
-var l = require("./12.js");
-var c = require("./74.js");
-var u = require("./4525.js");
-o.classImplementsInterfaces(r, "ICollectableRendererList");
-r.__initialize_static_members();
+  SeaqueenEventVO.prototype.openMerchantDialog = function (e, t) {
+    this.executeOpenDialog(e, c.CastleSeaQueenEventDialog, new s.CastleGenericMerchantDialogProperties(this, t));
+  };
+  Object.defineProperty(SeaqueenEventVO.prototype, "eventBuildingWOD", {
+    get: function () {
+      return SeaqueenEventVO.EVENT_BUILDING_WOD_ID;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.ASeasonEventVO.prototype, "eventBuildingWOD").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SeaqueenEventVO.prototype, "eventFullsizeCharacterName", {
+    get: function () {
+      return a.ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SEA_QUEEN;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.ASeasonEventVO.prototype, "eventFullsizeCharacterName").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SeaqueenEventVO.EVENT_BUILDING_WOD_ID = 396;
+  return SeaqueenEventVO;
+}(r.ASeasonEventVO);
+exports.SeaqueenEventVO = l;
+var c = require("./4526.js");
+o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");

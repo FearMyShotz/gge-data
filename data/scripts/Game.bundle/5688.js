@@ -4,14 +4,14 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function TutorialConfirmDefenceEquippedCommand() {
+  function TutorialConfirmCollectTaxCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TutorialConfirmDefenceEquippedCommand, e);
-  TutorialConfirmDefenceEquippedCommand.prototype.getTrackOnQuestConfirmID = function () {
-    return "tracking s_090_140_dialog_confirmed";
+  n.__extends(TutorialConfirmCollectTaxCommand, e);
+  TutorialConfirmCollectTaxCommand.prototype.getTrackOnQuestConfirmID = function () {
+    return "040_010_dialog_confirmed";
   };
-  return TutorialConfirmDefenceEquippedCommand;
+  return TutorialConfirmCollectTaxCommand;
 }(require("./253.js").TutorialBasicQuestStarterActionCommand);
-exports.TutorialConfirmDefenceEquippedCommand = a;
+exports.TutorialConfirmCollectTaxCommand = a;
 o.classImplementsInterfaces(a, "ISimpleCommand");

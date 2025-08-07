@@ -1,64 +1,62 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = function (e) {
-  function IsoDataObjectGroupSurrounding() {
-    return e !== null && e.apply(this, arguments) || this;
+var n = function () {
+  function IsoMovementWorkPlaces(e) {
+    this._workPlaces = new Map();
+    this._isoData = e;
   }
-  n.__extends(IsoDataObjectGroupSurrounding, e);
-  IsoDataObjectGroupSurrounding.prototype.initObjects = function () {
-    var e = new r.IsoGeneratorSurroundings();
-    this._list = e.build();
-    if (this.list != null) {
-      for (var t = 0, i = this.list; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && a.instanceOfClass(n, "AIsoObjectVO")) {
-          var o = n;
-          o.init(this.isoData);
-          o.updateData();
-        }
+  IsoMovementWorkPlaces.prototype.destroy = function () {
+    this._workPlaces.clear();
+  };
+  IsoMovementWorkPlaces.prototype.reinit = function () {
+    this._workPlaces = this._workPlaces || new Map();
+    var e = this.isoData.objects.provider.getObjectByType(o.IsoObjectEnum.WOOD_RESOURCE_FIELD);
+    this._workPlaces.set(o.IsoObjectEnum.MOVEMENT_WOOD_CUTTER, Array(e.spawnPoints.length).fill(false));
+    var t = this.isoData.objects.provider.getObjectByType(o.IsoObjectEnum.STONE_RESOURCE_FIELD);
+    this._workPlaces.set(o.IsoObjectEnum.MOVEMENT_STONE_CUTTER, Array(t.getWorkPointsByIndex(0).length * t.fieldAmount).fill(false));
+    var i = this.isoData.objects.provider.getObjectByType(o.IsoObjectEnum.FOOD_RESOURCE_FIELD);
+    this._workPlaces.set(o.IsoObjectEnum.MOVEMENT_FARMER, Array(i.getWorkPointsByIndex(0).length * i.fieldAmount).fill(false));
+  };
+  IsoMovementWorkPlaces.prototype.markWorkPlace = function (e, t, i) {
+    this._workPlaces.get(e)[t] = i;
+  };
+  IsoMovementWorkPlaces.prototype.hasFreeSlot = function (e) {
+    if (!this._workPlaces.has(e)) {
+      return false;
+    }
+    for (var t = this._workPlaces.get(e), i = 0; i < t.length; ++i) {
+      if (!t[i]) {
+        return true;
       }
     }
-    this.isoData.objects.invalidateCompleteObjectsList();
+    return false;
   };
-  IsoDataObjectGroupSurrounding.prototype.getStoneField = function () {
-    return this.getSurroundingByClass(c.StoneResourceFieldVO);
-  };
-  IsoDataObjectGroupSurrounding.prototype.getWoodField = function () {
-    return this.getSurroundingByClass(u.WoodResourceFieldVO);
-  };
-  IsoDataObjectGroupSurrounding.prototype.getFoodField = function () {
-    return this.getSurroundingByClass(l.FoodResourceFieldVO);
-  };
-  IsoDataObjectGroupSurrounding.prototype.getSurroundingByClass = function (e) {
-    if (this.list != null) {
-      for (var t = 0, i = this.list; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && a.instanceOfClass(n, o.getQualifiedClassName(e))) {
-          return n;
-        }
+  IsoMovementWorkPlaces.prototype.getIndexOfFreeSlot = function (e) {
+    if (!this._workPlaces.has(e)) {
+      return -1;
+    }
+    for (var t = this._workPlaces.get(e), i = [], n = 0; n < t.length; ++n) {
+      if (!t[n]) {
+        i.push(n);
       }
     }
-  };
-  IsoDataObjectGroupSurrounding.prototype.getResourceCarts = function () {
-    var e = [];
-    if (this.list != null) {
-      for (var t = 0, i = this.list; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && a.instanceOfClass(n, "ResourceCartSurroundingsVO")) {
-          e.push(n);
-        }
-      }
+    if (i.length <= 0) {
+      return -1;
+    } else {
+      return s.int(i[a.ClientConstUtils.getRandomInt(0, i.length - 1)]);
     }
-    return e;
   };
-  return IsoDataObjectGroupSurrounding;
-}(require("./358.js").AIsoDataObjectGroupSimpleList);
-exports.IsoDataObjectGroupSurrounding = s;
-var r = require("./2765.js");
-var l = require("./1004.js");
-var c = require("./1005.js");
-var u = require("./1006.js");
+  Object.defineProperty(IsoMovementWorkPlaces.prototype, "isoData", {
+    get: function () {
+      return this._isoData;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return IsoMovementWorkPlaces;
+}();
+exports.IsoMovementWorkPlaces = n;
+var o = require("./80.js");
+var a = require("./55.js");
+var s = require("./6.js");

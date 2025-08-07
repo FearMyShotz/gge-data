@@ -1,36 +1,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./6.js");
-var o = function () {
-  function SamuraiDaimyoContractProgressVO(e = null) {
-    this._id = 0;
-    this._points = 0;
-    if (e) {
-      this.parseServerData(e);
-    }
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SGetDaimyoWarEffortsEventVO() {
+    return e.call(this) || this;
   }
-  SamuraiDaimyoContractProgressVO.prototype.parseServerData = function (e) {
-    var t = e;
-    if (t) {
-      this._id = n.int(t[0]);
-      this._points = n.int(t[1]);
-    }
+  n.__extends(C2SGetDaimyoWarEffortsEventVO, e);
+  C2SGetDaimyoWarEffortsEventVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_GET_DAIMYO_WAR_EFFORTS;
   };
-  Object.defineProperty(SamuraiDaimyoContractProgressVO.prototype, "id", {
-    get: function () {
-      return this._id;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SamuraiDaimyoContractProgressVO.prototype, "points", {
-    get: function () {
-      return this._points;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return SamuraiDaimyoContractProgressVO;
-}();
-exports.SamuraiDaimyoContractProgressVO = o;
+  return C2SGetDaimyoWarEffortsEventVO;
+}(o.BasicCommandVO);
+exports.C2SGetDaimyoWarEffortsEventVO = s;

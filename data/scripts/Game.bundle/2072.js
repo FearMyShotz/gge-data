@@ -5,23 +5,17 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SRemoveFromDistrictVO(t, i, n, o) {
-    var a = this;
-    a.OID = 0;
-    a.X = 0;
-    a.Y = 0;
-    a.R = 0;
+  function C2SIsoStoreObjectVO(t) {
+    var i = this;
+    i.OID = 0;
     CONSTRUCTOR_HACK;
-    (a = e.call(this) || this).OID = t;
-    a.X = i;
-    a.Y = n;
-    a.R = o;
-    return a;
+    (i = e.call(this) || this).OID = t;
+    return i;
   }
-  n.__extends(C2SRemoveFromDistrictVO, e);
-  C2SRemoveFromDistrictVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_REMOVE_FROM_DISTRICT;
+  n.__extends(C2SIsoStoreObjectVO, e);
+  C2SIsoStoreObjectVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_STORE_OBJECT;
   };
-  return C2SRemoveFromDistrictVO;
+  return C2SIsoStoreObjectVO;
 }(o.BasicCommandVO);
-exports.C2SRemoveFromDistrictVO = s;
+exports.C2SIsoStoreObjectVO = s;

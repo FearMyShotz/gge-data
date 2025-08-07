@@ -1,157 +1,79 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function IsoDataObjects(e) {
-    this._groups = new Map();
-    this._completeTempObjectList = [];
-    this._isCompleteObjectListValid = false;
-    this._isoData = e;
-    this._provider = new s.IsoDataObjectsProvider(this);
-    this._groups = a.IsoHelper.data.createObjectGroupDic(false);
-    if (this.groups != null) {
-      for (var t = 0, i = Array.from(this.groups.values()); t < i.length; t++) {
-        i[t].init(e);
-      }
-    }
+var n = createjs.Point;
+var o = createjs.Rectangle;
+var a = function () {
+  function IsoDataGridOrigins(e) {
+    this._originDic = new Map();
+    this._groundStartPos = new n();
+    this._groundEndPos = new n();
+    this._groundDimension = new n();
+    this._grid = e;
   }
-  IsoDataObjects.prototype.invalidateCompleteObjectsList = function () {
-    this._isCompleteObjectListValid = false;
-    if (this._completeTempObjectList.length > 0) {
-      this._completeTempObjectList.length = 0;
-    }
+  IsoDataGridOrigins.prototype.update = function () {
+    this.updateGroundInfos();
+    this.updateOriginPositions();
   };
-  IsoDataObjects.prototype.destroy = function () {
-    if (this.groups != null) {
-      for (var e = 0, t = Array.from(this.groups.values()); e < t.length; e++) {
-        t[e].destroy();
-      }
-    }
-    this._groups = null;
-    this._completeTempObjectList = null;
-  };
-  IsoDataObjects.prototype.getGroupByType = function (e) {
-    return this.groups.get(e);
-  };
-  IsoDataObjects.prototype.getCompleteObjectsList = function () {
-    if (!this._isCompleteObjectListValid) {
-      if (this.groups != null) {
-        for (var e = 0, t = Array.from(this.groups.values()); e < t.length; e++) {
-          t[e].fillInCompleteList(this._completeTempObjectList);
+  IsoDataGridOrigins.prototype.updateGroundInfos = function () {
+    this._groundStartPos.x = this._groundStartPos.y = Number.MAX_VALUE;
+    this._groundEndPos.x = this._groundEndPos.y = -Number.MAX_VALUE;
+    for (var e = 0, t = this.grid.isoData.objects.groundObjects.list; e < t.length; e++) {
+      var i = t[e];
+      if (i !== undefined) {
+        if (i.x < this._groundStartPos.x) {
+          this._groundStartPos.x = i.x;
+        }
+        if (i.y < this._groundStartPos.y) {
+          this._groundStartPos.y = i.y;
+        }
+        if (i.x2 > this._groundEndPos.x) {
+          this._groundEndPos.x = i.x2;
+        }
+        if (i.y2 > this._groundEndPos.y) {
+          this._groundEndPos.y = i.y2;
         }
       }
-      this._isCompleteObjectListValid = true;
     }
-    return this._completeTempObjectList;
+    this._groundDimension.x = this._groundEndPos.x - this._groundStartPos.x + 1;
+    this._groundDimension.y = this._groundEndPos.y - this._groundStartPos.y + 1;
   };
-  Object.defineProperty(IsoDataObjects.prototype, "background", {
+  IsoDataGridOrigins.prototype.updateOriginPositions = function () {
+    this._originDic = new Map();
+    this._originDic.set(s.IsoGridOriginEnum.NORMAL, new n());
+    this._originDic.set(s.IsoGridOriginEnum.TOP_CORNER, new n(this._groundStartPos.x, this._groundStartPos.y));
+    this._originDic.set(s.IsoGridOriginEnum.BOTTOM_CORNER, new n(this._groundEndPos.x, this._groundEndPos.y));
+    this._originDic.set(s.IsoGridOriginEnum.LEFT_CORNER, new n(this._groundStartPos.x, this._groundEndPos.y));
+    this._originDic.set(s.IsoGridOriginEnum.RIGHT_CORNER, new n(this._groundEndPos.x, this._groundStartPos.y));
+  };
+  IsoDataGridOrigins.prototype.getOriginPos = function (e) {
+    return this.originDic.get(e);
+  };
+  IsoDataGridOrigins.prototype.getOriginRect = function () {
+    return new o(this._groundStartPos.x, this._groundStartPos.y, this._groundDimension.x - 1, this._groundDimension.y - 1);
+  };
+  Object.defineProperty(IsoDataGridOrigins.prototype, "grid", {
     get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.BACKGROUND);
+      return this._grid;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoDataObjects.prototype, "innerBuildings", {
+  Object.defineProperty(IsoDataGridOrigins.prototype, "originDic", {
     get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.INNER_BUILDINGS);
+      return this._originDic;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoDataObjects.prototype, "eventBuildings", {
+  Object.defineProperty(IsoDataGridOrigins.prototype, "groundDimension", {
     get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.EVENT_BUILDINGS);
+      return this._groundDimension;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoDataObjects.prototype, "defences", {
-    get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.DEFENCE);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "fixedPositions", {
-    get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.FIXED_POSITIONS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "groundObjects", {
-    get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.GROUNDS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "surroundings", {
-    get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.SURROUNDINGS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "expansions", {
-    get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.EXPANSIONS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "movements", {
-    get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.MOVEMENTS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "treasureChests", {
-    get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.TREASURE_CHESTS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "judgements", {
-    get: function () {
-      return this.getGroupByType(o.IsoObjectGroupEnum.JUDGEMENTS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "isoData", {
-    get: function () {
-      return this._isoData;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "groups", {
-    get: function () {
-      return this._groups;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "provider", {
-    get: function () {
-      return this._provider;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoDataObjects.prototype, "completeTempObjectList", {
-    get: function () {
-      return this._completeTempObjectList;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IsoDataObjects;
+  return IsoDataGridOrigins;
 }();
-exports.IsoDataObjects = n;
-var o = require("./143.js");
-var a = require("./46.js");
-var s = require("./5251.js");
+exports.IsoDataGridOrigins = a;
+var s = require("./105.js");

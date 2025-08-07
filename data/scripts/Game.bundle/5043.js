@@ -5,35 +5,35 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function KLICommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function KBPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(KLICommand, e);
-  Object.defineProperty(KLICommand.prototype, "cmdId", {
+  n.__extends(KBPCommand, e);
+  Object.defineProperty(KBPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_SEASON_INFO;
+      return s.ClientConstSF.S2C_BUY_SEASON_PASS;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  KLICommand.prototype.executeCommand = function (e, t) {
+  KBPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.seasonLeagueData.server.parseKLI(i);
+        c.CastleBasicController.getInstance().dispatchEvent(new u.SeasonLeagueEvent(u.SeasonLeagueEvent.ON_PASS_SEASON_BOUGHT));
         return true;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return KLICommand;
-}(l.CastleCommand);
-exports.KLICommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return KBPCommand;
+}(r.CastleCommand);
+exports.KBPCommand = l;
+var c = require("./15.js");
+var u = require("./174.js");
+o.classImplementsInterfaces(l, "IExecCommand");

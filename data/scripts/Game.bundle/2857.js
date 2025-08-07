@@ -4,11 +4,14 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function FoodDistrictBuildingVO() {
-    return e.call(this) || this;
+  function FirepalaceBuildingVO() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FoodDistrictBuildingVO, e);
-  return FoodDistrictBuildingVO;
-}(require("./446.js").ADistrictBuildingVO);
-exports.FoodDistrictBuildingVO = a;
+  n.__extends(FirepalaceBuildingVO, e);
+  FirepalaceBuildingVO.prototype.getVisualClassName = function () {
+    return "Palace_Building_Level1";
+  };
+  return FirepalaceBuildingVO;
+}(require("./642.js").APalaceBuildingVO);
+exports.FirepalaceBuildingVO = a;
 o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");

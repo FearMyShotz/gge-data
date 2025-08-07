@@ -3,19 +3,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./341.js");
+var a = require("./145.js");
 var s = function (e) {
-  function TreasurechestHighSurroundingsVE() {
+  function SlumBuildingPartCharacterVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TreasurechestHighSurroundingsVE, e);
-  TreasurechestHighSurroundingsVE.prototype.onMouseClick = function () {
-    var e = this.treasureChestBuildingVO.offerVO;
-    var t = e.getVisualComponentByName("offerDialog");
-    r.CastleComponent.dialogHandler.registerDefaultDialogs(t.dialogName, new a.CastlePrivateOfferDialogProperties(e));
+  n.__extends(SlumBuildingPartCharacterVE, e);
+  SlumBuildingPartCharacterVE.prototype.createDisp = function () {
+    var e = "Slumdog_Surroundings_" + this.vo.getAreaKingdomName();
+    this.dispComponent.addClip(this.loadExternalClip(e, e));
   };
-  return TreasurechestHighSurroundingsVE;
-}(require("./1615.js").ATreasurechestSurroundingsVE);
-exports.TreasurechestHighSurroundingsVE = s;
-var r = require("./14.js");
+  SlumBuildingPartCharacterVE.prototype.createAdditionalClips = function () {
+    if (this.isoRenderer.isoData.areaData.isMyArea) {
+      this.additionalClips.addClips(a.IsoAdditionalClipEnum.EXCLAMATION_MARK3);
+    }
+  };
+  SlumBuildingPartCharacterVE.prototype.getScreenPos = function () {
+    return this.parentVE.isoRenderer.camera.getScreenPosByGridPosDelta(this.partVO.posOffset);
+  };
+  SlumBuildingPartCharacterVE.prototype.onAllDispClipsLoaded = function () {
+    e.prototype.onAllDispClipsLoaded.call(this);
+    this.parentVE.updateDispBounds();
+  };
+  return SlumBuildingPartCharacterVE;
+}(require("./1614.js").ASlumBuildingPartVE);
+exports.SlumBuildingPartCharacterVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

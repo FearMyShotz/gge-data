@@ -1,29 +1,50 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./855.js");
-var s = function (e) {
-  function EffectValueUnitSpeedBoost() {
-    return e.call(this) || this;
-  }
-  n.__extends(EffectValueUnitSpeedBoost, e);
-  Object.defineProperty(EffectValueUnitSpeedBoost.prototype, "textReplacements", {
+var n = require("./1.js");
+var o = require("./409.js");
+var a = function () {
+  function EffectValueTools() {}
+  EffectValueTools.prototype.parseFromValueString = function (e) {
+    this._tools = e.split("#");
+    return this;
+  };
+  EffectValueTools.prototype.parseFromValueArray = function (e) {
+    this._tools = e;
+    return this;
+  };
+  EffectValueTools.prototype.add = function (e, t) {
+    this._tools = e.rawValues;
+    return this;
+  };
+  Object.defineProperty(EffectValueTools.prototype, "textReplacements", {
     get: function () {
-      return [EffectValueUnitSpeedBoost.SHOWN_BOOSTUNITSPEED_VALUE];
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.EffectValueWodID.prototype, "textReplacements").set.call(this, e);
+      return [""];
     },
     enumerable: true,
     configurable: true
   });
-  EffectValueUnitSpeedBoost.__initialize_static_members = function () {
-    EffectValueUnitSpeedBoost.SHOWN_BOOSTUNITSPEED_VALUE = 20;
+  Object.defineProperty(EffectValueTools.prototype, "rawValues", {
+    get: function () {
+      return this._tools;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EffectValueTools.prototype, "strength", {
+    get: function () {
+      return 0;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EffectValueTools.prototype.clone = function () {
+    return new o.EffectValueSimple().parseFromValueArray(this.rawValues);
   };
-  return EffectValueUnitSpeedBoost;
-}(a.EffectValueWodID);
-exports.EffectValueUnitSpeedBoost = s;
-s.__initialize_static_members();
-o.classImplementsInterfaces(s, "IEffectValue");
+  EffectValueTools.prototype.getContextTextReplacements = function (e) {
+    return this.textReplacements;
+  };
+  return EffectValueTools;
+}();
+exports.EffectValueTools = a;
+n.classImplementsInterfaces(a, "IEffectValue");

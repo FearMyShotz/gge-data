@@ -20,8 +20,8 @@ var o = function (e) {
     return e;
   };
   return IsoCommandPackageObjectRemoveByVO;
-}(require("./633.js").AIsoCommandPackageObject);
+}(require("./634.js").AIsoCommandPackageObject);
 exports.IsoCommandPackageObjectRemoveByVO = o;
 var a = require("./1491.js");
 var s = require("./1492.js");
-var r = require("./484.js");
+var r = require("./485.js");

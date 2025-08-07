@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./303.js");
 var s = function (e) {
-  function FactionUnitCampBuildingVE() {
+  function FactionStorageBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FactionUnitCampBuildingVE, e);
-  Object.defineProperty(FactionUnitCampBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(FactionStorageBuildingVE, e);
+  Object.defineProperty(FactionStorageBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Units;
+      return Library.CastleInterfaceElements_Icons.Icon_Storage;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.AFactionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return FactionUnitCampBuildingVE;
+  return FactionStorageBuildingVE;
 }(a.AFactionBuildingVE);
-exports.FactionUnitCampBuildingVE = s;
+exports.FactionStorageBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

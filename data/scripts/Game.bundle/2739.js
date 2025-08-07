@@ -2,35 +2,36 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./451.js");
-var a = require("./631.js");
-var s = createjs.Point;
-var r = function (e) {
-  function IsoGeneratorDefenceGate() {
+var o = require("./2.js");
+var a = require("./84.js");
+var s = require("./2740.js");
+var r = require("./2741.js");
+var l = require("./2742.js");
+var c = require("./2743.js");
+var u = function (e) {
+  function IsoGeneratorDefenceEnum(t, i) {
+    var n = this;
     CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+    (n = e.call(this, t, o.BasicEnum.instantiationKey) || this)._clazz = i;
+    return n;
   }
-  n.__extends(IsoGeneratorDefenceGate, e);
-  IsoGeneratorDefenceGate.prototype.execute = function () {
-    var e;
-    var t = this.getRelevantGateGround();
-    e = t.rotatedWidth == t.rotatedHeight ? new s(t.x2 + 1, t.y + t.rotatedHeight / 2) : t.rotatedWidth > t.rotatedHeight ? new s(t.x2 + 1, t.y) : new s(t.x2 + 1, t.y + t.rotatedHeight / 2);
-    this.parentGenerator.result.gate = new o.IsoDefencePosition(e, 0, IsoGeneratorDefenceGate.GATE_DIMENSION);
+  n.__extends(IsoGeneratorDefenceEnum, e);
+  Object.defineProperty(IsoGeneratorDefenceEnum.prototype, "clazz", {
+    get: function () {
+      return this._clazz;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  IsoGeneratorDefenceEnum.__initialize_static_members = function () {
+    IsoGeneratorDefenceEnum.COMMON = new IsoGeneratorDefenceEnum("", d.IsoGeneratorDefenceCommon);
+    IsoGeneratorDefenceEnum.GATE = new IsoGeneratorDefenceEnum("", s.IsoGeneratorDefenceGate);
+    IsoGeneratorDefenceEnum.TOWER = new IsoGeneratorDefenceEnum("", l.IsoGeneratorDefenceTower);
+    IsoGeneratorDefenceEnum.WALL = new IsoGeneratorDefenceEnum("", c.IsoGeneratorDefenceWall);
+    IsoGeneratorDefenceEnum.MOAT = new IsoGeneratorDefenceEnum("", r.IsoGeneratorDefenceMoat);
   };
-  IsoGeneratorDefenceGate.prototype.getRelevantGateGround = function () {
-    var e;
-    for (var t = 0, i = this.parentGenerator.grounds; t < i.length; t++) {
-      var n = i[t];
-      if (n !== undefined && (!e || e.x2 + e.y2 < n.x2 + n.y2 || n.x2 > e.x2)) {
-        e = n;
-      }
-    }
-    return e;
-  };
-  IsoGeneratorDefenceGate.__initialize_static_members = function () {
-    IsoGeneratorDefenceGate.GATE_DIMENSION = new s(3, 4);
-  };
-  return IsoGeneratorDefenceGate;
-}(a.AIsoGeneratorDefenceComponent);
-exports.IsoGeneratorDefenceGate = r;
-r.__initialize_static_members();
+  return IsoGeneratorDefenceEnum;
+}(a.CastleEnum);
+exports.IsoGeneratorDefenceEnum = u;
+var d = require("./2744.js");
+u.__initialize_static_members();

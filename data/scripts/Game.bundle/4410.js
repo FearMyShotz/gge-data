@@ -175,15 +175,15 @@ var o = function () {
 }();
 exports.CastleColossusHighscoreListDelegate = o;
 var a = require("./343.js");
-var s = require("./275.js");
+var s = require("./274.js");
 var r = require("./2.js");
 var l = require("./2.js");
 var c = require("./5.js");
 var u = require("./3.js");
 var d = require("./6.js");
-var p = require("./1898.js");
+var p = require("./1900.js");
 var h = require("./232.js");
 var g = require("./4.js");
-var C = require("./274.js");
+var C = require("./273.js");
 var _ = require("./8.js");
 o.__initialize_static_members();

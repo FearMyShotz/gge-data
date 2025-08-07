@@ -4,17 +4,17 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function ReduceGateBonusStrategy() {
+  function ReduceMoatBonusStrategy() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ReduceGateBonusStrategy, e);
-  ReduceGateBonusStrategy.prototype.getRelevantToolBonus = function (e) {
-    return e.gateBonus;
+  n.__extends(ReduceMoatBonusStrategy, e);
+  ReduceMoatBonusStrategy.prototype.getRelevantToolBonus = function (e) {
+    return e.moatBonus;
   };
-  ReduceGateBonusStrategy.prototype.getRelevantDefenderBonus = function (e, t) {
-    return t.defenderGateBonus - e.attackerGateReduction;
+  ReduceMoatBonusStrategy.prototype.getRelevantDefenderBonus = function (e, t) {
+    return t.defenderMoatBonus - e.attackerMoatReduction;
   };
-  return ReduceGateBonusStrategy;
-}(require("./834.js").AReduceDefenseBonusStrategy);
-exports.ReduceGateBonusStrategy = a;
+  return ReduceMoatBonusStrategy;
+}(require("./836.js").AReduceDefenseBonusStrategy);
+exports.ReduceMoatBonusStrategy = a;
 o.classImplementsInterfaces(a, "IFillToolSlotStrategy");

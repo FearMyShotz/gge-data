@@ -5,15 +5,15 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./7.js");
 var s = require("./37.js");
-var r = require("./475.js");
+var r = require("./476.js");
 var l = function (e) {
-  function DCICommand() {
+  function CICCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DCICommand, e);
-  Object.defineProperty(DCICommand.prototype, "cmdId", {
+  n.__extends(CICCommand, e);
+  Object.defineProperty(CICCommand.prototype, "cmdId", {
     get: function () {
-      return a.ClientConstSF.S2C_DISASSEMBLE_CONSTRUCTION_ITEM;
+      return a.ClientConstSF.S2C_CRAFT_CONSTRUCTION_ITEM;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleDispatchingCommand.prototype, "cmdId").set.call(this, e);
@@ -21,9 +21,9 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DCICommand.prototype, "eventType", {
+  Object.defineProperty(CICCommand.prototype, "eventType", {
     get: function () {
-      return s.CastleServerMessageArrivedEvent.DCI_ARRIVED;
+      return s.CastleServerMessageArrivedEvent.CIC_ARRIVED;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleDispatchingCommand.prototype, "eventType").set.call(this, e);
@@ -31,7 +31,7 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  return DCICommand;
+  return CICCommand;
 }(r.CastleDispatchingCommand);
-exports.DCICommand = l;
+exports.CICCommand = l;
 o.classImplementsInterfaces(l, "IExecCommand");

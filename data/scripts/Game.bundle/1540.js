@@ -9,6 +9,6 @@ var a = function (e) {
   }
   n.__extends(FactionMarketBuildingVO, e);
   return FactionMarketBuildingVO;
-}(require("./536.js").MarketBuildingVO);
+}(require("./537.js").MarketBuildingVO);
 exports.FactionMarketBuildingVO = a;
 o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");

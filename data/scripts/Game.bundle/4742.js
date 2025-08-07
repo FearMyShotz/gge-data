@@ -2,23 +2,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./389.js");
-var l = require("./4.js");
-var c = require("./266.js");
-var u = require("./211.js");
-var d = require("./374.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./7.js");
+var c = require("./4.js");
+var u = require("./265.js");
+var d = require("./211.js");
 var p = require("./10.js");
 var h = function (e) {
-  function AIICommand() {
+  function ACICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AIICommand, e);
-  Object.defineProperty(AIICommand.prototype, "cmdId", {
+  n.__extends(ACICommand, e);
+  Object.defineProperty(ACICommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ATTACK_INFO_ISLAND;
+      return l.ClientConstSF.S2C_GET_ATTACK_CASTLE_INFOS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(p.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -26,34 +26,29 @@ var h = function (e) {
     enumerable: true,
     configurable: true
   });
-  AIICommand.prototype.executeCommand = function (e, t) {
+  ACICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case a.ERROR.ALL_OK:
-        this.controller.removeEventListener(r.CastlePlayerInfoEvent.GET_PLAYERINFO, this.bindFunction(this.onPlayerInfoGained));
-        this.paramObj = JSON.parse(t[1]);
-        var i = l.CastleModel.attackData.parse_AII(this.paramObj);
-        if (i.targetArea && !i.targetArea.ownerInfo && i.targetArea.occupierPId > 0) {
-          this.controller.addEventListener(r.CastlePlayerInfoEvent.GET_PLAYERINFO, this.bindFunction(this.onPlayerInfoGained));
-          l.CastleModel.smartfoxClient.sendCommandVO(new d.C2SGetDetailPlayerInfo(i.targetArea.occupierPId));
-          return true;
-        }
-        this.openDialog(i);
+      case s.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        c.CastleModel.otherPlayerData.parseOwnerInfoArray(i.gaa.OI);
+        var n = c.CastleModel.attackData.parse_ACI(i);
+        g.CastleDialogHandler.getInstance().registerDefaultDialogs(d.AttackDialog, new u.CastleAttackDialogProperties(n));
+        break;
+      case s.ERROR.PLAYER_HAS_NOOB_PROTECTION:
+      case s.ERROR.TARGET_HAS_PEACE:
+        g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_information"), r.Localize.text("errorCode_94")));
+        break;
+      case s.ERROR.SPECIALCAMP_PROTECTED:
+        g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_information"), r.Localize.text("dialog_factionEvent_villageBlockedByTower")));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  AIICommand.prototype.onPlayerInfoGained = function () {
-    this.controller.removeEventListener(r.CastlePlayerInfoEvent.GET_PLAYERINFO, this.bindFunction(this.onPlayerInfoGained));
-    var e = l.CastleModel.attackData.parse_AII(this.paramObj);
-    this.openDialog(e);
-  };
-  AIICommand.prototype.openDialog = function (e) {
-    g.CastleDialogHandler.getInstance().registerDefaultDialogs(u.AttackDialog, new c.CastleAttackDialogProperties(e));
-  };
-  return AIICommand;
+  return ACICommand;
 }(p.CastleCommand);
-exports.AIICommand = h;
+exports.ACICommand = h;
 var g = require("./9.js");
-o.classImplementsInterfaces(h, "IExecCommand");
+var C = require("./38.js");
+a.classImplementsInterfaces(h, "IExecCommand");

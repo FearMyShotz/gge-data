@@ -3,35 +3,34 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./1043.js");
-var r = function (e) {
-  function FactionPalisadeDefenceVE() {
+var a = require("./539.js");
+var s = function (e) {
+  function WorkshopBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FactionPalisadeDefenceVE, e);
-  FactionPalisadeDefenceVE.prototype.updateFlagVisibility = function () {};
-  Object.defineProperty(FactionPalisadeDefenceVE.prototype, "assetClipName", {
+  n.__extends(WorkshopBuildingVE, e);
+  WorkshopBuildingVE.prototype.createStatusIcons = function () {
+    e.prototype.createStatusIcons.call(this);
+    if (!this.statusIcons.isUpgradeIconActive) {
+      if (this.unitProductionBuildingVO.isProductive) {
+        this.statusIcons.addIcon(r.IsoStatusIconEnum.PRODUCTIVE);
+      } else if (!this.buildingVO.buildingState.isUnderConstruction) {
+        this.statusIcons.addIcon(r.IsoStatusIconEnum.UNPRODUCTIVE);
+      }
+    }
+  };
+  Object.defineProperty(WorkshopBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return "FactionCamp_Castlewall_Level" + this.vo.isoData.objects.defences.currentWallLevel;
+      return Library.CastleInterfaceElements_Icons.Icon_Workshop;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastlewallDefenceVE.prototype, "assetClipName").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.AUnitProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FactionPalisadeDefenceVE.prototype, "assetFileName", {
-    get: function () {
-      return "Event" + a.EventConst.EVENTTYPE_FACTION + "Lib";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastlewallDefenceVE.prototype, "assetFileName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return FactionPalisadeDefenceVE;
-}(s.CastlewallDefenceVE);
-exports.FactionPalisadeDefenceVE = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");
+  return WorkshopBuildingVE;
+}(a.AUnitProductionBuildingVE);
+exports.WorkshopBuildingVE = s;
+var r = require("./177.js");
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

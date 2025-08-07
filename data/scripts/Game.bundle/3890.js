@@ -4,14 +4,19 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function CheckboxesGroup(t, i, n, o, a = 0) {
+  function RadioButtonsGroup(t, i, n, o, a = 0) {
     return e.call(this, t, i, n, o, a) || this;
   }
-  n.__extends(CheckboxesGroup, e);
-  CheckboxesGroup.prototype.click = function (e) {
-    this.selectButton(e, !this.isSelected(e));
+  n.__extends(RadioButtonsGroup, e);
+  RadioButtonsGroup.prototype.click = function (e) {
+    if (this.isSelected(e)) {
+      this.selectButton(e, false);
+    } else {
+      this.reset();
+      this.selectButton(e, true);
+    }
   };
-  return CheckboxesGroup;
-}(require("./1802.js").AChooseGroup);
-exports.CheckboxesGroup = a;
+  return RadioButtonsGroup;
+}(require("./1804.js").AChooseGroup);
+exports.RadioButtonsGroup = a;
 o.classImplementsInterfaces(a, "ISurveyFormField");

@@ -3,19 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
+var a = require("./5.js");
+var s = require("./6.js");
 var r = require("./7.js");
 var l = require("./4.js");
 var c = require("./10.js");
 var u = function (e) {
-  function IRCCommand() {
+  function GRCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IRCCommand, e);
-  Object.defineProperty(IRCCommand.prototype, "cmdId", {
+  n.__extends(GRCCommand, e);
+  Object.defineProperty(GRCCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_RESOURCE_CITIZEN;
+      return r.ClientConstSF.S2C_GET_CASTLE_RESOURCES;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -23,26 +23,24 @@ var u = function (e) {
     enumerable: true,
     configurable: true
   });
-  IRCCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case s.ERROR.ALL_OK:
-        var i;
-        if (d.Iso.renderer && l.CastleModel.resourcePoolData.ownerMovementVO) {
-          i = o.castAs(d.Iso.renderer.objects.provider.getObjectByVO(l.CastleModel.resourcePoolData.ownerMovementVO), "AIsoMovementVE");
-        }
-        var n = JSON.parse(t[1]);
-        l.CastleModel.resourcePoolData.parseIRC(n);
-        if (i) {
-          i.updateResourceIcon();
+  GRCCommand.prototype.executeCommand = function (t, i) {
+    return e.prototype.executeCommand.call(this, t, i);
+  };
+  GRCCommand.prototype.exec = function (e) {
+    var t = s.int(e[0]);
+    var i = e[1];
+    switch (t) {
+      case a.ERROR.ALL_OK:
+        var n = JSON.parse(i[1]);
+        if (l.CastleModel.areaData.activeArea) {
+          l.CastleModel.areaData.activeArea.updater.parseGRC(n);
         }
         break;
       default:
-        this.showErrorDialog(e, t);
+        this.showErrorDialog(t, i);
     }
-    return false;
   };
-  return IRCCommand;
+  return GRCCommand;
 }(c.CastleCommand);
-exports.IRCCommand = u;
-var d = require("./33.js");
-a.classImplementsInterfaces(u, "IExecCommand");
+exports.GRCCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

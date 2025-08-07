@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function AHFCommand() {
+  function AGRCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AHFCommand, e);
-  Object.defineProperty(AHFCommand.prototype, "cmdId", {
+  n.__extends(AGRCommand, e);
+  Object.defineProperty(AGRCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ALLIANCE_HELP_FEEDBACK;
+      return s.ClientConstSF.S2C_ALLIANCE_GIFT_RECIEVED;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  AHFCommand.prototype.executeCommand = function (e, t) {
+  AGRCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.allianceHelpRequestData.parse_AHF(i);
+        r.CastleModel.allianceGiftData.parse_AGR(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return AHFCommand;
+  return AGRCommand;
 }(l.CastleCommand);
-exports.AHFCommand = c;
+exports.AGRCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

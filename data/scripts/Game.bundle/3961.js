@@ -51,5 +51,5 @@ var r = function (e) {
   return CastleWorldCupDialogAlreadyVotedState;
 }(s.ACastleWorldCupDialogState);
 exports.CastleWorldCupDialogAlreadyVotedState = r;
-var l = require("./669.js");
+var l = require("./671.js");
 o.classImplementsInterfaces(r, "ICastleWorldCupDialogState");

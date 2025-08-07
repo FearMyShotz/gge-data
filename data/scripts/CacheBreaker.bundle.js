@@ -50,7 +50,7 @@
       return Object.prototype.hasOwnProperty.call(e, t);
     }),
     (__webpack_require__.p = ''),
-    __webpack_require__((__webpack_require__.s = 1976)));
+    __webpack_require__((__webpack_require__.s = 1977)));
 })({
   0: function (e, t, n) {
     e.exports = n(126)(0);
@@ -58,20 +58,20 @@
   1: function (e, t, n) {
     e.exports = n(126)(3);
   },
-  118: function (e, t, n) {
+  116: function (e, t, n) {
     e.exports = n(126)(2);
   },
   126: function (e, t) {
     e.exports = ggs_lib;
   },
-  1976: function (e, t, n) {
+  1977: function (e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
     var o = n(0),
       r = n(2),
-      s = n(1977),
-      i = n(1978),
-      a = n(1979),
+      s = n(1978),
+      i = n(1979),
+      a = n(1980),
       l = n(306),
       c = n(334);
     a.wrapper(l.appVersion);
@@ -126,7 +126,7 @@
           'url(ModernStartscreenAnimation_large.jpg)')),
       new p());
   },
-  1977: function (e, t, n) {
+  1978: function (e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
     var o = n(0),
@@ -673,7 +673,7 @@
       })(i.BasicEnvironmentGlobals);
     ((t.CastleEnvironmentGlobals = p), l.classImplementsInterfaces(p, 'IEnvironmentGlobals'));
   },
-  1978: function (e, t, n) {
+  1979: function (e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
     var o = n(0),
@@ -723,13 +723,13 @@
         'IDetectableEnvironment',
       ));
   },
-  1979: function (e, t, n) {
+  1980: function (e, t, n) {
     'use strict';
     Object.defineProperty(t, '__esModule', { value: !0 });
     var o = n(2),
       r = n(2),
       s = n(2),
-      i = n(1980),
+      i = n(1981),
       a = !1,
       l = function (e) {
         if ('production' === e) {
@@ -844,7 +844,7 @@
         window.messageHandler.register());
     };
   },
-  1980: function (e, t, n) {
+  1981: function (e, t, n) {
     e.exports = n(126)(987);
   },
   2: function (e, t, n) {
@@ -856,9 +856,9 @@
     var o = n(0),
       r = n(2),
       s = n(1),
-      i = n(118),
-      a = n(850).version;
-    t.appVersion = n(851).version;
+      i = n(116),
+      a = n(851).version;
+    t.appVersion = n(852).version;
     var l = (function (e) {
         var t = e.split('.'),
           n = t[0],
@@ -998,10 +998,10 @@
       })();
     t.StartscreenHelper = i;
   },
-  850: function (e) {
+  851: function (e) {
     e.exports = {
       name: '@goodgamestudios/empire-createjs-assets',
-      version: '1.2.1055',
+      version: '1.2.1081',
       main: 'generated/index.js',
       types: 'generated/index.d.ts',
       description: 'CreateJS Assets for Empire HTML5',
@@ -1117,10 +1117,10 @@
       resolutions: { vinyl: '^2.2.1', psl: '1.10.0' },
     };
   },
-  851: function (e) {
+  852: function (e) {
     e.exports = {
       name: 'TranspilationEmpire',
-      version: '1.137.21',
+      version: '1.138.29',
       description: 'Transpiled version of the Flash game',
       main: 'index.js',
       repository: 'git@source.services.ggs-net.com:Foundation-HTML5/TranspilationEmpire.git',
@@ -1264,7 +1264,7 @@
       dependencies: {
         '@goodgamestudios/core': '^6.12.6',
         '@goodgamestudios/empire-createjs-assets': '^1.2.298',
-        '@goodgamestudios/empire-shared-constants': '6.955.24',
+        '@goodgamestudios/empire-shared-constants': '6.0.1273',
         '@goodgamestudios/message-handler': '1.3.1',
         axios: '^0.21.1',
         'bugsnag-js': '^4.7.2',
@@ -1277,4 +1277,4 @@
     };
   },
 });
-//# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/CacheBreaker.bundle.901db5cd3eec521dd8df.js.map
+//# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/CacheBreaker.bundle.9b4d8a9d5255b77feeba.js.map

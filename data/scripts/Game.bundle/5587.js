@@ -2,22 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./18.js");
-var a = function (e) {
-  function CastleSupportDefenceData() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SGetSpyLog(t) {
+    var i = this;
+    i.MID = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).MID = t;
+    return i;
   }
-  n.__extends(CastleSupportDefenceData, e);
-  CastleSupportDefenceData.prototype.parse_SDI = function (e) {
-    if (!e) {
-      return null;
-    }
-    var t = new s.CastleSupportDefenceVO();
-    t.fillFromParamObject(e);
-    t.targetActionType = o.ClientConstCastle.ACTION_TYPE_SUPPORTDEFENSE;
-    return t;
+  n.__extends(C2SGetSpyLog, e);
+  C2SGetSpyLog.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_SPY_LOG_DETAIL;
   };
-  return CastleSupportDefenceData;
-}(require("./72.js").CastleEventDispatcher);
-exports.CastleSupportDefenceData = a;
-var s = require("./5588.js");
+  return C2SGetSpyLog;
+}(o.BasicCommandVO);
+exports.C2SGetSpyLog = s;

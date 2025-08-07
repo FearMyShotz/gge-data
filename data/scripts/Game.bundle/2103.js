@@ -4,14 +4,14 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function EventOverviewDetailsPointEventDefault() {
+  function EventOverviewDetailsNone() {
     var t = e.call(this) || this;
-    t.dispClassName = "list_rewards_points_event";
+    t.dispClassName = "flash.display.MovieClip";
     t.init();
     return t;
   }
-  n.__extends(EventOverviewDetailsPointEventDefault, e);
-  return EventOverviewDetailsPointEventDefault;
-}(require("./571.js").EventOverviewDetailedEventView);
-exports.EventOverviewDetailsPointEventDefault = a;
+  n.__extends(EventOverviewDetailsNone, e);
+  return EventOverviewDetailsNone;
+}(require("./572.js").EventOverviewDetailedEventView);
+exports.EventOverviewDetailsNone = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList");

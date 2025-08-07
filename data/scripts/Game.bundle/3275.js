@@ -2,32 +2,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./24.js");
-var r = function (e) {
-  function CollectableItemResourcePointVE() {
+var o = function (e) {
+  function CollectableItemResourcePointVO(t = 0) {
     CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+    return e.call(this, t) || this;
   }
-  n.__extends(CollectableItemResourcePointVE, e);
-  CollectableItemResourcePointVE.prototype.iconCreate = function () {
-    this.dispCreator.addClip(new s.CastleGoodgameExternalClip(CollectableItemResourcePointVE.RESOURCE_POINTS_ICON_ASSET_NAME, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(CollectableItemResourcePointVE.RESOURCE_POINTS_ICON_ASSET_NAME), null, 0, false));
+  n.__extends(CollectableItemResourcePointVO, e);
+  CollectableItemResourcePointVO.prototype.parseServerObject = function (t) {
+    e.prototype.parseServerObject.call(this, t);
+    this.amount = t[1];
   };
-  CollectableItemResourcePointVE.prototype.textfieldUpdate = function () {
-    this.textfieldSetTextAsNumber(this.vo.amount);
+  CollectableItemResourcePointVO.prototype.getTooltipTextId = function () {
+    return "colossus_donateResource_labelPoints";
   };
-  CollectableItemResourcePointVE.prototype.textfieldBackgroundVisible = function () {
-    return true;
+  CollectableItemResourcePointVO.prototype.getDescriptionTextId = function () {
+    return "colossusPoints_short_info";
   };
-  CollectableItemResourcePointVE.prototype.tooltipCreate = function () {
-    return this.tooltipCreateByAmount(this.vo.getTooltipTextId());
+  CollectableItemResourcePointVO.__initialize_static_members = function () {
+    CollectableItemResourcePointVO.SERVER_KEY = "RP";
+    CollectableItemResourcePointVO.XML_KEY = "resourcePoints";
   };
-  CollectableItemResourcePointVE.__initialize_static_members = function () {
-    CollectableItemResourcePointVE.RESOURCE_POINTS_ICON_ASSET_NAME = "ResourcePointsIcon";
-  };
-  return CollectableItemResourcePointVE;
-}(require("./195.js").ACollectableItemSimpleIconVE);
-exports.CollectableItemResourcePointVE = r;
-a.classImplementsInterfaces(r, "ICollectableRendererList");
-r.__initialize_static_members();
+  return CollectableItemResourcePointVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemResourcePointVO = o;
+o.__initialize_static_members();

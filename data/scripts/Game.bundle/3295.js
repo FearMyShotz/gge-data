@@ -2,17 +2,37 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CollectableItemWarEffortPointsVO(t = 0) {
-    return e.call(this, t) || this;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./195.js");
+var r = function (e) {
+  function CollectableItemPaymentDoublerVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemWarEffortPointsVO, e);
-  CollectableItemWarEffortPointsVO.prototype.getTooltipTextId = function () {
-    return this.itemType.name;
+  n.__extends(CollectableItemPaymentDoublerVE, e);
+  CollectableItemPaymentDoublerVE.prototype.textfieldUpdate = function () {
+    this.textfieldSetTextAsNumber(this.vo.amount);
   };
-  CollectableItemWarEffortPointsVO.prototype.getDescriptionTextId = function () {
-    return this.itemType.name + "_short_info";
+  CollectableItemPaymentDoublerVE.prototype.textfieldBackgroundVisible = function () {
+    return true;
   };
-  return CollectableItemWarEffortPointsVO;
-}(require("./96.js").ACollectableItemVO);
-exports.CollectableItemWarEffortPointsVO = o;
+  CollectableItemPaymentDoublerVE.prototype.tooltipCreate = function () {
+    return {
+      t: "dialog_paymentdoubler_tootlipp",
+      p: [new a.LocalizedNumberVO(this.vo.amount)]
+    };
+  };
+  Object.defineProperty(CollectableItemPaymentDoublerVE.prototype, "iconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements_Icons.Icon_PaymentDoubler;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CollectableItemPaymentDoublerVE;
+}(s.ACollectableItemSimpleIconVE);
+exports.CollectableItemPaymentDoublerVE = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList");

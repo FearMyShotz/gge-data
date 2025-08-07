@@ -1,23 +1,35 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = function () {
-  function CastleBasicButtonValueContainer(e) {
-    this.more = e.amountPicker.btn_right;
-    this.less = e.amountPicker.btn_left;
-    this.max = e.btn_all;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2926.js");
+var r = require("./970.js");
+var l = function (e) {
+  function CastleValueChangerController(t, i, n) {
+    return e.call(this, t, i, n) || this;
   }
-  CastleBasicButtonValueContainer.prototype.getMoreButton = function () {
-    return this.more;
+  n.__extends(CastleValueChangerController, e);
+  CastleValueChangerController.prototype.addButtons = function (e, t) {
+    var i = new s.CastleBasicButtonValueContainer(e);
+    var n = new o.ButtonsValueComponent(this, this._minValue, this._maxValue, i, t);
+    this.addValueComponent(n);
   };
-  CastleBasicButtonValueContainer.prototype.getLessButton = function () {
-    return this.less;
+  CastleValueChangerController.prototype.addSlider = function (e, t = 0) {
+    var i = new r.CastleSliderValueComponent(this, this._minValue, this._maxValue, e, "", t);
+    this.addValueComponent(i);
   };
-  CastleBasicButtonValueContainer.prototype.getMaxButton = function () {
-    return this.max;
-  };
-  return CastleBasicButtonValueContainer;
-}();
-exports.CastleBasicButtonValueContainer = o;
-n.classImplementsInterfaces(o, "IButtonsValueDisp");
+  Object.defineProperty(CastleValueChangerController.prototype, "value", {
+    get: function () {
+      return this._value;
+    },
+    set: function (e) {
+      this.userChangedData(e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleValueChangerController;
+}(a.ValueChangerController);
+exports.CastleValueChangerController = l;

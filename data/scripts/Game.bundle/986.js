@@ -2,108 +2,81 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./57.js");
-var l = require("./40.js");
-var c = require("./8.js");
-var u = function (e) {
-  function SearchFieldComponent(t) {
-    var i = this;
-    i._onSearchValueChanged = new r.Signal();
-    i._isFocusedIn = false;
-    i._currentSearchValue = "";
-    CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).init();
-    return i;
+var o = require("./2.js");
+var a = require("./45.js");
+var s = require("./74.js");
+var r = require("./66.js");
+var l = require("./985.js");
+var c = function (e) {
+  function ModernPackageShopResourceTipDialogProperties(t = null, i = null) {
+    var n = e.call(this) || this;
+    n._relevantCurrencyTypes = [];
+    n._eventPackageVO = t;
+    n._currencyTypes = i;
+    n._relevantCurrencyTypes = n.getRelevantCurrencyTypes();
+    return n;
   }
-  n.__extends(SearchFieldComponent, e);
-  SearchFieldComponent.prototype.init = function () {
-    c.ButtonHelper.initButton(this.disp.btn_cancel, -1, p.ClickFeedbackButtonHover);
-    d.CastleComponent.textFieldManager.registerTextField(this.disp.txt_helpText, new a.LocalizedTextVO("searchDeco_name"));
-    this._txtInput = d.CastleComponent.textFieldManager.registerTextField(this.disp.txt_value, new s.TextVO(""));
-    this._txtInput.maxChars = SearchFieldComponent.SEARCH_FIELD_MAX_CHARS;
-    this._txtInput.multiline = false;
-    this._txtInput.wordwrap = false;
-  };
-  SearchFieldComponent.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    if (this._txtInput) {
-      this._txtInput.change.add(this.bindFunction(this.onValueChanged));
-      this._txtInput.focusIn.add(this.bindFunction(this.onSearchFieldFocusIn));
-      this._txtInput.focusOut.add(this.bindFunction(this.onSearchFieldFocusOut));
+  n.__extends(ModernPackageShopResourceTipDialogProperties, e);
+  ModernPackageShopResourceTipDialogProperties.prototype.getRelevantCurrencyTypes = function () {
+    var e = [];
+    if (this.eventPackageVO) {
+      for (var t = 0, i = this.eventPackageVO.getCostList().list; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          if (!r.CostHelper.canAfford(a.CollectableHelper.createCostList([n]))) {
+            e.push(new s.CollectableTypeVO().initByCollectable(n));
+          }
+        }
+      }
+    } else if (this.currencyTypes) {
+      return this.currencyTypes;
     }
+    return e;
   };
-  SearchFieldComponent.prototype.removeEventListener = function () {
-    e.prototype.removeEventListener.call(this);
-    if (this._txtInput) {
-      this._txtInput.change.remove(this.bindFunction(this.onValueChanged));
-      this._txtInput.focusIn.remove(this.bindFunction(this.onSearchFieldFocusIn));
-      this._txtInput.focusOut.remove(this.bindFunction(this.onSearchFieldFocusOut));
+  ModernPackageShopResourceTipDialogProperties.prototype.isHandledByTipDialog = function () {
+    if (this.relevantCurrencyTypes != null) {
+      for (var e = 0, t = this.relevantCurrencyTypes; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined && l.ModernPackageShopResourceTipEnum.getTypeByVO(i) != l.ModernPackageShopResourceTipEnum.NONE) {
+          return true;
+        }
+      }
     }
+    return false;
   };
-  SearchFieldComponent.prototype.updateVisuals = function () {
-    var e = this._currentSearchValue.length > 0;
-    this.disp.txt_helpText.visible = !e && !this._isFocusedIn;
-    this.disp.mc_background.gotoAndStop(this._isFocusedIn ? 2 : 1);
-    this.disp.btn_search.visible = !e;
-    this.disp.btn_cancel.visible = e;
-  };
-  SearchFieldComponent.prototype.clearSearchField = function () {
-    this._txtInput.clearText();
-    this._currentSearchValue = "";
-    this.updateVisuals();
-    if (this._onSearchValueChanged) {
-      this._onSearchValueChanged.dispatch();
+  ModernPackageShopResourceTipDialogProperties.prototype.extractCurrencyIds = function () {
+    var e = [];
+    if (this.relevantCurrencyTypes != null) {
+      for (var t = 0, i = this.relevantCurrencyTypes; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined && n.id >= 0) {
+          e.push(n.id);
+        }
+      }
     }
+    return e;
   };
-  SearchFieldComponent.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.disp.btn_cancel:
-        this.clearSearchField();
-        break;
-      default:
-        this._txtInput.setFocus();
-    }
-  };
-  SearchFieldComponent.prototype.onValueChanged = function (e) {
-    this._currentSearchValue = this._txtInput.text.toLowerCase();
-    this.updateVisuals();
-    if (this._onSearchValueChanged) {
-      this._onSearchValueChanged.dispatch();
-    }
-  };
-  SearchFieldComponent.prototype.onSearchFieldFocusIn = function (e) {
-    this._isFocusedIn = true;
-    this.updateVisuals();
-  };
-  SearchFieldComponent.prototype.onSearchFieldFocusOut = function (e) {
-    this._isFocusedIn = false;
-    this.updateVisuals();
-  };
-  Object.defineProperty(SearchFieldComponent.prototype, "currentSearchValue", {
+  Object.defineProperty(ModernPackageShopResourceTipDialogProperties.prototype, "eventPackageVO", {
     get: function () {
-      return this._currentSearchValue;
+      return this._eventPackageVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SearchFieldComponent.prototype, "onSearchValueChanged", {
+  Object.defineProperty(ModernPackageShopResourceTipDialogProperties.prototype, "currencyTypes", {
     get: function () {
-      return this._onSearchValueChanged;
+      return this._currencyTypes;
     },
     enumerable: true,
     configurable: true
   });
-  SearchFieldComponent.__initialize_static_members = function () {
-    SearchFieldComponent.SEARCH_FIELD_MAX_CHARS = 100;
-  };
-  return SearchFieldComponent;
-}(l.CastleItemRenderer);
-exports.SearchFieldComponent = u;
-var d = require("./14.js");
-var p = require("./20.js");
-o.classImplementsInterfaces(u, "ICollectableRendererList");
-u.__initialize_static_members();
+  Object.defineProperty(ModernPackageShopResourceTipDialogProperties.prototype, "relevantCurrencyTypes", {
+    get: function () {
+      return this._relevantCurrencyTypes;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ModernPackageShopResourceTipDialogProperties;
+}(o.BasicProperties);
+exports.ModernPackageShopResourceTipDialogProperties = c;

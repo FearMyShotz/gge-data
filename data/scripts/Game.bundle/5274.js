@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function SBDCommand() {
+  function BDECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SBDCommand, e);
-  Object.defineProperty(SBDCommand.prototype, "cmdId", {
+  n.__extends(BDECommand, e);
+  Object.defineProperty(BDECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SELL_BUILDING_DECO;
+      return s.ClientConstSF.S2C_DELETE_BOOKMARK;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,19 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  SBDCommand.prototype.executeCommand = function (e, t) {
+  BDECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        r.CastleModel.areaData.activeArea.updater.parseSBD(i);
+        r.CastleModel.bookmarkData.parse_BDE(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SBDCommand;
+  return BDECommand;
 }(l.CastleCommand);
-exports.SBDCommand = c;
+exports.BDECommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

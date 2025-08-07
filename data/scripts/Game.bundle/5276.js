@@ -2,38 +2,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./10.js");
-var a = require("./7.js");
-var s = require("./5.js");
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./7.js");
 var r = require("./4.js");
-var l = require("./9.js");
-var c = require("./1295.js");
-var u = function (e) {
-  function PSDCommand() {
+var l = require("./10.js");
+var c = function (e) {
+  function SBDCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(PSDCommand, e);
-  Object.defineProperty(PSDCommand.prototype, "cmdId", {
+  n.__extends(SBDCommand, e);
+  Object.defineProperty(SBDCommand.prototype, "cmdId", {
     get: function () {
-      return a.ClientConstSF.S2C_PLAYER_SCHEDULED_DELETION;
+      return s.ClientConstSF.S2C_SELL_BUILDING_DECO;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  PSDCommand.prototype.executeCommand = function (e, t) {
+  SBDCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case s.ERROR.ALL_OK:
+      case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.deleteAccountData.remainingTimeTillDeleteTimeStamp = Number(i.D);
-        if (r.CastleModel.deleteAccountData.isAccountDeletionStarted) {
-          l.CastleDialogHandler.getInstance().registerDefaultDialogs(c.CastleDeleteAccountDialog);
-        }
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.areaData.activeArea.updater.parseSBD(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return PSDCommand;
-}(o.CastleCommand);
-exports.PSDCommand = u;
+  return SBDCommand;
+}(l.CastleCommand);
+exports.SBDCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

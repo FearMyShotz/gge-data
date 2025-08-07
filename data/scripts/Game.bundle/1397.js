@@ -160,7 +160,7 @@ var f = function (e) {
     this.updateDialog();
   };
   return CastleAllianceBattlegroundEventDialogPerformanceAlliance;
-}(require("./34.js").CastleDialogSubLayer);
+}(require("./35.js").CastleDialogSubLayer);
 exports.CastleAllianceBattlegroundEventDialogPerformanceAlliance = f;
 o.classImplementsInterfaces(f, "ICollectableRendererList", "ISublayer");
 var O = require("./78.js");

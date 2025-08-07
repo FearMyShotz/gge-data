@@ -1,79 +1,95 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
+var n = require("./49.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./2720.js");
-var u = require("./1472.js");
-var d = require("./4.js");
-var p = function (e) {
-  function ResearchMinuteSkipProperties() {
-    return e.call(this) || this;
+var a = require("./5.js");
+var s = require("./3.js");
+var r = require("./6.js");
+var l = require("./1472.js");
+var c = require("./37.js");
+var u = require("./21.js");
+var d = require("./531.js");
+var p = require("./15.js");
+var h = require("./4.js");
+var g = require("./33.js");
+var C = require("./27.js");
+var _ = require("./20.js");
+var m = require("./8.js");
+var f = require("./185.js");
+var O = createjs.MouseEvent;
+var E = createjs.Point;
+var y = function () {
+  function ResearchProgressInfo(e) {
+    this._disp = e;
+    this._disp.btn_minuteSkip.toolTipText = "timeSkipButton_tooltip";
+    this.researchProgressBar = new n.BasicProgressBar(e.mc_bar);
+    this.itxt_timeProgress = o.GoodgameTextFieldManager.getInstance().registerTextField(e.txt_time, new s.TextVO(""));
+    m.ButtonHelper.initButtons([e.btn_buyInstant, e.btn_minuteSkip], _.ClickFeedbackButtonHover);
   }
-  n.__extends(ResearchMinuteSkipProperties, e);
-  ResearchMinuteSkipProperties.prototype.getMinuteSkipCommand = function (e) {
-    return new c.C2SMinuteSkipResearchVO(e);
+  ResearchProgressInfo.prototype.show = function () {
+    this._disp.addEventListener(O.CLICK, this.bindFunction(this.onClick));
+    h.CastleModel.researchData.addEventListener(d.CastleResearchEvent.RESEARCH_INFO_UPDATE, this.bindFunction(this.updateResearch));
+    p.CastleBasicController.getInstance().addEventListener(c.CastleServerMessageArrivedEvent.RFI_ARRIVED, this.bindFunction(this.updateResearch));
+    this.updateResearch();
   };
-  ResearchMinuteSkipProperties.prototype.getFullSkipCommand = function () {
-    return new u.C2SResearchFinishInstantVO();
+  ResearchProgressInfo.prototype.hide = function () {
+    this._disp.removeEventListener(O.CLICK, this.bindFunction(this.onClick));
+    h.CastleModel.timerData.removeEventListener(u.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateProgress));
+    h.CastleModel.researchData.removeEventListener(d.CastleResearchEvent.RESEARCH_INFO_UPDATE, this.bindFunction(this.updateResearch));
+    p.CastleBasicController.getInstance().removeEventListener(c.CastleServerMessageArrivedEvent.RFI_ARRIVED, this.bindFunction(this.updateResearch));
   };
-  ResearchMinuteSkipProperties.prototype.isSkipAppliable = function () {
-    return d.CastleModel.researchData.isSomeResearchActive;
+  ResearchProgressInfo.prototype.onClick = function (e) {
+    switch (e.target) {
+      case this._disp.btn_buyInstant:
+        this.buyResearchInstant();
+        break;
+      case this._disp.btn_minuteSkip:
+        ResearchProgressInfo.spendMinuteSkip();
+    }
   };
-  ResearchMinuteSkipProperties.prototype.isFreeSkipActive = function () {
-    return false;
+  ResearchProgressInfo.spendMinuteSkip = function () {
+    b.CastleDialogHandler.getInstance().registerDefaultDialogs(I.CastleMinuteSkipDialog, new T.ResearchMinuteSkipProperties());
   };
-  ResearchMinuteSkipProperties.prototype.isPrimeSaleActive = function () {
-    return false;
+  ResearchProgressInfo.prototype.buyResearchInstant = function () {
+    h.CastleModel.smartfoxClient.sendCommandVO(new l.C2SResearchFinishInstantVO());
+    m.ButtonHelper.enableButton(this._disp.btn_buyInstant, false);
+    m.ButtonHelper.enableButton(this._disp.btn_minuteSkip, false);
   };
-  ResearchMinuteSkipProperties.prototype.getPrimeSaleDiscount = function () {
-    return 0;
+  ResearchProgressInfo.prototype.updateProgress = function (e = null) {
+    if (h.CastleModel.researchData.isSomeResearchActive) {
+      var t = h.CastleModel.researchData.currentResearchVO;
+      var i = r.int(h.CastleModel.researchData.remainingResearchTimeInSeconds());
+      var n = C.CastleTimeStringHelper.getShortTimeString(i);
+      this.itxt_timeProgress.textContentVO.stringValue = s.Localize.digitalClock(n);
+      f.SubscriptionHelper.showSubscriptionStarToTextField(this.itxt_timeProgress, h.CastleModel.subscriptionData.getEffectValue(g.EffectTypeEnum.EFFECT_TYPE_RESEARCH_BOOST) > 0, 15, new E(-3, 0), false);
+      this.researchProgressBar.scaleX = 1 - i / t.researchDuration;
+      var o = r.int(a.ResearchConst.getFastCompleteCostC2(i, h.CastleModel.userData.userLevel));
+      var l = r.int(h.CastleModel.costsData.getFinalCostsC2(o));
+      this._disp.btn_buyInstant.toolTipText = {
+        t: "research_skip",
+        p: [l]
+      };
+    }
   };
-  ResearchMinuteSkipProperties.prototype.getNameText = function () {
-    return new r.LocalizedTextVO(ResearchMinuteSkipProperties.researchVO.fullNameText);
+  ResearchProgressInfo.prototype.updateResearch = function (e = null) {
+    this._disp.visible = h.CastleModel.researchData.isSomeResearchActive;
+    if (h.CastleModel.researchData.isSomeResearchActive) {
+      m.ButtonHelper.enableButton(this._disp.btn_buyInstant, true);
+      m.ButtonHelper.enableButton(this._disp.btn_minuteSkip, true);
+      var t = h.CastleModel.researchData.currentResearchVO;
+      var i = this._disp.mc_iconHolder;
+      D.ResearchIconHelper.addResearchIcon(t.groupVO, i, ResearchProgressInfo.ICON_SIZE);
+      i.toolTipText = t.fullNameText;
+      this.updateProgress();
+      h.CastleModel.timerData.addEventListener(u.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateProgress));
+    }
   };
-  ResearchMinuteSkipProperties.prototype.getAdditionalInfo = function () {
-    return new r.LocalizedTextVO("building_level", [ResearchMinuteSkipProperties.researchVO.level]);
-  };
-  ResearchMinuteSkipProperties.prototype.getIconFrame = function () {
-    return l.int(g.CastleMinuteSkipDialog.ICONFRAME_RESEARCH);
-  };
-  ResearchMinuteSkipProperties.prototype.getIconToolTipText = function () {
-    return "research";
-  };
-  ResearchMinuteSkipProperties.prototype.displayPicture = function (e) {
-    h.ResearchIconHelper.addResearchIcon(ResearchMinuteSkipProperties.researchVO.groupVO, e);
-    return e;
-  };
-  ResearchMinuteSkipProperties.prototype.getTotalTime = function () {
-    return ResearchMinuteSkipProperties.researchVO.researchDuration;
-  };
-  ResearchMinuteSkipProperties.prototype.getRemainingTime = function () {
-    return d.CastleModel.researchData.remainingResearchTimeInSeconds();
-  };
-  ResearchMinuteSkipProperties.prototype.getSkipCost = function () {
-    return l.int(s.ResearchConst.getFastCompleteCostC2(d.CastleModel.researchData.remainingResearchTimeInSeconds(), d.CastleModel.userData.userLevel));
-  };
-  Object.defineProperty(ResearchMinuteSkipProperties, "researchVO", {
-    get: function () {
-      return d.CastleModel.researchData.currentResearchVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ResearchMinuteSkipProperties.prototype.getRemainingTimeUntilFreeSkip = function () {
-    return 0;
-  };
-  ResearchMinuteSkipProperties.prototype.getRemainingPrimeSaleTime = function () {
-    return 0;
-  };
-  return ResearchMinuteSkipProperties;
-}(o.BasicProperties);
-exports.ResearchMinuteSkipProperties = p;
-var h = require("./630.js");
-var g = require("./208.js");
-a.classImplementsInterfaces(p, "IMinuteSkipProperties");
+  ResearchProgressInfo.ICON_SIZE = 65;
+  return ResearchProgressInfo;
+}();
+exports.ResearchProgressInfo = y;
+var b = require("./9.js");
+var D = require("./631.js");
+var I = require("./208.js");
+var T = require("./2720.js");

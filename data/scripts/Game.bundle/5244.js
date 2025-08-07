@@ -3,26 +3,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1.js");
-var s = function (e) {
-  function IsoCommandObjectUpdateView(t) {
+var a = function (e) {
+  function IsoCommandPackageUpdateSlums(t) {
     var i = e.call(this) || this;
-    i._vo = t;
+    i._isoData = t;
     return i;
   }
-  n.__extends(IsoCommandObjectUpdateView, e);
-  IsoCommandObjectUpdateView.prototype.execute = function () {
-    if (a.instanceOfClass(this._vo, "CastlewallDefenceVO")) {
-      this.viewObjects.defenceObjects.updateWalls();
-      this.viewObjects.defenceObjects.updateTowers();
-    } else {
-      var e = this.isoRenderer.objects.provider.getObjectByVO(this._vo);
-      if (e) {
-        e.updateDisp();
+  n.__extends(IsoCommandPackageUpdateSlums, e);
+  IsoCommandPackageUpdateSlums.prototype.createCommandList = function () {
+    var e = [];
+    for (var t = 0, i = this.isoData.objects.surroundings.list; t < i.length; t++) {
+      var n = i[t];
+      if (n !== undefined) {
+        var a = o.castAs(n, "ASlumBuildingPartVO");
+        if (a) {
+          e.push(new s.IsoCommandObjectUpdateModel(n.isoData, a), new r.IsoCommandObjectUpdateView(a));
+        }
       }
     }
+    return e;
   };
-  return IsoCommandObjectUpdateView;
-}(require("./311.js").AIsoCommandView);
-exports.IsoCommandObjectUpdateView = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  Object.defineProperty(IsoCommandPackageUpdateSlums.prototype, "isoData", {
+    get: function () {
+      return this._isoData;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return IsoCommandPackageUpdateSlums;
+}(require("./486.js").AIsoCommandPackage);
+exports.IsoCommandPackageUpdateSlums = a;
+var s = require("./5245.js");
+var r = require("./5246.js");

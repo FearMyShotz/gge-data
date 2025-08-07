@@ -3,159 +3,134 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./3.js");
-var c = require("./3.js");
-var u = require("./6.js");
-var d = require("./4.js");
-var p = require("./52.js");
-var h = require("./8.js");
-var g = require("./11.js");
-var C = require("./135.js");
-var _ = function (e) {
-  function CastleSellEmbeddedEquipmentDialog() {
-    return e.call(this, CastleSellEmbeddedEquipmentDialog.NAME, a.BasicModel.basicLoaderData.getVersionedItemAssetUrl(b.CastleEquipmentDialog.NAME)) || this;
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./32.js");
+var u = require("./31.js");
+var d = require("./19.js");
+var p = require("./4.js");
+var h = require("./42.js");
+var g = require("./8.js");
+var C = require("./11.js");
+var _ = require("./351.js");
+var m = require("./135.js");
+var f = createjs.Point;
+var O = function (e) {
+  function ACastleSocketDialog(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(CastleSellEmbeddedEquipmentDialog, e);
-  CastleSellEmbeddedEquipmentDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_extract, this.dialogDisp.btn_sell, this.dialogDisp.btn_close]);
-    this.dialogDisp.mc_equipment.mouseChildren = false;
+  n.__extends(ACastleSocketDialog, e);
+  ACastleSocketDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this);
+    this.initBasicButtons([this.dialogDisp.btn_cancel, this.dialogDisp.btn_ok, this.dialogDisp.btn_help, this.dialogDisp.btn_close]);
+    this.dialogDisp.btn_help.toolTipText = "generic_help";
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO(this.titleTextID)).autoFitToBounds = true;
+    this.dialogDisp.mc_gem.mouseChildren = false;
+    this.dialogDisp.mc_eq.mouseChildren = false;
   };
-  CastleSellEmbeddedEquipmentDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    this.initTexts();
-    this.fillSlotContainer(this.dialogProperties.itemToSell);
-    var t = d.CastleModel.gemData.isInventoryFull;
-    h.ButtonHelper.enableButton(this.dialogDisp.btn_extract, !t);
-    this.dialogDisp.btn_extract.toolTipText = t ? "allyforge_tooltip_inventoryFull_gems" : "";
+  ACastleSocketDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this);
+    this.controller.addEventListener(c.CastleUserDataEvent.CHANGE_USER_CURRENCY, this.bindFunction(this.onUserCurrencyChanged));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_gem, new a.TextVO(this.dialogProperties.gemVO.nameString)).verticalAlign = h.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_eq, new a.TextVO(this.dialogProperties.eqVO.nameString)).verticalAlign = h.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    this.renderIcons();
+    this.onUserCurrencyChanged(null);
   };
-  CastleSellEmbeddedEquipmentDialog.prototype.initTexts = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new l.LocalizedTextVO("dialog_equipmentSale_title")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new l.LocalizedTextVO("dialog_equipmentSale_info", [this.dialogProperties.itemToSell.gemVO.nameString]));
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_sell.txt_value, new l.LocalizedTextVO("dialog_equipmentSale_sell")).verticalAlign = r.GGSVerticalAlign.MIDDLE;
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_extract.txt_value, new l.LocalizedTextVO("dialog_equipmentSale_extractGem")).verticalAlign = r.GGSVerticalAlign.MIDDLE;
-    if (I.instanceOfClass(this.dialogProperties.itemToSell, "RelicEquipmentVO")) {
-      var e = this.dialogProperties.itemToSell.getSellPrice();
-      this.dialogDisp.mc_sell.mc_currency.toolTipText = e.getNameTextId();
-      this.dialogDisp.mc_sell.mc_currency.gotoAndStop(3);
-      var t = e.amount;
-      this.textFieldManager.registerTextField(this.dialogDisp.mc_sell.tfSellValue, new c.LocalizedNumberVO(t));
-      this.dialogDisp.mc_extract.mc_currency.toolTipText = e.getNameTextId();
-      this.dialogDisp.mc_extract.mc_currency.gotoAndStop(3);
-      this.dialogDisp.btn_extract.mc_icon.gotoAndStop(3);
-    } else {
-      this.dialogDisp.mc_sell.mc_currency.toolTipText = "cash";
-      this.dialogDisp.mc_sell.mc_currency.gotoAndStop(1);
-      var i = this.dialogProperties.itemToSell;
-      var n = i.sellPriceOverride > -1 ? i.sellPriceOverride : d.CastleModel.equipData.equipmentXml.getEquipmentRareness(i.rareID).saleValue;
-      if (i.gemVO) {
-        var o = i.gemVO;
-        n += o.sellPriceOverride > -1 ? o.sellPriceOverride : o.levelInfos.sellValueC1;
-      }
-      this.textFieldManager.registerTextField(this.dialogDisp.mc_sell.tfSellValue, new c.LocalizedNumberVO(n));
-      this.dialogDisp.mc_extract.mc_currency.toolTipText = "gold";
-      this.dialogDisp.mc_extract.mc_currency.gotoAndStop(2);
-      this.dialogDisp.btn_extract.mc_icon.gotoAndStop(2);
-    }
-    var a = this.calculateRemovalCostsForGems();
-    if (a == 0) {
-      this.textFieldManager.registerTextField(this.dialogDisp.mc_extract.tfSellValue, new l.LocalizedTextVO("dialog_kingdomStart_prebuiltCastle_chooseCastle_forFree")).autoFitToBounds = true;
-    } else {
-      this.textFieldManager.registerTextField(this.dialogDisp.mc_extract.tfSellValue, new c.LocalizedNumberVO(a)).autoFitToBounds = true;
-    }
+  ACastleSocketDialog.prototype.hide = function () {
+    this.controller.removeEventListener(c.CastleUserDataEvent.CHANGE_USER_CURRENCY, this.bindFunction(this.onUserCurrencyChanged));
+    e.prototype.hide.call(this);
   };
-  CastleSellEmbeddedEquipmentDialog.prototype.calculateRemovalCostsForGems = function () {
-    var e = 0;
-    if (I.instanceOfClass(this.dialogProperties.itemToSell.gemVO, "CastleGemVO")) {
-      e += u.int(this.dialogProperties.itemToSell.gemVO.levelInfos.removalCostC2);
-    } else {
-      e += u.int(T.RelicItemConst.EXTRACT_RELIC_GEM_RELIC_FRAGMENT_COST);
-    }
-    return e;
+  ACastleSocketDialog.prototype.updateCosts = function () {
+    this.destroyCollectableRenderList();
+    I.CollectableRenderHelper.displaySingleItemAndAddToRenderList(this, new u.CollectableRenderClips(this.dialogDisp.mc_cost), this.getCosts(), new d.CollectableRenderOptions(d.CollectableRenderOptions.SET_COST_LIST, ACastleSocketDialog.COST_ICON_DIMENSION));
   };
-  CastleSellEmbeddedEquipmentDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    h.ButtonHelper.enableButton(this.dialogDisp.btn_extract, !d.CastleModel.gemData.isInventoryFull);
-    this.dialogDisp.btn_extract.toolTipText = d.CastleModel.gemData.isInventoryFull ? "allyforge_tooltip_inventoryFull_gems" : null;
+  ACastleSocketDialog.prototype.renderIcons = function () {
+    this.dialogDisp.mc_gem.equipmentVO = this.dialogProperties.gemVO;
+    this.dialogDisp.mc_gem.addChild(L.CastleGemRenderer.renderAsset(this.dialogProperties.gemVO, null, null, true));
+    v.EquipmentIconHelper.addEquipmentIcon(this.dialogProperties.eqVO, this.dialogDisp.mc_eq, 55, 55, null, true, false, false, true, true);
+    this.dialogDisp.mc_eq.equipmentVO = this.dialogProperties.eqVO;
+    this.dialogDisp.mc_rarity.visible = false;
+    this.dialogDisp.mc_rarity.gotoAndStop(this.dialogProperties.eqVO.visualRareID + 1);
   };
-  CastleSellEmbeddedEquipmentDialog.prototype.hideLoaded = function (t = null) {
-    e.prototype.hideLoaded.call(this, t);
-    s.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_equipment.mc_equipmentHolder);
-    this.dialogDisp.mc_equipment.mc_bg.gotoAndStop(6);
+  ACastleSocketDialog.prototype.checkAndShowNotEnoughCurrencyMessage = function (e) {
+    return !!T.CostHelper.canAfford(y.CollectableHelper.createCostList([e])) || (e.itemType == E.CollectableEnum.C1 ? D.CastleDialogHandler.getInstance().registerDefaultDialogs(S.CastleNoMoneyC1Dialog, new _.CastleNoMoneyC1DialogProperties()) : e.itemType == E.CollectableEnum.C2 ? D.CastleDialogHandler.getInstance().registerDefaultDialogs(A.CastleNoMoneyC2Dialog, new m.CastleNoMoneyC2DialogProperties()) : T.CostHelper.showNotEnoughSpecialCurrencyDialog([new b.CollectableTypeVO().initByCollectable(e).id]), false);
   };
-  CastleSellEmbeddedEquipmentDialog.prototype.onClick = function (t) {
-    if (h.ButtonHelper.isButtonEnabled(t.target)) {
+  Object.defineProperty(ACastleSocketDialog.prototype, "titleTextID", {
+    get: function () {
+      return "dialog_gems_insertGems_header";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ACastleSocketDialog.prototype.getCosts = function () {
+    var e = l.int(P.instanceOfClass(this.dialogProperties.gemVO, "CastleGemVO") ? p.CastleModel.costsData.getFinalCostsC1(this.dialogProperties.gemVO.levelInfos.insertCostC1) : M.RelicItemConst.INSERT_RELIC_GEM_C1_COST);
+    return y.CollectableHelper.createVO(E.CollectableEnum.C1, e);
+  };
+  ACastleSocketDialog.prototype.onClick = function (t) {
+    if (g.ButtonHelper.isButtonEnabled(t.target)) {
       e.prototype.onClick.call(this, t);
       switch (t.target) {
+        case this.dialogDisp.btn_ok:
+          this.onConfirmButtonClicked();
+          break;
+        case this.dialogDisp.btn_back:
         case this.dialogDisp.btn_close:
-          if (this.dialogProperties.cancelFunction) {
-            this.dialogProperties.cancelFunction();
+        case this.dialogDisp.btn_cancel:
+          if (this.dialogProperties.onAbort) {
+            this.dialogProperties.onAbort();
           }
           this.hide();
           break;
-        case this.dialogDisp.btn_sell:
-          this.dialogProperties.okFunction(false);
-          this.hide();
-          break;
-        case this.dialogDisp.btn_extract:
-          this.onExtract();
+        case this.dialogDisp.btn_help:
+          D.CastleDialogHandler.getInstance().showHelper("", r.Localize.text("help_insertGems"));
       }
     }
   };
-  CastleSellEmbeddedEquipmentDialog.prototype.onExtract = function () {
-    if (I.instanceOfClass(this.dialogProperties.itemToSell, "RelicEquipmentVO") && d.CastleModel.currencyData.getAmountById(p.ClientConstCurrency.ID_RELIC_FRAGMENTS) < this.calculateRemovalCostsForGems()) {
-      O.CostHelper.showNotEnoughSpecialCurrencyDialog([p.ClientConstCurrency.ID_RELIC_FRAGMENTS]);
-    } else if (!I.instanceOfClass(this.dialogProperties.itemToSell, "RelicEquipmentVO") && d.CastleModel.currencyData.c2Amount < this.calculateRemovalCostsForGems()) {
-      f.CastleDialogHandler.getInstance().registerDefaultDialogs(y.CastleNoMoneyC2Dialog, new C.CastleNoMoneyC2DialogProperties());
-    } else {
-      this.dialogProperties.okFunction(true);
+  ACastleSocketDialog.prototype.onConfirmButtonClicked = function () {
+    if (this.checkAndShowNotEnoughCurrencyMessage(this.getCosts())) {
+      this.onValidConfirmClicked();
+      if (this.dialogProperties.onConfirm) {
+        this.dialogProperties.onConfirm();
+      }
       this.hide();
     }
   };
-  CastleSellEmbeddedEquipmentDialog.prototype.onMouseOver = function (t) {
+  ACastleSocketDialog.prototype.onUserCurrencyChanged = function (e) {
+    this.updateCosts();
+  };
+  ACastleSocketDialog.prototype.onMouseOver = function (t) {
     e.prototype.onMouseOver.call(this, t);
-    if (t.target == this.dialogDisp.mc_equipment) {
-      E.EquipmentIconHelper.showToolTip(this.dialogDisp.mc_equipment, this.dialogProperties.itemToSell);
+    if (t.target && t.target.equipmentVO) {
+      v.EquipmentIconHelper.showToolTip(t.target, t.target.equipmentVO);
     }
   };
-  CastleSellEmbeddedEquipmentDialog.prototype.fillSlotContainer = function (e) {
-    if (e) {
-      if (I.instanceOfClass(e, "BasicEquipmentVO")) {
-        E.EquipmentIconHelper.addEquipmentIcon(e, this.dialogDisp.mc_equipment.mc_equipmentHolder, b.CastleEquipmentDialog.MAX_WIDTH, b.CastleEquipmentDialog.MAX_HEIGHT, this.bindFunction(this.onEQLoaded), true, false, false, true, true);
-        var t = u.int(e.visualRareID);
-        if (e.rarity == m.BasicEquipmentVO.RARITY_UNIQUE) {
-          t = 5;
-        }
-        this.dialogDisp.mc_equipment.mc_bg.gotoAndStop(t);
-      } else {
-        this.dialogDisp.mc_equipment.mc_equipmentHolder.addChild(D.CastleGemRenderer.renderAsset(e, null, null, true));
-      }
-    }
-  };
-  CastleSellEmbeddedEquipmentDialog.prototype.onEQLoaded = function (e = null) {
-    v.CastleMovieClipHelper.createHitArea(this.dialogDisp.mc_equipment);
-  };
-  Object.defineProperty(CastleSellEmbeddedEquipmentDialog.prototype, "dialogProperties", {
+  ACastleSocketDialog.prototype.onValidConfirmClicked = function () {};
+  Object.defineProperty(ACastleSocketDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleSellEmbeddedEquipmentDialog.NAME = "CastleSellEmbeddedEquipment";
-  return CastleSellEmbeddedEquipmentDialog;
-}(g.CastleExternalDialog);
-exports.CastleSellEmbeddedEquipmentDialog = _;
-var m = require("./198.js");
-var f = require("./9.js");
-var O = require("./66.js");
-var E = require("./73.js");
-var y = require("./138.js");
-var b = require("./246.js");
-var D = require("./248.js");
-var I = require("./1.js");
-var T = require("./5.js");
-var v = require("./41.js");
-o.classImplementsInterfaces(_, "ICollectableRendererList");
+  ACastleSocketDialog.__initialize_static_members = function () {
+    ACastleSocketDialog.COST_ICON_DIMENSION = new f(35, 35);
+  };
+  return ACastleSocketDialog;
+}(C.CastleExternalDialog);
+exports.ACastleSocketDialog = O;
+o.classImplementsInterfaces(O, "ICollectableRendererList");
+var E = require("./12.js");
+var y = require("./45.js");
+var b = require("./74.js");
+var D = require("./9.js");
+var I = require("./25.js");
+var T = require("./66.js");
+var v = require("./73.js");
+var S = require("./352.js");
+var A = require("./138.js");
+var L = require("./248.js");
+O.__initialize_static_members();
+var P = require("./1.js");
+var M = require("./5.js");

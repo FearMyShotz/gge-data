@@ -4,46 +4,64 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./6.js");
 var o = require("./22.js");
 var a = function () {
-  function XmlSamuraiDaimyoRewardVO() {
+  function XmlSamuraiDaimyoContractVO() {
     this._id = 0;
-    this._rewardSetId = 0;
-    this._minHighscoreRank = 0;
-    this._rewardIds = [];
+    this._rank = 0;
+    this._enableOnStart = false;
+    this._nextContract = 0;
+    this._shogunPoints = 0;
+    this._warEffortPoints = 0;
   }
-  XmlSamuraiDaimyoRewardVO.prototype.parseXml = function (e) {
+  XmlSamuraiDaimyoContractVO.prototype.parseXml = function (e) {
     this._id = n.int(o.CastleXMLUtils.getIntAttribute("id", e, -1));
-    this._rewardSetId = n.int(o.CastleXMLUtils.getIntAttribute("rewardSetID", e, -1));
-    this._minHighscoreRank = n.int(o.CastleXMLUtils.getIntAttribute("minHighscoreRank", e, -1));
-    this._rewardIds = o.CastleXMLUtils.createIntListFromAttribute("rewardIDs", e);
+    this._rank = n.int(o.CastleXMLUtils.getIntAttribute("rank", e, -1));
+    this._enableOnStart = o.CastleXMLUtils.getBooleanAttribute("enableOnStart", e, false);
+    this._nextContract = n.int(o.CastleXMLUtils.getIntAttribute("nextContract", e, -1));
+    this._shogunPoints = n.int(o.CastleXMLUtils.getIntAttribute("shogunPoints", e, -1));
+    this._warEffortPoints = n.int(o.CastleXMLUtils.getIntAttribute("warEffortPoints", e, -1));
   };
-  Object.defineProperty(XmlSamuraiDaimyoRewardVO.prototype, "id", {
+  Object.defineProperty(XmlSamuraiDaimyoContractVO.prototype, "id", {
     get: function () {
       return this._id;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSamuraiDaimyoRewardVO.prototype, "rewardSetId", {
+  Object.defineProperty(XmlSamuraiDaimyoContractVO.prototype, "rank", {
     get: function () {
-      return this._rewardSetId;
+      return this._rank;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSamuraiDaimyoRewardVO.prototype, "minHighscoreRank", {
+  Object.defineProperty(XmlSamuraiDaimyoContractVO.prototype, "enableOnStart", {
     get: function () {
-      return this._minHighscoreRank;
+      return this._enableOnStart;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSamuraiDaimyoRewardVO.prototype, "rewardIds", {
+  Object.defineProperty(XmlSamuraiDaimyoContractVO.prototype, "nextContract", {
     get: function () {
-      return this._rewardIds;
+      return this._nextContract;
     },
     enumerable: true,
     configurable: true
   });
-  return XmlSamuraiDaimyoRewardVO;
+  Object.defineProperty(XmlSamuraiDaimyoContractVO.prototype, "shogunPoints", {
+    get: function () {
+      return this._shogunPoints;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlSamuraiDaimyoContractVO.prototype, "warEffortPoints", {
+    get: function () {
+      return this._warEffortPoints;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return XmlSamuraiDaimyoContractVO;
 }();
-exports.XmlSamuraiDaimyoRewardVO = a;
+exports.XmlSamuraiDaimyoContractVO = a;

@@ -2,22 +2,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastlePlayerGiftSelectionProperties(t) {
-    var i = this;
-    i._playerID = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this)._playerID = t;
-    return i;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SGetFriendConnectionsVO() {
+    return e.call(this) || this;
   }
-  n.__extends(CastlePlayerGiftSelectionProperties, e);
-  Object.defineProperty(CastlePlayerGiftSelectionProperties.prototype, "playerID", {
-    get: function () {
-      return this._playerID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastlePlayerGiftSelectionProperties;
-}(require("./2.js").BasicProperties);
-exports.CastlePlayerGiftSelectionProperties = o;
+  n.__extends(C2SGetFriendConnectionsVO, e);
+  C2SGetFriendConnectionsVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_GET_FRIEND_CONNECTIONS;
+  };
+  return C2SGetFriendConnectionsVO;
+}(o.BasicCommandVO);
+exports.C2SGetFriendConnectionsVO = s;

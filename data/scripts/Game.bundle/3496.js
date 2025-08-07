@@ -3,50 +3,146 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./39.js");
-var l = function (e) {
-  function CastleBountyhunterWinDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleBountyhunterWinDialog.NAME) || this;
+var a = require("./75.js");
+var s = require("./4.js");
+var r = require("./226.js");
+var l = require("./3.js");
+var c = require("./2.js");
+var u = require("./1693.js");
+var d = require("./13.js");
+var p = require("./19.js");
+var h = function (e) {
+  function CastleCollectorEventRewardDialog() {
+    return e.call(this, CastleCollectorEventRewardDialog.NAME) || this;
   }
-  n.__extends(CastleBountyhunterWinDialog, e);
-  CastleBountyhunterWinDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("dialog_bountyhunterWin_title"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_winText, new s.LocalizedTextVO("dialog_bountyhunter_title_won"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_reward, new s.LocalizedTextVO("reward"));
-    this.itxt_c1 = this.textFieldManager.registerTextField(this.dialogDisp.txt_c1, new a.LocalizedNumberVO(0));
-    this.itxt_c2 = this.textFieldManager.registerTextField(this.dialogDisp.txt_c2, new a.LocalizedNumberVO(0));
-    this.dialogDisp.mc_c1.toolTipText = r.ClientConstTextIds.C1;
-    this.dialogDisp.mc_c2.toolTipText = r.ClientConstTextIds.C2;
+  n.__extends(CastleCollectorEventRewardDialog, e);
+  CastleCollectorEventRewardDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this._rewards = new u.CastleGenericRewardsComponent(this.dialogDisp.mc_items, true, true, null, function (e) {
+      e.getRenderer(p.CollectableRenderOptions.ICON_TRANSFORM).transform.offset.y = e.itemVE && e.itemVE.textfieldBackgroundVisible() ? 0 : 5;
+    });
   };
-  CastleBountyhunterWinDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    this.itxt_c1.textContentVO.numberValue = this.dialogProperties.bountyPrizeC1;
-    this.itxt_c2.textContentVO.numberValue = this.dialogProperties.bountyPrizeC2;
+  CastleCollectorEventRewardDialog.prototype.initDialog = function () {
+    var e;
+    var t;
+    if (this.dialogProperties.rewardList && this.dialogProperties.rewardList.length > 0) {
+      e = new l.LocalizedTextVO(d.TextHelper.toUpperCaseLocaSafeTextId(this.gotRewardTitleTextId));
+      t = new l.LocalizedTextVO(this.gotRewardCopyTextId, [this.dialogProperties.points]);
+    } else {
+      e = new l.LocalizedTextVO(d.TextHelper.toUpperCaseLocaSafeTextId(this.noRewardTitleTextId));
+      t = this.makeSpecialRewardLocalizedTextVO(this.noRewardCopyTextId, this.dialogProperties.points, this.dialogProperties.ownRank);
+    }
+    var i = this.textFieldManager.registerTextField(this.dialogDisp.txt_title, e);
+    i.autoFitToBounds = true;
+    i.verticalAlign = c.GGSVerticalAlign.MIDDLE;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, t).autoFitToBounds = true;
   };
-  CastleBountyhunterWinDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_close:
-      case this.dialogDisp.btn_ok:
-        this.hide();
+  CastleCollectorEventRewardDialog.prototype.updateRewards = function () {
+    this._rewards.onShow();
+    if (this.dialogProperties.rewardList && this.dialogProperties.rewardList.length > 0) {
+      this.dialogProperties.rewardList.sort(a.ClientConstSort.sortCombinedEventRewards);
+      this._rewards.updateWithNewData(this.dialogProperties.rewardList);
     }
   };
-  Object.defineProperty(CastleBountyhunterWinDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastleCollectorEventRewardDialog.prototype, "eventSuffix", {
     get: function () {
-      return this.properties;
+      return s.CastleModel.collectEventData.getCollectInfoVOByID(this.dialogProperties.optionID).collectorEventSkinName;
     },
     enumerable: true,
     configurable: true
   });
-  CastleBountyhunterWinDialog.__initialize_static_members = function () {
-    CastleBountyhunterWinDialog.NAME = "CastleBountyHunterWinExternal";
-  };
-  return CastleBountyhunterWinDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleBountyhunterWinDialog = l;
-o.classImplementsInterfaces(l, "ICollectableRendererList");
-l.__initialize_static_members();
+  Object.defineProperty(CastleCollectorEventRewardDialog.prototype, "firstPlaceTitleTextId", {
+    get: function () {
+      return "dialog_collector_eventEnd_title_" + this.eventSuffix;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGenericRewardDialog.prototype, "firstPlaceTitleTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleCollectorEventRewardDialog.prototype, "firstPlaceCopyTextId", {
+    get: function () {
+      return "dialog_collector_eventReward_copy_" + this.eventSuffix;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGenericRewardDialog.prototype, "firstPlaceCopyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleCollectorEventRewardDialog.prototype, "topXTitleTextId", {
+    get: function () {
+      return this.firstPlaceTitleTextId;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGenericRewardDialog.prototype, "topXTitleTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleCollectorEventRewardDialog.prototype, "topXCopyTextId", {
+    get: function () {
+      return this.firstPlaceCopyTextId;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGenericRewardDialog.prototype, "topXCopyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleCollectorEventRewardDialog.prototype, "topXCopyTextReplacements", {
+    get: function () {
+      return [this.dialogProperties.points];
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGenericRewardDialog.prototype, "topXCopyTextReplacements").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleCollectorEventRewardDialog.prototype, "gotRewardTitleTextId", {
+    get: function () {
+      return this.firstPlaceTitleTextId;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGenericRewardDialog.prototype, "gotRewardTitleTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleCollectorEventRewardDialog.prototype, "gotRewardCopyTextId", {
+    get: function () {
+      return this.firstPlaceCopyTextId;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGenericRewardDialog.prototype, "gotRewardCopyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleCollectorEventRewardDialog.prototype, "noRewardTitleTextId", {
+    get: function () {
+      return this.firstPlaceCopyTextId;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGenericRewardDialog.prototype, "noRewardTitleTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleCollectorEventRewardDialog.prototype, "noRewardCopyTextId", {
+    get: function () {
+      return "dialog_collector_eventNoReward_copy_" + this.eventSuffix;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGenericRewardDialog.prototype, "noRewardCopyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleCollectorEventRewardDialog.NAME = "CastleGenericRewardsDialog";
+  return CastleCollectorEventRewardDialog;
+}(r.CastleGenericRewardDialog);
+exports.CastleCollectorEventRewardDialog = h;
+o.classImplementsInterfaces(h, "ICollectableRendererList");

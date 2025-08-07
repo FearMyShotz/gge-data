@@ -2,76 +2,49 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./3.js");
-var l = require("./3.js");
-var c = require("./27.js");
-var u = require("./229.js");
-var d = createjs.TimerEvent;
-var p = function (e) {
-  function CastleTimerOkDialog(t = null) {
-    var i = this;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = function (e) {
+  function CastleWelcomebackDialog() {
     CONSTRUCTOR_HACK;
-    (i = e.call(this, t ?? new (a.getDefinitionByName("CastleStandardOk"))()) || this).itxt_title = i.textFieldManager.registerTextField(i.standardDialog.txt_title, new l.TextVO(""));
-    i.itxt_copy = i.textFieldManager.registerTextField(i.standardDialog.txt_copy, new l.TextVO(""));
-    i.itxt_copy.autoFitToBounds = true;
-    i.standardDialog.btn_label.visible = false;
-    return i;
+    return e.call(this, CastleWelcomebackDialog.NAME) || this;
   }
-  n.__extends(CastleTimerOkDialog, e);
-  CastleTimerOkDialog.prototype.show = function () {
-    e.prototype.show.call(this);
-    this.itxt_title.textContentVO.stringValue = r.Localize.text(this.standardDialogProperties.titleTextID);
-    this.itxt_copy.textContentVO.stringValue = r.Localize.text(this.getDialogMessage());
-    this.timer = new a.Timer(1000, 0);
-    this.timer.start();
-    this.timer.addEventListener(d.TIMER, this.bindFunction(this.onTimer));
+  n.__extends(CastleWelcomebackDialog, e);
+  CastleWelcomebackDialog.prototype.initLoaded = function (t = null) {
+    this.initBasicButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close]);
+    e.prototype.initLoaded.call(this, t);
   };
-  CastleTimerOkDialog.prototype.onTimer = function (e) {
-    this.itxt_copy.textContentVO.stringValue = r.Localize.text(this.getDialogMessage());
-    if (this.standardDialogProperties.remainingSeconds <= 0) {
+  CastleWelcomebackDialog.prototype.showLoaded = function (t = null) {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_comeback_title")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_comeback_copy"));
+    this.itxt_value ||= this.textFieldManager.registerTextField(this.dialogDisp.txt_value, new a.LocalizedTextVO("value_multiplied", [0]));
+    this.itxt_value.textContentVO.textId = "value_multiplied";
+    this.itxt_value.textContentVO.textReplacements = [this.dialogProperties.amountC2];
+    e.prototype.showLoaded.call(this, t);
+    if (!this.isOutOfTutorial()) {
       this.hide();
     }
   };
-  CastleTimerOkDialog.prototype.getDialogMessage = function () {
-    var e = r.Localize.text(this.standardDialogProperties.descTextID);
-    e += "\n\n";
-    return e += c.CastleTimeStringHelper.getFullTimeString(this.standardDialogProperties.remainingSeconds);
-  };
-  CastleTimerOkDialog.prototype.onClick = function (t) {
+  CastleWelcomebackDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
     switch (t.target) {
-      case this.standardDialog.btn_close:
-      case this.standardDialog.btn_ok:
+      case this.dialogDisp.btn_close:
+      case this.dialogDisp.btn_ok:
         this.hide();
     }
   };
-  CastleTimerOkDialog.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    this.timer.stop();
-    this.timer.removeEventListener(d.TIMER, this.bindFunction(this.onTimer));
-  };
-  Object.defineProperty(CastleTimerOkDialog.prototype, "standardDialogProperties", {
+  Object.defineProperty(CastleWelcomebackDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTimerOkDialog.prototype, "standardDialog", {
-    get: function () {
-      return this.disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleTimerOkDialog.__initialize_static_members = function () {
-    CastleTimerOkDialog.NAME = o.CommonDialogNames.StandardOkDialog_NAME;
+  CastleWelcomebackDialog.__initialize_static_members = function () {
+    CastleWelcomebackDialog.NAME = "CastleWellcomeBack";
   };
-  return CastleTimerOkDialog;
-}(u.CastleDialog);
-exports.CastleTimerOkDialog = p;
-s.classImplementsInterfaces(p, "ICollectableRendererList");
-p.__initialize_static_members();
+  return CastleWelcomebackDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleWelcomebackDialog = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");
+s.__initialize_static_members();

@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./113.js");
+var s = require("./111.js");
 var r = function (e) {
   function ASurroundingBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
@@ -49,7 +49,7 @@ var r = function (e) {
     configurable: true
   });
   return ASurroundingBuildingVE;
-}(require("./489.js").AInteractiveIsoObjectVE);
+}(require("./490.js").AInteractiveIsoObjectVE);
 exports.ASurroundingBuildingVE = r;
 var l = require("./46.js");
 a.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

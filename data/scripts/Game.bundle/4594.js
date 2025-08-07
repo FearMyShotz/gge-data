@@ -2,98 +2,105 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
+var o = require("./1.js");
+var a = require("./3.js");
 var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./32.js");
-var c = require("./90.js");
-var u = require("./15.js");
-var d = require("./64.js");
-var p = require("./124.js");
-var h = createjs.Container;
-var g = function (e) {
-  function DaimyoTownshipMapobject() {
-    return e !== null && e.apply(this, arguments) || this;
+var r = require("./577.js");
+var l = require("./44.js");
+var c = require("./117.js");
+var u = require("./1150.js");
+var d = function (e) {
+  function CapitalMapobject() {
+    return e.call(this) || this;
   }
-  n.__extends(DaimyoTownshipMapobject, e);
-  DaimyoTownshipMapobject.prototype.initVisualRep = function () {
-    if (!this.disp) {
-      this.disp = new h();
-      this.mapobjectVO.addEventListener(d.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
-    }
-    this.drawDaimyoTownship();
-    if (this.isOwnMapobject) {
-      u.CastleBasicController.getInstance().addEventListener(l.CastleUserDataEvent.CHANGE_USER_AVATAR, this.bindFunction(this.onChangeCrest));
-    }
+  n.__extends(CapitalMapobject, e);
+  CapitalMapobject.prototype.getFlamesClip = function () {
+    var t = this.getABGFlamesClip("Capital");
+    return t || e.prototype.getFlamesClip.call(this);
   };
-  DaimyoTownshipMapobject.prototype.drawDaimyoTownship = function () {
+  CapitalMapobject.prototype.drawOutpost = function () {
     this.clearObjectContainer();
     if (this.mapobjectVO.isVisibleOnMap) {
-      this.objectContainer = this.daimyoTownshipMapobjectVO.getDisplayObjectClipContainer(true, null, false);
+      if (!this.worldmapObjectVO.ownerInfo || this.worldmapObjectVO.ownerInfo && this.worldmapObjectVO.ownerInfo.isOutpostOwner) {
+        this.objectContainer = this.worldmapObjectVO.getDisplayObjectClipContainer(false, null, false);
+      } else {
+        this.objectContainer = this.capitalVO.getDisplayObjectClipContainer(true, null, false);
+        this.setOccupiedMarker();
+      }
       if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0) {
         this.showFlames();
       }
       this.addObjectContainer();
-      this.addMouseListener();
-    }
-  };
-  DaimyoTownshipMapobject.prototype.getFlamesClip = function () {
-    return this.getAsExternalClip("DaimyoTownship_Cooldown");
-  };
-  DaimyoTownshipMapobject.prototype.showRingMenu = function () {
-    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.SHOW_MENU, [this, c.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
-  };
-  DaimyoTownshipMapobject.prototype.onRollOver = function (t) {
-    if (!this.worldmapRenderer.camera.isWorldDragging) {
-      if (!this.hasRingMenu) {
-        this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
+      if (this.occupiedMarker && this.disp.contains(this.occupiedMarker.disp)) {
+        this.disp.setChildIndex(this.occupiedMarker.disp, this.disp.numChildren - 1);
       }
-      e.prototype.onRollOver.call(this, t);
+      this.addMouseListener();
+      this.disp.dispatchEvent(new r.VisualMapObjectEvent(r.VisualMapObjectEvent.VE_UPDATED, [this]));
     }
   };
-  DaimyoTownshipMapobject.prototype.onRollOut = function (t) {
-    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [false]));
-    e.prototype.onRollOut.call(this, t);
-  };
-  Object.defineProperty(DaimyoTownshipMapobject.prototype, "line1Content", {
+  Object.defineProperty(CapitalMapobject.prototype, "ignorePeaceProtection", {
     get: function () {
-      return new r.LocalizedTextVO("township");
+      return true;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.InteractiveMapobject.prototype, "line1Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.OutpostMapobject.prototype, "ignorePeaceProtection").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DaimyoTownshipMapobject.prototype, "line2Content", {
+  Object.defineProperty(CapitalMapobject.prototype, "capitalVO", {
     get: function () {
-      return new r.LocalizedTextVO("rank_value", [this.daimyoTownshipMapobjectVO.daimyoXmlVO.rank]);
+      return this.mapobjectVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CapitalMapobject.prototype, "line1Content", {
+    get: function () {
+      var e = this.capitalVO.ownerInfo;
+      if (e && !e.isOutpostOwner) {
+        return new a.TextVO(c.CastleTitleSystemHelper.getPlayerNameWithTitleFromPlayerInfo(this.capitalVO.ownerInfo));
+      } else {
+        return new a.TextVO(this.capitalVO.areaNameString);
+      }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.OutpostMapobject.prototype, "line1Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DaimyoTownshipMapobject.prototype, "line3Content", {
+  Object.defineProperty(CapitalMapobject.prototype, "line2Content", {
     get: function () {
-      return new r.LocalizedTextVO(o.GenericTextIds.VALUE_ASSIGN_COLON, [s.Localize.text("level"), this.daimyoTownshipMapobjectVO.daimyoXmlVO.level]);
+      var e = this.capitalVO.ownerInfo;
+      if (e && e.isRuin) {
+        return new s.LocalizedTextVO("ruin");
+      } else {
+        return new s.LocalizedTextVO(l.SpecialServerHelper.checkTextIDForSkinText("capital_worldmap_tooltip"));
+      }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.OutpostMapobject.prototype, "line2Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DaimyoTownshipMapobject.prototype, "daimyoTownshipMapobjectVO", {
+  Object.defineProperty(CapitalMapobject.prototype, "line3Content", {
     get: function () {
-      return this.vo;
+      var e = this.capitalVO.ownerInfo;
+      if (e && !e.isOutpostOwner) {
+        return new a.TextVO(this.getAllianceString());
+      } else {
+        return null;
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.OutpostMapobject.prototype, "line3Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return DaimyoTownshipMapobject;
-}(p.InteractiveMapobject);
-exports.DaimyoTownshipMapobject = g;
-a.classImplementsInterfaces(g, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+  return CapitalMapobject;
+}(u.OutpostMapobject);
+exports.CapitalMapobject = d;
+o.classImplementsInterfaces(d, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");

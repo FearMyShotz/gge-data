@@ -4,159 +4,137 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./5.js");
-var u = require("./5.js");
-var d = require("./5.js");
-var p = require("./3.js");
-var h = require("./3.js");
-var g = require("./3.js");
-var C = require("./3.js");
-var _ = require("./241.js");
-var m = require("./264.js");
-var f = require("./37.js");
-var O = require("./210.js");
-var E = require("./15.js");
-var y = require("./4.js");
-var b = require("./251.js");
-var D = require("./8.js");
-var I = require("./288.js");
-var T = require("./34.js");
-var v = require("./330.js");
-var S = function (e) {
-  function CastleNomadInvasionPointsEventSublayer(t) {
-    var i = e.call(this, t) || this;
-    i.textFieldManager.registerTextField(t.txt_title, new g.LocalizedTextVO("dialog_nomadInvasion_overview_title"));
-    i.textFieldManager.registerTextField(t.txt_desc1, new g.LocalizedTextVO("dialog_nomadInvasion_overview_desc"));
-    i.textFieldManager.registerTextField(t.txt_desc2, new g.LocalizedTextVO("dialog_nomadInvasion_overview_pointsEventInfo"));
-    i.textFieldManager.registerTextField(t.txt_description, new g.LocalizedTextVO("dialog_nomadInvasion_desc"));
-    D.ButtonHelper.initBasicButton(t.btn_showMe);
-    i.textFieldManager.registerTextField(t.mc_disabledRanking.txt_rank, new g.LocalizedTextVO("rank")).autoFitToBounds = true;
-    t.mc_disabledRanking.toolTipText = "dialog_tournament_yourRank";
-    t.mc_disabledRanking.mouseChildren = false;
-    t.btn_showMe.mouseChildren = false;
-    t.btn_showMe.toolTipText = "dialog_nomadInvasion_overview_seekNomadsButton";
-    i._seasonLeague = new R.SeasonLeagueEventElementComponent(t.mc_seasonLeague, l.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE);
-    return i;
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./3.js");
+var c = require("./13.js");
+var u = require("./279.js");
+var d = require("./280.js");
+var p = require("./163.js");
+var h = require("./59.js");
+var g = require("./8.js");
+var C = require("./11.js");
+var _ = function (e) {
+  function DifficultyScalingRewardOverviewDialogComplex() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, DifficultyScalingRewardOverviewDialogComplex.NAME) || this;
   }
-  n.__extends(CastleNomadInvasionPointsEventSublayer, e);
-  CastleNomadInvasionPointsEventSublayer.prototype.setScoreBarData = function (e) {
-    this.scoreBarData = e;
+  n.__extends(DifficultyScalingRewardOverviewDialogComplex, e);
+  DifficultyScalingRewardOverviewDialogComplex.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    g.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help], m.ClickFeedbackButton);
+    g.ButtonHelper.initBasicButtons([this.dialogDisp.btn_tab0Unselected, this.dialogDisp.btn_tab1Unselected, this.dialogDisp.btn_tab2Unselected]);
   };
-  CastleNomadInvasionPointsEventSublayer.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    if (this.eventVO && this.eventVO.khanCampBarVO && y.CastleModel.userData.userLevel >= c.PlayerConst.LEVEL_CAP) {
-      this.textFieldManager.registerTextField(this.subLayerDisp.txt_desc2, new g.LocalizedTextVO("dialog_nomadInvasion_overview_pointsEventInfo_khan"));
+  DifficultyScalingRewardOverviewDialogComplex.prototype.initScrollList = function () {
+    var e = new u.AccordionComponentProperties();
+    e.scrollStrategy = h.DynamicSizeScrollStrategyVertical;
+    e.disableButtons = true;
+    e.scrollStepPixels = 40;
+    e.scrollDuration = 0;
+    this.scrollList = new f.DynamicSliderAccordionComponent(this.dialogDisp.mc_list, e);
+  };
+  DifficultyScalingRewardOverviewDialogComplex.prototype.updateContent = function (e, t) {
+    var i = e.getRewardsAndPointsArrayForDifficultyDescending(this.dialogProperties.difficultyVO ? this.dialogProperties.difficultyVO.difficultyID : 0);
+    var n = new d.GenericCollapsibleItemProperties(new p.LayoutMargin(0, 6, 0, 0), true, 0.2, 0.2, false);
+    this.scrollList.hide();
+    var o = [];
+    if (t) {
+      for (var a = 0; a < i.length; a++) {
+        var s = new O.DifficultyScalingRewardDialogListItem(i[a], n);
+        o.push(s);
+      }
     } else {
-      this.textFieldManager.registerTextField(this.subLayerDisp.txt_desc2, new g.LocalizedTextVO("dialog_nomadInvasion_overview_pointsEventInfo"));
+      for (var r = 0; r < 3; r++) {
+        s = new O.DifficultyScalingRewardDialogListItem(i[r], n);
+        o.push(s);
+      }
+      for (var l = e.getRewardGroupsAndPointsArrayForDifficultyDescending(), c = 0; c < l.length; c++) {
+        var u;
+        u = l[c][0].length == 1 ? new y.DifficultyScalingRewardDialogListItemSingleHeader(l[c], n) : new E.DifficultyScalingRewardDialogListItemDoubleHeader(l[c], n);
+        o.push(u);
+      }
     }
-    if (y.CastleModel.specialEventData.isEventActive(l.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE)) {
-      y.CastleModel.smartfoxClient.sendCommandVO(new _.C2SPointEventGetPointsVO(l.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE));
+    for (var h = 0; h < o.length; h++) {
+      this.scrollList.addItem(o[h]);
     }
-    var i = new P.RewardsDialogScoreBarProperties(this.scoreBarData.rewardLists, "nomadInvasion", this.tooltipValues, this.levelLabels);
-    var n = new (s.getDefinitionByName("NomadInvasionEvent_Score_Icon"))();
-    n.toolTipText = "dialog_nomadInvasion_nomadPoints";
-    var o = new (s.getDefinitionByName("NomadInvasionEvent_Background"))();
-    this.scoreBar = new V.RewardsDialogScoreBarComponentExternal();
-    this.scoreBar.load(this.subLayerDisp.mc_scoreBarContainer, this.bindFunction(this.onScorebarAssetLoaded), "Scorebar_Player", n, o, CastleNomadInvasionPointsEventSublayer.openRewardsDialog, i);
-    this.subLayerDisp.mc_seasonLeague.visible = false;
-    this._seasonLeague.onShow();
-    this.subLayerDisp.mc_difficulty.visible = this.eventVO.isDifficultyScalingActivated;
-    if (this.subLayerDisp.mc_difficulty.visible) {
-      I.DifficultyScalingHelper.addDifficultyIcon(this.subLayerDisp.mc_difficulty.mc_icon, y.CastleModel.eventDifficultyScaling.getDifficultyVOByDifficultyID(this.eventVO.difficultyIDChoosen), 45, 45, this.subLayerDisp.mc_difficulty);
-    }
+    this.scrollList.show();
+    this.scrollList.scrollToTop();
   };
-  CastleNomadInvasionPointsEventSublayer.prototype.onScorebarAssetLoaded = function () {
-    this.onUpdatePoints();
-    E.CastleBasicController.getInstance().addEventListener(O.CastleScoreEventEvent.UPDATE_POINTS, this.bindFunction(this.onUpdatePoints));
-  };
-  CastleNomadInvasionPointsEventSublayer.openRewardsDialog = function () {
-    L.CastleDialogHandler.getInstance().registerDefaultDialogs(x.CastleAllianceNomadInvasionRewardListDialog, new v.GenericEventInfoListProperties(l.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE, M.AllianceAndPlayerPointEventRewardListDialog.TAB_PLAYER));
-  };
-  CastleNomadInvasionPointsEventSublayer.prototype.showHelp = function () {
-    L.CastleDialogHandler.getInstance().showHelper("", p.Localize.text("help_nomadinvasion"));
-  };
-  CastleNomadInvasionPointsEventSublayer.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    if (this.scoreBar) {
-      this.scoreBar.destroy();
-      E.CastleBasicController.getInstance().removeEventListener(O.CastleScoreEventEvent.UPDATE_POINTS, this.bindFunction(this.onUpdatePoints));
-    }
-    if (this._seasonLeague) {
-      this._seasonLeague.onHide();
+  DifficultyScalingRewardOverviewDialogComplex.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.initScrollList();
+    this.updateText();
+    if (this.dialogProperties.singlePlayerLeagueVO) {
+      this.selectTab(0);
+    } else if (this.dialogProperties.alliancePlayerLeagueVO) {
+      this.selectTab(1);
     }
   };
-  CastleNomadInvasionPointsEventSublayer.prototype.onClick = function (t) {
+  DifficultyScalingRewardOverviewDialogComplex.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this, t);
+    this.scrollList.hide();
+    this.scrollList.destroy();
+    o.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_list.mc_items);
+  };
+  DifficultyScalingRewardOverviewDialogComplex.prototype.selectTab = function (e) {
+    this.dialogDisp.btn_tab2Selected.visible = false;
+    this.dialogDisp.btn_tab2Unselected.visible = false;
+    switch (e) {
+      case 0:
+        this.dialogDisp.btn_tab0Selected.visible = !!this.dialogProperties.singlePlayerLeagueVO;
+        this.dialogDisp.btn_tab0Unselected.visible = false;
+        this.dialogDisp.btn_tab1Unselected.visible = !!this.dialogProperties.alliancePlayerLeagueVO;
+        this.dialogDisp.btn_tab1Selected.visible = false;
+        this.updateContent(this.dialogProperties.singlePlayerLeagueVO, false);
+        break;
+      case 1:
+        this.dialogDisp.btn_tab0Selected.visible = false;
+        this.dialogDisp.btn_tab0Unselected.visible = !!this.dialogProperties.singlePlayerLeagueVO;
+        this.dialogDisp.btn_tab1Unselected.visible = false;
+        this.dialogDisp.btn_tab1Selected.visible = !!this.dialogProperties.alliancePlayerLeagueVO;
+        this.updateContent(this.dialogProperties.alliancePlayerLeagueVO, true);
+    }
+  };
+  DifficultyScalingRewardOverviewDialogComplex.prototype.updateText = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new l.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_difficultyScaling_rewardOverview_title")));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new r.LocalizedTextVO("dialog_difficultyScaling_eventRankingRewards_desc", [this.dialogProperties.difficultyVO ? this.dialogProperties.difficultyVO.name_textID : "dialog_difficultyScaling_confirmClassic_title"]));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_tab0Selected.txt_copy, new l.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_difficultyScaling_playerRanking_title")));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_tab0Unselected.txt_copy, new l.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_difficultyScaling_playerRanking_title")));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_tab1Selected.txt_copy, new l.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_difficultyScaling_allianceRanking_desc")));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_tab1Unselected.txt_copy, new l.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_difficultyScaling_allianceRanking_desc")));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_tab2Selected.txt_copy, new l.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_difficultyScaling_extraRewards_desc")));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_tab2Unselected.txt_copy, new l.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_difficultyScaling_extraRewards_desc")));
+  };
+  DifficultyScalingRewardOverviewDialogComplex.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
     switch (t.target) {
-      case this.subLayerDisp.btn_showMe:
-        var i = y.CastleModel.userData.castleList.getMainCastleByKingdomID(u.WorldClassic.KINGDOM_ID);
-        o.CommandController.instance.executeCommand(A.IngameClientCommands.SWITCH_KINGDOM_GOTO_WORLDMAP_AND_CENTER_POS_COMMAND, [i.kingdomID, i.absAreaPosX, i.absAreaPosY]);
-        this.controller.addEventListener(f.CastleServerMessageArrivedEvent.GAA_ARRIVED, this.bindFunction(this.onGAAarrived));
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_help:
+        C.CastleExternalDialog.dialogHandler.showHelper("", s.Localize.text("help_difficultyScaling"));
+        break;
+      case this.dialogDisp.btn_tab0Unselected:
+        this.selectTab(0);
+        break;
+      case this.dialogDisp.btn_tab1Unselected:
+        this.selectTab(1);
     }
   };
-  CastleNomadInvasionPointsEventSublayer.prototype.onGAAarrived = function (e) {
-    this.controller.removeEventListener(f.CastleServerMessageArrivedEvent.GAA_ARRIVED, this.bindFunction(this.onGAAarrived));
-    y.CastleModel.smartfoxClient.sendCommandVO(new m.C2SFindNextMapObjectVO(d.WorldConst.AREA_TYPE_NOMAD_CAMP, u.WorldClassic.KINGDOM_ID, -1, -1, r.DungeonConst.BASIC_NOMAD_CAMP_PLAYER_ID));
-  };
-  CastleNomadInvasionPointsEventSublayer.prototype.onUpdatePoints = function (e = null) {
-    this.updateProgressBars();
-  };
-  Object.defineProperty(CastleNomadInvasionPointsEventSublayer.prototype, "tooltipValues", {
+  Object.defineProperty(DifficultyScalingRewardOverviewDialogComplex.prototype, "dialogProperties", {
     get: function () {
-      var e = [];
-      for (var t = 0; t < this.scoreBarData.pointThresholds.length && this.scoreBarData.pointThresholds[t] != 0; t++) {
-        e.push(this.scoreBarData.pointThresholds[t]);
-      }
-      for (var i = 0; i < this.scoreBarData.topX.length; i++) {
-        e.push(this.scoreBarData.topX[i]);
-      }
-      return e;
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNomadInvasionPointsEventSublayer.prototype, "levelLabels", {
-    get: function () {
-      var e = [];
-      var t = 0;
-      for (t = 0; t < this.scoreBarData.pointThresholds.length && this.scoreBarData.pointThresholds[t] != 0; t++) {
-        e.push(this.scoreBarData.pointThresholds[t]);
-      }
-      for (t = 0; t < this.scoreBarData.topX.length; t++) {
-        e.push(p.Localize.text("Ranking_TopX", [this.scoreBarData.topX[t]]));
-      }
-      e.push(p.Localize.text("Ranking_Winner"));
-      return e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleNomadInvasionPointsEventSublayer.prototype.updateProgressBars = function () {
-    this.scoreBar.update(new b.CastleScoreBarProgressVO(this.scoreBarData.ownPoints, this.scoreBarData.ownRank, this.scoreBarData.pointThresholds, this.scoreBarData.topX, this.scoreBarData.rewardsReceived));
-    if (this.scoreBarData.ownRank > 0) {
-      this.textFieldManager.registerTextField(this.subLayerDisp.mc_disabledRanking.txt_value, new h.LocalizedNumberVO(this.scoreBarData.ownRank));
-    } else {
-      this.textFieldManager.registerTextField(this.subLayerDisp.mc_disabledRanking.txt_value, new C.TextVO("-"));
-    }
-  };
-  Object.defineProperty(CastleNomadInvasionPointsEventSublayer.prototype, "eventVO", {
-    get: function () {
-      return y.CastleModel.specialEventData.getActiveEventByEventId(l.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleNomadInvasionPointsEventSublayer;
-}(T.CastleDialogSubLayer);
-exports.CastleNomadInvasionPointsEventSublayer = S;
-var A = require("./29.js");
-var L = require("./9.js");
-var P = require("./464.js");
-var M = require("./332.js");
-var R = require("./655.js");
-var V = require("./465.js");
-var x = require("./1092.js");
-a.classImplementsInterfaces(S, "ICollectableRendererList", "ISublayer");
+  DifficultyScalingRewardOverviewDialogComplex.NAME = "EventDifficultyRewardList2";
+  return DifficultyScalingRewardOverviewDialogComplex;
+}(C.CastleExternalDialog);
+exports.DifficultyScalingRewardOverviewDialogComplex = _;
+var m = require("./36.js");
+var f = require("./281.js");
+var O = require("./3720.js");
+var E = require("./3724.js");
+var y = require("./1772.js");
+a.classImplementsInterfaces(_, "ICollectableRendererList");

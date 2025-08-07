@@ -1,61 +1,74 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./28.js");
-var c = require("./188.js");
-var u = function (e) {
-  function CastleTitleSublayerFactionProperties() {
-    return e.call(this) || this;
-  }
-  n.__extends(CastleTitleSublayerFactionProperties, e);
-  Object.defineProperty(CastleTitleSublayerFactionProperties.prototype, "titleSystem", {
+var n = createjs.Point;
+var o = function () {
+  function AAllianceBookmarkRenderer() {}
+  AAllianceBookmarkRenderer.prototype.render = function (e, t) {
+    l.MovieClipHelper.clearMovieClip(e.mc_placeHolder);
+    var i = a.WorldmapObjectIconHelper.drawMapObjectIcon(t.worldmapObjectVO, AAllianceBookmarkRenderer.WMO_ICON_SIZE, true, false, false);
+    e.mc_placeHolder.addChild(i);
+    e.bg.gotoAndStop(this.backgroundFrame);
+    this.showSublayer(e);
+    var n = this.getSublayer(e);
+    this.textFieldManager.registerTextField(n.txt_name, new u.TextVO(c.TextValide.parseChatJSONMessage(t.name)));
+    n.mc_bookmarkType.gotoAndStop(this.bookmarkTypeIconFrame);
+    n.mc_bookmarkType.mouseChildren = false;
+    n.mc_bookmarkType.toolTipText = this.bookmarkTypeTextID;
+    this.renderAdditionalInfos(n, t);
+  };
+  AAllianceBookmarkRenderer.prototype.showSublayer = function (e) {
+    throw new s.AbstractMethodError();
+  };
+  Object.defineProperty(AAllianceBookmarkRenderer.prototype, "bookmarkTypeTextID", {
     get: function () {
-      return c.ClientConstTitle.BRAVERY_TITLE;
+      throw new s.AbstractMethodError();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTitleSublayerFactionProperties.prototype, "copyTextID", {
+  Object.defineProperty(AAllianceBookmarkRenderer.prototype, "isAdditionalDetailsVisible", {
     get: function () {
-      return "dialog_factionTitles_noDecay_info";
+      throw new s.AbstractMethodError();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTitleSublayerFactionProperties.prototype, "headerTextID", {
+  AAllianceBookmarkRenderer.prototype.renderAdditionalInfos = function (e, t) {};
+  Object.defineProperty(AAllianceBookmarkRenderer.prototype, "backgroundFrame", {
     get: function () {
-      return "dialog_factionTitles_header";
+      throw new s.AbstractMethodError();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTitleSublayerFactionProperties.prototype, "neededPointsTextID", {
+  Object.defineProperty(AAllianceBookmarkRenderer.prototype, "bookmarkTypeIconFrame", {
     get: function () {
-      return "dialog_factionTitles_pointsNeeded";
+      throw new s.AbstractMethodError();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTitleSublayerFactionProperties.prototype, "decayTextID", {
+  Object.defineProperty(AAllianceBookmarkRenderer.prototype, "textFieldManager", {
     get: function () {
-      return "dialog_factionTitles_dailyLoss";
+      return r.GoodgameTextFieldManager.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTitleSublayerFactionProperties.prototype, "helpText", {
-    get: function () {
-      return r.Localize.text("help_berimond_titles", [s.FactionConst.TITLE_RESET_INTERVAL_SECONDS / l.ClientConstTime.HOURES_2_SEC]);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleTitleSublayerFactionProperties;
-}(o.BasicProperties);
-exports.CastleTitleSublayerFactionProperties = u;
-a.classImplementsInterfaces(u, "ITitleSublayerProperties");
+  AAllianceBookmarkRenderer.prototype.getSublayer = function (e) {
+    throw new s.AbstractMethodError();
+  };
+  AAllianceBookmarkRenderer.__initialize_static_members = function () {
+    AAllianceBookmarkRenderer.WMO_ICON_SIZE = new n(100, 100);
+  };
+  return AAllianceBookmarkRenderer;
+}();
+exports.AAllianceBookmarkRenderer = o;
+var a = require("./70.js");
+var s = require("./69.js");
+var r = require("./2.js");
+var l = require("./2.js");
+var c = require("./2.js");
+var u = require("./3.js");
+o.__initialize_static_members();

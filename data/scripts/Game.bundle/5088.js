@@ -3,37 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./1070.js");
-var l = require("./10.js");
-var c = function (e) {
-  function FUCCommand() {
+var a = require("./7.js");
+var s = require("./1156.js");
+var r = function (e) {
+  function FNTCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FUCCommand, e);
-  Object.defineProperty(FUCCommand.prototype, "cmdId", {
+  n.__extends(FNTCommand, e);
+  Object.defineProperty(FNTCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_CAMP_UNIT_CAPACITY;
+      return a.ClientConstSF.S2C_FIND_NEXT_TOWER;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.FNMCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  FUCCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        this.controller.dispatchEvent(new r.CastleUnitCapacityEvent(r.CastleUnitCapacityEvent.UNIT_CAPACITY_CHANGED, Math.max(i.FUC, 0)));
-        break;
-      default:
-        this.showErrorDialog(e, t);
-    }
-    return false;
-  };
-  return FUCCommand;
-}(l.CastleCommand);
-exports.FUCCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return FNTCommand;
+}(s.FNMCommand);
+exports.FNTCommand = r;
+o.classImplementsInterfaces(r, "IExecCommand");

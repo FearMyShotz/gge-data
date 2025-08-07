@@ -1,42 +1,48 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function AllianceFameLevelVO() {
-    this._level = 0;
-    this._threshHold = 0;
+var n = require("./22.js");
+var o = function () {
+  function AlienRerollChanceVO() {
+    this._amountUnits = 0;
+    this._chance = NaN;
+    this._isSoftCurrency = false;
+    this._isHardCurrency = false;
   }
-  AllianceFameLevelVO.prototype.fillFromParamXML = function (e) {
-    this._level = parseInt(e.fameLevel || "");
-    this._threshHold = parseFloat(e.threshold || "");
-    this._awardList = o.CollectableManager.parser.createGoodsListSave(new l.CollectableItemWoodVO(parseInt(e.wood || "")), new r.CollectableItemStoneVO(parseInt(e.stone || "")), new a.CollectableItemC1VO(parseInt(e.currency1 || "")), new s.CollectableItemC2VO(parseInt(e.currency2 || "")));
+  AlienRerollChanceVO.prototype.parseXML = function (e) {
+    this._amountUnits = parseInt(n.CastleXMLUtils.getValueOrDefault("amountUnits", e, "0", true));
+    this._chance = parseInt(n.CastleXMLUtils.getValueOrDefault("chance", e, "0", true)) / 1000;
+    this._isSoftCurrency = parseInt(n.CastleXMLUtils.getValueOrDefault("isSoftCurrency", e, "0")) == 1;
+    this._isHardCurrency = parseInt(n.CastleXMLUtils.getValueOrDefault("isHardCurrency", e, "0")) == 1;
   };
-  Object.defineProperty(AllianceFameLevelVO.prototype, "level", {
+  Object.defineProperty(AlienRerollChanceVO.prototype, "amountUnits", {
     get: function () {
-      return this._level;
+      return this._amountUnits;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceFameLevelVO.prototype, "awardList", {
+  Object.defineProperty(AlienRerollChanceVO.prototype, "chance", {
     get: function () {
-      return this._awardList;
+      return this._chance;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceFameLevelVO.prototype, "threshHold", {
+  Object.defineProperty(AlienRerollChanceVO.prototype, "isSoftCurrency", {
     get: function () {
-      return this._threshHold;
+      return this._isSoftCurrency;
     },
     enumerable: true,
     configurable: true
   });
-  return AllianceFameLevelVO;
+  Object.defineProperty(AlienRerollChanceVO.prototype, "isHardCurrency", {
+    get: function () {
+      return this._isHardCurrency;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AlienRerollChanceVO;
 }();
-exports.AllianceFameLevelVO = n;
-var o = require("./50.js");
-var a = require("./234.js");
-var s = require("./128.js");
-var r = require("./268.js");
-var l = require("./269.js");
+exports.AlienRerollChanceVO = o;

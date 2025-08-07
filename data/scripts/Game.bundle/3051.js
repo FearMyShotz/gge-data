@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function KingsstorageBuildingVE() {
+  function KingdomhunterBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(KingsstorageBuildingVE, e);
-  return KingsstorageBuildingVE;
-}(require("./62.js").ABasicBuildingVE);
-exports.KingsstorageBuildingVE = a;
+  n.__extends(KingdomhunterBuildingVE, e);
+  return KingdomhunterBuildingVE;
+}(require("./1589.js").AHunterBuildingVE);
+exports.KingdomhunterBuildingVE = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

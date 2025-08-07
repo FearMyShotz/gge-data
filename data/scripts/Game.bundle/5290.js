@@ -3,19 +3,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./258.js");
+var a = require("./7.js");
 var s = function (e) {
-  function C2SOfferStatusCheck(t) {
-    var i = this;
-    i.OID = 0;
+  function C2SOfferOfferPayVO(t, i) {
+    var n = this;
+    n.OID = 0;
+    n.C = 1;
     CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).OID = t;
-    return i;
+    (n = e.call(this) || this).ODI = i;
+    n.OID = t;
+    return n;
   }
-  n.__extends(C2SOfferStatusCheck, e);
-  C2SOfferStatusCheck.prototype.getCmdId = function () {
-    return a.CoreEventsConstants.C2S_OFFER_STATUS_CHECK_EVENT;
+  n.__extends(C2SOfferOfferPayVO, e);
+  C2SOfferOfferPayVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_OFFER_OFFER_PAY;
   };
-  return C2SOfferStatusCheck;
+  return C2SOfferOfferPayVO;
 }(o.BasicCommandVO);
-exports.C2SOfferStatusCheck = s;
+exports.C2SOfferOfferPayVO = s;

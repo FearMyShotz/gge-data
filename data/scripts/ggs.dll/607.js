@@ -119,15 +119,15 @@ exports.layOutTokens = function layOutTokens(e, t, n, c, _, d, m, h, p, g) {
     }
   }
   var G = Math.max.apply(Math, y.map(lineTextWidth));
-  var w = (c = typeof c == "number" ? c : G) + s.TEXT_GUTTER_WIDTH * 2;
-  var k = y.map(function (e, t) {
+  var k = (c = typeof c == "number" ? c : G) + s.TEXT_GUTTER_WIDTH * 2;
+  var w = y.map(function (e, t) {
     var n;
     if (v.align === a.TextFormatAlign.CENTER) {
       var i = lineTextWidth(e);
-      n = (w - i) / 2;
+      n = (k - i) / 2;
     } else if (v.align === a.TextFormatAlign.RIGHT) {
       i = lineTextWidth(e);
-      n = w - i - s.TEXT_GUTTER_WIDTH;
+      n = k - i - s.TEXT_GUTTER_WIDTH;
     } else {
       n = s.TEXT_GUTTER_WIDTH;
     }
@@ -139,7 +139,7 @@ exports.layOutTokens = function layOutTokens(e, t, n, c, _, d, m, h, p, g) {
     });
     return r;
   });
-  var x = k.map(function (e) {
+  var x = w.map(function (e) {
     return e.map(function (e) {
       if (e.type === "plain") {
         return e.text;
@@ -148,7 +148,7 @@ exports.layOutTokens = function layOutTokens(e, t, n, c, _, d, m, h, p, g) {
       }
     }).join("");
   });
-  var W = Math.max.apply(Math, k.map(function (e) {
+  var W = Math.max.apply(Math, w.map(function (e) {
     return e.reduce(function (e, t) {
       if (t.type === "plain") {
         return e + t.width;
@@ -161,11 +161,11 @@ exports.layOutTokens = function layOutTokens(e, t, n, c, _, d, m, h, p, g) {
       }
     }, 0);
   }));
-  var V = Math.ceil(G);
-  var H = Math.ceil(x.length * f);
+  var H = Math.ceil(G);
+  var V = Math.ceil(x.length * f);
   var j = {
-    textWidth: V,
-    textHeight: H,
+    textWidth: H,
+    textHeight: V,
     totalNumberOfTextLines: x.length,
     maximumNumberOfVisibleLines: h / f,
     drawnLines: x,
@@ -173,11 +173,11 @@ exports.layOutTokens = function layOutTokens(e, t, n, c, _, d, m, h, p, g) {
     distanceToBaseline: E,
     leading: C,
     widthUntilEndOfText: W,
-    textWithGutterWidth: V + s.TEXT_GUTTER_WIDTH * 2,
-    textWithGutterHeight: H + s.TEXT_GUTTER_WIDTH * 2
+    textWithGutterWidth: H + s.TEXT_GUTTER_WIDTH * 2,
+    textWithGutterHeight: V + s.TEXT_GUTTER_WIDTH * 2
   };
   return {
-    drawingTokens: u(k).reduce(function (e, t) {
+    drawingTokens: u(w).reduce(function (e, t) {
       var n = e[e.length - 1];
       if (n && n.type === "plain" && t.type === "plain") {
         e[e.length - 1] = {
@@ -191,7 +191,7 @@ exports.layOutTokens = function layOutTokens(e, t, n, c, _, d, m, h, p, g) {
       return e;
     }, []).map(function () {
       if (g === "middle") {
-        var e = h - H;
+        var e = h - V;
         if (e > 0) {
           return function (t) {
             switch (t.type) {
@@ -205,7 +205,7 @@ exports.layOutTokens = function layOutTokens(e, t, n, c, _, d, m, h, p, g) {
           };
         }
       } else if (g === "bottom") {
-        var t = h - H;
+        var t = h - V;
         if (t > 0) {
           return function (e) {
             switch (e.type) {

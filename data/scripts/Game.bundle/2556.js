@@ -6,23 +6,25 @@ var o = require("./2.js");
 var a = require("./6.js");
 var s = require("./7.js");
 var r = function (e) {
-  function C2SSupportDefenceInfoVO(t, i) {
-    var n = this;
-    n.TX = 0;
-    n.TY = 0;
-    n.SX = 0;
-    n.SY = 0;
+  function C2SConquerInfoFactioncampVO(t, i, n) {
+    var o = this;
+    o.KID = 0;
+    o.TX = 0;
+    o.TY = 0;
+    o.SX = 0;
+    o.SY = 0;
     CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).TX = a.int(t.x);
-    n.TY = a.int(t.y);
-    n.SX = a.int(i.x);
-    n.SY = a.int(i.y);
-    return n;
+    (o = e.call(this) || this).KID = n;
+    o.TX = a.int(t.x);
+    o.TY = a.int(t.y);
+    o.SX = a.int(i.x);
+    o.SY = a.int(i.y);
+    return o;
   }
-  n.__extends(C2SSupportDefenceInfoVO, e);
-  C2SSupportDefenceInfoVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_SUPPORT_DEFENCE_INFO;
+  n.__extends(C2SConquerInfoFactioncampVO, e);
+  C2SConquerInfoFactioncampVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_CONQUER_INFO_FACTIONCAMP;
   };
-  return C2SSupportDefenceInfoVO;
+  return C2SConquerInfoFactioncampVO;
 }(o.BasicCommandVO);
-exports.C2SSupportDefenceInfoVO = r;
+exports.C2SConquerInfoFactioncampVO = r;

@@ -2,13 +2,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = function (e) {
-  function FactionMoatMoatVO() {
+var o = function (e) {
+  function CastleGroundVO() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FactionMoatMoatVO, e);
-  return FactionMoatMoatVO;
-}(require("./1021.js").BasicMoatVO);
-exports.FactionMoatMoatVO = a;
-o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
+  n.__extends(CastleGroundVO, e);
+  return CastleGroundVO;
+}(require("./309.js").AIsoObjectVO);
+exports.CastleGroundVO = o;

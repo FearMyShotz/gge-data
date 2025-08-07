@@ -4,44 +4,44 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function GDRCommand() {
+var s = require("./7.js");
+var r = require("./1471.js");
+var l = require("./37.js");
+var c = require("./4.js");
+var u = require("./476.js");
+var d = function (e) {
+  function GCCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GDRCommand, e);
-  Object.defineProperty(GDRCommand.prototype, "cmdId", {
+  n.__extends(GCCCommand, e);
+  Object.defineProperty(GCCCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_GET_DONATION_RESOURCES;
+      return s.ClientConstSF.S2C_GET_CONSTRUCTION_CRAFTING_INFO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleDispatchingCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  GDRCommand.prototype.executeCommand = function (t, i) {
-    return e.prototype.executeCommand.call(this, t, i);
-  };
-  GDRCommand.prototype.exec = function (e) {
-    var t = s.int(e[0]);
-    var i = e[1];
+  GCCCommand.prototype.executeCommand = function (t, i) {
     switch (t) {
       case a.ERROR.ALL_OK:
-        var n = JSON.parse(i[1]);
-        if (l.CastleModel.userData) {
-          l.CastleModel.currencyData.parseSCE(n.sce);
-        }
-        l.CastleModel.areaData.activeArea.updater.parseGRC(n.grc);
-        break;
-      default:
-        this.showErrorDialog(t, i);
+        c.CastleModel.craftingMaterialData.dispatchEvent(new r.CastleCraftingMaterialEvent(r.CastleCraftingMaterialEvent.MATERIAL_INVENTORY_UPDATED));
     }
+    return e.prototype.executeCommand.call(this, t, i);
   };
-  return GDRCommand;
-}(c.CastleCommand);
-exports.GDRCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  Object.defineProperty(GCCCommand.prototype, "eventType", {
+    get: function () {
+      return l.CastleServerMessageArrivedEvent.GCC_ARRIVED;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleDispatchingCommand.prototype, "eventType").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return GCCCommand;
+}(u.CastleDispatchingCommand);
+exports.GCCCommand = d;
+o.classImplementsInterfaces(d, "IExecCommand");

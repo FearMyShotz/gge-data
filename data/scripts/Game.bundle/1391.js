@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./4.js");
-var r = require("./512.js");
+var r = require("./513.js");
 var l = function (e) {
   function RenameFightPresetDialog() {
     var t = this;

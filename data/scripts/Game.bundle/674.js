@@ -2,18 +2,113 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function ClientConstMailFilter() {}
-  ClientConstMailFilter.__initialize_static_members = function () {
-    ClientConstMailFilter.TYPELIST_INBOX = [o.MessageConst.MESSAGE_TYPE_SYSTEM, o.MessageConst.MESSAGE_TYPE_USER_IN, o.MessageConst.MESSAGE_TYPE_ALLIANCE_REQUEST, o.MessageConst.MESSAGE_TYPE_BATTLE_LOG, o.MessageConst.MESSAGE_TYPE_CONQUERABLE_AREA, o.MessageConst.MESSAGE_TYPE_SPY_NPC, o.MessageConst.MESSAGE_TYPE_SPY_PLAYER, o.MessageConst.MESSAGE_TYPE_SPY_CANCELLED, o.MessageConst.MESSAGE_TYPE_ATTACK_CANCELLED, o.MessageConst.MESSAGE_TYPE_STARVE_INFO, o.MessageConst.MESSAGE_TYPE_BUILDING_DISABLED, o.MessageConst.MESSAGE_TYPE_MARKET_CARRIAGE_ARRIVED, o.MessageConst.MESSAGE_TYPE_ABO, o.MessageConst.MESSAGE_TYPE_PAYMENT_DOPPLER, o.MessageConst.MESSAGE_TYPE_REBUY, o.MessageConst.MESSAGE_TYPE_STARVE_VILLAGE_LOST, o.MessageConst.MESSAGE_TYPE_STARVE_ISLE_RESOURCE_LOST, o.MessageConst.MESSAGE_TYPE_SPECIAL_EVENT, o.MessageConst.MESSAGE_TYPE_TOURNAMENT_OVER, o.MessageConst.MESSAGE_RUIN_INFO, o.MessageConst.MESSAGE_TYPE_SUBSCRIPTION, o.MessageConst.MESSAGE_TYPE_THANKY_YOU_PACKAGE, o.MessageConst.MESSAGE_TYPE_HIGHSCORE_BONUS, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_TITLE, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_REWARD, o.MessageConst.MESSAGE_TYPE_ALLIANCE_WAR, o.MessageConst.MESSAGE_TYPE_ALLIANCE_NEWSLETTER, o.MessageConst.MESSAGE_TYPE_PLAYER_GIFT, o.MessageConst.MESSAGE_TYPE_ALLIANCE_BOOKMARK, o.MessageConst.MESSAGE_TYPE_FIND_A_FRIEND, o.MessageConst.MESSAGE_TYPE_FRIEND_INVITE_TEASER, o.MessageConst.MESSAGE_TYPE_FRIEND_JOIN_THE_GAME, o.MessageConst.MESSAGE_TYPE_FRIEND_REACHED_A_LEVEL, o.MessageConst.MESSAGE_TYPE_X_FRIENDS_BOUGHT_RUBIES, o.MessageConst.MESSAGE_TYPE_FRIEND_BOUGHT_RUBIES, o.MessageConst.MESSAGE_TYPE_PATCH_NOTES, o.MessageConst.MESSAGE_TYPE_EVENT_ANNOUNCEMENT, o.MessageConst.MESSAGE_TYPE_LOWLEVEL_UNDERWORLD, o.MessageConst.MESSAGE_TYPE_USER_SURVEY, o.MessageConst.MESSAGE_TYPE_FRIEND_INVITE, o.MessageConst.MESSAGE_TYPE_NEW_FRIENDSHIP, o.MessageConst.MESSAGE_TYPE_TEXT_ID, o.MessageConst.MESSAGE_TYPE_POPUP, o.MessageConst.MESSAGE_TYPE_DOWNTIME_STATUS, o.MessageConst.MESSAGE_TYPE_ATTACK_COUNT_THRESHOLD, o.MessageConst.MESSAGE_TYPE_ATTACK_ADVISOR_FAILURE, o.MessageConst.MESSAGE_TYPE_ATTACK_ADVISOR_SUMMARY];
-    ClientConstMailFilter.TYPELIST_OUTBOX = [o.MessageConst.MESSAGE_TYPE_USER_OUT];
-    ClientConstMailFilter.TYPELIST_PLAYER = [o.MessageConst.MESSAGE_TYPE_USER_IN, o.MessageConst.MESSAGE_TYPE_SYSTEM, o.MessageConst.MESSAGE_TYPE_PATCH_NOTES, o.MessageConst.MESSAGE_TYPE_ALLIANCE_REQUEST, o.MessageConst.MESSAGE_TYPE_ATTACK_CANCELLED, o.MessageConst.MESSAGE_TYPE_STARVE_INFO, o.MessageConst.MESSAGE_TYPE_BUILDING_DISABLED, o.MessageConst.MESSAGE_TYPE_MARKET_CARRIAGE_ARRIVED, o.MessageConst.MESSAGE_TYPE_ABO, o.MessageConst.MESSAGE_TYPE_PAYMENT_DOPPLER, o.MessageConst.MESSAGE_TYPE_REBUY, o.MessageConst.MESSAGE_TYPE_STARVE_VILLAGE_LOST, o.MessageConst.MESSAGE_TYPE_STARVE_ISLE_RESOURCE_LOST, o.MessageConst.MESSAGE_TYPE_SPECIAL_EVENT, o.MessageConst.MESSAGE_TYPE_TOURNAMENT_OVER, o.MessageConst.MESSAGE_RUIN_INFO, o.MessageConst.MESSAGE_TYPE_SUBSCRIPTION, o.MessageConst.MESSAGE_TYPE_THANKY_YOU_PACKAGE, o.MessageConst.MESSAGE_TYPE_HIGHSCORE_BONUS, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_TITLE, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_REWARD, o.MessageConst.MESSAGE_TYPE_CONQUERABLE_AREA, o.MessageConst.MESSAGE_TYPE_ALLIANCE_WAR, o.MessageConst.MESSAGE_TYPE_ALLIANCE_NEWSLETTER, o.MessageConst.MESSAGE_TYPE_ALLIANCE_BOOKMARK, o.MessageConst.MESSAGE_TYPE_FIND_A_FRIEND, o.MessageConst.MESSAGE_TYPE_FRIEND_INVITE_TEASER, o.MessageConst.MESSAGE_TYPE_FRIEND_JOIN_THE_GAME, o.MessageConst.MESSAGE_TYPE_FRIEND_REACHED_A_LEVEL, o.MessageConst.MESSAGE_TYPE_X_FRIENDS_BOUGHT_RUBIES, o.MessageConst.MESSAGE_TYPE_FRIEND_BOUGHT_RUBIES, o.MessageConst.MESSAGE_TYPE_EVENT_ANNOUNCEMENT, o.MessageConst.MESSAGE_TYPE_POPUP, o.MessageConst.MESSAGE_TYPE_DOWNTIME_STATUS];
-    ClientConstMailFilter.TYPELIST_SYSTEM = [o.MessageConst.MESSAGE_TYPE_SYSTEM, o.MessageConst.MESSAGE_TYPE_PATCH_NOTES, o.MessageConst.MESSAGE_TYPE_ALLIANCE_REQUEST, o.MessageConst.MESSAGE_TYPE_BATTLE_LOG, o.MessageConst.MESSAGE_TYPE_CONQUERABLE_AREA, o.MessageConst.MESSAGE_TYPE_ATTACK_CANCELLED, o.MessageConst.MESSAGE_TYPE_STARVE_INFO, o.MessageConst.MESSAGE_TYPE_BUILDING_DISABLED, o.MessageConst.MESSAGE_TYPE_MARKET_CARRIAGE_ARRIVED, o.MessageConst.MESSAGE_TYPE_ABO, o.MessageConst.MESSAGE_TYPE_PAYMENT_DOPPLER, o.MessageConst.MESSAGE_TYPE_REBUY, o.MessageConst.MESSAGE_TYPE_STARVE_VILLAGE_LOST, o.MessageConst.MESSAGE_TYPE_STARVE_ISLE_RESOURCE_LOST, o.MessageConst.MESSAGE_TYPE_SPECIAL_EVENT, o.MessageConst.MESSAGE_TYPE_TOURNAMENT_OVER, o.MessageConst.MESSAGE_RUIN_INFO, o.MessageConst.MESSAGE_TYPE_SUBSCRIPTION, o.MessageConst.MESSAGE_TYPE_THANKY_YOU_PACKAGE, o.MessageConst.MESSAGE_TYPE_HIGHSCORE_BONUS, o.MessageConst.MESSAGE_TYPE_PRIVATE_OFFER, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_TITLE, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_REWARD, o.MessageConst.MESSAGE_TYPE_ALLIANCE_WAR, o.MessageConst.MESSAGE_TYPE_EVENT_ANNOUNCEMENT, o.MessageConst.MESSAGE_TYPE_LOWLEVEL_UNDERWORLD, o.MessageConst.MESSAGE_TYPE_USER_SURVEY, o.MessageConst.MESSAGE_TYPE_TEXT_ID, o.MessageConst.MESSAGE_TYPE_POPUP, o.MessageConst.MESSAGE_TYPE_DOWNTIME_STATUS];
-    ClientConstMailFilter.TYPELIST_SPY = [o.MessageConst.MESSAGE_TYPE_SPY_PLAYER, o.MessageConst.MESSAGE_TYPE_SPY_NPC, o.MessageConst.MESSAGE_TYPE_SPY_CANCELLED];
-    ClientConstMailFilter.TYPELIST_BATTLE_AND_SPY = [o.MessageConst.MESSAGE_TYPE_BATTLE_LOG, o.MessageConst.MESSAGE_TYPE_SPY_NPC, o.MessageConst.MESSAGE_TYPE_SPY_PLAYER, o.MessageConst.MESSAGE_TYPE_SPY_CANCELLED];
-    ClientConstMailFilter.TYPELIST_SPECIAL_OFFER = [o.MessageConst.MESSAGE_TYPE_PRIVATE_OFFER];
+  function DailyLoginBonusStateButton(e, t, i = true) {
+    this._defaultState = 0;
+    this._currentState = 0;
+    this._selected = false;
+    this._enableButton = true;
+    this._clickable = true;
+    this._button = e;
+    if (i) {
+      this._basicButton = new a.BasicButton(this._button, true);
+    }
+    this._defaultState = t;
+    this.changeToDefaultState();
+    this._button[DailyLoginBonusStateButton.WRAPPER_PROPERTY] = this;
+  }
+  Object.defineProperty(DailyLoginBonusStateButton.prototype, "button", {
+    get: function () {
+      return this._button;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DailyLoginBonusStateButton.prototype, "defaultState", {
+    get: function () {
+      return this._defaultState;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DailyLoginBonusStateButton.prototype, "selected", {
+    get: function () {
+      return this._selected;
+    },
+    set: function (e) {
+      this._selected = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DailyLoginBonusStateButton.prototype, "collectableItem", {
+    get: function () {
+      return this._collectableItem;
+    },
+    set: function (e) {
+      this._collectableItem = e;
+      this.updateData();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DailyLoginBonusStateButton.prototype, "enableButton", {
+    get: function () {
+      return this._enableButton;
+    },
+    set: function (e) {
+      this._enableButton = e;
+      if (this._basicButton) {
+        l.ButtonHelper.enableButton(this._button, this._enableButton);
+        this._basicButton.enableButton = this._enableButton;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DailyLoginBonusStateButton.prototype, "clickable", {
+    get: function () {
+      return this._clickable;
+    },
+    set: function (e) {
+      this._clickable = e;
+      this.button.enabled = this._clickable;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  DailyLoginBonusStateButton.prototype.changeToDefaultState = function () {
+    this.changeTo(this.defaultState);
+    if (this._collectableRenderComponent) {
+      this._collectableRenderComponent.destroy();
+      this._collectableRenderComponent = null;
+    }
   };
-  return ClientConstMailFilter;
+  DailyLoginBonusStateButton.prototype.changeTo = function (e) {
+    if (this._currentState != e) {
+      this._currentState = e;
+      this.button.gotoAndStop(this._currentState);
+    }
+  };
+  DailyLoginBonusStateButton.prototype.updateData = function () {
+    if (this._collectableRenderComponent) {
+      this._collectableRenderComponent.destroy();
+    }
+    this._collectableRenderComponent = o.CollectableRenderHelper.displaySingleItem(new s.CollectableRenderClips(this._button), this._collectableItem, new r.CollectableRenderOptions(), null, this.bindFunction(this.afterRenderFunc));
+  };
+  DailyLoginBonusStateButton.prototype.afterRenderFunc = function (e) {
+    if (this._button && this._button.cacheCanvas) {
+      this._button.updateCache();
+    }
+  };
+  DailyLoginBonusStateButton.__initialize_static_members = function () {
+    DailyLoginBonusStateButton.WRAPPER_PROPERTY = "wrapper";
+  };
+  return DailyLoginBonusStateButton;
 }();
-exports.ClientConstMailFilter = n;
-var o = require("./5.js");
+exports.DailyLoginBonusStateButton = n;
+var o = require("./25.js");
+var a = require("./49.js");
+var s = require("./31.js");
+var r = require("./19.js");
+var l = require("./8.js");
 n.__initialize_static_members();

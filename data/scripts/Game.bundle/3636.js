@@ -4,16 +4,16 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./227.js");
+var s = require("./228.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayHalloweenDialog() {
+  function CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayParagonXPDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, l.CastlePaymentRewardSpecialOfferHalloweenDialog.NAME) || this;
+    return e.call(this, "CastlePaymentRewardSpecialOfferParagonXP") || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayHalloweenDialog, e);
-  Object.defineProperty(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayHalloweenDialog.prototype, "skinType", {
+  n.__extends(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayParagonXPDialog, e);
+  Object.defineProperty(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayParagonXPDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_HALLOWEEN;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_PARAGON_XP;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayDialog.prototype, "skinType").set.call(this, e);
@@ -21,12 +21,11 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayHalloweenDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayHalloweenDialog.NAME = "CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayHalloween";
+  CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayParagonXPDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayParagonXPDialog.NAME = "CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayParagonXP";
   };
-  return CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayHalloweenDialog;
+  return CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayParagonXPDialog;
 }(s.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayDialog);
-exports.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayHalloweenDialog = r;
-var l = require("./1737.js");
+exports.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayParagonXPDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
 r.__initialize_static_members();

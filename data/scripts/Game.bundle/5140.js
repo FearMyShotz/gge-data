@@ -5,35 +5,32 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function ASGCommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function AGSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ASGCommand, e);
-  Object.defineProperty(ASGCommand.prototype, "cmdId", {
+  n.__extends(AGSCommand, e);
+  Object.defineProperty(AGSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_AUTO_SELL_CONDITIONS;
+      return s.ClientConstSF.S2C_SET_AUTO_SELL_GEM_CONDITIONS;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  ASGCommand.prototype.executeCommand = function (e, t) {
+  AGSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.subscriptionData.parseASG(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return ASGCommand;
-}(l.CastleCommand);
-exports.ASGCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return AGSCommand;
+}(r.CastleCommand);
+exports.AGSCommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

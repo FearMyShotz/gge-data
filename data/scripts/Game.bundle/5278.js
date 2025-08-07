@@ -2,41 +2,38 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./7.js");
-var r = function (e) {
-  function C2SLoginVO(t, i, n, s, r, l, c, u, d, p = "", h = false) {
-    var g = this;
-    g.CONM = 0;
-    g.RTM = 0;
-    g.ID = 0;
-    g.PL = 0;
-    CONSTRUCTOR_HACK;
-    (g = e.call(this) || this).NOM = t;
-    g.PW = i;
-    if (i && i.length > 0) {
-      n = null;
-    }
-    g.LT = n;
-    g.LANG = s;
-    g.DID = r;
-    g.CONM = l;
-    g.RTM = c;
-    g.AID = u;
-    g.KID = p;
-    g.ID = 0;
-    g.REF = d;
-    g.PL = a.int(h ? 1 : 0);
-    g.GCI = o.EnvGlobalsHandler.globals.urlVariables.urlParams.get("gci") || "";
-    g.SID = o.EnvGlobalsHandler.globals.storeId;
-    g.PLFID = o.EnvGlobalsHandler.globals.platformId;
-    return g;
+var o = require("./10.js");
+var a = require("./7.js");
+var s = require("./5.js");
+var r = require("./4.js");
+var l = require("./9.js");
+var c = require("./1295.js");
+var u = function (e) {
+  function PSDCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(C2SLoginVO, e);
-  C2SLoginVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_LOGIN;
+  n.__extends(PSDCommand, e);
+  Object.defineProperty(PSDCommand.prototype, "cmdId", {
+    get: function () {
+      return a.ClientConstSF.S2C_PLAYER_SCHEDULED_DELETION;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  PSDCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case s.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.deleteAccountData.remainingTimeTillDeleteTimeStamp = Number(i.D);
+        if (r.CastleModel.deleteAccountData.isAccountDeletionStarted) {
+          l.CastleDialogHandler.getInstance().registerDefaultDialogs(c.CastleDeleteAccountDialog);
+        }
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    return false;
   };
-  return C2SLoginVO;
-}(o.BasicCommandVO);
-exports.C2SLoginVO = r;
+  return PSDCommand;
+}(o.CastleCommand);
+exports.PSDCommand = u;

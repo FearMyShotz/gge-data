@@ -37,12 +37,12 @@ var F = require("./229.js");
 var U = require("./16.js");
 var G = d.getLogger(U.TEXT_FIELDS_LOGGER);
 R.insertInputFieldElementCSS();
-var w;
-var k = 0;
+var k;
+var w = 0;
 document.addEventListener("copy", function (e) {
   var t = e;
-  if (w && document.activeElement === document.body && t.clipboardData) {
-    t.clipboardData.setData("text/plain", w);
+  if (k && document.activeElement === document.body && t.clipboardData) {
+    t.clipboardData.setData("text/plain", k);
     t.preventDefault();
   }
 });
@@ -153,7 +153,7 @@ var x = function (e) {
         t._htmlTextFieldElement.blur();
       }
       if (t._selectionBeginIndex !== undefined) {
-        w = undefined;
+        k = undefined;
         t._selectionBeginIndex = undefined;
         t._selectionEndIndex = undefined;
         t.invalidate("stage mouse down, no more selection", true);
@@ -882,7 +882,7 @@ var x = function (e) {
       }
       this._htmlTextFieldElement = t;
       t.className = R.HTML_TEXTFIELD_CLASS;
-      t.id = this.name + "_" + ++k;
+      t.id = this.name + "_" + ++w;
       t.style.textAlign = this.textFormat ? this.textFormat.align : "left";
       t.maxLength = this._maxChars;
       t.value = this._textValue.text;
@@ -1450,9 +1450,9 @@ var x = function (e) {
         return characters(e.text);
       });
       var t = C(e);
-      w = t.slice(this._selectionBeginIndex, this._selectionEndIndex).join("");
+      k = t.slice(this._selectionBeginIndex, this._selectionEndIndex).join("");
     } else {
-      w = undefined;
+      k = undefined;
     }
   };
   TextField.prototype.caretCharacterIndexAtElementPosition = function (e) {

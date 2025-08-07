@@ -3,80 +3,166 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./520.js");
-var r = require("./4.js");
-var l = function (e) {
-  function CastleSlumDonateDialog() {
-    return e.call(this, CastleSlumDonateDialog.NAME) || this;
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./166.js");
+var u = require("./71.js");
+var d = require("./194.js");
+var p = createjs.Container;
+var h = createjs.Point;
+var g = function (e) {
+  function SlumSurroundingsVE() {
+    var t = this;
+    t._slumParts = [];
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleSlumDonateDialog, e);
-  Object.defineProperty(CastleSlumDonateDialog.prototype, "payedGoods", {
-    get: function () {
-      return this.kingdomVO.getSlumVOByLevel(this.kingdomVO.activeSlumLevel + 1).payedGoods;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSlumDonateDialog.prototype, "partpaypriceVO", {
-    get: function () {
-      return this.kingdomVO.getSlumVOByLevel(this.kingdomVO.activeSlumLevel + 1).partpaypriceVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSlumDonateDialog.prototype, "kingdomVO", {
-    get: function () {
-      return r.CastleModel.kingdomData.activeKingdomVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleSlumDonateDialog.prototype.initLoaded = function (t = null) {
-    this._woodSelector ||= new d.CastleResourceCollectorComponent(this.dialogDisp.mc_selectWood);
-    this._stoneSelector ||= new d.CastleResourceCollectorComponent(this.dialogDisp.mc_selectStone);
-    this._c1Selector ||= new d.CastleResourceCollectorComponent(this.dialogDisp.mc_selectC1);
-    this._castleInfos ||= new u.CastleCastleCrestComponent(this.dialogDisp.mc_sourceCastle);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_village_unlock_payin_title"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_village_unlock_payin_copy"));
-    this.initBasicButtons([this.dialogDisp.btn_cancle, this.dialogDisp.btn_close, this.dialogDisp.btn_ok]);
-    e.prototype.initLoaded.call(this, t);
+  n.__extends(SlumSurroundingsVE, e);
+  SlumSurroundingsVE.prototype.init = function (t) {
+    e.prototype.init.call(this, t);
+    this.dispComponent.cacheDisp = false;
   };
-  CastleSlumDonateDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this._castleInfos.initComponent();
-    this._castleInfos.show();
-    this._c1Selector.initComponent(Math.min(r.CastleModel.currencyData.c1Amount, this.getRemainingValueToPay(c.CollectableEnum.C1)), d.CastleResourceCollectorComponent.C1, 154);
-    this._woodSelector.initComponent(Math.min(r.CastleModel.areaData.getActiveStorageItem(c.CollectableEnum.WOOD).amount, this.getRemainingValueToPay(c.CollectableEnum.WOOD)), d.CastleResourceCollectorComponent.WOOD, 151);
-    this._stoneSelector.initComponent(Math.min(r.CastleModel.areaData.getActiveStorageItem(c.CollectableEnum.STONE).amount, this.getRemainingValueToPay(c.CollectableEnum.STONE)), d.CastleResourceCollectorComponent.STONE, 152);
-  };
-  CastleSlumDonateDialog.prototype.getRemainingValueToPay = function (e) {
-    return this.partpaypriceVO.costsList.getAmountOrDefaultByType(e) - this.payedGoods.getAmountOrDefaultByType(e);
-  };
-  CastleSlumDonateDialog.prototype.hideLoaded = function (t = null) {
-    this._castleInfos.hide();
-    this._woodSelector.resetValue();
-    this._stoneSelector.resetValue();
-    this._c1Selector.resetValue();
-    e.prototype.hideLoaded.call(this, t);
-  };
-  CastleSlumDonateDialog.prototype.onClick = function (e) {
-    switch (e.target) {
-      case this.dialogDisp.btn_close:
-      case this.dialogDisp.btn_cancle:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_ok:
-        var t = r.CastleModel.areaData.activeAreaInfo;
-        r.CastleModel.smartfoxClient.sendCommandVO(new s.C2SUnlockEventVO(t.objectId, t.kingdomID, this._woodSelector.getSelectedAmount(), this._stoneSelector.getSelectedAmount(), 0, this._c1Selector.getSelectedAmount(), this.partpaypriceVO.id, 0));
-        this.hide();
+  SlumSurroundingsVE.prototype.addGlow = function () {
+    if (this.slumParts != null) {
+      for (var e = 0, t = this.slumParts; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          i.addGlow();
+        }
+      }
     }
   };
-  CastleSlumDonateDialog.NAME = "CastleSlumDonate";
-  return CastleSlumDonateDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleSlumDonateDialog = l;
-var c = require("./12.js");
-var u = require("./739.js");
-var d = require("./319.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList");
+  SlumSurroundingsVE.prototype.getLocalDispPosTopCenter = function () {
+    return new h(-1500, this.dispLayerBounds.top);
+  };
+  SlumSurroundingsVE.prototype.removeGlow = function () {
+    if (this.slumParts != null) {
+      for (var e = 0, t = this.slumParts; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          i.removeGlow();
+        }
+      }
+    }
+  };
+  SlumSurroundingsVE.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    C.CastleComponent.controller.addEventListener(u.AreaDataEvent.ON_SLUM_LEVEL_CHANGED, this.bindFunction(this.onSlumLevelChanged));
+  };
+  SlumSurroundingsVE.prototype.removeEventListener = function () {
+    C.CastleComponent.controller.removeEventListener(u.AreaDataEvent.ON_SLUM_LEVEL_CHANGED, this.bindFunction(this.onSlumLevelChanged));
+    e.prototype.removeEventListener.call(this);
+  };
+  SlumSurroundingsVE.prototype.createDisp = function () {
+    var e = new p();
+    for (var t = 0, i = this.slumVO.slumParts; t < i.length; t++) {
+      var n = i[t];
+      if (n !== undefined) {
+        var o;
+        if (a.instanceOfClass(n, "SlumBuildingPartBuildingVO")) {
+          o = new y.SlumBuildingPartBuildingVE();
+        } else {
+          if (!a.instanceOfClass(n, "SlumBuildingPartCharacterVO")) {
+            continue;
+          }
+          o = new b.SlumBuildingPartCharacterVE();
+        }
+        o.init(n);
+        o.parentVE = this;
+        o.updateDisp();
+        e.addChild(o.elementContainer);
+        this.slumParts.push(o);
+      }
+    }
+    E.IsoHelper.zSort.sortObjects(this.slumParts, e);
+    this.dispComponent.addDisp(e);
+  };
+  SlumSurroundingsVE.prototype.destroyDisp = function () {
+    if (this.slumParts != null) {
+      for (var t = 0, i = this.slumParts; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.destroy();
+        }
+      }
+    }
+    this._slumParts.length = 0;
+    e.prototype.destroyDisp.call(this);
+  };
+  SlumSurroundingsVE.prototype.onMouseClick = function () {
+    if (this.slumVO.slumLevel == 0) {
+      C.CastleComponent.dialogHandler.registerDefaultDialogs(_.CastleSlumDonateCharacterDialog);
+    } else {
+      switch (this.slumVO.kingdomId) {
+        case s.WorldDessert.KINGDOM_ID:
+          C.CastleComponent.dialogHandler.registerDefaultDialogs(m.CastleDessertSlumPackageDialog, new c.CastleGenericMerchantDialogProperties(null));
+          break;
+        case l.WorldVolcano.KINGDOM_ID:
+          C.CastleComponent.dialogHandler.registerDefaultDialogs(O.CastleVolcanoSlumPackageDialog, new c.CastleGenericMerchantDialogProperties(null));
+          break;
+        case r.WorldIce.KINGDOM_ID:
+          C.CastleComponent.dialogHandler.registerDefaultDialogs(f.CastleIcecreamSlumPackageDialog, new c.CastleGenericMerchantDialogProperties(null));
+      }
+    }
+  };
+  SlumSurroundingsVE.prototype.onSlumLevelChanged = function (e) {
+    if (this.slumVO.kingdomId != s.WorldIsland.KINGDOM_ID) {
+      this.updateDisp();
+    }
+  };
+  Object.defineProperty(SlumSurroundingsVE.prototype, "slumParts", {
+    get: function () {
+      return this._slumParts;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SlumSurroundingsVE.prototype, "slumVO", {
+    get: function () {
+      return this.vo;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SlumSurroundingsVE.prototype.preCacheGlow = function () {
+    if (this.slumParts != null) {
+      for (var e = 0, t = this.slumParts; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          i.preCacheGlow();
+        }
+      }
+    }
+  };
+  SlumSurroundingsVE.prototype.onCameraZoomChanged = function () {
+    e.prototype.onCameraZoomChanged.call(this);
+    if (this.slumParts != null) {
+      for (var t = 0, i = this.slumParts; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.onCameraZoomChanged();
+        }
+      }
+    }
+  };
+  SlumSurroundingsVE.prototype.needsReCache = function (e) {
+    if (this._slumParts.length > 0) {
+      var t = this._slumParts[0].dispComponent.dispContainer;
+      return t.children.length > 0 && t._cacheScale !== e;
+    }
+    return false;
+  };
+  return SlumSurroundingsVE;
+}(d.ASurroundingBuildingVE);
+exports.SlumSurroundingsVE = g;
+var C = require("./14.js");
+var _ = require("./1613.js");
+var m = require("./3195.js");
+var f = require("./3201.js");
+var O = require("./3204.js");
+var E = require("./46.js");
+var y = require("./3207.js");
+var b = require("./3208.js");
+o.classImplementsInterfaces(g, "ICollectableRendererList", "IIngameUICapable");

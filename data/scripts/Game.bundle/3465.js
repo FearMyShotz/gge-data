@@ -2,84 +2,83 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
-var l = require("./6.js");
-var c = require("./23.js");
-var u = require("./23.js");
-var d = createjs.Event;
-var p = function (e) {
-  function CastleIngameMessagePopup(t) {
-    var i = this;
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./3.js");
+var r = require("./6.js");
+var l = require("./31.js");
+var c = require("./19.js");
+var u = function (e) {
+  function CastleBookmarkRewardDialog() {
     CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).dispBounds = t.getBounds(null);
-    return i;
+    return e.call(this, CastleBookmarkRewardDialog.NAME) || this;
   }
-  n.__extends(CastleIngameMessagePopup, e);
-  CastleIngameMessagePopup.prototype.init = function () {
-    e.prototype.init.call(this);
-    this.removeBackground();
-  };
-  CastleIngameMessagePopup.prototype.show = function () {
-    e.prototype.show.call(this);
-    this.tweenIn();
-    window.setTimeout(this.bindFunction(this.tweenOut), 2500);
-  };
-  CastleIngameMessagePopup.prototype.hide = function () {
-    if (Object.getOwnPropertyDescriptor(a.FlashUIComponent.prototype, "disp").get.call(this) && Object.getOwnPropertyDescriptor(a.FlashUIComponent.prototype, "disp").get.call(this).stage) {
-      Object.getOwnPropertyDescriptor(a.FlashUIComponent.prototype, "disp").get.call(this).stage.removeEventListener(r.KeyboardEvent.KEY_UP, this.bindFunction(this.onKeyUp));
-      window.removeEventListener(d.RESIZE, this.bindFunction(this.onResize));
-      Object.getOwnPropertyDescriptor(a.FlashUIComponent.prototype, "disp").get.call(this).visible = false;
-    }
-    h.CastleIngameMessageHandler.getInstance().onHideCurrentMessage();
-  };
-  CastleIngameMessagePopup.prototype.tweenIn = function () {
-    u.TweenMax.fromTo(this.disp, 0.5, {
-      alpha: 0
-    }, {
-      alpha: 1,
-      ease: c.Linear.easeIn
-    });
-  };
-  CastleIngameMessagePopup.prototype.tweenOut = function () {
-    u.TweenMax.fromTo(this.disp, 0.5, {
-      alpha: 1
-    }, {
-      alpha: 0,
-      ease: c.Linear.easeIn,
-      onComplete: this.bindFunction(this.hide)
-    });
-  };
-  CastleIngameMessagePopup.prototype.updatePosition = function () {
-    if (this.disp && this.disp.stage) {
-      var e = 1;
-      if (this.disp.stage.stageWidth < this.dispBounds.width) {
-        e = this.disp.stage.stageWidth / this.dispBounds.width;
-      }
-      if (this.disp.stage.stageHeight < this.dispBounds.height * e) {
-        e = this.disp.stage.stageHeight / this.dispBounds.height;
-      }
-      this.disp.x = -this.dispBounds.left * e - this.dispBounds.width * e * 0.5 + this.disp.stage.stageWidth * 0.5;
-      this.disp.y = -this.dispBounds.top * e - this.dispBounds.height * e * 0.5 + (this.disp.stage.stageHeight - 135);
-      this.disp.scaleX = this.disp.scaleY = e;
-      this.disp.x = l.int(this.disp.x);
-      this.disp.y = l.int(this.disp.y);
-    }
-  };
-  Object.defineProperty(CastleIngameMessagePopup.prototype, "textFieldManager", {
+  n.__extends(CastleBookmarkRewardDialog, e);
+  Object.defineProperty(CastleBookmarkRewardDialog.prototype, "customProperties", {
     get: function () {
-      return s.GoodgameTextFieldManager.getInstance();
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleIngameMessagePopup.__initialize_static_members = function () {
-    CastleIngameMessagePopup.NAME = "CastleIngameMessagePopup";
+  CastleBookmarkRewardDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.initBasicButtons([this.dialogDisp.btn_close]);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("dialog_bookmarkIncentive_header"));
   };
-  return CastleIngameMessagePopup;
-}(o.BasicDialog);
-exports.CastleIngameMessagePopup = p;
-var h = require("./657.js");
-p.__initialize_static_members();
+  CastleBookmarkRewardDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.updateRewards();
+    this.dialogDisp.mc_reward_today.toolTipText = "dialog_bookmarkIncentive_currentReward";
+    this.dialogDisp.mc_reward_tomorrow.toolTipText = "dialog_bookmarkIncentive_nextReward";
+    this.dialogDisp.mc_reward_yesterday.toolTipText = "dialog_bookmarkIncentive_previousReward";
+    var i = CastleBookmarkRewardDialog.MAX_INDEX > this.customProperties.dayIndex ? "dialog_bookmarkIncentive_copy" : "dialog_bookmarkIncentive_copyFinal";
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO(i));
+  };
+  CastleBookmarkRewardDialog.prototype.updateRewards = function () {
+    this.destroyCollectableRenderList();
+    this.setReward(this.customProperties.dayIndex, this.dialogDisp.mc_reward_today);
+    this.setReward(this.customProperties.dayIndex + 1, this.dialogDisp.mc_reward_tomorrow);
+    this.setReward(this.customProperties.dayIndex - 1, this.dialogDisp.mc_reward_yesterday);
+    this.dialogDisp.mc_left_arc.visible = this.customProperties.dayIndex > 0;
+    this.dialogDisp.mc_right_arc.visible = this.customProperties.dayIndex < 13;
+  };
+  CastleBookmarkRewardDialog.prototype.setReward = function (e, t) {
+    h.CollectableRenderHelper.displaySingleItem(new l.CollectableRenderClips(t), this.createRewardItem(e), new c.CollectableRenderOptions(c.CollectableRenderOptions.SET_ADVANCED)).destroy();
+    this.textFieldManager.registerTextField(t.txt_day, new s.LocalizedTextVO("countingDays_day" + (e + 1)));
+  };
+  CastleBookmarkRewardDialog.prototype.createRewardItem = function (e) {
+    var t;
+    var i = 0;
+    if (a.PlayerConst.LOGIN_LP_INCENTIVES_C1[e] > 0) {
+      t = d.CollectableEnum.C1;
+      i = r.int(a.PlayerConst.LOGIN_LP_INCENTIVES_C1[e]);
+    } else {
+      t = d.CollectableEnum.C2;
+      i = r.int(a.PlayerConst.LOGIN_LP_INCENTIVES_C2[e]);
+    }
+    if (i <= 0) {
+      return null;
+    } else {
+      return p.CollectableHelper.createVO(t, i);
+    }
+  };
+  CastleBookmarkRewardDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
+    }
+  };
+  CastleBookmarkRewardDialog.__initialize_static_members = function () {
+    CastleBookmarkRewardDialog.NAME = "CastleBookmarkReward";
+    CastleBookmarkRewardDialog.MAX_INDEX = r.int(a.PlayerConst.LOGIN_LP_INCENTIVES_C1.length);
+  };
+  return CastleBookmarkRewardDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleBookmarkRewardDialog = u;
+var d = require("./12.js");
+var p = require("./45.js");
+var h = require("./25.js");
+o.classImplementsInterfaces(u, "ICollectableRendererList");
+u.__initialize_static_members();

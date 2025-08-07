@@ -3,19 +3,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleBattleLogDetailAdvancedDialogProperties(t, i, n, o, a) {
+  function CastleBattleLogDialogProperties(t, i, n, o, a = -1) {
     var s = this;
-    s.forwarded = false;
-    s.messageId = 0;
+    s.messageID = 0;
+    s.areaType = 0;
+    s.setRead = false;
+    s.isForwarded = false;
     CONSTRUCTOR_HACK;
-    (s = e.call(this) || this).logVO = t;
-    s.forwarded = n;
-    s.messageId = i;
+    (s = e.call(this) || this).messageID = t;
+    s.setRead = i;
+    s.isForwarded = n;
     s.forwardSender = o;
-    s.onClose = a;
+    s.areaType = a;
     return s;
   }
-  n.__extends(CastleBattleLogDetailAdvancedDialogProperties, e);
-  return CastleBattleLogDetailAdvancedDialogProperties;
+  n.__extends(CastleBattleLogDialogProperties, e);
+  return CastleBattleLogDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastleBattleLogDetailAdvancedDialogProperties = o;
+exports.CastleBattleLogDialogProperties = o;

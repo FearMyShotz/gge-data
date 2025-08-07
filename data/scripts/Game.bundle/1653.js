@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
-var s = require("./279.js");
+var s = require("./278.js");
 var r = require("./26.js");
 var l = require("./4.js");
 var c = require("./8.js");
@@ -100,7 +100,7 @@ var p = function (e) {
 }(u.CastleExternalDialog);
 exports.CastleFactionInvasionEventHighscoreDialog = p;
 var h = require("./9.js");
-var g = require("./3408.js");
-var C = require("./3411.js");
+var g = require("./3409.js");
+var C = require("./3412.js");
 o.classImplementsInterfaces(p, "ICollectableRendererList");
 p.__initialize_static_members();

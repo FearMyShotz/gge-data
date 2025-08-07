@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GATPCommand() {
+  function THMCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GATPCommand, e);
-  Object.defineProperty(GATPCommand.prototype, "cmdId", {
+  n.__extends(THMCommand, e);
+  Object.defineProperty(THMCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_ACTIVE_TRAINING_PROGRAM_INFO;
+      return s.ClientConstSF.S2C_CREATE_TREASUREHUNT_MOVEMENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,22 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GATPCommand.prototype.executeCommand = function (e, t) {
+  THMCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.officerSchoolData.parse_GATP(i);
+        r.CastleModel.armyData.parseMapMovementArray([i.TM]);
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.militaryData.parse_GUI(i.gui);
+        break;
+      case a.ERROR.CANT_START_NEW_ARMIES:
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GATPCommand;
+  return THMCommand;
 }(l.CastleCommand);
-exports.GATPCommand = c;
+exports.THMCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

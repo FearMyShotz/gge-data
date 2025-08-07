@@ -2,56 +2,56 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function CastleForumPostVO() {
-    this._postId = -1;
-    this._content = "";
-    this._author = "";
-    this._allianceRank = -1;
+  function CastleForumTopicDetailVO() {
+    this._topicName = "";
   }
-  CastleForumPostVO.prototype.parseGTRItem = function (e) {
-    this._postId = a.int(e.RID);
-    this._content = o.TextValide.parseChatJSONMessage(e.RT);
-    this._author = e.PN;
-    this._allianceRank = a.int(e.AR);
-    this._creationTimestamp = new Date(e.T * 1000);
+  CastleForumTopicDetailVO.prototype.parseGTR = function (e) {
+    this._topicName = s.TextValide.parseChatJSONMessage(e.TN);
+    this._visibleRankingGroups = e.RG;
+    this._author = e.CN;
+    this._posts = [];
+    if (e.R) {
+      for (var t = 0; t < e.R.length; ++t) {
+        var i = new a.CastleForumPostVO();
+        i.parseGTRItem(e.R[t]);
+        this._posts.push(i);
+      }
+    }
   };
-  Object.defineProperty(CastleForumPostVO.prototype, "postId", {
+  CastleForumTopicDetailVO.prototype.hasRightsToChangeVisibility = function () {
+    return o.CastleAllianceForumData.hasTopicRightsToDeleteOrAnswerOrChangeVisibility(this.author, this.visibleRankingGroups);
+  };
+  Object.defineProperty(CastleForumTopicDetailVO.prototype, "posts", {
     get: function () {
-      return this._postId;
+      return this._posts;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleForumPostVO.prototype, "content", {
+  Object.defineProperty(CastleForumTopicDetailVO.prototype, "topicName", {
     get: function () {
-      return this._content;
+      return this._topicName;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleForumPostVO.prototype, "author", {
+  Object.defineProperty(CastleForumTopicDetailVO.prototype, "visibleRankingGroups", {
+    get: function () {
+      return this._visibleRankingGroups;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumTopicDetailVO.prototype, "author", {
     get: function () {
       return this._author;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleForumPostVO.prototype, "allianceRank", {
-    get: function () {
-      return this._allianceRank;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleForumPostVO.prototype, "creationTimestamp", {
-    get: function () {
-      return this._creationTimestamp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleForumPostVO;
+  return CastleForumTopicDetailVO;
 }();
-exports.CastleForumPostVO = n;
-var o = require("./2.js");
-var a = require("./6.js");
+exports.CastleForumTopicDetailVO = n;
+var o = require("./224.js");
+var a = require("./2381.js");
+var s = require("./2.js");

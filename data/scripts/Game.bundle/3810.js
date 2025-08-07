@@ -3,106 +3,93 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./5.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./3.js");
 var l = require("./3.js");
 var c = require("./3.js");
-var u = require("./6.js");
-var d = require("./4.js");
-var p = require("./24.js");
-var h = require("./833.js");
-var g = require("./1787.js");
-var C = function (e) {
-  function LongTermPointEventHighScoreDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, LongTermPointEventHighScoreDialog.NAME) || this;
+var u = require("./4.js");
+var d = require("./223.js");
+var p = require("./43.js");
+var h = require("./40.js");
+var g = require("./8.js");
+var C = require("./93.js");
+var _ = createjs.Point;
+var m = function (e) {
+  function CastleGenericHighscoreDialogItemRenderer(t, i = null) {
+    var n = e.call(this, t) || this;
+    n._itemVO = i;
+    return n;
   }
-  n.__extends(LongTermPointEventHighScoreDialog, e);
-  LongTermPointEventHighScoreDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.leagueRangeGGSTF = this.textFieldManager.registerTextField(this.dialogDisp.txt_leagueRange, new l.LocalizedTextVO(""));
-    this.ownPointsGGSTF = this.textFieldManager.registerTextField(this.dialogDisp.txt_nobilityPoints, new c.NumberVO(0));
-    this.dialogDisp.mc_scoreIcon.toolTipText = "dialog_longPointsEvent_seasonalPoints";
-  };
-  LongTermPointEventHighScoreDialog.prototype.loadingComplete = function (e) {
-    this.dialogDisp.backgroundMC.addChild(e.currentshownDisplayObject);
-  };
-  LongTermPointEventHighScoreDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    var i = LongTermPointEventHighScoreDialog.SKIN_ASSET_PREFIX + LongTermPointEventHighScoreDialog.eventVO.skin.assetName + LongTermPointEventHighScoreDialog.SKIN_ASSET_SUFFIX;
-    var n = new p.CastleGoodgameExternalClip(i, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(i), null, 0, true);
-    if (n.isLoaded) {
-      this.loadingComplete(n);
-    } else {
-      n.clipLoaded.addOnce(this.bindFunction(this.loadingComplete));
-    }
-    if (!LongTermPointEventHighScoreDialog.eventVO) {
-      this.hide();
+  n.__extends(CastleGenericHighscoreDialogItemRenderer, e);
+  CastleGenericHighscoreDialogItemRenderer.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (this.itemVO && g.ButtonHelper.isButtonEnabled(t.target)) {
+      t.target;
+      f.CastleDialogHandler.getInstance().registerDialogsWithTypeAndDefaultValues(y.CastlePlayerInfoDialog, new C.CastlePlayerInfoDialogProperties(this.itemVO.ownerInfo.playerID), p.CastleDialogConsts.DIALOG_TYPE_SINGLE);
     }
   };
-  Object.defineProperty(LongTermPointEventHighScoreDialog.prototype, "helpTextId", {
+  CastleGenericHighscoreDialogItemRenderer.prototype.updateItem = function (e = "") {
+    if (!this._itemVO) {
+      this.disp.visible = false;
+      this.onHide();
+      return;
+    }
+    this.disp.visible = true;
+    this.onShow();
+    var t = u.CastleModel.userData.userName;
+    var i = e != "" ? e : null;
+    var n = this.itemVO.rank <= 1;
+    var o = this.itemVO.rank == 2;
+    var s = this.itemVO.ownerInfo.playerName.toLowerCase() == t.toLowerCase();
+    this.disp.mc_first.visible = n && !s;
+    this.disp.mc_second.visible = o && !s;
+    this.disp.mc_own.visible = s || n || o;
+    if (this.disp.mc_search) {
+      this.disp.mc_search.visible = !!i && (this.itemVO.ownerInfo.playerName.toLowerCase() == i.toLowerCase() || parseInt(i) == this.itemVO.rank);
+    }
+    E.CastleComponent.textFieldManager.registerTextField(this.disp.txt_rank, new r.LocalizedNumberVO(this.itemVO.rank), new a.InternalGGSTextFieldConfigVO(true));
+    E.CastleComponent.textFieldManager.registerTextField(this.disp.txt_name, new c.TextVO(this.itemVO.ownerInfo.playerName), new a.InternalGGSTextFieldConfigVO(true));
+    E.CastleComponent.textFieldManager.registerTextField(this.disp.txt_alliance, new c.TextVO(this.itemVO.ownerInfo.isInAlliance ? this.itemVO.ownerInfo.allianceName : " - "), new a.InternalGGSTextFieldConfigVO(true));
+    E.CastleComponent.textFieldManager.registerTextField(this.disp.txt_level, new l.NumberVO(this.itemVO.ownerInfo.playerLevel), new a.InternalGGSTextFieldConfigVO(true));
+    E.CastleComponent.textFieldManager.registerTextField(this.disp.txt_distance, new r.LocalizedNumberVO(this.getDistanceToOwnMainCastle()), new a.InternalGGSTextFieldConfigVO(true));
+    if (this.disp.txt_amount) {
+      E.CastleComponent.textFieldManager.registerTextField(this.disp.txt_amount, new r.LocalizedNumberVO(this.itemVO.amount), new a.InternalGGSTextFieldConfigVO(true));
+    }
+  };
+  CastleGenericHighscoreDialogItemRenderer.prototype.getDistanceToOwnMainCastle = function () {
+    var e = u.CastleModel.userData.castleList.getHomeCastle();
+    return Math.round(d.MapHelper.getShortestDistance(this.itemVO.ownerInfo.getMainCastlePositionByKingdomID(0), new _(e.absAreaPosX, e.absAreaPosY)));
+  };
+  CastleGenericHighscoreDialogItemRenderer.prototype.onRollOver = function (e) {
+    this.disp.scaleX = this.disp.scaleY = 1.02;
+    O.CastleLayoutManager.getInstance().nativeCursor.setCursorType(o.BasicCustomCursor.CURSOR_CLICK);
+  };
+  CastleGenericHighscoreDialogItemRenderer.prototype.onRollOut = function (e) {
+    this.disp.scaleX = e.target.scaleY = 1;
+    O.CastleLayoutManager.getInstance().nativeCursor.setCursorType(o.BasicCustomCursor.CURSOR_ARROW);
+  };
+  Object.defineProperty(CastleGenericHighscoreDialogItemRenderer.prototype, "itemVO", {
     get: function () {
-      return "help_highscore_longPointsEvent";
+      return this._itemVO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(h.CastleGenericHighscoreDialog.prototype, "helpTextId").set.call(this, e);
+      this._itemVO = e;
     },
     enumerable: true,
     configurable: true
   });
-  LongTermPointEventHighScoreDialog.prototype.onGetHighscoreData = function (e) {
-    var t = u.int(LongTermPointEventHighScoreDialog.eventVO.leagueLevels(e.leagueId)[0]);
-    var i = u.int(LongTermPointEventHighScoreDialog.eventVO.leagueLevels(e.leagueId)[1]);
-    if (i > r.PlayerConst.LEVEL_CAP) {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_leagueRange, new l.LocalizedTextVO(t != i ? "dialog_ranking_legendFilter" : "legendaryLevel_placeholder", [Math.max(t - r.PlayerConst.LEVEL_CAP, 1), i - r.PlayerConst.LEVEL_CAP])).autoFitToBounds = true;
-    } else {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_leagueRange, new l.LocalizedTextVO("levelrange_placeholder", [t, i])).autoFitToBounds = true;
-    }
-    this.isWaitingForServerMessage = false;
-    this._currentLeagueId = e.leagueId;
-    this.initItemRenderers();
-    var n = e.params[0].L;
-    var o = 0;
-    for (var a = 0; a < h.CastleGenericHighscoreDialog.NUMBER_OF_VISIBLE_RANK_ITEMS; ++a) {
-      var s = this._itemRenderers[a];
-      var c = null;
-      if (a < n.length) {
-        var d = n[a];
-        c = new g.CastlePointEventHighscoreItemVO();
-        var p = new _.WorldMapOwnerInfoVO();
-        p.fillFromParamObject(d[1]);
-        c.ownerInfo = p;
-        o = u.int(c.rank = u.int(d[0]));
-        c.amount = u.int(d[1]);
-      }
-      s.itemVO = c;
-      s.updateItem(this._currentSearchName);
-    }
-    this.updateScrollButtons(o, e.params[0].LR);
-    this._currentSearchName = "";
-    this.ownPointsGGSTF.textContentVO.numberValue = LongTermPointEventHighScoreDialog.eventVO.ownPoints;
+  CastleGenericHighscoreDialogItemRenderer.prototype.isSelected = function () {
+    return !!this.disp && !!this.disp.mc_own && this.disp.mc_own.visible;
   };
-  LongTermPointEventHighScoreDialog.prototype.onRemoveSpecialEvent = function (e) {
-    if (e.specialEventVO.eventId == s.EventConst.EVENTTYPE_LONGTERM_POINT_EVENT) {
-      this.hide();
-    }
+  CastleGenericHighscoreDialogItemRenderer.prototype.select = function () {
+    this.disp.mc_own.visible = true;
   };
-  Object.defineProperty(LongTermPointEventHighScoreDialog, "eventVO", {
-    get: function () {
-      return d.CastleModel.specialEventData.getActiveEventByEventId(s.EventConst.EVENTTYPE_LONGTERM_POINT_EVENT);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  LongTermPointEventHighScoreDialog.__initialize_static_members = function () {
-    LongTermPointEventHighScoreDialog.NAME = "LongTermPeHighScoreDialog_D";
-    LongTermPointEventHighScoreDialog.SKIN_ASSET_PREFIX = "LongTermPeHighScoreDialog";
-    LongTermPointEventHighScoreDialog.SKIN_ASSET_SUFFIX = "Skin";
-  };
-  return LongTermPointEventHighScoreDialog;
-}(h.CastleGenericHighscoreDialog);
-exports.LongTermPointEventHighScoreDialog = C;
-var _ = require("./316.js");
-a.classImplementsInterfaces(C, "ICollectableRendererList");
-C.__initialize_static_members();
+  return CastleGenericHighscoreDialogItemRenderer;
+}(h.CastleItemRenderer);
+exports.CastleGenericHighscoreDialogItemRenderer = m;
+var f = require("./9.js");
+var O = require("./17.js");
+var E = require("./14.js");
+var y = require("./94.js");
+s.classImplementsInterfaces(m, "ICollectableRendererList");

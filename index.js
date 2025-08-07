@@ -4,6 +4,7 @@ import path from 'path'
 import { XMLParser } from 'fast-xml-parser'
 import { JSDOM } from 'jsdom'
 import prettier from 'prettier'
+import { exec } from 'child_process'
 
 const defaultDomain = 'empire-html5.goodgamestudios.com'
 const networks = [1, 5, 11, 26, 34, 39, 64, 65, 68]
@@ -222,6 +223,41 @@ async function fetchGameClientScripts() {
   return scripts
 }
 
+async function decompileScripts(scripts) {
+  if (!scripts || Object.keys(scripts).length === 0) return
+
+  for (const [scriptId, info] of Object.entries(scripts)) {
+    const inputPath = path.join('data', 'scripts', info.filename)
+    const baseName = info.filename.replace(/\.js$/, '')
+    const outputDir = path.join('data', 'scripts', baseName)
+
+    try {
+      const stats = await fs.stat(outputDir).catch(() => null)
+      if (stats && stats.isDirectory()) {
+        await fs.rm(outputDir, { recursive: true, force: true })
+        console.log(`🗑️  Ordner gelöscht: ${outputDir}`)
+      }
+    } catch (err) {
+      console.warn(`⚠️  Fehler beim Löschen von ${outputDir}:`, err.message)
+    }
+
+    await new Promise((resolve, reject) => {
+      const cmd = `npx webcrack "${inputPath}" --output "${outputDir}"`
+      console.log(`🔁 Starte Webcrack: ${cmd}`)
+
+      exec(cmd, (err, stdout, stderr) => {
+        if (err) {
+          console.error(`❌ Fehler bei Webcrack für ${scriptId}: ${stderr}`)
+          return reject(err)
+        }
+
+        console.log(`✅ ${scriptId} entpackt nach ${outputDir}`)
+        resolve()
+      })
+    })
+  }
+}
+
 async function loadVersionHistory() {
   const historyPath = path.join('data', 'versionHistory.json')
   try {
@@ -297,6 +333,7 @@ async function main() {
   await fetchNetworks()
 
   const scripts = await fetchGameClientScripts()
+  await decompileScripts(scripts)
   await updateVersionHistory(scripts)
   
   const scriptsVersion = scripts ? new Date().toISOString() : null

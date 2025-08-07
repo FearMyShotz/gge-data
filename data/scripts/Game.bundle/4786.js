@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GDBCommand() {
+  function GCBCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GDBCommand, e);
-  Object.defineProperty(GDBCommand.prototype, "cmdId", {
+  n.__extends(GCBCommand, e);
+  Object.defineProperty(GCBCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_DAMAGED_BUILDINGS;
+      return s.ClientConstSF.S2C_GET_CHANGED_BUILDING_EFFICIENCY;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,12 +22,12 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GDBCommand.prototype.executeCommand = function (e, t) {
+  GCBCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
         if (r.CastleModel.areaData.activeArea) {
-          r.CastleModel.areaData.activeArea.updater.parseGDB(i);
+          r.CastleModel.areaData.activeArea.updater.parseGCB(i);
         }
         break;
       default:
@@ -35,7 +35,7 @@ var c = function (e) {
     }
     return false;
   };
-  return GDBCommand;
+  return GCBCommand;
 }(l.CastleCommand);
-exports.GDBCommand = c;
+exports.GCBCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

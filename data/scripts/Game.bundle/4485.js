@@ -2,13 +2,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastlePlagueMonkEventDialogProperties(t) {
-    var i = e.call(this) || this;
-    i.plagueEventVO = t;
-    return i;
+var o = require("./1.js");
+var a = function (e) {
+  function OverseerEventVO() {
+    return e.call(this) || this;
   }
-  n.__extends(CastlePlagueMonkEventDialogProperties, e);
-  return CastlePlagueMonkEventDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastlePlagueMonkEventDialogProperties = o;
+  n.__extends(OverseerEventVO, e);
+  return OverseerEventVO;
+}(require("./79.js").ASpecialEventVO);
+exports.OverseerEventVO = a;
+o.classImplementsInterfaces(a, "IEventOverviewable");

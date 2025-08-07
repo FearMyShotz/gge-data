@@ -12,7 +12,7 @@ var a = function (e) {
     return s.CastleStartQuestDialog;
   };
   return TutorialBasicQuestStarterActionCommand;
-}(require("./1972.js").TutorialBasicQuestActionCommand);
+}(require("./1973.js").TutorialBasicQuestActionCommand);
 exports.TutorialBasicQuestStarterActionCommand = a;
 var s = require("./461.js");
 o.classImplementsInterfaces(a, "ISimpleCommand");

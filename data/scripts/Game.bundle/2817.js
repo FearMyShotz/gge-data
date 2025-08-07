@@ -3,17 +3,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function IsoViewObjectGroupMovement() {
+  function SpotJudgementVO() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IsoViewObjectGroupMovement, e);
-  IsoViewObjectGroupMovement.prototype.initObjects = function () {
-    e.prototype.initObjects.call(this);
-    this.resetList();
-  };
-  IsoViewObjectGroupMovement.prototype.addObject = function (e) {
-    this.addObjectToLayerAndList(e, this.list);
-  };
-  return IsoViewObjectGroupMovement;
-}(require("./302.js").AIsoViewObjectGroupSimpleList);
-exports.IsoViewObjectGroupMovement = o;
+  n.__extends(SpotJudgementVO, e);
+  return SpotJudgementVO;
+}(require("./309.js").AIsoObjectVO);
+exports.SpotJudgementVO = o;

@@ -38,5 +38,5 @@ var l = function (e) {
 }(r.ACastleBoosterStatusIcon);
 exports.StatusIconFameBooster = l;
 var c = require("./9.js");
-var u = require("./1841.js");
-var d = require("./110.js");
+var u = require("./1843.js");
+var d = require("./109.js");

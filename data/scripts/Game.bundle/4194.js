@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./18.js");
 var s = require("./4.js");
-var r = require("./524.js");
+var r = require("./525.js");
 var l = function (e) {
   function ButtonSendTroopsComponent(t) {
     return e.call(this, t) || this;

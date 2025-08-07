@@ -2,138 +2,236 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./24.js");
-var c = require("./35.js");
-var u = require("./1964.js");
-var d = function (e) {
-  function ResearchVO() {
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./6.js");
+var r = require("./28.js");
+var l = require("./796.js");
+var c = require("./30.js");
+var u = require("./4.js");
+var d = require("./1159.js");
+var p = function (e) {
+  function UnitPackageSlotVO() {
+    var t = this;
+    t._wodId = 0;
+    t._amount = 0;
+    t._remainingTime = 0;
+    t._unitReadyTimeStamp = 0;
+    t._boostAmount = 0;
+    t._helpAmount = 0;
+    t._recruitmentSpeedAtStart = 0;
+    t._recruitmentID = 0;
+    t._isVIP = false;
+    t._productionTime = 0;
+    t._isFree = false;
+    t._isLocked = false;
+    t._sourceRecruitmentID = 0;
+    t._receivedAllianceHelp = false;
     CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+    return t = e.call(this) || this;
   }
-  n.__extends(ResearchVO, e);
-  ResearchVO.prototype.getBonusText = function (e) {
-    switch (this.groupID) {
-      case 21:
-      case 31:
-      case 43:
-      case 45:
-      case 46:
-      case 47:
-      case 50:
-      case 85:
-      case 86:
-      case 87:
-      case 88:
-      case 89:
-      case 90:
-      case 97:
-      case 98:
-      case 99:
-      case 100:
-      case 101:
-        return s.Localize.text(a.GenericTextIds.VALUE_NOMINAL_ADD, e);
-      case 22:
-      case 23:
-      case 44:
-      case 36:
-      case 34:
-      case 104:
-      case 105:
-      case 106:
-      case 107:
-      case 108:
-      case 109:
-      case 110:
-      case 111:
-      case 112:
-      case 113:
-      case 114:
-      case 115:
-      case 116:
-        return s.Localize.text(a.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, e);
-      case 41:
-      case 42:
-      case 49:
-        return s.Localize.text(a.GenericTextIds.VALUE_SIMPLE_COMP, [new r.LocalizedTextVO(a.GenericTextIds.VALUE_NOMINAL_SUBTRACT, e), a.GenericTextIds.COMMON_SECOND_SHORT]);
-      default:
-        return s.Localize.text(a.GenericTextIds.VALUE_PERCENTAGE_ADD, e);
+  n.__extends(UnitPackageSlotVO, e);
+  UnitPackageSlotVO.prototype.fillFromParamObject = function (e) {
+    var t = false;
+    if (e && e.ICT) {
+      this._wodId = s.int(e.WID);
+      this._amount = s.int(e.TUA);
+      this._boostAmount = s.int(e.CBS);
+      t = !!e.RAH;
+      this._receivedAllianceHelp = Boolean(t);
+      this._recruitmentID = s.int(e.PID);
+      this._remainingTime = s.int(e.RCT);
+      this._productionTime = s.int(e.ICT);
+      this._sourceRecruitmentID = s.int(e.SPID);
+      this._isFree = false;
+      this._isCurrentlyRecruiting = true;
     }
+    if (e && e.P) {
+      this._wodId = s.int(e.P.WID);
+      this._amount = s.int(e.P.TUA);
+      this._boostAmount = s.int(e.P.CBS);
+      t = !!e.P.RAH;
+      this._receivedAllianceHelp = Boolean(t);
+      this._recruitmentID = s.int(e.P.PID);
+    }
+    if (e && e.SI) {
+      this._timeTillLocked = this.amount <= 0 ? e.SI.RUT : -1;
+      t = !!e.SI.VIP;
+      this._isVIP = Boolean(t);
+      this._isLocked = this._timeTillLocked == 0;
+      this._isFree = !this._isLocked && this.amount <= 0;
+    }
+    this._unitReadyTimeStamp = c.CachedTimer.getCachedTimer() + this._remainingTime * r.ClientConstTime.SEC_2_MILLISEC;
+    this.setLockTimestamp();
   };
-  Object.defineProperty(ResearchVO.prototype, "effectText", {
+  UnitPackageSlotVO.prototype.initProductionSlot = function () {
+    this._timeTillLocked = -1;
+    this._isLocked = false;
+    this._isFree = !this._isLocked;
+    this._isVIP = false;
+  };
+  UnitPackageSlotVO.prototype.fillFromParamArray = function (e) {
+    this._wodId = s.int(e.shift());
+    this._amount = s.int(e.shift());
+    this._remainingTime = s.int(e.shift());
+    this._recruitmentSpeedAtStart = e.shift() / 100;
+    this._boostAmount = s.int(e.shift());
+    this._helpAmount = s.int(e.shift());
+    this._recruitmentID = s.int(e.shift());
+    this._productionTime = s.int(e.shift());
+    this._timeTillLocked = e.shift();
+    var t = s.int(e.shift());
+    this._isVIP = Boolean(t);
+    this._isFree = this._wodId == a.ConstructionConst.SLOTSTATEUNLOCKED;
+    this._isLocked = this._wodId == a.ConstructionConst.SLOTSTATELOCKED;
+    this._unitReadyTimeStamp = c.CachedTimer.getCachedTimer() + this._remainingTime * r.ClientConstTime.SEC_2_MILLISEC;
+    this.setLockTimestamp();
+  };
+  UnitPackageSlotVO.prototype.update = function () {
+    this._castleSlotVOEvent ||= new l.CastleSlotVOEvent(l.CastleSlotVOEvent.SLOT_UPDATE);
+    this.dispatchEvent(this._castleSlotVOEvent);
+  };
+  Object.defineProperty(UnitPackageSlotVO.prototype, "isFree", {
     get: function () {
-      if (this.boni[0].effectValue.strength != 0 && this.showEffectValue) {
-        return s.Localize.text(this.descriptionTextId) + "\n" + this.getBonusText(this.boni[0].effectValue.textReplacements);
+      return this._isFree;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.BasicSlotVO.prototype, "isFree").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "isLocked", {
+    get: function () {
+      return this._isLocked;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.BasicSlotVO.prototype, "isLocked").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "isVIP", {
+    get: function () {
+      return this._isVIP;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "wodId", {
+    get: function () {
+      return this._wodId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "amount", {
+    get: function () {
+      return this._amount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "unitReadyTimeStamp", {
+    get: function () {
+      return this._unitReadyTimeStamp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "remainingTimeInSeconds", {
+    get: function () {
+      if (this.isCurrentlyRecruiting) {
+        return Math.ceil(this._unitReadyTimeStamp - c.CachedTimer.getCachedTimer()) * r.ClientConstTime.MILLISEC_2_SEC;
       } else {
-        return s.Localize.text(this.descriptionTextId);
+        return this._remainingTime;
       }
     },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "effectText").set.call(this, e);
-    },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ResearchVO.prototype, "descriptionTextId", {
-    get: function () {
-      return "research_" + this.groupID + "_copy";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "descriptionTextId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchVO.prototype, "nameTextId", {
-    get: function () {
-      return "research_" + this.groupID + "_title";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "nameTextId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchVO.prototype, "fullNameText", {
-    get: function () {
-      return s.Localize.text(a.GenericTextIds.VALUE_SIMPLE_COMP, [s.Localize.text(this.nameTextId), s.Localize.text("building_level", [this.level])]);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "fullNameText").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ResearchVO.prototype.icon = function () {
-    return new l.CastleGoodgameExternalClip(ResearchVO.ICON_PREFIX_CLASSNAME + this.groupID, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(ResearchVO.ICON_PREFIX_CLASSNAME + this.groupID), null, 0, false);
+  UnitPackageSlotVO.prototype.isReady = function () {
+    return c.CachedTimer.getCachedTimer() > this._unitReadyTimeStamp;
   };
-  Object.defineProperty(ResearchVO.prototype, "showEffectValue", {
+  Object.defineProperty(UnitPackageSlotVO.prototype, "numOfBoost", {
     get: function () {
-      return !this.hasOneOrMoreEffectTypes([c.EffectTypeEnum.EFFECT_TYPE_ENABLE_UNITS, c.EffectTypeEnum.EFFECT_TYPE_STRONGER_PEASANT, c.EffectTypeEnum.EFFECT_TYPE_TAX_COLLECTOR_NO_RUBIES, c.EffectTypeEnum.EFFECT_TYPE_ENABLE_CRAFTINGRECIPE]);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "showEffectValue").set.call(this, e);
+      return this._boostAmount;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ResearchVO.prototype, "showInfoBtn", {
+  Object.defineProperty(UnitPackageSlotVO.prototype, "unitReadyInPercent", {
     get: function () {
-      return this.hasOneOrMoreEffectTypes([c.EffectTypeEnum.EFFECT_TYPE_ENABLE_UNITS, c.EffectTypeEnum.EFFECT_TYPE_STRONGER_PEASANT, c.EffectTypeEnum.EFFECT_TYPE_ENABLE_CRAFTINGRECIPE]);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "showInfoBtn").set.call(this, e);
+      return Math.max(0, Math.min(1, this.remainingTimeInSeconds / this.productionTime));
     },
     enumerable: true,
     configurable: true
   });
-  ResearchVO.__initialize_static_members = function () {
-    ResearchVO.ICON_PREFIX_CLASSNAME = "Icon_Research_";
-  };
-  return ResearchVO;
-}(u.AResearchVO);
-exports.ResearchVO = d;
-d.__initialize_static_members();
+  Object.defineProperty(UnitPackageSlotVO.prototype, "productionTime", {
+    get: function () {
+      return this._productionTime;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "unitVO", {
+    get: function () {
+      if (this.wodId > 0) {
+        return u.CastleModel.wodData.voSubList(h.CastleWodData.TYPE_UNIT).get(this.wodId);
+      } else {
+        return null;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "recruitmentID", {
+    get: function () {
+      return this._recruitmentID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "helpAmount", {
+    get: function () {
+      return this._helpAmount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "hasLoopableUnitAmount", {
+    get: function () {
+      return false;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "sourceRecruitmentID", {
+    get: function () {
+      return this._sourceRecruitmentID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "isCurrentlyRecruiting", {
+    get: function () {
+      return this._isCurrentlyRecruiting;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.BasicSlotVO.prototype, "isCurrentlyRecruiting").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(UnitPackageSlotVO.prototype, "receivedAllianceHelp", {
+    get: function () {
+      return this._receivedAllianceHelp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return UnitPackageSlotVO;
+}(d.BasicSlotVO);
+exports.UnitPackageSlotVO = p;
+var h = require("./56.js");
+o.classImplementsInterfaces(p, "ISlotVO", "IEventDispatcher");

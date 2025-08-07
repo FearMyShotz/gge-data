@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function MetropolstorageBuildingVE() {
-    return e !== null && e.apply(this, arguments) || this;
+  function AABGBoosterBuildingVE() {
+    return e.call(this) || this;
   }
-  n.__extends(MetropolstorageBuildingVE, e);
-  return MetropolstorageBuildingVE;
-}(require("./1029.js").StorageBuildingVE);
-exports.MetropolstorageBuildingVE = a;
+  n.__extends(AABGBoosterBuildingVE, e);
+  return AABGBoosterBuildingVE;
+}(require("./62.js").ABasicBuildingVE);
+exports.AABGBoosterBuildingVE = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

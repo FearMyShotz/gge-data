@@ -3,161 +3,152 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1.js");
+var a = require("./5.js");
 var s = require("./5.js");
-var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./5.js");
-var u = require("./5.js");
-var d = require("./3.js");
-var p = require("./3.js");
-var h = require("./264.js");
-var g = require("./210.js");
-var C = require("./15.js");
-var _ = require("./4.js");
-var m = require("./251.js");
-var f = require("./8.js");
-var O = require("./34.js");
-var E = require("./330.js");
-var y = function (e) {
-  function CastleFactionInvasionEventDialogAllianceSublayer(t) {
-    var i = e.call(this, t) || this;
-    i.setTexts();
-    return i;
+var r = require("./3.js");
+var l = require("./3.js");
+var c = require("./6.js");
+var u = require("./28.js");
+var d = require("./241.js");
+var p = require("./278.js");
+var h = require("./21.js");
+var g = require("./26.js");
+var C = require("./4.js");
+var _ = require("./27.js");
+var m = require("./8.js");
+var f = require("./11.js");
+var O = require("./951.js");
+var E = function (e) {
+  function CastleFactionInvasionEventDialog() {
+    return e.call(this, CastleFactionInvasionEventDialog.NAME) || this;
   }
-  n.__extends(CastleFactionInvasionEventDialogAllianceSublayer, e);
-  CastleFactionInvasionEventDialogAllianceSublayer.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this.initBasicButtons([this.subLayerDisp.btn_show_me_red, this.subLayerDisp.btn_show_me_blue, this.subLayerDisp.btn_highscore]);
-    this.subLayerDisp.btn_highscore.toolTipText = "dialog_berimondInvasion_alliance_rankings_tooltip";
-    var i = CastleFactionInvasionEventDialogAllianceSublayer.eventVO.pointThresholds.concat(CastleFactionInvasionEventDialogAllianceSublayer.eventVO.topX);
-    var n = new b.RewardsDialogScoreBarProperties(CastleFactionInvasionEventDialogAllianceSublayer.eventVO.rewardLists, "berimondInvasion_alliance", i, this.levelLabels, this.descriptions);
-    var o = new (a.getDefinitionByName("FactionInvasionEvent_Score_Icon"))();
-    o.toolTipText = "factionHighscore_points";
-    var s = new (a.getDefinitionByName("FactionInvasionEvent_Background"))();
-    this.scoreBar = new D.RewardsDialogScoreBarComponentExternal();
-    this.scoreBar.load(this.subLayerDisp.mc_scoreBarContainer, this.bindFunction(this.onScorebarAssetLoaded), "Scorebar_Alliance_V", o, s, CastleFactionInvasionEventDialogAllianceSublayer.openRewardsDialog, n);
+  n.__extends(CastleFactionInvasionEventDialog, e);
+  CastleFactionInvasionEventDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.mc_time.txt_remaining_time, new l.TextVO(""));
+    this.itxt_time.autoFitToBounds = true;
+    this.dialogDisp.mc_time.mouseChildren = false;
+    this.dialogDisp.tab_instruction.toolTipText = "dialog_berimondInvasion_header";
+    this.dialogDisp.tab_singleplayer.toolTipText = "dialog_berimondInvasion_sp_header";
+    this.dialogDisp.tab_multiplayer.toolTipText = "dialog_berimondInvasion_alliance_header";
+    this.dialogDisp.tab_gallantry.toolTipText = "dialog_factionTitles_header";
+    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help]);
   };
-  CastleFactionInvasionEventDialogAllianceSublayer.prototype.onScorebarAssetLoaded = function () {
-    this.onUpdatePoints();
-    C.CastleBasicController.getInstance().addEventListener(g.CastleScoreEventEvent.UPDATE_POINTS, this.bindFunction(this.onUpdatePoints));
-  };
-  CastleFactionInvasionEventDialogAllianceSublayer.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    this.scoreBar.destroy();
-    C.CastleBasicController.getInstance().removeEventListener(g.CastleScoreEventEvent.UPDATE_POINTS, this.bindFunction(this.onUpdatePoints));
-  };
-  CastleFactionInvasionEventDialogAllianceSublayer.prototype.updateProgressBar = function () {
-    this.scoreBar.update(new m.CastleScoreBarProgressVO(CastleFactionInvasionEventDialogAllianceSublayer.eventVO.ownPoints, CastleFactionInvasionEventDialogAllianceSublayer.eventVO.ownRank, CastleFactionInvasionEventDialogAllianceSublayer.eventVO.pointThresholds, CastleFactionInvasionEventDialogAllianceSublayer.eventVO.topX, CastleFactionInvasionEventDialogAllianceSublayer.eventVO.rewardsReceived, this.isPlayerQualifiedForAllianceRewards(), this.allianceRewardThresholdPoints()));
-  };
-  CastleFactionInvasionEventDialogAllianceSublayer.prototype.onUpdatePoints = function (e = null) {
-    if (CastleFactionInvasionEventDialogAllianceSublayer.mainEventVO) {
-      this.updateProgressBar();
+  CastleFactionInvasionEventDialog.prototype.createProperties = function (e) {
+    switch (e) {
+      case CastleFactionInvasionEventDialog.TAB_GALLANTRY_TITLES:
+        return new O.CastleTitleSublayerFactionProperties();
+      default:
+        return null;
     }
   };
-  Object.defineProperty(CastleFactionInvasionEventDialogAllianceSublayer.prototype, "levelLabels", {
-    get: function () {
-      var e = 0;
-      if (!this._levelLabels) {
-        this._levelLabels = [];
-        var t = CastleFactionInvasionEventDialogAllianceSublayer.eventVO;
-        for (e = 0; e < t.pointThresholds.length && t.pointThresholds[e] != 0; e++) {
-          this._levelLabels.push(t.pointThresholds[e]);
-        }
-        for (e = 0; e < t.topX.length; e++) {
-          this._levelLabels.push(p.Localize.text("Ranking_TopX", [t.topX[e]]));
-        }
-        this._levelLabels.push(p.Localize.text("Ranking_Winner"));
-      }
-      return this._levelLabels;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleFactionInvasionEventDialogAllianceSublayer.prototype, "descriptions", {
-    get: function () {
-      if (!this._descriptions) {
-        this._descriptions = [];
-        for (var e = 0; e < CastleFactionInvasionEventDialogAllianceSublayer.eventVO.rewardLists.length; e++) {
-          if (CastleFactionInvasionEventDialogAllianceSublayer.eventVO.rewardLists[e].grantType == l.RewardConst.ALLIANCE) {
-            this._descriptions.push("dialog_alienInvasionAlliance_Treasury_tooltip");
-          } else if (CastleFactionInvasionEventDialogAllianceSublayer.eventVO.rewardLists[e].grantType == l.RewardConst.ALLIANCE_MEMBER) {
-            this._descriptions.push("dialog_alienInvasionAlliance_Members_tooltip");
-          } else {
-            this._descriptions.push("forAllianceFundsAndMembers");
-          }
-        }
-      }
-      return this._descriptions;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleFactionInvasionEventDialogAllianceSublayer.prototype.setTexts = function () {
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_dialog_title, new d.LocalizedTextVO("dialog_berimondInvasion_alliance_header")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_description, new d.LocalizedTextVO("dialog_berimondInvasion_alliance_desc")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_goto_red_title, new d.LocalizedTextVO("dialog_berimondInvasion_findRedCamp")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_goto_blue_title, new d.LocalizedTextVO("dialog_berimondInvasion_findBlueCamp")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_goto_red_description, new d.LocalizedTextVO("dialog_berimondInvasion_alliance_camp_desc")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_goto_blue_description, new d.LocalizedTextVO("dialog_berimondInvasion_alliance_camp_desc")).autoFitToBounds = true;
-  };
-  CastleFactionInvasionEventDialogAllianceSublayer.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    if (f.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.subLayerDisp.btn_show_me_red:
-          _.CastleModel.smartfoxClient.sendCommandVO(new h.C2SFindNextMapObjectVO(s.WorldConst.AREA_TYPE_FACTION_INVASION_CAMP, r.WorldClassic.KINGDOM_ID, -1, -1, u.DungeonConst.RED_FACTION_KING));
+  CastleFactionInvasionEventDialog.prototype.onClick = function (e) {
+    if (m.ButtonHelper.isButtonEnabled(e.target)) {
+      switch (e.target) {
+        case this.dialogDisp.sublayer_teaser.btn_open_sublayer_singleplayer:
+          this.sublayerSwitcher.switchTo(CastleFactionInvasionEventDialog.TAB_SINGLEPLAYER);
           break;
-        case this.subLayerDisp.btn_show_me_blue:
-          _.CastleModel.smartfoxClient.sendCommandVO(new h.C2SFindNextMapObjectVO(s.WorldConst.AREA_TYPE_FACTION_INVASION_CAMP, r.WorldClassic.KINGDOM_ID, -1, -1, u.DungeonConst.BLUE_FACTION_KING));
+        case this.dialogDisp.sublayer_teaser.btn_open_sublayer_alliance:
+          this.sublayerSwitcher.switchTo(CastleFactionInvasionEventDialog.TAB_ALLIANCE);
           break;
-        case this.subLayerDisp.btn_highscore:
-          O.CastleDialogSubLayer.dialogHandler.registerDefaultDialogs(I.CastleFactionInvasionEventHighscoreDialog, new E.GenericEventInfoListProperties(c.EventConst.EVENTTYPE_FACTION_INVASION, I.CastleFactionInvasionEventHighscoreDialog.TAB_ALLIANCE));
+        case this.dialogDisp.btn_close:
+          this.hide();
+          break;
+        case this.dialogDisp.btn_help:
+          y.CastleDialogHandler.getInstance().showHelper("", this.helpText);
       }
     }
   };
-  CastleFactionInvasionEventDialogAllianceSublayer.openRewardsDialog = function () {
-    O.CastleDialogSubLayer.dialogHandler.registerDefaultDialogs(T.CastleFactionInvasionEventRewardListDialog, new E.GenericEventInfoListProperties(c.EventConst.EVENTTYPE_FACTION_INVASION, T.CastleFactionInvasionEventRewardListDialog.TAB_ALLIANCE));
-  };
-  Object.defineProperty(CastleFactionInvasionEventDialogAllianceSublayer, "mainEventVO", {
+  Object.defineProperty(CastleFactionInvasionEventDialog.prototype, "helpText", {
     get: function () {
-      return _.CastleModel.specialEventData.getActiveEventByEventId(c.EventConst.EVENTTYPE_FACTION_INVASION);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleFactionInvasionEventDialogAllianceSublayer, "eventVO", {
-    get: function () {
-      return this.mainEventVO.allianceEventVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleFactionInvasionEventDialogAllianceSublayer.prototype.isPlayerQualifiedForAllianceRewards = function () {
-    var e = _.CastleModel.specialEventData.getActiveEventByEventId(c.EventConst.EVENTTYPE_FACTION_INVASION);
-    var t = e.singleEventVO(true);
-    var i = e.singleEventVO(false);
-    return t.isPlayerQualifiedForAllianceRewards || i.isPlayerQualifiedForAllianceRewards;
-  };
-  CastleFactionInvasionEventDialogAllianceSublayer.prototype.allianceRewardThresholdPoints = function () {
-    var e = _.CastleModel.specialEventData.getActiveEventByEventId(c.EventConst.EVENTTYPE_FACTION_INVASION);
-    var t = e.singleEventVO(true);
-    var i = e.singleEventVO(false);
-    if (t.isPlayerQualifiedForAllianceRewards) {
-      if (i.isPlayerQualifiedForAllianceRewards) {
-        return 0;
-      } else {
-        return i.allianceRewardThresholdPoints;
+      switch (this.sublayerSwitcher.activeTab) {
+        case CastleFactionInvasionEventDialog.TAB_INSTRUCTION:
+          return r.Localize.text("help_berimondInvasion_overview");
+        case CastleFactionInvasionEventDialog.TAB_SINGLEPLAYER:
+          return r.Localize.text("help_berimondInvasion_sp");
+        case CastleFactionInvasionEventDialog.TAB_ALLIANCE:
+          return r.Localize.text("help_berimondInvasion_alliance");
+        case CastleFactionInvasionEventDialog.TAB_GALLANTRY_TITLES:
+          return r.Localize.text("help_berimond_titles", [s.FactionConst.TITLE_RESET_INTERVAL_SECONDS / u.ClientConstTime.HOURES_2_SEC]);
       }
+      return null;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleFactionInvasionEventDialog.prototype.addEventListenerOnShow = function () {
+    e.prototype.addEventListenerOnShow.call(this);
+    C.CastleModel.specialEventData.addEventListener(g.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventRemoved));
+    C.CastleModel.timerData.addEventListener(h.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateEventTime));
+  };
+  CastleFactionInvasionEventDialog.prototype.onEventRemoved = function (e) {
+    if (e.specialEventVO.eventId == a.EventConst.EVENTTYPE_FACTION_INVASION) {
+      this.hide();
+    }
+  };
+  CastleFactionInvasionEventDialog.prototype.removeEventListenerOnHide = function () {
+    e.prototype.removeEventListenerOnHide.call(this);
+    C.CastleModel.specialEventData.removeEventListener(g.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventRemoved));
+    C.CastleModel.timerData.removeEventListener(h.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateEventTime));
+  };
+  CastleFactionInvasionEventDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this, t);
+    this.sublayerSwitcher.hide();
+  };
+  CastleFactionInvasionEventDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    if (C.CastleModel.specialEventData.isEventActive(a.EventConst.EVENTTYPE_FACTION_INVASION)) {
+      C.CastleModel.smartfoxClient.sendCommandVO(new d.C2SPointEventGetPointsVO(a.EventConst.EVENTTYPE_FACTION_INVASION));
+    }
+    if (!this.sublayerSwitcher) {
+      this.dialogDisp.titles_sublayer_container.addChild(this.dialogProperties.titlesSublayer);
+      this.sublayerSwitcher = new p.SublayerSwitcher(this.bindFunction(this.createProperties));
+      this.sublayerSwitcher.add(CastleFactionInvasionEventDialog.TAB_INSTRUCTION, this.dialogDisp.tab_instruction, new I.CastleFactionInvasionEventDialogInstructionSublayer(this.dialogDisp.sublayer_teaser));
+      this.sublayerSwitcher.add(CastleFactionInvasionEventDialog.TAB_SINGLEPLAYER, this.dialogDisp.tab_singleplayer, new T.CastleFactionInvasionEventDialogSingleplayerSublayer(this.dialogDisp.sublayer_singleplayer));
+      this.sublayerSwitcher.add(CastleFactionInvasionEventDialog.TAB_ALLIANCE, this.dialogDisp.tab_multiplayer, new D.CastleFactionInvasionEventDialogAllianceSublayer(this.dialogDisp.sublayer_multiplayer));
+      this.sublayerSwitcher.add(CastleFactionInvasionEventDialog.TAB_GALLANTRY_TITLES, this.dialogDisp.tab_gallantry, new b.FactionEventTitlesSublayer(this.dialogProperties.titlesSublayer));
+      this.sublayerSwitcher.switchTo(CastleFactionInvasionEventDialog.TAB_INSTRUCTION);
+    }
+    this.sublayerSwitcher.show();
+    this.updateTimer();
+  };
+  CastleFactionInvasionEventDialog.prototype.onUpdateEventTime = function (e) {
+    if (c.int(this.eventVO.remainingEventTimeInSeconds) <= 0) {
+      this.hide();
     } else {
-      return t.allianceRewardThresholdPoints;
+      this.updateTimer();
     }
   };
-  return CastleFactionInvasionEventDialogAllianceSublayer;
-}(O.CastleDialogSubLayer);
-exports.CastleFactionInvasionEventDialogAllianceSublayer = y;
-var b = require("./464.js");
-var D = require("./465.js");
-var I = require("./1653.js");
-var T = require("./1062.js");
-o.classImplementsInterfaces(y, "ICollectableRendererList", "ISublayer");
+  CastleFactionInvasionEventDialog.prototype.updateTimer = function () {
+    var e = c.int(this.eventVO.remainingEventTimeInSeconds);
+    this.itxt_time.textContentVO.stringValue = _.CastleTimeStringHelper.getEventTimeString(e);
+    this.dialogDisp.mc_time.toolTipText = _.CastleTimeStringHelper.getEventToolTipString(e);
+  };
+  Object.defineProperty(CastleFactionInvasionEventDialog.prototype, "eventVO", {
+    get: function () {
+      return C.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_FACTION_INVASION);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleFactionInvasionEventDialog.prototype, "dialogProperties", {
+    get: function () {
+      return this.properties;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleFactionInvasionEventDialog.NAME = "CastleFactionInvasionEvent_O";
+  CastleFactionInvasionEventDialog.TAB_INSTRUCTION = 1;
+  CastleFactionInvasionEventDialog.TAB_SINGLEPLAYER = 2;
+  CastleFactionInvasionEventDialog.TAB_ALLIANCE = 3;
+  CastleFactionInvasionEventDialog.TAB_GALLANTRY_TITLES = 4;
+  return CastleFactionInvasionEventDialog;
+}(f.CastleExternalDialog);
+exports.CastleFactionInvasionEventDialog = E;
+var y = require("./9.js");
+var b = require("./1652.js");
+var D = require("./3407.js");
+var I = require("./3418.js");
+var T = require("./3548.js");
+o.classImplementsInterfaces(E, "ICollectableRendererList");

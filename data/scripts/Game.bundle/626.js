@@ -1,119 +1,60 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CastleDecoShopItemArrayHelper() {}
-  CastleDecoShopItemArrayHelper.getBuildingsByCategory = function (e) {
-    var t = [];
-    var i = e.toLowerCase();
-    if (!c.CastleModel.decoShop[e.toLowerCase()]) {
-      return t;
-    }
-    var n = 0;
-    var a = [];
-    var u = [];
-    var d = [];
-    for (var p = 0, h = c.CastleModel.decoShop[i]; p < h.length; p++) {
-      var g = h[p];
-      if (g !== undefined) {
-        var C = c.CastleModel.userData.userLevel == 0;
-        var _ = g.level == 0;
-        if ((!C && !_ || C && _) && g.isAvailableInAreaTypeAndKingdomId(c.CastleModel.areaData.activeAreaInfo.areaType, c.CastleModel.areaData.activeAreaInfo.kingdomID) && (CastleDecoShopItemArrayHelper.layoutManager.isInTreasureCamp || !g.isOnlyAvailableByMapIds()) && (!CastleDecoShopItemArrayHelper.layoutManager.isInTreasureCamp || g.isOnlyAvailableInEvent() || CastleDecoShopItemArrayHelper.isShopVOActiveBySeason(g)) && (!(g.sceatSkillLocked > 0) || c.CastleModel.legendSkillData.hasLegendTemple())) {
-          if (e == s.ClientConstCastle.CATEGORY_DEFENCE) {
-            if (r.instanceOfClass(g, "CastlewallDefenceVO")) {
-              if (g.level > o.Iso.data.objects.defences.currentWallLevel) {
-                a.push(g);
-              }
-            } else if (r.instanceOfClass(g, "BasicMoatVO") && CastleDecoShopItemArrayHelper.isMoatVisible(g)) {
-              a.push(g);
-            }
-          } else {
-            if (!g.canBeBuildByResourceFields()) {
-              continue;
-            }
-            if (o.Iso.data.objects.provider.hasMaxAmountOfObjectsByType(g)) {
-              d.push(g);
-            } else {
-              if (c.CastleModel.areaData.activeArea.slum) {
-                n = l.int(c.CastleModel.areaData.activeArea.slum.slumLevel);
-              }
-              if (g.slumLevelNeeded > 0) {
-                if (n != -1) {
-                  if (g.slumLevelNeeded > n) {
-                    u.push(g);
-                  } else {
-                    a.push(g);
-                  }
-                }
-              } else {
-                a.push(g);
-              }
-            }
-          }
-        }
-      }
-    }
-    if (e == s.ClientConstCastle.CATEGORY_DEFENCE) {
-      d.sort(CastleDecoShopItemArrayHelper.defaultSortOrderBuilding);
-      a.sort(CastleDecoShopItemArrayHelper.sortOrderDefence);
-    } else {
-      a.sort(CastleDecoShopItemArrayHelper.defaultSortOrderBuilding);
-    }
-    u.sort(CastleDecoShopItemArrayHelper.defaultSortOrderBuilding);
-    return t = (t = a.concat(u)).concat(d);
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./413.js");
+var r = require("./1198.js");
+var l = require("./8.js");
+var c = require("./189.js");
+var u = require("./36.js");
+var d = function (e) {
+  function DynamicSizeScrollStrategyHorizontal(t = false, i = 0) {
+    var n = this;
+    n._visibleValue = 0;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this, t) || this)._visibleValue = i;
+    return n;
+  }
+  n.__extends(DynamicSizeScrollStrategyHorizontal, e);
+  DynamicSizeScrollStrategyHorizontal.prototype.init = function () {
+    e.prototype.init.call(this);
+    this.placeSliderButton();
   };
-  CastleDecoShopItemArrayHelper.defaultSortOrderBuilding = function (e, t) {
-    var i = e.sortOrder - t.sortOrder;
-    if (i != 0) {
-      return i;
-    }
-    var n = e.requiredLegendLevel - t.requiredLegendLevel;
-    if (n != 0) {
-      return n;
-    } else {
-      return e.requiredLevel - t.requiredLevel;
+  DynamicSizeScrollStrategyHorizontal.prototype.getPercentFactorOfMousePos = function (e = 0) {
+    var t = (this.scrollVO.sliderLine.mouseX - e - this.getSliderButtonWidth() / 2) / this.getLineLength();
+    return t = o.MathBase.clamp(t, 0, 1);
+  };
+  DynamicSizeScrollStrategyHorizontal.prototype.getLineLength = function () {
+    return this.scrollVO.sliderLine.width - this.getSliderButtonWidth();
+  };
+  DynamicSizeScrollStrategyHorizontal.prototype.placeSliderButton = function () {
+    if (this.scrollVO.hasSlider && (this.scrollVO.sliderButton.x = this.getLineStartPos() + this.getLineLength() * this.percentFactor + this.getSliderButtonWidth() / 2, r.instanceOf_IDynamicSizeSlider(l.ButtonHelper.getBasicButton(this.scrollVO.sliderButton)))) {
+      var e = l.ButtonHelper.getBasicButton(this.scrollVO.sliderButton);
+      var t = o.MathBase.clamp(this._visibleValue / (this._scrollComponent.maxValue + this._visibleValue), 0, 1) * this.scrollVO.sliderLine.width;
+      e.setSize(Math.max(t, e.minSize));
     }
   };
-  CastleDecoShopItemArrayHelper.sortOrderDefence = function (e, t) {
-    var i = 0;
-    if ((i = e.group.toLowerCase() < t.group.toLowerCase() ? -1 : e.group.toLowerCase() > t.group.toLowerCase() ? 1 : 0) != 0) {
-      return i;
-    } else {
-      return CastleDecoShopItemArrayHelper.defaultSortOrderBuilding(e, t);
-    }
-  };
-  CastleDecoShopItemArrayHelper.isShopVOActiveBySeason = function (e) {
-    return !!c.CastleModel.specialEventData.activeSeasonVO && !!c.CastleModel.specialEventData.activeSeasonVO.treasureMapVO && e.isAvailableByMapId(c.CastleModel.specialEventData.activeSeasonVO.treasureMapVO.mapID);
-  };
-  CastleDecoShopItemArrayHelper.isMoatVisible = function (e) {
-    var t = o.Iso.data.objects.defences.moat;
-    if (t) {
-      var i = r.instanceOfClass(t, "PremiumMoatVO") || r.instanceOfClass(t, "FactionPMoatMoatVO");
-      if (r.instanceOfClass(e, "PremiumMoatVO") || r.instanceOfClass(e, "FactionPMoatMoatVO")) {
-        if (i) {
-          return e.level > t.level && e.isMoatAvailableByBuildOrder;
-        } else {
-          return !!r.instanceOfClass(e, "FactionPMoatMoatVO") || e.isMoatAvailableByBuildOrder;
-        }
-      } else {
-        return !i && e.level > t.level && e.isMoatAvailableByBuildOrder;
-      }
-    }
-    return e.isMoatAvailableByBuildOrder;
-  };
-  Object.defineProperty(CastleDecoShopItemArrayHelper, "layoutManager", {
-    get: function () {
-      return a.CastleLayoutManager.getInstance();
+  Object.defineProperty(DynamicSizeScrollStrategyHorizontal.prototype, "visibleValue", {
+    set: function (e) {
+      this._visibleValue = e;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleDecoShopItemArrayHelper;
-}();
-exports.CastleDecoShopItemArrayHelper = n;
-var o = require("./33.js");
-var a = require("./17.js");
-var s = require("./18.js");
-var r = require("./1.js");
-var l = require("./6.js");
-var c = require("./4.js");
+  DynamicSizeScrollStrategyHorizontal.prototype.getSliderButtonWidth = function () {
+    if (this.scrollVO.sliderButton.skewX != 0 || this.scrollVO.sliderButton.rotation != 0) {
+      return this.scrollVO.sliderButton.height;
+    } else {
+      return this.scrollVO.sliderButton.width;
+    }
+  };
+  DynamicSizeScrollStrategyHorizontal.prototype.initButtons = function () {
+    l.ButtonHelper.initButtons([this.scrollVO.minButton, this.scrollVO.maxButton, this.scrollVO.plusButton, this.scrollVO.minusButton], u.ClickFeedbackButton, 1);
+    l.ButtonHelper.initButtons([this.scrollVO.sliderButton], s.ClickFeedBackSliderButton, 1);
+  };
+  return DynamicSizeScrollStrategyHorizontal;
+}(c.SimpleScrollStrategyHorizontal);
+exports.DynamicSizeScrollStrategyHorizontal = d;
+a.classImplementsInterfaces(d, "ISimpleScrollStrategy", "IDynamicSizeScrollStrategy");

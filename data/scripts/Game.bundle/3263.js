@@ -3,16 +3,28 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./27.js");
+var a = require("./3.js");
 var s = require("./195.js");
 var r = function (e) {
-  function CollectableItemVipTimeVE() {
+  function CollectableItemVipPointVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemVipTimeVE, e);
-  Object.defineProperty(CollectableItemVipTimeVE.prototype, "iconClass", {
+  n.__extends(CollectableItemVipPointVE, e);
+  CollectableItemVipPointVE.prototype.textfieldUpdate = function () {
+    this.textfieldSetTextAsNumber(this.vo.amount);
+  };
+  CollectableItemVipPointVE.prototype.textfieldBackgroundVisible = function () {
+    return true;
+  };
+  CollectableItemVipPointVE.prototype.tooltipCreate = function () {
+    return {
+      t: "dialog_buyVipPoints_pointAmount_v2",
+      p: [new a.LocalizedNumberVO(this.vo.amount)]
+    };
+  };
+  Object.defineProperty(CollectableItemVipPointVE.prototype, "iconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_VipTime;
+      return Library.CastleInterfaceElements_Icons.Icon_VipPoints_Big;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
@@ -20,23 +32,7 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CollectableItemVipTimeVE.prototype.textfieldBackgroundVisible = function () {
-    return true;
-  };
-  CollectableItemVipTimeVE.prototype.tooltipCreate = function () {
-    return {
-      t: "dialog_StarterDailyLoginBonus_premiumTime_v2",
-      p: [a.CastleTimeStringHelper.getFullTimeString(this.itemVipTimeVO.duration)]
-    };
-  };
-  Object.defineProperty(CollectableItemVipTimeVE.prototype, "itemVipTimeVO", {
-    get: function () {
-      return this.vo;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CollectableItemVipTimeVE;
+  return CollectableItemVipPointVE;
 }(s.ACollectableItemSimpleIconVE);
-exports.CollectableItemVipTimeVE = r;
+exports.CollectableItemVipPointVE = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");

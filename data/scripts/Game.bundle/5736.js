@@ -5,19 +5,25 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SExtractGemVO(t, i) {
-    var n = this;
-    n.EID = 0;
-    n.LID = 0;
+  function C2SBindGem(t, i, n, o, a) {
+    var s = this;
+    s.GID = NaN;
+    s.EID = NaN;
+    s.LID = 0;
+    s.M = 0;
+    s.RGEM = 0;
     CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).EID = t;
-    n.LID = i;
-    return n;
+    (s = e.call(this) || this).GID = t;
+    s.EID = i;
+    s.LID = n;
+    s.M = o ? 1 : 0;
+    s.RGEM = a ? 1 : 0;
+    return s;
   }
-  n.__extends(C2SExtractGemVO, e);
-  C2SExtractGemVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_EXTRACT_GEM;
+  n.__extends(C2SBindGem, e);
+  C2SBindGem.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_BIND_GEM;
   };
-  return C2SExtractGemVO;
+  return C2SBindGem;
 }(o.BasicCommandVO);
-exports.C2SExtractGemVO = s;
+exports.C2SBindGem = s;

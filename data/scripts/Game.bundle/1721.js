@@ -2,83 +2,53 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./3.js");
-var l = require("./104.js");
-var c = require("./4.js");
-var u = function (e) {
-  function InviteAFriendLevelRewardReceivedDialog(t = "") {
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./6.js");
+var l = function (e) {
+  function CastlePaginatedScoreEventScoreBarProperties(t, i, n, o, a = null, s = null, l = CastlePaginatedScoreEventScoreBarProperties.NUMBER_OF_THRESHOLD_REWARDS_0, c = CastlePaginatedScoreEventScoreBarProperties.NUMBER_OF_RANK_REWARDS_0) {
+    var u = this;
     CONSTRUCTOR_HACK;
-    return e.call(this, t == "" ? InviteAFriendLevelRewardReceivedDialog.NAME : t) || this;
+    (u = e.call(this, i, n, o, a, s, l, c) || this)._pagination = t;
+    u._pagination.maxPages = r.int(i.length - u.numRankRewards - (u.numThresholdRewards - 1));
+    return u;
   }
-  n.__extends(InviteAFriendLevelRewardReceivedDialog, e);
-  InviteAFriendLevelRewardReceivedDialog.prototype.registerRewardHolder = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_currentrewardholder.tf_reward, new r.LocalizedTextVO(InviteAFriendLevelRewardReceivedDialog.GAINED_REWARD_0));
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_nextrewardholder.tf_reward, new r.LocalizedTextVO(InviteAFriendLevelRewardReceivedDialog.NEXT_REWARD));
+  n.__extends(CastlePaginatedScoreEventScoreBarProperties, e);
+  CastlePaginatedScoreEventScoreBarProperties.prototype.getToolTip = function (t, i) {
+    var n = e.prototype.getToolTip.call(this, t, i);
+    n.p = [this._toolTipValues[this.getPaginatedIndex(t)] ? this._toolTipValues[this.getPaginatedIndex(t)] : 1];
+    return n;
   };
-  InviteAFriendLevelRewardReceivedDialog.prototype.fillRewards = function () {
-    for (var e = c.CastleModel.inviteFriendsData.getRewardVOsForFriendCount(this.dialogProperties.playerCount), t = 0; t < e.length; t++) {
-      if (e[t].friendLevel == this.dialogProperties.levelReached) {
-        this.receivedReward = e[t];
-        if (t < e.length - 1) {
-          this.nextReward = e[t + 1];
-        } else {
-          this.nextReward = c.CastleModel.inviteFriendsData.getRewardVOByID(e[t].id + 1);
-        }
-      }
-    }
-    a.debug("-------------------------- rewards:");
-    a.debug("Received: " + this.receivedReward);
-    a.debug("Next: " + this.nextReward);
-    a.debug("------------------------------------");
-    this.destroyCollectableRenderList();
-    o.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_currentrewardholder.mc_reward);
-    o.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_nextrewardholder.mc_reward);
-    var i = new Library.CastleInterfaceElements.InviteAFriendRewardContainer();
-    var n = new l.CollectableRendererList();
-    this.dialogDisp.mc_currentrewardholder.mc_reward.addChild(i);
-    d.RewardRenderHelper.renderInviteAFriendLevelReward(n, i, this.receivedReward, c.CastleModel.inviteFriendsData.hasRewardBeenReceived(this.receivedReward.id));
-    if (this.nextReward) {
-      var s = new Library.CastleInterfaceElements.InviteAFriendRewardContainer();
-      var r = new l.CollectableRendererList();
-      this.dialogDisp.mc_nextrewardholder.mc_reward.addChild(s);
-      d.RewardRenderHelper.renderInviteAFriendLevelReward(r, s, this.nextReward, c.CastleModel.inviteFriendsData.hasRewardBeenReceived(this.nextReward.id));
-    }
-  };
-  InviteAFriendLevelRewardReceivedDialog.prototype.handleTextIDs = function () {
-    if (this.dialogProperties.levelReached == 70 && this.dialogProperties.playerCount > 1) {
-      this.itxt_description.textContentVO.textId = InviteAFriendLevelRewardReceivedDialog.DESCRIPTION_LAST_REWARD;
-      this.itxt_description.textContentVO.textReplacements = [this.dialogProperties.playerCount, this.dialogProperties.levelReached];
+  CastlePaginatedScoreEventScoreBarProperties.prototype.getLabel = function (e) {
+    if (isNaN(this._labels[this.getPaginatedIndex(e)])) {
+      return new s.LocalizedTextVO(this._labels[this.getPaginatedIndex(e)]);
     } else {
-      this.itxt_description.textContentVO.textReplacements = [this.receivedReward.friendCount, this.receivedReward.friendLevel, this.nextReward ? this.nextReward.friendCount : "", this.nextReward ? this.nextReward.friendLevel : ""];
+      return new a.LocalizedNumberVO(this._labels[this.getPaginatedIndex(e)]);
     }
   };
-  InviteAFriendLevelRewardReceivedDialog.prototype.updateRewardHolder = function () {
-    this.dialogDisp.mc_nextrewardholder.visible = !!this.nextReward;
-    this.dialogDisp.mc_currentrewardholder.x = this.nextReward ? -118 : 0;
+  CastlePaginatedScoreEventScoreBarProperties.prototype.getDescription = function (e) {
+    return new s.LocalizedTextVO(this._descriptions[this.getPaginatedIndex(e)]);
   };
-  InviteAFriendLevelRewardReceivedDialog.prototype.hideLoaded = function (t = null) {
-    this.nextReward = null;
-    e.prototype.hideLoaded.call(this);
+  CastlePaginatedScoreEventScoreBarProperties.prototype.getReward = function (e) {
+    return this._rewardList[this.getPaginatedIndex(e)];
   };
-  Object.defineProperty(InviteAFriendLevelRewardReceivedDialog.prototype, "dialogProperties", {
-    get: function () {
-      return this.properties;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  InviteAFriendLevelRewardReceivedDialog.__initialize_static_members = function () {
-    InviteAFriendLevelRewardReceivedDialog.NAME = "InviteAFriendRewardReceived";
-    InviteAFriendLevelRewardReceivedDialog.GAINED_REWARD_0 = "dialog_referFriend_gainReward_rewardboxHeader_01";
-    InviteAFriendLevelRewardReceivedDialog.NEXT_REWARD = "dialog_referFriend_gainReward_rewardboxHeader_0";
-    InviteAFriendLevelRewardReceivedDialog.DESCRIPTION_LAST_REWARD = "dialog_referFriend_gainReward_description_04";
+  CastlePaginatedScoreEventScoreBarProperties.prototype.getPaginatedIndex = function (e) {
+    if (e >= this.numThresholdRewards) {
+      return e + this._pagination.maxPages - 1;
+    } else {
+      return e + this._pagination.currentPageIndex;
+    }
   };
-  return InviteAFriendLevelRewardReceivedDialog;
-}(require("./1722.js").InviteAFriendRewardReceivedDialog);
-exports.InviteAFriendLevelRewardReceivedDialog = u;
-var d = require("./398.js");
-s.classImplementsInterfaces(u, "ICollectableRendererList");
-u.__initialize_static_members();
+  CastlePaginatedScoreEventScoreBarProperties.prototype.thresholdProgress = function (t, i, n) {
+    return e.prototype.thresholdProgress.call(this, this.getPaginatedIndex(t), i, n);
+  };
+  CastlePaginatedScoreEventScoreBarProperties.__initialize_static_members = function () {
+    CastlePaginatedScoreEventScoreBarProperties.NUMBER_OF_THRESHOLD_REWARDS_0 = 2;
+    CastlePaginatedScoreEventScoreBarProperties.NUMBER_OF_RANK_REWARDS_0 = 3;
+  };
+  return CastlePaginatedScoreEventScoreBarProperties;
+}(require("./546.js").CastleScoreEventScoreBarProperties);
+exports.CastlePaginatedScoreEventScoreBarProperties = l;
+o.classImplementsInterfaces(l, "IScorebarProperties");
+l.__initialize_static_members();

@@ -4,20 +4,20 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./116.js");
+var s = require("./114.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferAlienDialog() {
-    return e.call(this, CastlePaymentRewardSpecialOfferAlienDialog.NAME) || this;
+  function CastlePaymentRewardSpecialOfferAnniversaryDialog() {
+    return e.call(this, CastlePaymentRewardSpecialOfferAnniversaryDialog.NAME) || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferAlienDialog, e);
-  CastlePaymentRewardSpecialOfferAlienDialog.prototype.setTextIDs = function () {
+  n.__extends(CastlePaymentRewardSpecialOfferAnniversaryDialog, e);
+  CastlePaymentRewardSpecialOfferAnniversaryDialog.prototype.setTextIDs = function () {
     e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_alienInvasion_title";
-    this.descriptionTextID = "dialog_primeday_alienInvasion_description";
+    this.titleTextID = "dialog_primeday_anniversary_title";
+    this.descriptionTextID = "dialog_primeday_anniversary_description";
   };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferAlienDialog.prototype, "skinType", {
+  Object.defineProperty(CastlePaymentRewardSpecialOfferAnniversaryDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_ALIEN;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_ANNIVERSARY;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
@@ -25,11 +25,11 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferAlienDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferAlienDialog.NAME = "CastlePaymentRewardSpecialOfferAlien";
+  CastlePaymentRewardSpecialOfferAnniversaryDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferAnniversaryDialog.NAME = "CastlePaymentRewardSpecialOfferAnniversary";
   };
-  return CastlePaymentRewardSpecialOfferAlienDialog;
+  return CastlePaymentRewardSpecialOfferAnniversaryDialog;
 }(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferAlienDialog = r;
-r.__initialize_static_members();
+exports.CastlePaymentRewardSpecialOfferAnniversaryDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
+r.__initialize_static_members();

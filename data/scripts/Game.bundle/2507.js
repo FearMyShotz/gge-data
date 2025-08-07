@@ -2,111 +2,238 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./6.js");
-var r = require("./31.js");
-var l = require("./19.js");
-var c = require("./4.js");
-var u = require("./24.js");
-var d = require("./40.js");
-var p = require("./322.js");
-var h = require("./221.js");
-var g = createjs.MovieClip;
-var C = createjs.Point;
-var _ = function (e) {
-  function CastleAllianceDialogTreasurySubscriptionsItem(t, i) {
-    var n = e.call(this, new g()) || this;
-    n._seriesId = -1;
-    n._seriesBuffs = [];
-    t.addChild(n.disp);
-    n._itemClip = new u.CastleGoodgameExternalClip(CastleAllianceDialogTreasurySubscriptionsItem.ASSET_CLIP_NAME, f.IsoHelper.view.getAssetFileURL(y.CastleAllianceDialog.NAME));
-    n.disp.addChild(n._itemClip);
-    n._seriesId = i;
-    n._seriesBuffs = c.CastleModel.subscriptionData.getPackageSeriesBuffs(h.SubscriptionPackageEnum.ALLIANCE, i);
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./3.js");
+var c = require("./3.js");
+var u = require("./6.js");
+var d = require("./28.js");
+var p = require("./13.js");
+var h = require("./4.js");
+var g = require("./383.js");
+var C = require("./47.js");
+var _ = require("./59.js");
+var m = require("./8.js");
+var f = require("./35.js");
+var O = require("./222.js");
+var E = function (e) {
+  function SubscriptionDialogOffer(t, i) {
+    var n = this;
+    n._effectItems = [];
+    CONSTRUCTOR_HACK;
+    (n = e.call(this, t) || this)._packageType = i;
+    n.init();
     return n;
   }
-  n.__extends(CastleAllianceDialogTreasurySubscriptionsItem, e);
-  CastleAllianceDialogTreasurySubscriptionsItem.prototype.update = function () {
-    this.updateIcon();
-    this.updateText();
-    this.updateProgressBar();
+  n.__extends(SubscriptionDialogOffer, e);
+  SubscriptionDialogOffer.prototype.init = function () {
+    m.ButtonHelper.initButtons([this.subLayerDisp.btn_buy, this.subLayerDisp.mc_allianceBonus.btn_bonusList], T.ClickFeedbackButtonBackground);
+    m.ButtonHelper.initButtons([this.subLayerDisp.btn_loyalty, this.subLayerDisp.btn_monthlyGift], v.ClickFeedbackButton);
+    this.textFieldManager.registerTextField(this.subLayerDisp.btn_buy.txt_text, new l.LocalizedTextVO("dialog_subscriptionOverview_buySub_button_copy")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.subLayerDisp.mc_allianceBonus.btn_bonusList.txt_text, new l.LocalizedTextVO("dialog_subscriptionOverview_allianceBonusButton_copy")).autoFitToBounds = true;
+    this._scrollComponent = new y.SimpleScrollComponent(new C.SimpleScrollVO().initByParent(this.subLayerDisp.mc_bonusList.mc_slider).addMouseWheelElements([this.subLayerDisp.mc_bonusList]).addVisualElements([this.subLayerDisp.mc_bonusList.mc_slider]), new _.DynamicSizeScrollStrategyVertical(true));
   };
-  CastleAllianceDialogTreasurySubscriptionsItem.prototype.updateIcon = function () {
-    E.CollectableRenderHelper.displaySingleItemComplete(this, new r.CollectableRenderClips(this.itemMc.mc_icon).addIconMc(this.itemMc.mc_icon), new m.CollectableItemEffectVO(this.seriesBuffs[0].boni[0].effect.effectID), new l.CollectableRenderOptions(l.CollectableRenderOptions.ICON, new C(70, 70)));
+  SubscriptionDialogOffer.prototype.show = function (t) {
+    e.prototype.show.call(this, t);
+    this._scrollComponent.show();
+    this.controller.addEventListener(g.SubscriptionEvent.ON_SUBSCRIPTION_CHANGED, this.bindFunction(this.onSubscriptionChanged));
+    this.controller.addEventListener(g.SubscriptionEvent.ON_SHOP_PACKAGES_RECEIVED, this.bindFunction(this.onShopPackagesReceived));
+    this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
+    this.updatePackageInfos();
   };
-  CastleAllianceDialogTreasurySubscriptionsItem.prototype.updateText = function () {
-    var e = this.seriesBuffs[0];
-    var t = this.getCurrentBuffVO();
-    var i = this.getNextBuffVO();
-    var n = e.boni[0].effect.name;
-    O.CastleComponent.textFieldManager.registerTextField(this.itemMc.txt_text1, new a.LocalizedTextVO("subscription_effect_description_" + n, t ? t.boni[0].effectValue.textReplacements : [0]));
-    O.CastleComponent.textFieldManager.registerTextField(this.itemMc.txt_text2, new a.LocalizedTextVO(i ? "dialog_alliance_stageBonus_next_" + n : "dialog_alliance_treasury_subscription_subEffect_max", i ? i.boni[0].effectValue.textReplacements : [0]));
+  SubscriptionDialogOffer.prototype.hide = function () {
+    this._scrollComponent.hide();
+    this.controller.removeEventListener(g.SubscriptionEvent.ON_SUBSCRIPTION_CHANGED, this.bindFunction(this.onSubscriptionChanged));
+    this.controller.removeEventListener(g.SubscriptionEvent.ON_SHOP_PACKAGES_RECEIVED, this.bindFunction(this.onShopPackagesReceived));
+    this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
+    e.prototype.hide.call(this);
   };
-  CastleAllianceDialogTreasurySubscriptionsItem.prototype.updateProgressBar = function () {
-    var e = this.getCurrentBuffVO();
-    var t = this.getNextBuffVO();
-    var i = s.int(t ? c.CastleModel.subscriptionData.allianceSubscriberCount : e.requiredMembers);
-    var n = s.int(t ? t.requiredMembers : e.requiredMembers);
-    new p.SimpleProgressBarComponent(this.itemMc.mc_progress, 504).setProgressByPercent(i / n);
-    O.CastleComponent.textFieldManager.registerTextField(this.itemMc.mc_progress.txt_text, new a.LocalizedTextVO(t ? "dialog_alliance_treasury_subscription_subEffect_subscriberCounter" : "dialog_alliance_treasury_subscription_subEffect_subscriberCounterMax", [i, n]));
-  };
-  Object.defineProperty(CastleAllianceDialogTreasurySubscriptionsItem.prototype, "itemMc", {
-    get: function () {
-      return this._itemClip.currentshownDisplayObject;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleAllianceDialogTreasurySubscriptionsItem.prototype.getCurrentBuffIndex = function () {
-    var e = s.int(c.CastleModel.subscriptionData.allianceSubscriberCount);
-    var t = -1;
-    for (var i = 0; i < this.seriesBuffs.length; ++i) {
-      var n = this.seriesBuffs[i];
-      if (t < 0) {
-        if (e >= n.requiredMembers) {
-          t = i;
+  SubscriptionDialogOffer.prototype.updatePackageInfos = function () {
+    var e = h.CastleModel.subscriptionData.isPackageActive(this.packageType);
+    var t = h.CastleModel.subscriptionData.hasReceivedShopPackage();
+    this.textFieldManager.registerTextField(this.subLayerDisp.txt_title, new c.TextVO(p.TextHelper.toUpperCaseLocaSafeTextId(this.packageType.nameTextId))).autoFitToBounds = true;
+    this.subLayerDisp.mc_teaser.gotoAndStop(this.getTeaserFrame());
+    if (this.subLayerDisp.mc_teaser.icon_duration) {
+      this.subLayerDisp.mc_teaser.icon_duration.toolTipText = "loyaltyGift_tt";
+    }
+    if (this.subLayerDisp.mc_teaser.icon_ww_coins) {
+      this.subLayerDisp.mc_teaser.icon_ww_coins.toolTipText = "dialog_subscription_monthlyGift_tt";
+    }
+    this.subLayerDisp.btn_loyalty.visible = this.packageType == O.SubscriptionPackageEnum.PREMIUM;
+    this.subLayerDisp.btn_monthlyGift.visible = this.packageType == O.SubscriptionPackageEnum.PLAYER;
+    this.textFieldManager.registerTextField(this.subLayerDisp.btn_loyalty.txt_copy, new c.TextVO(p.TextHelper.toUpperCaseLocaSafeTextId("dialog_subscriptionHelp_loyaltyGift_header")));
+    this.textFieldManager.registerTextField(this.subLayerDisp.btn_monthlyGift.txt_copy, new c.TextVO(p.TextHelper.toUpperCaseLocaSafeTextId("dialog_subscriptionOverview_monthlyGiftButton_copy")));
+    this.textFieldManager.registerTextField(this.subLayerDisp.txt_buyDesc, new l.LocalizedTextVO(e ? "dialog_subscriptionOverview_subscribed_desc" : "dialog_subscriptionOverview_unsubscribed_desc")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.subLayerDisp.txt_buyPrice, this.getPriceTextVO()).autoFitToBounds = true;
+    m.ButtonHelper.enableButton(this.subLayerDisp.btn_buy, !e && t);
+    this.subLayerDisp.btn_buy.toolTipText = e ? "dialog_subscriptionOverview_buySub_button_inactive_tooltip" : null;
+    this.subLayerDisp.mc_bought.gotoAndStop(e ? 1 : 2);
+    this.textFieldManager.registerTextField(this.subLayerDisp.txt_boughtDesc, new l.LocalizedTextVO(e ? "dialog_subscriptionOverview_statusField_subscribed_desc" : "dialog_subscriptionOverview_statusField_subscribedNot_desc")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.subLayerDisp.txt_desc, new l.LocalizedTextVO(this.getDescTextId())).autoFitToBounds = true;
+    var i = this.subLayerDisp.mc_allianceBonus;
+    if (this.packageType == O.SubscriptionPackageEnum.ALLIANCE) {
+      i.visible = true;
+      this.textFieldManager.registerTextField(i.txt_title, new l.LocalizedTextVO(this.getAllianceCountTextId(), [h.CastleModel.subscriptionData.allianceSubscriberCount])).autoFitToBounds = true;
+      this.textFieldManager.registerTextField(i.txt_desc, new l.LocalizedTextVO(this.getDescTextId()));
+    } else {
+      i.visible = false;
+    }
+    this.textFieldManager.registerTextField(this.subLayerDisp.mc_bonusList.txt_title, new l.LocalizedTextVO(this.getEffectTitleTextId())).autoFitToBounds = true;
+    if (this._effectItems != null) {
+      for (var n = 0, a = this._effectItems; n < a.length; n++) {
+        var s = a[n];
+        if (s !== undefined) {
+          s.destroy();
         }
-      } else if (e >= n.requiredMembers && n.requiredMembers >= this.seriesBuffs[t].requiredMembers) {
-        t = i;
       }
     }
-    return t;
+    var r = this.getEffectItemMc();
+    r.removeChildren();
+    this._effectItems = [];
+    for (var d = h.CastleModel.subscriptionData.getSubscriptionSeriesBuffs(this.packageType, h.CastleModel.subscriptionData.allianceSubscriberCount + 1), g = 0, C = 0; C < d.length; ++C) {
+      s = new D.SubscriptionDialogOfferItem(r, d[C], D.SubscriptionDialogOfferItem.ASSET_CLIP_NAME_BONUS_ITEM);
+      this._effectItems.push(s);
+      s.disp.y = g;
+      g += s.dispHeight;
+    }
+    for (var _ = h.CastleModel.subscriptionData.getSubscriptionRewardsByTypeID(this.packageType.serverId), f = 0; f < _.length; f++) {
+      s = new D.SubscriptionDialogOfferItem(r, _.getItemByIndex(f), D.SubscriptionDialogOfferItem.ASSET_CLIP_NAME_BONUS_ITEM);
+      this._effectItems.push(s);
+      s.disp.y = g;
+      g += s.dispHeight;
+    }
+    var E = u.int(s ? s.dispHeight : 1);
+    var y = u.int(o.MathBase.max(g - SubscriptionDialogOffer.EFFECT_MASK_HEIGHT, 0));
+    this._scrollComponent.init(0, y, E, E);
+    this._scrollComponent.setVisibility(y > 0);
+    this._scrollComponent.scrollToValue(0);
   };
-  CastleAllianceDialogTreasurySubscriptionsItem.prototype.getBuffVOSafe = function (e) {
-    if (e >= 0 && e < this.seriesBuffs.length) {
-      return this.seriesBuffs[e];
-    } else {
-      return null;
+  SubscriptionDialogOffer.prototype.updateEffectItemPositions = function () {
+    this.getEffectItemMc().y = -this._scrollComponent.currentValue;
+  };
+  SubscriptionDialogOffer.prototype.getPriceTextVO = function () {
+    if (h.CastleModel.subscriptionData.isPackageActive(this._packageType)) {
+      var e = h.CastleModel.subscriptionData.getActivePackage(this._packageType);
+      var t = new Date();
+      t.setTime(t.getTime() + e.getRemainingSeconds() * d.ClientConstTime.SEC_2_MILLISEC);
+      return new r.LocalizedDateTimeVO(t, s.DateTimeStyle.SHORT, s.DateTimeStyle.NONE);
+    }
+    return new c.TextVO(h.CastleModel.subscriptionData.getPriceString(this._packageType));
+  };
+  SubscriptionDialogOffer.prototype.getTeaserFrame = function () {
+    switch (this.packageType) {
+      case O.SubscriptionPackageEnum.PLAYER:
+        return 1;
+      case O.SubscriptionPackageEnum.PREMIUM:
+        return 2;
+      case O.SubscriptionPackageEnum.ALLIANCE:
+        return 3;
+      default:
+        return 1;
     }
   };
-  CastleAllianceDialogTreasurySubscriptionsItem.prototype.getCurrentBuffVO = function () {
-    return this.getBuffVOSafe(this.getCurrentBuffIndex());
+  SubscriptionDialogOffer.prototype.getDescTextId = function () {
+    switch (this.packageType) {
+      case O.SubscriptionPackageEnum.PLAYER:
+        return "dialog_subscriptionOverview_singleSub_1_desc";
+      case O.SubscriptionPackageEnum.PREMIUM:
+        return "dialog_subscriptionOverview_singleSub_2_desc";
+      case O.SubscriptionPackageEnum.ALLIANCE:
+        return "dialog_subscriptionOverview_allianceSub_1_desc";
+      default:
+        return "";
+    }
   };
-  CastleAllianceDialogTreasurySubscriptionsItem.prototype.getNextBuffVO = function () {
-    return this.getBuffVOSafe(this.getCurrentBuffIndex() + 1);
+  SubscriptionDialogOffer.prototype.getEffectTitleTextId = function () {
+    if (!h.CastleModel.subscriptionData.isPackageActive(this.packageType)) {
+      return "dialog_subscriptionOverview_boniActivation_desc";
+    }
+    switch (this.packageType) {
+      case O.SubscriptionPackageEnum.PLAYER:
+      case O.SubscriptionPackageEnum.PREMIUM:
+        return "dialog_subscriptionOverview_boniPlayer_desc";
+      case O.SubscriptionPackageEnum.ALLIANCE:
+        return "dialog_subscriptionOverview_boniAlliance_desc";
+      default:
+        return "";
+    }
   };
-  Object.defineProperty(CastleAllianceDialogTreasurySubscriptionsItem.prototype, "seriesId", {
+  SubscriptionDialogOffer.prototype.getAllianceCountTextId = function () {
+    if (h.CastleModel.userData.isInAlliance) {
+      if (h.CastleModel.subscriptionData.allianceSubscriberCount <= 0) {
+        return "dialog_subscriptionOverview_allianceField_memberNone_desc";
+      } else {
+        return "dialog_subscriptionOverview_allianceField_memberCount_desc";
+      }
+    } else {
+      return "dialog_subscriptionOverview_allianceField_noAlliance_desc";
+    }
+  };
+  SubscriptionDialogOffer.prototype.getEffectItemMc = function () {
+    return this.subLayerDisp.mc_bonusList.mc_items.mc_transform;
+  };
+  SubscriptionDialogOffer.prototype.onClick = function (t) {
+    if (m.ButtonHelper.isButtonEnabled(t.target)) {
+      e.prototype.onClick.call(this, t);
+      switch (t.target) {
+        case this.subLayerDisp.btn_buy:
+          h.CastleModel.subscriptionData.requestSPC(this.packageType);
+          break;
+        case this.subLayerDisp.mc_allianceBonus.btn_bonusList:
+          this.onAllianceBonusListButtonClicked();
+          break;
+        case this.subLayerDisp.btn_loyalty:
+          this.onLoyaltyButtonClicked();
+          break;
+        case this.subLayerDisp.btn_monthlyGift:
+          this.onMonthlyGiftButtonClicked();
+      }
+    }
+  };
+  SubscriptionDialogOffer.prototype.onMonthlyGiftButtonClicked = function () {
+    var e = this.layoutManager.getDialog(b.SubscriptionDialog);
+    if (e) {
+      e.openPreselection(b.SubscriptionDialog.TAB_INFO, I.SubscriptionInfoTopicEnum.TOPIC_MONTHLY_GIFT);
+    }
+  };
+  SubscriptionDialogOffer.prototype.onLoyaltyButtonClicked = function () {
+    var e = this.layoutManager.getDialog(b.SubscriptionDialog);
+    if (e) {
+      e.openPreselection(b.SubscriptionDialog.TAB_INFO, I.SubscriptionInfoTopicEnum.TOPIC_LOYALTY);
+    }
+  };
+  SubscriptionDialogOffer.prototype.onAllianceBonusListButtonClicked = function () {
+    var e = this.layoutManager.getDialog(b.SubscriptionDialog);
+    if (e) {
+      e.openPreselection(b.SubscriptionDialog.TAB_INFO, I.SubscriptionInfoTopicEnum.TOPIC_SUBSCRIBED_ALLIANCE_MEMBERS);
+    }
+  };
+  SubscriptionDialogOffer.prototype.onSubscriptionChanged = function (e) {
+    this.updatePackageInfos();
+  };
+  SubscriptionDialogOffer.prototype.onScroll = function () {
+    this.updateEffectItemPositions();
+  };
+  SubscriptionDialogOffer.prototype.onShopPackagesReceived = function (e) {
+    this.updatePackageInfos();
+  };
+  Object.defineProperty(SubscriptionDialogOffer.prototype, "packageType", {
     get: function () {
-      return this._seriesId;
+      return this._packageType;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceDialogTreasurySubscriptionsItem.prototype, "seriesBuffs", {
-    get: function () {
-      return this._seriesBuffs;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleAllianceDialogTreasurySubscriptionsItem.ASSET_CLIP_NAME = "CastleAlliance_Treasury_Item_Subscriptions";
-  return CastleAllianceDialogTreasurySubscriptionsItem;
-}(d.CastleItemRenderer);
-exports.CastleAllianceDialogTreasurySubscriptionsItem = _;
-var m = require("./611.js");
-var f = require("./46.js");
-var O = require("./14.js");
-var E = require("./25.js");
-var y = require("./125.js");
-o.classImplementsInterfaces(_, "ICollectableRendererList");
+  SubscriptionDialogOffer.EFFECT_MASK_HEIGHT = 220;
+  return SubscriptionDialogOffer;
+}(f.CastleDialogSubLayer);
+exports.SubscriptionDialogOffer = E;
+var y = require("./95.js");
+var b = require("./523.js");
+var D = require("./1390.js");
+var I = require("./958.js");
+var T = require("./121.js");
+var v = require("./36.js");
+a.classImplementsInterfaces(E, "ICollectableRendererList", "ISublayer");

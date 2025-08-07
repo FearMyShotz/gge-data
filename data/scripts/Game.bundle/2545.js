@@ -6,21 +6,25 @@ var o = require("./2.js");
 var a = require("./6.js");
 var s = require("./7.js");
 var r = function (e) {
-  function C2SAttackInfoIslandVO(t, i) {
-    var n = this;
-    n.KID = 0;
-    n.TX = 0;
-    n.TY = 0;
+  function C2SAttackInfoBossDungeonVO(t, i, n) {
+    var o = this;
+    o.KID = 0;
+    o.SX = 0;
+    o.SY = 0;
+    o.TX = 0;
+    o.TY = 0;
     CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).KID = i;
-    n.TX = a.int(t.x);
-    n.TY = a.int(t.y);
-    return n;
+    (o = e.call(this) || this).KID = n;
+    o.SX = a.int(t.x);
+    o.SY = a.int(t.y);
+    o.TX = a.int(i.x);
+    o.TY = a.int(i.y);
+    return o;
   }
-  n.__extends(C2SAttackInfoIslandVO, e);
-  C2SAttackInfoIslandVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_ATTACK_INFO_ISLAND;
+  n.__extends(C2SAttackInfoBossDungeonVO, e);
+  C2SAttackInfoBossDungeonVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_ATTACK_INFO_BOSSDUNGEON;
   };
-  return C2SAttackInfoIslandVO;
+  return C2SAttackInfoBossDungeonVO;
 }(o.BasicCommandVO);
-exports.C2SAttackInfoIslandVO = r;
+exports.C2SAttackInfoBossDungeonVO = r;

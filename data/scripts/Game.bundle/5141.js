@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GSCCommand() {
+  function ASCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GSCCommand, e);
-  Object.defineProperty(GSCCommand.prototype, "cmdId", {
+  n.__extends(ASCCommand, e);
+  Object.defineProperty(ASCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_SHOP_CATALOG;
+      return s.ClientConstSF.S2C_GET_ALLIANCE_SUBSCRIBER_COUNT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GSCCommand.prototype.executeCommand = function (e, t) {
+  ASCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.subscriptionData.parseGSC(i);
+        r.CastleModel.subscriptionData.parseASC(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GSCCommand;
+  return ASCCommand;
 }(l.CastleCommand);
-exports.GSCCommand = c;
+exports.ASCCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

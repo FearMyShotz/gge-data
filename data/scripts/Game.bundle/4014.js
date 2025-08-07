@@ -94,15 +94,15 @@ var l = function (e) {
     configurable: true
   });
   return CastleStormIslandsMainDialogPerformancePlayer;
-}(require("./34.js").CastleDialogSubLayer);
+}(require("./35.js").CastleDialogSubLayer);
 exports.CastleStormIslandsMainDialogPerformancePlayer = l;
-var c = require("./473.js");
+var c = require("./474.js");
 var u = require("./61.js");
 var d = require("./13.js");
 var p = require("./4.js");
 var h = require("./5.js");
-var g = require("./965.js");
-var C = require("./751.js");
+var g = require("./966.js");
+var C = require("./753.js");
 var _ = require("./37.js");
 var m = require("./5.js");
 o.classImplementsInterfaces(l, "ICollectableRendererList", "ISublayer");

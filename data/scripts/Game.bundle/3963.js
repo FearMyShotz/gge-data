@@ -7,7 +7,7 @@ var a = require("./3.js");
 var s = require("./3964.js");
 var r = require("./4.js");
 var l = require("./8.js");
-var c = require("./766.js");
+var c = require("./768.js");
 var u = require("./1121.js");
 var d = createjs.MouseEvent;
 var p = function (e) {
@@ -93,7 +93,7 @@ var p = function (e) {
   return CastleWorldCupDialogNotVotedState;
 }(u.ACastleWorldCupDialogState);
 exports.CastleWorldCupDialogNotVotedState = p;
-var h = require("./669.js");
+var h = require("./671.js");
 var g = require("./9.js");
-var C = require("./765.js");
+var C = require("./767.js");
 o.classImplementsInterfaces(p, "ICastleWorldCupDialogState");

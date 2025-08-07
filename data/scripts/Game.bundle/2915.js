@@ -4,13 +4,13 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function TreasurechestLowSurroundingsVO() {
+  function TreasurechestHighSurroundingsVO() {
     var t = e.call(this) || this;
-    t._name = "TreasurechestLow";
+    t._name = "TreasurechestHigh";
     return t;
   }
-  n.__extends(TreasurechestLowSurroundingsVO, e);
-  return TreasurechestLowSurroundingsVO;
+  n.__extends(TreasurechestHighSurroundingsVO, e);
+  return TreasurechestHighSurroundingsVO;
 }(require("./1555.js").ATreasurechestSurroundingsVO);
-exports.TreasurechestLowSurroundingsVO = a;
+exports.TreasurechestHighSurroundingsVO = a;
 o.classImplementsInterfaces(a, "IRelativeGridBuildingVO");

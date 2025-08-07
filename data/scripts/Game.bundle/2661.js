@@ -1,56 +1,43 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./6.js");
-var r = function (e) {
-  function DecorationForgeSelectTargetDialogOrderButton(t = null, i = false) {
-    var n = this;
-    n._isActive = false;
-    n._isArrowUp = false;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this, t, i) || this).updateActiveState();
-    return n;
+var n = function () {
+  function DecorationForgeSelectTargetDialogListItemVO(e) {
+    this._isSelected = false;
+    this._selectVO = e;
+    this._searchName = this.buildingVO.buildingVO.getInfoTooltipLine1().toLowerCase();
   }
-  n.__extends(DecorationForgeSelectTargetDialogOrderButton, e);
-  DecorationForgeSelectTargetDialogOrderButton.prototype.setActive = function (e) {
-    this._isActive = e;
-    this.updateActiveState();
-  };
-  DecorationForgeSelectTargetDialogOrderButton.prototype.updateActiveState = function () {
-    this.disp.gotoAndStop(s.int(this._isActive ? 2 : 1));
-    this.updateArrow();
-  };
-  DecorationForgeSelectTargetDialogOrderButton.prototype.setArrow = function (e) {
-    this._isArrowUp = e;
-    this.updateArrow();
-  };
-  DecorationForgeSelectTargetDialogOrderButton.prototype.updateArrow = function () {
-    var e = o.castAs(this.disp.getChildByName("mc_arrow"), "MovieClip");
-    if (e) {
-      e.gotoAndStop(s.int(this._isArrowUp ? 1 : 2));
-    }
-  };
-  DecorationForgeSelectTargetDialogOrderButton.prototype.onRollOut = function (e) {
-    this._disp.scaleX = this._disp.scaleY = this.initScale;
-  };
-  Object.defineProperty(DecorationForgeSelectTargetDialogOrderButton.prototype, "isActive", {
+  Object.defineProperty(DecorationForgeSelectTargetDialogListItemVO.prototype, "buildingVO", {
     get: function () {
-      return this._isActive;
+      return this._selectVO.itemVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DecorationForgeSelectTargetDialogOrderButton.prototype, "isArrowUp", {
+  Object.defineProperty(DecorationForgeSelectTargetDialogListItemVO.prototype, "searchName", {
     get: function () {
-      return this._isArrowUp;
+      return this._searchName;
     },
     enumerable: true,
     configurable: true
   });
-  return DecorationForgeSelectTargetDialogOrderButton;
-}(require("./121.js").ClickFeedbackButtonBackground);
-exports.DecorationForgeSelectTargetDialogOrderButton = r;
-a.classImplementsInterfaces(r, "MovieClip");
+  Object.defineProperty(DecorationForgeSelectTargetDialogListItemVO.prototype, "isSelected", {
+    get: function () {
+      return this._isSelected;
+    },
+    set: function (e) {
+      this._isSelected = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DecorationForgeSelectTargetDialogListItemVO.prototype, "selectVO", {
+    get: function () {
+      return this._selectVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return DecorationForgeSelectTargetDialogListItemVO;
+}();
+exports.DecorationForgeSelectTargetDialogListItemVO = n;

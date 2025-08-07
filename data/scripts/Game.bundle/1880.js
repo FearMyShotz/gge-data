@@ -2,27 +2,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = function (e) {
-  function APopoverVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function PopoverEvent(t, i = null, n = true, o = false) {
+    var a = e.call(this, t, n, o) || this;
+    a.params = i;
+    return a;
   }
-  n.__extends(APopoverVE, e);
-  APopoverVE.prototype.fillContent = function (e) {};
-  APopoverVE.prototype.getPopoverConfig = function () {
-    return null;
-  };
-  Object.defineProperty(APopoverVE.prototype, "popoverVO", {
-    get: function () {
-      return this._popoverVO;
-    },
-    set: function (e) {
-      this._popoverVO = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return APopoverVE;
-}(require("./14.js").CastleComponent);
-exports.APopoverVE = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList");
+  n.__extends(PopoverEvent, e);
+  PopoverEvent.ON_NEW_POPOVER_ARRIVED = "onNewPopoverArrived";
+  return PopoverEvent;
+}(createjs.Event);
+exports.PopoverEvent = o;

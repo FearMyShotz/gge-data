@@ -3,20 +3,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SAllianceTopicChangeRanks(t, i) {
-    var n = this;
-    n.TID = -1;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).TID = t;
-    n.RG = i;
-    return n;
+var a = require("./2.js");
+var s = require("./7.js");
+var r = require("./224.js");
+var l = function (e) {
+  function C2SAllianceTopicCreateVO(t, i, n) {
+    var o = e.call(this) || this;
+    o.N = a.TextValide.getValideSmartFoxJSONTextMessage(r.CastleAllianceForumData.getForumValidText(t));
+    o.RG = i;
+    o.R = a.TextValide.getValideSmartFoxJSONTextMessage(r.CastleAllianceForumData.getForumValidText(n));
+    return o;
   }
-  n.__extends(C2SAllianceTopicChangeRanks, e);
-  C2SAllianceTopicChangeRanks.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_ALLIANCE_TOPIC_CHANGE_RANKS;
+  n.__extends(C2SAllianceTopicCreateVO, e);
+  C2SAllianceTopicCreateVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_ALLIANCE_TOPIC_CREATE;
   };
-  return C2SAllianceTopicChangeRanks;
+  return C2SAllianceTopicCreateVO;
 }(o.BasicCommandVO);
-exports.C2SAllianceTopicChangeRanks = s;
+exports.C2SAllianceTopicCreateVO = l;

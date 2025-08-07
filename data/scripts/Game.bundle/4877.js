@@ -4,30 +4,27 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./5.js");
 var a = require("./7.js");
-var s = require("./4.js");
-var r = function (e) {
-  function SCTCommand() {
+var s = function (e) {
+  function GUSECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SCTCommand, e);
-  Object.defineProperty(SCTCommand.prototype, "cmdId", {
+  n.__extends(GUSECommand, e);
+  Object.defineProperty(GUSECommand.prototype, "cmdId", {
     get: function () {
-      return a.ClientConstSF.S2C_SPIN_CHARACTER_TOMBOLA;
+      return a.ClientConstSF.S2C_GENERAL_UNLOCK_SKILL;
     },
     enumerable: true,
     configurable: true
   });
-  SCTCommand.prototype.executeCommand = function (e, t) {
+  GUSECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case o.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        s.CastleModel.generalsData.parse_SCT(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SCTCommand;
+  return GUSECommand;
 }(require("./10.js").CastleCommand);
-exports.SCTCommand = r;
+exports.GUSECommand = s;

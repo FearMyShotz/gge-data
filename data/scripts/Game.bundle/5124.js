@@ -4,24 +4,24 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./10.js");
+var s = require("./10.js");
+var r = require("./7.js");
 var l = function (e) {
-  function CCRCommand() {
+  function SEDECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CCRCommand, e);
-  Object.defineProperty(CCRCommand.prototype, "cmdId", {
+  n.__extends(SEDECommand, e);
+  Object.defineProperty(SEDECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_TEMP_SERVER_CHARGE_CHAMP_EFFECTS_REROLL;
+      return r.ClientConstSF.S2C_SELECT_EVENT_AUTO_SCALING_DIFFICULTY_EVENT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CCRCommand.prototype.executeCommand = function (e, t) {
+  SEDECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         break;
@@ -30,7 +30,7 @@ var l = function (e) {
     }
     return true;
   };
-  return CCRCommand;
-}(r.CastleCommand);
-exports.CCRCommand = l;
+  return SEDECommand;
+}(s.CastleCommand);
+exports.SEDECommand = l;
 o.classImplementsInterfaces(l, "IExecCommand");

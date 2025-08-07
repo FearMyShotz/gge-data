@@ -15,6 +15,6 @@ var o = function (e) {
     CollectableItemHeroRandomVO.SERVER_KEY = "RE";
   };
   return CollectableItemHeroRandomVO;
-}(require("./687.js").CollectableItemEquipmentRarenessVO);
+}(require("./689.js").CollectableItemEquipmentRarenessVO);
 exports.CollectableItemHeroRandomVO = o;
 o.__initialize_static_members();

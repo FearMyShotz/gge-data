@@ -2,47 +2,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
-var l = require("./1.js");
-var c = require("./1.js");
-var u = require("./3.js");
-var d = function (e) {
-  function CastleTermsAndConditionsChangedDialog() {
+var o = require("./1.js");
+var a = require("./3.js");
+var s = function (e) {
+  function CastleIngameMessageTurkeyDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleTermsAndConditionsChangedDialog.NAME) || this;
+    return e.call(this, CastleIngameMessageTurkeyDialog.NAME) || this;
   }
-  n.__extends(CastleTermsAndConditionsChangedDialog, e);
-  CastleTermsAndConditionsChangedDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(CastleIngameMessageTurkeyDialog, e);
+  CastleIngameMessageTurkeyDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_gotoTermsAndConditions]);
+    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok]);
+  };
+  CastleIngameMessageTurkeyDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
     this.setText();
   };
-  CastleTermsAndConditionsChangedDialog.prototype.setText = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new u.LocalizedTextVO("general_tcmailing_subject")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_descriptionTop, new u.LocalizedTextVO("general_tcmailing_2015_text1")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_descriptionBottom, new u.LocalizedTextVO("general_tcmailing_2015_text2")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_gotoTermsAndConditions.txt_goToTermsAndConditions, new u.LocalizedTextVO("read_t_and_c")).autoFitToBounds = true;
+  CastleIngameMessageTurkeyDialog.prototype.setText = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("turkish_paysteaser_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy1, new a.LocalizedTextVO("turkish_paysteaser_copy1"));
   };
-  CastleTermsAndConditionsChangedDialog.prototype.onClick = function (t) {
+  CastleIngameMessageTurkeyDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
     switch (t.target) {
       case this.dialogDisp.btn_close:
+      case this.dialogDisp.btn_ok:
         this.hide();
-        break;
-      case this.dialogDisp.btn_gotoTermsAndConditions:
-        var i = new r.URLRequest(s.EnvGlobalsHandler.globals.urlAGB);
-        c.navigateToURL(i, "goodgamestudios");
-        a.ClientFunnelTrackingController.getInstance().trackState(o.ClientFunnelGameStates.VIEW_AGB);
     }
   };
-  CastleTermsAndConditionsChangedDialog.__initialize_static_members = function () {
-    CastleTermsAndConditionsChangedDialog.NAME = "CastleTermsAndConditionsChanged";
+  CastleIngameMessageTurkeyDialog.__initialize_static_members = function () {
+    CastleIngameMessageTurkeyDialog.NAME = "CastleIngameMessageTurkey";
   };
-  return CastleTermsAndConditionsChangedDialog;
+  return CastleIngameMessageTurkeyDialog;
 }(require("./11.js").CastleExternalDialog);
-exports.CastleTermsAndConditionsChangedDialog = d;
-l.classImplementsInterfaces(d, "ICollectableRendererList");
-d.__initialize_static_members();
+exports.CastleIngameMessageTurkeyDialog = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");
+s.__initialize_static_members();

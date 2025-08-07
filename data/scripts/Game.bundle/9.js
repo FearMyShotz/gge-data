@@ -9,7 +9,7 @@ var r = require("./2.js");
 var l = require("./1.js");
 var c = require("./6.js");
 var u = require("./43.js");
-var d = require("./1986.js");
+var d = require("./1987.js");
 var p = function (e) {
   function CastleDialogHandler() {
     var t = e.call(this) || this;
@@ -51,7 +51,7 @@ var p = function (e) {
     }
   };
   CastleDialogHandler.prototype.registerDialogsWithType = function (e, t = null, n = false, o = c.int(u.CastleDialogConsts.PRIORITY_LOW), a = 0, r = c.int(u.CastleDialogConsts.DIALOG_TYPE_DEFAULT)) {
-    if (require("./1987.js").DialogBlocker.isAllowedToShowDialog(e, t)) {
+    if (require("./1988.js").DialogBlocker.isAllowedToShowDialog(e, t)) {
       if (r == u.CastleDialogConsts.DIALOG_TYPE_DEFAULT && typeof e == "function" && e.hasOwnProperty("DEFAULT_BEHAVIOR")) {
         r = c.int(e.DEFAULT_BEHAVIOR);
       }

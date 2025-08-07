@@ -2,48 +2,83 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleLuckyWheelSalesDayMediator(t, i) {
-    return e.call(this, t, i) || this;
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./4517.js");
+var r = require("./1144.js");
+var l = require("./4.js");
+var c = require("./52.js");
+var u = require("./1910.js");
+var d = function (e) {
+  function SaleDaysLuckyWheelEventVO() {
+    return e.call(this) || this;
   }
-  n.__extends(CastleLuckyWheelSalesDayMediator, e);
-  CastleLuckyWheelSalesDayMediator.prototype.stopWheel = function () {
-    if (this.luckyWheelData.winningCategory != -1) {
-      this.destroyTimer();
-      var e = NaN;
-      var t = NaN;
-      if (this.luckyWheelData.winningCategory == 0) {
-        t = 45;
-        e = 22.5;
-      } else {
-        t = 78.75;
-        e = -22.5 - (this.luckyWheelData.winningCategory - 1) * t;
-      }
-      e -= Math.random() * (t - 15) + 7.5;
-      e += 360;
-      this._spinningWheel.accelerateWheel(0, e);
-      if (this._spinningWheel.currentSpeedInDegrees > 0) {
-        this.startBreakingCallback();
-      }
-    } else {
-      this.onServerFailed();
-    }
+  n.__extends(SaleDaysLuckyWheelEventVO, e);
+  Object.defineProperty(SaleDaysLuckyWheelEventVO.prototype, "luckyWheelData", {
+    get: function () {
+      return l.CastleModel.saleDaysLuckyWheelData;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.LuckyWheelEventVO.prototype, "luckyWheelData").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SaleDaysLuckyWheelEventVO.prototype, "eventBuildingNameId", {
+    get: function () {
+      return "eventBuilding_luckyWheel_saleDays";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.LuckyWheelEventVO.prototype, "eventBuildingNameId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SaleDaysLuckyWheelEventVO.prototype.openDialog = function (e = true) {
+    this.executeOpenDialog(e, s.CastleLuckWheelSalesDaysDialog, new r.CastleLuckyWheelDialogProperties(this));
   };
-  CastleLuckyWheelSalesDayMediator.prototype.showTooltips = function (e) {
-    if (e) {
-      this.componentDisp.component_wheel.icon_jackpot.toolTipText = "dialog_luckyWheel_jackpot";
-      this.componentDisp.component_wheel.icon_units.toolTipText = "dialog_luckyWheel_saleDays_units";
-      this.componentDisp.component_wheel.icon_relicEquipment.toolTipText = "dialog_luckyWheel_saleDays_relicEquipment";
-      this.componentDisp.component_wheel.icon_boosterTools.toolTipText = "dialog_luckyWheel_saleDays_boosterTools";
-      this.componentDisp.component_wheel.icon_tickets.toolTipText = "dialog_luckyWheel_saleDays_tickets_saleDays";
-    } else {
-      this.componentDisp.component_wheel.icon_jackpot.toolTipText = null;
-      this.componentDisp.component_wheel.icon_units.toolTipText = null;
-      this.componentDisp.component_wheel.icon_relicEquipment.toolTipText = null;
-      this.componentDisp.component_wheel.icon_boosterTools.toolTipText = null;
-      this.componentDisp.component_wheel.icon_tickets.toolTipText = null;
-    }
-  };
-  return CastleLuckyWheelSalesDayMediator;
-}(require("./1913.js").CastleLuckyWheelMediator);
-exports.CastleLuckyWheelSalesDayMediator = o;
+  Object.defineProperty(SaleDaysLuckyWheelEventVO.prototype, "eventBuildingWOD", {
+    get: function () {
+      return SaleDaysLuckyWheelEventVO.EVENT_BUILDING_WOD_0;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.LuckyWheelEventVO.prototype, "eventBuildingWOD").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SaleDaysLuckyWheelEventVO.prototype, "ticketCost", {
+    get: function () {
+      return a.LuckyWheelConst.SPIN_TICKET_COST_SALE_DAYS;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.LuckyWheelEventVO.prototype, "ticketCost").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SaleDaysLuckyWheelEventVO.prototype, "currencyID", {
+    get: function () {
+      return c.ClientConstCurrency.ID_SALES_DAYS_LUCKY_WHEEL_TICKET;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.LuckyWheelEventVO.prototype, "currencyID").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SaleDaysLuckyWheelEventVO.prototype, "textIDString", {
+    get: function () {
+      return "luckyWheel_saleDays";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.LuckyWheelEventVO.prototype, "textIDString").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SaleDaysLuckyWheelEventVO.EVENT_BUILDING_WOD_0 = 1897;
+  return SaleDaysLuckyWheelEventVO;
+}(u.LuckyWheelEventVO);
+exports.SaleDaysLuckyWheelEventVO = d;
+o.classImplementsInterfaces(d, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO", "IScoreUpdatable");

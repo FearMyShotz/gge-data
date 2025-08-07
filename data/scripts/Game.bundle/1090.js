@@ -2,153 +2,152 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./1.js");
-var c = require("./3.js");
-var u = require("./3.js");
-var d = require("./3.js");
-var p = require("./531.js");
-var h = require("./217.js");
-var g = require("./243.js");
-var C = require("./218.js");
-var _ = require("./71.js");
-var m = require("./4.js");
-var f = require("./11.js");
-var O = function (e) {
-  function CastleTransferResourcesDialog() {
-    return e.call(this, CastleTransferResourcesDialog.NAME) || this;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./243.js");
+var l = require("./4.js");
+var c = require("./8.js");
+var u = function (e) {
+  function CastleEilandRankingDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleEilandRankingDialog.NAME) || this;
   }
-  n.__extends(CastleTransferResourcesDialog, e);
-  CastleTransferResourcesDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this._castleSelector = new b.CastleSelectorComponent(this.dialogDisp.castleSelector);
-    this.dialogDisp.mc_infoTime.toolTipText = "travelTime";
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new u.LocalizedTextVO("dialog_season_sendRes_title"));
-    this.initBasicButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close, this.dialogDisp.btn_cancle]);
+  n.__extends(CastleEilandRankingDialog, e);
+  CastleEilandRankingDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this);
+    this._subLayer = new Map();
+    this._subLayer.set(CastleEilandRankingDialog.SUBLAYER_RULES, new g.CastleEilandRankingDialogRules(this.dialogDisp.sublayer_rules));
+    this._subLayer.set(CastleEilandRankingDialog.SUBLAYER_ALLIANCE_RANKING, new p.CastleEilandRankingDialogAlliance(this.dialogDisp.sublayer_allianceRanking));
+    this._subLayer.set(CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING, new h.CastleEilandRankingDialogPlayer(this.dialogDisp.sublayer_playerRanking));
+    this._subLayer.set(CastleEilandRankingDialog.SUBLAYER_TITLE, new C.CastleEilandRankingDialogTitle(this.dialogDisp.sublayer_title));
+    this.initBasicButtons([this.dialogDisp.btn_help, this.dialogDisp.btn_close, this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_RULES], this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_ALLIANCE_RANKING], this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING], this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_TITLE]]);
+    this.dialogDisp.btn_help.toolTipText = "generic_help";
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO(""));
+    this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_RULES].toolTipText = "dialog_eiland_tutorial_tooltip";
+    this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_ALLIANCE_RANKING].toolTipText = "dialog_eiland_cargoRanking_tooltip";
+    this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_TITLE].toolTipText = "dialog_eiland_titleMenu_tooltip";
+    this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING].toolTipText = "dialog_eiland_allianceRanking_tooltip";
   };
-  CastleTransferResourcesDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.dialogDisp.mc_infoTime.visible = this.dialogProperties.travelTime > 0;
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_infoTime.txt_value, new d.TextVO(r.TimeStringHelper.getTimeToString(this.dialogProperties.travelTime, r.TimeStringHelper.TWO_TIME_FORMAT, c.Localize.text)));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_help, new u.LocalizedTextVO(this.dialogProperties.infoText));
-    this._castleSelector.castleList.disp.addEventListener(o.BasicComboboxEvent.COMBOBOXCHANGE, this.bindFunction(this.onSelectCastle));
-    this._castleSelector.initComponent(m.CastleModel.otherPlayerData.getOwnInfoVO(), m.CastleModel.userData.castleList, null, this.dialogProperties.exceptingKingdomIDs);
-    this.dialogDisp.tradeComponent.visible = false;
-    m.CastleModel.smartfoxClient.sendCommandVO(new h.C2SGetDetailedCastleListVO());
-    this.onSelectCastle(null);
-  };
-  CastleTransferResourcesDialog.prototype.addEventListenerOnShow = function () {
-    this.controller.addEventListener(_.AreaDataEvent.ON_RESOURCES_CHANGED, this.bindFunction(this.onChangeResources));
-    this.controller.addEventListener(C.CastleDetailedCastleListEvent.DETAILED_CASTLELISTDATA_UPDATED, this.bindFunction(this.onDataUpdated));
-    this.controller.addEventListener(g.CastleEilandEvent.EILAND_RESET, this.bindFunction(this.onEilandReset));
-  };
-  CastleTransferResourcesDialog.prototype.removeEventListenerOnHide = function () {
-    this.controller.removeEventListener(_.AreaDataEvent.ON_RESOURCES_CHANGED, this.bindFunction(this.onChangeResources));
-    this.controller.removeEventListener(C.CastleDetailedCastleListEvent.DETAILED_CASTLELISTDATA_UPDATED, this.bindFunction(this.onDataUpdated));
-    this.controller.removeEventListener(g.CastleEilandEvent.EILAND_RESET, this.bindFunction(this.onEilandReset));
-  };
-  CastleTransferResourcesDialog.prototype.onEilandReset = function (e) {
-    this.hide();
-  };
-  CastleTransferResourcesDialog.prototype.onDataUpdated = function (e) {
-    this.initSelectors();
-  };
-  CastleTransferResourcesDialog.prototype.onChangeResources = function (e = null) {
-    this._castleRessourcesVO = e.params[0];
-    if (this._castleRessourcesVO && this._castleRessourcesVO.castleID == this._castleSelector.selectedCastleVO.objectId && this._castleRessourcesVO.kingdomID == this._castleSelector.selectedCastleVO.kingdomID) {
-      this.initSelectors();
-    }
-  };
-  CastleTransferResourcesDialog.prototype.initSelectors = function () {
-    var e;
-    if (this._tradeComponent) {
-      e = this._tradeComponent.selectedIndices;
-      this._tradeComponent.hide();
-    }
-    if (this._castleRessourcesVO && this.sourceDetailedCastleVO && this.dialogProperties.targetInitialized) {
-      this.dialogDisp.tradeComponent.visible = true;
-      var t = new y.CastleSendGoodsKingdomVO(this.sourceDetailedCastleVO.getResourcesAsCollectableList(), this.dialogProperties.travelTaxRate, this.dialogProperties.targetResources, this.dialogProperties.resourceStorageCapacity, this.dialogProperties.isSubscriptionBuffed);
-      this._tradeComponent = new D.CastleSendGoodsComponent(this.dialogDisp.tradeComponent, t, null, this.dialogProperties.hideTabs);
-      if (e && e.length > 0) {
-        this._tradeComponent.selectedIndices = e;
-      }
-    }
-  };
-  CastleTransferResourcesDialog.prototype.onSelectCastle = function (e = null) {
-    m.CastleModel.smartfoxClient.sendCommandVO(new p.C2SGetCastleResourcesVO(this._castleSelector.selectedCastleVO.objectId, this._castleSelector.selectedCastleVO.kingdomID));
-  };
-  CastleTransferResourcesDialog.prototype.onClick = function (e) {
-    switch (e.target) {
-      case this.dialogDisp.btn_close:
-      case this.dialogDisp.btn_cancle:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_ok:
-        this.onOk();
-    }
-  };
-  CastleTransferResourcesDialog.prototype.onOk = function () {
-    if (this._tradeComponent) {
-      if (this._tradeComponent.getSelectedSum() > 0) {
-        if (this.dialogProperties.hasInsufficientTime) {
-          f.CastleExternalDialog.dialogHandler.registerDefaultDialogs(T.CastleSendResOrTroopsToSeasonInfoInsufficientTimeDialog, new s.BasicStandardYesNoDialogProperties(c.Localize.text("generic_alert_information"), c.Localize.text("alert_season_sendRes_info_insufficentTime"), this.bindFunction(this.sendResources), this.bindFunction(this.dontSendResources)));
-        } else {
-          this.sendResources();
-        }
-      } else {
-        f.CastleExternalDialog.dialogHandler.registerDefaultDialogs(I.CastleStandardOkDialog, new a.BasicStandardOkDialogProperties(c.Localize.text("generic_alert_information"), c.Localize.text("dialog_sendGoods_noGoods")));
-      }
+  CastleEilandRankingDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    e.prototype.applyPropertiesLoaded.call(this, t);
+    this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_RULES].gotoAndStop(1);
+    this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_ALLIANCE_RANKING].gotoAndStop(1);
+    var i = this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING];
+    i.gotoAndStop(1);
+    c.ButtonHelper.enableButton(i, l.CastleModel.allianceData.myAllianceVO != null);
+    if (i.enabled) {
+      this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING].toolTipText = "dialog_eiland_allianceRanking_tooltip";
     } else {
-      this.hide();
+      this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING].toolTipText = "dialog_eiland_allianceRanking_noAlliance_tooltip";
     }
+    this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_TITLE].gotoAndStop(1);
+    this.switchSublayer(this.dialogProperties.startCategory);
+    this.controller.addEventListener(r.CastleEilandEvent.EILAND_RESET, this.bindFunction(this.onEilandReset));
   };
-  CastleTransferResourcesDialog.prototype.sendResources = function (e = null) {
-    var t = this._castleSelector.selectedCastleVO;
-    m.CastleModel.smartfoxClient.sendCommandVO(this.dialogProperties.getSendResourcesCommand(t.objectId, t.kingdomID, this.createC2SRewardList()));
-    this.hide();
-  };
-  CastleTransferResourcesDialog.prototype.dontSendResources = function (e = null) {
-    this.hide();
-  };
-  CastleTransferResourcesDialog.prototype.createC2SRewardList = function () {
-    return E.CollectableManager.parser.c2SCosts.createCostsListForServer(E.CollectableManager.parser.createGoodsListSavefromList(this._tradeComponent.rewardList()));
-  };
-  CastleTransferResourcesDialog.prototype.hideLoaded = function (t = null) {
+  CastleEilandRankingDialog.prototype.hideLoaded = function (t = null) {
     e.prototype.hideLoaded.call(this, t);
-    if (this._tradeComponent) {
-      this._tradeComponent.hide();
-    }
-    this._castleRessourcesVO = null;
-    this._castleSelector.castleList.disp.removeEventListener(o.BasicComboboxEvent.COMBOBOXCHANGE, this.bindFunction(this.onSelectCastle));
+    this.controller.removeEventListener(r.CastleEilandEvent.EILAND_RESET, this.bindFunction(this.onEilandReset));
   };
-  Object.defineProperty(CastleTransferResourcesDialog.prototype, "sourceDetailedCastleVO", {
-    get: function () {
-      return m.CastleModel.userCastleListDetailed.getVObyCastleID(this._castleSelector.selectedCastleVO.objectId, this._castleSelector.selectedCastleVO.kingdomID);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResourcesDialog.prototype, "dialogProperties", {
+  CastleEilandRankingDialog.prototype.onEilandReset = function (e) {
+    this.hide();
+  };
+  CastleEilandRankingDialog.prototype.onClick = function (e) {
+    if (c.ButtonHelper.isButtonEnabled(e.target)) {
+      switch (e.target) {
+        case this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_RULES]:
+          this.switchSublayer(CastleEilandRankingDialog.SUBLAYER_RULES);
+          break;
+        case this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_ALLIANCE_RANKING]:
+          this.switchSublayer(CastleEilandRankingDialog.SUBLAYER_ALLIANCE_RANKING);
+          break;
+        case this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING]:
+          this.switchSublayer(CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING);
+          break;
+        case this.dialogDisp["btn_" + CastleEilandRankingDialog.SUBLAYER_TITLE]:
+          this.switchSublayer(CastleEilandRankingDialog.SUBLAYER_TITLE);
+          break;
+        case this.dialogDisp.btn_close:
+          this.hide();
+          break;
+        case this.dialogDisp.btn_help:
+          this.showHelpText();
+      }
+    }
+  };
+  CastleEilandRankingDialog.prototype.showHelpText = function () {
+    switch (this._currentCategory) {
+      case CastleEilandRankingDialog.SUBLAYER_RULES:
+        d.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("help_eiland_instructionsList"));
+        break;
+      case CastleEilandRankingDialog.SUBLAYER_ALLIANCE_RANKING:
+        d.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("help_eiland_allianceRanglist"));
+        break;
+      case CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING:
+        d.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("help_eiland_membersRanglist"));
+        break;
+      case CastleEilandRankingDialog.SUBLAYER_TITLE:
+        d.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("help_eiland_titleMenu"));
+    }
+  };
+  CastleEilandRankingDialog.prototype.switchSublayer = function (e) {
+    var t;
+    if (this._currentCategory) {
+      this.dialogDisp["btn_" + this._currentCategory].gotoAndStop(1);
+    }
+    this.dialogDisp["btn_" + e].gotoAndStop(2);
+    this.changeCategory(e);
+    this.showSublayer(this._subLayer.get(e), []);
+    switch (this._currentCategory) {
+      case CastleEilandRankingDialog.SUBLAYER_RULES:
+        t = "dialog_eiland_instructions_header";
+        break;
+      case CastleEilandRankingDialog.SUBLAYER_ALLIANCE_RANKING:
+        t = "dialog_eiland_allianceRanglist_header";
+        break;
+      case CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING:
+        t = "dialog_eiland_membersRanglist_header";
+        break;
+      case CastleEilandRankingDialog.SUBLAYER_TITLE:
+        t = "dialog_eiland_titleMenu_header";
+    }
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO(t)).autoFitToBounds = true;
+    this.adjustBackgroundHeight();
+  };
+  CastleEilandRankingDialog.prototype.adjustBackgroundHeight = function () {
+    switch (this._currentCategory) {
+      case CastleEilandRankingDialog.SUBLAYER_RULES:
+      case CastleEilandRankingDialog.SUBLAYER_ALLIANCE_RANKING:
+      case CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING:
+        this.dialogDisp.mc_background.height = CastleEilandRankingDialog.BACKGROUND_HEIGHT_NORMAL;
+        break;
+      case CastleEilandRankingDialog.SUBLAYER_TITLE:
+        this.dialogDisp.mc_background.height = CastleEilandRankingDialog.BACKGROUND_HEIGHT_TITLE;
+    }
+  };
+  Object.defineProperty(CastleEilandRankingDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleTransferResourcesDialog.__initialize_static_members = function () {
-    CastleTransferResourcesDialog.NAME = "CastleTransferResources_R2";
+  CastleEilandRankingDialog.__initialize_static_members = function () {
+    CastleEilandRankingDialog.NAME = "CastleEilandRanking";
+    CastleEilandRankingDialog.SUBLAYER_RULES = "sublayerRules";
+    CastleEilandRankingDialog.SUBLAYER_ALLIANCE_RANKING = "sublayerAllianceRanking";
+    CastleEilandRankingDialog.SUBLAYER_PLAYER_RANKING = "sublayerPlayerRanking";
+    CastleEilandRankingDialog.SUBLAYER_TITLE = "sublayerTitle";
+    CastleEilandRankingDialog.BACKGROUND_HEIGHT_TITLE = 571.5;
+    CastleEilandRankingDialog.BACKGROUND_HEIGHT_NORMAL = 442.1;
   };
-  return CastleTransferResourcesDialog;
-}(f.CastleExternalDialog);
-exports.CastleTransferResourcesDialog = O;
-var E = require("./50.js");
-var y = require("./3709.js");
-var b = require("./321.js");
-var D = require("./1347.js");
-var I = require("./38.js");
-var T = require("./3710.js");
-l.classImplementsInterfaces(O, "ICollectableRendererList");
-O.__initialize_static_members();
+  return CastleEilandRankingDialog;
+}(require("./112.js").CastleExternalSubLayerDialog);
+exports.CastleEilandRankingDialog = u;
+var d = require("./9.js");
+var p = require("./3692.js");
+var h = require("./3696.js");
+var g = require("./3699.js");
+var C = require("./3700.js");
+o.classImplementsInterfaces(u, "ICollectableRendererList");
+u.__initialize_static_members();

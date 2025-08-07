@@ -2,143 +2,178 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
+var o = require("./49.js");
 var a = require("./2.js");
 var s = require("./1.js");
-var r = require("./16.js");
-var l = require("./85.js");
-var c = function (e) {
-  function ResourcePanelItem(t) {
-    var i = this;
-    i._iconFrame = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this)._disp = new Library.CastleInterfaceElements.ResourcePanelContainer();
-    i._disp.mc_icon.gotoAndStop(t);
-    i._disp.mouseChildren = false;
-    i._iconFrame = t;
-    i.isStorageBarVisible = true;
-    i._disp.hunterBoostIndicator.visible = false;
-    return i;
-  }
-  n.__extends(ResourcePanelItem, e);
-  ResourcePanelItem.prototype.setValue = function (e) {
-    if (!this._dispTextValue || !this._dispTextValue.textContentVO || this._dispTextValue.textContentVO.numberValue !== e) {
-      var t = 0;
-      switch (true) {
-        case e < 1000000:
-        case e >= 10000000:
-          t = 0;
-          break;
-        default:
-          t = 2;
-      }
-      if (this._dispTextValue && this._dispTextValue.textContentVO) {
-        this._dispTextValue.textContentVO.numberValue = e;
-      } else {
-        this._dispTextValue = o.GoodgameTextFieldManager.getInstance().registerTextField(this._disp.txt_value, new l.CastleLocalizedNumberVO(e, {
-          compactThreshold: 100000,
-          compactFractionalDigits: t
-        }, t), new a.InternalGGSTextFieldConfigVO(true));
-      }
-      this._dispTextValue.autoFitToBounds = true;
-    }
-  };
-  ResourcePanelItem.prototype.setBoostIndicator = function (e, t) {
-    this.displayObject.hunterBoostIndicator.visible = e;
+var r = require("./18.js");
+var l = require("./346.js");
+var c = require("./157.js");
+var u = require("./20.js");
+var d = require("./8.js");
+var p = require("./63.js");
+var h = require("./115.js");
+var g = createjs.MouseEvent;
+var C = function (e) {
+  function AttackDialogWaveHandlerFinalYardWaveInfoItem(t, i) {
+    var n = e.call(this, new (s.getDefinitionByName("WaveListItem_FinalWave"))(), i) || this;
+    n.CONST_MAX_SLOTS = 8;
+    n.selectWave = false;
+    n.cbx = new o.CheckBoxButton(n.itemMc.cbx_select, true);
     if (t) {
-      this.displayObject.hunterBoostIndicator.gotoAndStop(2);
+      n.cbx.selected();
     } else {
-      this.displayObject.hunterBoostIndicator.gotoAndStop(1);
+      n.cbx.deselected();
+    }
+    n.itemMc.mc_down.visible = false;
+    n.itemMc.mc_hover.visible = false;
+    n.fill();
+    n.controller.onSelectedWaveInfoSlotContainerChanged.add(n.bindFunction(n.onSelectionChanged));
+    n.controller.updateAllWaveInfo.add(n.bindFunction(n.fill));
+    n.controller.onAutoFillALLSelectionChanged.add(n.bindFunction(n.updateAutoFillSelection));
+    return n;
+  }
+  n.__extends(AttackDialogWaveHandlerFinalYardWaveInfoItem, e);
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.destroy = function () {
+    e.prototype.destroy.call(this);
+    this.controller.onSelectedWaveInfoSlotContainerChanged.remove(this.bindFunction(this.onSelectionChanged));
+    this.controller.updateAllWaveInfo.remove(this.bindFunction(this.fill));
+    this.controller.onAutoFillALLSelectionChanged.remove(this.bindFunction(this.updateAutoFillSelection));
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.updateAutoFillSelection = function () {
+    if (this.controller.getIsWaveSelectedForAutoFill(AttackDialogWaveHandlerFinalYardWaveInfoItem.CONST_WAVE_NAME)) {
+      this.cbx.selected();
+    } else {
+      this.cbx.deselected();
     }
   };
-  Object.defineProperty(ResourcePanelItem.prototype, "isBoosted", {
-    set: function (e) {
-      this.displayObject.mc_boosted.visible = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResourcePanelItem.prototype, "isValueRed", {
-    set: function (e) {
-      if (this._dispTextValue && this._dispTextValue.textContentVO) {
-        this._dispTextValue.color = e ? r.ClientConstColor.FONT_INSUFFICIENT_COLOR : r.ClientConstColor.FONT_DEFAULT_COLOR;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResourcePanelItem.prototype, "isStorageBarVisible", {
-    set: function (e) {
-      this.displayObject.mc_storagebar.visible = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ResourcePanelItem.prototype.setStorageBar = function (e) {
-    e = parseFloat(e.toFixed(2));
-    this.displayObject.mc_storagebar.scaleX = e;
-    var t = new s.ColorTransform();
-    t.color = e >= 1 ? r.ClientConstColor.GENERIC_BRIGHT_RED : e >= 0.8 ? r.ClientConstColor.GENERIC_BRIGHT_YELLOW : r.ClientConstColor.GENERIC_LIGHT_GREEN;
-    this.displayObject.mc_storagebar.useFilters([new createjs.ColorFilter(t.redMultiplier, t.greenMultiplier, t.blueMultiplier, t.alphaMultiplier, t.redOffset, t.greenOffset, t.blueOffset, t.alphaOffset)]);
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.onSelectionChanged = function () {
+    this.fill();
   };
-  Object.defineProperty(ResourcePanelItem.prototype, "iconFrame", {
-    get: function () {
-      return this._iconFrame;
-    },
-    set: function (e) {
-      this._iconFrame = e;
-      this.displayObject.mc_icon.gotoAndStop(this._iconFrame);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResourcePanelItem.prototype, "displayObject", {
-    get: function () {
-      return this._disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResourcePanelItem.prototype, "resourceType", {
-    get: function () {
-      return this._resourceType;
-    },
-    set: function (e) {
-      this._resourceType = e;
-      this._isResourceContainer = true;
-      this.disp.resourceType = this._resourceType;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ResourcePanelItem.prototype.setFrozen = function () {
-    this._dispTextValue.color = r.ClientConstColor.FONT_FROZEN;
-    var e = new s.ColorTransform();
-    e.color = ResourcePanelItem.COLOR_BAR_FROZEN;
-    this.displayObject.mc_storagebar.useFilters([new createjs.ColorFilter(e.redMultiplier, e.greenMultiplier, e.blueMultiplier, e.alphaMultiplier, e.redOffset, e.greenOffset, e.blueOffset, e.alphaOffset)]);
-    this.displayObject.bg.gotoAndStop(2);
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.fill = function () {
+    var e;
+    d.ButtonHelper.initButtons([this.itemMc.mc_units], u.ClickFeedbackButtonHover, 1);
+    this.itemMc.mc_units.mouseChildren = false;
+    this.selectWave = false;
+    e = 0;
+    for (; e < this.CONST_MAX_SLOTS; e++) {
+      this.fillUnitContainer(e, this.itemMc.mc_units, this.controller.attackVO.yardWaveContainer, false);
+    }
+    this.itemMc.mc_selected.visible = this.controller.selectedWaveName == AttackDialogWaveHandlerFinalYardWaveInfoItem.CONST_WAVE_NAME;
   };
-  ResourcePanelItem.__initialize_static_members = function () {
-    ResourcePanelItem.ICON_FRAME_WOOD = 1;
-    ResourcePanelItem.ICON_FRAME_STONE = 2;
-    ResourcePanelItem.ICON_FRAME_FOOD = 3;
-    ResourcePanelItem.ICON_FRAME_POPULATION = 4;
-    ResourcePanelItem.ICON_FRAME_UNITCOUNT = 5;
-    ResourcePanelItem.ICON_FRAME_COAL = 6;
-    ResourcePanelItem.ICON_FRAME_OLIVEOIL = 7;
-    ResourcePanelItem.ICON_FRAME_GLASS = 8;
-    ResourcePanelItem.ICON_FRAME_AQUAMARINE = 9;
-    ResourcePanelItem.ICON_FRAME_IRON = 11;
-    ResourcePanelItem.ICON_FRAME_AUXCOUNT = 12;
-    ResourcePanelItem.ICON_FRAME_HONEY = 13;
-    ResourcePanelItem.ICON_FRAME_MEAD = 14;
-    ResourcePanelItem.ICON_FRAME_BEEF = 17;
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.fillUnitContainer = function (e, t, i, n) {
+    var o = t["item" + e];
+    var s = this.getSelectedSlot() == i;
+    var c = i.items[e];
+    var u = !!c.unitVO;
+    var d = !c.unitVO;
+    o.mc_range.visible = !n && u && c.unitVO.unitType == r.ClientConstCastle.UNIT_TYPE_SOLDIER_RANGE;
+    o.mc_melee.visible = !n && u && c.unitVO.unitType == r.ClientConstCastle.UNIT_TYPE_SOLDIER_MELEE;
+    a.MovieClipHelper.clearMovieClip(o.mc_icon);
+    if (n && c.unitVO) {
+      p.WodPicHelper.addToolEffectIcon(c.unitVO, o.mc_icon, 20, 20, 0);
+    }
+    o.mc_selected_plus.visible = d && s && c.isUnlocked();
+    o.mc_selected_bg.visible = s;
+    o.mc_error_frame.visible = c.outline != l.CastleFightItemVO.OUTLINE_NONE;
+    o.mc_error_icon.visible = c.outline != l.CastleFightItemVO.OUTLINE_NONE && !c.unitVO;
+    o.mc_filled_bg.visible = u && !s;
+    o.mc_empty_plus.visible = d && !s && c.isUnlocked();
+    o.mc_empty_bg.visible = d && !s;
+    this.selectWave = this.selectWave || s;
   };
-  ResourcePanelItem.ICON_FRAME_FOOD_FROZEN = 15;
-  ResourcePanelItem.ICON_FRAME_MEAD_FROZEN = 16;
-  ResourcePanelItem.ICON_FRAME_BEEF_FROZEN = 18;
-  ResourcePanelItem.COLOR_BAR_FROZEN = 2211055;
-  return ResourcePanelItem;
-}(require("./1814.js").AResourcePanelItem);
-exports.ResourcePanelItem = c;
-c.__initialize_static_members();
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.itemMc.mc_units:
+        this.selectContainer();
+        break;
+      case this.itemMc.cbx_select:
+        this.cbx.toggleSelected();
+        this.controller.changeSelectionForAutoFill(AttackDialogWaveHandlerFinalYardWaveInfoItem.CONST_WAVE_NAME, this.cbx.isSelected);
+        break;
+      default:
+        this.selectContainer();
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.selectForAutoFill = function (e) {
+    if (e) {
+      this.cbx.selected();
+    } else {
+      this.cbx.deselected();
+    }
+  };
+  Object.defineProperty(AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype, "isSelectedForAutoFill", {
+    get: function () {
+      return this.cbx.isSelected;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.selectContainer = function () {
+    this.controller.setSelectedWaveInfoSlotMC(this.controller.attackVO.yardWaveContainer, null, -1, AttackDialogWaveHandlerFinalYardWaveInfoItem.CONST_WAVE_NAME);
+    if (this.controller.selectedWaveInfoSlotContainer) {
+      this.controller.onOpenUnitPicker.dispatch(this.controller.selectedWaveInfoSlotContainer.items[0]);
+      this.controller.openSpyInfoFlank("keep");
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    if (this.disp) {
+      this.disp.addEventListener(g.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
+      this.disp.addEventListener(g.MOUSE_UP, this.bindFunction(this.onMouseUp));
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.removeEventListener = function () {
+    e.prototype.removeEventListener.call(this);
+    if (this.disp) {
+      this.disp.removeEventListener(g.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
+      this.disp.removeEventListener(g.MOUSE_UP, this.bindFunction(this.onMouseUp));
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.onMouseDown = function (e) {
+    this.itemMc.mc_down.visible = true;
+    if (e.target != this.itemMc.mc_units && e.target != this.itemMc.cbx_select) {
+      this.controller.setSelectedWaveInfoSlotMC(null, null, -1, AttackDialogWaveHandlerFinalYardWaveInfoItem.CONST_WAVE_NAME);
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.onMouseUp = function (e) {
+    this.itemMc.mc_down.visible = false;
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.onMouseOver = function (e) {
+    this.controller.onMouseOverWave.dispatch(this.controller.attackVO.yardWaveContainer, this.disp);
+    this.itemMc.mc_hover.visible = true;
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.onMouseOut = function (e) {
+    this.controller.onMouseOutWave.dispatch(this.controller.attackVO.yardWaveContainer, this.disp);
+    this.itemMc.mc_hover.visible = false;
+    this.itemMc.mc_down.visible = false;
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype.getSelectedSlot = function () {
+    return this.controller.selectedWaveInfoSlotContainer;
+  };
+  Object.defineProperty(AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype, "controller", {
+    get: function () {
+      return h.AttackDialogController.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype, "itemMc", {
+    get: function () {
+      return this.disp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AttackDialogWaveHandlerFinalYardWaveInfoItem.prototype, "height", {
+    get: function () {
+      return this.disp.height;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AttackDialogWaveHandlerFinalYardWaveInfoItem.CONST_WAVE_NAME = "yardWave";
+  return AttackDialogWaveHandlerFinalYardWaveInfoItem;
+}(c.ACollapsibleItem);
+exports.AttackDialogWaveHandlerFinalYardWaveInfoItem = C;
+s.classImplementsInterfaces(C, "ICollectableRendererList");

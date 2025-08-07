@@ -17,7 +17,7 @@ var C = require("./169.js");
 var _ = require("./26.js");
 var m = require("./4.js");
 var f = require("./24.js");
-var O = require("./879.js");
+var O = require("./880.js");
 var E = require("./8.js");
 var y = function (e) {
   function CastleArtifactBuyPieceDialog() {

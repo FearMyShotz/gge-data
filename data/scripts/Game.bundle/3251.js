@@ -2,27 +2,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./299.js");
-var s = function (e) {
-  function CollectableItemSamuraiBoosterVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CollectableItemSamuraiBoosterVO() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  n.__extends(CollectableItemSamuraiBoosterVE, e);
-  Object.defineProperty(CollectableItemSamuraiBoosterVE.prototype, "percentageIconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_SamuraiBooster;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ACollectableItemPercentageBoosterVE.prototype, "percentageIconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CollectableItemSamuraiBoosterVE.prototype.getBoosterTooltipId = function () {
-    return "dialog_samuraiBooster_boost_tt";
+  n.__extends(CollectableItemSamuraiBoosterVO, e);
+  CollectableItemSamuraiBoosterVO.prototype.getTooltipTextId = function () {
+    return "samuraiBooster_name";
   };
-  return CollectableItemSamuraiBoosterVE;
-}(a.ACollectableItemPercentageBoosterVE);
-exports.CollectableItemSamuraiBoosterVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  CollectableItemSamuraiBoosterVO.prototype.getDescriptionTextId = function () {
+    return "samuraiBooster_short_info";
+  };
+  CollectableItemSamuraiBoosterVO.__initialize_static_members = function () {
+    CollectableItemSamuraiBoosterVO.SERVER_KEY = "STB";
+  };
+  return CollectableItemSamuraiBoosterVO;
+}(require("./328.js").ACollectableItemPercentageBoosterVO);
+exports.CollectableItemSamuraiBoosterVO = o;
+o.__initialize_static_members();

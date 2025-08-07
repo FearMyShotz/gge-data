@@ -32,6 +32,6 @@ var a = function (e) {
     CollectableItemEquipmentUniqueVO.XML_KEY = "equipmentIDs";
   };
   return CollectableItemEquipmentUniqueVO;
-}(require("./479.js").ACollectableItemEquipmentVO);
+}(require("./480.js").ACollectableItemEquipmentVO);
 exports.CollectableItemEquipmentUniqueVO = a;
 a.__initialize_static_members();

@@ -2,178 +2,130 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./60.js");
-var u = require("./67.js");
-var d = require("./19.js");
-var p = require("./226.js");
-var h = require("./73.js");
-var g = require("./11.js");
-var C = createjs.Point;
-var _ = function (e) {
-  function CastleWhaleChestFinishDialog() {
-    var t = this;
-    t.rewardIndex = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this, CastleWhaleChestFinishDialog.NAME) || this;
+var o = require("./3.js");
+var a = require("./3.js");
+var s = require("./40.js");
+var r = require("./4.js");
+var l = require("./14.js");
+var c = require("./2.js");
+var u = require("./2.js");
+var d = require("./60.js");
+var p = require("./25.js");
+var h = require("./31.js");
+var g = require("./19.js");
+var C = require("./17.js");
+var _ = require("./2.js");
+var m = require("./130.js");
+var f = require("./1260.js");
+var O = require("./167.js");
+var E = require("./206.js");
+var y = createjs.Point;
+var b = require("./43.js");
+var D = function (e) {
+  function CastlePrivateBestsellerShopItem(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(CastleWhaleChestFinishDialog, e);
-  CastleWhaleChestFinishDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-      case this.dialogDisp.btn_close:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_left:
-        this.rewardIndex -= CastleWhaleChestFinishDialog.MAX_ITEMS_AT_ONCE;
-        this.setReward();
-        break;
-      case this.dialogDisp.btn_right:
-        this.rewardIndex += CastleWhaleChestFinishDialog.MAX_ITEMS_AT_ONCE;
-        this.setReward();
+  n.__extends(CastlePrivateBestsellerShopItem, e);
+  CastlePrivateBestsellerShopItem.prototype.showOffer = function (e, t) {
+    this.offerVO = r.CastleModel.privateOfferData.getOfferById(e);
+    this.parentOfferID = t;
+    this.pbsPackageVO = new f.PrivateBestsellerShopPackageVO();
+    this.pbsPackageVO.fillFromPBSOffer(this.offerVO, this.parentOfferID);
+    var i = this.visualsSubOffer.discount;
+    var n = this.visualsSubOffer.oldCost;
+    if (n == 0 && i != 0) {
+      n = Math.round(this.costVO.amount / (1 - i / 100));
+    } else if (i == 0 && n != 0) {
+      i = Math.round(-(this.costVO.amount / n - 1) * 100);
     }
-  };
-  CastleWhaleChestFinishDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    e.prototype.applyPropertiesLoaded.call(this, t);
-    this.getCustomProps();
-    this.parseCustomDialogProps();
-  };
-  CastleWhaleChestFinishDialog.prototype.getCustomProps = function () {
-    var e;
-    switch (this.offerVO.offerState) {
-      case p.PrivateOfferStateEnum.OFFER_ACCEPTED:
-      case p.PrivateOfferStateEnum.OFFER_SUCCEEDED:
-      case p.PrivateOfferStateEnum.ITERATION_SUCCEEDED:
-        e = this.offerVO.getVisualComponentByName(c.ClientConstOffer.OFFER_VISUAL_FINISH_DIALOG);
-        this._customDialogProps = e.dialogCustomization;
-        break;
-      case p.PrivateOfferStateEnum.OFFER_EXPIRED:
-        e = this.dialogProperties.offerVO.getVisualComponentByName(c.ClientConstOffer.OFFER_VISUAL_FAILED_DIALOG);
-        this._customDialogProps = e.dialogCustomization;
-    }
-  };
-  CastleWhaleChestFinishDialog.prototype.parseCustomDialogProps = function () {
-    if (this._customDialogProps) {
-      this._customCopySuccess = this._customDialogProps.CID ? this._customDialogProps.CID : "";
-      this._customTitleSuccess = this._customDialogProps.TID ? this._customDialogProps.TID : "";
-      this._customCopyExpire = this._customDialogProps.EXC ? this._customDialogProps.EXC : "";
-      this._customTitleExpire = this._customDialogProps.EXT ? this._customDialogProps.EXT : "";
-      this._customTitleAlreadyRec = this._customDialogProps.ART ? this._customDialogProps.ART : "";
-      this._customCopyAlreadyRec = this._customDialogProps.ARC ? this._customDialogProps.ARC : "";
-    }
-  };
-  CastleWhaleChestFinishDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close, this.dialogDisp.btn_right, this.dialogDisp.btn_left]);
-    this.dialogDisp.btn_ok.toolTipText = o.GenericTextIds.BUTTON_OKAY;
-    this.setDialogTexts();
-    this.setReward();
-  };
-  CastleWhaleChestFinishDialog.prototype.setDialogTexts = function () {
-    var e = "dialog_specialOfferDungeonTreasureOpen_title";
-    var t = "dialog_specialOfferDungeonTreasureOpen_copy";
-    switch (this.offerVO.offerState) {
-      case p.PrivateOfferStateEnum.OFFER_SUCCEEDED:
-      case p.PrivateOfferStateEnum.ITERATION_SUCCEEDED:
-      case p.PrivateOfferStateEnum.OFFER_ACCEPTED:
-        e = this._customTitleSuccess ? this._customTitleSuccess : CastleWhaleChestFinishDialog.OFFER_ACCEPTED_TITLE;
-        t = this._customCopySuccess ? this._customCopyExpire : CastleWhaleChestFinishDialog.OFFER_ACCEPTED_COPY;
-        break;
-      case p.PrivateOfferStateEnum.OFFER_EXPIRED:
-        e = this._customTitleExpire ? this._customTitleExpire : CastleWhaleChestFinishDialog.OFFER_ENDED_TITLE;
-        t = this._customCopyExpire ? this._customCopyExpire : CastleWhaleChestFinishDialog.OFFER_ENDED_COPY;
-        break;
-      default:
-        e = CastleWhaleChestFinishDialog.OFFER_ALREADY_RECEIVED_TITLE;
-        t = CastleWhaleChestFinishDialog.OFFER_ALREADY_RECEIVED_COPY;
-        e = this._customTitleAlreadyRec ? this._customTitleAlreadyRec : CastleWhaleChestFinishDialog.OFFER_ALREADY_RECEIVED_TITLE;
-        t = this._customCopyAlreadyRec ? this._customCopyAlreadyRec : CastleWhaleChestFinishDialog.OFFER_ALREADY_RECEIVED_COPY;
-    }
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.LocalizedTextVO(e));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new r.LocalizedTextVO(t));
-  };
-  CastleWhaleChestFinishDialog.prototype.onMouseOver = function (t) {
-    e.prototype.onMouseOver.call(this, t);
-    if (s.instanceOfClass(t.target, "MovieClip") && t.target.equipmentVO) {
-      h.EquipmentIconHelper.showToolTip(t.target.mc_icon, t.target.equipmentVO, null, !t.target.equipmentVO.isPermanent);
-    }
-  };
-  CastleWhaleChestFinishDialog.prototype.onMouseOut = function (t) {
-    e.prototype.onMouseOut.call(this, t);
-    f.TooltipManagerFacade.hideAllTooltips();
-  };
-  CastleWhaleChestFinishDialog.prototype.setReward = function () {
+    this.disp.mc_discount.visible = i > 0;
+    this.disp.mc_oldCost.visible = i > 0;
+    l.CastleComponent.textFieldManager.registerTextField(this.disp.mc_discount.txt_discount, new o.LocalizedTextVO(c.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, [i]), new u.InternalGGSTextFieldConfigVO(true));
+    l.CastleComponent.textFieldManager.registerTextField(this.disp.mc_oldCost.txt_oldCost, new a.LocalizedNumberVO(n), new u.InternalGGSTextFieldConfigVO(true));
+    l.CastleComponent.textFieldManager.registerTextField(this.disp.txt_amount, new o.LocalizedTextVO("generic_amount_reward", [this.rewardVO.amount, new o.TextVO(" ")]), new u.InternalGGSTextFieldConfigVO(true));
+    l.CastleComponent.textFieldManager.registerTextField(this.disp.txt_name, new o.LocalizedTextVO(this.rewardVO.getNameTextId(), this.rewardVO.getNameTextParams()), new u.InternalGGSTextFieldConfigVO(true));
+    l.CastleComponent.textFieldManager.registerTextField(this.disp.mc_soldOut.txt_soldOut, new o.LocalizedTextVO("dialog_shop_soldOut"), new u.InternalGGSTextFieldConfigVO(true));
     this.destroyCollectableRenderList();
-    if (p.PrivateOfferStateEnum.isFailedState(this.offerVO.offerState)) {
-      this.setRewards(null);
-    } else {
-      var e = l.int(this.dialogProperties.offerSelectionIndex);
-      var t = this.offerVO.getTotalRewardListFromOfferVO(e);
-      this.setRewards(t);
+    var s = new h.CollectableRenderClips(this.disp.mc_item).addIconMc(this.disp.mc_item);
+    var d = new g.CollectableRenderOptions(g.CollectableRenderOptions.SET_ICON, new y(64, 64));
+    p.CollectableRenderHelper.displaySingleItemAndAddToRenderList(this, s, this.rewardVO, d);
+    var C = new h.CollectableRenderClips(this.disp.mc_cost);
+    var _ = new g.CollectableRenderOptions(g.CollectableRenderOptions.SET_DEFAULT, new y(30, 20));
+    p.CollectableRenderHelper.displaySingleItemAndAddToRenderList(this, C, this.costVO, _);
+    this.disp.mc_soldOut.visible = !this.pbsPackageVO.isAvailable();
+    this.disp.mouseChildren = false;
+    this.disp.toolTipText = "dialog_equipmentMerchantEvent_tooltip";
+    this.disp.mc_hover.visible = false;
+    this.disp.mc_down.visible = false;
+  };
+  CastlePrivateBestsellerShopItem.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    if (this.disp) {
+      this.disp.addEventListener("mousedown", this.bindFunction(this.onMouseDown));
+      r.CastleModel.privateOfferData.addEventListener(m.PrivateOfferDataEvent.PRIVATE_OFFER_UPDATED, this.bindFunction(this.onOfferUpdated));
+      r.CastleModel.privateOfferData.addEventListener(m.PrivateOfferDataEvent.PRIVATE_OFFER_STATE_CHANGED, this.bindFunction(this.onOfferUpdated));
     }
   };
-  CastleWhaleChestFinishDialog.prototype.setRewards = function (e) {
-    var t;
-    this.hideAllRewardHolders();
-    this.dialogDisp.btn_right.visible = this.rewardIndex + CastleWhaleChestFinishDialog.MAX_ITEMS_AT_ONCE < e.length;
-    this.dialogDisp.btn_left.visible = this.rewardIndex - CastleWhaleChestFinishDialog.MAX_ITEMS_AT_ONCE >= 0;
-    var i = new m.CollectableList();
-    for (var n = this.rewardIndex; n < this.rewardIndex + CastleWhaleChestFinishDialog.MAX_ITEMS_AT_ONCE; n++) {
-      if (e.getItemByIndex(n) != null) {
-        i.addItem(e.getItemByIndex(n));
-      }
-    }
-    t = this.dialogDisp[CastleWhaleChestFinishDialog.REWARDHOLDERS[i.length - 1]];
-    var o = new u.CollectableRenderClipsList(t, "mc_reward");
-    o.addInfoBtns("parent.mc_info_btn", null, true);
-    o.addIconMcs("mc_icon");
-    if (t) {
-      t.visible = true;
-    }
-    O.CollectableRenderHelper.displayMultipleItemsAndAddToRenderList(this, o, i, new d.CollectableRenderOptions(d.CollectableRenderOptions.SET_DEFAULT, CastleWhaleChestFinishDialog.REWARD_ITEM_EQUIPMENT_DIMENSION));
-  };
-  CastleWhaleChestFinishDialog.prototype.hideAllRewardHolders = function () {
-    for (var e = 0; e < CastleWhaleChestFinishDialog.REWARDHOLDERS.length; e++) {
-      this.dialogDisp[CastleWhaleChestFinishDialog.REWARDHOLDERS[e]].visible = false;
+  CastlePrivateBestsellerShopItem.prototype.removeEventListener = function () {
+    e.prototype.removeEventListener.call(this);
+    if (this.disp) {
+      this.disp.removeEventListener("mousedown", this.bindFunction(this.onMouseDown));
+      r.CastleModel.privateOfferData.removeEventListener(m.PrivateOfferDataEvent.PRIVATE_OFFER_UPDATED, this.bindFunction(this.onOfferUpdated));
+      r.CastleModel.privateOfferData.removeEventListener(m.PrivateOfferDataEvent.PRIVATE_OFFER_STATE_CHANGED, this.bindFunction(this.onOfferUpdated));
     }
   };
-  Object.defineProperty(CastleWhaleChestFinishDialog.prototype, "offerVO", {
+  CastlePrivateBestsellerShopItem.prototype.onOfferUpdated = function (e) {
+    if (e.offerVO.id == this.offerVO.id) {
+      this.showOffer(this.offerVO.id, this.parentOfferID);
+    }
+  };
+  CastlePrivateBestsellerShopItem.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    this.resetHoverStates();
+    var i = new O.CastleGenericBuyDialogProperties();
+    i.eventPackageVO = this.pbsPackageVO;
+    i.privateOfferVO = this.offerVO;
+    l.CastleComponent.dialogHandler.registerDialogsWithTypeAndDefaultValues(E.ModernPackageShopBuyDialog, i, b.CastleDialogConsts.DIALOG_TYPE_MODAL_SINGLE);
+  };
+  CastlePrivateBestsellerShopItem.prototype.onMouseDown = function (e) {
+    this.disp.mc_hover.visible = false;
+    this.disp.mc_down.visible = true;
+  };
+  CastlePrivateBestsellerShopItem.prototype.onRollOver = function (t) {
+    e.prototype.onRollOver.call(this, t);
+    C.CastleLayoutManager.getInstance().customCursor.setCursorType(_.BasicCustomCursor.CURSOR_CLICK);
+    this.disp.mc_hover.visible = true;
+  };
+  CastlePrivateBestsellerShopItem.prototype.onRollOut = function (t) {
+    e.prototype.onRollOut.call(this, t);
+    this.resetHoverStates();
+  };
+  CastlePrivateBestsellerShopItem.prototype.resetHoverStates = function () {
+    this.disp.mc_hover.visible = false;
+    this.disp.mc_down.visible = false;
+    C.CastleLayoutManager.getInstance().customCursor.setCursorType(_.BasicCustomCursor.CURSOR_ARROW);
+  };
+  Object.defineProperty(CastlePrivateBestsellerShopItem.prototype, "costVO", {
     get: function () {
-      return this.dialogProperties.offerVO;
+      return this.pbsPackageVO.price;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleWhaleChestFinishDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastlePrivateBestsellerShopItem.prototype, "rewardVO", {
     get: function () {
-      return this.properties;
+      return this.pbsPackageVO.rewards.getItemByIndexSave(0);
     },
     enumerable: true,
     configurable: true
   });
-  CastleWhaleChestFinishDialog.__initialize_static_members = function () {
-    CastleWhaleChestFinishDialog.REWARD_ITEM_EQUIPMENT_DIMENSION = new C(58, 58);
-  };
-  CastleWhaleChestFinishDialog.NAME = "CastlePOWhaleChestFinishExternal";
-  CastleWhaleChestFinishDialog.PO_NAME = "CastlePOStandardOKExternal";
-  CastleWhaleChestFinishDialog.REWARDHOLDERS = ["mc_one_item_offer", "mc_two_item_offer", "mc_three_item_offer", "mc_four_item_offer"];
-  CastleWhaleChestFinishDialog.OFFER_ACCEPTED_TITLE = "dialog_primeday_specialoffer_rewardtitle";
-  CastleWhaleChestFinishDialog.OFFER_ACCEPTED_COPY = "dialog_privateOffer_whaleChest_rewardGet_description";
-  CastleWhaleChestFinishDialog.OFFER_ALREADY_RECEIVED_TITLE = "dialog_privateOffer_whaleChest_rewardAlreadyGet";
-  CastleWhaleChestFinishDialog.OFFER_ALREADY_RECEIVED_COPY = "dialog_privateOffer_whaleChest_rewardAlreadyGet_description";
-  CastleWhaleChestFinishDialog.OFFER_ENDED_TITLE = "dialog_privateOffer_whaleChest_offerend";
-  CastleWhaleChestFinishDialog.OFFER_ENDED_COPY = "dialog_privateOffer_whaleChest_offerend_description";
-  CastleWhaleChestFinishDialog.MAX_ITEMS_AT_ONCE = 4;
-  return CastleWhaleChestFinishDialog;
-}(g.CastleExternalDialog);
-exports.CastleWhaleChestFinishDialog = _;
-var m = require("./48.js");
-var f = require("./200.js");
-var O = require("./25.js");
-a.classImplementsInterfaces(_, "ICollectableRendererList");
-_.__initialize_static_members();
+  Object.defineProperty(CastlePrivateBestsellerShopItem.prototype, "visualsSubOffer", {
+    get: function () {
+      return this.offerVO.getVisualComponentByName(d.ClientConstOffer.OFFER_VISUAL_SUB_OFFER);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastlePrivateBestsellerShopItem;
+}(s.CastleItemRenderer);
+exports.CastlePrivateBestsellerShopItem = D;

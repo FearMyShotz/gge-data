@@ -8,7 +8,7 @@ var s = require("./2.js");
 var r = require("./1.js");
 var l = require("./1.js");
 var c = require("./15.js");
-var u = require("./1111.js");
+var u = require("./1112.js");
 var d = function (e) {
   function CastleOpenDiscordCommand() {
     CONSTRUCTOR_HACK;

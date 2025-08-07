@@ -2,27 +2,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./299.js");
-var s = function (e) {
-  function CollectableItemRageBoosterVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CollectableItemRageBoosterVO() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  n.__extends(CollectableItemRageBoosterVE, e);
-  Object.defineProperty(CollectableItemRageBoosterVE.prototype, "percentageIconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_RageBooster;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ACollectableItemPercentageBoosterVE.prototype, "percentageIconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CollectableItemRageBoosterVE.prototype.getBoosterTooltipId = function () {
-    return "dialog_rageBooster_boost_tt";
+  n.__extends(CollectableItemRageBoosterVO, e);
+  CollectableItemRageBoosterVO.prototype.getTooltipTextId = function () {
+    return "rageBooster_name";
   };
-  return CollectableItemRageBoosterVE;
-}(a.ACollectableItemPercentageBoosterVE);
-exports.CollectableItemRageBoosterVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  CollectableItemRageBoosterVO.prototype.getDescriptionTextId = function () {
+    return "rageBooster_short_info";
+  };
+  CollectableItemRageBoosterVO.__initialize_static_members = function () {
+    CollectableItemRageBoosterVO.SERVER_KEY = "RPB";
+  };
+  return CollectableItemRageBoosterVO;
+}(require("./328.js").ACollectableItemPercentageBoosterVO);
+exports.CollectableItemRageBoosterVO = o;
+o.__initialize_static_members();

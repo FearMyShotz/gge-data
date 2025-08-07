@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function MASCommand() {
+  function GUSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MASCommand, e);
-  Object.defineProperty(MASCommand.prototype, "cmdId", {
+  n.__extends(GUSCommand, e);
+  Object.defineProperty(GUSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ABANDON_OUTPOST_START;
+      return s.ClientConstSF.S2C_GET_UNLOCKED_SYMBOL;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  MASCommand.prototype.executeCommand = function (e, t) {
+  GUSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.userData.parse_MAS(i);
-        return true;
+        r.CastleModel.crestSymbolData.parse_gus(i.U, i.P);
+        break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return MASCommand;
+  return GUSCommand;
 }(l.CastleCommand);
-exports.MASCommand = c;
+exports.GUSCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

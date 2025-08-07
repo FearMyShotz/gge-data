@@ -2,34 +2,33 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./1.js");
-var o = require("./60.js");
-var a = function () {
-  function OfferDescriptionAdditionalIsInviteeConversionOffer() {
-    this._isInvitation = false;
+var o = require("./6.js");
+var a = require("./60.js");
+var s = function () {
+  function OfferDescriptionAdditionalBuildingID() {
+    this._buildingID = 0;
   }
-  Object.defineProperty(OfferDescriptionAdditionalIsInviteeConversionOffer.prototype, "name", {
+  Object.defineProperty(OfferDescriptionAdditionalBuildingID.prototype, "name", {
     get: function () {
-      return o.ClientConstOffer.OFFER_ADDITIONAL_IS_INVITATION;
+      return a.ClientConstOffer.OFFER_ADDITIONAL_BUILDING_ID;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionAdditionalIsInviteeConversionOffer.prototype.registerRewardParameter = function (e) {
+  OfferDescriptionAdditionalBuildingID.prototype.registerRewardParameter = function (e) {
     e.addEntry(this.name, this);
   };
-  OfferDescriptionAdditionalIsInviteeConversionOffer.prototype.parseFromObjectParam = function (e) {
-    if (e.ICO) {
-      this._isInvitation = !!e.ICO;
-    }
+  OfferDescriptionAdditionalBuildingID.prototype.parseFromObjectParam = function (e) {
+    this._buildingID = o.int(e.wodID);
   };
-  Object.defineProperty(OfferDescriptionAdditionalIsInviteeConversionOffer.prototype, "isInvitation", {
+  Object.defineProperty(OfferDescriptionAdditionalBuildingID.prototype, "ID", {
     get: function () {
-      return this._isInvitation;
+      return this._buildingID;
     },
     enumerable: true,
     configurable: true
   });
-  return OfferDescriptionAdditionalIsInviteeConversionOffer;
+  return OfferDescriptionAdditionalBuildingID;
 }();
-exports.OfferDescriptionAdditionalIsInviteeConversionOffer = a;
-n.classImplementsInterfaces(a, "IOfferDescriptionAdditionalParameter");
+exports.OfferDescriptionAdditionalBuildingID = s;
+n.classImplementsInterfaces(s, "IOfferDescriptionAdditionalParameter");

@@ -3,12 +3,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleArmyListWithLootDialogProperties(t) {
-    var i = e.call(this) || this;
-    i.mapMovementVO = t;
-    return i;
+  function CastleCompactArmyDialogProperties(t, i = false) {
+    var n = this;
+    n.isAdventureMode = false;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this).mapMovementVO = t;
+    n.isAdventureMode = i;
+    return n;
   }
-  n.__extends(CastleArmyListWithLootDialogProperties, e);
-  return CastleArmyListWithLootDialogProperties;
+  n.__extends(CastleCompactArmyDialogProperties, e);
+  return CastleCompactArmyDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastleArmyListWithLootDialogProperties = o;
+exports.CastleCompactArmyDialogProperties = o;

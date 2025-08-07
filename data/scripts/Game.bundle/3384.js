@@ -4,105 +4,74 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./2.js");
-var c = require("./1.js");
-var u = require("./3.js");
-var d = require("./3.js");
-var p = require("./3.js");
-var h = require("./16.js");
-var g = require("./39.js");
-var C = require("./3385.js");
-var _ = require("./15.js");
-var m = require("./4.js");
-var f = require("./8.js");
-var O = require("./135.js");
-var E = require("./1647.js");
-var y = function (e) {
-  function CastleCollectTaxElement(t) {
-    var i = e.call(this, t) || this;
-    t.mc_cost.mouseChildren = false;
-    t.mc_cost.toolTipText = g.ClientConstTextIds.COSTS;
-    t.mc_duration.mouseChildren = false;
-    t.mc_duration.toolTipText = "dialog_moveOverview_waitTime";
-    t.mc_reward.mouseChildren = false;
-    t.mc_reward.toolTipText = "earning";
-    t.btn_collect.mouseChildren = false;
-    t.btn_collect.toolTipText = "alert_tax_stopCollectinng_title";
-    f.ButtonHelper.initBasicButtons([t.btn_collect]);
+var s = require("./5.js");
+var r = require("./6.js");
+var l = require("./4.js");
+var c = require("./33.js");
+var u = function (e) {
+  function CollectTaxElementVO(t) {
+    var i = this;
+    i.taxType = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).taxType = t;
+    i.active = true;
     return i;
   }
-  n.__extends(CastleCollectTaxElement, e);
-  CastleCollectTaxElement.prototype.customFillItem = function () {
-    f.ButtonHelper.enableButton(this.disp.btn_collect, true);
-    if (this.elementVO.hasC2CostWithoutPremium) {
-      this.disp.mc_cost.mc_costIcon.gotoAndStop(2);
-      this.textfieldManager.registerTextField(this.disp.mc_cost.txt_cost, new d.LocalizedNumberVO(this.elementVO.c2Costs), new r.InternalGGSTextFieldConfigVO(true)).color = this.elementVO.c2Costs > m.CastleModel.currencyData.c2Amount ? h.ClientConstColor.FONT_INSUFFICIENT_COLOR : h.ClientConstColor.FONT_DEFAULT_COLOR;
-      this.disp.btn_collect.gotoAndStop(2);
-    } else {
-      this.disp.mc_cost.mc_costIcon.gotoAndStop(1);
-      this.textfieldManager.registerTextField(this.disp.mc_cost.txt_cost, new d.LocalizedNumberVO(this.elementVO.c1Costs), new r.InternalGGSTextFieldConfigVO(true)).color = this.elementVO.c1Costs > m.CastleModel.currencyData.c1Amount ? h.ClientConstColor.FONT_INSUFFICIENT_COLOR : h.ClientConstColor.FONT_DEFAULT_COLOR;
-      this.disp.btn_collect.gotoAndStop(1);
-    }
-    this.textfieldManager.registerTextField(this.disp.mc_duration.txt_duration, new p.TextVO(this.elementVO.durationString), new r.InternalGGSTextFieldConfigVO(true));
-    this.textfieldManager.registerTextField(this.disp.mc_reward.txt_reward, new d.LocalizedNumberVO(this.elementVO.reward), new r.InternalGGSTextFieldConfigVO(true));
-  };
-  CastleCollectTaxElement.prototype.onMouseClick = function (e) {
-    if (this.isActive && e.target == this.disp.btn_collect) {
-      this.onStartTaxCollection();
-    }
-  };
-  CastleCollectTaxElement.prototype.onStartTaxCollection = function () {
-    if (this.elementVO.c1Costs > m.CastleModel.currencyData.c1Amount) {
-      CastleCollectTaxElement.dialogHandler.registerDefaultDialogs(T.CastleStandardOkDialog, new a.BasicStandardOkDialogProperties(u.Localize.text("generic_alert_watchout"), u.Localize.text("dialog_no_money_c1_copy")));
-    } else if (this.elementVO.c2Costs > m.CastleModel.currencyData.c2Amount) {
-      CastleCollectTaxElement.dialogHandler.registerDefaultDialogs(I.CastleNoMoneyC2Dialog, new O.CastleNoMoneyC2DialogProperties());
-    } else {
-      this.dispatchEvent(new E.CastleCollectTaxElementEvent(E.CastleCollectTaxElementEvent.START_TAX_COLLECTION));
-      o.BasicController.getInstance().sendServerMessageVOAndWait(new C.C2SStartCollectTaxVO(this.elementVO.taxType));
-    }
-  };
-  Object.defineProperty(CastleCollectTaxElement.prototype, "elementVO", {
+  n.__extends(CollectTaxElementVO, e);
+  Object.defineProperty(CollectTaxElementVO.prototype, "c1Costs", {
     get: function () {
-      return this._scrollItemVO;
+      var e = r.int(l.CastleModel.boostData.premiumAccountVO.premiumAccountType);
+      var t = l.CastleModel.vipData.currentActiveVIPLevel;
+      return l.CastleModel.costsData.getFinalCostsC1(s.TaxConst.getCollectorC1Costs(this.taxType, e, l.CastleModel.taxData.taxInfoVO.population, this.hasTaxResearch, t.taxCollector12HoursNoRubies, t.taxCollector24HoursNoRubies));
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleCollectTaxElement.prototype, "textfieldManager", {
+  Object.defineProperty(CollectTaxElementVO.prototype, "c2Costs", {
     get: function () {
-      return s.GoodgameTextFieldManager.getInstance();
+      var e = r.int(l.CastleModel.boostData.premiumAccountVO.premiumAccountType);
+      var t = l.CastleModel.vipData.currentActiveVIPLevel;
+      return l.CastleModel.costsData.getFinalCostsC2(s.TaxConst.getCollectorC2Costs(this.taxType, e, this.hasTaxResearch, t.taxCollector12HoursNoRubies, t.taxCollector24HoursNoRubies));
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleCollectTaxElement.prototype, "layoutManager", {
+  Object.defineProperty(CollectTaxElementVO.prototype, "hasTaxResearch", {
     get: function () {
-      return D.CastleLayoutManager.getInstance();
+      return l.CastleModel.researchData.getResearchEffectValue(c.EffectTypeEnum.EFFECT_TYPE_TAX_COLLECTOR_NO_RUBIES).strength >= 1;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleCollectTaxElement.prototype, "controller", {
+  Object.defineProperty(CollectTaxElementVO.prototype, "hasC2CostWithoutPremium", {
     get: function () {
-      return _.CastleBasicController.getInstance();
+      var e = l.CastleModel.vipData.currentActiveVIPLevel;
+      return l.CastleModel.costsData.getFinalCostsC2(s.TaxConst.getCollectorC2Costs(this.taxType, -1, this.hasTaxResearch, e.taxCollector12HoursNoRubies, e.taxCollector24HoursNoRubies)) > 0;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleCollectTaxElement, "dialogHandler", {
+  Object.defineProperty(CollectTaxElementVO.prototype, "duration", {
     get: function () {
-      return b.CastleDialogHandler.getInstance();
+      return s.TaxConst.COLLECTOR_DURATION[this.taxType];
     },
     enumerable: true,
     configurable: true
   });
-  return CastleCollectTaxElement;
-}(l.ScrollItem);
-exports.CastleCollectTaxElement = y;
-var b = require("./9.js");
-var D = require("./17.js");
-var I = require("./138.js");
-var T = require("./38.js");
-c.classImplementsInterfaces(y, "MovieClip");
+  Object.defineProperty(CollectTaxElementVO.prototype, "reward", {
+    get: function () {
+      return l.CastleModel.taxData.taxInfoVO.getEstimatedIncomeById(this.taxType);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CollectTaxElementVO.prototype, "durationString", {
+    get: function () {
+      return a.TimeStringHelper.getHoureMinutesTimeString(s.TaxConst.COLLECTOR_DURATION[this.taxType]);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CollectTaxElementVO;
+}(o.ScrollItemVO);
+exports.CollectTaxElementVO = u;

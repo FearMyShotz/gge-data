@@ -2,81 +2,88 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./5.js");
-var s = require("./3.js");
-var r = require("./6.js");
-var l = require("./57.js");
-var c = require("./4.js");
-var u = require("./8.js");
-var d = require("./40.js");
-var p = require("./20.js");
+var o = require("./45.js");
+var a = require("./74.js");
+var s = require("./31.js");
+var r = require("./19.js");
+var l = require("./20.js");
+var c = require("./8.js");
+var u = require("./25.js");
+var d = require("./112.js");
+var p = createjs.Point;
 var h = function (e) {
-  function GlobalLeaderBoardLeagueComponent(t, i) {
-    var n = e.call(this, t) || this;
-    n.leagueChangeSignal = new l.Signal();
-    n._eventID = i;
-    n._itxt_league = o.GoodgameTextFieldManager.getInstance().registerTextField(n._disp.txt_league, new s.LocalizedTextVO(""));
-    n._itxt_league.autoFitToBounds = true;
-    n._leagueTypeId = n.eventVO.leagueID;
-    u.ButtonHelper.initButtons([n._disp.btn_prevLeague, n._disp.btn_nextLeague], p.ClickFeedbackButtonHover);
-    n.updateText();
-    return n;
+  function ADynamicTabPackageShopDialog(t) {
+    var i = e.call(this, t) || this;
+    i._currencies = [];
+    return i;
   }
-  n.__extends(GlobalLeaderBoardLeagueComponent, e);
-  GlobalLeaderBoardLeagueComponent.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this._disp.btn_prevLeague:
-        this.showPrevLeague();
-        break;
-      case this._disp.btn_nextLeague:
-        this.showNextLeague();
+  n.__extends(ADynamicTabPackageShopDialog, e);
+  ADynamicTabPackageShopDialog.prototype.initTabsByPackages = function (e, t = null, i = "tab_", n = 12) {
+    this._subLayer = new Map();
+    this._tabMcPrefix = i;
+    this._maxTabs = n;
+    var d = [];
+    var h = function (e) {
+      var t = e.getCostList().getItemByIndex(0);
+      if (!d.some(function (e) {
+        return o.CollectableHelper.haveSameIdAndType(e, t);
+      })) {
+        d.push(t.clone());
+      }
+    };
+    for (var g = 0, C = this.getEventPackages(); g < C.length; g++) {
+      h(C[g]);
     }
-  };
-  GlobalLeaderBoardLeagueComponent.prototype.showPrevLeague = function () {
-    this.changeLeague(this._leagueTypeId - 1 < 1 ? this.eventVO.numberOfLeagues : this._leagueTypeId - 1);
-    this.leagueChangeSignal.dispatch();
-  };
-  GlobalLeaderBoardLeagueComponent.prototype.showNextLeague = function () {
-    this.changeLeague(this._leagueTypeId + 1 > this.eventVO.numberOfLeagues ? 1 : this._leagueTypeId + 1);
-    this.leagueChangeSignal.dispatch();
-  };
-  GlobalLeaderBoardLeagueComponent.prototype.updateText = function () {
-    var e = r.int(this.eventVO.leagueLevels(this._leagueTypeId)[0]);
-    var t = r.int(this.eventVO.leagueLevels(this._leagueTypeId)[1]);
-    if (t > a.PlayerConst.LEVEL_CAP) {
-      this._itxt_league.textContentVO.textId = e != t ? "dialog_ranking_legendFilter" : "legendaryLevel_placeholder";
-      this._itxt_league.textContentVO.textReplacements = [Math.max(e - a.PlayerConst.LEVEL_CAP, 1), t - a.PlayerConst.LEVEL_CAP];
-    } else {
-      this._itxt_league.textContentVO.textId = "levelrange_placeholder";
-      this._itxt_league.textContentVO.textReplacements = [e, t];
-    }
-  };
-  GlobalLeaderBoardLeagueComponent.prototype.changeLeague = function (e, t = false) {
-    this._leagueTypeId = e;
-    this.updateText();
     if (t) {
-      this.leagueChangeSignal.dispatch();
+      d.sort(t);
+    }
+    this._currencies = d.map(function (e) {
+      return new a.CollectableTypeVO().initByCollectable(e);
+    });
+    this._defaultSublayer ||= new e(this.dialogDisp.tab_shop, this.dialogClassName);
+    for (var _ = 0; _ < n; _++) {
+      var m = this.dialogDisp[i + _];
+      if (m) {
+        if (_ < d.length) {
+          c.ButtonHelper.initButtons([m], l.ClickFeedbackButtonHover);
+          var f = new r.CollectableRenderOptions(r.CollectableRenderOptions.ICON, new p(32, 32));
+          f.icon.useDropShadowIcon = true;
+          u.CollectableRenderHelper.displaySingleItem(new s.CollectableRenderClips(m), d[_], f);
+          m.toolTipText = d[_].getTooltipTextId();
+          this._subLayer.set(_.toString(), this._defaultSublayer);
+        } else {
+          m.visible = false;
+        }
+      }
     }
   };
-  GlobalLeaderBoardLeagueComponent.prototype.changeToMyLeague = function () {
-    this.changeLeague(this.eventVO.leagueID, true);
+  ADynamicTabPackageShopDialog.prototype.changeCategory = function (t) {
+    if (this._currentCategory != t) {
+      e.prototype.changeCategory.call(this, t);
+      this.showSublayer(this._subLayer.get(t), [this._currencies[parseInt(t)]]);
+      for (var i = 0; i < this._maxTabs; i++) {
+        var n = this.dialogDisp[this._tabMcPrefix + i];
+        if (n) {
+          o = n;
+          a = i.toString() == this._currentCategory;
+          o.mc_selected.visible = a;
+        }
+      }
+      var o;
+      var a;
+    }
   };
-  Object.defineProperty(GlobalLeaderBoardLeagueComponent.prototype, "leagueTypeId", {
-    get: function () {
-      return this._leagueTypeId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalLeaderBoardLeagueComponent.prototype, "eventVO", {
-    get: function () {
-      return c.CastleModel.specialEventData.getActiveEventByEventId(this._eventID);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return GlobalLeaderBoardLeagueComponent;
-}(d.CastleItemRenderer);
-exports.GlobalLeaderBoardLeagueComponent = h;
+  ADynamicTabPackageShopDialog.prototype.onClick = function (t) {
+    if (c.ButtonHelper.isButtonEnabled(t.target)) {
+      e.prototype.onClick.call(this, t);
+      if (t.target.name && t.target.name.startsWith(this._tabMcPrefix)) {
+        this.changeCategory(t.target.name.replace(this._tabMcPrefix, ""));
+      }
+    }
+  };
+  ADynamicTabPackageShopDialog.prototype.getEventPackages = function () {
+    return [];
+  };
+  return ADynamicTabPackageShopDialog;
+}(d.CastleExternalSubLayerDialog);
+exports.ADynamicTabPackageShopDialog = h;

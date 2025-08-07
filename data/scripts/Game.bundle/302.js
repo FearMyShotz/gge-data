@@ -60,5 +60,5 @@ var o = function (e) {
     configurable: true
   });
   return AIsoViewObjectGroupSimpleList;
-}(require("./1008.js").AIsoViewObjectGroup);
+}(require("./1009.js").AIsoViewObjectGroup);
 exports.AIsoViewObjectGroupSimpleList = o;

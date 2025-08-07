@@ -1,52 +1,77 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function ABTest_FirstTimeChallengeCampVsIcon() {
-    this.HIDE_CAMP = "hideCamp";
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./1290.js");
+var c = require("./15.js");
+var u = require("./2269.js");
+var d = require("./4.js");
+var p = function (e) {
+  function CastleOwnSplitRunData(t) {
+    var i = this;
+    i.testCases = [];
+    i.testCasesReceived = 0;
+    CONSTRUCTOR_HACK;
+    return i = e.call(this, t) || this;
   }
-  ABTest_FirstTimeChallengeCampVsIcon.prototype.setupTest = function (e) {
-    this.setupPrivateOffers();
-    if (this._allConcernedPrivateOffers != null) {
-      for (var t = 0, i = this._allConcernedPrivateOffers; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          var s = n.getVisualComponentByName(o.ClientConstOffer.OFFER_VISUAL_ISO_OBJECT);
-          var r = n.getVisualComponentByName(o.ClientConstOffer.OFFER_VISUAL_INTERFACE_BUTTON);
-          s.hiddenByABTest = a.CastleModel.userData.splitRunData.getBooleanParam(this.HIDE_CAMP);
-          r.hiddenByABTest = a.CastleModel.userData.splitRunData.getBooleanParam("hideIcon");
-          s.execute(n);
-          r.execute(n);
+  n.__extends(CastleOwnSplitRunData, e);
+  CastleOwnSplitRunData.prototype.retrieveTestCaseInfos = function () {
+    o.BasicController.getInstance().addEventListener(r.TestCaseInfoEvent.TEST_CASE_INFO_RECEIVED, this.bindFunction(this.onTestCaseInfoReceived));
+    c.CastleBasicController.getInstance().addEventListener(l.ABTest_Refresh_Event.REFRESH_ABTESTS_EVENT, this.bindFunction(this.refreshTests));
+    this.testCasesReceived = 0;
+    if (this.testCases != null) {
+      for (var e = 0, t = this.testCases; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          a.BasicModel.smartfoxClient.sendMessage(s.BasicSmartfoxConstants.C2S_TEST_CASE_INFO, [i]);
         }
       }
     }
   };
-  ABTest_FirstTimeChallengeCampVsIcon.prototype.setupPrivateOffers = function () {
-    this.setupAllConcernedPrivateOfferIDs();
-    this.setupAllConcernedPrivateOffers();
+  CastleOwnSplitRunData.prototype.onTestCaseInfoReceived = function (e) {
+    var t;
+    this.testCasesReceived++;
+    for (t in e.paramObj) {
+      this._abTests.set(t, e.paramObj[t]);
+    }
+    if (this.testCasesReceived == this.testCases.length) {
+      o.BasicController.getInstance().removeEventListener(r.TestCaseInfoEvent.TEST_CASE_INFO_RECEIVED, this.bindFunction(this.onTestCaseInfoReceived));
+      this.abTestDataArrived();
+    }
   };
-  ABTest_FirstTimeChallengeCampVsIcon.prototype.setupAllConcernedPrivateOfferIDs = function () {
-    var e = [];
-    e.push(111);
-    e.push(118);
-    e.push(119);
-    this._allConcernedPrivateOfferIDs = e;
+  CastleOwnSplitRunData.prototype.removeAllListeners = function () {
+    c.CastleBasicController.getInstance().removeEventListener(r.TestCaseInfoEvent.TEST_CASE_INFO_RECEIVED, this.bindFunction(this.onTestCaseInfoReceived));
+    c.CastleBasicController.getInstance().removeEventListener(l.ABTest_Refresh_Event.REFRESH_ABTESTS_EVENT, this.bindFunction(this.refreshTests));
+  };
+  CastleOwnSplitRunData.prototype.getTestCaseIfNotPresent = function (e) {
+    if (!this.getParam(e)) {
+      a.BasicModel.smartfoxClient.sendMessage(s.BasicSmartfoxConstants.C2S_TEST_CASE_INFO, [e]);
+    }
+  };
+  CastleOwnSplitRunData.prototype.refreshTests = function (e = null) {
+    this.abTestDataArrived();
+  };
+  CastleOwnSplitRunData.prototype.abTestDataArrived = function () {
+    d.CastleModel.gfxData.applyAnimationABTest();
+    this.handleABTest689();
+  };
+  CastleOwnSplitRunData.prototype.handleABTest689 = function () {
+    new u.ABTest_FirstTimeChallengeCampVsIcon().setupTest(this._abTests);
+  };
+  CastleOwnSplitRunData.prototype.handleHCShopABTestPayload = function (e) {
+    e.config = {
+      categories: {
+        hardCurrency: {
+          enabled: true
+        }
+      }
+    };
     return e;
   };
-  ABTest_FirstTimeChallengeCampVsIcon.prototype.setupAllConcernedPrivateOffers = function () {
-    var e;
-    this._allConcernedPrivateOffers = [];
-    if (this._allConcernedPrivateOfferIDs != null) {
-      for (var t = 0, i = this._allConcernedPrivateOfferIDs; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && (e = a.CastleModel.privateOfferData.getOfferById(n))) {
-          this._allConcernedPrivateOffers.push(e);
-        }
-      }
-    }
-  };
-  return ABTest_FirstTimeChallengeCampVsIcon;
-}();
-exports.ABTest_FirstTimeChallengeCampVsIcon = n;
-var o = require("./60.js");
-var a = require("./4.js");
+  return CastleOwnSplitRunData;
+}(require("./1216.js").CastleSplitRunData);
+exports.CastleOwnSplitRunData = p;

@@ -11,7 +11,7 @@ var c = require("./3.js");
 var u = require("./6.js");
 var d = require("./21.js");
 var p = require("./4.js");
-var h = require("./35.js");
+var h = require("./33.js");
 var g = require("./68.js");
 var C = require("./8.js");
 var _ = require("./1386.js");
@@ -100,6 +100,6 @@ var m = function (e) {
   return CastleAllianceDialogTreasuryBoosterItemTemp;
 }(_.CastleAllianceDialogTreasuryBoosterItem_OneEffect);
 exports.CastleAllianceDialogTreasuryBoosterItemTemp = m;
-var f = require("./747.js");
+var f = require("./749.js");
 var O = require("./14.js");
 o.classImplementsInterfaces(m, "ICollectableRendererList");

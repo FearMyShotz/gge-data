@@ -3,19 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function InnerDistrictBuildingVE() {
-    return e.call(this) || this;
+var a = require("./62.js");
+var s = function (e) {
+  function ImperialCouncilHallBuildingVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(InnerDistrictBuildingVE, e);
-  Object.defineProperty(InnerDistrictBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(ImperialCouncilHallBuildingVE, e);
+  Object.defineProperty(ImperialCouncilHallBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_InnerDistrict;
+      return Library.CastleInterfaceElements_Icons.Icon_UnitToolProductionBoost;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return InnerDistrictBuildingVE;
-}(require("./540.js").ADistrictBuildingVE);
-exports.InnerDistrictBuildingVE = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
+  return ImperialCouncilHallBuildingVE;
+}(a.ABasicBuildingVE);
+exports.ImperialCouncilHallBuildingVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

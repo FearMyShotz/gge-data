@@ -2,39 +2,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./16.js");
-var l = require("./35.js");
-var c = function (e) {
-  function CraneBuildingVO() {
-    var t = this;
-    t._constructionSlotCount = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./6.js");
+var r = require("./4.js");
+var l = function (e) {
+  function ContorBuildingVO() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CraneBuildingVO, e);
-  CraneBuildingVO.prototype.parseXmlNode = function (t) {
-    var i = this;
-    e.prototype.parseXmlNode.call(this, t);
-    this.allShowableBuildingEffects.forEach(function (e) {
-      if (e.effect.effectType.type == l.EffectTypeEnum.EFFECT_TYPE_CONSTRUCTION_QUEUE) {
-        i._constructionSlotCount = e.strength;
-      }
-    });
+  n.__extends(ContorBuildingVO, e);
+  ContorBuildingVO.prototype.createInfoPanelItems = function (e) {
+    var t = s.int(r.CastleModel.kingdomData.activeKingdomID);
+    var i = r.CastleModel.userData.villageList;
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourFood, "kingdom_villageFoodBoost", new a.TextVO(i.getBonusStringByKingdomID(t, "Food")));
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourStone, "kingdom_villageStoneBoost", new a.TextVO(i.getBonusStringByKingdomID(t, "Stone")));
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourWood, "kingdom_villageWoodBoost", new a.TextVO(i.getBonusStringByKingdomID(t, "Wood")));
   };
-  CraneBuildingVO.prototype.createInfoPanelItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Crane, "crane_slot_number", new s.LocalizedTextVO(o.GenericTextIds.VALUE_NOMINAL_ADD, [this.constructionSlotCount]), r.ClientConstColor.FONT_DEFAULT_COLOR, true);
-  };
-  Object.defineProperty(CraneBuildingVO.prototype, "constructionSlotCount", {
-    get: function () {
-      return this._constructionSlotCount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CraneBuildingVO;
+  return ContorBuildingVO;
 }(require("./65.js").AEffectBuildingVO);
-exports.CraneBuildingVO = c;
-a.classImplementsInterfaces(c, "IShopVO", "ICostVO", "IInventoryVO");
+exports.ContorBuildingVO = l;
+o.classImplementsInterfaces(l, "IShopVO", "ICostVO", "IInventoryVO");

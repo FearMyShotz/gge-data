@@ -80,6 +80,6 @@ var r = function (e) {
 }(s.AAutoRecruitmentCopyDialog);
 exports.AutoRecruitmentCopyToolsDialog = r;
 var l = require("./9.js");
-var c = require("./2960.js");
+var c = require("./2961.js");
 o.classImplementsInterfaces(r, "ICollectableRendererList");
 r.__initialize_static_members();

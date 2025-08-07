@@ -3,88 +3,67 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./55.js");
-var l = require("./105.js");
-var c = require("./1498.js");
-var u = createjs.Point;
-var d = function (e) {
-  function StoneResourceFieldVO() {
+var a = require("./6.js");
+var s = require("./55.js");
+var r = require("./105.js");
+var l = require("./1498.js");
+var c = createjs.Point;
+var u = function (e) {
+  function FoodResourceFieldVO() {
     var t = e.call(this) || this;
-    t._width = 10;
-    t._height = 20;
-    t._resourceType = p.CollectableEnum.STONE;
-    t._name = r.ClientConstUtils.capitalizeFirstLetter(t._resourceType.name);
+    t._width = 20;
+    t._height = 10;
+    t._resourceType = d.CollectableEnum.FOOD;
+    t._name = s.ClientConstUtils.capitalizeFirstLetter(t._resourceType.name);
     return t;
   }
-  n.__extends(StoneResourceFieldVO, e);
-  StoneResourceFieldVO.prototype.updatePosition = function () {
+  n.__extends(FoodResourceFieldVO, e);
+  FoodResourceFieldVO.prototype.updatePosition = function () {
     if (this.isoData.areaData.isMyHomeCastle) {
-      this._posOrigin = l.IsoGridOriginEnum.TOP_CORNER;
-      this._posOffset = new u(-16, 0);
+      this._posOrigin = r.IsoGridOriginEnum.TOP_CORNER;
+      this._posOffset = new c(-2, -16);
     } else {
-      this._posOrigin = l.IsoGridOriginEnum.RIGHT_CORNER;
-      this._posOffset = new u(8, -2);
+      this._posOrigin = r.IsoGridOriginEnum.LEFT_CORNER;
+      this._posOffset = new c(-2, 8);
     }
     e.prototype.updatePosition.call(this);
   };
-  StoneResourceFieldVO.prototype.updateDimension = function () {
-    this._totalWidth = this.width;
-    this._totalHeight = this.height * this.fieldAmount;
+  FoodResourceFieldVO.prototype.updateDimension = function () {
+    this._totalWidth = this.width * this.fieldAmount;
+    this._totalHeight = this.height;
   };
-  StoneResourceFieldVO.prototype.updateSpawnPoints = function () {
+  FoodResourceFieldVO.prototype.updateSpawnPoints = function () {
     this._spawnPoints.length = 0;
     for (var e = 0; e < this.fieldAmount; ++e) {
-      this._spawnPoints.push(new u(0, 9 + this.height * e));
+      this._spawnPoints.push(new c(9 + this.width * e, 3));
     }
   };
-  StoneResourceFieldVO.prototype.updateWalkmap = function () {
+  FoodResourceFieldVO.prototype.updateWalkmap = function () {
     e.prototype.updateWalkmap.call(this);
     for (var t = 0; t < this.fieldAmount; ++t) {
       var i = 0;
-      var n = s.int(this.height - 1 + this.height * t);
-      for (i = 0; i < this.width; ++i) {
-        this.walkmap[n][i] = true;
+      var n = a.int(this.width - 1 + this.width * t);
+      for (i = 0; i < this.height; ++i) {
+        this.walkmap[i][n] = true;
       }
-      var o = s.int(9 + this.height * t);
-      for (i = 0; i < 1; ++i) {
-        this.walkmap[o][i] = true;
+      var o = a.int(9 + this.width * t);
+      for (i = 0; i < 4; ++i) {
+        this.walkmap[i][o] = true;
       }
     }
   };
-  StoneResourceFieldVO.prototype.getFieldAmount = function () {
-    return s.int(this.isoData.grid.origins.groundDimension.y / this.height);
+  FoodResourceFieldVO.prototype.getFieldAmount = function () {
+    return a.int(this.isoData.grid.origins.groundDimension.x / this.width);
   };
-  StoneResourceFieldVO.prototype.getLastPartStartOffset = function () {
-    return new u(this.posOffset.x + this.width, this.posOffset.y + this.fieldAmount * this.height);
+  FoodResourceFieldVO.prototype.getLastPartStartOffset = function () {
+    return new c(this.posOffset.x + this.fieldAmount * this.width, this.posOffset.y + this.height);
   };
-  StoneResourceFieldVO.prototype.getWorkPointsByIndex = function (e) {
-    var t = [];
-    if (this.isoData.areaData.areaInfo.kingdomID == a.WorldClassic.KINGDOM_ID) {
-      var i = s.int(this.getGfxLevel());
-      if (i == 1) {
-        t.push(new u(1, 5));
-        t.push(new u(5, 17));
-      } else if (i == 2) {
-        t.push(new u(4, 7));
-        t.push(new u(7, 16));
-      } else if (i == 3) {
-        t.push(new u(3, 8));
-        t.push(new u(4, 19));
-      }
-    } else if (this.isoData.areaData.isKingdomCastle) {
-      t.push(new u(3, 17));
-      t.push(new u(5, 3));
-    }
-    var n = s.int(this.height * e);
-    for (var o = 0; o < t.length; ++o) {
-      t[o].y += n;
-    }
-    return t;
+  FoodResourceFieldVO.prototype.getWorkPointsByIndex = function (e) {
+    var t = a.int(this.width * e);
+    return [new c(5 + t, 5), new c(13 + t, 5)];
   };
-  return StoneResourceFieldVO;
-}(c.AExpandingResourceFieldVO);
-exports.StoneResourceFieldVO = d;
-var p = require("./12.js");
-o.classImplementsInterfaces(d, "IRelativeGridBuildingVO");
+  return FoodResourceFieldVO;
+}(l.AExpandingResourceFieldVO);
+exports.FoodResourceFieldVO = u;
+var d = require("./12.js");
+o.classImplementsInterfaces(u, "IRelativeGridBuildingVO");

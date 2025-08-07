@@ -2,57 +2,75 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function XmlFusionCostSequenceVO() {
-    this._id = -1;
+  function XmlCatalystVO() {
+    this._currencyId = -1;
     this._forgeId = -1;
-    this._fusionTargetLevelIterationIndex = -1;
-    this._costJSONKey = "";
-    this._costAmount = 0;
+    this._deprecated = false;
+    this._maxUsableFusionLevel = 0;
+    this._tier = 0;
+    this._addDecoDust = 0;
+    this._costDecoDust = 0;
   }
-  XmlFusionCostSequenceVO.prototype.parseXml = function (e) {
-    this._id = o.int(a.CastleXMLUtils.getIntAttribute("id", e, -1));
+  XmlCatalystVO.prototype.parseXml = function (e) {
+    this._currencyId = o.int(a.CastleXMLUtils.getIntAttribute("currencyID", e, -1));
     this._forgeId = o.int(a.CastleXMLUtils.getIntAttribute("forgeID", e, -1));
-    this._fusionTargetLevelIterationIndex = o.int(a.CastleXMLUtils.getIntAttribute("fusionTargetLevelIterationIndex", e, -1));
-    this._costJSONKey = a.CastleXMLUtils.getStringAttribute("costJSONKey", e, "");
-    this._costAmount = o.int(a.CastleXMLUtils.getIntAttribute("costAmount", e, 0));
+    this._deprecated = a.CastleXMLUtils.getBooleanAttribute("deprecated", e, false);
+    this._maxUsableFusionLevel = o.int(a.CastleXMLUtils.getIntAttribute("maxUsableFusionLevel", e, 0));
+    this._tier = o.int(a.CastleXMLUtils.getIntAttribute("tier", e, 0));
+    this._addDecoDust = o.int(a.CastleXMLUtils.getIntAttribute("addDecoDust", e, 0));
+    this._costDecoDust = o.int(a.CastleXMLUtils.getIntAttribute("costDecoDust", e, 0));
   };
-  Object.defineProperty(XmlFusionCostSequenceVO.prototype, "id", {
+  Object.defineProperty(XmlCatalystVO.prototype, "currencyId", {
     get: function () {
-      return this._id;
+      return this._currencyId;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionCostSequenceVO.prototype, "forgeId", {
+  Object.defineProperty(XmlCatalystVO.prototype, "forgeId", {
     get: function () {
       return this._forgeId;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionCostSequenceVO.prototype, "fusionTargetLevelIterationIndex", {
+  Object.defineProperty(XmlCatalystVO.prototype, "deprecated", {
     get: function () {
-      return this._fusionTargetLevelIterationIndex;
+      return this._deprecated;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionCostSequenceVO.prototype, "costJSONKey", {
+  Object.defineProperty(XmlCatalystVO.prototype, "maxUsableFusionLevel", {
     get: function () {
-      return this._costJSONKey;
+      return this._maxUsableFusionLevel;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionCostSequenceVO.prototype, "costAmount", {
+  Object.defineProperty(XmlCatalystVO.prototype, "tier", {
     get: function () {
-      return this._costAmount;
+      return this._tier;
     },
     enumerable: true,
     configurable: true
   });
-  return XmlFusionCostSequenceVO;
+  Object.defineProperty(XmlCatalystVO.prototype, "addDecoDust", {
+    get: function () {
+      return this._addDecoDust;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlCatalystVO.prototype, "costDecoDust", {
+    get: function () {
+      return this._costDecoDust;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return XmlCatalystVO;
 }();
-exports.XmlFusionCostSequenceVO = n;
+exports.XmlCatalystVO = n;
 var o = require("./6.js");
 var a = require("./22.js");

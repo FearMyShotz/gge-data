@@ -3,61 +3,36 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
+var a = require("./5.js");
 var s = require("./3.js");
-var r = require("./21.js");
-var l = require("./4.js");
-var c = require("./27.js");
-var u = require("./256.js");
-var d = function (e) {
-  function CastleSamuraiHunterEventDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleSamuraiHunterEventDialog.NAME) || this;
+var r = require("./3.js");
+var l = require("./3.js");
+var c = require("./13.js");
+var u = require("./8.js");
+var d = require("./11.js");
+var p = require("./36.js");
+var h = function (e) {
+  function CastleNotEnoughLuckyWheelSalesDaysTicketsDialog() {
+    return e.call(this, CastleNotEnoughLuckyWheelSalesDaysTicketsDialog.NAME) || this;
   }
-  n.__extends(CastleSamuraiHunterEventDialog, e);
-  CastleSamuraiHunterEventDialog.prototype.addEventListenerOnShow = function () {
-    e.prototype.addEventListenerOnShow.call(this);
-    l.CastleModel.timerData.addEventListener(r.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTick));
-  };
-  CastleSamuraiHunterEventDialog.prototype.onTick = function (e) {
-    this.updateTimer();
-  };
-  CastleSamuraiHunterEventDialog.prototype.updateTimer = function () {
-    this.itxt_time.textContentVO.stringValue = c.CastleTimeStringHelper.getEventTimeString(this.dialogProperties.buyPackageEventVO.remainingEventTimeInSeconds);
-    this.dialogDisp.mc_timer.toolTipText = c.CastleTimeStringHelper.getEventToolTipString(this.dialogProperties.buyPackageEventVO.remainingEventTimeInSeconds);
-  };
-  CastleSamuraiHunterEventDialog.prototype.removeEventListenerOnHide = function () {
-    e.prototype.removeEventListenerOnHide.call(this);
-    l.CastleModel.timerData.removeEventListener(r.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTick));
-  };
-  CastleSamuraiHunterEventDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(CastleNotEnoughLuckyWheelSalesDaysTicketsDialog, e);
+  CastleNotEnoughLuckyWheelSalesDaysTicketsDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new a.LocalizedTextVO("dialog_samuraiToolVendor_desc"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_detailedDescription, new a.LocalizedTextVO("dialog_samuraiToolVendor_desc_detail")).autoFitToBounds = true;
-    this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.mc_timer.txt_time, new s.TextVO(""));
-    this.itxt_time.autoFitToBounds = true;
-    this.dialogDisp.mc_timer.mouseChildren = false;
+    u.ButtonHelper.initButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close], p.ClickFeedbackButton);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new l.TextVO(c.TextHelper.toUpperCaseLocaSafe(s.Localize.text("dialog_luckyWheel_SaleDay_noTicketsTitle"))));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new r.LocalizedTextVO("dialog_luckyWheel_SaleDay_noTickets", [a.LuckyWheelConst.SPIN_TICKET_COST_SALE_DAYS]));
+    this.dialogDisp.icon_tickets.toolTipText = "tooltip_tickets_saleDays";
   };
-  CastleSamuraiHunterEventDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.updateTimer();
+  CastleNotEnoughLuckyWheelSalesDaysTicketsDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_ok:
+      case this.dialogDisp.btn_close:
+        this.hide();
+    }
   };
-  Object.defineProperty(CastleSamuraiHunterEventDialog.prototype, "merchantScrollItem", {
-    get: function () {
-      return p.CastleSamuraiHunterEventScrollItem;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleGenericMerchantDialog.prototype, "merchantScrollItem").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleSamuraiHunterEventDialog.__initialize_static_members = function () {
-    CastleSamuraiHunterEventDialog.NAME = "CastleSamuraiHunterEvent";
-  };
-  return CastleSamuraiHunterEventDialog;
-}(u.CastleGenericMerchantDialog);
-exports.CastleSamuraiHunterEventDialog = d;
-var p = require("./4520.js");
-o.classImplementsInterfaces(d, "ICollectableRendererList");
-d.__initialize_static_members();
+  CastleNotEnoughLuckyWheelSalesDaysTicketsDialog.NAME = "CastleNotEnoughLuckyWheelSalesDaysTickets";
+  return CastleNotEnoughLuckyWheelSalesDaysTicketsDialog;
+}(d.CastleExternalDialog);
+exports.CastleNotEnoughLuckyWheelSalesDaysTicketsDialog = h;
+o.classImplementsInterfaces(h, "ICollectableRendererList");

@@ -1,33 +1,45 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./60.js");
-var a = function () {
-  function OfferDescriptionAutoAccept() {
-    this._autoAccept = false;
+var n = function () {
+  function OfferDescriptionRewardDictionary() {
+    this._dict = new Map();
   }
-  Object.defineProperty(OfferDescriptionAutoAccept.prototype, "name", {
-    get: function () {
-      return o.ClientConstOffer.OFFER_AUTO_ACCEPT;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  OfferDescriptionAutoAccept.prototype.registerOfferDescription = function (e) {
-    e.addEntry(this.name, this);
+  OfferDescriptionRewardDictionary.prototype.addEntry = function (e, t) {
+    if (this._dict.get(e) === undefined) {
+      this._dict.set(e, t.constructor);
+      return true;
+    }
+    throw new Error("Offer Description Reward already exists duplicates not allowed. parameterName: " + e);
   };
-  OfferDescriptionAutoAccept.prototype.parseFromObjectParam = function (e) {
-    this._autoAccept = !!e;
+  OfferDescriptionRewardDictionary.prototype.removeEntry = function (e) {
+    var t = this._dict.get(e);
+    if (t) {
+      this._dict.delete(e);
+    }
+    return t;
   };
-  Object.defineProperty(OfferDescriptionAutoAccept.prototype, "autoAccept", {
-    get: function () {
-      return this._autoAccept;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return OfferDescriptionAutoAccept;
+  OfferDescriptionRewardDictionary.prototype.clear = function () {
+    this._dict = new Map();
+  };
+  OfferDescriptionRewardDictionary.prototype.getEntry = function (e) {
+    return this._dict.get(e);
+  };
+  OfferDescriptionRewardDictionary.prototype.hasEntry = function (e) {
+    return this._dict.get(e) !== undefined;
+  };
+  OfferDescriptionRewardDictionary.prototype.traceAllEntries = function () {
+    var e;
+    o.info("---- OfferDescriptionRewardDictionary ----");
+    if (this._dict != null) {
+      for (var t = 0, i = Array.from(this._dict.keys()); t < i.length; t++) {
+        if ((e = i[t]) !== undefined) {
+          o.info("      " + e + " ---> " + this._dict.get(e).toString());
+        }
+      }
+    }
+  };
+  return OfferDescriptionRewardDictionary;
 }();
-exports.OfferDescriptionAutoAccept = a;
-n.classImplementsInterfaces(a, "IOfferDescription");
+exports.OfferDescriptionRewardDictionary = n;
+var o = require("./2.js");

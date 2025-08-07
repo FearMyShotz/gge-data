@@ -4,30 +4,45 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./1723.js");
-var r = function (e) {
-  function OpenInviteAFriendMultiplePaymentRewardReceivedCommand() {
+var s = require("./389.js");
+var r = require("./15.js");
+var l = require("./4.js");
+var c = require("./1725.js");
+var u = require("./374.js");
+var d = function (e) {
+  function OpenInviteAFriendSinglePaymentRewardReceivedCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(OpenInviteAFriendMultiplePaymentRewardReceivedCommand, e);
-  OpenInviteAFriendMultiplePaymentRewardReceivedCommand.prototype.execute = function (e = null) {
+  n.__extends(OpenInviteAFriendSinglePaymentRewardReceivedCommand, e);
+  OpenInviteAFriendSinglePaymentRewardReceivedCommand.prototype.execute = function (e = null) {
     var t = e;
-    this.openInviteAFriendRewardReceivedDialog(t);
+    this.openInviteAFriendSinglePaymentReceivedDialog(t);
   };
-  OpenInviteAFriendMultiplePaymentRewardReceivedCommand.prototype.openInviteAFriendRewardReceivedDialog = function (e) {
-    l.CastleDialogHandler.getInstance().registerDefaultDialogs(u.InviteAFriendPaymentRewardReceivedDialog, new s.InviteAFriendPaymentRewardReceivedDialogProperties(e.playerCount));
+  OpenInviteAFriendSinglePaymentRewardReceivedCommand.prototype.openInviteAFriendSinglePaymentReceivedDialog = function (e) {
+    var t = this.createOnInfoReceivedCallback(e.playerCount);
+    r.CastleBasicController.getInstance().addEventListener(s.CastlePlayerInfoEvent.GET_PLAYERINFO, t);
+    l.CastleModel.smartfoxClient.sendCommandVO(new u.C2SGetDetailPlayerInfo(e.friendID));
   };
-  Object.defineProperty(OpenInviteAFriendMultiplePaymentRewardReceivedCommand.prototype, "layoutManager", {
+  OpenInviteAFriendSinglePaymentRewardReceivedCommand.prototype.createOnInfoReceivedCallback = function (e) {
+    function t(i) {
+      r.CastleBasicController.getInstance().removeEventListener(s.CastlePlayerInfoEvent.GET_PLAYERINFO, t);
+      var n = i.params[0];
+      var o = l.CastleModel.otherPlayerData.getOwnerInfoVO(n.ownerID);
+      p.CastleDialogHandler.getInstance().registerDefaultDialogs(g.InviteAFriendPaymentRewardReceivedWithPlayerInfoDialog, new c.InviteAFriendPaymentRewardReceivedDialogProperties(e, o, n));
+    }
+    return t;
+  };
+  Object.defineProperty(OpenInviteAFriendSinglePaymentRewardReceivedCommand.prototype, "layoutManager", {
     get: function () {
-      return c.CastleLayoutManager.getInstance();
+      return h.CastleLayoutManager.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  return OpenInviteAFriendMultiplePaymentRewardReceivedCommand;
+  return OpenInviteAFriendSinglePaymentRewardReceivedCommand;
 }(o.SimpleCommand);
-exports.OpenInviteAFriendMultiplePaymentRewardReceivedCommand = r;
-var l = require("./9.js");
-var c = require("./17.js");
-var u = require("./1724.js");
-a.classImplementsInterfaces(r, "ISimpleCommand");
+exports.OpenInviteAFriendSinglePaymentRewardReceivedCommand = d;
+var p = require("./9.js");
+var h = require("./17.js");
+var g = require("./3570.js");
+a.classImplementsInterfaces(d, "ISimpleCommand");

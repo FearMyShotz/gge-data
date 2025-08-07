@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./770.js");
+var a = require("./772.js");
 var s = function (e) {
   function FactionPalisadeDefenceVO() {
     var t = e.call(this) || this;

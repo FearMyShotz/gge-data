@@ -3,38 +3,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = function (e) {
-  function CastleOutpostTeaserDialog() {
-    var t = this;
-    CONSTRUCTOR_HACK;
-    (t = e.call(this, CastleOutpostTeaserDialog.NAME) || this).backgroundAlpha = 0.5;
-    return t;
+var a = require("./58.js");
+var s = require("./4.js");
+var r = function (e) {
+  function OutpostSurroundingsVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleOutpostTeaserDialog, e);
-  CastleOutpostTeaserDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    e.prototype.applyPropertiesLoaded.call(this, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_outpostTeaser_header"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy1, new a.LocalizedTextVO("dialog_outpostTeaser_copy1"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy2, new a.LocalizedTextVO("dialog_outpostTeaser_copy2"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy3, new a.LocalizedTextVO("dialog_outpostTeaser_copy3"));
-  };
-  CastleOutpostTeaserDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_close]);
-  };
-  CastleOutpostTeaserDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_close:
-        this.hide();
+  n.__extends(OutpostSurroundingsVE, e);
+  OutpostSurroundingsVE.prototype.onMouseClick = function () {
+    if (!s.CastleModel.tutorialData.isTutorialActive && s.CastleModel.userData.hasLevelFor(a.ClientConstLevelRestrictions.MIN_LEVEL_EVENTBUILDINGS)) {
+      l.CastleComponent.dialogHandler.registerDefaultDialogs(c.CastleOutpostTeaserDialog);
     }
   };
-  CastleOutpostTeaserDialog.__initialize_static_members = function () {
-    CastleOutpostTeaserDialog.NAME = "CastleOutpostTeaser";
-  };
-  return CastleOutpostTeaserDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleOutpostTeaserDialog = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
-s.__initialize_static_members();
+  return OutpostSurroundingsVE;
+}(require("./194.js").ASurroundingBuildingVE);
+exports.OutpostSurroundingsVE = r;
+var l = require("./14.js");
+var c = require("./3187.js");
+o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

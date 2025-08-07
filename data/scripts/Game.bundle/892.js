@@ -6,23 +6,21 @@ var o = require("./2.js");
 var a = require("./6.js");
 var s = require("./7.js");
 var r = function (e) {
-  function C2SDefenceCompleteVO(t, i, n = -1) {
-    var o = this;
-    o.CX = 0;
-    o.CY = 0;
-    o.AID = 0;
-    o.KID = 0;
+  function C2SGetAllianceTowerBuffInfoVO(t, i) {
+    var n = this;
+    n.XPOS = 0;
+    n.YPOS = 0;
+    n.AID = 0;
     CONSTRUCTOR_HACK;
-    (o = e.call(this) || this).CX = a.int(t.x);
-    o.CY = a.int(t.y);
-    o.AID = i;
-    o.KID = n;
-    return o;
+    (n = e.call(this) || this).XPOS = a.int(t.x);
+    n.YPOS = a.int(t.y);
+    n.AID = i;
+    return n;
   }
-  n.__extends(C2SDefenceCompleteVO, e);
-  C2SDefenceCompleteVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_DEFENSE_COMPLETE;
+  n.__extends(C2SGetAllianceTowerBuffInfoVO, e);
+  C2SGetAllianceTowerBuffInfoVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_GET_ALLIANCE_TOWER_BUFF_INFO;
   };
-  return C2SDefenceCompleteVO;
+  return C2SGetAllianceTowerBuffInfoVO;
 }(o.BasicCommandVO);
-exports.C2SDefenceCompleteVO = r;
+exports.C2SGetAllianceTowerBuffInfoVO = r;

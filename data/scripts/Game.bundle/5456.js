@@ -4,66 +4,38 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./5.js");
 var a = require("./3.js");
-var s = require("./5457.js");
-var r = require("./83.js");
-var l = require("./476.js");
-var c = function (e) {
-  function MessageFriendRequestVO() {
+var s = require("./83.js");
+var r = require("./477.js");
+var l = function (e) {
+  function MessageFriendJoinTheGameVO() {
     var t = this;
-    t._otherPlayerID = 0;
-    t._isNewFriendship = false;
+    t.friendID = 0;
     CONSTRUCTOR_HACK;
     return t = e.call(this) || this;
   }
-  n.__extends(MessageFriendRequestVO, e);
-  MessageFriendRequestVO.prototype.parseMessageHeader = function (e) {
-    var t = e.split("+");
-    this._otherPlayerID = parseInt(t[0]);
-    this._otherPlayerName = t[1];
-    this._isNewFriendship = !!parseInt(t[2]);
-  };
-  MessageFriendRequestVO.prototype.parseSubject = function () {
-    if (this.messageType == o.MessageConst.MESSAGE_TYPE_FRIEND_INVITE) {
-      return a.Localize.text("dialog_friendRequest_message_header");
-    } else {
-      return a.Localize.text("dialog_friendAccepted_message_header");
-    }
-  };
-  MessageFriendRequestVO.prototype.parseSender = function () {
-    return this.senderName || this.otherPlayerName;
-  };
-  Object.defineProperty(MessageFriendRequestVO.prototype, "dialogInfo", {
+  n.__extends(MessageFriendJoinTheGameVO, e);
+  Object.defineProperty(MessageFriendJoinTheGameVO.prototype, "dialogInfo", {
     get: function () {
-      return new r.DialogInfoVO(u.CastleFriendRequestDialog, new s.CastleFriendRequestDialogProperties(this));
+      return new s.DialogInfoVO(null, null, c.IngameClientCommands.OPEN_INVITE_A_FRIEND_TUTORIAL_FINISHER, this);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.AMessageFriendInviteVO.prototype, "dialogInfo").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.AMessageFriendInviteVO.prototype, "dialogInfo").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MessageFriendRequestVO.prototype, "otherPlayerID", {
-    get: function () {
-      return this._otherPlayerID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MessageFriendRequestVO.prototype, "otherPlayerName", {
-    get: function () {
-      return this._otherPlayerName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MessageFriendRequestVO.prototype, "isNewFriendship", {
-    get: function () {
-      return this._isNewFriendship;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return MessageFriendRequestVO;
-}(l.AMessageFriendInviteVO);
-exports.MessageFriendRequestVO = c;
-var u = require("./5458.js");
+  MessageFriendJoinTheGameVO.prototype.parseSubject = function () {
+    return a.Localize.text("message_header_referFriend_inviter");
+  };
+  MessageFriendJoinTheGameVO.prototype.parseSender = function () {
+    return this.friendName;
+  };
+  MessageFriendJoinTheGameVO.prototype.parseMessageHeader = function (e) {
+    var t = e.split(o.MessageConst.SUBTYPE_META_DATA_SPLITTER);
+    this.friendID = parseInt(t[0]);
+    this.friendName = t[1];
+  };
+  return MessageFriendJoinTheGameVO;
+}(r.AMessageFriendInviteVO);
+exports.MessageFriendJoinTheGameVO = l;
+var c = require("./29.js");

@@ -18,5 +18,5 @@ var o = function (e) {
     configurable: true
   });
   return GeneralSkillLevel;
-}(require("./677.js").AGeneralSkillTreeNode);
+}(require("./679.js").AGeneralSkillTreeNode);
 exports.GeneralSkillLevel = o;

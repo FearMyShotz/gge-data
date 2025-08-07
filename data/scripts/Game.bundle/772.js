@@ -2,68 +2,78 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./51.js");
-var r = require("./166.js");
-var l = require("./184.js");
-var c = function (e) {
-  function UnitDealerEventVO() {
-    CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./6.js");
+var l = require("./16.js");
+var c = require("./4.js");
+var u = require("./336.js");
+var d = require("./633.js");
+var p = require("./859.js");
+var h = function (e) {
+  function CastlewallDefenceVO() {
+    var t = e.call(this) || this;
+    t._name = "Castlewall";
+    t._group = "Defence";
+    t._width = 1;
+    t._height = 1;
+    t._rotationType = u.IsoObjectRotationEnum._2FramesFor4Dir;
+    return t;
   }
-  n.__extends(UnitDealerEventVO, e);
-  UnitDealerEventVO.prototype.parseParamObject = function (e) {};
-  Object.defineProperty(UnitDealerEventVO.prototype, "eventBuildingWOD", {
+  n.__extends(CastlewallDefenceVO, e);
+  Object.defineProperty(CastlewallDefenceVO.prototype, "isAvailableByBuildOrder", {
     get: function () {
-      return UnitDealerEventVO.EVENT_BUILDING_WOD;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.BuyPackagesEventVO.prototype, "eventBuildingWOD").set.call(this, e);
+      var e = r.int(this.isoData ? this.isoData.objects.defences.currentWallLevel : c.CastleModel.areaData.activeIsoData.objects.defences.currentWallLevel);
+      return this.level == e + 1;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(UnitDealerEventVO.prototype, "eventBuildingNameId", {
+  Object.defineProperty(CastlewallDefenceVO.prototype, "isAvailableByLevelAndEffect", {
     get: function () {
-      if (this.eventId == a.EventConst.EVENTTYPE_UNITDEALER_ISLAND) {
-        return "dialog_eiland_toolShop_tooltip";
-      } else {
-        return "eventBuilding_UnitDealer";
-      }
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.BuyPackagesEventVO.prototype, "eventBuildingNameId").set.call(this, e);
+      return this.isAvailableByBuildOrder && Object.getOwnPropertyDescriptor(p.AShopVO.prototype, "isAvailableByLevelAndEffect").get.call(this);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(UnitDealerEventVO.prototype, "eventFullsizeCharacterName", {
+  Object.defineProperty(CastlewallDefenceVO.prototype, "isAvailableByLevel", {
     get: function () {
-      return s.ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_MARAUDER;
+      return Object.getOwnPropertyDescriptor(p.AShopVO.prototype, "isAvailableByLevel").get.call(this);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.BuyPackagesEventVO.prototype, "eventFullsizeCharacterName").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.ADefenceBuildingVO.prototype, "isAvailableByLevel").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  UnitDealerEventVO.prototype.openMerchantDialog = function (e, t) {
-    switch (this.eventId) {
-      case a.EventConst.EVENTTYPE_UNITDEALER_ISLAND:
-        this.executeOpenDialog(e, u.CastleEilandUnitDealerEventDialog, new r.CastleGenericMerchantDialogProperties(this, t));
-        break;
-      default:
-        this.executeOpenDialog(e, d.CastleUnitDealerEventDialog, new r.CastleGenericMerchantDialogProperties(this, t));
-    }
+  CastlewallDefenceVO.prototype.getNameString = function () {
+    return "castlewall_name";
   };
-  UnitDealerEventVO.__initialize_static_members = function () {
-    UnitDealerEventVO.EVENT_BUILDING_WOD = 290;
+  Object.defineProperty(CastlewallDefenceVO.prototype, "isInfoTooltipAvailable", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.ADefenceBuildingVO.prototype, "isInfoTooltipAvailable").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastlewallDefenceVO.prototype, "isRingmenuAvailable", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.ADefenceBuildingVO.prototype, "isRingmenuAvailable").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastlewallDefenceVO.prototype.createInfoDialogItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Defence, "dialog_defence_defenceBonusWall", new s.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [this.wallBonus]), l.ClientConstColor.FONT_DEFAULT_COLOR, true);
   };
-  return UnitDealerEventVO;
-}(l.BuyPackagesEventVO);
-exports.UnitDealerEventVO = c;
-var u = require("./2745.js");
-var d = require("./1485.js");
-o.classImplementsInterfaces(c, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
-c.__initialize_static_members();
+  return CastlewallDefenceVO;
+}(d.ADefenceBuildingVO);
+exports.CastlewallDefenceVO = h;
+a.classImplementsInterfaces(h, "IShopVO", "ICostVO", "IInventoryVO");

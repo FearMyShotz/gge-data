@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./304.js");
 var s = function (e) {
-  function CollectableItemAquamarineVE() {
+  function CollectableItemIronVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemAquamarineVE, e);
-  Object.defineProperty(CollectableItemAquamarineVE.prototype, "iconClass", {
+  n.__extends(CollectableItemIronVE, e);
+  Object.defineProperty(CollectableItemIronVE.prototype, "iconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Aquamarin_Centered;
+      return Library.CastleInterfaceElements.Icon_Iron_Big;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.ACollectableItemResourceVE.prototype, "iconClass").set.call(this, e);
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return CollectableItemAquamarineVE;
+  return CollectableItemIronVE;
 }(a.ACollectableItemResourceVE);
-exports.CollectableItemAquamarineVE = s;
+exports.CollectableItemIronVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList");

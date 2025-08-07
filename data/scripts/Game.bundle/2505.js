@@ -4,63 +4,91 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./13.js");
-var u = require("./4.js");
-var d = require("./40.js");
-var p = require("./95.js");
-var h = require("./47.js");
-var g = require("./59.js");
-var C = function (e) {
-  function SubscriptionDialogInfoPageLoyalty(t) {
-    var i = e.call(this, t) || this;
-    i.init();
+var s = require("./6.js");
+var r = require("./4.js");
+var l = require("./40.js");
+var c = require("./95.js");
+var u = require("./47.js");
+var d = require("./59.js");
+var p = require("./222.js");
+var h = function (e) {
+  function SubscriptionDialogInfoPageEffects(t) {
+    var i = this;
+    i._items = [];
+    CONSTRUCTOR_HACK;
+    (i = e.call(this, t) || this).init();
     return i;
   }
-  n.__extends(SubscriptionDialogInfoPageLoyalty, e);
-  SubscriptionDialogInfoPageLoyalty.prototype.init = function () {
-    this._scrollComponent = new p.SimpleScrollComponent(new h.SimpleScrollVO().initByParent(this.disp.mc_slider).addMouseWheelElements([this.disp]).addVisualElements([this.disp.mc_slider]), new g.DynamicSizeScrollStrategyVertical(true));
+  n.__extends(SubscriptionDialogInfoPageEffects, e);
+  SubscriptionDialogInfoPageEffects.prototype.init = function () {
+    this._scrollComponent = new c.SimpleScrollComponent(new u.SimpleScrollVO().initByParent(this.disp.mc_slider).addMouseWheelElements([this.disp]).addVisualElements([this.disp.mc_slider]), new d.DynamicSizeScrollStrategyVertical(true));
   };
-  SubscriptionDialogInfoPageLoyalty.prototype.onShow = function () {
+  SubscriptionDialogInfoPageEffects.prototype.onShow = function () {
     e.prototype.onShow.call(this);
     this._scrollComponent.show();
   };
-  SubscriptionDialogInfoPageLoyalty.prototype.onHide = function () {
+  SubscriptionDialogInfoPageEffects.prototype.onHide = function () {
     this._scrollComponent.hide();
     e.prototype.onHide.call(this);
   };
-  SubscriptionDialogInfoPageLoyalty.prototype.addEventListener = function () {
+  SubscriptionDialogInfoPageEffects.prototype.addEventListener = function () {
     e.prototype.addEventListener.call(this);
     this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
   };
-  SubscriptionDialogInfoPageLoyalty.prototype.removeEventListener = function () {
+  SubscriptionDialogInfoPageEffects.prototype.removeEventListener = function () {
     this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
     e.prototype.removeEventListener.call(this);
   };
-  SubscriptionDialogInfoPageLoyalty.prototype.fillContent = function () {
-    _.CastleComponent.textFieldManager.registerTextField(this.getItemMc().txt_text, new s.LocalizedTextVO("dialog_subscriptionHelp_loyaltyGift_text_1"));
-    _.CastleComponent.textFieldManager.registerTextField(this.getItemMc().txt_duration, new r.TextVO(c.TextHelper.toUpperCaseLocaSafe(a.Localize.text("runTime"))));
-    _.CastleComponent.textFieldManager.registerTextField(this.getItemMc().txt_c2, new r.TextVO(c.TextHelper.toUpperCaseLocaSafe(a.Localize.text("gold"))));
-    for (var e = 0; e < 6; e++) {
-      _.CastleComponent.textFieldManager.registerTextField(this.getItemMc()["txt_month" + e], new s.LocalizedTextVO("month" + (e == 5 ? "_plus" : ""), [e + 1]));
-      _.CastleComponent.textFieldManager.registerTextField(this.getItemMc()["txt_value" + e], new s.LocalizedTextVO("value_percentage_add", [u.CastleModel.subscriptionData.loyaltyBonusByMonth[e]]));
+  SubscriptionDialogInfoPageEffects.prototype.fillContent = function (e) {
+    var t = s.int(e.data);
+    g.CastleComponent.textFieldManager.registerTextField(this.disp.txt_title, new a.LocalizedTextVO(t == 1 ? "dialog_subscriptionHelp_subscribedOneMember_text_1" : "dialog_subscriptionHelp_subscribedMultiMembers_text_1", e.textReplacements));
+    if (this._items != null) {
+      for (var i = 0, n = this._items; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          o.destroy();
+        }
+      }
     }
-    var t = l.int(Math.max(0, this.getItemMc().height - SubscriptionDialogInfoPageLoyalty.ITEM_MASK_HEIGHT));
-    this._scrollComponent.init(0, t, 5, 5);
-    this._scrollComponent.setVisibility(t > 0);
+    this._items = [];
+    var l = this.getItemMc();
+    l.removeChildren();
+    var c = r.CastleModel.subscriptionData.getSubscriptionSeriesBuffs(p.SubscriptionPackageEnum.ALLIANCE, t);
+    var u = 0;
+    if (c != null) {
+      for (var d = 0, h = c; d < h.length; d++) {
+        var _ = h[d];
+        if (_ !== undefined) {
+          (o = new C.SubscriptionDialogOfferItem(l, _, C.SubscriptionDialogOfferItem.ASSET_CLIP_NAME_INFO_ITEM)).disp.y = u;
+          u += s.int(o.dispHeight);
+          this._items.push(o);
+        }
+      }
+    }
+    for (var m = 0, f = r.CastleModel.subscriptionData.getSubscriptionRewardsByTypeID(p.SubscriptionPackageEnum.ALLIANCE.serverId).list; m < f.length; m++) {
+      var O = f[m];
+      if (O !== undefined) {
+        (o = new C.SubscriptionDialogOfferItem(l, O, C.SubscriptionDialogOfferItem.ASSET_CLIP_NAME_INFO_ITEM)).disp.y = u;
+        u += o.dispHeight;
+        this._items.push(o);
+      }
+    }
+    var E = s.int(o ? o.dispHeight : 1);
+    var y = s.int(Math.max(0, u - SubscriptionDialogInfoPageEffects.ITEM_MASK_HEIGHT));
+    this._scrollComponent.init(0, y, E, E);
+    this._scrollComponent.setVisibility(y > 0);
     this._scrollComponent.scrollToValue(0);
   };
-  SubscriptionDialogInfoPageLoyalty.prototype.getItemMc = function () {
-    return this.disp.mc_info;
+  SubscriptionDialogInfoPageEffects.prototype.getItemMc = function () {
+    return this.disp.mc_items.mc_transform;
   };
-  SubscriptionDialogInfoPageLoyalty.prototype.onScroll = function () {
+  SubscriptionDialogInfoPageEffects.prototype.onScroll = function () {
     this.getItemMc().y = -this._scrollComponent.currentValue;
   };
-  SubscriptionDialogInfoPageLoyalty.ITEM_MASK_HEIGHT = 334;
-  return SubscriptionDialogInfoPageLoyalty;
-}(d.CastleItemRenderer);
-exports.SubscriptionDialogInfoPageLoyalty = C;
-var _ = require("./14.js");
-o.classImplementsInterfaces(C, "ICollectableRendererList");
+  SubscriptionDialogInfoPageEffects.ITEM_MASK_HEIGHT = 280;
+  return SubscriptionDialogInfoPageEffects;
+}(l.CastleItemRenderer);
+exports.SubscriptionDialogInfoPageEffects = h;
+o.classImplementsInterfaces(h, "ICollectableRendererList");
+var g = require("./14.js");
+var C = require("./1390.js");

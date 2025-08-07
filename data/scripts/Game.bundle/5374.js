@@ -2,92 +2,112 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1726.js");
-var s = require("./44.js");
-var r = require("./54.js");
-var l = require("./5375.js");
-var c = function (e) {
-  function CastleJudgementData(t) {
-    var i = e.call(this) || this;
-    i._judgementVOs = new Map();
-    var n = t.judgements;
-    if (g.JudgementConditionEnum.WOOD == undefined) {
-      g.JudgementConditionEnum.__initialize_static_members();
-    }
-    if (n != null) {
-      for (var o = 0, a = n; o < a.length; o++) {
-        var s = a[o];
-        if (s !== undefined) {
-          var r = new C.JudgementVO();
-          r.fillFromParamXML(s);
-          i._judgementVOs.set(r.id, r);
+var o = require("./6.js");
+var a = require("./123.js");
+var s = require("./370.js");
+var r = require("./15.js");
+var l = require("./72.js");
+var c = require("./5375.js");
+var u = function (e) {
+  function CastleEventPackageData() {
+    var t = this;
+    t._packagePrice = 0;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
+  }
+  n.__extends(CastleEventPackageData, e);
+  CastleEventPackageData.prototype.parseXml = function (e) {
+    this._filterRelations = new Map();
+    var t = e.packageCategoryFilterRelations;
+    if (t != null) {
+      for (var i = 0, n = t; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          var s = new c.EventPackageCategoryFilterRelationVO();
+          s.fillFromParamXML(o);
+          this._filterRelations.set(s.relationID, s);
         }
       }
     }
-    return i;
-  }
-  n.__extends(CastleJudgementData, e);
-  CastleJudgementData.prototype.reset = function () {
-    this._activeJudgement = null;
-  };
-  CastleJudgementData.prototype.destroy = function () {
-    this._activeJudgement = null;
-    if (this._judgementVOs != null) {
-      for (var t = 0, i = Array.from(this._judgementVOs.values()); t < i.length; t++) {
-        i[t].dispose();
+    this._packageVos = new Map();
+    var r = e.packages;
+    var l = [];
+    if (r != null) {
+      for (var u = 0, p = r; u < p.length; u++) {
+        var h;
+        var g = p[u];
+        if (g !== undefined) {
+          (h = new d.EventPackageVO()).fillFromParamXML(g);
+          this._packageVos.set(h.packageID, h);
+          if (h.packageType == a.ClientConstPackages.PACKAGE_TYPE_BUNDLE) {
+            l.push([h, g]);
+          }
+        }
       }
     }
-    this._judgementVOs = null;
-    e.prototype.destroy.call(this);
-  };
-  CastleJudgementData.prototype.getJudgementVObyID = function (e) {
-    return this._judgementVOs.get(e);
-  };
-  CastleJudgementData.prototype.parse_SJC = function (e) {
-    this.startNewJudgement(parseInt(e.JID));
-  };
-  CastleJudgementData.prototype.parse_JJC = function (e) {
-    p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleJudgementRewardDialog, new l.CastleJudgementRewardDialogProperties(this.activeJudgement.id, e.CO));
-    this.endActiveJudgement();
-  };
-  CastleJudgementData.prototype.startNewJudgement = function (e) {
-    if (this.activeJudgement) {
-      this.endActiveJudgement();
-    }
-    this._activeJudgement = this._judgementVOs.get(e);
-    if (this._activeJudgement) {
-      if (d.Iso && d.Iso.data && d.Iso.controller && d.Iso.controller.dataUpdater) {
-        d.Iso.controller.dataUpdater.initObjects(u.IsoObjectGroupEnum.JUDGEMENTS);
+    if (l != null) {
+      for (var C = 0, _ = l; C < _.length; C++) {
+        var m = _[C];
+        if (m !== undefined) {
+          m[0].parseRewards(m[1]);
+        }
       }
-      this.dispatchEvent(new a.CastleJudgementDataEvent(a.CastleJudgementDataEvent.NEW_JUDGEMENT_STARTED));
     }
   };
-  CastleJudgementData.prototype.endActiveJudgement = function () {
-    this._activeJudgement = null;
-    if (d.Iso.data) {
-      d.Iso.controller.dataUpdater.initObjects(u.IsoObjectGroupEnum.JUDGEMENTS);
+  CastleEventPackageData.prototype.getEventPackageByID = function (e) {
+    if (this._packageVos.get(e)) {
+      return this._packageVos.get(e);
+    } else {
+      return null;
     }
-    this.dispatchEvent(new a.CastleJudgementDataEvent(a.CastleJudgementDataEvent.JUDGEMENT_ENDED));
   };
-  Object.defineProperty(CastleJudgementData.prototype, "activeJudgement", {
+  CastleEventPackageData.prototype.getPackagePrice = function (e) {
+    this._packagePrice = o.int(e.PKPC);
+    this.dispatchEvent(new s.CastlePackageEvent(s.CastlePackageEvent.PACKAGEPRICE_GOT));
+  };
+  Object.defineProperty(CastleEventPackageData.prototype, "packagePrice", {
     get: function () {
-      if (s.SpecialServerHelper.isCrossplay()) {
-        return null;
-      } else {
-        return this._activeJudgement;
-      }
+      return this._packagePrice;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleJudgementData;
-}(r.CastleBasicData);
-exports.CastleJudgementData = c;
-var u = require("./143.js");
-var d = require("./33.js");
-var p = require("./9.js");
-var h = require("./5376.js");
-var g = require("./1076.js");
-var C = require("./5377.js");
-o.classImplementsInterfaces(c, "IUpdatable");
+  CastleEventPackageData.prototype.parseGBC = function (e) {
+    if (this._packageVos != null) {
+      for (var t = 0, i = Array.from(this._packageVos.values()); t < i.length; t++) {
+        a = i[t];
+        if (a !== undefined) {
+          a.boughtCount = 0;
+        }
+      }
+    }
+    if (e != null) {
+      for (var n = 0, o = e; n < o.length; n++) {
+        var a;
+        var s = a = o[n];
+        if (s !== undefined) {
+          this.parseBoughtCount(s);
+        }
+      }
+    }
+  };
+  CastleEventPackageData.prototype.parseBoughtCount = function (e) {
+    var t = o.int(e.PID);
+    var i = this._packageVos.get(t);
+    if (i && i.isStockLimited) {
+      var n = o.int(e.AMT);
+      i.boughtCount = n;
+      r.CastleBasicController.getInstance().dispatchEvent(new s.CastlePackageEvent(s.CastlePackageEvent.PACKAGEINFO_UPDATED));
+    }
+  };
+  CastleEventPackageData.prototype.getFilterRelationByID = function (e) {
+    if (this._filterRelations.get(e)) {
+      return this._filterRelations.get(e);
+    } else {
+      return null;
+    }
+  };
+  return CastleEventPackageData;
+}(l.CastleEventDispatcher);
+exports.CastleEventPackageData = u;
+var d = require("./905.js");

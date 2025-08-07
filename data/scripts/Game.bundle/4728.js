@@ -5,36 +5,30 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./102.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = createjs.Event;
-var d = function (e) {
-  function SAECommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function RCACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SAECommand, e);
-  Object.defineProperty(SAECommand.prototype, "cmdId", {
+  n.__extends(RCACommand, e);
+  Object.defineProperty(RCACommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SET_ALLIANCE_EMBLEM;
+      return s.ClientConstSF.S2C_ROYAL_CAPITAL_ALLIANCE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  SAECommand.prototype.executeCommand = function (e, t) {
+  RCACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        l.CastleModel.allianceData.dispatchEvent(new u(r.CastleAllianceDataEvent.ALLIANCE_CREST_SAVED_OK, false, false));
-        break;
-      default:
-        this.showErrorDialog(e, t);
+        JSON.parse(t[1]);
     }
     return false;
   };
-  return SAECommand;
-}(c.CastleCommand);
-exports.SAECommand = d;
-o.classImplementsInterfaces(d, "IExecCommand");
+  return RCACommand;
+}(r.CastleCommand);
+exports.RCACommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

@@ -3,67 +3,67 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./1258.js");
-var l = require("./8.js");
-var c = require("./413.js");
-var u = require("./36.js");
-var d = function (e) {
-  function DynamicSliderAccordionComponent(t, i = null, n = null, o = true) {
-    return e.call(this, t, i, n ? n.y : t.mc_mask.y, o) || this;
+var a = require("./3.js");
+var s = require("./13.js");
+var r = require("./8.js");
+var l = function (e) {
+  function ModernYesNoDialog(t = null) {
+    return e.call(this, t || ModernYesNoDialog.NAME) || this;
   }
-  n.__extends(DynamicSliderAccordionComponent, e);
-  DynamicSliderAccordionComponent.prototype.init = function () {
-    l.ButtonHelper.initButton(this._disp.mc_slider.btn_minus, 1, u.ClickFeedbackButton);
-    l.ButtonHelper.initButton(this._disp.mc_slider.btn_slider, 1, c.ClickFeedBackSliderButton);
-    l.ButtonHelper.initButton(this._disp.mc_slider.btn_plus, 1, u.ClickFeedbackButton);
-    this._sliderButton = this._disp.mc_slider.btn_slider.basicButton;
-    e.prototype.init.call(this);
-    if (a.instanceOfClass(this.scrollComponent.strategy, "DynamicSizeScrollStrategyVertical")) {
-      this.scrollComponent.strategy.visibleValue = this._itemContainer.mask.height;
+  n.__extends(ModernYesNoDialog, e);
+  ModernYesNoDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this);
+    r.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_no, this.dialogDisp.btn_yes], u.ClickFeedbackButton);
+    this.itxt_title = this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO(""));
+    this.itxt_title.autoFitToBounds = true;
+    var i = new a.HTMLTextCustomVO();
+    i.addLocalizedTextVO(new a.LocalizedTextVO(this.standardDialogProperties.copy));
+    this.itxt_copy = this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, i);
+    this.itxt_copy.autoFitToBounds = true;
+    this.dialogDisp.btn_yes.label = this.standardDialogProperties.buttonLabel_yes;
+    this.dialogDisp.btn_no.label = this.standardDialogProperties.buttonLabel_no;
+    this.itxt_title.textContentVO.textId = s.TextHelper.toUpperCaseLocaSafeTextId(this.standardDialogProperties.title);
+  };
+  ModernYesNoDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_yes:
+        this.hide();
+        if (this.standardDialogProperties.functionYes != null) {
+          this.standardDialogProperties.functionYes(this.getCallbackParams());
+        }
+        break;
+      case this.dialogDisp.btn_close:
+        this.hide();
+        if (this.standardDialogProperties.functionClose != null) {
+          this.standardDialogProperties.functionClose(null);
+        }
+        break;
+      case this.dialogDisp.btn_no:
+        this.hide();
+        if (this.standardDialogProperties.functionNo != null) {
+          this.standardDialogProperties.functionNo(null);
+        }
     }
   };
-  DynamicSliderAccordionComponent.prototype.show = function () {
-    e.prototype.show.call(this);
-    this._disp.visible = true;
-  };
-  DynamicSliderAccordionComponent.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    this._disp.visible = false;
-    this.clear();
-  };
-  DynamicSliderAccordionComponent.prototype.updateSlider = function (e = false) {
-    var t = 0;
-    var i = 0;
-    if (this._properties.isVertical) {
-      i = this.applyLayout().height;
-      t = s.int(Math.max(0, i - this._itemContainer.mask.height));
+  ModernYesNoDialog.prototype.getCallbackParams = function () {
+    if (c.instanceOfClass(this.properties, "CastleStandardYesNoDialogProperties")) {
+      return this.properties.params;
     } else {
-      i = this.applyLayout().width;
-      t = s.int(Math.max(0, i - this._itemContainer.mask.width));
+      return null;
     }
-    var n = s.int(e ? 0 : this.scrollComponent.currentValue);
-    this.scrollComponent.init(0, t, this._properties.scrollStepPixels, this._properties.scrollStepPixels);
-    this.scrollComponent.scrollToValue(Math.min(n, t));
-    this.disp.mc_slider.visible = t > 0;
-    this.scrollComponent.setVisibility(t > 0);
   };
-  Object.defineProperty(DynamicSliderAccordionComponent.prototype, "sliderButton", {
+  Object.defineProperty(ModernYesNoDialog.prototype, "standardDialogProperties", {
     get: function () {
-      return this._sliderButton;
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DynamicSliderAccordionComponent.prototype, "numItems", {
-    get: function () {
-      return this.items.length;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return DynamicSliderAccordionComponent;
-}(r.AccordionComponent);
-exports.DynamicSliderAccordionComponent = d;
-o.classImplementsInterfaces(d, "ICollectableRendererList");
+  ModernYesNoDialog.NAME = "ModernYesNo";
+  return ModernYesNoDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.ModernYesNoDialog = l;
+o.classImplementsInterfaces(l, "ICollectableRendererList");
+var c = require("./1.js");
+var u = require("./36.js");

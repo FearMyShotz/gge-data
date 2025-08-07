@@ -4,119 +4,199 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./23.js");
-var u = require("./23.js");
-var d = require("./13.js");
-var p = require("./277.js");
-var h = require("./14.js");
-var g = require("./47.js");
-var C = require("./59.js");
-var _ = require("./42.js");
-var m = require("./8.js");
-var f = require("./41.js");
-var O = require("./413.js");
-var E = createjs.Rectangle;
-var y = function (e) {
-  function QuestMapComponent(t) {
-    var i = this;
-    i._startY = 0;
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./3.js");
+var c = require("./3.js");
+var u = require("./13.js");
+var d = require("./4.js");
+var p = require("./27.js");
+var h = require("./157.js");
+var g = require("./42.js");
+var C = require("./8.js");
+var _ = function (e) {
+  function QuestListItem(t, i, n, a = false) {
+    var r = this;
+    r.selected = false;
     CONSTRUCTOR_HACK;
-    (i = e.call(this) || this)._disp = t;
-    i._startY = t.mc_mask.y;
-    i._itemContainer = t.mc_ItemContainer;
-    f.CastleMovieClipHelper.applyMaskFromMovieClip(i._itemContainer, t.mc_mask);
-    m.ButtonHelper.initButton(i._disp.mc_slider.btn_minus, 1, I.ClickFeedbackButton);
-    m.ButtonHelper.initButton(i._disp.mc_slider.btn_slider, 1, O.ClickFeedBackSliderButton);
-    m.ButtonHelper.initButton(i._disp.mc_slider.btn_plus, 1, I.ClickFeedbackButton);
-    i._sliderButton = i._disp.mc_slider.btn_slider.basicButton;
-    var n = new C.DynamicSizeScrollStrategyVertical(true);
-    i.layoutStrategy = new p.SimpleLayoutStrategyVertical();
-    i.scrollComponent = new b.SimpleScrollComponent(new g.SimpleScrollVO().initByParent(i._disp.mc_slider).addMouseWheelElements([i._disp]), n);
-    i.scrollComponent.strategy.visibleValue = i._itemContainer.mask.height;
-    i.mapTilePool = [];
-    h.CastleComponent.textFieldManager.registerTextField(i._disp.txt_title, new r.TextVO(d.TextHelper.toUpperCaseLocaSafe(s.Localize.text("dialog_questbook_taskInfo")))).verticalAlign = _.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
-    i.hide();
-    return i;
+    (r = e.call(this, new (s.getDefinitionByName("QuestListItemMC" + (a ? "_Recommended" : "")))(), n) || this)._questVO = t;
+    r.questSelectCallBack = i;
+    C.ButtonHelper.initBasicButton(r._headerMC, a ? 1.015 : 1.02);
+    r._headerMC.mouseChildren = true;
+    r.itxt_regular = m.CastleComponent.textFieldManager.registerTextField(r._headerMC.txt_regular, new c.TextVO(t.getQuestName()), new o.InternalGGSTextFieldConfigVO(true));
+    r.itxt_regular.verticalAlign = g.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    r.itxt_regular.autoFitToBounds = true;
+    r.itxt_regular.mouseEnabled = false;
+    r.itxt_bold = m.CastleComponent.textFieldManager.registerTextField(r._headerMC.txt_bold, new c.TextVO(t.getQuestName()), new o.InternalGGSTextFieldConfigVO(true));
+    r.itxt_bold.verticalAlign = g.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    r.itxt_bold.autoFitToBounds = true;
+    r.itxt_bold.visible = false;
+    r.itxt_bold.mouseEnabled = false;
+    if (a) {
+      m.CastleComponent.textFieldManager.registerTextField(r._headerMC.mc_recommended.txt_recommended, new c.TextVO(u.TextHelper.toUpperCaseLocaSafe(l.Localize.text("recommended_quest"))), new o.InternalGGSTextFieldConfigVO(true));
+      r._headerMC.mc_recommended.mouseChildren = false;
+      r._headerMC.mc_recommended.actLikeButton = true;
+    }
+    r._headerMC.bg.gotoAndStop(1);
+    r._headerMC.bg.actLikeButton = true;
+    r._headerMC.bg.mouseChildren = false;
+    r.updateStateIcon();
+    r.setQuestItemIcon();
+    r._headerMC.doCache(0, 2);
+    return r;
   }
-  n.__extends(QuestMapComponent, e);
-  QuestMapComponent.prototype.show = function (e) {
-    var t;
-    var i = 0;
-    var n = 0;
-    o.MovieClipHelper.clearMovieClip(this._itemContainer);
-    this.mapTiles = [];
-    while (n < e.length) {
-      if (this.mapTilePool.length <= i) {
-        this.mapTilePool.push(new D.QuestMapTile());
+  n.__extends(QuestListItem, e);
+  QuestListItem.prototype.updateStateIcon = function () {
+    var e = 0;
+    if (this._questVO.isLocked) {
+      e = QuestListItem.QUEST_STATE_LOCKED;
+      this._headerMC.stateIcon.toolTipText = "dialog_questbook_questStatusFuture";
+    } else if (this._questVO.isFailed) {
+      e = QuestListItem.QUEST_STATE_FAILED;
+      this._headerMC.stateIcon.toolTipText = "dialog_questbook_questStatusFailed";
+    } else if (this._questVO.isCompleted) {
+      e = QuestListItem.QUEST_STATE_COMPLETED;
+      this._headerMC.stateIcon.toolTipText = "dialog_questbook_questStatusFinished";
+    } else if (this._questVO.isInProgress()) {
+      e = QuestListItem.QUEST_STATE_PROGRESS;
+      if (this._questVO.isCampaignQuest || this._questVO.isEpicQuest) {
+        this._headerMC.stateIcon.toolTipText = "dialog_questbook_questStatusActive";
+      } else {
+        this._headerMC.stateIcon.toolTipText = "dialog_questbook_questStatusInProgress";
       }
-      t = this.mapTilePool[i];
-      this._itemContainer.addChild(t.disp);
-      this.mapTiles.push(t);
-      t.show(e, n);
-      i++;
-      n = l.int(i * QuestMapComponent.QUESTS_PER_TILE);
+    } else {
+      e = QuestListItem.QUEST_STATE_NEW;
+      this._headerMC.stateIcon.toolTipText = "";
     }
-    this.updateSlider();
-    this.scrollComponent.show();
-    this.scrollComponent.onScrollSignal.add(this.bindFunction(this.onScrollValueChange));
-    this._disp.visible = true;
+    if (e) {
+      this._headerMC.stateIcon.gotoAndStop(e);
+    }
+    this._headerMC.stateIcon.actLikeButton = true;
   };
-  QuestMapComponent.prototype.onScrollValueChange = function () {
-    u.TweenMax.killTweensOf(this._itemContainer);
-    u.TweenMax.to(this._itemContainer, QuestMapComponent.SCOLL_DURATION, {
-      y: this._startY - this.scrollComponent.currentValue,
-      ease: c.Power1.easeOut
-    });
-  };
-  QuestMapComponent.prototype.hide = function () {
-    if (this.mapTilePool != null) {
-      for (var e = 0, t = this.mapTilePool; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.hide();
-        }
+  QuestListItem.prototype.setQuestItemIcon = function () {
+    if (this._questVO.isCampaignQuest) {
+      this._headerMC.mc_icon.gotoAndStop(6);
+      this._headerMC.mc_icon.toolTipText = null;
+    } else if (this._questVO.isEpicQuest) {
+      this._headerMC.mc_icon.gotoAndStop(7);
+      this._headerMC.mc_icon.toolTipText = null;
+    } else if (this._questVO.eventID > 0) {
+      this._headerMC.mc_icon.gotoAndStop(2);
+      switch (this._questVO.eventID) {
+        case r.EventConst.EVENTTYPE_CRUSADE_THORNKING:
+          this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_thornKing";
+          this._headerMC.mc_icon.icon_event.gotoAndStop(2);
+          break;
+        case r.EventConst.EVENTTYPE_CRUSADE_SEAQUEEN:
+          this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_bladeCoast";
+          this._headerMC.mc_icon.icon_event.gotoAndStop(4);
+          break;
+        case r.EventConst.EVENTTYPE_CRUSADE_UNDERWORLD:
+          this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_underworld";
+          this._headerMC.mc_icon.icon_event.gotoAndStop(6);
+          break;
+        case r.EventConst.EVENTTYPE_FACTION:
+          this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_Berimond";
+          this._headerMC.mc_icon.icon_event.gotoAndStop(3);
+          break;
+        case r.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE:
+          this._headerMC.mc_icon.icon_event.gotoAndStop(5);
+          this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_nomadInvasion";
+          break;
+        case r.EventConst.EVENTTYPE_SAMURAI_INVASION:
+          this._headerMC.mc_icon.icon_event.gotoAndStop(7);
+          this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_samuraiInvasion";
+          break;
+        case r.EventConst.EVENTTYPE_FACTION_INVASION:
+          this._headerMC.mc_icon.icon_event.gotoAndStop(8);
+          this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_factionInvasion";
+          break;
+        case r.EventConst.EVENTTYPE_EVENT_TEMPORARY_QUESTS:
+          this._headerMC.mc_icon.gotoAndStop(5);
+          this._headerMC.mc_icon.toolTipText = {
+            t: "dialog_questbook_countdownIcon_tooltip",
+            p: [p.CastleTimeStringHelper.getEventTimeString(this._questVO.duration)]
+          };
+          break;
+        case r.EventConst.EVENTTYPE_LONGTERM_POINT_EVENT:
+          this._headerMC.mc_icon.icon_event.gotoAndStop(9);
+          this._headerMC.mc_icon.toolTipText = null;
+          break;
+        case r.EventConst.EVENTTYPE_TEMPSERVER:
+          this._headerMC.mc_icon.icon_event.gotoAndStop(10);
+          this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_tempServer";
+          break;
+        case r.EventConst.EVENTTYPE_RED_ALIEN_INVASION_ALLIANCE:
+          this._headerMC.mc_icon.icon_event.gotoAndStop(11);
+          this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_redAlienInvasion";
+          break;
+        case r.EventConst.EVENTTYPE_ALIEN_INVASION_ALLIANCE:
+          this._headerMC.mc_icon.icon_event.gotoAndStop(12);
+          this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_alienInvasion";
       }
+    } else if (this._questVO.mapID > 0) {
+      this._headerMC.mc_icon.gotoAndStop(2);
+    } else if (this._questVO.isGettingXpFromThisQuest) {
+      this._headerMC.mc_icon.gotoAndStop(d.CastleModel.userData.isLegend ? 4 : 1);
+      this._headerMC.mc_icon.toolTipText = d.CastleModel.userData.isLegend ? "dialog_questReward_tooltip_XP_legend" : "dialog_questReward_tooltip_XP";
+    } else if (this._questVO.isC2RewardQuest) {
+      this._headerMC.mc_icon.gotoAndStop(3);
+      this._headerMC.mc_icon.toolTipText = "dialog_questReward_tooltip_Ruby";
+    } else {
+      this._headerMC.mc_icon.gotoAndStop(8);
     }
-    this.scrollComponent.hide();
-    this.scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScrollValueChange));
-    o.MovieClipHelper.clearMovieClip(this._itemContainer);
-    this.mapTiles = [];
-    this._disp.visible = false;
+    this._headerMC.mc_icon.mouseChildren = false;
+    this._headerMC.mc_icon.actLikeButton = true;
   };
-  QuestMapComponent.prototype.updateSlider = function (e = false) {
-    var t;
-    var i;
-    var n;
-    i = this.applyLayout().height;
-    t = l.int(Math.max(0, i - this._itemContainer.mask.height));
-    n = this._itemContainer.mask.height / i;
-    this._sliderButton.setSize(this.scrollComponent.scrollVO.sliderLine.height * n);
-    var o = l.int(e ? 0 : this.scrollComponent.currentValue);
-    this.scrollComponent.init(0, t, QuestMapComponent.SCROLL_STEP_PIXELS, QuestMapComponent.SCROLL_STEP_PIXELS);
-    this.scrollComponent.scrollToValue(Math.min(o, t));
-    this._disp.mc_slider.visible = t > 0;
-    this.scrollComponent.setVisibility(t > 0);
+  Object.defineProperty(QuestListItem.prototype, "questVO", {
+    get: function () {
+      return this._questVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  QuestListItem.prototype.onClick = function (e) {
+    this.select(!this.selected, true);
   };
-  QuestMapComponent.prototype.scrollToTop = function () {
-    this.updateSlider(true);
-    this._itemContainer.y = this._startY;
+  QuestListItem.prototype.select = function (e, t) {
+    this.selected = e;
+    this._headerMC.bg.gotoAndStop(this.selected ? 2 : 1);
+    if (this.itxt_regular.model) {
+      this.itxt_regular.visible = !this.selected;
+    }
+    if (this.itxt_bold && this.itxt_bold.model) {
+      this.itxt_bold.visible = this.selected;
+    }
+    if (t) {
+      this.questSelectCallBack(this, this.selected);
+    }
+    this._headerMC.doCache(0, 1.5);
   };
-  QuestMapComponent.prototype.applyLayout = function () {
-    return this.layoutStrategy.apply(this.mapTiles, new E());
+  QuestListItem.prototype.destroy = function () {
+    e.prototype.destroy.call(this);
+    this._headerMC.removeAllEventListeners();
   };
-  QuestMapComponent.__initialize_static_members = function () {
-    QuestMapComponent.QUESTS_PER_TILE = 4;
-    QuestMapComponent.SCROLL_STEP_PIXELS = 109;
-    QuestMapComponent.SCOLL_DURATION = 0.2;
-  };
-  return QuestMapComponent;
-}(h.CastleComponent);
-exports.QuestMapComponent = y;
-var b = require("./95.js");
-var D = require("./3353.js");
-var I = require("./36.js");
-a.classImplementsInterfaces(y, "ICollectableRendererList");
-y.__initialize_static_members();
+  Object.defineProperty(QuestListItem.prototype, "campaignEventVO", {
+    get: function () {
+      return d.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_TIMELIMITED_CAMPAIGN_EVENT);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(QuestListItem.prototype, "height", {
+    get: function () {
+      return this._headerMC.y + this._headerMC.bg.height + (this._headerMC.mc_recommended ? this._headerMC.mc_recommended.height : 0);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  QuestListItem.QUEST_STATE_NEW = 4;
+  QuestListItem.QUEST_STATE_COMPLETED = 1;
+  QuestListItem.QUEST_STATE_FAILED = 3;
+  QuestListItem.QUEST_STATE_PROGRESS = 2;
+  QuestListItem.QUEST_STATE_LOCKED = 5;
+  return QuestListItem;
+}(h.ACollapsibleItem);
+exports.QuestListItem = _;
+var m = require("./14.js");
+a.classImplementsInterfaces(_, "ICollectableRendererList", "ICollapsibleItem", "ILayoutable");

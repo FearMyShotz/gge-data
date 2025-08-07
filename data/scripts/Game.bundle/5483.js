@@ -3,38 +3,42 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./4.js");
-var s = function (e) {
-  function CastleAlchemistRetirementDialogProperties(t, i) {
-    var n = this;
-    n._rewardID = 0;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this) || this)._ingredients = t;
-    n._rewardID = i;
-    return n;
+var a = require("./1.js");
+var s = require("./5.js");
+var r = function (e) {
+  function CastleResetMonumentDialogProperties() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleAlchemistRetirementDialogProperties, e);
-  Object.defineProperty(CastleAlchemistRetirementDialogProperties.prototype, "rewardID", {
+  n.__extends(CastleResetMonumentDialogProperties, e);
+  Object.defineProperty(CastleResetMonumentDialogProperties.prototype, "areaType", {
     get: function () {
-      return this._rewardID;
+      return s.WorldConst.AREA_TYPE_MONUMENT;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAlchemistRetirementDialogProperties.prototype, "ingredients", {
+  Object.defineProperty(CastleResetMonumentDialogProperties.prototype, "titleTextID", {
     get: function () {
-      return this._ingredients;
+      return "dialog_monument_resetMessage_title";
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAlchemistRetirementDialogProperties.prototype, "rewards", {
+  Object.defineProperty(CastleResetMonumentDialogProperties.prototype, "copyTextID", {
     get: function () {
-      return a.CastleModel.rewardData.getListById(this.rewardID);
+      return "dialog_monument_resetMessage_copy";
     },
     enumerable: true,
     configurable: true
   });
-  return CastleAlchemistRetirementDialogProperties;
+  Object.defineProperty(CastleResetMonumentDialogProperties.prototype, "helpTextID", {
+    get: function () {
+      return "help_monument_resetMessage";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleResetMonumentDialogProperties;
 }(o.BasicProperties);
-exports.CastleAlchemistRetirementDialogProperties = s;
+exports.CastleResetMonumentDialogProperties = r;
+a.classImplementsInterfaces(r, "ICastleResetLandmarkDialogProperties");

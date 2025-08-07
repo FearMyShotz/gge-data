@@ -82,7 +82,7 @@ var p = function (e) {
     CastleStandardOkDialog.NAME = o.CommonDialogNames.StandardOkDialog_NAME;
   };
   return CastleStandardOkDialog;
-}(require("./229.js").CastleDialog);
+}(require("./230.js").CastleDialog);
 exports.CastleStandardOkDialog = p;
 r.classImplementsInterfaces(p, "ICollectableRendererList");
 p.__initialize_static_members();

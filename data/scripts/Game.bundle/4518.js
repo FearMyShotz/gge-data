@@ -2,57 +2,48 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./51.js");
-var s = require("./166.js");
-var r = require("./184.js");
-var l = function (e) {
-  function SamuraiHunterEventVO() {
-    var t = this;
-    CONSTRUCTOR_HACK;
-    (t = e.call(this) || this).eventOverviewConfig.showRemainingEventDuration = true;
-    return t;
+var o = function (e) {
+  function CastleLuckyWheelSalesDayMediator(t, i) {
+    return e.call(this, t, i) || this;
   }
-  n.__extends(SamuraiHunterEventVO, e);
-  Object.defineProperty(SamuraiHunterEventVO.prototype, "eventBuildingWOD", {
-    get: function () {
-      return SamuraiHunterEventVO.EVENT_BUILDING_WOD;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "eventBuildingWOD").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SamuraiHunterEventVO.prototype, "eventBuildingNameId", {
-    get: function () {
-      return "eventBuilding_samuraiToolVendor";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "eventBuildingNameId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SamuraiHunterEventVO.prototype.openMerchantDialog = function (e, t) {
-    this.executeOpenDialog(e, c.CastleSamuraiHunterEventDialog, new s.CastleGenericMerchantDialogProperties(this, t));
+  n.__extends(CastleLuckyWheelSalesDayMediator, e);
+  CastleLuckyWheelSalesDayMediator.prototype.stopWheel = function () {
+    if (this.luckyWheelData.winningCategory != -1) {
+      this.destroyTimer();
+      var e = NaN;
+      var t = NaN;
+      if (this.luckyWheelData.winningCategory == 0) {
+        t = 45;
+        e = 22.5;
+      } else {
+        t = 78.75;
+        e = -22.5 - (this.luckyWheelData.winningCategory - 1) * t;
+      }
+      e -= Math.random() * (t - 15) + 7.5;
+      e += 360;
+      this._spinningWheel.accelerateWheel(0, e);
+      if (this._spinningWheel.currentSpeedInDegrees > 0) {
+        this.startBreakingCallback();
+      }
+    } else {
+      this.onServerFailed();
+    }
   };
-  Object.defineProperty(SamuraiHunterEventVO.prototype, "eventFullsizeCharacterName", {
-    get: function () {
-      return a.ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SAMURAI_HUNTER;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "eventFullsizeCharacterName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SamuraiHunterEventVO.__initialize_static_members = function () {
-    SamuraiHunterEventVO.EVENT_BUILDING_WOD = 636;
+  CastleLuckyWheelSalesDayMediator.prototype.showTooltips = function (e) {
+    if (e) {
+      this.componentDisp.component_wheel.icon_jackpot.toolTipText = "dialog_luckyWheel_jackpot";
+      this.componentDisp.component_wheel.icon_units.toolTipText = "dialog_luckyWheel_saleDays_units";
+      this.componentDisp.component_wheel.icon_relicEquipment.toolTipText = "dialog_luckyWheel_saleDays_relicEquipment";
+      this.componentDisp.component_wheel.icon_boosterTools.toolTipText = "dialog_luckyWheel_saleDays_boosterTools";
+      this.componentDisp.component_wheel.icon_tickets.toolTipText = "dialog_luckyWheel_saleDays_tickets_saleDays";
+    } else {
+      this.componentDisp.component_wheel.icon_jackpot.toolTipText = null;
+      this.componentDisp.component_wheel.icon_units.toolTipText = null;
+      this.componentDisp.component_wheel.icon_relicEquipment.toolTipText = null;
+      this.componentDisp.component_wheel.icon_boosterTools.toolTipText = null;
+      this.componentDisp.component_wheel.icon_tickets.toolTipText = null;
+    }
   };
-  return SamuraiHunterEventVO;
-}(r.BuyPackagesEventVO);
-exports.SamuraiHunterEventVO = l;
-var c = require("./4519.js");
-o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
-l.__initialize_static_members();
+  return CastleLuckyWheelSalesDayMediator;
+}(require("./1914.js").CastleLuckyWheelMediator);
+exports.CastleLuckyWheelSalesDayMediator = o;

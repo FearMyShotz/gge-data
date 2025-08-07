@@ -1,113 +1,49 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./33.js");
-var o = function () {
-  function IsoGeneratorDefence(e) {
-    this._subGenerators = new Map();
-    this._numberOfOwningTowers = 0;
-    this._isoData = e;
-    this._subGenerators = new Map();
-    for (var t = 0, i = s.CastleEnum.getEnumListByClass(a.IsoGeneratorDefenceEnum); t < i.length; t++) {
-      var n = i[t];
-      if (r.instanceOfClass(n, "IsoGeneratorDefenceEnum")) {
-        var o = n;
-        var l = new o.clazz();
-        l.init(this);
-        this.subGenerators.set(o.clazz, l);
-      }
-    }
-  }
-  IsoGeneratorDefence.prototype.generate = function () {
-    this._result = new c.IsoDefencePositions();
-    this._grounds = this.isoData.objects.groundObjects.list;
-    this._grid = this.isoData.grid;
-    this._numberOfOwningTowers = l.int(this.isoData.objects.defences.towers.length);
-    if (this.grounds && this.grounds.length > 0) {
-      this._grounds = this.grounds.sort(this.bindFunction(this.sortGroundFunc));
-      for (var e = 0, t = s.CastleEnum.getEnumListByClass(a.IsoGeneratorDefenceEnum); e < t.length; e++) {
-        var i = t[e];
-        if (r.instanceOfClass(i, "IsoGeneratorDefenceEnum")) {
-          var n = i;
-          this.subGenerators.get(n.clazz).execute();
-        }
-      }
-    }
-    this.cleanup();
-    return this.result;
+var n = function () {
+  function IsoDefencePositionsMoat() {}
+  IsoDefencePositionsMoat.prototype.reset = function () {
+    this._walls = this.createNewList();
+    this._outerCorners = this.createNewList();
+    this._innerCorners = this.createNewList();
+    this._gate = new o.IsoDefencePosition();
   };
-  IsoGeneratorDefence.prototype.cleanup = function () {
-    for (var e = 0, t = s.CastleEnum.getEnumListByClass(a.IsoGeneratorDefenceEnum); e < t.length; e++) {
-      var i = t[e];
-      if (r.instanceOfClass(i, "IsoGeneratorDefenceEnum")) {
-        var n = i;
-        this.subGenerators.get(n.clazz).cleanup();
-      }
-    }
-    this._grid = null;
-    this._grounds = null;
-    this._numberOfOwningTowers = 0;
+  IsoDefencePositionsMoat.prototype.createNewList = function () {
+    return [];
   };
-  IsoGeneratorDefence.prototype.sortGroundFunc = function (e, t) {
-    if (e.x2 > t.x2) {
-      return 1;
-    } else if (e.x2 < t.x2) {
-      return -1;
-    } else if (e.y2 > t.y2) {
-      return 1;
-    } else if (e.y2 < t.y2) {
-      return -1;
-    } else {
-      return 0;
-    }
-  };
-  Object.defineProperty(IsoGeneratorDefence.prototype, "grid", {
+  Object.defineProperty(IsoDefencePositionsMoat.prototype, "gate", {
     get: function () {
-      return this._grid;
+      return this._gate;
+    },
+    set: function (e) {
+      this._gate = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoGeneratorDefence.prototype, "grounds", {
+  Object.defineProperty(IsoDefencePositionsMoat.prototype, "innerCorners", {
     get: function () {
-      return this._grounds;
+      return this._innerCorners;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoGeneratorDefence.prototype, "result", {
+  Object.defineProperty(IsoDefencePositionsMoat.prototype, "outerCorners", {
     get: function () {
-      return this._result;
+      return this._outerCorners;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoGeneratorDefence.prototype, "numberOfOwningTowers", {
+  Object.defineProperty(IsoDefencePositionsMoat.prototype, "walls", {
     get: function () {
-      return this._numberOfOwningTowers;
+      return this._walls;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoGeneratorDefence.prototype, "subGenerators", {
-    get: function () {
-      return this._subGenerators;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoGeneratorDefence.prototype, "isoData", {
-    get: function () {
-      return n.Iso.data;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IsoGeneratorDefence;
+  return IsoDefencePositionsMoat;
 }();
-exports.IsoGeneratorDefence = o;
-var a = require("./2738.js");
-var s = require("./84.js");
-var r = require("./1.js");
-var l = require("./6.js");
-var c = require("./1477.js");
+exports.IsoDefencePositionsMoat = n;
+var o = require("./451.js");

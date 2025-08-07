@@ -5,18 +5,18 @@ var n = require("./0.js");
 var o = require("./5.js");
 var a = require("./7.js");
 var s = function (e) {
-  function SGICommand() {
+  function LWTACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SGICommand, e);
-  Object.defineProperty(SGICommand.prototype, "cmdId", {
+  n.__extends(LWTACommand, e);
+  Object.defineProperty(LWTACommand.prototype, "cmdId", {
     get: function () {
-      return a.ClientConstSF.C2S_SKIP_GENERALS_INTRODUCTION;
+      return a.ClientConstSF.C2S_LAUNCH_WOLFKING_TAUNT_ATTACK;
     },
     enumerable: true,
     configurable: true
   });
-  SGICommand.prototype.executeCommand = function (e, t) {
+  LWTACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case o.ERROR.ALL_OK:
         break;
@@ -25,6 +25,6 @@ var s = function (e) {
     }
     return false;
   };
-  return SGICommand;
+  return LWTACommand;
 }(require("./10.js").CastleCommand);
-exports.SGICommand = s;
+exports.LWTACommand = s;

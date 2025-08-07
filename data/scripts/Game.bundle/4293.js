@@ -18,5 +18,5 @@ var o = function (e) {
     configurable: true
   });
   return CastleLegendSkillLevel;
-}(require("./676.js").ACastleLegendSkillTreeNode);
+}(require("./678.js").ACastleLegendSkillTreeNode);
 exports.CastleLegendSkillLevel = o;

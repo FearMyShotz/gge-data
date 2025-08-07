@@ -3,42 +3,46 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./6.js");
+var a = require("./1.js");
+var s = require("./5.js");
 var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function PEPCommand() {
+var l = require("./26.js");
+var c = require("./4.js");
+var u = require("./10.js");
+var d = function (e) {
+  function RPRCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(PEPCommand, e);
-  Object.defineProperty(PEPCommand.prototype, "cmdId", {
+  n.__extends(RPRCommand, e);
+  Object.defineProperty(RPRCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_POINT_EVENT_POINTS;
+      return r.ClientConstSF.S2C_RAGE_POINTS_RECEIVED;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  PEPCommand.prototype.exec = function (e) {
-    var t = s.int(e[0]);
-    var i = e[1];
-    switch (t) {
-      case a.ERROR.ALL_OK:
-        var n = JSON.parse(i[1]);
-        var o = l.CastleModel.specialEventData.getActiveEventByEventId(n.EID);
-        if (o) {
-          o.setRankAndPoints(n.OR, n.OP, n.PT);
+  RPRCommand.prototype.executeCommand = function (e, t) {
+    var i;
+    if (t && t.length > 0) {
+      i = JSON.parse(t[1]);
+    }
+    switch (e) {
+      case s.ERROR.ALL_OK:
+        var n = o.castAs(c.CastleModel.specialEventData.getActiveEventByEventId(i.EID), "IAllianceCampUpdateable");
+        if (n) {
+          n.parse_RPR(i);
+          c.CastleModel.specialEventData.dispatchEvent(new l.CastleSpecialEventEvent(l.CastleSpecialEventEvent.REFRESH_SPECIALEVENT, c.CastleModel.specialEventData.getActiveEventByEventId(i.EID)));
         }
         break;
       default:
-        this.showErrorDialog(t, i);
+        this.showErrorDialog(e, t);
     }
+    return false;
   };
-  return PEPCommand;
-}(c.CastleCommand);
-exports.PEPCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return RPRCommand;
+}(u.CastleCommand);
+exports.RPRCommand = d;
+a.classImplementsInterfaces(d, "IExecCommand");

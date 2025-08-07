@@ -2,90 +2,199 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./265.js");
-var r = require("./15.js");
-var l = require("./24.js");
-var c = require("./14.js");
-var u = require("./41.js");
-var d = require("./362.js");
-var p = require("./556.js");
-var h = function (e) {
-  function GachaComponentAnimation(t) {
-    return e.call(this, t) || this;
+var o = require("./6.js");
+var a = require("./1821.js");
+var s = require("./1119.js");
+var r = createjs.Container;
+var l = function (e) {
+  function CastleStatusBar(t, i = false) {
+    var n = e.call(this) || this;
+    n._disp = new r();
+    n._icons = [];
+    n._expandTo = t;
+    n._disp.tickEnabled = i;
+    n._positionResets = [];
+    return n;
   }
-  n.__extends(GachaComponentAnimation, e);
-  GachaComponentAnimation.prototype.onShow = function () {
-    e.prototype.onShow.call(this);
-    var t = this.getEventVO().assetName();
-    var i = this.getEventVO().getCurrentGachaVO().skinID;
-    var n = p.GachaEventMainDialog.NAME + "_Animation_Idle_" + t + (i ? "_" + i : "");
-    var s = p.GachaEventMainDialog.NAME + "_Animation_Active_" + t + (i ? "_" + i : "");
-    var r = 24;
-    if (i == "EasterGacha" || i == "SummerGacha") {
-      r = 30;
+  n.__extends(CastleStatusBar, e);
+  Object.defineProperty(CastleStatusBar.prototype, "disp", {
+    get: function () {
+      return this._disp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleStatusBar.prototype, "anchorItem", {
+    get: function () {
+      return this._anchorItem;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleStatusBar.prototype.clearPositionResets = function () {
+    this._positionResets = [];
+  };
+  CastleStatusBar.prototype.addPositionReset = function (e, t, i, n) {
+    if (n) {
+      this.clearPositionResets();
     }
-    var c = new l.CastleGoodgameExternalClip(n, a.BasicModel.basicLoaderData.getVersionedItemAssetUrl(n), null, r, true);
-    var u = new l.CastleGoodgameExternalClip(s, a.BasicModel.basicLoaderData.getVersionedItemAssetUrl(s), null, r, true);
-    this._idleAnimation = c;
-    this._activeAnimation = u;
-    this._idleAnimation.doWhenLoaded(this.bindFunction(this.onLoadComplete));
-    var d = this.getEventVO().animationPos;
-    var h = this.getEventVO().animationScale;
-    this._idleAnimation.scaleX = this._idleAnimation.scaleY = h;
-    this._activeAnimation.scaleX = this._activeAnimation.scaleY = h;
-    this._idleAnimation.x = d.x;
-    this._idleAnimation.y = d.y;
-    this._activeAnimation.x = d.x;
-    this._activeAnimation.y = d.y;
-    this._idleAnimation.visible = true;
-    this._activeAnimation.visible = false;
-    o.MovieClipHelper.clearMovieClip(this.disp);
-    this.disp.addChild(this._idleAnimation);
-    this.disp.addChild(this._activeAnimation);
+    this._positionResets.push([e, t, i]);
   };
-  GachaComponentAnimation.prototype.onLoadComplete = function (e = null) {
-    o.MovieClipHelper.playAllMovies(this._idleAnimation);
+  CastleStatusBar.prototype.addIcon = function (e) {
+    this._icons.push(e);
+    e.addToContainer(this._disp);
+    e.changedVisibilityCallback = this.bindFunction(this.onIconChangeVisibility);
+    this._icons.sort(this.bindFunction(this.compareIcons));
   };
-  GachaComponentAnimation.prototype.onHide = function () {
-    e.prototype.onHide.call(this);
-  };
-  GachaComponentAnimation.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    c.CastleComponent.controller.addEventListener(s.GachaEvent.SPIN, this.bindFunction(this.onSpin));
-  };
-  GachaComponentAnimation.prototype.removeEventListener = function () {
-    e.prototype.removeEventListener.call(this);
-    c.CastleComponent.controller.removeEventListener(s.GachaEvent.SPIN, this.bindFunction(this.onSpin));
-    if (this._activeAnimation) {
-      this._activeAnimation.stop();
-      this._activeAnimation.onLoopEnd.removeAll();
+  CastleStatusBar.prototype.removeIcon = function (e) {
+    var t = this._icons.indexOf(e);
+    if (!(t < 0)) {
+      e.changedVisibilityCallback = null;
+      this._icons.splice(t, 1);
+      e.removeFromContainer(this._disp);
+      this._icons.sort(this.bindFunction(this.compareIcons));
     }
   };
-  GachaComponentAnimation.prototype.onSpin = function (e) {
-    if (this.getEventVO().eventId == e.eventVO.eventId) {
-      this._idleAnimation.visible = false;
-      this._activeAnimation.visible = true;
-      this._idleAnimation.gotoAndStop(1);
-      if (this._activeAnimation.numFrames > 1) {
-        u.CastleMovieClipHelper.goAndPlayAllMovies(this._activeAnimation, 1, -1, 1);
-        this._activeAnimation.onLoopEnd.addOnce(this.bindFunction(this.onSpinEnd));
-      } else {
-        this.onSpinEnd();
+  CastleStatusBar.prototype.dispose = function () {
+    if (this._icons != null) {
+      for (var e = 0, t = this._icons; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          i.dispose();
+        }
+      }
+    }
+    if (this.disp) {
+      while (this.disp.numChildren > 0) {
+        this._disp.removeChildAt(0);
+      }
+      this._disp = null;
+      this._icons = null;
+    }
+  };
+  CastleStatusBar.prototype.onChangeLayoutState = function () {
+    if (this._icons != null) {
+      for (var e = 0, t = this._icons; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          i.onLayoutStateChanged();
+        }
+      }
+    }
+    this.repositioningIcons();
+  };
+  CastleStatusBar.prototype.onIconChangeVisibility = function () {
+    this.repositioningIcons();
+  };
+  CastleStatusBar.prototype.compareIcons = function (e, t) {
+    if (this._expandTo === s.StatusBarExpansionDirectionEnum.EXPAND_LEFT || this._expandTo === s.StatusBarExpansionDirectionEnum.EXPAND_UP) {
+      return e.priority - t.priority;
+    } else {
+      return t.priority - e.priority;
+    }
+  };
+  CastleStatusBar.prototype.repositioningIcons = function () {
+    var e = this._expandTo == s.StatusBarExpansionDirectionEnum.EXPAND_LEFT || this._expandTo == s.StatusBarExpansionDirectionEnum.EXPAND_RIGHT ? 15 : 0;
+    var t = 0;
+    var i = 0;
+    var n = 0;
+    this._anchorItem = null;
+    if (this._icons != null) {
+      for (var r = 0, l = this._icons; r < l.length; r++) {
+        var c = l[r];
+        if (c !== undefined && c.visible) {
+          var u = o.int(Math.min(c.width * 0.5, CastleStatusBar.ICON_HEIGHT * 0.5));
+          var d = o.int(Math.min(c.height * 0.5, CastleStatusBar.ICON_HEIGHT * 0.5));
+          for (var p = 0; p < this._positionResets.length; p++) {
+            if (this._positionResets[p][0] == i) {
+              e = this._positionResets[p][1];
+              t = this._positionResets[p][2];
+              n = i;
+            }
+          }
+          if (i == n) {
+            u = 0;
+            d = 0;
+          }
+          switch (this._expandTo) {
+            case s.StatusBarExpansionDirectionEnum.EXPAND_LEFT:
+              e -= u;
+              c.setPosition(e, t);
+              e -= c.width / 2 + CastleStatusBar.SPACE_X;
+              break;
+            case s.StatusBarExpansionDirectionEnum.EXPAND_RIGHT:
+              e += u;
+              c.setPosition(e, t);
+              e += c.width / 2 + CastleStatusBar.SPACE_X;
+              break;
+            case s.StatusBarExpansionDirectionEnum.EXPAND_UP:
+              t -= d;
+              c.setPosition(e, t);
+              t -= c.height / 2 + CastleStatusBar.SPACE_Y;
+              break;
+            case s.StatusBarExpansionDirectionEnum.EXPAND_DOWN:
+              t += d;
+              c.setPosition(e, t);
+              t += c.height / 2 + CastleStatusBar.SPACE_Y;
+          }
+          this.checkAnchorItem(c);
+          i++;
+        }
+      }
+    }
+    this.dispatchEvent(new a.CastleStatusBarEvent(a.CastleStatusBarEvent.ICONS_REPOSITIONED));
+  };
+  CastleStatusBar.prototype.checkAnchorItem = function (e) {
+    if (this._anchorItem == null) {
+      this._anchorItem = e;
+    } else {
+      switch (this._expandTo) {
+        case s.StatusBarExpansionDirectionEnum.EXPAND_LEFT:
+          this._anchorItem = e.iconDisp.x > this._anchorItem.iconDisp.x ? e : this._anchorItem;
+          break;
+        case s.StatusBarExpansionDirectionEnum.EXPAND_RIGHT:
+          this._anchorItem = e.iconDisp.x < this._anchorItem.iconDisp.x ? e : this._anchorItem;
+          break;
+        case s.StatusBarExpansionDirectionEnum.EXPAND_UP:
+          this._anchorItem = e.iconDisp.y > this._anchorItem.iconDisp.y ? e : this._anchorItem;
+          break;
+        case s.StatusBarExpansionDirectionEnum.EXPAND_DOWN:
+          this._anchorItem = e.iconDisp.y < this._anchorItem.iconDisp.y ? e : this._anchorItem;
       }
     }
   };
-  GachaComponentAnimation.prototype.onSpinEnd = function () {
-    this._idleAnimation.visible = true;
-    this._activeAnimation.visible = false;
-    o.MovieClipHelper.playAllMovies(this._idleAnimation);
-    o.MovieClipHelper.stopAllMoviesGotoFrameOne(this._activeAnimation);
-    r.CastleBasicController.getInstance().dispatchEvent(new s.GachaEvent(s.GachaEvent.SPIN_ANIMATION_COMPLETE, this.getEventVO()));
+  CastleStatusBar.prototype.hasIcon = function (e) {
+    return this._icons.indexOf(e) >= 0;
   };
-  GachaComponentAnimation.prototype.getEventVO = function () {
-    return this._params[0];
+  Object.defineProperty(CastleStatusBar.prototype, "expandTo", {
+    get: function () {
+      return this._expandTo;
+    },
+    set: function (e) {
+      var t = this._expandTo != e;
+      this._expandTo = e;
+      if (t) {
+        this.repositioningIcons();
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleStatusBar.prototype.getCountOfVisibleSlots = function () {
+    var e = 0;
+    if (this._icons != null) {
+      for (var t = 0, i = this._icons; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined && n.visible) {
+          e++;
+        }
+      }
+    }
+    return e;
   };
-  return GachaComponentAnimation;
-}(d.AGachaComponent);
-exports.GachaComponentAnimation = h;
+  CastleStatusBar.SPACE_X = 15;
+  CastleStatusBar.SPACE_Y = 15;
+  CastleStatusBar.ICON_HEIGHT = 100;
+  return CastleStatusBar;
+}(createjs.EventDispatcher);
+exports.CastleStatusBar = l;

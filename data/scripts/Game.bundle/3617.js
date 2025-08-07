@@ -4,20 +4,20 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./116.js");
+var s = require("./114.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferEveningDialog() {
-    return e.call(this, "CastlePaymentRewardSpecialOfferEvening") || this;
+  function CastlePaymentRewardSpecialOfferFurysBladeDialog() {
+    return e.call(this, CastlePaymentRewardSpecialOfferFurysBladeDialog.NAME) || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferEveningDialog, e);
-  CastlePaymentRewardSpecialOfferEveningDialog.prototype.setTextIDs = function () {
+  n.__extends(CastlePaymentRewardSpecialOfferFurysBladeDialog, e);
+  CastlePaymentRewardSpecialOfferFurysBladeDialog.prototype.setTextIDs = function () {
     e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_evening_title";
-    this.descriptionTextID = "dialog_primeday_evening_description";
+    this.titleTextID = "dialog_primeday_furysblade_title";
+    this.descriptionTextID = "dialog_primeday_furysblade_description";
   };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferEveningDialog.prototype, "skinType", {
+  Object.defineProperty(CastlePaymentRewardSpecialOfferFurysBladeDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_EVENING;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_FURYS_BLADE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
@@ -25,11 +25,8 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferEveningDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferEveningDialog.NAME = "CastlePaymentRewardSpecialOfferEvening";
-  };
-  return CastlePaymentRewardSpecialOfferEveningDialog;
+  CastlePaymentRewardSpecialOfferFurysBladeDialog.NAME = "CastlePaymentRewardSpecialOfferFurysBlade";
+  return CastlePaymentRewardSpecialOfferFurysBladeDialog;
 }(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferEveningDialog = r;
+exports.CastlePaymentRewardSpecialOfferFurysBladeDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
-r.__initialize_static_members();

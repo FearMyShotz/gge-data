@@ -3,28 +3,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
+var a = require("./457.js");
 var s = function (e) {
-  function RingMenuButtonOfficerSchool() {
+  function OfficersSchoolBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RingMenuButtonOfficerSchool, e);
-  RingMenuButtonOfficerSchool.prototype.init = function (t, i, n) {
-    e.prototype.init.call(this, t, i, n);
-    this._disp = i.btn_officerSchool;
-    this._disp.visible = c.instanceOfClass(n, "OfficersSchoolBuildingVE") && n.buildingVO.buildingState.isFunctionally;
+  n.__extends(OfficersSchoolBuildingVE, e);
+  OfficersSchoolBuildingVE.prototype.getRingMenuButtons = function () {
+    var t = e.prototype.getRingMenuButtons.call(this);
+    t.push(new r.RingMenuButtonOfficerSchool());
+    return t;
   };
-  RingMenuButtonOfficerSchool.prototype.onClick = function (e, t) {
-    r.CastleDialogHandler.getInstance().registerDefaultDialogs(l.OfficersSchoolDialog);
-    this.parent.hide();
-  };
-  RingMenuButtonOfficerSchool.prototype.getInfoText = function () {
-    return a.Localize.text("ringmenu_trainingProgram");
-  };
-  return RingMenuButtonOfficerSchool;
-}(require("./98.js").ARingMenuButton);
-exports.RingMenuButtonOfficerSchool = s;
-var r = require("./9.js");
-var l = require("./1036.js");
-o.classImplementsInterfaces(s, "IRingMenuButton");
-var c = require("./1.js");
+  Object.defineProperty(OfficersSchoolBuildingVE.prototype, "buildingGroundIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements.Icon_Recruit;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.AProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return OfficersSchoolBuildingVE;
+}(a.AProductionBuildingVE);
+exports.OfficersSchoolBuildingVE = s;
+var r = require("./3075.js");
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

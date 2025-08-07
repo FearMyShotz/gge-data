@@ -2,60 +2,64 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./1654.js");
-var r = require("./546.js");
-var l = function (e) {
-  function CastleFactionInvasionEventRewardListDialog() {
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./69.js");
+var l = require("./43.js");
+var c = require("./24.js");
+var u = require("./201.js");
+var d = function (e) {
+  function OpenDialogWithAdditionalExternalAssetsCommand() {
+    var t = this;
+    t.loadingQueue = 0;
+    t.allItemsLoading = false;
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleFactionInvasionEventRewardListDialog.NAME) || this;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleFactionInvasionEventRewardListDialog, e);
-  CastleFactionInvasionEventRewardListDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.dialogDisp.tab_0.toolTipText = "dialog_berimondInvasion_rewards_blue_tab";
-    this.dialogDisp.tab_1.toolTipText = "dialog_berimondInvasion_rewards_red_tab";
-    this.dialogDisp.tab_2.toolTipText = "dialog_berimondInvasion_rewards_alliance_tab";
+  n.__extends(OpenDialogWithAdditionalExternalAssetsCommand, e);
+  OpenDialogWithAdditionalExternalAssetsCommand.prototype.openDialog = function () {
+    throw new r.AbstractMethodError();
   };
-  CastleFactionInvasionEventRewardListDialog.prototype.showHelp = function () {
-    c.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("help_berimondInvasion_rewardsList"));
+  OpenDialogWithAdditionalExternalAssetsCommand.prototype.addAssets = function (e) {
+    throw new r.AbstractMethodError();
   };
-  CastleFactionInvasionEventRewardListDialog.prototype.createProperties = function (e) {
-    var t;
-    var i = this.dialogProperties.eventVO;
-    var n = 0;
-    var o = true;
-    switch (e) {
-      case CastleFactionInvasionEventRewardListDialog.TAB_BLUE:
-        t = i.singleEventVO(true);
-        n = i.rewardsReceivedBlue;
-        break;
-      case CastleFactionInvasionEventRewardListDialog.TAB_RED:
-        t = i.singleEventVO(false);
-        n = i.rewardsReceivedRed;
-        break;
-      case CastleFactionInvasionEventRewardListDialog.TAB_ALLIANCE:
-        t = i.allianceEventVO;
-        n = i.rewardsReceivedAlliance;
-        o = this.isPlayerQualifiedForAllianceRewards();
+  OpenDialogWithAdditionalExternalAssetsCommand.prototype.execute = function (e = null) {
+    this.allItemsLoading = false;
+    this.showPreloaderDialog();
+    this.addAssets(e);
+    this.allItemsLoading = true;
+    this.checkProgress();
+  };
+  OpenDialogWithAdditionalExternalAssetsCommand.prototype.loadAsset = function (e, t) {
+    this.loadingQueue++;
+    var i = new c.CastleGoodgameExternalClip(e, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(t), null, 0, false);
+    if (i.isLoaded) {
+      this.loadingComplete(i);
+    } else {
+      i.clipLoaded.addOnce(this.bindFunction(this.loadingComplete));
     }
-    return new r.GenericScoreBarRewardListSublayerProperties(t.rewardLists, t.pointThresholds, n, "", "", "", o);
   };
-  CastleFactionInvasionEventRewardListDialog.prototype.isPlayerQualifiedForAllianceRewards = function () {
-    var e = this.dialogProperties.eventVO.singleEventVO(true);
-    var t = this.dialogProperties.eventVO.singleEventVO(false);
-    return e.isPlayerQualifiedForAllianceRewards || t.isPlayerQualifiedForAllianceRewards;
+  OpenDialogWithAdditionalExternalAssetsCommand.prototype.loadingComplete = function (e) {
+    this.loadingQueue--;
+    this.checkProgress();
   };
-  CastleFactionInvasionEventRewardListDialog.__initialize_static_members = function () {
-    CastleFactionInvasionEventRewardListDialog.NAME = "CastleFactionInvasionEventRewardList_V";
-    CastleFactionInvasionEventRewardListDialog.TAB_BLUE = 0;
-    CastleFactionInvasionEventRewardListDialog.TAB_RED = 1;
-    CastleFactionInvasionEventRewardListDialog.TAB_ALLIANCE = 2;
+  OpenDialogWithAdditionalExternalAssetsCommand.prototype.checkProgress = function () {
+    if (this.allItemsLoading && this.loadingQueue == 0) {
+      this.hidePreloaderDialog();
+      this.openDialog();
+    }
   };
-  return CastleFactionInvasionEventRewardListDialog;
-}(s.ABasicScoreBarRewardListDialog);
-exports.CastleFactionInvasionEventRewardListDialog = l;
-var c = require("./9.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList");
-l.__initialize_static_members();
+  OpenDialogWithAdditionalExternalAssetsCommand.prototype.showPreloaderDialog = function () {
+    p.CastleDialogHandler.getInstance().registerDialogsWithType(g.CastleExternalPreloaderDialog, new u.CastleExternalPreloaderDialogProperties(null), false, l.CastleDialogConsts.PRIORITY_TOP, 0, l.CastleDialogConsts.DIALOG_TYPE_PRELOADER);
+  };
+  OpenDialogWithAdditionalExternalAssetsCommand.prototype.hidePreloaderDialog = function () {
+    h.CastleLayoutManager.getInstance().hideDialog(g.CastleExternalPreloaderDialog);
+  };
+  return OpenDialogWithAdditionalExternalAssetsCommand;
+}(a.SimpleCommand);
+exports.OpenDialogWithAdditionalExternalAssetsCommand = d;
+var p = require("./9.js");
+var h = require("./17.js");
+var g = require("./154.js");
+s.classImplementsInterfaces(d, "ISimpleCommand");

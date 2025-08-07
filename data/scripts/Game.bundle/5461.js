@@ -2,32 +2,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./3.js");
-var a = require("./83.js");
-var s = require("./99.js");
-var r = function (e) {
-  function MessageHighscoreBonusVO() {
-    return e.call(this) || this;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SAcceptFriendRequestVO(t, i) {
+    var n = this;
+    n.PID = 0;
+    n.MID = 0;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this).PID = t;
+    n.MID = i;
+    return n;
   }
-  n.__extends(MessageHighscoreBonusVO, e);
-  MessageHighscoreBonusVO.prototype.parseMessageHeader = function (e) {};
-  MessageHighscoreBonusVO.prototype.parseSubject = function () {
-    return o.Localize.text("dialog_rankreward_message_title");
+  n.__extends(C2SAcceptFriendRequestVO, e);
+  C2SAcceptFriendRequestVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_ACCEPT_FRIEND_REQUEST;
   };
-  MessageHighscoreBonusVO.prototype.parseSender = function () {
-    return o.Localize.text("system");
-  };
-  Object.defineProperty(MessageHighscoreBonusVO.prototype, "dialogInfo", {
-    get: function () {
-      return new a.DialogInfoVO(l.CastleWeeklyHighscoreRewardReadyMessage);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.AMessageVO.prototype, "dialogInfo").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return MessageHighscoreBonusVO;
-}(s.AMessageVO);
-exports.MessageHighscoreBonusVO = r;
-var l = require("./5462.js");
+  return C2SAcceptFriendRequestVO;
+}(o.BasicCommandVO);
+exports.C2SAcceptFriendRequestVO = s;

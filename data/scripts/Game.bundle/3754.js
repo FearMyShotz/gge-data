@@ -3,33 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./52.js");
-var s = require("./822.js");
-var r = createjs.Point;
-var l = function (e) {
-  function CastleSamuraiInvasionMerchantSublayer(t) {
+var a = require("./173.js");
+var s = function (e) {
+  function CastleSamuraiInvasionMerchantScrollItem(t) {
     return e.call(this, t) || this;
   }
-  n.__extends(CastleSamuraiInvasionMerchantSublayer, e);
-  CastleSamuraiInvasionMerchantSublayer.prototype.getDescriptionText = function () {
-    return "dialog_samuraiShop_desc_detail";
-  };
-  CastleSamuraiInvasionMerchantSublayer.prototype.getHelpText = function () {
-    return "help_samuraiShop";
-  };
-  CastleSamuraiInvasionMerchantSublayer.prototype.getCurrencies = function () {
-    return [new u.CollectableTypeVO(c.CollectableEnum.GENERIC_CURRENCY, a.ClientConstCurrency.ID_SAMURAI_TOKEN)];
-  };
-  CastleSamuraiInvasionMerchantSublayer.prototype.getMerchantScrollItem = function () {
-    return d.CastleSamuraiInvasionMerchantScrollItem;
-  };
-  CastleSamuraiInvasionMerchantSublayer.prototype.getCurrencyIconSize = function () {
-    return new r(50, 50);
-  };
-  return CastleSamuraiInvasionMerchantSublayer;
-}(s.CastleAbstractInvasionMerchantSublayer);
-exports.CastleSamuraiInvasionMerchantSublayer = l;
-var c = require("./12.js");
-var u = require("./74.js");
-var d = require("./3755.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList", "ISublayer");
+  n.__extends(CastleSamuraiInvasionMerchantScrollItem, e);
+  Object.defineProperty(CastleSamuraiInvasionMerchantScrollItem.prototype, "dialogKey", {
+    get: function () {
+      return r.CastleSamuraiInvasionEventBuyDialog;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.AMerchantScrollItem.prototype, "dialogKey").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleSamuraiInvasionMerchantScrollItem;
+}(a.AMerchantScrollItem);
+exports.CastleSamuraiInvasionMerchantScrollItem = s;
+var r = require("./3755.js");
+o.classImplementsInterfaces(s, "MovieClip");

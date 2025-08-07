@@ -5,61 +5,53 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./3.js");
-var r = require("./18.js");
-var l = require("./31.js");
-var c = require("./19.js");
-var u = require("./4.js");
-var d = function (e) {
-  function CastlePrivateOfferDecorationFinishDialog() {
+var r = require("./259.js");
+var l = function (e) {
+  function CastlePrivateOfferPremiumSmsDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, CastlePrivateOfferDecorationFinishDialog.NAME) || this;
+    return e.call(this, CastlePrivateOfferPremiumSmsDialog.NAME) || this;
   }
-  n.__extends(CastlePrivateOfferDecorationFinishDialog, e);
-  CastlePrivateOfferDecorationFinishDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    var i = this.dialogProperties.offerVO.getTotalRewardListFromOfferVO();
-    var n = i.getItemByType(p.CollectableEnum.BUILDING).buildingVO;
-    if (n) {
-      C.WodPicHelper.addWodPic(n, this.dialogDisp.mc_decoHolder, 160, 120);
-      h.CollectableRenderHelper.displaySingleItem(new l.CollectableRenderClips(this.dialogDisp.mc_decoHolder), i.getItemByType(p.CollectableEnum.BUILDING), new c.CollectableRenderOptions(c.CollectableRenderOptions.SET_TIME_CHALLENGE));
-      var o = n.buildingGroundType == r.ClientConstCastle.BUILDINGGROUND_TYPE_DECO ? "dialog_specialOfferDeco_finished_copy" : "dialog_buildingOffer_finished_copy";
-      this.itxt_title = this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("dialog_specialOfferDeco_finished_title"));
-      this.itxt_copy = this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO(o));
+  n.__extends(CastlePrivateOfferPremiumSmsDialog, e);
+  CastlePrivateOfferPremiumSmsDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.removeBackground();
+    this.tfHeader = this.textFieldManager.registerTextField(this.dialogDisp.tfHeader, new s.TextVO("LoPremium IpSMSum"));
+    this.tfDesc = this.textFieldManager.registerTextField(this.dialogDisp.tfDesc, new s.TextVO("Dollar sit armet, consectetur adipiscing elit."));
+    this.tfSmsText = this.textFieldManager.registerTextField(this.dialogDisp.tfSmsText, new s.TextVO(""));
+    this.tfPrice = this.textFieldManager.registerTextField(this.dialogDisp.tfPrice, new s.TextVO(""));
+    this.tfRemainingTime = this.textFieldManager.registerTextField(this.dialogDisp.tfRemainingTime, new s.TextVO("privateOffer_premiumSms_header"));
+    this.timerComponent = new r.CastleTimerComponent(this.tfRemainingTime, this.bindFunction(this.getTimeString), 0);
+  };
+  CastlePrivateOfferPremiumSmsDialog.prototype.getTimeString = function (e) {
+    return o.TimeStringHelper.getShortTimeStringBySeconds(e, o.TimeStringHelper.HOURS_MINUTES_SECONDS_FORMAT);
+  };
+  CastlePrivateOfferPremiumSmsDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    e.prototype.applyPropertiesLoaded.call(this, t);
+    if (this.offerVO.premiumSmsVO) {
+      this.tfSmsText.textContentVO.stringValue = "Send " + this.offerVO.premiumSmsVO.premiumSmsCode + " to " + this.offerVO.premiumSmsVO.callNumber;
+      this.tfPrice.textContentVO.stringValue = this.offerVO.premiumSmsVO.price + " " + this.offerVO.premiumSmsVO.currency + "/SMS";
+    } else {
+      this.tfSmsText.textContentVO.stringValue = "no premiumSmsVO";
+      this.tfPrice.textContentVO.stringValue = "no premiumSmsVO";
     }
+    this.timerComponent.start(this.offerVO.remainingSeconds);
   };
-  CastlePrivateOfferDecorationFinishDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_ok]);
-  };
-  CastlePrivateOfferDecorationFinishDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    o.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_decoHolder);
-    this.dialogDisp.mc_decoHolder.mouseEnabled = true;
-    this.dialogDisp.mc_decoHolder.mouseChildren = false;
-    g.CrestHelper.setCrestGraphics(this.dialogDisp.crest, u.CastleModel.userData.playerCrest);
-  };
-  CastlePrivateOfferDecorationFinishDialog.prototype.onClick = function (t) {
+  CastlePrivateOfferPremiumSmsDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-        this.hide();
-    }
+    this.hide();
   };
-  Object.defineProperty(CastlePrivateOfferDecorationFinishDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastlePrivateOfferPremiumSmsDialog.prototype, "offerVO", {
     get: function () {
-      return this.properties;
+      return this.properties.offerVO;
     },
     enumerable: true,
     configurable: true
   });
-  CastlePrivateOfferDecorationFinishDialog.__initialize_static_members = function () {
-    CastlePrivateOfferDecorationFinishDialog.NAME = "CastlePrivateOfferDecorationFinish";
+  CastlePrivateOfferPremiumSmsDialog.__initialize_static_members = function () {
+    CastlePrivateOfferPremiumSmsDialog.NAME = "CastlePrivateOfferPremiumSmsExternal";
   };
-  return CastlePrivateOfferDecorationFinishDialog;
+  return CastlePrivateOfferPremiumSmsDialog;
 }(require("./11.js").CastleExternalDialog);
-exports.CastlePrivateOfferDecorationFinishDialog = d;
-var p = require("./12.js");
-var h = require("./25.js");
-var g = require("./61.js");
-var C = require("./63.js");
-a.classImplementsInterfaces(d, "ICollectableRendererList");
-d.__initialize_static_members();
+exports.CastlePrivateOfferPremiumSmsDialog = l;
+a.classImplementsInterfaces(l, "ICollectableRendererList");
+l.__initialize_static_members();

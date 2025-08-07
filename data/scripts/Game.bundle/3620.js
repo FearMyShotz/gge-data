@@ -4,20 +4,21 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./116.js");
+var s = require("./114.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferParagonXPDialog() {
-    return e.call(this, CastlePaymentRewardSpecialOfferParagonXPDialog.NAME) || this;
+  function CastlePaymentRewardSpecialOfferSpringBunnyDialog() {
+    return e.call(this, CastlePaymentRewardSpecialOfferSpringBunnyDialog.NAME) || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferParagonXPDialog, e);
-  CastlePaymentRewardSpecialOfferParagonXPDialog.prototype.setTextIDs = function () {
+  n.__extends(CastlePaymentRewardSpecialOfferSpringBunnyDialog, e);
+  CastlePaymentRewardSpecialOfferSpringBunnyDialog.prototype.setTextIDs = function () {
     e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_paragon_title";
-    this.descriptionTextID = "dialog_primeday_paragon_description";
+    this.titleTextID = "dialog_primeday_springBunny_title";
+    this.descriptionTextID = "dialog_primeday_springBunny_description";
+    this.leftTeaserText = "dialog_primeday_springBunny_banner";
   };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferParagonXPDialog.prototype, "skinType", {
+  Object.defineProperty(CastlePaymentRewardSpecialOfferSpringBunnyDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_PARAGON_XP;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_SPRING_BUNNY;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
@@ -25,11 +26,11 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferParagonXPDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferParagonXPDialog.NAME = "CastlePaymentRewardSpecialOfferParagonXP";
+  CastlePaymentRewardSpecialOfferSpringBunnyDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferSpringBunnyDialog.NAME = "CastlePaymentRewardSpecialOfferSpringBunny";
   };
-  return CastlePaymentRewardSpecialOfferParagonXPDialog;
+  return CastlePaymentRewardSpecialOfferSpringBunnyDialog;
 }(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferParagonXPDialog = r;
+exports.CastlePaymentRewardSpecialOfferSpringBunnyDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
 r.__initialize_static_members();

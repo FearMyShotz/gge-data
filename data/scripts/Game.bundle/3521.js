@@ -6,59 +6,96 @@ var o = require("./1.js");
 var a = require("./3.js");
 var s = require("./3.js");
 var r = require("./13.js");
-var l = require("./4.js");
-var c = require("./658.js");
-var u = require("./76.js");
-var d = require("./78.js");
-var p = require("./77.js");
-var h = require("./8.js");
-var g = function (e) {
-  function SamuraiEventEndDialog() {
-    return e.call(this, SamuraiEventEndDialog.NAME) || this;
+var l = require("./14.js");
+var c = require("./81.js");
+var u = require("./301.js");
+var d = function (e) {
+  function SamuraiEventEndDialogItem() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SamuraiEventEndDialog, e);
-  SamuraiEventEndDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    h.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok], _.ClickFeedbackButton);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("dialog_samuraiInvasionEnd_header"))).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO("dialog_samuraiInvasionEnd_desc")).autoFitToBounds = true;
-    var i = new p.InfiniteScrollListOptions(C.SamuraiEventEndDialogItem, "SamuraiEventEnd_Item", SamuraiEventEndDialog.NAME);
-    i.itemPaddingY = 3;
-    i.useSmoothScroll = true;
-    this._scrollList = new d.InfiniteScrollListComponent(new u.InfiniteScrollListClips(this.dialogDisp.mc_list), i);
+  n.__extends(SamuraiEventEndDialogItem, e);
+  SamuraiEventEndDialogItem.prototype.initLoaded = function () {
+    e.prototype.initLoaded.call(this);
+    var t = this.getItemMc();
+    t.mc_pointsIcon.mouseChildren = false;
+    this._rewards = new u.SeasonLeagueSimpleRewardsComponent(t.mc_rewards, false, false);
   };
-  SamuraiEventEndDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.controller.addEventListener(c.SamuraiDaimyoEvent.ON_NEW_EVENT_END_DIALOG_INFO_ARRIVED, this.bindFunction(this.onNewDataArrived));
-    this._scrollList.onShow();
-    this.updateItems();
+  SamuraiEventEndDialogItem.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    this._rewards.onShow();
   };
-  SamuraiEventEndDialog.prototype.hideLoaded = function (t = null) {
-    this.controller.removeEventListener(c.SamuraiDaimyoEvent.ON_NEW_EVENT_END_DIALOG_INFO_ARRIVED, this.bindFunction(this.onNewDataArrived));
-    this._scrollList.onHide();
-    l.CastleModel.samuraiDaimyoData.server.clearEventEndDialogData();
-    e.prototype.hideLoaded.call(this, t);
+  SamuraiEventEndDialogItem.prototype.onHide = function () {
+    this._rewards.onHide();
+    e.prototype.onHide.call(this);
   };
-  SamuraiEventEndDialog.prototype.updateItems = function () {
-    this._scrollList.updateWithNewData(l.CastleModel.samuraiDaimyoData.server.eventEndDialogData);
+  SamuraiEventEndDialogItem.prototype.fill = function () {
+    this.updateTitle();
+    this.updateRank();
+    this.updatePoints();
+    this._rewards.updateWithNewData(this.itemVO.rewards);
   };
-  SamuraiEventEndDialog.prototype.onClick = function (t) {
-    if (h.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_ok:
-          this.hide();
-      }
+  SamuraiEventEndDialogItem.prototype.updateTitle = function () {
+    var e = 1;
+    var t = "";
+    switch (this.itemVO.itemType) {
+      case p.SamuraiEventEndDialogItemVO.TYPE_SINGLEPLAYER:
+        e = 1;
+        t = "dialog_samuraiInvasionEnd_sub_singleplayer";
+        break;
+      case p.SamuraiEventEndDialogItemVO.TYPE_ALLIANCE:
+        e = 2;
+        t = "dialog_samuraiInvasionEnd_sub_alliance";
+        break;
+      case p.SamuraiEventEndDialogItemVO.TYPE_DAIMYO:
+        e = 3;
+        t = "dialog_samuraiInvasionEnd_sub_daimyo";
     }
+    var i = this.getItemMc();
+    i.mc_titleIcon.gotoAndStop(e);
+    l.CastleComponent.textFieldManager.registerTextField(i.txt_title, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId(t))).autoFitToBounds = true;
   };
-  SamuraiEventEndDialog.prototype.onNewDataArrived = function (e) {
-    this.updateItems();
+  SamuraiEventEndDialogItem.prototype.updateRank = function () {
+    var e = "";
+    switch (this.itemVO.itemType) {
+      case p.SamuraiEventEndDialogItemVO.TYPE_SINGLEPLAYER:
+        e = "yourRanking";
+        break;
+      case p.SamuraiEventEndDialogItemVO.TYPE_ALLIANCE:
+      case p.SamuraiEventEndDialogItemVO.TYPE_DAIMYO:
+        e = "allianceRanking";
+    }
+    var t = this.getItemMc();
+    t.mc_rankIcon.toolTipText = e;
+    l.CastleComponent.textFieldManager.registerTextField(t.txt_rank, new a.LocalizedNumberVO(this.itemVO.rank)).autoFitToBounds = true;
   };
-  SamuraiEventEndDialog.NAME = "SamuraiEventEnd";
-  return SamuraiEventEndDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.SamuraiEventEndDialog = g;
-var C = require("./3522.js");
-var _ = require("./36.js");
-o.classImplementsInterfaces(g, "ICollectableRendererList");
+  SamuraiEventEndDialogItem.prototype.updatePoints = function () {
+    var e = 1;
+    var t = "";
+    switch (this.itemVO.itemType) {
+      case p.SamuraiEventEndDialogItemVO.TYPE_SINGLEPLAYER:
+        t = "dialog_samuraiInvasion_samuraiPoints";
+        break;
+      case p.SamuraiEventEndDialogItemVO.TYPE_ALLIANCE:
+        t = "dialog_samuraiInvasion_alliance_points";
+        break;
+      case p.SamuraiEventEndDialogItemVO.TYPE_DAIMYO:
+        e = 2;
+        t = "warEffortPoints";
+    }
+    var i = this.getItemMc();
+    i.mc_pointsIcon.gotoAndStop(e);
+    i.mc_pointsIcon.toolTipText = t;
+    l.CastleComponent.textFieldManager.registerTextField(i.txt_points, new a.LocalizedNumberVO(this.itemVO.points)).autoFitToBounds = true;
+  };
+  Object.defineProperty(SamuraiEventEndDialogItem.prototype, "itemVO", {
+    get: function () {
+      return this.data;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return SamuraiEventEndDialogItem;
+}(c.AInfiniteScrollListItem);
+exports.SamuraiEventEndDialogItem = d;
+var p = require("./1699.js");
+o.classImplementsInterfaces(d, "ICollectableRendererList");

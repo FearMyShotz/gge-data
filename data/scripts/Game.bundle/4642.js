@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function FIICommand() {
+  function DIOCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FIICommand, e);
-  Object.defineProperty(FIICommand.prototype, "cmdId", {
+  n.__extends(DIOCommand, e);
+  Object.defineProperty(DIOCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_FRIEND_INVITE_INFO;
+      return s.ClientConstSF.S2C_DYNAMIC_OFFEREVENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,20 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  FIICommand.prototype.executeCommand = function (e, t) {
+  DIOCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        if (t.length > 0) {
-          var i = JSON.parse(t[1]);
-          r.CastleModel.inviteFriendsData.parse_FII(i);
-        }
+        var i = JSON.parse(t[1]);
+        r.CastleModel.globalOfferData.parse_DIO(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return FIICommand;
+  return DIOCommand;
 }(l.CastleCommand);
-exports.FIICommand = c;
+exports.DIOCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

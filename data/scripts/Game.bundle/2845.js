@@ -2,45 +2,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./999.js");
-var r = function (e) {
-  function EventBuildingVO() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./16.js");
+var c = require("./97.js");
+var u = function (e) {
+  function DrillgroundBuildingVO() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(EventBuildingVO, e);
-  Object.defineProperty(EventBuildingVO.prototype, "isoSortOrder", {
-    get: function () {
-      return this.eventVO.isoSortOrder;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.AEventBuildingVO.prototype, "isoSortOrder").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  EventBuildingVO.prototype.getInfoTooltipLine1 = function () {
-    return a.Localize.text(this.eventVO.eventBuildingNameId);
+  n.__extends(DrillgroundBuildingVO, e);
+  DrillgroundBuildingVO.prototype.createInfoPanelItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_RecruitmentBoost, "recruitspeed", new r.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE_ADD, [this.recruitSpeedBoost + this.getConstructionItemEffectValue(c.CastleEffectEnum.RECRUITSPEEDBOOST)]), this.getInfoItemTextColor(c.CastleEffectEnum.RECRUITSPEEDBOOST), true);
+    e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), this.getInfoItemTextColor(c.CastleEffectEnum.DECOPOINTS), true);
   };
-  EventBuildingVO.prototype.getInfoTooltipLine2 = function () {
-    if (this.eventVO.eventBuildingNameId == "eventBuilding_fameBoost" || this.eventVO.eventBuildingNameId == "eventBuilding_Colossus") {
-      return a.Localize.text("glory_camp_hover");
-    } else {
-      return a.Localize.text("clickToOpen");
-    }
+  DrillgroundBuildingVO.prototype.createInfoDialogItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_RecruitmentBoost, "recruitspeed", new r.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE_ADD, [this.recruitSpeedBoost]), l.ClientConstColor.FONT_DEFAULT_COLOR, true);
+    e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), l.ClientConstColor.FONT_DEFAULT_COLOR, true);
   };
-  Object.defineProperty(EventBuildingVO.prototype, "eventVO", {
-    get: function () {
-      return this._eventVO;
-    },
-    set: function (e) {
-      this._eventVO = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return EventBuildingVO;
-}(s.AEventBuildingVO);
-exports.EventBuildingVO = r;
-o.classImplementsInterfaces(r, "IShopVO", "ICostVO", "IInventoryVO");
+  return DrillgroundBuildingVO;
+}(require("./65.js").AEffectBuildingVO);
+exports.DrillgroundBuildingVO = u;
+a.classImplementsInterfaces(u, "IShopVO", "ICostVO", "IInventoryVO");

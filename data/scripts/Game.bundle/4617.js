@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SGetShopCatalogEventVO() {
+  function C2SGetAllianceSubscriberCountEventVO() {
     return e.call(this) || this;
   }
-  n.__extends(C2SGetShopCatalogEventVO, e);
-  C2SGetShopCatalogEventVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_SHOP_CATALOG;
+  n.__extends(C2SGetAllianceSubscriberCountEventVO, e);
+  C2SGetAllianceSubscriberCountEventVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_GET_ALLIANCE_SUBSCRIBER_COUNT;
   };
-  return C2SGetShopCatalogEventVO;
+  return C2SGetAllianceSubscriberCountEventVO;
 }(o.BasicCommandVO);
-exports.C2SGetShopCatalogEventVO = s;
+exports.C2SGetAllianceSubscriberCountEventVO = s;

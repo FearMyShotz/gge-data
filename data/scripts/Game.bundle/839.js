@@ -2,149 +2,180 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./21.js");
-var l = require("./265.js");
-var c = require("./26.js");
-var u = require("./13.js");
-var d = require("./15.js");
-var p = require("./4.js");
-var h = require("./27.js");
-var g = require("./20.js");
-var C = require("./8.js");
-var _ = require("./11.js");
-var m = require("./1820.js");
-var f = require("./1822.js");
-var O = require("./1823.js");
-var E = require("./1824.js");
-var y = require("./1825.js");
-var b = require("./1826.js");
-var D = require("./1827.js");
-var I = require("./1828.js");
-var T = require("./1829.js");
-var v = function (e) {
-  function SeasonGachaEventMainDialog() {
-    var t = this;
-    t._gachaComponents = [];
-    CONSTRUCTOR_HACK;
-    return t = e.call(this, SeasonGachaEventMainDialog.NAME) || this;
+var o = createjs.MouseEvent;
+var a = require("./49.js");
+var s = require("./2.js");
+var r = require("./1.js");
+var l = require("./157.js");
+var c = require("./20.js");
+var u = require("./8.js");
+var d = require("./115.js");
+var p = require("./361.js");
+var h = require("./838.js");
+var g = function (e) {
+  function AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut(t, i) {
+    var n = e.call(this, new (r.getDefinitionByName("WaveListItem_FinalWave_FoldBig"))(), i) || this;
+    n.CONST_MAX_SLOTS = 8;
+    n.selectWave = false;
+    n.cbx = new a.CheckBoxButton(n.itemMc.headerMC.cbx_select, true);
+    n.init(t);
+    return n;
   }
-  n.__extends(SeasonGachaEventMainDialog, e);
-  SeasonGachaEventMainDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    C.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help], g.ClickFeedbackButtonHover);
-    this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.mc_timer.txt_time, new s.TextVO(""));
-    this.dialogDisp.btn_help.toolTipText = "generic_help";
-    this.dialogDisp.mc_timer.toolTipText = "dialog_tenthAnniversary_timer";
-    this.addGachaComponent(f.GachaComponentBackground, this.dialogDisp.mc_bg);
-    this.addGachaComponent(O.GachaComponentCurrency, this.dialogDisp.mc_currency);
-    this.addGachaComponent(y.GachaComponentMerchantButton, this.dialogDisp.btn_merchant);
-    this.addGachaComponent(I.GachaComponentRanking, this.dialogDisp.mc_ranking);
-    this.addGachaComponent(E.GachaComponentLevelRewards, this.dialogDisp.mc_levelRewards);
-    this.addGachaComponent(D.GachaComponentPull, this.dialogDisp.mc_pull, "supersale");
-    this.addGachaComponent(b.GachaComponentMilestones, this.dialogDisp.mc_milestones);
-    this.addGachaComponent(T.GachaComponentRewards, this.dialogDisp.mc_rewards);
-    this.addGachaComponent(m.GachaComponentAnimation, this.dialogDisp.mc_animation);
-  };
-  SeasonGachaEventMainDialog.prototype.showLoaded = function (t) {
-    var i = this;
-    if (t === undefined) {
-      t = null;
-    }
-    e.prototype.showLoaded.call(this, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId("event_title_" + this.eventVO.eventId)));
-    o.loadAsset("Rewards_Animation").then(function (e) {
-      d.CastleBasicController.getInstance().dispatchEvent(new l.GachaEvent(l.GachaEvent.SHINE_ANIMATION_LOADED, null, null));
-    });
-    this._gachaComponents.forEach(function (e) {
-      e.show([i.eventVO, 1]);
-    });
-    p.CastleModel.timerData.addEventListener(r.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
-    d.CastleBasicController.getInstance().addEventListener(l.GachaEvent.LOCK_DIALOG, this.bindFunction(this.onLockDialog));
-    d.CastleBasicController.getInstance().addEventListener(l.GachaEvent.UNLOCK_DIALOG, this.bindFunction(this.onUnlockDialog));
-    p.CastleModel.specialEventData.addEventListener(c.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
-  };
-  SeasonGachaEventMainDialog.prototype.addGachaComponent = function (e, t, i = null) {
-    if (t) {
-      if (i) {
-        this._gachaComponents.push(new e(t, i));
-      } else {
-        this._gachaComponents.push(new e(t));
-      }
-    }
-  };
-  SeasonGachaEventMainDialog.prototype.hideLoaded = function (t = null) {
-    e.prototype.hideLoaded.call(this, t);
-    this._gachaComponents.forEach(function (e) {
-      e.onHide();
-    });
-    p.CastleModel.timerData.removeEventListener(r.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
-    d.CastleBasicController.getInstance().removeEventListener(l.GachaEvent.LOCK_DIALOG, this.bindFunction(this.onLockDialog));
-    d.CastleBasicController.getInstance().removeEventListener(l.GachaEvent.UNLOCK_DIALOG, this.bindFunction(this.onUnlockDialog));
-    p.CastleModel.specialEventData.removeEventListener(c.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
-  };
-  SeasonGachaEventMainDialog.prototype.onSpecialEventRemoved = function (e) {
-    if (!this.isEventActive) {
-      this.hide();
-    }
-  };
-  SeasonGachaEventMainDialog.prototype.onLockDialog = function (e) {
-    this.lockDialog();
-  };
-  SeasonGachaEventMainDialog.prototype.onUnlockDialog = function (e) {
-    this.unLockDialog();
-  };
-  SeasonGachaEventMainDialog.prototype.onTimerUpdate = function (e) {
-    this.updateTimer();
-  };
-  SeasonGachaEventMainDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    if (!this.isLocked && C.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-          this.hide();
-          break;
-        case this.dialogDisp.btn_help:
-          _.CastleExternalDialog.dialogHandler.showHelper("", "helpPopup_" + this.eventVO.assetName());
-      }
-    }
-  };
-  SeasonGachaEventMainDialog.prototype.updateActiveEvent = function () {
-    this.updateTimer();
-  };
-  SeasonGachaEventMainDialog.prototype.updateTimer = function () {
-    if (this.isEventActive) {
-      var e = this.eventVO.remainingEventTimeInSeconds;
-      this.itxt_time.textContentVO.stringValue = h.CastleTimeStringHelper.getEventTimeString(e);
+  n.__extends(AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut, e);
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.init = function (e) {
+    if (e) {
+      this.cbx.selected();
     } else {
-      this.hide();
+      this.cbx.deselected();
+    }
+    this.itemMc.headerMC.mc_down.visible = false;
+    this.itemMc.headerMC.mc_hover.visible = false;
+    this.itemMc.headerMC.arrow_right.visible = !this._isExpanded;
+    this.itemMc.headerMC.arrow_down.visible = this._isExpanded;
+    this.fill();
+    this.controller.onSelectedWaveInfoSlotContainerChanged.add(this.bindFunction(this.onSelectionChanged));
+    this.controller.updateAllWaveInfo.add(this.bindFunction(this.fill));
+    this.controller.onAutoFillALLSelectionChanged.add(this.bindFunction(this.updateAutoFillSelection));
+    this.controller.updateAutoFillSelections.add(this.bindFunction(this.updateAutoFillSelection));
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.destroy = function () {
+    e.prototype.destroy.call(this);
+    this.controller.onSelectedWaveInfoSlotContainerChanged.remove(this.bindFunction(this.onSelectionChanged));
+    this.controller.updateAllWaveInfo.remove(this.bindFunction(this.fill));
+    this.controller.onAutoFillALLSelectionChanged.remove(this.bindFunction(this.updateAutoFillSelection));
+    this.controller.updateAutoFillSelections.remove(this.bindFunction(this.updateAutoFillSelection));
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.updateAutoFillSelection = function () {
+    if (this.controller.getIsWaveSelectedForAutoFill(AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.CONST_WAVE_NAME)) {
+      this.cbx.selected();
+    } else {
+      this.cbx.deselected();
     }
   };
-  Object.defineProperty(SeasonGachaEventMainDialog.prototype, "eventVO", {
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.onSelectionChanged = function () {
+    this.fill();
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.fill = function () {
+    var e;
+    u.ButtonHelper.initButtons([this.itemMc.headerMC.btn_clear], c.ClickFeedbackButtonHover, 1);
+    this.itemMc.headerMC.btn_expand.mouseChildren = false;
+    this.itemMc.headerMC.btn_expand.actLikeButton = true;
+    this.itemMc.headerMC.btn_clear.toolTipText = "deleteAll";
+    this.itemMc.headerMC.mc_units.gotoAndStop(1);
+    this.selectWave = false;
+    e = 0;
+    for (; e < this.CONST_MAX_SLOTS; e++) {
+      p.AttackDialogWaveInfoHelper.fillUnitContainer(e, this.itemMc.headerMC.mc_units, this.controller.attackVO.yardWaveContainer, false);
+    }
+    this.itemMc.headerMC.mc_selected.visible = this.controller.selectedWaveName == h.AttackDialogWaveHandlerFinalYardWaveInfoItem.CONST_WAVE_NAME;
+    this.itemMc.headerMC.btn_clear.visible = this.getSelectedSlot().sumOfItems > 0;
+    p.AttackDialogWaveInfoHelper.showFinalWave(this.itemMc.contentMC, this.getSelectedSlot());
+    if (this.contentMC.cacheCanvas) {
+      this.contentMC.updateCache();
+    } else {
+      this.contentMC.doCache();
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.itemMc.headerMC.cbx_select:
+        this.cbx.toggleSelected();
+        this.controller.changeSelectionForAutoFill(h.AttackDialogWaveHandlerFinalYardWaveInfoItem.CONST_WAVE_NAME, this.cbx.isSelected);
+        break;
+      case this.itemMc.headerMC.btn_expand:
+        this.expand(!this.isExpanded, false);
+        this.controller.trackExpandWaves(this.isExpanded);
+        break;
+      case this.itemMc.headerMC.btn_clear:
+        p.AttackDialogWaveInfoHelper.clearContainer(this.controller.attackVO.yardWaveContainer);
+        this.controller.updateAllWaveInfo.dispatch();
+    }
+    if (!this.controller.draggedUnitVO) {
+      switch (t.target.parent) {
+        case this.itemMc.headerMC.mc_units:
+          this.selectContainer();
+      }
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.selectContainer = function () {
+    this.controller.setSelectedWaveInfoSlotMC(this.getSelectedSlot(), null, -1, h.AttackDialogWaveHandlerFinalYardWaveInfoItem.CONST_WAVE_NAME);
+    if (this.controller.selectedWaveInfoSlotContainer) {
+      this.controller.onOpenUnitPicker.dispatch(this.controller.selectedWaveInfoSlotContainer.items[0]);
+      this.controller.openSpyInfoFlank("keep");
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    if (this.disp) {
+      this.disp.addEventListener(o.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
+      this.disp.addEventListener(o.MOUSE_UP, this.bindFunction(this.onMouseUp));
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.removeEventListener = function () {
+    e.prototype.removeEventListener.call(this);
+    if (this.disp) {
+      this.disp.removeEventListener(o.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
+      this.disp.removeEventListener(o.MOUSE_UP, this.bindFunction(this.onMouseUp));
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.onMouseDown = function (e) {
+    if (e.target == this.itemMc.headerMC.btn_expand) {
+      this.itemMc.headerMC.mc_down.visible = true;
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.onMouseUp = function (e) {
+    this.itemMc.headerMC.mc_down.visible = false;
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.onMouseOver = function (e) {
+    if (!s.MovieClipHelper.isChildrenOf(e.target, this.contentMC)) {
+      this.controller.onMouseOverWave.dispatch(this.getSelectedSlot(), this.disp);
+      if (e.target == this.itemMc.headerMC.btn_expand) {
+        this.itemMc.headerMC.mc_hover.visible = true;
+      }
+    }
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.onMouseOut = function (e) {
+    this.controller.onMouseOutWave.dispatch(this.getSelectedSlot(), this.disp);
+    this.itemMc.headerMC.mc_hover.visible = false;
+    this.itemMc.headerMC.mc_down.visible = false;
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.getSelectedSlot = function () {
+    return this.controller.attackVO.yardWaveContainer;
+  };
+  Object.defineProperty(AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype, "controller", {
     get: function () {
-      return this.dialogProperties.eventVO;
+      return d.AttackDialogController.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SeasonGachaEventMainDialog.prototype, "isEventActive", {
+  Object.defineProperty(AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype, "itemMc", {
     get: function () {
-      return !!p.CastleModel.specialEventData.getActiveEventByEventId(this.eventVO.eventId);
+      return this.disp;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SeasonGachaEventMainDialog.prototype, "dialogProperties", {
+  Object.defineProperty(AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype, "height", {
     get: function () {
-      return this.properties;
+      if (this._contentMC && this._contentMC.visible) {
+        return 90;
+      } else {
+        return this._headerMC.height;
+      }
     },
     enumerable: true,
     configurable: true
   });
-  SeasonGachaEventMainDialog.NAME = "SeasonGachaMain";
-  return SeasonGachaEventMainDialog;
-}(_.CastleExternalDialog);
-exports.SeasonGachaEventMainDialog = v;
-a.classImplementsInterfaces(v, "ICollectableRendererList");
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.prototype.expand = function (t, i, n = false) {
+    e.prototype.expand.call(this, t, i, n);
+    this.itemMc.headerMC.arrow_right.visible = !t;
+    this.itemMc.headerMC.arrow_down.visible = t;
+    this.controller.addToExpandWaveTrackingTemp("RW");
+  };
+  AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut.CONST_WAVE_NAME = "yardWave";
+  return AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut;
+}(l.ACollapsibleItem);
+exports.AttackDialogWaveHandlerFinalYardWaveInfoItemFoldOut = g;
+r.classImplementsInterfaces(g, "ICollectableRendererList");

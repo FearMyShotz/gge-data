@@ -5,63 +5,65 @@ var n = require("./1.js");
 var o = require("./6.js");
 var a = require("./22.js");
 var s = function () {
-  function XmlRelicTypeVO() {
-    this._id = 0;
-    this._wearerId = 0;
-    this._slotId = 0;
-    this._isGem = false;
+  function XmlRelicEnchanterVO() {
+    this._level = 0;
+    this._relicNormalEffectBoost = NaN;
+    this._chance = NaN;
+    this._c1Cost = 0;
+    this._c2Cost = 0;
+    this._costRelicFragments = 0;
   }
-  XmlRelicTypeVO.prototype.parseXml = function (e) {
-    this._id = o.int(a.CastleXMLUtils.getIntAttribute("id", e, -1));
-    this._name = a.CastleXMLUtils.getStringAttribute("name", e);
-    this._wearerId = o.int(a.CastleXMLUtils.getIntAttribute("wearerID", e, -1));
-    this._slotId = o.int(a.CastleXMLUtils.getIntAttribute("slotID", e, -1));
-    this._isGem = a.CastleXMLUtils.getBooleanAttribute("isGem", e);
-    this._canBeSlottedInSlotIds = a.CastleXMLUtils.createIntListFromAttribute("canBeSlottedInSlotIDs", e);
+  XmlRelicEnchanterVO.prototype.parseXml = function (e) {
+    this._level = o.int(a.CastleXMLUtils.getIntAttribute("level", e));
+    this._relicNormalEffectBoost = a.CastleXMLUtils.getNumberAttribute("relicNormalEffectBoost", e);
+    this._chance = a.CastleXMLUtils.getNumberAttribute("chance", e);
+    this._c1Cost = o.int(a.CastleXMLUtils.getIntAttribute("c1Cost", e));
+    this._c2Cost = o.int(a.CastleXMLUtils.getIntAttribute("c2Cost", e));
+    this._costRelicFragments = o.int(a.CastleXMLUtils.getIntAttribute("costRelicFragment", e));
   };
-  Object.defineProperty(XmlRelicTypeVO.prototype, "id", {
+  Object.defineProperty(XmlRelicEnchanterVO.prototype, "level", {
     get: function () {
-      return this._id;
+      return this._level;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlRelicTypeVO.prototype, "name", {
+  Object.defineProperty(XmlRelicEnchanterVO.prototype, "relicNormalEffectBoost", {
     get: function () {
-      return this._name;
+      return this._relicNormalEffectBoost;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlRelicTypeVO.prototype, "wearerId", {
+  Object.defineProperty(XmlRelicEnchanterVO.prototype, "chance", {
     get: function () {
-      return this._wearerId;
+      return this._chance;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlRelicTypeVO.prototype, "slotId", {
+  Object.defineProperty(XmlRelicEnchanterVO.prototype, "c1Cost", {
     get: function () {
-      return this._slotId;
+      return this._c1Cost;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlRelicTypeVO.prototype, "isGem", {
+  Object.defineProperty(XmlRelicEnchanterVO.prototype, "c2Cost", {
     get: function () {
-      return this._isGem;
+      return this._c2Cost;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlRelicTypeVO.prototype, "canBeSlottedInSlotIds", {
+  Object.defineProperty(XmlRelicEnchanterVO.prototype, "costRelicFragments", {
     get: function () {
-      return this._canBeSlottedInSlotIds;
+      return this._costRelicFragments;
     },
     enumerable: true,
     configurable: true
   });
-  return XmlRelicTypeVO;
+  return XmlRelicEnchanterVO;
 }();
-exports.XmlRelicTypeVO = s;
+exports.XmlRelicEnchanterVO = s;
 n.classImplementsInterfaces(s, "IXmlElementVO");

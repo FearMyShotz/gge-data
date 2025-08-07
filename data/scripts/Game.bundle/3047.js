@@ -3,23 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./262.js");
-var s = function (e) {
-  function IronmineBuildingVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var a = function (e) {
+  function InnerDistrictBuildingVE() {
+    return e.call(this) || this;
   }
-  n.__extends(IronmineBuildingVE, e);
-  Object.defineProperty(IronmineBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(InnerDistrictBuildingVE, e);
+  Object.defineProperty(InnerDistrictBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Iron;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.AResourceProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      return Library.CastleInterfaceElements_Icons.Icon_InnerDistrict;
     },
     enumerable: true,
     configurable: true
   });
-  return IronmineBuildingVE;
-}(a.AResourceProductionBuildingVE);
-exports.IronmineBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  return InnerDistrictBuildingVE;
+}(require("./541.js").ADistrictBuildingVE);
+exports.InnerDistrictBuildingVE = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

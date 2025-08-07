@@ -4,40 +4,47 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
-var s = require("./3.js");
+var s = require("./75.js");
 var r = require("./13.js");
-var l = require("./8.js");
-var c = require("./11.js");
-var u = require("./36.js");
-var d = function (e) {
-  function CastleTempServerInfoDialog() {
-    return e.call(this, CastleTempServerInfoDialog.NAME) || this;
+var l = require("./4.js");
+var c = require("./14.js");
+var u = require("./81.js");
+var d = require("./394.js");
+var p = function (e) {
+  function CastleTemporaryServerEventDialogOverviewRewardItem() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleTempServerInfoDialog, e);
-  CastleTempServerInfoDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    l.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok], u.ClickFeedbackButton);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title0, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId(this.dialogProps.title1ID)));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title1, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId(this.dialogProps.title2ID)));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO(this.dialogProps.copyID));
+  n.__extends(CastleTemporaryServerEventDialogOverviewRewardItem, e);
+  CastleTemporaryServerEventDialogOverviewRewardItem.prototype.initLoaded = function () {
+    e.prototype.initLoaded.call(this);
+    this._rewards = new d.TempServerSimpleRewardsComponent(this.getItemMc());
   };
-  CastleTempServerInfoDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_close:
-      case this.dialogDisp.btn_ok:
-        this.hide();
+  CastleTemporaryServerEventDialogOverviewRewardItem.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    this._rewards.onShow();
+  };
+  CastleTemporaryServerEventDialogOverviewRewardItem.prototype.onHide = function () {
+    this._rewards.onHide();
+    e.prototype.onHide.call(this);
+  };
+  CastleTemporaryServerEventDialogOverviewRewardItem.prototype.fill = function () {
+    var e = this.data;
+    var t = this.getItemMc();
+    e.collectableList.sort(s.ClientConstSort.sortByTempServerRewardPriority);
+    this._rewards.updateWithNewData(e.collectableList);
+    t.mc_indicator.gotoAndStop(e.listIndex + 1);
+    if (e.usePoints) {
+      c.CastleComponent.textFieldManager.registerTextField(t.txt_title, new a.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("dialog_tempServer_forPoints", [e.rank])));
+    } else {
+      var i = l.CastleModel.tempServerData.getRankRangeByRank(e.rank);
+      if (i.minRank == i.maxRank) {
+        c.CastleComponent.textFieldManager.registerTextField(t.txt_title, new a.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("rankingRange_single", [e.rank])));
+      } else {
+        c.CastleComponent.textFieldManager.registerTextField(t.txt_title, new a.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("rankingRange_multi", [i.maxRank, i.minRank])));
+      }
     }
   };
-  Object.defineProperty(CastleTempServerInfoDialog.prototype, "dialogProps", {
-    get: function () {
-      return this.properties;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleTempServerInfoDialog.NAME = "CastleTempServerInfo";
-  return CastleTempServerInfoDialog;
-}(c.CastleExternalDialog);
-exports.CastleTempServerInfoDialog = d;
-o.classImplementsInterfaces(d, "ICollectableRendererList");
+  return CastleTemporaryServerEventDialogOverviewRewardItem;
+}(u.AInfiniteScrollListItem);
+exports.CastleTemporaryServerEventDialogOverviewRewardItem = p;
+o.classImplementsInterfaces(p, "ICollectableRendererList");

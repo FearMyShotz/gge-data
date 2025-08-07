@@ -7,11 +7,11 @@ var a = require("./1.js");
 var s = require("./3.js");
 var r = require("./3.js");
 var l = require("./6.js");
-var c = require("./936.js");
+var c = require("./937.js");
 var u = require("./21.js");
-var d = require("./273.js");
+var d = require("./272.js");
 var p = require("./4.js");
-var h = require("./519.js");
+var h = require("./520.js");
 var g = require("./292.js");
 var C = function (e) {
   function VillageSeasonMapScreenItem(t, i) {

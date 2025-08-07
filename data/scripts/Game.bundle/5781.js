@@ -1,36 +1,22 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./1.js");
-var l = require("./1.js");
-var c = require("./5782.js");
-var u = require("./5783.js");
-var d = require("./5784.js");
-var p = function (e) {
-  function CastleTextFieldFactory() {
-    return e !== null && e.apply(this, arguments) || this;
+var n = require("./1.js");
+var o = function () {
+  function AssetUrlConvertor() {
+    this.isPNG = /.png$/i;
+    this.isWalkMap = /EmpireWalkmaps/i;
   }
-  n.__extends(CastleTextFieldFactory, e);
-  CastleTextFieldFactory.prototype.createAdvancedTextField = function (e) {
-    var t = e.parent;
-    if (e.parent && l.instanceOfClass(e.parent, "BasicButton") && e.parent.textField) {
-      var i = new c.BasicButtonTextField(t);
-      var n = s.castAs(i, "IInternalGGSTextField");
-      if (n != null) {
-        return n;
+  AssetUrlConvertor.prototype.convert = function (e) {
+    if (this.isPNG.test(e) && window.useMinAssets && !this.isWalkMap.test(e)) {
+      if (n.currentBrowserInfo.isChrome && parseInt(n.currentBrowserInfo.version, 10) > 23 && (!n.currentBrowserInfo.isMobile || n.currentBrowserInfo.isAndroid) || n.currentBrowserInfo.isFireFox && parseInt(n.currentBrowserInfo.version, 10) >= 65) {
+        e = e.replace(/.png$/, ".webp");
       }
-    }
-    if (e.type == a.TextFieldType.INPUT) {
-      return new u.CastleGoodgameInputTextField(e);
+      return e;
     } else {
-      return new d.CastleGoodGameTextField(e);
+      return e;
     }
   };
-  return CastleTextFieldFactory;
-}(o.GoodgameAdvancedTextFieldFactory);
-exports.CastleTextFieldFactory = p;
-r.classImplementsInterfaces(p, "IGGSTextFieldFactory");
+  return AssetUrlConvertor;
+}();
+exports.AssetUrlConvertor = o;

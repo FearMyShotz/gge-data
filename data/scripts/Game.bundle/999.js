@@ -3,59 +3,54 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./87.js");
-var s = require("./482.js");
-var r = function (e) {
-  function AEventBuildingVO() {
+var a = require("./5.js");
+var s = require("./166.js");
+var r = require("./4.js");
+var l = require("./774.js");
+var c = function (e) {
+  function PrivateUnitDealerEventVO() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AEventBuildingVO, e);
-  AEventBuildingVO.prototype.updateData = function () {
-    e.prototype.updateData.call(this);
-    this._buildingState = a.IsoBuildingStateEnum.BUILD_COMPLETED;
+  n.__extends(PrivateUnitDealerEventVO, e);
+  Object.defineProperty(PrivateUnitDealerEventVO.prototype, "eventPackages", {
+    get: function () {
+      return this.treasureMapVO.eventPackages;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(PrivateUnitDealerEventVO.prototype, "treasureMapVO", {
+    get: function () {
+      return r.CastleModel.treasureMapData.getTreasureMapByID(this._mapIDs[0]);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  PrivateUnitDealerEventVO.prototype.openMerchantDialog = function (e, t) {
+    this.executeOpenDialog(e, u.CastlePrivateUnitDealerEventDialog, new s.CastleGenericMerchantDialogProperties(this, t));
   };
-  Object.defineProperty(AEventBuildingVO.prototype, "isoSortOrder", {
+  Object.defineProperty(PrivateUnitDealerEventVO.prototype, "remainingEventTimeInSeconds", {
     get: function () {
-      return 0;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AEventBuildingVO.prototype, "isClickAvailable", {
-    get: function () {
-      return true;
+      return this.treasureMapVO.remainingMapTimeInSeconds;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(s.ABasicBuildingVO.prototype, "isClickAvailable").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.UnitDealerEventVO.prototype, "remainingEventTimeInSeconds").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AEventBuildingVO.prototype, "isRingmenuAvailable", {
+  Object.defineProperty(PrivateUnitDealerEventVO.prototype, "buyType", {
     get: function () {
-      return false;
+      return a.PackageConst.BUY_TYPE_CRUSADEMAP;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(s.ABasicBuildingVO.prototype, "isRingmenuAvailable").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.UnitDealerEventVO.prototype, "buyType").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  AEventBuildingVO.prototype.getInfoTooltipLine3 = function () {
-    return "";
-  };
-  Object.defineProperty(AEventBuildingVO.prototype, "isMovable", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.AIsoObjectVO.prototype, "isMovable").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AEventBuildingVO;
-}(s.ABasicBuildingVO);
-exports.AEventBuildingVO = r;
-var l = require("./309.js");
-o.classImplementsInterfaces(r, "IShopVO", "ICostVO", "IInventoryVO");
+  return PrivateUnitDealerEventVO;
+}(l.UnitDealerEventVO);
+exports.PrivateUnitDealerEventVO = c;
+var u = require("./2751.js");
+o.classImplementsInterfaces(c, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");

@@ -1,17 +1,44 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SGetFactionPointsVO() {
-    return e.call(this) || this;
+var n = function () {
+  function RawWorldmapDecoVO(e, t, i, n) {
+    this._decoId = -1;
+    this._width = 0;
+    this._height = 0;
+    this._decoId = e;
+    this._type = t;
+    this._width = i;
+    this._height = n;
   }
-  n.__extends(C2SGetFactionPointsVO, e);
-  C2SGetFactionPointsVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_FACTION_POINTS;
-  };
-  return C2SGetFactionPointsVO;
-}(o.BasicCommandVO);
-exports.C2SGetFactionPointsVO = s;
+  Object.defineProperty(RawWorldmapDecoVO.prototype, "height", {
+    get: function () {
+      return this._height;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(RawWorldmapDecoVO.prototype, "width", {
+    get: function () {
+      return this._width;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(RawWorldmapDecoVO.prototype, "type", {
+    get: function () {
+      return this._type;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(RawWorldmapDecoVO.prototype, "decoId", {
+    get: function () {
+      return this._decoId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return RawWorldmapDecoVO;
+}();
+exports.RawWorldmapDecoVO = n;

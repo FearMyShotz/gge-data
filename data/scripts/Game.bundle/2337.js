@@ -3,156 +3,114 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
+var a = require("./1.js");
+var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./3.js");
-var c = require("./16.js");
-var u = require("./4.js");
-var d = require("./8.js");
-var p = require("./34.js");
-var h = require("./1315.js");
-var g = require("./2338.js");
+var l = require("./16.js");
+var c = require("./4.js");
+var u = require("./127.js");
+var d = require("./928.js");
+var p = require("./8.js");
+var h = require("./35.js");
+var g = require("./1315.js");
 var C = require("./1316.js");
 var _ = function (e) {
-  function CastleCraftingDialogGem(t) {
+  function CastleCraftingDialogEquipment(t) {
     var i = this;
     CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).initBasicButtons([i.subLayerDisp.btn_craft, i.subLayerDisp.btn_craftRubies]);
+    (i = e.call(this, t) || this).itxt_value = i.textFieldManager.registerTextField(i.subLayerDisp.mc_price.txt_value, new s.LocalizedNumberVO(0));
+    i.initBasicButtons([i.subLayerDisp.btn_craft]);
+    i.textFieldManager.registerTextField(i.subLayerDisp.txt_desc, new r.LocalizedTextVO("dialog_equipmentCrafting_desc"));
+    i.subLayerDisp.mc_price.mouseChildren = false;
+    for (var n = 0; n < 6; n++) {
+      i.subLayerDisp["slot" + n].mouseChildren = false;
+    }
+    i._craftingAnimation = new g.CastleCraftingAnimationEquipment(i.subLayerDisp.mc_animation, i);
     i._newItemAnimation = new C.CastleCraftingNewItemAnimation();
-    i.textFieldManager.registerTextField(i.subLayerDisp.txt_desc, new l.LocalizedTextVO("dialog_gems_craftGems_description"));
-    i.itxt_upgradeChance = i.textFieldManager.registerTextField(i.subLayerDisp.mc_upgradeChance.txt_chance, new l.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [0]));
-    i.itxt_upgradeResult = i.textFieldManager.registerTextField(i.subLayerDisp.mc_resultInfo.txt_result, new l.LocalizedTextVO(""));
-    i.itxt_price = i.textFieldManager.registerTextField(i.subLayerDisp.mc_price.txt_value, new r.LocalizedNumberVO(0));
-    i.subLayerDisp.mc_price.toolTipText = "cash";
-    i.subLayerDisp.mc_upgradeChance.toolTipText = "dialog_gems_craftGems_gemUpgradeChance_tooltip";
-    i.subLayerDisp.mc_resultInfo.mouseChildren = false;
-    i.initComponents();
     return i;
   }
-  n.__extends(CastleCraftingDialogGem, e);
-  CastleCraftingDialogGem.prototype.initComponents = function () {
-    this.cacheSlots();
-    this.subLayerDisp.mc_price.mouseChildren = false;
-    this.subLayerDisp.mc_upgradeChance.mouseChildren = false;
-    this.subLayerDisp.mc_resultInfo.mouseChildren = false;
-  };
-  CastleCraftingDialogGem.prototype.cacheSlots = function () {
-    this._allSlotsOnScreen = [];
-    this._allConnectionBarMCs = [];
-    for (var e = 0; e < CastleCraftingDialogGem.SLOTS_ON_SCREEN; e++) {
-      var t = this.subLayerDisp["slot" + e];
-      t.mouseChildren = false;
-      t.slotId = e;
-      this._allSlotsOnScreen.push(t);
-      var i = this.subLayerDisp["mc_connectionBar" + e];
-      if (i) {
-        this._allConnectionBarMCs.push(i);
-      }
-    }
-  };
-  CastleCraftingDialogGem.prototype.show = function (t) {
+  n.__extends(CastleCraftingDialogEquipment, e);
+  CastleCraftingDialogEquipment.prototype.show = function (t) {
     e.prototype.show.call(this, t);
     this.resetVEs();
   };
-  CastleCraftingDialogGem.prototype.resetVEs = function () {
-    this.setCraftButton(false, "dialog_gems_craftGems_gemSlotsMissing_tooltip");
-    this.setCraftRubyButton(false, "dialog_gems_craftGems_gemSlotsMissing_tooltip");
-    this.resetCostsAndChance(false);
+  CastleCraftingDialogEquipment.prototype.resetVEs = function () {
+    this.subLayerDisp.mc_price.toolTipText = "cash";
+    this.subLayerDisp.btn_craft.toolTipText = "dialog_equipmentCrafting_cantCraft";
+    p.ButtonHelper.enableButton(this.subLayerDisp.btn_craft, false);
+    if (this.itxt_value.textContentVO) {
+      this.itxt_value.textContentVO.numberValue = 0;
+    }
     this.initSlots();
   };
-  CastleCraftingDialogGem.prototype.resetCostsAndChance = function (e) {
-    this.upgradePrice = 0;
-    this.setUpgradeChance(0, c.ClientConstColor.FONT_DEFAULT_COLOR);
-    if (e) {
-      this.setUpgradeResult("", c.ClientConstColor.FONT_DEFAULT_COLOR);
+  CastleCraftingDialogEquipment.prototype.initSlots = function () {
+    this._allSlotsOnScreen = [];
+    for (var e = 0; e < CastleCraftingDialogEquipment.SLOTS_ON_SCREEN; e++) {
+      var t = this.subLayerDisp["slot" + e];
+      t.actLikeButton = true;
+      o.MovieClipHelper.clearMovieClip(t.mc_itemHolder);
+      t.toolTipText = "dialog_equipment_craftEquipment_insertEquipment_tooltip";
+      t.mc_bg.gotoAndStop(1);
+      t.slotVO = new d.CastleEquipmentSlotVO(u.BasicEquippableVO.SLOT_TYPE_ALL);
+      t.mc_lock.visible = false;
+      t.mc_deco.gotoAndStop(e + 1);
+      this._allSlotsOnScreen.push(t);
+    }
+    this.resultSlot.mc_lock.visible = false;
+    this.resultSlot.toolTipText = "dialog_equipment_craftEquipment_middleSlotEmpty_tooltip";
+    this.resultSlot.mc_deco.gotoAndStop(7);
+    this.resultSlot.mc_bg.gotoAndStop(1);
+    o.MovieClipHelper.clearMovieClip(this.subLayerDisp.mc_animation);
+  };
+  CastleCraftingDialogEquipment.prototype.onMouseOver = function (t) {
+    e.prototype.onMouseOver.call(this, t);
+    if (this._clickHandler) {
+      this._clickHandler.handleDialogMouseOver(t);
     }
   };
-  CastleCraftingDialogGem.prototype.initSlots = function () {
-    if (this._allSlotsOnScreen != null) {
-      for (var e = 0, t = this._allSlotsOnScreen; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.actLikeButton = true;
-          a.MovieClipHelper.clearMovieClip(i.mc_itemHolder);
-          i.mc_itemHolder.scaleX = i.mc_itemHolder.scaleY = 1.1;
-          i.mc_bg.gotoAndStop(1);
-          i.mc_lock.visible = false;
-        }
-      }
-    }
-  };
-  CastleCraftingDialogGem.prototype.hide = function () {
-    e.prototype.hide.call(this);
-  };
-  CastleCraftingDialogGem.prototype.setCraftButton = function (e, t) {
-    d.ButtonHelper.enableButton(this.subLayerDisp.btn_craft, e);
-    this.subLayerDisp.btn_craft.toolTipText = t;
-  };
-  CastleCraftingDialogGem.prototype.setCraftRubyButton = function (e, t) {
-    d.ButtonHelper.enableButton(this.subLayerDisp.btn_craftRubies, e);
-    this.subLayerDisp.btn_craftRubies.toolTipText = t;
-  };
-  Object.defineProperty(CastleCraftingDialogGem.prototype, "allSlotsOnScreen", {
+  Object.defineProperty(CastleCraftingDialogEquipment.prototype, "clickHandler", {
+    set: function (e) {
+      this._clickHandler = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleCraftingDialogEquipment.prototype, "allSlotsOnScreen", {
     get: function () {
       return this._allSlotsOnScreen;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleCraftingDialogGem.prototype, "resultSlot", {
+  Object.defineProperty(CastleCraftingDialogEquipment.prototype, "resultSlot", {
     get: function () {
-      return this._allSlotsOnScreen[CastleCraftingDialogGem.SLOTS_ON_SCREEN - 1];
+      return this.subLayerDisp.slot6;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleCraftingDialogGem.prototype, "upgradePrice", {
+  Object.defineProperty(CastleCraftingDialogEquipment.prototype, "price", {
     set: function (e) {
-      this.itxt_price.textContentVO.numberValue = e;
-      this.itxt_price.color = u.CastleModel.currencyData.c1Amount < e ? c.ClientConstColor.FONT_INSUFFICIENT_COLOR : c.ClientConstColor.FONT_DEFAULT_COLOR;
+      this.itxt_value.textContentVO.numberValue = e;
+      this.itxt_value.color = c.CastleModel.currencyData.c1Amount < e ? l.ClientConstColor.FONT_INSUFFICIENT_COLOR : l.ClientConstColor.FONT_DEFAULT_COLOR;
     },
     enumerable: true,
     configurable: true
   });
-  CastleCraftingDialogGem.prototype.setUpgradeChance = function (e, t) {
-    this.itxt_upgradeChance.textContentVO.textReplacements = [e];
-    this.itxt_upgradeChance.color = t;
+  CastleCraftingDialogEquipment.prototype.startCraftAnimation = function (e, t, i) {
+    this._craftingAnimation.doEQAnimation(e, t, i);
   };
-  CastleCraftingDialogGem.prototype.setUpgradeResult = function (e, t) {
-    if (this.itxt_upgradeResult.textContentVO && this.itxt_upgradeResult.textContentVO) {
-      this.itxt_upgradeResult.textContentVO.textId = e;
-      this.itxt_upgradeResult.color = t;
-    }
+  CastleCraftingDialogEquipment.prototype.clearCenterSlot = function () {
+    this._craftingAnimation.clearCenterSlot();
   };
-  CastleCraftingDialogGem.prototype.playFailAnimation = function (e) {
-    g.CastleCraftingGemFailedAnimation.playAnimation(this._allSlotsOnScreen, e);
-  };
-  CastleCraftingDialogGem.prototype.playSuccessAnimation = function (e) {
-    this._craftingAnimationEquip = new h.CastleCraftingAnimationEquipment(this.subLayerDisp.mc_animation, this);
-    this._craftingAnimationEquip.doGemAnimation(e, this._allSlotsOnScreen, null);
-  };
-  CastleCraftingDialogGem.prototype.clearAnimationFinishedCallbacks = function () {
-    g.CastleCraftingGemFailedAnimation.callBack = null;
-    if (this._craftingAnimationEquip) {
-      this._craftingAnimationEquip.clearCallBacks();
-    }
-  };
-  Object.defineProperty(CastleCraftingDialogGem.prototype, "allConnectionBarMCs", {
-    get: function () {
-      return this._allConnectionBarMCs;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleCraftingDialogGem.prototype.startNewItemAnimation = function (e, t) {
+  CastleCraftingDialogEquipment.prototype.startNewItemAnimation = function (e, t) {
     this._newItemAnimation.playAnimation(e, t);
   };
-  CastleCraftingDialogGem.__initialize_static_members = function () {
-    CastleCraftingDialogGem.SLOTS_ON_SCREEN = 7;
+  CastleCraftingDialogEquipment.__initialize_static_members = function () {
+    CastleCraftingDialogEquipment.SLOTS_ON_SCREEN = 6;
   };
-  return CastleCraftingDialogGem;
-}(p.CastleDialogSubLayer);
-exports.CastleCraftingDialogGem = _;
-s.classImplementsInterfaces(_, "ICollectableRendererList", "ISublayer");
+  return CastleCraftingDialogEquipment;
+}(h.CastleDialogSubLayer);
+exports.CastleCraftingDialogEquipment = _;
+a.classImplementsInterfaces(_, "ICollectableRendererList", "ISublayer");
 _.__initialize_static_members();

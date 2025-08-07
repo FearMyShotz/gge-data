@@ -2,16 +2,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = function (e) {
-  function CollectableItemAchievementPointVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CollectableItemAchievementPointVO(t = 0) {
+    CONSTRUCTOR_HACK;
+    return e.call(this, t) || this;
   }
-  n.__extends(CollectableItemAchievementPointVE, e);
-  CollectableItemAchievementPointVE.prototype.tooltipCreate = function () {
-    return this.tooltipCreateByAmount(this.vo.getTooltipTextId());
+  n.__extends(CollectableItemAchievementPointVO, e);
+  CollectableItemAchievementPointVO.prototype.parseServerObject = function (t) {
+    e.prototype.parseServerObject.call(this, t);
+    this.amount = t;
   };
-  return CollectableItemAchievementPointVE;
-}(require("./195.js").ACollectableItemSimpleIconVE);
-exports.CollectableItemAchievementPointVE = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList");
+  CollectableItemAchievementPointVO.__initialize_static_members = function () {
+    CollectableItemAchievementPointVO.SERVER_KEY = "AP";
+    CollectableItemAchievementPointVO.XML_KEY = "achievementPoints";
+  };
+  return CollectableItemAchievementPointVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemAchievementPointVO = o;
+o.__initialize_static_members();

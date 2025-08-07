@@ -2,21 +2,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleColossusEventFinishedDialogProperties(t, i, n, o) {
-    var a = this;
-    a.rank = 0;
-    a.decoPoints = 0;
-    a.points = 0;
-    a.wodID = 0;
+var o = require("./2.js");
+var a = require("./6.js");
+var s = function (e) {
+  function CastleBountyhunterWinDialogProperties(t) {
+    var i = this;
+    i.bountyPrizeC1 = 0;
+    i.bountyPrizeC2 = 0;
     CONSTRUCTOR_HACK;
-    (a = e.call(this) || this).points = t;
-    a.rank = i;
-    a.decoPoints = n;
-    a.wodID = o;
-    return a;
+    (i = e.call(this) || this).bountyPrizeC1 = a.int(t.BC1);
+    i.bountyPrizeC2 = a.int(t.BC2);
+    return i;
   }
-  n.__extends(CastleColossusEventFinishedDialogProperties, e);
-  return CastleColossusEventFinishedDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleColossusEventFinishedDialogProperties = o;
+  n.__extends(CastleBountyhunterWinDialogProperties, e);
+  return CastleBountyhunterWinDialogProperties;
+}(o.BasicProperties);
+exports.CastleBountyhunterWinDialogProperties = s;

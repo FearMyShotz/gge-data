@@ -11,7 +11,7 @@ var c = require("./3.js");
 var u = require("./16.js");
 var d = require("./4.js");
 var p = require("./97.js");
-var h = require("./35.js");
+var h = require("./33.js");
 var g = function (e) {
   function RelicFarmBuildingVO() {
     return e !== null && e.apply(this, arguments) || this;
@@ -46,6 +46,6 @@ var g = function (e) {
     }
   };
   return RelicFarmBuildingVO;
-}(require("./634.js").FarmBuildingVO);
+}(require("./635.js").FarmBuildingVO);
 exports.RelicFarmBuildingVO = g;
 s.classImplementsInterfaces(g, "IShopVO", "ICostVO", "IInventoryVO");

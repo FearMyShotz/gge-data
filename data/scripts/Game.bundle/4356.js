@@ -145,9 +145,9 @@ var h = function (e) {
   CastleAllianceAlienInvasionEventDialog.CAT_PLAYER = "CAT_PLAYER";
   CastleAllianceAlienInvasionEventDialog.CAT_ALLIANCE = "CAT_ALLIANCE";
   return CastleAllianceAlienInvasionEventDialog;
-}(require("./114.js").CastleExternalSubLayerDialog);
+}(require("./112.js").CastleExternalSubLayerDialog);
 exports.CastleAllianceAlienInvasionEventDialog = h;
 var g = require("./4357.js");
 var C = require("./4359.js");
-var _ = require("./288.js");
+var _ = require("./287.js");
 o.classImplementsInterfaces(h, "ICollectableRendererList");

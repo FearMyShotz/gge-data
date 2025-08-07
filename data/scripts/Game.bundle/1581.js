@@ -12,5 +12,5 @@ var o = function (e) {
   }
   n.__extends(CastleRecruitStrongholdAddUnitsDialogProperties, e);
   return CastleRecruitStrongholdAddUnitsDialogProperties;
-}(require("./584.js").CastleBasicAddUnitsDialogProperties);
+}(require("./585.js").CastleBasicAddUnitsDialogProperties);
 exports.CastleRecruitStrongholdAddUnitsDialogProperties = o;

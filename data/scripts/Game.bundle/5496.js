@@ -3,40 +3,98 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./3.js");
-var l = require("./3.js");
-var c = require("./39.js");
-var u = require("./24.js");
-var d = function (e) {
-  function CastleAwardWithRewardWinDialog() {
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./1.js");
+var l = require("./1.js");
+var c = require("./1.js");
+var u = require("./1.js");
+var d = require("./5.js");
+var p = require("./3.js");
+var h = require("./24.js");
+var g = function (e) {
+  function CastleAwardDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleAwardWithRewardWinDialog.NAME) || this;
+    return e.call(this, CastleAwardDialog.NAME) || this;
   }
-  n.__extends(CastleAwardWithRewardWinDialog, e);
-  CastleAwardWithRewardWinDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(CastleAwardDialog, e);
+  CastleAwardDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_close]);
-    this.dialogDisp.mc_deco.gotoAndStop(2);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new l.LocalizedTextVO("dialog_EGAevent_message_won"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new l.LocalizedTextVO("dialog_EGAevent_message_won_title"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_reward_value, new r.LocalizedNumberVO(200));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_reward, new l.LocalizedTextVO("dialog_EGAevent_price1"));
-    this.dialogDisp.mc_ruby.toolTipText = c.ClientConstTextIds.C2;
-    this.dialogDisp.mc_awardHolder.addChild(new u.CastleGoodgameExternalClip("CastleWelcomeNewsEGA14", o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("CastleWelcomeNewsEGA14"), null, 1, false, s.getDefinitionByName("LoadingAnimation")));
+    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_vote]);
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_vote.txt_label, new p.LocalizedTextVO("dialog_award_button"));
+    this.itxt_title = this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new p.LocalizedTextVO("european_games_award_title"));
+    this.itxt_copy1 = this.textFieldManager.registerTextField(this.dialogDisp.txt_copy1, new p.LocalizedTextVO("bam_award_copy1"));
+    this.itxt_copy2 = this.textFieldManager.registerTextField(this.dialogDisp.txt_copy2, new p.LocalizedTextVO("bam_award_copy2"));
   };
-  CastleAwardWithRewardWinDialog.prototype.onClick = function (t) {
+  CastleAwardDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    e.prototype.applyPropertiesLoaded.call(this, t);
+    this.setPicture();
+    this.setButton();
+  };
+  CastleAwardDialog.prototype.setButton = function () {
+    this.dialogDisp.btn_vote.visible = !this.env.loginIsKeyBased;
+  };
+  CastleAwardDialog.prototype.setPicture = function () {
+    var e = this.dialogProperties.messageVO.subtypeEvent;
+    a.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_awardHolder);
+    var t = "";
+    if (e == d.MessageConst.SPECIAL_ID_BAEM_AWARD) {
+      t = "CastleWelcomeNews27";
+    } else if (e == d.MessageConst.SPECIAL_ID_BAEM_AWARD_FINAL) {
+      t = "CastleWelcomeNews30";
+    } else if (e == d.MessageConst.SPECIAL_ID_EUROPEAN_AWARD) {
+      t = "CastleWelcomeNewsEGA14";
+    } else if (e == d.MessageConst.SPECIAL_ID_GAMEX_AWARD) {
+      t = "AwardGameX";
+    } else if (e == d.MessageConst.SPECIAL_ID_MMO_OF_THE_YEAR_AWARD) {
+      t = "CastleWelcomeNews44";
+    }
+    this.dialogDisp.mc_awardHolder.addChild(new h.CastleGoodgameExternalClip(t, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(t), null, 0, false, c.getDefinitionByName("LoadingAnimation")).asDisplayObject());
+  };
+  CastleAwardDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    if (t.target == this.dialogDisp.btn_close) {
-      this.hide();
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_vote:
+        this.gotoURL();
     }
   };
-  CastleAwardWithRewardWinDialog.__initialize_static_members = function () {
-    CastleAwardWithRewardWinDialog.NAME = "CastleAwardWithRewardWinEx";
+  CastleAwardDialog.prototype.gotoURL = function () {
+    try {
+      var e;
+      switch (this.dialogProperties.messageVO.subtypeEvent) {
+        case d.MessageConst.SPECIAL_ID_BAEM_AWARD:
+        case d.MessageConst.SPECIAL_ID_BAEM_AWARD_FINAL:
+          e = new r.URLRequest("http://www.bamaward.de");
+          break;
+        case d.MessageConst.SPECIAL_ID_EUROPEAN_AWARD:
+          e = new r.URLRequest("http://european-games-award.com/voting");
+          break;
+        case d.MessageConst.SPECIAL_ID_GAMEX_AWARD:
+          e = new r.URLRequest("http://gamex.com.tr/award/best-browser-game/");
+          break;
+        case d.MessageConst.SPECIAL_ID_MMO_OF_THE_YEAR_AWARD:
+          e = new r.URLRequest("http://www.mmooftheyear.com/vote#91X6228");
+      }
+      u.navigateToURL(e, "_blank");
+    } catch (e) {
+      s.error("nor URL Request possible");
+    }
   };
-  return CastleAwardWithRewardWinDialog;
+  Object.defineProperty(CastleAwardDialog.prototype, "dialogProperties", {
+    get: function () {
+      return this.properties;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleAwardDialog.__initialize_static_members = function () {
+    CastleAwardDialog.NAME = "CastleAward";
+  };
+  return CastleAwardDialog;
 }(require("./11.js").CastleExternalDialog);
-exports.CastleAwardWithRewardWinDialog = d;
-a.classImplementsInterfaces(d, "ICollectableRendererList");
-d.__initialize_static_members();
+exports.CastleAwardDialog = g;
+l.classImplementsInterfaces(g, "ICollectableRendererList");
+g.__initialize_static_members();

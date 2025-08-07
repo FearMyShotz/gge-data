@@ -8,5 +8,5 @@ var o = function (e) {
   }
   n.__extends(CastleAllianceTournamentEventDialogProperties, e);
   return CastleAllianceTournamentEventDialogProperties;
-}(require("./1892.js").ACastleTournamentEventDialogProperties);
+}(require("./1894.js").ACastleTournamentEventDialogProperties);
 exports.CastleAllianceTournamentEventDialogProperties = o;

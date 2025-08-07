@@ -2,94 +2,109 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
+var o = require("./1.js");
+var a = require("./5.js");
 var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./18.js");
-var c = require("./37.js");
-var u = require("./80.js");
-var d = require("./33.js");
-var p = require("./29.js");
-var h = require("./260.js");
-var g = require("./11.js");
-var C = require("./8.js");
-var _ = require("./20.js");
-var m = require("./4.js");
-var f = require("./13.js");
-var O = require("./38.js");
-var E = require("./1458.js");
-var y = require("./9.js");
-var b = require("./448.js");
-var D = function (e) {
-  function CastleMissingSceatSkillExpansionDialog() {
-    return e.call(this, CastleMissingSceatSkillExpansionDialog.NAME) || this;
+var r = require("./6.js");
+var l = require("./23.js");
+var c = require("./23.js");
+var u = require("./4.js");
+var d = require("./415.js");
+var p = createjs.Point;
+var h = function (e) {
+  function InfoTooltipExpansion() {
+    var t = this;
+    CONSTRUCTOR_HACK;
+    (t = e.call(this, new Library.CastleInterfaceElements.ExpansionTooltip()) || this).infoToolTip.mouseChildren = false;
+    t.infoToolTip.mouseEnabled = false;
+    t.iCostC1Txt = t.textFieldManager.registerTextField(t.infoToolTip.txt_textCost, new s.LocalizedTextVO("cost"));
+    t.iCostC2Txt = t.textFieldManager.registerTextField(t.infoToolTip.txt_textCostPremium, new s.LocalizedTextVO("cost"));
+    return t;
   }
-  n.__extends(CastleMissingSceatSkillExpansionDialog, e);
-  CastleMissingSceatSkillExpansionDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    C.ButtonHelper.initButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close], _.ClickFeedbackButtonHover);
+  n.__extends(InfoTooltipExpansion, e);
+  InfoTooltipExpansion.prototype.updateMenuPosition = function () {
+    if (this._target && this._target.uiPos && this._target.uiDisp && this._target.uiDisp.stage) {
+      var e = this._target.uiDisp.localToGlobal(new p(this._target.uiDisp.stage.x + this._target.uiDisp.width / 2, this._target.uiDisp.stage.y + this._target.uiDisp.height / 2));
+      this.disp.x = e.x;
+      this.disp.y = e.y;
+    } else {
+      this.hide();
+    }
   };
-  CastleMissingSceatSkillExpansionDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    var i = m.CastleModel.legendSkillData.getSceatSkillByID(m.CastleModel.expansionCostsData.getSceatSkillLocked()).nameTextID;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.TextVO(f.TextHelper.toUpperCaseLocaSafeTextId("dialog_needLegendTemple_skill_header")));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO("dialog_needLegendTemple_skill_desc", [i])).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_ok.txt_copy, new r.TextVO(f.TextHelper.toUpperCaseLocaSafeTextId("button_getSkill")));
-  };
-  CastleMissingSceatSkillExpansionDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    if (C.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-          this.hide();
-          break;
-        case this.dialogDisp.btn_ok:
-          this.onClickOk();
-          this.hide();
+  InfoTooltipExpansion.prototype.initComponent = function () {
+    var e = 0;
+    if (this.targetExpansionVO) {
+      var t;
+      if (o.getQualifiedClassName(this._target.uiDisp).indexOf("ExpandArrow_Normal_") >= 0) {
+        this.iCostC1Txt.visible = true;
+        this.iCostC2Txt.visible = false;
+        if (this.targetExpansionVO.isSceatLocked) {
+          this.textFieldManager.registerTextField(this.infoToolTip.txt_name, new s.LocalizedTextVO("dialog_needLegendTemple_skill_header"));
+        } else if (this.targetExpansionVO.userHasLevelForBuyNormal) {
+          if (this.targetExpansionVO.userHasResourcesForBuy) {
+            this.textFieldManager.registerTextField(this.infoToolTip.txt_name, new s.LocalizedTextVO("expansion_buy"));
+          } else {
+            this.textFieldManager.registerTextField(this.infoToolTip.txt_name, new s.LocalizedTextVO("expansion_notEnoughResources"));
+          }
+        } else {
+          e = r.int(a.ConstructionConst.getExpandLevelForResources(_.Iso.data.objects.groundObjects.expansionAmount + 1));
+          this.textFieldManager.registerTextField(this.infoToolTip.txt_name, new s.LocalizedTextVO("expansion_higherLevelNeeded", [e]));
+        }
+        t = u.CastleModel.expansionCostsData.getExpandCostNormal();
+        m.CostHelper.initAsCosts(t, this.infoToolTip);
+      } else {
+        this.iCostC2Txt.visible = true;
+        this.iCostC1Txt.visible = false;
+        if (this.targetExpansionVO.userHasLevelForBuyPremium) {
+          this.textFieldManager.registerTextField(this.infoToolTip.txt_name, new s.LocalizedTextVO("expansion_buyPremium"));
+        } else {
+          e = r.int(a.ConstructionConst.getExpandLevelForC2(_.Iso.data.objects.groundObjects.expansionAmount + 1));
+          this.textFieldManager.registerTextField(this.infoToolTip.txt_name, new s.LocalizedTextVO("expansion_higherLevelNeeded", [e]));
+        }
+        var i = r.int(u.CastleModel.costsData.getFinalCostsC2(u.CastleModel.expansionCostsData.getExpandCostC2()));
+        t = g.CollectableManager.parser.createGoodsListSave(new C.CollectableItemC2VO(i));
+        m.CostHelper.initAsCosts(t, this.infoToolTip);
       }
+      c.TweenMax.fromTo(this.infoToolTip, 0.2, {
+        alpha: 0
+      }, {
+        alpha: 1,
+        ease: l.Linear.easeIn
+      });
     }
   };
-  CastleMissingSceatSkillExpansionDialog.prototype.onClickOk = function () {
-    if (this.layoutManager.isInMyCastle && m.CastleModel.areaData.activeArea && m.CastleModel.areaData.activeArea.isMyHomeCastle) {
-      this.gotoSkill();
-    } else {
-      this.controller.addEventListener(c.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.bindFunction(this.onJAAArrived));
-      o.CommandController.instance.executeCommand(p.IngameClientCommands.JOIN_MAIN_CASTLE_COMMAND);
-    }
+  Object.defineProperty(InfoTooltipExpansion.prototype, "worldLayer", {
+    get: function () {
+      return _.Iso.renderer.layers.transformLayer;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.BasicIngameUIComponent.prototype, "worldLayer").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(InfoTooltipExpansion.prototype, "infoToolTip", {
+    get: function () {
+      return this.disp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(InfoTooltipExpansion.prototype, "targetExpansionVO", {
+    get: function () {
+      return this._target.expansionVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  InfoTooltipExpansion.__initialize_static_members = function () {
+    InfoTooltipExpansion.NAME = "InfoTooltipExpansion";
   };
-  CastleMissingSceatSkillExpansionDialog.prototype.onJAAArrived = function (e) {
-    this.controller.removeEventListener(c.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.bindFunction(this.onJAAArrived));
-    this.gotoSkill();
-  };
-  CastleMissingSceatSkillExpansionDialog.prototype.gotoSkill = function () {
-    if (d.Iso.data.objects.provider.hasFunctionalBuildingByType(u.IsoObjectEnum.LEGEND_TEMPLE)) {
-      this.gotoSceatTree();
-    } else {
-      this.gotoBuildMenu();
-    }
-  };
-  CastleMissingSceatSkillExpansionDialog.prototype.gotoSceatTree = function () {
-    var e = m.CastleModel.expansionCostsData.getSceatSkillLocked();
-    var t = m.CastleModel.legendSkillData.getTabBySkillId(e);
-    var i = new E.CastleLegendSkillDialogProperties(t, e);
-    y.CastleDialogHandler.getInstance().registerDefaultDialogs(b.CastleLegendSkillDialog, i);
-  };
-  CastleMissingSceatSkillExpansionDialog.prototype.gotoBuildMenu = function () {
-    var e = a.castAs(d.Iso.renderer.objects.provider.getObjectByType(u.IsoObjectEnum.LEGEND_TEMPLE), "ABasicBuildingVE");
-    if (e) {
-      d.Iso.renderer.camera.scrollToGridPos(e.vo.pos);
-      d.Iso.renderer.mouse.changeSelectedTarget(e);
-    } else {
-      d.Iso.controller.viewUpdater.switchBuildModeInOwnCastle(true);
-      var t = this.layoutManager.getPanel(h.CastleDecoShopPanel);
-      var i = m.CastleModel.wodData.getBuildingVOById(l.ClientConstCastle.LEGEND_TEMPLE_WOD_LEVEL1);
-      if (!t.centerAndHighlightBuildingInShop(i)) {
-        y.CastleDialogHandler.getInstance().registerDefaultDialogs(O.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(s.Localize.text("dialog_primeday_primesale_warningTitle"), s.Localize.text("dialog_primeday_primesale_warning")));
-      }
-    }
-  };
-  CastleMissingSceatSkillExpansionDialog.NAME = "CastleMissingSceatSkillExpansion";
-  return CastleMissingSceatSkillExpansionDialog;
-}(g.CastleExternalDialog);
-exports.CastleMissingSceatSkillExpansionDialog = D;
+  return InfoTooltipExpansion;
+}(d.BasicIngameUIComponent);
+exports.InfoTooltipExpansion = h;
+var g = require("./50.js");
+var C = require("./128.js");
+var _ = require("./34.js");
+var m = require("./66.js");
+h.__initialize_static_members();

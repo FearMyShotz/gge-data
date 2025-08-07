@@ -1,32 +1,20 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./4.js");
-var o = require("./3428.js");
-var a = function () {
-  function RewardHubParser() {}
-  RewardHubParser.prototype.parse = function (e) {
-    var t;
-    n.CastleModel.rewardHubData.reset();
-    for (var i = 0; i < e.length; i++) {
-      (t = new o.RewardHubVO()).parseData(e[i]);
-      n.CastleModel.rewardHubData.rewardHubVOs.push(t);
-    }
-    n.CastleModel.rewardHubData.setAmountOfPendingRewards(n.CastleModel.rewardHubData.rewardHubVOs.length, false);
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SBuySeasonPassPromotionEventVO(t, i = -1) {
+    var n = e.call(this) || this;
+    n.KLRID = t;
+    n.KLID = i;
+    return n;
+  }
+  n.__extends(C2SBuySeasonPassPromotionEventVO, e);
+  C2SBuySeasonPassPromotionEventVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_BUY_SEASON_PASS_PROMOTION;
   };
-  RewardHubParser.prototype.updateUnlockedRewards = function (e) {
-    if (e) {
-      var t;
-      for (var i = 0; i < n.CastleModel.rewardHubData.rewardHubVOs.length; i++) {
-        t = n.CastleModel.rewardHubData.rewardHubVOs[i];
-        for (var o = 0; o < e.length; o++) {
-          if (e[o] == t.hubRewardID) {
-            t.extraTierUnlocked = true;
-          }
-        }
-      }
-    }
-  };
-  return RewardHubParser;
-}();
-exports.RewardHubParser = a;
+  return C2SBuySeasonPassPromotionEventVO;
+}(o.BasicCommandVO);
+exports.C2SBuySeasonPassPromotionEventVO = s;

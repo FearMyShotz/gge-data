@@ -4,33 +4,15 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./1.js");
-var r = function (e) {
-  function OpenEventDialogCommand() {
+var s = function (e) {
+  function OpenNewServerAnnouncementCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(OpenEventDialogCommand, e);
-  OpenEventDialogCommand.prototype.execute = function (e) {
-    var t;
-    if (e === undefined) {
-      e = null;
-    }
-    var i = true;
-    if (s.instanceOfClass(e, "Array")) {
-      if (e.length >= 1) {
-        t = e[0];
-      }
-      if (e.length >= 2) {
-        i = e[1];
-      }
-    } else {
-      t = e;
-    }
-    if (t) {
-      t.openDialog(i);
-    }
+  n.__extends(OpenNewServerAnnouncementCommand, e);
+  OpenNewServerAnnouncementCommand.prototype.execute = function (t = null) {
+    e.prototype.execute.call(this, t);
   };
-  return OpenEventDialogCommand;
+  return OpenNewServerAnnouncementCommand;
 }(o.SimpleCommand);
-exports.OpenEventDialogCommand = r;
-a.classImplementsInterfaces(r, "ISimpleCommand");
+exports.OpenNewServerAnnouncementCommand = s;
+a.classImplementsInterfaces(s, "ISimpleCommand");

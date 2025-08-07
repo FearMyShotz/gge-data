@@ -1,278 +1,276 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function ResearchGroupVO() {
-    this.id = 0;
-    this.tabId = 0;
-    this.researchTypeId = 0;
-    this._advancement = -1;
-    this.researches = [];
-    this._prerequisites = [];
-    this._prerequisitesPaths = new Map();
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./5.js");
+var r = require("./6.js");
+var l = require("./18.js");
+var c = require("./28.js");
+var u = require("./22.js");
+var d = require("./531.js");
+var p = require("./30.js");
+var h = require("./72.js");
+var g = require("./4.js");
+var C = require("./110.js");
+var _ = require("./142.js");
+var m = require("./33.js");
+var f = require("./5573.js");
+var O = require("./5574.js");
+var E = require("./5575.js");
+var y = function (e) {
+  function CastleResearchData(t) {
+    var i = e.call(this) || this;
+    i._boughtResearches = [];
+    i._currentResearchId = -1;
+    i._actResearchEndTime = 0;
+    i._hasResearchTower = false;
+    i._tabs = [];
+    i.showResearchIDs = false;
+    i.showResearchGrid = false;
+    i.editingEnabled = false;
+    i._researchVOs = new Map();
+    i._groupVOs = new Map();
+    i._hasResearchTower = false;
+    var n = t.researches;
+    if (n != null) {
+      for (var o = 0, a = n; o < a.length; o++) {
+        var s = a[o];
+        if (s !== undefined) {
+          var r = i.createResearchVO(s);
+          i._researchVOs.set(r.researchID, r);
+          var l = i._groupVOs.get(r.groupID);
+          if (l == null) {
+            l = new O.ResearchGroupVO();
+            i._groupVOs.set(r.groupID, l);
+            l.fillFromParamXML(s);
+            var c = i._tabs[l.tabId];
+            if (c == null) {
+              (c = i._tabs[l.tabId] = new E.ResearchTabVO()).fillFromParamXML(s);
+            }
+            c.addGroup(l);
+            c.checkRootResearch(r);
+          }
+          l.addResearch(r);
+        }
+      }
+    }
+    if (i._researchVOs != null) {
+      for (var u = 0, d = Array.from(i._researchVOs.values()); u < d.length; u++) {
+        if ((r = d[u]) !== undefined) {
+          r.setupPrerequisites(i._researchVOs);
+        }
+      }
+    }
+    if (i._tabs) {
+      i._tabs.forEach(function (e) {
+        return e.setupConnections();
+      });
+    }
+    return i;
   }
-  ResearchGroupVO.prototype.addResearch = function (e) {
-    this.researches.push(e);
-    e.groupVO = this;
-    this.researches.sort(function (e, t) {
-      return e.level - t.level;
-    });
+  n.__extends(CastleResearchData, e);
+  CastleResearchData.prototype.reset = function () {
+    if (this._researchVOs != null) {
+      for (var e = 0, t = Array.from(this._researchVOs.values()); e < t.length; e++) {
+        t[e].isComplete = false;
+      }
+    }
+    this._boughtResearches = [];
+    this._currentResearchId = -1;
+    this._actResearchEndTime = 0;
+    this._hasResearchTower = false;
+    this._researchBuildingVO = null;
+    this._researchBoosterBuildingVO = null;
   };
-  ResearchGroupVO.prototype.addPrerequisite = function (e) {
-    if (e != this) {
-      if (this._prerequisites != null) {
-        for (var t = 0, i = this._prerequisites; t < i.length; t++) {
+  CastleResearchData.prototype.createResearchVO = function (e) {
+    var t;
+    var i = parseInt(u.CastleXMLUtils.getValueOrDefault("effects", e, "").split(/[&,#]/)[0]);
+    switch (i ? r.int(g.CastleModel.effectsData.getEffectByID(i).effectTypeID) : -1) {
+      case m.EffectTypeEnum.EFFECT_TYPE_ENABLE_CONSTRUCTIONITEM_RECIPE_ID.id:
+        t = new D.BlueprintResearchVO();
+        break;
+      case m.EffectTypeEnum.EFFECT_TYPE_ENABLE_CRAFTINGRECIPE.id:
+        t = new f.CraftingRecipeResearchVO();
+        break;
+      default:
+        t = new I.ResearchVO();
+    }
+    t.fillFromParamXML(e);
+    return t;
+  };
+  CastleResearchData.prototype.parse_REI = function (e) {
+    if (e) {
+      this._boughtResearches = e.BR;
+      this._currentResearchId = r.int(e.ARID);
+      this._actResearchEndTime = p.CachedTimer.getCachedTimer() + e.ARRT * c.ClientConstTime.SEC_2_MILLISEC;
+      if (this._boughtResearches != null) {
+        for (var t = 0, i = this._boughtResearches; t < i.length; t++) {
           var n = i[t];
-          if (n !== undefined && n == e) {
-            return;
+          if (n !== undefined && this._researchVOs.get(n)) {
+            this._researchVOs.get(n).isComplete = true;
           }
         }
       }
-      this._prerequisites.push(e);
+      this.dispatchEvent(new d.CastleResearchEvent(d.CastleResearchEvent.RESEARCH_INFO_UPDATE));
     }
   };
-  ResearchGroupVO.prototype.addPrerequisitePath = function (e, t) {
-    if (e && t) {
-      this._prerequisitesPaths.set(e, t);
-    }
-  };
-  Object.defineProperty(ResearchGroupVO.prototype, "isLocked", {
+  Object.defineProperty(CastleResearchData.prototype, "researchTowerLevel", {
     get: function () {
-      return this.topResearch.isLocked;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "isFullyResearched", {
-    get: function () {
-      return this.lastResearch.isComplete;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "maxLevel", {
-    get: function () {
-      return this.researches.length;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "currentLevel", {
-    get: function () {
-      for (var e = 0; e < this.researches.length; e++) {
-        if (!this.researches[e].isComplete) {
-          return e;
-        }
+      if (this._researchBuildingVO) {
+        return this._researchBuildingVO.level;
+      } else {
+        return 0;
       }
-      return this.maxLevel;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ResearchGroupVO.prototype, "activeResearch", {
+  CastleResearchData.prototype.remainingResearchTimeInSeconds = function () {
+    return r.int(Math.max((this._actResearchEndTime - p.CachedTimer.getCachedTimer()) * c.ClientConstTime.MILLISEC_2_SEC, 0));
+  };
+  Object.defineProperty(CastleResearchData.prototype, "isSomeResearchActive", {
     get: function () {
-      for (var e = 0; e < this.researches.length; e++) {
-        var t = this.researches[e];
-        if (!t.isComplete) {
-          return t;
-        }
+      return this._currentResearchId != -1 && this.remainingResearchTimeInSeconds() > 0;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleResearchData.prototype, "currentResearchVO", {
+    get: function () {
+      if (this._currentResearchId != -1) {
+        return this._researchVOs.get(this._currentResearchId);
+      } else {
+        return null;
       }
-      return null;
     },
     enumerable: true,
     configurable: true
   });
-  ResearchGroupVO.prototype.getResearchByLevel = function (e) {
-    for (var t = 0; t < this.researches.length; t++) {
-      if (this.researches[t].level == e) {
-        return this.researches[t];
-      }
+  CastleResearchData.prototype.getResearchEffectsByType = function (e, t = null) {
+    t = t || new _.CastleEffectConditionVO();
+    var i = [];
+    if (!this._boughtResearches) {
+      return i;
     }
-    return this.activeResearch;
-  };
-  Object.defineProperty(ResearchGroupVO.prototype, "lastResearch", {
-    get: function () {
-      return this.researches[this.researches.length - 1];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "firstResearch", {
-    get: function () {
-      return this.researches[0];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "topResearch", {
-    get: function () {
-      return this.activeResearch || this.lastResearch;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ResearchGroupVO.prototype.fillFromParamXML = function (e) {
-    this.id = parseInt(s.CastleXMLUtils.getValueOrDefault("groupID", e, "-1", true));
-    this.researchTypeId = parseInt(s.CastleXMLUtils.getValueOrDefault("researchTypeID", e, "0", false));
-    this.tabId = parseInt(s.CastleXMLUtils.getValueOrDefault("tabID", e, "1", true)) - 1;
-    this._x = parseInt(s.CastleXMLUtils.getValueOrDefault("x", e, "1", true));
-    this._y = parseInt(s.CastleXMLUtils.getValueOrDefault("y", e, "1", true));
-    this._predecessorX1 = parseInt(s.CastleXMLUtils.getValueOrDefault("predecessorX1", e, "1", true));
-    this._predecessorY1 = parseInt(s.CastleXMLUtils.getValueOrDefault("predecessorY1", e, "1", true));
-    this._categoryID = parseInt(s.CastleXMLUtils.getValueOrDefault("categoryID", e, "0", false));
-  };
-  ResearchGroupVO.prototype.getValueOnLevel = function (e) {
-    var t;
-    for (var i = 0; i < this.researches.length && i < e; i++) {
-      var n = this.researches[i].getBonusVOByEffectType(l.EffectTypeEnum.EFFECT_TYPE_UNKNOWN);
-      t ||= new n.effect.effectType.valueClass();
-      t.add(n.effectValue, null);
-    }
-    return t || new c.EffectValueSimple();
-  };
-  Object.defineProperty(ResearchGroupVO.prototype, "prerequisites", {
-    get: function () {
-      return this._prerequisites;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "prerequisitePaths", {
-    get: function () {
-      return this._prerequisitesPaths;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "isResearchable", {
-    get: function () {
-      return !this.isLocked && !this.isFullyResearched && !this.isEmptyGroup();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "advancement", {
-    get: function () {
-      if (this._advancement == -1) {
-        var e = -1;
-        if (this._prerequisites != null) {
-          for (var t = 0, i = this._prerequisites; t < i.length; t++) {
-            var n = i[t];
-            if (n !== undefined && n.advancement > e) {
-              e = n.advancement;
+    if (this._researchVOs != null) {
+      for (var n = 0, o = this._boughtResearches; n < o.length; n++) {
+        var a = o[n];
+        var s = this.getResearchById(a);
+        if (s !== undefined) {
+          for (var r = 0, l = s.boni; r < l.length; r++) {
+            var c = l[r];
+            if (c !== undefined && c.matchesConditions(e, t.areaType, t.spaceId, t.wodId, t.otherPlayer)) {
+              i.push(c);
             }
           }
         }
-        this._advancement = e + 1;
       }
-      return this._advancement;
+    }
+    return i;
+  };
+  CastleResearchData.prototype.getResearchEffectValue = function (e, t = -1, i = -1, n = -1, o = null) {
+    var a = C.CastleEffectsHelper.getTotalEffectValue(this.getResearchEffectsByType(e, new _.CastleEffectConditionVO(t, i, n, o)), true);
+    return a || new e.valueClass();
+  };
+  Object.defineProperty(CastleResearchData.prototype, "isResearchTowerBuilt", {
+    get: function () {
+      return this._hasResearchTower;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ResearchGroupVO.prototype, "toolTip", {
+  CastleResearchData.prototype.setResearchBuildingData = function (e) {
+    this._researchBuildingVO = e;
+    this._hasResearchTower = !!e && e.objectType == b.IsoObjectEnum.RESEARCH_TOWER && e.buildingState.isFunctionally;
+  };
+  CastleResearchData.prototype.setResearchBoostBuildingData = function (e) {
+    this._researchBoosterBuildingVO = e;
+  };
+  Object.defineProperty(CastleResearchData.prototype, "researchBoost", {
     get: function () {
-      var e = this.topResearch;
-      var t = e.fullNameText;
-      if (this.currentLevel > 0 && e.showEffectValue) {
-        t += "\n " + e.getBonusText(this.getValueOnLevel(this.currentLevel).textReplacements);
-      }
-      var i = this.requirementsText;
-      if (i) {
-        t += "\n" + i;
-      }
-      return t;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "requirementsText", {
-    get: function () {
-      var e = this.topResearch;
-      var t = [];
-      if (this.isLocked) {
-        if (e.minResearchTowerLevel > r.CastleModel.researchData.researchTowerLevel) {
-          var i = o.Localize.text("researchtower_name");
-          var n = o.Localize.text("building_with_level", [i, e.minResearchTowerLevel]);
-          t.push(n);
+      if (this._researchBuildingVO) {
+        if (this._researchBoosterBuildingVO) {
+          return this._researchBuildingVO.researchBoost + this._researchBoosterBuildingVO.researchBoost;
         } else {
-          for (var s = 0; s < e.prerequisites.length; s++) {
-            t.push(e.prerequisites[s].fullNameText);
+          return this._researchBuildingVO.researchBoost;
+        }
+      } else {
+        return 0;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleResearchData.prototype.getAbsoluteProductionBoost = function (e, t, i, n) {
+    if (t > l.ClientConstCastle.MINIMUM_RECRUITEMENT_TIME * i && n.areaType == s.WorldConst.AREA_TYPE_CASTLE && n.kingdomID == a.WorldClassic.KINGDOM_ID) {
+      var o = r.int(i * this.getResearchEffectValue(e.getAbsoluteBoostEffectType()).strength);
+      return t - r.int(Math.max(t + o, l.ClientConstCastle.MINIMUM_RECRUITEMENT_TIME * i));
+    }
+    return 0;
+  };
+  CastleResearchData.prototype.getNextResearch = function (e) {
+    var t = null;
+    if (this._researchVOs != null) {
+      for (var i = 0, n = Array.from(this._researchVOs.values()); i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined && o.isResearchable) {
+          var a = o.prerequisiteIDs;
+          if (a != null) {
+            for (var s = 0, r = a; s < r.length; s++) {
+              var l = r[s];
+              if (l !== undefined && l == e.researchID) {
+                if (o.groupID != e.groupID) {
+                  return o;
+                }
+                t = o;
+              }
+            }
           }
         }
       }
-      if (e.isLockedByLevel()) {
-        if (r.CastleModel.userData.level < e.requiredLevel) {
-          t.push(o.Localize.text("level_placeholder", [e.requiredLevel]));
-        } else {
-          t.push(o.Localize.text("legendaryLevel_placeholder", [e.requiredLegendLevel]));
-        }
-      }
-      var l = "";
-      if (t.length > 0) {
-        var c = a.int(Math.min(t.length - 1, ResearchGroupVO.TEXT_IDS_TOOLTIP_PREREQUISITES.length - 1));
-        var u = ResearchGroupVO.TEXT_IDS_TOOLTIP_PREREQUISITES[c];
-        l = o.Localize.text(u, t);
-      }
-      return l;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ResearchGroupVO.prototype.icon = function () {
-    return this.researches[0].icon();
+    }
+    return t;
   };
-  Object.defineProperty(ResearchGroupVO.prototype, "predecessorX1", {
-    get: function () {
-      return this._predecessorX1;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "predecessorY1", {
-    get: function () {
-      return this._predecessorY1;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "x", {
-    get: function () {
-      return this._x;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ResearchGroupVO.prototype, "y", {
-    get: function () {
-      return this._y;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ResearchGroupVO.prototype.isEmptyGroup = function () {
-    return this.firstResearch.isEmptyResearch();
+  CastleResearchData.prototype.getResearchById = function (e) {
+    return this._researchVOs.get(e);
   };
-  Object.defineProperty(ResearchGroupVO.prototype, "categoryID", {
+  Object.defineProperty(CastleResearchData.prototype, "researchVOs", {
     get: function () {
-      return this._categoryID;
+      return this._researchVOs;
     },
     enumerable: true,
     configurable: true
   });
-  ResearchGroupVO.__initialize_static_members = function () {
-    ResearchGroupVO.RESEARCH_TYPE_CORE = 0;
-    ResearchGroupVO.RESEARCH_TYPE_ECONOMY = 1;
-    ResearchGroupVO.RESEARCH_TYPE_MILITARY = 2;
-    ResearchGroupVO.TEXT_IDS_TOOLTIP_PREREQUISITES = ["research_need_one", "research_need_two", "research_need_three", "research_need_four"];
+  CastleResearchData.prototype.getGroupById = function (e) {
+    return this._groupVOs.get(e);
   };
-  return ResearchGroupVO;
-}();
-exports.ResearchGroupVO = n;
-var o = require("./3.js");
-var a = require("./6.js");
-var s = require("./22.js");
-var r = require("./4.js");
-var l = require("./35.js");
-var c = require("./409.js");
-n.__initialize_static_members();
+  Object.defineProperty(CastleResearchData.prototype, "groupVOs", {
+    get: function () {
+      return this._groupVOs;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleResearchData.prototype, "tabsCount", {
+    get: function () {
+      return this._tabs.length;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleResearchData.prototype, "tabs", {
+    get: function () {
+      return this._tabs;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleResearchData;
+}(h.CastleEventDispatcher);
+exports.CastleResearchData = y;
+o.classImplementsInterfaces(y, "ICastleBasicData");
+var b = require("./80.js");
+var D = require("./5578.js");
+var I = require("./1964.js");

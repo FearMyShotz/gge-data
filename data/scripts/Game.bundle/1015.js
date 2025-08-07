@@ -2,72 +2,71 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./3.js");
-var c = require("./18.js");
-var u = require("./16.js");
-var d = require("./4.js");
-var p = require("./97.js");
-var h = require("./1014.js");
-var g = function (e) {
-  function DworkshopBuildingVO() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./1.js");
+var a = require("./6.js");
+var s = require("./4.js");
+var r = function (e) {
+  function AUnitProductionBuildingVO() {
+    var t = this;
+    t._productionSpeed = 0;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(DworkshopBuildingVO, e);
-  Object.defineProperty(DworkshopBuildingVO.prototype, "unitCategory", {
-    get: function () {
-      return c.ClientConstCastle.UNIT_CATEGORY_TOOLS;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.AUnitProductionBuildingVO.prototype, "unitCategory").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DworkshopBuildingVO.prototype, "recruitCategory", {
-    get: function () {
-      return c.ClientConstCastle.UNIT_CATEGORY_TOOLS;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.AUnitProductionBuildingVO.prototype, "recruitCategory").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DworkshopBuildingVO.prototype, "recruitFilter", {
-    get: function () {
-      return c.ClientConstCastle.UNIT_TYPE_TOOL_DEFENCE;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.AUnitProductionBuildingVO.prototype, "recruitFilter").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DworkshopBuildingVO.prototype, "isProductive", {
-    get: function () {
-      return C.RecruitmentHelper.isProducingTools(this.recruitFilter);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.AUnitProductionBuildingVO.prototype, "isProductive").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  DworkshopBuildingVO.prototype.createInfoPanelItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements.Icon_Productivity, "productivity", new l.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [d.CastleModel.militaryData.getBuildingProductionSpeed(this.name)]), this.getInfoItemTextColor(p.CastleEffectEnum.REDUCEDEFENSIVETOOLSTIME));
-    if (this.decoPoints > 0) {
-      e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new r.LocalizedNumberVO(this.decoPoints), this.getInfoItemTextColor(p.CastleEffectEnum.DECOPOINTS));
+  n.__extends(AUnitProductionBuildingVO, e);
+  AUnitProductionBuildingVO.prototype.parseServerObject = function (t) {
+    e.prototype.parseServerObject.call(this, t);
+    this._productionSpeed = a.int(t.shift());
+  };
+  AUnitProductionBuildingVO.prototype.cloneFrom = function (t) {
+    e.prototype.cloneFrom.call(this, t);
+    var i = t;
+    if (i) {
+      this._productionSpeed = i._productionSpeed;
     }
   };
-  DworkshopBuildingVO.prototype.createInfoDialogItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements.Icon_Productivity, "productionspeed", new l.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [s.ConstructionConst.UPGRADE_RECRUITSPEED_BOOST * (this.level - 1)]), u.ClientConstColor.FONT_DEFAULT_COLOR, true);
-  };
-  return DworkshopBuildingVO;
-}(h.AUnitProductionBuildingVO);
-exports.DworkshopBuildingVO = g;
-var C = require("./628.js");
-a.classImplementsInterfaces(g, "IShopVO", "ICostVO", "IInventoryVO");
+  Object.defineProperty(AUnitProductionBuildingVO.prototype, "unitCategory", {
+    get: function () {
+      return "";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AUnitProductionBuildingVO.prototype, "isProductive", {
+    get: function () {
+      return false;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AUnitProductionBuildingVO.prototype, "isFestivalActive", {
+    get: function () {
+      return s.CastleModel.boostData.festivalVO.isActive;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AUnitProductionBuildingVO.prototype, "recruitCategory", {
+    get: function () {
+      return "";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AUnitProductionBuildingVO.prototype, "recruitFilter", {
+    get: function () {
+      return "";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AUnitProductionBuildingVO.prototype, "productionSpeed", {
+    get: function () {
+      return this._productionSpeed;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AUnitProductionBuildingVO;
+}(require("./452.js").AProductionBuildingVO);
+exports.AUnitProductionBuildingVO = r;
+o.classImplementsInterfaces(r, "IShopVO", "ICostVO", "IInventoryVO");

@@ -7,13 +7,13 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./10.js");
 var l = function (e) {
-  function RCACommand() {
+  function AHRCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RCACommand, e);
-  Object.defineProperty(RCACommand.prototype, "cmdId", {
+  n.__extends(AHRCommand, e);
+  Object.defineProperty(AHRCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ROYAL_CAPITAL_ALLIANCE;
+      return s.ClientConstSF.S2C_ALLIANCE_HELP_REQUEST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -21,14 +21,16 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  RCACommand.prototype.executeCommand = function (e, t) {
+  AHRCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        JSON.parse(t[1]);
+        break;
+      default:
+        this.showErrorDialog(e, t);
     }
     return false;
   };
-  return RCACommand;
+  return AHRCommand;
 }(r.CastleCommand);
-exports.RCACommand = l;
+exports.AHRCommand = l;
 o.classImplementsInterfaces(l, "IExecCommand");

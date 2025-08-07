@@ -3,109 +3,142 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./3.js");
+var a = require("./2.js");
 var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./265.js");
-var c = require("./14.js");
-var u = require("./20.js");
-var d = require("./8.js");
-var p = require("./1629.js");
-var h = require("./1630.js");
-var g = function (e) {
-  function GachaComponentMilestones(t) {
+var l = require("./23.js");
+var c = require("./16.js");
+var u = require("./288.js");
+var d = require("./14.js");
+var p = require("./20.js");
+var h = require("./8.js");
+var g = require("./362.js");
+var C = require("./1806.js");
+var _ = require("./1807.js");
+var m = function (e) {
+  function GachaComponentLevelRewards(t) {
     var i = e.call(this, t) || this;
-    d.ButtonHelper.initButtons([i.disp.btn_info], u.ClickFeedbackButtonHover);
-    i.itxt_points = c.CastleComponent.textFieldManager.registerTextField(i.disp.txt_points, new r.LocalizedNumberVO(0));
-    i.itxt_pointsLabel = c.CastleComponent.textFieldManager.registerTextField(i.disp.txt_pointsLabel, new s.LocalizedTextVO(""));
+    i._currentLevel = 0;
+    h.ButtonHelper.initButtons([i.disp.btn_info], p.ClickFeedbackButtonHover);
+    i.itxt_level = d.CastleComponent.textFieldManager.registerTextField(i.disp.mc_level.txt_level, new r.LocalizedNumberVO(0));
+    i.itxt_progress = d.CastleComponent.textFieldManager.registerTextField(i.disp.mc_progress.txt_text, new s.LocalizedTextVO(""));
+    i.disp.btn_info.toolTipText = "dialog_generals_inn_drawChances_header";
     return i;
   }
-  n.__extends(GachaComponentMilestones, e);
-  GachaComponentMilestones.prototype.onShow = function () {
-    var t = this.getEventVO().pointThresholds.length > 0;
-    this.setVisibility(t);
-    if (t) {
-      e.prototype.onShow.call(this);
-      this.updateMilestones();
-    }
+  n.__extends(GachaComponentLevelRewards, e);
+  GachaComponentLevelRewards.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    this._currentLevel = this.getEventVO().getCurrentLevel();
+    this.disp.mc_progress.mc_highlight.alpha = 0;
+    this.disp.mc_level.mc_highlight.alpha = 0;
+    this.disp.mc_level.scaleX = this.disp.mc_level.scaleY = 1;
+    this.updateLevelProgress();
   };
-  GachaComponentMilestones.prototype.onHide = function () {
+  GachaComponentLevelRewards.prototype.onHide = function () {
     e.prototype.onHide.call(this);
     this.destroyCollectableRenderList();
   };
-  GachaComponentMilestones.prototype.addEventListener = function () {
+  GachaComponentLevelRewards.prototype.addEventListener = function () {
     e.prototype.addEventListener.call(this);
-    c.CastleComponent.controller.addEventListener(l.GachaEvent.UPDATED, this.bindFunction(this.onGachaUpdate));
-    c.CastleComponent.controller.addEventListener(l.GachaEvent.MULTIPULL_CHANGED, this.bindFunction(this.onMultiPullChange));
+    d.CastleComponent.controller.addEventListener(u.GachaEvent.UPDATED, this.bindFunction(this.onGachaUpdate));
+    d.CastleComponent.controller.addEventListener(u.GachaEvent.MULTIPULL_CHANGED, this.bindFunction(this.onMultiPullChange));
   };
-  GachaComponentMilestones.prototype.removeEventListener = function () {
+  GachaComponentLevelRewards.prototype.removeEventListener = function () {
     e.prototype.removeEventListener.call(this);
-    c.CastleComponent.controller.removeEventListener(l.GachaEvent.UPDATED, this.bindFunction(this.onGachaUpdate));
-    c.CastleComponent.controller.removeEventListener(l.GachaEvent.MULTIPULL_CHANGED, this.bindFunction(this.onMultiPullChange));
+    d.CastleComponent.controller.removeEventListener(u.GachaEvent.UPDATED, this.bindFunction(this.onGachaUpdate));
+    d.CastleComponent.controller.removeEventListener(u.GachaEvent.MULTIPULL_CHANGED, this.bindFunction(this.onMultiPullChange));
   };
-  GachaComponentMilestones.prototype.onGachaUpdate = function (e) {
+  GachaComponentLevelRewards.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.disp.btn_info:
+        this.showLevelRewardDialog();
+    }
+  };
+  GachaComponentLevelRewards.prototype.onGachaUpdate = function (e) {
     if (e.eventVO.eventId == this.getEventVO().eventId) {
-      this.updateMilestones();
+      this.updateLevelProgress();
     }
   };
-  GachaComponentMilestones.prototype.onMultiPullChange = function (e) {
+  GachaComponentLevelRewards.prototype.onMultiPullChange = function (e) {
     if (e.eventVO.eventId == this.getEventVO().eventId) {
-      this.updateMilestones();
+      this.fillProgressBar();
     }
   };
-  GachaComponentMilestones.prototype.onMouseOver = function (t) {
-    e.prototype.onMouseOver.call(this, t);
-    var i = t.target.name;
-    if (i && i.startsWith("reward")) {
-      this.showRewardTooltip(t.target);
-    }
+  GachaComponentLevelRewards.prototype.showLevelRewardDialog = function () {
+    d.CastleComponent.dialogHandler.registerDefaultDialogs(C.GachaOfferingRewardsDialog, new _.GachaOfferingRewardsDialogProperies(this.getEventVO().eventId));
   };
-  GachaComponentMilestones.prototype.updateMilestones = function () {
-    this.itxt_points.textContentVO.numberValue = this.getEventVO().ownPoints || 0;
-    this.itxt_pointsLabel.textContentVO.textId = "gachaPull_milestone_" + this.getEventVO().assetName();
-    var e = this.updateProgressBar(this.disp.mc_progress.progressbar, this.getEventVO().ownPoints);
-    this.updateProgressBar(this.disp.mc_progress.mc_foreshadow, this.getEventVO().ownPoints + this.getEventVO().currentMultiPull);
-    for (var t = 0; t < GachaComponentMilestones.MILESTONES; t++) {
-      this.disp["reward" + t].gotoAndStop(t < e ? 2 : 1);
-      this.disp["reward" + t].mouseChildren = false;
-    }
-  };
-  GachaComponentMilestones.prototype.updateProgressBar = function (e, t) {
-    if (e) {
-      var i = this.getEventVO().pointThresholds;
-      var n = 0;
-      for (var a = 0; a < GachaComponentMilestones.MILESTONES; a++) {
-        if (t >= i[a]) {
-          n++;
-        }
-      }
-      if (n >= GachaComponentMilestones.MILESTONES) {
-        e.scaleY = 1;
+  GachaComponentLevelRewards.prototype.updateLevelProgress = function () {
+    if (this.getEventVO().getGachaVOs().length > 1) {
+      this.disp.mc_level.visible = true;
+      if (this.getEventVO().getCurrentLevel() > this._currentLevel) {
+        this.playLevelUpAnimation();
       } else {
-        var s = n / GachaComponentMilestones.MILESTONES;
-        var r = n > 0 ? i[n - 1] : 0;
-        var l = (t - r) / (i[n] - r) / GachaComponentMilestones.MILESTONES;
-        e.scaleY = o.MathBase.clamp(s + l, 0, 1);
+        this.fillProgressBar();
       }
-      return n;
-    }
-  };
-  GachaComponentMilestones.prototype.showRewardTooltip = function (e) {
-    var t = parseInt(e.name.replace("reward", ""));
-    var i = this.getEventVO().rewardLists[t];
-    var n = [];
-    if (this.getEventVO().ownPoints >= this.getEventVO().pointThresholds[t]) {
-      n.push(a.Localize.text("Completed"));
     } else {
-      n.push(a.Localize.text("gachaPull_milestone_tooltip_amount_" + this.getEventVO().assetName(), [this.getEventVO().ownPoints, this.getEventVO().pointThresholds[t]]));
-      n.push(a.Localize.text("gachaPull_milestone_tooltip_amountLeft_" + this.getEventVO().assetName(), [this.getEventVO().pointThresholds[t] - this.getEventVO().ownPoints]));
+      this.disp.mc_level.visible = false;
+      this.disp.mc_progress.progressbar.scaleX = 0;
+      this.itxt_progress.textContentVO.textId = "rewards";
+      this.itxt_progress.color = c.ClientConstColor.MODERN_DEFAULT_BRIGHT;
     }
-    p.GachaMilestoneTooltipHelper.showToolTip(e, n, i, h.GachaMilestoneTooltip.TARGET_RIGHT);
   };
-  GachaComponentMilestones.prototype.getEventVO = function () {
+  GachaComponentLevelRewards.prototype.fillProgressBar = function () {
+    if (this.getEventVO().getIsMaxLevel()) {
+      this.disp.mc_progress.progressbar.scaleX = 1;
+      this.itxt_progress.textContentVO.textId = "dialog_mainDonationEvent_maxLevel";
+      this.itxt_progress.color = c.ClientConstColor.MODERN_DEFAULT;
+    } else {
+      this.disp.mc_progress.progressbar.scaleX = o.MathBase.clamp(this.getEventVO().getCurrentLevelProgress() / this.getEventVO().getCurrentLevelMaxPulls(), 0, 1);
+      this.disp.mc_progress.mc_foreshadow.scaleX = o.MathBase.clamp(this.getEventVO().getCurrentLevelProgress(this.getEventVO().currentMultiPull) / this.getEventVO().getCurrentLevelMaxPulls(), 0, 1);
+      this.itxt_progress.textContentVO.textId = a.GenericTextIds.VALUE_PROPORTIONAL_VALUE;
+      this.itxt_progress.textContentVO.textReplacements = [this.getEventVO().getCurrentLevelProgress(), this.getEventVO().getCurrentLevelMaxPulls()];
+      this.itxt_progress.color = c.ClientConstColor.MODERN_DEFAULT;
+    }
+    var e = this.getEventVO().getCurrentLevel();
+    this.itxt_level.textContentVO.numberValue = e;
+    this._currentLevel = e;
+  };
+  GachaComponentLevelRewards.prototype.playLevelUpAnimation = function () {
+    var e = this;
+    this.disp.mc_progress.progressbar.scaleX = 1;
+    var t = this.getEventVO().getCurrentLevel();
+    var i = this.getEventVO().getGachaVOByLevel(t - 1);
+    var n = i.maxPulls - i.minPulls;
+    this.itxt_progress.textContentVO.textId = a.GenericTextIds.VALUE_PROPORTIONAL_VALUE;
+    this.itxt_progress.textContentVO.textReplacements = [n + 1, n + 1];
+    this.itxt_progress.color = c.ClientConstColor.MODERN_DEFAULT;
+    l.TweenMax.to(this.disp.mc_progress.mc_highlight, 0.33, {
+      alpha: 0.5,
+      onComplete: function () {
+        l.TweenMax.to(e.disp.mc_progress.mc_highlight, 0.33, {
+          alpha: 0
+        });
+      }
+    });
+    l.TweenMax.to(this.disp.mc_level.mc_highlight, 0.33, {
+      alpha: 0.5,
+      onComplete: function () {
+        l.TweenMax.to(e.disp.mc_level.mc_highlight, 0.33, {
+          alpha: 0
+        });
+      }
+    });
+    l.TweenMax.to(this.disp.mc_level, 0.33, {
+      scaleX: 1.15,
+      scaleY: 1.15,
+      onComplete: function () {
+        l.TweenMax.to(e.disp.mc_level, 0.33, {
+          scaleX: 1,
+          scaleY: 1
+        });
+        e.fillProgressBar();
+      }
+    });
+  };
+  GachaComponentLevelRewards.prototype.getEventVO = function () {
     return this._params[0];
   };
-  GachaComponentMilestones.MILESTONES = 4;
-  return GachaComponentMilestones;
-}(require("./362.js").AGachaComponent);
-exports.GachaComponentMilestones = g;
+  return GachaComponentLevelRewards;
+}(g.AGachaComponent);
+exports.GachaComponentLevelRewards = m;

@@ -5,65 +5,118 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./6.js");
 var s = require("./55.js");
-var r = require("./105.js");
-var l = require("./1498.js");
-var c = createjs.Point;
-var u = function (e) {
-  function FoodResourceFieldVO() {
-    var t = e.call(this) || this;
-    t._width = 20;
-    t._height = 10;
-    t._resourceType = d.CollectableEnum.FOOD;
-    t._name = s.ClientConstUtils.capitalizeFirstLetter(t._resourceType.name);
-    return t;
+var r = require("./4.js");
+var l = require("./22.js");
+var c = require("./79.js");
+var u = require("./2768.js");
+var d = require("./2769.js");
+var p = require("./2770.js");
+var h = require("./2771.js");
+var g = function (e) {
+  function EventSkinEventVO() {
+    var t = this;
+    t._theme = -1;
+    t._hasIsoSkin = false;
+    t._hasWorldMapSkin = false;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(FoodResourceFieldVO, e);
-  FoodResourceFieldVO.prototype.updatePosition = function () {
-    if (this.isoData.areaData.isMyHomeCastle) {
-      this._posOrigin = r.IsoGridOriginEnum.TOP_CORNER;
-      this._posOffset = new c(-2, -16);
+  n.__extends(EventSkinEventVO, e);
+  EventSkinEventVO.prototype.parseBasicsFromParamObject = function (t) {
+    e.prototype.parseBasicsFromParamObject.call(this, t);
+    this._theme = a.int(t.T);
+  };
+  EventSkinEventVO.prototype.parseAdditionalXmlFromRoot = function (e) {
+    if (!(this._theme < 0)) {
+      var t = EventSkinEventVO.getDestXmlNodeFromSkinId(e, this._theme);
+      if (t) {
+        var i = l.CastleXMLUtils.getValueOrDefault("kIDs", t, "0").split(",");
+        this._kingdomIDs = [];
+        for (var n = 0; n < i.length; n++) {
+          this._kingdomIDs[n] = parseInt(i[n]);
+        }
+        this._skinString = l.CastleXMLUtils.getValueOrDefault("eventType", t, "");
+        this._hasIsoSkin = s.ClientConstUtils.getBooleanFromString(l.CastleXMLUtils.getValueOrDefault("hasIsoSkin", t, "0"));
+        this._hasWorldMapSkin = s.ClientConstUtils.getBooleanFromString(l.CastleXMLUtils.getValueOrDefault("hasWorldMapSkin", t, "0"));
+        this._minLevel = 0;
+        this.createEventColorScheme();
+      }
+    }
+  };
+  EventSkinEventVO.getDestXmlNodeFromSkinId = function (e, t) {
+    var i = e.eventSkins;
+    if (i != null) {
+      for (var n = 0, o = i; n < o.length; n++) {
+        var a = o[n];
+        if (a !== undefined && t == parseInt(a.eventSkinID || "")) {
+          return a;
+        }
+      }
+    }
+    return null;
+  };
+  EventSkinEventVO.prototype.createEventColorScheme = function () {
+    switch (this._skinString) {
+      case EventSkinEventVO.SKIN_TYPE_WINTER:
+        this.skinEventColors = new p.EventSkinColorsWinter();
+        break;
+      case EventSkinEventVO.SKIN_TYPE_HALLOWEEN:
+        this.skinEventColors = new d.EventSkinColorsHalloween();
+        break;
+      case EventSkinEventVO.SKIN_TYPE_WINTER_OFFENSIVE:
+        this.skinEventColors = new h.EventSkinColorsWinterOffensive();
+        break;
+      default:
+        this.skinEventColors = new u.EventSkinColorsDefault();
+    }
+  };
+  EventSkinEventVO.prototype.onDestroy = function () {
+    this.refreshWorldMap();
+  };
+  Object.defineProperty(EventSkinEventVO.prototype, "theme", {
+    get: function () {
+      return this._theme;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventSkinEventVO.prototype, "skinString", {
+    get: function () {
+      return this._skinString;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventSkinEventVO.prototype, "hasIsoSkin", {
+    get: function () {
+      return this._hasIsoSkin;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventSkinEventVO.prototype, "hasWorldMapSkin", {
+    get: function () {
+      return this._hasWorldMapSkin;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EventSkinEventVO.prototype.getBackgroundColor = function (e, t) {
+    if (t) {
+      return this.skinEventColors.getIsoBackgroundColor(e);
     } else {
-      this._posOrigin = r.IsoGridOriginEnum.LEFT_CORNER;
-      this._posOffset = new c(-2, 8);
-    }
-    e.prototype.updatePosition.call(this);
-  };
-  FoodResourceFieldVO.prototype.updateDimension = function () {
-    this._totalWidth = this.width * this.fieldAmount;
-    this._totalHeight = this.height;
-  };
-  FoodResourceFieldVO.prototype.updateSpawnPoints = function () {
-    this._spawnPoints.length = 0;
-    for (var e = 0; e < this.fieldAmount; ++e) {
-      this._spawnPoints.push(new c(9 + this.width * e, 3));
+      return this.skinEventColors.getWorldmapBackgroundColor(e);
     }
   };
-  FoodResourceFieldVO.prototype.updateWalkmap = function () {
-    e.prototype.updateWalkmap.call(this);
-    for (var t = 0; t < this.fieldAmount; ++t) {
-      var i = 0;
-      var n = a.int(this.width - 1 + this.width * t);
-      for (i = 0; i < this.height; ++i) {
-        this.walkmap[i][n] = true;
-      }
-      var o = a.int(9 + this.width * t);
-      for (i = 0; i < 4; ++i) {
-        this.walkmap[i][o] = true;
-      }
-    }
+  EventSkinEventVO.prototype.canUseIsoSkin = function () {
+    return !!C.Iso.data && !!C.Iso.data.areaData && this.kingdomIDs.indexOf(C.Iso.data.areaData.areaInfo.kingdomID) >= 0 && this.hasIsoSkin && r.CastleModel.userData.userLevel >= this.minLevel && r.CastleModel.userData.userLevel <= this.maxLevel;
   };
-  FoodResourceFieldVO.prototype.getFieldAmount = function () {
-    return a.int(this.isoData.grid.origins.groundDimension.x / this.width);
-  };
-  FoodResourceFieldVO.prototype.getLastPartStartOffset = function () {
-    return new c(this.posOffset.x + this.fieldAmount * this.width, this.posOffset.y + this.height);
-  };
-  FoodResourceFieldVO.prototype.getWorkPointsByIndex = function (e) {
-    var t = a.int(this.width * e);
-    return [new c(5 + t, 5), new c(13 + t, 5)];
-  };
-  return FoodResourceFieldVO;
-}(l.AExpandingResourceFieldVO);
-exports.FoodResourceFieldVO = u;
-var d = require("./12.js");
-o.classImplementsInterfaces(u, "IRelativeGridBuildingVO");
+  EventSkinEventVO.SKIN_TYPE_WINTER = "Winter";
+  EventSkinEventVO.SKIN_TYPE_HALLOWEEN = "Halloween";
+  EventSkinEventVO.SKIN_TYPE_CHRISTMAS = "Christmas";
+  EventSkinEventVO.SKIN_TYPE_WINTER_OFFENSIVE = "WinterOffensive";
+  return EventSkinEventVO;
+}(c.ASpecialEventVO);
+exports.EventSkinEventVO = g;
+o.classImplementsInterfaces(g, "IEventOverviewable");
+var C = require("./34.js");

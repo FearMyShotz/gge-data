@@ -1,18 +1,15 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = createjs.Point;
-var o = function () {
-  return function CollectableRenderOptionsIcon() {
-    this.dimension = new n(42, 42);
-    this.unitLevelDimension = new n(15, 15);
-    this.unitLevelOffset = new n(15, 15);
-    this.useSmallBoosterIcons = false;
-    this.renderAsBroken = false;
-    this.useFavIcon = false;
-    this.useDropShadowIcon = false;
-    this.selfLoadlevelIndicator = true;
-    this.showMysteryBoxDrawCounter = true;
+var n = function () {
+  return function CollectableRenderOptionsCostTextfield() {
+    this.usePlusOnPositiveValues = false;
+    this.enableMarkOnNotEnough = true;
+    this.useKiloAbbreviationForAmount = false;
+    this.useMillionAbbreviationForAmount = true;
+    this.showAvailableStorage = false;
+    this.defaultColor = o.ClientConstColor.FONT_DEFAULT_COLOR;
   };
 }();
-exports.CollectableRenderOptionsIcon = o;
+exports.CollectableRenderOptionsCostTextfield = n;
+var o = require("./16.js");

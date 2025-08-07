@@ -5,35 +5,32 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./5004.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function RVECommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function OOPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RVECommand, e);
-  Object.defineProperty(RVECommand.prototype, "cmdId", {
+  n.__extends(OOPCommand, e);
+  Object.defineProperty(OOPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_REDEEM_VOUCHER;
+      return s.ClientConstSF.S2C_OFFER_OFFER_PAY;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  RVECommand.prototype.executeCommand = function (e, t) {
+  OOPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        l.CastleModel.privateOfferData.dispatchEvent(new r.CastleVoucherEvent(r.CastleVoucherEvent.VOUCHER_CODE_SUCCESS));
         break;
       default:
-        l.CastleModel.privateOfferData.dispatchEvent(new r.CastleVoucherEvent(r.CastleVoucherEvent.VOUCHER_CODE_FAILED));
+        this.showErrorDialog(e, t);
     }
     return false;
   };
-  return RVECommand;
-}(c.CastleCommand);
-exports.RVECommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return OOPCommand;
+}(r.CastleCommand);
+exports.OOPCommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

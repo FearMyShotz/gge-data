@@ -2,25 +2,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function ClientBetaHelper() {}
-  ClientBetaHelper.setSupportContextMenu = function () {
-    if (r.ClientConstInstanceIDs.isBetaInstance() || s.instanceOfClass(a.EnvironmentProvider.instance.globals, "CastleEnvironmentGlobals") && a.EnvironmentProvider.instance.globals.isClosedBeta) {
-      o.BasicContextMenuController.instance.disableContextMenuItem(o.BasicContextMenuController.SUPPORT_LABEL);
-    } else {
-      o.BasicContextMenuController.instance.enableContextMenuItem(o.BasicContextMenuController.SUPPORT_LABEL);
-    }
-  };
-  Object.defineProperty(ClientBetaHelper, "isOnOpenBeta", {
+  function ConstructionItemSlotVO(e, t) {
+    this._slotType = 0;
+    this._index = 0;
+    this._slotType = e;
+    this._index = t;
+  }
+  Object.defineProperty(ConstructionItemSlotVO.prototype, "slotType", {
     get: function () {
-      return o.BasicModel.instanceProxy.selectedInstanceVO.instanceLocaId.indexOf("openbeta") > -1;
+      return this._slotType;
     },
     enumerable: true,
     configurable: true
   });
-  return ClientBetaHelper;
+  Object.defineProperty(ConstructionItemSlotVO.prototype, "index", {
+    get: function () {
+      return this._index;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ConstructionItemSlotVO.prototype.equals = function (e) {
+    return !!e && this._slotType == e.slotType && this.index == e.index;
+  };
+  return ConstructionItemSlotVO;
 }();
-exports.ClientBetaHelper = n;
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./342.js");
+exports.ConstructionItemSlotVO = n;

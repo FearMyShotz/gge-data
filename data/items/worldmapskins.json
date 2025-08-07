@@ -519,5 +519,13 @@
     "skinID": "127",
     "name": "KegCastle",
     "increasedSize": "1"
+  },
+  {
+    "skinID": "128",
+    "name": "AnniversaryChestComm"
+  },
+  {
+    "skinID": "129",
+    "name": "AnniversaryCakeSliceCast"
   }
 ]

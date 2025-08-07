@@ -2,106 +2,77 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./3.js");
-var c = require("./26.js");
-var u = require("./12.js");
-var d = require("./74.js");
-var p = require("./13.js");
-var h = require("./4.js");
-var g = require("./52.js");
-var C = require("./20.js");
-var _ = require("./8.js");
-var m = require("./11.js");
-var f = require("./3797.js");
-var O = require("./3798.js");
-var E = function (e) {
-  function ApprenticeSmithEventDialog() {
-    return e.call(this, ApprenticeSmithEventDialog.NAME) || this;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./13.js");
+var l = require("./9.js");
+var c = require("./20.js");
+var u = require("./76.js");
+var d = require("./78.js");
+var p = require("./77.js");
+var h = require("./8.js");
+var g = require("./11.js");
+var C = require("./1784.js");
+var _ = require("./550.js");
+var m = require("./404.js");
+var f = function (e) {
+  function GlobalLeaderboardRankingRankingRewardsDialog() {
+    return e.call(this, GlobalLeaderboardRankingRankingRewardsDialog.NAME) || this;
   }
-  n.__extends(ApprenticeSmithEventDialog, e);
-  ApprenticeSmithEventDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(GlobalLeaderboardRankingRankingRewardsDialog, e);
+  GlobalLeaderboardRankingRankingRewardsDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    _.ButtonHelper.initButtons([this.dialogDisp.btn_help, this.dialogDisp.btn_close], C.ClickFeedbackButtonHover);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.TextVO(p.TextHelper.toUpperCaseLocaSafeTextId("eventBuilding_apprenticeSmith"))).autoFitToBounds = true;
+    h.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help, this.dialogDisp.btn_rewardHub], c.ClickFeedbackButtonHover, 1);
   };
-  ApprenticeSmithEventDialog.prototype.showLoaded = function (t) {
-    var i;
-    if (t === undefined) {
-      t = null;
-    }
+  GlobalLeaderboardRankingRankingRewardsDialog.prototype.showLoaded = function (t = null) {
     e.prototype.showLoaded.call(this, t);
-    h.CastleModel.specialEventData.addEventListener(c.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveEvent));
-    this.initTabsByPackages(O.ApprenticeSmithEventDialogShop, this.bindFunction(this.sortTabs));
-    if (this.dialogProperties.highlightPackageId > 0) {
-      i = h.CastleModel.eventPackageData.getEventPackageByID(this.dialogProperties.highlightPackageId);
-    }
-    var n = Math.max(this._currencies.findIndex(function (e) {
-      if (i) {
-        return e.hasType(i.getCostList().getItemByIndex(0));
-      } else {
-        return e.isSameAs(new d.CollectableTypeVO(u.CollectableEnum.GENERIC_CURRENCY, g.ClientConstCurrency.ID_SCEAT_TOKEN));
-      }
-    }), 0).toString();
-    this.changeCategory(n);
-    if (i) {
-      this._currentSublayer.setStarterPackage(i);
-    }
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("event_rewards_header")));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO("ranking_description_DonationEvent"));
+    var i = new p.InfiniteScrollListOptions(C.GachaRankingRewardsDialogListItem, "DonationRankingRewards_Item", GlobalLeaderboardRankingRankingRewardsDialog.NAME);
+    i.itemPaddingY = 0;
+    i.useSmoothScroll = true;
+    o.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_list.mc_items);
+    this._list = new d.InfiniteScrollListComponent(new u.InfiniteScrollListClips(this.dialogDisp.mc_list).addSliderMc(this.dialogDisp.mc_list.mc_slider).addMaskMc(this.dialogDisp.mc_list.maskMc), i);
+    this._list.onShow();
+    this.updateAllInfos(true);
   };
-  ApprenticeSmithEventDialog.prototype.hide = function () {
-    h.CastleModel.specialEventData.removeEventListener(c.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveEvent));
+  GlobalLeaderboardRankingRankingRewardsDialog.prototype.hide = function () {
+    if (this._list && this._list.scrollComponent.scrollVO) {
+      this._list.onHide();
+      this._list.destroy();
+    }
     e.prototype.hide.call(this);
   };
-  ApprenticeSmithEventDialog.prototype.sortTabs = function (e, t) {
-    var i = new d.CollectableTypeVO().initByCollectable(e);
-    var n = new d.CollectableTypeVO().initByCollectable(t);
-    var o = [g.ClientConstCurrency.ID_SILVER_TOKEN, g.ClientConstCurrency.ID_GOLD_TOKEN, g.ClientConstCurrency.ID_SCEAT_TOKEN];
-    return o.indexOf(n.id) - o.indexOf(i.id);
+  GlobalLeaderboardRankingRankingRewardsDialog.prototype.updateAllInfos = function (e = false) {
+    var t = this.dialogProperties.rankingRewards;
+    this._list.updateWithNewData(t, e);
+    this._list.onShow();
   };
-  ApprenticeSmithEventDialog.prototype.onClick = function (t) {
-    if (_.ButtonHelper.isButtonEnabled(t.target)) {
+  GlobalLeaderboardRankingRankingRewardsDialog.prototype.onClick = function (t) {
+    if (h.ButtonHelper.isButtonEnabled(t.target)) {
       e.prototype.onClick.call(this, t);
       switch (t.target) {
         case this.dialogDisp.btn_close:
           this.hide();
           break;
+        case this.dialogDisp.btn_rewardHub:
+          l.CastleDialogHandler.getInstance().registerDefaultDialogs(m.RewardHubMainDialog, new _.RewardHubDialogProperties(false));
+          break;
         case this.dialogDisp.btn_help:
-          var i = this._subLayer.get(this._currentCategory).currencyType.id;
-          var n = h.CastleModel.currencyData.getXmlCurrencyById(i);
-          if (n) {
-            m.CastleExternalDialog.dialogHandler.showHelper("", l.Localize.text("dialog_apprenticeSmith_" + n.name + "_desc"));
-          }
+          l.CastleDialogHandler.getInstance().showHelper(s.Localize.text(" "), s.Localize.text("dialog_mainDonationEvent_helpPopup"));
       }
     }
   };
-  ApprenticeSmithEventDialog.prototype.onRemoveEvent = function (e) {
-    if (e.specialEventVO.eventId == s.EventConst.EVENTTYPE_APPRENTICE_TOKEN_VENDOR) {
-      this.hide();
-    }
-  };
-  ApprenticeSmithEventDialog.prototype.getEventPackages = function () {
-    var e = this.getEventVO();
-    if (e) {
-      return e.getVisiblePackages(h.CastleModel.userData.userLevel, h.CastleModel.userData.userLegendLevel, a.WorldConst.AREA_TYPE_CASTLE);
-    } else {
-      return [];
-    }
-  };
-  ApprenticeSmithEventDialog.prototype.getEventVO = function () {
-    return h.CastleModel.specialEventData.getActiveEventByEventId(s.EventConst.EVENTTYPE_APPRENTICE_TOKEN_VENDOR);
-  };
-  Object.defineProperty(ApprenticeSmithEventDialog.prototype, "dialogProperties", {
+  Object.defineProperty(GlobalLeaderboardRankingRankingRewardsDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  ApprenticeSmithEventDialog.NAME = "ModernFilterableShopExt_SEP23";
-  return ApprenticeSmithEventDialog;
-}(f.ADynamicTabPackageShopDialog);
-exports.ApprenticeSmithEventDialog = E;
-o.classImplementsInterfaces(E, "ICollectableRendererList");
+  GlobalLeaderboardRankingRankingRewardsDialog.NAME = "DonationRankingRewards";
+  return GlobalLeaderboardRankingRankingRewardsDialog;
+}(g.CastleExternalDialog);
+exports.GlobalLeaderboardRankingRankingRewardsDialog = f;
+a.classImplementsInterfaces(f, "ICollectableRendererList");

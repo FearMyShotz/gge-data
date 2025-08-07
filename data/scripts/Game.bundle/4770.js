@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function EBECommand() {
+  function CSLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(EBECommand, e);
-  Object.defineProperty(EBECommand.prototype, "cmdId", {
+  n.__extends(CSLCommand, e);
+  Object.defineProperty(CSLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_BUY_EXPANSION;
+      return s.ClientConstSF.S2C_CASTLE_SLUM_LEVEL;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,22 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  EBECommand.prototype.executeCommand = function (e, t) {
+  CSLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.areaData.activeArea.updater.parseEBE(i);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        r.CastleModel.decoStorage.parseSIN(i.sin);
-        u.Iso.controller.viewUpdater.onExpansion();
+        r.CastleModel.areaData.activeArea.updater.parseCSL(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return EBECommand;
+  return CSLCommand;
 }(l.CastleCommand);
-exports.EBECommand = c;
-var u = require("./33.js");
+exports.CSLCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

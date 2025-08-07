@@ -5,11 +5,11 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./4297.js");
-var r = require("./810.js");
+var r = require("./812.js");
 var l = require("./1626.js");
 var c = require("./54.js");
 var u = require("./4298.js");
-var d = require("./1888.js");
+var d = require("./1890.js");
 var p = function (e) {
   function CastleLootboxData(t) {
     var i = e.call(this) || this;

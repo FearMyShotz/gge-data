@@ -2,20 +2,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SRemovePrivateResourceVillageVO(t) {
-    var i = this;
-    i.VID = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).VID = t;
-    return i;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./2794.js");
+var r = require("./4.js");
+var l = function (e) {
+  function PrivateResourceVillageDestroyDialog() {
+    return e.call(this) || this;
   }
-  n.__extends(C2SRemovePrivateResourceVillageVO, e);
-  C2SRemovePrivateResourceVillageVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_REMOVE_PRIVATE_RESOURCE_VILLAGE;
+  n.__extends(PrivateResourceVillageDestroyDialog, e);
+  PrivateResourceVillageDestroyDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    e.prototype.applyPropertiesLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO("dialog_privateResourceVillages_removePopup_desc"));
+    this.dialogDisp.mc_exclamationMark.visible = true;
   };
-  return C2SRemovePrivateResourceVillageVO;
-}(o.BasicCommandVO);
-exports.C2SRemovePrivateResourceVillageVO = s;
+  PrivateResourceVillageDestroyDialog.prototype.onConfirm = function () {
+    r.CastleModel.smartfoxClient.sendCommandVO(new s.C2SRemovePrivateResourceVillageVO(this.dialogProperties.uniqueVillageID));
+  };
+  return PrivateResourceVillageDestroyDialog;
+}(require("./1011.js").APrivateResourceVillageActionDialog);
+exports.PrivateResourceVillageDestroyDialog = l;
+o.classImplementsInterfaces(l, "ICollectableRendererList");

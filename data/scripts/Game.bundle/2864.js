@@ -2,16 +2,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = function (e) {
-  function IcepalaceBuildingVO() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./16.js");
+var l = function (e) {
+  function HuntertentBuildingVO() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IcepalaceBuildingVO, e);
-  IcepalaceBuildingVO.prototype.getVisualClassName = function () {
-    return "Palace_Building_Level1";
+  n.__extends(HuntertentBuildingVO, e);
+  HuntertentBuildingVO.prototype.createInfoPanelItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_FoodConsumption, "foodwastage", new s.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, [this.foodReduction]), r.ClientConstColor.FONT_DEFAULT_COLOR, true);
   };
-  return IcepalaceBuildingVO;
-}(require("./641.js").APalaceBuildingVO);
-exports.IcepalaceBuildingVO = a;
-o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
+  return HuntertentBuildingVO;
+}(require("./65.js").AEffectBuildingVO);
+exports.HuntertentBuildingVO = l;
+a.classImplementsInterfaces(l, "IShopVO", "ICostVO", "IInventoryVO");

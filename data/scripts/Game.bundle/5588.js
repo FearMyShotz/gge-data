@@ -1,209 +1,174 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./6.js");
-var l = require("./708.js");
-var c = require("./4.js");
-var u = require("./35.js");
-var d = require("./230.js");
-var p = require("./827.js");
-var h = function (e) {
-  function CastleSupportDefenceVO() {
-    var t = e !== null && e.apply(this, arguments) || this;
-    t._unitsYard = 0;
-    t._unitsYardLimit = 0;
-    t._allianceUnitYard = 0;
-    t._allianceUnitYardLimit = 0;
-    t._unitsWall = 0;
-    t._unitsWallLimit = 0;
-    return t;
+var n = function () {
+  function CastleStartSpyVO() {
+    this._guardCount = 0;
+    this._availableSpies = 0;
+    this._availablePlagueMonks = 0;
+    this._totalPlagueMonks = 0;
+    this._distance = 0;
+    this._spiesInUse = 1;
+    this._accuracy = 0;
+    this._damage = 0;
+    this._risk = 0;
+    this._cost = 0;
+    this._startCastleId = 0;
+    this._spyType = 0;
   }
-  n.__extends(CastleSupportDefenceVO, e);
-  CastleSupportDefenceVO.prototype.fillFromParamObject = function (t) {
-    this._sourceArea = c.CastleModel.userData.getOwnCastle(t.SCID);
-    this._sourceOwner = c.CastleModel.otherPlayerData.getOwnInfoVO();
-    this._targetArea = g.WorldmapObjectFactory.parseWorldMapArea(t.gaa.AI);
-    if (this._targetArea.ownerInfo) {
-      this._targetOwner = this._targetArea.ownerInfo;
-    } else {
-      this._targetOwner = c.CastleModel.otherPlayerData.parseOwnerInfo(t.gaa.OI[0]);
-    }
-    var i = this._targetArea.areaType == s.WorldConst.AREA_TYPE_ALLIANCE_BATTLE_GROUND_TOWER ? t.abe : t.B;
-    this._spyInfo = new m.CastleSpyArmyInfoVO();
-    this._spyInfo.parseArmyInfo(t.S, t.AS, i, t.LS);
-    this._unitInventory = new O.UnitInventoryDictionary();
-    this._unitInventory.fillFromWodAmountArray(t.gui.I);
-    this._strongholdUnitInventory = new f.StrongholdUnitInventory();
-    this._strongholdUnitInventory.fillFromWodAmountArray(t.gui.SHI);
-    this._supportUnits = new _.CastleFightItemContainer(CastleSupportDefenceVO.ITEM_TYPES, CastleSupportDefenceVO.ITEM_LEVELS, 99, this.getDefenderLimit());
-    this._allianceUnitYardLimit = t.AUYL || 0;
-    this._unitsYardLimit = t.UYL - this._allianceUnitYardLimit || 0;
-    this._unitsWallLimit = t.UWL || 0;
-    if (this.spyInfo.itemsKeep) {
-      var n = this.spyInfo.itemsKeep.getSoldierCount();
-      this._unitsWall = this.spyInfo.totalWallSoldierCount;
-      this._unitsYard = Math.min(n, this._unitsYardLimit);
-      this._allianceUnitYard = Math.max(0, n - this._unitsYardLimit);
-    }
-    e.prototype.fillFromParamObject.call(this, t);
+  CastleStartSpyVO.prototype.setSpyValues = function (e, t) {
+    var i = !s.instanceOfClass(this.worldmapObjectVO, "OutpostMapobjectVO") || s.instanceOfClass(this._worldmapObjectVO, "OutpostMapobjectVO") && this._worldmapObjectVO.ownerInfo.playerID > 0;
+    this._spiesInUse = c.int(Math.max(1, t));
+    this._accuracy = e;
+    this._risk = c.int(r.SpyConst.getSpyRisk(this._spiesInUse, this._guardCount, this._accuracy, this._worldmapObjectVO.ownerInfo.playerID < 0 && !u.PlayerHelper.isNpcPvpPlayer(this._worldmapObjectVO.ownerInfo.playerID), i));
+    this._cost = c.int(r.SpyConst.getTravelCostC1(this._spiesInUse, this._distance, this._risk));
   };
-  CastleSupportDefenceVO.prototype.getDefenderLimit = function () {
-    if (l.instanceOf_ISupportCapacityVO(this._targetArea)) {
-      return r.int(this._targetArea.supportCapacity - this.getUnitCountFromSupportMovements());
-    } else {
-      return r.int(Number.MAX_VALUE);
-    }
+  CastleStartSpyVO.prototype.setSabotageValues = function (e, t) {
+    this._spiesInUse = c.int(Math.max(1, t));
+    this._damage = e;
+    this._risk = c.int(r.SpyConst.getSabotageRisk(this._spiesInUse, this._guardCount, this._damage));
+    this._cost = c.int(r.SpyConst.getTravelCostC1(this._spiesInUse, this._distance, this._risk));
   };
-  CastleSupportDefenceVO.prototype.getArmy = function () {
-    var e = [];
-    for (var t = 0, i = this._supportUnits.getSlotList(); t < i.length; t++) {
-      var n = i[t];
-      if (n[0] != -1) {
-        e.push([n[0], n[1]]);
-      }
-    }
-    return e;
+  CastleStartSpyVO.prototype.setPlagueValues = function (e, t) {
+    this._spiesInUse = c.int(Math.max(1, t));
+    this._damage = e;
+    this._risk = c.int(r.SpyConst.getSabotageRisk(this._spiesInUse, this._guardCount, this._damage));
+    this._cost = c.int(r.SpyConst.getTravelCostC1(this._spiesInUse, this._distance, this._risk));
   };
-  CastleSupportDefenceVO.prototype.getSumOfItems = function () {
-    return this._supportUnits.sumOfItems;
-  };
-  CastleSupportDefenceVO.prototype.getSumOfTools = function () {
-    return 0;
-  };
-  CastleSupportDefenceVO.prototype.getSumOfUnits = function () {
-    return this._supportUnits.sumOfItems;
-  };
-  CastleSupportDefenceVO.prototype.getLowestTravelSpeed = function (e = null) {
-    return r.int(this._supportUnits.getLowestTravelSpeed(false, e));
-  };
-  Object.defineProperty(CastleSupportDefenceVO.prototype, "supportUnits", {
+  Object.defineProperty(CastleStartSpyVO.prototype, "distance", {
     get: function () {
-      return this._supportUnits;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleSupportDefenceVO.prototype.getTravelCost = function (e) {
-    var t = e ? C.CastleEffectsHelper.getTravelCostBonusForAreaType(e, this.targetArea.areaType, this.targetActionType) : 0;
-    var i = 0;
-    if (c.CastleModel.userData.isLegend) {
-      i = c.CastleModel.legendSkillData.getTotalValueOfLegendSkillEffect(d.CastleLegendSkillEffectsEnum.TRAVEL_COST_REDUCTION);
-    }
-    var n = c.CastleModel.costsData.getFinalCostsC1(s.TravelConst.getTravelCostC1(this.distance, this.getSumOfItems(), t, i));
-    return Math.ceil(n);
-  };
-  CastleSupportDefenceVO.prototype.getTravelTime = function (e, t) {
-    if (e.areaType == s.WorldConst.AREA_TYPE_DAIMYO_TOWNSHIP) {
-      return 0;
-    } else {
-      return r.int(this.getBoostedTravelTime(e, 0, t));
-    }
-  };
-  CastleSupportDefenceVO.prototype.getBoostedTravelTime = function (e, t, i) {
-    if (this.getSumOfItems() == 0) {
-      return 0;
-    }
-    var n = i ? this.getActionTravelTimeBonusForAreaType(i, null) : 0;
-    var o = 1;
-    if (c.CastleModel.allianceData.myAllianceVO) {
-      o += c.CastleModel.allianceData.myAllianceVO.getTotalAllianceBuffEffectValue(u.EffectTypeEnum.EFFECT_TYPE_SUPPORT_SPEED_BONUS, this.targetArea.areaType, this.targetArea.spaceID, -1, e.controllerWorldMapOwnerInfoVO).strength / 100;
-      if (this.travelTimeIsSubscriptionBoosted) {
-        o += c.CastleModel.subscriptionData.getEffectValue(u.EffectTypeEnum.EFFECT_TYPE_SUPPORT_SPEED_BONUS, this.targetArea.areaType, this.targetArea.spaceID) / 100;
-      }
-    }
-    return r.int(s.TravelConst.getTravelTimeWithHorse(this.getLowestTravelSpeed(i), this.distance, o, t, n, this.distance, false));
-  };
-  Object.defineProperty(CastleSupportDefenceVO.prototype, "travelTimeIsSubscriptionBoosted", {
-    get: function () {
-      return c.CastleModel.subscriptionData.getEffectValue(u.EffectTypeEnum.EFFECT_TYPE_SUPPORT_SPEED_BONUS, this.targetArea.areaType, this.targetArea.spaceID) > 0 && this.targetOwner.allianceID >= 0 && this.targetOwner.allianceID == this.sourceOwner.allianceID;
+      return this._distance;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastleFightScreenVO.prototype, "travelTimeIsSubscriptionBoosted").set.call(this, e);
+      this._distance = e;
     },
     enumerable: true,
     configurable: true
   });
-  CastleSupportDefenceVO.prototype.getUnitCountFromSupportMovements = function () {
-    var e = 0;
-    var t = c.CastleModel.armyData.getMovementsToAreaPos(this.targetArea);
-    if (t != null) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && a.instanceOfClass(o, "SupportDefenceMapmovementVO")) {
-          e += r.int(o.armySize);
-        }
-      }
-    }
-    return e;
+  Object.defineProperty(CastleStartSpyVO.prototype, "guardCount", {
+    get: function () {
+      return this._guardCount;
+    },
+    set: function (e) {
+      this._guardCount = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleStartSpyVO.prototype, "availableSpies", {
+    get: function () {
+      return this._availableSpies;
+    },
+    set: function (e) {
+      this._availableSpies = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleStartSpyVO.prototype, "availablePlagueMonks", {
+    get: function () {
+      return this._availablePlagueMonks;
+    },
+    set: function (e) {
+      this._availablePlagueMonks = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleStartSpyVO.prototype.getTravelTime = function (e, t) {
+    var i = 0;
+    i = e == a.ClientConstCastle.SPYTYPE_SABOTAGE ? r.SpyConst.TRAVELSPEED_SABOTAGE : r.SpyConst.TRAVELSPEED_SPY;
+    var n = 1 + d.CastleModel.researchData.getResearchEffectValue(h.EffectTypeEnum.EFFECT_TYPE_ESPIONAGE_SPEED_BOOST).strength / 100;
+    n += d.CastleModel.userData.getGlobalConstructionItemEffectByType(p.CastleEffectEnum.ESPIONAGESPEEDBOOST) / 100;
+    n += o.CastleTitleSystemHelper.returnTitleEffectValue(h.EffectTypeEnum.EFFECT_TYPE_SPEED_BONUS, -1, this.worldmapObjectVO.areaType, this.worldmapObjectVO.spaceID).strength / 100;
+    n += d.CastleModel.globalEffectData.getBonusByEffectType(h.EffectTypeEnum.EFFECT_TYPE_SPEED_BONUS, this.worldmapObjectVO.areaType, this.worldmapObjectVO.spaceID) / 100;
+    return c.int(l.TravelConst.getTravelTime(i, this._distance, n, 0, false));
   };
-  CastleSupportDefenceVO.prototype.getMyUnitCountFromSupportMovements = function () {
-    var e = 0;
-    var t = c.CastleModel.armyData.getMyMovementsToAreaPos(this.targetArea);
-    if (t != null) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && a.instanceOfClass(o, "SupportDefenceMapmovementVO")) {
-          e += r.int(o.armySize);
-        }
-      }
-    }
-    return e;
-  };
-  Object.defineProperty(CastleSupportDefenceVO.prototype, "unitsYardLimit", {
+  Object.defineProperty(CastleStartSpyVO.prototype, "accuracy", {
     get: function () {
-      return this._unitsYardLimit;
+      return this._accuracy;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSupportDefenceVO.prototype, "allianceUnitYardLimit", {
+  Object.defineProperty(CastleStartSpyVO.prototype, "spiesInUse", {
     get: function () {
-      return this._allianceUnitYardLimit;
+      return this._spiesInUse;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSupportDefenceVO.prototype, "unitsWallLimit", {
+  Object.defineProperty(CastleStartSpyVO.prototype, "risk", {
     get: function () {
-      return this._unitsWallLimit;
+      return this._risk;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSupportDefenceVO.prototype, "unitsYard", {
+  Object.defineProperty(CastleStartSpyVO.prototype, "cost", {
     get: function () {
-      return this._unitsYard;
+      return this._cost;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSupportDefenceVO.prototype, "allianceUnitYard", {
+  Object.defineProperty(CastleStartSpyVO.prototype, "startCastleId", {
     get: function () {
-      return this._allianceUnitYard;
+      return this._startCastleId;
+    },
+    set: function (e) {
+      this._startCastleId = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSupportDefenceVO.prototype, "unitsWall", {
+  Object.defineProperty(CastleStartSpyVO.prototype, "worldmapObjectVO", {
     get: function () {
-      return this._unitsWall;
+      return this._worldmapObjectVO;
+    },
+    set: function (e) {
+      this._worldmapObjectVO = e;
     },
     enumerable: true,
     configurable: true
   });
-  CastleSupportDefenceVO.ITEM_TYPES = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  CastleSupportDefenceVO.ITEM_LEVELS = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  return CastleSupportDefenceVO;
-}(p.CastleFightScreenVO);
-exports.CastleSupportDefenceVO = h;
-var g = require("./147.js");
-var C = require("./111.js");
-var _ = require("./552.js");
-var m = require("./829.js");
-var f = require("./553.js");
-var O = require("./156.js");
-o.classImplementsInterfaces(h, "IFightScreenVO");
+  Object.defineProperty(CastleStartSpyVO.prototype, "spyType", {
+    get: function () {
+      return this._spyType;
+    },
+    set: function (e) {
+      this._spyType = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleStartSpyVO.prototype, "damage", {
+    get: function () {
+      return this._damage;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleStartSpyVO.prototype, "totalPlagueMonks", {
+    get: function () {
+      return this._totalPlagueMonks;
+    },
+    set: function (e) {
+      this._totalPlagueMonks = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleStartSpyVO;
+}();
+exports.CastleStartSpyVO = n;
+var o = require("./117.js");
+var a = require("./18.js");
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./6.js");
+var u = require("./119.js");
+var d = require("./4.js");
+var p = require("./97.js");
+var h = require("./33.js");

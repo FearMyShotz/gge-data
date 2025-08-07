@@ -5,36 +5,46 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./1.js");
 var s = require("./5.js");
-var r = require("./7.js");
-var l = require("./26.js");
-var c = require("./4.js");
-var u = require("./10.js");
-var d = function (e) {
-  function RPRCommand() {
+var r = require("./5.js");
+var l = require("./7.js");
+var c = require("./26.js");
+var u = require("./4.js");
+var d = require("./10.js");
+var p = function (e) {
+  function AICCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RPRCommand, e);
-  Object.defineProperty(RPRCommand.prototype, "cmdId", {
+  n.__extends(AICCommand, e);
+  Object.defineProperty(AICCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_RAGE_POINTS_RECEIVED;
+      return l.ClientConstSF.S2C_ALLIANCE_INVASION_CAMP_INFO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  RPRCommand.prototype.executeCommand = function (e, t) {
+  AICCommand.prototype.executeCommand = function (e, t) {
     var i;
     if (t && t.length > 0) {
       i = JSON.parse(t[1]);
     }
     switch (e) {
-      case s.ERROR.ALL_OK:
-        var n = o.castAs(c.CastleModel.specialEventData.getActiveEventByEventId(i.EID), "IAllianceCampUpdateable");
-        if (n) {
-          n.parse_RPR(i);
-          c.CastleModel.specialEventData.dispatchEvent(new l.CastleSpecialEventEvent(l.CastleSpecialEventEvent.REFRESH_SPECIALEVENT, c.CastleModel.specialEventData.getActiveEventByEventId(i.EID)));
+      case r.ERROR.ALL_OK:
+        var n = i[s.CommKeys.ALLIANCE_CAMP][0];
+        if (!n) {
+          return;
+        }
+        var a = n[s.CommKeys.EVENT_ID];
+        var l = o.castAs(u.CastleModel.specialEventData.getActiveEventByEventId(a), "IAllianceCampUpdateable");
+        if (l) {
+          var d = u.CastleModel.allianceInvasionCampData.getAllianceCamp(n[s.CommKeys.ALLIANCE_CAMP_ID], l.isDifficultyScalingActivated ? n[s.CommKeys.ALLIANCE_CAMP_ID] : -1);
+          if (!d) {
+            return false;
+          }
+          l.parse_AIC(d, n[s.CommKeys.ALLIANCE_RAGE]);
+          u.CastleModel.specialEventData.dispatchEvent(new c.CastleSpecialEventEvent(c.CastleSpecialEventEvent.REFRESH_SPECIALEVENT, u.CastleModel.specialEventData.getActiveEventByEventId(a)));
         }
         break;
       default:
@@ -42,7 +52,7 @@ var d = function (e) {
     }
     return false;
   };
-  return RPRCommand;
-}(u.CastleCommand);
-exports.RPRCommand = d;
-a.classImplementsInterfaces(d, "IExecCommand");
+  return AICCommand;
+}(d.CastleCommand);
+exports.AICCommand = p;
+a.classImplementsInterfaces(p, "IExecCommand");

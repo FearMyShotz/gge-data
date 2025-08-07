@@ -3,62 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./4.js");
-var l = function (e) {
-  function CastleHandleSeasonDialogProperties(t) {
-    var i = e.call(this) || this;
-    i._seasonEventVO = t;
-    return i;
+var a = require("./7.js");
+var s = function (e) {
+  function C2STreasuremapSkipTransferVO(t, i, n) {
+    var o = this;
+    o.EID = 0;
+    o.MID = 0;
+    o.TT = 0;
+    CONSTRUCTOR_HACK;
+    (o = e.call(this) || this).EID = t;
+    o.MID = i;
+    o.TT = n;
+    return o;
   }
-  n.__extends(CastleHandleSeasonDialogProperties, e);
-  CastleHandleSeasonDialogProperties.prototype.hasTimer = function () {
-    return true;
+  n.__extends(C2STreasuremapSkipTransferVO, e);
+  C2STreasuremapSkipTransferVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_TREASUREMAP_SKIP_TRANSFER;
   };
-  CastleHandleSeasonDialogProperties.prototype.getRemainingTime = function () {
-    if (r.CastleModel.specialEventData.activeSeasonVO != null) {
-      return s.int(this._seasonEventVO.remainingEventTimeInSeconds);
-    } else {
-      return 0;
-    }
-  };
-  CastleHandleSeasonDialogProperties.prototype.getTitleString = function () {
-    return this._seasonEventVO.seasonNameString;
-  };
-  CastleHandleSeasonDialogProperties.prototype.getName = function () {
-    return this._seasonEventVO.eventType;
-  };
-  CastleHandleSeasonDialogProperties.prototype.getBackgroundSkinClassName = function () {
-    return "SeasonDialogBackground_" + this._seasonEventVO.eventId;
-  };
-  CastleHandleSeasonDialogProperties.prototype.getSpaceID = function () {
-    return this._seasonEventVO.mapID;
-  };
-  CastleHandleSeasonDialogProperties.prototype.getCrestLeft = function () {
-    return c.CastleNPCOwnerFactory.getCrusadeCrest(this._seasonEventVO.eventId);
-  };
-  CastleHandleSeasonDialogProperties.prototype.getCrestRight = function () {
-    return this.getCrestLeft();
-  };
-  CastleHandleSeasonDialogProperties.prototype.isUnlocked = function () {
-    return !this._seasonEventVO.isLocked;
-  };
-  CastleHandleSeasonDialogProperties.prototype.getFirstSeasonReward = function () {
-    return this._seasonEventVO.rewardList.getItemByIndexSave(0);
-  };
-  CastleHandleSeasonDialogProperties.prototype.getEventId = function () {
-    return s.int(this._seasonEventVO.eventId);
-  };
-  Object.defineProperty(CastleHandleSeasonDialogProperties.prototype, "seasonEventVO", {
-    get: function () {
-      return this._seasonEventVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleHandleSeasonDialogProperties;
-}(o.BasicProperties);
-exports.CastleHandleSeasonDialogProperties = l;
-var c = require("./387.js");
-a.classImplementsInterfaces(l, "ICastleHandleSpaceDialogProperties");
+  return C2STreasuremapSkipTransferVO;
+}(o.BasicCommandVO);
+exports.C2STreasuremapSkipTransferVO = s;

@@ -2,49 +2,114 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
+var o = require("./1.js");
 var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./6.js");
-var l = require("./44.js");
-var c = require("./165.js");
-var u = function (e) {
-  function RawLordEffectBonusVO() {
-    return e.call(this) || this;
+var s = require("./5.js");
+var r = require("./4.js");
+var l = require("./385.js");
+var c = function (e) {
+  function AlienAttackMovementVO() {
+    var t = this;
+    CONSTRUCTOR_HACK;
+    (t = e.call(this) || this).name = AlienAttackMovementVO.NAME;
+    t.group = "Mapmovement";
+    return t;
   }
-  n.__extends(RawLordEffectBonusVO, e);
-  RawLordEffectBonusVO.prototype.clone = function () {
-    var e = new RawLordEffectBonusVO().parseFromValueArray(this.effect, this._effectValue.rawValues);
-    e._effectSources = this._effectSources;
-    return e;
-  };
-  RawLordEffectBonusVO.prototype.lordEffectText = function () {
-    var e = r.int(this.maxValueStrength);
-    if (e < Number.MAX_VALUE) {
-      return s.Localize.text(o.GenericTextIds.VALUE_SIMPLE_COMP, [this.descriptionText, s.Localize.text(this.effect.effectType.type.simpleValueTextID == o.GenericTextIds.VALUE_NOMINAL_ADD ? "equipment_bonus_maximum_noPercentage" : "equipment_bonus_maximum", [e])]);
-    } else {
-      return this.descriptionText;
+  n.__extends(AlienAttackMovementVO, e);
+  AlienAttackMovementVO.prototype.loadFromParamObject = function (t) {
+    e.prototype.loadFromParamObject.call(this, t);
+    if (a.instanceOfClass(this.sourceArea, "AAlienInvasionMapobjectVO")) {
+      this.sourceArea.kingdomID = this.kingdomID;
+    }
+    if (a.instanceOfClass(this.targetArea, "AAlienInvasionMapobjectVO")) {
+      this.targetArea.kingdomID = this.kingdomID;
     }
   };
-  Object.defineProperty(RawLordEffectBonusVO.prototype, "descriptionText", {
+  Object.defineProperty(AlienAttackMovementVO.prototype, "tooLateToBeRetreated", {
     get: function () {
-      try {
-        if (this.effect.name.indexOf("relic") > -1) {
-          return s.Localize.text(l.SpecialServerHelper.checkTextIDForSkinText("relicequip_effect_description_" + this.effect.name), this.effectValue.textReplacements) + this.decriptionSuffix;
-        } else {
-          return s.Localize.text(l.SpecialServerHelper.checkTextIDForSkinText("equip_effect_description_" + this.effect.name), this.effectValue.textReplacements) + this.decriptionSuffix;
-        }
-      } catch (e) {
-        throw new Error("EffectID:" + this.effect.effectID + "\n" + e.toString());
-      }
+      return true;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.BonusVO.prototype, "descriptionText").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.ArmyAttackMapmovementVO.prototype, "tooLateToBeRetreated").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return RawLordEffectBonusVO;
-}(c.BonusVO);
-exports.RawLordEffectBonusVO = u;
-a.classImplementsInterfaces(u, "ILordEffectText");
+  Object.defineProperty(AlienAttackMovementVO.prototype, "isAttackingMovement", {
+    get: function () {
+      return this.targetOwnerID == r.CastleModel.userData.playerID;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ArmyAttackMapmovementVO.prototype, "isAttackingMovement").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AlienAttackMovementVO.prototype, "needGeneral", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ArmyAttackMapmovementVO.prototype, "needGeneral").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AlienAttackMovementVO.prototype, "canBeRetreated", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ArmyAttackMapmovementVO.prototype, "canBeRetreated").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AlienAttackMovementVO.prototype, "canBeSendHome", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ArmyAttackMapmovementVO.prototype, "canBeSendHome").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AlienAttackMovementVO.prototype, "distance", {
+    get: function () {
+      return s.TravelConst.ALIEN_TRAVEL_DISTANCE;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ArmyAttackMapmovementVO.prototype, "distance").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AlienAttackMovementVO.prototype, "isNPCMovement", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ArmyAttackMapmovementVO.prototype, "isNPCMovement").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AlienAttackMovementVO.prototype, "showAsAllianceAttackWarning", {
+    get: function () {
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ArmyAttackMapmovementVO.prototype, "showAsAllianceAttackWarning").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AlienAttackMovementVO.__initialize_static_members = function () {
+    AlienAttackMovementVO.NAME = "AlienAttack";
+  };
+  return AlienAttackMovementVO;
+}(l.ArmyAttackMapmovementVO);
+exports.AlienAttackMovementVO = c;
+o.classImplementsInterfaces(c, "IMapMovementVO", "IArmyMapmovementVO");
+c.__initialize_static_members();

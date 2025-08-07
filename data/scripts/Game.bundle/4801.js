@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function AECCommand() {
+  function RDECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AECCommand, e);
-  Object.defineProperty(AECCommand.prototype, "cmdId", {
+  n.__extends(RDECommand, e);
+  Object.defineProperty(RDECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_ALL_EXPIRED_CONSTRUCTION_ITEM_EVENT;
+      return s.ClientConstSF.S2C_REMOVE_FROM_DISTRICT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,19 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  AECCommand.prototype.executeCommand = function (e, t) {
+  RDECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
+      case a.ERROR.MOVE_FAILED:
         var i = JSON.parse(t[1]);
-        r.CastleModel.constructionItemData.parse_AEC(i);
+        r.CastleModel.areaData.activeArea.updater.parseEMO(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return AECCommand;
+  return RDECommand;
 }(l.CastleCommand);
-exports.AECCommand = c;
+exports.RDECommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

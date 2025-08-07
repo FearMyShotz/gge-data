@@ -1,21 +1,54 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SQuestStarterClickVO(t) {
-    var i = this;
-    i.QID = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).QID = t;
-    return i;
-  }
-  n.__extends(C2SQuestStarterClickVO, e);
-  C2SQuestStarterClickVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_QUEST_STARTER_CLICK;
+var n = require("./23.js");
+var o = require("./23.js");
+var a = createjs.Point;
+var s = function () {
+  function QuestMapTooltipHelper() {}
+  QuestMapTooltipHelper.hideToolTip = function () {
+    if (QuestMapTooltipHelper.disp) {
+      o.TweenMax.killTweensOf(QuestMapTooltipHelper._questMapTooltip.disp);
+      o.TweenMax.to(QuestMapTooltipHelper._questMapTooltip.disp, QuestMapTooltipHelper.FADE_DURATION, {
+        autoAlpha: 0,
+        ease: n.Linear.easeIn
+      });
+    }
   };
-  return C2SQuestStarterClickVO;
-}(o.BasicCommandVO);
-exports.C2SQuestStarterClickVO = s;
+  QuestMapTooltipHelper.showToolTip = function (e, t) {
+    QuestMapTooltipHelper._questMapTooltip.show(t);
+    r.CastleLayoutManager.getInstance().addInteractiveToolTip(QuestMapTooltipHelper.disp);
+    var i = e.localToGlobal(new a(0, 0));
+    QuestMapTooltipHelper._questMapTooltip.disp.x = i.x;
+    QuestMapTooltipHelper._questMapTooltip.disp.y = Math.max(QuestMapTooltipHelper._questMapTooltip.disp.height, i.y) - e.height / 2;
+    if (QuestMapTooltipHelper._questMapTooltip.disp.y - QuestMapTooltipHelper._questMapTooltip.disp.height < 0) {
+      QuestMapTooltipHelper._questMapTooltip.disp.y = i.y + e.height / 2 + QuestMapTooltipHelper._questMapTooltip.disp.height;
+      QuestMapTooltipHelper._questMapTooltip.disp.arrow_down.visible = false;
+      QuestMapTooltipHelper._questMapTooltip.disp.arrow_up.visible = true;
+    } else {
+      QuestMapTooltipHelper._questMapTooltip.disp.arrow_down.visible = true;
+      QuestMapTooltipHelper._questMapTooltip.disp.arrow_up.visible = false;
+    }
+    o.TweenMax.killTweensOf(QuestMapTooltipHelper._questMapTooltip.disp);
+    o.TweenMax.to(QuestMapTooltipHelper._questMapTooltip.disp, QuestMapTooltipHelper.FADE_DURATION, {
+      autoAlpha: 1,
+      ease: n.Linear.easeOut
+    });
+  };
+  Object.defineProperty(QuestMapTooltipHelper, "disp", {
+    get: function () {
+      return QuestMapTooltipHelper._questMapTooltip.disp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  QuestMapTooltipHelper.__initialize_static_members = function () {
+    QuestMapTooltipHelper.FADE_DURATION = 0.1;
+    QuestMapTooltipHelper._questMapTooltip = new l.QuestMapTooltip();
+  };
+  return QuestMapTooltipHelper;
+}();
+exports.QuestMapTooltipHelper = s;
+var r = require("./17.js");
+var l = require("./3315.js");
+s.__initialize_static_members();

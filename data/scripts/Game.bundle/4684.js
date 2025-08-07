@@ -2,41 +2,86 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
+var o = require("./2.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./102.js");
+var s = require("./3.js");
+var r = require("./7.js");
 var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function ABLCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var c = require("./1229.js");
+var u = require("./4685.js");
+var d = require("./136.js");
+var p = require("./630.js");
+var h = function (e) {
+  function AASCommand() {
+    return e.call(this) || this;
   }
-  n.__extends(ABLCommand, e);
-  Object.defineProperty(ABLCommand.prototype, "cmdId", {
+  n.__extends(AASCommand, e);
+  Object.defineProperty(AASCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ALLIANCE_BUFF_LIST;
+      return r.ClientConstSF.S2C_AUTO_ALLIANCE_SEARCH;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(o.BasicCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  ABLCommand.prototype.executeCommand = function (e, t) {
+  AASCommand.prototype.executeCommand = function (e, t) {
+    var i;
+    var n;
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        l.CastleModel.allianceData.parse_ABL(i);
-        break;
-      default:
-        l.CastleModel.allianceData.dispatchEvent(new r.CastleAllianceDataEvent(r.CastleAllianceDataEvent.ALLIANCEDATA_UPDATED, null));
-        l.CastleModel.allianceData.dispatchEvent(new r.CastleAllianceDataEvent(r.CastleAllianceDataEvent.MY_ALLIANCEDATA_UPDATED, null));
-        this.showErrorDialog(e, t);
+        var o = JSON.parse(t[1]);
+        if (o.gal) {
+          l.CastleModel.userData.parse_GAL(o.gal);
+          if (o.gam) {
+            l.CastleModel.armyData.parse_GAM(o.gam);
+          }
+          i = s.Localize.text("dialog_alliance_joiningAlliance_failed_title");
+          n = s.Localize.text("dialog_alliance_joiningAlliance_failed_copy");
+          g.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleLargeYesNoDialog, new p.CastleLargeYesNoDialogProperties(i, n, this.bindFunction(this.showAllianceDialog), null, null, "", "", false));
+        } else if (o.AL) {
+          var r = [];
+          for (var u = 0, d = o.AL; u < d.length; u++) {
+            var h = d[u];
+            if (h !== undefined) {
+              var C = new c.SearchListAllianceItemVO();
+              C.parseItem(h);
+              r.push(C);
+            }
+          }
+          if (r.length == 0) {
+            g.CastleDialogHandler.getInstance().registerDefaultDialogs(f.ModernYesNoDialog, new O.BasicStandardYesNoDialogProperties("dialog_noAllianceFound_title", "dialog_noAllianceFound_desc", function () {
+              y.CastleLayoutManager.getInstance().hideAllDialogs();
+              g.CastleDialogHandler.getInstance().registerDefaultDialogs(E.CastleNewAllianceDialog);
+            }, this.bindFunction(this.showOrUpdateSearchDialog), this.bindFunction(this.showOrUpdateSearchDialog)));
+          } else {
+            this.showOrUpdateSearchDialog(r);
+          }
+        }
     }
     return false;
   };
-  return ABLCommand;
-}(c.CastleCommand);
-exports.ABLCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  AASCommand.prototype.showOrUpdateSearchDialog = function (e) {
+    if (y.CastleLayoutManager.getInstance().isDialogVisibleByName(C.CastleSearchAllianceDialog)) {
+      b.CastleBasicController.getInstance().dispatchEvent(new D.CastleAllianceSearchEvent(D.CastleAllianceSearchEvent.ALLIANCE_SEARCH_UPDATED, e));
+    } else {
+      g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleSearchAllianceDialog, new u.CastleSearchAllianceDialogProperties(e));
+    }
+  };
+  AASCommand.prototype.showAllianceDialog = function (e) {
+    g.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleAllianceDialog, new d.CastleAllianceDialogProperties());
+  };
+  return AASCommand;
+}(o.BasicCommand);
+exports.AASCommand = h;
+var g = require("./9.js");
+var C = require("./971.js");
+var _ = require("./125.js");
+var m = require("./449.js");
+var f = require("./282.js");
+var O = require("./2.js");
+var E = require("./1337.js");
+var y = require("./17.js");
+var b = require("./15.js");
+var D = require("./1411.js");

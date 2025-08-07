@@ -2,106 +2,40 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./5.js");
-var a = require("./3.js");
-var s = require("./5412.js");
-var r = require("./83.js");
-var l = require("./99.js");
-var c = function (e) {
-  function MessageAllianceWarVO() {
+var o = require("./3.js");
+var a = require("./5412.js");
+var s = require("./83.js");
+var r = require("./99.js");
+var l = function (e) {
+  function MessageAllianceRequestVO() {
     var t = this;
-    t._subtypeAllianceWar = 0;
-    t._alliedMemberOrAllianceID = 0;
-    t._enemyAllianceID = 0;
-    t._enemyPeaceOfferEndTimeStamp = -1;
+    t.allianceID = 0;
     CONSTRUCTOR_HACK;
     return t = e.call(this) || this;
   }
-  n.__extends(MessageAllianceWarVO, e);
-  MessageAllianceWarVO.prototype.parseMessageHeader = function (e) {
-    var t = e.split("*");
-    this._subtypeAllianceWar = parseInt(t[0]);
-    this._alliedMemberOrAllianceID = parseInt(t[1]);
-    this._alliedMemberOrAllianceName = t[2];
-    this._enemyAllianceID = parseInt(t[3]);
-    this._enemyAllianceName = t[4];
-    if (this.subtypeAllianceWar == o.MessageConst.SUBTYPE_ALLIANCE_ENEMY_END_WAR && t.length > 5) {
-      this._enemyPeaceOfferEndTimeStamp = parseFloat(t[5]);
-    }
+  n.__extends(MessageAllianceRequestVO, e);
+  MessageAllianceRequestVO.prototype.parseMessageHeader = function (e) {
+    var t = e.split("+");
+    this.allianceID = parseInt(t[0]);
+    this.allianceName = t[1];
   };
-  MessageAllianceWarVO.prototype.parseSubject = function () {
-    if (this._subtypeAllianceWar == o.MessageConst.SUBTYPE_ALLIANCE_ENEMY_END_WAR) {
-      return a.Localize.text("dialog_allianceDiplomacy_peaceOffer_title");
-    } else {
-      return a.Localize.text("message_autoWar_subject");
-    }
+  MessageAllianceRequestVO.prototype.parseSubject = function () {
+    return o.Localize.text("dialog_alliance_invitationHeader");
   };
-  MessageAllianceWarVO.prototype.parseSender = function () {
-    return this._enemyAllianceName;
+  MessageAllianceRequestVO.prototype.parseSender = function () {
+    return this.allianceName;
   };
-  Object.defineProperty(MessageAllianceWarVO.prototype, "dialogInfo", {
+  Object.defineProperty(MessageAllianceRequestVO.prototype, "dialogInfo", {
     get: function () {
-      return new r.DialogInfoVO(u.CastleAllianceWarPeaceMessageDialog, new s.CastleAllianceWarPeaceMessageDialogProperties(this));
+      return new s.DialogInfoVO(c.CastleAllianceInvitationDialog, new a.CastleAllianceInvitationDialogProperties(this));
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.AMessageVO.prototype, "dialogInfo").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.AMessageVO.prototype, "dialogInfo").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MessageAllianceWarVO.prototype, "additionalIconName", {
-    get: function () {
-      return "CastleMessageIconsAutowar";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.AMessageVO.prototype, "additionalIconName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MessageAllianceWarVO.prototype, "subtypeAllianceWar", {
-    get: function () {
-      return this._subtypeAllianceWar;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MessageAllianceWarVO.prototype, "alliedMemberOrAllianceID", {
-    get: function () {
-      return this._alliedMemberOrAllianceID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MessageAllianceWarVO.prototype, "alliedMemberOrAllianceName", {
-    get: function () {
-      return this._alliedMemberOrAllianceName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MessageAllianceWarVO.prototype, "enemyAllianceID", {
-    get: function () {
-      return this._enemyAllianceID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MessageAllianceWarVO.prototype, "enemyAllianceName", {
-    get: function () {
-      return this._enemyAllianceName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MessageAllianceWarVO.prototype, "enemyPeaceOfferEndTimeStamp", {
-    get: function () {
-      return this._enemyPeaceOfferEndTimeStamp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return MessageAllianceWarVO;
-}(l.AMessageVO);
-exports.MessageAllianceWarVO = c;
-var u = require("./5413.js");
+  return MessageAllianceRequestVO;
+}(r.AMessageVO);
+exports.MessageAllianceRequestVO = l;
+var c = require("./1367.js");

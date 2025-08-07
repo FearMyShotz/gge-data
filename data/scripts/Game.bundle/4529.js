@@ -2,199 +2,87 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./6.js");
-var u = require("./15.js");
-var d = require("./876.js");
-var p = require("./4.js");
-var h = function (e) {
-  function ShoppingCartPrimeSaleEventVO() {
+var o = require("./1.js");
+var a = require("./6.js");
+var s = require("./28.js");
+var r = require("./30.js");
+var l = require("./4.js");
+var c = require("./1143.js");
+var u = function (e) {
+  function SeasonLeagueEventVO() {
     var t = this;
-    t._typeIds = [];
-    t._lifeTimeSpent = -1;
-    t._useSpent90Days = false;
-    t._spent90Days = 0;
-    t._level = -1;
-    t._limit = -1;
-    t._timesBuyable = -1;
-    t._c2Payed = 0;
-    t._cartsPaid = 0;
-    t._c2Needed = 1337;
-    t._shoppingCartOptionIds = [];
-    t._shoppingCartOptionsIdsByCategory = [];
-    t._averageBonus = 0;
-    t._valid = true;
+    t._originalEventDays = 0;
+    t._remainingEventDays = 0;
+    t._rewardSetId = 0;
+    t._hasAllianceRanking = false;
+    t._leaguetypeID = 0;
     CONSTRUCTOR_HACK;
     return t = e.call(this) || this;
   }
-  n.__extends(ShoppingCartPrimeSaleEventVO, e);
-  ShoppingCartPrimeSaleEventVO.prototype.parseParamObject = function (e) {
-    var t = e[r.CommKeys.TYPE_IDS];
-    if (!t) {
-      this._valid = false;
-      o.error("ShoppingCart event needs type ids!");
-      return;
-    }
-    var i = t.length;
-    if (i != ShoppingCartPrimeSaleEventVO.TYPE_COUNT) {
-      this._valid = false;
-      o.error("ShoppingCart event needs " + ShoppingCartPrimeSaleEventVO.TYPE_COUNT + " type ids!");
-      return;
-    }
-    this._level = c.int(e[r.CommKeys.LEVEL]);
-    if (e.hasOwnProperty(r.CommKeys.SHOPPING_CART) && s.instanceOfClass(e[r.CommKeys.SHOPPING_CART], "Array")) {
-      this._shoppingCartOptionIds = e[r.CommKeys.SHOPPING_CART];
-    } else {
-      this._shoppingCartOptionIds = [];
-    }
-    this._c2Needed = c.int(e[r.CommKeys.CURRENCY_2]);
-    this._limit = c.int(e[r.CommKeys.LIMIT]);
-    this.c2Payed = e[r.CommKeys.PAYED_C2];
-    this._lifeTimeSpent = c.int(e[r.CommKeys.LIFETIME_SPENT_C2]);
-    this._useSpent90Days = e[r.CommKeys.USE_90_DAYS_SPENT] != 0;
-    this._spent90Days = c.int(e[r.CommKeys.C2_SPENT_90_DAYS]);
-    this._typeIds = [];
-    var n = 0;
-    var a = 0;
-    for (var u = 0; u < i; u++) {
-      if (u % l.ShoppingCartConst.OPTIONS_PER_GROUP == 0) {
-        n++;
-      }
-      var d = c.int(t[u]);
-      var h = p.CastleModel.shoppingCartPrimeDayData.getNodeByTypeAndGroupWithEvent(d, n, this);
-      if (!h) {
-        this._valid = false;
-        o.error("No node found for type " + d + " and group " + n);
-        break;
-      }
-      a += h.shownOfferBonus;
-      this._typeIds.push(d);
-    }
-    this._averageBonus = c.int(a / i);
-    this._valid = this._timesBuyable > 0;
+  n.__extends(SeasonLeagueEventVO, e);
+  SeasonLeagueEventVO.prototype.parseParamObject = function (t) {
+    e.prototype.parseParamObject.call(this, t);
+    this._remainingEventDays = a.int(t.KLRD);
+    this._originalEventDays = a.int(t.KLRT);
+    this._rewardSetId = a.int(t.RSID);
+    this._hasAllianceRanking = t.KLARE == 1;
+    this._leaguetypeID = t.KLLID || 0;
   };
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "shoppingCartOptionIds", {
+  SeasonLeagueEventVO.prototype.openDialog = function (e = true) {
+    l.CastleModel.seasonLeagueData.openEventDialog();
+  };
+  Object.defineProperty(SeasonLeagueEventVO.prototype, "endTimestamp", {
     get: function () {
-      return this._shoppingCartOptionIds;
-    },
-    set: function (e) {
-      this._shoppingCartOptionIds = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "shoppingCartOptionsIdsByCategory", {
-    get: function () {
-      return this._shoppingCartOptionsIdsByCategory;
-    },
-    set: function (e) {
-      this._shoppingCartOptionsIdsByCategory = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "typeIds", {
-    get: function () {
-      return this._typeIds;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "averageBonus", {
-    get: function () {
-      return this._averageBonus;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "lifeTimeSpent", {
-    get: function () {
-      return this._lifeTimeSpent;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "c2Payed", {
-    get: function () {
-      return this._c2Payed % this._c2Needed;
-    },
-    set: function (e) {
-      this._c2Payed = e;
-      this._timesBuyable = c.int(this._limit - c.int(this._c2Payed / this._c2Needed));
-      if (this._timesBuyable > 0) {
-        u.CastleBasicController.getInstance().dispatchEvent(new d.CastleShoppingCartPrimeDayEvent(d.CastleShoppingCartPrimeDayEvent.UPDATE_DIALOG));
-      } else {
-        u.CastleBasicController.getInstance().dispatchEvent(new d.CastleShoppingCartPrimeDayEvent(d.CastleShoppingCartPrimeDayEvent.SOLD_OUT));
+      if (this._remainingEventDays <= 1) {
+        var e = l.CastleModel.seasonLeagueData.getActiveSeasonEventVO();
+        if (e) {
+          return e.endTimestamp;
+        }
       }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "c2Needed", {
-    get: function () {
-      return this._c2Needed;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "rewardCount", {
-    get: function () {
-      return c.int(this._c2Payed / this._c2Needed);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "cartsPaid", {
-    get: function () {
-      return this._cartsPaid;
+      return r.CachedTimer.getCachedTimer() + this.remainingEventDays * s.ClientConstTime.SECONDS_PER_DAY * s.ClientConstTime.SEC_2_MILLISEC;
     },
     set: function (e) {
-      this._cartsPaid = e;
+      Object.getOwnPropertyDescriptor(c.ATriggerEventVO.prototype, "endTimestamp").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "level", {
+  Object.defineProperty(SeasonLeagueEventVO.prototype, "remainingEventDays", {
     get: function () {
-      return this._level;
+      return this._remainingEventDays;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "timesBuyable", {
+  Object.defineProperty(SeasonLeagueEventVO.prototype, "originalEventDays", {
     get: function () {
-      return this._timesBuyable;
+      return this._originalEventDays;
     },
     enumerable: true,
     configurable: true
   });
-  ShoppingCartPrimeSaleEventVO.prototype.canBeAddedToActiveEvents = function () {
-    return this._valid;
-  };
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "spent90Days", {
+  Object.defineProperty(SeasonLeagueEventVO.prototype, "rewardSetId", {
     get: function () {
-      return this._spent90Days;
+      return this._rewardSetId;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "useSpent90Days", {
+  Object.defineProperty(SeasonLeagueEventVO.prototype, "hasAllianceRanking", {
     get: function () {
-      return this._useSpent90Days;
+      return this._hasAllianceRanking;
     },
     enumerable: true,
     configurable: true
   });
-  ShoppingCartPrimeSaleEventVO.prototype.openDialog = function (e = true) {
-    this.executeOpenDialog(e, g.CastleShoppingCartPrimeDayDialog, null);
-  };
-  ShoppingCartPrimeSaleEventVO.TYPE_COUNT = 18;
-  return ShoppingCartPrimeSaleEventVO;
-}(require("./79.js").ASpecialEventVO);
-exports.ShoppingCartPrimeSaleEventVO = h;
-var g = require("./493.js");
-a.classImplementsInterfaces(h, "IEventOverviewable");
+  Object.defineProperty(SeasonLeagueEventVO.prototype, "leaguetypeID", {
+    get: function () {
+      return this._leaguetypeID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return SeasonLeagueEventVO;
+}(c.ATriggerEventVO);
+exports.SeasonLeagueEventVO = u;
+o.classImplementsInterfaces(u, "IEventOverviewable");

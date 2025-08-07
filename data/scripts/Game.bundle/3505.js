@@ -3,127 +3,113 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1693.js");
+var a = require("./226.js");
 var s = function (e) {
-  function LongTermPointEventRewardDialog() {
-    var t = e.call(this) || this;
-    t.wonFrame = r.CastleGenericRewardDialog.FRAME_GOT_REWARD;
-    t.noRewardFrame = r.CastleGenericRewardDialog.FRAME_NOREWARD_BEGGING;
-    t.headerFrame = LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_DEFAULT;
-    return t;
+  function CastleAllianceNomadInvasionRewardDialogAlliance() {
+    return e.call(this) || this;
   }
-  n.__extends(LongTermPointEventRewardDialog, e);
-  LongTermPointEventRewardDialog.prototype.showLoaded = function (t = null) {
-    this.headerFrame = this.dialogProperties.skin.id;
-    e.prototype.showLoaded.call(this, t);
+  n.__extends(CastleAllianceNomadInvasionRewardDialogAlliance, e);
+  CastleAllianceNomadInvasionRewardDialogAlliance.prototype.applyPropertiesLoaded = function (t = null) {
+    this.noRewardFrame = a.CastleGenericRewardDialog.FRAME_NOREWARD_NOMAD_ALLIANCE;
+    this.headerFrame = a.CastleGenericRewardDialog.FRAME_HEADER_NOMAD_ALLIANCE;
+    this.wonFrame = a.CastleGenericRewardDialog.FRAME_WON_NOMAD_ALLIANCE;
+    e.prototype.applyPropertiesLoaded.call(this, t);
   };
-  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "assetClassName", {
+  Object.defineProperty(CastleAllianceNomadInvasionRewardDialogAlliance.prototype, "firstPlaceTitleTextId", {
     get: function () {
-      return LongTermPointEventRewardDialog.ASSET_NAME;
+      return "dialog_nomadInvasionAlliance_gotRoyalReward_title";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "assetClassName").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "firstPlaceTitleTextId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "firstPlaceTitleTextId", {
+  Object.defineProperty(CastleAllianceNomadInvasionRewardDialogAlliance.prototype, "firstPlaceCopyTextId", {
     get: function () {
-      return "dialog_longPointsEvent_gotRoyalReward_title" + this.dialogProperties.skin.textSuffix;
+      return "dialog_nomadInvasionAlliance_gotRoyalReward" + this.grantTypeSuffix + "_copy";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "firstPlaceTitleTextId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "firstPlaceCopyTextId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "firstPlaceCopyTextId", {
+  Object.defineProperty(CastleAllianceNomadInvasionRewardDialogAlliance.prototype, "topXTitleTextId", {
     get: function () {
-      return "dialog_longPointsEvent_gotRoyalReward_copy" + this.dialogProperties.skin.textSuffix;
+      return "dialog_nomadInvasionAlliance_gotTopxReward_title";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "firstPlaceCopyTextId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXTitleTextId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "topXTitleTextId", {
+  Object.defineProperty(CastleAllianceNomadInvasionRewardDialogAlliance.prototype, "topXCopyTextId", {
     get: function () {
-      return "dialog_longPointsEvent_gotTopxReward_title" + this.dialogProperties.skin.textSuffix;
+      return "dialog_nomadInvasionAlliance_gotTopxReward" + this.grantTypeSuffix + "_copy";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "topXTitleTextId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXCopyTextId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "topXCopyTextId", {
+  Object.defineProperty(CastleAllianceNomadInvasionRewardDialogAlliance.prototype, "topXCopyTextReplacements", {
     get: function () {
-      return "dialog_longPointsEvent_gotTopxReward_copy" + this.dialogProperties.skin.textSuffix;
+      return [this.dialogProperties.points, this.dialogProperties.topXCount];
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "topXCopyTextId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXCopyTextReplacements").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "gotRewardCopyTextId", {
+  Object.defineProperty(CastleAllianceNomadInvasionRewardDialogAlliance.prototype, "gotRewardTitleTextId", {
     get: function () {
-      if (this.dialogProperties.skin.id == LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_NEW_KING) {
-        if (this.dialogProperties.points == 1) {
-          return "dialog_pointEvent_gotReward_kingEric_copy_singular";
-        } else {
-          return "dialog_pointEvent_gotReward_kingEric_copy";
-        }
-      } else if (this.dialogProperties.points == 1) {
-        return "dialog_longPointsEvent_gotReward_copy_singular";
-      } else {
-        return "dialog_longPointsEvent_gotReward_copy";
-      }
+      return "dialog_nomadInvasionAlliance_gotReward_title";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "gotRewardCopyTextId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "gotRewardTitleTextId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "noRewardTitleTextId", {
+  Object.defineProperty(CastleAllianceNomadInvasionRewardDialogAlliance.prototype, "gotRewardCopyTextId", {
     get: function () {
-      return "dialog_longPointsEvent_eventEnd_title" + this.dialogProperties.skin.textSuffix;
+      return "dialog_nomadInvasionAlliance_gotReward" + this.grantTypeSuffix + "_copy";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "noRewardTitleTextId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "gotRewardCopyTextId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "noRewardCopyTextId", {
+  Object.defineProperty(CastleAllianceNomadInvasionRewardDialogAlliance.prototype, "noRewardTitleTextId", {
     get: function () {
-      if (this.dialogProperties.points == 1) {
-        return "dialog_longPointsEvent_eventEnd" + this.dialogProperties.skin.textSuffix + "_singular";
-      } else {
-        return "dialog_longPointsEvent_eventEnd" + this.dialogProperties.skin.textSuffix;
-      }
+      return "dialog_nomadInvasionAlliance_eventEnd_title";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "noRewardCopyTextId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "noRewardTitleTextId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  LongTermPointEventRewardDialog.__initialize_static_members = function () {
-    LongTermPointEventRewardDialog.NAME = "LongTermPeRewardDialog";
-    LongTermPointEventRewardDialog.ASSET_NAME = "LongTermPointEventReward";
-    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_DEFAULT = 1;
-    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_HALLOWEEN = 2;
-    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_WINTER = 3;
-    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_SPRING = 4;
-    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_REUSABLE = 5;
-    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_NEW_KING = 6;
+  Object.defineProperty(CastleAllianceNomadInvasionRewardDialogAlliance.prototype, "noRewardCopyTextId", {
+    get: function () {
+      return "dialog_nomadInvasionAlliance_eventEnd_copy";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "noRewardCopyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleAllianceNomadInvasionRewardDialogAlliance.__initialize_static_members = function () {
+    CastleAllianceNomadInvasionRewardDialogAlliance.NAME = "CastleAllianceNomadInvasionRewardAlliance";
   };
-  return LongTermPointEventRewardDialog;
-}(a.CastlePointEventRewardDialog);
-exports.LongTermPointEventRewardDialog = s;
-var r = require("./225.js");
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  return CastleAllianceNomadInvasionRewardDialogAlliance;
+}(a.CastleGenericRewardDialog);
+exports.CastleAllianceNomadInvasionRewardDialogAlliance = s;
 s.__initialize_static_members();
+o.classImplementsInterfaces(s, "ICollectableRendererList");

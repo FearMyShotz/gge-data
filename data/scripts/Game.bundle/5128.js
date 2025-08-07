@@ -4,42 +4,36 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./5.js");
-var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function VWCCommand() {
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function TPCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(VWCCommand, e);
-  Object.defineProperty(VWCCommand.prototype, "cmdId", {
+  n.__extends(TPCCommand, e);
+  Object.defineProperty(TPCCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_VOTE_WORLD_CUP;
+      return s.ClientConstSF.S2C_GET_PLAYER_TEMP_SERVER_COLLECTOR_CURRENCY;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  VWCCommand.prototype.executeCommand = function (e, t) {
+  TPCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        if (i) {
-          var n = l.CastleModel.specialEventData.getActiveEventByEventId(s.EventConst.EVENTTYPE_WORLD_CUP);
-          if (n && i) {
-            n.parse_VWC(i);
-          }
-        }
+        r.CastleModel.collectEventData.parse_PCC(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return VWCCommand;
-}(c.CastleCommand);
-exports.VWCCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return TPCCommand;
+}(l.CastleCommand);
+exports.TPCCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

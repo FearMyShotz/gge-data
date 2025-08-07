@@ -2,20 +2,28 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
+var o = require("./99.js");
 var a = function (e) {
-  function TutorialBasicQuestFinisherActionCommand() {
+  function AMessageFriendInviteVO() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TutorialBasicQuestFinisherActionCommand, e);
-  TutorialBasicQuestFinisherActionCommand.prototype.onQuestConfirmPre = function () {
-    this.tutorialController.waitForDialogHide(this.getDialogClass(), this.bindFunction(this.onQuestConfirm));
+  n.__extends(AMessageFriendInviteVO, e);
+  AMessageFriendInviteVO.prototype.parseMessageHeader = function (e) {
+    this._senderName = e;
   };
-  TutorialBasicQuestFinisherActionCommand.prototype.getDialogClass = function () {
-    return s.CastleQuestCompletedDialog;
+  AMessageFriendInviteVO.prototype.parseSender = function () {
+    return this._senderName;
   };
-  return TutorialBasicQuestFinisherActionCommand;
-}(require("./1972.js").TutorialBasicQuestActionCommand);
-exports.TutorialBasicQuestFinisherActionCommand = a;
-var s = require("./1066.js");
-o.classImplementsInterfaces(a, "ISimpleCommand");
+  Object.defineProperty(AMessageFriendInviteVO.prototype, "additionalIconName", {
+    get: function () {
+      return "CastleMessageIconsFriendInvite";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(o.AMessageVO.prototype, "additionalIconName").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AMessageFriendInviteVO;
+}(o.AMessageVO);
+exports.AMessageFriendInviteVO = a;

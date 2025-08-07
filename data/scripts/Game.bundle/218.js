@@ -2,16 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleDetailedCastleListEvent(t, i = false, n = false) {
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SGetDetailedCastleListVO(t = 1) {
+    var i = this;
+    i.CD = 0;
     CONSTRUCTOR_HACK;
-    return e.call(this, t, i, n) || this;
+    (i = e.call(this) || this).CD = t;
+    return i;
   }
-  n.__extends(CastleDetailedCastleListEvent, e);
-  CastleDetailedCastleListEvent.__initialize_static_members = function () {
-    CastleDetailedCastleListEvent.DETAILED_CASTLELISTDATA_UPDATED = "detailed_castlelistdata_updated";
+  n.__extends(C2SGetDetailedCastleListVO, e);
+  C2SGetDetailedCastleListVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_GET_DETAILEDCASTLELIST;
   };
-  return CastleDetailedCastleListEvent;
-}(createjs.Event);
-exports.CastleDetailedCastleListEvent = o;
-o.__initialize_static_members();
+  return C2SGetDetailedCastleListVO;
+}(o.BasicCommandVO);
+exports.C2SGetDetailedCastleListVO = s;

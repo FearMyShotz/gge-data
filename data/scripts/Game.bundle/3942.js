@@ -175,9 +175,9 @@ var I = function (e) {
 }(y.CastleExternalDialog);
 exports.CastleDailyQuestDialog = I;
 var T = require("./29.js");
-var v = require("./544.js");
+var v = require("./545.js");
 var S = require("./9.js");
 var A = require("./331.js");
-var L = require("./1065.js");
+var L = require("./1066.js");
 var P = require("./25.js");
 r.classImplementsInterfaces(I, "ICollectableRendererList");

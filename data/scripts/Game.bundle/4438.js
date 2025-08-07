@@ -3,17 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function CastleFactionHunterEventBuyDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+var a = require("./1906.js");
+var s = function (e) {
+  function FactionHunterMerchantScrollItem(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(CastleFactionHunterEventBuyDialog, e);
-  CastleFactionHunterEventBuyDialog.__initialize_static_members = function () {
-    CastleFactionHunterEventBuyDialog.NAME = "CastleFactionHunterEventBuyDialog";
-  };
-  return CastleFactionHunterEventBuyDialog;
-}(require("./1906.js").CastleFactionArmorerEventBuyDialog);
-exports.CastleFactionHunterEventBuyDialog = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList");
-a.__initialize_static_members();
+  n.__extends(FactionHunterMerchantScrollItem, e);
+  Object.defineProperty(FactionHunterMerchantScrollItem.prototype, "dialogKey", {
+    get: function () {
+      return r.CastleFactionHunterEventBuyDialog;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.FactionArmorerMerchantScrollItem.prototype, "dialogKey").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return FactionHunterMerchantScrollItem;
+}(a.FactionArmorerMerchantScrollItem);
+exports.FactionHunterMerchantScrollItem = s;
+var r = require("./4439.js");
+o.classImplementsInterfaces(s, "MovieClip");

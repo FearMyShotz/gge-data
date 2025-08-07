@@ -3,23 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./62.js");
-var s = function (e) {
-  function CargoBuildingVE() {
+var a = function (e) {
+  function ButcherShopBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CargoBuildingVE, e);
-  Object.defineProperty(CargoBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(ButcherShopBuildingVE, e);
+  Object.defineProperty(ButcherShopBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Aquamarin_Centered;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      return Library.CastleInterfaceElements.Icon_BeefBuff;
     },
     enumerable: true,
     configurable: true
   });
-  return CargoBuildingVE;
-}(a.ABasicBuildingVE);
-exports.CargoBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  return ButcherShopBuildingVE;
+}(require("./62.js").ABasicBuildingVE);
+exports.ButcherShopBuildingVE = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

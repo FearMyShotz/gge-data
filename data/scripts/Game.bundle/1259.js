@@ -10,5 +10,5 @@ var o = function (e) {
   }
   n.__extends(GeneralsLevelUPDialogProperties, e);
   return GeneralsLevelUPDialogProperties;
-}(require("./219.js").BasicProperties);
+}(require("./220.js").BasicProperties);
 exports.GeneralsLevelUPDialogProperties = o;

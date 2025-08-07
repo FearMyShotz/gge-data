@@ -2,54 +2,59 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./6.js");
-var o = function () {
-  function SubscriptionProviderVO() {
-    this._id = 0;
-    this._minAmount = 0;
-    this._maxAmount = 0;
+var o = require("./28.js");
+var a = require("./30.js");
+var s = require("./222.js");
+var r = function () {
+  function SubscriptionActivePackageVO() {
+    this._serverId = -1;
+    this._endTimestamp = 0;
+    this._endTimestampWithGracePeriod = 0;
+    this._type = s.SubscriptionPackageEnum.UNKNOWN;
   }
-  SubscriptionProviderVO.prototype.parseServerObject = function (e) {
-    this._id = n.int(e.id);
-    this._countryCode = e.countryCode;
-    this._minAmount = n.int(e.minAmount);
-    this._maxAmount = n.int(e.maxAmount);
-    this._type = e.type;
+  SubscriptionActivePackageVO.prototype.parseServerObject = function (e) {
+    this._serverId = n.int(e.STID);
+    this._endTimestamp = a.CachedTimer.getFreshTimer() + e.RS * o.ClientConstTime.SEC_2_MILLISEC;
+    this._endTimestampWithGracePeriod = a.CachedTimer.getFreshTimer() + e.RSGP * o.ClientConstTime.SEC_2_MILLISEC;
+    this._type = s.SubscriptionPackageEnum.getTypeByServerId(this._serverId);
   };
-  Object.defineProperty(SubscriptionProviderVO.prototype, "id", {
+  SubscriptionActivePackageVO.prototype.isActive = function () {
+    return this.getRemainingSecondWithGracePeriod() > 0;
+  };
+  SubscriptionActivePackageVO.prototype.getRemainingSeconds = function () {
+    return n.int((this._endTimestamp - a.CachedTimer.getCachedTimer()) * o.ClientConstTime.MILLISEC_2_SEC);
+  };
+  SubscriptionActivePackageVO.prototype.getRemainingSecondWithGracePeriod = function () {
+    return n.int((this._endTimestampWithGracePeriod - a.CachedTimer.getCachedTimer()) * o.ClientConstTime.MILLISEC_2_SEC);
+  };
+  Object.defineProperty(SubscriptionActivePackageVO.prototype, "serverId", {
     get: function () {
-      return this._id;
+      return this._serverId;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SubscriptionProviderVO.prototype, "countryCode", {
-    get: function () {
-      return this._countryCode;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SubscriptionProviderVO.prototype, "minAmount", {
-    get: function () {
-      return this._minAmount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SubscriptionProviderVO.prototype, "maxAmount", {
-    get: function () {
-      return this._maxAmount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SubscriptionProviderVO.prototype, "type", {
+  Object.defineProperty(SubscriptionActivePackageVO.prototype, "type", {
     get: function () {
       return this._type;
     },
     enumerable: true,
     configurable: true
   });
-  return SubscriptionProviderVO;
+  Object.defineProperty(SubscriptionActivePackageVO.prototype, "endTimestamp", {
+    get: function () {
+      return this._endTimestamp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SubscriptionActivePackageVO.prototype, "endTimestampWithGracePeriod", {
+    get: function () {
+      return this._endTimestampWithGracePeriod;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return SubscriptionActivePackageVO;
 }();
-exports.SubscriptionProviderVO = o;
+exports.SubscriptionActivePackageVO = r;

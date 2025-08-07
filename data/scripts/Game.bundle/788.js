@@ -7,16 +7,14 @@ var a = require("./1.js");
 var s = require("./3.js");
 var r = require("./16.js");
 var l = function (e) {
-  function StableBuildingVO() {
+  function FactionHuntertentBuildingVO() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(StableBuildingVO, e);
-  StableBuildingVO.prototype.createInfoPanelItems = function (e) {
-    if (this.level >= 2) {
-      e.addInfoItem(Library.CastleInterfaceElements.Icon_Horse_Boost, "effect", new s.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [this.shownTravelBoost]), r.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    }
+  n.__extends(FactionHuntertentBuildingVO, e);
+  FactionHuntertentBuildingVO.prototype.createInfoPanelItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_FoodConsumption, "foodwastage", new s.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, [this.foodReduction]), r.ClientConstColor.FONT_DEFAULT_COLOR, true);
   };
-  return StableBuildingVO;
+  return FactionHuntertentBuildingVO;
 }(require("./65.js").AEffectBuildingVO);
-exports.StableBuildingVO = l;
+exports.FactionHuntertentBuildingVO = l;
 a.classImplementsInterfaces(l, "IShopVO", "ICostVO", "IInventoryVO");

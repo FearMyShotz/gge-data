@@ -6,7 +6,7 @@ var o = require("./1.js");
 var a = require("./6.js");
 var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./615.js");
+var l = require("./616.js");
 var c = createjs.MouseEvent;
 var u = function (e) {
   function CastleStormIslandsMainDialogRankingItem(t, i) {
@@ -155,7 +155,7 @@ var h = require("./2.js");
 var g = require("./2.js");
 var C = require("./187.js");
 var _ = require("./4.js");
-var m = require("./214.js");
+var m = require("./215.js");
 var f = require("./235.js");
 var O = require("./335.js");
 var E = require("./149.js");

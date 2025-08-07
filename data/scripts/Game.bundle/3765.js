@@ -3,13 +3,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastlePostSpyDialogProperties(t, i) {
+  function CastlePostSendGoodsDialogProperties(t, i) {
     var n = e.call(this) || this;
-    n.startSpyVO = t;
+    n.castleTraveVO = t;
     n.hideFunction = i;
     return n;
   }
-  n.__extends(CastlePostSpyDialogProperties, e);
-  return CastlePostSpyDialogProperties;
+  n.__extends(CastlePostSendGoodsDialogProperties, e);
+  return CastlePostSendGoodsDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastlePostSpyDialogProperties = o;
+exports.CastlePostSendGoodsDialogProperties = o;

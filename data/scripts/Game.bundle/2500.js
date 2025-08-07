@@ -5,19 +5,20 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SGetDonationResourcesVO(t, i) {
-    var n = this;
-    n.AID = 0;
-    n.KID = 0;
+  function C2SAllianceDonateVO(t, i, n) {
+    var o = this;
+    o.AID = 0;
+    o.KID = 0;
     CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).AID = t;
-    n.KID = i;
-    return n;
+    (o = e.call(this) || this).AID = t;
+    o.KID = i;
+    o.RV = n;
+    return o;
   }
-  n.__extends(C2SGetDonationResourcesVO, e);
-  C2SGetDonationResourcesVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_DONATION_RESOURCES;
+  n.__extends(C2SAllianceDonateVO, e);
+  C2SAllianceDonateVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_ALLIANCE_DONATE;
   };
-  return C2SGetDonationResourcesVO;
+  return C2SAllianceDonateVO;
 }(o.BasicCommandVO);
-exports.C2SGetDonationResourcesVO = s;
+exports.C2SAllianceDonateVO = s;

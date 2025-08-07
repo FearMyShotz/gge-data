@@ -3,45 +3,39 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./118.js");
-var l = require("./726.js");
-var c = require("./15.js");
-var u = require("./4.js");
-var d = r.getLogger("CastleFacebookSendReferralLinkCommand");
-var p = function (e) {
-  function CastleFacebookSendReferralLinkCommand() {
+var a = require("./1.js");
+var s = require("./1166.js");
+var r = require("./4.js");
+var l = require("./17.js");
+var c = require("./354.js");
+var u = function (e) {
+  function CastleFacebookGetUserDataCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleFacebookSendReferralLinkCommand, e);
-  CastleFacebookSendReferralLinkCommand.prototype.execute = function (t = null) {
-    e.prototype.execute.call(this, t);
-    if (C.CastleFacebookModule.hasAuthResponse && u.CastleModel.userData.isConnectedToFacebook) {
-      d.debug(u.CastleModel.userData.facebookEmail, "  ", C.CastleFacebookModule.userID, "  ", C.CastleFacebookModule.accessToken);
-      C.CastleFacebookModule.sendReferralLink(g.getFacebookReferralLink());
-    } else {
-      c.CastleBasicController.getInstance().addEventListener(l.CastleFacebookEvent.FACEBOOK_MAPPING_UPDATED, this.bindFunction(this.onFacebookMappingUpdated));
-      c.CastleBasicController.getInstance().addEventListener(l.CastleFacebookEvent.FACEBOOK_MAPPING_ERROR, this.bindFunction(this.removeMappingListeners));
-      o.CommandController.instance.executeCommand(h.IngameClientCommands.MAP_USER_TO_FACEBOOK, true);
-    }
+  n.__extends(CastleFacebookGetUserDataCommand, e);
+  CastleFacebookGetUserDataCommand.prototype.execute = function (e) {
+    d.CastleFacebookModule.getUserData(function (t) {
+      if (t) {
+        r.CastleModel.userData.facebookEmail = s.CastleStringHelper.parseToStringOrEmpty(t.email);
+        new p();
+        if (!e && !l.CastleLayoutManager.getInstance().isDialogVisibleByName(c.OptionsDialog)) {
+          return;
+        }
+        var i = o.TrackingCache.getInstance().getEvent(o.TrackingEventIds.FACEBOOK_USER_DATA);
+        i.playerId = r.CastleModel.userData.playerID;
+        i.email = r.CastleModel.userData.facebookEmail;
+        JSON.stringify(t);
+        o.debug("Track FacebookUserData,playerId : " + i.getVars().playerId + ", email: " + i.getVars().email);
+        console.warn("Track FacebookUserData,playerId : " + i.getVars().playerId + ", email: " + i.getVars().email + "\nFBData: " + JSON.stringify(t));
+        o.TrackingCache.getInstance().sendEvent(o.TrackingEventIds.FACEBOOK_USER_DATA);
+      }
+    });
   };
-  CastleFacebookSendReferralLinkCommand.prototype.removeMappingListeners = function () {
-    c.CastleBasicController.getInstance().removeEventListener(l.CastleFacebookEvent.FACEBOOK_MAPPING_UPDATED, this.bindFunction(this.onFacebookMappingUpdated));
-    c.CastleBasicController.getInstance().removeEventListener(l.CastleFacebookEvent.FACEBOOK_MAPPING_ERROR, this.bindFunction(this.removeMappingListeners));
-  };
-  CastleFacebookSendReferralLinkCommand.prototype.onFacebookMappingUpdated = function (e) {
-    this.removeMappingListeners();
-    if (u.CastleModel.userData.isConnectedToFacebook) {
-      C.CastleFacebookModule.sendReferralLink(g.getFacebookReferralLink);
-    } else {
-      d.warn("onLogout:  we tried to Map a user to Facebook and  we got a FACEBOOK_MAPPING_UPDATED but userData is still not connectedToFacebook.");
-    }
-  };
-  return CastleFacebookSendReferralLinkCommand;
-}(a.SimpleCommand);
-exports.CastleFacebookSendReferralLinkCommand = p;
-var h = require("./29.js");
-var g = require("./434.js");
-var C = require("./193.js");
-s.classImplementsInterfaces(p, "ISimpleCommand");
+  return CastleFacebookGetUserDataCommand;
+}(o.SimpleCommand);
+exports.CastleFacebookGetUserDataCommand = u;
+var d = require("./193.js");
+a.classImplementsInterfaces(u, "ISimpleCommand");
+var p = function () {
+  return function FacebookUserData() {};
+}();

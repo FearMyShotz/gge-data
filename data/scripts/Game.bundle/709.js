@@ -3,17 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleFightDataEvent(t, i = null, n = true, o = false) {
+  function CastleDefenceDataEvent(t, i = null, n = true, o = false) {
     var a = this;
     CONSTRUCTOR_HACK;
     (a = e.call(this, t, n, o) || this).params = i;
     return a;
   }
-  n.__extends(CastleFightDataEvent, e);
-  CastleFightDataEvent.__initialize_static_members = function () {
-    CastleFightDataEvent.NEW_TOOL_BOUGHT = "newtoolbought";
+  n.__extends(CastleDefenceDataEvent, e);
+  CastleDefenceDataEvent.__initialize_static_members = function () {
+    CastleDefenceDataEvent.GET_DEFENCE_INFOS = "getdefenceinfos";
+    CastleDefenceDataEvent.DEFENCELIST_CHANGED = "defencelistchanged";
+    CastleDefenceDataEvent.DEFENCE_PRIORITYLIST_CHANGED = "defenceprioritylistchanged";
   };
-  return CastleFightDataEvent;
+  return CastleDefenceDataEvent;
 }(createjs.Event);
-exports.CastleFightDataEvent = o;
+exports.CastleDefenceDataEvent = o;
 o.__initialize_static_members();

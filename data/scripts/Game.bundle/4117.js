@@ -47,5 +47,5 @@ var l = function (e) {
 }(r.APanelButton);
 exports.RelicUpgradePanelButton = l;
 var c = require("./14.js");
-var u = require("./797.js");
+var u = require("./799.js");
 o.classImplementsInterfaces(l, "ICollectableRendererList");

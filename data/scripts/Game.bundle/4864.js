@@ -2,41 +2,38 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./5.js");
-var a = require("./7.js");
-var s = require("./265.js");
-var r = require("./15.js");
-var l = require("./4.js");
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
 var c = function (e) {
-  function DGECommand() {
+  function FSRCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DGECommand, e);
-  Object.defineProperty(DGECommand.prototype, "cmdId", {
+  n.__extends(FSRCommand, e);
+  Object.defineProperty(FSRCommand.prototype, "cmdId", {
     get: function () {
-      return a.ClientConstSF.S2C_GACHA_SPIN;
+      return s.ClientConstSF.S2C_SKIP_FUSION_RECHARGE;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  DGECommand.prototype.executeCommand = function (e, t) {
+  FSRCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case o.ERROR.ALL_OK:
+      case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        var n = i.ID;
-        var a = l.CastleModel.gachaData.getGachaVOByID(n);
-        var c = a ? l.CastleModel.specialEventData.getActiveEventByEventId(a.eventID) : null;
-        if (c) {
-          c.parseGachaEvent(i);
-          r.CastleBasicController.getInstance().dispatchEvent(new s.GachaEvent(s.GachaEvent.SPIN, c, i.LTR));
-        }
+        r.CastleModel.fusionForgeData.parseFSR(i);
         break;
       default:
         this.showErrorDialog(e, t);
-        r.CastleBasicController.getInstance().dispatchEvent(new s.GachaEvent(s.GachaEvent.SPIN_ANIMATION_COMPLETE, null));
     }
     return false;
   };
-  return DGECommand;
-}(require("./10.js").CastleCommand);
-exports.DGECommand = c;
+  return FSRCommand;
+}(l.CastleCommand);
+exports.FSRCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

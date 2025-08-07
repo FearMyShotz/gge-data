@@ -2,60 +2,180 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./892.js");
-var u = require("./707.js");
-var d = require("./15.js");
-var p = require("./4.js");
-var h = require("./705.js");
-var g = function (e) {
-  function RingMenuButtonDefence() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./780.js");
+var a = require("./782.js");
+var s = require("./640.js");
+var r = function (e) {
+  function IsoViewObjectGroupDefence() {
+    var t = this;
+    t._towers = [];
+    t._walls = [];
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(RingMenuButtonDefence, e);
-  RingMenuButtonDefence.prototype.init = function (t, i, n) {
-    e.prototype.init.call(this, t, i, n);
-    this._disp = i.btn_defence;
-    this._disp.visible = a.instanceOfClass(n, "ADefenceBuildingVE") && p.CastleModel.userData.userCanOpenDefenceScreen;
-    this._disp.enableButton = this.enableButton();
+  n.__extends(IsoViewObjectGroupDefence, e);
+  IsoViewObjectGroupDefence.prototype.destroy = function () {
+    this._gate = this.destroyObject(this._gate);
+    this._moat = this.destroyObject(this._moat);
+    this._towers = this.destroyAndCreateNewObjectList(this._towers);
+    this._walls = this.destroyAndCreateNewObjectList(this._walls);
+    e.prototype.destroy.call(this);
   };
-  RingMenuButtonDefence.prototype.onGetDefenceInfos = function (e) {
-    d.CastleBasicController.getInstance().removeEventListener(u.CastleDefenceDataEvent.GET_DEFENCE_INFOS, this.bindFunction(this.onGetDefenceInfos));
-    this._disp.enableButton = p.CastleModel.defenceData.areaInfo.moatLevel >= 1;
+  IsoViewObjectGroupDefence.prototype.initObjects = function () {
+    this.initTowers();
+    this.initWalls();
+    this.initGate();
+    this.initMoat();
   };
-  RingMenuButtonDefence.prototype.onClick = function (e, t) {
-    var n = l.int(s.DefenseConst.TOOL_TYPE_WALL);
-    if (a.instanceOfClass(this.targetBuilding, "GuardTowerVE")) {
-      n = l.int(s.DefenseConst.TOOL_TYPE_WALL);
-    } else if (a.instanceOfClass(this.targetBuilding, "BasicGateVE")) {
-      n = l.int(s.DefenseConst.TOOL_TYPE_GATE);
-    } else if (a.instanceOfClass(this.targetBuilding, "BasicMoatVE")) {
-      n = l.int(s.DefenseConst.TOOL_TYPE_MOAT);
-    } else if (a.instanceOfClass(this.targetBuilding, "KeepBuildingVE")) {
-      n = l.int(s.DefenseConst.TOOL_TYPE_KEEP);
+  IsoViewObjectGroupDefence.prototype.initGate = function () {
+    if (this.gate) {
+      this._gate = this.destroyObject(this.gate);
     }
-    this.parent.hide();
-    var o = require("./426.js").CastleDefenceDialog;
-    C.CastleDialogHandler.getInstance().registerDefaultDialogs(o, new h.CastleDefenceDialogProperties(p.CastleModel.areaData.activeAreaInfo, n));
+    this._gate = this.createObjectAndAddToLayer(this.isoData.objects.defences.gate);
   };
-  RingMenuButtonDefence.prototype.getInfoText = function () {
-    return r.Localize.text("ringmenu_defence");
+  IsoViewObjectGroupDefence.prototype.initWalls = function () {
+    if (this.walls && this.walls.length > 0) {
+      this._walls = this.destroyAndCreateNewObjectList(this.walls);
+    }
+    this.createObjectsAndAddToLayerAndList(this.isoData.objects.defences.walls, this.walls);
   };
-  RingMenuButtonDefence.prototype.enableButton = function () {
-    if (a.instanceOfClass(this.targetBuilding, "BasicMoatVE") || a.instanceOfClass(this.targetBuilding, "PremiumMoatVE") || a.instanceOfClass(this.targetBuilding, "FactionMoatMoatVE")) {
-      d.CastleBasicController.getInstance().addEventListener(u.CastleDefenceDataEvent.GET_DEFENCE_INFOS, this.bindFunction(this.onGetDefenceInfos));
-      p.CastleModel.smartfoxClient.sendCommandVO(new c.C2SDefenceCompleteVO(p.CastleModel.areaData.activeAreaInfo.absAreaPos, p.CastleModel.areaData.activeAreaInfo.objectId));
-      return false;
+  IsoViewObjectGroupDefence.prototype.initTowers = function () {
+    if (this.towers && this.towers.length > 0) {
+      this._towers = this.destroyAndCreateNewObjectList(this.towers);
+    }
+    this.createObjectsAndAddToLayerAndList(this.isoData.objects.defences.towers, this.towers);
+    this.createObjectsAndAddToLayerAndList(this.isoData.objects.defences.emptyTowers, this.towers);
+  };
+  IsoViewObjectGroupDefence.prototype.initMoat = function () {
+    if (this.moat) {
+      this._moat = this.destroyObject(this.moat);
+    }
+    this._moat = this.createObjectAndAddToLayer(this.isoData.objects.defences.moat);
+  };
+  IsoViewObjectGroupDefence.prototype.render = function () {
+    if (this.gate) {
+      this.gate.updateDisp();
+    }
+    if (this.moat) {
+      this.moat.updateDisp();
+    }
+    this.updateTowers();
+    this.updateWalls();
+  };
+  IsoViewObjectGroupDefence.prototype.addObject = function (e) {
+    if (e instanceof o.BasicGateVE) {
+      this.initGate();
+    } else if (e instanceof a.BasicMoatVE) {
+      this.initMoat();
+    } else if (e instanceof s.ATowerVE) {
+      this.initTowers();
+    }
+  };
+  IsoViewObjectGroupDefence.prototype.updateWalls = function () {
+    if (this.walls != null) {
+      for (var e = 0, t = this.walls; e < t.length; e++) {
+        var i = t[e];
+        if (i) {
+          i.updateDisp();
+        }
+      }
+    }
+  };
+  IsoViewObjectGroupDefence.prototype.updateTowers = function () {
+    if (this.towers != null) {
+      for (var e = 0, t = this.towers; e < t.length; e++) {
+        var i = t[e];
+        if (i) {
+          i.updateDisp();
+        }
+      }
+    }
+  };
+  IsoViewObjectGroupDefence.prototype.removeObjectByVE = function (e) {
+    if (this.gate && this.gate == e) {
+      this._gate = this.destroyObject(this._gate);
+    } else if (this.moat && this.moat == e) {
+      this._moat = this.destroyObject(this._moat);
     } else {
-      return this.targetBuilding.buildingVO.buildingState.isFunctionally;
+      var t;
+      for (var i = 0, n = this.towers; i < n.length; i++) {
+        if ((t = n[i]) == e) {
+          this.removeObjectFromList(t, this.towers);
+          return;
+        }
+      }
+      for (var o = 0, a = this.walls; o < a.length; o++) {
+        if ((t = a[o]) == e) {
+          this.removeObjectFromList(t, this.walls);
+          return;
+        }
+      }
     }
   };
-  return RingMenuButtonDefence;
-}(require("./98.js").ARingMenuButton);
-exports.RingMenuButtonDefence = g;
-var C = require("./9.js");
-o.classImplementsInterfaces(g, "IRingMenuButton");
+  IsoViewObjectGroupDefence.prototype.containsObject = function (e) {
+    if (!e) {
+      return false;
+    }
+    if (e == this.moat || e == this.gate) {
+      return true;
+    }
+    for (var t = 0, i = this.towers; t < i.length; t++) {
+      if (i[t] == e) {
+        return true;
+      }
+    }
+    for (var n = 0, o = this.walls; n < o.length; n++) {
+      if (o[n] == e) {
+        return true;
+      }
+    }
+    return false;
+  };
+  IsoViewObjectGroupDefence.prototype.fillInCompleteList = function (e) {
+    var t;
+    if (this.gate) {
+      e.push(this.gate);
+    }
+    if (this.moat) {
+      e.push(this.moat);
+    }
+    for (var i = 0, n = this.walls; i < n.length; i++) {
+      t = n[i];
+      e.push(t);
+    }
+    for (var o = 0, a = this.towers; o < a.length; o++) {
+      t = a[o];
+      e.push(t);
+    }
+  };
+  Object.defineProperty(IsoViewObjectGroupDefence.prototype, "gate", {
+    get: function () {
+      return this._gate;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoViewObjectGroupDefence.prototype, "moat", {
+    get: function () {
+      return this._moat;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoViewObjectGroupDefence.prototype, "towers", {
+    get: function () {
+      return this._towers;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoViewObjectGroupDefence.prototype, "walls", {
+    get: function () {
+      return this._walls;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return IsoViewObjectGroupDefence;
+}(require("./1009.js").AIsoViewObjectGroup);
+exports.IsoViewObjectGroupDefence = r;

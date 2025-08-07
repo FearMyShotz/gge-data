@@ -4,40 +4,37 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function FBECommand() {
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function EUDCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FBECommand, e);
-  Object.defineProperty(FBECommand.prototype, "cmdId", {
+  n.__extends(EUDCommand, e);
+  Object.defineProperty(EUDCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_FINISHED_BUILDING;
+      return s.ClientConstSF.S2C_UPGRADE_DEFENCE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  FBECommand.prototype.exec = function (e) {
-    var t = s.int(e[0]);
-    var i = e[1];
-    switch (t) {
+  EUDCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
       case a.ERROR.ALL_OK:
-        var n = JSON.parse(i[1]);
-        if (l.CastleModel.areaData.activeArea) {
-          l.CastleModel.areaData.activeArea.updater.parseCBX(n);
-        }
+        var i = JSON.parse(t[1]);
+        r.CastleModel.areaData.activeArea.updater.parseEUD(i);
+        r.CastleModel.currencyData.parseGCU(i.gcu);
         break;
       default:
-        this.showErrorDialog(t, i);
+        this.showErrorDialog(e, t);
     }
+    return false;
   };
-  return FBECommand;
-}(c.CastleCommand);
-exports.FBECommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return EUDCommand;
+}(l.CastleCommand);
+exports.EUDCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

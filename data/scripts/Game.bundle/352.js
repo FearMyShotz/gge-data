@@ -6,7 +6,7 @@ var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./3.js");
 var r = require("./51.js");
-var l = require("./107.js");
+var l = require("./106.js");
 var c = function (e) {
   function CastleNoMoneyC1Dialog() {
     CONSTRUCTOR_HACK;

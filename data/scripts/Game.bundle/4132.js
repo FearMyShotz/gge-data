@@ -118,10 +118,10 @@ var O = function (e) {
   return CastleBuildingListComponent;
 }(C.BasicBuildListComponent);
 exports.CastleBuildingListComponent = O;
-var E = require("./33.js");
+var E = require("./34.js");
 var y = require("./9.js");
 var b = require("./4135.js");
 var D = require("./8.js");
 var I = require("./260.js");
-var T = require("./626.js");
+var T = require("./627.js");
 var v = require("./4136.js");

@@ -7,7 +7,7 @@ var a = require("./58.js");
 var s = require("./146.js");
 var r = require("./32.js");
 var l = require("./161.js");
-var c = require("./491.js");
+var c = require("./492.js");
 var u = require("./4.js");
 var d = require("./197.js");
 var p = require("./8.js");
@@ -54,6 +54,6 @@ var h = function (e) {
   return ButtonAddGoldComponent;
 }(require("./150.js").ButtonBasicComponent);
 exports.ButtonAddGoldComponent = h;
-var g = require("./589.js");
+var g = require("./590.js");
 var C = require("./1.js");
-var _ = require("./108.js");
+var _ = require("./107.js");

@@ -6,43 +6,38 @@ var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./4.js");
-var l = require("./849.js");
-var c = require("./1194.js");
-var u = require("./10.js");
-var d = function (e) {
-  function EDOCommand() {
+var l = require("./10.js");
+var c = function (e) {
+  function EBECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(EDOCommand, e);
-  Object.defineProperty(EDOCommand.prototype, "cmdId", {
+  n.__extends(EBECommand, e);
+  Object.defineProperty(EBECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_DISASSEMBLE_OBJECT;
+      return s.ClientConstSF.S2C_BUY_EXPANSION;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  EDOCommand.prototype.executeCommand = function (e, t) {
-    var i;
+  EBECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        i = JSON.parse(t[1]);
-        r.CastleModel.areaData.activeArea.updater.parseEDO(i);
-        break;
-      case a.ERROR.NO_FREE_CONSTRUCTION_SLOT:
-        i = JSON.parse(t[1]);
-        p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleSkipBuildingDialog, new l.CastleSkipBuildingDialogProperties(new c.C2SIsoDisassembleObjectVO(i.OID), i.WID));
+        var i = JSON.parse(t[1]);
+        r.CastleModel.areaData.activeArea.updater.parseEBE(i);
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.decoStorage.parseSIN(i.sin);
+        u.Iso.controller.viewUpdater.onExpansion();
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return EDOCommand;
-}(u.CastleCommand);
-exports.EDOCommand = d;
-var p = require("./9.js");
-var h = require("./638.js");
-o.classImplementsInterfaces(d, "IExecCommand");
+  return EBECommand;
+}(l.CastleCommand);
+exports.EBECommand = c;
+var u = require("./34.js");
+o.classImplementsInterfaces(c, "IExecCommand");

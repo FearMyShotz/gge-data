@@ -2,101 +2,61 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./548.js");
-var r = function (e) {
-  function CastleGenericRewardDialogProperties(t, i, n = false) {
-    var o = e.call(this) || this;
-    o._isFirstPrize = false;
-    o._isTopX = false;
-    o._points = 0;
-    o._topXCount = 0;
-    o._ownRank = 0;
-    o._grantType = 0;
-    o._optionID = 0;
-    o._isFirstPrize = t;
-    o._isTopX = n;
-    o._points = a.int(i.OP ? i.OP : -1);
-    o._ownRank = a.int(i.OR ? i.OR : -1);
-    o._topXCount = a.int(i.TX ? i.TX : -1);
-    o._optionID = a.int(i.EOID ? i.EOID : -1);
-    o._rewardList = l.CastlePopUpHelper.createRewardList(i);
-    o._grantType = i.GT ? parseInt(i.GT) : -1;
-    o.getSkinBySkinId(i.SID);
-    return o;
+var o = require("./3.js");
+var a = require("./8.js");
+var s = require("./11.js");
+var r = require("./36.js");
+var l = require("./3466.js");
+var c = require("./4.js");
+var u = function (e) {
+  function CastleMailGiftDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleMailGiftDialog.NAME) || this;
   }
-  n.__extends(CastleGenericRewardDialogProperties, e);
-  CastleGenericRewardDialogProperties.prototype.getSkinBySkinId = function (e) {
-    this._skin = e ? s.LongTermPointEventSkin.getTypeById(e) : s.LongTermPointEventSkin.DEFAULT;
+  n.__extends(CastleMailGiftDialog, e);
+  CastleMailGiftDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    a.ButtonHelper.initButton(this.dialogDisp.btn_close, -1, r.ClickFeedbackButton);
+    a.ButtonHelper.initButton(this.dialogDisp.btn_ok, -1, r.ClickFeedbackButton);
+    this._rewards = new l.CastleMailRewardsComponent(this.dialogDisp.mc_items);
   };
-  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "isFirstPrize", {
+  CastleMailGiftDialog.prototype.applyProperties = function () {
+    e.prototype.applyProperties.call(this);
+    this.showRewards();
+  };
+  CastleMailGiftDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new o.LocalizedTextVO("dialog_mailGift_title")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new o.LocalizedTextVO("dialog_mailGift_copy"));
+  };
+  CastleMailGiftDialog.prototype.showRewards = function () {
+    var e = c.CastleModel.rewardData.getListById(this.dialogProperties.rewardID);
+    this._rewards.onShow();
+    this._rewards.updateWithNewData(e);
+  };
+  CastleMailGiftDialog.prototype.onClick = function (e) {
+    switch (e.target) {
+      case this.dialogDisp.btn_close:
+      case this.dialogDisp.btn_ok:
+        this.hide();
+    }
+  };
+  CastleMailGiftDialog.prototype.hideLoaded = function (t = null) {
+    this._rewards.onHide();
+    this._rewards.destroy();
+    e.prototype.hideLoaded.call(this, t);
+  };
+  Object.defineProperty(CastleMailGiftDialog.prototype, "dialogProperties", {
     get: function () {
-      return this._isFirstPrize;
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "rewardList", {
-    get: function () {
-      return this._rewardList;
-    },
-    set: function (e) {
-      this._rewardList = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "points", {
-    get: function () {
-      return this._points;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "ownRank", {
-    get: function () {
-      return this._ownRank;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "isTopX", {
-    get: function () {
-      return this._isTopX;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "topXCount", {
-    get: function () {
-      return this._topXCount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "skin", {
-    get: function () {
-      return this._skin;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "grantType", {
-    get: function () {
-      return this._grantType;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "optionID", {
-    get: function () {
-      return this._optionID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleGenericRewardDialogProperties;
-}(o.BasicProperties);
-exports.CastleGenericRewardDialogProperties = r;
-var l = require("./405.js");
+  CastleMailGiftDialog.__initialize_static_members = function () {
+    CastleMailGiftDialog.NAME = "CastleMailGiftDark";
+  };
+  return CastleMailGiftDialog;
+}(s.CastleExternalDialog);
+exports.CastleMailGiftDialog = u;
+u.__initialize_static_members();

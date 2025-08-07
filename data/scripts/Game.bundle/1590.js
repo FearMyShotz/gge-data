@@ -7,11 +7,11 @@ var a = require("./1.js");
 var s = require("./3.js");
 var r = require("./3.js");
 var l = require("./3.js");
-var c = require("./3041.js");
+var c = require("./3042.js");
 var u = require("./71.js");
 var d = require("./4.js");
 var p = require("./11.js");
-var h = require("./3042.js");
+var h = require("./3043.js");
 var g = function (e) {
   function CastleHunterDialog() {
     CONSTRUCTOR_HACK;
@@ -80,7 +80,7 @@ var g = function (e) {
   return CastleHunterDialog;
 }(p.CastleExternalDialog);
 exports.CastleHunterDialog = g;
-var C = require("./688.js");
+var C = require("./690.js");
 var _ = require("./9.js");
 a.classImplementsInterfaces(g, "ICollectableRendererList");
 g.__initialize_static_members();

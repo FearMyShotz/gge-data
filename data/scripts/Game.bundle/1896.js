@@ -3,173 +3,199 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./1085.js");
-var r = require("./79.js");
-var l = function (e) {
-  function ArtifactEventVO() {
-    var t = this;
-    t._artifactParts = 0;
-    t._artifactPartsFound = 0;
-    t._artifactPartCosts = 0;
-    t._artifactLeagueID = 0;
-    t._skinID = 0;
+var a = require("./1.js");
+var s = require("./1.js");
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./91.js");
+var u = require("./40.js");
+var d = require("./8.js");
+var p = function (e) {
+  function CastleTournamentRankListComponent(t, i, n, o) {
+    var a = this;
     CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+    (a = e.call(this, t) || this)._itemClass = i;
+    d.ButtonHelper.initBasicButtons([t.btn_top, t.btn_up, t.btn_down]);
+    if (t.mc_search && t.mc_search.btn_search) {
+      d.ButtonHelper.initBasicButtons([t.mc_search.btn_search]);
+    }
+    if (t.mc_search) {
+      a._itxt_search = g.CastleComponent.textFieldManager.registerTextField(t.mc_search.txt_search, new r.LocalizedTextVO(n));
+      a._itxt_search.textContentDefaultVO = new r.LocalizedTextVO(n);
+      a._itxt_search.maxChars = CastleTournamentRankListComponent.SEARCH_MAX_CHARS;
+      t.mc_search.btn_search.toolTipText = o;
+    }
+    a._itemList = [];
+    for (var s = 0; s < CastleTournamentRankListComponent.MAX_ITEM_COUNT; ++s) {
+      a._itemList.push(new a._itemClass(t["item" + s]));
+    }
+    return a;
   }
-  n.__extends(ArtifactEventVO, e);
-  ArtifactEventVO.prototype.parseBasicsFromParamObject = function (t) {
-    e.prototype.parseBasicsFromParamObject.call(this, t);
-    this._artifactLeagueID = a.int(t.ALID);
+  n.__extends(CastleTournamentRankListComponent, e);
+  CastleTournamentRankListComponent.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    for (var t = 0; t < this._itemList.length; ++t) {
+      this._itemList[t].onShow();
+    }
+    if (this._itxt_search) {
+      this._itxt_search.keyUp.add(this.bindFunction(this.onSearchTextfieldKeyUp));
+      this._itxt_search.textContentVO = this._itxt_search.textContentDefaultVO;
+    }
+    this.updateFullScreenMode();
   };
-  ArtifactEventVO.prototype.parseEventXmlNode = function (e) {
-    this._artifactParts = parseInt(e.artifactParts || "");
-    this._artifactPartCosts = parseInt(e.artifactPartPrice || "");
-    this._artifactType = String(e.artifactType || "");
-    this._artifactReward = c.CollectableManager.parser.createListFromRewardIdsString(String(e.rewardIDs || ""));
+  CastleTournamentRankListComponent.prototype.onHide = function () {
+    e.prototype.onHide.call(this);
+    for (var t = 0; t < this._itemList.length; ++t) {
+      this._itemList[t].onHide();
+    }
+    if (this._itxt_search) {
+      this._itxt_search.keyUp.remove(this.bindFunction(this.onSearchTextfieldKeyUp));
+    }
   };
-  ArtifactEventVO.prototype.parseAdditionalXmlFromRoot = function (t) {
-    e.prototype.parseAdditionalXmlFromRoot.call(this, t);
-    var i = t.artifactsLeagues;
-    if (i != null) {
-      for (var n = 0, o = i; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined) {
-          if (parseInt(a.artifactsLeagueID || "") == this._artifactLeagueID) {
-            this._minLevel = parseInt(a.minLevel || "");
-            this._maxLevel = parseInt(a.maxLevel || "");
-            this._artifactPartCosts = parseInt(a.artifactPrice || "");
-            this._artifactReward = c.CollectableManager.parser.createListFromRewardIdsString(String(a.rewardIDs || ""));
-            var s = parseInt(a.artifactID || "");
-            this.parseArtifact(t, s);
-          }
+  CastleTournamentRankListComponent.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    g.CastleComponent.controller.addEventListener(c.CastleLayoutManagerEvent.CHANGE_DISPLAYSTATE, this.bindFunction(this.onDisplayChange));
+  };
+  CastleTournamentRankListComponent.prototype.removeEventListener = function () {
+    e.prototype.removeEventListener.call(this);
+    g.CastleComponent.controller.removeEventListener(c.CastleLayoutManagerEvent.CHANGE_DISPLAYSTATE, this.bindFunction(this.onDisplayChange));
+  };
+  CastleTournamentRankListComponent.prototype.requestHighscoreData = function (e) {
+    if (this._requestHighscoreDataFunction) {
+      this._requestHighscoreDataFunction(e);
+    }
+  };
+  CastleTournamentRankListComponent.prototype.reset = function () {
+    for (var e = 0; e < this._itemList.length; ++e) {
+      this._itemList[e].onHide();
+      this._itemList[e].setVisibility(false);
+    }
+    if (this._itxt_search) {
+      this._itxt_search.clearText();
+    }
+    this.updateScrollButtons();
+  };
+  CastleTournamentRankListComponent.prototype.updateWithNewData = function (e) {
+    var t;
+    var i = l.int(e.LR);
+    var n = 0;
+    var o = e.L;
+    for (var a = 0; a < CastleTournamentRankListComponent.MAX_ITEM_COUNT; ++a) {
+      t = this._itemList[a];
+      if (!o || o.length <= 0 || a >= o.length) {
+        t.setVisibility(false);
+        t.onHide();
+      } else {
+        t.searchFieldValue = this.searchText;
+        t.parseItemData(o[a]);
+        t.setVisibility(true);
+        t.onShow();
+        n = t.rank;
+      }
+    }
+    this.updateScrollButtons(n, i);
+  };
+  CastleTournamentRankListComponent.prototype.updateFullScreenMode = function () {
+    if (this._itxt_search) {
+      var e = h.CastleLayoutManager.getInstance().stage.displayState;
+      if (e == a.StageDisplayState.FULL_SCREEN || e == a.StageDisplayState.FULL_SCREEN_INTERACTIVE) {
+        this.disp.mc_search.mouseChildren = false;
+        this.disp.mc_search.toolTipText = "alert_noChatInFullScreen";
+        this._itxt_search.tabEnabled = false;
+      } else {
+        this.disp.mc_search.mouseChildren = true;
+        this.disp.mc_search.toolTipText = null;
+        this._itxt_search.tabEnabled = true;
+      }
+    }
+  };
+  CastleTournamentRankListComponent.prototype.scrollUp = function () {
+    var e = l.int(Math.max(this._itemList[0].rank - CastleTournamentRankListComponent.MAX_ITEM_COUNT + CastleTournamentRankListComponent.SCROLL_DELTA, 0));
+    this.requestHighscoreData("" + e);
+  };
+  CastleTournamentRankListComponent.prototype.scrollDown = function () {
+    var e = l.int(this._itemList[0].rank + CastleTournamentRankListComponent.MAX_ITEM_COUNT + CastleTournamentRankListComponent.SCROLL_DELTA);
+    this.requestHighscoreData("" + e);
+  };
+  CastleTournamentRankListComponent.prototype.updateScrollButtons = function (e = 0, t = 0) {
+    var i = this._itemList[0].rank > 1;
+    var n = e < t;
+    d.ButtonHelper.enableButton(this.disp.btn_top, i);
+    d.ButtonHelper.enableButton(this.disp.btn_up, i);
+    d.ButtonHelper.enableButton(this.disp.btn_down, n);
+  };
+  CastleTournamentRankListComponent.prototype.onClick = function (t) {
+    if (d.ButtonHelper.isButtonEnabled(t.target)) {
+      e.prototype.onClick.call(this, t);
+      if (this._itxt_search && t.target == this.disp.mc_search.btn_search) {
+        if (this.searchText != "" && !this._itxt_search.containsDefaultTextContent) {
+          this.requestHighscoreData(this.searchText);
+        }
+      } else {
+        switch (t.target) {
+          case this.disp.btn_top:
+            if (this._requestHighscoreDataFunction) {
+              this.requestHighscoreData("1");
+            }
+            break;
+          case this.disp.btn_up:
+            this.scrollUp();
+            break;
+          case this.disp.btn_down:
+            this.scrollDown();
         }
       }
     }
   };
-  ArtifactEventVO.prototype.parseArtifact = function (e, t) {
-    var i = e.artifacts;
-    if (i != null) {
-      for (var n = 0, o = i; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined) {
-          if (parseInt(a.artifactID || "") == t) {
-            this._artifactType = String(a.artifactType || "");
-            this._artifactParts = parseInt(a.artifactParts || "");
-          }
-        }
+  CastleTournamentRankListComponent.prototype.onSearchTextfieldKeyUp = function (e) {
+    if (this._itxt_search && e.key == o.Keyboard.ENTER) {
+      if (this.searchText != "" && !this._itxt_search.containsDefaultTextContent) {
+        document.activeElement.blur();
+        this.requestHighscoreData(this.searchText);
       }
     }
   };
-  Object.defineProperty(ArtifactEventVO.prototype, "artifactClassName", {
+  CastleTournamentRankListComponent.prototype.onMouseWheel = function (t) {
+    e.prototype.onMouseWheel.call(this, t);
+    if (t.delta < 0) {
+      this.scrollUp();
+    } else if (t.delta > 0) {
+      this.scrollDown();
+    }
+  };
+  CastleTournamentRankListComponent.prototype.onDisplayChange = function (e) {
+    this.updateFullScreenMode();
+  };
+  Object.defineProperty(CastleTournamentRankListComponent.prototype, "searchText", {
     get: function () {
-      return "Artifact_" + this._artifactType;
+      if (this._itxt_search) {
+        return this._itxt_search.text;
+      } else {
+        return "";
+      }
     },
     enumerable: true,
     configurable: true
   });
-  ArtifactEventVO.prototype.parseParamObject = function (e) {
-    this._artifactPartsFound = a.int(e.PF);
-    this._skinID = a.int(e.SID);
-  };
-  Object.defineProperty(ArtifactEventVO.prototype, "eventBuildingWOD", {
+  Object.defineProperty(CastleTournamentRankListComponent.prototype, "requestHighscoreDataFunction", {
     get: function () {
-      return ArtifactEventVO.EVENT_BUILDING_WOD_IDS[this._skinID - 1];
+      return this._requestHighscoreDataFunction;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ASpecialEventVO.prototype, "eventBuildingWOD").set.call(this, e);
+      this._requestHighscoreDataFunction = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ArtifactEventVO.prototype, "eventBuildingNameId", {
-    get: function () {
-      return "eventBuilding_Artifact_" + this._skinID;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ASpecialEventVO.prototype, "eventBuildingNameId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ArtifactEventVO.prototype, "artifactReward", {
-    get: function () {
-      return this._artifactReward;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ArtifactEventVO.prototype, "missingParts", {
-    get: function () {
-      return this._artifactParts - this._artifactPartsFound;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ArtifactEventVO.prototype, "hasAllParts", {
-    get: function () {
-      return this._artifactParts == this._artifactPartsFound;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ArtifactEventVO.prototype, "artifactPartCosts", {
-    get: function () {
-      return this._artifactPartCosts;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ArtifactEventVO.prototype, "artifactPartsFound", {
-    get: function () {
-      return this._artifactPartsFound;
-    },
-    set: function (e) {
-      this._artifactPartsFound = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ArtifactEventVO.prototype, "artifactParts", {
-    get: function () {
-      return this._artifactParts;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ArtifactEventVO.prototype, "hasUserSolvedEvent", {
-    get: function () {
-      return this.hasAllParts;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ASpecialEventVO.prototype, "hasUserSolvedEvent").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ArtifactEventVO.prototype.openDialog = function (e = true) {
-    this.executeOpenDialog(e, u.CastleArtifactEventDialog, new s.CastleArtifactEventDialogProperties(this));
+  CastleTournamentRankListComponent.__initialize_static_members = function () {
+    CastleTournamentRankListComponent.MAX_ITEM_COUNT = 8;
+    CastleTournamentRankListComponent.SCROLL_DELTA = 3;
+    CastleTournamentRankListComponent.SEARCH_MAX_CHARS = 15;
   };
-  Object.defineProperty(ArtifactEventVO.prototype, "skinID", {
-    get: function () {
-      return this._skinID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ArtifactEventVO.prototype.hasClickableArtifact = function () {
-    return this._artifactType == "Portrait";
-  };
-  ArtifactEventVO.__initialize_static_members = function () {
-    ArtifactEventVO.EVENT_BUILDING_WOD = 279;
-    ArtifactEventVO.EVENT_BUILDING_WOD_RENEGADE = 286;
-    ArtifactEventVO.EVENT_BUILDING_WOD_NEWKING = 1522;
-    ArtifactEventVO.EVENT_BUILDING_WOD_IDS = [ArtifactEventVO.EVENT_BUILDING_WOD, ArtifactEventVO.EVENT_BUILDING_WOD_RENEGADE, ArtifactEventVO.EVENT_BUILDING_WOD_RENEGADE, ArtifactEventVO.EVENT_BUILDING_WOD_RENEGADE, ArtifactEventVO.EVENT_BUILDING_WOD_NEWKING];
-  };
-  return ArtifactEventVO;
-}(r.ASpecialEventVO);
-exports.ArtifactEventVO = l;
-var c = require("./50.js");
-var u = require("./4380.js");
-o.classImplementsInterfaces(l, "IEventOverviewable");
-l.__initialize_static_members();
+  return CastleTournamentRankListComponent;
+}(u.CastleItemRenderer);
+exports.CastleTournamentRankListComponent = p;
+var h = require("./17.js");
+var g = require("./14.js");
+s.classImplementsInterfaces(p, "ICollectableRendererList");
+p.__initialize_static_members();

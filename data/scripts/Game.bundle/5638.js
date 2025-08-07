@@ -2,39 +2,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function XmlFusionForgeVO() {
+  function XmlForgeMinuteSkipVO() {
+    this._id = -1;
     this._forgeId = -1;
-    this._dustCurrencyID = 0;
-    this._usableMinuteSkipsPerDay = 0;
+    this._currencyId = -1;
   }
-  XmlFusionForgeVO.prototype.parseXml = function (e) {
+  XmlForgeMinuteSkipVO.prototype.parseXml = function (e) {
+    this._id = o.int(a.CastleXMLUtils.getIntAttribute("id", e, -1));
     this._forgeId = o.int(a.CastleXMLUtils.getIntAttribute("forgeID", e, -1));
-    this._dustCurrencyID = o.int(a.CastleXMLUtils.getIntAttribute("dustCurrencyID", e, 0));
-    this._usableMinuteSkipsPerDay = o.int(a.CastleXMLUtils.getIntAttribute("usableMinuteSkipsPerDay", e, 0));
+    this._currencyId = o.int(a.CastleXMLUtils.getIntAttribute("currencyID", e, -1));
   };
-  Object.defineProperty(XmlFusionForgeVO.prototype, "forgeId", {
+  Object.defineProperty(XmlForgeMinuteSkipVO.prototype, "id", {
+    get: function () {
+      return this._id;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlForgeMinuteSkipVO.prototype, "forgeId", {
     get: function () {
       return this._forgeId;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionForgeVO.prototype, "dustCurrencyID", {
+  Object.defineProperty(XmlForgeMinuteSkipVO.prototype, "currencyId", {
     get: function () {
-      return this._dustCurrencyID;
+      return this._currencyId;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionForgeVO.prototype, "usableMinuteSkipsPerDay", {
-    get: function () {
-      return this._usableMinuteSkipsPerDay;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return XmlFusionForgeVO;
+  return XmlForgeMinuteSkipVO;
 }();
-exports.XmlFusionForgeVO = n;
+exports.XmlForgeMinuteSkipVO = n;
 var o = require("./6.js");
 var a = require("./22.js");

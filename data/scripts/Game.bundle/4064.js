@@ -11,8 +11,8 @@ var c = require("./383.js");
 var u = require("./42.js");
 var d = require("./8.js");
 var p = require("./11.js");
-var h = require("./954.js");
-var g = require("./221.js");
+var h = require("./955.js");
+var g = require("./222.js");
 var C = function (e) {
   function SubscriptionTeaserDialog() {
     return e.call(this, SubscriptionTeaserDialog.NAME) || this;
@@ -88,7 +88,7 @@ var C = function (e) {
   return SubscriptionTeaserDialog;
 }(p.CastleExternalDialog);
 exports.SubscriptionTeaserDialog = C;
-var _ = require("./522.js");
+var _ = require("./523.js");
 var m = require("./36.js");
 var f = require("./121.js");
 o.classImplementsInterfaces(C, "ICollectableRendererList");

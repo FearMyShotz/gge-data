@@ -2,62 +2,92 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./3.js");
-var l = require("./4.js");
-var c = require("./24.js");
-var u = function (e) {
-  function CastleJudgementRewardDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleJudgementRewardDialog.NAME) || this;
+var o = require("./1.js");
+var a = require("./1728.js");
+var s = require("./44.js");
+var r = require("./54.js");
+var l = require("./5377.js");
+var c = function (e) {
+  function CastleJudgementData(t) {
+    var i = e.call(this) || this;
+    i._judgementVOs = new Map();
+    var n = t.judgements;
+    if (g.JudgementConditionEnum.WOOD == undefined) {
+      g.JudgementConditionEnum.__initialize_static_members();
+    }
+    if (n != null) {
+      for (var o = 0, a = n; o < a.length; o++) {
+        var s = a[o];
+        if (s !== undefined) {
+          var r = new C.JudgementVO();
+          r.fillFromParamXML(s);
+          i._judgementVOs.set(r.id, r);
+        }
+      }
+    }
+    return i;
   }
-  n.__extends(CastleJudgementRewardDialog, e);
-  CastleJudgementRewardDialog.prototype.initLoaded = function (t = null) {
-    this.backgroundAlpha = 0.7;
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_reward_label, new r.LocalizedTextVO("dialog_fame_reward"));
-    this.itxt_title = this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.LocalizedTextVO(""));
-    this.itxt_desc = this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new r.LocalizedTextVO(""));
+  n.__extends(CastleJudgementData, e);
+  CastleJudgementData.prototype.reset = function () {
+    this._activeJudgement = null;
   };
-  CastleJudgementRewardDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    e.prototype.applyPropertiesLoaded.call(this, t);
-    var i = l.CastleModel.judgementData.getJudgementVObyID(this.dialogProperties.judgementID);
-    this.itxt_title.textContentVO.textId = "judgement_" + i.id + "_name";
-    this.itxt_desc.textContentVO.textId = "judgement_" + i.id + "_reward" + (this.dialogProperties.optionID > 0 ? "B" : "A") + "_description";
-    var n = this.dialogProperties.optionID > 0 ? i.rewardB : i.rewardA;
-    this.dialogDisp.mc_reward.gotoAndStop(n.length + 1);
-    for (var s = 0; s < n.length; ++s) {
-      d.CastleJudgementHelper.setRewardIconAndTooltipAndAmount(n[s], this.dialogDisp.mc_reward["res" + s], this.dialogProperties.optionID, l.CastleModel.userData.userLevel, i.id);
+  CastleJudgementData.prototype.destroy = function () {
+    this._activeJudgement = null;
+    if (this._judgementVOs != null) {
+      for (var t = 0, i = Array.from(this._judgementVOs.values()); t < i.length; t++) {
+        i[t].dispose();
+      }
     }
-    a.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_imageHolder);
-    var r = "Judgement_" + i.visualName + "_reward" + (this.dialogProperties.optionID > 0 ? "B" : "A");
-    var u = new c.CastleGoodgameExternalClip(r, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(r), null, 0, false);
-    this.dialogDisp.mc_imageHolder.addChild(u);
+    this._judgementVOs = null;
+    e.prototype.destroy.call(this);
   };
-  CastleJudgementRewardDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-      case this.dialogDisp.btn_close:
-        this.hide();
+  CastleJudgementData.prototype.getJudgementVObyID = function (e) {
+    return this._judgementVOs.get(e);
+  };
+  CastleJudgementData.prototype.parse_SJC = function (e) {
+    this.startNewJudgement(parseInt(e.JID));
+  };
+  CastleJudgementData.prototype.parse_JJC = function (e) {
+    p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleJudgementRewardDialog, new l.CastleJudgementRewardDialogProperties(this.activeJudgement.id, e.CO));
+    this.endActiveJudgement();
+  };
+  CastleJudgementData.prototype.startNewJudgement = function (e) {
+    if (this.activeJudgement) {
+      this.endActiveJudgement();
+    }
+    this._activeJudgement = this._judgementVOs.get(e);
+    if (this._activeJudgement) {
+      if (d.Iso && d.Iso.data && d.Iso.controller && d.Iso.controller.dataUpdater) {
+        d.Iso.controller.dataUpdater.initObjects(u.IsoObjectGroupEnum.JUDGEMENTS);
+      }
+      this.dispatchEvent(new a.CastleJudgementDataEvent(a.CastleJudgementDataEvent.NEW_JUDGEMENT_STARTED));
     }
   };
-  Object.defineProperty(CastleJudgementRewardDialog.prototype, "dialogProperties", {
+  CastleJudgementData.prototype.endActiveJudgement = function () {
+    this._activeJudgement = null;
+    if (d.Iso.data) {
+      d.Iso.controller.dataUpdater.initObjects(u.IsoObjectGroupEnum.JUDGEMENTS);
+    }
+    this.dispatchEvent(new a.CastleJudgementDataEvent(a.CastleJudgementDataEvent.JUDGEMENT_ENDED));
+  };
+  Object.defineProperty(CastleJudgementData.prototype, "activeJudgement", {
     get: function () {
-      return this.properties;
+      if (s.SpecialServerHelper.isCrossplay()) {
+        return null;
+      } else {
+        return this._activeJudgement;
+      }
     },
     enumerable: true,
     configurable: true
   });
-  CastleJudgementRewardDialog.__initialize_static_members = function () {
-    CastleJudgementRewardDialog.NAME = "JudgementReward";
-  };
-  return CastleJudgementRewardDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleJudgementRewardDialog = u;
-var d = require("./1727.js");
-s.classImplementsInterfaces(u, "ICollectableRendererList");
-u.__initialize_static_members();
+  return CastleJudgementData;
+}(r.CastleBasicData);
+exports.CastleJudgementData = c;
+var u = require("./143.js");
+var d = require("./34.js");
+var p = require("./9.js");
+var h = require("./5378.js");
+var g = require("./1077.js");
+var C = require("./5379.js");
+o.classImplementsInterfaces(c, "IUpdatable");

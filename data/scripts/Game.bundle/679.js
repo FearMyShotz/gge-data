@@ -1,62 +1,84 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./21.js");
-var l = require("./4.js");
-var c = require("./27.js");
-var u = function (e) {
-  function CastleBasicSpecialEventTeaserDialog(t) {
-    return e.call(this, t) || this;
+var n = function () {
+  function AGeneralSkillTreeNode(e) {
+    this._id = 0;
+    this._id = e;
+    this._childs = [];
+    this._unlockRequirements = [];
   }
-  n.__extends(CastleBasicSpecialEventTeaserDialog, e);
-  CastleBasicSpecialEventTeaserDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_exit, this.dialogDisp.btn_ok]);
-    this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.mc_time.txt_time, new s.TextVO(""));
-    this.itxt_time.textAlign = o.GGSTextAlign.LEFT;
-  };
-  CastleBasicSpecialEventTeaserDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    e.prototype.applyProperties.call(this);
-    this.setText();
-    this.onUpdateEventTime(null);
-  };
-  CastleBasicSpecialEventTeaserDialog.prototype.setText = function () {};
-  CastleBasicSpecialEventTeaserDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    l.CastleModel.timerData.addEventListener(r.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateEventTime));
-  };
-  CastleBasicSpecialEventTeaserDialog.prototype.hideLoaded = function (t = null) {
-    l.CastleModel.timerData.removeEventListener(r.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateEventTime));
-    e.prototype.hideLoaded.call(this);
-  };
-  CastleBasicSpecialEventTeaserDialog.prototype.onUpdateEventTime = function (e) {
-    var t = this.getEventVO();
-    var i = 0;
-    if (t && this.itxt_time.textContentVO) {
-      i = t.remainingEventTimeInSeconds;
-    }
-    c.CastleTimeStringHelper.setEventTime(this.dialogDisp.mc_time.txt_time, i);
-    c.CastleTimeStringHelper.setEventTimeToolTip(this.dialogDisp.mc_time, i);
-    if (i <= 0) {
-      this.hide();
+  AGeneralSkillTreeNode.prototype.insertSkill = function (e) {
+    if (this.childNodeClass != null) {
+      if (!this.getChildNode(this.childIDProperty(e))) {
+        this._childs.push(new this.childNodeClass(this.childIDProperty(e)));
+      }
+      this.getChildNode(this.childIDProperty(e)).insertSkill(e);
     }
   };
-  CastleBasicSpecialEventTeaserDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-      case this.dialogDisp.btn_exit:
-        this.hide();
-    }
+  Object.defineProperty(AGeneralSkillTreeNode.prototype, "childNodeClass", {
+    get: function () {
+      return null;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AGeneralSkillTreeNode.prototype.childIDProperty = function (e) {
+    return 0;
   };
-  CastleBasicSpecialEventTeaserDialog.prototype.getEventVO = function () {
+  AGeneralSkillTreeNode.prototype.getChildNode = function (e) {
+    if (this._childs != null) {
+      for (var t = 0, i = this._childs; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined && n.id == e) {
+          return n;
+        }
+      }
+    }
     return null;
   };
-  return CastleBasicSpecialEventTeaserDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleBasicSpecialEventTeaserDialog = u;
-a.classImplementsInterfaces(u, "ICollectableRendererList");
+  Object.defineProperty(AGeneralSkillTreeNode.prototype, "id", {
+    get: function () {
+      return this._id;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AGeneralSkillTreeNode.prototype, "childs", {
+    get: function () {
+      return this._childs;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AGeneralSkillTreeNode.prototype, "unlockRequirements", {
+    get: function () {
+      return this._unlockRequirements;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AGeneralSkillTreeNode.prototype.isUnlocked = function () {
+    for (var e = 0; e < this._unlockRequirements.length; e++) {
+      if (!this._unlockRequirements[e].isUnlocked()) {
+        return false;
+      }
+    }
+    return true;
+  };
+  AGeneralSkillTreeNode.prototype.getUnlockText = function () {
+    var e = "";
+    for (var t = 0; t < this._unlockRequirements.length; t++) {
+      var i = this._unlockRequirements[t];
+      if (!i.isUnlocked() && (e += e != "" ? "\n" : "", e += i.getUnlockRequirementText(), !i.showFollowingRequirements)) {
+        break;
+      }
+    }
+    return e;
+  };
+  AGeneralSkillTreeNode.prototype.addUnlockRequirement = function (e) {
+    this._unlockRequirements.push(e);
+  };
+  return AGeneralSkillTreeNode;
+}();
+exports.AGeneralSkillTreeNode = n;

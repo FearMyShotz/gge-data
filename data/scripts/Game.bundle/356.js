@@ -50,6 +50,6 @@ var o = function () {
   return ConstructionItemTooltipHelper;
 }();
 exports.ConstructionItemTooltipHelper = o;
-var a = require("./2693.js");
-var s = require("./228.js");
+var a = require("./2694.js");
+var s = require("./229.js");
 o.__initialize_static_members();

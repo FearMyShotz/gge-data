@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleShortArmyDialogProperties(t) {
+  function CastleSpyInfoDialogProperties(t) {
     var i = e.call(this) || this;
     i.mapMovementVO = t;
     return i;
   }
-  n.__extends(CastleShortArmyDialogProperties, e);
-  return CastleShortArmyDialogProperties;
+  n.__extends(CastleSpyInfoDialogProperties, e);
+  return CastleSpyInfoDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastleShortArmyDialogProperties = o;
+exports.CastleSpyInfoDialogProperties = o;

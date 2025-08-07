@@ -2,19 +2,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleUnitCapacityEvent(t, i, n = true, o = false) {
-    var a = this;
-    a.capacity = 0;
-    CONSTRUCTOR_HACK;
-    (a = e.call(this, t, n, o) || this).capacity = i;
-    return a;
+var o = require("./2.js");
+var a = require("./4.js");
+var s = function (e) {
+  function SeasonLeagueBuyPassesDialogProperties(t = true, i = true, n = -1, o = -1, s = -1, r = -1, l = -1) {
+    var c = e.call(this) || this;
+    c.useEventSale = t;
+    c.usePromotionSale = i;
+    c.eventID = n;
+    c.instanceID = n;
+    c.promotionID = s;
+    c.rewardSetID = r;
+    c.leagueTypeID = l;
+    if (r < 0 && a.CastleModel.seasonLeagueData.getActiveSeasonLeagueEventVO()) {
+      c.rewardSetID = a.CastleModel.seasonLeagueData.getActiveSeasonLeagueEventVO().rewardSetId;
+      c.leagueTypeID = a.CastleModel.seasonLeagueData.getActiveSeasonLeagueEventVO().leaguetypeID;
+    }
+    return c;
   }
-  n.__extends(CastleUnitCapacityEvent, e);
-  CastleUnitCapacityEvent.__initialize_static_members = function () {
-    CastleUnitCapacityEvent.UNIT_CAPACITY_CHANGED = "UNIT_CAPACITY_CHANGED";
-  };
-  return CastleUnitCapacityEvent;
-}(createjs.Event);
-exports.CastleUnitCapacityEvent = o;
-o.__initialize_static_members();
+  n.__extends(SeasonLeagueBuyPassesDialogProperties, e);
+  return SeasonLeagueBuyPassesDialogProperties;
+}(o.BasicProperties);
+exports.SeasonLeagueBuyPassesDialogProperties = s;

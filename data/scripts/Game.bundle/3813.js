@@ -5,46 +5,54 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./2.js");
 var s = require("./1.js");
-var r = require("./6.js");
-var l = require("./4.js");
-var c = createjs.Point;
-var u = function (e) {
-  function SwitchKingdomGoToWorldmapAndCenterPosCommand() {
+var r = require("./4.js");
+var l = function (e) {
+  function SwitchToRelocateWorldmapCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SwitchKingdomGoToWorldmapAndCenterPosCommand, e);
-  SwitchKingdomGoToWorldmapAndCenterPosCommand.prototype.execute = function (e = null) {
-    if (e) {
-      var t = r.int(e.shift());
-      var i = r.int(e.shift());
-      var n = r.int(e.shift());
-      var a = r.int(e.shift());
-      if (!l.CastleModel.kingdomData.getKingdomVOByID(t).isPaid) {
-        return;
+  n.__extends(SwitchToRelocateWorldmapCommand, e);
+  SwitchToRelocateWorldmapCommand.prototype.execute = function (e = null) {
+    var t = r.CastleModel.userData.castleList.getHomeCastle();
+    var i = !!e && !!e.friendsPlace;
+    if (i) {
+      t = e.friendsPlace;
+    }
+    if (t) {
+      if (this.layoutManager.currentState == d.CastleLayoutManager.STATE_WORLDMAP && r.CastleModel.kingdomData.activeKingdomID == 0) {
+        var n = this.worldmap.camera.viewPortCenter;
+        var a = this.worldmap.camera.viewPortZoom;
+        r.CastleModel.worldmapCameraData.saveCameraPosition(n, a);
+        this.layoutManager.state = d.CastleLayoutManager.STATE_WORLDMAP_RELOCATION;
+        if (i) {
+          this.layoutManager.worldmapScreen.camera.centerArea(t.absAreaPos);
+        }
+      } else {
+        o.CommandController.instance.executeCommand(c.IngameClientCommands.SWITCH_KINGDOM_COMMAND, 0);
+        r.CastleModel.worldmapData ||= r.CastleModel.addModel(new u.CastleWorldmapData());
+        r.CastleModel.worldmapData.areaTiles.resetUpdateTimes();
+        this.layoutManager.state = d.CastleLayoutManager.STATE_WORLDMAP_RELOCATION;
+        this.layoutManager.worldmapScreen.camera.centerArea(t.absAreaPos);
       }
-      if (d.FlashBlockHelper.checkFlashBlock(t)) {
-        return;
-      }
-      if (t != l.CastleModel.kingdomData.activeKingdomID) {
-        l.CastleModel.questData.resetCurrentSearchEnemyCounter();
-        o.CommandController.instance.executeCommand(p.IngameClientCommands.SWITCH_KINGDOM_COMMAND, t);
-      }
-      l.CastleModel.worldmapCameraData.savedMapPosition = null;
-      o.CommandController.instance.executeCommand(p.IngameClientCommands.SWITCH_TO_WORLDMAP_COMMAND, a);
-      this.layoutManager.worldmapScreen.camera.centerArea(new c(i, n));
     }
   };
-  Object.defineProperty(SwitchKingdomGoToWorldmapAndCenterPosCommand.prototype, "layoutManager", {
+  Object.defineProperty(SwitchToRelocateWorldmapCommand.prototype, "layoutManager", {
     get: function () {
-      return h.CastleLayoutManager.getInstance();
+      return d.CastleLayoutManager.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  return SwitchKingdomGoToWorldmapAndCenterPosCommand;
+  Object.defineProperty(SwitchToRelocateWorldmapCommand.prototype, "worldmap", {
+    get: function () {
+      return d.CastleLayoutManager.getInstance().worldmapScreen.renderer;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return SwitchToRelocateWorldmapCommand;
 }(a.SimpleCommand);
-exports.SwitchKingdomGoToWorldmapAndCenterPosCommand = u;
-var d = require("./160.js");
-var p = require("./29.js");
-var h = require("./17.js");
-s.classImplementsInterfaces(u, "ISimpleCommand");
+exports.SwitchToRelocateWorldmapCommand = l;
+var c = require("./29.js");
+var u = require("./503.js");
+var d = require("./17.js");
+s.classImplementsInterfaces(l, "ISimpleCommand");

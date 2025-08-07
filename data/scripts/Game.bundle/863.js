@@ -1,41 +1,53 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./16.js");
-var u = require("./22.js");
-var d = require("./97.js");
-var p = function (e) {
-  function ResearchBuildingVO() {
-    var t = this;
-    t._researchBoost = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
-  }
-  n.__extends(ResearchBuildingVO, e);
-  ResearchBuildingVO.prototype.parseXmlNode = function (t) {
-    e.prototype.parseXmlNode.call(this, t);
-    this._researchBoost = l.int(u.CastleXMLUtils.getIntAttribute("researchBoost", t));
+var n = require("./34.js");
+var o = function () {
+  function AIsoDataObjectGroup() {}
+  AIsoDataObjectGroup.prototype.init = function (e) {
+    this._isoData = e;
   };
-  ResearchBuildingVO.prototype.createInfoPanelItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements.Icon_Research, "researchSpeed", new r.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [this.researchBoost + 100]), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    if (this.decoPoints > 0) {
-      e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), this.getInfoItemTextColor(d.CastleEffectEnum.DECOPOINTS));
-    }
+  AIsoDataObjectGroup.prototype.destroy = function () {};
+  AIsoDataObjectGroup.prototype.initObjects = function () {};
+  AIsoDataObjectGroup.prototype.addObject = function (e) {};
+  AIsoDataObjectGroup.prototype.updateObjectByServer = function (e, t) {
+    return null;
   };
-  Object.defineProperty(ResearchBuildingVO.prototype, "researchBoost", {
+  AIsoDataObjectGroup.prototype.removeObject = function (e) {};
+  AIsoDataObjectGroup.prototype.isObjectForThisList = function (e) {
+    return e.objectType.groupType == this.groupType;
+  };
+  AIsoDataObjectGroup.prototype.containsObject = function (e) {
+    return false;
+  };
+  AIsoDataObjectGroup.prototype.containsObjectById = function (e) {
+    return false;
+  };
+  AIsoDataObjectGroup.prototype.fillInCompleteList = function (e) {};
+  AIsoDataObjectGroup.prototype.parseGCA = function (e) {};
+  Object.defineProperty(AIsoDataObjectGroup.prototype, "isoData", {
     get: function () {
-      return this._researchBoost;
+      return n.Iso.data;
     },
     enumerable: true,
     configurable: true
   });
-  return ResearchBuildingVO;
-}(require("./65.js").AEffectBuildingVO);
-exports.ResearchBuildingVO = p;
-a.classImplementsInterfaces(p, "IShopVO", "ICostVO", "IInventoryVO");
+  AIsoDataObjectGroup.prototype.destroyObject = function (e) {
+    if (e) {
+      e.destroy();
+    }
+    return null;
+  };
+  Object.defineProperty(AIsoDataObjectGroup.prototype, "groupType", {
+    get: function () {
+      return this._groupType;
+    },
+    set: function (e) {
+      this._groupType = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AIsoDataObjectGroup;
+}();
+exports.AIsoDataObjectGroup = o;

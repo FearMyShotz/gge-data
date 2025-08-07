@@ -2,17 +2,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function ForwardMessageListItemVO() {
-    var t = this;
-    t.level = 0;
-    t.honor = 0;
-    t.isReceiver = false;
-    t.playerID = 0;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SForwardSpyLogVO(t, i) {
+    var n = this;
+    n.MID = NaN;
     CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+    (n = e.call(this) || this).PID = t;
+    n.MID = i;
+    return n;
   }
-  n.__extends(ForwardMessageListItemVO, e);
-  return ForwardMessageListItemVO;
-}(require("./2.js").ScrollItemVO);
-exports.ForwardMessageListItemVO = o;
+  n.__extends(C2SForwardSpyLogVO, e);
+  C2SForwardSpyLogVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_FORWARD_SPY_LOG;
+  };
+  return C2SForwardSpyLogVO;
+}(o.BasicCommandVO);
+exports.C2SForwardSpyLogVO = s;

@@ -5,37 +5,35 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./102.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function ACNCommand() {
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function ACLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ACNCommand, e);
-  Object.defineProperty(ACNCommand.prototype, "cmdId", {
+  n.__extends(ACLCommand, e);
+  Object.defineProperty(ACLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ALLIANCE_CHANGE_NAME;
+      return s.ClientConstSF.S2C_ALLIANCE_CHAT_LOG;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  ACNCommand.prototype.executeCommand = function (e, t) {
+  ACLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        l.CastleModel.allianceData.parse_AIN(i);
-        this.controller.dispatchEvent(new r.CastleAllianceDataEvent(r.CastleAllianceDataEvent.ON_ALLIANCE_NAME_CHANGED));
+        r.CastleModel.chatData.parseHistory(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return ACNCommand;
-}(c.CastleCommand);
-exports.ACNCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return ACLCommand;
+}(l.CastleCommand);
+exports.ACLCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

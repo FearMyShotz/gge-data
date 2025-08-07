@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function RelicQuarryBuildingVE() {
+  function RelicFarmGreenBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RelicQuarryBuildingVE, e);
-  return RelicQuarryBuildingVE;
-}(require("./1034.js").QuarryBuildingVE);
-exports.RelicQuarryBuildingVE = a;
+  n.__extends(RelicFarmGreenBuildingVE, e);
+  return RelicFarmGreenBuildingVE;
+}(require("./1595.js").RelicFarmBuildingVE);
+exports.RelicFarmGreenBuildingVE = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

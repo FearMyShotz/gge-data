@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./303.js");
 var s = function (e) {
-  function FactionMarketBuildingVE() {
+  function FactionMaintentBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FactionMarketBuildingVE, e);
-  Object.defineProperty(FactionMarketBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(FactionMaintentBuildingVE, e);
+  Object.defineProperty(FactionMaintentBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_MarketCarrige;
+      return Library.CastleInterfaceElements_Icons.Icon_Keep;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.AFactionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return FactionMarketBuildingVE;
+  return FactionMaintentBuildingVE;
 }(a.AFactionBuildingVE);
-exports.FactionMarketBuildingVE = s;
+exports.FactionMaintentBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

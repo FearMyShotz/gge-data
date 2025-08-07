@@ -2,8 +2,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  return function GameSightPayloadVO(e) {
-    this.eventName = e;
-  };
+  function GamesightEventConstants() {}
+  GamesightEventConstants.GAME_LAUNCH = "game_launch";
+  GamesightEventConstants.PLAYER_REGISTRATION = "player_registration";
+  GamesightEventConstants.LEVEL_COMPLETE_ = "level_complete_";
+  GamesightEventConstants.PURCHASE = "purchase";
+  return GamesightEventConstants;
 }();
-exports.GameSightPayloadVO = n;
+exports.GamesightEventConstants = n;

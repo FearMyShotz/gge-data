@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function MCMCommand() {
+  function CSSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MCMCommand, e);
-  Object.defineProperty(MCMCommand.prototype, "cmdId", {
+  n.__extends(CSSCommand, e);
+  Object.defineProperty(CSSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_CANCEL_MOVEMENT;
+      return s.ClientConstSF.S2C_CREATE_SIEGE_MOVEMENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,10 +22,12 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  MCMCommand.prototype.executeCommand = function (e, t) {
+  CSSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.otherPlayerData.parseOwnerInfoArray(i.O);
         r.CastleModel.armyData.parseMapMovementArray([i.A]);
         break;
       default:
@@ -33,7 +35,7 @@ var c = function (e) {
     }
     return false;
   };
-  return MCMCommand;
+  return CSSCommand;
 }(l.CastleCommand);
-exports.MCMCommand = c;
+exports.CSSCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

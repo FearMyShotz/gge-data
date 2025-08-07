@@ -2,49 +2,46 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./7.js");
-var c = require("./4.js");
-var u = require("./296.js");
-var d = require("./10.js");
-var p = function (e) {
-  function ARMCommand() {
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function AQICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ARMCommand, e);
-  Object.defineProperty(ARMCommand.prototype, "cmdId", {
+  n.__extends(AQICommand, e);
+  Object.defineProperty(AQICommand.prototype, "cmdId", {
     get: function () {
-      return l.ClientConstSF.S2C_ALLIANCE_RERANK_MEMBER;
+      return s.ClientConstSF.S2C_ALLIANCE_QUIT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  ARMCommand.prototype.executeCommand = function (e, t) {
+  AQICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case s.ERROR.ALL_OK:
+      case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        c.CastleModel.allianceData.parse_AIN(i.ain);
-        break;
-      case s.ERROR.IN_OTHER_ALLI:
-        h.CastleDialogHandler.getInstance().registerDefaultDialogs(g.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_information"), r.Localize.text("errorCode_123")));
-        c.CastleModel.smartfoxClient.sendCommandVO(new u.C2SGetAllianceInfoVO(c.CastleModel.allianceData.myAllianceVO.allianceId));
-        break;
-      case s.ERROR.NO_CHANGE:
+        r.CastleModel.chatData.resetHistory();
+        r.CastleModel.userData.parse_GAL(i.gal);
+        r.CastleModel.allianceData.resetMyAlliance();
+        if (u.CastleLayoutManager.getInstance().currentState == u.CastleLayoutManager.STATE_WORLDMAP) {
+          var n = u.CastleLayoutManager.getInstance().worldmapScreen.renderer.camera.getAreaViewportRectangle();
+          r.CastleModel.worldmapData.updateAreaRange(n.x, n.y, n.x + n.width, n.y + n.height);
+          this.layoutManager.worldmapScreen.renderer.renderLayer();
+        }
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return ARMCommand;
-}(d.CastleCommand);
-exports.ARMCommand = p;
-var h = require("./9.js");
-var g = require("./38.js");
-a.classImplementsInterfaces(p, "IExecCommand");
+  return AQICommand;
+}(l.CastleCommand);
+exports.AQICommand = c;
+var u = require("./17.js");
+o.classImplementsInterfaces(c, "IExecCommand");

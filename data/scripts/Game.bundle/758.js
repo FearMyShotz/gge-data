@@ -3,18 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleCostInfoDialogProperties(t, i, n = "", o = "", a = "") {
-    var s = this;
-    s.amount = 0;
+  function SkipCooldownEvent(t, i, n = false, o = false) {
+    var a = this;
     CONSTRUCTOR_HACK;
-    (s = e.call(this) || this).functionOk = i;
-    s.amount = t;
-    s.copy = n;
-    s.timestring = o;
-    s.helpertext = a;
-    return s;
+    (a = e.call(this, t, n, o) || this)._mapObjectVO = i;
+    return a;
   }
-  n.__extends(CastleCostInfoDialogProperties, e);
-  return CastleCostInfoDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleCostInfoDialogProperties = o;
+  n.__extends(SkipCooldownEvent, e);
+  Object.defineProperty(SkipCooldownEvent.prototype, "mapObjectVO", {
+    get: function () {
+      return this._mapObjectVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SkipCooldownEvent.__initialize_static_members = function () {
+    SkipCooldownEvent.UPDATE = "update";
+  };
+  return SkipCooldownEvent;
+}(createjs.Event);
+exports.SkipCooldownEvent = o;
+o.__initialize_static_members();

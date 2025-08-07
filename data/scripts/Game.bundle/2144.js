@@ -2,100 +2,37 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
+var o = require("./2.js");
 var a = require("./6.js");
-var s = function (e) {
-  function MultiSliderButton(t, i) {
-    var n = this;
-    n.id = 0;
+var s = require("./7.js");
+var r = function (e) {
+  function C2SDefenceWallVO(t, i, n, o, s, r, l, c, u, d, p) {
+    var h = this;
+    h.CX = 0;
+    h.CY = 0;
+    h.AID = 0;
     CONSTRUCTOR_HACK;
-    (n = e.call(this) || this)._disp = t;
-    n._disp.actLikeButton = true;
-    n._disp.mouseChildren = false;
-    n.addChild(n._disp);
-    n._slider = i;
-    return n;
+    (h = e.call(this) || this).CX = a.int(t.x);
+    h.CY = a.int(t.y);
+    h.AID = i;
+    h.L = {};
+    h.L.S = n;
+    h.L.UP = o;
+    h.L.UC = s;
+    h.M = {};
+    h.M.S = r;
+    h.M.UP = l;
+    h.M.UC = c;
+    h.R = {};
+    h.R.S = u;
+    h.R.UP = d;
+    h.R.UC = p;
+    return h;
   }
-  n.__extends(MultiSliderButton, e);
-  Object.defineProperty(MultiSliderButton.prototype, "disp", {
-    get: function () {
-      return this._disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MultiSliderButton.prototype, "selectedValue", {
-    set: function (e) {
-      if (e < 0) {
-        e = 0;
-      } else if (e > 100) {
-        e = 100;
-      }
-      this.buttonPosition = a.int(e / 100 * this._slider.oneHundredPercentInPixel + this._slider.sliderButtonWidth / 2 + this.id * this._slider.sliderButtonWidth);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MultiSliderButton.prototype, "borderLeft", {
-    get: function () {
-      if (this.id == 0) {
-        return this._slider.borderLeft;
-      } else {
-        return this._slider.buttons[this.id - 1].buttonRight + this._slider.sliderButtonWidth / 2;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MultiSliderButton.prototype, "borderRight", {
-    get: function () {
-      if (this.id == this._slider.sliderAmount - 1) {
-        return this._slider.borderRight;
-      } else {
-        return this._slider.buttons[this.id + 1].buttonLeft - this._slider.sliderButtonWidth / 2;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MultiSliderButton.prototype, "buttonLeft", {
-    get: function () {
-      return this.x - this._slider.sliderButtonWidth / 2;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MultiSliderButton.prototype, "buttonRight", {
-    get: function () {
-      return this.x + this._slider.sliderButtonWidth / 2;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MultiSliderButton.prototype, "buttonPosition", {
-    get: function () {
-      return this.x;
-    },
-    set: function (e) {
-      if (e > this._slider.borderRight) {
-        e = this._slider.borderRight;
-      } else if (e < this._slider.borderLeft) {
-        e = this._slider.borderLeft;
-      }
-      this.x = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  MultiSliderButton.prototype.movePosition = function (e) {
-    if (e > this.borderRight) {
-      e = this.borderRight;
-    } else if (e < this.borderLeft) {
-      e = this.borderLeft;
-    }
-    this.x = e;
+  n.__extends(C2SDefenceWallVO, e);
+  C2SDefenceWallVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_DEFENSE_WALL;
   };
-  return MultiSliderButton;
-}(require("./583.js").CastleMovieClip);
-exports.MultiSliderButton = s;
-o.classImplementsInterfaces(s, "MovieClip");
+  return C2SDefenceWallVO;
+}(o.BasicCommandVO);
+exports.C2SDefenceWallVO = r;

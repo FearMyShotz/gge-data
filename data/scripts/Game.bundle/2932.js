@@ -2,48 +2,44 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
+var o = require("./1.js");
+var a = require("./1.js");
 var s = require("./1.js");
-var r = require("./191.js");
-var l = function (e) {
-  function ComboboxItemRendererRecruitList() {
+var r = require("./3.js");
+var l = require("./87.js");
+var c = require("./263.js");
+var u = function (e) {
+  function RingMenuButtonProduce() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ComboboxItemRendererRecruitList, e);
-  ComboboxItemRendererRecruitList.prototype.renderItem = function (e, t, i, n, r) {
-    var l = s.castAs(new this.itemMCClass(), "MovieClip");
-    l.actLikeButton = true;
-    l.mouseChildren = false;
-    l.itxt_item = o.GoodgameTextFieldManager.getInstance().registerTextField(l.txt_item, new r(e.itemLabel), new a.InternalGGSTextFieldConfigVO(true));
-    l.itxt_item.mouseEnabled = false;
-    l.bg.gotoAndStop(1);
-    if (i > 0) {
-      l.bg.width = i;
-      l.itxt_item.width = i;
+  n.__extends(RingMenuButtonProduce, e);
+  RingMenuButtonProduce.prototype.init = function (t, i, n) {
+    e.prototype.init.call(this, t, i, n);
+    this._disp = i.btn_produce;
+    if (s.instanceOfClass(n, "AUnitProductionBuildingVE")) {
+      var a = o.castAs(n, "AUnitProductionBuildingVE");
+      this._disp.visible = a && a.unitProductionBuildingVO.areValuesActive;
+    } else {
+      this._disp.visible = false;
     }
-    l.bg.height = n;
-    l.id = t;
-    var c = s.castAs(e.data, "IWorldmapObjectVO");
-    if (l && c) {
-      l.mc_icon.visible = false;
-      l.mc_icon.x = l.bg.x + l.bg.width - l.mc_icon.width;
-      l.mc_kingdomPoint.x = l.mc_icon.x + l.mc_icon.width / 2 - l.mc_kingdomPoint.width / 2;
-      l.mc_kingdomPoint.gotoAndStop(Math.min(c.kingdomID + 1, 6));
-      l.itxt_item.autoFitToBounds = true;
+    switch (n.buildingVO.buildingState) {
+      case l.IsoBuildingStateEnum.BUILD_IN_PROGRESS:
+      case l.IsoBuildingStateEnum.BUILD_STOPPED:
+        this._disp.visible = false;
     }
-    return l;
+    this._disp.enableButton = true;
   };
-  Object.defineProperty(ComboboxItemRendererRecruitList.prototype, "itemMCClass", {
-    get: function () {
-      return Library.CastleInterfaceElements.RecruitCastleListComboboxItem;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ComboboxItemRenderer.prototype, "itemMCClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return ComboboxItemRendererRecruitList;
-}(r.ComboboxItemRenderer);
-exports.ComboboxItemRendererRecruitList = l;
+  RingMenuButtonProduce.prototype.onClick = function (e, t) {
+    var i = this.targetBuilding;
+    d.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleRecruitDialog, new c.CastleRecruitDialogProperties(i.unitProductionBuildingVO.recruitCategory, i.unitProductionBuildingVO.recruitFilter));
+    this.parent.hide();
+  };
+  RingMenuButtonProduce.prototype.getInfoText = function () {
+    return r.Localize.text("produce");
+  };
+  return RingMenuButtonProduce;
+}(require("./98.js").ARingMenuButton);
+exports.RingMenuButtonProduce = u;
+var d = require("./9.js");
+var p = require("./225.js");
+a.classImplementsInterfaces(u, "IRingMenuButton");

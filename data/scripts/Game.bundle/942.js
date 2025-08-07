@@ -1,93 +1,116 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
-var o = require("./5.js");
-var a = require("./3.js");
-var s = require("./6.js");
-var r = require("./23.js");
-var l = require("./23.js");
-var c = require("./16.js");
-var u = require("./1339.js");
-var d = require("./15.js");
-var p = require("./937.js");
-var h = require("./1344.js");
-var g = function () {
-  function LetterLimiter(e, t) {
-    this.messageTextRestrictor = new p.CastleJSONTextFieldRestrictor();
-    this.mc_letterLimit = e;
-    e.visible = true;
-    this._itxt_letterLimit = this.textFieldManager.registerTextField(e.txt_letterLimit, new a.LocalizedTextVO("dialog_messageLimit_charactersLeft", [o.MessageConst.MAX_LENGTH_TEXT]));
-    this.messageTextRestrictor.init(t, o.MessageConst.MAX_LENGTH_TEXT);
-    this._itxt_letterLimit.color = c.ClientConstColor.GENERIC_BLACK;
-    e.toolTipText = {
-      t: "dialog_messageLimit_textLength_Tooltip",
-      p: [o.MessageConst.MAX_LENGTH_TEXT]
-    };
-    e.mouseChildren = false;
+var n = createjs.MouseEvent;
+var o = function () {
+  function PackageTabComponent(e, t) {
+    this.disp = e;
+    this.onTabChanged = t;
+    this.tabs = [];
   }
-  Object.defineProperty(LetterLimiter.prototype, "textFieldManager", {
-    get: function () {
-      return n.GoodgameTextFieldManager.getInstance();
+  PackageTabComponent.prototype.addTab = function (e, t, i) {
+    this.tabs.push(new s(e, t, i));
+  };
+  PackageTabComponent.prototype.init = function () {
+    this.defaultTab = this.tabs[0];
+    if (this.tabs != null) {
+      for (var e = 0, t = this.tabs; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          i.disp.toolTipText = i.toolTip;
+          a.ButtonHelper.initBasicButton(i.disp);
+        }
+      }
+    }
+  };
+  PackageTabComponent.prototype.updateTabsEnablement = function (e) {
+    if (this.tabs != null) {
+      for (var t = 0, i = this.tabs; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          var o = false;
+          if (e != null) {
+            for (var s = 0, r = e; s < r.length; s++) {
+              var l = r[s];
+              if (l !== undefined && n.filterFunction(l)) {
+                o = true;
+                break;
+              }
+            }
+          }
+          a.ButtonHelper.enableButton(n.disp, o);
+          n.disp.toolTipText = o ? n.toolTip : "alert_not_available";
+        }
+      }
+    }
+  };
+  PackageTabComponent.prototype.show = function () {
+    this.disp.addEventListener(n.CLICK, this.bindFunction(this.onClick));
+    this.selectedTab = this.defaultTab;
+  };
+  PackageTabComponent.prototype.hide = function () {
+    this.disp.removeEventListener(n.CLICK, this.bindFunction(this.onClick));
+  };
+  PackageTabComponent.prototype.onClick = function (e) {
+    if (a.ButtonHelper.isButtonEnabled(e.target) && this.tabs != null) {
+      for (var t = 0, i = this.tabs; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined && e.target == n.disp) {
+          this.selectedTab = n;
+          return;
+        }
+      }
+    }
+  };
+  Object.defineProperty(PackageTabComponent.prototype, "selectedTab", {
+    set: function (e) {
+      this._selectedTab = e;
+      this.updateTabFrames();
+      this.onTabChanged();
     },
     enumerable: true,
     configurable: true
   });
-  LetterLimiter.prototype.addEventListeners = function () {
-    this.messageTextRestrictor.addEventListener(u.CastleJSONTextFieldRestrictorEvent.TEXT_CHANGED, this.bindFunction(this.onTextChange));
-    this.messageTextRestrictor.addEventListener(u.CastleJSONTextFieldRestrictorEvent.TEXT_LIMIT_REACHED, this.bindFunction(this.onTextLimitReached));
-    this.messageTextRestrictor.addEventListener(u.CastleJSONTextFieldRestrictorEvent.TEXT_LIMIT_EXCEEDED, this.bindFunction(this.onTextLimitExceeded));
+  PackageTabComponent.prototype.updateTabFrames = function () {
+    if (this.tabs != null) {
+      for (var e = 0, t = this.tabs; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          i.disp.gotoAndStop(this.getTabFrame(i));
+        }
+      }
+    }
   };
-  LetterLimiter.prototype.removeEventListeners = function () {
-    this.messageTextRestrictor.removeEventListener(u.CastleJSONTextFieldRestrictorEvent.TEXT_CHANGED, this.bindFunction(this.onTextChange));
-    this.messageTextRestrictor.removeEventListener(u.CastleJSONTextFieldRestrictorEvent.TEXT_LIMIT_REACHED, this.bindFunction(this.onTextLimitReached));
-    this.messageTextRestrictor.removeEventListener(u.CastleJSONTextFieldRestrictorEvent.TEXT_LIMIT_EXCEEDED, this.bindFunction(this.onTextLimitExceeded));
-  };
-  LetterLimiter.prototype.onTextLimitReached = function (e) {
-    this.updateRemainingLettersText(true, e.newTextLength);
-    d.CastleBasicController.getInstance().dispatchEvent(new h.LetterLimiterEvent(h.LetterLimiterEvent.TEXT_LIMIT_REACHED));
-  };
-  LetterLimiter.prototype.onTextChange = function (e) {
-    this.updateRemainingLettersText(false, e.newTextLength);
-    d.CastleBasicController.getInstance().dispatchEvent(new h.LetterLimiterEvent(h.LetterLimiterEvent.TEXT_CHANGED));
-  };
-  LetterLimiter.prototype.updateRemainingLettersText = function (e, t) {
-    if (e) {
-      this._itxt_letterLimit.color = c.ClientConstColor.FONT_INSUFFICIENT_COLOR;
-      this.mc_letterLimit.toolTipText = {
-        t: "dialog_messageLimit_maxTextlength_Tooltip",
-        p: [o.MessageConst.MAX_LENGTH_TEXT]
-      };
+  PackageTabComponent.prototype.getTabFrame = function (e) {
+    if (this._selectedTab == e) {
+      return PackageTabComponent.SELECTED_TAB_FRAME;
     } else {
-      this._itxt_letterLimit.color = LetterLimiter.DEFAULT_TEXT_LIMIT_COLOR;
-      this.mc_letterLimit.toolTipText = {
-        t: "dialog_messageLimit_textLength_Tooltip",
-        p: [o.MessageConst.MAX_LENGTH_TEXT]
-      };
+      return PackageTabComponent.DEFAULT_TAB_FRAME;
     }
-    this._itxt_letterLimit.textContentVO.textReplacements = [o.MessageConst.MAX_LENGTH_TEXT - t];
-    d.CastleBasicController.getInstance().dispatchEvent(new h.LetterLimiterEvent(h.LetterLimiterEvent.UPDATE_REMAINING_LETTERS));
   };
-  LetterLimiter.prototype.onTextLimitExceeded = function (e) {
-    this.onTextLimitReached(e);
-    if (e.newTextLength < o.MessageConst.MAX_LENGTH_TEXT) {
-      l.TweenMax.to(this.mc_letterLimit.txt_letterLimit, 1.5, {
-        hexColors: {
-          textColor: LetterLimiter.DEFAULT_TEXT_LIMIT_COLOR
-        },
-        ease: r.Power4.easeIn
-      });
-      this.mc_letterLimit.toolTipText = {
-        t: "dialog_messageLimit_textLength_Tooltip",
-        p: [o.MessageConst.MAX_LENGTH_TEXT]
-      };
-    }
-    d.CastleBasicController.getInstance().dispatchEvent(new h.LetterLimiterEvent(h.LetterLimiterEvent.TEXT_LIMIT_EXCEEDED));
+  PackageTabComponent.prototype.isPackageInCurrentTab = function (e) {
+    return !!this._selectedTab.filterFunction(e);
   };
-  LetterLimiter.__initialize_static_members = function () {
-    LetterLimiter.DEFAULT_TEXT_LIMIT_COLOR = s.int(c.ClientConstColor.GENERIC_BLACK);
+  Object.defineProperty(PackageTabComponent.prototype, "isFilterReset", {
+    get: function () {
+      return this._selectedTab == this.defaultTab;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  PackageTabComponent.__initialize_static_members = function () {
+    PackageTabComponent.DEFAULT_TAB_FRAME = 2;
+    PackageTabComponent.SELECTED_TAB_FRAME = 1;
   };
-  return LetterLimiter;
+  return PackageTabComponent;
 }();
-exports.LetterLimiter = g;
-g.__initialize_static_members();
+exports.PackageTabComponent = o;
+var a = require("./8.js");
+var s = function () {
+  return function Tab(e, t, i) {
+    this.disp = e;
+    this.toolTip = t;
+    this.filterFunction = i;
+  };
+}();
+o.__initialize_static_members();

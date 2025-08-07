@@ -2,35 +2,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function QDRCommand() {
+var o = require("./5.js");
+var a = require("./7.js");
+var s = function (e) {
+  function FQCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(QDRCommand, e);
-  Object.defineProperty(QDRCommand.prototype, "cmdId", {
+  n.__extends(FQCCommand, e);
+  Object.defineProperty(FQCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_QUEST_DONATE_RESOURCES;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      return a.ClientConstSF.C2S_FINISH_QUEST_CONDITION;
     },
     enumerable: true,
     configurable: true
   });
-  QDRCommand.prototype.executeCommand = function (e, t) {
+  FQCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case a.ERROR.ALL_OK:
+      case o.ERROR.ALL_OK:
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return QDRCommand;
-}(r.CastleCommand);
-exports.QDRCommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  return FQCCommand;
+}(require("./10.js").CastleCommand);
+exports.FQCCommand = s;

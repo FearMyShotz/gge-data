@@ -3,47 +3,40 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./1.js");
-var c = require("./1.js");
-var u = require("./5.js");
-var d = require("./342.js");
-var p = require("./4.js");
-var h = function (e) {
-  function CastleOpenForumCommand() {
-    var t = this;
-    t.basicOpenForumCommand = new o.BasicOpenForumCommand();
+var a = require("./6.js");
+var s = require("./7.js");
+var r = function (e) {
+  function C2SLoginVO(t, i, n, s, r, l, c, u, d, p = "", h = false) {
+    var g = this;
+    g.CONM = 0;
+    g.RTM = 0;
+    g.ID = 0;
+    g.PL = 0;
     CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+    (g = e.call(this) || this).NOM = t;
+    g.PW = i;
+    if (i && i.length > 0) {
+      n = null;
+    }
+    g.LT = n;
+    g.LANG = s;
+    g.DID = r;
+    g.CONM = l;
+    g.RTM = c;
+    g.AID = u;
+    g.KID = p;
+    g.ID = 0;
+    g.REF = d;
+    g.PL = a.int(h ? 1 : 0);
+    g.GCI = o.EnvGlobalsHandler.globals.urlVariables.urlParams.get("gci") || "";
+    g.SID = o.EnvGlobalsHandler.globals.storeId;
+    g.PLFID = o.EnvGlobalsHandler.globals.platformId;
+    return g;
   }
-  n.__extends(CastleOpenForumCommand, e);
-  CastleOpenForumCommand.prototype.execute = function (e) {
-    var t;
-    if (e === undefined) {
-      e = null;
-    }
-    if (s.EnvGlobalsHandler.globals.networkNewsByJS || !s.EnvGlobalsHandler.globals.useexternallinks || p.CastleModel.userData.email != u.PlayerConst.DEFAULT_MAIL) {
-      if (d.ClientConstInstanceIDs.isBetaInstance()) {
-        t = new l.URLRequest(CastleOpenForumCommand.BETA_FORUM_URL);
-        a.BrowserUtil.executeNavigateToURL(t, "_blank");
-      } else if (s.EnvGlobalsHandler.globals.isClosedBeta) {
-        t = new l.URLRequest(CastleOpenForumCommand.CLOSED_BETA_FORUM_URL);
-        a.BrowserUtil.executeNavigateToURL(t, "_blank");
-      } else {
-        this.basicOpenForumCommand.execute(e);
-      }
-    } else if (!s.EnvGlobalsHandler.globals.isOnSpecialServer) {
-      g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.OptionsDialog, new _.OptionsDialogProperties(C.OptionsDialog.TAB_ACCOUNT_DETAILS, true));
-    }
+  n.__extends(C2SLoginVO, e);
+  C2SLoginVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_LOGIN;
   };
-  CastleOpenForumCommand.BETA_FORUM_URL = "https://community.goodgamestudios.com/empire/testboard";
-  CastleOpenForumCommand.CLOSED_BETA_FORUM_URL = "https://community.goodgamestudios.com/empire/testboard/entry/password";
-  return CastleOpenForumCommand;
-}(r.SimpleCommand);
-exports.CastleOpenForumCommand = h;
-var g = require("./9.js");
-var C = require("./354.js");
-var _ = require("./435.js");
-c.classImplementsInterfaces(h, "ISimpleCommand");
+  return C2SLoginVO;
+}(o.BasicCommandVO);
+exports.C2SLoginVO = r;

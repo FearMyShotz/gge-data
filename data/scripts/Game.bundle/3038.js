@@ -3,23 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./62.js");
+var a = require("./262.js");
 var s = function (e) {
-  function HouseoffireBuildingVE() {
+  function HoneyGardensBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(HouseoffireBuildingVE, e);
-  Object.defineProperty(HouseoffireBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(HoneyGardensBuildingVE, e);
+  Object.defineProperty(HoneyGardensBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_FireProtection;
+      return Library.CastleInterfaceElements_Icons.Icon_HoneyBoost;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.AResourceProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return HouseoffireBuildingVE;
-}(a.ABasicBuildingVE);
-exports.HouseoffireBuildingVE = s;
+  return HoneyGardensBuildingVE;
+}(a.AResourceProductionBuildingVE);
+exports.HoneyGardensBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

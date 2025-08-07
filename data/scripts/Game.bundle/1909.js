@@ -1,280 +1,119 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./51.js");
-var s = require("./26.js");
-var r = require("./1144.js");
-var l = require("./4.js");
-var c = require("./52.js");
-var u = require("./184.js");
-var d = function (e) {
-  function LuckyWheelEventVO() {
-    var t = this;
-    t._willShowDialogAgain = false;
-    CONSTRUCTOR_HACK;
-    (t = e.call(this) || this)._scoreEventVO = new C.LuckyWheelPointEventTypeScoreEventVO();
-    t.buyPackagesEventVO = new u.BuyPackagesEventVO();
-    t.eventOverviewConfig.eventOverviewDetails = p.EventOverviewDetailEnum.DETAILS_POINT_EVENT_DEFAULT;
-    return t;
+var n = function () {
+  function ScoreConditionVO(e, t, i = -1) {
+    this._score = 0;
+    this._amount = 0;
+    this._targetId = -1;
+    this._kingdomId = 0;
+    this._score = e;
+    this._name = t[0];
+    this._amount = o.int(t[1]);
+    if (t.length > 2) {
+      this._targetId = o.int(t[2]);
+    }
+    this._kingdomId = i;
   }
-  n.__extends(LuckyWheelEventVO, e);
-  LuckyWheelEventVO.prototype.parseData = function (t, i, n) {
-    e.prototype.parseData.call(this, t, i, n);
-    this._scoreEventVO.parseData(t, i, n);
-    this.buyPackagesEventVO.parseData(t, i, n);
-    this._scoreEventVO.pointThresholds = this.luckyWheelData.pointThresholds;
-  };
-  Object.defineProperty(LuckyWheelEventVO.prototype, "isAtMaxClass", {
+  Object.defineProperty(ScoreConditionVO.prototype, "score", {
     get: function () {
-      return this.luckyWheelData.isMaxIncreaseWinClass;
+      return this._score;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "winClassesAmount", {
+  Object.defineProperty(ScoreConditionVO.prototype, "name", {
     get: function () {
-      return this.luckyWheelData.winClassesAmount;
+      return this._name;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "numSpinsDoneInCurrentClass", {
+  Object.defineProperty(ScoreConditionVO.prototype, "textId", {
     get: function () {
-      return this.luckyWheelData.winClassProgress;
+      return "pointsEvent_" + this._name + this.textIdSuffix + "_condition";
     },
     enumerable: true,
     configurable: true
   });
-  LuckyWheelEventVO.prototype.getNeededSpinsForClass = function (e) {
-    return this.luckyWheelData.getNeededSpinsForClass(e);
-  };
-  Object.defineProperty(LuckyWheelEventVO.prototype, "winClassProgress", {
+  Object.defineProperty(ScoreConditionVO.prototype, "isTargetIdUsedForTextIdSuffix", {
     get: function () {
-      return this.luckyWheelData.winClassProgress / this.luckyWheelData.getNeededSpinsForClass(this.luckyWheelData.currentWinClass);
+      switch (this._name) {
+        case ScoreConditionVO.FIND_EQUIPMENT_RARENESS:
+        case ScoreConditionVO.CRAFT_EQUIPMENT_RARENESS:
+        case ScoreConditionVO.POINT_EVENT_FAME:
+        case ScoreConditionVO.CONQUER_VILLAGE:
+        case ScoreConditionVO.SPIN_LUCKY_WHEEL:
+          return true;
+      }
+      return false;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "nextWinClassProgress", {
+  Object.defineProperty(ScoreConditionVO.prototype, "isKingdomIdUsedForTextIdSuffix", {
     get: function () {
-      return this.luckyWheelData.nextWinClassProgress;
+      return this._name == ScoreConditionVO.COUNT_DUNGEONS;
     },
     enumerable: true,
     configurable: true
   });
-  LuckyWheelEventVO.prototype.parseParamObject = function (e) {
-    this.luckyWheelData.parseBasics(e);
-    l.CastleModel.specialEventData.dispatchEvent(new s.CastleSpecialEventEvent(s.CastleSpecialEventEvent.REFRESH_SPECIALEVENT, this));
-  };
-  LuckyWheelEventVO.prototype.setRankAndPoints = function (e, t, i) {
-    this._scoreEventVO.setRankAndPoints([e[0]], [t[0]], null);
-  };
-  Object.defineProperty(LuckyWheelEventVO.prototype, "eventBuildingWOD", {
+  Object.defineProperty(ScoreConditionVO.prototype, "textIdSuffix", {
     get: function () {
-      return LuckyWheelEventVO.EVENT_BUILDING_WOD;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.BuyPackagesEventVO.prototype, "eventBuildingWOD").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "eventBuildingNameId", {
-    get: function () {
-      return "eventBuilding_LuckyWheel";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.BuyPackagesEventVO.prototype, "eventBuildingNameId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "eventFullsizeCharacterName", {
-    get: function () {
-      return a.ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_LUCKY_WHEEL_CARNY;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.BuyPackagesEventVO.prototype, "eventFullsizeCharacterName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  LuckyWheelEventVO.prototype.openDialog = function (e = true) {
-    this.executeOpenDialog(e, h.CastleLuckyWheelDialog, new r.CastleLuckyWheelDialogProperties(this));
-  };
-  LuckyWheelEventVO.prototype.openMerchantDialog = function (e, t) {
-    this.openDialog(e);
-    this.executeOpenDialog(e, g.CastleLuckyWheelTicketBuyDialog);
-  };
-  Object.defineProperty(LuckyWheelEventVO.prototype, "isProMode", {
-    get: function () {
-      return this.luckyWheelData.isProMode;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "currentWinClass", {
-    get: function () {
-      return this.luckyWheelData.currentWinClass;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "isFirstVisitToLuckyWheel", {
-    get: function () {
-      return this.luckyWheelData.isFirstVisitToLuckyWheel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "hasFreeSpin", {
-    get: function () {
-      return this.luckyWheelData.hasFreeSpin;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "hasVisitedProMode", {
-    get: function () {
-      return this.luckyWheelData.hasVisitedProMode;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  LuckyWheelEventVO.prototype.getPreviewSet = function (e) {
-    return this.luckyWheelData.getPreviewSets(e);
-  };
-  Object.defineProperty(LuckyWheelEventVO.prototype, "rewardIsTickets", {
-    get: function () {
-      return this.luckyWheelData.rewardIsTickets;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "levelLabels", {
-    get: function () {
-      return this.luckyWheelData.levelLabels;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "hasLevelUp", {
-    get: function () {
-      return this.luckyWheelData.hasLevelUp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "scoreEventVO", {
-    get: function () {
-      return this._scoreEventVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "eventPackagesVO", {
-    get: function () {
-      return this.buyPackagesEventVO;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.BuyPackagesEventVO.prototype, "eventPackagesVO").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "primesaleDescriptionTextID", {
-    get: function () {
-      return "dialog_primeday_primesale_luckyWheel_description";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.BuyPackagesEventVO.prototype, "primesaleDescriptionTextID").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "primesaleSaveRubiesTextID", {
-    get: function () {
-      return this.buyPackagesEventVO.primesaleSaveRubiesTextID;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.BuyPackagesEventVO.prototype, "primesaleSaveRubiesTextID").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  LuckyWheelEventVO.prototype.getVisiblePackages = function (e, t, i) {
-    return this.buyPackagesEventVO.getVisiblePackages(e, t, i);
-  };
-  LuckyWheelEventVO.prototype.containsEventPackage = function (e) {
-    return this.buyPackagesEventVO.containsEventPackage(e);
-  };
-  Object.defineProperty(LuckyWheelEventVO.prototype, "luckyWheelData", {
-    get: function () {
-      return l.CastleModel.luckyWheelData;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "hasEnoughRubiesToBuyJackpot", {
-    get: function () {
-      return this.luckyWheelData.hasEnoughRubiesToBuyJackpot;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "hasEnoughTicketsToBuyJackpot", {
-    get: function () {
-      return this.luckyWheelData.hasEnoughTicketsToBuyJackpot;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "willShowDialogAgain", {
-    get: function () {
-      return this._willShowDialogAgain;
-    },
-    set: function (e) {
-      this._willShowDialogAgain = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "ticketCost", {
-    get: function () {
-      if (this.isProMode) {
-        return _.LuckyWheelConst.SPIN_TICKET_COST_PROMODE;
-      } else if (this.hasFreeSpin) {
-        return 0;
+      if (this.isTargetIdUsedForTextIdSuffix) {
+        return "_" + this._targetId;
+      } else if (this.isKingdomIdUsedForTextIdSuffix) {
+        return "_" + this._kingdomId;
       } else {
-        return _.LuckyWheelConst.SPIN_TICKET_COST_NORMAL;
+        return "";
       }
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "currencyID", {
+  Object.defineProperty(ScoreConditionVO.prototype, "textReplacements", {
     get: function () {
-      return c.ClientConstCurrency.ID_LUCKY_WHEEL_TICKET;
+      if (this._targetId == -1 || this.isTargetIdUsedForTextIdSuffix) {
+        return [this._amount];
+      } else {
+        return [this._targetId];
+      }
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LuckyWheelEventVO.prototype, "textIDString", {
-    get: function () {
-      return "luckyWheel";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  LuckyWheelEventVO.EVENT_BUILDING_WOD = 48;
-  return LuckyWheelEventVO;
-}(u.BuyPackagesEventVO);
-exports.LuckyWheelEventVO = d;
-var p = require("./570.js");
-var h = require("./4456.js");
-var g = require("./1916.js");
-var C = require("./4476.js");
-var _ = require("./5.js");
-o.classImplementsInterfaces(d, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO", "IScoreUpdatable");
+  ScoreConditionVO.__initialize_static_members = function () {
+    ScoreConditionVO.COLLECT_TAX = "collectTax";
+    ScoreConditionVO.COUNT_SABOTAGE = "countSabotage";
+    ScoreConditionVO.COUNT_SPY = "countSpy";
+    ScoreConditionVO.DO_FIRE_DAMAGE = "doFireDamage";
+    ScoreConditionVO.COLLECT_FROM_CITIZEN = "collectFromCitizen";
+    ScoreConditionVO.OFF_MELEE_UNITS = "offMeleeUnits";
+    ScoreConditionVO.OFF_RANGE_UNITS = "offRangeUnits";
+    ScoreConditionVO.FIND_EQUIPMENT_RARENESS = "findEquipmentRareness";
+    ScoreConditionVO.CRAFT_EQUIPMENT_RARENESS = "craftEquipmentRareness";
+    ScoreConditionVO.COUNT_DUNGEONS = "countDungeons";
+    ScoreConditionVO.RESOURCE_TO_PLAYER = "resourceToPlayer";
+    ScoreConditionVO.POINT_EVENT_FAME = "pointEventFame";
+    ScoreConditionVO.CONQUER_VILLAGE = "conquerVillage";
+    ScoreConditionVO.SPIN_LUCKY_WHEEL = "spinLuckyWheel";
+    ScoreConditionVO.COMPLETE_BOUNTY_HUNTER = "completeBountyHunter";
+    ScoreConditionVO.COLLECT_KHAN_TABLETS = "collectKhanTablets";
+    ScoreConditionVO.COLLECT_SAMURAI_TOKENS = "collectSamuraiTokens";
+    ScoreConditionVO.COLLECT_MARAUDER_POINTS = "collectMarauderPoints";
+    ScoreConditionVO.GET_ATT_TOOLS_POINT_EVENT = "getAttToolsPointEvent";
+    ScoreConditionVO.GET_DEF_TOOLS_POINT_EVENT = "getDefToolsPointEvent";
+    ScoreConditionVO.LOOT_RESOURCES_POINT_EVENT = "lootResourcesPointEvent";
+    ScoreConditionVO.REVIVE_ATT_UNITS_WITH_MIN_STRENGTH = "reviveAttUnitsWithMinStrength";
+    ScoreConditionVO.REVIVE_DEF_UNITS_WITH_MIN_STRENGTH = "reviveDefUnitsWithMinStrength";
+    ScoreConditionVO.GAIN_FACTION_POINTS = "gainFactionPoints";
+    ScoreConditionVO.SPEND_C2 = "spendC2";
+    ScoreConditionVO.DEFEAT_ALIENS_WITH_MIN_FAME = "defeatAliensWithMinFame";
+    ScoreConditionVO.RECRUIT_UNITS = "recruitedUnits";
+    ScoreConditionVO.PRODUCE_TOOLS = "producedTools";
+  };
+  return ScoreConditionVO;
+}();
+exports.ScoreConditionVO = n;
+var o = require("./6.js");
+n.__initialize_static_members();

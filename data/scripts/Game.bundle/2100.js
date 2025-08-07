@@ -2,44 +2,30 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function EventOverviewEventConfig() {
-    this._eventOverviewDetails = a.EventOverviewDetailEnum.DETAILS_NONE;
-    this._showRemainingEventDuration = true;
-    this._eventCurrency = o.CollectableEnum.UNKNOWN;
-    this._hasAllianceMode = false;
+  function SpecialEventSeasonLeagueComponent() {
+    this._isModeEnabled = false;
+    this._participatedOnEvent = false;
   }
-  Object.defineProperty(EventOverviewEventConfig.prototype, "eventOverviewDetails", {
+  SpecialEventSeasonLeagueComponent.prototype.parseServerData = function (e) {
+    this._isModeEnabled = !!e && !!e.KL;
+  };
+  Object.defineProperty(SpecialEventSeasonLeagueComponent.prototype, "isModeEnabled", {
     get: function () {
-      return this._eventOverviewDetails;
-    },
-    set: function (e) {
-      this._eventOverviewDetails = e;
+      return this._isModeEnabled;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EventOverviewEventConfig.prototype, "showRemainingEventDuration", {
+  Object.defineProperty(SpecialEventSeasonLeagueComponent.prototype, "participatedOnEvent", {
     get: function () {
-      return this._showRemainingEventDuration;
+      return this._participatedOnEvent;
     },
     set: function (e) {
-      this._showRemainingEventDuration = e;
+      this._participatedOnEvent = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EventOverviewEventConfig.prototype, "hasAllianceMode", {
-    get: function () {
-      return this._hasAllianceMode;
-    },
-    set: function (e) {
-      this._hasAllianceMode = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return EventOverviewEventConfig;
+  return SpecialEventSeasonLeagueComponent;
 }();
-exports.EventOverviewEventConfig = n;
-var o = require("./12.js");
-var a = require("./570.js");
+exports.SpecialEventSeasonLeagueComponent = n;

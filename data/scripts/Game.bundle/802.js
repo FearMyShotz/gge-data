@@ -2,16 +2,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleLogoutEvent(t, i = false, n = false) {
-    CONSTRUCTOR_HACK;
-    return e.call(this, t, i, n) || this;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = function (e) {
+  function ResourcePaneltoolTipIconWithText(t, i) {
+    var n = e.call(this, t) || this;
+    n._icon = i;
+    t.mc_icon.addChild(i);
+    o.MovieClipHelper.centerMovieClip(i, 30, 30);
+    return n;
   }
-  n.__extends(CastleLogoutEvent, e);
-  CastleLogoutEvent.__initialize_static_members = function () {
-    CastleLogoutEvent.LOGOUT_TRIGGERED = "logout_triggered";
+  n.__extends(ResourcePaneltoolTipIconWithText, e);
+  ResourcePaneltoolTipIconWithText.prototype.updateTextFieldDimensions = function (e) {
+    var t = this;
+    this._textFields.forEach(function (i) {
+      i.width = e.width - t._icon.width;
+    });
   };
-  return CastleLogoutEvent;
-}(createjs.Event);
-exports.CastleLogoutEvent = o;
-o.__initialize_static_members();
+  return ResourcePaneltoolTipIconWithText;
+}(require("./286.js").ResourcePanelToolTipSingleLineText);
+exports.ResourcePaneltoolTipIconWithText = s;
+a.classImplementsInterfaces(s, "Container");

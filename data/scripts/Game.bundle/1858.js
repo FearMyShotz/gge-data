@@ -3,63 +3,49 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./58.js");
-var s = require("./527.js");
-var r = require("./4.js");
-var l = require("./89.js");
-var c = createjs.Point;
-var u = function (e) {
-  function PremiumMarketPanelButton() {
+var a = require("./5.js");
+var s = require("./3.js");
+var r = require("./58.js");
+var l = require("./4.js");
+var c = require("./236.js");
+var u = require("./707.js");
+var d = require("./89.js");
+var p = function (e) {
+  function DefencePanelButton() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(PremiumMarketPanelButton, e);
-  PremiumMarketPanelButton.prototype.addEventListener = function () {
+  n.__extends(DefencePanelButton, e);
+  DefencePanelButton.prototype.addEventListener = function () {
     e.prototype.addEventListener.call(this);
-    r.CastleModel.vipData.addEventListener(s.CastleVIPDataEvent.VIP_DATA_UPDATED, this.bindFunction(this.onVipDataUpdated));
     this.listenOnXPChanged();
   };
-  PremiumMarketPanelButton.prototype.removeEventListener = function () {
-    r.CastleModel.vipData.removeEventListener(s.CastleVIPDataEvent.VIP_DATA_UPDATED, this.bindFunction(this.onVipDataUpdated));
-    e.prototype.removeEventListener.call(this);
-  };
-  PremiumMarketPanelButton.prototype.updateOnVisible = function () {
-    this.setHighlight(l.APanelButton.HIGHLIGHT_TYPE_YELLOW, r.CastleModel.vipData.vipModeActive);
-  };
-  Object.defineProperty(PremiumMarketPanelButton.prototype, "iconClass", {
+  Object.defineProperty(DefencePanelButton.prototype, "iconClass", {
     get: function () {
-      return Library.CastleInterfaceElements.Btn_PremiumMarket_Relicus;
+      return Library.CastleInterfaceElements.Btn_Defence;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.APanelButton.prototype, "iconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.APanelButton.prototype, "iconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  PremiumMarketPanelButton.prototype.isButtonEnabled = function () {
-    return r.CastleModel.userData.hasLevelFor(a.ClientConstLevelRestrictions.MIN_LEVEL_KINGS_MARKET);
+  DefencePanelButton.prototype.isButtonEnabled = function () {
+    return (h.CastleComponent.layoutManager.isInMyCastle || !!l.CastleModel.areaData && !!l.CastleModel.areaData.activeArea && !!l.CastleModel.areaData.activeAreaInfo && l.CastleModel.areaData.activeAreaInfo.isConqueredByMe) && l.CastleModel.userData.hasLevelFor(r.ClientConstLevelRestrictions.MIN_LEVEL_DEFENCE_DIALOG);
   };
-  PremiumMarketPanelButton.prototype.getButtonTooltip = function () {
-    return "premiummarket_title";
+  DefencePanelButton.prototype.getButtonTooltip = function () {
+    return "panel_action_defence";
   };
-  Object.defineProperty(PremiumMarketPanelButton.prototype, "iconDimension", {
-    get: function () {
-      return new c(40, 40);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.APanelButton.prototype, "iconDimension").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  PremiumMarketPanelButton.prototype.onButtonClicked = function () {
-    d.CastleComponent.dialogHandler.registerDefaultDialogs(p.CastlePremiumMarketPlaceDialog);
+  DefencePanelButton.prototype.onButtonClicked = function () {
+    if (l.CastleModel.userData.userCanOpenDefenceScreen) {
+      h.CastleComponent.dialogHandler.registerDefaultDialogs(C.CastleDefenceDialog, new u.CastleDefenceDialogProperties(l.CastleModel.areaData.activeAreaInfo, a.DefenseConst.TOOL_TYPE_WALL));
+    } else {
+      h.CastleComponent.dialogHandler.registerDefaultDialogs(g.CastleCharacterYesNoOKDialog, new c.CastleCharacterYesNoOKDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("panel_action_levelBlockDefencescreen"), 4, null, null, false));
+    }
   };
-  PremiumMarketPanelButton.prototype.onVipDataUpdated = function (e) {
-    this.update();
-  };
-  return PremiumMarketPanelButton;
-}(l.APanelButton);
-exports.PremiumMarketPanelButton = u;
-var d = require("./14.js");
-var p = require("./315.js");
-o.classImplementsInterfaces(u, "ICollectableRendererList");
+  return DefencePanelButton;
+}(d.APanelButton);
+exports.DefencePanelButton = p;
+var h = require("./14.js");
+var g = require("./238.js");
+var C = require("./426.js");
+o.classImplementsInterfaces(p, "ICollectableRendererList");

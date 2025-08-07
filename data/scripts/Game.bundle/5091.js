@@ -3,39 +3,42 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function FTLCommand() {
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./5.js");
+var l = require("./7.js");
+var c = require("./4.js");
+var u = require("./10.js");
+var d = function (e) {
+  function GFPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FTLCommand, e);
-  Object.defineProperty(FTLCommand.prototype, "cmdId", {
+  n.__extends(GFPCommand, e);
+  Object.defineProperty(GFPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_FORTUNE_TELLER_EVENT;
+      return l.ClientConstSF.C2S_GET_FACTION_POINTS;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  FTLCommand.prototype.executeCommand = function (e, t) {
+  GFPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case a.ERROR.ALL_OK:
+      case s.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        if (i) {
-          r.CastleModel.fortuneTeller.parseFTL(i);
+        var n = o.castAs(c.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_FACTION), "FactionEventVO");
+        if ((i.RFP || i.BFP) && n) {
+          n.parseFactionPointsFromParamObject(i);
         }
-        break;
+        return true;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return FTLCommand;
-}(l.CastleCommand);
-exports.FTLCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return GFPCommand;
+}(u.CastleCommand);
+exports.GFPCommand = d;
+a.classImplementsInterfaces(d, "IExecCommand");

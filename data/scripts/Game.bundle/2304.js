@@ -3,54 +3,85 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./280.js");
-var s = require("./59.js");
-var r = require("./34.js");
-var l = require("./282.js");
-var c = function (e) {
-  function OptionsDialogSublayerAccordion(t) {
-    var i = e.call(this, t) || this;
-    var n = new a.AccordionComponentProperties();
-    n.scrollStepPixels = 124;
-    n.scrollStrategy = s.DynamicSizeScrollStrategyVertical;
-    n.disableButtons = true;
-    n.onlyOneActiveItem = true;
-    i._accordionComponent = new l.DynamicSliderAccordionComponent(i.subLayerDisp, n);
-    o.MovieClipHelper.clearMovieClip(i.subLayerDisp.mc_items);
+var a = require("./100.js");
+var s = require("./1.js");
+var r = require("./1.js");
+var l = require("./49.js");
+var c = require("./3.js");
+var u = require("./3.js");
+var d = require("./4.js");
+var p = require("./14.js");
+var h = require("./284.js");
+var g = require("./8.js");
+var C = function (e) {
+  function OptionsDialogRubyConfirmationItem(t) {
+    var i = e.call(this, new (r.getDefinitionByName("CastleOptions_RubyConfirmationItem"))(), t) || this;
+    i._inputBehaviours = [];
+    p.CastleComponent.textFieldManager.registerTextField(i._headerMC.txt_default, new c.LocalizedTextVO("dialog_options_rubyConfirmation_title"), new a.InternalGGSTextFieldConfigVO(true));
+    p.CastleComponent.textFieldManager.registerTextField(i._headerMC.mc_open.txt_selected, new c.LocalizedTextVO("dialog_options_rubyConfirmation_title"), new a.InternalGGSTextFieldConfigVO(true));
+    p.CastleComponent.textFieldManager.registerTextField(i.contentMC.txt_description, new c.LocalizedTextVO("dialog_options_rubyConfirmation_desc"), new a.InternalGGSTextFieldConfigVO(true));
+    p.CastleComponent.textFieldManager.registerTextField(i.contentMC.txt_default, new c.LocalizedTextVO("dialog_options_rubyConfirmation_noAmount_desc"), new a.InternalGGSTextFieldConfigVO(true));
+    g.ButtonHelper.initButtons([i.contentMC.checkbox_ruby, i.contentMC.checkbox_default], l.TwoStateButton);
+    i.itxt_ruby = p.CastleComponent.textFieldManager.registerTextField(i.contentMC.mc_ruby.txt_ruby, new u.LocalizedNumberVO(OptionsDialogRubyConfirmationItem.DEFAULT_AMOUNT), new a.InternalGGSTextFieldConfigVO(true));
+    i.itxt_ruby.type = s.TextFieldType.INPUT;
+    i.itxt_ruby.restrict = "0-9";
+    i.itxt_ruby.tabIndex = 1;
+    i._inputBehaviours = [];
+    i._inputBehaviours.push(new h.HighlightAndClearInputTextBehaviour(i.contentMC.mc_ruby, i.itxt_ruby, false));
+    var n = d.CastleModel.settingsData.confirmC2Threshold;
+    i.itxt_ruby.textContentVO.numberValue = n > 0 ? n : OptionsDialogRubyConfirmationItem.DEFAULT_AMOUNT;
+    i.setRubyConfirmation(n > -1, false);
     return i;
   }
-  n.__extends(OptionsDialogSublayerAccordion, e);
-  OptionsDialogSublayerAccordion.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this.createContent();
-    this._accordionComponent.show();
-    this.scrollToFirstExpandedItem();
-  };
-  OptionsDialogSublayerAccordion.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    this._accordionComponent.hide();
-  };
-  Object.defineProperty(OptionsDialogSublayerAccordion.prototype, "contentCreator", {
-    get: function () {
-      return this._params.contentCreator;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  OptionsDialogSublayerAccordion.prototype.createContent = function () {
-    var e = this;
-    this.contentCreator.accordionComponent = this._accordionComponent;
-    this.contentCreator.createItems().forEach(function (t) {
-      return e._accordionComponent.addItem(t);
+  n.__extends(OptionsDialogRubyConfirmationItem, e);
+  OptionsDialogRubyConfirmationItem.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    this.setRubyConfirmation(d.CastleModel.settingsData.confirmC2Threshold > 0);
+    this.itxt_ruby.focusOut.add(this.bindFunction(this.onFocusOutRubyInput));
+    this._inputBehaviours.forEach(function (e) {
+      return e.onShow();
     });
   };
-  OptionsDialogSublayerAccordion.prototype.scrollToFirstExpandedItem = function () {
-    var e = this._accordionComponent.items.find(function (e) {
-      return e.isExpanded && e.disp.visible;
+  OptionsDialogRubyConfirmationItem.prototype.onHide = function () {
+    e.prototype.onHide.call(this);
+    this.itxt_ruby.focusOut.remove(this.bindFunction(this.onFocusOutRubyInput));
+    this._inputBehaviours.forEach(function (e) {
+      return e.onHide();
     });
-    var t = e ? e.disp.y : 0;
-    this._accordionComponent.scrollToValue(t);
   };
-  return OptionsDialogSublayerAccordion;
-}(r.CastleDialogSubLayer);
-exports.OptionsDialogSublayerAccordion = c;
+  OptionsDialogRubyConfirmationItem.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (g.ButtonHelper.isButtonEnabled(t.target)) {
+      switch (t.target) {
+        case this.contentMC.checkbox_ruby:
+          this.setRubyConfirmation(true);
+          break;
+        case this.contentMC.checkbox_default:
+          this.setRubyConfirmation(false);
+      }
+    }
+  };
+  OptionsDialogRubyConfirmationItem.prototype.setRubyConfirmation = function (e, t = true) {
+    this._rubyConfirmationActive = e;
+    g.ButtonHelper.setButtonSelected(this.contentMC.checkbox_ruby, e);
+    g.ButtonHelper.setButtonSelected(this.contentMC.checkbox_default, !e);
+    if (t) {
+      this.saveRubyConfirmation();
+    }
+  };
+  OptionsDialogRubyConfirmationItem.prototype.onFocusOutRubyInput = function () {
+    var e = parseInt(this.itxt_ruby.text.replace(".", "").replace(",", "")) || OptionsDialogRubyConfirmationItem.DEFAULT_AMOUNT;
+    e = o.MathBase.clamp(e, OptionsDialogRubyConfirmationItem.MIN_AMOUNT, OptionsDialogRubyConfirmationItem.MAX_AMOUNT);
+    this.itxt_ruby.textContentVO.numberValue = e;
+    this.saveRubyConfirmation();
+  };
+  OptionsDialogRubyConfirmationItem.prototype.saveRubyConfirmation = function () {
+    var e = this.itxt_ruby.textContentVO.numberValue;
+    d.CastleModel.settingsData.confirmC2Threshold = this._rubyConfirmationActive ? e : -1;
+  };
+  OptionsDialogRubyConfirmationItem.MIN_AMOUNT = 1;
+  OptionsDialogRubyConfirmationItem.DEFAULT_AMOUNT = 250;
+  OptionsDialogRubyConfirmationItem.MAX_AMOUNT = 1000000;
+  return OptionsDialogRubyConfirmationItem;
+}(require("./382.js").AOptionsDialogCollapsibleItem);
+exports.OptionsDialogRubyConfirmationItem = C;

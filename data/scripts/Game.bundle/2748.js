@@ -3,24 +3,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./173.js");
-var s = function (e) {
-  function CastleUnitDealerEventScrollItem(t) {
-    return e.call(this, t) || this;
+var a = function (e) {
+  function CastleEilandUnitDealerEventBuyDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleEilandUnitDealerEventBuyDialog.ASSET_NAME) || this;
   }
-  n.__extends(CastleUnitDealerEventScrollItem, e);
-  Object.defineProperty(CastleUnitDealerEventScrollItem.prototype, "dialogKey", {
-    get: function () {
-      return r.CastleUnitDealerEventBuyDialog;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.AMerchantScrollItem.prototype, "dialogKey").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleUnitDealerEventScrollItem;
-}(a.AMerchantScrollItem);
-exports.CastleUnitDealerEventScrollItem = s;
-var r = require("./2749.js");
-o.classImplementsInterfaces(s, "MovieClip");
+  n.__extends(CastleEilandUnitDealerEventBuyDialog, e);
+  CastleEilandUnitDealerEventBuyDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    e.prototype.applyPropertiesLoaded.call(this, t);
+    this.dialogDisp.mc_titleBG.gotoAndStop(3);
+  };
+  CastleEilandUnitDealerEventBuyDialog.__initialize_static_members = function () {
+    CastleEilandUnitDealerEventBuyDialog.NAME = "CastleEilandUnitDealerEventBuy";
+    CastleEilandUnitDealerEventBuyDialog.ASSET_NAME = "CastleResourceMerchantEventBuyExternal";
+  };
+  return CastleEilandUnitDealerEventBuyDialog;
+}(require("./168.js").CastleGenericSliderBuyDialog);
+exports.CastleEilandUnitDealerEventBuyDialog = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList");
+a.__initialize_static_members();

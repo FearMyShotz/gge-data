@@ -4,18 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function FoodDistrictBuildingVE() {
-    return e.call(this) || this;
+  function FirepalaceBuildingVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FoodDistrictBuildingVE, e);
-  Object.defineProperty(FoodDistrictBuildingVE.prototype, "buildingGroundIconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_FoodDistrict;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return FoodDistrictBuildingVE;
-}(require("./540.js").ADistrictBuildingVE);
-exports.FoodDistrictBuildingVE = a;
+  n.__extends(FirepalaceBuildingVE, e);
+  return FirepalaceBuildingVE;
+}(require("./647.js").APalaceBuildingVE);
+exports.FirepalaceBuildingVE = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

@@ -13,8 +13,8 @@ var d = require("./18.js");
 var p = require("./58.js");
 var h = require("./148.js");
 var g = require("./4.js");
-var C = require("./112.js");
-var _ = require("./518.js");
+var C = require("./119.js");
+var _ = require("./519.js");
 var m = function (e) {
   function ArmyAttackMapmovementVO() {
     var t = this;
@@ -300,6 +300,6 @@ var m = function (e) {
   return ArmyAttackMapmovementVO;
 }(_.BasicMapmovementVO);
 exports.ArmyAttackMapmovementVO = m;
-var f = require("./2354.js");
+var f = require("./2355.js");
 a.classImplementsInterfaces(m, "IMapMovementVO", "IArmyMapmovementVO");
 m.__initialize_static_members();

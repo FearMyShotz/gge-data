@@ -1,19 +1,33 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = function (e) {
-  function CastleDonationEventDataEvent(t, i = null, n = false, o = false) {
-    var a = this;
-    CONSTRUCTOR_HACK;
-    (a = e.call(this, t, n, o) || this).params = i;
-    return a;
+var n = function () {
+  function ACrestSymbolVO(e) {
+    this._id = 0;
+    this._id = e;
   }
-  n.__extends(CastleDonationEventDataEvent, e);
-  CastleDonationEventDataEvent.__initialize_static_members = function () {
-    CastleDonationEventDataEvent.ON_CURRENT_SPENT_POINTS_UPDATED = "ON_CURRENT_SPENT_POINTS_UPDATED";
-  };
-  return CastleDonationEventDataEvent;
-}(createjs.Event);
-exports.CastleDonationEventDataEvent = o;
-o.__initialize_static_members();
+  Object.defineProperty(ACrestSymbolVO.prototype, "id", {
+    get: function () {
+      return this._id;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ACrestSymbolVO.prototype, "graphicClassName", {
+    get: function () {
+      return "extCrestSymbol_" + this._id;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ACrestSymbolVO.prototype, "assetUrl", {
+    get: function () {
+      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("CastleCrestSymbols");
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ACrestSymbolVO;
+}();
+exports.ACrestSymbolVO = n;
+var o = require("./2.js");

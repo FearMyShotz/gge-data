@@ -2,48 +2,45 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = function (e) {
-  function IsoViewObjectGroupBackground() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./6.js");
+var r = require("./18.js");
+var l = require("./60.js");
+var c = require("./4.js");
+var u = function (e) {
+  function IsoDataObjectGroupTreasureChest() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IsoViewObjectGroupBackground, e);
-  IsoViewObjectGroupBackground.prototype.destroy = function () {
-    e.prototype.destroy.call(this);
-    this.destroyBackground();
-  };
-  IsoViewObjectGroupBackground.prototype.destroyBackground = function () {
-    this._ve = this.destroyObject(this.ve);
-  };
-  IsoViewObjectGroupBackground.prototype.initObjects = function () {
-    this.destroyBackground();
-    this._ve = this.createObjectAndAddToLayer(this.isoData.objects.background.vo);
-  };
-  IsoViewObjectGroupBackground.prototype.render = function (e = false) {
-    if (this.ve) {
-      this.ve.updateDisp();
-      s.IsoHelper.view.bgStage.color = o.ColorTransform.colorNumToString(s.IsoHelper.view.getIsoColorsByActiveKingdom().backgroundColor);
+  n.__extends(IsoDataObjectGroupTreasureChest, e);
+  IsoDataObjectGroupTreasureChest.prototype.initObjects = function () {
+    this.resetList();
+    if (this.isoData.areaData.isMyHomeCastle) {
+      var e = c.CastleModel.privateOfferData.getPrivateOffersWithVisualParamter(l.ClientConstOffer.OFFER_VISUAL_TREASURE_CHEST);
+      if (e != null) {
+        for (var t = 0, i = e; t < i.length; t++) {
+          var n = i[t];
+          if (n !== undefined) {
+            var o = n.getDescriptionByName(l.ClientConstOffer.VISUAL_COMPONENT_CONTAINER).visuals.get(l.ClientConstOffer.OFFER_VISUAL_TREASURE_CHEST);
+            if (o.isVisible && o.isTreasureChestVisibleByArea(this.isoData.areaData.areaInfo.areaType)) {
+              var s = new (a.getDefinitionByName(o.objectType + r.ClientConstCastle.GROUP_SURROUNDINGS + "VO"))();
+              this.initObjectVO(s, n);
+              this._list.push(s);
+            }
+          }
+        }
+      }
     }
   };
-  IsoViewObjectGroupBackground.prototype.removeObjectByVE = function (e) {
-    this.destroyBackground();
+  IsoDataObjectGroupTreasureChest.prototype.initObjectVO = function (e, t) {
+    e.offerVO = t;
+    e.init(this.isoData);
+    var i = s.int(o.MathBase.random(0, 3, true));
+    var n = this.isoData.areaData.isMyHomeCastle ? r.ClientConstCastle.TREASURECHEST_POSITIONS_HOME_CASTLE : r.ClientConstCastle.TREASURECHEST_POSITIONS;
+    e.posOffset.x = n[i][0];
+    e.posOffset.y = n[i][1];
+    e.updateData();
   };
-  IsoViewObjectGroupBackground.prototype.containsObject = function (e) {
-    return e == this.ve;
-  };
-  IsoViewObjectGroupBackground.prototype.fillInCompleteList = function (e) {
-    if (this.ve) {
-      e.push(this.ve);
-    }
-  };
-  Object.defineProperty(IsoViewObjectGroupBackground.prototype, "ve", {
-    get: function () {
-      return this._ve;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IsoViewObjectGroupBackground;
-}(require("./1008.js").AIsoViewObjectGroup);
-exports.IsoViewObjectGroupBackground = a;
-var s = require("./46.js");
+  return IsoDataObjectGroupTreasureChest;
+}(require("./358.js").AIsoDataObjectGroupSimpleList);
+exports.IsoDataObjectGroupTreasureChest = u;

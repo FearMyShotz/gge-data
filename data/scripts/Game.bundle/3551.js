@@ -2,89 +2,110 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./5.js");
+var r = require("./5.js");
 var l = require("./3.js");
-var c = require("./429.js");
-var u = require("./24.js");
-var d = require("./8.js");
-var p = function (e) {
-  function FactionEventIntroductionSublayer(t) {
-    var i = this;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).pagination = new c.Pagination(i, FactionEventIntroductionSublayer.PAGES);
-    i.externalClip = new u.CastleGoodgameExternalClip("FactionEventDlgInstructions", o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("FactionEventDlgInstructions"), null, 0, false);
-    i.initBasicButtons([t.mc_pagination.btn_left, t.mc_pagination.btn_right]);
-    i.textFieldManager.registerTextField(t.txt_header, new l.LocalizedTextVO("dialog_faction_tutorial_header"));
-    i.itxt_pagination = i.textFieldManager.registerTextField(t.mc_pagination.txt_page, new l.LocalizedTextVO(a.GenericTextIds.VALUE_PROPORTIONAL_VALUE));
-    return i;
+var c = require("./3.js");
+var u = require("./1431.js");
+var d = require("./26.js");
+var p = require("./4.js");
+var h = require("./8.js");
+var g = require("./588.js");
+var C = require("./35.js");
+var _ = function (e) {
+  function FactionEventJoinSublayer(t, i) {
+    var n = e.call(this, t) || this;
+    n.sublayerSwitcher = i;
+    n.initBasicButtons([t.btn_introduction, t.btn_rankings, t.mc_bottom.btn_join]);
+    n.textFieldManager.registerTextField(t.txt_header, new l.LocalizedTextVO("dialog_factionJoin_header"));
+    n.textFieldManager.registerTextField(t.txt_introduction, new l.LocalizedTextVO("dialog_factionJoin_tutorial"));
+    n.textFieldManager.registerTextField(t.txt_rankings, new l.LocalizedTextVO("dialog_factionJoin_rewards"));
+    n.textFieldManager.registerTextField(t.txt_chooseCamp, new l.LocalizedTextVO("dialog_factionJoin_chooseCamp"));
+    n.textFieldManager.registerTextField(t.mc_bottom.btn_join.txt_name, new l.LocalizedTextVO("dialog_factionJoin_join_button"));
+    n.textFieldManager.registerTextField(t.mc_warning.txt_title, new l.LocalizedTextVO("dialog_factionJoin_lastManStanding_header"));
+    n.textFieldManager.registerTextField(t.mc_warning.txt_description, new l.LocalizedTextVO("dialog_factionJoin_lastManStanding_copy"));
+    t.btn_introduction.toolTipText = "dialog_factionJoin_tutorial_tooltip";
+    t.btn_rankings.toolTipText = "dialog_factionJoin_rewards_tooltip";
+    n.campSelection = new y.PrebuiltCastleSelector(t.mc_factionCamps, "mc_castle", 3);
+    return n;
   }
-  n.__extends(FactionEventIntroductionSublayer, e);
-  FactionEventIntroductionSublayer.prototype.show = function (t) {
+  n.__extends(FactionEventJoinSublayer, e);
+  FactionEventJoinSublayer.prototype.show = function (t) {
     e.prototype.show.call(this, t);
-    this.loadPages();
-    this.updatePageDisplay();
-    this.updatePagination();
+    this.campSelection.show(s.FactionConst.KINGDOM_ID);
+    this.campSelection.selectionIndex = 1;
+    h.ButtonHelper.enableButton(this.subLayerDisp.mc_bottom.btn_join, true);
+    this.updateShowLMSWarning();
+    p.CastleModel.specialEventData.addEventListener(d.CastleSpecialEventEvent.FACTION_EVENT_LAST_MAN_STANDING_UPDATE, this.bindFunction(this.onLMSChanged));
   };
-  FactionEventIntroductionSublayer.prototype.onClick = function (e) {
-    if (d.ButtonHelper.isButtonEnabled(e.target)) {
+  FactionEventJoinSublayer.prototype.hide = function () {
+    e.prototype.hide.call(this);
+    this.campSelection.hide();
+    p.CastleModel.specialEventData.removeEventListener(d.CastleSpecialEventEvent.FACTION_EVENT_LAST_MAN_STANDING_UPDATE, this.bindFunction(this.onLMSChanged));
+  };
+  FactionEventJoinSublayer.prototype.onLMSChanged = function (e) {
+    this.updateShowLMSWarning();
+  };
+  FactionEventJoinSublayer.prototype.updateShowLMSWarning = function () {
+    var e = p.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_FACTION).isOneLMSActive;
+    this.subLayerDisp.mc_bottom.visible = !e;
+    this.subLayerDisp.mc_warning.visible = e;
+  };
+  FactionEventJoinSublayer.prototype.onClick = function (e) {
+    if (h.ButtonHelper.isButtonEnabled(e.target)) {
       switch (e.target) {
-        case this.subLayerDisp.mc_pagination.btn_left:
-          this.pagination.scrollLeft();
+        case this.subLayerDisp.btn_introduction:
+          this.sublayerSwitcher.switchTo(b.FactionEventMainDialog.SUBLAYER_INTRODUCTION);
           break;
-        case this.subLayerDisp.mc_pagination.btn_right:
-          this.pagination.scrollRight();
+        case this.subLayerDisp.btn_rankings:
+          this.sublayerSwitcher.switchTo(b.FactionEventMainDialog.SUBLAYER_RANKINGS);
+          break;
+        case this.subLayerDisp.mc_bottom.btn_join:
+          this.onJoinFactionEventButtonClicked();
       }
     }
   };
-  FactionEventIntroductionSublayer.prototype.loadPages = function () {
-    if (this.externalClip.isLoaded) {
-      this.onPagesLoaded(this.externalClip);
-    } else {
-      this.externalClip.clipLoaded.addOnceWithPriority(this.bindFunction(this.onPagesLoaded));
-    }
-  };
-  FactionEventIntroductionSublayer.prototype.onPagesLoaded = function (e) {
-    var t = this.externalClip.currentshownDisplayObject;
-    s.MovieClipHelper.clearMovieClip(this.subLayerDisp.mc_pages);
-    this.subLayerDisp.mc_pages.addChild(this.externalClip.currentshownDisplayObject);
-    this.textFieldManager.registerTextField(t.page0.txt_desc0, new l.LocalizedTextVO("dialog_faction_tutorial_slide1_copy1"));
-    this.textFieldManager.registerTextField(t.page0.txt_desc1, new l.LocalizedTextVO("dialog_faction_tutorial_slide1_copy2"));
-    this.textFieldManager.registerTextField(t.page0.txt_desc2, new l.LocalizedTextVO("dialog_faction_tutorial_slide1_copy3"));
-    this.textFieldManager.registerTextField(t.page1.txt_desc0, new l.LocalizedTextVO("dialog_faction_tutorial_slide2_copy1"));
-    this.textFieldManager.registerTextField(t.page1.txt_desc1, new l.LocalizedTextVO("dialog_faction_tutorial_slide2_copy2"));
-    this.textFieldManager.registerTextField(t.page2.txt_desc0, new l.LocalizedTextVO("dialog_faction_tutorial_slide3_copy1"));
-    this.textFieldManager.registerTextField(t.page2.txt_desc1, new l.LocalizedTextVO("dialog_faction_tutorial_slide3_copy2"));
-    this.textFieldManager.registerTextField(t.page3.txt_desc0, new l.LocalizedTextVO("dialog_faction_tutorial_slide4_copy1"));
-    this.textFieldManager.registerTextField(t.page4.txt_header, new l.LocalizedTextVO("dialog_faction_tutorial_slide5_header"));
-    this.textFieldManager.registerTextField(t.page5.txt_header, new l.LocalizedTextVO("dialog_faction_tutorial_slide6_header"));
-    this.textFieldManager.registerTextField(t.page5.txt_desc0, new l.LocalizedTextVO("dialog_faction_tutorial_slide6_copy1"));
-    this.textFieldManager.registerTextField(t.page5.txt_desc1, new l.LocalizedTextVO("dialog_faction_tutorial_slide6_copy2"));
-  };
-  FactionEventIntroductionSublayer.prototype.updatePages = function (e, t) {
-    this.updatePageDisplay();
-    this.updatePagination();
-  };
-  FactionEventIntroductionSublayer.prototype.updatePageDisplay = function () {
-    var e = this.externalClip.currentshownDisplayObject;
-    if (e) {
-      for (var t = 0; t < FactionEventIntroductionSublayer.PAGES; ++t) {
-        e["page" + t].visible = this.pagination.currentPageIndex == t;
+  FactionEventJoinSublayer.prototype.onJoinFactionEventButtonClicked = function () {
+    if (!f.FlashBlockHelper.checkFlashBlock(s.FactionConst.KINGDOM_ID)) {
+      if (this.haveEnoughResourcesToEnter()) {
+        var e = p.CastleModel.userCastleListDetailed.getMainCastleByKingdomID(a.WorldClassic.KINGDOM_ID).getResourcesAsCollectableList();
+        try {
+          C.CastleDialogSubLayer.dialogHandler.registerDefaultDialogs(E.CastleConfirmCostsDialog, new g.CastleConfirmCostsDialogProperties(c.Localize.text("dialog_factionJoin_confirm_header"), c.Localize.text("dialog_factionJoin_confirmCamp" + this.campSelection.selectionData.id), this.campSelection.selectionData.primaryCosts, e, this.bindFunction(this.buyCamp)));
+        } catch (e) {
+          console.error("selectionData is null, selectedIndex: " + this.campSelection.selectionIndex);
+        }
+      } else {
+        this.buyCamp();
       }
     }
   };
-  FactionEventIntroductionSublayer.prototype.updatePagination = function () {
-    this.subLayerDisp.mc_pagination.btn_left.visible = this.pagination.canScrollLeft();
-    this.subLayerDisp.mc_pagination.btn_right.visible = this.pagination.canScrollRight();
-    this.itxt_pagination.textContentVO.textReplacements = [this.pagination.currentPage, FactionEventIntroductionSublayer.PAGES];
+  FactionEventJoinSublayer.prototype.buyCamp = function (e = null) {
+    h.ButtonHelper.delayEnableButton(this.subLayerDisp.mc_bottom.btn_join, true);
+    p.CastleModel.smartfoxClient.sendCommandVO(new u.C2SSelectFactionCampVO(this.campSelection.selectionData.id, this.campSelection.selectionData.isPremium(), s.FactionConst.KINGDOM_ID, false));
   };
-  FactionEventIntroductionSublayer.__initialize_static_members = function () {
-    FactionEventIntroductionSublayer.PAGES = 6;
+  FactionEventJoinSublayer.prototype.haveEnoughResourcesToEnter = function () {
+    if (this.campSelection.selectionData) {
+      for (var e = this.campSelection.selectionData.primaryCosts, t = 0; t < e.length; ++t) {
+        var i = e.getItemByIndexSave(t);
+        if (i) {
+          var n = p.CastleModel.userCastleListDetailed.getMainCastleByKingdomID(a.WorldClassic.KINGDOM_ID);
+          if (O.CostHelper.getAvailableGoodsFromDetailedCastleVO(n, new m.CollectableTypeVO().initByCollectable(i)) < i.amount) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
   };
-  return FactionEventIntroductionSublayer;
-}(require("./34.js").CastleDialogSubLayer);
-exports.FactionEventIntroductionSublayer = p;
-r.classImplementsInterfaces(p, "ICollectableRendererList", "ISublayer", "IPaginationContainer");
-p.__initialize_static_members();
+  return FactionEventJoinSublayer;
+}(C.CastleDialogSubLayer);
+exports.FactionEventJoinSublayer = _;
+var m = require("./74.js");
+var f = require("./160.js");
+var O = require("./66.js");
+var E = require("./613.js");
+var y = require("./1714.js");
+var b = require("./662.js");
+o.classImplementsInterfaces(_, "ICollectableRendererList", "ISublayer");

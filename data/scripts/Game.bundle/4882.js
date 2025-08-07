@@ -2,57 +2,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./7.js");
-var u = require("./172.js");
-var d = require("./4.js");
-var p = require("./10.js");
-var h = function (e) {
-  function HGHCommand() {
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./172.js");
+var l = require("./15.js");
+var c = require("./10.js");
+var u = function (e) {
+  function AMACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(HGHCommand, e);
-  Object.defineProperty(HGHCommand.prototype, "cmdId", {
+  n.__extends(AMACommand, e);
+  Object.defineProperty(AMACommand.prototype, "cmdId", {
     get: function () {
-      return c.ClientConstSF.S2C_GET_HIGHSCORE;
+      return s.ClientConstSF.S2C_ALLIANCE_MEMBER_AQUA_POINTS_EVENT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  HGHCommand.prototype.executeCommand = function (e, t) {
+  AMACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case s.ERROR.ALL_OK:
+      case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        var n = -1;
-        if (i.LID) {
-          n = l.int(i.LID);
-        }
-        d.CastleModel.highscoreData.dispatchEvent(new u.CastleHighscoreEvent(u.CastleHighscoreEvent.GET_HIGHSCORE_DATA, [i], n));
-        return true;
-      case s.ERROR.PLAYER_NOT_FOUND:
-        d.CastleModel.highscoreData.dispatchEvent(new u.CastleHighscoreEvent(u.CastleHighscoreEvent.GET_HIGHSCORE_DATA_ERROR, [i], n));
-        g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_watchout"), r.Localize.text("alert_playerName_notFound")));
-        break;
-      case s.ERROR.ALLI_NOT_FOUND:
-        d.CastleModel.highscoreData.dispatchEvent(new u.CastleHighscoreEvent(u.CastleHighscoreEvent.GET_HIGHSCORE_DATA_ERROR, [i], n));
-        g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_watchout"), r.Localize.text("alert_allianceName_notFound")));
+        l.CastleBasicController.getInstance().dispatchEvent(new r.CastleHighscoreEvent(r.CastleHighscoreEvent.AQUAPOINTS_HIGSCORE_ALLY_PLAYER, [i]));
         break;
       default:
         this.showErrorDialog(e, t);
-        d.CastleModel.highscoreData.dispatchEvent(new u.CastleHighscoreEvent(u.CastleHighscoreEvent.GET_HIGHSCORE_DATA_ERROR));
     }
     return false;
   };
-  return HGHCommand;
-}(p.CastleCommand);
-exports.HGHCommand = h;
-var g = require("./9.js");
-var C = require("./38.js");
-a.classImplementsInterfaces(h, "IExecCommand");
+  return AMACommand;
+}(c.CastleCommand);
+exports.AMACommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

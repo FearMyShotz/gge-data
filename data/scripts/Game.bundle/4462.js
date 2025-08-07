@@ -2,179 +2,68 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./1.js");
-var l = require("./5.js");
-var c = require("./3.js");
-var u = require("./6.js");
-var d = require("./289.js");
-var p = function (e) {
-  function CastleLuckyWheelJackpotDialog() {
-    var t = this;
-    t._isRewarded = false;
+var o = require("./1.js");
+var a = require("./67.js");
+var s = require("./104.js");
+var r = require("./19.js");
+var l = function (e) {
+  function JackpotPrizeDisplayComponent(t, i = null) {
+    var n = this;
+    n._itemWidth = 0;
+    n._itemGap = 0;
     CONSTRUCTOR_HACK;
-    return t = e.call(this, CastleLuckyWheelJackpotDialog.NAME) || this;
+    (n = e.call(this) || this)._itemHolder = t;
+    n._itemContainer = i;
+    n.setupVerticalAlignment();
+    return n;
   }
-  n.__extends(CastleLuckyWheelJackpotDialog, e);
-  CastleLuckyWheelJackpotDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_reward]);
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_reward.txt_text, new c.LocalizedTextVO("dialog_dailyQuests_activityGift"));
-    this._cardList = [];
-    this._itxtTitle = this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new c.LocalizedTextVO(""));
-  };
-  CastleLuckyWheelJackpotDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.setTitle("dialog_luckyWheel_jackpotCurrent");
-    this._isRewarded = false;
-    this.setRewardBtn();
-    this.createCards();
-    this.setCards();
-    this.initAnimation();
-  };
-  CastleLuckyWheelJackpotDialog.prototype.hideLoaded = function (t = null) {
-    this.destroyCards();
-    e.prototype.hideLoaded.call(this, t);
-  };
-  CastleLuckyWheelJackpotDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_reward:
-        this.dialogProperties.fillRewardCallback();
-        this.hide();
-    }
-  };
-  CastleLuckyWheelJackpotDialog.prototype.createCards = function () {
-    var e = this.dialogProperties.eventVO.eventId == l.EventConst.EVENTTYPE_LUCKYWHEEL_SD ? "JackpotCard_SalesDays" : "JackpotCard";
-    var t = s.getDefinitionByName(e);
-    this._cardList.push(new g.CastleLuckyWheelJackpotCard(new t(), 0, this.bindFunction(this.onClickJackpotCard), this.dialogProperties.eventVO, this.bindFunction(this.onAnimationCompleted)), new g.CastleLuckyWheelJackpotCard(new t(), 1, this.bindFunction(this.onClickJackpotCard), this.dialogProperties.eventVO), new g.CastleLuckyWheelJackpotCard(new t(), 2, this.bindFunction(this.onClickJackpotCard), this.dialogProperties.eventVO));
-    for (var i = 0; i < this._cardList.length; i++) {
-      var n = this._cardList[i];
-      this.dialogDisp.cardlayer.addChild(n.disp);
-    }
-  };
-  CastleLuckyWheelJackpotDialog.prototype.onAnimationCompleted = function () {
-    this.setTitle("dialog_luckyWheel_choosePrice");
-  };
-  CastleLuckyWheelJackpotDialog.prototype.destroyCards = function () {
-    for (var e = u.int(this._cardList.length - 1); e >= 0; e--) {
-      var t = this._cardList.splice(e, 1)[0];
-      this.dialogDisp.cardlayer.removeChild(t.disp);
-      t.destroy();
-      t.disp = null;
-      t = null;
-    }
-  };
-  CastleLuckyWheelJackpotDialog.prototype.onClickJackpotCard = function (e) {
-    if (!this._isRewarded) {
-      this.setWinnerCard(this._cardList[e]);
-      this.removeMatchingReward();
-      for (var t = this._cardList.length, i = 0; i < t; i++) {
-        var n = this._cardList[i];
-        if (n.isClosed()) {
-          this.setLoosingCard(n);
-        }
+  n.__extends(JackpotPrizeDisplayComponent, e);
+  JackpotPrizeDisplayComponent.prototype.showItems = function (e, t) {
+    if (e) {
+      var i = new c.CollectableList();
+      i.addItem(e.list[0 + (t - 1) * 3]);
+      if (e.list.length > 1 + (t - 1) * 3) {
+        i.addItem(e.list[1 + (t - 1) * 3]);
       }
-      this._isRewarded = true;
-      this.setRewardBtn();
-      this.setTitle("dialog_luckyWheel_congratulations");
-    }
-  };
-  CastleLuckyWheelJackpotDialog.prototype.setWinnerCard = function (e) {
-    e.setOpened(this.dialogProperties.winningItem);
-    e.setWinningAppearance();
-  };
-  CastleLuckyWheelJackpotDialog.prototype.setLoosingCard = function (e) {
-    var t = u.int(o.MathUtils.randomInt(0, this.dialogProperties.rewards.length - 1));
-    var i = this.dialogProperties.rewards.getItemByIndex(t);
-    this.dialogProperties.rewards.removeByIndex(t);
-    e.setOpened(i);
-  };
-  CastleLuckyWheelJackpotDialog.prototype.setCards = function () {
-    var e;
-    var t = this.dialogProperties.rewards.clone();
-    for (var i = 0; i < this._cardList.length; i++) {
-      e = t.getItemByIndex(i);
-      var n = this._cardList[i];
-      n.x = -CastleLuckyWheelJackpotDialog.X_DIST + i * CastleLuckyWheelJackpotDialog.X_DIST;
-      n.show();
-      n.setOpened(e);
-    }
-  };
-  CastleLuckyWheelJackpotDialog.prototype.initAnimation = function () {
-    for (var e = 0; e < this._cardList.length; e++) {
-      this._cardList[e].setAnimation(0, 1.5, true, false);
-    }
-  };
-  CastleLuckyWheelJackpotDialog.prototype.setRewardBtn = function () {
-    this.dialogDisp.btn_reward.visible = this._isRewarded;
-  };
-  CastleLuckyWheelJackpotDialog.prototype.setTitle = function (e) {
-    this._itxtTitle.textContentVO.textId = e;
-  };
-  Object.defineProperty(CastleLuckyWheelJackpotDialog.prototype, "dialogProperties", {
-    get: function () {
-      return this.properties;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleLuckyWheelJackpotDialog.prototype.removeMatchingReward = function () {
-    var e;
-    var t = 0;
-    var i = this.dialogProperties.rewards.length;
-    var n = this.dialogProperties.winningItem;
-    for (t = 0; t < i; t++) {
-      e = this.dialogProperties.rewards.getItemByIndex(t);
-      if (n.itemType == h.CollectableEnum.GEM && e.itemType == h.CollectableEnum.GEM_RANDOM) {
-        this.dialogProperties.rewards.removeByIndex(t);
-        return;
+      if (e.list.length > 2 + (t - 1) * 3) {
+        i.addItem(e.list[2 + (t - 1) * 3]);
       }
-      if (n.itemType == h.CollectableEnum.EQUIPMENT_RARENESS && e.itemType == h.CollectableEnum.HERO_RANDOM) {
-        this.dialogProperties.rewards.removeByIndex(t);
-        return;
-      }
-      if (n.itemType.serverKey == e.itemType.serverKey) {
-        if (n.itemType == h.CollectableEnum.EQUIPMENT_UNIQUE) {
-          if (n.equipmentVO.uniqueID == e.equipmentVO.uniqueID) {
-            this.dialogProperties.rewards.removeByIndex(t);
-            return;
-          }
-          continue;
-        }
-        if (r.instanceOfClass(n, "ACollectableItemEquipmentVO")) {
-          if (n.equipmentVO.rareID == e.equipmentVO.rareID) {
-            this.dialogProperties.rewards.removeByIndex(t);
-            return;
-          }
-          continue;
-        }
-        if (r.instanceOfClass(n, "CollectableItemRelicVO")) {
-          if (e.type == d.CollectableItemRelicVO.TYPE_ALL) {
-            this.dialogProperties.rewards.removeByIndex(t);
-            return;
-          }
-          var o = n.vo.relicInfoVO;
-          var a = e.vo.relicInfoVO;
-          if (o.relicTypeId == a.relicTypeId) {
-            this.dialogProperties.rewards.removeByIndex(t);
-            return;
-          }
-        }
-        if (n.isSameAs(e)) {
-          this.dialogProperties.rewards.removeByIndex(t);
-          return;
-        }
-      }
+      var n = new r.CollectableRenderOptions(r.CollectableRenderOptions.SET_DEFAULT);
+      n.textfield.verticalAlign = d.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+      u.CollectableRenderHelper.displayMultipleItemsComplete(this, new a.CollectableRenderClipsList().createByItemMcList(this._itemHolder).addIconMcs("mc_iconHolder").addTextfields("txt_amount").addInfoBtns("parent.btn_info"), i, n, null, function afterRenderFunc(e) {
+        e.clips.itemMc.parent.visible = e.itemVO != null;
+      });
+      this.alignHorizontally(e.length);
     }
   };
-  CastleLuckyWheelJackpotDialog.NAME = "CastleLuckyWheelJackpotDialog";
-  CastleLuckyWheelJackpotDialog.X_DIST = 187;
-  return CastleLuckyWheelJackpotDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleLuckyWheelJackpotDialog = p;
-var h = require("./12.js");
-var g = require("./4463.js");
-a.classImplementsInterfaces(p, "ICollectableRendererList");
+  JackpotPrizeDisplayComponent.prototype.dispose = function () {
+    this.resetPosition();
+  };
+  JackpotPrizeDisplayComponent.prototype.resetPosition = function () {
+    if (this._itemContainer) {
+      this._itemContainer.x = this._itemContainerBounds.x;
+    }
+  };
+  JackpotPrizeDisplayComponent.prototype.setupVerticalAlignment = function () {
+    if (this._itemContainer) {
+      this._itemContainerBounds = this._itemContainer.getBounds(this._itemContainer.parent);
+      var e = this._itemHolder[0].parent;
+      var t = this._itemHolder[1].parent;
+      this._itemWidth = e.width;
+      this._itemGap = t.x - e.x - this._itemWidth;
+    }
+  };
+  JackpotPrizeDisplayComponent.prototype.alignHorizontally = function (e) {
+    if (this._itemContainerBounds) {
+      var t = this._itemHolder.length;
+      var i = (t - (e = Math.min(e, t))) * (this._itemWidth - this._itemGap);
+      this._itemContainer.x = this._itemContainerBounds.x + i;
+    }
+  };
+  return JackpotPrizeDisplayComponent;
+}(s.CollectableRendererList);
+exports.JackpotPrizeDisplayComponent = l;
+var c = require("./48.js");
+var u = require("./25.js");
+var d = require("./42.js");
+o.classImplementsInterfaces(l, "ICollectableRendererList");

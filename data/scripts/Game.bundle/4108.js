@@ -7,7 +7,7 @@ var a = require("./58.js");
 var s = require("./53.js");
 var r = require("./4.js");
 var l = require("./447.js");
-var c = require("./988.js");
+var c = require("./989.js");
 var u = require("./89.js");
 var d = function (e) {
   function FusionForgePanelButton() {
@@ -60,5 +60,5 @@ var d = function (e) {
 }(u.APanelButton);
 exports.FusionForgePanelButton = d;
 var p = require("./14.js");
-var h = require("./989.js");
+var h = require("./990.js");
 o.classImplementsInterfaces(d, "ICollectableRendererList");

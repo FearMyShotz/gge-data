@@ -1,17 +1,84 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = function (e) {
-  function CastleLoginEvent(t, i = false, n = false) {
-    return e.call(this, t, i, n) || this;
+var n = function () {
+  function ACastleLegendSkillTreeNode(e) {
+    this._id = 0;
+    this._id = e;
+    this._childs = [];
+    this._unlockRequirements = [];
   }
-  n.__extends(CastleLoginEvent, e);
-  CastleLoginEvent.__initialize_static_members = function () {
-    CastleLoginEvent.LOGIN_PROCESS_COMPLETE = "login_process_complete";
-    CastleLoginEvent.ON_GBD_ARRIVED = "onGbdArrived";
+  ACastleLegendSkillTreeNode.prototype.insertSkill = function (e) {
+    if (this.childNodeClass != null) {
+      if (!this.getChildNode(this.childIDProperty(e))) {
+        this._childs.push(new this.childNodeClass(this.childIDProperty(e)));
+      }
+      this.getChildNode(this.childIDProperty(e)).insertSkill(e);
+    }
   };
-  return CastleLoginEvent;
-}(createjs.Event);
-exports.CastleLoginEvent = o;
-o.__initialize_static_members();
+  Object.defineProperty(ACastleLegendSkillTreeNode.prototype, "childNodeClass", {
+    get: function () {
+      return null;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ACastleLegendSkillTreeNode.prototype.childIDProperty = function (e) {
+    return 0;
+  };
+  ACastleLegendSkillTreeNode.prototype.getChildNode = function (e) {
+    if (this._childs != null) {
+      for (var t = 0, i = this._childs; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined && n.id == e) {
+          return n;
+        }
+      }
+    }
+    return null;
+  };
+  Object.defineProperty(ACastleLegendSkillTreeNode.prototype, "id", {
+    get: function () {
+      return this._id;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ACastleLegendSkillTreeNode.prototype, "childs", {
+    get: function () {
+      return this._childs;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ACastleLegendSkillTreeNode.prototype, "unlockRequirements", {
+    get: function () {
+      return this._unlockRequirements;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ACastleLegendSkillTreeNode.prototype.isUnlocked = function () {
+    for (var e = 0; e < this._unlockRequirements.length; e++) {
+      if (!this._unlockRequirements[e].isUnlocked()) {
+        return false;
+      }
+    }
+    return true;
+  };
+  ACastleLegendSkillTreeNode.prototype.getUnlockText = function () {
+    var e = "";
+    for (var t = 0; t < this._unlockRequirements.length; t++) {
+      var i = this._unlockRequirements[t];
+      if (!i.isUnlocked() && (e += e != "" ? "\n" : "", e += i.getUnlockRequirementText(), !i.showFollowingRequirements)) {
+        break;
+      }
+    }
+    return e;
+  };
+  ACastleLegendSkillTreeNode.prototype.addUnlockRequirement = function (e) {
+    this._unlockRequirements.push(e);
+  };
+  return ACastleLegendSkillTreeNode;
+}();
+exports.ACastleLegendSkillTreeNode = n;

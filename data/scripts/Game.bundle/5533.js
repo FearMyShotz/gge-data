@@ -2,75 +2,93 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
+var o = require("./5.js");
 var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./13.js");
-var c = require("./8.js");
-var u = require("./11.js");
-var d = require("./221.js");
-var p = function (e) {
-  function SubscriptionExpiredDialog() {
-    return e.call(this, SubscriptionExpiredDialog.NAME) || this;
+var s = require("./6.js");
+var r = require("./1065.js");
+var l = require("./1704.js");
+var c = require("./5534.js");
+var u = require("./5535.js");
+var d = require("./5536.js");
+var p = require("./222.js");
+var h = require("./4.js");
+var g = require("./83.js");
+var C = require("./99.js");
+var _ = function (e) {
+  function MessageSubscriptionVO() {
+    var t = this;
+    t._subType = -1;
+    t._subscriptionTypeId = -1;
+    t._allianceSubscribersAtThatTime = -1;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(SubscriptionExpiredDialog, e);
-  SubscriptionExpiredDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    c.ButtonHelper.initButton(this.dialogDisp.btn_close, -1, g.ClickFeedbackButton);
-    c.ButtonHelper.initButton(this.dialogDisp.btn_ok, -1, h.ClickFeedbackButtonBackground);
-    C.registerUIComponentToCXF(this.dialogDisp.btn_ok, "btn_webshop", {
-      page: "subscriptions",
-      sourceId: _.CXFSourceTrackingConstants.CXF_SOURCE_SUBSCRIPTION_EXPIRED_DIALOG
-    });
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("dialog_subscriptionExpired_header")));
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_ok.txt_text, new s.LocalizedTextVO("dialog_subscriptionExpired_subscriptionButton_desc"));
-  };
-  SubscriptionExpiredDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.updateInfos();
-  };
-  SubscriptionExpiredDialog.prototype.updateInfos = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new s.LocalizedTextVO(this.getDescriptionTextId(), [a.Localize.text(this.dialogProperties.messageVO.getPackageType().nameTextId), this.dialogProperties.messageVO.allianceSubscribersAtThatTime]));
-  };
-  SubscriptionExpiredDialog.prototype.getDescriptionTextId = function () {
-    switch (this.dialogProperties.messageVO.getPackageType()) {
-      case d.SubscriptionPackageEnum.ALLIANCE:
-        switch (this.dialogProperties.messageVO.allianceSubscribersAtThatTime) {
-          case 0:
-            return "dialog_subscriptionExpired_allianceNone_desc";
-          case 1:
-            return "dialog_subscriptionExpired_allianceSingular_desc";
-          default:
-            return "dialog_subscriptionExpired_alliance_desc";
+  n.__extends(MessageSubscriptionVO, e);
+  MessageSubscriptionVO.prototype.parseMessageHeader = function (e) {
+    var t = e.split("#");
+    this._subType = s.int(t[0]);
+    t = t[1].split("+");
+    this._subscriptionTypeId = s.int(t[0]);
+    switch (this._subType) {
+      case o.MessageConst.SUBTYPE_SUBSCRIPTION_ENABLED:
+      case o.MessageConst.SUBTYPE_SUBSCRIPTION_EXPIRED:
+        if (t.length > 1) {
+          this._allianceSubscribersAtThatTime = s.int(t[1]);
         }
-      default:
-        return "dialog_subscriptionExpired_player_desc";
     }
   };
-  SubscriptionExpiredDialog.prototype.onClick = function (t) {
-    if (c.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_ok:
-          this.hide();
-      }
+  MessageSubscriptionVO.prototype.parseSubject = function () {
+    switch (this._subType) {
+      case o.MessageConst.SUBTYPE_SUBSCRIPTION_ENABLED:
+        return a.Localize.text("dialog_subscriptionConfirmation_header");
+      case o.MessageConst.SUBTYPE_SUBSCRIPTION_EXPIRED:
+        return a.Localize.text("dialog_subscriptionExpired_header");
+      case o.MessageConst.SUBTYPE_SUBSCRIPTION_REWARD:
+        return a.Localize.text("dialog_subscription_monthlyGift_title");
     }
+    return "";
   };
-  Object.defineProperty(SubscriptionExpiredDialog.prototype, "dialogProperties", {
+  MessageSubscriptionVO.prototype.parseSender = function () {
+    return a.Localize.text("system");
+  };
+  Object.defineProperty(MessageSubscriptionVO.prototype, "dialogInfo", {
     get: function () {
-      return this.properties;
+      switch (this._subType) {
+        case o.MessageConst.SUBTYPE_SUBSCRIPTION_ENABLED:
+          return new g.DialogInfoVO(c.SubscriptionConfirmationDialog, new d.SubscriptionMessageDialogProperties(this));
+        case o.MessageConst.SUBTYPE_SUBSCRIPTION_EXPIRED:
+          return new g.DialogInfoVO(u.SubscriptionExpiredDialog, new d.SubscriptionMessageDialogProperties(this));
+        case o.MessageConst.SUBTYPE_SUBSCRIPTION_REWARD:
+          var e = h.CastleModel.subscriptionData.getSubscriptionRewardsByTypeID(this.subscriptionTypeId);
+          var t = a.Localize.text("dialog_subscription_monthlyGift_singleSubscription_desc", [a.Localize.text(this.getPackageType().nameTextId)]);
+          var i = new l.ModernGenericRewardDialogProperties("dialog_subscription_monthlyGift_title", t, e);
+          return new g.DialogInfoVO(r.ModernGenericRewardDialog, i);
+      }
+      return null;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(C.AMessageVO.prototype, "dialogInfo").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  SubscriptionExpiredDialog.NAME = "SubscriptionExpired";
-  return SubscriptionExpiredDialog;
-}(u.CastleExternalDialog);
-exports.SubscriptionExpiredDialog = p;
-var h = require("./121.js");
-var g = require("./36.js");
-var C = require("./267.js");
-var _ = require("./108.js");
-o.classImplementsInterfaces(p, "ICollectableRendererList");
+  MessageSubscriptionVO.prototype.getPackageType = function () {
+    return p.SubscriptionPackageEnum.getTypeByServerId(this.subscriptionTypeId);
+  };
+  Object.defineProperty(MessageSubscriptionVO.prototype, "subscriptionTypeId", {
+    get: function () {
+      return this._subscriptionTypeId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessageSubscriptionVO.prototype, "allianceSubscribersAtThatTime", {
+    get: function () {
+      return this._allianceSubscribersAtThatTime;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return MessageSubscriptionVO;
+}(C.AMessageVO);
+exports.MessageSubscriptionVO = _;

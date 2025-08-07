@@ -7,13 +7,13 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./10.js");
 var l = function (e) {
-  function ATDCommand() {
+  function ADACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ATDCommand, e);
-  Object.defineProperty(ATDCommand.prototype, "cmdId", {
+  n.__extends(ADACommand, e);
+  Object.defineProperty(ADACommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ALLIANCE_TOPIC_DELETE;
+      return s.ClientConstSF.S2C_ALLIANCE_DELETE_TOPIC_ANSWER;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -21,7 +21,7 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  ATDCommand.prototype.executeCommand = function (e, t) {
+  ADACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         JSON.parse(t[1]);
@@ -31,7 +31,7 @@ var l = function (e) {
     }
     return false;
   };
-  return ATDCommand;
+  return ADACommand;
 }(r.CastleCommand);
-exports.ATDCommand = l;
+exports.ADACommand = l;
 o.classImplementsInterfaces(l, "IExecCommand");

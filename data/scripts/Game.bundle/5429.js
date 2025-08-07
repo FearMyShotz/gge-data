@@ -2,98 +2,116 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./3.js");
-var a = require("./83.js");
-var s = require("./99.js");
-var r = function (e) {
-  function MessageChangelistVO() {
-    var t = this;
-    t._teaserId = 0;
-    t._patchNoteId = 0;
-    t._collected = false;
-    CONSTRUCTOR_HACK;
-    (t = e.call(this) || this)._collected = false;
-    return t;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./1.js");
+var c = require("./3.js");
+var u = require("./3.js");
+var d = require("./3.js");
+var p = require("./3.js");
+var h = require("./6.js");
+var g = require("./16.js");
+var C = require("./4.js");
+var _ = require("./20.js");
+var m = require("./8.js");
+var f = require("./377.js");
+var O = require("./120.js");
+var E = createjs.Point;
+var y = function (e) {
+  function CastleBattleLogUnitScrollListItem(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(MessageChangelistVO, e);
-  MessageChangelistVO.prototype.parseMessageHeader = function (e) {
-    var t = e.split("+");
-    this._teaserId = parseInt(t[0]);
-    this._patchNoteId = parseInt(t[1]);
-    this._collected = parseInt(t[2]) == 1;
-    if (this._patchNoteId > MessageChangelistVO.currentPatchNoteID) {
-      MessageChangelistVO.currentPatchNoteID = this._patchNoteId;
+  n.__extends(CastleBattleLogUnitScrollListItem, e);
+  CastleBattleLogUnitScrollListItem.prototype.customFillItem = function () {
+    e.prototype.customFillItem.call(this);
+    var t = this.itemVO.unitVO;
+    if (this.disp.mc_unitItem.mc_level) {
+      o.MovieClipHelper.clearMovieClip(this.disp.mc_unitItem.mc_level);
+    }
+    this.disp.gotoAndStop(1);
+    this.disp.toolTipText = t.getNameString();
+    this.disp.mouseChildren = false;
+    this.disp.actLikeButton = true;
+    if (this.itemVO.isEffect) {
+      this.textFieldManager.registerTextField(this.disp.txt_loss, new d.LocalizedTextVO("value_percentage", [this.itemVO.effectInventoryAmount]), new s.InternalGGSTextFieldConfigVO(true)).color = g.ClientConstColor.FONT_DEFAULT_COLOR;
+    } else {
+      this.textFieldManager.registerTextField(this.disp.mc_unitItem.mc_counter.txt_pick, new p.NumberVO(this.itemVO.logUnitVO.count), new s.InternalGGSTextFieldConfigVO(true));
+    }
+    if (!this.itemVO.isEffect) {
+      if (t.type == "Soldiers" || t.type == "Tools") {
+        if (t.isStronghold) {
+          this.disp.toolTipText = c.Localize.text("Unknown_name") + "\n" + c.Localize.text("stronghold_UnitInside");
+        } else {
+          this.disp.toolTipText = "Unknown_name";
+        }
+      } else if (t.isStronghold) {
+        this.disp.toolTipText = c.Localize.text(String(String(t.type).toLowerCase() + "_name")) + "\n" + c.Localize.text("stronghold_UnitInside");
+      } else {
+        this.disp.toolTipText = String(String(t.type).toLowerCase() + "_name");
+      }
+    }
+    var i = C.CastleModel.otherPlayerData.getOwnerInfoVO(this.itemVO.participantVO.playerID);
+    I.WodPicHelper.setCorrectUnitBackgroundPic(t, this.disp.mc_unitItem.mc_bg, Library.CastleInterfaceElements.battleLogPopUpUnitBackground, Library.CastleInterfaceElements.battleLogPopUpUnitBackground_berimond);
+    if (i) {
+      I.WodPicHelper.addSmallUnitPicToContainer(t, this.disp.mc_unitItem.mc_unit, i.crest.backgroundColor1, i.crest.backgroundColor2, true, 20, new E(8, 25), f.WodPicHelperUnitFramePerfectCallbackWrapper.callback4SmallPic(t, I.WodPicHelper.SMALL_UNIT_WIDTH, I.WodPicHelper.SMALL_UNIT_HEIGHT), this.disp.mc_unitItem.mc_level);
+    }
+    m.ButtonHelper.initButtons([this.disp], _.ClickFeedbackButtonHover);
+    this.disp.mc_unitItem.mc_counter.visible = true;
+    if (this.itemVO.isEffect) {
+      this.disp.actLikeButton = false;
+      this.disp.mc_unitItem.mc_counter.visible = false;
+    } else {
+      var n = h.int(this.itemVO.logUnitVO.lost);
+      var a = this.textFieldManager.registerTextField(this.disp.txt_loss, new u.LocalizedNumberVO(n), new s.InternalGGSTextFieldConfigVO(true));
+      a.color = this.getLostColor(n);
+      a.autoFitToBounds = true;
     }
   };
-  MessageChangelistVO.prototype.parseSubject = function () {
-    return o.Localize.text("dialog_changelist_mailHeader");
+  CastleBattleLogUnitScrollListItem.prototype.getLostColor = function (e) {
+    if (e == 0) {
+      return g.ClientConstColor.FONT_DEFAULT_COLOR;
+    } else {
+      return g.ClientConstColor.GENERIC_BRIGHT_RED;
+    }
   };
-  MessageChangelistVO.prototype.parseSender = function () {
-    return o.Localize.text("system");
+  CastleBattleLogUnitScrollListItem.prototype.onMouseClick = function (t) {
+    e.prototype.onMouseClick.call(this, t);
+    if (this.itemVO && this.itemVO.unitVO && !this.itemVO.isEffect) {
+      var i = C.CastleModel.otherPlayerData.getOwnerInfoVO(this.itemVO.participantVO.playerID);
+      b.CastleDialogHandler.getInstance().registerDefaultDialogs(T.CastleRecruitInfoDialog, new O.CastleRecruitInfoDialogProperties(this.itemVO.unitVO, i.crest));
+    }
   };
-  Object.defineProperty(MessageChangelistVO.prototype, "additionalIconName", {
+  CastleBattleLogUnitScrollListItem.prototype.onRollOver = function (t) {
+    e.prototype.onRollOver.call(this, t);
+    if (!this.itemVO.isEffect) {
+      D.CastleLayoutManager.getInstance().nativeCursor.setCursorType(o.BasicCustomCursor.CURSOR_CLICK);
+    }
+  };
+  CastleBattleLogUnitScrollListItem.prototype.onRollOut = function (t) {
+    e.prototype.onRollOut.call(this, t);
+    D.CastleLayoutManager.getInstance().nativeCursor.setCursorType(o.BasicCustomCursor.CURSOR_ARROW);
+  };
+  Object.defineProperty(CastleBattleLogUnitScrollListItem.prototype, "textFieldManager", {
     get: function () {
-      if (!this.collected && this.isCurrentChangelist()) {
-        return "CastleMessageIconsChangelist";
-      } else {
-        return "";
-      }
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.AMessageVO.prototype, "additionalIconName").set.call(this, e);
+      return a.GoodgameTextFieldManager.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MessageChangelistVO.prototype, "dialogInfo", {
+  Object.defineProperty(CastleBattleLogUnitScrollListItem.prototype, "itemVO", {
     get: function () {
-      return new a.DialogInfoVO(l.CastleChangelistDialog, new c.CastleChangelistDialogProperties(this));
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.AMessageVO.prototype, "dialogInfo").set.call(this, e);
+      return this.scrollItemVO;
     },
     enumerable: true,
     configurable: true
   });
-  MessageChangelistVO.prototype.isCurrentChangelist = function () {
-    return MessageChangelistVO.currentPatchNoteID == this._patchNoteId;
-  };
-  MessageChangelistVO.prototype.canBeDeleted = function () {
-    return this.collected || !this.isCurrentChangelist();
-  };
-  Object.defineProperty(MessageChangelistVO.prototype, "teaserId", {
-    get: function () {
-      return this._teaserId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MessageChangelistVO.prototype, "patchNoteId", {
-    get: function () {
-      return this._patchNoteId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MessageChangelistVO.prototype, "collected", {
-    get: function () {
-      return this._collected;
-    },
-    set: function (e) {
-      this._collected = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  MessageChangelistVO.prototype.canBeArchived = function () {
-    return false;
-  };
-  MessageChangelistVO.__initialize_static_members = function () {
-    MessageChangelistVO.currentPatchNoteID = 0;
-  };
-  return MessageChangelistVO;
-}(s.AMessageVO);
-exports.MessageChangelistVO = r;
-var l = require("./5430.js");
-var c = require("./5433.js");
-r.__initialize_static_members();
+  return CastleBattleLogUnitScrollListItem;
+}(r.ScrollItem);
+exports.CastleBattleLogUnitScrollListItem = y;
+var b = require("./9.js");
+var D = require("./17.js");
+var I = require("./63.js");
+var T = require("./113.js");
+l.classImplementsInterfaces(y, "MovieClip");

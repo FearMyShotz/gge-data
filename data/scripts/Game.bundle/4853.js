@@ -5,32 +5,34 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function AFRCommand() {
-    return e.call(this) || this;
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function SGECommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AFRCommand, e);
-  Object.defineProperty(AFRCommand.prototype, "cmdId", {
+  n.__extends(SGECommand, e);
+  Object.defineProperty(SGECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ACCEPT_FRIEND_REQUEST;
+      return s.ClientConstSF.S2C_SELL_GEM;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  AFRCommand.prototype.executeCommand = function (e, t) {
+  SGECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
+        r.CastleModel.gemData.parse_SGE();
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return AFRCommand;
-}(r.CastleCommand);
-exports.AFRCommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  return SGECommand;
+}(l.CastleCommand);
+exports.SGECommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

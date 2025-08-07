@@ -1,78 +1,47 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./6.js");
-var a = require("./22.js");
-var s = function () {
-  function XmlRelicBluePrintVO() {
-    this._id = 0;
-    this._relicTypeId = 0;
-    this._normalAmount = 0;
-    this._specialAmount = 0;
-    this._normalRelicEffectListId = 0;
-    this._specialRelicEffectListId = 0;
-    this._baseRelicEffectIds = [];
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./198.js");
+var r = require("./127.js");
+var l = function (e) {
+  function RandomEquipmentVO(t) {
+    var i = this;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).parseEquipFromArray([0, r.BasicEquippableVO.SLOT_TYPE_ALL, r.BasicEquippableVO.LORD_TYPE_ALL, t, "asdf", [], 0, -1, 0, 0, s.BasicEquipmentVO.NO_GEM_ID]);
+    return i;
   }
-  XmlRelicBluePrintVO.prototype.parseXml = function (e) {
-    this._id = o.int(a.CastleXMLUtils.getIntAttribute("id", e, -1));
-    this._relicTypeId = o.int(a.CastleXMLUtils.getIntAttribute("relicTypeID", e, -1));
-    this._normalAmount = o.int(a.CastleXMLUtils.getIntAttribute("normalAmount", e, -1));
-    this._specialAmount = o.int(a.CastleXMLUtils.getIntAttribute("specialAmount", e, -1));
-    this._normalRelicEffectListId = o.int(a.CastleXMLUtils.getIntAttribute("normalRelicEffectListID", e, -1));
-    this._specialRelicEffectListId = o.int(a.CastleXMLUtils.getIntAttribute("specialRelicEffectListID", e, -1));
-    this._baseRelicEffectIds = a.CastleXMLUtils.createIntListFromAttribute("baseRelicEffectIDs", e);
+  n.__extends(RandomEquipmentVO, e);
+  Object.defineProperty(RandomEquipmentVO.prototype, "nameString", {
+    get: function () {
+      return RandomEquipmentVO.ASSET_NAME.toLowerCase() + "_" + this.rarity.toLowerCase();
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.BasicEquipmentVO.prototype, "nameString").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(RandomEquipmentVO.prototype, "visClassName", {
+    get: function () {
+      return RandomEquipmentVO.ASSET_NAME + "_" + this.visualRareID;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.BasicEquipmentVO.prototype, "visClassName").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  RandomEquipmentVO.prototype.getFilePath = function () {
+    return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(RandomEquipmentVO.ASSET_NAME);
   };
-  Object.defineProperty(XmlRelicBluePrintVO.prototype, "id", {
-    get: function () {
-      return this._id;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlRelicBluePrintVO.prototype, "relicTypeId", {
-    get: function () {
-      return this._relicTypeId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlRelicBluePrintVO.prototype, "normalAmount", {
-    get: function () {
-      return this._normalAmount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlRelicBluePrintVO.prototype, "specialAmount", {
-    get: function () {
-      return this._specialAmount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlRelicBluePrintVO.prototype, "normalRelicEffectListId", {
-    get: function () {
-      return this._normalRelicEffectListId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlRelicBluePrintVO.prototype, "specialRelicEffectListId", {
-    get: function () {
-      return this._specialRelicEffectListId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlRelicBluePrintVO.prototype, "baseRelicEffectIds", {
-    get: function () {
-      return this._baseRelicEffectIds;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return XmlRelicBluePrintVO;
-}();
-exports.XmlRelicBluePrintVO = s;
-n.classImplementsInterfaces(s, "IXmlElementVO");
+  RandomEquipmentVO.__initialize_static_members = function () {
+    RandomEquipmentVO.ASSET_NAME = "Random_Equipment";
+  };
+  return RandomEquipmentVO;
+}(s.BasicEquipmentVO);
+exports.RandomEquipmentVO = l;
+a.classImplementsInterfaces(l, "IEquippableVO");
+l.__initialize_static_members();

@@ -6,66 +6,105 @@ var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./90.js");
-var c = require("./64.js");
-var u = require("./124.js");
-var d = createjs.Container;
-var p = function (e) {
-  function NomadCampMapobject() {
-    return e !== null && e.apply(this, arguments) || this;
+var l = require("./3.js");
+var c = require("./90.js");
+var u = require("./4.js");
+var d = require("./27.js");
+var p = require("./64.js");
+var h = require("./124.js");
+var g = createjs.Container;
+var C = function (e) {
+  function LaboratoryMapobject() {
+    return e.call(this) || this;
   }
-  n.__extends(NomadCampMapobject, e);
-  NomadCampMapobject.prototype.initVisualRep = function () {
+  n.__extends(LaboratoryMapobject, e);
+  LaboratoryMapobject.prototype.initVisualRep = function () {
     if (!this.disp) {
-      this.disp = new d();
-      this.mapobjectVO.addEventListener(c.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
+      this.disp = new g();
+      this.mapobjectVO.addEventListener(p.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
     }
-    this.drawNomad();
+    this.drawLaboratory();
   };
-  NomadCampMapobject.prototype.drawNomad = function () {
+  LaboratoryMapobject.prototype.drawLaboratory = function () {
     this.clearObjectContainer();
     if (this.mapobjectVO.isVisibleOnMap) {
-      this.objectContainer = this.nomadMapObjectVO.getDisplayObjectClipContainer(false, null, false);
-      if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0) {
-        this.showFlames();
-      }
+      o.debug("redrawing laboratory");
+      this.objectContainer = this.laboratoryMapObjectVO.getDisplayObjectClipContainer(false, null, false);
       this.addObjectContainer();
       this.addMouseListener();
     }
   };
-  NomadCampMapobject.prototype.showRingMenu = function () {
-    this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.SHOW_MENU, [this, l.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
+  LaboratoryMapobject.prototype.clearObjectContainer = function () {
+    o.debug("clearing laboratory");
+    e.prototype.clearObjectContainer.call(this);
   };
-  NomadCampMapobject.prototype.onRollOver = function (t) {
-    if (!this.worldmapRenderer.camera.isWorldDragging) {
-      if (!this.hasRingMenu) {
-        this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
-      }
-      e.prototype.onRollOver.call(this, t);
-    }
-  };
-  NomadCampMapobject.prototype.onRollOut = function (t) {
-    this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.INFOTOOLTIP, [false]));
-    e.prototype.onRollOut.call(this, t);
-  };
-  Object.defineProperty(NomadCampMapobject.prototype, "nomadMapObjectVO", {
+  Object.defineProperty(LaboratoryMapobject.prototype, "laboratoryMapObjectVO", {
     get: function () {
       return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(NomadCampMapobject.prototype, "line2Content", {
+  LaboratoryMapobject.prototype.showRingMenu = function () {
+    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.SHOW_MENU, [this, c.CastleWorldmapEvent.RINGMENU_CASTLEINFO]));
+    this.showOwnerLines();
+  };
+  LaboratoryMapobject.prototype.onRollOver = function (t) {
+    if (!this.worldmapRenderer.camera.isWorldDragging) {
+      if (!this.hasRingMenu) {
+        this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
+      }
+      e.prototype.onRollOver.call(this, t);
+    }
+  };
+  LaboratoryMapobject.prototype.onRollOut = function (t) {
+    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [false]));
+    e.prototype.onRollOut.call(this, t);
+  };
+  LaboratoryMapobject.prototype.onMouseUp = function (t) {
+    e.prototype.onMouseUp.call(this, t);
+    this.showOwnerLines();
+  };
+  Object.defineProperty(LaboratoryMapobject.prototype, "line1Content", {
     get: function () {
-      return new r.LocalizedTextVO(o.GenericTextIds.VALUE_ASSIGN_COLON, [s.Localize.text("level"), this.nomadMapObjectVO.dungeonLevel]);
+      return new r.LocalizedTextVO("laboratory_level", [this.laboratoryMapObjectVO.level]);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(h.InteractiveMapobject.prototype, "line1Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return NomadCampMapobject;
-}(u.InteractiveMapobject);
-exports.NomadCampMapobject = p;
-a.classImplementsInterfaces(p, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+  Object.defineProperty(LaboratoryMapobject.prototype, "line2Content", {
+    get: function () {
+      return new r.LocalizedTextVO("laboratory_worldmap_tooltip", [this.laboratoryMapObjectVO.landmarkBonus]);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LaboratoryMapobject.prototype, "line3Content", {
+    get: function () {
+      var e;
+      var t = d.CastleTimeStringHelper.getEventTimeString(u.CastleModel.laboratoryData.remainingResetTime);
+      var i = s.Localize.text("dialog_laboratory_resetTimer_tooltip", [t]);
+      if (this.laboratoryMapObjectVO.isPlayerOwned) {
+        var n = this.laboratoryMapObjectVO.ownerInfo.isInAlliance ? this.getAllianceString() : this.laboratoryMapObjectVO.ownerInfo.playerName;
+        e = s.Localize.text("dialog_landmarkList_Owner") + ": " + n + "\n" + i;
+      } else {
+        e = i;
+      }
+      return new l.TextVO(e);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return LaboratoryMapobject;
+}(h.InteractiveMapobject);
+exports.LaboratoryMapobject = C;
+a.classImplementsInterfaces(C, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");

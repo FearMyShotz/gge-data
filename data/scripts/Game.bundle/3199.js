@@ -2,40 +2,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1048.js");
-var s = function (e) {
-  function CastleDessertSlumPackageBuyDialog() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CastleSlumPackageBuyDialogProperties() {
+    var t = this;
+    t.activeSlumLevel = 0;
+    t.level = 0;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleDessertSlumPackageBuyDialog, e);
-  Object.defineProperty(CastleDessertSlumPackageBuyDialog.prototype, "titleTextColor", {
-    get: function () {
-      return CastleDessertSlumPackageBuyDialog.TITLE_TEXT_COLOR;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastleSlumPackageBuyDialog.prototype, "titleTextColor").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleDessertSlumPackageBuyDialog.prototype, "titleBackgroundFrame", {
-    get: function () {
-      return CastleDessertSlumPackageBuyDialog.TITLE_BACKGROUND_FRAME;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastleSlumPackageBuyDialog.prototype, "titleBackgroundFrame").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleDessertSlumPackageBuyDialog.__initialize_static_members = function () {
-    CastleDessertSlumPackageBuyDialog.NAME = "CastleDessertSlumPackageBuy";
-    CastleDessertSlumPackageBuyDialog.TITLE_TEXT_COLOR = 212797;
-    CastleDessertSlumPackageBuyDialog.TITLE_BACKGROUND_FRAME = 1;
+  n.__extends(CastleSlumPackageBuyDialogProperties, e);
+  CastleSlumPackageBuyDialogProperties.prototype.parseDataFromSlumPackageScrollItemVO = function (e) {
+    this.parseDataFromScrollItem(e);
+    this.slumVO = e.slumVO;
+    this.activeSlumLevel = e.activeSlumLevel;
+    this.level = e.level;
   };
-  return CastleDessertSlumPackageBuyDialog;
-}(a.CastleSlumPackageBuyDialog);
-exports.CastleDessertSlumPackageBuyDialog = s;
-s.__initialize_static_members();
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  return CastleSlumPackageBuyDialogProperties;
+}(require("./167.js").CastleGenericBuyDialogProperties);
+exports.CastleSlumPackageBuyDialogProperties = o;

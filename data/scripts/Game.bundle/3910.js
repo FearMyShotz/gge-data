@@ -4,13 +4,13 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./196.js");
 var a = function (e) {
-  function CheatShowResearchGridCommand() {
+  function CheatShowResearchIDsCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CheatShowResearchGridCommand, e);
-  CheatShowResearchGridCommand.prototype.execute = function (e = null) {
-    o.ClientCheatsHelper.performCommand("showResearchGrid");
+  n.__extends(CheatShowResearchIDsCommand, e);
+  CheatShowResearchIDsCommand.prototype.execute = function (e = null) {
+    o.ClientCheatsHelper.performCommand("showResearchIDs");
   };
-  return CheatShowResearchGridCommand;
+  return CheatShowResearchIDsCommand;
 }(require("./212.js").ABotCommand);
-exports.CheatShowResearchGridCommand = a;
+exports.CheatShowResearchIDsCommand = a;

@@ -3,26 +3,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CollectableItemUnlockAllPassVO() {
+  function CollectableItemSeasonLeagueEventPassVO() {
     return e.call(this, 1) || this;
   }
-  n.__extends(CollectableItemUnlockAllPassVO, e);
-  Object.defineProperty(CollectableItemUnlockAllPassVO.prototype, "hubRewardIdsToUnlock", {
-    get: function () {
-      return this._hubRewardIdsToUnlock;
-    },
-    set: function (e) {
-      this._hubRewardIdsToUnlock = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CollectableItemUnlockAllPassVO.prototype.getTooltipTextId = function () {
-    return "dialog_unlockAllExtraTierRewards_name";
+  n.__extends(CollectableItemSeasonLeagueEventPassVO, e);
+  CollectableItemSeasonLeagueEventPassVO.prototype.getTooltipTextId = function () {
+    return "seasonLeague_eventPass_name";
   };
-  CollectableItemUnlockAllPassVO.prototype.getDescriptionTextId = function () {
-    return "dialog_rewardHub_unlockAll_rewardPasses_desc";
+  CollectableItemSeasonLeagueEventPassVO.prototype.getDescriptionTextId = function () {
+    return "seasonLeague_eventPass_short_info";
   };
-  return CollectableItemUnlockAllPassVO;
+  return CollectableItemSeasonLeagueEventPassVO;
 }(require("./96.js").ACollectableItemVO);
-exports.CollectableItemUnlockAllPassVO = o;
+exports.CollectableItemSeasonLeagueEventPassVO = o;

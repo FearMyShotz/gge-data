@@ -3,79 +3,84 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./91.js");
-var r = require("./229.js");
-var l = createjs.Point;
-var c = function (e) {
-  function CastleServerMessageBigDialog() {
+var a = require("./105.js");
+var s = require("./209.js");
+var r = createjs.Point;
+var l = function (e) {
+  function FillerSurroundingsVO(t, i, n = null, o = false, s = null) {
+    var r = this;
+    r._isPath = false;
     CONSTRUCTOR_HACK;
-    return e.call(this, new Library.CastleInterfaceElements.CastleServerMessageBig()) || this;
+    (r = e.call(this) || this)._name = "Filler";
+    if (o) {
+      r._width = 0;
+      r._height = 0;
+    } else {
+      r._width = s ? s.x : FillerSurroundingsVO.DEFAULT_DIMENSIONS.x;
+      r._height = s ? s.y : FillerSurroundingsVO.DEFAULT_DIMENSIONS.y;
+    }
+    r._posOrigin = n || a.IsoGridOriginEnum.BOTTOM_CORNER;
+    r._posOffset.x = i.x;
+    r._posOffset.y = i.y;
+    r._assetName = t;
+    r._isPath = o;
+    return r;
   }
-  n.__extends(CastleServerMessageBigDialog, e);
-  CastleServerMessageBigDialog.prototype.applyProperties = function () {
-    this.textFieldManager.registerTextField(this.dialog.txt_title, new a.TextVO(this.dialogProperties.title));
-  };
-  CastleServerMessageBigDialog.prototype.show = function () {
-    e.prototype.show.call(this);
-    if (!this.htmlText) {
-      var t = this.dialog.localToGlobal(new l(this.dialog.txt_copy.x, this.dialog.txt_copy.y));
-      var i = this.dialog.txt_copy.getTextFormat();
-      this.htmlText = document.createElement("div");
-      this.htmlText.style.overflow = "auto";
-      this.htmlText.style.height = this.dialog.txt_copy.height + "px";
-      this.htmlText.style.width = this.dialog.txt_copy.width + "px";
-      this.htmlText.style.position = "absolute";
-      this.htmlText.style.left = t.x + "px";
-      this.htmlText.style.top = t.y + "px";
-      this.htmlText.style.fontFamily = i.font;
-      this.htmlText.style.fontSize = i.size + "px";
-      this.htmlText.style.whiteSpace = "pre-wrap";
-      this.htmlText.innerHTML = this.dialogProperties.copy;
-      document.body.appendChild(this.htmlText);
-    }
-    this.controller.addEventListener(s.CastleLayoutManagerEvent.SHOW_DIALOG, this.bindFunction(this.onTopDialogChanged));
-    this.controller.addEventListener(s.CastleLayoutManagerEvent.HIDE_DIALOG, this.bindFunction(this.onTopDialogChanged));
-  };
-  CastleServerMessageBigDialog.prototype.onTopDialogChanged = function (e) {
-    var t = this.layoutManager.highestShownDialog;
-    this.htmlText.style.visibility = t && this == t ? "visible" : "hidden";
-  };
-  CastleServerMessageBigDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialog.btn_close:
-        this.hide();
-    }
-  };
-  CastleServerMessageBigDialog.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    if (this.htmlText) {
-      this.htmlText.parentElement.removeChild(this.htmlText);
-      this.htmlText = null;
-    }
-    this.controller.removeEventListener(s.CastleLayoutManagerEvent.SHOW_DIALOG, this.bindFunction(this.onTopDialogChanged));
-    this.controller.removeEventListener(s.CastleLayoutManagerEvent.HIDE_DIALOG, this.bindFunction(this.onTopDialogChanged));
-  };
-  Object.defineProperty(CastleServerMessageBigDialog.prototype, "dialog", {
+  n.__extends(FillerSurroundingsVO, e);
+  Object.defineProperty(FillerSurroundingsVO.prototype, "isInfoTooltipAvailable", {
     get: function () {
-      return this.disp;
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.ASurroundingBuildingVO.prototype, "isInfoTooltipAvailable").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleServerMessageBigDialog.prototype, "dialogProperties", {
+  Object.defineProperty(FillerSurroundingsVO.prototype, "isHoverGlowAvailable", {
     get: function () {
-      return this.properties;
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.ASurroundingBuildingVO.prototype, "isHoverGlowAvailable").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleServerMessageBigDialog.__initialize_static_members = function () {
-    CastleServerMessageBigDialog.NAME = "CastleServerMessageBigDialog";
+  Object.defineProperty(FillerSurroundingsVO.prototype, "isClickAvailable", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.ASurroundingBuildingVO.prototype, "isClickAvailable").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  FillerSurroundingsVO.prototype.getVisualClassName = function () {
+    return this._assetName;
   };
-  return CastleServerMessageBigDialog;
-}(r.CastleDialog);
-exports.CastleServerMessageBigDialog = c;
-o.classImplementsInterfaces(c, "ICollectableRendererList");
-c.__initialize_static_members();
+  Object.defineProperty(FillerSurroundingsVO.prototype, "isPath", {
+    get: function () {
+      return this._isPath;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  FillerSurroundingsVO.prototype.setAssetName = function (e) {
+    this._assetName = e;
+  };
+  FillerSurroundingsVO.prototype.setPosOrigin = function (e) {
+    this._posOrigin = e;
+  };
+  FillerSurroundingsVO.prototype.setPosOffset = function (e) {
+    this._posOffset = e;
+  };
+  FillerSurroundingsVO.__initialize_static_members = function () {
+    FillerSurroundingsVO.DEFAULT_DIMENSIONS = new r(5, 5);
+  };
+  return FillerSurroundingsVO;
+}(s.ASurroundingBuildingVO);
+exports.FillerSurroundingsVO = l;
+l.__initialize_static_members();
+o.classImplementsInterfaces(l, "IRelativeGridBuildingVO");

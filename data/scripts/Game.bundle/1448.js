@@ -58,7 +58,7 @@ var u = function (e) {
   return DecorationForgeNotEnoughEnergyDialog;
 }(c.CastleExternalDialog);
 exports.DecorationForgeNotEnoughEnergyDialog = u;
-var d = require("./992.js");
+var d = require("./993.js");
 var p = require("./36.js");
 var h = require("./121.js");
 o.classImplementsInterfaces(u, "ICollectableRendererList");

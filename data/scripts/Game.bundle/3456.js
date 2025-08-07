@@ -3,19 +3,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleNomadInvasionAllianceCampRewardDialogProperties(t) {
-    var i = e.call(this) || this;
-    i._params = t;
+  function CastleSlotRewardEventDialogProperties(t) {
+    var i = this;
+    i._isToolSlot = false;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this)._isToolSlot = Boolean(t);
     return i;
   }
-  n.__extends(CastleNomadInvasionAllianceCampRewardDialogProperties, e);
-  Object.defineProperty(CastleNomadInvasionAllianceCampRewardDialogProperties.prototype, "params", {
+  n.__extends(CastleSlotRewardEventDialogProperties, e);
+  Object.defineProperty(CastleSlotRewardEventDialogProperties.prototype, "isToolSlot", {
     get: function () {
-      return this._params;
+      return this._isToolSlot;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleNomadInvasionAllianceCampRewardDialogProperties;
+  return CastleSlotRewardEventDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastleNomadInvasionAllianceCampRewardDialogProperties = o;
+exports.CastleSlotRewardEventDialogProperties = o;

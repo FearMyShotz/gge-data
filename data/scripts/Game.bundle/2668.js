@@ -2,20 +2,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SAddSkillPointVO(t) {
-    var i = this;
+var o = require("./7.js");
+var a = function (e) {
+  function C2SBuySceatSkillVO(t) {
+    var i = e.call(this) || this;
     i.ID = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).ID = t;
+    i.ID = t;
     return i;
   }
-  n.__extends(C2SAddSkillPointVO, e);
-  C2SAddSkillPointVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_ADD_SKILLS_POINT;
+  n.__extends(C2SBuySceatSkillVO, e);
+  C2SBuySceatSkillVO.prototype.getCmdId = function () {
+    return o.ClientConstSF.C2S_BUY_SCEAT_SKILL;
   };
-  return C2SAddSkillPointVO;
-}(o.BasicCommandVO);
-exports.C2SAddSkillPointVO = s;
+  return C2SBuySceatSkillVO;
+}(require("./2.js").BasicCommandVO);
+exports.C2SBuySceatSkillVO = a;

@@ -2,17 +2,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./113.js");
-var s = function (e) {
-  function AEventBuildingVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CastleRefineryToolsmithDialogProperties(t = 1) {
+    var i = e.call(this) || this;
+    i._queueID = t;
+    return i;
   }
-  n.__extends(AEventBuildingVE, e);
-  AEventBuildingVE.prototype.getVELayerType = function () {
-    return a.IsoLayerEnum.ISO_OBJECTS;
-  };
-  return AEventBuildingVE;
-}(require("./489.js").AInteractiveIsoObjectVE);
-exports.AEventBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  n.__extends(CastleRefineryToolsmithDialogProperties, e);
+  Object.defineProperty(CastleRefineryToolsmithDialogProperties.prototype, "queueID", {
+    get: function () {
+      return this._queueID;
+    },
+    set: function (e) {
+      this._queueID = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleRefineryToolsmithDialogProperties;
+}(require("./220.js").BasicProperties);
+exports.CastleRefineryToolsmithDialogProperties = o;

@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./1.js");
 var o = require("./176.js");
 var a = require("./4.js");
-var s = require("./682.js");
+var s = require("./684.js");
 var r = function () {
   function BonusVO() {
     this._effectSources = [];
@@ -29,22 +29,7 @@ var r = function () {
   };
   BonusVO.prototype.matchesConditions = function (e, t = -1, i = -1, o = -1, a = null) {
     var s = true;
-    if (e && e.id != this.effect.effectType.id) {
-      s = false;
-    }
-    if (o > -1 && (n.instanceOfClass(this.effectValue, "EffectValueWodID") && !this.effectValue.hasWodId(o) || n.instanceOfClass(this.effectValue, "EffectValueMap") && !this.effectValue.hasWodId(o))) {
-      s = false;
-    }
-    if (i > -1 && !this.effect.isForSpaceID(i)) {
-      s = false;
-    }
-    if (t > -1 && !this.effect.isForAreaType(t)) {
-      s = false;
-    }
-    if (a && !this.effect.checkPlayerRelation(a)) {
-      s = false;
-    }
-    return s;
+    return !!this.effect && (e && e.id != this.effect.effectType.id && (s = false), o > -1 && (n.instanceOfClass(this.effectValue, "EffectValueWodID") && !this.effectValue.hasWodId(o) || n.instanceOfClass(this.effectValue, "EffectValueMap") && !this.effectValue.hasWodId(o)) && (s = false), i > -1 && !this.effect.isForSpaceID(i) && (s = false), t > -1 && !this.effect.isForAreaType(t) && (s = false), a && !this.effect.checkPlayerRelation(a) && (s = false), s);
   };
   Object.defineProperty(BonusVO.prototype, "descriptionText", {
     get: function () {

@@ -138,7 +138,7 @@ var h = function (e) {
 }(p.ArmyAttackMapmovementVO);
 exports.TreasureHuntMovementVO = h;
 var g = require("./387.js");
-var C = require("./732.js");
-var _ = require("./603.js");
+var C = require("./734.js");
+var _ = require("./604.js");
 o.classImplementsInterfaces(h, "IMapMovementVO", "IArmyMapmovementVO");
 h.__initialize_static_members();

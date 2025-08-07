@@ -2,44 +2,32 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./67.js");
-var r = require("./19.js");
-var l = require("./4.js");
-var c = require("./8.js");
-var u = require("./953.js");
-var d = createjs.Point;
-var p = function (e) {
-  function CastleAllianceDialogTreasuryStorage(t) {
-    return e.call(this, t) || this;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./4.js");
+var l = require("./749.js");
+var c = require("./14.js");
+var u = function (e) {
+  function CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects(t, i) {
+    return e.call(this, t, i, "CastleAlliance_Treasury_Item_Booster_TwoEffects") || this;
   }
-  n.__extends(CastleAllianceDialogTreasuryStorage, e);
-  CastleAllianceDialogTreasuryStorage.prototype.init = function () {
-    e.prototype.init.call(this);
-    c.ButtonHelper.initBasicButton(this.disp.btn_donate);
-    this.disp.btn_donate.toolTipText = "dialog_alliance_donateToTreasury_tooltip";
-    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_desc, new a.LocalizedTextVO("dialog_alliance_treasury_treasury_info"));
+  n.__extends(CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects, e);
+  CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects.prototype.updateText = function () {
+    e.prototype.updateText.call(this);
+    c.CastleComponent.textFieldManager.registerTextField(this.itemMc.txt_name1, new s.LocalizedTextVO("value_colon", [s.Localize.text("dialog_alliance_temporaryBoost_" + r.CastleModel.allianceBuffData.getAllianceBuffVoBySeriesIDAndLevel(this.buffVO.seriesID, 1).boni[1].effect.name)]));
+    c.CastleComponent.textFieldManager.registerTextField(this.itemMc.txt_amount1, this.getBoosterAmountText1());
   };
-  CastleAllianceDialogTreasuryStorage.prototype.update = function () {
-    e.prototype.update.call(this);
-    var t = new r.CollectableRenderOptions(r.CollectableRenderOptions.SET_ADVANCED, new d(30, 30));
-    t.tooltip.useAmount = false;
-    g.CollectableRenderHelper.displayMultipleItemsComplete(this, new s.CollectableRenderClipsList(this.disp, "mc_item"), l.CastleModel.allianceData.myAllianceVO.storage, t);
-  };
-  CastleAllianceDialogTreasuryStorage.prototype.onClick = function (t) {
-    if (c.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.disp.btn_donate:
-          h.CastleComponent.dialogHandler.registerDefaultDialogs(C.CastleAllianceDonateDialog);
-      }
+  CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects.prototype.getBoosterAmountText1 = function () {
+    if (l.AllianceBuffData.CUSTOMIZABLE_BUFFS.indexOf(this.buffVO.seriesID) > -1 && !this.allianceInfoVO.isTemporaryBoosterActive(this.buffVO.seriesID)) {
+      var t = r.CastleModel.allianceBuffData.getAllianceBuffVoBySeriesIDAndLevel(this.buffVO.seriesID, 1);
+      var i = s.Localize.text(o.GenericTextIds.VALUE_PERCENTAGE_ADD, [this.allianceInfoVO.getBoostValue(this.buffVO.seriesID, 1, t.boni[1].effect.effectType.type)]);
+      var n = s.Localize.text(o.GenericTextIds.VALUE_PERCENTAGE, [this.allianceInfoVO.getBoostValue(this.buffVO.seriesID, this.buffVO.maxLevel, t.boni[1].effect.effectType.type)]);
+      return new s.LocalizedTextVO("value_dash_split_paragraph", [i, n]);
     }
+    return e.prototype.getBoosterAmountText.call(this);
   };
-  return CastleAllianceDialogTreasuryStorage;
-}(u.ACastleAllianceDialogTreasurySublayer);
-exports.CastleAllianceDialogTreasuryStorage = p;
-var h = require("./14.js");
-var g = require("./25.js");
-var C = require("./1388.js");
-o.classImplementsInterfaces(p, "ICollectableRendererList");
+  return CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects;
+}(require("./1387.js").CastleAllianceDialogTreasuryBoosterItemTemp);
+exports.CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects = u;
+a.classImplementsInterfaces(u, "ICollectableRendererList");

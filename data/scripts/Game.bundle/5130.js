@@ -4,39 +4,42 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function CPMCommand() {
+var s = require("./5.js");
+var r = require("./7.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function VWCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CPMCommand, e);
-  Object.defineProperty(CPMCommand.prototype, "cmdId", {
+  n.__extends(VWCCommand, e);
+  Object.defineProperty(VWCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_CREATE_PLAGUEMONK_MOVEMENT;
+      return r.ClientConstSF.S2C_VOTE_WORLD_CUP;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CPMCommand.prototype.executeCommand = function (e, t) {
+  VWCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        r.CastleModel.otherPlayerData.parseOwnerInfoArray(i.O);
-        r.CastleModel.armyData.parseMapMovementArray([i.A]);
-        r.CastleModel.spyData.parse_CPI(i.cpi);
+        if (i) {
+          var n = l.CastleModel.specialEventData.getActiveEventByEventId(s.EventConst.EVENTTYPE_WORLD_CUP);
+          if (n && i) {
+            n.parse_VWC(i);
+          }
+        }
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return CPMCommand;
-}(l.CastleCommand);
-exports.CPMCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return VWCCommand;
+}(c.CastleCommand);
+exports.VWCCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

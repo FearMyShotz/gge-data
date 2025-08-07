@@ -8,10 +8,10 @@ var s = require("./2.js");
 var r = require("./2.js");
 var l = require("./1.js");
 var c = require("./6.js");
-var u = require("./803.js");
+var u = require("./805.js");
 var d = require("./15.js");
 var p = require("./4.js");
-var h = require("./1057.js");
+var h = require("./1058.js");
 var g = createjs.Point;
 var C = function (e) {
   function TutorialBasicActionCommand() {
@@ -149,11 +149,11 @@ var C = function (e) {
 }(a.SimpleCommand);
 exports.TutorialBasicActionCommand = C;
 var _ = require("./17.js");
-var m = require("./471.js");
+var m = require("./472.js");
 var f = require("./300.js");
 var O = require("./433.js");
-var E = require("./826.js");
+var E = require("./828.js");
 var y = require("./326.js");
-var b = require("./558.js");
+var b = require("./559.js");
 l.classImplementsInterfaces(C, "ISimpleCommand");
 C.__initialize_static_members();

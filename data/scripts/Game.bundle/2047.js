@@ -1,87 +1,59 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./30.js");
-var a = require("./690.js");
-var s = require("./865.js");
-var r = createjs.Point;
-var l = function (e) {
-  function IsoMovementActionStand(t, i, n = -1, o = false, a = false, s = 1000) {
-    var l = this;
-    l._standPos = new r();
-    l._duration = 0;
-    l._rotation = 0;
-    l._startTime = NaN;
-    l._fadeDuration = NaN;
-    CONSTRUCTOR_HACK;
-    (l = e.call(this, o, a) || this)._standPos.x = t.x;
-    l._standPos.y = t.y;
-    l._rotation = n;
-    l._duration = i;
-    l._fadeDuration = s;
-    return l;
-  }
-  n.__extends(IsoMovementActionStand, e);
-  IsoMovementActionStand.prototype.start = function () {
-    this.movementVO.changePos(this.standPos.x, this.standPos.y);
-    if (this.rotation >= 0) {
-      this.movementVO.rotation = this.rotation;
-    }
-    this._startTime = o.CachedTimer.getCachedTimer();
-    this.updateFading();
-  };
-  IsoMovementActionStand.prototype.update = function (t) {
-    e.prototype.update.call(this, t);
-    if (t >= this.startTime + this.duration) {
-      this.onActionDone();
+var n = createjs.Point;
+var o = function () {
+  function IsoKeyWordCheats() {}
+  IsoKeyWordCheats.onCheatET = function () {
+    if (r.IsoHelper.view.isInIsoScreen && s.Iso.data.areaData.isMyHomeCastle) {
+      var e = new l.IsoGeneratorMovements(s.Iso.data);
+      for (var t = 0; t < 40; ++t) {
+        s.Iso.controller.processor.addPackageToQueue(new c.IsoCommandPackageMovementSpawn(e.createEggMovement()));
+      }
+      s.Iso.controller.processor.executeQueue();
     }
   };
-  Object.defineProperty(IsoMovementActionStand.prototype, "actionType", {
-    get: function () {
-      return a.IsoMovementActionEnum.STAND;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.AIsoMovementAction.prototype, "actionType").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMovementActionStand.prototype, "standPos", {
-    get: function () {
-      return this._standPos;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMovementActionStand.prototype, "duration", {
-    get: function () {
-      return this._duration;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMovementActionStand.prototype, "startTime", {
-    get: function () {
-      return this._startTime;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMovementActionStand.prototype, "rotation", {
-    get: function () {
-      return this._rotation;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMovementActionStand.prototype, "fadeDuration", {
-    get: function () {
-      return this._fadeDuration;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IsoMovementActionStand;
-}(s.AIsoMovementAction);
-exports.IsoMovementActionStand = l;
+  IsoKeyWordCheats.onCheatFarhat = function () {
+    if (r.IsoHelper.view.isInIsoScreen && s.Iso.data.areaData.isMyHomeCastle) {
+      for (var e = s.Iso.data.grid.origins.getOriginRect(), t = new l.IsoGeneratorMovements(s.Iso.data), i = d.int(e.top); i < e.bottom; i += 2) {
+        s.Iso.controller.processor.addPackageToQueue(new c.IsoCommandPackageMovementSpawn(t.createShowUpMovement(new n(e.right + 7, i), 3)));
+      }
+      for (var o = d.int(e.left); o < e.right; o += 2) {
+        s.Iso.controller.processor.addPackageToQueue(new c.IsoCommandPackageMovementSpawn(t.createShowUpMovement(new n(o, e.bottom + 7), 2)));
+      }
+      s.Iso.controller.processor.executeQueue();
+    }
+  };
+  IsoKeyWordCheats.onCheatDebugCross = function () {
+    if (r.IsoHelper.view.isInIsoScreen) {
+      s.Iso.renderer.settings.isDebugCrossVisible = !s.Iso.renderer.settings.isDebugCrossVisible;
+      s.Iso.renderer.objects.render();
+    }
+  };
+  IsoKeyWordCheats.onCheatDebugPos = function () {
+    if (r.IsoHelper.view.isInIsoScreen) {
+      s.Iso.renderer.settings.isDebugPosVisible = !s.Iso.renderer.settings.isDebugPosVisible;
+      s.Iso.renderer.mouse.updateFloorCursor();
+    }
+  };
+  IsoKeyWordCheats.onCheatFps = function () {
+    a.CastleLayoutManager.getInstance().toggleFPSvisibility();
+  };
+  IsoKeyWordCheats.onCheatZSort = function () {
+    s.Iso.renderer.settings.isZSortChildIndexVisible = !s.Iso.renderer.settings.isZSortChildIndexVisible;
+    if (s.Iso.renderer.settings.isZSortChildIndexVisible) {
+      r.IsoHelper.zSort.showChildIndices();
+    } else {
+      s.Iso.renderer.layers.getIsoLayer(u.IsoLayerEnum.DEBUG_Z_SORT).removeChildren();
+    }
+  };
+  return IsoKeyWordCheats;
+}();
+exports.IsoKeyWordCheats = o;
+var a = require("./17.js");
+var s = require("./34.js");
+var r = require("./46.js");
+var l = require("./1185.js");
+var c = require("./2053.js");
+var u = require("./111.js");
+var d = require("./6.js");

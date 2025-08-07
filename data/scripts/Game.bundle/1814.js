@@ -1,27 +1,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function AResourcePanelItem() {
-    this._isResourceContainer = false;
+var n = require("./0.js");
+var o = function (e) {
+  function CastleBuddyListDataEvent(t, i = null, n = false, o = false) {
+    var a = this;
+    CONSTRUCTOR_HACK;
+    (a = e.call(this, t, n, o) || this).params = i;
+    return a;
   }
-  AResourcePanelItem.prototype.dispose = function () {
-    this._disp = null;
+  n.__extends(CastleBuddyListDataEvent, e);
+  CastleBuddyListDataEvent.__initialize_static_members = function () {
+    CastleBuddyListDataEvent.CHANGE_BUDDYDATA = "changebuddydata";
   };
-  Object.defineProperty(AResourcePanelItem.prototype, "disp", {
-    get: function () {
-      return this._disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResourcePanelItem.prototype, "isResourceContainer", {
-    get: function () {
-      return this._isResourceContainer;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AResourcePanelItem;
-}();
-exports.AResourcePanelItem = n;
+  return CastleBuddyListDataEvent;
+}(createjs.Event);
+exports.CastleBuddyListDataEvent = o;
+o.__initialize_static_members();

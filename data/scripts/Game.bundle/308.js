@@ -201,7 +201,7 @@ var n = function () {
     return i;
   };
   CrestVO.prototype.getEffectValue = function (e, t) {
-    var n = require("./111.js").CastleEffectsHelper.getTotalEffectValue(this.getEffectsByType(e, t), true);
+    var n = require("./110.js").CastleEffectsHelper.getTotalEffectValue(this.getEffectsByType(e, t), true);
     return n || new e.valueClass();
   };
   return CrestVO;

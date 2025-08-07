@@ -2,60 +2,57 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./5.js");
-var r = require("./6.js");
-var l = function (e) {
-  function CastleConquerInfoVO() {
-    var t = this;
-    t._availableBarons = 0;
-    t._maxBarons = 0;
-    t.isCapital = false;
-    t.isMetropol = false;
+var o = require("./2.js");
+var a = require("./6.js");
+var s = require("./7.js");
+var r = function (e) {
+  function C2SCreateArmyAttackMovementTempServerVO(t, i, n, o, s, r, l, c, u, d, p, h, g, C, _, m, f, O) {
+    var E = this;
+    E.SX = 0;
+    E.SY = 0;
+    E.TX = 0;
+    E.TY = 0;
+    E.KID = 0;
+    E.LID = 0;
+    E.WT = 0;
+    E.HBW = 0;
+    E.BPC = 0;
+    E.ATT = 0;
+    E.AV = 0;
+    E.LP = 0;
+    E.FC = 0;
+    E.PTT = 0;
+    E.SD = 0;
+    E.ICA = 0;
+    E.CD = 0;
     CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+    (E = e.call(this) || this).KID = h;
+    E.SX = a.int(t.x);
+    E.SY = a.int(t.y);
+    E.TX = a.int(i.x);
+    E.TY = a.int(i.y);
+    E.A = n;
+    E.LID = d;
+    E.WT = o;
+    E.HBW = a.int(g ? -1 : s);
+    E.BPC = r;
+    E.ATT = l;
+    E.AV = a.int(c ? 1 : 0);
+    E.LP = u;
+    E.FC = a.int(p ? 1 : 0);
+    E.PTT = a.int(g ? 1 : 0);
+    E.SD = C;
+    E.ICA = 0;
+    E.BKS = m;
+    E.CD = 99;
+    E.AST = f;
+    E.RW = O;
+    return E;
   }
-  n.__extends(CastleConquerInfoVO, e);
-  CastleConquerInfoVO.prototype.fillFromParamObject = function (t) {
-    e.prototype.fillFromParamObject.call(this, t);
-    if (t.gaa.AI) {
-      this._targetArea = p.WorldmapObjectFactory.parseWorldMapArea(t.gaa.AI);
-    } else {
-      this._targetArea = this.isCapital ? new c.CapitalMapobjectVO() : this.isMetropol ? new u.MetropolMapobjectVO() : new d.OutpostMapobjectVO();
-      this._targetArea.parseAreaInfo(t.gaa.AI);
-    }
-    this._targetArea.keepLevel = Math.max(1, this._targetArea.keepLevel);
-    this._targetArea.gateLevel = Math.max(1, this._targetArea.gateLevel);
-    this._targetArea.wallLevel = Math.max(1, this._targetArea.wallLevel);
-    this._targetArea.towerLevel = Math.max(1, this._targetArea.towerLevel);
-    this._targetOwner = this._targetArea.controllerWorldMapOwnerInfoVO;
-    if (!this.isCapital && !this.isMetropol) {
-      this.parseBarons(t);
-    }
-    this._army.init(this.targetOwnerLevel, true, this._targetArea.areaType == s.WorldConst.AREA_TYPE_FACTION_TOWER || this._targetArea.areaType == s.WorldConst.AREA_TYPE_FACTION_CAPITAL, this._targetArea);
+  n.__extends(C2SCreateArmyAttackMovementTempServerVO, e);
+  C2SCreateArmyAttackMovementTempServerVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_CREATE_ARMY_ATTACK_MOVEMENT_TEMP_SERVER;
   };
-  CastleConquerInfoVO.prototype.addAdditionalWave = function () {
-    this._army.addAdditionalWave(this.targetOwnerLevel, true, this._targetArea);
-  };
-  CastleConquerInfoVO.prototype.deductLastWave = function () {
-    this.unitInventory.addAll(this._army.getUnitVectorFromCompleteWave(this.army.getWaveCount() - 1));
-    this._army.deductLastWave();
-  };
-  CastleConquerInfoVO.prototype.parseBarons = function (e) {
-    this._availableBarons = r.int(e.AB);
-    this._maxBarons = r.int(e.MB);
-  };
-  CastleConquerInfoVO.prototype.getLowestTravelSpeed = function (t = false, i = null) {
-    var n = 0;
-    n = this.isCapital ? a.TravelConst.CAPITAL_CONQUER_SPEED : this.isMetropol ? a.TravelConst.METROPOL_CONQUER_SPEED : a.TravelConst.BARON_SPEED;
-    return r.int(Math.min(n, e.prototype.getLowestTravelSpeed.call(this, t, i)));
-  };
-  return CastleConquerInfoVO;
-}(require("./828.js").CastleAttackInfoVO);
-exports.CastleConquerInfoVO = l;
-var c = require("./499.js");
-var u = require("./577.js");
-var d = require("./500.js");
-var p = require("./147.js");
-o.classImplementsInterfaces(l, "IFightScreenVO");
+  return C2SCreateArmyAttackMovementTempServerVO;
+}(o.BasicCommandVO);
+exports.C2SCreateArmyAttackMovementTempServerVO = r;

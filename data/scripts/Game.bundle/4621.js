@@ -2,63 +2,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./4622.js");
-var a = require("./4.js");
+var o = require("./2.js");
+var a = require("./7.js");
 var s = function (e) {
-  function AutoSellGemsVO() {
-    var t = this;
-    t._actives = new Map();
+  function C2SShopCheckoutEventVO(t, i, n, o) {
+    var a = this;
+    a.IID = 0;
+    a.PID = 0;
     CONSTRUCTOR_HACK;
-    (t = e.call(this) || this)._actives = t.createActiveMatrix();
-    return t;
+    (a = e.call(this) || this).IID = t;
+    a.PID = i;
+    a.LOC = n;
+    a.GSID = o;
+    return a;
   }
-  n.__extends(AutoSellGemsVO, e);
-  AutoSellGemsVO.prototype.parseASG = function (e) {
-    var t = e;
-    if (t && (this.setAllActives(0), t != null)) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          this.setActive(parseInt(o[1]), o[0]);
-        }
-      }
-    }
+  n.__extends(C2SShopCheckoutEventVO, e);
+  C2SShopCheckoutEventVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_SHOP_CHECKOUT;
   };
-  AutoSellGemsVO.prototype.setActive = function (e, t) {
-    this._actives.set(e, t);
-  };
-  AutoSellGemsVO.prototype.setAllActives = function (e) {
-    if (this._actives != null) {
-      for (var t = 0, i = Array.from(this._actives.keys()); t < i.length; t++) {
-        var n = i[t];
-        this._actives.set(n, e);
-      }
-    }
-  };
-  AutoSellGemsVO.prototype.copy = function (e) {
-    for (var t = 0, i = Array.from(e._actives.keys()); t < i.length; t++) {
-      var n = i[t];
-      this._actives.set(n, e._actives.get(n));
-    }
-  };
-  AutoSellGemsVO.prototype.sendConfigToServer = function () {
-    a.CastleModel.smartfoxClient.sendCommandVO(new o.C2SSetAutoSellGemConditionsEventVO(this));
-  };
-  AutoSellGemsVO.prototype.createActiveMatrix = function () {
-    var e = new Map();
-    for (var t = 0, i = Array.from(a.CastleModel.gemData.gemColors.keys()); t < i.length; t++) {
-      var n = i[t];
-      e.set(n, 0);
-    }
-    return e;
-  };
-  Object.defineProperty(AutoSellGemsVO.prototype, "actives", {
-    get: function () {
-      return this._actives;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AutoSellGemsVO;
-}(require("./1310.js").ASubAutoSellVO);
-exports.AutoSellGemsVO = s;
+  return C2SShopCheckoutEventVO;
+}(o.BasicCommandVO);
+exports.C2SShopCheckoutEventVO = s;

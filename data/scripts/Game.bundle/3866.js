@@ -2,40 +2,45 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./72.js");
-var a = require("./78.js");
-var s = require("./1107.js");
+var o = require("./1.js");
+var a = require("./901.js");
+var s = require("./8.js");
 var r = function (e) {
-  function CastleAdvancedTroopSelectionItemInfiniteScrollList(t, i) {
-    var n = e.call(this, t, i) || this;
-    n.dispatcher = new o.CastleEventDispatcher();
-    return n;
+  function AttackDialogWaveHandlerSoldierPickItem() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleAdvancedTroopSelectionItemInfiniteScrollList, e);
-  CastleAdvancedTroopSelectionItemInfiniteScrollList.prototype.onValueChange = function (e) {
-    this.dispatcher.dispatchEvent(new s.CastleAdvancedTroopSelectionInfiniteEvent(e.scrollItem, s.CastleAdvancedTroopSelectionInfiniteEvent.UNIT_SELECTION_CHANGED));
+  n.__extends(AttackDialogWaveHandlerSoldierPickItem, e);
+  AttackDialogWaveHandlerSoldierPickItem.prototype.onValueChange = function (t) {
+    e.prototype.onValueChange.call(this, t);
+    this.updateSlider();
   };
-  CastleAdvancedTroopSelectionItemInfiniteScrollList.prototype.updateWithNewData = function (t, i = true) {
-    e.prototype.updateWithNewData.call(this, t, i);
-    if (this._items != null) {
-      for (var n = 0, o = this._items; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined) {
-          a.dispatcher.addEventListener(s.CastleAdvancedTroopSelectionInfiniteEvent.UNIT_SELECTION_CHANGED, this.bindFunction(this.onValueChange));
-        }
+  AttackDialogWaveHandlerSoldierPickItem.prototype.customFillItem = function () {
+    e.prototype.customFillItem.call(this);
+    this.updateSlider();
+  };
+  AttackDialogWaveHandlerSoldierPickItem.prototype.updateSlider = function () {
+    if (this._amountComponent && this._amountComponent.numberOfItems > 0) {
+      this.disp.mc_selection.mc_slider.mc_line.scaleX = this._amountComponent.getSelectedAmount() / this._amountComponent.numberOfItems;
+    } else {
+      var e = this._amountComponent && this._amountComponent.numberOfItems == 0;
+      if (e) {
+        this._amountComponent.enableComponent(true);
+      }
+      this.disp.mc_selection.mc_slider.mc_line.scaleX = 0;
+      if (e) {
+        this._amountComponent.enableComponent(false);
       }
     }
   };
-  CastleAdvancedTroopSelectionItemInfiniteScrollList.prototype.updateLimits = function () {
-    if (this._items != null) {
-      for (var e = 0, t = this._items; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.updateSelection();
-        }
-      }
-    }
+  AttackDialogWaveHandlerSoldierPickItem.prototype.updateSelection = function () {
+    e.prototype.updateSelection.call(this);
+    this.updateSlider();
   };
-  return CastleAdvancedTroopSelectionItemInfiniteScrollList;
-}(a.InfiniteScrollListComponent);
-exports.CastleAdvancedTroopSelectionItemInfiniteScrollList = r;
+  AttackDialogWaveHandlerSoldierPickItem.prototype.onTouchDown = function (t) {
+    e.prototype.onTouchDown.call(this, t);
+    s.ButtonHelper.isButtonEnabled(t.target);
+  };
+  return AttackDialogWaveHandlerSoldierPickItem;
+}(a.CastleAdvancedUnitSelectionScrollItem);
+exports.AttackDialogWaveHandlerSoldierPickItem = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList");

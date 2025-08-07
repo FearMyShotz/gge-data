@@ -2,15 +2,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./196.js");
-var a = function (e) {
-  function CheatMaintenanceDialogCommand() {
+var o = require("./2.js");
+var a = require("./432.js");
+var s = require("./9.js");
+var r = require("./216.js");
+var l = require("./196.js");
+var c = function (e) {
+  function CheatMysteryBoxChancesCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CheatMaintenanceDialogCommand, e);
-  CheatMaintenanceDialogCommand.prototype.execute = function (e = null) {
-    o.ClientCheatsHelper.performCommand("noConnection");
+  n.__extends(CheatMysteryBoxChancesCommand, e);
+  CheatMysteryBoxChancesCommand.prototype.execute = function (e = null) {
+    l.ClientCheatsHelper.performCommand("mysteryBoxChance ");
+    var t = "";
+    t = a.CastleCheatData.cheatShowMysteryBoxChances ? "show lootbox chances: on" : "show lootbox chances: off";
+    s.CastleDialogHandler.getInstance().registerDefaultDialogs(r.DarkOkDialog, new o.BasicStandardOkDialogProperties("mysteryBoxChance", t));
   };
-  return CheatMaintenanceDialogCommand;
+  return CheatMysteryBoxChancesCommand;
 }(require("./212.js").ABotCommand);
-exports.CheatMaintenanceDialogCommand = a;
+exports.CheatMysteryBoxChancesCommand = c;

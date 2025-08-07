@@ -6,17 +6,17 @@ var o = require("./1.js");
 var a = require("./4.js");
 var s = require("./437.js");
 var r = function (e) {
-  function FilterAllianceOutgoing() {
+  function FilterAllianceIncoming() {
     CONSTRUCTOR_HACK;
     return e.call(this) || this;
   }
-  n.__extends(FilterAllianceOutgoing, e);
-  FilterAllianceOutgoing.prototype.filterFunction = function (e, t, i) {
-    return !!a.CastleModel.userData.isInAlliance && !!e.sourceOwnerInfo && e.sourceOwnerInfo.allianceID == a.CastleModel.userData.allianceID && !e.isMyMovement && (o.instanceOfClass(e, "SupportDefenceMapmovementVO") && e.targetOwnerID != a.CastleModel.userData.playerID || o.instanceOfClass(e, "SiegeMapmovementVO") || o.instanceOfClass(e, "ArmyAttackMapmovementVO") && !e.isAttackingMovement);
+  n.__extends(FilterAllianceIncoming, e);
+  FilterAllianceIncoming.prototype.filterFunction = function (e, t, i) {
+    return !!a.CastleModel.userData.isInAlliance && !!e.targetOwnerInfo && e.targetOwnerInfo.allianceID == a.CastleModel.userData.allianceID && !e.isMyMovement && (o.instanceOfClass(e, "SiegeMapmovementVO") && e.targetOwnerInfo.playerID != a.CastleModel.userData.playerID || o.instanceOfClass(e, "ArmyAttackMapmovementVO") && !e.isAttackingMovement);
   };
-  Object.defineProperty(FilterAllianceOutgoing.prototype, "name", {
+  Object.defineProperty(FilterAllianceIncoming.prototype, "name", {
     get: function () {
-      return FilterAllianceOutgoing.NAME;
+      return FilterAllianceIncoming.NAME;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.AMovementFilterStrategy.prototype, "name").set.call(this, e);
@@ -24,10 +24,10 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  FilterAllianceOutgoing.__initialize_static_members = function () {
-    FilterAllianceOutgoing.NAME = "FilterAllianceOutgoing";
+  FilterAllianceIncoming.__initialize_static_members = function () {
+    FilterAllianceIncoming.NAME = "FilterAllianceIncoming";
   };
-  return FilterAllianceOutgoing;
+  return FilterAllianceIncoming;
 }(s.AMovementFilterStrategy);
-exports.FilterAllianceOutgoing = r;
+exports.FilterAllianceIncoming = r;
 r.__initialize_static_members();

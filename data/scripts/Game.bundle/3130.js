@@ -3,19 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function ToolsmithBuildingVE() {
+var a = require("./62.js");
+var s = function (e) {
+  function TavernBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ToolsmithBuildingVE, e);
-  Object.defineProperty(ToolsmithBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(TavernBuildingVE, e);
+  Object.defineProperty(TavernBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements.Btn_Toolsmith;
+      return Library.CastleInterfaceElements.Icon_Spy;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return ToolsmithBuildingVE;
-}(require("./647.js").ACraftingBuildingVE);
-exports.ToolsmithBuildingVE = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
+  return TavernBuildingVE;
+}(a.ABasicBuildingVE);
+exports.TavernBuildingVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

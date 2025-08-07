@@ -1,30 +1,53 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./5.js");
-var s = function (e) {
-  function CastleDesertedTroopsDialogProperties(t) {
-    var i = e.call(this) || this;
-    i.messageVO = t;
-    return i;
+var n = function () {
+  function ButtonBasicComponentExternal(e) {
+    this._button = e;
+    this.init();
   }
-  n.__extends(CastleDesertedTroopsDialogProperties, e);
-  Object.defineProperty(CastleDesertedTroopsDialogProperties.prototype, "isCamp", {
+  ButtonBasicComponentExternal.prototype.init = function () {};
+  ButtonBasicComponentExternal.prototype.listenOnLayoutChange = function () {
+    this.controller.addEventListener(a.CastleLayoutManagerEvent.CHANGE_LAYOUTSTATE, this.bindFunction(this.onChangeLayoutState));
+  };
+  ButtonBasicComponentExternal.prototype.listenOnChangeCastleList = function () {
+    this.controller.addEventListener(s.CastleUserDataEvent.CHANGE_CASTLELIST, this.bindFunction(this.onChangeCastleList));
+  };
+  ButtonBasicComponentExternal.prototype.listenOnChangeSelectedCastleListItem = function () {
+    c.CastleModel.worldmapCameraData.addEventListener(r.CastleWorldmapEvent.SELECTED_CASTLELIST_ITEM_CHANGED, this.bindFunction(this.onChangeSelectedCastleListItem));
+  };
+  ButtonBasicComponentExternal.prototype.onChangeSelectedCastleListItem = function (e) {};
+  ButtonBasicComponentExternal.prototype.onChangeCastleList = function (e) {};
+  ButtonBasicComponentExternal.prototype.onChangeLayoutState = function (e) {
+    this.init();
+  };
+  ButtonBasicComponentExternal.prototype.destroy = function () {
+    this.controller.removeEventListener(a.CastleLayoutManagerEvent.CHANGE_LAYOUTSTATE, this.bindFunction(this.onChangeLayoutState));
+    this.controller.removeEventListener(s.CastleUserDataEvent.CHANGE_CASTLELIST, this.bindFunction(this.onChangeCastleList));
+    if (c.CastleModel.worldmapData) {
+      c.CastleModel.worldmapData.removeEventListener(r.CastleWorldmapEvent.SELECTED_CASTLELIST_ITEM_CHANGED, this.bindFunction(this.onChangeCastleList));
+    }
+  };
+  Object.defineProperty(ButtonBasicComponentExternal.prototype, "layoutManager", {
     get: function () {
-      return this.messageVO.areaType == a.WorldConst.AREA_TYPE_TREASURE_CAMP || this.messageVO.areaType == a.WorldConst.AREA_TYPE_FACTION_CAMP;
+      return o.CastleLayoutManager.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleDesertedTroopsDialogProperties.prototype, "isHospitalEnabled", {
+  Object.defineProperty(ButtonBasicComponentExternal.prototype, "controller", {
     get: function () {
-      return this.messageVO.areaID != -1 && this.messageVO.kingdomID != -1 && this.messageVO.areaType != a.WorldConst.AREA_TYPE_TREASURE_CAMP;
+      return l.CastleBasicController.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  return CastleDesertedTroopsDialogProperties;
-}(o.BasicProperties);
-exports.CastleDesertedTroopsDialogProperties = s;
+  return ButtonBasicComponentExternal;
+}();
+exports.ButtonBasicComponentExternal = n;
+var o = require("./17.js");
+var a = require("./91.js");
+var s = require("./32.js");
+var r = require("./90.js");
+var l = require("./15.js");
+var c = require("./4.js");

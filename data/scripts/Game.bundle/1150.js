@@ -159,5 +159,5 @@ var C = function (e) {
 }(h.InteractiveMapobject);
 exports.OutpostMapobject = C;
 o.classImplementsInterfaces(C, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
-var _ = require("./106.js");
+var _ = require("./117.js");
 var m = require("./1334.js");

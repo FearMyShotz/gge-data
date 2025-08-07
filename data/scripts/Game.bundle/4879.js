@@ -2,38 +2,32 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function HDCommand() {
+var o = require("./5.js");
+var a = require("./7.js");
+var s = require("./4.js");
+var r = function (e) {
+  function SCTCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(HDCommand, e);
-  Object.defineProperty(HDCommand.prototype, "cmdId", {
+  n.__extends(SCTCommand, e);
+  Object.defineProperty(SCTCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_HERO_DECISION_COMMAND;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      return a.ClientConstSF.S2C_SPIN_CHARACTER_TOMBOLA;
     },
     enumerable: true,
     configurable: true
   });
-  HDCommand.prototype.executeCommand = function (e, t) {
+  SCTCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case a.ERROR.ALL_OK:
+      case o.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.userData.parse_HDC(i);
+        s.CastleModel.generalsData.parse_SCT(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return HDCommand;
-}(l.CastleCommand);
-exports.HDCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return SCTCommand;
+}(require("./10.js").CastleCommand);
+exports.SCTCommand = r;

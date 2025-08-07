@@ -3,12 +3,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleAllianceBuyTemporaryBoostDialogProperties(t, i, n, o, a, s, r) {
-    var l = e.call(this, t, i, n, a, s, r) || this;
-    l.boostDuration = o;
-    return l;
+  function CastleAllianceBuyCustomizableBoostDialogProperties(t, i, n, o, a) {
+    var s = e.call(this) || this;
+    s.buffSeriesID = 0;
+    s.isTemporaryBoosterActive = false;
+    s.titleText = t;
+    s.descriptionText = i;
+    s.buffSeriesID = n;
+    s.targetAllianceSublayer = o;
+    s.isTemporaryBoosterActive = a;
+    return s;
   }
-  n.__extends(CastleAllianceBuyTemporaryBoostDialogProperties, e);
-  return CastleAllianceBuyTemporaryBoostDialogProperties;
-}(require("./1648.js").CastleAllianceBuyBoostDialogProperties);
-exports.CastleAllianceBuyTemporaryBoostDialogProperties = o;
+  n.__extends(CastleAllianceBuyCustomizableBoostDialogProperties, e);
+  return CastleAllianceBuyCustomizableBoostDialogProperties;
+}(require("./2.js").BasicProperties);
+exports.CastleAllianceBuyCustomizableBoostDialogProperties = o;

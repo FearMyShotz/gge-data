@@ -3,15 +3,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleStartQuestDialogProperties(t) {
-    var i = e.call(this) || this;
-    if (!t) {
-      throw new ReferenceError("CastleQuestVO must not be null!");
-    }
-    i.quest = t;
-    return i;
+  function CollectableItemSeasonLeaguePromotionPassVO() {
+    return e.call(this, 1) || this;
   }
-  n.__extends(CastleStartQuestDialogProperties, e);
-  return CastleStartQuestDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleStartQuestDialogProperties = o;
+  n.__extends(CollectableItemSeasonLeaguePromotionPassVO, e);
+  CollectableItemSeasonLeaguePromotionPassVO.prototype.getTooltipTextId = function () {
+    return "seasonLeague_promotionPass_name";
+  };
+  CollectableItemSeasonLeaguePromotionPassVO.prototype.getDescriptionTextId = function () {
+    return "seasonLeague_promotionPass_short_info";
+  };
+  return CollectableItemSeasonLeaguePromotionPassVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemSeasonLeaguePromotionPassVO = o;

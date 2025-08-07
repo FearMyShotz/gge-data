@@ -3,178 +3,82 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./6.js");
+var a = require("./84.js");
 var s = require("./14.js");
-var r = require("./87.js");
-var l = require("./293.js");
-var c = createjs.Point;
+var r = require("./293.js");
+var l = createjs.Container;
+var c = createjs.Event;
 var u = function (e) {
-  function IsoStatusIconManager() {
+  function IsoObjectLayerManager() {
     var t = this;
-    t._iconList = [];
-    t._posOffset = new c();
-    t._isVisible = true;
+    t._layerDic = new Map();
     CONSTRUCTOR_HACK;
     return t = e.call(this) || this;
   }
-  n.__extends(IsoStatusIconManager, e);
-  IsoStatusIconManager.prototype.init = function (e) {
+  n.__extends(IsoObjectLayerManager, e);
+  IsoObjectLayerManager.prototype.init = function (e) {
     this._ve = e;
+    this.createLayers();
   };
-  IsoStatusIconManager.prototype.destroy = function () {
+  IsoObjectLayerManager.prototype.destroy = function () {
     e.prototype.destroy.call(this);
-    this.removeAllIcons();
+    this.destroyLayers();
   };
-  IsoStatusIconManager.prototype.reset = function () {
-    this.removeAllIcons();
-    this._isVisible = true;
-  };
-  IsoStatusIconManager.prototype.addIcon = function (e) {
-    if (this.canShowStatusIcons()) {
-      var t = new e.veClass();
-      t.init(this.ve, e);
-      this.iconList.push(t);
-      t.updateDisp();
-      this.updatePosition();
-    }
-  };
-  IsoStatusIconManager.prototype.removeIcon = function (e) {
-    for (var t = 0; t < this.iconList.length; ++t) {
-      var i = this.iconList[t];
-      if (i.iconType == e) {
-        i.destroy();
-        this.iconList.splice(t, 1);
+  IsoObjectLayerManager.prototype.createLayers = function () {
+    for (var e = 0, t = a.CastleEnum.getEnumListByClass(r.IsoObjectLayerEnum); e < t.length; e++) {
+      var i = t[e];
+      var n = new l();
+      if (i == r.IsoObjectLayerEnum.DISP) {
+        this.ve.elementContainer.addChild(n);
+      } else {
+        n.addEventListener(c.ADDED, this.bindFunction(this.onAddedToLayer));
       }
+      n.name = i.name + "Layer";
+      this.layerDic.set(i, n);
     }
   };
-  IsoStatusIconManager.prototype.removeAllIcons = function () {
-    if (this.iconList != null) {
-      for (var e = 0, t = this.iconList; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.destroy();
-        }
-      }
-    }
-    this._iconList = [];
+  IsoObjectLayerManager.prototype.onAddedToLayer = function (e) {
+    e.target.removeEventListener(c.ADDED, this.bindFunction(this.onAddedToLayer));
+    this.ve.elementContainer.addChild(e.currentTarget);
+    this.sortLayers();
   };
-  IsoStatusIconManager.prototype.update = function (e) {
-    if (this.iconList != null) {
-      for (var t = 0, i = this.iconList; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.update(e);
-        }
-      }
-    }
-  };
-  IsoStatusIconManager.prototype.updatePosition = function () {
+  IsoObjectLayerManager.prototype.sortLayers = function () {
     var e = 0;
-    if (this.iconList != null) {
-      for (var t = 0, i = this.iconList; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.dispComponent.dispContainer.y = e;
-          e -= a.int(n.getDispHeight() + 10);
-        }
+    for (var t = 0, i = a.CastleEnum.getEnumListByClass(r.IsoObjectLayerEnum); t < i.length; t++) {
+      var n = i[t];
+      var o = this.layerDic.get(n);
+      if (o.parent) {
+        o.parent.setChildIndex(o, e++);
       }
     }
-    this.ve.isoRenderer.camera.getCurrentZoomValue();
-    var o = this.ve.disp._cacheScale;
-    var s = 0;
-    if (this.ve.disp && this.ve.disp.filters && this.ve.disp.filters.length > 0) {
-      s = -o;
+  };
+  IsoObjectLayerManager.prototype.destroyLayers = function () {
+    for (var e = 0, t = a.CastleEnum.getEnumListByClass(r.IsoObjectLayerEnum); e < t.length; e++) {
+      var i = t[e];
+      var n = this.getLayer(i);
+      n.removeEventListener(c.ADDED, this.bindFunction(this.onAddedToLayer));
+      this.ve.elementContainer.removeChild(n);
     }
-    var r = this.ve.getLocalDispPosTopCenter();
-    r.x += this.posOffset.x + s;
-    r.y = r.y + this.posOffset.y - r.y * 0.1;
-    var l = this.getLayer();
-    l.x = r.x;
-    l.y = r.y;
+    this._layerDic = new Map();
   };
-  IsoStatusIconManager.prototype.setVisibility = function (e) {
-    this.getLayer().visible = this._isVisible = e;
+  IsoObjectLayerManager.prototype.getLayer = function (e) {
+    return this.layerDic.get(e);
   };
-  IsoStatusIconManager.prototype.setNewOffset = function (e) {
-    this._posOffset = e;
-    this.updatePosition();
-  };
-  IsoStatusIconManager.prototype.getIcon = function (e) {
-    if (this.iconList != null) {
-      for (var t = 0, i = this.iconList; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.iconType == e) {
-          return n;
-        }
-      }
-    }
-    return null;
-  };
-  IsoStatusIconManager.prototype.canShowStatusIcons = function () {
-    if (!this.getLayer()) {
-      return false;
-    }
-    if (!this.ve.vo.isOwnArea) {
-      return false;
-    }
-    var e = this.ve;
-    return !e || e.buildingVO.buildingState != r.IsoBuildingStateEnum.INITIAL;
-  };
-  Object.defineProperty(IsoStatusIconManager.prototype, "hasIcon", {
-    get: function () {
-      return this.iconList.length > 0;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoStatusIconManager.prototype, "isUpgradeIconActive", {
-    get: function () {
-      if (this.iconList != null) {
-        for (var e = 0, t = this.iconList; e < t.length; e++) {
-          var i = t[e];
-          if (i !== undefined && (i.iconType == d.IsoStatusIconEnum.UPGRADE || i.iconType == d.IsoStatusIconEnum.UPGRADE_PRIME_SALE)) {
-            return true;
-          }
-        }
-      }
-      return false;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  IsoStatusIconManager.prototype.getLayer = function () {
-    return this.ve.layers.getLayer(l.IsoObjectLayerEnum.STATUS_ICONS);
-  };
-  Object.defineProperty(IsoStatusIconManager.prototype, "ve", {
+  Object.defineProperty(IsoObjectLayerManager.prototype, "ve", {
     get: function () {
       return this._ve;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoStatusIconManager.prototype, "posOffset", {
+  Object.defineProperty(IsoObjectLayerManager.prototype, "layerDic", {
     get: function () {
-      return this._posOffset;
+      return this._layerDic;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoStatusIconManager.prototype, "isVisible", {
-    get: function () {
-      return this._isVisible;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoStatusIconManager.prototype, "iconList", {
-    get: function () {
-      return this._iconList;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IsoStatusIconManager;
+  return IsoObjectLayerManager;
 }(s.CastleComponent);
-exports.IsoStatusIconManager = u;
-var d = require("./177.js");
+exports.IsoObjectLayerManager = u;
 o.classImplementsInterfaces(u, "ICollectableRendererList");

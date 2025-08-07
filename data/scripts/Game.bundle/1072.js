@@ -2,78 +2,127 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./4.js");
-var r = require("./8.js");
-var l = function (e) {
-  function CastleSendTroopsAddUnitsDialog(t = null) {
-    CONSTRUCTOR_HACK;
-    return e.call(this, t ?? CastleSendTroopsAddUnitsDialog.NAME) || this;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./5.js");
+var u = require("./5.js");
+var d = require("./3555.js");
+var p = require("./1715.js");
+var h = require("./4.js");
+var g = function (e) {
+  function CastleTransferTroopsToKingdomProperties(t) {
+    var i = e.call(this) || this;
+    i.targetKingdomVO = t;
+    return i;
   }
-  n.__extends(CastleSendTroopsAddUnitsDialog, e);
-  CastleSendTroopsAddUnitsDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_cancle, this.dialogDisp.btn_ok, this.dialogDisp.btn_remove, this.dialogDisp.btn_all, this.dialogDisp.mc_slider.btn_slider]);
-  };
-  CastleSendTroopsAddUnitsDialog.prototype.showLoaded = function (t = null) {
-    this.dialogDisp.btn_all.toolTipText = "dialog_addUnit_all";
-    this.dialogDisp.btn_remove.toolTipText = "dialog_addUnit_remove";
-    this.i_txt_infoConsumption = this.textFieldManager.registerTextField(this.dialogDisp.txt_infoConsumption, new a.LocalizedTextVO(this.addUnitsProperties.unitVO.getShortInfoString()));
-    this.i_txt_infoConsumption.autoFitToBounds = true;
-    this.i_txt_name = this.textFieldManager.registerTextField(this.dialogDisp.txt_name, new a.LocalizedTextVO(this.addUnitsProperties.unitVO.getNameString()));
-    this._amountComponent ||= new c.CastleUnitAmountComponent();
-    this._amountComponent.init(this.dialogDisp.mc_slider, this.dialogDisp.amountPicker, this.dialogDisp.btn_all);
-    this._amountComponent.registerOnReturnKeyPressed(this.bindFunction(this.onConfirmToAddUnits));
-    u.WodPicHelper.addUnitPic(this.addUnitsProperties.unitVO, this.dialogDisp.mc_content, CastleSendTroopsAddUnitsDialog.MAX_WIDTH, CastleSendTroopsAddUnitsDialog.MAX_HEIGHT, s.CastleModel.userData.playerCrest.colorsTwo[0], s.CastleModel.userData.playerCrest.colorsTwo[1]);
-    this.dialogDisp.btn_remove.visible = this.addUnitsProperties.currentItems > 0;
-    this.dialogDisp.mc_slider.visible = true;
-    this._amountComponent.setNumberOfItems(this.addUnitsProperties.maxItems);
-    this._amountComponent.setSelectedAmount(this.addUnitsProperties.currentItems);
-    this._amountComponent.selectTextfield();
-    e.prototype.showLoaded.call(this);
-  };
-  CastleSendTroopsAddUnitsDialog.prototype.onClick = function (t) {
-    var i;
-    e.prototype.onClick.call(this, t);
-    if (r.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_cancle:
-          this.hide();
-          break;
-        case this.dialogDisp.btn_ok:
-          this.onConfirmToAddUnits();
-          break;
-        case this.dialogDisp.btn_remove:
-          i = [this.addUnitsProperties.unitVO, 0];
-          this.addUnitsProperties.addItemFunction(i);
-          this.hide();
-      }
-    }
-  };
-  CastleSendTroopsAddUnitsDialog.prototype.onConfirmToAddUnits = function () {
-    var e;
-    e = [this.addUnitsProperties.unitVO, this._amountComponent.getSelectedAmount()];
-    this.addUnitsProperties.addItemFunction(e);
-    this.hide();
-  };
-  Object.defineProperty(CastleSendTroopsAddUnitsDialog.prototype, "addUnitsProperties", {
+  n.__extends(CastleTransferTroopsToKingdomProperties, e);
+  Object.defineProperty(CastleTransferTroopsToKingdomProperties.prototype, "unitTravelTime", {
     get: function () {
-      return this.properties;
+      return h.CastleModel.kingdomData.getKingdomVOByID(this.targetKingdomVO.kID).unitTravelTime;
     },
     enumerable: true,
     configurable: true
   });
-  CastleSendTroopsAddUnitsDialog.__initialize_static_members = function () {
-    CastleSendTroopsAddUnitsDialog.NAME = "CastleAttackAddUnitsEx";
-    CastleSendTroopsAddUnitsDialog.MAX_WIDTH = 70;
-    CastleSendTroopsAddUnitsDialog.MAX_HEIGHT = 70;
+  Object.defineProperty(CastleTransferTroopsToKingdomProperties.prototype, "exceptingKingdomID", {
+    get: function () {
+      return [this.targetKingdomVO.kID, l.FactionConst.KINGDOM_ID];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleTransferTroopsToKingdomProperties.prototype.isToolTravelingAllowed = function (e) {
+    return e.isTravelingToTargetAllowed(this.targetKingdomVO.kID, c.WorldConst.AREA_TYPE_ALIEN_CAMP) || e.isTravelingToTargetAllowed(this.targetKingdomVO.kID, c.WorldConst.AREA_TYPE_RED_ALIEN_CAMP) || e.isTravelingToTargetAllowed(this.targetKingdomVO.kID, c.WorldConst.AREA_TYPE_KINGDOM_CASTLE) || e.isTravelingToTargetAllowed(this.targetKingdomVO.kID, c.WorldConst.AREA_TYPE_FACTION_CAMP);
   };
-  return CastleSendTroopsAddUnitsDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleSendTroopsAddUnitsDialog = l;
-var c = require("./297.js");
-var u = require("./63.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList");
-l.__initialize_static_members();
+  Object.defineProperty(CastleTransferTroopsToKingdomProperties.prototype, "addUnitsDialogKey", {
+    get: function () {
+      if (this.targetKingdomVO.kID == l.FactionConst.KINGDOM_ID) {
+        return m.CastleSendTroopsToFactionAddUnitsDialog;
+      } else {
+        return _.CastleSendTroopsAddUnitsDialog;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTransferTroopsToKingdomProperties.prototype, "unitTravelTaxRate", {
+    get: function () {
+      return this.targetKingdomVO.unitTravelTaxRate;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTransferTroopsToKingdomProperties.prototype, "insufficentTimeAlert", {
+    get: function () {
+      if (this.targetKingdomVO.kID == l.FactionConst.KINGDOM_ID) {
+        var e = a.castAs(h.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_FACTION), "FactionEventVO");
+        if (e && e.remainingEventTimeInSeconds < this.unitTravelTime) {
+          return true;
+        }
+      }
+      return false;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleTransferTroopsToKingdomProperties.prototype.getUnitTransferCommand = function (e, t, i) {
+    if (i) {
+      return new d.C2SKingdomUnitTransferVO(e.selectedCastleVO.objectId, e.selectedCastleVO.kingdomID, this.targetKingdomVO.kID, t, i.selectedData.objectId);
+    } else {
+      return new d.C2SKingdomUnitTransferVO(e.selectedCastleVO.objectId, e.selectedCastleVO.kingdomID, this.targetKingdomVO.kID, t, -1);
+    }
+  };
+  CastleTransferTroopsToKingdomProperties.prototype.isSpecialEvent = function (e) {
+    switch (e) {
+      case r.EventConst.EVENTTYPE_FACTION:
+        return this.targetKingdomVO.kID == l.FactionConst.KINGDOM_ID;
+      case r.EventConst.EVENTTYPE_ISLAND_KINGDOM:
+        return this.targetKingdomVO.kID == u.WorldIsland.KINGDOM_ID;
+    }
+    return false;
+  };
+  Object.defineProperty(CastleTransferTroopsToKingdomProperties.prototype, "targetCapacity", {
+    get: function () {
+      return Number.MAX_VALUE;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTransferTroopsToKingdomProperties.prototype, "descriptionTextID", {
+    get: function () {
+      return "dialog_kingdom_sendTroops_info";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTransferTroopsToKingdomProperties.prototype, "additionalDataUpdateCommands", {
+    get: function () {
+      var e = [];
+      if (this.targetKingdomVO.kID == l.FactionConst.KINGDOM_ID) {
+        e.push(new p.C2SGetCampUnitCapacity(h.CastleModel.userData.castleList.getMainFactionCastle().objectId));
+      }
+      return e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTransferTroopsToKingdomProperties.prototype, "targetFoodConsumption", {
+    get: function () {
+      if (h.CastleModel.userCastleListDetailed.getMainCastleByKingdomID(this.targetKingdomVO.kID)) {
+        return h.CastleModel.userCastleListDetailed.getMainCastleByKingdomID(this.targetKingdomVO.kID).getResourceProduction(C.CollectableEnum.FOOD);
+      } else {
+        return 0;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleTransferTroopsToKingdomProperties;
+}(o.BasicProperties);
+exports.CastleTransferTroopsToKingdomProperties = g;
+var C = require("./12.js");
+var _ = require("./1073.js");
+var m = require("./3556.js");
+s.classImplementsInterfaces(g, "ITransferTroopsDialogProperties");

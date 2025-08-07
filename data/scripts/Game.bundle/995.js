@@ -1,47 +1,43 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = function (e) {
-  function ConstructionItemsActionProperties(t, i, n, o, a = -1) {
-    var s = e.call(this) || this;
-    s.lostAndFoundID = 0;
-    s._constructionItemVO = t;
-    s._slotVO = i;
-    s._buildingVO = n;
-    s._hideCallback = o;
-    s.lostAndFoundID = a;
-    return s;
-  }
-  n.__extends(ConstructionItemsActionProperties, e);
-  Object.defineProperty(ConstructionItemsActionProperties.prototype, "buildingVO", {
+var n = createjs.Point;
+var o = function () {
+  function LegendSkillIconHelper() {}
+  LegendSkillIconHelper.hideToolTip = function () {
+    LegendSkillIconHelper._legendSkillToolTip.disp.visible = false;
+    LegendSkillIconHelper._currentTarget = null;
+  };
+  LegendSkillIconHelper.showToolTip = function (e, t) {
+    LegendSkillIconHelper._currentTarget = e;
+    LegendSkillIconHelper._legendSkillToolTip.initToolTip(t);
+    var i = e.localToGlobal(new n(0, 0));
+    LegendSkillIconHelper._legendSkillToolTip.disp.x = i.x;
+    LegendSkillIconHelper._legendSkillToolTip.disp.y = Math.max(LegendSkillIconHelper._legendSkillToolTip.disp.bg.height, i.y) - e.height / 2;
+    if (LegendSkillIconHelper._legendSkillToolTip.disp.y - LegendSkillIconHelper._legendSkillToolTip.disp.bg.height < 0) {
+      LegendSkillIconHelper._legendSkillToolTip.disp.y = i.y + e.height / 2 + LegendSkillIconHelper._legendSkillToolTip.disp.bg.height;
+    }
+    LegendSkillIconHelper._legendSkillToolTip.disp.visible = true;
+  };
+  Object.defineProperty(LegendSkillIconHelper, "disp", {
     get: function () {
-      return this._buildingVO;
+      return LegendSkillIconHelper._legendSkillToolTip.disp;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ConstructionItemsActionProperties.prototype, "constructionItemVO", {
+  Object.defineProperty(LegendSkillIconHelper, "currentTarget", {
     get: function () {
-      return this._constructionItemVO;
+      return LegendSkillIconHelper._currentTarget;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ConstructionItemsActionProperties.prototype, "slotVO", {
-    get: function () {
-      return this._slotVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ConstructionItemsActionProperties.prototype, "hideCallback", {
-    get: function () {
-      return this._hideCallback;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return ConstructionItemsActionProperties;
-}(require("./2.js").BasicProperties);
-exports.ConstructionItemsActionProperties = o;
+  LegendSkillIconHelper.__initialize_static_members = function () {
+    LegendSkillIconHelper._legendSkillToolTip = new a.CastleLegendSkillTooltip();
+  };
+  return LegendSkillIconHelper;
+}();
+exports.LegendSkillIconHelper = o;
+var a = require("./2667.js");
+o.__initialize_static_members();

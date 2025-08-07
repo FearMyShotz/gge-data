@@ -3,92 +3,64 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./3.js");
-var l = function (e) {
-  function CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem() {
-    var t = this;
-    t.isSelected = false;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./13.js");
+var l = require("./4.js");
+var c = require("./1393.js");
+var u = require("./5.js");
+var d = require("./12.js");
+var p = require("./25.js");
+var h = require("./31.js");
+var g = require("./19.js");
+var C = createjs.Point;
+var _ = require("./16.js");
+var m = require("./5.js");
+var f = require("./67.js");
+var O = function (e) {
+  function CastleTempServerCostConfirmationDialog() {
+    return e.call(this, CastleTempServerCostConfirmationDialog.NAME) || this;
   }
-  n.__extends(CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem, e);
-  CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem.prototype.fill = function () {
-    if (this.data) {
-      var e = this.getItemMc();
-      e.actLikeButton = true;
-      e.mouseChildren = false;
-      s.MovieClipHelper.clearMovieClip(e.mc_icon);
-      e.mc_discount.visible = false;
-      var t = new r.TextVO(this.preBuilt.getNameText());
-      d.CastleComponent.textFieldManager.registerTextField(e.txt_value, t).visible = this.isSelected;
-      d.CastleComponent.textFieldManager.registerTextField(e.txt_value_unselected, t).visible = !this.isSelected;
-      e.mc_selected.visible = this.isSelected;
-      e.mc_unselected.visible = !this.isSelected;
-      if (this.type == h.CastleSpecialServerPreBuildCastleSelectionDialogProperties.TYPE_STORMISLANDS) {
-        var i = "PreBuildCastleIcon_" + this.preBuilt.preBuiltCastleID + "_" + this.type;
-        e.mc_icon.addChild(new a.GoodgameDisplayObjectClipExternal(i, u.IsoHelper.view.getAssetFileURL(i)));
+  n.__extends(CastleTempServerCostConfirmationDialog, e);
+  CastleTempServerCostConfirmationDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.dialogDisp.cost_4.x = -212;
+    if (this.dialogProps.preBuildCastle) {
+      if (this.dialogProps.globalServerID == u.GlobalServerConst.TEMP_SERVER) {
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_tempServer_preBuiltCastle_buyConfirmationPremium_desc"));
       } else {
-        var n = this.type == h.CastleSpecialServerPreBuildCastleSelectionDialogProperties.TYPE_TEMPSERVER ? "_Temp" : "";
-        e.mc_icon.addChild(new a.GoodgameDisplayObjectClipExternal("PreBuildCastleIcon_" + this.preBuilt.preBuiltCastleID + n, u.IsoHelper.view.getAssetFileURL(p.CastleSpecialServerPreBuildCastleSelectionDialog.NAME)));
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_chooseCastleConfirm_desc"));
       }
-      e.mc_vip.visible = this.preBuilt.costs.getAmountOrDefaultByType(c.CollectableEnum.C2) > 200000;
+      this.textFieldManager.registerTextField(this.dialogDisp.cost_1.txt_copy1, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("costs")));
+      var i = l.CastleModel.userCastleListDetailed.getMainCastleByKingdomID(m.WorldClassic.KINGDOM_ID);
+      var n = new g.CollectableRenderOptions(g.CollectableRenderOptions.SET_COST_LIST, new C(30, 30));
+      n.costTextfield.useOtherResourceStorage = i.getResourcesAsCollectableList();
+      n.tooltip.useAmount = false;
+      var o = this.dialogProps.preBuildCastle.costs;
+      if (o.length <= 1) {
+        p.CollectableRenderHelper.displaySingleItemComplete(this, new h.CollectableRenderClips(this.dialogDisp.cost_1.icon_ruby).addIconMc(this.dialogDisp.cost_1.icon_ruby).addTextfield(this.dialogDisp.cost_1.txt_cost), o.list[0], n);
+        this.textFieldManager.registerTextField(this.dialogDisp.cost_1.txt_cost, new a.LocalizedTextVO("value_proportional_value", [o.list[0].amount, this.getAvailableCurrency(o.list[0])])).color = o.list[0].amount > this.getAvailableCurrency(o.list[0]) ? _.ClientConstColor.FONT_INSUFFICIENT_COLOR : _.ClientConstColor.FONT_DEFAULT_COLOR;
+        this.dialogDisp.cost_1.visible = true;
+        this.dialogDisp.cost_4.visible = false;
+        this.dialogDisp.cost_1.mc_discount.visible = false;
+      } else {
+        p.CollectableRenderHelper.displayMultipleItemsComplete(this, new f.CollectableRenderClipsList().createByParentMc(this.dialogDisp.cost_4, "cost"), o, n);
+        this.dialogDisp.cost_1.visible = false;
+        this.dialogDisp.cost_4.visible = true;
+      }
     }
   };
-  Object.defineProperty(CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem.prototype, "preBuilt", {
-    get: function () {
-      return this.data[0];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem.prototype, "index", {
-    get: function () {
-      if (this.data) {
-        return this.data[1];
-      } else {
-        return -1;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem.prototype, "onSelectFunction", {
-    get: function () {
-      return this.data[2];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem.prototype, "type", {
-    get: function () {
-      return this.data[3];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem.prototype.onClick = function (e) {
-    if (!this.isSelected) {
-      this.isSelected = true;
-      this.fill();
-      this.onSelectFunction(this.index);
+  CastleTempServerCostConfirmationDialog.prototype.getAvailableCurrency = function (e) {
+    switch (e.itemType) {
+      case d.CollectableEnum.C2:
+        return l.CastleModel.currencyData.c2Amount;
+      case d.CollectableEnum.GENERIC_CURRENCY:
+        return l.CastleModel.currencyData.getCurrencyById(e.id).amount;
     }
+    return 0;
   };
-  CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem.prototype.unSelect = function () {
-    this.isSelected = false;
-    this.fill();
-  };
-  CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem.prototype.select = function () {
-    this.isSelected = true;
-    this.fill();
-  };
-  return CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem;
-}(require("./81.js").AInfiniteScrollListItem);
-exports.CastleSpecialServerPreBuildCastleSelectionDialogPreBuiltItem = l;
-o.classImplementsInterfaces(l, "ICollectableRendererList");
-var c = require("./12.js");
-var u = require("./46.js");
-var d = require("./14.js");
-var p = require("./750.js");
-var h = require("./614.js");
+  CastleTempServerCostConfirmationDialog.NAME = "PreBuiltCastleCostConfirmation";
+  return CastleTempServerCostConfirmationDialog;
+}(c.CastleTempServerConfirmationDialog);
+exports.CastleTempServerCostConfirmationDialog = O;
+o.classImplementsInterfaces(O, "ICollectableRendererList");

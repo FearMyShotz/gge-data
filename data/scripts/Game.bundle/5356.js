@@ -6,7 +6,7 @@ var o = require("./2.js");
 var a = require("./6.js");
 var s = require("./7.js");
 var r = function (e) {
-  function C2SCreateArmyAttackMovementTempServerVO(t, i, n, o, s, r, l, c, u, d, p, h, g, C, _, m, f, O) {
+  function C2SCreateAllianceBattleGroundCollectorArmyAttackMovementVO(t, i, n, o, s, r, l, c, u, d, p, h, g, C, _, m, f, O) {
     var E = this;
     E.SX = 0;
     E.SY = 0;
@@ -24,6 +24,7 @@ var r = function (e) {
     E.PTT = 0;
     E.SD = 0;
     E.ICA = 0;
+    E.TCK = 0;
     E.CD = 0;
     CONSTRUCTOR_HACK;
     (E = e.call(this) || this).KID = h;
@@ -42,17 +43,17 @@ var r = function (e) {
     E.FC = a.int(p ? 1 : 0);
     E.PTT = a.int(g ? 1 : 0);
     E.SD = C;
-    E.ICA = 0;
+    E.ICA = _;
     E.BKS = m;
     E.CD = 99;
     E.AST = f;
     E.RW = O;
     return E;
   }
-  n.__extends(C2SCreateArmyAttackMovementTempServerVO, e);
-  C2SCreateArmyAttackMovementTempServerVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_CREATE_ARMY_ATTACK_MOVEMENT_TEMP_SERVER;
+  n.__extends(C2SCreateAllianceBattleGroundCollectorArmyAttackMovementVO, e);
+  C2SCreateAllianceBattleGroundCollectorArmyAttackMovementVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_CREATE_ARMY_ATTACK_MOVEMENT_ALLIANCE_BATTLE_GROUND;
   };
-  return C2SCreateArmyAttackMovementTempServerVO;
+  return C2SCreateAllianceBattleGroundCollectorArmyAttackMovementVO;
 }(o.BasicCommandVO);
-exports.C2SCreateArmyAttackMovementTempServerVO = r;
+exports.C2SCreateAllianceBattleGroundCollectorArmyAttackMovementVO = r;

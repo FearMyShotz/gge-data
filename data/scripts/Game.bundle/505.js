@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CollectableItemGlassVO(t = 0) {
+  function CollectableItemCoalVO(t = 0) {
     return e.call(this, t) || this;
   }
-  n.__extends(CollectableItemGlassVO, e);
-  CollectableItemGlassVO.SERVER_KEY = "G";
-  CollectableItemGlassVO.XML_KEY = "glass";
-  return CollectableItemGlassVO;
+  n.__extends(CollectableItemCoalVO, e);
+  CollectableItemCoalVO.SERVER_KEY = "C";
+  CollectableItemCoalVO.XML_KEY = "coal";
+  return CollectableItemCoalVO;
 }(require("./254.js").ACollectableItemResourceVO);
-exports.CollectableItemGlassVO = o;
+exports.CollectableItemCoalVO = o;

@@ -5,33 +5,35 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function ADACommand() {
+var r = require("./605.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function AATCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ADACommand, e);
-  Object.defineProperty(ADACommand.prototype, "cmdId", {
+  n.__extends(AATCommand, e);
+  Object.defineProperty(AATCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ALLIANCE_DELETE_TOPIC_ANSWER;
+      return s.ClientConstSF.S2C_ALLIANCE_ANSWER_TOPIC;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  ADACommand.prototype.executeCommand = function (e, t) {
+  AATCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        JSON.parse(t[1]);
+        l.CastleModel.castleForumData.dispatchEvent(new r.CastleAllianceForumEvent(r.CastleAllianceForumEvent.ON_POST_CREATION_ACCEPTED));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return ADACommand;
-}(r.CastleCommand);
-exports.ADACommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  return AATCommand;
+}(c.CastleCommand);
+exports.AATCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

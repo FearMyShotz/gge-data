@@ -7,13 +7,13 @@ var a = require("./1.js");
 var s = require("./162.js");
 var r = createjs.Container;
 var l = function (e) {
-  function DaimyoTownshipDetailView(t, i, n, o) {
+  function DaimyoCastleDetailView(t, i, n, o) {
     return e.call(this, t, i, n, o) || this;
   }
-  n.__extends(DaimyoTownshipDetailView, e);
-  Object.defineProperty(DaimyoTownshipDetailView.prototype, "assetCastleFileURL", {
+  n.__extends(DaimyoCastleDetailView, e);
+  Object.defineProperty(DaimyoCastleDetailView.prototype, "assetCastleFileURL", {
     get: function () {
-      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("DetailView_DaimyoTownship");
+      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("DetailView_DaimyoCastle");
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.FightDetailView.prototype, "assetCastleFileURL").set.call(this, e);
@@ -21,7 +21,7 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DaimyoTownshipDetailView.prototype, "assetBackgroundFileURL", {
+  Object.defineProperty(DaimyoCastleDetailView.prototype, "assetBackgroundFileURL", {
     get: function () {
       return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("DetailView_Background_Daimyo");
     },
@@ -31,10 +31,10 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  DaimyoTownshipDetailView.prototype.getBackgroundClassName = function () {
+  DaimyoCastleDetailView.prototype.getBackgroundClassName = function () {
     return "Castle_Landscape_Daimyo";
   };
-  DaimyoTownshipDetailView.prototype.drawCastleVO = function () {
+  DaimyoCastleDetailView.prototype.drawCastleVO = function () {
     this._castleLayer = new r();
     this._layerBackground = new r();
     this._layerMoat = new r();
@@ -48,6 +48,8 @@ var l = function (e) {
     this._layerRight.mouseChildren = false;
     this._layerMiddle = new r();
     this._layerMiddle.mouseChildren = false;
+    this._castleLayer.y = -10;
+    this._castleLayer.x = -20;
     this._castleLayer.addChild(this._layerBackground);
     this._castleLayer.addChild(this._layerMoat);
     this._layerFront.addChild(this._layerLeft);
@@ -55,20 +57,18 @@ var l = function (e) {
     this._layerFront.addChild(this._layerKeep);
     this._layerFront.addChild(this._layerMiddle);
     this._castleLayer.addChild(this._layerFront);
-    this._layerKeep.addChild(this.getMovieClipByName(DaimyoTownshipDetailView.CLASSNAME_KEEP));
-    this._layerLeft.addChild(this.getMovieClipByName(DaimyoTownshipDetailView.CLASSNAME_BACKWALL_LEFT));
-    this._layerRight.addChild(this.getMovieClipByName(DaimyoTownshipDetailView.CLASSNAME_BACKWALL_RIGHT));
-    this._layerMiddle.addChild(this.getMovieClipByName(DaimyoTownshipDetailView.CLASSNAME_GATE));
-    if (this._detailDrawAble.moatLevel > 0) {
-      this._layerMoat.addChild(this.getMovieClipByName(DaimyoTownshipDetailView.CLASSNAME_MOAT));
-    }
+    this._layerKeep.addChild(this.getMovieClipByName(DaimyoCastleDetailView.CLASSNAME_KEEP));
+    this._layerLeft.addChild(this.getMovieClipByName(DaimyoCastleDetailView.CLASSNAME_BACKWALL_LEFT));
+    this._layerRight.addChild(this.getMovieClipByName(DaimyoCastleDetailView.CLASSNAME_BACKWALL_RIGHT));
+    this._layerMiddle.addChild(this.getMovieClipByName(DaimyoCastleDetailView.CLASSNAME_GATE));
+    this._layerMoat.addChild(this.getMovieClipByName(DaimyoCastleDetailView.CLASSNAME_MOAT));
   };
-  DaimyoTownshipDetailView.CLASSNAME_KEEP = "DaimyoTownship_Keep";
-  DaimyoTownshipDetailView.CLASSNAME_BACKWALL_LEFT = "DaimyoTownship_BackWall_Left";
-  DaimyoTownshipDetailView.CLASSNAME_BACKWALL_RIGHT = "DaimyoTownship_BackWall_Right";
-  DaimyoTownshipDetailView.CLASSNAME_GATE = "DaimyoTownship_Gate";
-  DaimyoTownshipDetailView.CLASSNAME_MOAT = "DaimyoTownship_Moat";
-  return DaimyoTownshipDetailView;
+  DaimyoCastleDetailView.CLASSNAME_KEEP = "DaimyoCastle_Keep";
+  DaimyoCastleDetailView.CLASSNAME_BACKWALL_LEFT = "DaimyoCastle_BackWall_Left";
+  DaimyoCastleDetailView.CLASSNAME_BACKWALL_RIGHT = "DaimyoCastle_BackWall_Right";
+  DaimyoCastleDetailView.CLASSNAME_GATE = "DaimyoCastle_Gate";
+  DaimyoCastleDetailView.CLASSNAME_MOAT = "DaimyoCastle_Moat";
+  return DaimyoCastleDetailView;
 }(s.FightDetailView);
-exports.DaimyoTownshipDetailView = l;
+exports.DaimyoCastleDetailView = l;
 a.classImplementsInterfaces(l, "IFightDetailView");

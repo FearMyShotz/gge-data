@@ -4,20 +4,20 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./116.js");
+var s = require("./114.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferBloodcrowDialog() {
-    return e.call(this, CastlePaymentRewardSpecialOfferBloodcrowDialog.NAME) || this;
+  function CastlePaymentRewardSpecialOfferChristmasDialog() {
+    return e.call(this, CastlePaymentRewardSpecialOfferChristmasDialog.NAME) || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferBloodcrowDialog, e);
-  CastlePaymentRewardSpecialOfferBloodcrowDialog.prototype.setTextIDs = function () {
+  n.__extends(CastlePaymentRewardSpecialOfferChristmasDialog, e);
+  CastlePaymentRewardSpecialOfferChristmasDialog.prototype.setTextIDs = function () {
     e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_bloodcrow_title";
-    this.descriptionTextID = "dialog_primeday_bloodcrow_description";
+    this.titleTextID = "dialog_primeday_christmas_title";
+    this.descriptionTextID = "dialog_primeday_christmas_description";
   };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferBloodcrowDialog.prototype, "skinType", {
+  Object.defineProperty(CastlePaymentRewardSpecialOfferChristmasDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_BLOOD_CROW;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_CHRISTMAS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
@@ -25,8 +25,8 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferBloodcrowDialog.NAME = "CastlePaymentRewardSpecialOfferBloodcrow";
-  return CastlePaymentRewardSpecialOfferBloodcrowDialog;
+  CastlePaymentRewardSpecialOfferChristmasDialog.NAME = "CastlePaymentRewardSpecialOfferChristmas";
+  return CastlePaymentRewardSpecialOfferChristmasDialog;
 }(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferBloodcrowDialog = r;
+exports.CastlePaymentRewardSpecialOfferChristmasDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");

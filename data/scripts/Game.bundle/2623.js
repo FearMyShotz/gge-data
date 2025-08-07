@@ -1,37 +1,36 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./22.js");
-var o = require("./4.js");
-var a = function () {
-  function ConstructionItemDisassemblingTombolaVO() {}
-  ConstructionItemDisassemblingTombolaVO.prototype.parseXML = function (e = null) {
-    this._tombolaID = parseInt(n.CastleXMLUtils.getValueOrDefault("tombolaID", e, "0"));
-    this._shares = parseInt(n.CastleXMLUtils.getValueOrDefault("shares", e, "0"));
-    this._rewardID = parseInt(n.CastleXMLUtils.getValueOrDefault("rewardID", e, "0"));
+var n = require("./4.js");
+var o = function () {
+  function ConstructionItemExpiredVO() {}
+  ConstructionItemExpiredVO.prototype.parseParams = function (e) {
+    this._constructionItemVO = n.CastleModel.constructionItemData.getConstructionItemVO(e.CID).clone();
+    this._buildingVO = n.CastleModel.wodData.getBuildingVOById(e.B);
+    this._objectID = e.OID;
+    this._constructionItemVO.setRemainingTime(-1);
   };
-  Object.defineProperty(ConstructionItemDisassemblingTombolaVO.prototype, "tombolaID", {
+  Object.defineProperty(ConstructionItemExpiredVO.prototype, "buildingVO", {
     get: function () {
-      return this._tombolaID;
+      return this._buildingVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ConstructionItemDisassemblingTombolaVO.prototype, "shares", {
+  Object.defineProperty(ConstructionItemExpiredVO.prototype, "constructionItemVO", {
     get: function () {
-      return this._shares;
+      return this._constructionItemVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ConstructionItemDisassemblingTombolaVO.prototype, "rewards", {
+  Object.defineProperty(ConstructionItemExpiredVO.prototype, "objectID", {
     get: function () {
-      this._rewards ||= o.CastleModel.rewardData.getListById(this._rewardID);
-      return this._rewards;
+      return this._objectID;
     },
     enumerable: true,
     configurable: true
   });
-  return ConstructionItemDisassemblingTombolaVO;
+  return ConstructionItemExpiredVO;
 }();
-exports.ConstructionItemDisassemblingTombolaVO = a;
+exports.ConstructionItemExpiredVO = o;

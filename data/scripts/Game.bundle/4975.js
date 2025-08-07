@@ -2,40 +2,64 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function CDSCommand() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./7.js");
+var c = require("./4.js");
+var u = require("./9.js");
+var d = require("./38.js");
+var p = require("./1154.js");
+var h = require("./1155.js");
+var g = require("./10.js");
+var C = function (e) {
+  function CAMCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CDSCommand, e);
-  Object.defineProperty(CDSCommand.prototype, "cmdId", {
+  n.__extends(CAMCommand, e);
+  Object.defineProperty(CAMCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_CREATE_DEFENCE_SUPPORT_MOVEMENT;
+      return l.ClientConstSF.S2C_CREATE_ARMY_ATTACK_MOVEMENT_TEMP_SERVER;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(g.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CDSCommand.prototype.executeCommand = function (e, t) {
+  CAMCommand.prototype.executeCommand = function (e, t) {
+    var i;
+    if (t && t.length > 1) {
+      i = JSON.parse(t[1]);
+    }
     switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        r.CastleModel.otherPlayerData.parseOwnerInfoArray(i.O);
-        r.CastleModel.armyData.parseMapMovementArray([i.A]);
+      case s.ERROR.ALL_OK:
+        c.CastleModel.currencyData.parseGCU(i.gcu);
+        c.CastleModel.otherPlayerData.parseOwnerInfoArray(i.O);
+        c.CastleModel.armyData.parseMapMovementArray([i.AAM]);
+        break;
+      case s.ERROR.COOLING_DOWN:
+        u.CastleDialogHandler.getInstance().registerDefaultDialogs(d.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_watchout"), r.Localize.text("canNotAttackCastle")));
+        break;
+      case s.ERROR.MOVEMENT_HAS_NO_UNITS:
+        u.CastleDialogHandler.getInstance().registerDefaultDialogs(d.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_watchout"), r.Localize.text("errorCode_100", [i.MS])));
+        break;
+      case s.ERROR.ATTACK_IN_PROGRESS:
+        u.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastlePostPostAttackFactionDialog, new h.CastlePostPostAttackFactionDialogProperties(i.TS, i.AS));
+        break;
+      case s.ERROR.ALREADY_TO_MANY_OUTPOSTS:
+        u.CastleDialogHandler.getInstance().registerDefaultDialogs(d.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_watchout"), r.Localize.text("noAbailableBarons")));
+        break;
+      case s.ERROR.ATTACK_TOO_MANY_UNITS:
+        u.CastleDialogHandler.getInstance().registerDefaultDialogs(d.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties("", r.Localize.text("errorCode_313")));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return CDSCommand;
-}(l.CastleCommand);
-exports.CDSCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return CAMCommand;
+}(g.CastleCommand);
+exports.CAMCommand = C;
+a.classImplementsInterfaces(C, "IExecCommand");

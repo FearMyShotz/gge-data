@@ -3,15 +3,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./7.js");
+var a = require("./2.js");
 var s = function (e) {
-  function C2SGetNewsletterSubscriptionStatusVO() {
-    return e.call(this) || this;
+  function CastleWelcomeBetaTestDialogProperties(t = null) {
+    var i = this;
+    CONSTRUCTOR_HACK;
+    i = e.call(this) || this;
+    var n = a.EnvGlobalsHandler.globals.isClosedBeta ? CastleWelcomeBetaTestDialogProperties.CLOSED_BETA_NEWS : CastleWelcomeBetaTestDialogProperties.OPEN_BETA_NEWS;
+    i._newsIDs = t || n;
+    return i;
   }
-  n.__extends(C2SGetNewsletterSubscriptionStatusVO, e);
-  C2SGetNewsletterSubscriptionStatusVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_MAIL_NEWSLETTER_STATUS;
+  n.__extends(CastleWelcomeBetaTestDialogProperties, e);
+  Object.defineProperty(CastleWelcomeBetaTestDialogProperties.prototype, "newsIDs", {
+    get: function () {
+      return this._newsIDs;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleWelcomeBetaTestDialogProperties.__initialize_static_members = function () {
+    CastleWelcomeBetaTestDialogProperties.OPEN_BETA_NEWS = [1];
+    CastleWelcomeBetaTestDialogProperties.CLOSED_BETA_NEWS = [1];
   };
-  return C2SGetNewsletterSubscriptionStatusVO;
-}(o.BasicCommandVO);
-exports.C2SGetNewsletterSubscriptionStatusVO = s;
+  return CastleWelcomeBetaTestDialogProperties;
+}(o.BasicProperties);
+exports.CastleWelcomeBetaTestDialogProperties = s;
+s.__initialize_static_members();

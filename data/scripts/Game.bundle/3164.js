@@ -3,23 +3,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1610.js");
-var s = function (e) {
-  function WoodResourceFieldVE() {
+var a = require("./1609.js");
+var s = createjs.Point;
+var r = function (e) {
+  function StoneResourceFieldVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(WoodResourceFieldVE, e);
-  Object.defineProperty(WoodResourceFieldVE.prototype, "hasBuildingPlaceHolder", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.AResourceFieldVE.prototype, "hasBuildingPlaceHolder").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return WoodResourceFieldVE;
-}(a.AResourceFieldVE);
-exports.WoodResourceFieldVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  n.__extends(StoneResourceFieldVE, e);
+  StoneResourceFieldVE.prototype.getClipDeltaTilePosByIndex = function (e) {
+    return new s(0, this.vo.height * e);
+  };
+  return StoneResourceFieldVE;
+}(a.AExpandingResourceFieldVE);
+exports.StoneResourceFieldVE = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

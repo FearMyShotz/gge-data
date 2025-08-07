@@ -3,23 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1044.js");
+var a = require("./489.js");
 var s = function (e) {
-  function SoldierMeleeMovementVE() {
+  function FarmerMovementVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SoldierMeleeMovementVE, e);
-  Object.defineProperty(SoldierMeleeMovementVE.prototype, "assetClipName", {
+  n.__extends(FarmerMovementVE, e);
+  Object.defineProperty(FarmerMovementVE.prototype, "workFrameRange", {
     get: function () {
-      return "Soldier_Melee";
+      return [19, 48];
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ASoldierMovementVE.prototype, "assetClipName").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.AIsoMovementVE.prototype, "workFrameRange").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return SoldierMeleeMovementVE;
-}(a.ASoldierMovementVE);
-exports.SoldierMeleeMovementVE = s;
+  return FarmerMovementVE;
+}(a.AIsoMovementVE);
+exports.FarmerMovementVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

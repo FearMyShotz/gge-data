@@ -64,5 +64,5 @@ var c = function (e) {
   return CastleRelocatePanel;
 }(require("./131.js").CastlePanel);
 exports.CastleRelocatePanel = c;
-var u = require("./502.js");
+var u = require("./503.js");
 var d = require("./17.js");

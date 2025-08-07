@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./304.js");
 var s = function (e) {
-  function CollectableItemBeefVE() {
+  function CollectableItemMeadVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemBeefVE, e);
-  Object.defineProperty(CollectableItemBeefVE.prototype, "iconClass", {
+  n.__extends(CollectableItemMeadVE, e);
+  Object.defineProperty(CollectableItemMeadVE.prototype, "iconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Beef_Big;
+      return Library.CastleInterfaceElements_Icons.Icon_Mead_Big;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.ACollectableItemResourceVE.prototype, "iconClass").set.call(this, e);
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return CollectableItemBeefVE;
+  return CollectableItemMeadVE;
 }(a.ACollectableItemResourceVE);
-exports.CollectableItemBeefVE = s;
+exports.CollectableItemMeadVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList");

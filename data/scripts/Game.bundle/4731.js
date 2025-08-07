@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function SLLCommand() {
+  function SALCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SLLCommand, e);
-  Object.defineProperty(SLLCommand.prototype, "cmdId", {
+  n.__extends(SALCommand, e);
+  Object.defineProperty(SALCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SEND_ALLIANCE_LABORATORY_LIST;
+      return s.ClientConstSF.S2C_ALLIANCE_SEARCH_ALLIANCE_LIST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  SLLCommand.prototype.executeCommand = function (e, t) {
+  SALCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.allianceData.parseSLL(i);
+        r.CastleModel.allianceData.parse_SAL(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SLLCommand;
+  return SALCommand;
 }(l.CastleCommand);
-exports.SLLCommand = c;
+exports.SALCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

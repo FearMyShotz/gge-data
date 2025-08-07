@@ -4,36 +4,38 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function ODCCommand() {
+var s = require("./6.js");
+var r = require("./7.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function SPOCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ODCCommand, e);
-  Object.defineProperty(ODCCommand.prototype, "cmdId", {
+  n.__extends(SPOCommand, e);
+  Object.defineProperty(SPOCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_OFFER_DURATION_CHECK;
+      return r.ClientConstSF.S2C_SHOW_POPOVER;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  ODCCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
+  SPOCommand.prototype.exec = function (e) {
+    var t = s.int(e[0]);
+    var i = e[1];
+    switch (t) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.privateOfferData.parse_ODC(i);
+        var n = JSON.parse(i[1]);
+        l.CastleModel.popoverData.parseSPO(n);
         break;
       default:
-        this.showErrorDialog(e, t);
+        this.showErrorDialog(t, i);
     }
-    return false;
   };
-  return ODCCommand;
-}(l.CastleCommand);
-exports.ODCCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return SPOCommand;
+}(c.CastleCommand);
+exports.SPOCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

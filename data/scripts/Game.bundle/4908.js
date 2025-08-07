@@ -2,44 +2,33 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function ALBCommand() {
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./2.js");
+var c = require("./37.js");
+var u = require("./15.js");
+var d = function (e) {
+  function CastleCPSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ALBCommand, e);
-  Object.defineProperty(ALBCommand.prototype, "cmdId", {
-    get: function () {
-      return s.ClientConstSF.S2C_GET_LOGIN_BONUS;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ALBCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.loginBonusData.parseALB(i);
-        if (r.CastleModel.loginBonusData.hasAnythingToCollect && !r.CastleModel.loginBonusData.preventDialogPopup) {
-          u.CastleDialogHandler.getInstance().registerDefaultDialogs(d.CastleDailyLoginBonusDialog);
-        }
-        r.CastleModel.loginBonusData.preventDialogPopup = false;
+  n.__extends(CastleCPSCommand, e);
+  CastleCPSCommand.prototype.executeCommand = function (t, i) {
+    switch (t) {
+      case r.IdentityManagementConstants.ERROR_SHUT_DOWN_ALERT:
+        this._shutDownControlTimer = new l.ShutDownControlTimer(r.IdentityManagementConstants.SHUTDOWN_CONTROL_TIMER);
+        u.CastleBasicController.getInstance().dispatchEvent(new c.CastleServerMessageArrivedEvent(c.CastleServerMessageArrivedEvent.CPS_ARRIVED, [this._shutDownControlTimer]));
+        this._shutDownControlTimer.startCountDown();
+        p.CastleDialogHandler.getInstance().registerDialogs(h.CastleNotifyDialog, new a.BasicStandardOkDialogProperties(null, o.BasicModel.languageData.getTextById("generic_alert_korea_logoutCountdown", [this._shutDownControlTimer.showTimerCountdown])));
         break;
-      default:
-        this.showErrorDialog(e, t);
+      case r.IdentityManagementConstants.ERROR_UNDERAGE_LOGOUT:
+        e.prototype.executeCommand.call(this, t, i);
     }
-    return false;
+    return true;
   };
-  return ALBCommand;
-}(l.CastleCommand);
-exports.ALBCommand = c;
-var u = require("./9.js");
-var d = require("./1124.js");
-o.classImplementsInterfaces(c, "IExecCommand");
+  return CastleCPSCommand;
+}(s.CPSCommand);
+exports.CastleCPSCommand = d;
+var p = require("./9.js");
+var h = require("./4909.js");

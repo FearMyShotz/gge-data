@@ -2,96 +2,65 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./231.js");
-var r = require("./841.js");
-var l = function (e) {
-  function CastleAllianceGiftData() {
-    var t = e.call(this) || this;
-    t._gifts = [];
-    return t;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./2.js");
+var c = require("./2.js");
+var u = require("./2.js");
+var d = require("./1.js");
+var p = require("./116.js");
+var h = require("./4.js");
+var g = p.getLogger("Connection.CastleCheckMaintenanceCommand");
+var C = function (e) {
+  function CastleCheckMaintenanceCommand() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  n.__extends(CastleAllianceGiftData, e);
-  CastleAllianceGiftData.prototype.parse_AGC = function (e) {
-    if (!e) {
-      return null;
-    }
-    var t = a.int(e.ID);
-    this.removeGift(t);
-    this.propagateChange();
-    return u.CollectableManager.parser.s2cParamList.createList(e.R);
+  n.__extends(CastleCheckMaintenanceCommand, e);
+  CastleCheckMaintenanceCommand.prototype.executeNWMaintenance = function () {
+    g.debug("Server under maintenance: show Maintanance screen");
+    this.showMaintenanceScreen();
   };
-  CastleAllianceGiftData.prototype.removeGift = function (e) {
-    var t = this._gifts.filter(this.byGiftID(e));
-    if (t.length > 0) {
-      var i = t[0];
-      var n = a.int(this._gifts.indexOf(i));
-      if (n > -1) {
-        this._gifts.splice(n, 1);
+  CastleCheckMaintenanceCommand.prototype.executeSocialMaintenance = function () {
+    g.debug("Social/Network platform Maintenance: Server under maintenance: show Maintanance screen");
+    this.executeNWMaintenance();
+  };
+  CastleCheckMaintenanceCommand.prototype.clearMaintenanceMain = function () {
+    m.CastleLayoutManager.getInstance().hideDialog(f.CastleNoConnectionDialog);
+    e.prototype.clearMaintenance.call(this);
+  };
+  CastleCheckMaintenanceCommand.prototype.showMaintenanceScreen = function () {
+    l.ClientFunnelTrackingController.getInstance().trackState(r.ClientFunnelGameStates.MAINTENANCE_SCREEN);
+    if (this.env.isTest) {
+      _.CastleDialogHandler.getInstance().registerDialogs(O.CastleWorldSelectionDialog);
+    } else {
+      _.CastleDialogHandler.getInstance().registerDialogs(f.CastleNoConnectionDialog, new s.BasicReconnectDialogProperties(a.BasicModel.languageData.getTextById(u.GenericTextIds.ALERT_CONNECTION_FAILED_TITLE), a.BasicModel.languageData.getTextById(u.GenericTextIds.ALERT_CONNECTION_FAILED_COPY), null, a.BasicModel.languageData.getTextById(u.GenericTextIds.BUTTON_RECONNECT)));
+    }
+  };
+  CastleCheckMaintenanceCommand.prototype.executeNoMaintenance = function () {
+    try {
+      e.prototype.executeNoMaintenance.call(this);
+      var t = c.EnvGlobalsHandler.globals;
+      var i = h.CastleModel.smartfoxClient.isConnected;
+      g.debug("server isConnected: " + i + " - game should useAutologin:" + t.useAutoLogin + " and login isKeyBased: " + t.loginIsKeyBased);
+      if (!!t.loginIsKeyBased || !t.useAutoLogin) {
+        g.debug("server is NOT under maintenance --> show LoginScreen");
       }
-    }
-  };
-  CastleAllianceGiftData.prototype.byGiftID = function (e) {
-    return function (t) {
-      var i = [];
-      for (var n = 1; n < arguments.length; n++) {
-        i[n - 1] = arguments[n];
+      if (t.useAutoLogin) {
+        g.debug("server is connected and NOT under maintenance.  -->  proceed to autologin");
       }
-      return t.id == e;
-    };
-  };
-  CastleAllianceGiftData.prototype.parse_AGR = function (e) {
-    if (e && e.G) {
-      var t = new d.AllianceGiftVO();
-      t.parseArray(e.G);
-      this._gifts.push(t);
-      this._gifts.sort(c.ClientConstSort.sortByExpireTime);
-      this.propagateChange();
+    } catch (e) {
+      g.error(e);
+      window.bugsnagClient.notify(e);
     }
   };
-  CastleAllianceGiftData.prototype.propagateChange = function () {
-    this._dataUpdateEvent ||= new r.CastleAllianceGiftEvent(r.CastleAllianceGiftEvent.DATA_UPDATED);
-    this.dispatchEvent(this._dataUpdateEvent);
-  };
-  CastleAllianceGiftData.prototype.executeUpdate = function (e) {
-    var t = a.int(this._gifts.length);
-    var i = this._gifts.filter(this.createNonExpiredGiftsFilter(e));
-    if (t != i.length) {
-      this._gifts = i;
-      this.propagateChange();
-    }
-  };
-  CastleAllianceGiftData.prototype.createNonExpiredGiftsFilter = function (e) {
-    return function (t) {
-      var i = [];
-      for (var n = 1; n < arguments.length; n++) {
-        i[n - 1] = arguments[n];
-      }
-      return t.expiredTimeStamp > e;
-    };
-  };
-  CastleAllianceGiftData.prototype.hasGifts = function (e) {
-    return this._gifts.length > 0 && e >= s.ClientConstAlliance.MIN_LEVEL_ALLIANCE_GIFTS;
-  };
-  Object.defineProperty(CastleAllianceGiftData.prototype, "giftCount", {
-    get: function () {
-      return this._gifts.length;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAllianceGiftData.prototype, "gifts", {
-    get: function () {
-      return this._gifts;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleAllianceGiftData;
-}(require("./54.js").CastleBasicData);
-exports.CastleAllianceGiftData = l;
-var c = require("./75.js");
-var u = require("./50.js");
-var d = require("./5284.js");
-o.classImplementsInterfaces(l, "IUpdatable");
+  return CastleCheckMaintenanceCommand;
+}(o.BasicCheckMaintenanceCommand);
+exports.CastleCheckMaintenanceCommand = C;
+var _ = require("./9.js");
+var m = require("./17.js");
+var f = require("./1805.js");
+var O = require("./1116.js");
+d.classImplementsInterfaces(C, "ISimpleCommand");

@@ -6,190 +6,183 @@ var o = require("./2.js");
 var a = require("./2.js");
 var s = require("./1.js");
 var r = require("./1.js");
-var l = require("./5.js");
+var l = require("./3.js");
 var c = require("./3.js");
 var u = require("./3.js");
-var d = require("./3.js");
-var p = require("./6.js");
-var h = require("./39.js");
-var g = require("./1951.js");
-var C = require("./140.js");
-var _ = require("./4.js");
-var m = require("./180.js");
-var f = require("./43.js");
-var O = require("./8.js");
-var E = require("./11.js");
-var y = require("./93.js");
-var b = require("./391.js");
-var D = function (e) {
-  function CastleReadDialog() {
+var d = require("./31.js");
+var p = require("./19.js");
+var h = require("./8.js");
+var g = require("./11.js");
+var C = createjs.Point;
+var _ = function (e) {
+  function CastleTournamentEventFinishDialog() {
+    var t = this;
+    t.TOP3_MIN_RANK = 3;
+    t.TOP100_MIN_RANK = 100;
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleReadDialog.NAME) || this;
+    return t = e.call(this, CastleTournamentEventFinishDialog.NAME) || this;
   }
-  n.__extends(CastleReadDialog, e);
-  CastleReadDialog.prototype.initLoaded = function (t = null) {
-    this._scrollComponent = new T.CastleTextScrollComponent(new m.CastleTextScrollVO(this.dialogDisp.txt_content, this.dialogDisp.mc_scrollHandle.btn_up, this.dialogDisp.mc_scrollHandle.btn_down, this.dialogDisp.mc_scrollHandle.btn_slider, this.dialogDisp.mc_scrollHandle.mc_sliderLine, [this.dialogDisp.mc_scrollHandle]));
-    this._scrollComponent.invisibleOnFit = true;
-    this.dialogDisp.btn_help.toolTipText = "generic_help";
-    this.initBasicButtons([this.dialogDisp.btn_reply, this.dialogDisp.btn_delete, this.dialogDisp.btn_close, this.dialogDisp.btn_cancel, this.dialogDisp.btn_help, this.dialogDisp.btn_player, this.dialogDisp.btn_report, this.dialogDisp.btn_archive, this.dialogDisp.mc_scrollHandle.btn_up, this.dialogDisp.mc_scrollHandle.btn_down, this.dialogDisp.mc_scrollHandle.btn_slider]);
-    e.prototype.initLoaded.call(this);
+  n.__extends(CastleTournamentEventFinishDialog, e);
+  CastleTournamentEventFinishDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.initBasicButtons([this.dialogDisp.btn_close]);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new c.LocalizedTextVO("dialog_messageHeader_tournamentOver"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new c.LocalizedTextVO("dialog_tournamentOver_copy"));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_ranking.txt_yourRankTitle, new c.LocalizedTextVO("dialog_tournament_yourRank"));
+    this.i_rank_txt_txt_rank = this.textFieldManager.registerTextField(this.dialogDisp.mc_ranking.txt_rank, new u.TextVO(""), new o.InternalGGSTextFieldConfigVO(true));
   };
-  CastleReadDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    this.setBtns();
-    this.controller.addEventListener(C.CastleMessageDataEvent.NEW_MESSAGE_BODY, this.bindFunction(this.displayCurrentMessage));
-    this.controller.addEventListener(C.CastleMessageDataEvent.MESSAGE_ARCHIVED, this.bindFunction(this.onMessageArchived));
-    _.CastleModel.messageData.getBodyForTextMessage(this.readDialogProperties.messageVO.messageID);
+  CastleTournamentEventFinishDialog.prototype.initComponents = function () {
+    this.updateRanking();
+    this.updateRewards();
   };
-  CastleReadDialog.prototype.setBtns = function () {
-    this.setDeleteBtn();
-    this.setReportBtn();
-    this.setArchiveBtn();
+  CastleTournamentEventFinishDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.initComponents();
   };
-  CastleReadDialog.prototype.setDeleteBtn = function () {
-    O.ButtonHelper.enableButton(this.dialogDisp.btn_delete, _.CastleModel.tutorialData.isTutorialFinished());
-    if (this.dialogDisp.btn_delete.enabled) {
-      this.dialogDisp.btn_delete.toolTipText = "dialog_inbox_deleteMessage";
-    } else {
-      this.dialogDisp.btn_delete.toolTipText = h.ClientConstTextIds.NOT_AVAILABLE;
+  CastleTournamentEventFinishDialog.prototype.updateRanking = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_ranking.txt_yourRankTitle, new c.LocalizedTextVO("dialog_tournament_yourRank"));
+    if (this.isNothing || this.isBooby || this.isTop100) {
+      this.dialogDisp.mc_ranking.gotoAndStop(1);
+      this.i_rank_txt_txt_rank = this.textFieldManager.registerTextField(this.dialogDisp.mc_ranking.txt_rank, new l.LocalizedNumberVO(this.dialogProperties.ownRank), new o.InternalGGSTextFieldConfigVO(true));
+    } else if (this.dialogProperties.ownRank == 3) {
+      this.dialogDisp.mc_ranking.gotoAndStop(2);
+    } else if (this.dialogProperties.ownRank == 2) {
+      this.dialogDisp.mc_ranking.gotoAndStop(3);
+    } else if (this.dialogProperties.ownRank == 1) {
+      this.dialogDisp.mc_ranking.gotoAndStop(4);
     }
   };
-  CastleReadDialog.prototype.setReportBtn = function () {
-    this.dialogDisp.btn_report.toolTipText = "dialog_inbox_ignore_player_tooltip";
-    this.dialogDisp.btn_report.enabled = false;
-  };
-  CastleReadDialog.prototype.setArchiveBtn = function () {
-    if (this.readDialogProperties.messageVO.archived) {
-      this.dialogDisp.btn_archive.visible = false;
+  CastleTournamentEventFinishDialog.prototype.updateRewards = function () {
+    this.destroyCollectableRenderList();
+    a.MovieClipHelper.clearMovieClip(this.rewardComponentContainerMovieClip);
+    if (this.dialogProperties.rewardsList && this.dialogProperties.rewardsList.length > 0) {
+      this.setupRewardBackgroundComponent("PriceCount" + this.dialogProperties.rewardsList.length);
     } else {
-      this.dialogDisp.btn_archive.visible = true;
-      this.dialogDisp.btn_archive.gotoAndStop(1);
-      if (_.CastleModel.tutorialData.isInTutorial()) {
-        this.dialogDisp.btn_delete.toolTipText = h.ClientConstTextIds.NOT_AVAILABLE;
-        O.ButtonHelper.enableButton(this.dialogDisp.btn_archive, false);
-      } else if (_.CastleModel.messageData.isArchiveFull()) {
-        this.dialogDisp.btn_archive.toolTipText = "dialog_inbox_archiveFull";
-        O.ButtonHelper.enableButton(this.dialogDisp.btn_archive, false);
-      } else {
-        this.dialogDisp.btn_archive.toolTipText = "dialog_inbox_archiveMessage";
-        O.ButtonHelper.enableButton(this.dialogDisp.btn_archive, true);
+      this.setupRewardBackgroundComponent("PriceCount0");
+    }
+  };
+  CastleTournamentEventFinishDialog.prototype.setupRewardBackgroundComponent = function (e) {
+    var t = new (r.getDefinitionByName(e))();
+    this.rewardComponentContainerMovieClip.addChild(t);
+    if (this.dialogProperties.rewardsList) {
+      for (var i = 0; i < this.dialogProperties.rewardsList.length; i++) {
+        var n = i;
+        var o = "mc_price_" + (i + 1);
+        this.fillRewardSlotComponent(t, o, n, this.dialogProperties.rewardsList[i]);
       }
     }
   };
-  CastleReadDialog.prototype.setCheckedArchiveBtn = function () {
-    this.dialogDisp.btn_archive.gotoAndStop(2);
-    O.ButtonHelper.enableButton(this.dialogDisp.btn_archive, false);
-    this.dialogDisp.btn_archive.toolTipText = "dialog_inbox_archiveMessagMoved";
-  };
-  CastleReadDialog.prototype.displayCurrentMessage = function (e) {
-    this.controller.removeEventListener(C.CastleMessageDataEvent.NEW_MESSAGE_BODY, this.bindFunction(this.displayCurrentMessage));
-    this.readDialogProperties.messageVO.body = a.TextValide.parseChatJSONMessage(e.params[0]);
-    var t = this.readDialogProperties.messageVO;
-    if (t.messageType == l.MessageConst.MESSAGE_TYPE_USER_OUT) {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_from, new u.LocalizedTextVO("dialog_newMessage_messageTo"));
+  CastleTournamentEventFinishDialog.prototype.fillRewardSlotComponent = function (e, t, i, n) {
+    var o;
+    var a = n;
+    var s = e[t];
+    this.setupRewardComponentLabel(s.txt_title, this.dialogProperties.rewardsList.length - i);
+    if (a.containsAnyTypeOf(m.ClientConstCollectable.GROUP_LIST_EQUIPMENT)) {
+      o = a.getFirstItemOfTypes(m.ClientConstCollectable.GROUP_LIST_EQUIPMENT);
+      this.setupAndRenderSingleItem(s.mc_equipment, o, 5, CastleTournamentEventFinishDialog.ICON_EQUIPMENT_DIMENSION);
+      s.mc_reward_item_1.visible = false;
+      s.mc_reward_item_2.visible = false;
+      s.btn_info_0.visible = false;
+      s.btn_info_1.visible = false;
+      s.mc_bcg.visible = false;
+    } else if (a.containsType(f.CollectableEnum.BUILDING)) {
+      o = a.getItemByType(f.CollectableEnum.BUILDING);
+      this.setupAndRenderSingleItem(s.mc_equipment, o, 6, CastleTournamentEventFinishDialog.ICON_DECO_DIMENSION);
+      s.mc_reward_item_1.visible = false;
+      s.mc_reward_item_2.visible = false;
+      s.btn_info_0.visible = false;
+      s.btn_info_1.visible = false;
+      s.mc_bcg.visible = false;
     } else {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_from, new u.LocalizedTextVO("dialog_read_messageFrom"));
-    }
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_player.txt_sender, new d.TextVO(t.senderName)).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_header, new d.TextVO(t.subject)).visible = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_content, new d.TextVO(t.body)).selectable = true;
-    this.dialogDisp.btn_player.properties = t.playerID;
-    this._scrollComponent.scrollToStart();
-    this.dialogDisp.icon_allianceLetter.mc1.toolTipText = this.dialogDisp.icon_allianceLetter.mc2.toolTipText = "dialog_inbox_massMessage_tooltip";
-    this.dialogDisp.btn_cancel.toolTipText = "generic_btn_cancel";
-    var i = _.CastleModel.messageData.getMessageRestrictionVOByMessageType(l.MessageConst.MESSAGE_TYPE_USER_OUT);
-    var n = !!i && i.currentPlayerAmount >= i.dailyLimit;
-    O.ButtonHelper.enableButton(this.dialogDisp.btn_reply, !n && _.CastleModel.userData.userLevel >= _.CastleModel.messageData.minLevelForSendingP2PMessages);
-    this.dialogDisp.btn_reply.toolTipText = O.ButtonHelper.isButtonEnabled(this.dialogDisp.btn_reply) ? this.isMassUserMessage() ? "dialog_inbox_writeAnswer_massMessage_tooltip" : "dialog_inbox_writeAnswer" : h.ClientConstTextIds.NOT_AVAILABLE;
-    if (_.CastleModel.userData.userLevel < _.CastleModel.messageData.minLevelForSendingP2PMessages) {
-      this.dialogDisp.btn_reply.toolTipText = "dialog_inbox_writeNewMessage_blocked_lowLevel_tooltip";
-    }
-    if (n) {
-      this.dialogDisp.btn_reply.toolTipText = "dialog_inbox_writeNewMessage_blocked_dailyLimit_tooltip";
-    }
-    this.dialogDisp.btn_reply.visible = this.isSingleUserMessage() || this.isMassUserMessage();
-    O.ButtonHelper.enableButton(this.dialogDisp.btn_report, t.playerID != _.CastleModel.userData.playerID && t.playerID != -1);
-    O.ButtonHelper.enableButton(this.dialogDisp.btn_player, t.playerID != -1);
-    this.dialogDisp.btn_report.visible = t.ignoreAvailable;
-    this.dialogDisp.icon_allianceLetter.visible = this.isMassUserMessage();
-  };
-  CastleReadDialog.prototype.isSingleUserMessage = function () {
-    return this.readDialogProperties.messageVO.messageType == l.MessageConst.MESSAGE_TYPE_USER_IN;
-  };
-  CastleReadDialog.prototype.isMassUserMessage = function () {
-    return this.readDialogProperties.messageVO.messageType == l.MessageConst.MESSAGE_TYPE_ALLIANCE_NEWSLETTER;
-  };
-  CastleReadDialog.prototype.onMessageArchived = function (e) {
-    if (p.int(e.params[0]) == this.readDialogProperties.messageVO.messageID) {
-      this.setCheckedArchiveBtn();
+      a = a.getFilteredListWithoutTypes([f.CollectableEnum.BUILDING].concat(m.ClientConstCollectable.GROUP_LIST_EQUIPMENT));
+      s.mc_equipment.visible = false;
+      for (var r = 0; r < 2; ++r) {
+        o = a.getItemByIndex(r);
+        this.setupAndRenderItemFromDoubleSet(s["mc_reward_item_" + (r + 1)], s["btn_info_" + r], o);
+      }
     }
   };
-  CastleReadDialog.prototype.onClick = function (t) {
-    if (O.ButtonHelper.isButtonEnabled(t.target) && (e.prototype.onClick.call(this, t), !r.instanceOfClass(t.target, "BasicButton") || t.target.enabled)) {
+  CastleTournamentEventFinishDialog.prototype.setupAndRenderSingleItem = function (e, t, i, n) {
+    e.gotoAndStop(i);
+    var o = new d.CollectableRenderClips(e).addIconMc(e.mc_equipmentHolder);
+    O.CollectableRenderHelper.displaySingleItemAndAddToRenderList(this, o, t, new p.CollectableRenderOptions(p.CollectableRenderOptions.SET_DEFAULT, n));
+  };
+  CastleTournamentEventFinishDialog.prototype.setupAndRenderItemFromDoubleSet = function (e, t, i) {
+    this.collectableRenderList.push(O.CollectableRenderHelper.displaySingleItemAndAddToRenderList(this, new d.CollectableRenderClips(e).addIconMc(e.mc_icon).addColorBgMc(e.mc_background).addInfoBtn(t), i, new p.CollectableRenderOptions(p.CollectableRenderOptions.SET_TOURNAMENT_DEFAULT)));
+  };
+  CastleTournamentEventFinishDialog.prototype.setupRewardComponentLabel = function (e, t) {
+    switch (t) {
+      case 1:
+        this.textFieldManager.registerTextField(e, new c.LocalizedTextVO("dialog_tournament_boobyprice"));
+        break;
+      case 2:
+        this.textFieldManager.registerTextField(e, new c.LocalizedTextVO("dialog_tournament_priceTop", [this.TOP100_MIN_RANK.toString()]));
+        break;
+      case 3:
+        this.textFieldManager.registerTextField(e, new c.LocalizedTextVO("dialog_tournament_priceTop", [this.TOP3_MIN_RANK.toString()]));
+    }
+  };
+  CastleTournamentEventFinishDialog.prototype.onClick = function (t) {
+    if (h.ButtonHelper.isButtonEnabled(t.target)) {
+      e.prototype.onClick.call(this, t);
       switch (t.target) {
-        case this.dialogDisp.btn_reply:
-          I.CastleDialogHandler.getInstance().registerDefaultDialogs(A.CastleNewMessageDialog, new b.CastleNewMessageDialogProperties(this.readDialogProperties.messageVO.senderName, this.readDialogProperties.messageVO.subject));
-          this.hide();
-          break;
-        case this.dialogDisp.btn_delete:
-          _.CastleModel.messageData.deleteMessage(this.readDialogProperties.messageVO);
-          this.hide();
-          break;
         case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_cancel:
           this.hide();
-          break;
-        case this.dialogDisp.btn_help:
-          I.CastleDialogHandler.getInstance().showHelper("", c.Localize.text("help_message_read_player"));
-          break;
-        case this.dialogDisp.btn_player:
-          if (this.isOutOfTutorial()) {
-            I.CastleDialogHandler.getInstance().registerDialogsWithTypeAndDefaultValues(S.CastlePlayerInfoDialog, new y.CastlePlayerInfoDialogProperties(t.target.properties), f.CastleDialogConsts.DIALOG_TYPE_SINGLE);
-          }
-          break;
-        case this.dialogDisp.btn_report:
-          I.CastleDialogHandler.getInstance().registerDefaultDialogs(v.CastleStandardYesNoDialog, new o.BasicStandardYesNoDialogProperties(c.Localize.text("dialog_inbox_ignore_player_tooltip"), c.Localize.text("dialog_inbox_ignore_player_copy"), this.bindFunction(this.onIgnoreConfirmed)));
-          break;
-        case this.dialogDisp.btn_archive:
-          this.onClickedArchiveBtn();
       }
     }
   };
-  CastleReadDialog.prototype.onClickedArchiveBtn = function () {
-    if (!this.readDialogProperties.messageVO.archived) {
-      _.CastleModel.messageData.archiveMessage(this.readDialogProperties.messageVO);
-    }
-  };
-  CastleReadDialog.prototype.onIgnoreConfirmed = function (e = null) {
-    _.CastleModel.smartfoxClient.sendCommandVO(new g.C2SIgnorePlayerVO(this.readDialogProperties.messageVO.playerID, true));
-    this.hide();
-  };
-  CastleReadDialog.prototype.showLoaded = function (t = null) {
-    this._scrollComponent.onShow();
-    e.prototype.showLoaded.call(this);
-  };
-  CastleReadDialog.prototype.hideLoaded = function (t = null) {
-    this.controller.removeEventListener(C.CastleMessageDataEvent.NEW_MESSAGE_BODY, this.bindFunction(this.displayCurrentMessage));
-    this.controller.removeEventListener(C.CastleMessageDataEvent.MESSAGE_ARCHIVED, this.bindFunction(this.onMessageArchived));
-    this._scrollComponent.onHide();
-    e.prototype.hideLoaded.call(this);
-  };
-  Object.defineProperty(CastleReadDialog.prototype, "readDialogProperties", {
+  Object.defineProperty(CastleTournamentEventFinishDialog.prototype, "isTop3", {
+    get: function () {
+      return this.dialogProperties.ownRank <= this.TOP3_MIN_RANK;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTournamentEventFinishDialog.prototype, "isTop100", {
+    get: function () {
+      return this.dialogProperties.ownRank > this.TOP3_MIN_RANK && this.dialogProperties.ownRank <= this.TOP100_MIN_RANK;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTournamentEventFinishDialog.prototype, "isBooby", {
+    get: function () {
+      return !this.isTop3 && !this.isTop100 && !!this.dialogProperties.rewardsList;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTournamentEventFinishDialog.prototype, "isNothing", {
+    get: function () {
+      return !this.isTop3 && !this.isTop100 && !this.dialogProperties.rewardsList;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTournamentEventFinishDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleReadDialog.__initialize_static_members = function () {
-    CastleReadDialog.NAME = "CastleReadMessageEx";
+  Object.defineProperty(CastleTournamentEventFinishDialog.prototype, "rewardComponentContainerMovieClip", {
+    get: function () {
+      return this.dialogDisp.mc_rewardsPosition;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleTournamentEventFinishDialog.__initialize_static_members = function () {
+    CastleTournamentEventFinishDialog.NAME = "CastleTournamentFinished";
+    CastleTournamentEventFinishDialog.ICON_DECO_DIMENSION = new C(65, 65);
+    CastleTournamentEventFinishDialog.ICON_EQUIPMENT_DIMENSION = new C(50, 50);
   };
-  return CastleReadDialog;
-}(E.CastleExternalDialog);
-exports.CastleReadDialog = D;
-var I = require("./9.js");
-var T = require("./182.js");
-var v = require("./151.js");
-var S = require("./94.js");
-var A = require("./392.js");
-s.classImplementsInterfaces(D, "ICollectableRendererList");
-D.__initialize_static_members();
+  return CastleTournamentEventFinishDialog;
+}(g.CastleExternalDialog);
+exports.CastleTournamentEventFinishDialog = _;
+var m = require("./86.js");
+var f = require("./12.js");
+var O = require("./25.js");
+s.classImplementsInterfaces(_, "ICollectableRendererList");
+_.__initialize_static_members();

@@ -81,5 +81,5 @@ var h = function (e) {
   return CastleUnitDealerEventDialog;
 }(p.CastleGenericMerchantDialog);
 exports.CastleUnitDealerEventDialog = h;
-var g = require("./2748.js");
+var g = require("./2749.js");
 a.classImplementsInterfaces(h, "ICollectableRendererList");

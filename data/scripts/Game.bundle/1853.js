@@ -2,81 +2,99 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
+var o = require("./1.js");
+var a = require("./3.js");
 var s = require("./3.js");
-var r = require("./23.js");
-var l = require("./21.js");
-var c = require("./338.js");
-var u = require("./53.js");
-var d = require("./4.js");
-var p = require("./52.js");
-var h = function (e) {
-  function ABGAllianceTowerPointMalusInfoPanel() {
-    return e.call(this, ABGAllianceTowerPointMalusInfoPanel.NAME) || this;
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./23.js");
+var u = require("./21.js");
+var d = require("./32.js");
+var p = require("./338.js");
+var h = require("./53.js");
+var g = require("./15.js");
+var C = require("./4.js");
+var _ = require("./52.js");
+var m = require("./27.js");
+var f = function (e) {
+  function ABGAllianceCollectorPointPanel() {
+    return e.call(this, ABGAllianceCollectorPointPanel.NAME) || this;
   }
-  n.__extends(ABGAllianceTowerPointMalusInfoPanel, e);
-  ABGAllianceTowerPointMalusInfoPanel.prototype.showLoaded = function (t = null) {
+  n.__extends(ABGAllianceCollectorPointPanel, e);
+  ABGAllianceCollectorPointPanel.prototype.showLoaded = function (t = null) {
     e.prototype.showLoaded.call(this);
-    d.CastleModel.timerData.addEventListener(l.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTime));
-    this.panelDisp.mc_malus.toolTipText = "statuetteMalusInfo_tt";
-    this.panelDisp.mc_malus.mouseChildren = false;
-    this.panelDisp.mc_info.toolTipText = "help_StatuetteMalusInfo_tt";
-    this.panelDisp.mc_info.mouseChildren = false;
+    C.CastleModel.timerData.addEventListener(u.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTime));
+    this.txt_ownPoints = this.textFieldManager.registerTextField(this.panelDisp.txt_points, new s.NumberVO(0));
+    this.txt_alliPoints = this.textFieldManager.registerTextField(this.panelDisp.txt_alliRanking, new s.NumberVO(0));
     this.updateData();
-    this.controller.addEventListener(c.CastlePanelEvent.RESOURCE_PANEL_SHOW_SPECIAL_RESOURCES, this.bindFunction(this.onShowSpecialResources));
-    this.controller.addEventListener(c.CastlePanelEvent.RESOURCE_PANEL_HIDE_SPECIAL_RESOURCES, this.bindFunction(this.onHideSpecialResources));
+    this.panelDisp.mc_tt_alliRank.toolTipText = new y.CollectableItemGenericCurrencyVO(_.ClientConstCurrency.ID_ALLIANCE_INFLUENCE).getNameTextId();
+    this.panelDisp.mc_tt_alliRank.mouseChildren = false;
+    this.panelDisp.mc_tt_points.toolTipText = new y.CollectableItemGenericCurrencyVO(_.ClientConstCurrency.ID_INFLUENCE).getNameTextId();
+    this.panelDisp.mc_tt_points.mouseChildren = false;
+    this.controller.addEventListener(p.CastlePanelEvent.RESOURCE_PANEL_SHOW_SPECIAL_RESOURCES, this.bindFunction(this.onShowSpecialResources));
+    this.controller.addEventListener(p.CastlePanelEvent.RESOURCE_PANEL_HIDE_SPECIAL_RESOURCES, this.bindFunction(this.onHideSpecialResources));
     this.onHideSpecialResources();
+    g.CastleBasicController.getInstance().addEventListener(d.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.updateData));
   };
-  ABGAllianceTowerPointMalusInfoPanel.prototype.onHideSpecialResources = function (e = null) {
-    r.TweenLite.to(this.panelDisp, 0.3, {
+  ABGAllianceCollectorPointPanel.prototype.onHideSpecialResources = function (e = null) {
+    c.TweenLite.to(this.panelDisp, 0.3, {
       autoAlpha: 1,
       delay: 0.3
     });
   };
-  ABGAllianceTowerPointMalusInfoPanel.prototype.onShowSpecialResources = function (e) {
-    r.TweenLite.to(this.panelDisp, 0, {
+  ABGAllianceCollectorPointPanel.prototype.onShowSpecialResources = function (e) {
+    c.TweenLite.to(this.panelDisp, 0, {
       autoAlpha: 0,
       delay: 0
     });
   };
-  ABGAllianceTowerPointMalusInfoPanel.prototype.hideLoaded = function (t = null) {
+  ABGAllianceCollectorPointPanel.prototype.hideLoaded = function (t = null) {
     e.prototype.hideLoaded.call(this);
-    d.CastleModel.timerData.removeEventListener(l.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTime));
-    this.controller.removeEventListener(c.CastlePanelEvent.RESOURCE_PANEL_SHOW_SPECIAL_RESOURCES, this.bindFunction(this.onShowSpecialResources));
-    this.controller.removeEventListener(c.CastlePanelEvent.RESOURCE_PANEL_HIDE_SPECIAL_RESOURCES, this.bindFunction(this.onHideSpecialResources));
+    C.CastleModel.timerData.removeEventListener(u.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTime));
+    this.controller.removeEventListener(p.CastlePanelEvent.RESOURCE_PANEL_SHOW_SPECIAL_RESOURCES, this.bindFunction(this.onShowSpecialResources));
+    this.controller.removeEventListener(p.CastlePanelEvent.RESOURCE_PANEL_HIDE_SPECIAL_RESOURCES, this.bindFunction(this.onHideSpecialResources));
+    g.CastleBasicController.getInstance().removeEventListener(d.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.updateData));
   };
-  ABGAllianceTowerPointMalusInfoPanel.prototype.updateData = function () {
-    this.updateTime();
+  ABGAllianceCollectorPointPanel.prototype.onMouseOver = function (t) {
+    e.prototype.onMouseOver.call(this, t);
   };
-  ABGAllianceTowerPointMalusInfoPanel.prototype.updateTime = function (e = null) {
-    if (u.ABGHelper.abgEvent) {
-      var t = d.CastleModel.allianceData.myAllianceVO.storage.getItemByTypeVO(new C.CollectableTypeVO(g.CollectableEnum.GENERIC_CURRENCY, p.ClientConstCurrency.ID_STATUETTE_MALUS));
-      var i = t ? t.amount : 0;
-      if (i == 0) {
-        this.textFieldManager.registerTextField(this.panelDisp.txt_malus, new s.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [i])).color = _.ClientConstColor.FONT_DEFAULT_COLOR;
-      } else {
-        this.textFieldManager.registerTextField(this.panelDisp.txt_malus, new s.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, [i])).color = _.ClientConstColor.MODERN_RED2;
-      }
+  ABGAllianceCollectorPointPanel.prototype.updateData = function (e = null) {
+    var t;
+    var i = C.CastleModel.currencyData.getAmountByType(new E.CollectableTypeVO(O.CollectableEnum.GENERIC_CURRENCY, _.ClientConstCurrency.ID_INFLUENCE));
+    this.txt_ownPoints = this.textFieldManager.registerTextField(this.panelDisp.txt_points, new s.NumberVO(i));
+    if (C.CastleModel.allianceData.myAllianceVO) {
+      t = C.CastleModel.allianceData.myAllianceVO.storage.getItemByTypeVO(new E.CollectableTypeVO(O.CollectableEnum.GENERIC_CURRENCY, _.ClientConstCurrency.ID_ALLIANCE_INFLUENCE));
+      this.txt_alliPoints = this.textFieldManager.registerTextField(this.panelDisp.txt_alliRanking, new s.NumberVO(t ? t.amount : 0));
+    }
+  };
+  ABGAllianceCollectorPointPanel.prototype.updateTime = function (e = null) {
+    if (h.ABGHelper.abgEvent) {
+      this.textFieldManager.registerTextField(this.panelDisp.txt_time, new a.TextVO(m.CastleTimeStringHelper.getShortTimeString(h.ABGHelper.abgEvent.remainingEventTimeInSeconds)));
+      var t = r.Localize.text("resttime") + "\n" + m.CastleTimeStringHelper.getFullTimeString(h.ABGHelper.abgEvent.remainingEventTimeInSeconds);
+      this.panelDisp.mc_tt_time.toolTipText = t;
+      this.panelDisp.mc_tt_time.mouseChildren = false;
+      this.updateData();
     } else {
       this.hide();
     }
   };
-  ABGAllianceTowerPointMalusInfoPanel.prototype.updatePosition = function () {
+  ABGAllianceCollectorPointPanel.prototype.updatePosition = function () {
     if (this.externalClip && this.externalClip.stage) {
-      this.externalClip.y = 65;
-      this.externalClip.x = this.externalClip.stage.stageWidth / 2;
+      var e = 30;
+      var t = l.int(this.externalClip.stage.stageWidth / 2);
       if (this.layoutManager.isOnMap) {
-        this.externalClip.y -= 10;
-        this.externalClip.x += 40;
+        e -= 10;
+        t += 40;
       }
+      this.externalClip.y = e;
+      this.externalClip.x = t;
     }
   };
-  ABGAllianceTowerPointMalusInfoPanel.NAME = "ABGAllianceTowerPointMalusInfo";
-  return ABGAllianceTowerPointMalusInfoPanel;
-}(require("./844.js").CastleExternalPanel);
-exports.ABGAllianceTowerPointMalusInfoPanel = h;
-var g = require("./12.js");
-var C = require("./74.js");
-var _ = require("./16.js");
-a.classImplementsInterfaces(h, "ICollectableRendererList");
+  ABGAllianceCollectorPointPanel.NAME = "ABGAllianceCollectorPoint";
+  return ABGAllianceCollectorPointPanel;
+}(require("./845.js").CastleExternalPanel);
+exports.ABGAllianceCollectorPointPanel = f;
+var O = require("./12.js");
+var E = require("./74.js");
+var y = require("./155.js");
+o.classImplementsInterfaces(f, "ICollectableRendererList");

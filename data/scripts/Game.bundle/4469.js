@@ -1,61 +1,57 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CircularItemDistributorProperties(e, t, i, n, o = 1, a = 0) {
-    this._amountItems = 0;
-    this._targetCircleRadius = 0;
-    this._highlightAnimationDurationInSeconds = 0;
-    this._animationDelay = 0;
-    this._itemClass = e;
-    this._amountItems = t;
-    this._dispClassName = i;
-    this._targetCircleRadius = n;
-    this._highlightAnimationDurationInSeconds = o;
-    this._animationDelay = a;
+var n = require("./2.js");
+var o = require("./3.js");
+var a = require("./16.js");
+var s = require("./4.js");
+var r = require("./1146.js");
+var l = require("./1915.js");
+var c = function () {
+  function CastleLuckyWheelSpinComponent(e, t) {
+    this._eventID = 0;
+    this.disp = e;
+    this._eventID = t;
+    this._spinButton = new l.CastleLuckyWheelSpinButton(e.btn_spin, t);
+    this._autoPlayButton = new r.CastleLuckyWheelCheckboxWrapper(e.checkbox_autospin, "mc_box", "dialog_luckyWheel_fastSpinBox_checked", "dialog_luckyWheel_fastStopBox_empty");
+    e.checkbox_autospin.mc_spin.mouseChildren = false;
+    e.checkbox_autospin.mc_spin.toolTipText = "dialog_luckyWheel_fastSpinIcon";
+    e.box_ticketCount.toolTipText = "tooltip_tickets";
+    e.box_ticketCount.mouseChildren = false;
   }
-  Object.defineProperty(CircularItemDistributorProperties.prototype, "itemClass", {
+  CastleLuckyWheelSpinComponent.prototype.updateTicketCount = function (e) {
+    var t = s.CastleModel.specialEventData.getActiveEventByEventId(this._eventID);
+    if (this._itxt_TicketCount) {
+      this._itxt_TicketCount.textContentVO.textReplacements = [e];
+    } else {
+      this._itxt_TicketCount = n.GoodgameTextFieldManager.getInstance().registerTextField(this.disp.box_ticketCount.txt_amt, new o.LocalizedTextVO("generic_amount_times", [e]));
+    }
+    if (e > s.CastleModel.currencyData.getAmountById(t.currencyID)) {
+      this._itxt_TicketCount.color = a.ClientConstColor.GENERIC_RED;
+    } else {
+      this._itxt_TicketCount.color = a.ClientConstColor.GENERIC_BLACK;
+    }
+  };
+  Object.defineProperty(CastleLuckyWheelSpinComponent.prototype, "spinButton", {
     get: function () {
-      return this._itemClass;
+      return this._spinButton;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CircularItemDistributorProperties.prototype, "amountItems", {
+  Object.defineProperty(CastleLuckyWheelSpinComponent.prototype, "isAutoSpin", {
     get: function () {
-      return this._amountItems;
+      return this._autoPlayButton.isEnabled;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CircularItemDistributorProperties.prototype, "targetCircleRadius", {
-    get: function () {
-      return this._targetCircleRadius;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CircularItemDistributorProperties.prototype, "highlightAnimationDurationInSeconds", {
-    get: function () {
-      return this._highlightAnimationDurationInSeconds;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CircularItemDistributorProperties.prototype, "animationDelay", {
-    get: function () {
-      return this._animationDelay;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CircularItemDistributorProperties.prototype, "dispClassName", {
-    get: function () {
-      return this._dispClassName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CircularItemDistributorProperties;
+  CastleLuckyWheelSpinComponent.prototype.addEventListenerOnShow = function () {
+    this._autoPlayButton.addEventListenerOnShow();
+  };
+  CastleLuckyWheelSpinComponent.prototype.removeEventListenersOnHide = function () {
+    this._autoPlayButton.removeEventListenersOnHide();
+  };
+  return CastleLuckyWheelSpinComponent;
 }();
-exports.CircularItemDistributorProperties = n;
+exports.CastleLuckyWheelSpinComponent = c;

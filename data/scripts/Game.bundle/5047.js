@@ -5,35 +5,35 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function RAECommand() {
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function SPPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RAECommand, e);
-  Object.defineProperty(RAECommand.prototype, "cmdId", {
+  n.__extends(SPPCommand, e);
+  Object.defineProperty(SPPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_REPLACE_ALIEN_CAMP;
+      return s.ClientConstSF.S2C_GET_SEASON_PASS_PRICES;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  RAECommand.prototype.executeCommand = function (e, t) {
+  SPPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        c.CastleDialogHandler.getInstance().registerDialogs(u.CastleRerollAlienSuccessDialog);
-        break;
+        var i = JSON.parse(t[1]);
+        r.CastleModel.seasonLeagueData.server.parseSPP(i);
+        return true;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return RAECommand;
-}(r.CastleCommand);
-exports.RAECommand = l;
-var c = require("./9.js");
-var u = require("./5048.js");
-o.classImplementsInterfaces(l, "IExecCommand");
+  return SPPCommand;
+}(l.CastleCommand);
+exports.SPPCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

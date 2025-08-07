@@ -3,60 +3,38 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./57.js");
-var s = require("./5486.js");
-var r = require("./1939.js");
-var l = require("./15.js");
-var c = require("./4.js");
-var u = function (e) {
-  function CastleNewServerAnnounceDialogProperties(t, i, n) {
-    var o = this;
-    o._zoneId = 0;
-    o._webSiteId = 0;
-    o._wodId = 0;
-    o.onLinkReceived = new a.Signal();
+var a = require("./4.js");
+var s = function (e) {
+  function CastleAlchemistRetirementDialogProperties(t, i) {
+    var n = this;
+    n._rewardID = 0;
     CONSTRUCTOR_HACK;
-    (o = e.call(this) || this)._zoneId = t;
-    o._webSiteId = i;
-    o._wodId = n;
-    o._url = null;
-    l.CastleBasicController.getInstance().addEventListener(r.LinkReceivedEvent.LINK_RECEIVED, o.bindFunction(o.handleLinkReceived));
-    c.CastleModel.smartfoxClient.sendCommandVO(new s.C2SGetInstanceLink(t, i));
-    return o;
+    (n = e.call(this) || this)._ingredients = t;
+    n._rewardID = i;
+    return n;
   }
-  n.__extends(CastleNewServerAnnounceDialogProperties, e);
-  CastleNewServerAnnounceDialogProperties.prototype.handleLinkReceived = function (e) {
-    this._url = e.url;
-    this.onLinkReceived.dispatch();
-  };
-  Object.defineProperty(CastleNewServerAnnounceDialogProperties.prototype, "webSiteId", {
+  n.__extends(CastleAlchemistRetirementDialogProperties, e);
+  Object.defineProperty(CastleAlchemistRetirementDialogProperties.prototype, "rewardID", {
     get: function () {
-      return this._webSiteId;
+      return this._rewardID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNewServerAnnounceDialogProperties.prototype, "zoneId", {
+  Object.defineProperty(CastleAlchemistRetirementDialogProperties.prototype, "ingredients", {
     get: function () {
-      return this._zoneId;
+      return this._ingredients;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNewServerAnnounceDialogProperties.prototype, "url", {
+  Object.defineProperty(CastleAlchemistRetirementDialogProperties.prototype, "rewards", {
     get: function () {
-      return this._url;
+      return a.CastleModel.rewardData.getListById(this.rewardID);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNewServerAnnounceDialogProperties.prototype, "wodId", {
-    get: function () {
-      return this._wodId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleNewServerAnnounceDialogProperties;
+  return CastleAlchemistRetirementDialogProperties;
 }(o.BasicProperties);
-exports.CastleNewServerAnnounceDialogProperties = u;
+exports.CastleAlchemistRetirementDialogProperties = s;

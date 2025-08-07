@@ -1,136 +1,161 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./32.js");
-var u = require("./31.js");
-var d = require("./19.js");
-var p = require("./4.js");
-var h = require("./42.js");
-var g = require("./8.js");
-var C = require("./11.js");
-var _ = require("./351.js");
-var m = require("./135.js");
-var f = createjs.Point;
-var O = function (e) {
-  function ACastleSocketDialog(t) {
-    return e.call(this, t) || this;
+var n = require("./2.js");
+var o = require("./3.js");
+var a = require("./6.js");
+var s = require("./2225.js");
+var r = require("./4.js");
+var l = require("./52.js");
+var c = require("./1265.js");
+var u = require("./495.js");
+var d = function () {
+  function RelicItemInfoVO() {
+    this.relicTypeId = 0;
+    this.relicCategoryId = 0;
+    this.mightValue = 0;
+    this.relicBoni = [];
+    this.predefinedEffectIds = [];
+    this._predefinedMinRating = -1;
+    this._predefinedMaxRating = -1;
   }
-  n.__extends(ACastleSocketDialog, e);
-  ACastleSocketDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_cancel, this.dialogDisp.btn_ok, this.dialogDisp.btn_help, this.dialogDisp.btn_close]);
-    this.dialogDisp.btn_help.toolTipText = "generic_help";
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO(this.titleTextID)).autoFitToBounds = true;
-    this.dialogDisp.mc_gem.mouseChildren = false;
-    this.dialogDisp.mc_eq.mouseChildren = false;
-  };
-  ACastleSocketDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this);
-    this.controller.addEventListener(c.CastleUserDataEvent.CHANGE_USER_CURRENCY, this.bindFunction(this.onUserCurrencyChanged));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_gem, new a.TextVO(this.dialogProperties.gemVO.nameString)).verticalAlign = h.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_eq, new a.TextVO(this.dialogProperties.eqVO.nameString)).verticalAlign = h.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
-    this.renderIcons();
-    this.onUserCurrencyChanged(null);
-  };
-  ACastleSocketDialog.prototype.hide = function () {
-    this.controller.removeEventListener(c.CastleUserDataEvent.CHANGE_USER_CURRENCY, this.bindFunction(this.onUserCurrencyChanged));
-    e.prototype.hide.call(this);
-  };
-  ACastleSocketDialog.prototype.updateCosts = function () {
-    this.destroyCollectableRenderList();
-    I.CollectableRenderHelper.displaySingleItemAndAddToRenderList(this, new u.CollectableRenderClips(this.dialogDisp.mc_cost), this.getCosts(), new d.CollectableRenderOptions(d.CollectableRenderOptions.SET_COST_LIST, ACastleSocketDialog.COST_ICON_DIMENSION));
-  };
-  ACastleSocketDialog.prototype.renderIcons = function () {
-    this.dialogDisp.mc_gem.equipmentVO = this.dialogProperties.gemVO;
-    this.dialogDisp.mc_gem.addChild(L.CastleGemRenderer.renderAsset(this.dialogProperties.gemVO, null, null, true));
-    v.EquipmentIconHelper.addEquipmentIcon(this.dialogProperties.eqVO, this.dialogDisp.mc_eq, 55, 55, null, true, false, false, true, true);
-    this.dialogDisp.mc_eq.equipmentVO = this.dialogProperties.eqVO;
-    this.dialogDisp.mc_rarity.visible = false;
-    this.dialogDisp.mc_rarity.gotoAndStop(this.dialogProperties.eqVO.visualRareID + 1);
-  };
-  ACastleSocketDialog.prototype.checkAndShowNotEnoughCurrencyMessage = function (e) {
-    return !!T.CostHelper.canAfford(y.CollectableHelper.createCostList([e])) || (e.itemType == E.CollectableEnum.C1 ? D.CastleDialogHandler.getInstance().registerDefaultDialogs(S.CastleNoMoneyC1Dialog, new _.CastleNoMoneyC1DialogProperties()) : e.itemType == E.CollectableEnum.C2 ? D.CastleDialogHandler.getInstance().registerDefaultDialogs(A.CastleNoMoneyC2Dialog, new m.CastleNoMoneyC2DialogProperties()) : T.CostHelper.showNotEnoughSpecialCurrencyDialog([new b.CollectableTypeVO().initByCollectable(e).id]), false);
-  };
-  Object.defineProperty(ACastleSocketDialog.prototype, "titleTextID", {
-    get: function () {
-      return "dialog_gems_insertGems_header";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ACastleSocketDialog.prototype.getCosts = function () {
-    var e = l.int(P.instanceOfClass(this.dialogProperties.gemVO, "CastleGemVO") ? p.CastleModel.costsData.getFinalCostsC1(this.dialogProperties.gemVO.levelInfos.insertCostC1) : M.RelicItemConst.INSERT_RELIC_GEM_C1_COST);
-    return y.CollectableHelper.createVO(E.CollectableEnum.C1, e);
-  };
-  ACastleSocketDialog.prototype.onClick = function (t) {
-    if (g.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.dialogDisp.btn_ok:
-          this.onConfirmButtonClicked();
-          break;
-        case this.dialogDisp.btn_back:
-        case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_cancel:
-          if (this.dialogProperties.onAbort) {
-            this.dialogProperties.onAbort();
+  RelicItemInfoVO.prototype.parseRelicBoni = function (e) {
+    this.relicBoni = [];
+    if (e) {
+      if (e != null) {
+        for (var t = 0, i = e; t < i.length; t++) {
+          var n = i[t];
+          if (n !== undefined) {
+            var o = new c.RelicBonusVO();
+            o.parseRelicFromValueArray(n);
+            this.relicBoni.push(o);
           }
-          this.hide();
-          break;
-        case this.dialogDisp.btn_help:
-          D.CastleDialogHandler.getInstance().showHelper("", r.Localize.text("help_insertGems"));
+        }
+      }
+      this.relicBoni.sort(p.ClientConstSort.sortRelicBoni);
+    }
+  };
+  RelicItemInfoVO.prototype.getCategoryEffects = function (e, t, i) {
+    var n;
+    var o;
+    if (i === undefined) {
+      i = false;
+    }
+    if (t != null) {
+      for (var a = 0, r = t; a < r.length; a++) {
+        var l = r[a];
+        if (l !== undefined && l.relicEffectVO.effectType == e) {
+          n ||= [];
+          n.push(l);
+        }
       }
     }
+    if (n && n.length > 0 || i) {
+      (o = new s.RelicEquipmentInfoEffectCategoryVO()).categoryType = e;
+      o.effects = n || [];
+    }
+    return o;
   };
-  ACastleSocketDialog.prototype.onConfirmButtonClicked = function () {
-    if (this.checkAndShowNotEnoughCurrencyMessage(this.getCosts())) {
-      this.onValidConfirmClicked();
-      if (this.dialogProperties.onConfirm) {
-        this.dialogProperties.onConfirm();
+  RelicItemInfoVO.prototype.getCategorisedEffectsDefined = function () {
+    var e = [];
+    for (var t = 0, i = u.XmlRelicEffectVO.EFFECT_TYPE_SORT_ORDER; t < i.length; t++) {
+      var n = i[t];
+      if (n !== undefined) {
+        var o = this.getCategoryEffects(n, this.relicBoni);
+        if (o) {
+          e.push(o);
+        }
       }
-      this.hide();
+    }
+    return e;
+  };
+  RelicItemInfoVO.prototype.getCategorisedEffectsUndefined = function () {
+    var e = [];
+    for (var t = 0, i = this.bluePrintVO.baseRelicEffectIds; t < i.length; t++) {
+      var o = i[t];
+      if (o !== undefined) {
+        var s = new c.RelicBonusVO();
+        s.parseRelicFromValueArray([o, 0, 0]);
+        s.predefinedMinRating = this._predefinedMinRating;
+        s.predefinedMaxRating = this._predefinedMaxRating;
+        e.push(s);
+      }
+    }
+    for (var l = 0, d = this.predefinedEffectIds; l < d.length; l++) {
+      o = d[l];
+      (s = new c.RelicBonusVO()).parseRelicFromValueArray([o, 0, 0]);
+      s.predefinedMinRating = this._predefinedMinRating;
+      s.predefinedMaxRating = this._predefinedMaxRating;
+      e.push(s);
+    }
+    if (this.bluePrintVO.specialAmount > 0) {
+      var p;
+      if (this.bluePrintVO.specialRelicEffectListId >= 0) {
+        if (r.CastleModel.equipData.relicXml.getRelicEffectList(this.bluePrintVO.specialRelicEffectListId)) {
+          var h = r.CastleModel.equipData.relicXml.getRelicEffectList(this.bluePrintVO.specialRelicEffectListId).relicEffectIds;
+          if (h && h.length > 0) {
+            p = r.CastleModel.equipData.relicXml.getRelicEffect(h[0]).effectType;
+          }
+        }
+      }
+      if (!p || p == "") {
+        p = u.XmlRelicEffectVO.EFFECT_TYPE_UNIT_TOOL;
+      }
+    }
+    var g = [];
+    g.push(u.XmlRelicEffectVO.EFFECT_TYPE_NORMAL);
+    if (p != null && p != "") {
+      g.push(p);
+    }
+    var C = [];
+    if (g != null) {
+      for (var _ = 0, m = g; _ < m.length; _++) {
+        var f = m[_];
+        if (f !== undefined) {
+          var O = this.getCategoryEffects(f, e, true);
+          if (O) {
+            O.numberOfUnknownEffects = a.int(n.MathBase.max((f == u.XmlRelicEffectVO.EFFECT_TYPE_NORMAL ? this.bluePrintVO.normalAmount : this.bluePrintVO.specialAmount) - O.effects.length, 0));
+            C.push(O);
+          }
+        }
+      }
+    }
+    return C;
+  };
+  RelicItemInfoVO.getSellPriceTextByInfoVO = function (e, t) {
+    if (e.isRelicDefined()) {
+      return o.Localize.text("relicequip_dialog_sellValue_name", [t]);
+    } else {
+      return o.Localize.text("relicequip_dialog_sellValue_range_name", [C.RelicItemConst.calculateFragmentSellMinValue(), e.bluePrintVO ? C.RelicItemConst.calculateFragmentSellMaxValue(e.bluePrintVO.normalAmount) : e.predefinedEffectIds.length]);
     }
   };
-  ACastleSocketDialog.prototype.onUserCurrencyChanged = function (e) {
-    this.updateCosts();
+  RelicItemInfoVO.prototype.getSellPriceText = function () {
+    return RelicItemInfoVO.getSellPriceTextByInfoVO(this, this.getSellPrice().amount);
   };
-  ACastleSocketDialog.prototype.onMouseOver = function (t) {
-    e.prototype.onMouseOver.call(this, t);
-    if (t.target && t.target.equipmentVO) {
-      v.EquipmentIconHelper.showToolTip(t.target, t.target.equipmentVO);
-    }
+  RelicItemInfoVO.prototype.isRelicDefined = function () {
+    return this.bluePrintVO == null && this.relicTypeId >= 0 && this.relicCategoryId >= 0;
   };
-  ACastleSocketDialog.prototype.onValidConfirmClicked = function () {};
-  Object.defineProperty(ACastleSocketDialog.prototype, "dialogProperties", {
-    get: function () {
-      return this.properties;
+  RelicItemInfoVO.prototype.getSellPrice = function () {
+    return g.CollectableHelper.createVO(h.CollectableEnum.GENERIC_CURRENCY, C.EffectConst.applyBoostToValueRoundingWithCeil(r.CastleModel.equipData.relicFragmentBoost, C.RelicItemConst.calculateFragmentSellValue(this.mightValue)), l.ClientConstCurrency.ID_RELIC_FRAGMENTS);
+  };
+  Object.defineProperty(RelicItemInfoVO.prototype, "predefinedMinRating", {
+    set: function (e) {
+      this._predefinedMinRating = e;
     },
     enumerable: true,
     configurable: true
   });
-  ACastleSocketDialog.__initialize_static_members = function () {
-    ACastleSocketDialog.COST_ICON_DIMENSION = new f(35, 35);
-  };
-  return ACastleSocketDialog;
-}(C.CastleExternalDialog);
-exports.ACastleSocketDialog = O;
-o.classImplementsInterfaces(O, "ICollectableRendererList");
-var E = require("./12.js");
-var y = require("./45.js");
-var b = require("./74.js");
-var D = require("./9.js");
-var I = require("./25.js");
-var T = require("./66.js");
-var v = require("./73.js");
-var S = require("./352.js");
-var A = require("./138.js");
-var L = require("./248.js");
-O.__initialize_static_members();
-var P = require("./1.js");
-var M = require("./5.js");
+  Object.defineProperty(RelicItemInfoVO.prototype, "predefinedMaxRating", {
+    set: function (e) {
+      this._predefinedMaxRating = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return RelicItemInfoVO;
+}();
+exports.RelicItemInfoVO = d;
+var p = require("./75.js");
+var h = require("./12.js");
+var g = require("./45.js");
+var C = require("./5.js");

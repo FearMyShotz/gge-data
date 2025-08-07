@@ -2,83 +2,90 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./3.js");
-var a = require("./3.js");
+var o = require("./1.js");
+var a = require("./5.js");
 var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./203.js");
-var u = require("./949.js");
-var d = function (e) {
-  function AllianceBookmarkAttackOrderRenderer() {
+var r = require("./4.js");
+var l = require("./203.js");
+var c = require("./8.js");
+var u = function (e) {
+  function CastleDeleteAllianceBookmarkDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+    return e.call(this, CastleDeleteAllianceBookmarkDialog.NAME) || this;
   }
-  n.__extends(AllianceBookmarkAttackOrderRenderer, e);
-  Object.defineProperty(AllianceBookmarkAttackOrderRenderer.prototype, "bookmarkTypeTextID", {
+  n.__extends(CastleDeleteAllianceBookmarkDialog, e);
+  CastleDeleteAllianceBookmarkDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("dialog_alliance_bookmarks_eraseBookmark_header"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO("dialog_alliance_bookmarks_eraseBookmark_copy"));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_notify.txt_notifyAttackers, new s.LocalizedTextVO("dialog_alliance_bookmarks_eraseBookmark_sendMessage_copy"));
+    c.ButtonHelper.initTwoStateButton(this.dialogDisp.mc_notify.btn_notify);
+    c.ButtonHelper.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_no, this.dialogDisp.btn_ok]);
+    this.crestComponent = new d.CastleCastleCrestComponent(this.dialogDisp.mc_sourceCastle);
+  };
+  CastleDeleteAllianceBookmarkDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    e.prototype.applyPropertiesLoaded.call(this, t);
+    if (this.dialogProperties.bookmarkVO.type == l.EWorldmapBookmarkType.ALLIANCE_ATTACK_ORDER) {
+      this.dialogDisp.mc_notify.visible = true;
+      c.ButtonHelper.setButtonSelected(this.dialogDisp.mc_notify.btn_notify, true);
+      this.setSendMessageButtonTooltip();
+    } else {
+      this.dialogDisp.mc_notify.visible = false;
+    }
+  };
+  CastleDeleteAllianceBookmarkDialog.prototype.showLoaded = function (t) {
+    var i;
+    if (t === undefined) {
+      t = null;
+    }
+    e.prototype.showLoaded.call(this, t);
+    i = this.dialogProperties.bookmarkVO.kingdomId == a.FactionConst.KINGDOM_ID ? p.CrestHelper.getPlayerOrFactionCrest(this.dialogProperties.bookmarkVO.worldmapObjectVO.ownerInfo) : this.dialogProperties.bookmarkVO.worldmapObjectVO.ownerInfo.crest;
+    this.crestComponent.initComponent(i, this.dialogProperties.bookmarkVO.worldmapObjectVO);
+  };
+  CastleDeleteAllianceBookmarkDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this, t);
+  };
+  CastleDeleteAllianceBookmarkDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_no:
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_ok:
+        this.deleteBookmark();
+        this.hide();
+    }
+    if (this.dialogDisp.mc_notify.visible && this.dialogDisp.mc_notify.btn_notify == t.target) {
+      var i = c.ButtonHelper.isButtonSelected(this.dialogDisp.mc_notify.btn_notify);
+      c.ButtonHelper.setButtonSelected(this.dialogDisp.mc_notify.btn_notify, !i);
+      this.setSendMessageButtonTooltip();
+    }
+  };
+  CastleDeleteAllianceBookmarkDialog.prototype.setSendMessageButtonTooltip = function () {
+    if (c.ButtonHelper.isButtonSelected(this.dialogDisp.mc_notify.btn_notify)) {
+      this.dialogDisp.mc_notify.btn_notify.toolTipText = "dialog_alliance_bookmarks_eraseBookmark_sendMessage_confirm_tooltip";
+    } else {
+      this.dialogDisp.mc_notify.btn_notify.toolTipText = "dialog_alliance_bookmarks_eraseBookmark_sendMessage_deny_tooltip";
+    }
+  };
+  CastleDeleteAllianceBookmarkDialog.prototype.deleteBookmark = function () {
+    r.CastleModel.bookmarkData.deleteBookmark(this.dialogProperties.bookmarkVO, c.ButtonHelper.isButtonSelected(this.dialogDisp.mc_notify.btn_notify));
+  };
+  Object.defineProperty(CastleDeleteAllianceBookmarkDialog.prototype, "dialogProperties", {
     get: function () {
-      return "Bookmarks_worldmap_alliance_plannedTarget_2_tooltip";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.AAllianceBookmarkRenderer.prototype, "bookmarkTypeTextID").set.call(this, e);
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceBookmarkAttackOrderRenderer.prototype, "isAdditionalDetailsVisible", {
-    get: function () {
-      return true;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.AAllianceBookmarkRenderer.prototype, "isAdditionalDetailsVisible").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AllianceBookmarkAttackOrderRenderer.prototype, "backgroundFrame", {
-    get: function () {
-      return 3;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.AAllianceBookmarkRenderer.prototype, "backgroundFrame").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AllianceBookmarkAttackOrderRenderer.prototype, "bookmarkTypeIconFrame", {
-    get: function () {
-      return 3;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.AAllianceBookmarkRenderer.prototype, "bookmarkTypeIconFrame").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AllianceBookmarkAttackOrderRenderer.prototype.renderAdditionalInfos = function (e, t) {
-    var i = t.attackOrderDetails;
-    var n = i.attackDate;
-    var l = new r.TextVO(a.Localize.datetime(n, o.DateTimeStyle.SHORT, o.DateTimeStyle.NONE));
-    this.textFieldManager.registerTextField(e.txt_date, l);
-    var c = new r.TextVO(a.Localize.datetime(n, o.DateTimeStyle.NONE, o.DateTimeStyle.SHORT));
-    this.textFieldManager.registerTextField(e.txt_time, c);
-    var u = i.assignedAttackers.length > 1 ? "dialog_alliance_bookmarks_attackerAmount" : "dialog_alliance_bookmarks_attackerAmount_singular";
-    this.textFieldManager.registerTextField(e.mc_participants.txt_memberCount, new s.LocalizedTextVO(u, [i.assignedAttackers.length]));
-    e.mc_participants.actLikeButton = true;
-    e.mc_participants.mouseChildren = false;
-    e.mc_participants.toolTipText = "dialog_alliance_bookmarks_attackerList_tooltip";
+  CastleDeleteAllianceBookmarkDialog.__initialize_static_members = function () {
+    CastleDeleteAllianceBookmarkDialog.NAME = "CastleDeleteAllianceBookmark";
   };
-  AllianceBookmarkAttackOrderRenderer.prototype.getSublayer = function (e) {
-    return e.sublayer_attackOrderInfo;
-  };
-  AllianceBookmarkAttackOrderRenderer.prototype.showSublayer = function (e) {
-    e.sublayer_attackOrderInfo.visible = true;
-    e.sublayer_defaultInfo.visible = false;
-  };
-  AllianceBookmarkAttackOrderRenderer.__initialize_static_members = function () {
-    AllianceBookmarkAttackOrderRenderer.ID = l.int(c.EWorldmapBookmarkType.ALLIANCE_ATTACK_ORDER.typeIndex);
-  };
-  return AllianceBookmarkAttackOrderRenderer;
-}(u.AAllianceBookmarkRenderer);
-exports.AllianceBookmarkAttackOrderRenderer = d;
-d.__initialize_static_members();
+  return CastleDeleteAllianceBookmarkDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleDeleteAllianceBookmarkDialog = u;
+var d = require("./741.js");
+var p = require("./61.js");
+o.classImplementsInterfaces(u, "ICollectableRendererList");
+u.__initialize_static_members();

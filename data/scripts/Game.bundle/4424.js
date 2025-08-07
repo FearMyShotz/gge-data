@@ -2,22 +2,42 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
+var o = require("./1.js");
+var a = require("./79.js");
 var s = function (e) {
-  function C2SEnchantEquipmentEvent(t, i) {
-    var n = this;
-    n.C2 = 0;
-    n.EID = 0;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).C2 = t;
-    n.EID = i;
-    return n;
+  function EquipmentEnhancerEventVO() {
+    return e.call(this) || this;
   }
-  n.__extends(C2SEnchantEquipmentEvent, e);
-  C2SEnchantEquipmentEvent.prototype.getCmdId = function () {
-    return a.ClientConstSF.S2C_ENCHANT_EQUIPMENT_EVENT;
+  n.__extends(EquipmentEnhancerEventVO, e);
+  Object.defineProperty(EquipmentEnhancerEventVO.prototype, "eventBuildingWOD", {
+    get: function () {
+      return EquipmentEnhancerEventVO.EVENT_BUILDING_WOD;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.ASpecialEventVO.prototype, "eventBuildingWOD").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EquipmentEnhancerEventVO.prototype, "eventBuildingNameId", {
+    get: function () {
+      return "eventBuilding_Enchanter";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.ASpecialEventVO.prototype, "eventBuildingNameId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EquipmentEnhancerEventVO.prototype.openDialog = function (e = true) {
+    this.executeOpenDialog(e, r.CastleEquipmentEnchanterDialog);
   };
-  return C2SEnchantEquipmentEvent;
-}(o.BasicCommandVO);
-exports.C2SEnchantEquipmentEvent = s;
+  EquipmentEnhancerEventVO.__initialize_static_members = function () {
+    EquipmentEnhancerEventVO.EVENT_BUILDING_WOD = 296;
+  };
+  return EquipmentEnhancerEventVO;
+}(a.ASpecialEventVO);
+exports.EquipmentEnhancerEventVO = s;
+var r = require("./1904.js");
+o.classImplementsInterfaces(s, "IEventOverviewable");
+s.__initialize_static_members();

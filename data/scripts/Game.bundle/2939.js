@@ -2,23 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./793.js");
-var a = require("./2940.js");
+var o = require("./2.js");
+var a = require("./7.js");
 var s = function (e) {
-  function HospitalInventoryListComponent(t, i) {
-    var n = e.call(this, t) || this;
-    n.selectCallback = i;
-    n.init();
-    return n;
+  function C2SReviveAllHospitalUnits(t) {
+    var i = this;
+    i.C2 = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).C2 = t;
+    return i;
   }
-  n.__extends(HospitalInventoryListComponent, e);
-  HospitalInventoryListComponent.prototype.createTooltipComponent = function (e) {
-    return new a.HospitalInventoryTooltipComponent(e);
+  n.__extends(C2SReviveAllHospitalUnits, e);
+  C2SReviveAllHospitalUnits.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_REVIVE_ALL_HOSPITAL_UNITS;
   };
-  HospitalInventoryListComponent.prototype.createListItemComponent = function (e, t) {
-    return new r.HospitalInventoryListItemComponent(e, t, this.selectCallback);
-  };
-  return HospitalInventoryListComponent;
-}(o.AInventoryList);
-exports.HospitalInventoryListComponent = s;
-var r = require("./2941.js");
+  return C2SReviveAllHospitalUnits;
+}(o.BasicCommandVO);
+exports.C2SReviveAllHospitalUnits = s;

@@ -4,20 +4,20 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./116.js");
+var s = require("./114.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferWinterDialog() {
-    return e.call(this, CastlePaymentRewardSpecialOfferWinterDialog.NAME) || this;
+  function CastlePaymentRewardSpecialOfferBlackFridayDialog() {
+    return e.call(this, CastlePaymentRewardSpecialOfferBlackFridayDialog.NAME) || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferWinterDialog, e);
-  CastlePaymentRewardSpecialOfferWinterDialog.prototype.setTextIDs = function () {
+  n.__extends(CastlePaymentRewardSpecialOfferBlackFridayDialog, e);
+  CastlePaymentRewardSpecialOfferBlackFridayDialog.prototype.setTextIDs = function () {
     e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_winter_title";
-    this.descriptionTextID = "dialog_primeday_winter_description";
+    this.titleTextID = "dialog_primeday_blackFriday_title";
+    this.descriptionTextID = "dialog_primeday_blackFriday_description";
   };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferWinterDialog.prototype, "skinType", {
+  Object.defineProperty(CastlePaymentRewardSpecialOfferBlackFridayDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_WINTER;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_BLACK_FRIDAY;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
@@ -25,11 +25,11 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferWinterDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferWinterDialog.NAME = "CastlePaymentRewardSpecialOfferWinter";
+  CastlePaymentRewardSpecialOfferBlackFridayDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferBlackFridayDialog.NAME = "CastlePaymentRewardSpecialOfferBlackFriday";
   };
-  return CastlePaymentRewardSpecialOfferWinterDialog;
+  return CastlePaymentRewardSpecialOfferBlackFridayDialog;
 }(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferWinterDialog = r;
+exports.CastlePaymentRewardSpecialOfferBlackFridayDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
 r.__initialize_static_members();

@@ -1,257 +1,119 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./5.js");
-var s = require("./3.js");
-var r = require("./28.js");
-var l = require("./2667.js");
-var c = require("./22.js");
-var u = require("./50.js");
-var d = require("./155.js");
-var p = require("./30.js");
-var h = require("./24.js");
-var g = require("./181.js");
-var C = require("./4.js");
-var _ = require("./165.js");
-var m = require("./52.js");
-var f = require("./35.js");
-var O = function (e) {
-  function CastleSceatSkillVO() {
-    var t = e !== null && e.apply(this, arguments) || this;
-    t._activeActivationTimestamp = -1;
-    t._sortOrder = 0;
-    return t;
-  }
-  n.__extends(CastleSceatSkillVO, e);
-  CastleSceatSkillVO.prototype.parseXML = function (t) {
-    e.prototype.parseXML.call(this, t);
-    this._costList = u.CollectableManager.parser.x2cList.createList(t, "cost");
-    this._cost = this._costList.list[0].amount;
-    this._activationTime = parseInt(c.CastleXMLUtils.getValueOrDefault("activationTime", t, "0"));
-    this._sortOrder = parseInt(c.CastleXMLUtils.getValueOrDefault("sortOrder", t, "0"));
-    this.parseBoni(t);
-  };
-  CastleSceatSkillVO.prototype.parseBoni = function (e) {
-    this._boni = [];
-    var t = c.CastleXMLUtils.getValueOrDefault("effect", e, "") || c.CastleXMLUtils.getValueOrDefault("effects", e, "");
-    if (t != "") {
-      for (var i = 0, n = t.split(","); i < n.length; i++) {
-        var o = n[i];
-        if (o.length > 0) {
-          var a = o.split("&");
-          var s = C.CastleModel.effectsData.getEffectByID(parseInt(a[0]));
-          var r = new _.BonusVO().parseFromValueString(s, a[1]);
-          this._boni.push(r);
-        }
-      }
+var n = function () {
+  function CastleDecoShopItemArrayHelper() {}
+  CastleDecoShopItemArrayHelper.getBuildingsByCategory = function (e) {
+    var t = [];
+    var i = e.toLowerCase();
+    if (!c.CastleModel.decoShop[e.toLowerCase()]) {
+      return t;
     }
-  };
-  CastleSceatSkillVO.prototype.getEffectValueByType = function (e, t = -1, i = -1, n = -1, o = null) {
-    var a = new e.valueClass();
-    if (this._boni != null) {
-      for (var s = 0, r = this._boni; s < r.length; s++) {
-        var l = r[s];
-        if (l !== undefined && l.matchesConditions(e, t, i, n, o)) {
-          a.add(l.effectValue, null);
-        }
-      }
-    }
-    return a;
-  };
-  CastleSceatSkillVO.prototype.getUnlockLevel = function () {
-    var e = -1;
-    var t = this.getCurrentEffectValue;
-    var i = this.boni[0].effect.effectType.type;
-    if (t) {
-      var n = this.getCurrentEffectValue.strength;
-      if (i == f.EffectTypeEnum.EFFECT_ENABLE_BUILDINGS) {
-        var o = undefined;
-        var a = undefined;
-        for (var s = 0, r = this.boni; s < r.length; s++) {
-          var l = r[s].effectValue;
-          var c = C.CastleModel.wodData.getBuildingVOById(l.strength);
-          a ||= c;
-          if (c && c.sceatSkillLocked == this.id) {
-            o = c;
-          }
-        }
-        e = o ? o.level : a ? a.level : -1;
-      } else {
-        var u = C.CastleModel.wodData.getUnitVOByWodId(n);
-        e = u ? u.level : -1;
-      }
-    }
-    return e;
-  };
-  Object.defineProperty(CastleSceatSkillVO.prototype, "getCurrentEffectValue", {
-    get: function () {
-      return this._boni[0].effectValue;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "getCurrentEffectTypeId", {
-    get: function () {
-      return this._boni[0].effect.effectTypeID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "hasBuildingEffect", {
-    get: function () {
-      return this.getCurrentEffectTypeId == f.EffectTypeEnum.EFFECT_ENABLE_BUILDINGS.id;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "hasUnitEffect", {
-    get: function () {
-      return this.getCurrentEffectTypeId == f.EffectTypeEnum.EFFECT_TYPE_ENABLE_UNITS.id;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "nameTextID", {
-    get: function () {
-      return "dialog_legendTemple_sceat_" + this._skillGroupID + "_name";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "descriptionTextID", {
-    get: function () {
-      return "dialog_legendTemple_sceat_" + this._skillGroupID + "_desc";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "shortDescriptionTextID", {
-    get: function () {
-      return "dialog_legendTemple_sceat_" + this._skillGroupID + "_desc_short";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "costTextID", {
-    get: function () {
-      switch (this.costCurrencyID) {
-        case m.ClientConstCurrency.ID_SCEAT_TOKEN:
-          return "dialog_legendTemple_sceatCosts";
-        case m.ClientConstCurrency.ID_IMPERIAL_DUCAT:
-          return "dialog_legendTemple_imperialDucatCosts";
-      }
-      return "dialog_legendTemple_sceatCosts";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "costCurrencyID", {
-    get: function () {
-      var e = this._costList.list[0];
-      if (e instanceof d.CollectableItemGenericCurrencyVO) {
-        return e.xmlCurrencyVO.id;
-      } else {
-        return m.ClientConstCurrency.ID_SCEAT_TOKEN;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "previewText", {
-    get: function () {
-      var e = this.boni.some(function (e) {
-        return e.effect.effectType.type == f.EffectTypeEnum.EFFECT_TYPE_ENABLE_UNITS;
-      });
-      if (this.boni.some(function (e) {
-        return e.effect.effectType.type == f.EffectTypeEnum.EFFECT_ENABLE_BUILDINGS;
-      })) {
-        return s.Localize.text("dialog_legendTemple_sceat_preview_buildings");
-      }
-      if (e) {
-        var t = this.boni.find(function (e) {
-          return e.effect.effectType.type == f.EffectTypeEnum.EFFECT_TYPE_ENABLE_UNITS;
-        }).effectValue.strength;
-        var i = C.CastleModel.wodData.getUnitVOByWodId(t);
-        if (i) {
-          if (i instanceof g.ToolUnitVO) {
-            return s.Localize.text("dialog_legendTemple_sceat_preview_tools");
+    var n = 0;
+    var a = [];
+    var u = [];
+    var d = [];
+    for (var p = 0, h = c.CastleModel.decoShop[i]; p < h.length; p++) {
+      var g = h[p];
+      if (g !== undefined) {
+        var C = c.CastleModel.userData.userLevel == 0;
+        var _ = g.level == 0;
+        if ((!C && !_ || C && _) && g.isAvailableInAreaTypeAndKingdomId(c.CastleModel.areaData.activeAreaInfo.areaType, c.CastleModel.areaData.activeAreaInfo.kingdomID) && (CastleDecoShopItemArrayHelper.layoutManager.isInTreasureCamp || !g.isOnlyAvailableByMapIds()) && (!CastleDecoShopItemArrayHelper.layoutManager.isInTreasureCamp || g.isOnlyAvailableInEvent() || CastleDecoShopItemArrayHelper.isShopVOActiveBySeason(g)) && (!(g.sceatSkillLocked > 0) || c.CastleModel.legendSkillData.hasLegendTemple())) {
+          if (e == s.ClientConstCastle.CATEGORY_DEFENCE) {
+            if (r.instanceOfClass(g, "CastlewallDefenceVO")) {
+              if (g.level > o.Iso.data.objects.defences.currentWallLevel) {
+                a.push(g);
+              }
+            } else if (r.instanceOfClass(g, "BasicMoatVO") && CastleDecoShopItemArrayHelper.isMoatVisible(g)) {
+              a.push(g);
+            }
           } else {
-            return s.Localize.text("dialog_legendTemple_sceat_preview_units");
+            if (!g.canBeBuildByResourceFields()) {
+              continue;
+            }
+            if (o.Iso.data.objects.provider.hasMaxAmountOfObjectsByType(g)) {
+              d.push(g);
+            } else {
+              if (c.CastleModel.areaData.activeArea.slum) {
+                n = l.int(c.CastleModel.areaData.activeArea.slum.slumLevel);
+              }
+              if (g.slumLevelNeeded > 0) {
+                if (n != -1) {
+                  if (g.slumLevelNeeded > n) {
+                    u.push(g);
+                  } else {
+                    a.push(g);
+                  }
+                }
+              } else {
+                a.push(g);
+              }
+            }
           }
         }
       }
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleSceatSkillVO.prototype.createSkillIcon = function () {
-    if (this.isPreview) {
-      var t = this.boni.some(function (e) {
-        return e.effect.effectType.type == f.EffectTypeEnum.EFFECT_TYPE_ENABLE_UNITS;
-      });
-      var i = "";
-      if (this.boni.some(function (e) {
-        return e.effect.effectType.type == f.EffectTypeEnum.EFFECT_ENABLE_BUILDINGS;
-      })) {
-        i = "Skill_UnlockBuilding";
-      } else if (t) {
-        var n = this.boni.find(function (e) {
-          return e.effect.effectType.type == f.EffectTypeEnum.EFFECT_TYPE_ENABLE_UNITS;
-        }).effectValue.strength;
-        var a = C.CastleModel.wodData.getUnitVOByWodId(n);
-        if (a) {
-          i = a instanceof g.ToolUnitVO ? "Skill_UnlockTool" : "Skill_UnlockUnit";
-        }
-      }
-      var s = new h.CastleGoodgameExternalClip(i, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(i), null, 0, false);
-      s.recycleAsset = false;
-      return s;
     }
-    return e.prototype.createSkillIcon.call(this);
+    if (e == s.ClientConstCastle.CATEGORY_DEFENCE) {
+      d.sort(CastleDecoShopItemArrayHelper.defaultSortOrderBuilding);
+      a.sort(CastleDecoShopItemArrayHelper.sortOrderDefence);
+    } else {
+      a.sort(CastleDecoShopItemArrayHelper.defaultSortOrderBuilding);
+    }
+    u.sort(CastleDecoShopItemArrayHelper.defaultSortOrderBuilding);
+    return t = (t = a.concat(u)).concat(d);
   };
-  Object.defineProperty(CastleSceatSkillVO.prototype, "skillIconClassName", {
+  CastleDecoShopItemArrayHelper.defaultSortOrderBuilding = function (e, t) {
+    var i = e.sortOrder - t.sortOrder;
+    if (i != 0) {
+      return i;
+    }
+    var n = e.requiredLegendLevel - t.requiredLegendLevel;
+    if (n != 0) {
+      return n;
+    } else {
+      return e.requiredLevel - t.requiredLevel;
+    }
+  };
+  CastleDecoShopItemArrayHelper.sortOrderDefence = function (e, t) {
+    var i = 0;
+    if ((i = e.group.toLowerCase() < t.group.toLowerCase() ? -1 : e.group.toLowerCase() > t.group.toLowerCase() ? 1 : 0) != 0) {
+      return i;
+    } else {
+      return CastleDecoShopItemArrayHelper.defaultSortOrderBuilding(e, t);
+    }
+  };
+  CastleDecoShopItemArrayHelper.isShopVOActiveBySeason = function (e) {
+    return !!c.CastleModel.specialEventData.activeSeasonVO && !!c.CastleModel.specialEventData.activeSeasonVO.treasureMapVO && e.isAvailableByMapId(c.CastleModel.specialEventData.activeSeasonVO.treasureMapVO.mapID);
+  };
+  CastleDecoShopItemArrayHelper.isMoatVisible = function (e) {
+    var t = o.Iso.data.objects.defences.moat;
+    if (t) {
+      var i = r.instanceOfClass(t, "PremiumMoatVO") || r.instanceOfClass(t, "FactionPMoatMoatVO");
+      if (r.instanceOfClass(e, "PremiumMoatVO") || r.instanceOfClass(e, "FactionPMoatMoatVO")) {
+        if (i) {
+          return e.level > t.level && e.isMoatAvailableByBuildOrder;
+        } else {
+          return !!r.instanceOfClass(e, "FactionPMoatMoatVO") || e.isMoatAvailableByBuildOrder;
+        }
+      } else {
+        return !i && e.level > t.level && e.isMoatAvailableByBuildOrder;
+      }
+    }
+    return e.isMoatAvailableByBuildOrder;
+  };
+  Object.defineProperty(CastleDecoShopItemArrayHelper, "layoutManager", {
     get: function () {
-      return "SceatSkill_" + this._skillGroupID;
+      return a.CastleLayoutManager.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "activationTime", {
-    get: function () {
-      return this._activationTime;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleSceatSkillVO.prototype.setRemainingActivationTime = function (e) {
-    this._activeActivationTimestamp = p.CachedTimer.getCachedTimer() + e * r.ClientConstTime.SEC_2_MILLISEC;
-  };
-  CastleSceatSkillVO.prototype.getRemainingActivationTime = function () {
-    return (this._activeActivationTimestamp - p.CachedTimer.getCachedTimer()) * r.ClientConstTime.MILLISEC_2_SEC;
-  };
-  CastleSceatSkillVO.prototype.buySkill = function () {
-    C.CastleModel.smartfoxClient.sendCommandVO(new l.C2SBuySceatSkillVO(this.id));
-  };
-  CastleSceatSkillVO.prototype.getSkipCosts = function () {
-    return a.SceatSkillConst.getFastCompleteCostC2(this.getRemainingActivationTime(), C.CastleModel.userData.userLevel);
-  };
-  Object.defineProperty(CastleSceatSkillVO.prototype, "sortOrder", {
-    get: function () {
-      return this._sortOrder;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSceatSkillVO.prototype, "boni", {
-    get: function () {
-      return this._boni;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleSceatSkillVO;
-}(require("./1454.js").CastleLegendSkillVO);
-exports.CastleSceatSkillVO = O;
+  return CastleDecoShopItemArrayHelper;
+}();
+exports.CastleDecoShopItemArrayHelper = n;
+var o = require("./34.js");
+var a = require("./17.js");
+var s = require("./18.js");
+var r = require("./1.js");
+var l = require("./6.js");
+var c = require("./4.js");

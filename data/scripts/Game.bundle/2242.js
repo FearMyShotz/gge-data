@@ -2,297 +2,205 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
+var o = require("./1270.js");
 var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./16.js");
-var l = require("./119.js");
-var c = require("./32.js");
-var u = require("./4.js");
-var d = require("./68.js");
-var p = require("./380.js");
-var h = require("./1275.js");
-var g = require("./1280.js");
-var C = require("./714.js");
-var _ = createjs.Bitmap;
-var m = require("./353.js");
-var f = function (e) {
-  function EquipmentEquipmentClickHandler(t) {
-    return e.call(this, t) || this;
+var s = require("./23.js");
+var r = require("./23.js");
+var l = require("./23.js");
+var c = require("./23.js");
+var u = function (e) {
+  function AmbientAnimationsHandler(t) {
+    var i = e.call(this, t) || this;
+    i.CANDLE_ANIMATION = "Candlelight_Animation";
+    i.CODE_BASED_ANIMATIONS = "Codebased_Animation_Elements";
+    i.CANDLES_STICKS_ANIMATION = "CandlelightSticks_Back";
+    i.CHANDLELIERS_ANIMATION = "Lightbeams_Chandleliers";
+    i.CANDLE_LIGHT_MIDDLE_BACK1_ANIMATION = "CandleLight_Middle_Back1";
+    i.CANDLE_LIGHT_MIDDLE_BACK2_ANIMATION = "CandleLight_Middle_Back2";
+    i.BEAM_FRONT_1_ANIMATION = "Beam_Front1";
+    i.BEAM_FRONT_2_ANIMATION = "Beam_Front2";
+    i.BEAMS_MIDDLE_ANIMATION = "Lightbeams_Middle";
+    i.BEAMS_BACK_ANIMATION = "Lightbeams_Back";
+    i.PARTICLES_ANIMATION = "Particles";
+    i.DUST_ANIMATION = "Dust";
+    i.animationAssets = [i.CANDLE_ANIMATION, i.CODE_BASED_ANIMATIONS];
+    return i;
   }
-  n.__extends(EquipmentEquipmentClickHandler, e);
-  EquipmentEquipmentClickHandler.prototype.init = function () {
-    e.prototype.init.call(this);
-    if (h.EquipmentDialogClickHandler.targetSlot && h.EquipmentDialogClickHandler.targetSlot.slotVO.equipmentVO) {
-      this.startDrag(new g.EquipmentDragMovement(h.EquipmentDialogClickHandler.targetSlot.slotVO.equipmentVO, new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_SLOT, this.equipmentScreen.currentLord.id), h.EquipmentDialogClickHandler.targetSlot));
-      this.controller.addEventListener(l.CastleEquipmentEvent.EQUIP_FAILED, this.bindFunction(this.onUnEquipFail));
-      this.controller.addEventListener(l.CastleEquipmentEvent.EQUIP_SUCCESSFUL, this.bindFunction(this.onUnEquipSuccess));
-      h.EquipmentDialogClickHandler.targetSlot.mc_anim.gotoAndStop(1);
-      h.EquipmentDialogClickHandler.targetSlot = null;
+  n.__extends(AmbientAnimationsHandler, e);
+  AmbientAnimationsHandler.prototype.initialize = function () {
+    this._candlesAnimationsPlaceholders = [this._disp.mc_candlelight_animation_0, this._disp.mc_candlelight_animation_1, this._disp.mc_candlelight_animation_2, this._disp.mc_candlelight_animation_3, this._disp.mc_candlelight_animation_4, this._disp.mc_candlelight_animation_5, this._disp.mc_candlelight_animation_6, this._disp.mc_candlelight_animation_7];
+    var e;
+    var t;
+    var i = a.getDefinitionByName(this.CANDLE_ANIMATION);
+    for (var n = 0; n < this._candlesAnimationsPlaceholders.length; n++) {
+      e = this._candlesAnimationsPlaceholders[n];
+      (t = new i()).framerate = 6;
+      e.addChild(t);
+      e.name = this.CANDLE_ANIMATION;
+      e.mouseEnabled = false;
     }
-    this.setStorageWarning();
-    this.setAddStorageBtn();
-    this.equipmentScreen.dialogDisp.mc_equipmentList.mc_storageSpace.icon.gotoAndStop(1);
-    this.controller.addEventListener(l.CastleEquipmentEvent.INVENTORY_SPACE_LEFT, this.bindFunction(this.onInventorySpaceChanged));
-    this.equipmentScreen.gemFilterPanel.hide();
+    var o = a.getDefinitionByName(this.CANDLES_STICKS_ANIMATION);
+    this._candlesSticksLightAnimation = new o();
+    this._disp.mc_candlelight_sticks_back_animation.name = this.CANDLES_STICKS_ANIMATION;
+    this._disp.mc_candlelight_sticks_back_animation.addChild(this._candlesSticksLightAnimation);
+    this._disp.mc_candlelight_sticks_back_animation.mouseEnabled = false;
+    var s = a.getDefinitionByName(this.CHANDLELIERS_ANIMATION);
+    this._chandleliersLightAnimation = new s();
+    this._disp.mc_lightbeams_chandleliers_animation.name = this.CHANDLELIERS_ANIMATION;
+    this._disp.mc_lightbeams_chandleliers_animation.addChild(this._chandleliersLightAnimation);
+    this._disp.mc_lightbeams_chandleliers_animation.mouseEnabled = false;
+    var r = a.getDefinitionByName(this.CANDLE_LIGHT_MIDDLE_BACK1_ANIMATION);
+    this._candleLightMiddleBack1 = new r();
+    this._disp.mc_candlelight_middle_back1.name = this.CANDLE_LIGHT_MIDDLE_BACK1_ANIMATION;
+    this._disp.mc_candlelight_middle_back1.addChild(this._candleLightMiddleBack1);
+    this._disp.mc_candlelight_middle_back1.mouseEnabled = false;
+    var l = a.getDefinitionByName(this.CANDLE_LIGHT_MIDDLE_BACK2_ANIMATION);
+    this._candleLightMiddleBack2 = new l();
+    this._disp.mc_candlelight_middle_back2.name = this.CANDLE_LIGHT_MIDDLE_BACK2_ANIMATION;
+    this._disp.mc_candlelight_middle_back2.addChild(this._candleLightMiddleBack1);
+    this._disp.mc_candlelight_middle_back2.mouseEnabled = false;
+    this._candleLightAnimationsPlaceholders = [this._disp.mc_candlelight_sticks_back_animation, this._disp.mc_lightbeams_chandleliers_animation, this._disp.mc_candlelight_middle_back1, this._disp.mc_candlelight_middle_back2];
+    var c = a.getDefinitionByName(this.BEAM_FRONT_1_ANIMATION);
+    this._beamFront1Animation = new c();
+    this._disp.mc_beam_front_1_animation.name = this.BEAM_FRONT_1_ANIMATION;
+    this._disp.mc_beam_front_1_animation.addChild(this._beamFront1Animation);
+    this._disp.mc_beam_front_1_animation.mouseEnabled = false;
+    var u = a.getDefinitionByName(this.BEAM_FRONT_2_ANIMATION);
+    this._beamFront2Animation = new u();
+    this._disp.mc_beam_front_2_animation.name = this.BEAM_FRONT_2_ANIMATION;
+    this._disp.mc_beam_front_2_animation.addChild(this._beamFront2Animation);
+    this._disp.mc_beam_front_2_animation.mouseEnabled = false;
+    var d = a.getDefinitionByName(this.BEAMS_MIDDLE_ANIMATION);
+    this._beamsMiddleAnimation = new d();
+    this._disp.mc_lightbeams_middle_animation.name = this.BEAMS_MIDDLE_ANIMATION;
+    this._disp.mc_lightbeams_middle_animation.addChild(this._beamsMiddleAnimation);
+    this._disp.mc_lightbeams_middle_animation.mouseEnabled = false;
+    var p = a.getDefinitionByName(this.BEAMS_BACK_ANIMATION);
+    this._beamBackAnimation = new p();
+    this._disp.mc_beam_back_animation.name = this.BEAMS_BACK_ANIMATION;
+    this._disp.mc_beam_back_animation.addChild(this._beamBackAnimation);
+    this._disp.mc_beam_back_animation.mouseEnabled = false;
+    this._lightBeamsAnimationsPlaceholders = [this._disp.mc_beam_front_1_animation, this._disp.mc_beam_front_2_animation, this._disp.mc_lightbeams_middle_animation, this._disp.mc_beam_back_animation];
+    var h = a.getDefinitionByName(this.PARTICLES_ANIMATION);
+    this._particlesAnimation = new h();
+    this._disp.mc_particles_animation.name = this.PARTICLES_ANIMATION;
+    this._disp.mc_particles_animation.addChild(this._particlesAnimation);
+    this._disp.mc_particles_animation.mouseEnabled = false;
+    var g = a.getDefinitionByName(this.DUST_ANIMATION);
+    this._dustAnimation = new g();
+    this._disp.mc_dust_animation.name = this.DUST_ANIMATION;
+    this._disp.mc_dust_animation.addChild(this._dustAnimation);
+    this._disp.mc_dust_animation.mouseEnabled = false;
+    this._particlesAnimationsPlaceholders = [this._disp.mc_particles_animation, this._disp.mc_dust_animation];
+    this.animations = [].concat(this._candlesAnimationsPlaceholders, this._candleLightAnimationsPlaceholders, this._lightBeamsAnimationsPlaceholders, this._particlesAnimationsPlaceholders);
   };
-  EquipmentEquipmentClickHandler.prototype.onInventorySpaceChanged = function (e) {
-    this.setStorageWarning();
-    this.setAddStorageBtn();
-  };
-  EquipmentEquipmentClickHandler.prototype.updateInventory = function () {
-    this._inventory.update();
-  };
-  EquipmentEquipmentClickHandler.prototype.setStorageWarning = function () {
-    this.dialogDisp.mc_storageWarning.toolTipText = "dialog_equipment_storageWarning";
-    this.dialogDisp.mc_storageWarning.visible = u.CastleModel.equipData.isInventoryFull;
-    this.equipmentScreen.itxt_storage.textContentVO.textReplacements = [u.CastleModel.equipData.filledInventorySpace, u.CastleModel.equipData.playerTotalInventorySpace];
-    this.equipmentScreen.itxt_storage.color = u.CastleModel.equipData.isInventoryFull ? r.ClientConstColor.FONT_INSUFFICIENT_COLOR : r.ClientConstColor.FONT_DEFAULT_COLOR;
-    this.dialogDisp.mc_equipmentList.mc_storageSpace.toolTipText = "dialog_equipmentSpace_tooltip";
-  };
-  EquipmentEquipmentClickHandler.prototype.handleInventoryEntryClick = function (e) {
-    if (this._canDrag) {
-      var t = e.scrollItem.scrollItemVO.equipmentVO;
-      if (this.dragMovement) {
-        if (e.scrollItem.scrollItemVO) {
-          this.endDrag(new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_INVENTORY));
-          this.startDrag(new g.EquipmentDragMovement(t, new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_INVENTORY)));
-        } else {
-          this.endDrag(new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_INVENTORY));
-        }
-      } else {
-        this.startDrag(new g.EquipmentDragMovement(t, new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_INVENTORY)));
-      }
+  AmbientAnimationsHandler.prototype.startAnimations = function () {
+    var e;
+    for (var t = 0; t < this._candlesAnimationsPlaceholders.length; t++) {
+      e = this._candlesAnimationsPlaceholders[t];
+      this.playAnimation(e, Math.floor(Math.random() * e.children[0].totalFrames));
+      this.playAnimation(e, Math.floor(Math.random() * e.children[0].totalFrames));
     }
+    c.TweenMax.fromTo(this._disp.mc_beam_front_1_animation, 6, {
+      alpha: 1
+    }, {
+      alpha: 0.2,
+      ease: r.Power2.easeInOut,
+      delay: 5,
+      yoyo: true,
+      repeat: -1
+    });
+    c.TweenMax.fromTo(this._disp.mc_beam_front_2_animation, 6, {
+      alpha: 1
+    }, {
+      alpha: 0.2,
+      ease: r.Power2.easeInOut,
+      delay: 6,
+      yoyo: true,
+      repeat: -1
+    });
+    c.TweenMax.fromTo(this._disp.mc_beam_back_animation, 6, {
+      alpha: 1
+    }, {
+      alpha: 0.2,
+      ease: r.Power2.easeInOut,
+      delay: 4,
+      yoyo: true,
+      repeat: -1
+    });
+    c.TweenMax.fromTo(this._disp.mc_lightbeams_middle_animation, 6, {
+      alpha: 1
+    }, {
+      alpha: 0.2,
+      ease: r.Power2.easeInOut,
+      delay: 4,
+      yoyo: true,
+      repeat: -1
+    });
+    c.TweenMax.fromTo(this._disp.mc_lightbeams_chandleliers_animation, 6, {
+      alpha: 1
+    }, {
+      alpha: 0.2,
+      ease: r.Power2.easeInOut,
+      delay: 2,
+      yoyo: true,
+      repeat: -1
+    });
+    c.TweenMax.fromTo(this._disp.mc_dust_animation, 40, {
+      alpha: 1
+    }, {
+      alpha: 0.1,
+      ease: l.Power4.easeIn,
+      delay: 4,
+      yoyo: false,
+      repeat: -1
+    });
+    c.TweenMax.fromTo(this._disp.mc_dust_animation, 6, {
+      x: 170
+    }, {
+      x: 220,
+      ease: s.Power1.easeInOut,
+      delay: 0,
+      yoyo: true,
+      repeat: -1
+    });
+    c.TweenMax.fromTo(this._disp.mc_dust_animation, 40, {
+      y: -300
+    }, {
+      y: -250,
+      ease: s.Power1.easeInOut,
+      delay: 0,
+      yoyo: false,
+      repeat: -1
+    });
+    c.TweenMax.fromTo(this._disp.mc_particles_animation, 40, {
+      alpha: 1
+    }, {
+      alpha: 0.1,
+      ease: l.Power4.easeIn,
+      delay: 4,
+      yoyo: false,
+      repeat: -1
+    });
+    c.TweenMax.fromTo(this._disp.mc_particles_animation, 6, {
+      x: -440
+    }, {
+      x: -480,
+      ease: s.Power1.easeInOut,
+      delay: 0,
+      yoyo: true,
+      repeat: -1
+    });
+    c.TweenMax.fromTo(this._disp.mc_particles_animation, 40, {
+      y: -20
+    }, {
+      y: 30,
+      ease: s.Power1.easeInOut,
+      delay: 0,
+      yoyo: true,
+      repeat: -1
+    });
   };
-  EquipmentEquipmentClickHandler.prototype.handleInventoryEntryTouchDragStart = function (e) {
-    var t = e.scrollItem.scrollItemVO && e.scrollItem.scrollItemVO.equipmentVO;
-    if (t && !this.dragMovement) {
-      this.startDrag(new g.EquipmentDragMovement(t, new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_INVENTORY)));
-      this.checkForFittingSlots();
-    }
-  };
-  EquipmentEquipmentClickHandler.prototype.handleInventoryEntryTouchDragEnd = function (t) {
-    if (this.dragMovement) {
-      if (t.originEvent) {
-        var i = t.originEvent.target.stage.getObjectUnderPoint(t.originEvent.rawX, t.originEvent.rawY, 0);
-        if (i.parent === this.dialogDisp.saleSlot) {
-          t.originEvent.target = i.parent;
-          e.prototype.handleDialogClick.call(this, t.originEvent);
-          return;
-        }
-        var n = i.parent && i.parent.parent;
-        if (n) {
-          switch (n) {
-            case this.dialogDisp.slot0:
-            case this.dialogDisp.slot1:
-            case this.dialogDisp.slot2:
-            case this.dialogDisp.slot3:
-            case this.dialogDisp.slot4:
-            case this.dialogDisp.slot5:
-              this.handleSlotClick(n);
-          }
-        }
-      }
-      this.endDrag(new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_INVENTORY));
-    }
-  };
-  EquipmentEquipmentClickHandler.prototype.handleInventoryClick = function (e) {
-    if (this.dragMovement && e.target.parent == this.dialogDisp.mc_equipmentList && e.target instanceof _) {
-      this.endDrag(new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_INVENTORY));
-    }
-  };
-  EquipmentEquipmentClickHandler.prototype.handleDialogClick = function (t) {
-    e.prototype.handleDialogClick.call(this, t);
-    if (this.dragMovement) {
-      this.checkForFittingSlots();
-    }
-    switch (t.target) {
-      case this.dialogDisp.mc_equipmentList.tab0:
-      case this.dialogDisp.mc_equipmentList.tab1:
-      case this.dialogDisp.mc_equipmentList.tab2:
-      case this.dialogDisp.mc_equipmentList.tab3:
-      case this.dialogDisp.mc_equipmentList.tab4:
-      case this.dialogDisp.mc_equipmentList.tab5:
-      case this.dialogDisp.mc_equipmentList.tab6:
-        this.endDrag(new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_INVENTORY));
-    }
-    if (!a.instanceOfClass(t.target, "EquipmentGemSocket") && this.hasMCParentOfSlot(t.target)) {
-      this.handleSlotClick(this.hasMCParentOfSlot(t.target));
-    }
-  };
-  EquipmentEquipmentClickHandler.prototype.hasMCParentOfSlot = function (e) {
-    if (!e || !e.parent) {
-      return null;
-    }
-    for (var t = 0; t < 6; t++) {
-      if ((e.parent == this.dialogDisp["slot" + t] || e["slot" + t]) && e != this.dialogDisp) {
-        return this.dialogDisp["slot" + t];
-      }
-    }
-    return this.hasMCParentOfSlot(e.parent);
-  };
-  EquipmentEquipmentClickHandler.prototype.handleSlotClick = function (e) {
-    if (this.equipmentScreen.currentLord.isAvailableForEquip && !u.CastleModel.equipData.isEquiqInProgress) {
-      if (this._canDrag) {
-        if (this.dragMovement) {
-          if (this.dragMovement.draggedEquipmentVO.slotType == e.slotVO.slotType && this.isDragActionRelicAllowed) {
-            if (this.isEmptySlot(e)) {
-              this.endDrag(new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_SLOT, this.equipmentScreen.currentLord.id), e);
-            } else {
-              var t = new g.EquipmentDragMovement(e.slotVO.equipmentVO, new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_SLOT, -1));
-              this.endDrag(new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_SLOT, this.equipmentScreen.currentLord.id), e);
-              this.startDrag(t);
-              this.controller.addEventListener(l.CastleEquipmentEvent.EQUIP_FAILED, this.bindFunction(this.onUnEquipFail));
-              this.controller.addEventListener(l.CastleEquipmentEvent.EQUIP_SUCCESSFUL, this.bindFunction(this.onUnEquipSuccess));
-            }
-          }
-        } else if (e.slotVO.equipmentVO) {
-          if (e.favoriteDisp) {
-            e.favoriteDisp.disp.mc_star_small.visible = false;
-          }
-          this.startDrag(new g.EquipmentDragMovement(e.slotVO.equipmentVO, new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_SLOT, this.equipmentScreen.currentLord.id), e));
-          this.controller.addEventListener(l.CastleEquipmentEvent.EQUIP_FAILED, this.bindFunction(this.onUnEquipFail));
-          this.controller.addEventListener(l.CastleEquipmentEvent.EQUIP_SUCCESSFUL, this.bindFunction(this.onUnEquipSuccess));
-        }
-      } else {
-        this.markAsFavorite(e);
-      }
-    }
-  };
-  EquipmentEquipmentClickHandler.prototype.markAsFavorite = function (e) {
-    if (e.slotVO.equipmentVO) {
-      e.slotVO.equipmentVO.isFavorite = !e.slotVO.equipmentVO.isFavorite;
-      e.favoriteDisp.disp.mc_star_active.visible = e.slotVO.equipmentVO.isFavorite;
-      e.favoriteDisp.disp.mc_star_inactive.visible = !e.slotVO.equipmentVO.isFavorite;
-      m.CastleEquipmentFavoritesMicroservice.Instance.equipmentItemUpdatedSignal.dispatch(e.slotVO.equipmentVO);
-    }
-  };
-  EquipmentEquipmentClickHandler.prototype.startDrag = function (e) {
-    this.dragMovement = e;
-    this.dragMovement.startDrag();
-    if (s.int(C.CastleEquipmentSublayer.FILTER_MAP.get(this.dragMovement.draggedEquipmentVO.slotType)) != this._inventory.currentFilterIndex) {
-      this._inventory.currentFilterIndex = C.CastleEquipmentSublayer.FILTER_MAP.get(this.dragMovement.draggedEquipmentVO.slotType);
-    }
-    this.updateDialog();
-    this.tabChangeAllowed = false;
-  };
-  EquipmentEquipmentClickHandler.prototype.endDrag = function (t, i = null) {
-    if (this.dragMovement) {
-      this.lastDragMovement = this.dragMovement;
-    }
-    e.prototype.endDrag.call(this, t, i);
-  };
-  EquipmentEquipmentClickHandler.prototype.onUnEquipSuccess = function (e) {
-    this.checkForFittingSlots();
-    this.equipmentScreen.updateCurrentLordPic();
-    this.controller.removeEventListener(l.CastleEquipmentEvent.EQUIP_FAILED, this.bindFunction(this.onUnEquipFail));
-    this.controller.removeEventListener(l.CastleEquipmentEvent.EQUIP_SUCCESSFUL, this.bindFunction(this.onUnEquipSuccess));
-  };
-  EquipmentEquipmentClickHandler.prototype.onUnEquipFail = function (e) {
-    if (this.dragMovement) {
-      this.endDrag(this.dragMovement.sourceLocation, this.dragMovement.sourceSlotMC);
-    }
-    this.controller.removeEventListener(l.CastleEquipmentEvent.EQUIP_FAILED, this.bindFunction(this.onUnEquipFail));
-    this.controller.removeEventListener(l.CastleEquipmentEvent.EQUIP_SUCCESSFUL, this.bindFunction(this.onUnEquipSuccess));
-  };
-  EquipmentEquipmentClickHandler.prototype.confirmSellCallback = function (e = false) {
-    var t = this.dragMovement ? this.dragMovement : this.lastDragMovement;
-    if (e) {
-      u.CastleModel.gemData.extractGem(t.draggedEquipmentVO, -1);
-    } else {
-      u.CastleModel.equipData.sell(t.draggedEquipmentVO, -1, -1);
-    }
-    this.endDrag(new p.EquipableDragLocationVO(p.EquipableDragLocationVO.TYPE_SELL_SLOT));
-  };
-  EquipmentEquipmentClickHandler.prototype.updateDialog = function () {
-    this.checkForFittingSlots();
-    this.updateSlotBorder();
-    this.updateSlotTooltip();
-    this.updateSlotMouseChildren();
-    this._inventory.update();
-    this.equipmentScreen.lordEffectsComponent.update();
-    this.setStorageWarning();
-    this.equipmentScreen.updateCurrentLordPic();
-  };
-  Object.defineProperty(EquipmentEquipmentClickHandler.prototype, "dragMovement", {
-    get: function () {
-      return this._dragMovement;
-    },
-    set: function (e) {
-      this._dragMovement = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  EquipmentEquipmentClickHandler.prototype.dispose = function () {
-    this.controller.removeEventListener(l.CastleEquipmentEvent.INVENTORY_SPACE_LEFT, this.bindFunction(this.onInventorySpaceChanged));
-  };
-  EquipmentEquipmentClickHandler.prototype.hideDialog = function () {
-    if (this.dragMovement) {
-      this.endDrag(new p.EquipableDragLocationVO(this.dragMovement.sourceLocation.locationType, this.dragMovement.sourceLocation.lordID));
-    }
-  };
-  EquipmentEquipmentClickHandler.prototype.onCastleListUpdated = function (e) {
-    this.equipmentScreen.setCastleIcon();
-    this.controller.removeEventListener(c.CastleUserDataEvent.CHANGE_CASTLELIST, this.bindFunction(this.onCastleListUpdated));
-  };
-  EquipmentEquipmentClickHandler.prototype.updateSlotBorder = function () {
-    var e = this.equipmentScreen.allSlotsOnScreen;
-    var t = 0;
-    if (e != null) {
-      for (var i in e) {
-        var n = e[i];
-        if (n !== undefined) {
-          if (n.slotVO.equipmentVO) {
-            if ((t = s.int(n.slotVO.equipmentVO.visualRareID)) == 0) {
-              t = 5;
-            }
-            n.mc_bg.gotoAndStop(t);
-          } else {
-            o.MovieClipHelper.clearMovieClip(n.mc_itemHolder);
-            n.mc_bg.gotoAndStop(7);
-          }
-        }
-      }
-    }
-  };
-  EquipmentEquipmentClickHandler.prototype.checkForFittingSlots = function () {
-    if (!this.equipmentScreen.currentLord || this.equipmentScreen.currentLord.isAvailableForEquip) {
-      for (var e in this.equipmentScreen.allSlotsOnScreen) {
-        var t = this.equipmentScreen.allSlotsOnScreen[e];
-        if (t !== undefined) {
-          var i = t.slotVO;
-          if (this.dragMovement && this.dragMovement.draggedEquipmentVO) {
-            if (this.isDragActionRelicAllowed) {
-              if (this.dragMovement.draggedEquipmentVO.slotType == i.slotType) {
-                t.mc_lock.visible = false;
-                t.mc_bgEmpty.allowFastGlow = false;
-                t.mc_bgEmpty.useFilters(d.BitmapFilterHelper.FILTER_GLOW_ENABLED_EQUIPMENT_SLOT, false, 1);
-              } else {
-                t.mc_lock.visible = !i.equipmentVO;
-                t.mc_bgEmpty.useFilters(d.BitmapFilterHelper.NO_FILTER);
-              }
-            } else {
-              t.mc_lock.visible = true;
-              t.mc_bgEmpty.filters = d.BitmapFilterHelper.NO_FILTER;
-            }
-          } else {
-            t.mc_lock.visible = false;
-            t.mc_bgEmpty.useFilters(d.BitmapFilterHelper.NO_FILTER);
-          }
-        }
-      }
-    } else {
-      for (var e in this.equipmentScreen.allSlotsOnScreen) {
-        var n = this.equipmentScreen.allSlotsOnScreen[e];
-        if (n !== undefined) {
-          n.mc_lock.visible = false;
-          n.mc_bgEmpty.useFilters(d.BitmapFilterHelper.NO_FILTER);
-        }
-      }
-    }
-  };
-  return EquipmentEquipmentClickHandler;
-}(h.EquipmentDialogClickHandler);
-exports.EquipmentEquipmentClickHandler = f;
+  return AmbientAnimationsHandler;
+}(o.GeneralsHubBasicAnimationsHandler);
+exports.AmbientAnimationsHandler = u;

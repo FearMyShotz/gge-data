@@ -3,14 +3,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastlePostAttackDialogProperties(t, i, n) {
-    var o = e.call(this) || this;
-    o.hideFunction = t;
-    o.attackInfoVO = i;
-    o.selectedLord = n;
-    return o;
+  function PostAttackSelectBoosterDialogProperties(t, i, n, o) {
+    var a = this;
+    a.targetActionType = 0;
+    CONSTRUCTOR_HACK;
+    (a = e.call(this) || this).targetActionType = t;
+    a.hideFunction = i;
+    a.attackInfoVO = n;
+    a.selectedLord = o;
+    return a;
   }
-  n.__extends(CastlePostAttackDialogProperties, e);
-  return CastlePostAttackDialogProperties;
+  n.__extends(PostAttackSelectBoosterDialogProperties, e);
+  return PostAttackSelectBoosterDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastlePostAttackDialogProperties = o;
+exports.PostAttackSelectBoosterDialogProperties = o;

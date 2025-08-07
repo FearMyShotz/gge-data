@@ -2,15 +2,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleAllianceSamuraiInvasionEventDialogProperties(t, i = -1) {
-    var n = e.call(this) || this;
-    n.sublayerIndex = 0;
-    n.eventVO = t;
-    n.sublayerIndex = i;
-    return n;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SIsoRepairAllVO() {
+    return e.call(this) || this;
   }
-  n.__extends(CastleAllianceSamuraiInvasionEventDialogProperties, e);
-  return CastleAllianceSamuraiInvasionEventDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleAllianceSamuraiInvasionEventDialogProperties = o;
+  n.__extends(C2SIsoRepairAllVO, e);
+  C2SIsoRepairAllVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_REPAIR_ALL;
+  };
+  return C2SIsoRepairAllVO;
+}(o.BasicCommandVO);
+exports.C2SIsoRepairAllVO = s;

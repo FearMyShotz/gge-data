@@ -6,22 +6,18 @@ var o = require("./2.js");
 var a = require("./2.js");
 var s = require("./7.js");
 var r = function (e) {
-  function C2SListLeaderboardScoresWindowVO(t, i, n, o = "") {
-    var s = e.call(this) || this;
-    s.LT = 0;
-    s.LID = -1;
-    s.M = 0;
-    s.SI = "";
-    s.SI = a.TextValide.getValideSmartFoxJSONTextMessage(o);
-    s.LT = t;
-    s.LID = i;
-    s.M = n;
-    return s;
+  function C2SSearchLeaderboardScoresEventVO(t, i) {
+    var n = e.call(this) || this;
+    n.LT = 0;
+    n.SV = "";
+    n.SV = a.TextValide.getValideSmartFoxJSONTextMessage(i);
+    n.LT = t;
+    return n;
   }
-  n.__extends(C2SListLeaderboardScoresWindowVO, e);
-  C2SListLeaderboardScoresWindowVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_LIST_LEADERBOARD_SCORE_WINDOW;
+  n.__extends(C2SSearchLeaderboardScoresEventVO, e);
+  C2SSearchLeaderboardScoresEventVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_SEARCH_LEADERBOARD_SCORE_EVENT;
   };
-  return C2SListLeaderboardScoresWindowVO;
+  return C2SSearchLeaderboardScoresEventVO;
 }(o.BasicCommandVO);
-exports.C2SListLeaderboardScoresWindowVO = r;
+exports.C2SSearchLeaderboardScoresEventVO = r;

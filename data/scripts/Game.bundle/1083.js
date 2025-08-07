@@ -7,311 +7,306 @@ var a = require("./2.js");
 var s = require("./2.js");
 var r = require("./2.js");
 var l = require("./1.js");
-var c = require("./3.js");
-var u = require("./3.js");
-var d = require("./6.js");
-var p = require("./51.js");
-var h = require("./60.js");
-var g = require("./21.js");
-var C = require("./67.js");
-var _ = require("./19.js");
-var m = require("./4.js");
-var f = require("./130.js");
-var O = require("./27.js");
-var E = require("./24.js");
-var y = require("./73.js");
-var b = require("./11.js");
-var D = createjs.MovieClip;
-var I = createjs.Point;
-var T = function (e) {
-  function CastleChestDialog() {
+var c = require("./1.js");
+var u = require("./1.js");
+var d = require("./5.js");
+var p = require("./5.js");
+var h = require("./5.js");
+var g = require("./5.js");
+var C = require("./5.js");
+var _ = require("./3.js");
+var m = require("./3.js");
+var f = require("./3.js");
+var O = require("./3.js");
+var E = require("./6.js");
+var y = require("./18.js");
+var b = require("./60.js");
+var D = require("./3644.js");
+var I = require("./159.js");
+var T = require("./37.js");
+var v = require("./1742.js");
+var S = require("./4.js");
+var A = require("./372.js");
+var L = function (e) {
+  function CastlePrimeSaleDialog() {
     var t = this;
-    t.rewardIndex = 0;
-    t._offerType = -1;
-    t._currentConfig = CastleChestDialog.CONFIGS.get(CastleChestDialog.CONFIG_OLD_THREE_REWARD);
-    t._customCharacter = -1;
+    t.kingdomSortOrder = [];
+    t.mainCastles = [];
     CONSTRUCTOR_HACK;
-    return t = e.call(this, CastleChestDialog.NAME) || this;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleChestDialog, e);
-  CastleChestDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    e.prototype.applyPropertiesLoaded.call(this, t);
-    var i = this.dialogProperties.offerVO.getVisualComponentByName(h.ClientConstOffer.OFFER_VISUAL_OFFER_DIALOG);
-    this._currentConfig = this.offerVO.getTotalRewardListFromOfferVO().length > 1 ? CastleChestDialog.CONFIGS.get(CastleChestDialog.CONFIG_OLD_THREE_REWARD) : CastleChestDialog.CONFIGS.get(CastleChestDialog.CONFIG_OLD_ONE_REWARD);
-    this._customDialogProps = i.dialogCustomization;
-    this.parseCustomDialogProps();
-  };
-  CastleChestDialog.prototype.parseCustomDialogProps = function () {
-    if (this._customDialogProps) {
-      if (this._customDialogProps.hasOwnProperty("LO")) {
-        var e = d.int(this._customDialogProps.LO);
-        if (e > -1) {
-          this._currentConfig = a.DictionaryUtil.containsKey(CastleChestDialog.CONFIGS, e) ? CastleChestDialog.CONFIGS.get(e) : this._currentConfig;
-        }
-      } else {
-        this._currentConfig = this._customDialogProps.CFG ? this._customDialogProps.CFG : this._currentConfig;
-      }
-      this._customCopy = this._customDialogProps.CID;
-      this._customBtnTxt = this._customDialogProps.BID;
-      this._customTitleTxt = this._customDialogProps.TID;
-      this._customBannerText = this._customDialogProps.BCID;
-      this._customTimeText = this._customDialogProps.TTID;
-      this._customCharacter = d.int(this._customDialogProps.hasOwnProperty("CH") ? this._customDialogProps.CH : -1);
-      this._offerType = d.int(this._customDialogProps.hasOwnProperty("OT") ? this._customDialogProps.OT : -1);
+  n.__extends(CastlePrimeSaleDialog, e);
+  CastlePrimeSaleDialog.prototype.initSortArrays = function () {
+    var e = E.int(S.CastleModel.kingdomData.activeKingdomID);
+    this.mainCastles = [];
+    this.kingdomSortOrder = [];
+    if (S.CastleModel.kingdomData.activeKingdomID != C.WorldVolcano.KINGDOM_ID && S.CastleModel.userData.castleList.getMainCastleByKingdomID(C.WorldVolcano.KINGDOM_ID)) {
+      this.mainCastles.push(S.CastleModel.userData.castleList.getMainCastleByKingdomID(C.WorldVolcano.KINGDOM_ID).objectId);
+      this.kingdomSortOrder.push(C.WorldVolcano.KINGDOM_ID);
+    }
+    if (S.CastleModel.kingdomData.activeKingdomID != h.WorldDessert.KINGDOM_ID && S.CastleModel.userData.castleList.getMainCastleByKingdomID(h.WorldDessert.KINGDOM_ID)) {
+      this.mainCastles.push(S.CastleModel.userData.castleList.getMainCastleByKingdomID(h.WorldDessert.KINGDOM_ID).objectId);
+      this.kingdomSortOrder.push(h.WorldDessert.KINGDOM_ID);
+    }
+    if (S.CastleModel.kingdomData.activeKingdomID != g.WorldIce.KINGDOM_ID && S.CastleModel.userData.castleList.getMainCastleByKingdomID(g.WorldIce.KINGDOM_ID)) {
+      this.mainCastles.push(S.CastleModel.userData.castleList.getMainCastleByKingdomID(g.WorldIce.KINGDOM_ID).objectId);
+      this.kingdomSortOrder.push(g.WorldIce.KINGDOM_ID);
+    }
+    if (S.CastleModel.kingdomData.activeKingdomID != p.WorldClassic.KINGDOM_ID && S.CastleModel.userData.castleList.getMainCastleByKingdomID(p.WorldClassic.KINGDOM_ID)) {
+      this.mainCastles.push(S.CastleModel.userData.castleList.getMainCastleByKingdomID(p.WorldClassic.KINGDOM_ID).objectId);
+      this.kingdomSortOrder.push(p.WorldClassic.KINGDOM_ID);
+    }
+    if (S.CastleModel.userData.castleList.getMainCastleByKingdomID(e)) {
+      this.mainCastles.push(S.CastleModel.userData.castleList.getMainCastleByKingdomID(e).objectId);
+    }
+    this.kingdomSortOrder.push(d.FactionConst.KINGDOM_ID);
+    if (e != d.FactionConst.KINGDOM_ID) {
+      this.kingdomSortOrder.push(e);
     }
   };
-  CastleChestDialog.prototype.showLoaded = function (t = null) {
+  CastlePrimeSaleDialog.prototype.showLoaded = function (t = null) {
     e.prototype.showLoaded.call(this, t);
-    this.rewardIndex = 0;
-    this.showCurrentConfig();
-    this.setChestVO();
-    this.setupChest();
-    this.setReward();
-    this.setRemainingTime();
+    this.initSortArrays();
+    this._discountedItem = this.primeSaleComponent.buildingVO;
+    var i = this.isPrimeSaleUpgradeComponent ? _.Localize.text(a.GenericTextIds.VALUE_PERCENTAGE, [this.primeSaleComponent.discount]) : _.Localize.integer(this._discountedItem.basicCostC2 - this.primeSaleComponent.finalePriceC2);
+    var n = this.isPrimeSaleUpgradeComponent ? "dialog_primeday_primesale_allLevels" : "building_level";
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new f.LocalizedTextVO(CastlePrimeSaleDialog.DIALOG_COPY));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_offer, new f.LocalizedTextVO(CastlePrimeSaleDialog.DIALOG_TITLE));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_ok.txt_buy, new f.LocalizedTextVO(CastlePrimeSaleDialog.DIALOG_OK_BUTTON_TEXT));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_limited_offer.txt_limited_offer, new f.LocalizedTextVO(CastlePrimeSaleDialog.LIMITED_OFFER, [new O.TextVO(i)]));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_percentOff.txt_percentOff, new f.LocalizedTextVO(a.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, [this.primeSaleComponent.discount]));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_costs.txt_value, new m.LocalizedNumberVO(this.primeSaleComponent.finalePriceC2));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_old_costs.txt_value, new m.LocalizedNumberVO(this._discountedItem.costC2));
+    var o = this.textFieldManager.registerTextField(this.dialogDisp.mc_buildingClip.txt_name, new f.LocalizedTextVO(this._discountedItem.getNameString()));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_buildingClip.txt_level, new f.LocalizedTextVO(n, [this._discountedItem.level]));
+    if (this.primeSaleComponent.buildingVO.buildingGroundType == y.ClientConstCastle.BUILDINGGROUND_TYPE_DECO) {
+      this.dialogDisp.mc_buildingClip.txt_level.visible = false;
+      o.textContentVO = new f.LocalizedTextVO(this._discountedItem.name.toLowerCase() + "_" + this._discountedItem.type.toLowerCase() + "_name");
+    } else {
+      this.dialogDisp.mc_buildingClip.txt_level.visible = true;
+    }
+    this.dialogDisp.mc_buildingClip.visible = true;
+    this.showBuilding();
+    this.setButtonCentered(this.isPrimeSaleUpgradeComponent);
     this.dialogDisp.mc_costs.mouseChildren = false;
-    this.dialogDisp.mc_costs.toolTipText = this._chestVO.textId_newPriceTooltip;
-    this.dialogDisp.mc_oldCosts.toolTipText = this._chestVO.textId_oldPriceTooltip;
-    this.dialogDisp.mc_oldCosts.mouseChildren = false;
-    this.dialogDisp.mc_sideBanner.mouseChildren = false;
-    m.CastleModel.timerData.addEventListener(g.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.setRemainingTime));
-    m.CastleModel.privateOfferData.addEventListener(f.PrivateOfferDataEvent.PRIVATE_OFFER_REMOVED, this.bindFunction(this.onOfferRemoved));
+    this.dialogDisp.mc_costs.toolTipText = A.CastleAbstractPrimeSaleDialog.SPECIAL_PRICE;
+    this.dialogDisp.mc_old_costs.mouseChildren = false;
+    this.dialogDisp.mc_old_costs.toolTipText = _.Localize.text(A.CastleAbstractPrimeSaleDialog.SAVE_COSTS, [this.primeSaleComponent.discount]);
   };
-  CastleChestDialog.prototype.showCurrentConfig = function () {
-    this.hideAllConfigElements();
-    this._okButton = this._currentConfig.hasOwnProperty("button") ? this.dialogDisp[CastleChestDialog.BUTTONS[this._currentConfig.button]] : this.dialogDisp.btn_ok;
-    this._okButton.visible = true;
-    this._okButton.toolTipText = s.GenericTextIds.BUTTON_ACCEPT;
-    if (this._currentConfig.banner) {
-      this._redBanner = this.dialogDisp[this._currentConfig.banner];
-      this._redBanner.visible = true;
-    }
-    this.dialogDisp.mc_costs.visible = this._currentConfig.costs;
-    this.dialogDisp.mc_oldCosts.visible = this._currentConfig.oldCosts;
-    this.dialogDisp.mc_time.visible = this._currentConfig.timer;
-    this.initBasicButtons([this._okButton, this.dialogDisp.btn_close, this.dialogDisp.btn_right, this.dialogDisp.btn_left]);
-  };
-  CastleChestDialog.prototype.hideAllRewardHolders = function () {
-    for (var e = 0; e < CastleChestDialog.REWARDHOLDERS.length; e++) {
-      this.dialogDisp[CastleChestDialog.REWARDHOLDERS[e]].visible = false;
-    }
-  };
-  CastleChestDialog.prototype.hideAllConfigElements = function () {
-    this.dialogDisp.btn_ok.visible = false;
-    this.dialogDisp.btn_ok_small.visible = false;
-    this.dialogDisp.mc_costs.visible = false;
-    this.dialogDisp.mc_sideBanner.visible = false;
-    this.dialogDisp.mc_centerBanner.visible = false;
-    this.dialogDisp.mc_oldCosts.visible = false;
-    this.dialogDisp.mc_time.visible = false;
-  };
-  CastleChestDialog.prototype.setupChest = function () {
-    this.setCharacterAndTexts();
-    this.setChestPayment();
-  };
-  CastleChestDialog.prototype.setChestVO = function () {
-    var e = this.offerVO.getCostsForOfferAcception().getAmountOrDefaultByType(v.CollectableEnum.C2);
-    this._chestVO = e > 0 ? new M.CastleWhaleChestVO() : new P.CastleSoftChestVO();
-  };
-  CastleChestDialog.prototype.setCharacterAndTexts = function () {
-    var e;
-    var t;
-    var i;
-    var n = d.int(p.ClientConstCharacter.CHAR_ID_MARAUDER);
-    var o = this._chestVO.textId_plundermeister;
-    if (this._offerType > -1) {
-      switch (this._offerType) {
-        case CastleChestDialog.OFFER_TYPE_TOOLS:
-        case CastleChestDialog.OFFER_TYPE_UNITS:
-          o = this._chestVO.textId_general;
-          n = d.int(p.ClientConstCharacter.CHAR_ID_GENERAL);
-          break;
-        case CastleChestDialog.OFFER_TYPE_DECO:
-          o = this._chestVO.textId_architect;
-          n = d.int(p.ClientConstCharacter.CHAR_ID_ARCHITECT);
-          break;
-        case CastleChestDialog.OFFER_TYPE_EQUIPMENT:
-        case CastleChestDialog.OFFER_TYPE_VIP:
-        default:
-          o = this._chestVO.textId_plundermeister;
-          n = d.int(p.ClientConstCharacter.CHAR_ID_MARAUDER);
-      }
-    }
-    o = this._customCopy ? this._customCopy : o;
-    e = this._customBtnTxt ? this._customBtnTxt : this._chestVO.textId_pay;
-    t = this._customTitleTxt ? this._customTitleTxt : this._chestVO.textId_title;
-    n = this._customCharacter > -1 ? this._customCharacter : n;
-    this.setCharacterImage(p.ClientConstCharacter.getFullSizeAssetName(n));
-    this.textFieldManager.registerTextField(this._okButton.txt_value, new u.LocalizedTextVO(e));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_offer, new u.LocalizedTextVO(t)).autoFitToBounds = true;
-    if (this._currentConfig.banner) {
-      i = this._customBannerText ? this._customBannerText : this._currentConfig.banner == CastleChestDialog.CENTER_BANNER_ASSET ? this._chestVO.textId_noise : this._chestVO.textId_savings;
-      this.textFieldManager.registerTextField(this._redBanner.txt_content, new u.LocalizedTextVO(i));
-    }
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new u.LocalizedTextVO(o));
-  };
-  CastleChestDialog.prototype.setCharacterImage = function (e) {
-    r.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_character);
-    var t = new E.CastleGoodgameExternalClip(e, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(e), null, 0, false);
-    this.dialogDisp.mc_character.addChild(t.asDisplayObject());
-  };
-  CastleChestDialog.prototype.hideLoaded = function (t = null) {
-    e.prototype.hideLoaded.call(this, t);
-    m.CastleModel.timerData.removeEventListener(g.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.setRemainingTime));
-    m.CastleModel.privateOfferData.removeEventListener(f.PrivateOfferDataEvent.PRIVATE_OFFER_REMOVED, this.bindFunction(this.onOfferRemoved));
-  };
-  CastleChestDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this._okButton:
-        m.CastleModel.privateOfferData.sendOfferPay(this.dialogProperties.offerVO.id);
-        this.hide();
-        break;
-      case this.dialogDisp.btn_close:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_left:
-        this.rewardIndex -= CastleChestDialog.MAX_ITEMS_AT_ONCE;
-        this.setReward();
-        break;
-      case this.dialogDisp.btn_right:
-        this.rewardIndex += CastleChestDialog.MAX_ITEMS_AT_ONCE;
-        this.setReward();
-    }
-  };
-  CastleChestDialog.prototype.onMouseOver = function (t) {
-    e.prototype.onMouseOver.call(this, t);
-    if (t.target instanceof D && t.target.equipmentVO) {
-      y.EquipmentIconHelper.showToolTip(t.target, t.target.equipmentVO, null, !t.target.equipmentVO.isPermanent);
-    }
-  };
-  CastleChestDialog.prototype.onMouseOut = function (t) {
-    e.prototype.onMouseOut.call(this, t);
-    if (t.target instanceof D && t.target.equipmentVO) {
-      y.EquipmentIconHelper.hideEquipmentToolTip();
-    }
-  };
-  CastleChestDialog.prototype.setReward = function () {
-    this.destroyCollectableRenderList();
-    var e = this.offerVO.getTotalRewardListFromOfferVO();
-    this.setRewards(e);
-  };
-  CastleChestDialog.prototype.setRewards = function (e) {
-    var t;
-    this.hideAllRewardHolders();
-    this.dialogDisp.btn_right.visible = this.rewardIndex + CastleChestDialog.MAX_ITEMS_AT_ONCE < e.length;
-    this.dialogDisp.btn_left.visible = this.rewardIndex - CastleChestDialog.MAX_ITEMS_AT_ONCE >= 0;
-    var i = new S.CollectableList();
-    for (var n = this.rewardIndex; n < this.rewardIndex + CastleChestDialog.MAX_ITEMS_AT_ONCE; n++) {
-      if (e.getItemByIndex(n) != null) {
-        i.addItem(e.getItemByIndex(n));
-      }
-    }
-    if (t = this.dialogDisp[CastleChestDialog.REWARDHOLDERS[i.length - 1]]) {
-      t.visible = true;
-    }
-    A.CollectableRenderHelper.displayMultipleItemsAndAddToRenderList(this, new C.CollectableRenderClipsList(t, "mc_reward").addInfoBtns("parent.mc_info_btn", null, true), i, new _.CollectableRenderOptions(_.CollectableRenderOptions.SET_ADVANCED, CastleChestDialog.REWARD_ITEM_EQUIPMENT_DIMENSION), this.bindFunction(this.preRenderFunc));
-  };
-  CastleChestDialog.prototype.preRenderFunc = function (e) {
-    if (e.itemVO) {
-      e.getRenderer(_.CollectableRenderOptions.ICON_TRANSFORM).transform.offset.y = 0;
-    }
-  };
-  CastleChestDialog.prototype.setChestPayment = function () {
-    var e = this.offerVO.getCostsForOfferAcception().getAmountOrDefaultByType(this._chestVO.currency);
-    this.setPayment(e, this._chestVO.iconClass, this._chestVO.textId_savings);
-  };
-  CastleChestDialog.prototype.setPayment = function (e, t, i) {
-    var n = 5000;
-    if (this._customDialogProps && this._customDialogProps.OC) {
-      n = this._customDialogProps.OC;
-    }
-    r.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_costs.mc_icon);
-    r.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_oldCosts.mc_costs.mc_icon);
-    r.MovieClipHelper.replaceMovieClip(this.dialogDisp.mc_costs.mc_icon, t);
-    r.MovieClipHelper.replaceMovieClip(this.dialogDisp.mc_oldCosts.mc_costs.mc_icon, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_oldCosts.mc_costs.txt_value, new c.LocalizedNumberVO(n));
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_sideBanner.txt_content, new u.LocalizedTextVO(i, [n - e]));
-    var o = this.textFieldManager.registerTextField(this.dialogDisp.mc_costs.txt_value, new c.LocalizedNumberVO(e));
-    L.CostHelper.setCostC2TextFieldColor(o, e);
-  };
-  CastleChestDialog.prototype.onOfferRemoved = function (e) {
-    if (e.offerVO.id == this.dialogProperties.offerVO.id) {
-      m.CastleModel.privateOfferData.removeEventListener(f.PrivateOfferDataEvent.PRIVATE_OFFER_REMOVED, this.bindFunction(this.onOfferRemoved));
+  CastlePrimeSaleDialog.prototype.onRemoveSpecialEvent = function (e) {
+    if (this.dialogProperties && this.dialogProperties.eventVO && e.specialEventVO.eventId == this.dialogProperties.eventVO.eventId) {
       this.hide();
     }
   };
-  CastleChestDialog.prototype.setRemainingTime = function (e = null) {
-    var t = this._customTimeText ? this._customTimeText : this._chestVO.textId_endTimer;
-    var i = d.int(this.dialogProperties.offerVO.remainingSeconds);
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_time.txt_offer_timeleft, new u.LocalizedTextVO(t, [O.CastleTimeStringHelper.getEventTimeString(i)]));
-    O.CastleTimeStringHelper.setEventTimeToolTip(this.dialogDisp.mc_time, i);
+  CastlePrimeSaleDialog.prototype.onRemoveOffer = function (e) {
+    if (this.isPrivateOffer_0 && e.offerVO == this.dialogPropertiesPrivateOffer.offerVO) {
+      this.hide();
+    }
   };
-  Object.defineProperty(CastleChestDialog.prototype, "offerVO", {
+  CastlePrimeSaleDialog.prototype.showBuilding = function () {
+    var e = this.dialogDisp.mc_buildingClip.mc_holderclip;
+    s.MovieClipHelper.clearMovieClip(e);
+    var t = "";
+    if (u.instanceOfClass(this._discountedItem, "FactionPMoatMoatVO") || u.instanceOfClass(this._discountedItem, "FactionMoatMoatVO")) {
+      t = S.CastleModel.kingdomData.getKingdomVOByID(d.FactionConst.KINGDOM_ID).kingdomName;
+    } else if (u.instanceOfClass(this._discountedItem, "PremiumMoatVO") && S.CastleModel.kingdomData.activeKingdomID == d.FactionConst.KINGDOM_ID) {
+      t = S.CastleModel.kingdomData.getKingdomVOByID(p.WorldClassic.KINGDOM_ID).kingdomName;
+    }
+    if (this.isPrimeSaleUpgradeComponent) {
+      x.WodPicHelper.addWodPic(this.primeSaleComponent.highestLevelOfBuilding(), e, 180, 85, t);
+    } else {
+      x.WodPicHelper.addWodPic(this._discountedItem, e, 180, 85, t);
+    }
+    e.mouseChildren = false;
+  };
+  CastlePrimeSaleDialog.prototype.centerAndHighlightBuildingInShop = function () {
+    P.Iso.controller.viewUpdater.switchBuildModeInOwnCastle(true);
+    var e = l.castAs(this.layoutManager.getPanel(w.CastleDecoShopPanel), "CastleDecoShopPanel");
+    if (e) {
+      if (!e.centerAndHighlightBuildingInShop(this.primeSaleComponent.buildingVO.getLowestDowngradeVO())) {
+        B.CastleExternalDialog.dialogHandler.registerDefaultDialogs(F.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(_.Localize.text("dialog_primeday_primesale_warningTitle"), _.Localize.text("dialog_primeday_primesale_warning")));
+      }
+    }
+  };
+  CastlePrimeSaleDialog.prototype.centerAndShowRingMenuOnBuilding = function (e) {
+    var t = P.Iso.renderer.objects.provider.getObjectById(e);
+    if (!u.instanceOfClass(t, "BasicMoatVE") && !u.instanceOfClass(t, "PremiumMoatVE") && !u.instanceOfClass(t, "FactionMoatMoatVE") && !u.instanceOfClass(t, "FactionPMoatMoatVE")) {
+      P.Iso.renderer.camera.scrollToGridPos(t.vo.pos);
+    }
+    P.Iso.renderer.mouse.changeSelectedTarget(t);
+  };
+  CastlePrimeSaleDialog.prototype.onServerMessageArrived = function (e) {
+    var t = this;
+    if (e === undefined) {
+      e = -1;
+    }
+    return function (i = null) {
+      N.CastleBasicController.getInstance().removeEventListener(T.CastleServerMessageArrivedEvent.JAA_ARRIVED, t.jaaArrivedCallback);
+      t.jaaArrivedCallback = null;
+      if (e > 0) {
+        t.centerAndShowRingMenuOnBuilding(e);
+      } else {
+        t.centerAndHighlightBuildingInShop();
+      }
+      V.CastleLayoutManager.getInstance().hideAllDialogs();
+    };
+  };
+  CastlePrimeSaleDialog.prototype.onOkButton = function () {
+    this.controller.addEventListener(v.CastleShowUpgradableBuildingsEvent.UPGRADABLE_BUILDINGS_DATA_RECEIVED, this.bindFunction(this.onShowmeUpgradeDataReceived));
+    S.CastleModel.smartfoxClient.sendCommandVO(new D.C2SShowMeUpgradeBuildingsVO(this.primeSaleComponent.wodID, this.isPrimeSaleUpgradeComponent));
+  };
+  CastlePrimeSaleDialog.prototype.onShowmeUpgradeDataReceived = function (e) {
+    if (e.paramObj.WOD == this.primeSaleComponent.wodID) {
+      this.controller.removeEventListener(v.CastleShowUpgradableBuildingsEvent.UPGRADABLE_BUILDINGS_DATA_RECEIVED, this.bindFunction(this.onShowmeUpgradeDataReceived));
+      var t = e.paramObj.UD;
+      var i = 0;
+      if (t.length < 1) {
+        var n = l.castAs(S.CastleModel.wodData.createVObyWOD(this.primeSaleComponent.wodID, R.CastleWodData.TYPE_BUILDING), "ABasicBuildingVO");
+        if (n) {
+          var a = false;
+          for (var s = 0, r = n.onlyInKingdomIds; s < r.length; s++) {
+            var c = r[s];
+            if (c !== undefined) {
+              a = a || S.CastleModel.kingdomData.isKingdomUnlocked(c);
+            }
+          }
+          if (!a) {
+            B.CastleExternalDialog.dialogHandler.registerDefaultDialogs(F.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(_.Localize.text("dialog_primeday_primesale_warningTitle"), _.Localize.text("alert_kingdom_notEntered")));
+            this.hide();
+            return;
+          }
+        }
+        if (e.paramObj.BE) {
+          B.CastleExternalDialog.dialogHandler.registerDefaultDialogs(F.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(_.Localize.text("dialog_primeday_primesale_warningTitle"), _.Localize.text("dialog_primeday_primesale_buildingExists")));
+        } else {
+          B.CastleExternalDialog.dialogHandler.registerDefaultDialogs(F.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(_.Localize.text("dialog_primeday_primesale_warningTitle"), _.Localize.text("dialog_primeday_primesale_warningLevel")));
+        }
+        this.hide();
+      } else {
+        t.sort(this.bindFunction(this.sortPossibleBuildingArray));
+        for (var u = 0; u < t.length; u++) {
+          var d = t[u];
+          if (S.CastleModel.areaData.activeAreaInfo.objectId == d[1]) {
+            i = u;
+          }
+        }
+        var p = isNaN(i) ? t[0] : t[i];
+        this.goToCastleAndObject(p);
+      }
+    }
+  };
+  CastlePrimeSaleDialog.prototype.goToCastleAndObject = function (e) {
+    var t = E.int(e.length > 2 ? e[2] : -1);
+    if (e[1] == S.CastleModel.areaData.activeAreaInfo.objectId && this.layoutManager.isInMyCastle) {
+      this.onServerMessageArrived(t)();
+    } else {
+      if (M.FlashBlockHelper.checkFlashBlock(e[0])) {
+        return;
+      }
+      this.jaaArrivedCallback = this.onServerMessageArrived(t);
+      this.controller.addEventListener(T.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.jaaArrivedCallback);
+      S.CastleModel.smartfoxClient.sendCommandVO(new I.C2SJoinCastleVO(e[1], e[0]));
+    }
+  };
+  CastlePrimeSaleDialog.prototype.sortPossibleBuildingArray = function (e, t) {
+    if (this.mainCastles.indexOf(e[1]) > this.mainCastles.indexOf(t[1])) {
+      return -1;
+    } else if (this.mainCastles.indexOf(e[1]) < this.mainCastles.indexOf(t[1])) {
+      return 1;
+    } else if (this.kingdomSortOrder.indexOf(e[0]) > this.kingdomSortOrder.indexOf(t[0])) {
+      return -1;
+    } else if (this.kingdomSortOrder.indexOf(e[0]) < this.kingdomSortOrder.indexOf(t[0])) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  CastlePrimeSaleDialog.prototype.getRemainingTime = function () {
+    if (this.isPrivateOffer_0) {
+      return E.int(this.properties.offerVO.remainingSeconds);
+    } else {
+      return E.int(this.properties.eventVO.remainingEventTimeInSeconds);
+    }
+  };
+  CastlePrimeSaleDialog.prototype.timeToString = function (e) {
+    return new O.TextVO(_.Localize.text(CastlePrimeSaleDialog.SPECIAL_OFFER_TIMER, [k.CastleTimeStringHelper.getEventTimeString(e)]));
+  };
+  Object.defineProperty(CastlePrimeSaleDialog.prototype, "primeSaleComponent", {
     get: function () {
-      return this.dialogProperties.offerVO;
+      if (this.isPrivateOffer_0) {
+        var e = l.castAs(this.dialogPropertiesPrivateOffer.offerVO.getAdditionalComponentByName(b.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE), "OfferDescriptionAdditionalPrimeSale");
+        var t = l.castAs(this.dialogPropertiesPrivateOffer.offerVO.getAdditionalComponentByName(b.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE_UPGRADE), "OfferDescriptionAdditionalPrimeSaleUpgrade");
+        if (e) {
+          return e.primeSaleComponent;
+        } else if (t) {
+          return t.primeSaleComponent;
+        } else {
+          r.error("no primeSaleParameter found: " + this.dialogPropertiesPrivateOffer.offerVO);
+          return null;
+        }
+      }
+      return this.dialogProperties.eventVO.primeSaleComponent;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleChestDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastlePrimeSaleDialog.prototype, "isPrivateOffer_0", {
+    get: function () {
+      return u.instanceOfClass(this.properties, "CastlePrivateOfferDialogProperties");
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastlePrimeSaleDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleChestDialog.__initialize_static_members = function () {
-    var e;
-    CastleChestDialog.BUTTONS = [CastleChestDialog.BIG_OK_BUTTON_ASSET, CastleChestDialog.SMALL_OK_BUTTON_ASSET];
-    CastleChestDialog.REWARD_ITEM_EQUIPMENT_DIMENSION = new I(58, 58);
-    (e = new Map()).set(CastleChestDialog.CONFIG_OLD_ONE_REWARD, {
-      button: 0,
-      banner: CastleChestDialog.CENTER_BANNER_ASSET,
-      costs: 1,
-      oldCosts: 0,
-      timer: 1
-    });
-    e.set(CastleChestDialog.CONFIG_OLD_THREE_REWARD, {
-      button: 0,
-      banner: CastleChestDialog.SIDE_BANNER_ASSET,
-      costs: 1,
-      oldCosts: 1,
-      timer: 1
-    });
-    e.set(CastleChestDialog.CONFIG_STANDARD_GIFT_REWARD, {
-      button: 1,
-      timer: 1
-    });
-    e.set(CastleChestDialog.NO_TIME_LIMIT_GIFT_REWARD, {
-      button: 1,
-      timer: 0
-    });
-    CastleChestDialog.CONFIGS = e;
+  Object.defineProperty(CastlePrimeSaleDialog.prototype, "dialogPropertiesPrivateOffer", {
+    get: function () {
+      return this.properties;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastlePrimeSaleDialog.prototype, "isPrimeSaleUpgradeComponent", {
+    get: function () {
+      return u.instanceOfClass(this.primeSaleComponent, "PrimeSaleUpgradeComponent");
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastlePrimeSaleDialog.prototype.isOffer = function () {
+    return true;
   };
-  CastleChestDialog.NAME = "CastlePOWhaleChestExternal";
-  CastleChestDialog.OFFER_TYPE_UNITS = 1;
-  CastleChestDialog.OFFER_TYPE_EQUIPMENT = 2;
-  CastleChestDialog.OFFER_TYPE_DECO = 3;
-  CastleChestDialog.OFFER_TYPE_TOOLS = 4;
-  CastleChestDialog.OFFER_TYPE_VIP = 5;
-  CastleChestDialog.CENTER_BANNER_ASSET = "mc_centerBanner";
-  CastleChestDialog.SIDE_BANNER_ASSET = "mc_sideBanner";
-  CastleChestDialog.BIG_OK_BUTTON_ASSET = "btn_ok";
-  CastleChestDialog.SMALL_OK_BUTTON_ASSET = "btn_ok_small";
-  CastleChestDialog.CONFIG_OLD_ONE_REWARD = 0;
-  CastleChestDialog.CONFIG_OLD_THREE_REWARD = 1;
-  CastleChestDialog.CONFIG_STANDARD_GIFT_REWARD = 2;
-  CastleChestDialog.NO_TIME_LIMIT_GIFT_REWARD = 3;
-  CastleChestDialog.MAX_ITEMS_AT_ONCE = 3;
-  CastleChestDialog.REWARDHOLDERS = ["mc_one_item_offer", "mc_two_item_offer", "mc_three_item_offer"];
-  return CastleChestDialog;
-}(b.CastleExternalDialog);
-exports.CastleChestDialog = T;
-var v = require("./12.js");
-var S = require("./48.js");
-var A = require("./25.js");
-var L = require("./66.js");
-var P = require("./3647.js");
-var M = require("./3648.js");
-l.classImplementsInterfaces(T, "ICollectableRendererList");
-T.__initialize_static_members();
+  CastlePrimeSaleDialog.prototype.isEvent = function () {
+    return true;
+  };
+  CastlePrimeSaleDialog.prototype.onCloseButton = function () {
+    if (this.jaaArrivedCallback) {
+      this.controller.removeEventListener(T.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.jaaArrivedCallback);
+      this.jaaArrivedCallback = null;
+    }
+  };
+  CastlePrimeSaleDialog.NAME = "CastlePrimeSalesDialogExternal";
+  CastlePrimeSaleDialog.DIALOG_TITLE = "dialog_specialOfferDeco_title";
+  CastlePrimeSaleDialog.DIALOG_COPY = "dialog_primeday_primesale_description";
+  CastlePrimeSaleDialog.DIALOG_OK_BUTTON_TEXT = "dialog_questInfo_showMe";
+  CastlePrimeSaleDialog.SPECIAL_OFFER_TIMER = "dialog_primeday_specialoffer_endTimer";
+  CastlePrimeSaleDialog.LIMITED_OFFER = "dialog_privateOffer_whaleChest_rubySave";
+  return CastlePrimeSaleDialog;
+}(A.CastleAbstractPrimeSaleDialog);
+exports.CastlePrimeSaleDialog = L;
+var P = require("./34.js");
+var M = require("./160.js");
+var R = require("./56.js");
+var V = require("./17.js");
+var x = require("./63.js");
+var w = require("./260.js");
+var B = require("./11.js");
+var F = require("./38.js");
+var N = require("./15.js");
+var k = require("./27.js");
+c.classImplementsInterfaces(L, "ICollectableRendererList");

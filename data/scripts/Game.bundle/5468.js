@@ -2,33 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
+var o = require("./2.js");
+var a = require("./7.js");
 var s = function (e) {
-  function CastlePaymentDopplerMessageDialog() {
+  function C2SMarketCarriageNotifyVO(t) {
+    var i = this;
+    i.MID = 0;
     CONSTRUCTOR_HACK;
-    return e.call(this, CastlePaymentDopplerMessageDialog.NAME) || this;
+    (i = e.call(this) || this).MID = t;
+    return i;
   }
-  n.__extends(CastlePaymentDopplerMessageDialog, e);
-  CastlePaymentDopplerMessageDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_ok]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_paymentdoubler_title"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_paymentdoubler_copy")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_hint, new a.LocalizedTextVO(""));
+  n.__extends(C2SMarketCarriageNotifyVO, e);
+  C2SMarketCarriageNotifyVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_MARKET_CARRIAGE_NOTIFY;
   };
-  CastlePaymentDopplerMessageDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-        this.hide();
-    }
-  };
-  CastlePaymentDopplerMessageDialog.__initialize_static_members = function () {
-    CastlePaymentDopplerMessageDialog.NAME = "CastlePaymentDopplerMessageEx";
-  };
-  return CastlePaymentDopplerMessageDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastlePaymentDopplerMessageDialog = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
-s.__initialize_static_members();
+  return C2SMarketCarriageNotifyVO;
+}(o.BasicCommandVO);
+exports.C2SMarketCarriageNotifyVO = s;

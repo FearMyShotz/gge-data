@@ -2,254 +2,193 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./5.js");
+var r = require("./5.js");
 var l = require("./5.js");
-var c = require("./342.js");
-var u = require("./91.js");
-var d = require("./802.js");
-var p = require("./37.js");
-var h = require("./803.js");
-var g = require("./261.js");
-var C = require("./15.js");
-var _ = require("./54.js");
-var m = require("./4.js");
-var f = require("./5605.js");
-var O = require("./1100.js");
-var E = function (e) {
-  function CastleTutorialData(t) {
-    var i = this;
-    i._tutorialStepVOs = [];
-    i._existingListeners = new Array();
-    i._isTutorialActive = false;
-    i._isWaitingToStartTutorial = false;
-    i._isCompletelyLoggedIn = false;
-    i.isSkippingTutorial = false;
+var c = require("./6.js");
+var u = require("./4.js");
+var d = require("./33.js");
+var p = require("./552.js");
+var h = require("./830.js");
+var g = function (e) {
+  function CastleTreasureHuntFightscreenVO() {
+    var t = this;
+    t._eventID = -1;
     CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).parseChapters(t.tutorials);
-    i.reinit();
-    return i;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleTutorialData, e);
-  CastleTutorialData.prototype.reset = function () {
-    this.reinit();
+  n.__extends(CastleTreasureHuntFightscreenVO, e);
+  CastleTreasureHuntFightscreenVO.prototype.fillFromParamObject = function (e) {
+    this._treasureMapVO = u.CastleModel.treasureMapData.getTreasureMapByID(e.MID);
+    this._tmapNode = this._treasureMapVO.getNodeById(e.NID);
+    this.initSeasonID();
+    this._sourceOwner = u.CastleModel.otherPlayerData.getOwnInfoVO();
+    this._targetOwner = u.CastleModel.otherPlayerData.getOwnerInfoVO(this._tmapNode.ownerID);
+    if (this._treasureMapVO.hasCamp) {
+      this._sourceArea = new C.EventCampMapobjectVO();
+    } else {
+      this._sourceArea = u.CastleModel.userData.castleList.getMainCastleByKingdomID(r.WorldClassic.KINGDOM_ID);
+    }
+    var t = new _.TreasureDungeonMapObjectVO();
+    t.parseAreaInfo([l.WorldConst.AREA_TYPE_TREASURE_DUNGEON, -1, -1, 0, a.DungeonConst.getVictories(this._tmapNode.dungeonlevel, 0), 0, 0]);
+    t.tmapID = this._treasureMapVO.mapID;
+    t.tMapNode = this._tmapNode;
+    t.baseGateBonus = this._tmapNode.gateBonus;
+    t.baseWallBonus = this._tmapNode.wallBonus;
+    t.ownerInfo = this._targetOwner;
+    t.mapID = this._tmapNode.mapID;
+    this._targetArea = t;
+    this._spyInfo = new f.CastleSpyArmyInfoVO();
+    this._spyInfo.parseArmyInfo(e.S, e.AS, e.B, e.LS);
+    this._unitInventory = new E.UnitInventoryDictionary();
+    this._strongholdUnitInventory = new O.StrongholdUnitInventory();
+    this._unitInventory.fillFromWodAmountArray(e.gui.I);
+    this._strongholdUnitInventory.fillFromWodAmountArray(e.gui.SHI);
+    this._army = new y.CastleAttackArmyVO();
+    this._army.init(this._tmapNode.dungeonlevel, false, false, this._targetArea);
+    this._yardWaveItemContainer = new p.CastleFightItemContainer([0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], 0, 10000);
+    this._supportItemContainer = new p.CastleFightItemContainer(a.CombatConst.ITEMS_ASUPPORT_TOOLS, a.CombatConst.LEVELS_SUPPORT_TOOLS_HOME_AWORKSHOP, this.homeWorkshopLevel);
   };
-  CastleTutorialData.prototype.reinit = function () {
-    this._isTutorialActive = false;
-    this._isWaitingToStartTutorial = false;
-    this._isCompletelyLoggedIn = false;
-    this._currentStep = null;
-    this._delayedSteps = [];
-    C.CastleBasicController.getInstance().addEventListener(p.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.bindFunction(this.onLoginProcessComplete));
-    C.CastleBasicController.getInstance().addEventListener(d.CastleLogoutEvent.LOGOUT_TRIGGERED, this.bindFunction(this.onLogout));
-    m.CastleModel.questData.addEventListener(g.CastleQuestDataEvent.QUEST_START, this.bindFunction(this.onQuestStart));
-    m.CastleModel.questData.addEventListener(g.CastleQuestDataEvent.GET_QUESTLIST, this.bindFunction(this.onQuestStart));
-    m.CastleModel.questData.addEventListener(g.CastleQuestDataEvent.QUEST_FINISHED, this.bindFunction(this.onQuestFinish));
-    C.CastleBasicController.getInstance().addEventListener(h.CastleTutorialEvent.STEP_FINISHED, this.bindFunction(this.onStepFinished));
+  CastleTreasureHuntFightscreenVO.prototype.addAdditionalWave = function () {
+    this._army.addAdditionalWave(this._tmapNode.dungeonlevel, false, this._targetArea);
   };
-  CastleTutorialData.prototype.onQuestStart = function (e) {
-    this.checkQuest(CastleTutorialData.QUEST_IDS, function (e) {
-      return m.CastleModel.questData.getActiveQuestByID(e);
-    });
+  CastleTreasureHuntFightscreenVO.prototype.deductLastWave = function () {
+    this.unitInventory.addAll(this._army.getUnitVectorFromCompleteWave(this.army.getWaveCount() - 1));
+    this._army.deductLastWave();
   };
-  CastleTutorialData.prototype.onQuestFinish = function (e) {
-    this.checkQuest(CastleTutorialData.FINISH_QUEST_IDS, function (t) {
-      return e.quest.questID == t;
-    });
-  };
-  CastleTutorialData.prototype.onStepFinished = function (e) {
-    this.checkQuest(CastleTutorialData.STEP_FINISHED, function (t) {
-      return e.params[0] == t;
-    });
-  };
-  CastleTutorialData.prototype.checkQuest = function (e, t) {
-    if (!this.isSkippingTutorial && this._tutorialStepVOs != null) {
-      for (var i = 0, n = this._tutorialStepVOs; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && o.attributes.has(e)) {
-          var a = o.attributes.get(e).split(",");
-          if (a != null) {
-            for (var s = 0, r = a; s < r.length; s++) {
-              var l = r[s];
-              if (l !== undefined) {
-                var c = parseInt(l);
-                if (t(c)) {
-                  this.handleStep(o, c);
-                  return;
-                }
-              }
-            }
-          }
-        }
-      }
+  CastleTreasureHuntFightscreenVO.prototype.initSeasonID = function () {
+    if (u.CastleModel.specialEventData.activeSeasonVO && u.CastleModel.specialEventData.activeSeasonVO.treasureMapVO && u.CastleModel.specialEventData.activeSeasonVO.treasureMapVO.mapID == this.treasureMapVO.mapID) {
+      this._eventID = c.int(u.CastleModel.specialEventData.activeSeasonVO.eventId);
     }
   };
-  CastleTutorialData.prototype.handleStep = function (e, t) {
-    if (!this._currentStep || e.id != this._currentStep.id) {
-      if (this._isCompletelyLoggedIn) {
-        if (this.isTutorialActive) {
-          this.delayStep(e, t);
-        } else {
-          this.startTutorialStep(e, t);
-        }
-      } else {
-        this.delayStep(e, t);
-        this._isWaitingToStartTutorial = true;
-      }
-    }
-  };
-  CastleTutorialData.prototype.delayStep = function (e, t) {
-    if (this._delayedSteps != null) {
-      for (var i = 0, n = this._delayedSteps; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && (o.step.id == e.id || o.questId == t)) {
-          return;
-        }
-      }
-    }
-    this._delayedSteps.push({
-      step: e,
-      questId: t
-    });
-  };
-  CastleTutorialData.prototype.onLoginProcessComplete = function (e) {
-    C.CastleBasicController.getInstance().removeEventListener(p.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.bindFunction(this.onLoginProcessComplete));
-    if (!c.ClientConstInstanceIDs.isBetaInstance()) {
-      this.startTutorialOnLoginComplete();
-    }
-  };
-  CastleTutorialData.prototype.startTutorialOnLoginComplete = function () {
-    this._isCompletelyLoggedIn = true;
-    if (this._isWaitingToStartTutorial) {
-      this._isWaitingToStartTutorial = false;
-      if (!this.isTutorialFinished()) {
-        a.ClientFunnelTrackingController.getInstance().trackState(o.ClientFunnelGameStates.TUTORIAL_START);
-      }
-      this.checkDelayedSteps();
-    }
-  };
-  CastleTutorialData.prototype.startTutorialStep = function (e, t) {
-    this._isWaitingToStartTutorial = false;
-    if (this.isTutorialFinished()) {
-      s.debug("We should've started a tutorial step although it seems to be finished! Step: " + (e ? e.id : "null"));
-      this.activateTutorial(false);
-      v.CastleTutorialSpotlight.instance.destroyTutorialCanvas();
-      return;
-    }
-    this._currentStep = e;
-    D.CastleTutorialController.getInstance().startStep(e, t);
-  };
-  CastleTutorialData.prototype.parseChapters = function (e) {
-    if (e != null) {
-      for (var t = 0, i = e; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          var o = new f.TutorialStepVO().parseData(n);
-          this._tutorialStepVOs.push(o);
-        }
-      }
-    }
-  };
-  CastleTutorialData.prototype.activateTutorial = function (e) {
-    this._isTutorialActive = e;
-  };
-  Object.defineProperty(CastleTutorialData.prototype, "isTutorialActive", {
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "distance", {
     get: function () {
-      return this._isTutorialActive;
+      return this._tmapNode.distance;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "distance").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTutorialData.prototype, "currentTutorialCommand", {
+  CastleTreasureHuntFightscreenVO.prototype.getTravelTime = function (e, t) {
+    var i = t ? m.CastleEffectsHelper.getAccumulatedEquipmentBonusByEffectTypeForArea(t, d.EffectTypeEnum.EFFECT_TYPE_SPEED_BONUS, this.targetArea.areaType).strength : 0;
+    var n = 1 + u.CastleModel.globalEffectData.getBonusByEffectType(d.EffectTypeEnum.EFFECT_TYPE_SPEED_BONUS, this.targetArea.areaType) / 100;
+    return c.int(s.TravelConst.getTravelTime(this.getLowestTravelSpeed(false, t), this.distance, n, i, false));
+  };
+  CastleTreasureHuntFightscreenVO.prototype.getBoostedTravelTime = function (e, t, i) {
+    return 0;
+  };
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "waitTime", {
     get: function () {
-      if (this._currentStep) {
-        return this._currentStep.command;
-      } else {
-        return "";
-      }
+      return 0;
+    },
+    set: function (e) {},
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "isConquerAttack", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "isConquerAttack").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleTutorialData.prototype.removeAllListeners = function () {
-    if (this._existingListeners != null) {
-      for (var e = 0, t = this._existingListeners; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.target.removeEventListener(i.type, i.listenerFunc);
-        }
-      }
-    }
-    this._existingListeners = new Array();
-  };
-  CastleTutorialData.prototype.removeFromExisting = function (e) {
-    for (var t = 0; t < this._existingListeners.length; t++) {
-      if (this._existingListeners[t].listenerFunc == e) {
-        this._existingListeners.splice(t, 1);
-        break;
-      }
-    }
-  };
-  CastleTutorialData.prototype.registerListener = function (e, t, i) {
-    var n = new O.TutorialListenerObject(e, t, i);
-    n.target.addEventListener(t, i);
-    this._existingListeners.push(n);
-    return n;
-  };
-  CastleTutorialData.prototype.removeListener = function (e, t, i) {
-    if (this._existingListeners != null) {
-      for (var n = 0, o = this._existingListeners; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined && a.listenerFunc == i && a.target == e && a.type == t) {
-          a.target.removeEventListener(t, i);
-          this._existingListeners.splice(this._existingListeners.indexOf(a), 1);
-          return;
-        }
-      }
-    }
-  };
-  CastleTutorialData.prototype.onLogout = function (e) {
-    C.CastleBasicController.getInstance().removeEventListener(d.CastleLogoutEvent.LOGOUT_TRIGGERED, this.bindFunction(this.onLogout));
-    this.removeAllListeners();
-    this.clearBlockers();
-    this.reinit();
-  };
-  CastleTutorialData.prototype.clearBlockers = function () {
-    y.CastleTutorialArrowController.instance.clear();
-    b.CastleTutorialClickBlocker.instance.clear();
-    v.CastleTutorialSpotlight.instance.clear();
-    I.CastleTutorialDialogFilter.instance.clear();
-    T.CastleLayoutManager.getInstance().dispatchEvent(new u.CastleLayoutManagerEvent(u.CastleLayoutManagerEvent.LOCK_CAMERA, [false]));
-  };
-  Object.defineProperty(CastleTutorialData.prototype, "existingListeners", {
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "treasureMapVO", {
     get: function () {
-      return this._existingListeners;
+      return this._treasureMapVO;
     },
     enumerable: true,
     configurable: true
   });
-  CastleTutorialData.prototype.isInTutorial = function () {
-    return this.isTutorialActive;
-  };
-  CastleTutorialData.prototype.isTutorialFinished = function () {
-    return m.CastleModel.userData.userXP >= l.TutorialConst.LAST_TUTORIAL_STEP_XP;
-  };
-  CastleTutorialData.prototype.checkDelayedSteps = function () {
-    var e = this._delayedSteps.shift();
-    return !!e && (this.startTutorialStep(e.step, e.questId), true);
-  };
-  CastleTutorialData.QUEST_IDS = "questIDs";
-  CastleTutorialData.FINISH_QUEST_IDS = "onfinishQuestIDs";
-  CastleTutorialData.STEP_FINISHED = "stepFinished";
-  return CastleTutorialData;
-}(_.CastleBasicData);
-exports.CastleTutorialData = E;
-var y = require("./300.js");
-var b = require("./433.js");
-var D = require("./826.js");
-var I = require("./326.js");
-var T = require("./17.js");
-var v = require("./471.js");
-r.classImplementsInterfaces(E, "IUpdatable");
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "tmapNode", {
+    get: function () {
+      return this._tmapNode;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "eventID", {
+    get: function () {
+      return this._eventID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "detailViewObject", {
+    get: function () {
+      this._tmapNode.eventID = this._eventID;
+      return this._tmapNode;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "detailViewObject").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "targetOwnerLevel", {
+    get: function () {
+      return this._tmapNode.dungeonlevel;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "targetOwnerLevel").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "baseWallBonus", {
+    get: function () {
+      return this._tmapNode.wallBonus;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "baseWallBonus").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "baseGateBonus", {
+    get: function () {
+      return this._tmapNode.gateBonus;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "baseGateBonus").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "baseMoatBonus", {
+    get: function () {
+      return 0;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "baseMoatBonus").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "morality", {
+    get: function () {
+      return this._treasureMapVO.morality;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "morality").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleTreasureHuntFightscreenVO;
+}(h.CastleAttackInfoVO);
+exports.CastleTreasureHuntFightscreenVO = g;
+var C = require("./734.js");
+var _ = require("./604.js");
+var m = require("./110.js");
+var f = require("./831.js");
+var O = require("./553.js");
+var E = require("./156.js");
+var y = require("./1778.js");
+o.classImplementsInterfaces(g, "IFightScreenVO");

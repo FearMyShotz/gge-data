@@ -13,7 +13,7 @@ var d = require("./26.js");
 var p = require("./4.js");
 var h = require("./8.js");
 var g = require("./11.js");
-var C = require("./2343.js");
+var C = require("./2344.js");
 var _ = function (e) {
   function CastleMovementOverviewDialog() {
     return e.call(this, CastleMovementOverviewDialog.NAME) || this;
@@ -197,13 +197,13 @@ var _ = function (e) {
 }(g.CastleExternalDialog);
 exports.CastleMovementOverviewDialog = _;
 var m = require("./9.js");
-var f = require("./874.js");
-var O = require("./2345.js");
-var E = require("./2373.js");
-var y = require("./2374.js");
-var b = require("./2375.js");
-var D = require("./2376.js");
-var I = require("./2377.js");
-var T = require("./2378.js");
+var f = require("./875.js");
+var O = require("./2346.js");
+var E = require("./2374.js");
+var y = require("./2375.js");
+var b = require("./2376.js");
+var D = require("./2377.js");
+var I = require("./2378.js");
+var T = require("./2379.js");
 s.classImplementsInterfaces(_, "ICollectableRendererList");
 _.__initialize_static_members();

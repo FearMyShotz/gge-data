@@ -3,35 +3,37 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./7.js");
-var s = require("./37.js");
-var r = require("./475.js");
-var l = function (e) {
-  function SURCommand() {
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function SIECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SURCommand, e);
-  Object.defineProperty(SURCommand.prototype, "cmdId", {
+  n.__extends(SIECommand, e);
+  Object.defineProperty(SIECommand.prototype, "cmdId", {
     get: function () {
-      return a.ClientConstSF.S2C_GET_SURVEY_INFO;
+      return s.ClientConstSF.S2C_GET_SUBSCRIPTION_PACKAGES;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleDispatchingCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SURCommand.prototype, "eventType", {
-    get: function () {
-      return s.CastleServerMessageArrivedEvent.SUR_ARRIVED;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleDispatchingCommand.prototype, "eventType").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return SURCommand;
-}(r.CastleDispatchingCommand);
-exports.SURCommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  SIECommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.subscriptionData.parseSIE(i);
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    return false;
+  };
+  return SIECommand;
+}(l.CastleCommand);
+exports.SIECommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

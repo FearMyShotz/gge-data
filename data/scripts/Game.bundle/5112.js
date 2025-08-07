@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GDCCommand() {
+  function CDDCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GDCCommand, e);
-  Object.defineProperty(GDCCommand.prototype, "cmdId", {
+  n.__extends(CDDCommand, e);
+  Object.defineProperty(CDDCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_DAIMYO_ALLIANCE_CONTRACTS;
+      return s.ClientConstSF.S2C_CREATE_DAIMYO_DEFENSE_MOVEMENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,20 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GDCCommand.prototype.executeCommand = function (e, t) {
+  CDDCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.samuraiDaimyoData.server.parseGDC(i);
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.otherPlayerData.parseOwnerInfoArray(i.O);
+        r.CastleModel.armyData.parseMapMovementArray([i.A]);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GDCCommand;
+  return CDDCommand;
 }(l.CastleCommand);
-exports.GDCCommand = c;
+exports.CDDCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

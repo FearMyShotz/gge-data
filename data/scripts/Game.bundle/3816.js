@@ -5,110 +5,102 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./2.js");
 var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./2.js");
-var c = require("./2.js");
-var u = require("./2.js");
-var d = require("./1.js");
-var p = require("./6.js");
-var h = require("./15.js");
-var g = require("./432.js");
-var C = require("./4.js");
-var _ = function (e) {
-  function CastleChooseLoginMethodCommand() {
+var r = require("./1.js");
+var l = require("./3.js");
+var c = require("./277.js");
+var u = require("./52.js");
+var d = require("./3817.js");
+var p = require("./1432.js");
+var h = function (e) {
+  function DonateForQuestCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleChooseLoginMethodCommand, e);
-  CastleChooseLoginMethodCommand.prototype.execute = function (e = null) {
-    var t = s.BasicModel.smartfoxClient.userForcedDisconnect;
-    var i = g.CastleCheatData.cheatLoginName != null && g.CastleCheatData.cheatLoginName != "";
-    var n = C.CastleModel.userData.connectToSpecialServer;
-    if (i || !t || C.CastleModel.localData.getIsRedirectedWithFacebook() || n) {
-      var o;
-      var a;
-      var r = false;
-      if (this.isAutoLoginInSocialNetworkPossible()) {
-        o = "*** Castle **** With social login account.";
-        r = true;
-        C.CastleModel.userData.persistentLogin = true;
-      } else if (this.isLoginPossibleWithFacebookCookie()) {
-        o = "*** Castle **** With  facebook account stored in SharedObject.";
-        C.CastleModel.localData.saveIsRedirectedWithFacebook(false);
-        r = true;
-      } else if (this.isLoginPossibleWithCookieAccount() && !n) {
-        o = "*** Castle **** With account stored in SharedObject.";
-        C.CastleModel.localData.saveIsRedirectedWithFacebook(false);
-        C.CastleModel.localData.saveFacebookID("");
-        r = true;
-        C.CastleModel.userData.persistentLogin = true;
-      }
-      if (!this.isAgeGateValid()) {
-        a = r ? "*** Castle ****  Auto login would have been possible, but age gate validation is not complete." : "*** Castle ****  AgeGate validation is not complete. No login possible.";
-        u.info(a);
-        s.BasicModel.ageGateData.autoLoginTryFailed = r;
-        r = false;
-      }
-      if (i) {
-        C.CastleModel.userData.userName = g.CastleCheatData.cheatLoginName;
-        C.CastleModel.userData.loginPwd = "-+";
-        C.CastleModel.userData.loginToken = null;
-        r = true;
-      }
-      if (r && !n) {
-        u.info("*** Castle **** Do autologin: " + o);
-        this.login();
-        return;
-      }
-      if (n) {
-        this.login();
-        return;
-      }
+  n.__extends(DonateForQuestCommand, e);
+  DonateForQuestCommand.prototype.execute = function (e = null) {
+    this.questVO = e[0];
+    this.conditionVO = e[1];
+    this.onYesFunc = e.length > 1 ? e[2] : null;
+    this.onNoFunc = e.length > 2 ? e[3] : null;
+    if (this.questVO && this.conditionVO) {
+      var t = this.conditionVO.conditionMaxCounter;
+      var i = l.Localize.text("dialog_questbook_donateCheck_copy", [t, this.getCollectableVO().getNameTextId()]);
+      _.CastleDialogHandler.getInstance().registerDefaultDialogs(m.ModernYesNoDialog, new a.BasicStandardYesNoDialogProperties("dialog_questbook_donateCheck_title", i, this.bindFunction(this.performAction), this.bindFunction(this.onNoFunc)));
     }
-    u.info("*** Castle **** No auto login possible, show startscreen.");
-    this.handleAutoLoginImpossible();
   };
-  CastleChooseLoginMethodCommand.prototype.isAgeGateValid = function () {
-    return !s.BasicModel.ageGateData.isAgeGateActive || !!s.BasicModel.ageGateData.validationSucceeded;
-  };
-  CastleChooseLoginMethodCommand.prototype.handleAutoLoginImpossible = function () {
-    a.BasicLayoutManager.getInstance().state = a.BasicLayoutManager.STATE_STARTSCREEN;
-  };
-  CastleChooseLoginMethodCommand.prototype.isAutoLoginInSocialNetworkPossible = function () {
-    var e = s.BasicModel.socialData.displayNameExistingPlayer;
-    if (e && e != "") {
-      var t = p.int(s.BasicModel.instanceProxy.instanceMap.length);
-      var i = p.int(s.BasicModel.instanceProxy.instanceMap[0].countries.length);
-      return t != 1 || !(i > 1);
+  DonateForQuestCommand.prototype.getCollectableVO = function () {
+    switch (this.conditionVO.conditionType) {
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_FOOD:
+        return C.CollectableHelper.createVO(g.CollectableEnum.FOOD);
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_WOOD:
+        return C.CollectableHelper.createVO(g.CollectableEnum.WOOD);
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_STONE:
+        return C.CollectableHelper.createVO(g.CollectableEnum.STONE);
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_C1:
+        return C.CollectableHelper.createVO(g.CollectableEnum.C1);
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_COAL:
+        return C.CollectableHelper.createVO(g.CollectableEnum.COAL);
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_OIL:
+        return C.CollectableHelper.createVO(g.CollectableEnum.OIL);
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_GLASS:
+        return C.CollectableHelper.createVO(g.CollectableEnum.GLASS);
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_IRON:
+        return C.CollectableHelper.createVO(g.CollectableEnum.IRON);
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_KHAN_MEDALS:
+        return C.CollectableHelper.createVO(g.CollectableEnum.GENERIC_CURRENCY, 0, u.ClientConstCurrency.ID_KHAN_MEDAL);
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_SAMURAI_TOKENS:
+        return C.CollectableHelper.createVO(g.CollectableEnum.GENERIC_CURRENCY, 0, u.ClientConstCurrency.ID_SAMURAI_TOKEN);
     }
-    return false;
+    return null;
   };
-  CastleChooseLoginMethodCommand.prototype.isLoginPossibleWithFacebookCookie = function () {
-    var e = C.CastleModel.localData.getFacebookID();
-    return !!e && e != "";
-  };
-  CastleChooseLoginMethodCommand.prototype.isLoginPossibleWithCookieAccount = function () {
-    var e = C.CastleModel.localData.readLoginDataUsername();
-    var t = C.CastleModel.localData.readLoginDataLoginToken();
-    return !!this.hasAccountSavedInCookie(e, t) && (C.CastleModel.userData.userName = e, C.CastleModel.userData.loginToken = t, true);
-  };
-  CastleChooseLoginMethodCommand.prototype.hasAccountSavedInCookie = function (e, t) {
-    return !!e && e != "" && !!t && t != "";
-  };
-  CastleChooseLoginMethodCommand.prototype.login = function () {
-    var e;
-    if (C.CastleModel.userData.connectToSpecialServer && C.CastleModel.userData.specialServerLoginToken) {
-      if (C.CastleModel.userData.connectToTempServer) {
-        r.CommandController.instance.executeCommand(h.CastleBasicController.CONNECT_TO_TEMPORARY_SERVER, "login");
-      }
-      if (C.CastleModel.userData.connectToABGServer) {
-        r.CommandController.instance.executeCommand(h.CastleBasicController.CONNECT_TO_ALLIANCE_BATTLE_GROUND_SERVER, "login");
-      }
-      return;
+  DonateForQuestCommand.prototype.performAction = function (e = null) {
+    var t = this.conditionVO.conditionMaxCounter;
+    switch (this.conditionVO.conditionType) {
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_FOOD:
+        this.controller.sendCommandVOAndWait(new p.C2SQuestDonateRessourcesVO(this.questVO.questID, t));
+        break;
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_WOOD:
+        this.controller.sendCommandVOAndWait(new p.C2SQuestDonateRessourcesVO(this.questVO.questID, 0, t));
+        break;
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_STONE:
+        this.controller.sendCommandVOAndWait(new p.C2SQuestDonateRessourcesVO(this.questVO.questID, 0, 0, t));
+        break;
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_C1:
+        this.controller.sendCommandVOAndWait(new p.C2SQuestDonateRessourcesVO(this.questVO.questID, 0, 0, 0, t));
+        break;
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_COAL:
+        this.controller.sendCommandVOAndWait(new p.C2SQuestDonateRessourcesVO(this.questVO.questID, 0, 0, 0, 0, t));
+        break;
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_OIL:
+        this.controller.sendCommandVOAndWait(new p.C2SQuestDonateRessourcesVO(this.questVO.questID, 0, 0, 0, 0, 0, t));
+        break;
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_GLASS:
+        this.controller.sendCommandVOAndWait(new p.C2SQuestDonateRessourcesVO(this.questVO.questID, 0, 0, 0, 0, 0, 0, t));
+        break;
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_IRON:
+        this.controller.sendCommandVOAndWait(new p.C2SQuestDonateRessourcesVO(this.questVO.questID, 0, 0, 0, 0, 0, 0, 0, t));
+        break;
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_KHAN_MEDALS:
+        this.controller.sendCommandVOAndWait(new d.C2SQuestDonateCurrencyVO(this.questVO.questID, u.ClientConstCurrency.ID_KHAN_MEDAL, t));
+        break;
+      case c.ClientConstQuestCondition.QUESTTYPE_DONATE_SAMURAI_TOKENS:
+        this.controller.sendCommandVOAndWait(new d.C2SQuestDonateCurrencyVO(this.questVO.questID, u.ClientConstCurrency.ID_SAMURAI_TOKEN, t));
     }
-    e = l.EnvGlobalsHandler.globals.isSSO && !l.EnvGlobalsHandler.globals.useLegacySocialRegistration ? o.BasicController.COMMAND_SOCIAL_LOGIN : o.BasicController.COMMAND_LOGIN;
-    r.CommandController.instance.executeCommand(e);
+    if (this.onYesFunc) {
+      this.onYesFunc(e);
+    }
   };
-  return CastleChooseLoginMethodCommand;
-}(c.SimpleCommand);
-exports.CastleChooseLoginMethodCommand = _;
-d.classImplementsInterfaces(_, "ISimpleCommand");
+  Object.defineProperty(DonateForQuestCommand.prototype, "controller", {
+    get: function () {
+      return s.BasicController.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return DonateForQuestCommand;
+}(o.SimpleCommand);
+exports.DonateForQuestCommand = h;
+var g = require("./12.js");
+var C = require("./45.js");
+var _ = require("./9.js");
+var m = require("./282.js");
+r.classImplementsInterfaces(h, "ISimpleCommand");

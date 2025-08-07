@@ -2,159 +2,199 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
+var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./6.js");
-var l = require("./28.js");
-var c = require("./30.js");
-var u = require("./4.js");
-var d = require("./79.js");
-var p = require("./386.js");
-var h = require("./167.js");
-var g = require("./244.js");
-var C = function (e) {
-  function TempServerEventVO() {
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./6.js");
+var u = require("./15.js");
+var d = require("./877.js");
+var p = require("./4.js");
+var h = function (e) {
+  function ShoppingCartPrimeSaleEventVO() {
     var t = this;
-    t._dailyResetTimeStamp = 0;
-    t._castleBought = false;
-    t.ownOverallRank = 0;
-    t.ownOverallPoints = 0;
-    t.ownDailyRank = 0;
-    t.ownDailyPoints = 0;
-    t._isCrossPlay = false;
+    t._typeIds = [];
+    t._lifeTimeSpent = -1;
+    t._useSpent90Days = false;
+    t._spent90Days = 0;
+    t._level = -1;
+    t._limit = -1;
+    t._timesBuyable = -1;
+    t._c2Payed = 0;
+    t._cartsPaid = 0;
+    t._c2Needed = 1337;
+    t._shoppingCartOptionIds = [];
+    t._shoppingCartOptionsIdsByCategory = [];
+    t._averageBonus = 0;
+    t._valid = true;
     CONSTRUCTOR_HACK;
     return t = e.call(this) || this;
   }
-  n.__extends(TempServerEventVO, e);
-  TempServerEventVO.prototype.parseParamObject = function (e) {
-    if (e.RD) {
-      this._dailyResetTimeStamp = c.CachedTimer.getCachedTimer() + e.RD * l.ClientConstTime.SEC_2_MILLISEC;
+  n.__extends(ShoppingCartPrimeSaleEventVO, e);
+  ShoppingCartPrimeSaleEventVO.prototype.parseParamObject = function (e) {
+    var t = e[r.CommKeys.TYPE_IDS];
+    if (!t) {
+      this._valid = false;
+      o.error("ShoppingCart event needs type ids!");
+      return;
     }
-    if (e.TSID) {
-      this.settingVO = u.CastleModel.tempServerData.getConfigVOByID(e.TSID);
+    var i = t.length;
+    if (i != ShoppingCartPrimeSaleEventVO.TYPE_COUNT) {
+      this._valid = false;
+      o.error("ShoppingCart event needs " + ShoppingCartPrimeSaleEventVO.TYPE_COUNT + " type ids!");
+      return;
     }
-    if (e.IPS != null) {
-      this._castleBought = e.IPS == 1;
+    this._level = c.int(e[r.CommKeys.LEVEL]);
+    if (e.hasOwnProperty(r.CommKeys.SHOPPING_CART) && s.instanceOfClass(e[r.CommKeys.SHOPPING_CART], "Array")) {
+      this._shoppingCartOptionIds = e[r.CommKeys.SHOPPING_CART];
     } else {
-      this._castleBought = true;
+      this._shoppingCartOptionIds = [];
     }
-    if (e[s.CommKeys.IS_CROSSPLAY_SERVER_EVENT]) {
-      this._isCrossPlay = e[s.CommKeys.IS_CROSSPLAY_SERVER_EVENT] == 1;
-    }
-  };
-  TempServerEventVO.prototype.parseOwnRanks = function (e) {
-    this.ownDailyPoints = r.int(e.DHS);
-    this.ownDailyRank = r.int(Math.max(0, e.DR));
-    this.ownOverallPoints = r.int(e.HS);
-    this.ownOverallRank = r.int(Math.max(0, e.R));
-    b.CastleBasicController.getInstance().dispatchEvent(new y.CastleHighscoreEvent(y.CastleHighscoreEvent.TEMPORARY_SERVER_HIGHSCORE));
-  };
-  TempServerEventVO.prototype.openDialog = function (e = true) {
-    var t = this.getEventTeaserMessageVO();
-    if (t && !t.read) {
-      O.CommandController.instance.executeCommand(f.IngameClientCommands.OPEN_MESSAGE_DIALOG_COMMAND, t);
-    } else {
-      _.CastleDialogHandler.getInstance().registerDialogs(m.CastleTemporaryServerEventDialog);
-    }
-  };
-  TempServerEventVO.prototype.getMerchantProperties = function () {
-    var e = new g.MerchantScrollItemVO();
-    e.eventPackageVO = u.CastleModel.eventPackageData.getEventPackageByID(this.settingVO.boosterCurrencyPackageID);
-    e.specialEventVO = u.CastleModel.specialEventData.getActiveEventByEventId(E.EventConst.EVENTTYPE_ARMORER);
-    var t = new h.CastleGenericBuyDialogProperties();
-    t.parseDataFromScrollItem(e);
-    return t;
-  };
-  TempServerEventVO.prototype.getEventTeaserMessageVO = function () {
-    for (var e = 0, t = u.CastleModel.messageData.incomingMails; e < t.length; e++) {
-      var i = t[e];
-      if (i !== undefined && o.instanceOfClass(i, "MessageSpecialEventVO")) {
-        var n = i;
-        if (n && n.subtypeEvent == E.MessageConst.SPECIAL_ID_SPECIAL_EVENT_START && n.additionalInformation[0] == E.EventConst.EVENTTYPE_TEMPSERVER) {
-          return n;
-        }
+    this._c2Needed = c.int(e[r.CommKeys.CURRENCY_2]);
+    this._limit = c.int(e[r.CommKeys.LIMIT]);
+    this.c2Payed = e[r.CommKeys.PAYED_C2];
+    this._lifeTimeSpent = c.int(e[r.CommKeys.LIFETIME_SPENT_C2]);
+    this._useSpent90Days = e[r.CommKeys.USE_90_DAYS_SPENT] != 0;
+    this._spent90Days = c.int(e[r.CommKeys.C2_SPENT_90_DAYS]);
+    this._typeIds = [];
+    var n = 0;
+    var a = 0;
+    for (var u = 0; u < i; u++) {
+      if (u % l.ShoppingCartConst.OPTIONS_PER_GROUP == 0) {
+        n++;
       }
+      var d = c.int(t[u]);
+      var h = p.CastleModel.shoppingCartPrimeDayData.getNodeByTypeAndGroupWithEvent(d, n, this);
+      if (!h) {
+        this._valid = false;
+        o.error("No node found for type " + d + " and group " + n);
+        break;
+      }
+      a += h.shownOfferBonus;
+      this._typeIds.push(d);
     }
-    return null;
+    this._averageBonus = c.int(a / i);
+    this._valid = this._timesBuyable > 0;
   };
-  Object.defineProperty(TempServerEventVO.prototype, "eventBuildingNameId", {
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "shoppingCartOptionIds", {
     get: function () {
-      return "eventBuilding_TempServer";
+      return this._shoppingCartOptionIds;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.ASpecialEventVO.prototype, "eventBuildingNameId").set.call(this, e);
+      this._shoppingCartOptionIds = e;
     },
     enumerable: true,
     configurable: true
   });
-  TempServerEventVO.prototype.getRewardList = function () {
-    this._rewardList ||= u.CastleModel.tempServerData.getRewardsByRewardSetID(this.settingVO.rewardSetID);
-    this._rewardList.sort(this.bindFunction(this.sortRewards));
-    return this._rewardList;
-  };
-  TempServerEventVO.prototype.sortRewards = function (e, t) {
-    if (e.usePoints && !t.usePoints) {
-      return -1;
-    } else if (!e.usePoints && t.usePoints) {
-      return 1;
-    } else {
-      return t.rank - e.rank;
-    }
-  };
-  Object.defineProperty(TempServerEventVO.prototype, "remainingTimeInSecondsUntilDailyReset", {
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "shoppingCartOptionsIdsByCategory", {
     get: function () {
-      return Math.max(0, (this._dailyResetTimeStamp - c.CachedTimer.getCachedTimer()) * l.ClientConstTime.MILLISEC_2_SEC);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(TempServerEventVO.prototype, "castleBought", {
-    get: function () {
-      return this._castleBought;
+      return this._shoppingCartOptionsIdsByCategory;
     },
     set: function (e) {
-      this._castleBought = e;
+      this._shoppingCartOptionsIdsByCategory = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(TempServerEventVO.prototype, "isRankSwapScoring", {
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "typeIds", {
     get: function () {
-      return this.settingVO.scoringSystem == p.TempServerConfigurationVO.SCORING_SYSTEM_RANK_SWAP;
+      return this._typeIds;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(TempServerEventVO.prototype, "isMightScoring", {
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "averageBonus", {
     get: function () {
-      return this.settingVO.scoringSystem == p.TempServerConfigurationVO.SCORING_SYSTEM_MIGHT;
+      return this._averageBonus;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(TempServerEventVO.prototype, "isCollectorScoring", {
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "lifeTimeSpent", {
     get: function () {
-      return this.settingVO.scoringSystem == p.TempServerConfigurationVO.SCORING_SYSTEM_COLLECTOR;
+      return this._lifeTimeSpent;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(TempServerEventVO.prototype, "isCrossPlay", {
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "c2Payed", {
     get: function () {
-      return this._isCrossPlay;
+      return this._c2Payed % this._c2Needed;
+    },
+    set: function (e) {
+      this._c2Payed = e;
+      this._timesBuyable = c.int(this._limit - c.int(this._c2Payed / this._c2Needed));
+      if (this._timesBuyable > 0) {
+        u.CastleBasicController.getInstance().dispatchEvent(new d.CastleShoppingCartPrimeDayEvent(d.CastleShoppingCartPrimeDayEvent.UPDATE_DIALOG));
+      } else {
+        u.CastleBasicController.getInstance().dispatchEvent(new d.CastleShoppingCartPrimeDayEvent(d.CastleShoppingCartPrimeDayEvent.SOLD_OUT));
+      }
     },
     enumerable: true,
     configurable: true
   });
-  return TempServerEventVO;
-}(d.ASpecialEventVO);
-exports.TempServerEventVO = C;
-var _ = require("./9.js");
-var m = require("./1148.js");
-var f = require("./29.js");
-var O = require("./2.js");
-var E = require("./5.js");
-var y = require("./172.js");
-var b = require("./15.js");
-a.classImplementsInterfaces(C, "IEventOverviewable");
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "c2Needed", {
+    get: function () {
+      return this._c2Needed;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "rewardCount", {
+    get: function () {
+      return c.int(this._c2Payed / this._c2Needed);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "cartsPaid", {
+    get: function () {
+      return this._cartsPaid;
+    },
+    set: function (e) {
+      this._cartsPaid = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "level", {
+    get: function () {
+      return this._level;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "timesBuyable", {
+    get: function () {
+      return this._timesBuyable;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ShoppingCartPrimeSaleEventVO.prototype.canBeAddedToActiveEvents = function () {
+    return this._valid;
+  };
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "spent90Days", {
+    get: function () {
+      return this._spent90Days;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ShoppingCartPrimeSaleEventVO.prototype, "useSpent90Days", {
+    get: function () {
+      return this._useSpent90Days;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ShoppingCartPrimeSaleEventVO.prototype.openDialog = function (e = true) {
+    this.executeOpenDialog(e, g.CastleShoppingCartPrimeDayDialog, null);
+  };
+  ShoppingCartPrimeSaleEventVO.TYPE_COUNT = 18;
+  return ShoppingCartPrimeSaleEventVO;
+}(require("./79.js").ASpecialEventVO);
+exports.ShoppingCartPrimeSaleEventVO = h;
+var g = require("./494.js");
+a.classImplementsInterfaces(h, "IEventOverviewable");

@@ -4,44 +4,61 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./3.js");
-var r = function (e) {
-  function CastleKingdomTeaserDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleKingdomTeaserDialog.NAME) || this;
+var s = require("./1.js");
+var r = require("./1.js");
+var l = require("./3582.js");
+var c = require("./3583.js");
+var u = require("./3584.js");
+var d = require("./3585.js");
+var p = require("./3586.js");
+var h = require("./3587.js");
+var g = function (e) {
+  function OpenMovementInfoDialogCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleKingdomTeaserDialog, e);
-  CastleKingdomTeaserDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO(this.teaserProperties.titleTextID));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description0, new s.LocalizedTextVO("dialog_kingdomteaser_copy2"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description1, new s.LocalizedTextVO("dialog_kingdomteaser_copy3"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description2, new s.LocalizedTextVO("dialog_kingdomteaser_copy4_v2", [this.teaserProperties.minLevel]));
-    o.MovieClipHelper.clearMovieClip(this.dialogDisp.background_container);
-    this.dialogDisp.background_container.addChild(this.teaserProperties.backgroundImage);
-  };
-  CastleKingdomTeaserDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_close]);
-  };
-  CastleKingdomTeaserDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_close:
-        this.hide();
+  n.__extends(OpenMovementInfoDialogCommand, e);
+  OpenMovementInfoDialogCommand.prototype.execute = function (e = null) {
+    var t = a.castAs(e, "IMapMovementVO");
+    if (t) {
+      if (r.instanceOfClass(t, "TreasureHuntMovementVO")) {
+        C.CastleDialogHandler.getInstance().registerDefaultDialogs(f.CastleCompactArmyDialog, new u.CastleCompactArmyDialogProperties(t, true));
+      } else if (r.instanceOfClass(t, "MarketMapmovementVO")) {
+        C.CastleDialogHandler.getInstance().registerDefaultDialogs(O.CastleMarketMovmentDialog, new d.CastleMarketMovmentDialogProperties(t));
+      } else if (r.instanceOfClass(t, "SupportDefenceMapmovementVO")) {
+        C.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleArmyListDialog, new l.CastleArmyListDialogProperties(t));
+      } else if (r.instanceOfClass(t, "ArmyAttackMapmovementVO")) {
+        switch (t.armyState) {
+          case D.ArmyAttackMapmovementVO.ARMY_FULL:
+            C.CastleDialogHandler.getInstance().registerDefaultDialogs(f.CastleCompactArmyDialog, new u.CastleCompactArmyDialogProperties(t));
+            break;
+          case D.ArmyAttackMapmovementVO.ARMY_SHORT:
+            C.CastleDialogHandler.getInstance().registerDefaultDialogs(y.CastleShortArmyDialog, new p.CastleShortArmyDialogProperties(t));
+        }
+      } else if (r.instanceOfClass(t, "ArmyTravelMapMovementVO")) {
+        if (t.lootList.length > 0) {
+          C.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleArmyListWithLootDialog, new c.CastleArmyListWithLootDialogProperties(t));
+        } else {
+          C.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleArmyListDialog, new l.CastleArmyListDialogProperties(t));
+        }
+      } else if (r.instanceOfClass(t, "SpyMapmovementVO")) {
+        C.CastleDialogHandler.getInstance().registerDefaultDialogs(b.CastleSpyInfoDialog, new h.CastleSpyInfoDialogProperties(t));
+      } else if (r.instanceOfClass(t, "PlaguemonkMapmovementVO")) {
+        C.CastleDialogHandler.getInstance().registerDefaultDialogs(E.CastlePlaguemonkInfoDialog, new h.CastleSpyInfoDialogProperties(t));
+      } else if (r.instanceOfClass(t, "SiegeMapmovementVO")) {
+        C.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleArmyListDialog, new l.CastleArmyListDialogProperties(t));
+      }
     }
   };
-  Object.defineProperty(CastleKingdomTeaserDialog.prototype, "teaserProperties", {
-    get: function () {
-      return this.properties;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleKingdomTeaserDialog.__initialize_static_members = function () {
-    CastleKingdomTeaserDialog.NAME = "CastleKingdomTeaser";
-  };
-  return CastleKingdomTeaserDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleKingdomTeaserDialog = r;
-a.classImplementsInterfaces(r, "ICollectableRendererList");
-r.__initialize_static_members();
+  return OpenMovementInfoDialogCommand;
+}(o.SimpleCommand);
+exports.OpenMovementInfoDialogCommand = g;
+var C = require("./9.js");
+var _ = require("./3588.js");
+var m = require("./3589.js");
+var f = require("./3590.js");
+var O = require("./3591.js");
+var E = require("./3592.js");
+var y = require("./3593.js");
+var b = require("./3594.js");
+var D = require("./385.js");
+s.classImplementsInterfaces(g, "ISimpleCommand");

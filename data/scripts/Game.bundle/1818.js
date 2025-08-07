@@ -2,199 +2,179 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./6.js");
-var a = require("./1819.js");
-var s = require("./1118.js");
-var r = createjs.Container;
-var l = function (e) {
-  function CastleStatusBar(t, i = false) {
-    var n = e.call(this) || this;
-    n._disp = new r();
-    n._icons = [];
-    n._expandTo = t;
-    n._disp.tickEnabled = i;
-    n._positionResets = [];
-    return n;
+var o = require("./5.js");
+var a = require("./5.js");
+var s = require("./5.js");
+var r = require("./6.js");
+var l = require("./1.js");
+var c = require("./18.js");
+var u = require("./129.js");
+var d = require("./71.js");
+var p = require("./4.js");
+var h = require("./1117.js");
+var g = require("./1817.js");
+var C = require("./840.js");
+var _ = function (e) {
+  function CastleResourcePanel_Season() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, new Library.CastleInterfaceElements.ResourcePanel()) || this;
   }
-  n.__extends(CastleStatusBar, e);
-  Object.defineProperty(CastleStatusBar.prototype, "disp", {
-    get: function () {
-      return this._disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleStatusBar.prototype, "anchorItem", {
-    get: function () {
-      return this._anchorItem;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleStatusBar.prototype.clearPositionResets = function () {
-    this._positionResets = [];
+  n.__extends(CastleResourcePanel_Season, e);
+  CastleResourcePanel_Season.prototype.initResourceItems = function () {
+    this._moralBar = new g.ResourcePanelBar(new Library.CastleInterfaceElements.ResourcePanelMoral());
+    this._woodContainer = new C.ResourcePanelItem(C.ResourcePanelItem.ICON_FRAME_WOOD);
+    this._stoneContainer = new C.ResourcePanelItem(C.ResourcePanelItem.ICON_FRAME_STONE);
+    this._foodContainer = new C.ResourcePanelItem(C.ResourcePanelItem.ICON_FRAME_FOOD);
+    this._unitContainer = new C.ResourcePanelItem(C.ResourcePanelItem.ICON_FRAME_UNITCOUNT);
+    this._auxUnitsContainer = new C.ResourcePanelItem(C.ResourcePanelItem.ICON_FRAME_AUXCOUNT);
+    this._unitContainer.isBoosted = false;
+    this._unitContainer.isStorageBarVisible = false;
+    this._auxUnitsContainer.isBoosted = false;
+    this._auxUnitsContainer.isStorageBarVisible = false;
+    this._woodContainer.isBoosted = false;
+    this._stoneContainer.isBoosted = false;
+    this._foodContainer.isBoosted = false;
+    this.setPanelBar(this._moralBar);
+    this.addResource(this._woodContainer);
+    this.addResource(this._stoneContainer);
+    this.addResource(this._foodContainer);
+    this.addResource(this._unitContainer);
   };
-  CastleStatusBar.prototype.addPositionReset = function (e, t, i, n) {
-    if (n) {
-      this.clearPositionResets();
-    }
-    this._positionResets.push([e, t, i]);
+  CastleResourcePanel_Season.prototype.destroy = function () {
+    this.controller.removeEventListener(d.AreaDataEvent.ON_RESOURCES_CHANGED, this.bindFunction(this.onSomethingChanged));
+    this.controller.removeEventListener(d.AreaDataEvent.ON_INFO_VALUES_CHANGED, this.bindFunction(this.onSomethingChanged));
+    this.controller.removeEventListener(u.CastleMilitaryDataEvent.INVENTORY_UPDATED, this.bindFunction(this.onSomethingChanged));
+    this.removeResource(this._woodContainer);
+    this.removeResource(this._stoneContainer);
+    this.removeResource(this._foodContainer);
+    this.removeResource(this._unitContainer);
+    this.removeResource(this._auxUnitsContainer);
+    this.setPanelBar(null);
+    this._woodContainer.dispose();
+    this._stoneContainer.dispose();
+    this._foodContainer.dispose();
+    this._unitContainer.dispose();
+    this._auxUnitsContainer.dispose();
+    e.prototype.destroy.call(this);
   };
-  CastleStatusBar.prototype.addIcon = function (e) {
-    this._icons.push(e);
-    e.addToContainer(this._disp);
-    e.changedVisibilityCallback = this.bindFunction(this.onIconChangeVisibility);
-    this._icons.sort(this.bindFunction(this.compareIcons));
+  CastleResourcePanel_Season.prototype.show = function () {
+    e.prototype.show.call(this);
+    this.controller.addEventListener(d.AreaDataEvent.ON_RESOURCES_CHANGED, this.bindFunction(this.onSomethingChanged));
+    this.controller.addEventListener(d.AreaDataEvent.ON_INFO_VALUES_CHANGED, this.bindFunction(this.onSomethingChanged));
+    this.controller.addEventListener(u.CastleMilitaryDataEvent.INVENTORY_UPDATED, this.bindFunction(this.onSomethingChanged));
+    this.onSomethingChanged();
+    this.checkForAuxResourcePanel();
+    this.allowCaching = true;
   };
-  CastleStatusBar.prototype.removeIcon = function (e) {
-    var t = this._icons.indexOf(e);
-    if (!(t < 0)) {
-      e.changedVisibilityCallback = null;
-      this._icons.splice(t, 1);
-      e.removeFromContainer(this._disp);
-      this._icons.sort(this.bindFunction(this.compareIcons));
-    }
-  };
-  CastleStatusBar.prototype.dispose = function () {
-    if (this._icons != null) {
-      for (var e = 0, t = this._icons; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.dispose();
-        }
-      }
-    }
-    if (this.disp) {
-      while (this.disp.numChildren > 0) {
-        this._disp.removeChildAt(0);
-      }
-      this._disp = null;
-      this._icons = null;
-    }
-  };
-  CastleStatusBar.prototype.onChangeLayoutState = function () {
-    if (this._icons != null) {
-      for (var e = 0, t = this._icons; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.onLayoutStateChanged();
-        }
-      }
-    }
-    this.repositioningIcons();
-  };
-  CastleStatusBar.prototype.onIconChangeVisibility = function () {
-    this.repositioningIcons();
-  };
-  CastleStatusBar.prototype.compareIcons = function (e, t) {
-    if (this._expandTo === s.StatusBarExpansionDirectionEnum.EXPAND_LEFT || this._expandTo === s.StatusBarExpansionDirectionEnum.EXPAND_UP) {
-      return e.priority - t.priority;
+  CastleResourcePanel_Season.prototype.checkForAuxResourcePanel = function () {
+    if (p.CastleModel.areaData.activeArea.isFactionCamp) {
+      this.addResource(this._auxUnitsContainer);
     } else {
-      return t.priority - e.priority;
+      this.removeResource(this._auxUnitsContainer);
     }
   };
-  CastleStatusBar.prototype.repositioningIcons = function () {
-    var e = this._expandTo == s.StatusBarExpansionDirectionEnum.EXPAND_LEFT || this._expandTo == s.StatusBarExpansionDirectionEnum.EXPAND_RIGHT ? 15 : 0;
+  CastleResourcePanel_Season.prototype.hide = function () {
+    this.controller.removeEventListener(d.AreaDataEvent.ON_RESOURCES_CHANGED, this.bindFunction(this.onSomethingChanged));
+    this.controller.removeEventListener(d.AreaDataEvent.ON_INFO_VALUES_CHANGED, this.bindFunction(this.onSomethingChanged));
+    this.controller.removeEventListener(u.CastleMilitaryDataEvent.INVENTORY_UPDATED, this.bindFunction(this.onSomethingChanged));
+    e.prototype.hide.call(this);
+  };
+  CastleResourcePanel_Season.prototype.onSomethingChanged = function (e = null) {
+    CastleResourcePanel_Season.initResourceContainer(this._woodContainer, m.CollectableEnum.WOOD);
+    CastleResourcePanel_Season.initResourceContainer(this._foodContainer, m.CollectableEnum.FOOD);
+    CastleResourcePanel_Season.initResourceContainer(this._stoneContainer, m.CollectableEnum.STONE);
+    this._foodContainer.isValueRed = p.CastleModel.areaData.activeCommonInfo.foodProduction < 0;
     var t = 0;
     var i = 0;
-    var n = 0;
-    this._anchorItem = null;
-    if (this._icons != null) {
-      for (var r = 0, l = this._icons; r < l.length; r++) {
-        var c = l[r];
-        if (c !== undefined && c.visible) {
-          var u = o.int(Math.min(c.width * 0.5, CastleStatusBar.ICON_HEIGHT * 0.5));
-          var d = o.int(Math.min(c.height * 0.5, CastleStatusBar.ICON_HEIGHT * 0.5));
-          for (var p = 0; p < this._positionResets.length; p++) {
-            if (this._positionResets[p][0] == i) {
-              e = this._positionResets[p][1];
-              t = this._positionResets[p][2];
-              n = i;
-            }
-          }
-          if (i == n) {
-            u = 0;
-            d = 0;
-          }
-          switch (this._expandTo) {
-            case s.StatusBarExpansionDirectionEnum.EXPAND_LEFT:
-              e -= u;
-              c.setPosition(e, t);
-              e -= c.width / 2 + CastleStatusBar.SPACE_X;
-              break;
-            case s.StatusBarExpansionDirectionEnum.EXPAND_RIGHT:
-              e += u;
-              c.setPosition(e, t);
-              e += c.width / 2 + CastleStatusBar.SPACE_X;
-              break;
-            case s.StatusBarExpansionDirectionEnum.EXPAND_UP:
-              t -= d;
-              c.setPosition(e, t);
-              t -= c.height / 2 + CastleStatusBar.SPACE_Y;
-              break;
-            case s.StatusBarExpansionDirectionEnum.EXPAND_DOWN:
-              t += d;
-              c.setPosition(e, t);
-              t += c.height / 2 + CastleStatusBar.SPACE_Y;
-          }
-          this.checkAnchorItem(c);
-          i++;
-        }
+    if (p.CastleModel.areaData.activeAreaInfo.areaType == s.WorldConst.AREA_TYPE_TREASURE_CAMP) {
+      if (p.CastleModel.specialEventData.activeSeasonVO && p.CastleModel.specialEventData.activeSeasonVO.treasureMapVO) {
+        t = r.int(p.CastleModel.specialEventData.activeSeasonVO.treasureMapVO.unitInventory.getSoldierCount());
       }
-    }
-    this.dispatchEvent(new a.CastleStatusBarEvent(a.CastleStatusBarEvent.ICONS_REPOSITIONED));
-  };
-  CastleStatusBar.prototype.checkAnchorItem = function (e) {
-    if (this._anchorItem == null) {
-      this._anchorItem = e;
     } else {
-      switch (this._expandTo) {
-        case s.StatusBarExpansionDirectionEnum.EXPAND_LEFT:
-          this._anchorItem = e.iconDisp.x > this._anchorItem.iconDisp.x ? e : this._anchorItem;
-          break;
-        case s.StatusBarExpansionDirectionEnum.EXPAND_RIGHT:
-          this._anchorItem = e.iconDisp.x < this._anchorItem.iconDisp.x ? e : this._anchorItem;
-          break;
-        case s.StatusBarExpansionDirectionEnum.EXPAND_UP:
-          this._anchorItem = e.iconDisp.y > this._anchorItem.iconDisp.y ? e : this._anchorItem;
-          break;
-        case s.StatusBarExpansionDirectionEnum.EXPAND_DOWN:
-          this._anchorItem = e.iconDisp.y < this._anchorItem.iconDisp.y ? e : this._anchorItem;
+      t = r.int(p.CastleModel.militaryData.unitInventory.getUnitCount(CastleResourcePanel_Season.onlyNonAuxiliarySoldiers));
+      i = r.int(p.CastleModel.militaryData.unitInventory.getUnitCount(CastleResourcePanel_Season.onlyAuxiliaries));
+    }
+    var n = p.CastleModel.areaData.activeMorality;
+    if (n) {
+      this._unitContainer.setValue(Math.max(0, t));
+      this._unitContainer.isValueRed = t >= n.maxUnitStorage;
+      this._unitContainer.setStorageBar(Math.min(t / Math.min(n.maxUnitStorage, 1), 1));
+      var o = n.maxUnitStorage;
+      if (p.CastleModel.areaData.activeArea.isFactionCamp) {
+        o = n.maxAuxiliariesStorage;
       }
+      this._auxUnitsContainer.setValue(i);
+      this._auxUnitsContainer.isValueRed = i >= o;
+      this._auxUnitsContainer.setStorageBar(Math.min(i / Math.min(n.maxUnitStorage, 1), 1));
+      this._moralBar.setValue(this.getCalculateMoralityFactor);
+      this.updateCache();
     }
   };
-  CastleStatusBar.prototype.hasIcon = function (e) {
-    return this._icons.indexOf(e) >= 0;
+  CastleResourcePanel_Season.initResourceContainer = function (e, t) {
+    e.setValue(p.CastleModel.areaData.getActiveStorageItem(t).amount);
+    e.setStorageBar(p.CastleModel.areaData.getActiveStorageItem(t).filledInPercent);
   };
-  Object.defineProperty(CastleStatusBar.prototype, "expandTo", {
+  CastleResourcePanel_Season.onlyAuxiliaries = function (e) {
+    return e.unitCategory == c.ClientConstCastle.UNIT_CATEGORY_SOLDIERS && e.isAuxiliary;
+  };
+  CastleResourcePanel_Season.onlyNonAuxiliarySoldiers = function (e) {
+    return e.unitCategory == c.ClientConstCastle.UNIT_CATEGORY_SOLDIERS && !e.isAuxiliary;
+  };
+  Object.defineProperty(CastleResourcePanel_Season.prototype, "getCalculateMoralityFactor", {
     get: function () {
-      return this._expandTo;
+      return this.morality * 0.5;
     },
-    set: function (e) {
-      var t = this._expandTo != e;
-      this._expandTo = e;
-      if (t) {
-        this.repositioningIcons();
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleResourcePanel_Season.prototype, "morality", {
+    get: function () {
+      if (p.CastleModel.kingdomData.activeKingdomID == a.FactionConst.KINGDOM_ID) {
+        return a.FactionConst.getMoraleModifier(p.CastleModel.areaData.activeMorality.morality);
+      } else {
+        return o.CombatConst.getMoralBonus(p.CastleModel.areaData.activeMorality.morality);
       }
     },
     enumerable: true,
     configurable: true
   });
-  CastleStatusBar.prototype.getCountOfVisibleSlots = function () {
-    var e = 0;
-    if (this._icons != null) {
-      for (var t = 0, i = this._icons; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.visible) {
-          e++;
-        }
-      }
+  CastleResourcePanel_Season.prototype.onMouseOver = function (e) {
+    switch (e.target) {
+      case this._woodContainer.disp:
+        this.showToolTip(f.ResourcePanelToolTipManager.TOOL_TIP_TYPE_INFO_RESOURCE_WOOD, this._woodContainer.disp);
+        break;
+      case this._stoneContainer.disp:
+        this.showToolTip(f.ResourcePanelToolTipManager.TOOL_TIP_TYPE_INFO_RESOURCE_STONE, this._stoneContainer.disp);
+        break;
+      case this._foodContainer.disp:
+        this.showToolTip(f.ResourcePanelToolTipManager.TOOL_TIP_TYPE_FOOD, this._foodContainer.disp);
+        break;
+      case this._unitContainer.disp:
+        this.showToolTip(f.ResourcePanelToolTipManager.TOOL_TIP_TYPE_SEASON_MILITARY, this._unitContainer.disp);
+        break;
+      case this._auxUnitsContainer.disp:
+        this.showToolTip(f.ResourcePanelToolTipManager.TOOL_TIP_TYPE_SEASON_AUXILIARIES, this._auxUnitsContainer.disp);
+        break;
+      case this._moralBar.disp:
+        this.showToolTip(f.ResourcePanelToolTipManager.TOOL_TIP_TYPE_SEASON_MORALE, this._moralBar.disp);
     }
-    return e;
   };
-  CastleStatusBar.SPACE_X = 15;
-  CastleStatusBar.SPACE_Y = 15;
-  CastleStatusBar.ICON_HEIGHT = 100;
-  return CastleStatusBar;
-}(createjs.EventDispatcher);
-exports.CastleStatusBar = l;
+  CastleResourcePanel_Season.prototype.onMouseOut = function (e) {
+    f.ResourcePanelToolTipManager.hideAllToolTips();
+  };
+  CastleResourcePanel_Season.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (l.currentBrowserInfo.isTouchEvent(t)) {
+      f.ResourcePanelToolTipManager.hideAllToolTips();
+      this.onMouseOver(t);
+    }
+  };
+  CastleResourcePanel_Season.__initialize_static_members = function () {
+    CastleResourcePanel_Season.NAME = "CastleResourcePanel_Season";
+  };
+  return CastleResourcePanel_Season;
+}(h.CastleBaseResourcePanel);
+exports.CastleResourcePanel_Season = _;
+var m = require("./12.js");
+var f = require("./152.js");
+_.__initialize_static_members();

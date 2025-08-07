@@ -6,7 +6,7 @@ var o = require("./2.js");
 var a = require("./6.js");
 var s = require("./7.js");
 var r = function (e) {
-  function C2SGetConquerOutpostInfosVO(t, i) {
+  function C2SGetConquerMetropolInfosVO(t, i) {
     var n = this;
     n.KID = 0;
     n.TX = 0;
@@ -17,10 +17,10 @@ var r = function (e) {
     n.TY = a.int(t.y);
     return n;
   }
-  n.__extends(C2SGetConquerOutpostInfosVO, e);
-  C2SGetConquerOutpostInfosVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_GET_CONQUER_INFO_OUTPOST;
+  n.__extends(C2SGetConquerMetropolInfosVO, e);
+  C2SGetConquerMetropolInfosVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_GET_CONQUER_INFO_METROPOL;
   };
-  return C2SGetConquerOutpostInfosVO;
+  return C2SGetConquerMetropolInfosVO;
 }(o.BasicCommandVO);
-exports.C2SGetConquerOutpostInfosVO = r;
+exports.C2SGetConquerMetropolInfosVO = r;

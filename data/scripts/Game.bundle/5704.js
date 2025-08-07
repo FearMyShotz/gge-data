@@ -4,14 +4,14 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function TutorialFinishedUpgradeBuildingActionCommand() {
+  function TutorialFinishedDecoAndPublicOrderCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TutorialFinishedUpgradeBuildingActionCommand, e);
-  TutorialFinishedUpgradeBuildingActionCommand.prototype.getTrackOnQuestConfirmID = function () {
-    return "020_090_quest_finished_confirmed";
+  n.__extends(TutorialFinishedDecoAndPublicOrderCommand, e);
+  TutorialFinishedDecoAndPublicOrderCommand.prototype.getTrackOnQuestConfirmID = function () {
+    return "s_070_010_quest_finished_confirmed";
   };
-  return TutorialFinishedUpgradeBuildingActionCommand;
-}(require("./477.js").TutorialBasicQuestFinisherActionCommand);
-exports.TutorialFinishedUpgradeBuildingActionCommand = a;
+  return TutorialFinishedDecoAndPublicOrderCommand;
+}(require("./478.js").TutorialBasicQuestFinisherActionCommand);
+exports.TutorialFinishedDecoAndPublicOrderCommand = a;
 o.classImplementsInterfaces(a, "ISimpleCommand");

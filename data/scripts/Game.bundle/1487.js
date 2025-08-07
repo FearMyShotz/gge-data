@@ -7,7 +7,7 @@ var a = require("./3.js");
 var s = require("./6.js");
 var r = require("./18.js");
 var l = require("./1484.js");
-var c = require("./999.js");
+var c = require("./1000.js");
 var u = function (e) {
   function OfferBuildingVO(t, i, n) {
     var o = this;

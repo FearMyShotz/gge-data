@@ -1,29 +1,67 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SFindNextEnemyCastleVO(t, i, n, o = -1, a = -1) {
-    var s = this;
-    s.X = 0;
-    s.Y = 0;
-    s.N = 0;
-    s.LMIN = 0;
-    s.LMAX = 0;
-    CONSTRUCTOR_HACK;
-    (s = e.call(this) || this).X = t;
-    s.Y = i;
-    s.N = n;
-    s.LMIN = o;
-    s.LMAX = a;
-    return s;
+var n = createjs.MouseEvent;
+var o = function () {
+  function ArtifactComponent(e) {
+    this.disp = e;
+    this.disp.mouseChildren = false;
   }
-  n.__extends(C2SFindNextEnemyCastleVO, e);
-  C2SFindNextEnemyCastleVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_FIND_NEXT_ENEMY_CASTLE;
+  ArtifactComponent.prototype.init = function (e, t = null) {
+    this.eventVO = e;
+    if (e.hasClickableArtifact()) {
+      h.ButtonHelper.initBasicButton(this.disp);
+    }
+    l.MovieClipHelper.clearMovieClip(this.disp);
+    var i = e.artifactClassName + "_complete_External";
+    var o = c.getDefinitionByName("LoadingAnimation");
+    var a = r.BasicModel.basicLoaderData.getVersionedItemAssetUrl(e.artifactClassName);
+    this.artifact = new p.CastleGoodgameExternalClip(i, a, null, 0, false, o);
+    if (t) {
+      t.clipSizeChanged.add(this.bindFunction(this.onClipSizeChanged));
+      this.artifact.clipSizeComponent = t;
+    }
+    this.disp.addChild(this.artifact.asDisplayObject());
+    if (this.artifact.isLoaded) {
+      this.onArtifactLoaded(this.artifact);
+    } else {
+      this.artifact.clipLoaded.addOnce(this.bindFunction(this.onArtifactLoaded));
+    }
+    this.disp.addEventListener(n.CLICK, this.bindFunction(this.onClick));
   };
-  return C2SFindNextEnemyCastleVO;
-}(o.BasicCommandVO);
-exports.C2SFindNextEnemyCastleVO = s;
+  ArtifactComponent.prototype.onClick = function (e) {
+    if (this.eventVO.hasClickableArtifact()) {
+      a.CastleDialogHandler.getInstance().registerDialogsWithType(s.CastleArtifactBigDialog, new g.CastleArtifactEventDialogProperties(this.eventVO), false, d.CastleDialogConsts.PRIORITY_HIGH, 0, d.CastleDialogConsts.DIALOG_TYPE_MODAL_SINGLE);
+    }
+  };
+  ArtifactComponent.prototype.onClipSizeChanged = function (e) {
+    var t = e.asDisplayObject();
+    t.x = e.clipSizeComponent.offsetX;
+    if (u.instanceOfClass(this.eventVO, "RenegadeEventVO")) {
+      t.y = -t.height;
+    } else {
+      t.y = 0;
+    }
+  };
+  ArtifactComponent.prototype.onArtifactLoaded = function (e) {
+    var t = e.currentshownDisplayObject;
+    for (var i = 0; i < this.eventVO.artifactParts; i++) {
+      t["p" + i].visible = i >= this.eventVO.artifactPartsFound;
+    }
+  };
+  ArtifactComponent.prototype.onHide = function () {
+    this.disp.removeEventListener(n.CLICK, this.bindFunction(this.onClick));
+  };
+  return ArtifactComponent;
+}();
+exports.ArtifactComponent = o;
+var a = require("./9.js");
+var s = require("./3671.js");
+var r = require("./2.js");
+var l = require("./2.js");
+var c = require("./1.js");
+var u = require("./1.js");
+var d = require("./43.js");
+var p = require("./24.js");
+var h = require("./8.js");
+var g = require("./1086.js");

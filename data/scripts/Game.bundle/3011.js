@@ -3,34 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./538.js");
+var a = require("./62.js");
 var s = function (e) {
-  function DworkshopBuildingVE() {
+  function DwellingBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DworkshopBuildingVE, e);
-  DworkshopBuildingVE.prototype.createStatusIcons = function () {
-    e.prototype.createStatusIcons.call(this);
-    if (!this.statusIcons.isUpgradeIconActive) {
-      if (this.unitProductionBuildingVO.isProductive) {
-        this.statusIcons.addIcon(r.IsoStatusIconEnum.PRODUCTIVE);
-      } else if (!this.buildingVO.buildingState.isUnderConstruction) {
-        this.statusIcons.addIcon(r.IsoStatusIconEnum.UNPRODUCTIVE);
-      }
-    }
-  };
-  Object.defineProperty(DworkshopBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(DwellingBuildingVE, e);
+  Object.defineProperty(DwellingBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_DWorkshop;
+      return Library.CastleInterfaceElements.Icon_Population;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.AUnitProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return DworkshopBuildingVE;
-}(a.AUnitProductionBuildingVE);
-exports.DworkshopBuildingVE = s;
-var r = require("./177.js");
+  return DwellingBuildingVE;
+}(a.ABasicBuildingVE);
+exports.DwellingBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

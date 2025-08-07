@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1052.js");
+var a = require("./1053.js");
 var s = require("./27.js");
 var r = function (e) {
   function ACollectableItemPercentageBoosterVO() {

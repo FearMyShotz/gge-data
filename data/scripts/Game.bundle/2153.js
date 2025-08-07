@@ -1,20 +1,36 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./7.js");
-var r = function (e) {
-  function C2SAllianceChatVO(t) {
-    var i = e.call(this) || this;
-    i.M = a.TextValide.getValideSmartFoxJSONTextMessage(t.replace(/\r/g, ""));
-    return i;
+var n = function () {
+  function GlobalOfferVOAdditionalParams(e = 0, t = 0, i = 0) {
+    this._cashDiscount = 0;
+    this._goldDiscount = 0;
+    this._typeID = 0;
+    this._cashDiscount = e;
+    this._goldDiscount = t;
+    this._typeID = i;
   }
-  n.__extends(C2SAllianceChatVO, e);
-  C2SAllianceChatVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_ALLIANCE_CHAT;
-  };
-  return C2SAllianceChatVO;
-}(o.BasicCommandVO);
-exports.C2SAllianceChatVO = r;
+  Object.defineProperty(GlobalOfferVOAdditionalParams.prototype, "cashDiscount", {
+    get: function () {
+      return this._cashDiscount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(GlobalOfferVOAdditionalParams.prototype, "goldDiscount", {
+    get: function () {
+      return this._goldDiscount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(GlobalOfferVOAdditionalParams.prototype, "typeID", {
+    get: function () {
+      return this._typeID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return GlobalOfferVOAdditionalParams;
+}();
+exports.GlobalOfferVOAdditionalParams = n;

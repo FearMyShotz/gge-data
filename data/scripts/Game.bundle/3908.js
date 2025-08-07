@@ -4,19 +4,13 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./196.js");
 var a = function (e) {
-  function CheatQuestIDsCommand() {
+  function CheatRelicIDsCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CheatQuestIDsCommand, e);
-  CheatQuestIDsCommand.prototype.execute = function (e = null) {
-    var t = prompt("'on' or 'off' ", "on");
-    if (t == "on") {
-      o.ClientCheatsHelper.performCommand("showQuestIDs on");
-    }
-    if (t == "off") {
-      o.ClientCheatsHelper.performCommand("showQuestIDs on");
-    }
+  n.__extends(CheatRelicIDsCommand, e);
+  CheatRelicIDsCommand.prototype.execute = function (e = null) {
+    o.ClientCheatsHelper.performCommand("showRelicIDS");
   };
-  return CheatQuestIDsCommand;
+  return CheatRelicIDsCommand;
 }(require("./212.js").ABotCommand);
-exports.CheatQuestIDsCommand = a;
+exports.CheatRelicIDsCommand = a;

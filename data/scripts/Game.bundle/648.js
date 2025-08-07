@@ -3,67 +3,52 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function CastleRerollCostData(t) {
-    var i = e.call(this) || this;
-    i._rerollCostsByType = new Map();
-    for (var n = 0, o = t.rerollCosts; n < o.length; n++) {
-      var a = o[n];
-      if (a !== undefined) {
-        var r = new s.RerollCostVO(a);
-        if (!i._rerollCostsByType.get(r.type)) {
-          i._rerollCostsByType.set(r.type, []);
-        }
-        i._rerollCostsByType.get(r.type).push(r);
-      }
-    }
-    return i;
+var a = require("./542.js");
+var s = require("./4.js");
+var r = require("./3001.js");
+var l = require("./177.js");
+var c = function (e) {
+  function ACraftingBuildingVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleRerollCostData, e);
-  CastleRerollCostData.prototype.getRerollCostsByType = function (e) {
-    return this._rerollCostsByType.get(e);
-  };
-  CastleRerollCostData.prototype.getRerollCostsByTypeAndCount = function (e, t) {
-    var i;
-    for (var n = 0, o = this.getRerollCostsByType(e); n < o.length; n++) {
-      var a = o[n];
-      if (a.rerollCount == t) {
-        return a;
-      }
-      if (!i || i.rerollCount < a.rerollCount) {
-        i = a;
-      }
+  n.__extends(ACraftingBuildingVE, e);
+  ACraftingBuildingVE.prototype.createStatusIcons = function () {
+    e.prototype.createStatusIcons.call(this);
+    if (this.buildingVO.buildingState.isFunctionally && !this.statusIcons.isUpgradeIconActive && this.crafingQueueVO) {
+      this.statusIcons.addIcon(this.crafingQueueVO.isProducing() ? l.IsoStatusIconEnum.PRODUCTIVE : l.IsoStatusIconEnum.UNPRODUCTIVE);
     }
-    return i;
   };
-  CastleRerollCostData.prototype.getSoftCurrencyFreeRerollCountByType = function (e) {
-    var t = this.getRerollCostsByType(e);
-    var i = 0;
-    if (t != null) {
-      for (var n = 0, o = t; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined) {
-          var s = 0;
-          for (var r = 0, l = a.softCosts.list; r < l.length; r++) {
-            var c = l[r];
-            if (c !== undefined && c.amount > 0) {
-              s++;
-            }
-          }
-          if (a.c1Cost == 0 && s == 0) {
-            i++;
-          }
-        }
-      }
-    }
-    return i;
+  Object.defineProperty(ACraftingBuildingVE.prototype, "crafingQueueVO", {
+    get: function () {
+      return s.CastleModel.craftingData.getQueueVOByID(this.craftingBuildingVO.craftingQueueId);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ACraftingBuildingVE.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    s.CastleModel.craftingData.addEventListener(a.CraftingEvent.CRAFTING_QUEUE_UPDATED, this.bindFunction(this.onCraftingQueueUpdated));
   };
-  CastleRerollCostData.REROLL_TYPE_ALIEN = "alien";
-  CastleRerollCostData.REROLL_TYPE_OFFICERS_SCHOOL = "officersSchool";
-  CastleRerollCostData.REROLL_TYPE_PROLONG_TRAINING = "prolongTraining";
-  CastleRerollCostData.REROLL_TYPE_CHARGE_EFFECT = "chargeEffect";
-  return CastleRerollCostData;
-}(require("./54.js").CastleBasicData);
-exports.CastleRerollCostData = a;
-var s = require("./3078.js");
-o.classImplementsInterfaces(a, "IUpdatable", "ICastleBasicData");
+  ACraftingBuildingVE.prototype.removeEventListener = function () {
+    e.prototype.removeEventListener.call(this);
+    s.CastleModel.craftingData.removeEventListener(a.CraftingEvent.CRAFTING_QUEUE_UPDATED, this.bindFunction(this.onCraftingQueueUpdated));
+  };
+  ACraftingBuildingVE.prototype.onCraftingQueueUpdated = function (e) {
+    this.updateStatusIcon();
+  };
+  ACraftingBuildingVE.prototype.getRingMenuButtons = function () {
+    var t = e.prototype.getRingMenuButtons.call(this);
+    t.push(new r.RingMenuButtonCrafting());
+    return t;
+  };
+  Object.defineProperty(ACraftingBuildingVE.prototype, "craftingBuildingVO", {
+    get: function () {
+      return this.vo;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ACraftingBuildingVE;
+}(require("./62.js").ABasicBuildingVE);
+exports.ACraftingBuildingVE = c;
+o.classImplementsInterfaces(c, "ICollectableRendererList", "IIngameUICapable");

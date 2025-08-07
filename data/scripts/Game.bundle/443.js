@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./617.js");
+var a = require("./618.js");
 var s = require("./396.js");
 var r = require("./4.js");
 var l = require("./43.js");
@@ -125,8 +125,8 @@ var d = function (e) {
 exports.CastleSpyDialog = d;
 var p = require("./17.js");
 var h = require("./154.js");
-var g = require("./2559.js");
-var C = require("./2562.js");
-var _ = require("./2563.js");
+var g = require("./2560.js");
+var C = require("./2563.js");
+var _ = require("./2564.js");
 o.classImplementsInterfaces(d, "ICollectableRendererList");
 d.__initialize_static_members();

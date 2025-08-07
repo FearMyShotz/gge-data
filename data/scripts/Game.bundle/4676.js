@@ -2,40 +2,49 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function VLICommand() {
+var o = require("./5.js");
+var a = require("./7.js");
+var s = require("./1136.js");
+var r = require("./364.js");
+var l = function (e) {
+  function VPNCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(VLICommand, e);
-  Object.defineProperty(VLICommand.prototype, "cmdId", {
+  n.__extends(VPNCommand, e);
+  Object.defineProperty(VPNCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_ACHIEVEMENT_LIST;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      return a.ClientConstSF.S2C_VALIDATE_NEW_PLAYER_NAME;
     },
     enumerable: true,
     configurable: true
   });
-  VLICommand.prototype.exec = function (e) {
-    var t = s.int(e[0]);
-    var i = e[1];
-    switch (t) {
-      case a.ERROR.ALL_OK:
-        var n = JSON.parse(i[1]);
-        l.CastleModel.castleAchievementData.parse_vli(n);
+  VPNCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case o.ERROR.ALL_OK:
+        this.controller.dispatchEvent(new s.CastleNameValidationEvent(s.CastleNameValidationEvent.VPN_OK));
+        return true;
+      case o.ERROR.INVALID_NAME:
+        var i = JSON.parse(t[1]);
+        this.controller.dispatchEvent(new r.CastleRegisterErrorEvent(r.CastleRegisterErrorEvent.REGISTER_ERROR, r.CastleRegisterErrorEvent.INVALID_NAME, i));
+        break;
+      case o.ERROR.NAME_ALREADY_IN_USE:
+        i = JSON.parse(t[1]);
+        this.controller.dispatchEvent(new r.CastleRegisterErrorEvent(r.CastleRegisterErrorEvent.REGISTER_ERROR, r.CastleRegisterErrorEvent.NAME_ALREADY_IN_USE, i));
+        break;
+      case o.ERROR.NAME_HAS_ONLY_NUMBERS:
+        i = JSON.parse(t[1]);
+        this.controller.dispatchEvent(new r.CastleRegisterErrorEvent(r.CastleRegisterErrorEvent.REGISTER_ERROR, r.CastleRegisterErrorEvent.NAME_HAS_ONLY_NUMBERS, i));
+        break;
+      case o.ERROR.USAGE_OF_BADWORDS:
+        i = JSON.parse(t[1]);
+        this.controller.dispatchEvent(new r.CastleRegisterErrorEvent(r.CastleRegisterErrorEvent.REGISTER_ERROR, r.CastleRegisterErrorEvent.USAGE_OF_BADWORDS, i));
         break;
       default:
-        this.showErrorDialog(t, i);
+        i = JSON.parse(t[1]);
+        this.controller.dispatchEvent(new r.CastleRegisterErrorEvent(r.CastleRegisterErrorEvent.REGISTER_ERROR, r.CastleRegisterErrorEvent.INVALID_NAME, i));
     }
+    return false;
   };
-  return VLICommand;
-}(c.CastleCommand);
-exports.VLICommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return VPNCommand;
+}(require("./10.js").CastleCommand);
+exports.VPNCommand = l;

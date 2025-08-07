@@ -4,40 +4,46 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./10.js");
-var l = require("./9.js");
-var c = require("./38.js");
-var u = require("./2.js");
-var d = require("./3.js");
+var s = require("./5.js");
+var r = require("./6.js");
+var l = require("./7.js");
+var c = require("./53.js");
+var u = require("./137.js");
+var d = require("./10.js");
 var p = function (e) {
-  function TLEPCommand() {
+  function TCCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TLEPCommand, e);
-  Object.defineProperty(TLEPCommand.prototype, "cmdId", {
+  n.__extends(TCCCommand, e);
+  Object.defineProperty(TCCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GLOBAL_SERVER_REGISTER_OR_LOGIN_EP;
+      return l.ClientConstSF.S2C_SET_BOUGHT_SPECIAL_SERVER_CASTLES;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  TLEPCommand.prototype.executeCommand = function (e, t) {
+  TCCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case a.ERROR.ALL_OK:
-        break;
-      case a.ERROR.NO_EVENT:
-        l.CastleDialogHandler.getInstance().registerDialogs(c.CastleStandardOkDialog, new u.BasicStandardOkDialogProperties(d.Localize.text("generic_alert_information"), d.Localize.text("alert_tempServer_serverNotAvailable")));
+      case s.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        var n = r.int(i[a.CommKeys.TEMP_SERVER_CAMP_ID]);
+        var o = r.int(i[a.CommKeys.ALLIANCE_BATTLEGROUND_CAMP_ID]);
+        if (u.TempServerHelper.tmpServerEvent) {
+          u.TempServerHelper.tmpServerEvent.castleBought = n > 0;
+        }
+        if (c.ABGHelper.abgEvent) {
+          c.ABGHelper.abgEvent.castleBought = o > 0;
+        }
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return TLEPCommand;
-}(r.CastleCommand);
-exports.TLEPCommand = p;
+  return TCCCommand;
+}(d.CastleCommand);
+exports.TCCCommand = p;
 o.classImplementsInterfaces(p, "IExecCommand");

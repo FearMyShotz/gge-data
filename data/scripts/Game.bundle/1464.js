@@ -89,5 +89,5 @@ var u = function () {
   return CastleBuildingStats;
 }();
 exports.CastleBuildingStats = u;
-var d = require("./767.js");
+var d = require("./769.js");
 u.__initialize_static_members();

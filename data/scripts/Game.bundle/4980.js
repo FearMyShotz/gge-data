@@ -5,36 +5,39 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function GAMCommand() {
+var r = require("./71.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function CSMCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GAMCommand, e);
-  Object.defineProperty(GAMCommand.prototype, "cmdId", {
+  n.__extends(CSMCommand, e);
+  Object.defineProperty(CSMCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_ALL_MOVEMENTS;
+      return s.ClientConstSF.S2C_CREATE_SPY_MOVEMENT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  GAMCommand.prototype.executeCommand = function (e, t) {
+  CSMCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.otherPlayerData.parseOwnerInfoArray(i.O);
-        r.CastleModel.armyData.parse_GAM(i);
+        l.CastleModel.currencyData.parseGCU(i.gcu);
+        l.CastleModel.otherPlayerData.parseOwnerInfoArray(i.O);
+        l.CastleModel.armyData.parseMapMovementArray([i.A]);
+        this.controller.dispatchEvent(new r.AreaDataEvent(r.AreaDataEvent.ON_SPY_DATA_CHANGED));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GAMCommand;
-}(l.CastleCommand);
-exports.GAMCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return CSMCommand;
+}(c.CastleCommand);
+exports.CSMCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

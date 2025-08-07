@@ -2,38 +2,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./7.js");
-var r = function (e) {
-  function C2SCreateDefenceSupportMovementVO(t, i, n, o, s, r, l, c, u, d) {
-    var p = this;
-    p.SID = 0;
-    p.TX = 0;
-    p.TY = 0;
-    p.LID = 0;
-    p.WT = 0;
-    p.HBW = 0;
-    p.BPC = 0;
-    p.PTT = 0;
-    p.SD = 0;
-    CONSTRUCTOR_HACK;
-    (p = e.call(this) || this).SID = t;
-    p.TX = i;
-    p.TY = n;
-    p.A = o;
-    p.LID = c;
-    p.WT = s;
-    p.HBW = a.int(u ? -1 : r);
-    p.BPC = l;
-    p.PTT = a.int(u ? 1 : 0);
-    p.SD = d;
-    return p;
+var o = function (e) {
+  function C2SCreateArmyAttackMovementAdvisorVO() {
+    var t = e !== null && e.apply(this, arguments) || this;
+    t.AAC = 0;
+    t.AASM = 0;
+    return t;
   }
-  n.__extends(C2SCreateDefenceSupportMovementVO, e);
-  C2SCreateDefenceSupportMovementVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_CREATE_DEFENCE_SUPPORT_MOVEMENT;
+  n.__extends(C2SCreateArmyAttackMovementAdvisorVO, e);
+  C2SCreateArmyAttackMovementAdvisorVO.prototype.setAdvisor = function (e, t) {
+    this.AAC = e;
+    this.AASM = t ? 1 : 0;
   };
-  return C2SCreateDefenceSupportMovementVO;
-}(o.BasicCommandVO);
-exports.C2SCreateDefenceSupportMovementVO = r;
+  return C2SCreateArmyAttackMovementAdvisorVO;
+}(require("./1951.js").C2SCreateArmyAttackMovementVO);
+exports.C2SCreateArmyAttackMovementAdvisorVO = o;

@@ -61,5 +61,5 @@ exports.CollectableManager = n;
 var o = require("./12.js");
 var a = require("./48.js");
 var s = require("./1175.js");
-var r = require("./2037.js");
+var r = require("./2038.js");
 n.__initialize_static_members();

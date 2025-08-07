@@ -4,38 +4,41 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./5.js");
 var a = require("./3.js");
-var s = require("./83.js");
-var r = require("./476.js");
-var l = function (e) {
-  function MessageFriendJoinTheGameVO() {
+var s = require("./6.js");
+var r = require("./83.js");
+var l = require("./477.js");
+var c = function (e) {
+  function MessageFriendInviteSinglePaymentVO() {
     var t = this;
     t.friendID = 0;
+    t.playerCount = 0;
     CONSTRUCTOR_HACK;
     return t = e.call(this) || this;
   }
-  n.__extends(MessageFriendJoinTheGameVO, e);
-  Object.defineProperty(MessageFriendJoinTheGameVO.prototype, "dialogInfo", {
+  n.__extends(MessageFriendInviteSinglePaymentVO, e);
+  Object.defineProperty(MessageFriendInviteSinglePaymentVO.prototype, "dialogInfo", {
     get: function () {
-      return new s.DialogInfoVO(null, null, c.IngameClientCommands.OPEN_INVITE_A_FRIEND_TUTORIAL_FINISHER, this);
+      return new r.DialogInfoVO(null, null, u.IngameClientCommands.GET_INVITE_A_FRIEND_RECEIVED_REWARDS, [this, u.IngameClientCommands.OPEN_INVITE_A_FRIEND_SINGLE_PAYMENT_REWARD_RECEIVED]);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.AMessageFriendInviteVO.prototype, "dialogInfo").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.AMessageFriendInviteVO.prototype, "dialogInfo").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  MessageFriendJoinTheGameVO.prototype.parseSubject = function () {
-    return a.Localize.text("message_header_referFriend_inviter");
+  MessageFriendInviteSinglePaymentVO.prototype.parseSender = function () {
+    return a.Localize.text("system");
   };
-  MessageFriendJoinTheGameVO.prototype.parseSender = function () {
-    return this.friendName;
+  MessageFriendInviteSinglePaymentVO.prototype.parseSubject = function () {
+    return a.Localize.text("message_header_referFriend_reward");
   };
-  MessageFriendJoinTheGameVO.prototype.parseMessageHeader = function (e) {
+  MessageFriendInviteSinglePaymentVO.prototype.parseMessageHeader = function (e) {
     var t = e.split(o.MessageConst.SUBTYPE_META_DATA_SPLITTER);
     this.friendID = parseInt(t[0]);
     this.friendName = t[1];
+    this.playerCount = s.int(t[2]);
   };
-  return MessageFriendJoinTheGameVO;
-}(r.AMessageFriendInviteVO);
-exports.MessageFriendJoinTheGameVO = l;
-var c = require("./29.js");
+  return MessageFriendInviteSinglePaymentVO;
+}(l.AMessageFriendInviteVO);
+exports.MessageFriendInviteSinglePaymentVO = c;
+var u = require("./29.js");

@@ -45,6 +45,6 @@ var l = function (e) {
 }(r.APanelButton);
 exports.BreweryPanelButton = l;
 var c = require("./14.js");
-var u = require("./1022.js");
+var u = require("./1023.js");
 var d = require("./17.js");
 o.classImplementsInterfaces(l, "ICollectableRendererList");

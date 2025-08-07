@@ -3,74 +3,133 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./6.js");
-var l = require("./43.js");
-var c = require("./8.js");
-var u = require("./93.js");
-var d = require("./1895.js");
-var p = function (e) {
-  function CastleTournamentRankListItem(t) {
-    var i = this;
-    i._playerId = -1;
-    i._playerName = "";
+var a = require("./6.js");
+var s = require("./1894.js");
+var r = require("./4.js");
+var l = require("./79.js");
+var c = function (e) {
+  function TournamentEventVO() {
+    var t = this;
+    t._famePerDay = 0;
+    t._ownRank = 0;
+    t._ownEarnedFamePoints = 0;
+    t._minimumFamepointsForBoobyprice = 0;
+    t._ownLeague = 0;
     CONSTRUCTOR_HACK;
-    return i = e.call(this, t) || this;
+    (t = e.call(this) || this)._ranking = new Map();
+    return t;
   }
-  n.__extends(CastleTournamentRankListItem, e);
-  CastleTournamentRankListItem.prototype.parseItemData = function (t) {
-    e.prototype.parseItemData.call(this, t);
-    this._playerId = r.int(t[2]);
-    this._playerName = t[3];
+  n.__extends(TournamentEventVO, e);
+  TournamentEventVO.prototype.parseEventXmlNode = function (e) {
+    this._famePerDay = parseInt(e.famePerDay || "");
   };
-  CastleTournamentRankListItem.prototype.updateBgColor = function () {
-    var e = CastleTournamentRankListItem.BACKGROUND_FRAME_BOBBY;
-    if (this.isSearchTextRelevant) {
-      e = CastleTournamentRankListItem.BACKGROUND_FRAME_RELEVANT;
-    } else if (this.rank <= CastleTournamentRankListItem.COLOR_TOP3_RANK) {
-      e = CastleTournamentRankListItem.BACKGROUND_FRAME_TOP3;
-    } else if (this.rank <= CastleTournamentRankListItem.COLOR_TOPX_RANK) {
-      e = CastleTournamentRankListItem.BACKGROUND_FRAME_TOPX;
+  TournamentEventVO.prototype.parseParamObject = function (e) {
+    this._winnerRewardList = r.CastleModel.rewardData.getListById(parseInt(e.WR));
+    this._topXRewardList = r.CastleModel.rewardData.getListById(parseInt(e.TR));
+    this._boobyRewardList = r.CastleModel.rewardData.getListById(parseInt(e.BR));
+    if (e.R) {
+      for (var t = 0, i = e.R; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          this._ranking.set(n[0], {
+            O: r.CastleModel.otherPlayerData.parseOwnerInfo(n[2]),
+            EFP: a.int(n[1])
+          });
+        }
+      }
     }
-    this.disp.mc_background.gotoAndStop(e);
+    this._ownRank = a.int(e.OR);
+    this._ownEarnedFamePoints = a.int(e.OEP);
+    this._minimumFamepointsForBoobyprice = a.int(e.MFB);
   };
-  Object.defineProperty(CastleTournamentRankListItem.prototype, "isSearchTextRelevant", {
+  Object.defineProperty(TournamentEventVO.prototype, "eventBuildingWOD", {
     get: function () {
-      return this._playerName != "" && this._playerName.toLowerCase() == this.searchFieldValue.toLowerCase();
+      return TournamentEventVO.EVENT_BUILDING_WOD;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.ACastleTournamentRankListItem.prototype, "isSearchTextRelevant").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.ASpecialEventVO.prototype, "eventBuildingWOD").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleTournamentRankListItem.prototype.updateText = function () {
-    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_rank, new a.LocalizedNumberVO(this.rank)).autoFitToBounds = true;
-    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_name, new s.TextVO(this._playerName)).autoFitToBounds = true;
-    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_amount, new a.LocalizedNumberVO(this.points)).autoFitToBounds = true;
+  Object.defineProperty(TournamentEventVO.prototype, "eventBuildingNameId", {
+    get: function () {
+      return "eventBuilding_Tournement";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ASpecialEventVO.prototype, "eventBuildingNameId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TournamentEventVO.prototype, "famePerDay", {
+    get: function () {
+      return this._famePerDay;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  TournamentEventVO.prototype.getRankObject = function (e) {
+    return this._ranking.get(e);
   };
-  CastleTournamentRankListItem.prototype.onClick = function (t) {
-    if (c.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      t.target;
-      if (this._playerId >= 0) {
-        h.CastleComponent.dialogHandler.registerDialogsWithTypeAndDefaultValues(g.CastlePlayerInfoDialog, new u.CastlePlayerInfoDialogProperties(this._playerId), l.CastleDialogConsts.DIALOG_TYPE_SINGLE);
-      }
-    }
+  Object.defineProperty(TournamentEventVO.prototype, "ownRank", {
+    get: function () {
+      return this._ownRank;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TournamentEventVO.prototype, "ownEarnedFamePoints", {
+    get: function () {
+      return this._ownEarnedFamePoints;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TournamentEventVO.prototype, "minimumFamepointsForBoobyprice", {
+    get: function () {
+      return this._minimumFamepointsForBoobyprice;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TournamentEventVO.prototype, "winnerRewardList", {
+    get: function () {
+      return this._winnerRewardList;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TournamentEventVO.prototype, "topXRewardList", {
+    get: function () {
+      return this._topXRewardList;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TournamentEventVO.prototype, "boobyRewardList", {
+    get: function () {
+      return this._boobyRewardList;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TournamentEventVO.prototype, "ownLeague", {
+    get: function () {
+      return this._ownLeague;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  TournamentEventVO.prototype.openDialog = function (e = true) {
+    this.executeOpenDialog(e, u.CastleTournamentEventDialog, new s.ACastleTournamentEventDialogProperties(this));
   };
-  CastleTournamentRankListItem.__initialize_static_members = function () {
-    CastleTournamentRankListItem.COLOR_TOP3_RANK = 3;
-    CastleTournamentRankListItem.COLOR_TOPX_RANK = 100;
-    CastleTournamentRankListItem.BACKGROUND_FRAME_TOP3 = 1;
-    CastleTournamentRankListItem.BACKGROUND_FRAME_TOPX = 2;
-    CastleTournamentRankListItem.BACKGROUND_FRAME_BOBBY = 3;
-    CastleTournamentRankListItem.BACKGROUND_FRAME_RELEVANT = 4;
+  TournamentEventVO.__initialize_static_members = function () {
+    TournamentEventVO.EVENT_BUILDING_WOD = 217;
   };
-  return CastleTournamentRankListItem;
-}(d.ACastleTournamentRankListItem);
-exports.CastleTournamentRankListItem = p;
-var h = require("./14.js");
-var g = require("./94.js");
-o.classImplementsInterfaces(p, "ICollectableRendererList");
-p.__initialize_static_members();
+  return TournamentEventVO;
+}(l.ASpecialEventVO);
+exports.TournamentEventVO = c;
+var u = require("./4552.js");
+o.classImplementsInterfaces(c, "IEventOverviewable");
+c.__initialize_static_members();

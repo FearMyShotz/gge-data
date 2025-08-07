@@ -1,36 +1,49 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function TeaserVO() {
-    this._id = 0;
-    this._timestamp = 0;
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./6.js");
+var r = require("./7.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function VIPCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  TeaserVO.prototype.fillFromParamObject = function (e) {
-    this.id = o.int(e.FID);
-    this.timestamp = e.FTS;
+  n.__extends(VIPCommand, e);
+  VIPCommand.prototype.executeCommand = function (t, i) {
+    return e.prototype.executeCommand.call(this, t, i);
   };
-  Object.defineProperty(TeaserVO.prototype, "id", {
+  VIPCommand.prototype.exec = function (e) {
+    var t = s.int(e[0]);
+    var i = e[1];
+    switch (t) {
+      case a.ERROR.ALL_OK:
+        var n = JSON.parse(i[1]);
+        l.CastleModel.vipData.parse_VIP(n);
+        if (d.CastleLayoutManager.getInstance().worldmapScreen && d.CastleLayoutManager.getInstance().worldmapScreen.renderer) {
+          d.CastleLayoutManager.getInstance().worldmapScreen.renderer.invalidateMap();
+          d.CastleLayoutManager.getInstance().worldmapScreen.renderer.clearMapobjects(false);
+        }
+        break;
+      default:
+        this.showErrorDialog(t, i);
+    }
+  };
+  Object.defineProperty(VIPCommand.prototype, "cmdId", {
     get: function () {
-      return this._id;
+      return r.ClientConstSF.S2C_VIP_INFO_EVENT;
     },
     set: function (e) {
-      this._id = e;
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(TeaserVO.prototype, "timestamp", {
-    get: function () {
-      return this._timestamp;
-    },
-    set: function (e) {
-      this._timestamp = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return TeaserVO;
-}();
-exports.TeaserVO = n;
-var o = require("./6.js");
+  return VIPCommand;
+}(c.CastleCommand);
+exports.VIPCommand = u;
+var d = require("./17.js");
+o.classImplementsInterfaces(u, "IExecCommand");

@@ -108,6 +108,6 @@ var m = function (e) {
 exports.CastleSlumDonateCharacterDialog = m;
 var f = require("./12.js");
 var O = require("./9.js");
-var E = require("./3193.js");
+var E = require("./3194.js");
 r.classImplementsInterfaces(m, "ICollectableRendererList");
 m.__initialize_static_members();

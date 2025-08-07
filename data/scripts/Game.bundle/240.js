@@ -7,7 +7,7 @@ var a = require("./5.js");
 var s = require("./6.js");
 var r = require("./28.js");
 var l = require("./30.js");
-var c = require("./3358.js");
+var c = require("./3359.js");
 var u = function (e) {
   function CastleHeroDefaultBoosterShopVO(t, i, n, o) {
     var a = this;

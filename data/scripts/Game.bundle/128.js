@@ -10,5 +10,5 @@ var o = function (e) {
   CollectableItemC2VO.SERVER_KEY = "C2";
   CollectableItemC2VO.XML_KEY = ["currency2", "c2"];
   return CollectableItemC2VO;
-}(require("./861.js").ACollectableItemCurrencyVO);
+}(require("./862.js").ACollectableItemCurrencyVO);
 exports.CollectableItemC2VO = o;

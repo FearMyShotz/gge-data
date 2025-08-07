@@ -1,41 +1,50 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./157.js");
-var l = require("./1094.js");
-var c = function (e) {
-  function DifficultyScalingTextListItem(t, i) {
-    var n = e.call(this, new (a.getDefinitionByName("EventDifficultyTextItem"))(), i) || this;
-    n.eventID = t;
-    n.fill();
-    return n;
+var n = require("./3735.js");
+var o = function () {
+  function SamuraiInvasionDaimyoInfoVO() {
+    this._isEnabled = false;
+    this._castleContracts = [];
+    this._townshipContracts = [];
   }
-  n.__extends(DifficultyScalingTextListItem, e);
-  DifficultyScalingTextListItem.prototype.fill = function () {
-    o.GoodgameTextFieldManager.getInstance().registerTextField(this.itemMc.txt_copy, new s.LocalizedTextVO("dialog_difficultyScaling_chooseDifficulty_desc", ["event_title_" + this.eventID]));
+  SamuraiInvasionDaimyoInfoVO.prototype.parseServerObject = function (e) {
+    this._isEnabled = e.E == 1;
+    var t = e.C;
+    if (t) {
+      for (var i = 0, o = t.DCC; i < o.length; i++) {
+        var a = o[i];
+        if (a !== undefined) {
+          this._castleContracts.push(new n.SamuraiInvasionContractVO(a));
+        }
+      }
+      for (var s = 0, r = t.DTC; s < r.length; s++) {
+        a = r[s];
+        this._townshipContracts.push(new n.SamuraiInvasionContractVO(a));
+      }
+    }
   };
-  Object.defineProperty(DifficultyScalingTextListItem.prototype, "itemMc", {
+  Object.defineProperty(SamuraiInvasionDaimyoInfoVO.prototype, "isEnabled", {
     get: function () {
-      return this.disp;
+      return this._isEnabled;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DifficultyScalingTextListItem.prototype, "height", {
+  Object.defineProperty(SamuraiInvasionDaimyoInfoVO.prototype, "castleContracts", {
     get: function () {
-      return this.disp.height;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ACollapsibleItem.prototype, "height").set.call(this, e);
+      return this._castleContracts;
     },
     enumerable: true,
     configurable: true
   });
-  return DifficultyScalingTextListItem;
-}(r.ACollapsibleItem);
-exports.DifficultyScalingTextListItem = c;
-a.classImplementsInterfaces(l.GlobalEffectEventDialogListItem, "ICollectableRendererList", "ICollapsibleItem", "ILayoutable");
+  Object.defineProperty(SamuraiInvasionDaimyoInfoVO.prototype, "townshipContracts", {
+    get: function () {
+      return this._townshipContracts;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return SamuraiInvasionDaimyoInfoVO;
+}();
+exports.SamuraiInvasionDaimyoInfoVO = o;

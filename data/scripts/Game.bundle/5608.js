@@ -2,77 +2,144 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function ConstructionItemBlueprintData(e) {
-    this._newBlueprints = [];
-    this.parseFromXml(e);
+  function CastleUserCastleListDetailed() {
+    this._detailedCastleList = new Map();
   }
-  ConstructionItemBlueprintData.prototype.parseFromXml = function (e) {
-    this._recipes = new Map();
-    this._blueprints = new Map();
-    this._newBlueprints = [];
-    for (var t = 0, i = e.constructionItemRecipes; t < i.length; t++) {
-      var n = i[t];
-      if (n != null) {
-        try {
-          var s = new o.ConstructionItemRecipeVO(n);
-          this._recipes.set(s.id, s);
-          this.addOrUpdateBlueprint(s);
-          0;
-        } catch (e) {
-          a.debug(e.stack);
+  CastleUserCastleListDetailed.prototype.parseData = function (e) {
+    this._detailedCastleList = new Map();
+    if (e.C) {
+      var t;
+      var i;
+      for (var n = 0, o = e.C; n < o.length; n++) {
+        var a = o[n];
+        if (a !== undefined) {
+          t = [];
+          for (var c = 0, u = a.AI; c < u.length; c++) {
+            var d = u[c];
+            if (d !== undefined) {
+              (i = new s.DetailedCastleVO()).kingdomID = l.int(a.KID);
+              i.parseData(d);
+              t.push(i);
+            }
+          }
+          this._detailedCastleList.set(a.KID, t);
         }
+      }
+      this.controller.dispatchEvent(new r.CastleDetailedCastleListEvent(r.CastleDetailedCastleListEvent.DETAILED_CASTLELISTDATA_UPDATED));
+    }
+  };
+  CastleUserCastleListDetailed.prototype.parse_rue = function (e) {
+    if (e) {
+      var t = l.int(e.AID);
+      var i = l.int(e.SID);
+      var n = this.getVObyCastleID(t, i);
+      if (n) {
+        var o = l.int(e.WID);
+        var a = l.int(e.NUA);
+        n.unitInventory.setUnit(o, a);
       }
     }
   };
-  ConstructionItemBlueprintData.prototype.addOrUpdateBlueprint = function (e) {
-    if (!this._blueprints.has(e.blueprintId)) {
-      this._blueprints.set(e.blueprintId, new s.ConstructionItemBlueprintVO(e.blueprintId));
-    }
-    this._blueprints.get(e.blueprintId).addRecipe(e);
-  };
-  Object.defineProperty(ConstructionItemBlueprintData.prototype, "blueprints", {
-    get: function () {
-      return this._blueprints;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ConstructionItemBlueprintData.prototype.findRecipeFor = function (e, t = false) {
-    if (this._blueprints != null) {
-      for (var i = 0, n = Array.from(this._blueprints.values()); i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && o.recipes[0].constructionItem.name == e.name) {
-          for (var a = 0, s = o.recipes; a < s.length; a++) {
-            var r = s[a];
-            if (r !== undefined && r.constructionItemId == e.id && (!t || r.constructionItemNeeded)) {
-              return r;
-            }
-          }
+  CastleUserCastleListDetailed.prototype.getVObyCastleID = function (e, t) {
+    var i = this._detailedCastleList.get(t);
+    if (i) {
+      for (var n = 0, o = i; n < o.length; n++) {
+        var a = o[n];
+        if (a !== undefined && a.areaID == e) {
+          return a;
         }
       }
     }
     return null;
   };
-  Object.defineProperty(ConstructionItemBlueprintData.prototype, "recipes", {
-    get: function () {
-      return this._recipes;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ConstructionItemBlueprintData.prototype, "newBlueprints", {
-    get: function () {
-      return this._newBlueprints;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ConstructionItemBlueprintData.prototype.addNewBlueprints = function (e) {
-    this._newBlueprints = this._newBlueprints.concat(e);
+  CastleUserCastleListDetailed.prototype.getMainCastleByKingdomID = function (e) {
+    var t = this._detailedCastleList.get(e);
+    if (t != null) {
+      for (var i = 0, n = t; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined && o.getIsMyMainCastle(e)) {
+          return o;
+        }
+      }
+    }
+    return null;
   };
-  return ConstructionItemBlueprintData;
+  Object.defineProperty(CastleUserCastleListDetailed.prototype, "detailedCastleList", {
+    get: function () {
+      return this._detailedCastleList;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleUserCastleListDetailed.prototype.updateDetailVO = function (e) {
+    var t = this.getVObyCastleID(e.castleID, e.kingdomID);
+    if (t) {
+      for (var i = 0, n = a.ClientConstCollectable.GROUP_LIST_RESOURCES; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          t.setResource(o, e.resources.getAmountOrDefaultByType(o));
+        }
+      }
+    }
+  };
+  CastleUserCastleListDetailed.prototype.getFilteredCastlesList = function (e) {
+    var t = [];
+    if (this.detailedCastleList != null) {
+      for (var i = 0, n = Array.from(this.detailedCastleList.keys()); i < n.length; i++) {
+        var a = n[i];
+        if (a !== undefined) {
+          var s = this.detailedCastleList.get(a);
+          if (s != null) {
+            for (var r = 0, l = s; r < l.length; r++) {
+              var c = l[r];
+              if (c !== undefined && e(c)) {
+                t.push(c);
+              }
+            }
+          }
+        }
+      }
+    }
+    t.sort(o.ClientConstSort.sortDetailedCastleVOByKingdomID);
+    return t;
+  };
+  CastleUserCastleListDetailed.prototype.getCastlesWithBarracksList = function () {
+    return this.getFilteredCastlesList(CastleUserCastleListDetailed.filterHasBarracks);
+  };
+  CastleUserCastleListDetailed.prototype.getCastlesWithWorkshopsList = function () {
+    return this.getFilteredCastlesList(CastleUserCastleListDetailed.filterHasWorkshop);
+  };
+  CastleUserCastleListDetailed.prototype.getAllCastlesList = function () {
+    return this.getFilteredCastlesList(CastleUserCastleListDetailed.filterTrue);
+  };
+  CastleUserCastleListDetailed.prototype.getCastlesWithHospitalsList = function () {
+    return this.getFilteredCastlesList(CastleUserCastleListDetailed.filterHasHospital);
+  };
+  CastleUserCastleListDetailed.filterHasBarracks = function (e) {
+    return e.hasBarracks;
+  };
+  CastleUserCastleListDetailed.filterHasWorkshop = function (e) {
+    return e.hasSiegeWorkshop || e.hasDefenseWorkshop;
+  };
+  CastleUserCastleListDetailed.filterTrue = function (e) {
+    return true;
+  };
+  CastleUserCastleListDetailed.filterHasHospital = function (e) {
+    return e.hasHospital;
+  };
+  Object.defineProperty(CastleUserCastleListDetailed.prototype, "controller", {
+    get: function () {
+      return c.CastleBasicController.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleUserCastleListDetailed;
 }();
-exports.ConstructionItemBlueprintData = n;
-var o = require("./5609.js");
-var a = require("./2.js");
-var s = require("./5610.js");
+exports.CastleUserCastleListDetailed = n;
+var o = require("./75.js");
+var a = require("./86.js");
+var s = require("./5609.js");
+var r = require("./219.js");
+var l = require("./6.js");
+var c = require("./15.js");

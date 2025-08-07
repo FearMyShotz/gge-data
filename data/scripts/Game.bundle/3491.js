@@ -3,20 +3,20 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./225.js");
+var a = require("./226.js");
 var s = function (e) {
-  function CastleAllianceAlienInvasionRewardDialogPlayer() {
+  function CastleRedAllianceAlienInvasionRewardDialogAlliance() {
     return e.call(this) || this;
   }
-  n.__extends(CastleAllianceAlienInvasionRewardDialogPlayer, e);
-  CastleAllianceAlienInvasionRewardDialogPlayer.prototype.applyPropertiesLoaded = function (t = null) {
-    this.noRewardFrame = a.CastleGenericRewardDialog.FRAME_NOREWARD_ALIEN_ALLIANCE;
-    this.headerFrame = a.CastleGenericRewardDialog.FRAME_HEADER_ALIEN_ALLIANCE;
+  n.__extends(CastleRedAllianceAlienInvasionRewardDialogAlliance, e);
+  CastleRedAllianceAlienInvasionRewardDialogAlliance.prototype.applyPropertiesLoaded = function (t = null) {
+    this.noRewardFrame = a.CastleGenericRewardDialog.FRAME_NOREWARD_RED_ALIEN_ALLIANCE;
+    this.headerFrame = a.CastleGenericRewardDialog.FRAME_HEADER_RED_ALIEN;
     e.prototype.applyPropertiesLoaded.call(this, t);
   };
-  Object.defineProperty(CastleAllianceAlienInvasionRewardDialogPlayer.prototype, "firstPlaceTitleTextId", {
+  Object.defineProperty(CastleRedAllianceAlienInvasionRewardDialogAlliance.prototype, "firstPlaceTitleTextId", {
     get: function () {
-      return "dialog_alienInvasion_gotRoyalReward_title";
+      return "dialog_redAlienInvasionAlliance_gotRoyalReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "firstPlaceTitleTextId").set.call(this, e);
@@ -24,9 +24,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceAlienInvasionRewardDialogPlayer.prototype, "firstPlaceCopyTextId", {
+  Object.defineProperty(CastleRedAllianceAlienInvasionRewardDialogAlliance.prototype, "firstPlaceCopyTextId", {
     get: function () {
-      return "dialog_alienInvasion_gotRoyalReward_copy";
+      return "dialog_redAlienInvasionAlliance_gotRoyalReward" + this.grantTypeSuffix + "_copy";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "firstPlaceCopyTextId").set.call(this, e);
@@ -34,9 +34,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceAlienInvasionRewardDialogPlayer.prototype, "topXTitleTextId", {
+  Object.defineProperty(CastleRedAllianceAlienInvasionRewardDialogAlliance.prototype, "topXTitleTextId", {
     get: function () {
-      return "dialog_alienInvasion_gotTopxReward_title";
+      return "dialog_redAlienInvasionAlliance_gotTopxReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXTitleTextId").set.call(this, e);
@@ -44,9 +44,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceAlienInvasionRewardDialogPlayer.prototype, "topXCopyTextId", {
+  Object.defineProperty(CastleRedAllianceAlienInvasionRewardDialogAlliance.prototype, "topXCopyTextId", {
     get: function () {
-      return "dialog_alienInvasion_gotTopxReward_copy";
+      return "dialog_redAlienInvasionAlliance_gotTopxReward" + this.grantTypeSuffix + "_copy";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXCopyTextId").set.call(this, e);
@@ -54,7 +54,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceAlienInvasionRewardDialogPlayer.prototype, "topXCopyTextReplacements", {
+  Object.defineProperty(CastleRedAllianceAlienInvasionRewardDialogAlliance.prototype, "topXCopyTextReplacements", {
     get: function () {
       return [this.dialogProperties.points, this.dialogProperties.topXCount];
     },
@@ -64,9 +64,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceAlienInvasionRewardDialogPlayer.prototype, "gotRewardTitleTextId", {
+  Object.defineProperty(CastleRedAllianceAlienInvasionRewardDialogAlliance.prototype, "gotRewardTitleTextId", {
     get: function () {
-      return "dialog_alienInvasion_gotReward_title";
+      return "dialog_redAlienInvasionAlliance_gotReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "gotRewardTitleTextId").set.call(this, e);
@@ -74,9 +74,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceAlienInvasionRewardDialogPlayer.prototype, "gotRewardCopyTextId", {
+  Object.defineProperty(CastleRedAllianceAlienInvasionRewardDialogAlliance.prototype, "gotRewardCopyTextId", {
     get: function () {
-      return "dialog_alienInvasion_gotReward_copy";
+      return "dialog_redAlienInvasionAlliance_gotReward" + this.grantTypeSuffix + "_copy";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "gotRewardCopyTextId").set.call(this, e);
@@ -84,9 +84,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceAlienInvasionRewardDialogPlayer.prototype, "noRewardTitleTextId", {
+  Object.defineProperty(CastleRedAllianceAlienInvasionRewardDialogAlliance.prototype, "noRewardTitleTextId", {
     get: function () {
-      return "dialog_alienInvasion_eventEnd_title";
+      return "dialog_redAlienInvasionAlliance_eventEnd_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "noRewardTitleTextId").set.call(this, e);
@@ -94,9 +94,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceAlienInvasionRewardDialogPlayer.prototype, "noRewardCopyTextId", {
+  Object.defineProperty(CastleRedAllianceAlienInvasionRewardDialogAlliance.prototype, "noRewardCopyTextId", {
     get: function () {
-      return "dialog_alienInvasion_eventEnd_copy";
+      return "dialog_redAlienInvasionAlliance_eventEnd_copy";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "noRewardCopyTextId").set.call(this, e);
@@ -104,11 +104,11 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastleAllianceAlienInvasionRewardDialogPlayer.__initialize_static_members = function () {
-    CastleAllianceAlienInvasionRewardDialogPlayer.NAME = "CastleAllianceAlienInvasionEventRewardPlayer";
+  CastleRedAllianceAlienInvasionRewardDialogAlliance.__initialize_static_members = function () {
+    CastleRedAllianceAlienInvasionRewardDialogAlliance.NAME = "CastleRedAllianceAlienInvasionRewardAlliance";
   };
-  return CastleAllianceAlienInvasionRewardDialogPlayer;
+  return CastleRedAllianceAlienInvasionRewardDialogAlliance;
 }(a.CastleGenericRewardDialog);
-exports.CastleAllianceAlienInvasionRewardDialogPlayer = s;
+exports.CastleRedAllianceAlienInvasionRewardDialogAlliance = s;
 s.__initialize_static_members();
 o.classImplementsInterfaces(s, "ICollectableRendererList");

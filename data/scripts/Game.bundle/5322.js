@@ -2,41 +2,86 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./1.js");
-var o = require("./60.js");
-var a = function () {
-  function OfferDescriptionAdditionalPrimeSale() {}
-  Object.defineProperty(OfferDescriptionAdditionalPrimeSale.prototype, "name", {
+var o = require("./6.js");
+var a = require("./60.js");
+var s = function () {
+  function OfferQuestConditionPaymentMinWithUpdate() {
+    this._neededValue = 0;
+    this._currentValue = 0;
+    this.inclusive = false;
+  }
+  Object.defineProperty(OfferQuestConditionPaymentMinWithUpdate.prototype, "registerName", {
     get: function () {
-      return o.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE;
+      return a.ClientConstOffer.QUEST_CONDITION_PAYMENT_MIN_WITH_UPDATE;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionAdditionalPrimeSale.prototype.registerRewardParameter = function (e) {
-    e.addEntry(this.name, this);
+  OfferQuestConditionPaymentMinWithUpdate.prototype.registerOfferCondition = function (e) {
+    e.addEntry(this.registerName, this);
   };
-  OfferDescriptionAdditionalPrimeSale.prototype.parseFromObjectParam = function (e) {
-    var t = [];
-    for (var i = 0, n = e.wodID; i < n.length; i++) {
-      var o = n[i];
-      if (o !== undefined) {
-        t.push(o);
+  OfferQuestConditionPaymentMinWithUpdate.prototype.parseFromObjectParam = function (e, t, i) {
+    this._neededValue = t.value;
+    this.inclusive = t.inclusive;
+    this._publicID = i;
+  };
+  OfferQuestConditionPaymentMinWithUpdate.prototype.parseProgress = function (e) {
+    this._currentValue = o.int(e);
+  };
+  Object.defineProperty(OfferQuestConditionPaymentMinWithUpdate.prototype, "conditionPassed", {
+    get: function () {
+      if (this.inclusive) {
+        return this._currentValue >= this._neededValue;
+      } else {
+        return this._currentValue > this._neededValue;
       }
-    }
-    if (t.length == 0 && typeof e.wodID == "number") {
-      t.push(e.wodID);
-    }
-    this._primeSaleComponent = new s.PrimeSaleComponent(t, e.discount);
-  };
-  Object.defineProperty(OfferDescriptionAdditionalPrimeSale.prototype, "primeSaleComponent", {
-    get: function () {
-      return this._primeSaleComponent;
     },
     enumerable: true,
     configurable: true
   });
-  return OfferDescriptionAdditionalPrimeSale;
+  Object.defineProperty(OfferQuestConditionPaymentMinWithUpdate.prototype, "conditionTextId", {
+    get: function () {
+      return "";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionPaymentMinWithUpdate.prototype, "conditionTextReplacements", {
+    get: function () {
+      return [this._currentValue, this._neededValue];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionPaymentMinWithUpdate.prototype, "conditionsProgressInPercent", {
+    get: function () {
+      return this._currentValue / (this.inclusive ? this._neededValue : this._neededValue + 1) * 100;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionPaymentMinWithUpdate.prototype, "publicID", {
+    get: function () {
+      return this._publicID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionPaymentMinWithUpdate.prototype, "currentValue", {
+    get: function () {
+      return this._currentValue;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionPaymentMinWithUpdate.prototype, "neededValue", {
+    get: function () {
+      return this._neededValue;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return OfferQuestConditionPaymentMinWithUpdate;
 }();
-exports.OfferDescriptionAdditionalPrimeSale = a;
-var s = require("./1147.js");
-n.classImplementsInterfaces(a, "IOfferDescriptionAdditionalParameter");
+exports.OfferQuestConditionPaymentMinWithUpdate = s;
+n.classImplementsInterfaces(s, "IOfferQuestCondition");

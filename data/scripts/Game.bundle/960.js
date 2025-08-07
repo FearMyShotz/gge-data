@@ -1,116 +1,75 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./18.js");
-var o = function () {
-  function CastleAdvancedFightScreenConnectorHandler(e, t, i, n, o = null) {
-    this._connectorType = 0;
+var n = require("./2.js");
+var o = require("./1.js");
+var a = require("./1.js");
+var s = function () {
+  function CastleBasicAdvancedFightScreenDialogHelper() {
     this._displayType = 0;
-    this._fightItemContainer = e;
-    this._connectors = t;
-    this._connectorType = i;
-    this._displayType = n;
-    this._fightItemVO = o;
   }
-  CastleAdvancedFightScreenConnectorHandler.prototype.show = function () {
-    this.visible(true);
-  };
-  CastleAdvancedFightScreenConnectorHandler.prototype.reset = function () {
-    this.visible(false);
-  };
-  CastleAdvancedFightScreenConnectorHandler.prototype.displayComponent = function (e) {
-    switch (this.connectorType) {
-      case CastleAdvancedFightScreenConnectorHandler.UNITRIGHT:
-      case CastleAdvancedFightScreenConnectorHandler.UNITFRONT:
-      case CastleAdvancedFightScreenConnectorHandler.UNITLEFT:
-        e.castleadvancedTroopSelection.showUnitList(e.getFilteredArray(a.CastleFightDialog.SHOP_CATEGORY_UNITS), this._fightItemContainer, e.sourceArea, e, this.getFlankTypeByCurrentConnectorType(), this._fightItemVO);
-        break;
-      case CastleAdvancedFightScreenConnectorHandler.TOOLRIGHT:
-      case CastleAdvancedFightScreenConnectorHandler.TOOLFRONT:
-      case CastleAdvancedFightScreenConnectorHandler.TOOLLEFT:
-        e.castleadvancedTroopSelection.showToolList(s.instanceOfClass(e, "CastleDefenceDialog") ? e.getWallAndGateShopArray() : e.getFilteredArray(a.CastleFightDialog.SHOP_CATEGORY_TOOLS), this._fightItemContainer, e.sourceArea, e, this.getFlankTypeByCurrentConnectorType(), this._fightItemVO);
-    }
-    if (e.castleadvancedTroopSelection.isListEmpty()) {
-      this.hideAll(e);
-    } else {
-      e.castleLayer.doCache();
-      e.castleLayer.mouseEnabled = false;
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.handleTarget = function (e) {};
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.update = function () {
+    if (this.isVisible()) {
+      this.display();
     }
   };
-  CastleAdvancedFightScreenConnectorHandler.prototype.getFlankTypeByCurrentConnectorType = function () {
-    switch (this.connectorType) {
-      case CastleAdvancedFightScreenConnectorHandler.TOOLLEFT:
-      case CastleAdvancedFightScreenConnectorHandler.UNITLEFT:
-        return n.ClientConstCastle.FLANK_LEFT;
-      case CastleAdvancedFightScreenConnectorHandler.TOOLFRONT:
-      case CastleAdvancedFightScreenConnectorHandler.UNITFRONT:
-        return n.ClientConstCastle.FLANK_MIDDLE;
-      case CastleAdvancedFightScreenConnectorHandler.TOOLRIGHT:
-      case CastleAdvancedFightScreenConnectorHandler.UNITRIGHT:
-        return n.ClientConstCastle.FLANK_RIGHT;
-      default:
-        return -1;
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.hide = function () {
+    if (this._advancedFightScreenConnector) {
+      this._advancedFightScreenConnector.hideAll(this._fightDialog);
     }
   };
-  CastleAdvancedFightScreenConnectorHandler.prototype.hideAll = function (e) {
-    this.reset();
-    this.hideComponent(e);
-  };
-  CastleAdvancedFightScreenConnectorHandler.prototype.hideComponent = function (e) {
-    e.castleadvancedTroopSelection.hide();
-    r.CastleMovieClipHelper.uncacheSafe(e.castleLayer);
-    e.castleLayer.mouseEnabled = true;
-  };
-  CastleAdvancedFightScreenConnectorHandler.prototype.visible = function (e) {
-    this._fightItemContainer.highlighted = e;
-    this.updateConnectorsVisibility(e);
-  };
-  CastleAdvancedFightScreenConnectorHandler.prototype.updateConnectorsVisibility = function (e) {
-    for (var t = 0; t < this._connectors.length; t++) {
-      this._connectors[t].visible = e;
-    }
-  };
-  Object.defineProperty(CastleAdvancedFightScreenConnectorHandler.prototype, "connectors", {
-    get: function () {
-      return this._connectors;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAdvancedFightScreenConnectorHandler.prototype, "connectorType", {
-    get: function () {
-      return this._connectorType;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAdvancedFightScreenConnectorHandler.prototype, "isVisible", {
-    get: function () {
-      var e = true;
-      if (this.connectors != null) {
-        for (var t = 0, i = this.connectors; t < i.length; t++) {
-          var n = i[t];
-          if (n !== undefined) {
-            if (!n.visible) {
-              e = false;
-            }
-          }
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.handle = function (e) {
+    if (a.instanceOfClass(e, "DisplayObject")) {
+      if (this.isValidTarget(e, this._fightDialog)) {
+        if (a.instanceOfClass(e, "AttackWavePicker")) {
+          this.update();
+        } else if (!a.instanceOfClass(e.parent, "AttackWavePicker")) {
+          this.resetCurrent();
+          this.handleTarget(e);
         }
       }
-      return e && this._fightItemContainer.highlighted;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleAdvancedFightScreenConnectorHandler.TOOLLEFT = 1;
-  CastleAdvancedFightScreenConnectorHandler.TOOLRIGHT = 2;
-  CastleAdvancedFightScreenConnectorHandler.TOOLFRONT = 3;
-  CastleAdvancedFightScreenConnectorHandler.UNITLEFT = 4;
-  CastleAdvancedFightScreenConnectorHandler.UNITRIGHT = 5;
-  CastleAdvancedFightScreenConnectorHandler.UNITFRONT = 6;
-  return CastleAdvancedFightScreenConnectorHandler;
+    } else {
+      this.update();
+    }
+  };
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.resetCurrent = function () {
+    if (this._advancedFightScreenConnector) {
+      this._advancedFightScreenConnector.reset();
+    }
+  };
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.isValidTarget = function (e, t) {
+    return !n.MovieClipHelper.isChildrenOf(e, t.castleadvancedTroopSelection.disp) || e == t.castleadvancedTroopSelection.disp.btn_ok;
+  };
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.display = function () {
+    this.showContainerConnector();
+    this.displayListComponent();
+  };
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.handleDefault = function (e) {
+    if (a.instanceOfClass(e, "AttackSlotContainer")) {
+      this.handleDialogSlotContainer(e);
+      this.display();
+    } else {
+      this.hide();
+    }
+  };
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.handleDialogSlotContainer = function (e) {};
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.showContainerConnector = function () {
+    if (!o.MobileHelper.isScreenTooSmall()) {
+      if (this._advancedFightScreenConnector) {
+        this._advancedFightScreenConnector.show();
+      }
+    }
+  };
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.displayListComponent = function () {
+    if (this._advancedFightScreenConnector) {
+      this._advancedFightScreenConnector.displayComponent(this._fightDialog);
+    }
+  };
+  CastleBasicAdvancedFightScreenDialogHelper.prototype.isVisible = function () {
+    return !!this._advancedFightScreenConnector && this._advancedFightScreenConnector.isVisible;
+  };
+  return CastleBasicAdvancedFightScreenDialogHelper;
 }();
-exports.CastleAdvancedFightScreenConnectorHandler = o;
-var a = require("./376.js");
-var s = require("./1.js");
-var r = require("./41.js");
+exports.CastleBasicAdvancedFightScreenDialogHelper = s;
+o.classImplementsInterfaces(s, "IAdvancedFightscreenHandler");

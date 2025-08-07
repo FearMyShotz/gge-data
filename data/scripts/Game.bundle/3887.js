@@ -5,17 +5,20 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SGetSurveyInfoVO(t) {
-    var i = this;
-    i.SID = 0;
+  function C2SReportUserSurveyVO(t, i, n) {
+    var o = this;
+    o.SID = 0;
+    o.ST = 0;
     CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).SID = t;
-    return i;
+    (o = e.call(this) || this).SID = t;
+    o.ST = i;
+    o.A = n;
+    return o;
   }
-  n.__extends(C2SGetSurveyInfoVO, e);
-  C2SGetSurveyInfoVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_SURVEY_INFO;
+  n.__extends(C2SReportUserSurveyVO, e);
+  C2SReportUserSurveyVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_REPORT_USER_SURVEY;
   };
-  return C2SGetSurveyInfoVO;
+  return C2SReportUserSurveyVO;
 }(o.BasicCommandVO);
-exports.C2SGetSurveyInfoVO = s;
+exports.C2SReportUserSurveyVO = s;

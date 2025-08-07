@@ -1,104 +1,154 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./5.js");
-var l = require("./3.js");
-var c = require("./3.js");
-var u = require("./6.js");
-var d = require("./26.js");
-var p = require("./4.js");
-var h = require("./8.js");
-var g = function (e) {
-  function CastleAttackAddUnitsDialog() {
-    return e.call(this, CastleAttackAddUnitsDialog.NAME) || this;
-  }
-  n.__extends(CastleAttackAddUnitsDialog, e);
-  CastleAttackAddUnitsDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this._amountComponent = new C.CastleUnitAmountComponent();
-    this._amountComponent.init(this.dialogDisp.mc_slider, this.dialogDisp.amountPicker, this.dialogDisp.btn_all);
-    this._amountComponent.registerOnReturnKeyPressed(this.bindFunction(this.onConfirmToAddUnits));
-    this.dialogDisp.btn_all.toolTipText = "dialog_addUnit_all";
-    this.dialogDisp.btn_remove.toolTipText = l.Localize.text("dialog_addUnit_remove");
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_cancle, this.dialogDisp.btn_ok, this.dialogDisp.btn_remove, this.dialogDisp.btn_all, this.dialogDisp.mc_slider.btn_slider]);
-  };
-  CastleAttackAddUnitsDialog.prototype.showLoaded = function (t = null) {
-    var i = this.textFieldManager.registerTextField(this.dialogDisp.txt_infoConsumption, new c.LocalizedTextVO("dialog_defenceAddToolConsumption"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_name, new c.LocalizedTextVO(this.addUnitsProperties.unitVO.getNameString()));
-    if (a.instanceOfClass(this.addUnitsProperties.unitVO, "ToolUnitVO")) {
-      i.textContentVO.textId = "dialog_defenceAddToolConsumption";
-    } else {
-      i.textContentVO.textId = this.addUnitsProperties.unitVO.getShortInfoString();
-    }
-    _.WodPicHelper.addUnitPic(this.addUnitsProperties.unitVO, this.dialogDisp.mc_content, CastleAttackAddUnitsDialog.MAX_WIDTH, CastleAttackAddUnitsDialog.MAX_HEIGHT, p.CastleModel.userData.playerCrest.colorsTwo[0], p.CastleModel.userData.playerCrest.colorsTwo[1]);
-    this.dialogDisp.btn_remove.visible = this.addUnitsProperties.editMode;
-    this.dialogDisp.mc_slider.visible = true;
-    var n = u.int(this.addUnitsProperties.maxAmount);
-    var o = u.int(this.addUnitsProperties.unitVO.inventoryAmount);
-    if (this.addUnitsProperties.editMode) {
-      o += u.int(this.addUnitsProperties.itemVO.unitVO.inventoryAmount);
-    }
-    o = this.addUnitsProperties.maxAmountOnlyForSoldier && a.instanceOfClass(this.addUnitsProperties.unitVO, "ToolUnitVO") ? u.int(Math.min(o, s.TravelConst.MAX_TOOLS_PER_SLOT)) : u.int(Math.min(o, n));
-    var r = u.int(this.addUnitsProperties.itemVO.isFree() ? 0 : this.addUnitsProperties.itemVO.getAmount());
-    o = u.int(Math.min(o, this.addUnitsProperties.itemContainer.freeItems + r));
-    this._amountComponent.setNumberOfItems(o);
-    this._amountComponent.setSelectedAmount(r);
-    this._amountComponent.selectTextfield();
-    this._amountComponent.enableSliderComponent(true);
-    this._amountComponent.enablePickerComponent(true);
-    p.CastleModel.specialEventData.addEventListener(d.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveSpecialEvent));
-    e.prototype.showLoaded.call(this, t);
-  };
-  CastleAttackAddUnitsDialog.prototype.hideLoaded = function (t = null) {
-    p.CastleModel.specialEventData.removeEventListener(d.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveSpecialEvent));
-    e.prototype.hideLoaded.call(this, t);
-  };
-  CastleAttackAddUnitsDialog.prototype.onRemoveSpecialEvent = function (e) {
-    if (e.specialEventVO.eventId == s.EventConst.EVENTTYPE_ALIEN_INVASION_ALLIANCE && this.addUnitsProperties.targetAreaType == r.WorldConst.AREA_TYPE_ALIEN_CAMP || e.specialEventVO.eventId == s.EventConst.EVENTTYPE_RED_ALIEN_INVASION_ALLIANCE && this.addUnitsProperties.targetAreaType == r.WorldConst.AREA_TYPE_RED_ALIEN_CAMP) {
-      this.hide();
-    }
-  };
-  CastleAttackAddUnitsDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    if (h.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_cancle:
-          this.hide();
-          break;
-        case this.dialogDisp.btn_ok:
-          this.onConfirmToAddUnits();
-          break;
-        case this.dialogDisp.btn_remove:
-          this.addUnitsProperties.addItemFunction(this.addUnitsProperties.unitVO, this.addUnitsProperties.itemVO, 0);
-          this.hide();
+var n = require("./5.js");
+var o = require("./6.js");
+var a = require("./53.js");
+var s = require("./2496.js");
+var r = function () {
+  function AllianceBuffData(e) {
+    this._allianceBuffIdToBuffSeriesMap = new Map();
+    this._allianceBuffMap = new Map();
+    var t;
+    var i = e.alliancebuffs;
+    if (i != null) {
+      for (var n = 0, o = i; n < o.length; n++) {
+        var a = o[n];
+        if (a !== undefined) {
+          (t = new c.AllianceBuffVO()).fillFromParamXml(a);
+          this._allianceBuffIdToBuffSeriesMap.set(t.allianceBuffID, "" + t.seriesID + AllianceBuffData.MAP_AFFIX + t.level);
+          this.addBuffToMap(t);
+        }
       }
     }
-  };
-  CastleAttackAddUnitsDialog.prototype.onConfirmToAddUnits = function () {
-    if (!this.addUnitsProperties.itemVO.isFree()) {
-      this.addUnitsProperties.addItemFunction(this.addUnitsProperties.itemVO.unitVO, this.addUnitsProperties.itemVO, 0);
+    this._allianceForgeMap = new Map();
+    var r;
+    var l = e.allianceForges;
+    if (l != null) {
+      for (var u = 0, d = l; u < d.length; u++) {
+        var p = d[u];
+        if (p !== undefined) {
+          r = new s.AllianceForgeVO(p);
+          this._allianceForgeMap.set(r.level, r);
+        }
+      }
     }
-    this.addUnitsProperties.addItemFunction(this.addUnitsProperties.unitVO, this.addUnitsProperties.itemVO, this._amountComponent.getSelectedAmount());
-    this.hide();
+  }
+  AllianceBuffData.prototype.getMaxBuffVOByID = function (e) {
+    var t = this._allianceBuffMap.get(e);
+    var i = o.int(t[0].maxLevel);
+    return this.getBuffVObyLevel(t, i);
   };
-  Object.defineProperty(CastleAttackAddUnitsDialog.prototype, "addUnitsProperties", {
+  AllianceBuffData.prototype.getSeriesIDsOfPurchasableBuffs = function () {
+    var e = [];
+    if (this._allianceBuffMap != null) {
+      for (var t = 0, i = Array.from(this._allianceBuffMap.keys()); t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          if ((!this._allianceBuffMap.get(n)[0].isBattleground || !!a.ABGHelper.isOnABGServer) && (!this._allianceBuffMap.get(n)[0].hiddenBattleGround || !a.ABGHelper.isOnABGServer)) {
+            if (this._allianceBuffMap.get(n)[0].availableInAllianceFunds) {
+              e.push(n);
+            }
+          }
+        }
+      }
+    }
+    return e;
+  };
+  AllianceBuffData.prototype.getCosts = function (e, t) {
+    var i = this.getAllianceBuffVoBySeriesIDAndLevel(e, t);
+    if (i) {
+      return i.costsList;
+    } else {
+      return new l.CollectableList();
+    }
+  };
+  AllianceBuffData.prototype.getAllianceBuffVoBySeriesIDAndLevel = function (e, t) {
+    var i = this._allianceBuffMap.get(e);
+    return this.getBuffVObyLevel(i, t);
+  };
+  AllianceBuffData.prototype.getBuffLevelByBuffID = function (e) {
+    var t = this._allianceBuffIdToBuffSeriesMap.get(e).split(AllianceBuffData.MAP_AFFIX);
+    return o.int(t[AllianceBuffData.MAP_LEVEL_POSITION]);
+  };
+  AllianceBuffData.prototype.getBuffSeriesIDByBuffID = function (e) {
+    var t = this._allianceBuffIdToBuffSeriesMap.get(e).split(AllianceBuffData.MAP_AFFIX);
+    return o.int(t[AllianceBuffData.MAP_SERIES_ID_POSITION]);
+  };
+  AllianceBuffData.prototype.isUpgradeAble = function (e, t) {
+    return this._allianceBuffMap.get(e)[0].maxLevel > t;
+  };
+  AllianceBuffData.prototype.maxLevelOfBuff = function (e) {
+    return o.int(this._allianceBuffMap.get(e)[0].maxLevel);
+  };
+  AllianceBuffData.prototype.getRequiredBuffID = function (e, t) {
+    var i = this._allianceBuffMap.get(e);
+    if (t > i[0].maxLevel) {
+      t = o.int(i[0].maxLevel);
+    }
+    return o.int(this._allianceBuffMap.get(e)[t].requiredBuffID);
+  };
+  AllianceBuffData.prototype.isTemporaryBuff = function (e, t) {
+    return this.getBuffDuration(e, t) != -1;
+  };
+  AllianceBuffData.prototype.getBuffDuration = function (e, t) {
+    var i = this._allianceBuffMap.get(e);
+    if (t > i[0].maxLevel) {
+      t = o.int(i[0].maxLevel);
+    }
+    return o.int(this.getBuffVObyLevel(i, t).duration);
+  };
+  AllianceBuffData.prototype.isActive = function (e) {
+    return this._allianceBuffMap.get(e)[0].duration > 0;
+  };
+  AllianceBuffData.prototype.getBuffSeries = function (e) {
+    return this._allianceBuffMap.get(e);
+  };
+  AllianceBuffData.prototype.addBuffToMap = function (e) {
+    if (!this._allianceBuffMap.get(e.seriesID)) {
+      this._allianceBuffMap.set(e.seriesID, []);
+    }
+    this._allianceBuffMap.get(e.seriesID).push(e);
+  };
+  AllianceBuffData.prototype.getBuffVObyLevel = function (e, t) {
+    if (e != null) {
+      for (var i = 0, n = e; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined && o.level == t) {
+          return o;
+        }
+      }
+    }
+    return null;
+  };
+  Object.defineProperty(AllianceBuffData.prototype, "allianceBuffMap", {
     get: function () {
-      return this.properties;
+      return this._allianceBuffMap;
     },
     enumerable: true,
     configurable: true
   });
-  CastleAttackAddUnitsDialog.NAME = "CastleAttackAddUnitsEx";
-  CastleAttackAddUnitsDialog.MAX_WIDTH = 70;
-  CastleAttackAddUnitsDialog.MAX_HEIGHT = 70;
-  return CastleAttackAddUnitsDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleAttackAddUnitsDialog = g;
-var C = require("./297.js");
-var _ = require("./63.js");
-o.classImplementsInterfaces(g, "ICollectableRendererList");
+  AllianceBuffData.prototype.getAllianceForgeCostByLevel = function (e) {
+    return o.int(this._allianceForgeMap.get(e).forgingCostC1);
+  };
+  AllianceBuffData.prototype.getPreviousBuffVOInSeries = function (e) {
+    var t = null;
+    var i = this.getBuffSeries(e.seriesID);
+    var n = i.indexOf(e);
+    if (n > 0) {
+      t = i[n - 1];
+    }
+    return t;
+  };
+  AllianceBuffData.__initialize_static_members = function () {
+    AllianceBuffData.CUSTOMIZABLE_BUFFS = [n.AllianceConst.TYPE_RAGE_POINT_BOOST, n.AllianceConst.TYPE_COOLDOWN_REDUCTION_KHAN, n.AllianceConst.TYPE_COOLDOWN_REDUCTION_NOMADS, n.AllianceConst.TYPE_ALIEN_ATTACK_BOOST, n.AllianceConst.TYPE_DAIMYO_ATTACK_BOOST, n.AllianceConst.TYPE_KHAN_DEFENSE_BOOST, n.AllianceConst.TYPE_HEALING_SPEED_BOOST, n.AllianceConst.TYPE_COOLDOWN_REDUCTION_SAMURAI_CAMP, n.AllianceConst.TYPE_COOLDOWN_REDUCTION_DAIYMO];
+  };
+  AllianceBuffData.MAP_AFFIX = "&";
+  AllianceBuffData.MAP_SERIES_ID_POSITION = 0;
+  AllianceBuffData.MAP_LEVEL_POSITION = 1;
+  return AllianceBuffData;
+}();
+exports.AllianceBuffData = r;
+var l = require("./48.js");
+var c = require("./2497.js");
+r.__initialize_static_members();

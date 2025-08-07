@@ -2,41 +2,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./6.js");
-var a = require("./1052.js");
+var o = require("./1.js");
+var a = require("./299.js");
 var s = function (e) {
-  function CollectableItemReputationBoosterVO() {
-    CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+  function CollectableItemLongTermPointEventBoosterVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemReputationBoosterVO, e);
-  CollectableItemReputationBoosterVO.prototype.parseXmlObject = function (e) {
-    var t = e.split("+");
-    var i = o.int(t[0]);
-    var n = o.int(t[1]);
-    this.percentageBoosterVO = new a.PercentageBoosterVO(i, n);
-  };
-  CollectableItemReputationBoosterVO.prototype.getTooltipTextId = function () {
-    return "reputationBooster_name";
-  };
-  CollectableItemReputationBoosterVO.prototype.getDescriptionTextId = function () {
-    return "reputationBooster_short_info";
-  };
-  CollectableItemReputationBoosterVO.__initialize_static_members = function () {
-    CollectableItemReputationBoosterVO.SERVER_KEY = "REPB";
-    CollectableItemReputationBoosterVO.XML_KEY = "reputationPointBooster";
-  };
-  Object.defineProperty(CollectableItemReputationBoosterVO.prototype, "amount", {
+  n.__extends(CollectableItemLongTermPointEventBoosterVE, e);
+  Object.defineProperty(CollectableItemLongTermPointEventBoosterVE.prototype, "percentageIconClass", {
     get: function () {
-      return 1;
+      return Library.CastleInterfaceElements_Icons.Icon_LongTermPEBooster;
     },
     set: function (e) {
-      this._amount = 1;
+      Object.getOwnPropertyDescriptor(a.ACollectableItemPercentageBoosterVE.prototype, "percentageIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return CollectableItemReputationBoosterVO;
-}(require("./328.js").ACollectableItemPercentageBoosterVO);
-exports.CollectableItemReputationBoosterVO = s;
-s.__initialize_static_members();
+  CollectableItemLongTermPointEventBoosterVE.prototype.getBoosterTooltipId = function () {
+    return "pointsEvent_booster_tooltip";
+  };
+  return CollectableItemLongTermPointEventBoosterVE;
+}(a.ACollectableItemPercentageBoosterVE);
+exports.CollectableItemLongTermPointEventBoosterVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");

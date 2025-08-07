@@ -1,27 +1,45 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = function (e) {
-  function EventOverviewDetailsFactionInvasion() {
-    var t = e.call(this) || this;
-    t.dispClassName = "list_rewards_berimond_invasion";
-    t.init();
-    return t;
+var n = function () {
+  function EventOverviewEventConfig() {
+    this._eventOverviewDetails = a.EventOverviewDetailEnum.DETAILS_NONE;
+    this._showRemainingEventDuration = true;
+    this._eventCurrency = o.CollectableEnum.UNKNOWN;
+    this._hasAllianceMode = false;
   }
-  n.__extends(EventOverviewDetailsFactionInvasion, e);
-  EventOverviewDetailsFactionInvasion.prototype.updateRewards = function (e, t) {
-    var i = e.singleEventVO(false).rewardLists;
-    var n = e.singleEventVO(true).rewardLists;
-    for (var o = 0; o < 3; o++) {
-      this.fillList(i[o], o);
-    }
-    for (; o < 6; o++) {
-      this.fillList(n[o - 3], o);
-    }
-  };
-  return EventOverviewDetailsFactionInvasion;
-}(require("./571.js").EventOverviewDetailedEventView);
-exports.EventOverviewDetailsFactionInvasion = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList");
+  Object.defineProperty(EventOverviewEventConfig.prototype, "eventOverviewDetails", {
+    get: function () {
+      return this._eventOverviewDetails;
+    },
+    set: function (e) {
+      this._eventOverviewDetails = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventOverviewEventConfig.prototype, "showRemainingEventDuration", {
+    get: function () {
+      return this._showRemainingEventDuration;
+    },
+    set: function (e) {
+      this._showRemainingEventDuration = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventOverviewEventConfig.prototype, "hasAllianceMode", {
+    get: function () {
+      return this._hasAllianceMode;
+    },
+    set: function (e) {
+      this._hasAllianceMode = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return EventOverviewEventConfig;
+}();
+exports.EventOverviewEventConfig = n;
+var o = require("./12.js");
+var a = require("./571.js");

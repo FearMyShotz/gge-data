@@ -2,52 +2,86 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./3.js");
-var a = require("./13.js");
-var s = require("./4.js");
-var r = require("./20.js");
+var o = require("./100.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./14.js");
 var l = require("./8.js");
-var c = require("./11.js");
-var u = require("./221.js");
-var d = function (e) {
-  function AccountDeletionActiveSubscribtionDialog() {
-    return e.call(this, AccountDeletionActiveSubscribtionDialog.NAME) || this;
+var c = require("./2285.js");
+var u = require("./382.js");
+var d = require("./9.js");
+var p = require("./1295.js");
+var h = require("./2.js");
+var g = require("./16.js");
+var C = require("./4.js");
+var _ = require("./919.js");
+var m = require("./21.js");
+var f = function (e) {
+  function OptionsDialogDeleteAccountItem(t) {
+    var i = e.call(this, new (a.getDefinitionByName("CastleOptions_DeleteAccountItem"))(), t) || this;
+    r.CastleComponent.textFieldManager.registerTextField(i._headerMC.txt_default, new s.LocalizedTextVO("dialog_options_deleteAccount_title"), new o.InternalGGSTextFieldConfigVO(true));
+    r.CastleComponent.textFieldManager.registerTextField(i._headerMC.mc_open.txt_selected, new s.LocalizedTextVO("dialog_options_deleteAccount_title"), new o.InternalGGSTextFieldConfigVO(true));
+    l.ButtonHelper.initBasicButton(i.contentMC.mcDeleteAccount, 1);
+    return i;
   }
-  n.__extends(AccountDeletionActiveSubscribtionDialog, e);
-  AccountDeletionActiveSubscribtionDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    l.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok], r.ClickFeedbackButtonHover);
+  n.__extends(OptionsDialogDeleteAccountItem, e);
+  OptionsDialogDeleteAccountItem.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    this.updateTexts();
+    _.CastleDeleteAccountMicroservice.Instance.onDeleteAccountSignal.add(this.bindFunction(this.updateTexts));
+    _.CastleDeleteAccountMicroservice.Instance.onAbortDeleteSignal.add(this.bindFunction(this.updateTexts));
   };
-  AccountDeletionActiveSubscribtionDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new o.TextVO(a.TextHelper.toUpperCaseLocaSafeTextId("dialog_deleteAccount_initiated_popup_title")));
-    this.dialogDisp.btn_close.visible = false;
-    var i = o.Localize.text("dialog_options_deleteAccount_subscriptionActive_desc");
-    if (s.CastleModel.subscriptionData.isPackageActive(u.SubscriptionPackageEnum.PLAYER)) {
-      i += "\n" + o.Localize.text(u.SubscriptionPackageEnum.PLAYER.nameTextId);
+  OptionsDialogDeleteAccountItem.prototype.updateTexts = function () {
+    var e = new s.LocalizedTextVO("dialog_options_deleteAccount_desc");
+    var t = "dialog_options_deleteAccount_button";
+    if (C.CastleModel.deleteAccountData.isAccountDeletionStarted) {
+      t = "dialog_options_cancelDeletion_button";
+      C.CastleModel.timerData.addEventListener(m.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimeUpdate));
+      e = new s.LocalizedTextVO("dialog_options_deleteAccount_initiated_desc", [C.CastleModel.deleteAccountData.getDateForDelete()]);
     }
-    if (s.CastleModel.subscriptionData.isPackageActive(u.SubscriptionPackageEnum.PREMIUM)) {
-      i += "\n" + o.Localize.text(u.SubscriptionPackageEnum.PREMIUM.nameTextId);
-    }
-    if (s.CastleModel.subscriptionData.isPackageActive(u.SubscriptionPackageEnum.ALLIANCE)) {
-      i += "\n" + o.Localize.text(u.SubscriptionPackageEnum.ALLIANCE.nameTextId);
-    }
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new o.TextVO(i));
+    r.CastleComponent.textFieldManager.registerTextField(this.contentMC.txt_description, e, new o.InternalGGSTextFieldConfigVO(true));
+    var i = new s.HTMLTextCustomVO();
+    i.addLocalizedTextVO(new s.LocalizedTextVO(t));
+    var n = new s.HTMLLinkFormatVO(g.ClientConstColor.DEFAULT_SUBSCRIPTION, h.GGSTextDecoration.UNDERLINE);
+    var a = new s.HTMLLinkFormatVO(g.ClientConstColor.DEFAULT_SUBSCRIPTION, h.GGSTextDecoration.UNDERLINE);
+    var l = new s.HTMLLinkFormatVO(g.ClientConstColor.DEFAULT_SUBSCRIPTION, h.GGSTextDecoration.UNDERLINE);
+    i.linkFormats = new s.HTMLLinkFormatsVO(n, a, l);
+    r.CastleComponent.textFieldManager.registerTextField(this.contentMC.mcDeleteAccount.txt_copy, i, new o.InternalGGSTextFieldConfigVO(true));
   };
-  AccountDeletionActiveSubscribtionDialog.prototype.onClick = function (t) {
+  OptionsDialogDeleteAccountItem.prototype.onTimeUpdate = function (e = null) {
+    if (C.CastleModel.deleteAccountData.isAccountDeletionStarted) {
+      this.updateRemainingTime();
+    } else {
+      C.CastleModel.timerData.removeEventListener(m.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimeUpdate));
+    }
+  };
+  OptionsDialogDeleteAccountItem.prototype.updateRemainingTime = function () {
+    var e = new s.LocalizedTextVO("dialog_options_deleteAccount_initiated_desc", [C.CastleModel.deleteAccountData.getDateForDelete()]);
+    r.CastleComponent.textFieldManager.registerTextField(this.contentMC.txt_description, e, new o.InternalGGSTextFieldConfigVO(true));
+  };
+  OptionsDialogDeleteAccountItem.prototype.onDeleteClick = function () {
+    if (C.CastleModel.subscriptionData.isAnyPackageActive()) {
+      d.CastleDialogHandler.getInstance().registerDefaultDialogs(c.AccountDeletionActiveSubscribtionDialog);
+    } else {
+      d.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleDeleteAccountDialog);
+    }
+  };
+  OptionsDialogDeleteAccountItem.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
     if (l.ButtonHelper.isButtonEnabled(t.target)) {
       switch (t.target) {
-        case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_ok:
-          this.hide();
+        case this.contentMC.mcDeleteAccount:
+          this.onDeleteClick();
       }
     }
   };
-  AccountDeletionActiveSubscribtionDialog.__initialize_static_members = function () {
-    AccountDeletionActiveSubscribtionDialog.NAME = "AccountDeletionActiveSubscribtion";
+  OptionsDialogDeleteAccountItem.prototype.onHide = function () {
+    e.prototype.onHide.call(this);
+    _.CastleDeleteAccountMicroservice.Instance.onDeleteAccountSignal.remove(this.bindFunction(this.updateTexts));
+    _.CastleDeleteAccountMicroservice.Instance.onAbortDeleteSignal.remove(this.bindFunction(this.updateTexts));
+    C.CastleModel.timerData.removeEventListener(m.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimeUpdate));
   };
-  return AccountDeletionActiveSubscribtionDialog;
-}(c.CastleExternalDialog);
-exports.AccountDeletionActiveSubscribtionDialog = d;
-d.__initialize_static_members();
+  return OptionsDialogDeleteAccountItem;
+}(u.AOptionsDialogCollapsibleItem);
+exports.OptionsDialogDeleteAccountItem = f;
+a.classImplementsInterfaces(f, "ICollectableRendererList", "ICollapsibleItem", "ILayoutable");

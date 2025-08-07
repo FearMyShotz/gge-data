@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function MarketplaceBuildingVO() {
+  function LegendWoodcutterBuildingVO() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MarketplaceBuildingVO, e);
-  return MarketplaceBuildingVO;
-}(require("./999.js").AEventBuildingVO);
-exports.MarketplaceBuildingVO = a;
+  n.__extends(LegendWoodcutterBuildingVO, e);
+  return LegendWoodcutterBuildingVO;
+}(require("./534.js").WoodcutterBuildingVO);
+exports.LegendWoodcutterBuildingVO = a;
 o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");

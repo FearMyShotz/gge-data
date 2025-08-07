@@ -4,24 +4,14 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
-var s = require("./4.js");
-var r = function (e) {
-  function C2SLuckyWheelSpinVO(t) {
-    var i = this;
-    i.LWET = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).LWET = t;
-    if (i.LWET == 1) {
-      s.CastleModel.saleDaysLuckyWheelData.doNormalSpin();
-    } else {
-      s.CastleModel.luckyWheelData.doNormalSpin();
-    }
-    return i;
+var s = function (e) {
+  function C2SLuckyWheelIncreasePrizeClass() {
+    return e.call(this) || this;
   }
-  n.__extends(C2SLuckyWheelSpinVO, e);
-  C2SLuckyWheelSpinVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_LUCKY_WHEEL_SPIN;
+  n.__extends(C2SLuckyWheelIncreasePrizeClass, e);
+  C2SLuckyWheelIncreasePrizeClass.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_LUCKY_WHEEL_INCREASE_PRIZE_CLASS;
   };
-  return C2SLuckyWheelSpinVO;
+  return C2SLuckyWheelIncreasePrizeClass;
 }(o.BasicCommandVO);
-exports.C2SLuckyWheelSpinVO = r;
+exports.C2SLuckyWheelIncreasePrizeClass = s;

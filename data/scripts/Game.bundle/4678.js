@@ -4,18 +4,18 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./1836.js");
-var l = require("./1930.js");
+var s = require("./6.js");
+var r = require("./7.js");
+var l = require("./4.js");
 var c = require("./10.js");
 var u = function (e) {
-  function AAOCommand() {
+  function VLICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AAOCommand, e);
-  Object.defineProperty(AAOCommand.prototype, "cmdId", {
+  n.__extends(VLICommand, e);
+  Object.defineProperty(VLICommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ATTACK_ADVISOR_OVERVIEW_EVENT;
+      return r.ClientConstSF.S2C_ACHIEVEMENT_LIST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -23,20 +23,19 @@ var u = function (e) {
     enumerable: true,
     configurable: true
   });
-  AAOCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
+  VLICommand.prototype.exec = function (e) {
+    var t = s.int(e[0]);
+    var i = e[1];
+    switch (t) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        var n = new l.AdvisorAttackOverviewVO();
-        n.parseServerData(i);
-        this.controller.dispatchEvent(new r.AdvisorAttackOverviewEvent(r.AdvisorAttackOverviewEvent.ADVISOR_ATTACK_OVERVIEW_UPDATE, n));
+        var n = JSON.parse(i[1]);
+        l.CastleModel.castleAchievementData.parse_vli(n);
         break;
       default:
-        this.showErrorDialog(e, t);
+        this.showErrorDialog(t, i);
     }
-    return false;
   };
-  return AAOCommand;
+  return VLICommand;
 }(c.CastleCommand);
-exports.AAOCommand = u;
+exports.VLICommand = u;
 o.classImplementsInterfaces(u, "IExecCommand");

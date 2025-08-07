@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GNRCommand() {
+  function GGMCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GNRCommand, e);
-  Object.defineProperty(GNRCommand.prototype, "cmdId", {
+  n.__extends(GGMCommand, e);
+  Object.defineProperty(GGMCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_NEW_RELICS_EVENT;
+      return s.ClientConstSF.S2C_GET_GEMS_EVENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GNRCommand.prototype.executeCommand = function (e, t) {
+  GGMCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.equipData.parseGNR(i);
+        r.CastleModel.gemData.parseGGM(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GNRCommand;
+  return GGMCommand;
 }(l.CastleCommand);
-exports.GNRCommand = c;
+exports.GGMCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

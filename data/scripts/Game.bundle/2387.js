@@ -3,14 +3,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function PlayerGiftSelectionScrollItemVO() {
-    var t = this;
-    t.playerID = 0;
-    t.amount = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+  function CastlePlayerInfoCastleListEntryVO(t) {
+    var i = e.call(this) || this;
+    i.worldMapobjectVO = t;
+    return i;
   }
-  n.__extends(PlayerGiftSelectionScrollItemVO, e);
-  return PlayerGiftSelectionScrollItemVO;
-}(require("./244.js").MerchantScrollItemVO);
-exports.PlayerGiftSelectionScrollItemVO = o;
+  n.__extends(CastlePlayerInfoCastleListEntryVO, e);
+  return CastlePlayerInfoCastleListEntryVO;
+}(require("./2.js").ScrollItemVO);
+exports.CastlePlayerInfoCastleListEntryVO = o;

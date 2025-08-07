@@ -6,61 +6,73 @@ var o = require("./1.js");
 var a = require("./3.js");
 var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./137.js");
-var c = require("./13.js");
-var u = require("./8.js");
+var l = require("./3.js");
+var c = require("./6.js");
+var u = require("./28.js");
 var d = function (e) {
-  function CastleTempServerStartDialog() {
-    return e.call(this, CastleTempServerStartDialog.NAME) || this;
+  function CastleWorldCupFinisher() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleWorldCupFinisher.NAME) || this;
   }
-  n.__extends(CastleTempServerStartDialog, e);
-  CastleTempServerStartDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    u.ButtonHelper.initButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close, this.dialogDisp.btn_help], h.ClickFeedbackButton);
+  n.__extends(CastleWorldCupFinisher, e);
+  CastleWorldCupFinisher.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.tfTitle, new l.LocalizedTextVO("dialog_worldCup"));
+    this.tfDesc = this.textFieldManager.registerTextField(this.dialogDisp.tfDesc, new l.LocalizedTextVO(""));
+    this.initBasicButtons([this.dialogDisp.btnOk, this.dialogDisp.btnClose]);
   };
-  CastleTempServerStartDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_tempServer_start_header")));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_teaser, new s.LocalizedTextVO("dialog_tempServer_start_openHelpInfo"));
-    var i = this.getTextIds();
-    for (var n = 0; n < 3; n++) {
-      this.textFieldManager.registerTextField(this.dialogDisp["txt_title" + n], new r.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId(i[n][0])));
-      this.textFieldManager.registerTextField(this.dialogDisp["txt_copy" + n], new s.LocalizedTextVO(i[n][1]));
-      this.dialogDisp["mc_teaser" + n].gotoAndStop(l.TempServerHelper.getAssetFrame());
-    }
-  };
-  CastleTempServerStartDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_close:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_help:
-        p.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("help_tempServer_start"));
-        break;
-      case this.dialogDisp.btn_ok:
-        this.onOK();
-    }
-  };
-  CastleTempServerStartDialog.prototype.onOK = function () {
-    if (l.TempServerHelper.tmpServerEvent) {
-      l.TempServerHelper.tmpServerEvent.openDialog();
-    }
-    this.hide();
-  };
-  CastleTempServerStartDialog.prototype.getTextIds = function () {
-    if (l.TempServerHelper.tmpServerEvent.isCrossPlay) {
-      return CastleTempServerStartDialog.TEXT_CROSSPLAY;
+  CastleWorldCupFinisher.prototype.applyPropertiesLoaded = function (t = null) {
+    e.prototype.applyPropertiesLoaded.call(this, t);
+    var i = new r.LocalizedDateTimeVO(new Date(this.dialogProperties.date * u.ClientConstTime.SEC_2_MILLISEC), a.DateTimeStyle.SHORT, a.DateTimeStyle.NONE);
+    var n = s.Localize.text("dialog_worldCup_team" + this.dialogProperties.teamA);
+    var o = s.Localize.text("dialog_worldCup_team" + this.dialogProperties.teamB);
+    var l = c.int(this.dialogProperties.paymentC2 * this.dialogProperties.bonusC2 / 100);
+    if (this.dialogProperties.winner == this.dialogProperties.vote) {
+      switch (this.dialogProperties.winner) {
+        case p.WorldCupEventVO.VOTE_VALUE_TEAM_A:
+          this.tfDesc.textContentVO.textId = "dialog_worldCup_messageWin1";
+          break;
+        case p.WorldCupEventVO.VOTE_VALUE_TEAM_B:
+          this.tfDesc.textContentVO.textId = "dialog_worldCup_messageWin2";
+          break;
+        case p.WorldCupEventVO.VOTE_VALUE_TEAM_DRAW:
+          this.tfDesc.textContentVO.textId = "dialog_worldCup_messageWin3";
+      }
+      this.tfDesc.textContentVO.textReplacements = [i, n, o, l];
     } else {
-      return CastleTempServerStartDialog.TEXT_DEFAULT;
+      switch (this.dialogProperties.winner) {
+        case p.WorldCupEventVO.VOTE_VALUE_TEAM_A:
+          this.tfDesc.textContentVO.textId = "dialog_worldCup_messageLose1";
+          break;
+        case p.WorldCupEventVO.VOTE_VALUE_TEAM_B:
+          this.tfDesc.textContentVO.textId = "dialog_worldCup_messageLose2";
+          break;
+        case p.WorldCupEventVO.VOTE_VALUE_TEAM_DRAW:
+          this.tfDesc.textContentVO.textId = "dialog_worldCup_messageLose3";
+      }
+      this.tfDesc.textContentVO.textReplacements = [i, n, o];
     }
   };
-  CastleTempServerStartDialog.TEXT_DEFAULT = [["dialog_tempServer_start_desc1_title", "dialog_tempServer_start_desc1_desc"], ["dialog_tempServer_start_desc2_title", "dialog_tempServer_start_desc2_desc"], ["dialog_tempServer_start_desc3_title", "dialog_tempServer_start_desc3_desc"]];
-  CastleTempServerStartDialog.TEXT_CROSSPLAY = [["dialog_tempServer_start_desc1_title", "dialog_tempServer_start_desc1_desc_crossplay"], ["dialog_tempServer_start_desc2_title", "dialog_tempServer_start_desc2_desc_crossplay"], ["dialog_tempServer_start_desc3_title", "dialog_tempServer_start_desc3_desc"]];
-  CastleTempServerStartDialog.NAME = "CastleTempServerStarter";
-  return CastleTempServerStartDialog;
+  CastleWorldCupFinisher.prototype.onClick = function (e) {
+    switch (e.target) {
+      case this.dialogDisp.btnClose:
+      case this.dialogDisp.btnOk:
+        this.hide();
+    }
+  };
+  Object.defineProperty(CastleWorldCupFinisher.prototype, "dialogProperties", {
+    get: function () {
+      return this.properties;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleWorldCupFinisher.__initialize_static_members = function () {
+    CastleWorldCupFinisher.NAME = "CastleWorldCupFinisherExternal";
+  };
+  return CastleWorldCupFinisher;
 }(require("./11.js").CastleExternalDialog);
-exports.CastleTempServerStartDialog = d;
-var p = require("./9.js");
-var h = require("./36.js");
+exports.CastleWorldCupFinisher = d;
+var p = require("./671.js");
 o.classImplementsInterfaces(d, "ICollectableRendererList");
+d.__initialize_static_members();

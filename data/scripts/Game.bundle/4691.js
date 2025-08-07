@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function AEECommand() {
+  function ADOCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AEECommand, e);
-  Object.defineProperty(AEECommand.prototype, "cmdId", {
+  n.__extends(ADOCommand, e);
+  Object.defineProperty(ADOCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ALLIANCE_EMBLEM_EVENT;
+      return s.ClientConstSF.S2C_ALLIANCE_DONATE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,21 +22,20 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  AEECommand.prototype.executeCommand = function (e, t) {
+  ADOCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.allianceData.parse_AEE(i.ACCA);
-        if (r.CastleModel.allianceData.myAllianceVO) {
-          r.CastleModel.allianceData.myAllianceVO.parseFallbackCrest(i.ACFB);
-        }
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.areaData.activeArea.updater.parseGRC(i.grc);
+        r.CastleModel.allianceData.parse_AIN(i.ain);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return AEECommand;
+  return ADOCommand;
 }(l.CastleCommand);
-exports.AEECommand = c;
+exports.ADOCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

@@ -2,32 +2,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./4.js");
-var s = require("./437.js");
-var r = function (e) {
-  function FilterAllianceIncoming() {
-    CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./384.js");
+var c = function (e) {
+  function RenderMarket() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FilterAllianceIncoming, e);
-  FilterAllianceIncoming.prototype.filterFunction = function (e, t, i) {
-    return !!a.CastleModel.userData.isInAlliance && !!e.targetOwnerInfo && e.targetOwnerInfo.allianceID == a.CastleModel.userData.allianceID && !e.isMyMovement && (o.instanceOfClass(e, "SiegeMapmovementVO") && e.targetOwnerInfo.playerID != a.CastleModel.userData.playerID || o.instanceOfClass(e, "ArmyAttackMapmovementVO") && !e.isAttackingMovement);
+  n.__extends(RenderMarket, e);
+  RenderMarket.prototype.renderData = function (e, t) {
+    var i = new u.CastleResourceListComponent(e.btn_goods, Library.CastleInterfaceElements.GoodsInfoItem);
+    var n = t;
+    l.AMovementRenderStrategy.setDecoFrame(e, l.AMovementRenderStrategy.FRAME_MARKET);
+    e.btn_goods.visible = true;
+    i.updateComponent(n.lootList);
+    if (n.lootList.length > 0) {
+      e.fieldAction = this.textFieldManager.registerTextField(e.txt_action, new r.LocalizedTextVO("dialog_moveOverview_trade"), new a.InternalGGSTextFieldConfigVO(true));
+    } else {
+      var c = s.Localize.text("dialog_moveOverview_trade");
+      var d = s.Localize.text("dialog_moveOverview_wayHome");
+      e.fieldAction = this.textFieldManager.registerTextField(e.txt_action, new r.LocalizedTextVO(o.GenericTextIds.VALUE_DASH_SPLIT, [c, d]), new a.InternalGGSTextFieldConfigVO(true));
+    }
   };
-  Object.defineProperty(FilterAllianceIncoming.prototype, "name", {
-    get: function () {
-      return FilterAllianceIncoming.NAME;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.AMovementFilterStrategy.prototype, "name").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  FilterAllianceIncoming.__initialize_static_members = function () {
-    FilterAllianceIncoming.NAME = "FilterAllianceIncoming";
-  };
-  return FilterAllianceIncoming;
-}(s.AMovementFilterStrategy);
-exports.FilterAllianceIncoming = r;
-r.__initialize_static_members();
+  return RenderMarket;
+}(l.AMovementRenderStrategy);
+exports.RenderMarket = c;
+var u = require("./320.js");

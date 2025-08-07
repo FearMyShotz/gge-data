@@ -3,12 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function FirepalaceBuildingVE() {
+var a = require("./303.js");
+var s = function (e) {
+  function FactionWatchtowerBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FirepalaceBuildingVE, e);
-  return FirepalaceBuildingVE;
-}(require("./646.js").APalaceBuildingVE);
-exports.FirepalaceBuildingVE = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
+  n.__extends(FactionWatchtowerBuildingVE, e);
+  Object.defineProperty(FactionWatchtowerBuildingVE.prototype, "buildingGroundIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements_Icons.Icon_google;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.AFactionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return FactionWatchtowerBuildingVE;
+}(a.AFactionBuildingVE);
+exports.FactionWatchtowerBuildingVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

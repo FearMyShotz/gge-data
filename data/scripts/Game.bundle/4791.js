@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function IRACommand() {
+  function GPCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IRACommand, e);
-  Object.defineProperty(IRACommand.prototype, "cmdId", {
+  n.__extends(GPCCommand, e);
+  Object.defineProperty(GPCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_REPAIR_ALL;
+      return s.ClientConstSF.S2C_GET_PERMANENT_CASTLE_DATA;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,21 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  IRACommand.prototype.executeCommand = function (e, t) {
+  GPCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        if (r.CastleModel.areaData.activeArea) {
-          r.CastleModel.areaData.activeArea.updater.parseIRA(i);
-        }
+        r.CastleModel.permanentCastleData.parseGPC(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return IRACommand;
+  return GPCCommand;
 }(l.CastleCommand);
-exports.IRACommand = c;
+exports.GPCCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

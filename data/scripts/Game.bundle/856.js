@@ -1,82 +1,140 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
+var n = require("./2.js");
 var o = require("./1.js");
 var a = require("./6.js");
 var s = require("./55.js");
-var r = require("./4.js");
-var l = require("./127.js");
-var c = require("./24.js");
-var u = require("./158.js");
-var d = createjs.Point;
-var p = function (e) {
-  function CollectableItemRelicVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var r = require("./409.js");
+var l = function () {
+  function EffectValueWodID() {
+    this._firstWodID = -1;
+    this._wodIdToValueDict = new Map();
   }
-  n.__extends(CollectableItemRelicVE, e);
-  CollectableItemRelicVE.prototype.iconCreate = function () {
-    if (this.relicItemVO.isRelicDefined()) {
-      this.triggerOnAllIconDispLoadedManually = true;
-      this.scaleManually = true;
-      var e = this.renderer.getRenderer(f.CollectableRenderOptions.ICON_TRANSFORM);
-      var t = 1;
-      if (e) {
-        t = e.transform.scale;
-        e.transform.scale = 1;
+  EffectValueWodID.prototype.parseFromValueString = function (e) {
+    this._wodIdToValueDict = new Map();
+    var t;
+    var i = e.split("#");
+    if (i != null) {
+      for (var n = 0, o = i; n < o.length; n++) {
+        var a = o[n];
+        if (a !== undefined) {
+          if ((t = a.split(",")).length < 2) {
+            t = a.split("+");
+          }
+          var s = isNaN(parseInt(t[EffectValueWodID.VALUE_POSITION])) || parseFloat(t[EffectValueWodID.VALUE_POSITION]) == undefined ? t[EffectValueWodID.VALUE_POSITION] : parseFloat(t[EffectValueWodID.VALUE_POSITION]);
+          this._wodIdToValueDict.set(parseInt(t[EffectValueWodID.WOD_ID_POSITION]), s);
+          if (this._firstWodID == -1) {
+            this._firstWodID = parseInt(t[EffectValueWodID.WOD_ID_POSITION]);
+          }
+        }
       }
-      var i = this.options.icon.dimension.x * t;
-      i -= Math.round(6 / 55 * (i - i * (6 / 55)));
-      var n = this.options.icon.dimension.y * t;
-      n -= Math.round(6 / 55 * (n - n * (6 / 55)));
-      if (this.relicItemVO.type == _.CollectableItemRelicVO.TYPE_EQUIPMENT) {
-        g.EquipmentIconHelper.addEquipmentIcon(this.relicItemVO.vo, this.dispCreator.dispContainer, i, n, this.bindFunction(this.onAllDispClipsLoaded), true, false, false, true, this.options.icon.useFavIcon);
-      } else if (this.relicItemVO.type == _.CollectableItemRelicVO.TYPE_GEM) {
-        var o = new d(i, n);
-        this.dispCreator.addDisp(h.CastleGemRenderer.renderAsset(this.relicItemVO.vo, this.bindFunction(this.onAllDispClipsLoaded), o, this.renderer.options.icon.useFavIcon));
-        this.updateIconDimension();
+    }
+    return this;
+  };
+  EffectValueWodID.prototype.parseFromValueArray = function (e) {
+    this._wodIdToValueDict = new Map();
+    if (e != null) {
+      for (var t = 0, i = e; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          this._wodIdToValueDict.set(parseInt(n[EffectValueWodID.WOD_ID_POSITION]), parseInt(n[EffectValueWodID.VALUE_POSITION]));
+          if (this._firstWodID == -1 || isNaN(this._firstWodID)) {
+            this._firstWodID = parseInt(n[EffectValueWodID.WOD_ID_POSITION]);
+          }
+        }
       }
+    }
+    return this;
+  };
+  EffectValueWodID.prototype.hasWodId = function (e) {
+    return this._wodIdToValueDict.get(e) !== undefined;
+  };
+  EffectValueWodID.prototype.getValueforWodId = function (e) {
+    if (this._wodIdToValueDict.get(e)) {
+      return this._wodIdToValueDict.get(e);
     } else {
-      this.triggerOnAllIconDispLoadedManually = false;
-      var u;
-      var p = this.relicItemVO.getBluePrintVO();
-      u = this.relicItemVO.type == _.CollectableItemRelicVO.TYPE_GEM ? l.BasicEquippableVO.SLOT_TYPE_GEM : l.BasicEquippableVO.getSlotType(p ? r.CastleModel.equipData.relicXml.getRelicType(p.relicTypeId).slotId : -1);
-      var m = a.int(r.CastleModel.equipData.relicXml.getStarRating(this.relicItemVO.predefinedMinRating));
-      var O = CollectableItemRelicVE.ASSET_PREFIX + "_" + s.ClientConstUtils.capitalizeFirstLetter(u) + "_" + m;
-      this.dispCreator.addClip(new c.CastleGoodgameExternalClip(O, C.IsoHelper.view.getAssetFileURL(CollectableItemRelicVE.ASSET_FILE_NAME_UNDEFINED)));
+      return 0;
     }
   };
-  CollectableItemRelicVE.prototype.tooltipCreate = function () {
-    return g.EquipmentIconHelper.getToolTipByEquipmentVO(this.relicItemVO.vo);
+  EffectValueWodID.prototype.clone = function () {
+    return new r.EffectValueSimple().parseFromValueArray(this.rawValues);
   };
-  CollectableItemRelicVE.prototype.tooltipShowAdvanced = function () {
-    g.EquipmentIconHelper.showRelicToolTip(this.renderer.clips.getTooltipTargetMc(), this.relicItemVO.vo);
-  };
-  CollectableItemRelicVE.prototype.onAllDispClipsLoaded = function (t = null) {
-    e.prototype.onAllDispClipsLoaded.call(this, t);
-    if (this.relicItemVO.type == _.CollectableItemRelicVO.TYPE_EQUIPMENT) {
-      m.CastleMovieClipHelper.createHitArea(this.dispCreator.dispContainer);
-    }
-  };
-  Object.defineProperty(CollectableItemRelicVE.prototype, "relicItemVO", {
+  Object.defineProperty(EffectValueWodID.prototype, "strength", {
     get: function () {
-      return this.vo;
+      return this._wodIdToValueDict.get(this.firstWodID) || 0;
     },
     enumerable: true,
     configurable: true
   });
-  CollectableItemRelicVE.__initialize_static_members = function () {
-    CollectableItemRelicVE.ASSET_FILE_NAME_UNDEFINED = CollectableItemRelicVE.ASSET_PREFIX + "_Undefined_2_0";
+  Object.defineProperty(EffectValueWodID.prototype, "isNegative", {
+    get: function () {
+      return this._wodIdToValueDict.get(this.firstWodID) < 0;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EffectValueWodID.prototype.add = function (e, t) {
+    if (e.rawValues.length == 0) {
+      return this;
+    }
+    for (var i = 0, n = e.rawValues; i < n.length; i++) {
+      var o = n[i];
+      if (o !== undefined && o.length == 2) {
+        if (this._wodIdToValueDict.get(o[EffectValueWodID.WOD_ID_POSITION])) {
+          this._wodIdToValueDict.set(parseInt(o[EffectValueWodID.WOD_ID_POSITION]), this._wodIdToValueDict.get(o[EffectValueWodID.WOD_ID_POSITION]) + o[EffectValueWodID.VALUE_POSITION]);
+        } else {
+          this._wodIdToValueDict.set(parseInt(o[EffectValueWodID.WOD_ID_POSITION]), o[EffectValueWodID.VALUE_POSITION]);
+          if (this._firstWodID == -1) {
+            this._firstWodID = a.int(o[EffectValueWodID.WOD_ID_POSITION]);
+          }
+        }
+      }
+    }
+    if (e.rawValues.length == 1 && typeof e.rawValues[0] == "number" && this._firstWodID > -1) {
+      this._wodIdToValueDict.set(this._firstWodID, this._wodIdToValueDict.get(this._firstWodID) + e.rawValues[0]);
+    }
+    if (this._firstWodID <= 0) {
+      throw new Error("added wodID is invalid " + s.ClientConstUtils.map2String(this._wodIdToValueDict));
+    }
+    return this;
   };
-  CollectableItemRelicVE.ASSET_PREFIX = "Relic_Equipment";
-  return CollectableItemRelicVE;
-}(u.ACollectableItemVE);
-exports.CollectableItemRelicVE = p;
-var h = require("./248.js");
-var g = require("./73.js");
-var C = require("./46.js");
-var _ = require("./289.js");
-var m = require("./41.js");
-var f = require("./19.js");
-o.classImplementsInterfaces(p, "ICollectableRendererList");
-p.__initialize_static_members();
+  Object.defineProperty(EffectValueWodID.prototype, "textReplacements", {
+    get: function () {
+      return [n.MathBase.round(Math.abs(this._wodIdToValueDict.get(this.firstWodID)), 1)];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EffectValueWodID.prototype, "rawValues", {
+    get: function () {
+      var e = [];
+      if (this._wodIdToValueDict != null) {
+        for (var t = 0, i = Array.from(this._wodIdToValueDict.keys()); t < i.length; t++) {
+          var n = i[t];
+          if (n !== undefined) {
+            e.push([n, this._wodIdToValueDict.get(n)]);
+          }
+        }
+      }
+      return e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EffectValueWodID.prototype, "firstWodID", {
+    get: function () {
+      return this._firstWodID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EffectValueWodID.prototype.getContextTextReplacements = function (e) {
+    return this.textReplacements;
+  };
+  EffectValueWodID.WOD_ID_POSITION = 0;
+  EffectValueWodID.VALUE_POSITION = 1;
+  return EffectValueWodID;
+}();
+exports.EffectValueWodID = l;
+o.classImplementsInterfaces(l, "IEffectValue");

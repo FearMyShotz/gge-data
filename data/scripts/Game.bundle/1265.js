@@ -9,7 +9,7 @@ var r = require("./3.js");
 var l = require("./44.js");
 var c = require("./4.js");
 var u = require("./165.js");
-var d = require("./682.js");
+var d = require("./684.js");
 var p = function (e) {
   function RelicBonusVO() {
     var t = this;

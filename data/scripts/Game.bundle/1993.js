@@ -1,32 +1,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./1.js");
-var c = require("./4.js");
-var u = function (e) {
-  function OpenGenericOfferCommand() {
-    return e !== null && e.apply(this, arguments) || this;
-  }
-  n.__extends(OpenGenericOfferCommand, e);
-  OpenGenericOfferCommand.prototype.execute = function (t = null) {
-    e.prototype.execute.call(this, t);
-    var i = t.offerID;
-    var n = c.CastleModel.privateOfferData.getOfferById(i);
-    if (n) {
-      s.CommandController.instance.executeCommand(d.IngameClientCommands.OPEN_PRIVATE_OFFER_DIALOG_COMMAND, n);
+var n = function () {
+  function ClientConstHero() {}
+  ClientConstHero.getGenderStringForHero = function (e) {
+    if (ClientConstHero.FEMALE_HEROS.indexOf(e) > -1) {
+      return "female";
     } else {
-      p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.PrivateOfferFailedStandardDialog, new a.BasicStandardOkDialogProperties(o.BasicModel.languageData.getTextById("generic_alert_information"), o.BasicModel.languageData.getTextById("errorCode_219")));
+      return "male";
     }
   };
-  return OpenGenericOfferCommand;
-}(r.SimpleCommand);
-exports.OpenGenericOfferCommand = u;
-var d = require("./29.js");
-var p = require("./9.js");
-var h = require("./563.js");
-l.classImplementsInterfaces(u, "ISimpleCommand");
+  ClientConstHero.__initialize_static_members = function () {
+    ClientConstHero.FEMALE_HEROS = [2, 7, 9, 803];
+    ClientConstHero.MALE_HEROS = [0, 1, 3, 4, 5, 6, 8, 801, 802];
+    ClientConstHero.STARTER_HEROES = [801, 802, 803];
+  };
+  return ClientConstHero;
+}();
+exports.ClientConstHero = n;
+n.__initialize_static_members();

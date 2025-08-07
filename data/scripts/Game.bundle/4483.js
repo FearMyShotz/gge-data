@@ -4,11 +4,16 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function OverseerEventVO() {
-    return e.call(this) || this;
+  function CastleNomadHunterEventBuyDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleNomadHunterEventBuyDialog.NAME) || this;
   }
-  n.__extends(OverseerEventVO, e);
-  return OverseerEventVO;
-}(require("./79.js").ASpecialEventVO);
-exports.OverseerEventVO = a;
-o.classImplementsInterfaces(a, "IEventOverviewable");
+  n.__extends(CastleNomadHunterEventBuyDialog, e);
+  CastleNomadHunterEventBuyDialog.__initialize_static_members = function () {
+    CastleNomadHunterEventBuyDialog.NAME = "CastleNomadHunterEventBuy";
+  };
+  return CastleNomadHunterEventBuyDialog;
+}(require("./168.js").CastleGenericSliderBuyDialog);
+exports.CastleNomadHunterEventBuyDialog = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList");
+a.__initialize_static_members();

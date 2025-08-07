@@ -146,10 +146,10 @@ var d = function (e) {
   });
   CastleAllianceBattlegroundEventDialogRanking.MAX_VISIBLE_ITEMS = 7;
   return CastleAllianceBattlegroundEventDialogRanking;
-}(require("./34.js").CastleDialogSubLayer);
+}(require("./35.js").CastleDialogSubLayer);
 exports.CastleAllianceBattlegroundEventDialogRanking = d;
 o.classImplementsInterfaces(d, "ICollectableRendererList", "ISublayer");
-var p = require("./752.js");
+var p = require("./754.js");
 var h = require("./249.js");
 var g = require("./36.js");
 var C = require("./121.js");

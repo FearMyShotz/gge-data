@@ -9,7 +9,7 @@ var r = require("./6.js");
 var l = require("./4062.js");
 var c = require("./161.js");
 var u = require("./4.js");
-var d = require("./587.js");
+var d = require("./588.js");
 var p = require("./8.js");
 var h = function (e) {
   function ButtonBuyLevelComponent(t) {

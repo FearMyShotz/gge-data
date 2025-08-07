@@ -3,60 +3,52 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1032.js");
-var s = require("./303.js");
-var r = function (e) {
-  function FactionBarracksBuildingVE() {
+var a = require("./2.js");
+var s = require("./26.js");
+var r = require("./4.js");
+var l = require("./145.js");
+var c = function (e) {
+  function EventBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FactionBarracksBuildingVE, e);
-  FactionBarracksBuildingVE.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    l.CastleComponent.controller.addEventListener(a.UnitPackageListEvent.PACKAGE_UPDATE, this.bindFunction(this.onPackageUpdate));
+  n.__extends(EventBuildingVE, e);
+  EventBuildingVE.prototype.openEventDialog = function () {
+    a.CommandController.instance.executeCommand(u.IngameClientCommands.OPEN_EVENT_DIALOG_COMMAND, this.eventBuildingVO.eventVO);
   };
-  FactionBarracksBuildingVE.prototype.removeEventListener = function () {
-    l.CastleComponent.controller.removeEventListener(a.UnitPackageListEvent.PACKAGE_UPDATE, this.bindFunction(this.onPackageUpdate));
-    e.prototype.removeEventListener.call(this);
+  EventBuildingVE.prototype.createDisp = function () {
+    this.dispComponent.addClip(this.loadExternalClip(this.assetClipName));
   };
-  FactionBarracksBuildingVE.prototype.createStatusIcons = function () {
-    e.prototype.createStatusIcons.call(this);
-    if (!this.statusIcons.isUpgradeIconActive) {
-      if (this.unitProductionBuildingVO.isProductive) {
-        this.statusIcons.addIcon(this.unitProductionBuildingVO.isFestivalActive ? u.IsoStatusIconEnum.PRODUCTIVE_FESTIVAL : u.IsoStatusIconEnum.PRODUCTIVE);
-      } else if (!this.buildingVO.buildingState.isUnderConstruction) {
-        this.statusIcons.addIcon(this.unitProductionBuildingVO.isFestivalActive ? u.IsoStatusIconEnum.UNPRODUCTIVE_FESTIVAL : u.IsoStatusIconEnum.UNPRODUCTIVE);
-      }
+  EventBuildingVE.prototype.createAdditionalClips = function () {
+    this.additionalClips.addClips(l.IsoAdditionalClipEnum.CAMP_FIRE);
+    if (!this.eventBuildingVO.eventVO.hasUserSolvedEvent) {
+      this.additionalClips.addClips(l.IsoAdditionalClipEnum.EXCLAMATION_MARK);
     }
   };
-  FactionBarracksBuildingVE.prototype.getRingMenuButtons = function () {
-    var t = e.prototype.getRingMenuButtons.call(this);
-    t.push(new c.RingMenuButtonFactionBarracks());
-    return t;
+  EventBuildingVE.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    r.CastleModel.specialEventData.addEventListener(s.CastleSpecialEventEvent.REFRESH_SPECIALEVENT, this.bindFunction(this.onEventChanged));
   };
-  Object.defineProperty(FactionBarracksBuildingVE.prototype, "buildingGroundIconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements.Icon_Recruit;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.AFactionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  FactionBarracksBuildingVE.prototype.onPackageUpdate = function (e) {
-    this.updateStatusIcon();
+  EventBuildingVE.prototype.removeEventListener = function () {
+    e.prototype.removeEventListener.call(this);
+    r.CastleModel.specialEventData.removeEventListener(s.CastleSpecialEventEvent.REFRESH_SPECIALEVENT, this.bindFunction(this.onEventChanged));
   };
-  Object.defineProperty(FactionBarracksBuildingVE.prototype, "unitProductionBuildingVO", {
+  EventBuildingVE.prototype.onMouseClick = function () {
+    this.openEventDialog();
+  };
+  EventBuildingVE.prototype.onEventChanged = function (e) {
+    if (this.eventBuildingVO.eventVO == e.specialEventVO) {
+      this.updateAdditionalClips();
+    }
+  };
+  Object.defineProperty(EventBuildingVE.prototype, "eventBuildingVO", {
     get: function () {
       return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  return FactionBarracksBuildingVE;
-}(s.AFactionBuildingVE);
-exports.FactionBarracksBuildingVE = r;
-var l = require("./14.js");
-var c = require("./3016.js");
-var u = require("./177.js");
-o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");
+  return EventBuildingVE;
+}(require("./1032.js").AEventBuildingVE);
+exports.EventBuildingVE = c;
+var u = require("./29.js");
+o.classImplementsInterfaces(c, "ICollectableRendererList", "IIngameUICapable");

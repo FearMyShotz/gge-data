@@ -3,70 +3,99 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./5.js");
-var l = require("./3.js");
-var c = require("./6.js");
-var u = require("./4.js");
-var d = require("./141.js");
-var p = require("./401.js");
-var h = require("./287.js");
-var g = require("./1633.js");
-var C = function (e) {
-  function ResourcePanelToolTipMorale() {
-    return e.call(this, _.ResourcePanelToolTipManager.TOOL_TIP_TYPE_INFO_RESOURCE_WOOD) || this;
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./3.js");
+var l = require("./4.js");
+var c = require("./33.js");
+var u = require("./141.js");
+var d = require("./401.js");
+var p = require("./286.js");
+var h = require("./1633.js");
+var g = function (e) {
+  function ResourcePanelToolTipLawAndOrder() {
+    return e.call(this, C.ResourcePanelToolTipManager.TOOL_TIP_TYPE_LAW_AND_ORDER) || this;
   }
-  n.__extends(ResourcePanelToolTipMorale, e);
-  ResourcePanelToolTipMorale.prototype.createItems = function () {
-    this._title = new h.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextBold());
-    this._deco = new g.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
-    this._factionDeco = new g.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
-    this._moraleOther = new g.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
-    this._troops = new g.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
-    this._morale = new g.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair_Moral());
-    this._divider = new Library.CastleInterfaceElements.divider();
-  };
-  ResourcePanelToolTipMorale.prototype.updateContent = function () {
-    this._items.length = 0;
-    this._divider.scaleX = 0.1;
+  n.__extends(ResourcePanelToolTipLawAndOrder, e);
+  ResourcePanelToolTipLawAndOrder.prototype.createItems = function () {
+    this._title = new p.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextBold());
+    this._deco = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
+    this._protection = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
+    this._population = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
+    this._riot = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
+    this._subscription = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
+    this._baron = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
+    this._productivity = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipIconTwoShortTexts());
     this._items.push(this._title);
     this._items.push(this._deco);
-    d.CastleTextFieldHelper.safeSetText(this._title.tf, "morality");
-    d.CastleTextFieldHelper.safeSetText(this._deco.tf1, o.GenericTextIds.VALUE_COLON, [l.Localize.text("decoration")]);
-    d.CastleTextFieldHelper.safeSetText(this._deco.tf2, u.CastleModel.areaData.activeMorality.getMoralityPlus().toString());
-    if (u.CastleModel.kingdomData.activeKingdomID == r.FactionConst.KINGDOM_ID) {
-      d.CastleTextFieldHelper.safeSetText(this._factionDeco.tf1, o.GenericTextIds.VALUE_COLON, [l.Localize.text("morality_decoFactionBonus")]);
-      d.CastleTextFieldHelper.safeSetText(this._factionDeco.tf2, u.CastleModel.areaData.activeMorality.getFactionMoralityPlus().toString());
-      this._items.push(this._factionDeco);
-    }
-    var e = u.CastleModel.areaData.activeMorality.getMoralityPlus() + u.CastleModel.areaData.activeMorality.getFactionMoralityPlus() - Math.abs(u.CastleModel.areaData.activeMorality.getTroopStrength());
-    if ((e = Math.abs(e - u.CastleModel.areaData.activeMorality.morality)) > 0) {
-      d.CastleTextFieldHelper.safeSetText(this._moraleOther.tf1, o.GenericTextIds.VALUE_COLON, [l.Localize.text("morality_decoFaction_otherBonus")]);
-      d.CastleTextFieldHelper.safeSetText(this._moraleOther.tf2, e.toString());
-      this._items.push(this._moraleOther);
-    }
-    d.CastleTextFieldHelper.safeSetText(this._troops.tf1, o.GenericTextIds.VALUE_COLON, [l.Localize.text("troopstrength")]);
-    d.CastleTextFieldHelper.safeSetText(this._troops.tf2, o.GenericTextIds.VALUE_NOMINAL_SUBTRACT, [Math.abs(u.CastleModel.areaData.activeMorality.getTroopStrength())]);
-    d.CastleTextFieldHelper.safeSetText(this._morale.tf1, o.GenericTextIds.VALUE_PERCENTAGE, [c.int(ResourcePanelToolTipMorale.morality * 100)]);
-    d.CastleTextFieldHelper.safeSetNumber(this._morale.tf2, u.CastleModel.areaData.activeMorality.morality);
-    this._items.push(this._troops);
-    this._items.push(this._divider);
-    this._items.push(this._morale);
+    this._items.push(this._protection);
+    this._items.push(this._population);
+    this._items.push(this._riot);
+    this._items.push(this._subscription);
+    this._items.push(this._baron);
+    this._items.push(new Library.CastleInterfaceElements.divider());
+    this._items.push(this._productivity);
   };
-  Object.defineProperty(ResourcePanelToolTipMorale, "morality", {
-    get: function () {
-      if (u.CastleModel.kingdomData.activeKingdomID == r.FactionConst.KINGDOM_ID) {
-        return r.FactionConst.getMoraleModifier(u.CastleModel.areaData.activeMorality.morality);
-      } else {
-        return s.CombatConst.getMoralBonus(u.CastleModel.areaData.activeMorality.morality);
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return ResourcePanelToolTipMorale;
-}(p.AResourcePanelToolTip);
-exports.ResourcePanelToolTipMorale = C;
-var _ = require("./152.js");
-a.classImplementsInterfaces(C, "Container");
+  ResourcePanelToolTipLawAndOrder.prototype.updateContent = function () {
+    u.CastleTextFieldHelper.safeSetText(this._title.tf, "publicOrder");
+    if (o.GGSCountryController.instance.currentCountry.isLanguageWrittenRightToLeft) {
+      this.updateDeco(this._deco.tf2, this._deco.tf1);
+      this.updateProtection(this._protection.tf2, this._protection.tf1);
+      this.updatePopulation(this._population.tf2, this._population.tf1);
+      this.updateRiot(this._riot.tf2, this._riot.tf1);
+      this.updateSubscription(this._subscription.tf2, this._subscription.tf1);
+      this.updateBaron(this._baron.tf2, this._baron.tf1);
+      this.updateProductivity(this._productivity.tf2, this._productivity.tf1);
+    } else {
+      this.updateDeco(this._deco.tf1, this._deco.tf2);
+      this.updateProtection(this._protection.tf1, this._protection.tf2);
+      this.updatePopulation(this._population.tf1, this._population.tf2);
+      this.updateRiot(this._riot.tf1, this._riot.tf2);
+      this.updateSubscription(this._subscription.tf1, this._subscription.tf2);
+      this.updateBaron(this._baron.tf1, this._baron.tf2);
+      this.updateProductivity(this._productivity.tf1, this._productivity.tf2);
+    }
+  };
+  ResourcePanelToolTipLawAndOrder.prototype.updateDeco = function (e, t) {
+    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("decoration")]);
+    if (l.CastleModel.areaData.activeCommonInfo) {
+      u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo.getDecoPoints() - l.CastleModel.areaData.activeCommonInfo.populationPenalty);
+    }
+  };
+  ResourcePanelToolTipLawAndOrder.prototype.updateProtection = function (e, t) {
+    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("protection")]);
+    u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo ? l.CastleModel.areaData.activeCommonInfo.protection : 0);
+  };
+  ResourcePanelToolTipLawAndOrder.prototype.updateResearch = function (e, t) {
+    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("research")]);
+    u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.researchData.getResearchEffectValue(c.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BONUS, l.CastleModel.areaData.activeAreaInfo.areaType, l.CastleModel.areaData.activeArea.spaceId).strength);
+  };
+  ResourcePanelToolTipLawAndOrder.prototype.updatePopulation = function (e, t) {
+    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("population")]);
+    u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo.populationPenalty);
+  };
+  ResourcePanelToolTipLawAndOrder.prototype.updateRiot = function (e, t) {
+    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("riot")]);
+    u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo.riot * -1);
+  };
+  ResourcePanelToolTipLawAndOrder.prototype.updateSubscription = function (e, t) {
+    var i = l.CastleModel.areaData.activeCommonInfo.getPublicOrderSubscriptionBonus();
+    this._subscription.visible = i > 0;
+    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("dialog_subscriptions_HUD_subscriptionBonus")]);
+    u.CastleTextFieldHelper.safeSetNumber(t, i);
+  };
+  ResourcePanelToolTipLawAndOrder.prototype.updateBaron = function (e, t) {
+    var i = l.CastleModel.areaData.activeCommonInfo.getPublicOrderBaronBonus();
+    this._baron.visible = i > 0;
+    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("equipment_itemType_baron")]);
+    u.CastleTextFieldHelper.safeSetNumber(t, i);
+  };
+  ResourcePanelToolTipLawAndOrder.prototype.updateProductivity = function (e, t) {
+    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_PERCENTAGE, [Math.round(l.CastleModel.areaData.activeCommonInfo.getLawAndOrderFactor() * 100)]);
+    u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo.getLawAndOrderValue());
+  };
+  return ResourcePanelToolTipLawAndOrder;
+}(d.AResourcePanelToolTip);
+exports.ResourcePanelToolTipLawAndOrder = g;
+var C = require("./152.js");
+s.classImplementsInterfaces(g, "Container");

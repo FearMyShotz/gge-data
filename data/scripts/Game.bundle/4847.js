@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GLICommand() {
+  function GEICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GLICommand, e);
-  Object.defineProperty(GLICommand.prototype, "cmdId", {
+  n.__extends(GEICommand, e);
+  Object.defineProperty(GEICommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_LORDS_INFO;
+      return s.ClientConstSF.S2C_GET_EQUIPMENT_INVENTORY;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GLICommand.prototype.executeCommand = function (e, t) {
+  GEICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.lordData.parse_GLI(i);
+        r.CastleModel.equipData.parse_GEI(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GLICommand;
+  return GEICommand;
 }(l.CastleCommand);
-exports.GLICommand = c;
+exports.GEICommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

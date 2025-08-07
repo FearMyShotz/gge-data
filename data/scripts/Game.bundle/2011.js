@@ -2,11 +2,12 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  return function CollectableRenderOptionsTooltip() {
-    this.useAmount = true;
-    this.useSimpleTooltips = false;
-    this.showEquipmentCountdown = true;
-    this.forceHideTimer = false;
+  return function CollectableRenderOptionsTextfield() {
+    this.showBoosterDuration = false;
+    this.useKiloAbbreviationForAmount = false;
+    this.forceRender = false;
+    this.useAutoFitToBounds = true;
+    this.verticalAlign = "";
   };
 }();
-exports.CollectableRenderOptionsTooltip = n;
+exports.CollectableRenderOptionsTextfield = n;

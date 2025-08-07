@@ -2,44 +2,38 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./7.js");
-var l = require("./15.js");
-var c = require("./4.js");
-var u = require("./10.js");
-var d = function (e) {
-  function TSCCommand() {
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function GCECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TSCCommand, e);
-  Object.defineProperty(TSCCommand.prototype, "cmdId", {
+  n.__extends(GCECommand, e);
+  Object.defineProperty(GCECommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_TEMPORARY_SERVER_SELECT_CASTLE_COMPLETE;
+      return s.ClientConstSF.S2C_GET_TEMP_SERVER_CHARGE_CHAMP_EFFECTS;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  TSCCommand.prototype.executeCommand = function (e, t) {
+  GCECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case s.ERROR.ALL_OK:
-        if (c.CastleModel.userData.connectToTempServer) {
-          o.CommandController.instance.executeCommand(l.CastleBasicController.CONNECT_TO_TEMPORARY_SERVER);
-        }
-        if (c.CastleModel.userData.connectToABGServer) {
-          o.CommandController.instance.executeCommand(l.CastleBasicController.CONNECT_TO_ALLIANCE_BATTLE_GROUND_SERVER);
-        }
+      case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.tempServerData.parse_RerollChargeEffects(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return true;
   };
-  return TSCCommand;
-}(u.CastleCommand);
-exports.TSCCommand = d;
-a.classImplementsInterfaces(d, "IExecCommand");
+  return GCECommand;
+}(l.CastleCommand);
+exports.GCECommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

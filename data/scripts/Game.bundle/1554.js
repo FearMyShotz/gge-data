@@ -8,5 +8,5 @@ var o = function (e) {
   }
   n.__extends(ASoldierMovementVO, e);
   return ASoldierMovementVO;
-}(require("./537.js").AIsoMovementVO);
+}(require("./538.js").AIsoMovementVO);
 exports.ASoldierMovementVO = o;

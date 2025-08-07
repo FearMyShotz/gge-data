@@ -2,94 +2,52 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./54.js");
-var s = require("./5769.js");
-var r = require("./5770.js");
-var l = require("./5771.js");
-var c = require("./1095.js");
-var u = require("./5772.js");
-var d = function (e) {
-  function CastleEventDifficultyScalingData(t) {
+var o = require("./72.js");
+var a = require("./5769.js");
+var s = require("./22.js");
+var r = function (e) {
+  function DynamicTopXxmlData(t) {
     var i = e.call(this) || this;
-    i._eventAutoScalingDifficultiesVOsByEventID = new Map();
-    i._eventAutoScalingDifficultiesVOsByDifficultyID = new Map();
-    i._eventAutoScalingDifficultyEffectVOsByDifficultyID = new Map();
-    i._eventAutoScalingDifficultyTypeVOsByDifficultyID = new Map();
-    i._eventAutoScalingsVOsByDifficultyID = new Map();
-    i._eventAutoScalingCamps = new Map();
-    i.parseXML(t);
+    i._zoneIdsToTopX = new Map();
+    i.parseXml(t);
     return i;
   }
-  n.__extends(CastleEventDifficultyScalingData, e);
-  CastleEventDifficultyScalingData.prototype.parseXML = function (e) {
-    for (var t = 0, i = e.eventAutoScalingDifficultyTypes; t < i.length; t++) {
-      var n = i[t];
-      if (n !== undefined) {
-        var o = new c.EventAutoScalingDifficultyTypeVO();
-        o.parseXML(n);
-        this._eventAutoScalingDifficultyTypeVOsByDifficultyID.set(o.difficultyTypeID, o);
-      }
-    }
-    for (var a = 0, d = e.eventAutoScalingDifficulties; a < d.length; a++) {
-      var p = d[a];
-      if (p !== undefined) {
-        var h = new r.EventAutoScalingDifficultyVO();
-        h.parseXML(p);
-        if (!this._eventAutoScalingDifficultiesVOsByEventID.get(h.eventID)) {
-          this._eventAutoScalingDifficultiesVOsByEventID.set(h.eventID, []);
+  n.__extends(DynamicTopXxmlData, e);
+  DynamicTopXxmlData.prototype.parseXml = function (e) {
+    var t = e.leaguetypeTopXSizes;
+    if (t != null) {
+      var i = undefined;
+      for (var n = 0, o = t; n < o.length; n++) {
+        var r = o[n];
+        if (r !== undefined) {
+          var l = parseInt(r.zoneID || "");
+          var c = parseInt(r.eventID || "");
+          var u = parseInt(r.leaguetypeID || "");
+          var d = s.CastleXMLUtils.getIntArrayFromString(r.topXValue || [], ",");
+          i = new a.DynamicTopXVO(c, u, d);
+          if (!this._zoneIdsToTopX.has(l)) {
+            this._zoneIdsToTopX.set(l, []);
+          }
+          this._zoneIdsToTopX.get(l).push(i);
         }
-        this._eventAutoScalingDifficultiesVOsByDifficultyID.set(h.difficultyID, h);
-        this._eventAutoScalingDifficultiesVOsByEventID.get(h.eventID).push(h);
       }
     }
-    for (var g = 0, C = e.eventAutoScalingLordEffects; g < C.length; g++) {
-      var _ = C[g];
-      if (_ !== undefined) {
-        var m = new l.EventAutoScalingDifficultyEffectVO();
-        m.parseXML(_);
-        if (!this._eventAutoScalingDifficultyEffectVOsByDifficultyID.get(m.difficultyID)) {
-          this._eventAutoScalingDifficultyEffectVOsByDifficultyID.set(m.difficultyID, []);
+  };
+  DynamicTopXxmlData.prototype.getTopX = function (e, t, i) {
+    if (!this._zoneIdsToTopX.has(e)) {
+      return [];
+    }
+    var n = this._zoneIdsToTopX.get(e);
+    if (n) {
+      var o = undefined;
+      for (var a = 0; a < n.length; a++) {
+        if ((o = n[a]).leagueTypeID == i && o.eventId == t) {
+          return o.topX;
         }
-        this._eventAutoScalingDifficultyEffectVOsByDifficultyID.get(m.difficultyID).push(m);
       }
     }
-    for (var f = 0, O = e.eventAutoScalings; f < O.length; f++) {
-      var E = O[f];
-      if (E !== undefined) {
-        var y = new u.EventAutoScalingVO();
-        y.parseXML(E);
-        this._eventAutoScalingsVOsByDifficultyID.set(y.difficultyID, y);
-      }
-    }
-    for (var b = 0, D = e.eventAutoScalingCamps; b < D.length; b++) {
-      var I = D[b];
-      if (I !== undefined) {
-        var T = new s.DifficultyScalingCampXmlVO();
-        T.parseXML(I);
-        this._eventAutoScalingCamps.set(T.id, T);
-      }
-    }
+    return [];
   };
-  CastleEventDifficultyScalingData.prototype.getDifficultyTypesByTypeID = function (e) {
-    return this._eventAutoScalingDifficultyTypeVOsByDifficultyID.get(e);
-  };
-  CastleEventDifficultyScalingData.prototype.getDifficultiesByEventID = function (e) {
-    return this._eventAutoScalingDifficultiesVOsByEventID.get(e);
-  };
-  CastleEventDifficultyScalingData.prototype.getDifficultyVOByDifficultyID = function (e) {
-    return this._eventAutoScalingDifficultiesVOsByDifficultyID.get(e);
-  };
-  CastleEventDifficultyScalingData.prototype.getDifficultyEffectsByDifficultyID = function (e) {
-    return this._eventAutoScalingDifficultyEffectVOsByDifficultyID.get(e);
-  };
-  CastleEventDifficultyScalingData.prototype.getAutoScalingByDifficultyID = function (e) {
-    return this._eventAutoScalingsVOsByDifficultyID.get(e);
-  };
-  CastleEventDifficultyScalingData.prototype.getCampByEventAutoScalingCampID = function (e) {
-    return this._eventAutoScalingCamps.get(e);
-  };
-  return CastleEventDifficultyScalingData;
-}(a.CastleBasicData);
-exports.CastleEventDifficultyScalingData = d;
-o.classImplementsInterfaces(d, "IUpdatable", "ICastleBasicData");
+  return DynamicTopXxmlData;
+}(o.CastleEventDispatcher);
+exports.DynamicTopXxmlData = r;

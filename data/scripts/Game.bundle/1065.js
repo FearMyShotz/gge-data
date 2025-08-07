@@ -1,144 +1,65 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./3.js");
-var a = require("./12.js");
-var s = require("./19.js");
-var r = require("./4.js");
-var l = require("./544.js");
-var c = require("./52.js");
-var u = require("./331.js");
-var d = createjs.Point;
-var p = function () {
-  function DailyQuestScoreBarProperties(e) {
-    this._rewardList = e;
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./360.js");
+var l = require("./13.js");
+var c = require("./524.js");
+var u = require("./8.js");
+var d = require("./11.js");
+var p = require("./301.js");
+var h = require("./36.js");
+var g = function (e) {
+  function ModernGenericRewardDialog(t = null) {
+    return e.call(this, t || ModernGenericRewardDialog.NAME) || this;
   }
-  Object.defineProperty(DailyQuestScoreBarProperties.prototype, "maxItemsPerReward", {
-    get: function () {
-      return DailyQuestScoreBarProperties.MAX_NUMBER_OF_REWARDS_PER_PACKAGE;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DailyQuestScoreBarProperties.prototype, "numThresholdRewards", {
-    get: function () {
-      return DailyQuestScoreBarProperties.NUMBER_OF_THRESHOLD_REWARDS;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DailyQuestScoreBarProperties.prototype, "numRankRewards", {
-    get: function () {
-      return DailyQuestScoreBarProperties.NUMBER_OF_RANK_REWARDS;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DailyQuestScoreBarProperties.prototype, "orientation", {
-    get: function () {
-      return u.CastleScoreBarComponent.ORIENTATION_VERTICAL;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  DailyQuestScoreBarProperties.prototype.getOwnPointsText = function (e) {
-    return new o.NumberVO(e);
+  n.__extends(ModernGenericRewardDialog, e);
+  ModernGenericRewardDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    u.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok], h.ClickFeedbackButton);
+    this._rewards = new p.SeasonLeagueSimpleRewardsComponent(this.dialogDisp.mc_items, true, true, 7);
+    this._rewardAlign = new c.ItemCenterAlignComponent(this.dialogDisp.mc_items, "mc_item", true);
   };
-  DailyQuestScoreBarProperties.prototype.getReward = function (e) {
-    return this._rewardList[e];
+  ModernGenericRewardDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this._rewards.onShow();
+    this.updateRewards();
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO(this.dialogProps.copy)).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId(this.dialogProps.title))).autoFitToBounds = true;
   };
-  DailyQuestScoreBarProperties.prototype.getToolTip = function (e, t) {
-    return {
-      t: "dialog_dailyQuests_rank" + (e + 1) + "_tooltip",
-      p: [l.CastleQuestData.DAILY_QUEST_THRESHOLDS[e]]
-    };
+  ModernGenericRewardDialog.prototype.hide = function () {
+    this._rewards.onHide();
+    e.prototype.hide.call(this);
   };
-  DailyQuestScoreBarProperties.prototype.getLabel = function (e) {
-    return new o.NumberVO(l.CastleQuestData.DAILY_QUEST_THRESHOLDS[e]);
+  ModernGenericRewardDialog.prototype.updateRewards = function () {
+    this._rewardAlign.align(this.dialogProps.rewardList.length);
+    this._rewards.updateWithNewData(this.dialogProps.rewardList);
   };
-  DailyQuestScoreBarProperties.prototype.getDescription = function (e) {
-    return null;
-  };
-  DailyQuestScoreBarProperties.prototype.hasLabels = function () {
-    return true;
-  };
-  DailyQuestScoreBarProperties.prototype.hasDecriptions = function () {
-    return false;
-  };
-  Object.defineProperty(DailyQuestScoreBarProperties.prototype, "rewardIconDimension", {
-    get: function () {
-      return DailyQuestScoreBarProperties.REWARD_DIMENSION;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DailyQuestScoreBarProperties.prototype, "collectableRenderOption", {
-    get: function () {
-      return s.CollectableRenderOptions.SET_ADVANCED;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  DailyQuestScoreBarProperties.prototype.preRenderFunc = function (e) {
-    if (e.itemVO) {
-      var t = e.getRenderer(s.CollectableRenderOptions.ICON_TRANSFORM);
-      switch (e.itemVO.itemType) {
-        case a.CollectableEnum.EQUIPMENT_RARENESS:
-        case a.CollectableEnum.EQUIPMENT_UNIQUE:
-        case a.CollectableEnum.HERO_RANDOM:
-        case a.CollectableEnum.GEM:
-        case a.CollectableEnum.GEM_RANDOM:
-        case a.CollectableEnum.VIP_TIME:
-          t.transform.offset.y = 4;
-          t.transform.scale = 1.1;
-          break;
-        case a.CollectableEnum.C1:
-        case a.CollectableEnum.C2:
-        case a.CollectableEnum.WOOD:
-        case a.CollectableEnum.STONE:
-        case a.CollectableEnum.FOOD:
-          t.transform.scale = 0.9;
-          t.transform.offset.y = -3;
-          break;
-        case a.CollectableEnum.GENERIC_CURRENCY:
-          if (!e.itemVO.isInIdRange(r.CastleModel.currencyData.getCurrencyRangeByID(c.ClientConstCurrency.ID_RANGE_MINUTE_SKIP))) {
-            break;
-          }
-        case a.CollectableEnum.UNITS:
-        case a.CollectableEnum.GENERIC_CURRENCY:
-          t.transform.scale = 0.8;
-          t.transform.offset.y = -2;
-          break;
-        case a.CollectableEnum.BUILDING:
-          t.transform.offset.y = 3;
-      }
+  ModernGenericRewardDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_ok:
+        if (this.dialogProps.additionalInfo && o.instanceOfClass(this.dialogProps.additionalInfo, "RewardHubVO")) {
+          r.CastleRewardHubMicroservice.Instance.pickRewardsSignal.dispatch([this.dialogProps.additionalInfo.hubRewardID]);
+        }
+        this.hide();
     }
   };
-  DailyQuestScoreBarProperties.prototype.thresholdProgress = function (e, t, i) {
-    var n = t[e];
-    var o = e > 0 ? t[e - 1] : 0;
-    return Math.min(1, Math.max(i - o, 0) / (n - o));
-  };
-  Object.defineProperty(DailyQuestScoreBarProperties.prototype, "numLabels", {
+  Object.defineProperty(ModernGenericRewardDialog.prototype, "dialogProps", {
     get: function () {
-      if (l.CastleQuestData.DAILY_QUEST_THRESHOLDS) {
-        return l.CastleQuestData.DAILY_QUEST_THRESHOLDS.length;
-      } else {
-        return 0;
-      }
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  DailyQuestScoreBarProperties.__initialize_static_members = function () {
-    DailyQuestScoreBarProperties.MAX_NUMBER_OF_REWARDS_PER_PACKAGE = 4;
-    DailyQuestScoreBarProperties.NUMBER_OF_THRESHOLD_REWARDS = 4;
-    DailyQuestScoreBarProperties.NUMBER_OF_RANK_REWARDS = 0;
-    DailyQuestScoreBarProperties.REWARD_DIMENSION = new d(33, 33);
-  };
-  return DailyQuestScoreBarProperties;
-}();
-exports.DailyQuestScoreBarProperties = p;
-n.classImplementsInterfaces(p, "IScorebarProperties");
-p.__initialize_static_members();
+  ModernGenericRewardDialog.NAME = "SeasonLeaguePassGained";
+  return ModernGenericRewardDialog;
+}(d.CastleExternalDialog);
+exports.ModernGenericRewardDialog = g;
+o.classImplementsInterfaces(g, "ICollectableRendererList");

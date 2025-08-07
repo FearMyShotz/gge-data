@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function MCUCommand() {
+  function DUPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MCUCommand, e);
-  Object.defineProperty(MCUCommand.prototype, "cmdId", {
+  n.__extends(DUPCommand, e);
+  Object.defineProperty(DUPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_CANCEL_UNIT_PACKAGE;
+      return s.ClientConstSF.S2C_DISMISS_UNIT_PACKAGE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,19 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  MCUCommand.prototype.executeCommand = function (e, t) {
+  DUPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.militaryData.parse_SPL(i.spl);
+        r.CastleModel.areaData.activeArea.updater.parseGPA(i.gpa);
+        r.CastleModel.militaryData.parse_GUI(i.gui);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return MCUCommand;
+  return DUPCommand;
 }(l.CastleCommand);
-exports.MCUCommand = c;
+exports.DUPCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

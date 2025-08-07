@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function AQICommand() {
+  function ALLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AQICommand, e);
-  Object.defineProperty(AQICommand.prototype, "cmdId", {
+  n.__extends(ALLCommand, e);
+  Object.defineProperty(ALLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ALLIANCE_QUIT;
+      return s.ClientConstSF.S2C_ALLIANCE_ACTION_LIST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,26 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  AQICommand.prototype.executeCommand = function (e, t) {
+  ALLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.chatData.resetHistory();
-        r.CastleModel.userData.parse_GAL(i.gal);
-        r.CastleModel.allianceData.resetMyAlliance();
-        if (u.CastleLayoutManager.getInstance().currentState == u.CastleLayoutManager.STATE_WORLDMAP) {
-          var n = u.CastleLayoutManager.getInstance().worldmapScreen.renderer.camera.getAreaViewportRectangle();
-          r.CastleModel.worldmapData.updateAreaRange(n.x, n.y, n.x + n.width, n.y + n.height);
-          this.layoutManager.worldmapScreen.renderer.renderLayer();
-        }
+        r.CastleModel.allianceData.parse_ALL(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return AQICommand;
+  return ALLCommand;
 }(l.CastleCommand);
-exports.AQICommand = c;
-var u = require("./17.js");
+exports.ALLCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

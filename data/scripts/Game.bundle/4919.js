@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function MACCommand() {
+  function CEMCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MACCommand, e);
-  Object.defineProperty(MACCommand.prototype, "cmdId", {
+  n.__extends(CEMCommand, e);
+  Object.defineProperty(CEMCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ABANDON_OUTPOST_CANCEL;
+      return s.ClientConstSF.S2C_CHANGE_EMBLEM;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,19 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  MACCommand.prototype.executeCommand = function (e, t) {
+  CEMCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.userData.parse_MAC(i);
-        return true;
+        r.CastleModel.userData.parse_GEM(i.gem);
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return MACCommand;
+  return CEMCommand;
 }(l.CastleCommand);
-exports.MACCommand = c;
+exports.CEMCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

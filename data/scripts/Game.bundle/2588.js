@@ -4,102 +4,65 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./32.js");
-var r = require("./15.js");
-var l = require("./292.js");
-var c = require("./4.js");
-var u = require("./204.js");
-var d = createjs.Point;
-var p = function (e) {
-  function CastleFlagPremiumShopVO() {
-    var t = e.call(this, "flag", "flag_copy_short", [C.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_EVENT, C.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_REST], a.PlayerConst.PREMIUM_FLAG_COST_C2) || this;
-    r.CastleBasicController.getInstance().removeEventListener(s.CastleUserDataEvent.CHANGE_USER_AVATAR, t.bindFunction(t.onCrestUpdated));
-    r.CastleBasicController.getInstance().addEventListener(s.CastleUserDataEvent.CHANGE_USER_AVATAR, t.bindFunction(t.onCrestUpdated));
+var s = require("./3.js");
+var r = require("./28.js");
+var l = require("./103.js");
+var c = require("./30.js");
+var u = require("./4.js");
+var d = require("./108.js");
+var p = require("./64.js");
+var h = require("./275.js");
+var g = function (e) {
+  function ShadowareaMapobjectVO() {
+    var t = e.call(this) || this;
+    t.name = "Shadow";
+    t._isVisibleOnMap = true;
     return t;
   }
-  n.__extends(CastleFlagPremiumShopVO, e);
-  Object.defineProperty(CastleFlagPremiumShopVO.prototype, "isActive", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastlePremiumMarketShopVO.prototype, "isActive").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleFlagPremiumShopVO.prototype, "listSortPriority", {
-    get: function () {
-      return 5;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastlePremiumMarketShopVO.prototype, "listSortPriority").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleFlagPremiumShopVO.prototype.clickedBuyButton = function () {
-    h.CastleDialogHandler.getInstance().registerDefaultDialogs(g.CastleBuyPremiumFlagDialog);
+  n.__extends(ShadowareaMapobjectVO, e);
+  ShadowareaMapobjectVO.prototype.getDisplayObjectClipContainer = function (e, t, i = false) {
+    var n = u.CastleModel.kingdomData.getKingdomVOByID(this.kingdomID).kingdomName;
+    var o = this.assetFileURL(C.WorldmapObjectIconHelper.FILE_NAME_SHADOW_EVENT);
+    var a = new d.CastleDisplayObjectClipContainer();
+    var s = n == "Classic" ? "ShadowMapObjectBackground_" : "ShadowCampBackground_";
+    a.addItem(this.getAsExternalClip(s + n, o));
+    a.addItem(this.getAsExternalClip("Shadow_Mapobject", o));
+    a.asDisplayObject().scaleX = a.asDisplayObject().scaleY /= h.CastleWorldmapConst.ZOOM_MAX;
+    return a;
   };
-  CastleFlagPremiumShopVO.prototype.createVisualMovieClip = function () {
-    return new Library.CastleInterfaceElements_Icons.Icon_PremiumFlag();
+  ShadowareaMapobjectVO.prototype.parseAreaInfo = function (e) {
+    this._areaType = e[0];
+    this._absAreaPosX = e[1];
+    this._absAreaPosY = e[2];
+    this._attackCooldownEndTimestamp = c.CachedTimer.getCachedTimer() + e[3] * r.ClientConstTime.SEC_2_MILLISEC;
+    this._secondsSinceEspionage = e[4];
+    this._spyInfoReceivingTime = c.CachedTimer.getCachedTimer() * r.ClientConstTime.MILLISEC_2_SEC;
+    this.dispatchEvent(l.EventInstanceMapper.getEvent(p.VisualVOEvent, p.VisualVOEvent.VALUEOBJECT_CHANGE));
   };
-  CastleFlagPremiumShopVO.prototype.onCrestUpdated = function (e = null) {
-    if (this._iconMC) {
-      this._iconMC = this.createVisualMovieClip();
-      this.onLoadedIcon(this._iconMC);
-    }
-  };
-  Object.defineProperty(CastleFlagPremiumShopVO.prototype, "canBeBought", {
+  Object.defineProperty(ShadowareaMapobjectVO.prototype, "areaNameString", {
     get: function () {
-      return !c.CastleModel.userData.hasPremiumFlag;
+      if (this.ownerInfo.playerID != a.ShadowUnitConst.DEFAULT_OWNER_ID && this.collectorEvent != null) {
+        return s.Localize.text("collector_event_camp_" + this.collectorEvent.collectInfoVO.collectorEventSkinName);
+      } else {
+        return s.Localize.text("ShadowUnitCamp");
+      }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastlePremiumMarketShopVO.prototype, "canBeBought").set.call(this, e);
+      Object.getOwnPropertyDescriptor(_.InteractiveMapobjectVO.prototype, "areaNameString").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleFlagPremiumShopVO.prototype, "cantBeBoughtButtonToolTip", {
+  Object.defineProperty(ShadowareaMapobjectVO.prototype, "collectorEvent", {
     get: function () {
-      return "premiumFlag_cantbuy";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastlePremiumMarketShopVO.prototype, "cantBeBoughtButtonToolTip").set.call(this, e);
+      return u.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_COLLECTOR);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleFlagPremiumShopVO.prototype, "hasVisualTimeWhenActive", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenActive").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleFlagPremiumShopVO.prototype, "offsetIcon", {
-    get: function () {
-      return new d(0, -7);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastlePremiumMarketShopVO.prototype, "offsetIcon").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleFlagPremiumShopVO.prototype.applyFilter = function () {
-    e.prototype.applyFilter.call(this);
-    if (this._iconMC) {
-      l.FlagHelper.colorFlag(this._iconMC.mc_flag, c.CastleModel.userData.playerCrest);
-    }
-  };
-  return CastleFlagPremiumShopVO;
-}(u.CastlePremiumMarketShopVO);
-exports.CastleFlagPremiumShopVO = p;
-var h = require("./9.js");
-var g = require("./2589.js");
-var C = require("./170.js");
-o.classImplementsInterfaces(p, "IPremiumMarketShopVO");
+  return ShadowareaMapobjectVO;
+}(require("./205.js").ContainerBuilderMapobjectVO);
+exports.ShadowareaMapobjectVO = g;
+var C = require("./70.js");
+var _ = require("./101.js");
+o.classImplementsInterfaces(g, "IDetailViewAble", "IWorldmapObjectVO");

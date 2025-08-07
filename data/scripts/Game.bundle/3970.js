@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./3.js");
-var s = require("./672.js");
+var s = require("./674.js");
 var r = function (e) {
   function DailyGoldButton(t, i) {
     var n = this;

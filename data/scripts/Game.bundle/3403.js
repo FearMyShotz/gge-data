@@ -2,22 +2,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function FactionEventMainDialogProperties(t = -1) {
-    var i = this;
-    i._layerID = 0;
+var o = require("./1.js");
+var a = require("./6.js");
+var s = require("./3404.js");
+var r = function (e) {
+  function OpenFactionEventMainDialogCommand() {
+    var t = this;
+    t._subLayerID = 0;
     CONSTRUCTOR_HACK;
-    (i = e.call(this) || this)._layerID = t;
-    return i;
+    return t = e.call(this) || this;
   }
-  n.__extends(FactionEventMainDialogProperties, e);
-  Object.defineProperty(FactionEventMainDialogProperties.prototype, "layerID", {
-    get: function () {
-      return this._layerID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return FactionEventMainDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.FactionEventMainDialogProperties = o;
+  n.__extends(OpenFactionEventMainDialogCommand, e);
+  OpenFactionEventMainDialogCommand.prototype.addAssets = function (t) {
+    e.prototype.addAssets.call(this, t);
+    this._subLayerID = a.int(t ? a.int(t) : -1);
+  };
+  OpenFactionEventMainDialogCommand.prototype.open = function (e) {
+    var t = new s.FactionEventMainDialogProperties(this._subLayerID);
+    t.titlesSublayer = e;
+    l.CastleDialogHandler.getInstance().registerDefaultDialogs(c.FactionEventMainDialog, t);
+  };
+  return OpenFactionEventMainDialogCommand;
+}(require("./1651.js").OpenFactionInvasionEventMainDialogCommand);
+exports.OpenFactionEventMainDialogCommand = r;
+var l = require("./9.js");
+var c = require("./662.js");
+o.classImplementsInterfaces(r, "ISimpleCommand");

@@ -3,17 +3,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function LegendSkillsDataEvent(t, i = false, n = false) {
+  function CastleVIPDataEvent(t, i = false, n = false) {
     CONSTRUCTOR_HACK;
     return e.call(this, t, i, n) || this;
   }
-  n.__extends(LegendSkillsDataEvent, e);
-  LegendSkillsDataEvent.__initialize_static_members = function () {
-    LegendSkillsDataEvent.LEGEND_SKILLS_RESET = "legendSkillsReset";
-    LegendSkillsDataEvent.LEGEND_SKILL_ADDED = "legendSkillAdded";
-    LegendSkillsDataEvent.LEGEND_SKILLS_UPDATED = "legendSkillsUpdated";
+  n.__extends(CastleVIPDataEvent, e);
+  CastleVIPDataEvent.__initialize_static_members = function () {
+    CastleVIPDataEvent.VIP_DATA_UPDATED = "vipdataupdated";
   };
-  return LegendSkillsDataEvent;
+  return CastleVIPDataEvent;
 }(createjs.Event);
-exports.LegendSkillsDataEvent = o;
+exports.CastleVIPDataEvent = o;
 o.__initialize_static_members();

@@ -3,40 +3,41 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./5.js");
-var l = require("./3.js");
-var c = require("./7.js");
-var u = require("./10.js");
-var d = function (e) {
-  function SSDCommand() {
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./7.js");
+var l = require("./10.js");
+var c = function (e) {
+  function SMGCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SSDCommand, e);
-  Object.defineProperty(SSDCommand.prototype, "cmdId", {
+  n.__extends(SMGCommand, e);
+  Object.defineProperty(SMGCommand.prototype, "cmdId", {
     get: function () {
-      return c.ClientConstSF.S2C_SERVER_SHUTDOWN;
+      return r.ClientConstSF.S2C_SERVER_MESSAGE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  SSDCommand.prototype.executeCommand = function (e, t) {
+  SMGCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case r.ERROR.ALL_OK:
-        p.CastleDialogHandler.getInstance().registerDialogs(h.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(l.Localize.text("generic_alert_warning"), l.Localize.text("servershutdownpremonition_registered_copy", [a.TimeStringHelper.getTimeToString(60, a.TimeStringHelper.ONE_TIME_HOURS_FORMAT, l.Localize.text)])));
-        break;
-      default:
-        this.showErrorDialog(e, t);
+      case s.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        if (i.BIG == 1) {
+          u.CastleDialogHandler.getInstance().registerDialogs(d.CastleServerMessageBigDialog, new o.BasicStandardOkDialogProperties("SERVER MESSAGE", i.MSG));
+        } else {
+          u.CastleDialogHandler.getInstance().registerDialogs(p.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties("SERVER MESSAGE", i.MSG));
+        }
     }
     return false;
   };
-  return SSDCommand;
-}(u.CastleCommand);
-exports.SSDCommand = d;
-var p = require("./9.js");
-var h = require("./38.js");
-s.classImplementsInterfaces(d, "IExecCommand");
+  return SMGCommand;
+}(l.CastleCommand);
+exports.SMGCommand = c;
+var u = require("./9.js");
+var d = require("./1003.js");
+var p = require("./38.js");
+a.classImplementsInterfaces(c, "IExecCommand");

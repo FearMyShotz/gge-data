@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GGMCommand() {
+  function GECCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GGMCommand, e);
-  Object.defineProperty(GGMCommand.prototype, "cmdId", {
+  n.__extends(GECCommand, e);
+  Object.defineProperty(GECCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_GEMS_EVENT;
+      return s.ClientConstSF.S2C_GEM_CHANGE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GGMCommand.prototype.executeCommand = function (e, t) {
+  GECCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.gemData.parseGGM(i);
+        r.CastleModel.gemData.parse_GEC(i.GEM);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GGMCommand;
+  return GECCommand;
 }(l.CastleCommand);
-exports.GGMCommand = c;
+exports.GECCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

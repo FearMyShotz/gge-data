@@ -275,14 +275,14 @@ if ((s = typeof (i = function (e, t) {
       return n.join("");
     }).join(";");
   }
-  function w(e, t) {
+  function k(e, t) {
     function n() {
       return t;
     }
     n.dataCacheKey = e;
     return n;
   }
-  var k = function () {
+  var w = function () {
     function definePrivateProperty(e, t, n) {
       Object.defineProperty(e, t, {
         value: n
@@ -362,7 +362,7 @@ if ((s = typeof (i = function (e, t) {
     return e;
   }();
   function x(e, t) {
-    e = e instanceof k ? e.clone() : new Date(e.getTime());
+    e = e instanceof w ? e.clone() : new Date(e.getTime());
     switch (t) {
       case "year":
         e.setMonth(0);
@@ -382,7 +382,7 @@ if ((s = typeof (i = function (e, t) {
   function W(e, t, n) {
     return e < t || e > n;
   }
-  function V(e, t) {
+  function H(e, t) {
     var n;
     var i = {};
     for (n in e) {
@@ -392,7 +392,7 @@ if ((s = typeof (i = function (e, t) {
     }
     return i;
   }
-  function H(e, t) {
+  function V(e, t) {
     return (e.getDay() - t + 7) % 7;
   }
   function j(e) {
@@ -537,7 +537,7 @@ if ((s = typeof (i = function (e, t) {
           s.numberFormatters[e] = h("", e);
         }
         if (n) {
-          s.timeZoneData = w("iana/" + n, {
+          s.timeZoneData = k("iana/" + n, {
             offsets: t.get(["globalize-iana/zoneData", n, "offsets"]),
             untils: t.get(["globalize-iana/zoneData", n, "untils"]),
             isdsts: t.get(["globalize-iana/zoneData", n, "isdsts"])
@@ -736,7 +736,7 @@ if ((s = typeof (i = function (e, t) {
           var i = [];
           var a = n.timeSeparator;
           if (n.timeZoneData) {
-            e = new k(e, n.timeZoneData());
+            e = new w(e, n.timeZoneData());
           }
           n.pattern.replace(L, function (s) {
             var r;
@@ -781,7 +781,7 @@ if ((s = typeof (i = function (e, t) {
                 }
                 break;
               case "Y":
-                (l = new Date(e.getTime())).setDate(l.getDate() + 7 - H(e, n.firstDay) - n.firstDay - n.minDays);
+                (l = new Date(e.getTime())).setDate(l.getDate() + 7 - V(e, n.firstDay) - n.firstDay - n.minDays);
                 l = l.getFullYear();
                 if (_ === 2) {
                   l = +(l = String(l)).substr(l.length - 2);
@@ -802,11 +802,11 @@ if ((s = typeof (i = function (e, t) {
                 }
                 break;
               case "w":
-                l = H(x(e, "year"), n.firstDay);
+                l = V(x(e, "year"), n.firstDay);
                 l = Math.ceil((j(e) + l) / 7) - (7 - l >= n.minDays ? 0 : 1);
                 break;
               case "W":
-                l = H(x(e, "month"), n.firstDay);
+                l = V(x(e, "month"), n.firstDay);
                 l = Math.ceil((e.getDate() + l) / 7) - (7 - l >= n.minDays ? 0 : 1);
                 break;
               case "d":
@@ -821,7 +821,7 @@ if ((s = typeof (i = function (e, t) {
               case "e":
               case "c":
                 if (_ <= 2) {
-                  l = H(e, n.firstDay) + 1;
+                  l = V(e, n.firstDay) + 1;
                   break;
                 }
               case "E":
@@ -972,7 +972,7 @@ if ((s = typeof (i = function (e, t) {
           if (!/(timeZoneNames\/zone|supplemental\/metaZones|timeZoneNames\/metazone|timeZoneNames\/regionFormat|timeZoneNames\/gmtFormat)/.test(e)) {
             if (t) {
               if ((e = e.replace(/^.*\/dates\//, "").replace(/calendars\//, "")) === "gregorian/dayPeriods/format/wide") {
-                t = V(t, /^am|^pm/);
+                t = H(t, /^am|^pm/);
               }
               t = s(t) ? Object.keys(t).map(function (e) {
                 return [e, new RegExp("^" + _(r(t[e])))];
@@ -1137,7 +1137,7 @@ if ((s = typeof (i = function (e, t) {
           preferredTimeData: e.supplemental.timeData.preferred()
         };
         if (t) {
-          n.timeZoneData = w("iana/" + t, {
+          n.timeZoneData = k("iana/" + t, {
             offsets: e.get(["globalize-iana/zoneData", t, "offsets"]),
             untils: e.get(["globalize-iana/zoneData", t, "untils"]),
             isdsts: e.get(["globalize-iana/zoneData", t, "isdsts"])
@@ -1168,7 +1168,7 @@ if ((s = typeof (i = function (e, t) {
           var m = new Date();
           var h = [];
           if (n.timeZoneData) {
-            m = new k(m, n.timeZoneData());
+            m = new w(m, n.timeZoneData());
           }
           if (!t.length) {
             return null;
@@ -1353,7 +1353,7 @@ if ((s = typeof (i = function (e, t) {
             m.setMinutes(m.getMinutes() + _ - m.getTimezoneOffset());
           }
           h = Math.max.apply(null, h);
-          if ((m = x(m, ["year", "month", "day", "hour", "minute", "second", "milliseconds"][h])) instanceof k) {
+          if ((m = x(m, ["year", "month", "day", "hour", "minute", "second", "milliseconds"][h])) instanceof w) {
             m = m.toDate();
           }
           return m;

@@ -44,7 +44,7 @@ function parse(e, t, n) {
   var F = true;
   var U = false;
   var G = t;
-  var w = n.keepCase ? function (e) {
+  var k = n.keepCase ? function (e) {
     return e;
   } : m.camelCase;
   function illegal(e, t, n) {
@@ -226,7 +226,7 @@ function parse(e, t, n) {
                       throw illegal(i, "name");
                     }
                     B("=");
-                    var a = new o(w(i), parseId(N()), t, n);
+                    var a = new o(k(i), parseId(N()), t, n);
                     ifBlock(a, function parseMapField_block(e) {
                       if (e !== "option") {
                         throw illegal(e);
@@ -249,7 +249,7 @@ function parse(e, t, n) {
                     if (!S.test(t = N())) {
                       throw illegal(t, "name");
                     }
-                    var n = new l(w(t));
+                    var n = new l(k(t));
                     ifBlock(n, function parseOneOf_block(e) {
                       if (e === "option") {
                         parseOption(n, e);
@@ -431,7 +431,7 @@ function parse(e, t, n) {
       if (!S.test(a)) {
         throw illegal(a, "name");
       }
-      a = w(a);
+      a = k(a);
       B("=");
       var o = new r(a, parseId(N()), i, t, n);
       ifBlock(o, function parseField_block(e) {

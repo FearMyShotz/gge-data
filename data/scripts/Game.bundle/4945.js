@@ -4,39 +4,34 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./7.js");
-var l = require("./10.js");
-var c = function (e) {
-  function MSPCommand() {
+var s = require("./7.js");
+var r = require("./10.js");
+var l = function (e) {
+  function MFSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MSPCommand, e);
-  Object.defineProperty(MSPCommand.prototype, "cmdId", {
+  n.__extends(MFSCommand, e);
+  Object.defineProperty(MFSCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_SHOW_POPUP;
+      return s.ClientConstSF.S2C_FORWARD_SPY_LOG;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  MSPCommand.prototype.executeCommand = function (t, i) {
-    return e.prototype.executeCommand.call(this, t, i);
-  };
-  MSPCommand.prototype.exec = function (e) {
-    var t = s.int(e[0]);
-    var i = e[1];
-    if (t == a.ERROR.ALL_OK) {
-      var n = JSON.parse(i[1]);
-      u.CastlePopUpHelper.displayPopUps(n);
-    } else {
-      this.showErrorDialog(t, i);
+  MFSCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case a.ERROR.ALL_OK:
+      case a.ERROR.ALREADY_HAS_SPY_REPORT:
+        break;
+      default:
+        this.showErrorDialog(e, t);
     }
+    return false;
   };
-  return MSPCommand;
-}(l.CastleCommand);
-exports.MSPCommand = c;
-var u = require("./405.js");
-o.classImplementsInterfaces(c, "IExecCommand");
+  return MFSCommand;
+}(r.CastleCommand);
+exports.MFSCommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

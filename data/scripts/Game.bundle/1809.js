@@ -3,12 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleInviteAFriendTeaserDialogProperties(t) {
+  function GachaRankingRewardsDialogProperties(t) {
     var i = e.call(this) || this;
-    i.userInvitedBy = t;
+    i._eventID = t;
     return i;
   }
-  n.__extends(CastleInviteAFriendTeaserDialogProperties, e);
-  return CastleInviteAFriendTeaserDialogProperties;
+  n.__extends(GachaRankingRewardsDialogProperties, e);
+  Object.defineProperty(GachaRankingRewardsDialogProperties.prototype, "eventID", {
+    get: function () {
+      return this._eventID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return GachaRankingRewardsDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastleInviteAFriendTeaserDialogProperties = o;
+exports.GachaRankingRewardsDialogProperties = o;

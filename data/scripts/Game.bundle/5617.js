@@ -1,53 +1,39 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./4.js");
-var s = require("./339.js");
-var r = require("./1968.js");
-var l = function (e) {
-  function DaimyoTownshipXmlData(t) {
-    var i = e.call(this) || this;
-    i.parseXML(t);
-    return i;
+var n = require("./6.js");
+var o = require("./22.js");
+var a = require("./12.js");
+var s = function () {
+  function XmlResourceVO() {
+    this._resourceID = -1;
+    this._name = "";
   }
-  n.__extends(DaimyoTownshipXmlData, e);
-  DaimyoTownshipXmlData.prototype.getXmlList = function (e) {
-    return e.daimyoTownships;
+  XmlResourceVO.prototype.parseXml = function (e) {
+    this._resourceID = n.int(o.CastleXMLUtils.getIntAttribute("resourceID", e, -1));
+    this._name = o.CastleXMLUtils.getStringAttribute("name", e, "");
   };
-  DaimyoTownshipXmlData.prototype.getNewNode = function () {
-    return new r.DaimyoXmlVO();
-  };
-  DaimyoTownshipXmlData.prototype.getDaimyoTownship = function (e, t, i) {
-    if (i > 0) {
-      return a.CastleModel.eventDifficultyScaling.getCampByEventAutoScalingCampID(i);
-    }
-    if (this._nodes != null) {
-      for (var n = 0, o = Array.from(this._nodes.values()); n < o.length; n++) {
-        var s = o[n];
-        if (s !== undefined && s.rank == e && (t == -1 || s.level == t)) {
-          return s;
-        }
-      }
-    }
-    return null;
-  };
-  DaimyoTownshipXmlData.prototype.getDaimyoTownshipByID = function (e, t) {
-    if (t > 0) {
-      return a.CastleModel.eventDifficultyScaling.getCampByEventAutoScalingCampID(t);
-    }
-    if (this._nodes != null) {
-      for (var i = 0, n = Array.from(this._nodes.values()); i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && o.id == e) {
-          return o;
-        }
-      }
-    }
-    return null;
-  };
-  return DaimyoTownshipXmlData;
-}(s.CastleXmlData);
-exports.DaimyoTownshipXmlData = l;
-o.classImplementsInterfaces(l, "IUpdatable", "ICastleBasicData");
+  Object.defineProperty(XmlResourceVO.prototype, "resourceID", {
+    get: function () {
+      return this._resourceID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlResourceVO.prototype, "name", {
+    get: function () {
+      return this._name;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlResourceVO.prototype, "resourceEnum", {
+    get: function () {
+      return a.CollectableEnum.getTypeByXmlKey(this.name);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return XmlResourceVO;
+}();
+exports.XmlResourceVO = s;

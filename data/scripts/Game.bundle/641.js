@@ -3,37 +3,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./22.js");
+var a = require("./3.js");
+var s = require("./16.js");
 var r = function (e) {
-  function APalaceBuildingVO() {
-    var t = this;
-    t._palaceUnlockIds = [];
-    t._damageThreshold = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+  function StorageBuildingVO() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(APalaceBuildingVO, e);
-  APalaceBuildingVO.prototype.parseXmlNode = function (t) {
-    e.prototype.parseXmlNode.call(this, t);
-    this._damageThreshold = a.int(s.CastleXMLUtils.getIntAttribute("damageTreshold", t));
-    this._palaceUnlockIds = s.CastleXMLUtils.createIntListFromAttribute("palaceUnlockID", t);
+  n.__extends(StorageBuildingVO, e);
+  StorageBuildingVO.prototype.createInfoPanelItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Storage, "storage_capacity", new a.LocalizedNumberVO(this.maxStorageValue), s.ClientConstColor.FONT_DEFAULT_COLOR, true);
   };
-  Object.defineProperty(APalaceBuildingVO.prototype, "palaceUnlockIds", {
-    get: function () {
-      return this._palaceUnlockIds;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(APalaceBuildingVO.prototype, "damageThreshold", {
-    get: function () {
-      return this._damageThreshold;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return APalaceBuildingVO;
+  return StorageBuildingVO;
 }(require("./65.js").AEffectBuildingVO);
-exports.APalaceBuildingVO = r;
+exports.StorageBuildingVO = r;
 o.classImplementsInterfaces(r, "IShopVO", "ICostVO", "IInventoryVO");

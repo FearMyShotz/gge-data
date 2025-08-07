@@ -1,89 +1,47 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = createjs.Event;
-var o = createjs.MouseEvent;
-var a = function () {
-  function Event2SignalController() {}
-  Event2SignalController.add = function (e, t, i) {
-    try {
-      if (!Event2SignalController._eventDispatcherMap.get(e)) {
-        Event2SignalController._eventDispatcherMap.set(e, {});
-      }
-      if (Event2SignalController._eventDispatcherMap.get(e)[t] == null) {
-        Event2SignalController._eventDispatcherMap.get(e)[t] = new c.Signal();
-      }
-      Event2SignalController._eventDispatcherMap.get(e)[t].add(i);
-    } catch (n) {
-      u.warn("[Event2SignalController] [add]", e, t, i, n);
-    }
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./6.js");
+var l = require("./18.js");
+var c = require("./4.js");
+var u = require("./141.js");
+var d = require("./401.js");
+var p = require("./286.js");
+var h = function (e) {
+  function ResourcePanelToolTipFactionAuxiliary() {
+    return e.call(this, g.ResourcePanelToolTipManager.TOOL_TIP_TYPE_SEASON_AUXILIARIES) || this;
+  }
+  n.__extends(ResourcePanelToolTipFactionAuxiliary, e);
+  ResourcePanelToolTipFactionAuxiliary.prototype.updateContent = function () {
+    var e = c.CastleModel.militaryData.unitInventory;
+    var t = r.int(e.getUnitCount(ResourcePanelToolTipFactionAuxiliary.auxiliariesByUnitType(l.ClientConstCastle.UNIT_TYPE_SOLDIER_MELEE)));
+    var i = r.int(e.getUnitCount(ResourcePanelToolTipFactionAuxiliary.auxiliariesByUnitType(l.ClientConstCastle.UNIT_TYPE_SOLDIER_RANGE)));
+    u.CastleTextFieldHelper.safeSetText(this._title.tf, "auxiliaries");
+    u.CastleTextFieldHelper.safeSetText(this._melee.tf, o.GenericTextIds.VALUE_ASSIGN_COLON, [s.Localize.text("auxiliaries_melee"), t]);
+    u.CastleTextFieldHelper.safeSetText(this._range.tf, o.GenericTextIds.VALUE_ASSIGN_COLON, [s.Localize.text("auxiliaries_ranged"), i]);
+    u.CastleTextFieldHelper.safeSetText(this._capacity.tf, o.GenericTextIds.VALUE_ASSIGN_COLON, [s.Localize.text("dialog_factionAuxiliaries_tentCapacity_tooltip"), c.CastleModel.areaData.activeMorality.maxAuxiliariesStorage]);
   };
-  Event2SignalController.hasEventListener = function (e, t) {
-    return !!e && !!t && !!Event2SignalController._eventDispatcherMap && !!Event2SignalController._eventDispatcherMap.get(e) && !!Event2SignalController._eventDispatcherMap.get(e)[t];
+  ResourcePanelToolTipFactionAuxiliary.prototype.createItems = function () {
+    this._title = new p.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextBold());
+    this._melee = new p.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._range = new p.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._capacity = new p.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._items.push(this._title);
+    this._items.push(this._melee);
+    this._items.push(this._range);
+    this._items.push(this._capacity);
   };
-  Event2SignalController.dispatchSignal = function (e, t, i) {
-    if (e && t && i && Event2SignalController._eventDispatcherMap && Event2SignalController._eventDispatcherMap.get(e) && Event2SignalController._eventDispatcherMap.get(e)[t]) {
-      if (r.instanceOfClass(i, "CastleEvent")) {
-        i.target = e;
-      }
-      Event2SignalController._eventDispatcherMap.get(e)[t].dispatch(i);
-    }
+  ResourcePanelToolTipFactionAuxiliary.auxiliariesByUnitType = function (e) {
+    return function (t) {
+      return t.unitType == e && t.isAuxiliary;
+    };
   };
-  Event2SignalController.remove = function (e, t, i) {
-    try {
-      if (Event2SignalController._eventDispatcherMap.get(e) && Event2SignalController._eventDispatcherMap.get(e)[t]) {
-        Event2SignalController._eventDispatcherMap.get(e)[t].remove(i);
-        if (Event2SignalController._eventDispatcherMap.get(e)[t].numListeners <= 0) {
-          delete Event2SignalController._eventDispatcherMap.get(e)[t];
-        }
-        if (Object.keys(Event2SignalController._eventDispatcherMap.get(e)).length == 0) {
-          Event2SignalController._eventDispatcherMap.delete(e);
-        }
-      }
-    } catch (n) {
-      u.warn("[Event2SignalController] [remove]", e, t, i, n);
-    }
-  };
-  Event2SignalController.clear = function () {
-    var e = Event2SignalController._eventDispatcherMap.get(s.CastleBasicController.getInstance());
-    Event2SignalController._eventDispatcherMap.clear();
-    Event2SignalController._eventDispatcherMap.set(s.CastleBasicController.getInstance(), e);
-  };
-  Event2SignalController.isNativeEvent = function (e) {
-    var t = false;
-    switch (e) {
-      case n.INIT:
-      case n.ADDED_TO_STAGE:
-      case n.REMOVED_FROM_STAGE:
-      case n.REMOVED:
-      case n.ENTER_FRAME:
-      case n.FRAME_CONSTRUCTED:
-      case n.RENDER:
-      case n.COMPLETE:
-      case n.RESIZE:
-      case o.CLICK:
-      case o.MOUSE_DOWN:
-      case o.MOUSE_MOVE:
-      case o.MOUSE_OUT:
-      case o.MOUSE_OVER:
-      case o.MOUSE_UP:
-      case o.MOUSE_WHEEL:
-      case o.ROLL_OUT:
-      case o.ROLL_OVER:
-        t = true;
-    }
-    return t;
-  };
-  Event2SignalController.__initialize_static_members = function () {
-    Event2SignalController._eventDispatcherMap = new Map();
-  };
-  Event2SignalController.LOGGER_NAME = "Event2SignalController";
-  return Event2SignalController;
-}();
-exports.Event2SignalController = a;
-var s = require("./15.js");
-var r = require("./1.js");
-var l = require("./118.js");
-var c = require("./57.js");
-a.__initialize_static_members();
-var u = l.getLogger(a.LOGGER_NAME);
+  return ResourcePanelToolTipFactionAuxiliary;
+}(d.AResourcePanelToolTip);
+exports.ResourcePanelToolTipFactionAuxiliary = h;
+var g = require("./152.js");
+a.classImplementsInterfaces(h, "Container");

@@ -2,356 +2,151 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./1.js");
-var l = require("./1.js");
-var c = require("./5.js");
+var o = require("./1.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./2.js");
+var c = require("./3.js");
 var u = require("./3.js");
 var d = require("./3.js");
 var p = require("./6.js");
-var h = require("./393.js");
-var g = require("./172.js");
-var C = require("./137.js");
-var _ = require("./13.js");
-var m = require("./4.js");
-var f = require("./9.js");
-var O = require("./82.js");
-var E = require("./47.js");
-var y = require("./59.js");
-var b = require("./8.js");
-var D = require("./34.js");
-var I = require("./4535.js");
-var T = require("./4536.js");
-var v = require("./4537.js");
-var S = createjs.TimerEvent;
-var A = require("./36.js");
-var L = require("./121.js");
-var P = function (e) {
-  function CastleTemporaryServerEventDialogRanking(t, i, n) {
-    var o = this;
-    o._highScoreType = 0;
-    o._currentMaxRank = CastleTemporaryServerEventDialogRanking.MAX_VISIBLE_ITEMS;
-    o._hasRequestedOwnRank = false;
-    o._currentRank = 1;
-    o._rankListItems = [];
-    o._hasScrollValueChanged = false;
-    o._requestTimer = new l.Timer(CastleTemporaryServerEventDialogRanking.TIME_TO_REQUEST_NEW_RANK_DATA, 0);
-    o._defaultSearchText = "";
-    o.searchName = "";
-    o.isWaitingForServerMessage = false;
+var h = require("./55.js");
+var g = require("./1919.js");
+var C = require("./172.js");
+var _ = require("./137.js");
+var m = require("./13.js");
+var f = require("./15.js");
+var O = require("./4.js");
+var E = require("./76.js");
+var y = require("./78.js");
+var b = require("./77.js");
+var D = require("./82.js");
+var I = require("./47.js");
+var T = require("./59.js");
+var v = require("./8.js");
+var S = require("./35.js");
+var A = require("./4535.js");
+var L = function (e) {
+  function CastleTemporaryServerEventDialogOverview(t) {
+    var i = this;
+    i._currentPoints = 0;
     CONSTRUCTOR_HACK;
-    (o = e.call(this, t) || this)._highScoreType = i;
-    o.parent = n;
-    o.init();
-    return o;
+    (i = e.call(this, t) || this).init();
+    return i;
   }
-  n.__extends(CastleTemporaryServerEventDialogRanking, e);
-  CastleTemporaryServerEventDialogRanking.prototype.init = function () {
-    b.ButtonHelper.initButtons([this.dialogDisp.btn_info, this.dialogDisp.btn_search, this.dialogDisp.btn_findme, this.dialogDisp.mc_switch.btn_left, this.dialogDisp.mc_switch.btn_right], A.ClickFeedbackButton);
-    b.ButtonHelper.initButtons([this.dialogDisp.btn_info, this.dialogDisp.btn_findme], L.ClickFeedbackButtonBackground);
-    if (this.subLayerDisp.mc_multiplier) {
-      b.ButtonHelper.initButton(this.dialogDisp.mc_multiplier.btn_info, -1, A.ClickFeedbackButton);
+  n.__extends(CastleTemporaryServerEventDialogOverview, e);
+  CastleTemporaryServerEventDialogOverview.prototype.init = function () {
+    v.ButtonHelper.initBasicButton(this.subLayerDisp.btn_enter);
+    v.ButtonHelper.initButtons([this.subLayerDisp.btn_info], V.ClickFeedbackButtonHover);
+    this.textFieldManager.registerTextField(this.subLayerDisp.txt_title, new c.TextVO(m.TextHelper.toUpperCaseLocaSafeTextId("panel_action_overview")));
+    this.textFieldManager.registerTextField(this.subLayerDisp.txt_rewards, new c.TextVO(m.TextHelper.toUpperCaseLocaSafeTextId("rewards")));
+    this.textFieldManager.registerTextField(this.subLayerDisp.btn_info.txt_text, new c.TextVO(m.TextHelper.toUpperCaseLocaSafeTextId("dialog_tempServer_moreInfo_button"))).autoFitToBounds = true;
+    this._textScrollComponent = new D.ModernSliderScrollComponent(new I.SimpleScrollVO().initByParent(this.subLayerDisp.mc_descSlider), new T.DynamicSizeScrollStrategyVertical(true, 0));
+    if (this.subLayerDisp.mc_textScroll) {
+      this._textScrollComponent.scrollVO.addMouseWheelElements([this.subLayerDisp.mc_textScroll]);
+    } else {
+      this._textScrollComponent.scrollVO.addMouseWheelElements([this.subLayerDisp.txt_desc]);
     }
-    this.textFieldManager.registerTextField(this.subLayerDisp.btn_info.txt_text, new d.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("dialog_tempServer_moreInfo_button"))).autoFitToBounds = true;
-    this._scrollComponent = new O.ModernSliderScrollComponent(new E.SimpleScrollVO().initByParent(this.dialogDisp.mc_slider).addVisualElements([this.dialogDisp.mc_slider]).addMouseWheelElements([this.dialogDisp]), new y.DynamicSizeScrollStrategyVertical(true, CastleTemporaryServerEventDialogRanking.MAX_VISIBLE_ITEMS));
-    this._scrollComponent.triggerSignalOnlyOnValueChanged = true;
-    for (var e = 0; e < CastleTemporaryServerEventDialogRanking.MAX_VISIBLE_ITEMS; ++e) {
-      this._rankListItems.push(new v.TempServerEventDialogRankingItem(this.dialogDisp.getChildByName("mc_item" + e)));
-    }
+    var e = new b.InfiniteScrollListOptions(A.CastleTemporaryServerEventDialogOverviewRewardItem, "TempServerOverview_ListItem", P.CastleTemporaryServerEventDialog.NAME);
+    e.itemPaddingY = 10;
+    e.useSmoothScroll = true;
+    this._rewardScrollList = new y.InfiniteScrollListComponent(new E.InfiniteScrollListClips(this.subLayerDisp.mc_items).addMaskMc(this.subLayerDisp.mc_mask).addSliderMc(this.subLayerDisp.mc_items.mc_slider), e);
   };
-  CastleTemporaryServerEventDialogRanking.prototype.show = function (t) {
+  CastleTemporaryServerEventDialogOverview.prototype.show = function (t) {
     e.prototype.show.call(this, t);
-    b.ButtonHelper.enableButton(this.dialogDisp.mc_switch.btn_left, this.castleEnv.isOnTemporaryServer);
-    b.ButtonHelper.enableButton(this.dialogDisp.mc_switch.btn_right, this.castleEnv.isOnTemporaryServer);
-    this.dialogDisp.btn_findme.visible = this.castleEnv.isOnTemporaryServer;
-    this.dialogDisp.icon_ranking.toolTipText = "rank";
-    this.dialogDisp.icon_lvl.toolTipText = "level";
-    this.dialogDisp.icon_distance.toolTipText = "distance";
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_switch.txt_copy, new d.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId(this.highScoreTypeIsDaily ? "dialog_tempServer_dailyRanking_title" : "dialog_tempServer_overallRanking_title")));
-    if (this.dialogDisp.icon_lvl_charge) {
-      this.dialogDisp.icon_lvl_charge.visible = false;
-      this.dialogDisp.icon_lvl_charge.toolTipText = "level";
+    this._textScrollComponent.onScrollSignal.add(this.bindFunction(this.onDescriptionScroll));
+    this.controller.addEventListener(C.CastleHighscoreEvent.TEMPORARY_SERVER_HIGHSCORE, this.bindFunction(this.onPointsChanged));
+    this._textScrollComponent.show();
+    this._rewardScrollList.onShow();
+    this.updatePoints();
+    this.updateDescription();
+    this.updateEnterButton();
+    this._rewardScrollList.updateWithNewData(this.getRewardData());
+    this.subLayerDisp.mc_teaser_default.visible = !_.TempServerHelper.tmpServerEvent.isCrossPlay;
+    this.subLayerDisp.mc_teaser_crossplay.visible = _.TempServerHelper.tmpServerEvent.isCrossPlay;
+    if (this.subLayerDisp.mc_teaser_crossplay.visible) {
+      this.subLayerDisp.mc_teaser_crossplay.gotoAndStop(_.TempServerHelper.getAssetFrame());
     }
-    if (this.dialogDisp.icon_might) {
-      this.dialogDisp.icon_might.toolTipText = "playerMight";
-      this.dialogDisp.icon_might.visible = this.eventVO.isMightScoring;
-    }
-    if (this.dialogDisp.icon_collectorPoints) {
-      this.dialogDisp.icon_collectorPoints.visible = this.eventVO.isCollectorScoring;
-      this.dialogDisp.icon_collectorPoints.toolTipText = "dialog_tempServer_collectPoints_tooltip_collector";
-    }
-    if (this.dialogDisp.mc_rankSwap_total) {
-      this.dialogDisp.mc_rankSwap_total.visible = this.eventVO.isRankSwapScoring;
-      this.dialogDisp.mc_rankSwap_total.toolTipText = "dialog_tempServer_rankingPoints_tooltip";
-    }
-    if (this.dialogDisp.mc_icon_rankSwap) {
-      this.dialogDisp.mc_icon_rankSwap.visible = this.eventVO.isRankSwapScoring;
-      this.dialogDisp.mc_icon_rankSwap.toolTipText = "dialog_tempServer_collectPoints_tooltip_rankSwap";
-    }
-    if (this.dialogDisp.mc_rank_charge) {
-      this.dialogDisp.mc_rank_charge.visible = false;
-      this.dialogDisp.mc_rank_charge.toolTipText = "dialog_tempServer_collectPoints_tooltip_tier_charge";
-    }
-    if (this.dialogDisp.mc_charge_tonic) {
-      this.dialogDisp.mc_charge_tonic.visible = false;
-      this.dialogDisp.mc_charge_tonic.toolTipText = "dialog_tempServer_collectPoints_tooltip_tonic_charge";
-    }
-    if (this.dialogDisp.mc_charge_attackable) {
-      this.dialogDisp.mc_charge_attackable.visible = false;
-      this.dialogDisp.mc_charge_attackable.toolTipText = "dialog_tempServer_collectPoints_tooltip_attackAble_charge";
-    }
-    this.dialogDisp.icon_total.toolTipText = "dialog_tempServer_rankingPoints_tooltip";
-    if (this.dialogDisp.icon_total2) {
-      this.dialogDisp.icon_total2.visible = this.eventVO.isRankSwapScoring && this.highScoreTypeIsDaily;
-      this.dialogDisp.icon_total2.toolTipText = "dialog_tempServer_rankingPoints_tooltip";
-    }
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_name, new d.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("generic_name")));
-    if (this.dialogDisp.txt_name_charge) {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_name_charge, new d.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("generic_name"))).visible = false;
-    }
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_alliance, new d.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("panel_multiinfo_alliance")));
-    if (this.dialogDisp.txt_alliance_charge) {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_alliance_charge, new d.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("panel_multiinfo_alliance"))).visible = false;
-    }
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_findme.txt_text, new d.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("dialog_tempServer_findMe_button")));
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_info.txt_value, new d.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("dialog_tempServer_moreInfo_button")));
-    if (this.highScoreTypeIsDaily) {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new d.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("dialog_tempServer_dailyRanking_title")));
-    } else {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new d.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("dialog_tempServer_overallRanking_title")));
-    }
-    this.searchField = this.textFieldManager.registerTextField(this.dialogDisp.mc_find.txt_input, new u.LocalizedTextVO("dialog_highscore_search"));
-    this.searchField.type = r.TextFieldType.INPUT;
-    this.searchField.multiline = false;
-    this._defaultSearchText = this.searchField.text;
-    this.searchField.keyDown.add(this.bindFunction(this.inputKeyDown));
-    this.searchField.focusIn.add(this.bindFunction(this.onFocusInSearchText));
-    this.searchField.focusOut.add(this.bindFunction(this.onFocusOutSearchText));
-    this.dialogDisp.mc_find.gotoAndStop(1);
-    this._currentRank = 1;
-    this._requestTimer.start();
-    m.CastleModel.highscoreData.addEventListener(g.CastleHighscoreEvent.GET_HIGHSCORE_DATA, this.bindFunction(this.onRankDataReceived));
-    this._requestTimer.addEventListener(S.TIMER, this.bindFunction(this.onRequestTimerUpdate));
-    this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScrollValueChanged));
-    this._scrollComponent.show();
-    if (this._rankListItems != null) {
-      for (var i = 0, n = this._rankListItems; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          o.onShow();
-        }
-      }
-    }
-    this.updateScrollValues(0);
-    this.hideAllRankListItems();
-    this.updateRankList();
-    this.updateMultiplier();
-    this.requestDataFromServer(-1);
+    O.CastleModel.smartfoxClient.sendCommandVO(new g.C2STemporaryServerHighscoreVO());
   };
-  CastleTemporaryServerEventDialogRanking.prototype.hide = function () {
+  CastleTemporaryServerEventDialogOverview.prototype.hide = function () {
+    this._textScrollComponent.onScrollSignal.remove(this.bindFunction(this.onDescriptionScroll));
+    this.controller.removeEventListener(C.CastleHighscoreEvent.TEMPORARY_SERVER_HIGHSCORE, this.bindFunction(this.onPointsChanged));
+    this._textScrollComponent.hide();
+    this._rewardScrollList.onHide();
     e.prototype.hide.call(this);
-    m.CastleModel.highscoreData.removeEventListener(g.CastleHighscoreEvent.GET_HIGHSCORE_DATA, this.bindFunction(this.onRankDataReceived));
-    this._requestTimer.removeEventListener(S.TIMER, this.bindFunction(this.onRequestTimerUpdate));
-    this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScrollValueChanged));
-    if (this._rankListItems != null) {
-      for (var t = 0, i = this._rankListItems; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.onHide();
-        }
-      }
-    }
-    this._scrollComponent.hide();
-    this._requestTimer.stop();
-    if (this.searchField) {
-      this.searchField.keyDown.remove(this.bindFunction(this.inputKeyDown));
-      this.searchField.focusIn.remove(this.bindFunction(this.onFocusInSearchText));
-      this.searchField.focusOut.remove(this.bindFunction(this.onFocusOutSearchText));
-    }
   };
-  CastleTemporaryServerEventDialogRanking.prototype.inputKeyDown = function (e) {
-    if (e.key == s.Keyboard.ENTER) {
-      this.onSearchButton();
-    }
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.requestDataFromServer = function (e) {
-    var t = e;
-    if (t >= 0) {
-      t += CastleTemporaryServerEventDialogRanking.RANK_OFFSET_ON_SERVER_REQUEST;
-    }
-    m.CastleModel.smartfoxClient.sendCommandVO(new h.C2SGetHighscoreVO("" + t, this._highScoreType));
-    this._hasScrollValueChanged = false;
-    this._hasRequestedOwnRank = e < 0;
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.hideAllRankListItems = function () {
-    if (this._rankListItems != null) {
-      for (var e = 0, t = this._rankListItems; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.setVisibility(false);
-        }
-      }
-    }
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.updateRankList = function (e = null) {
+  CastleTemporaryServerEventDialogOverview.prototype.updatePoints = function () {
+    var e = _.TempServerHelper.isOnTempServer;
+    this.subLayerDisp.mc_pointsIcon.toolTipText = "dialog_tempServer_rankingPoints_tooltip";
+    this.subLayerDisp.mc_overall_up.toolTipText = "dialog_tempServer_overallRanking_tooltip";
+    this.subLayerDisp.mc_pointsIcon.visible = e;
+    this.subLayerDisp.mc_overall_up.visible = e;
+    this.subLayerDisp.txt_points.visible = e;
+    this.subLayerDisp.txt_rewards.visible = !e;
     if (e) {
-      this._currentRankData = e;
-    }
-    if (this._currentRankData) {
-      this.updateScrollValues(this._currentRankData.LR);
-    }
-    if (this._hasRequestedOwnRank && this._currentRankData && this._currentRankData.L.length > 0) {
-      this._hasRequestedOwnRank = false;
-      this._currentRank = p.int(this._currentRankData.L[0][0]);
-      this._scrollComponent.scrollToValue(this._currentRank, false);
-    }
-    for (var t = 0; t < CastleTemporaryServerEventDialogRanking.MAX_VISIBLE_ITEMS; ++t) {
-      var i = this._currentRank + t;
-      this._rankListItems[t].updateWithNewData(i, this.getEntryFromRankData(i), this._currentMaxRank, this.searchName != this._defaultSearchText ? this.searchName : "", this._highScoreType);
+      this.textFieldManager.registerTextField(this.subLayerDisp.txt_points, new u.LocalizedNumberVO(this._currentPoints));
     }
   };
-  CastleTemporaryServerEventDialogRanking.prototype.updateScrollValues = function (e = -1) {
-    if (this._currentMaxRank >= 0) {
-      this._currentMaxRank = e;
-    }
-    this._scrollComponent.setVisibility(this._currentMaxRank > CastleTemporaryServerEventDialogRanking.MAX_VISIBLE_ITEMS);
-    this._scrollComponent.init(1, o.MathBase.max(1, this._currentMaxRank - CastleTemporaryServerEventDialogRanking.MAX_VISIBLE_ITEMS + 1), CastleTemporaryServerEventDialogRanking.MAX_VISIBLE_ITEMS, CastleTemporaryServerEventDialogRanking.MAX_VISIBLE_ITEMS);
-    this._scrollComponent.scrollToValue(this._currentRank, false);
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.updateMultiplier = function () {
-    var e = this.subLayerDisp.mc_multiplier;
-    var t = e != null && this.castleEnv.isOnTemporaryServer && this.highScoreTypeIsDaily;
-    this.subLayerDisp.btn_info.visible = !t;
-    if (t) {
-      e.visible = t;
-      this.textFieldManager.registerTextField(e.txt_multiplierTitle, new u.LocalizedTextVO("dialog_tempServer_dailyRanking_multiplier")).autoFitToBounds = true;
-      this.textFieldManager.registerTextField(e.txt_multiplier, new u.LocalizedTextVO("value_multiplied_range", [m.CastleModel.tempServerData.currentMinMultiplier, m.CastleModel.tempServerData.currentMaxMultiplier])).autoFitToBounds = true;
-    }
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.getEntryFromRankData = function (e) {
-    if (!this._currentRankData) {
-      return null;
-    }
-    for (var t = 0; t < this._currentRankData.L.length; ++t) {
-      if (e == this._currentRankData.L[t][0]) {
-        return this._currentRankData.L[t];
-      }
-    }
-    return null;
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.onClick = function (t) {
-    if (b.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.dialogDisp.mc_slider.btn_min:
-        case this.dialogDisp.mc_slider.btn_minus:
-        case this.dialogDisp.mc_slider.btn_plus:
-          this.requestDataFromServer(this._currentRank);
-          break;
-        case this.dialogDisp.btn_search:
-          if (this.searchField.text != "" && this.searchField.text != this._defaultSearchText) {
-            this.searchName = this.searchField.text;
-            this.requestHighscoreData(this.searchName);
-            this.dialogDisp.mc_find.gotoAndStop(2);
-          }
-          break;
-        case this.dialogDisp.btn_findme:
-          this.searchName = m.CastleModel.userData.userName;
-          this.requestHighscoreData(this.searchName);
-          break;
-        case this.dialogDisp.btn_info:
-          this.onInfoButtonClicked();
-          break;
-        case this.dialogDisp.mc_switch.btn_left:
-        case this.dialogDisp.mc_switch.btn_right:
-          this.parent.toggleRankingType();
-      }
-      if (this.subLayerDisp.mc_multiplier && t.target == this.subLayerDisp.mc_multiplier.btn_info) {
-        this.onInfoButtonClicked();
-      }
-    }
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.onInfoButtonClicked = function () {
-    if (this.highScoreTypeIsDaily) {
-      f.CastleDialogHandler.getInstance().registerDialogs(I.CastleTempServerInfoDialog, new T.CastleTempServerInfoDialogProperties("dialog_tempServer_moreInfo_button", "dialog_tempServer_dailyRanking_title", "dialog_tempServer_dailyRanking_desc_" + C.TempServerHelper.tmpServerEvent.settingVO.scoringSystem));
+  CastleTemporaryServerEventDialogOverview.prototype.updateDescription = function () {
+    if (_.TempServerHelper.tmpServerEvent.isCrossPlay) {
+      this._tfDesc = this.textFieldManager.registerTextField(this.subLayerDisp.txt_desc, new d.LocalizedTextVO("dialog_tempServer_overview_crossServerLive_desc"));
+    } else if (_.TempServerHelper.tmpServerEvent.settingVO.isCastleTransportationOnly) {
+      this._tfDesc = this.textFieldManager.registerTextField(this.subLayerDisp.txt_desc, new d.LocalizedTextVO("dialog_tempServer_overview_castleTransport_desc"));
     } else {
-      f.CastleDialogHandler.getInstance().registerDialogs(I.CastleTempServerInfoDialog, new T.CastleTempServerInfoDialogProperties("dialog_tempServer_moreInfo_button", "dialog_tempServer_overallRanking_title", "dialog_tempServer_overallRanking_desc"));
+      this._tfDesc = this.textFieldManager.registerTextField(this.subLayerDisp.txt_desc, new d.LocalizedTextVO("dialog_tempServer_overview_desc"));
+    }
+    var e = p.int(h.ClientConstUtils.isTlfMode ? 20 : 1);
+    this._textScrollComponent.init(1, this._tfDesc.maxScrollV, e, e);
+    this._textScrollComponent.setVisibility(this._tfDesc.maxScrollV > 1);
+    this._textScrollComponent.scrollToPercent(0);
+  };
+  CastleTemporaryServerEventDialogOverview.prototype.updateEnterButton = function () {
+    var e = this.castleEnv.isOnTemporaryServer ? "dialog_tempServer_returnMainCastle_button" : "dialog_tempServer_joinTempServer_button";
+    this.textFieldManager.registerTextField(this.subLayerDisp.btn_enter.txt_value, new c.TextVO(m.TextHelper.toUpperCaseLocaSafeTextId(e)));
+  };
+  CastleTemporaryServerEventDialogOverview.prototype.getRewardData = function () {
+    var e = [];
+    var t = _.TempServerHelper.tmpServerEvent.getRewardList();
+    for (var i = p.int(t.length - 1); i >= 0; --i) {
+      t[i].listIndex = t.length - 1 - i;
+      e.push(t[i]);
+    }
+    return e;
+  };
+  CastleTemporaryServerEventDialogOverview.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.subLayerDisp.btn_enter:
+        if (!_.TempServerHelper.tmpServerEvent.castleBought) {
+          r.BasicDialogHandler.getInstance().registerDialogs(M.CastleSpecialServerPreBuildCastleSelectionDialog, new R.CastleSpecialServerPreBuildCastleSelectionDialogProperties(R.CastleSpecialServerPreBuildCastleSelectionDialogProperties.TYPE_TEMPSERVER));
+          break;
+        }
+        if (this.castleEnv.isOnTemporaryServer) {
+          l.CommandController.instance.executeCommand(s.BasicController.COMMAND_LOGOUT);
+        } else {
+          l.CommandController.instance.executeCommand(f.CastleBasicController.CONNECT_TO_TEMPORARY_SERVER);
+        }
+        break;
+      case this.subLayerDisp.btn_info:
+        w.CastleDialogHandler.getInstance().registerDefaultDialogs(x.CastleTempServerWelcomeDialog, null, false, r.BasicDialogHandler.PRIORITY_LOW);
     }
   };
-  Object.defineProperty(CastleTemporaryServerEventDialogRanking.prototype, "highScoreTypeIsDaily", {
-    get: function () {
-      return this._highScoreType != c.HighscoreConst.TEMP_SERVER_GLOBAL;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleTemporaryServerEventDialogRanking.prototype.onRankDataReceived = function (e) {
-    this.isWaitingForServerMessage = false;
-    if (this.searchName != this._defaultSearchText && e.params[0].L && e.params[0].L[0] && e.params[0].L[0][0]) {
-      this._currentRank = p.int(e.params[0].L[0][0]);
-    } else {
-      this._currentRank = p.int(this._scrollComponent.currentValue);
-    }
-    this.updateRankList(e.params[0]);
+  CastleTemporaryServerEventDialogOverview.prototype.onDescriptionScroll = function () {
+    this._tfDesc.scrollV = a.MathBase.clamp(this._textScrollComponent.currentValue, 1, this._tfDesc.maxScrollV);
   };
-  CastleTemporaryServerEventDialogRanking.prototype.onScrollValueChanged = function () {
-    this.searchName = "";
-    if (this._currentRank != this._scrollComponent.currentValue) {
-      this._hasScrollValueChanged = true;
-    }
-    this._currentRank = p.int(this._scrollComponent.currentValue);
-    this.updateRankList();
+  CastleTemporaryServerEventDialogOverview.prototype.onPointsChanged = function (e) {
+    this._currentPoints = p.int(_.TempServerHelper.tmpServerEvent.ownOverallPoints);
+    this.updatePoints();
   };
-  CastleTemporaryServerEventDialogRanking.prototype.onRequestTimerUpdate = function (e) {
-    if (this._hasScrollValueChanged) {
-      this.requestDataFromServer(this._currentRank);
-    }
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.onFocusInSearchText = function (e) {
-    if (this.searchField.text == this._defaultSearchText) {
-      this.searchField.clearText();
-      this.dialogDisp.mc_find.gotoAndStop(2);
-    }
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.onFocusOutSearchText = function (e) {
-    if (this.searchField.text == "") {
-      this.searchField.textContentVO = new u.LocalizedTextVO("dialog_highscore_search");
-      this.searchName = "";
-      this.dialogDisp.mc_find.gotoAndStop(1);
-    }
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.onSearchButton = function () {
-    if (this.searchField.text != "" && this.searchField.text != this._defaultSearchText) {
-      document.activeElement.blur();
-      this.searchName = this.searchField.text.trim();
-      this.requestHighscoreData(this.searchName);
-      this.dialogDisp.mc_find.gotoAndStop(2);
-    }
-  };
-  CastleTemporaryServerEventDialogRanking.prototype.requestHighscoreData = function (e) {
-    this.isWaitingForServerMessage = true;
-    m.CastleModel.smartfoxClient.sendCommandVO(new h.C2SGetHighscoreVO(e, this._highScoreType));
-  };
-  Object.defineProperty(CastleTemporaryServerEventDialogRanking.prototype, "eventVO", {
-    get: function () {
-      return C.TempServerHelper.tmpServerEvent;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTemporaryServerEventDialogRanking.prototype, "dialogDisp", {
-    get: function () {
-      return this.disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleTemporaryServerEventDialogRanking.MAX_VISIBLE_ITEMS = 7;
-  CastleTemporaryServerEventDialogRanking.TIME_TO_REQUEST_NEW_RANK_DATA = 500;
-  CastleTemporaryServerEventDialogRanking.RANK_OFFSET_ON_SERVER_REQUEST = 3;
-  return CastleTemporaryServerEventDialogRanking;
-}(D.CastleDialogSubLayer);
-exports.CastleTemporaryServerEventDialogRanking = P;
-a.classImplementsInterfaces(P, "ICollectableRendererList", "ISublayer");
+  return CastleTemporaryServerEventDialogOverview;
+}(S.CastleDialogSubLayer);
+exports.CastleTemporaryServerEventDialogOverview = L;
+o.classImplementsInterfaces(L, "ICollectableRendererList", "ISublayer");
+var P = require("./1148.js");
+var M = require("./752.js");
+var R = require("./615.js");
+var V = require("./20.js");
+var x = require("./1698.js");
+var w = require("./9.js");

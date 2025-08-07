@@ -1,61 +1,59 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./4.js");
-var o = function () {
-  function BattleLogAbilityVO(e) {
-    this._waveValues = [];
-    this.parseFromParamOj(e);
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./11.js");
+var r = require("./8.js");
+var l = require("./1163.js");
+var c = require("./2.js");
+var u = require("./24.js");
+var d = require("./2.js");
+var p = require("./20.js");
+var h = function (e) {
+  function CastleMessageFoodFreezeEndDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleMessageFoodFreezeEndDialog.NAME) || this;
   }
-  BattleLogAbilityVO.prototype.parseFromParamOj = function (e) {
-    if (e) {
-      this._abilityID = e[0];
-      for (var t = 0, i = e[1]; t < i.length; t++) {
-        var n = i[t];
-        this._waveValues.push({
-          waveID: n[0],
-          waveValue: n[1],
-          flankName: n[2]
-        });
-      }
+  n.__extends(CastleMessageFoodFreezeEndDialog, e);
+  CastleMessageFoodFreezeEndDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    r.ButtonHelper.initButtons([this.dialogDisp.btn_close], p.ClickFeedbackButtonHover);
+  };
+  CastleMessageFoodFreezeEndDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    c.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_teaser);
+    switch (this.dialogProperties.messageScope) {
+      case l.MessageDowntimeStatusVO.SCOPE_FOOD:
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("message_productionDownTime_unfreeze_food_header"));
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO("message_productionDownTime_unfreeze_food_desc"));
+        this.dialogDisp.mc_teaser.addChild(new u.CastleGoodgameExternalClip(CastleMessageFoodFreezeEndDialog.FOOD_TEASER, d.BasicModel.basicLoaderData.getVersionedItemAssetUrl(CastleMessageFoodFreezeEndDialog.FOOD_TEASER), null, 0, false));
+        break;
+      case l.MessageDowntimeStatusVO.SCOPE_FOOD_MEAD:
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("message_productionDownTime_unfreeze_foodmead_header"));
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO("message_productionDownTime_unfreeze_foodmead_desc"));
+        this.dialogDisp.mc_teaser.addChild(new u.CastleGoodgameExternalClip(CastleMessageFoodFreezeEndDialog.FOOD_MEAD_TEASER, d.BasicModel.basicLoaderData.getVersionedItemAssetUrl(CastleMessageFoodFreezeEndDialog.FOOD_MEAD_TEASER), null, 0, false));
     }
   };
-  BattleLogAbilityVO.prototype.getValueForWave = function (e, t) {
-    var i = 0;
-    var n = 0;
-    this._waveValues.forEach(function (o) {
-      if ((e === undefined || e == o.waveID) && (t === undefined || t == o.flankName)) {
-        i = o.waveValue;
-        if (Math.abs(n) < Math.abs(i)) {
-          n = i;
-        }
-      }
-    });
-    if (e === undefined) {
-      return n;
-    } else {
-      return i;
+  CastleMessageFoodFreezeEndDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
     }
   };
-  BattleLogAbilityVO.prototype.isTriggerdInWave = function (e, t) {
-    return this._waveValues.some(function (i) {
-      return (e === undefined || e == i.waveID) && (t == "" || t == i.flankName);
-    });
-  };
-  Object.defineProperty(BattleLogAbilityVO.prototype, "abilityID", {
+  Object.defineProperty(CastleMessageFoodFreezeEndDialog.prototype, "dialogProperties", {
     get: function () {
-      return this._abilityID;
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(BattleLogAbilityVO.prototype, "abilityXmlVO", {
-    get: function () {
-      return n.CastleModel.generalsData.getAbilityByID(this.abilityID);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return BattleLogAbilityVO;
-}();
-exports.BattleLogAbilityVO = o;
+  CastleMessageFoodFreezeEndDialog.NAME = "FoodFreezeEndExt";
+  CastleMessageFoodFreezeEndDialog.FOOD_TEASER = "FoodFreezeTeaser_Food";
+  CastleMessageFoodFreezeEndDialog.FOOD_MEAD_TEASER = "FoodFreezeTeaser_FoodMead";
+  return CastleMessageFoodFreezeEndDialog;
+}(s.CastleExternalDialog);
+exports.CastleMessageFoodFreezeEndDialog = h;
+o.classImplementsInterfaces(h, "ICollectableRendererList");

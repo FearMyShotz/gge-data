@@ -58,5 +58,5 @@ var p = function (e) {
   return AHunterBuildingVO;
 }(require("./65.js").AEffectBuildingVO);
 exports.AHunterBuildingVO = p;
-var h = require("./688.js");
+var h = require("./690.js");
 a.classImplementsInterfaces(p, "IShopVO", "ICostVO", "IInventoryVO");

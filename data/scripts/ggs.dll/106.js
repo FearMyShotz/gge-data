@@ -74,24 +74,24 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
   var F = Math.PI / 180;
   var U = 180 / Math.PI;
   var G = {};
-  var w = {
+  var k = {
     style: {}
   };
-  var k = i._gsScope.document || {
+  var w = i._gsScope.document || {
     createElement: function () {
-      return w;
+      return k;
     }
   };
   function x(e, t) {
-    if (k.createElementNS) {
-      return k.createElementNS(t || "http://www.w3.org/1999/xhtml", e);
+    if (w.createElementNS) {
+      return w.createElementNS(t || "http://www.w3.org/1999/xhtml", e);
     } else {
-      return k.createElement(e);
+      return w.createElement(e);
     }
   }
   var W = x("div");
-  var V = x("img");
-  var H = s._internals = {
+  var H = x("img");
+  var V = s._internals = {
     _specialProps: o
   };
   var j = (i._gsScope.navigator || {}).userAgent || "";
@@ -138,7 +138,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       return null;
     }
   }
-  var Q = (typeof window != "undefined" ? window : k.defaultView || {
+  var Q = (typeof window != "undefined" ? window : w.defaultView || {
     getComputedStyle: function () {}
   }).getComputedStyle;
   var $ = s.getStyle = function (e, t, n, i, a) {
@@ -160,7 +160,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       return K(e);
     }
   };
-  var J = H.convertToPixels = function (e, t, n, a, r) {
+  var J = V.convertToPixels = function (e, t, n, a, r) {
     if (a === "px" || !a && t !== "lineHeight") {
       return n;
     }
@@ -189,7 +189,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
         if (a !== "%" && _.appendChild && a.charAt(0) !== "v" && a !== "rem") {
           d[c ? "borderLeftWidth" : "borderTopWidth"] = n + a;
         } else {
-          _ = e.parentNode || k.body;
+          _ = e.parentNode || w.body;
           if ($(_, "display").indexOf("flex") !== -1) {
             d.position = "absolute";
           }
@@ -226,7 +226,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       return o;
     }
   };
-  var ee = H.calculateOffset = function (e, t, n) {
+  var ee = V.calculateOffset = function (e, t, n) {
     if ($(e, "position", n) !== "absolute") {
       return 0;
     }
@@ -318,7 +318,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
     if ((e.nodeName + "").toLowerCase() === "svg") {
       return (n || Q(e))[t] || 0;
     }
-    if (e.getCTM && Ve(e)) {
+    if (e.getCTM && He(e)) {
       return e.getBBox()[t] || 0;
     }
     var i = parseFloat(t === "width" ? e.offsetWidth : e.offsetHeight);
@@ -648,7 +648,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       return a.parse(t, o, s, r);
     };
   }
-  H._setPluginRatio = function (e) {
+  V._setPluginRatio = function (e) {
     this.plugin.setRatio(e);
     var t;
     var n;
@@ -700,7 +700,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       this._next = i;
     }
   }
-  H._parseToProxy = function (e, t, n, i, a, s) {
+  V._parseToProxy = function (e, t, n, i, a, s) {
     var r;
     var o;
     var l;
@@ -744,7 +744,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       pt: c
     };
   };
-  var Ce = H.CSSPropTween = function (t, n, i, s, r, o, l, u, c, _, d) {
+  var Ce = V.CSSPropTween = function (t, n, i, s, r, o, l, u, c, _, d) {
     this.t = t;
     this.p = n;
     this.s = i;
@@ -932,7 +932,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
     this.dflt = t.defaultValue;
     this.pr = t.priority || 0;
   }
-  var Ie = H._registerComplexSpecialProp = function (e, t, n) {
+  var Ie = V._registerComplexSpecialProp = function (e, t, n) {
     if (typeof t != "object") {
       t = {
         parser: n
@@ -949,7 +949,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       new ye(a[i], t);
     }
   };
-  var ve = H._registerPluginProp = function (e) {
+  var ve = V._registerPluginProp = function (e) {
     if (!o[e]) {
       var t = e.charAt(0).toUpperCase() + e.substr(1) + "Plugin";
       Ie(e, {
@@ -1027,14 +1027,14 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
   var Pe = z + "transform";
   var Be = X("transformOrigin");
   var Me = X("perspective") !== null;
-  var Fe = H.Transform = function () {
+  var Fe = V.Transform = function () {
     this.perspective = parseFloat(s.defaultTransformPerspective) || 0;
     this.force3D = s.defaultForce3D !== false && !!Me && (s.defaultForce3D || "auto");
   };
   var Ue = i._gsScope.SVGElement;
   function Ge(e, t, n) {
     var i;
-    var a = k.createElementNS("http://www.w3.org/2000/svg", e);
+    var a = w.createElementNS("http://www.w3.org/2000/svg", e);
     var s = /([a-z])([A-Z])/g;
     for (i in n) {
       a.setAttributeNS(null, i.replace(s, "$1-$2").toLowerCase(), n[i]);
@@ -1042,10 +1042,10 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
     t.appendChild(a);
     return a;
   }
-  var we = k.documentElement || {};
+  var ke = w.documentElement || {};
   be = h || /Android/i.test(j) && !i._gsScope.chrome;
-  if (k.createElementNS && !be) {
-    Oe = Ge("svg", we);
+  if (w.createElementNS && !be) {
+    Oe = Ge("svg", ke);
     De = (Le = Ge("rect", Oe, {
       width: 100,
       height: 50,
@@ -1054,9 +1054,9 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
     Le.style[Be] = "50% 50%";
     Le.style[Re] = "scaleX(0.5)";
     be = De === Le.getBoundingClientRect().width && (!d || !Me);
-    we.removeChild(Oe);
+    ke.removeChild(Oe);
   }
-  var ke = be;
+  var we = be;
   function xe(e, t, n, i, a, r) {
     var o;
     var l;
@@ -1091,7 +1091,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
     }
     n.xOrigin = c = parseFloat(o[0]);
     n.yOrigin = _ = parseFloat(o[1]);
-    if (i && y !== He) {
+    if (i && y !== Ve) {
       d = y[0];
       m = y[1];
       h = y[2];
@@ -1130,7 +1130,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
     var i = this.parentNode;
     var a = this.nextSibling;
     var s = this.style.cssText;
-    we.appendChild(n);
+    ke.appendChild(n);
     n.appendChild(this);
     this.style.display = "block";
     if (e) {
@@ -1147,11 +1147,11 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
     } else {
       i.appendChild(this);
     }
-    we.removeChild(n);
+    ke.removeChild(n);
     this.style.cssText = s;
     return t;
   }
-  function Ve(e) {
+  function He(e) {
     return !!Ue && !!e.getCTM && (!e.parentNode || !!e.ownerSVGElement) && !!function (e) {
       try {
         return e.getBBox();
@@ -1160,7 +1160,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       }
     }(e);
   }
-  var He = [1, 0, 0, 1, 0, 0];
+  var Ve = [1, 0, 0, 1, 0, 0];
   function je(e, t) {
     var n;
     var i;
@@ -1183,7 +1183,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       }
       if (!e.parentNode) {
         r = 1;
-        we.appendChild(e);
+        ke.appendChild(e);
       }
       n = !(i = $(e, Pe, null, true)) || i === "none" || i === "matrix(1, 0, 0, 1, 0, 0)";
       if (s) {
@@ -1192,10 +1192,10 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
         Ze(u, "display");
       }
       if (r) {
-        we.removeChild(e);
+        ke.removeChild(e);
       }
     }
-    if (l.svg || e.getCTM && Ve(e)) {
+    if (l.svg || e.getCTM && He(e)) {
       if (n && (u[Re] + "").indexOf("matrix") !== -1) {
         i = u[Re];
         n = 0;
@@ -1207,7 +1207,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       }
     }
     if (n) {
-      return He;
+      return Ve;
     }
     a = (i || "").match(E) || [];
     Se = a.length;
@@ -1221,7 +1221,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       return a;
     }
   }
-  var qe = H.getTransform = function (e, t, n, a) {
+  var qe = V.getTransform = function (e, t, n, a) {
     if (e._gsTransform && n && !a) {
       return e._gsTransform;
     }
@@ -1235,12 +1235,12 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
     var m = d.scaleX < 0;
     var h = Me && (parseFloat($(e, Be, t, false, "0 0 0").split(" ")[2]) || d.zOrigin) || 0;
     var p = parseFloat(s.defaultTransformPerspective) || 0;
-    d.svg = !!e.getCTM && !!Ve(e);
+    d.svg = !!e.getCTM && !!He(e);
     if (d.svg) {
       xe(e, $(e, Be, t, false, "50% 50%") + "", d, e.getAttribute("data-svg-origin"));
-      Ae = s.useSVGTransformAttr || ke;
+      Ae = s.useSVGTransformAttr || we;
     }
-    if ((r = je(e)) !== He) {
+    if ((r = je(e)) !== Ve) {
       if (r.length === 16) {
         var g;
         var E;
@@ -1336,17 +1336,17 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
           d.y -= d.yOrigin - (d.yOrigin * y - d.xOrigin * O);
         }
       } else if (!Me || a || !r.length || d.x !== r[4] || d.y !== r[5] || !d.rotationX && !d.rotationY) {
-        var w = r.length >= 6;
-        var k = w ? r[0] : 1;
+        var k = r.length >= 6;
+        var w = k ? r[0] : 1;
         var x = r[1] || 0;
         var W = r[2] || 0;
-        var V = w ? r[3] : 1;
+        var H = k ? r[3] : 1;
         d.x = r[4] || 0;
         d.y = r[5] || 0;
-        l = Math.sqrt(k * k + x * x);
-        u = Math.sqrt(V * V + W * W);
-        c = k || x ? Math.atan2(x, k) * U : d.rotation || 0;
-        _ = W || V ? Math.atan2(W, V) * U + c : d.skewX || 0;
+        l = Math.sqrt(w * w + x * x);
+        u = Math.sqrt(H * H + W * W);
+        c = w || x ? Math.atan2(x, w) * U : d.rotation || 0;
+        _ = W || H ? Math.atan2(W, H) * U + c : d.skewX || 0;
         d.scaleX = l;
         d.scaleY = u;
         d.rotation = c;
@@ -1357,8 +1357,8 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
           d.scaleZ = 1;
         }
         if (d.svg) {
-          d.x -= d.xOrigin - (d.xOrigin * k + d.yOrigin * W);
-          d.y -= d.yOrigin - (d.xOrigin * x + d.yOrigin * V);
+          d.x -= d.xOrigin - (d.xOrigin * w + d.yOrigin * W);
+          d.y -= d.yOrigin - (d.xOrigin * x + d.yOrigin * H);
         }
       }
       if (Math.abs(d.skewX) > 90 && Math.abs(d.skewX) < 270) {
@@ -1456,7 +1456,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       }
     }
   }
-  var Ye = H.set3DTransformRatio = H.setTransformRatio = function (e) {
+  var Ye = V.set3DTransformRatio = V.setTransformRatio = function (e) {
     var t;
     var n;
     var i;
@@ -1492,27 +1492,27 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
     var M = I.svg;
     var U = I.perspective;
     var G = I.force3D;
-    var w = I.skewY;
-    var k = I.skewX;
-    if (w) {
-      k += w;
-      A += w;
+    var k = I.skewY;
+    var w = I.skewX;
+    if (k) {
+      w += k;
+      A += k;
     }
     if (((e === 1 || e === 0) && G === "auto" && (this.tween._totalTime === this.tween._totalDuration || !this.tween._totalTime) || !G) && !B && !U && !L && !O && N === 1 || Ae && M || !Me) {
-      if (A || k || M) {
+      if (A || w || M) {
         A *= F;
-        S = k * F;
+        S = w * F;
         y = 100000;
         n = Math.cos(A) * D;
         s = Math.sin(A) * D;
         i = Math.sin(A - S) * -b;
         r = Math.cos(A - S) * b;
         if (S && I.skewType === "simple") {
-          t = Math.tan(S - w * F);
+          t = Math.tan(S - k * F);
           i *= t = Math.sqrt(1 + t * t);
           r *= t;
-          if (w) {
-            t = Math.tan(w * F);
+          if (k) {
+            t = Math.tan(k * F);
             n *= t = Math.sqrt(1 + t * t);
             s *= t;
           }
@@ -1553,20 +1553,20 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
           U = 0;
         }
       }
-      if (A || k) {
+      if (A || w) {
         A *= F;
         E = n = Math.cos(A);
         C = s = Math.sin(A);
-        if (k) {
-          A -= k * F;
+        if (w) {
+          A -= w * F;
           E = Math.cos(A);
           C = Math.sin(A);
           if (I.skewType === "simple") {
-            t = Math.tan((k - w) * F);
+            t = Math.tan((w - k) * F);
             E *= t = Math.sqrt(1 + t * t);
             C *= t;
             if (I.skewY) {
-              t = Math.tan(w * F);
+              t = Math.tan(k * F);
               n *= t = Math.sqrt(1 + t * t);
               s *= t;
             }
@@ -1709,7 +1709,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
           d.width = $(e, "width");
           d.height = $(e, "height");
         }
-        k.body.appendChild(W);
+        w.body.appendChild(W);
         _ = qe(W, null, false);
         if (L.skewType === "simple") {
           _.scaleY *= Math.cos(_.skewX * F);
@@ -1733,7 +1733,7 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
             _.y -= f - (C * T[1] + f * T[3]);
           }
         }
-        k.body.removeChild(W);
+        w.body.removeChild(W);
         _.perspective ||= L.perspective;
         if (A.xPercent != null) {
           _.xPercent = le(A.xPercent, L.xPercent);
@@ -1949,11 +1949,11 @@ i._gsScope._gsDefine("plugins.CSSPlugin", ["plugins.TweenPlugin", "TweenLite"], 
       if (g.indexOf("%") !== -1 != (E.indexOf("%") !== -1) && E.split(",").length < 2 && (d = $(e, "backgroundImage").replace(D, "")) && d !== "none") {
         o = g.split(" ");
         l = E.split(" ");
-        V.setAttribute("src", d);
+        H.setAttribute("src", d);
         u = 2;
         while (--u > -1) {
           if ((c = (g = o[u]).indexOf("%") !== -1) !== (l[u].indexOf("%") !== -1)) {
-            _ = u === 0 ? e.offsetWidth - V.width : e.offsetHeight - V.height;
+            _ = u === 0 ? e.offsetWidth - H.width : e.offsetHeight - H.height;
             o[u] = c ? parseFloat(g) / 100 * _ + "px" : parseFloat(g) / _ * 100 + "%";
           }
         }

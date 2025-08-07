@@ -2,21 +2,35 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./7.js");
-var r = function (e) {
-  function C2SCollectMineResources(t) {
-    var i = this;
-    i.OID = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).OID = a.int(t.OID);
-    return i;
+var o = require("./1.js");
+var a = require("./1584.js");
+var s = function (e) {
+  function CoinmineBuildingVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(C2SCollectMineResources, e);
-  C2SCollectMineResources.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_COLLECT_MINE_RESOURCES;
-  };
-  return C2SCollectMineResources;
-}(o.BasicCommandVO);
-exports.C2SCollectMineResources = r;
+  n.__extends(CoinmineBuildingVE, e);
+  Object.defineProperty(CoinmineBuildingVE.prototype, "buildingGroundIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements_Icons.Icon_Coins_Cluster;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.AMineBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CoinmineBuildingVE.prototype, "statusIconFull", {
+    get: function () {
+      return r.IsoStatusIconEnum.COINMINE_COLLECTABLE;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.AMineBuildingVE.prototype, "statusIconFull").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CoinmineBuildingVE;
+}(a.AMineBuildingVE);
+exports.CoinmineBuildingVE = s;
+var r = require("./177.js");
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

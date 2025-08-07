@@ -1,30 +1,47 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./3403.js");
-var r = function (e) {
-  function OpenFactionEventMainDialogCommand() {
-    var t = this;
-    t._subLayerID = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var n = function () {
+  function LeagueTypeVO() {
+    this._leaguetypeID = 0;
+    this._eventID = 0;
+    this._minLevel = 0;
+    this._maxLevel = 0;
   }
-  n.__extends(OpenFactionEventMainDialogCommand, e);
-  OpenFactionEventMainDialogCommand.prototype.addAssets = function (t) {
-    e.prototype.addAssets.call(this, t);
-    this._subLayerID = a.int(t ? a.int(t) : -1);
+  LeagueTypeVO.prototype.parseXML = function (e) {
+    this._leaguetypeID = parseInt(e.leaguetypeID || "");
+    this._eventID = parseInt(e.eventID || "");
+    this._minLevel = parseInt(e.minLevel || "");
+    this._maxLevel = parseInt(e.maxLevel || "");
   };
-  OpenFactionEventMainDialogCommand.prototype.open = function (e) {
-    var t = new s.FactionEventMainDialogProperties(this._subLayerID);
-    t.titlesSublayer = e;
-    l.CastleDialogHandler.getInstance().registerDefaultDialogs(c.FactionEventMainDialog, t);
-  };
-  return OpenFactionEventMainDialogCommand;
-}(require("./1651.js").OpenFactionInvasionEventMainDialogCommand);
-exports.OpenFactionEventMainDialogCommand = r;
-var l = require("./9.js");
-var c = require("./661.js");
-o.classImplementsInterfaces(r, "ISimpleCommand");
+  Object.defineProperty(LeagueTypeVO.prototype, "leaguetypeID", {
+    get: function () {
+      return this._leaguetypeID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeagueTypeVO.prototype, "eventID", {
+    get: function () {
+      return this._eventID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeagueTypeVO.prototype, "minLevel", {
+    get: function () {
+      return this._minLevel;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LeagueTypeVO.prototype, "maxLevel", {
+    get: function () {
+      return this._maxLevel;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return LeagueTypeVO;
+}();
+exports.LeagueTypeVO = n;

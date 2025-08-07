@@ -88,7 +88,7 @@ var l = function (e) {
   return CastleWorldCupDialog;
 }(require("./11.js").CastleExternalDialog);
 exports.CastleWorldCupDialog = l;
-var c = require("./669.js");
+var c = require("./671.js");
 var u = require("./3961.js");
 var d = require("./3962.js");
 var p = require("./3963.js");

@@ -2,34 +2,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = function (e) {
-  function CastleKongregateNotificationDialog() {
+var o = function (e) {
+  function CastleShowUpgradableBuildingsEvent(t, i, n = false, o = false) {
+    var a = this;
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleKongregateNotificationDialog.NAME) || this;
+    (a = e.call(this, t, n, o) || this)._paramObj = i;
+    return a;
   }
-  n.__extends(CastleKongregateNotificationDialog, e);
-  CastleKongregateNotificationDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_ok]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_rateEmpire_sucess_copy"));
+  n.__extends(CastleShowUpgradableBuildingsEvent, e);
+  Object.defineProperty(CastleShowUpgradableBuildingsEvent.prototype, "paramObj", {
+    get: function () {
+      return this._paramObj;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleShowUpgradableBuildingsEvent.__initialize_static_members = function () {
+    CastleShowUpgradableBuildingsEvent.UPGRADABLE_BUILDINGS_DATA_RECEIVED = "upgradableBuildingsDataReceived";
   };
-  CastleKongregateNotificationDialog.prototype.onClick = function (e) {
-    if (e.target == this.dialogDisp.btn_ok) {
-      this.hide();
-    }
-  };
-  CastleKongregateNotificationDialog.prototype.updatePosition = function () {
-    e.prototype.updatePosition.call(this);
-    var t = this.dialogDisp.getBounds(null);
-    this.dialogDisp.y = t.top + 250;
-  };
-  CastleKongregateNotificationDialog.__initialize_static_members = function () {
-    CastleKongregateNotificationDialog.NAME = "CastleKongregateNotification";
-  };
-  return CastleKongregateNotificationDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleKongregateNotificationDialog = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
-s.__initialize_static_members();
+  return CastleShowUpgradableBuildingsEvent;
+}(createjs.Event);
+exports.CastleShowUpgradableBuildingsEvent = o;
+o.__initialize_static_members();

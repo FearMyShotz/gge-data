@@ -34,11 +34,12 @@ var C = function (e) {
     n -= h.int(a * 60);
     a -= h.int(s * 24);
     for (var l = [r, s -= h.int(r * 30), a, n, i], c = "", d = 0; d < l.length; d++) {
-      var p = h.int(l[d]);
-      if (p > 0) {
-        var g = CastleTimeStringHelper.TIME_TEXT_IDS[d] + (p > 1 ? "s" : "");
-        var C = u.Localize.text(o.GenericTextIds.VALUE_SIMPLE_COMP, [p, u.Localize.text(g)]);
-        c = c == "" ? C : u.Localize.text(o.GenericTextIds.VALUE_SIMPLE_COMP, [c, C]);
+      var g = h.int(l[d]);
+      if (g > 0) {
+        var C = CastleTimeStringHelper.TIME_TEXT_IDS[d] + (g > 1 ? "s" : "");
+        var _ = u.Localize.text(C);
+        var m = u.Localize.text(o.GenericTextIds.VALUE_SIMPLE_COMP, [g, new p.TextVO(_)]);
+        c = c == "" ? m : u.Localize.text(o.GenericTextIds.VALUE_SIMPLE_COMP, [c, m]);
       }
     }
     return c;

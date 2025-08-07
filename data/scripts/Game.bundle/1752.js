@@ -3,99 +3,61 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./5.js");
-var s = function (e) {
-  function PrivateEventEnum(t, i, n, a, s, r, l, c, u, d) {
-    var p = e.call(this, t, o.BasicEnum.instantiationKey) || this;
-    p._privateEventID = 0;
-    p._minLevel = 0;
-    p._maxLevel = 0;
-    p._openWithLogin = false;
-    p._privateEventID = i;
-    p._privateEventClass = n;
-    p._eventType = a;
-    p._minLevel = s;
-    p._maxLevel = r;
-    p._openWithLogin = l;
-    p._kIDs = c;
-    p._areaTypes = u;
-    p._mapIDs = d;
-    return p;
+var a = require("./1.js");
+var s = require("./18.js");
+var r = require("./4.js");
+var l = function (e) {
+  function OpenTipDialogCommand() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  n.__extends(PrivateEventEnum, e);
-  PrivateEventEnum.getPrivateEventTypeFromName = function (e) {
-    return this.getByProperty(PrivateEventEnum, "name", e, PrivateEventEnum.UNDEFINED);
+  n.__extends(OpenTipDialogCommand, e);
+  OpenTipDialogCommand.prototype.execute = function (e = null) {
+    if (r.CastleModel.areaData.activeArea.isMyArea && !r.CastleModel.areaData.activeArea.isUnderConquerProcess) {
+      switch (e[0]) {
+        case s.ClientConstCastle.TIP_EFFICIENCY:
+          c.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleEfficiencyTipDialog);
+          break;
+        case s.ClientConstCastle.TIP_BARRACKUNIT:
+          c.CastleDialogHandler.getInstance().registerDefaultDialogs(u.CastleBarrackUnitTipDialog);
+          break;
+        case s.ClientConstCastle.TIP_BUILDLIST:
+          c.CastleDialogHandler.getInstance().registerDefaultDialogs(d.CastleBuildListTipDialog);
+          break;
+        case s.ClientConstCastle.TIP_INSTANTBUILD:
+          c.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleInstantBuildTipDialog);
+          break;
+        case s.ClientConstCastle.TIP_OVERSEER:
+          c.CastleDialogHandler.getInstance().registerDefaultDialogs(g.CastleOverseerTipDialog);
+          break;
+        case s.ClientConstCastle.TIP_PRODUCTIVITY:
+          c.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleProductivityTipDialog);
+          break;
+        case s.ClientConstCastle.TIP_REPAIR:
+          if (e.length == 2 && e[1]) {
+            c.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleRepairTipDialog);
+          } else if (e.length == 2 && !e[1]) {
+            if (OpenTipDialogCommand.repairShown < 1) {
+              OpenTipDialogCommand.repairShown++;
+              c.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleRepairTipDialog);
+            }
+          }
+      }
+    }
   };
-  Object.defineProperty(PrivateEventEnum.prototype, "privateEventID", {
-    get: function () {
-      return this._privateEventID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PrivateEventEnum.prototype, "privateEventClass", {
-    get: function () {
-      return this._privateEventClass;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PrivateEventEnum.prototype, "eventType", {
-    get: function () {
-      return this._eventType;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PrivateEventEnum.prototype, "minLevel", {
-    get: function () {
-      return this._minLevel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PrivateEventEnum.prototype, "maxLevel", {
-    get: function () {
-      return this._maxLevel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PrivateEventEnum.prototype, "openWithLogin", {
-    get: function () {
-      return this._openWithLogin;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PrivateEventEnum.prototype, "kIDs", {
-    get: function () {
-      return this._kIDs;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PrivateEventEnum.prototype, "areaTypes", {
-    get: function () {
-      return this._areaTypes;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PrivateEventEnum.prototype, "mapIDs", {
-    get: function () {
-      return this._mapIDs;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  PrivateEventEnum.__initialize_static_members = function () {
-    PrivateEventEnum.UNDEFINED = new PrivateEventEnum("undefined", 0, r.ASpecialEventVO, "", 6, 99, false, [], [], []);
-    PrivateEventEnum.LOW_LEVEL_UNIT_DEALER = new PrivateEventEnum("unitDealer", 100, l.PrivateUnitDealerEventVO, "UnitDealer", a.TreasureMapsConst.LOWLEVEL_UNDERWORLD_START_LEVEL, a.TreasureMapsConst.LOWLEVEL_UNDERWORLD_KILL_LEVEL, false, [0], [8], [30]);
+  OpenTipDialogCommand.__initialize_static_members = function () {
+    OpenTipDialogCommand.repairShown = 0;
   };
-  return PrivateEventEnum;
-}(o.BasicEnum);
-exports.PrivateEventEnum = s;
-var r = require("./79.js");
-var l = require("./998.js");
-s.__initialize_static_members();
+  return OpenTipDialogCommand;
+}(o.SimpleCommand);
+exports.OpenTipDialogCommand = l;
+var c = require("./9.js");
+var u = require("./3672.js");
+var d = require("./3673.js");
+var p = require("./3674.js");
+var h = require("./3675.js");
+var g = require("./3676.js");
+var C = require("./3677.js");
+var _ = require("./3678.js");
+a.classImplementsInterfaces(l, "ISimpleCommand");
+l.__initialize_static_members();

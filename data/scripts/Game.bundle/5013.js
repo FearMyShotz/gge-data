@@ -4,33 +4,38 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function QDCCommand() {
+var s = require("./6.js");
+var r = require("./7.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function DQLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(QDCCommand, e);
-  Object.defineProperty(QDCCommand.prototype, "cmdId", {
+  n.__extends(DQLCommand, e);
+  Object.defineProperty(DQLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_QUEST_DONATE_CURRENCY;
+      return r.ClientConstSF.S2C_DAILY_QUEST_LIST;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  QDCCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
+  DQLCommand.prototype.exec = function (e) {
+    var t = s.int(e[0]);
+    var i = e[1];
+    switch (t) {
       case a.ERROR.ALL_OK:
+        var n = JSON.parse(i[1]);
+        l.CastleModel.dailyQuestData.parse_DQL(n);
         break;
       default:
-        this.showErrorDialog(e, t);
+        this.showErrorDialog(t, i);
     }
-    return false;
   };
-  return QDCCommand;
-}(r.CastleCommand);
-exports.QDCCommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  return DQLCommand;
+}(c.CastleCommand);
+exports.DQLCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

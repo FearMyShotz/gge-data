@@ -4,14 +4,17 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function TutorialConfirmRecruitUnitsCommand() {
+  function TutorialConfirmFoodReductionForUnitsCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TutorialConfirmRecruitUnitsCommand, e);
-  TutorialConfirmRecruitUnitsCommand.prototype.getTrackOnQuestConfirmID = function () {
-    return "s_060_020_dialog_confirmed";
+  n.__extends(TutorialConfirmFoodReductionForUnitsCommand, e);
+  TutorialConfirmFoodReductionForUnitsCommand.prototype.finishStep = function () {
+    e.prototype.finishStep.call(this);
   };
-  return TutorialConfirmRecruitUnitsCommand;
+  TutorialConfirmFoodReductionForUnitsCommand.prototype.getTrackOnQuestConfirmID = function () {
+    return "s_060_060_dialog_confirmed";
+  };
+  return TutorialConfirmFoodReductionForUnitsCommand;
 }(require("./253.js").TutorialBasicQuestStarterActionCommand);
-exports.TutorialConfirmRecruitUnitsCommand = a;
+exports.TutorialConfirmFoodReductionForUnitsCommand = a;
 o.classImplementsInterfaces(a, "ISimpleCommand");

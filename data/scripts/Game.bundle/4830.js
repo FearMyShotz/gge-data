@@ -2,43 +2,38 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
-var l = require("./198.js");
-var c = require("./73.js");
-var u = require("./248.js");
-var d = function (e) {
-  function IncomingEquippableScrollItem(t) {
-    return e.call(this, t) || this;
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function ARLCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IncomingEquippableScrollItem, e);
-  IncomingEquippableScrollItem.prototype.customFillItem = function () {
-    a.MovieClipHelper.clearMovieClip(this._disp.mc_equipmentHolder);
-    if (this.incomingEquippableScrollItemVO.equippableVO instanceof l.BasicEquipmentVO) {
-      c.EquipmentIconHelper.addEquipmentIcon(this.incomingEquippableScrollItemVO.equippableVO, this._disp.mc_equipmentHolder, 60, 60);
-      c.EquipmentIconHelper.addEquipmentIconHitBG(this._disp.mc_equipmentHolder, 75, 75);
-    } else {
-      this._disp.mc_equipmentHolder.addChild(u.CastleGemRenderer.renderAsset(this.incomingEquippableScrollItemVO.equippableVO));
+  n.__extends(ARLCommand, e);
+  Object.defineProperty(ARLCommand.prototype, "cmdId", {
+    get: function () {
+      return s.ClientConstSF.S2C_RENAME_LORD_EVENT;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ARLCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.lordData.parse_GLI(i.gli);
+        break;
+      default:
+        this.showErrorDialog(e, t);
     }
-    this._disp.mc_equipmentHolder.mouseChildren = false;
+    return false;
   };
-  Object.defineProperty(IncomingEquippableScrollItem.prototype, "incomingEquippableScrollItemVO", {
-    get: function () {
-      return this.scrollItemVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IncomingEquippableScrollItem, "textFieldManager", {
-    get: function () {
-      return o.GoodgameTextFieldManager.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IncomingEquippableScrollItem;
-}(s.ScrollItem);
-exports.IncomingEquippableScrollItem = d;
-r.classImplementsInterfaces(d, "MovieClip");
+  return ARLCommand;
+}(l.CastleCommand);
+exports.ARLCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

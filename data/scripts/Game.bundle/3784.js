@@ -2,64 +2,110 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
+var o = require("./2.js");
+var a = require("./2.js");
 var s = require("./6.js");
 var r = require("./4.js");
-var l = require("./831.js");
+var l = require("./833.js");
 var c = require("./3785.js");
-var u = require("./241.js");
-var d = function (e) {
-  function OpenLongTermPointEventDialogCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var u = function (e) {
+  function LongTermPointEventProperties(t) {
+    var i = this;
+    i._currentEventID = 0;
+    i._selectedEvent = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this)._eventAssets = new Map();
+    i._eventVO = t;
+    i.updateEventIDs();
+    return i;
   }
-  n.__extends(OpenLongTermPointEventDialogCommand, e);
-  OpenLongTermPointEventDialogCommand.prototype.openDialog = function () {
-    new g.UpdateDynamicTopXDataService().updateDynamicTopXForVO(this._eventVO);
-    this._dialogProperties.updateEventVO(this._eventVO);
-    p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.LongTermPointEventDialog, this._dialogProperties);
-  };
-  OpenLongTermPointEventDialogCommand.prototype.addAssets = function (e) {
-    this._eventVO = r.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_LONGTERM_POINT_EVENT);
-    r.CastleModel.smartfoxClient.sendCommandVO(new u.C2SPointEventGetPointsVO(a.EventConst.EVENTTYPE_LONGTERM_POINT_EVENT));
-    this._dialogProperties = new c.LongTermPointEventProperties(this._eventVO);
-    this.loadSeasonAssets(this._dialogProperties);
-    this.loadPointEventAssets(this._dialogProperties, h.LongTermPointEventDialog.TAB_ICONS_IDS);
-  };
-  OpenLongTermPointEventDialogCommand.prototype.loadPointEventAssets = function (e, t) {
-    for (var i = s.int(t.length), n = 0, o = e.eventVO.skin, a = 0; a < i; a++) {
-      var r;
-      var c;
-      var u = "";
-      if (a == l.LongTermPointEventClientConst.GENERAL_TAB_ID) {
-        c = o.assetName;
-        r = l.LongTermPointEventClientConst.eventNamePrefix + o.textSuffix;
-        u = l.LongTermPointEventClientConst.eventDescriptionPrefix + o.textSuffix;
-      } else {
-        n = s.int(t[a]);
-        c = l.LongTermPointEventClientConst.pointEventAssetNames.get(n);
-        r = l.LongTermPointEventClientConst.tabToolTipPrefix + c.toLowerCase();
-      }
-      var d = l.LongTermPointEventClientConst.eventAssetFilePrefix + c;
-      var p = l.LongTermPointEventClientConst.tabPrefix + c.toLowerCase();
-      var h = l.LongTermPointEventClientConst.iconPrefix + c.toLowerCase();
-      var g = l.LongTermPointEventClientConst.teaserPrefix + c;
-      e.addEventAsset(n, c, h, p, g, r, u);
-      this.loadAsset(g, g);
-      this.loadAsset(p, d);
+  n.__extends(LongTermPointEventProperties, e);
+  LongTermPointEventProperties.prototype.addEventAsset = function (e, t, i, n, o, s, r) {
+    if (this._eventAssets.get(e)) {
+      a.debug("LongTermPeProperties: tried adding an event twice: " + e);
+    } else {
+      this._eventAssets.set(e, new c.LongTermPointEventEventInfoVO(e, t, i, n, o, s, r));
     }
   };
-  OpenLongTermPointEventDialogCommand.prototype.loadSeasonAssets = function (e) {
-    var t = l.LongTermPointEventClientConst.SEASON_PREFIX + e.eventVO.skin.assetName + l.LongTermPointEventClientConst.SEASON_SUFFIX;
-    var i = t;
-    e.seasonAssetName = i;
-    e.seasonClassName = t;
-    this.loadAsset(t, i);
+  LongTermPointEventProperties.prototype.isActiveEvent = function (e = -1) {
+    return (e = e != -1 ? e : this._selectedEvent) != l.LongTermPointEventClientConst.GENERAL_TAB_ID && r.CastleModel.specialEventData.getActiveEventByEventId(e) != null;
   };
-  return OpenLongTermPointEventDialogCommand;
-}(require("./1061.js").OpenDialogWithAdditionalExternalAssetsCommand);
-exports.OpenLongTermPointEventDialogCommand = d;
-var p = require("./9.js");
-var h = require("./3787.js");
-var g = require("./1786.js");
-o.classImplementsInterfaces(d, "ISimpleCommand");
+  LongTermPointEventProperties.prototype.hasNextAssetVO = function () {
+    return this._currentEventID < this._eventIDs.length;
+  };
+  LongTermPointEventProperties.prototype.resetNextEvent = function () {
+    this._currentEventID = 0;
+  };
+  LongTermPointEventProperties.prototype.getNextAssetVO = function () {
+    var e = s.int(this._eventIDs[this._currentEventID]);
+    this._currentEventID++;
+    return this.getEventAssetByEventID(e);
+  };
+  LongTermPointEventProperties.prototype.getEventAssetAtPosition = function (e) {
+    return this.getEventAssetByEventID(this._eventIDs[e]);
+  };
+  LongTermPointEventProperties.prototype.getEventAssetByEventID = function (e) {
+    return this._eventAssets.get(e);
+  };
+  Object.defineProperty(LongTermPointEventProperties.prototype, "eventVO", {
+    get: function () {
+      return this._eventVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  LongTermPointEventProperties.prototype.updateEventVO = function (e) {
+    this._eventVO = e;
+  };
+  Object.defineProperty(LongTermPointEventProperties.prototype, "selectedEvent", {
+    get: function () {
+      return this._selectedEvent;
+    },
+    set: function (e) {
+      this._selectedEvent = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LongTermPointEventProperties.prototype, "remainingSecondsForSelectedEvent", {
+    get: function () {
+      var e = r.CastleModel.specialEventData.getActiveEventByEventId(this._selectedEvent);
+      if (e) {
+        return e.remainingEventTimeInSeconds;
+      } else {
+        return 0;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LongTermPointEventProperties.prototype, "eventIDs", {
+    get: function () {
+      return this._eventIDs;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  LongTermPointEventProperties.prototype.updateEventIDs = function () {
+    this._eventIDs = [l.LongTermPointEventClientConst.GENERAL_TAB_ID];
+    var e = r.CastleModel.specialEventData.getActiveEventsByIds(l.LongTermPointEventClientConst.pointEventIDs);
+    if (e != null) {
+      for (var t = 0, i = e; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          this._eventIDs.push(n.eventId);
+        }
+      }
+    }
+    if (this._eventVO) {
+      for (var o = 0, a = this._eventVO.upcomingEvents; o < a.length; o++) {
+        var s = a[o];
+        if (s !== undefined && this._eventIDs.indexOf(s) == -1) {
+          this._eventIDs.push(s);
+        }
+      }
+    }
+  };
+  return LongTermPointEventProperties;
+}(o.BasicProperties);
+exports.LongTermPointEventProperties = u;

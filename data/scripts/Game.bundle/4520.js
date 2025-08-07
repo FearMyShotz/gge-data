@@ -3,24 +3,56 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./173.js");
-var s = function (e) {
-  function CastleSamuraiHunterEventScrollItem(t) {
-    return e.call(this, t) || this;
+var a = require("./51.js");
+var s = require("./166.js");
+var r = require("./184.js");
+var l = function (e) {
+  function SamuraiHunterEventVO() {
+    var t = this;
+    CONSTRUCTOR_HACK;
+    (t = e.call(this) || this).eventOverviewConfig.showRemainingEventDuration = true;
+    return t;
   }
-  n.__extends(CastleSamuraiHunterEventScrollItem, e);
-  Object.defineProperty(CastleSamuraiHunterEventScrollItem.prototype, "dialogKey", {
+  n.__extends(SamuraiHunterEventVO, e);
+  Object.defineProperty(SamuraiHunterEventVO.prototype, "eventBuildingWOD", {
     get: function () {
-      return r.CastleSamuraiHunterEventBuyDialog;
+      return SamuraiHunterEventVO.EVENT_BUILDING_WOD;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.AMerchantScrollItem.prototype, "dialogKey").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "eventBuildingWOD").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return CastleSamuraiHunterEventScrollItem;
-}(a.AMerchantScrollItem);
-exports.CastleSamuraiHunterEventScrollItem = s;
-var r = require("./4521.js");
-o.classImplementsInterfaces(s, "MovieClip");
+  Object.defineProperty(SamuraiHunterEventVO.prototype, "eventBuildingNameId", {
+    get: function () {
+      return "eventBuilding_samuraiToolVendor";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "eventBuildingNameId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SamuraiHunterEventVO.prototype.openMerchantDialog = function (e, t) {
+    this.executeOpenDialog(e, c.CastleSamuraiHunterEventDialog, new s.CastleGenericMerchantDialogProperties(this, t));
+  };
+  Object.defineProperty(SamuraiHunterEventVO.prototype, "eventFullsizeCharacterName", {
+    get: function () {
+      return a.ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SAMURAI_HUNTER;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "eventFullsizeCharacterName").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SamuraiHunterEventVO.__initialize_static_members = function () {
+    SamuraiHunterEventVO.EVENT_BUILDING_WOD = 636;
+  };
+  return SamuraiHunterEventVO;
+}(r.BuyPackagesEventVO);
+exports.SamuraiHunterEventVO = l;
+var c = require("./4521.js");
+o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
+l.__initialize_static_members();

@@ -3,22 +3,33 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./900.js");
-var s = require("./8.js");
-var r = function (e) {
-  function AttackDialogWaveHandlerSoldierPickItem() {
+var a = function (e) {
+  function AttackDialogWaveHandlerToolPickItem() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AttackDialogWaveHandlerSoldierPickItem, e);
-  AttackDialogWaveHandlerSoldierPickItem.prototype.onValueChange = function (t) {
+  n.__extends(AttackDialogWaveHandlerToolPickItem, e);
+  AttackDialogWaveHandlerToolPickItem.prototype.updateSelection = function () {
+    e.prototype.updateSelection.call(this);
+    if (this.troopSelectionScrollItemVO) {
+      if (this.troopSelectionScrollItemVO.unitVO.inventoryAmount > 0) {
+        this.disp.mc_selection.visible = true;
+        this.disp.mc_empty.visible = false;
+      } else {
+        this.disp.mc_selection.visible = false;
+        this.disp.mc_empty.visible = true;
+      }
+    }
+    this.updateSlider();
+  };
+  AttackDialogWaveHandlerToolPickItem.prototype.onValueChange = function (t) {
     e.prototype.onValueChange.call(this, t);
     this.updateSlider();
   };
-  AttackDialogWaveHandlerSoldierPickItem.prototype.customFillItem = function () {
+  AttackDialogWaveHandlerToolPickItem.prototype.customFillItem = function () {
     e.prototype.customFillItem.call(this);
     this.updateSlider();
   };
-  AttackDialogWaveHandlerSoldierPickItem.prototype.updateSlider = function () {
+  AttackDialogWaveHandlerToolPickItem.prototype.updateSlider = function () {
     if (this._amountComponent && this._amountComponent.numberOfItems > 0) {
       this.disp.mc_selection.mc_slider.mc_line.scaleX = this._amountComponent.getSelectedAmount() / this._amountComponent.numberOfItems;
     } else {
@@ -32,15 +43,7 @@ var r = function (e) {
       }
     }
   };
-  AttackDialogWaveHandlerSoldierPickItem.prototype.updateSelection = function () {
-    e.prototype.updateSelection.call(this);
-    this.updateSlider();
-  };
-  AttackDialogWaveHandlerSoldierPickItem.prototype.onTouchDown = function (t) {
-    e.prototype.onTouchDown.call(this, t);
-    s.ButtonHelper.isButtonEnabled(t.target);
-  };
-  return AttackDialogWaveHandlerSoldierPickItem;
-}(a.CastleAdvancedUnitSelectionScrollItem);
-exports.AttackDialogWaveHandlerSoldierPickItem = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList");
+  return AttackDialogWaveHandlerToolPickItem;
+}(require("./899.js").CastleAdvancedToolsSelectionScrollItem);
+exports.AttackDialogWaveHandlerToolPickItem = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList");

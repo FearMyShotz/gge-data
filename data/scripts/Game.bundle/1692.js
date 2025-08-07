@@ -2,82 +2,67 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./67.js");
-var u = require("./19.js");
-var d = require("./4.js");
-var p = require("./11.js");
-var h = createjs.Point;
-var g = function (e) {
-  function CastleFactionEventWinBasicDialog(t) {
-    return e.call(this, t) || this;
+var o = require("./2.js");
+var a = require("./6.js");
+var s = require("./4.js");
+var r = function (e) {
+  function SeasonLeaguePromotionDialogProperties(t) {
+    var i = e.call(this) || this;
+    i._isSeasonPassEnabled = false;
+    i.isPromoPassEnabled = false;
+    i._rewardSetId = 0;
+    i.seasonID = -1;
+    i.rewardHubVO = null;
+    i._promotionVO = s.CastleModel.seasonLeagueData.xml.getPromotion(t.KLRID);
+    i._isSeasonPassEnabled = t.KLP == 1;
+    i.isPromoPassEnabled = a.int(t[c.CommKeys.SEASON_PROMOTION_PASS_ENABLED]) == 1;
+    i._rewardSetId = a.int(t.RSID);
+    i._leaguetypeID = a.int(t.KLLID);
+    i.seasonID = a.int(t[c.CommKeys.SEASON_ID]);
+    i.rewardHubVO = t.rewardHubVO ? t.rewardHubVO : null;
+    return i;
   }
-  n.__extends(CastleFactionEventWinBasicDialog, e);
-  CastleFactionEventWinBasicDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_ok]);
-  };
-  CastleFactionEventWinBasicDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.updateRankingLine();
-    this.updateTexts();
-    this.updateRewards();
-  };
-  CastleFactionEventWinBasicDialog.prototype.updateRankingLine = function () {
-    this.dialogDisp.mc_first.visible = this.dialogProperties.rank == 1;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_rank, this.dialogProperties.rank > 0 ? new a.LocalizedNumberVO(this.dialogProperties.rank) : new r.TextVO("-"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_points, new a.LocalizedNumberVO(this.dialogProperties.points));
-  };
-  CastleFactionEventWinBasicDialog.prototype.updateTexts = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_name, new r.TextVO(d.CastleModel.userData.userName));
-  };
-  CastleFactionEventWinBasicDialog.prototype.setTitleText = function (e) {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO(e));
-  };
-  CastleFactionEventWinBasicDialog.prototype.setCopyText = function (e) {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO(e));
-  };
-  CastleFactionEventWinBasicDialog.prototype.updateRewards = function () {
-    this.showRightRewardContainer();
-    var e = l.int(this.dialogProperties.rewardList.length);
-    if (!(e <= 0) && !(e > 4)) {
-      C.CollectableRenderHelper.displayMultipleItemsComplete(this, new c.CollectableRenderClipsList(this.getRelevantRewardContainer(), "mc_reward"), this.dialogProperties.rewardList, new u.CollectableRenderOptions(u.CollectableRenderOptions.SET_ICON, new h(65, 120)));
-    }
-  };
-  CastleFactionEventWinBasicDialog.prototype.showRightRewardContainer = function () {
-    for (var e = 0; e <= 3; ++e) {
-      this.dialogDisp["mc_rewardContainer" + e].visible = false;
-    }
-    this.dialogDisp.mc_noReward.visible = false;
-    this.getRelevantRewardContainer().visible = true;
-  };
-  CastleFactionEventWinBasicDialog.prototype.getRelevantRewardContainer = function () {
-    var e = l.int(this.dialogProperties.rewardList.length);
-    if (e <= 0 || e > 4) {
-      return this.dialogDisp.mc_noReward;
+  n.__extends(SeasonLeaguePromotionDialogProperties, e);
+  SeasonLeaguePromotionDialogProperties.prototype.getPromotionRewardsVO = function () {
+    var e = new l.SeasonLeaguePromotionRewardsComponentVO();
+    if (this.rewardHubVO) {
+      e.normalRewards.addList(this.rewardHubVO.rewardTiers[0].rewards);
+      e.premiumRewards.addList(this.rewardHubVO.rewardTiers[1].rewards);
+      e.hasCollectedNormal = false;
+      e.hasCollectedPremium = false;
+      e.isUnlocked = this.rewardHubVO.isExtraTierUnlocked;
     } else {
-      return this.dialogDisp["mc_rewardContainer" + (e - 1)];
+      e.normalRewards = s.CastleModel.seasonLeagueData.xml.getPromotionRewards(this.rewardSetId, this.promotionVO.id, false, this._leaguetypeID);
+      e.premiumRewards = s.CastleModel.seasonLeagueData.xml.getPromotionRewards(this.rewardSetId, this.promotionVO.id, true, this._leaguetypeID);
+      e.hasCollectedNormal = false;
+      e.hasCollectedPremium = false;
+      e.isUnlocked = this.isSeasonPassEnabled || this.isPromoPassEnabled;
     }
+    return e;
   };
-  CastleFactionEventWinBasicDialog.prototype.onClick = function (e) {
-    switch (e.target) {
-      case this.dialogDisp.btn_ok:
-        this.hide();
-    }
-  };
-  Object.defineProperty(CastleFactionEventWinBasicDialog.prototype, "dialogProperties", {
+  Object.defineProperty(SeasonLeaguePromotionDialogProperties.prototype, "promotionVO", {
     get: function () {
-      return this.properties;
+      return this._promotionVO;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleFactionEventWinBasicDialog;
-}(p.CastleExternalDialog);
-exports.CastleFactionEventWinBasicDialog = g;
-var C = require("./25.js");
-o.classImplementsInterfaces(g, "ICollectableRendererList");
+  Object.defineProperty(SeasonLeaguePromotionDialogProperties.prototype, "isSeasonPassEnabled", {
+    get: function () {
+      return this._isSeasonPassEnabled;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SeasonLeaguePromotionDialogProperties.prototype, "rewardSetId", {
+    get: function () {
+      return this._rewardSetId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return SeasonLeaguePromotionDialogProperties;
+}(o.BasicProperties);
+exports.SeasonLeaguePromotionDialogProperties = r;
+var l = require("./1068.js");
+var c = require("./5.js");

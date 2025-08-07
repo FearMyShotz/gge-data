@@ -102,4 +102,4 @@ var l = function (e) {
 exports.CraftingDialogClickHandler = l;
 var c = require("./9.js");
 var u = require("./246.js");
-var d = require("./925.js");
+var d = require("./926.js");

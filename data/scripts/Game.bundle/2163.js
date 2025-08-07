@@ -8,16 +8,16 @@ var s = require("./5.js");
 var r = require("./6.js");
 var l = require("./162.js");
 var c = function (e) {
-  function FactionTowerDetailView(t, i, n, o) {
+  function FactionInvasionCampDetailView(t, i, n, o) {
     var a = this;
     a._factionFrame = 0;
     CONSTRUCTOR_HACK;
     return a = e.call(this, t, i, n, o) || this;
   }
-  n.__extends(FactionTowerDetailView, e);
-  Object.defineProperty(FactionTowerDetailView.prototype, "assetCastleFileURL", {
+  n.__extends(FactionInvasionCampDetailView, e);
+  Object.defineProperty(FactionInvasionCampDetailView.prototype, "assetCastleFileURL", {
     get: function () {
-      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("DetailView_Dungeon_" + this._kingdomVO.kingdomName + "_Level2");
+      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("DetailView_Camp_Faction");
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.FightDetailView.prototype, "assetCastleFileURL").set.call(this, e);
@@ -25,34 +25,32 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  FactionTowerDetailView.prototype.drawCastleVO = function () {
-    var e = "_" + this._kingdomVO.kingdomName;
-    var t = r.int(this._detailDrawAble.ownerInfo.factionID);
-    this._factionFrame = r.int(t == s.FactionConst.RED_FACTION ? 1 : 2);
+  FactionInvasionCampDetailView.prototype.drawCastleVO = function () {
+    var e = r.int(this._detailDrawAble.ownerInfo.factionID);
+    this._factionFrame = r.int(e == s.FactionConst.RED_FACTION ? 1 : 2);
     this.initLayer();
-    this._castleLayer.y = 15;
-    this._castleLayer.x = -7;
-    this._layerBackground.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_SHADOW + 2 + e));
-    this._layerKeep.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_KEEP + 2 + e, this.bindFunction(this.onClipLoaded)));
-    this._layerLeft.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_BACKWALL + "_Left_Level2" + e, this.bindFunction(this.onClipLoaded)));
-    this._layerMiddle.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_FRONTWALL + "_Left_Level2" + e, this.bindFunction(this.onClipLoaded)));
-    this._layerMiddle.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_FRONTWALL + "_Right_Level2" + e, this.bindFunction(this.onClipLoaded)));
-    this._layerMiddle.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_GATE + 2 + e, this.bindFunction(this.onClipLoaded)));
-    this._layerRight.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_BACKWALL + "_Right_Level2" + e, this.bindFunction(this.onClipLoaded)));
+    this._layerKeep.addChild(this.getMovieClipByName(FactionInvasionCampDetailView.CLASSNAME_KEEP, this.bindFunction(this.onClipLoaded)));
+    this._layerLeft.addChild(this.getMovieClipByName(FactionInvasionCampDetailView.CLASSNAME_BACKWALL + "_Left_Faction", this.bindFunction(this.onClipLoaded)));
+    this._layerMiddle.addChild(this.getMovieClipByName(FactionInvasionCampDetailView.CLASSNAME_FRONTWALL + "_Left_Faction", this.bindFunction(this.onClipLoaded)));
+    this._layerMiddle.addChild(this.getMovieClipByName(FactionInvasionCampDetailView.CLASSNAME_FRONTWALL + "_Right_Faction", this.bindFunction(this.onClipLoaded)));
+    this._layerMiddle.addChild(this.getMovieClipByName(FactionInvasionCampDetailView.CLASSNAME_GATE, this.bindFunction(this.onClipLoaded)));
+    this._layerRight.addChild(this.getMovieClipByName(FactionInvasionCampDetailView.CLASSNAME_BACKWALL + "_Right_Faction", this.bindFunction(this.onClipLoaded)));
+    if (this._detailDrawAble.moatLevel > 0) {
+      this._layerMoat.addChild(this.getMovieClipByName(FactionInvasionCampDetailView.CLASSNAME_MOAT + "_Faction" + this._detailDrawAble.moatLevel, this.bindFunction(this.onClipLoaded)));
+    }
   };
-  FactionTowerDetailView.prototype.onClipLoaded = function (e) {
+  FactionInvasionCampDetailView.prototype.onClipLoaded = function (e) {
     e.gotoAndStop(this._factionFrame);
   };
-  FactionTowerDetailView.__initialize_static_members = function () {
-    FactionTowerDetailView.CLASSNAME_KEEP = "Dungeon_Keep_Level";
-    FactionTowerDetailView.CLASSNAME_BACKWALL = "Dungeon_BackWall";
-    FactionTowerDetailView.CLASSNAME_FRONTWALL = "Dungeon_FrontWall";
-    FactionTowerDetailView.CLASSNAME_GATE = "Dungeon_Gate_Level";
-    FactionTowerDetailView.CLASSNAME_DETAIL = "Dungeon_Detail_Level";
-    FactionTowerDetailView.CLASSNAME_SHADOW = "Dungeon_Shadow_Level";
+  FactionInvasionCampDetailView.__initialize_static_members = function () {
+    FactionInvasionCampDetailView.CLASSNAME_KEEP = "Camp_Keep_Faction";
+    FactionInvasionCampDetailView.CLASSNAME_BACKWALL = "Camp_BackWall";
+    FactionInvasionCampDetailView.CLASSNAME_FRONTWALL = "Camp_FrontWall";
+    FactionInvasionCampDetailView.CLASSNAME_GATE = "Camp_Gate_Faction";
+    FactionInvasionCampDetailView.CLASSNAME_MOAT = "Camp_Moat";
   };
-  return FactionTowerDetailView;
+  return FactionInvasionCampDetailView;
 }(l.FightDetailView);
-exports.FactionTowerDetailView = c;
+exports.FactionInvasionCampDetailView = c;
 a.classImplementsInterfaces(c, "IFightDetailView");
 c.__initialize_static_members();

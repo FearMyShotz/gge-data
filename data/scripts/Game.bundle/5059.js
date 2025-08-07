@@ -2,20 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./7.js");
-var l = require("./29.js");
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./37.js");
+var l = require("./4.js");
 var c = require("./10.js");
 var u = function (e) {
-  function GTWARACommand() {
+  function GAECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GTWARACommand, e);
-  Object.defineProperty(GTWARACommand.prototype, "cmdId", {
+  n.__extends(GAECommand, e);
+  Object.defineProperty(GAECommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_GO_TO_WORLD_MAP_AFTER_REMOVE_AREA;
+      return s.ClientConstSF.S2C_ABG_GET_ALLIANCE_EVENT_STATISTICS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -23,17 +23,19 @@ var u = function (e) {
     enumerable: true,
     configurable: true
   });
-  GTWARACommand.prototype.executeCommand = function (e, t) {
+  GAECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case s.ERROR.ALL_OK:
-        o.CommandController.instance.executeCommand(l.IngameClientCommands.SWITCH_TO_WORLDMAP_COMMAND);
+      case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        l.CastleModel.allianceBattlegroundData.parseAlliancePerformance(i);
+        this.controller.dispatchEvent(new r.CastleServerMessageArrivedEvent(r.CastleServerMessageArrivedEvent.ABG_PERFORMANCE_ALLIANCE_ARRIVED, [i]));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GTWARACommand;
+  return GAECommand;
 }(c.CastleCommand);
-exports.GTWARACommand = u;
-a.classImplementsInterfaces(u, "IExecCommand");
+exports.GAECommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

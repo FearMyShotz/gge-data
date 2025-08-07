@@ -4,30 +4,27 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./5.js");
 var a = require("./7.js");
-var s = require("./4.js");
-var r = function (e) {
-  function GCSCommand() {
+var s = function (e) {
+  function GAAECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GCSCommand, e);
-  Object.defineProperty(GCSCommand.prototype, "cmdId", {
+  n.__extends(GAAECommand, e);
+  Object.defineProperty(GAAECommand.prototype, "cmdId", {
     get: function () {
-      return a.ClientConstSF.S2C_GENERALS_HUB_STATUS;
+      return a.ClientConstSF.S2C_GENERALS_SET_ABILITIES;
     },
     enumerable: true,
     configurable: true
   });
-  GCSCommand.prototype.executeCommand = function (e, t) {
+  GAAECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case o.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        s.CastleModel.generalsData.parse_GCS(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GCSCommand;
+  return GAAECommand;
 }(require("./10.js").CastleCommand);
-exports.GCSCommand = r;
+exports.GAAECommand = s;

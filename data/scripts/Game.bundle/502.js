@@ -2,264 +2,322 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./6.js");
-var l = require("./2120.js");
-var c = require("./2121.js");
-var u = require("./700.js");
-var d = require("./503.js");
-var p = require("./54.js");
-var h = require("./101.js");
-var g = require("./4.js");
-var C = createjs.Point;
-var _ = function (e) {
-  function CastleWorldmapData() {
-    var t = this;
-    t._allowGAARequests = false;
-    CONSTRUCTOR_HACK;
-    t = e.call(this) || this;
-    g.CastleModel.bookmarkData.addEventListener(d.CastleBookmarkDataEvent.ON_LIST_CHANGED, t.bindFunction(t.updateAllBookmarks));
-    t.bgTiles = new O.CastleWorldMapBackgroundTilesDirectory();
-    t.areaTiles = new f.CastleWorldMapAreaTilesDirectory();
-    t.requestExtraData();
-    o.debug("[ATTENTION]: Worldmap is running in debug mode. Sector updates have been set to 5 seconds.");
+var o = require("./1.js");
+var a = require("./2.js");
+var s = require("./5.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./6.js");
+var u = require("./18.js");
+var d = require("./58.js");
+var p = require("./103.js");
+var h = require("./53.js");
+var g = require("./44.js");
+var C = require("./4.js");
+var _ = require("./503.js");
+var m = require("./701.js");
+var f = require("./187.js");
+var O = require("./422.js");
+var E = require("./64.js");
+var y = require("./245.js");
+var b = require("./205.js");
+var D = function (e) {
+  function CastleMapobjectVO() {
+    var t = e.call(this) || this;
+    t._isABGTowerAttackable = false;
+    t._abgPlayerTowerPoints = 0;
+    t.name = "Castle";
+    t.group = "Mapobject";
+    t._areaType = s.WorldConst.AREA_TYPE_CASTLE;
     return t;
   }
-  n.__extends(CastleWorldmapData, e);
-  CastleWorldmapData.prototype.reset = function () {
-    this.bgTiles = new O.CastleWorldMapBackgroundTilesDirectory();
-    this.areaTiles.destroy();
-    this.areaTiles = new f.CastleWorldMapAreaTilesDirectory();
-    this._areasWithCoolDown = [];
-    this._areasWithSpyTime = [];
-    this._areasWithNoobProtection = [];
-    this._areasWithPeaceProtection = [];
-    this._areasWithBookmarks = [];
-  };
-  CastleWorldmapData.prototype.executeUpdate = function (e) {
-    this.updateCoolDownAreas();
-    this.updateWithNoobProtectionAreas();
-    this.updateWithPeaceProtectionAreas();
-    this.updateSpyTimeAreas();
-  };
-  CastleWorldmapData.prototype.updateCoolDownAreas = function () {
-    this._areasWithCoolDown = CastleWorldmapData.checkTimedAreas(this._areasWithCoolDown, function (e) {
-      return e.remainingCooldownTimeInSeconds <= 0;
-    });
-  };
-  CastleWorldmapData.prototype.updateAllBookmarks = function (e) {
-    var t = [];
-    var i = new Map();
-    var n = r.int(g.CastleModel.kingdomData.activeKingdomID);
-    var o = g.CastleModel.bookmarkData.getWorldmapBookmarksByKingdomID(n);
-    if (this._areasWithBookmarks && this._areasWithBookmarks != null) {
-      for (var a = 0, s = this._areasWithBookmarks; a < s.length; a++) {
-        var l = s[a];
-        if (l !== undefined) {
-          l.bookmark = null;
-          i.set(l, true);
-        }
-      }
+  n.__extends(CastleMapobjectVO, e);
+  CastleMapobjectVO.prototype.getDisplayObjectClipContainer = function (e, t, i = false) {
+    if (this.ownerInfo && this.ownerInfo.isRuin) {
+      return this.getRuinContainer();
+    } else {
+      return this.getCastleContainer(e);
     }
-    if (o != null) {
-      for (var c = 0, u = o; c < u.length; c++) {
-        var d;
-        var p = u[c];
-        if (p !== undefined) {
-          if (this.areaTiles) {
-            d = this.areaTiles.getVOForAreaByXY(p.posX, p.posY);
-          }
-          if (d) {
-            if (!d.bookmark || p.priority > d.bookmark.priority) {
-              d.bookmark = p;
-            }
-            i.set(d, true);
-            t.push(d);
-          }
-        }
-      }
+  };
+  CastleMapobjectVO.prototype.getRuinContainer = function () {
+    var e = new S.CastleDisplayObjectClipContainer();
+    e.addItem(this.getBackgroundClip());
+    e.addItem(this.getAsExternalClip(CastleMapobjectVO.MAPOBJECT_RUIN));
+    return e;
+  };
+  CastleMapobjectVO.prototype.getBackgroundClip = function () {
+    if (h.ABGHelper.isOnABGServer) {
+      return null;
+    } else {
+      return e.prototype.getBackgroundClip.call(this);
     }
-    if (i != null) {
-      for (var C = 0, _ = Array.from(i.keys()); C < _.length; C++) {
-        var m = _[C];
-        if (m instanceof h.InteractiveMapobjectVO) {
-          m.updateVE();
-        }
-      }
+  };
+  CastleMapobjectVO.prototype.getCastleContainer = function (e = true) {
+    var t = new S.CastleDisplayObjectClipContainer();
+    if (this.getBackgroundClip()) {
+      t.addItem(this.getBackgroundClip());
     }
-    this._areasWithBookmarks = t;
-  };
-  CastleWorldmapData.prototype.updateSpyTimeAreas = function () {
-    this._areasWithSpyTime = CastleWorldmapData.checkTimedAreas(this._areasWithSpyTime, function (e) {
-      return e.remainingSpyInfoTime <= 0;
-    });
-  };
-  CastleWorldmapData.prototype.updateWithNoobProtectionAreas = function () {
-    this._areasWithNoobProtection = CastleWorldmapData.checkTimedAreas(this._areasWithNoobProtection, function (e) {
-      return !e.ownerInfo || e.ownerInfo.remainingNoobTime <= 0;
-    });
-  };
-  CastleWorldmapData.prototype.updateWithPeaceProtectionAreas = function () {
-    this._areasWithPeaceProtection = CastleWorldmapData.checkTimedAreas(this._areasWithPeaceProtection, function (e) {
-      return !e.ownerInfo || e.ownerInfo.remainingPeaceTime <= 0;
-    });
-  };
-  CastleWorldmapData.checkTimedAreas = function (e, t) {
-    if (e) {
-      var i = false;
-      for (var n = 0; n < e.length; n++) {
-        if (t(e[n])) {
-          e[n].updateVE();
-          i = true;
-        }
-      }
-      if (!i) {
-        return e;
-      }
-      var o = [];
-      for (var a = 0; a < e.length; a++) {
-        if (!t(e[a])) {
-          o.push(e[a]);
-        }
-      }
-      if (e.length > 0) {
-        return o;
-      } else {
-        return null;
-      }
+    var i = this.getMoatClip();
+    if (i) {
+      t.addItem(i);
     }
-    return null;
-  };
-  CastleWorldmapData.prototype.parseAreaInfos = function (e) {
-    if (!e || !Array.isArray(e) || e.length == 0) {
-      return [];
-    }
-    var t = [];
-    var i = 0;
-    if (e != null) {
-      for (var n = 0, o = e; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined) {
-          var s = this.areaTiles.getVOForAreaByXY(a[1], a[2]);
-          if (s instanceof y.EmptyMapobjectVO) {
-            s = null;
-          }
-          var l = r.int(a[1]);
-          var c = r.int(a[2]);
-          if (a.length <= 0) {
-            return [];
-          }
-          s = s ? s.castAsAreaTypeAndParse(a) : E.WorldmapObjectFactory.parseWorldMapArea(a);
-          this.areaTiles.insertAreaVOByXY(s, l, c);
-          if (s.remainingCooldownTimeInSeconds > 0) {
-            this._areasWithCoolDown ||= [];
-            this._areasWithCoolDown.push(s);
-          }
-          if (s.remainingSpyInfoTime > 0) {
-            this._areasWithSpyTime ||= [];
-            this._areasWithSpyTime.push(s);
-          }
-          if (s.ownerInfo && s.ownerInfo.remainingNoobTime > 0) {
-            this._areasWithNoobProtection ||= [];
-            this._areasWithNoobProtection.push(s);
-          }
-          if (s.ownerInfo && s.ownerInfo.remainingPeaceTime > 0) {
-            this._areasWithPeaceProtection ||= [];
-            this._areasWithPeaceProtection.push(s);
-          }
-          t[i++] = s.absAreaPos;
-        }
-      }
+    var n = this.getKeepClip();
+    t.addItem(n);
+    if (this.ownerInfo && e) {
+      A.renderScheduler.addTask(this.addFlagCallback.bind(this, t, n));
     }
     return t;
   };
-  CastleWorldmapData.prototype.requestExtraData = function () {
-    this._allowGAARequests = true;
-    g.CastleModel.smartfoxClient.sendCommandVO(new u.C2SGetBookmarkList());
-  };
-  CastleWorldmapData.prototype.updateAreaRange = function (e, t, i, n) {
-    if (i - e > 100) {
-      i = e + 99;
+  CastleMapobjectVO.prototype.addFlagCallback = function (e, t) {
+    e.asDisplayObject();
+    if (e.isDisposed) {
+      return true;
     }
-    if (n - t > 100) {
-      n = t + 99;
-    }
-    if (!!this._allowGAARequests && (this.layoutManager.currentState == m.CastleLayoutManager.STATE_WORLDMAP || this.layoutManager.currentState == m.CastleLayoutManager.STATE_WORLDMAP_RELOCATION)) {
-      if (g.CastleModel.kingdomData.willBecomeFaction != -1) {
-        g.CastleModel.smartfoxClient.sendCommandVO(new l.C2SGetAreasVO(g.CastleModel.kingdomData.willBecomeFaction, e, t, i, n));
-      } else {
-        g.CastleModel.smartfoxClient.sendCommandVO(new l.C2SGetAreasVO(g.CastleModel.kingdomData.activeKingdomID, e, t, i, n));
-      }
-    }
+    var i = this.getCastleFlagClip(this.ownerInfo);
+    i.scaleX = i.scaleY *= L.CastleWorldmapConst.ZOOM_MAX;
+    e.addItem(i, 1);
+    O.WorldmapObjectFlagHelper.watchAndFix(t, i);
+    e.clipSizeComponent &&= e.clipSizeComponent;
+    return false;
   };
-  Object.defineProperty(CastleWorldmapData.prototype, "allowGAARequests", {
-    set: function (e) {
-      this._allowGAARequests = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleWorldmapData.prototype.searchPlayerByName = function (e) {
-    g.CastleModel.smartfoxClient.sendCommandVO(new c.C2SSearchPlayerVO(e));
-  };
-  CastleWorldmapData.prototype.parseSearchInfos = function (e) {
-    var t = new C(e.X, e.Y);
-    this.layoutManager.worldmapScreen.camera.centerArea(t);
-    var i = this.getAreaVEByXY(t, true);
+  CastleMapobjectVO.prototype.getKeepClip = function () {
+    var e = "Castle_Mapobject_EventSkin_" + g.SpecialServerHelper.skinName + "_" + Math.max(1, this.keepLevel);
+    if (g.SpecialServerHelper.useSkin && a.BasicModel.basicLoaderData.isItemAssetVersioned(e)) {
+      return this.getAsExternalClip(e);
+    }
+    var t = !!this.ownerInfo && (!!this.ownerInfo.playerPrefix && this.ownerInfo.playerPrefix.isIslandTitle || !!this.ownerInfo.playerSuffix && this.ownerInfo.playerSuffix.isIslandTitle);
+    var i = this.equipmentUniqueIdSkin > 0 ? C.CastleModel.equipData.getEquipmentByUniqueID(this.equipmentUniqueIdSkin) : null;
     if (i) {
-      i.showRingMenu();
-    } else {
-      var n = this.areaTiles.getVOForAreaByXY(t.x, t.y);
-      if (n && n.ownerInfo && !n.ownerInfo.isOwnOwnerInfo) {
-        this.layoutManager.worldmapScreen.delayOpenRingMenu(n);
+      var n = "";
+      if (i.skinDefinesAssetForAllCastleLevels) {
+        n = "_" + Math.max(1, this.keepLevel);
+      }
+      return this.getAsExternalClip("Castle_Mapobject_Special_" + i.skinAssetID + n);
+    }
+    if (t) {
+      if (T.CastleTitleSystemHelper.isIslandKing(this.ownerInfo)) {
+        return this.getAsExternalClip("Castle_Eiland_King");
+      } else {
+        return this.getAsExternalClip("Castle_Eiland_Pos_Title");
       }
     }
+    if (P.TempServerHelper.isOnTempServer && this.kingdomID == r.WorldClassic.KINGDOM_ID && P.TempServerHelper.tmpServerEvent && P.TempServerHelper.tmpServerEvent.settingVO.isCastleTransportationOnly) {
+      return this.getAsExternalClip("Castle_Mapobject_EventSkin_CastleTransportation");
+    }
+    var o;
+    var s = this.assetFileURL(v.WorldmapObjectIconHelper.FILE_NAME_CASTLE_PARTS);
+    var l = -1;
+    switch (this.keepLevel) {
+      case 1:
+        for (var u = (l = c.int(v.WorldmapObjectIconHelper.KEEP_LEVEL_1_STAGES.length)) - 1; u >= 0; u--) {
+          if (this.ownerInfo.playerLevel < v.WorldmapObjectIconHelper.KEEP_LEVEL_1_STAGES[u]) {
+            l = u > 0 && this.ownerInfo.playerLevel >= v.WorldmapObjectIconHelper.KEEP_LEVEL_1_STAGES[u - 1] ? u : 1;
+          }
+        }
+        o = "Castlepart_Keep_" + this.keepLevel + "_stage_" + l;
+        break;
+      case 2:
+        for (var d = (l = c.int(v.WorldmapObjectIconHelper.KEEP_LEVEL_2_STAGES.length)) - 1; d >= 0; d--) {
+          if (this.ownerInfo.playerLevel < v.WorldmapObjectIconHelper.KEEP_LEVEL_2_STAGES[d]) {
+            l = d > 0 && this.ownerInfo.playerLevel >= v.WorldmapObjectIconHelper.KEEP_LEVEL_2_STAGES[d - 1] ? d : d + 1;
+          }
+        }
+        o = "Castlepart_Keep_" + this.keepLevel + "_stage_" + l;
+        break;
+      default:
+        o = "Castlepart_Keep_" + this.keepLevel;
+        o = "Castlepart_Keep_" + this.keepLevel;
+    }
+    return this.getAsExternalClip(o, s);
   };
-  CastleWorldmapData.prototype.getAreaVEByXY = function (e, t = false) {
-    return this.layoutManager.worldmapScreen.renderer.getVEforAreaXY(e.x, e.y, t);
+  CastleMapobjectVO.prototype.colorizeFlag = function (e, t) {
+    return function () {
+      f.CastleAllianceCrestHelper.colorizeFlags(e.getChildAt(0), t);
+    };
   };
-  Object.defineProperty(CastleWorldmapData.prototype, "layoutManager", {
-    get: function () {
-      return m.CastleLayoutManager.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleWorldmapData.prototype.isSectorPopulated = function (e, t) {
-    return this.areaTiles.isSectorPopulated(e, t);
-  };
-  Object.defineProperty(CastleWorldmapData.prototype, "relocationObjects", {
-    get: function () {
-      this._relocationObjects ||= [];
-      return this._relocationObjects;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleWorldmapData.prototype.getExpiredRelocationObject = function () {
-    var e;
-    for (var t = 0; t < this.relocationObjects.length; t++) {
-      if ((e = this.relocationObjects[t]) && a.instanceOfClass(e, "CastleMapobjectVO")) {
-        var i = g.CastleModel.otherPlayerData.getOwnerInfoVO(e.occupierID);
-        if (i && i.remainingRelocateDuration <= 0) {
-          return e;
+  CastleMapobjectVO.prototype.getMoatClip = function () {
+    var e = C.CastleModel.kingdomData.getKingdomVOByID(this.kingdomID).kingdomName;
+    var t = this.assetFileURL(v.WorldmapObjectIconHelper.FILE_NAME_CASTLE_PARTS);
+    if (this.moatLevel > 0) {
+      if (h.ABGHelper.isOnABGServer) {
+        return null;
+      }
+      var i = this.equipmentUniqueIdSkin > 0 ? C.CastleModel.equipData.getEquipmentByUniqueID(this.equipmentUniqueIdSkin) : null;
+      if (i) {
+        if (i && i.skinDefinesIncreasedAsset) {
+          return this.getAsExternalClip(CastleMapobjectVO.CASTLE_PART_MOAT + e + "_25", t);
+        }
+        if (i && i.skinDefinesAssetForMoat) {
+          return this.getAsExternalClip(CastleMapobjectVO.CASTLE_PART_MOAT + e + CastleMapobjectVO.FILE_NAME_FLAG_SPECIAL + i.skinAssetID);
         }
       }
+      return this.getAsExternalClip(CastleMapobjectVO.CASTLE_PART_MOAT + e, t);
     }
     return null;
   };
-  CastleWorldmapData.__initialize_static_members = function () {
-    CastleWorldmapData.AREA_INVALIDATION_TIME = 120000;
+  CastleMapobjectVO.prototype.parseAreaInfo = function (t) {
+    if (t.length <= 4) {
+      this._areaType = t[0];
+      this._absAreaPosX = t[1];
+      this._absAreaPosY = t[2];
+      this._occupierID = t[3];
+      if (this.isOccupied) {
+        C.CastleModel.worldmapData ||= C.CastleModel.addModel(new _.CastleWorldmapData());
+        C.CastleModel.worldmapData.relocationObjects.push(this);
+      }
+      this._ownerInfo = null;
+      this.dispatchEvent(p.EventInstanceMapper.getEvent(E.VisualVOEvent, E.VisualVOEvent.VALUEOBJECT_CHANGE));
+    } else {
+      e.prototype.parseAreaInfo.call(this, t);
+      if (h.ABGHelper.isOnABGAndTower) {
+        var i = new m.ABGTowerConnectionVO();
+        var n = [t[18][0], t[18][1], this.ownerInfo.playerName, t[18][2] ? 1 : 0];
+        i.fillFromConnectionValues(n);
+        this._customConnections = [];
+        this.customConnections.push(i);
+        this._isABGTowerAttackable = t[18][2];
+        this._abgPlayerTowerPoints = c.int(t[18][3]);
+      }
+    }
   };
-  return CastleWorldmapData;
-}(p.CastleBasicData);
-exports.CastleWorldmapData = _;
-var m = require("./17.js");
-var f = require("./2122.js");
-var O = require("./2126.js");
-var E = require("./147.js");
-var y = require("./701.js");
-s.classImplementsInterfaces(_, "IUpdatable");
-_.__initialize_static_members();
+  Object.defineProperty(CastleMapobjectVO.prototype, "isVisibleOnMap", {
+    get: function () {
+      if (this._ownerInfo) {
+        return this._ownerInfo.playerID > 0 && this._ownerInfo.playerLevel >= d.ClientConstLevelRestrictions.MIN_LEVEL_TO_THE_WORLD_MAP;
+      } else {
+        return this._occupierID > 0 || this.isUseAbleForRelocation && I.CastleLayoutManager.getInstance().currentState == I.CastleLayoutManager.STATE_WORLDMAP_RELOCATION;
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(y.BasicMapobjectVO.prototype, "isVisibleOnMap").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleMapobjectVO.prototype.canBeTroupsSended = function () {
+    return this.isOwnMapobject && (C.CastleModel.userData.hasOutpostsInKingdom(this.kingdomID) || C.CastleModel.userData.laboratoryList.hasLaboratoryInKingdom(this.kingdomID) || C.CastleModel.userData.villageList.getAmountInKingdomID(C.CastleModel.kingdomData.activeKingdomID) > 0 || C.CastleModel.kingdomData.activeKingdomID == r.WorldClassic.KINGDOM_ID && (C.CastleModel.userData.kingstowerList.kingstowerAmount > 0 || C.CastleModel.userData.monumentList.amount > 0));
+  };
+  CastleMapobjectVO.prototype.canBeSupported = function () {
+    return !this.isOwnMapobject && C.CastleModel.userData.isUserInMyAlliance(this.ownerInfo);
+  };
+  CastleMapobjectVO.prototype.canBePlagueAttacked = function () {
+    return !!this.ownerInfo && !this.isOwnMapobject;
+  };
+  CastleMapobjectVO.prototype.canBeAttacked = function () {
+    return !!this.ownerInfo && !this.isOwnMapobject && !C.CastleModel.userData.isUserInMyAlliance(this.ownerInfo) && C.CastleModel.allianceData.getStatusByAlliance(this.ownerInfo.allianceID) != l.AllianceConst.DIPLOMACY_REAL_ALLIED;
+  };
+  Object.defineProperty(CastleMapobjectVO.prototype, "canBeTraded", {
+    get: function () {
+      return this.isOwnMapobject && C.CastleModel.userData.hasOutpostsInKingdom(this.kingdomID) || !this.isOwnMapobject;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "canBeTraded").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMapobjectVO.prototype, "canBeVisited", {
+    get: function () {
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "canBeVisited").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMapobjectVO.prototype, "canBeSpied", {
+    get: function () {
+      return !this.isOwnMapobject;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "canBeSpied").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMapobjectVO.prototype, "canBeSabotaged", {
+    get: function () {
+      return !this.isOwnMapobject && this._ownerInfo != null && this._ownerInfo.playerLevel >= d.ClientConstLevelRestrictions.MIN_LEVEL_SABOTAGE && !h.ABGHelper.isOnABGServer;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "canBeSabotaged").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMapobjectVO.prototype, "hasOtherPlayerInfo", {
+    get: function () {
+      return !this.isOwnMapobject;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "hasOtherPlayerInfo").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMapobjectVO.prototype, "isUseAbleForRelocation", {
+    get: function () {
+      return (!this.ownerInfo && !this.isOccupied || !!this.ownerInfo && this.ownerInfo.isRuin) && C.CastleModel.worldmapData.isSectorPopulated(this._absAreaPosX, this._absAreaPosY);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMapobjectVO.prototype, "hasNameLabel", {
+    get: function () {
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "hasNameLabel").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMapobjectVO.prototype, "attackType", {
+    get: function () {
+      return u.ClientConstCastle.ACTION_TYPE_ATTACK;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "attackType").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMapobjectVO.prototype, "isABGTowerAttackable", {
+    get: function () {
+      return this._isABGTowerAttackable;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleMapobjectVO.prototype, "abgPlayerTowerPoints", {
+    get: function () {
+      return this._abgPlayerTowerPoints;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleMapobjectVO.prototype.getMinConnectionsAsABGTowerConnection = function () {
+    return this._customConnections;
+  };
+  Object.defineProperty(CastleMapobjectVO.prototype, "canChangeDefenceOnWorldmap", {
+    get: function () {
+      return this.isOwnMapobject;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleMapobjectVO.CASTLE_PART_MOAT = "Castlepart_Moat_";
+  CastleMapobjectVO.MAPOBJECT_RUIN = "Ruin_Mapobject";
+  CastleMapobjectVO.FILE_NAME_FLAG_SPECIAL = "_Special_";
+  return CastleMapobjectVO;
+}(b.ContainerBuilderMapobjectVO);
+exports.CastleMapobjectVO = D;
+o.classImplementsInterfaces(D, "IDetailViewAble", "IWorldmapObjectVO");
+var I = require("./17.js");
+var T = require("./117.js");
+var v = require("./70.js");
+var S = require("./108.js");
+var A = require("./408.js");
+var L = require("./275.js");
+var P = require("./137.js");

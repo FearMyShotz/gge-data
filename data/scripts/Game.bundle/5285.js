@@ -3,106 +3,95 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./60.js");
-var l = require("./4.js");
-var c = require("./5286.js");
-var u = require("./5307.js");
-var d = require("./5308.js");
-var p = require("./5309.js");
-var h = require("./5310.js");
-var g = require("./5311.js");
-var C = require("./5312.js");
-var _ = require("./5313.js");
-var m = require("./5314.js");
-var f = require("./5316.js");
-var O = require("./5317.js");
-var E = require("./5318.js");
-var y = require("./5320.js");
-var b = require("./5321.js");
-var D = function (e) {
-  function CastlePrivateOfferData() {
-    return e !== null && e.apply(this, arguments) || this;
+var a = require("./6.js");
+var s = require("./231.js");
+var r = require("./842.js");
+var l = function (e) {
+  function CastleAllianceGiftData() {
+    var t = e.call(this) || this;
+    t._gifts = [];
+    return t;
   }
-  n.__extends(CastlePrivateOfferData, e);
-  CastlePrivateOfferData.prototype.initOfferDescriptions = function () {
-    e.prototype.initOfferDescriptions.call(this);
-    this.registerOfferDescription(new f.OfferDescriptionCostResources());
-    this.registerOfferAdditionalParameter(new _.OfferDescriptionAdditionalPackageIDs());
-    this.registerOfferAdditionalParameter(new T.OfferDescriptionAdditionalPrimeSale());
-    this.registerOfferAdditionalParameter(new v.OfferDescriptionAdditionalPrimeSaleUpgrade());
-    this.registerOfferAdditionalParameter(new m.OfferDescriptionAdditionalPrimeSaleSkipBuilding());
-    this.registerOfferAdditionalParameter(new d.OfferDescriptionAdditionalBuildingID());
-    this.registerOfferAdditionalParameter(new C.OfferDescriptionAdditionalIsTimeless());
-    this.registerOfferAdditionalParameter(new h.OfferDescriptionAdditionalIsInviteeConversionOffer());
-    this.registerOfferAdditionalParameter(new p.OfferDescriptionAdditionalClientTracking());
-    this.registerOfferAdditionalParameter(new u.OfferDescriptionAdditionalABTestDependency());
-    this.registerOfferAdditionalParameter(new g.OfferDescriptionAdditionalIsOneTimeOffer());
-    this.registerOfferAdditionalParameter(new N.OfferDescriptionAdditionalCosts());
-    this.registerOfferRewardParameter(new S.OfferDescriptionRewardStandard());
-    this.registerOfferVisualParameter(new R.OfferDescriptionVisualIsoObject());
-    this.registerOfferVisualParameter(new B.OfferDescriptionVisualTreasureChestObject());
-    this.registerOfferVisualParameter(new L.OfferDescriptionVisualFinishDialog());
-    this.registerOfferVisualParameter(new M.OfferDescriptionVisualInterfaceButton());
-    this.registerOfferVisualParameter(new V.OfferDescriptionVisualOfferDialog());
-    this.registerOfferVisualParameter(new x.OfferDescriptionVisualQuestAcceptDialog());
-    this.registerOfferVisualParameter(new w.OfferDescriptionVisualQuestDialog());
-    this.registerOfferVisualParameter(new A.OfferDescriptionVisualFailedDialog());
-    this.registerOfferVisualParameter(new P.OfferDescriptionVisualHideEvent());
-    this.registerOfferVisualParameter(new O.OfferDescriptionVisualEuroAmount());
-    this.registerOfferVisualParameter(new k.OfferDescriptionVisualSubOffer());
+  n.__extends(CastleAllianceGiftData, e);
+  CastleAllianceGiftData.prototype.parse_AGC = function (e) {
+    if (!e) {
+      return null;
+    }
+    var t = a.int(e.ID);
+    this.removeGift(t);
+    this.propagateChange();
+    return u.CollectableManager.parser.s2cParamList.createList(e.R);
   };
-  CastlePrivateOfferData.prototype.initOfferQuestConditions = function () {
-    e.prototype.initOfferQuestConditions.call(this);
-    this.registerOfferQuestCondition(new E.OfferQuestConditionIntegerPlayerLevel());
-    this.registerOfferQuestCondition(new y.OfferQuestConditionPaymentMinWithUpdate());
-    this.registerOfferQuestCondition(new b.OfferQuestConditionPayUser());
-    this.registerOfferQuestCondition(new F.OfferQuestConditionVoucherCode());
-    this.registerOfferQuestCondition(new U.OfferQuestConditionBoughtOfferReward());
-  };
-  CastlePrivateOfferData.prototype.getPrivateOfferIDbyWodID = function (e, t) {
-    var i = s.int(l.CastleModel.primeSaleData.getBestDiscountPrivateOfferID(e, t));
-    if (i == -1) {
-      for (var n = this.getActivePrivateOffersByDescription(r.ClientConstOffer.ADDITIONAL_COMPONENT_CONTAINER), o = 0; o < n.length; o++) {
-        var c = n[o];
-        var u = c.getAdditionalComponentByName(r.ClientConstOffer.OFFER_ADDITIONAL_BUILDING_ID);
-        if (a.instanceOfClass(u, "OfferDescriptionAdditionalBuildingID") && u.ID == e) {
-          i = c.id;
-        }
+  CastleAllianceGiftData.prototype.removeGift = function (e) {
+    var t = this._gifts.filter(this.byGiftID(e));
+    if (t.length > 0) {
+      var i = t[0];
+      var n = a.int(this._gifts.indexOf(i));
+      if (n > -1) {
+        this._gifts.splice(n, 1);
       }
     }
-    return i;
   };
-  CastlePrivateOfferData.prototype.getPrivateOfferMerchantID = function () {
-    var e = null;
-    for (var t = this.getPrivateOffersWithVisualParamter(r.ClientConstOffer.OFFER_VISUAL_OFFER_DIALOG), i = 0; i < t.length; i++) {
-      var n = t[i];
-      var o = n.getVisualComponentByName(r.ClientConstOffer.OFFER_VISUAL_OFFER_DIALOG);
-      if (a.instanceOfClass(o, "OfferDescriptionVisualOfferDialog") && o.dialogName == I.CastleResourceMerchantEventDialog.NAME) {
-        e = n;
+  CastleAllianceGiftData.prototype.byGiftID = function (e) {
+    return function (t) {
+      var i = [];
+      for (var n = 1; n < arguments.length; n++) {
+        i[n - 1] = arguments[n];
       }
-    }
-    return s.int(e ? e.id : -1);
+      return t.id == e;
+    };
   };
-  return CastlePrivateOfferData;
-}(c.BasicPrivateOfferData);
-exports.CastlePrivateOfferData = D;
-var I = require("./697.js");
-var T = require("./5322.js");
-var v = require("./5323.js");
-var S = require("./5325.js");
-var A = require("./5326.js");
-var L = require("./5327.js");
-var P = require("./5328.js");
-var M = require("./5329.js");
-var R = require("./5331.js");
-var V = require("./5333.js");
-var x = require("./5334.js");
-var w = require("./5335.js");
-var B = require("./5336.js");
-var F = require("./5337.js");
-var N = require("./5338.js");
-var k = require("./5339.js");
-var U = require("./5340.js");
-o.classImplementsInterfaces(D, "IUpdatable");
+  CastleAllianceGiftData.prototype.parse_AGR = function (e) {
+    if (e && e.G) {
+      var t = new d.AllianceGiftVO();
+      t.parseArray(e.G);
+      this._gifts.push(t);
+      this._gifts.sort(c.ClientConstSort.sortByExpireTime);
+      this.propagateChange();
+    }
+  };
+  CastleAllianceGiftData.prototype.propagateChange = function () {
+    this._dataUpdateEvent ||= new r.CastleAllianceGiftEvent(r.CastleAllianceGiftEvent.DATA_UPDATED);
+    this.dispatchEvent(this._dataUpdateEvent);
+  };
+  CastleAllianceGiftData.prototype.executeUpdate = function (e) {
+    var t = a.int(this._gifts.length);
+    var i = this._gifts.filter(this.createNonExpiredGiftsFilter(e));
+    if (t != i.length) {
+      this._gifts = i;
+      this.propagateChange();
+    }
+  };
+  CastleAllianceGiftData.prototype.createNonExpiredGiftsFilter = function (e) {
+    return function (t) {
+      var i = [];
+      for (var n = 1; n < arguments.length; n++) {
+        i[n - 1] = arguments[n];
+      }
+      return t.expiredTimeStamp > e;
+    };
+  };
+  CastleAllianceGiftData.prototype.hasGifts = function (e) {
+    return this._gifts.length > 0 && e >= s.ClientConstAlliance.MIN_LEVEL_ALLIANCE_GIFTS;
+  };
+  Object.defineProperty(CastleAllianceGiftData.prototype, "giftCount", {
+    get: function () {
+      return this._gifts.length;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleAllianceGiftData.prototype, "gifts", {
+    get: function () {
+      return this._gifts;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleAllianceGiftData;
+}(require("./54.js").CastleBasicData);
+exports.CastleAllianceGiftData = l;
+var c = require("./75.js");
+var u = require("./50.js");
+var d = require("./5286.js");
+o.classImplementsInterfaces(l, "IUpdatable");

@@ -7,38 +7,51 @@ var a = require("./5.js");
 var s = require("./6.js");
 var r = require("./7.js");
 var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function LTSCommand() {
+var c = require("./1946.js");
+var u = require("./10.js");
+var d = createjs.Point;
+var p = function (e) {
+  function GRICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(LTSCommand, e);
-  Object.defineProperty(LTSCommand.prototype, "cmdId", {
+  n.__extends(GRICommand, e);
+  Object.defineProperty(GRICommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_LIFETIME_SPEND_C2;
+      return r.ClientConstSF.S2C_GET_RELOCATION_INFO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  LTSCommand.prototype.executeCommand = function (t, i) {
-    return e.prototype.executeCommand.call(this, t, i);
-  };
-  LTSCommand.prototype.exec = function (e) {
-    var t = s.int(e[0]);
-    var i = e[1];
-    switch (t) {
+  GRICommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
       case a.ERROR.ALL_OK:
-        var n = JSON.parse(i[1]);
-        l.CastleModel.userData.parse_LTS(n);
+        var i = JSON.parse(t[1]);
+        if (s.int(i.JM) == 1 && (this.layoutManager.currentState == h.CastleLayoutManager.STATE_WORLDMAP || this.layoutManager.currentState == h.CastleLayoutManager.STATE_WORLDMAP_RELOCATION)) {
+          var n = l.CastleModel.worldmapData.getAreaVEByXY(new d(i.OX, i.OY), true);
+          this.layoutManager.hideAllIngameUIComponents();
+          if (n) {
+            this.layoutManager.hideAllIngameUIComponents();
+            n.remove();
+            n.removeNameMC();
+          }
+          var o = l.CastleModel.worldmapData.areaTiles.getVOForAreaByXY(i.OX, i.OY);
+          if (o) {
+            o.resetVO();
+          }
+        }
+        l.CastleModel.userData.parse_GRI(i);
+        l.CastleModel.smartfoxClient.sendCommandVO(new c.C2SGetCastleListVO(l.CastleModel.userData.playerID));
         break;
       default:
-        this.showErrorDialog(t, i);
+        this.showErrorDialog(e, t);
     }
+    return false;
   };
-  return LTSCommand;
-}(c.CastleCommand);
-exports.LTSCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return GRICommand;
+}(u.CastleCommand);
+exports.GRICommand = p;
+var h = require("./17.js");
+o.classImplementsInterfaces(p, "IExecCommand");

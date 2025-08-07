@@ -7,19 +7,19 @@ var a = require("./1.js");
 var s = require("./5.js");
 var r = require("./3.js");
 var l = require("./6.js");
-var c = require("./621.js");
-var u = require("./758.js");
+var c = require("./622.js");
+var u = require("./760.js");
 var d = require("./4.js");
 var p = require("./204.js");
 var h = createjs.Point;
 var g = function (e) {
-  function CastleUnitSlotPremiumShopVO() {
-    return e.call(this, "unitslot_title", "unitslot_copy_short", [m.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_REST], s.UnitProductionConst.UNLOCK_C2) || this;
+  function CastleToolSlotPremiumShopVO() {
+    return e.call(this, "toolslot_title", "toolslot_copy_short", [m.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_REST], s.UnitProductionConst.UNLOCK_C2) || this;
   }
-  n.__extends(CastleUnitSlotPremiumShopVO, e);
-  Object.defineProperty(CastleUnitSlotPremiumShopVO.prototype, "title", {
+  n.__extends(CastleToolSlotPremiumShopVO, e);
+  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "title", {
     get: function () {
-      var e = l.int(d.CastleModel.boostData.boughtUnitSlots + 1 + d.CastleModel.boostData.permanentUnitSlots);
+      var e = l.int(d.CastleModel.boostData.boughtToolSlots + 1 + d.CastleModel.boostData.permanentToolSlots);
       return r.Localize.text(this._titleStringID, [e, s.UnitProductionConst.MAX_SLOTS]);
     },
     set: function (e) {
@@ -28,9 +28,9 @@ var g = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleUnitSlotPremiumShopVO.prototype, "listSortPriority", {
+  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "listSortPriority", {
     get: function () {
-      return 40;
+      return 50;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "listSortPriority").set.call(this, e);
@@ -38,9 +38,9 @@ var g = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleUnitSlotPremiumShopVO.prototype, "isVisible", {
+  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "isVisible", {
     get: function () {
-      return d.CastleModel.boostData.boughtUnitSlots + d.CastleModel.boostData.permanentUnitSlots < s.UnitProductionConst.MAX_SLOTS;
+      return d.CastleModel.boostData.boughtToolSlots + d.CastleModel.boostData.permanentToolSlots < s.UnitProductionConst.MAX_SLOTS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "isVisible").set.call(this, e);
@@ -48,7 +48,7 @@ var g = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleUnitSlotPremiumShopVO.prototype, "isActive", {
+  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "isActive", {
     get: function () {
       return false;
     },
@@ -58,7 +58,7 @@ var g = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleUnitSlotPremiumShopVO.prototype, "duration", {
+  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "duration", {
     get: function () {
       return o.TimeStringHelper.getTimeToString(s.UnitProductionConst.UNLOCK_DURATION, o.TimeStringHelper.ONE_TIME_FORMAT, r.Localize.text);
     },
@@ -68,7 +68,7 @@ var g = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleUnitSlotPremiumShopVO.prototype, "hasVisualTimeWhenNotActive", {
+  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "hasVisualTimeWhenNotActive", {
     get: function () {
       return true;
     },
@@ -78,7 +78,7 @@ var g = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleUnitSlotPremiumShopVO.prototype, "hasVisualTimeWhenActive", {
+  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "hasVisualTimeWhenActive", {
     get: function () {
       return false;
     },
@@ -88,20 +88,20 @@ var g = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastleUnitSlotPremiumShopVO.prototype.clickedBuyButton = function () {
+  CastleToolSlotPremiumShopVO.prototype.clickedBuyButton = function () {
     var e = l.int(s.UnitProductionConst.UNLOCK_DURATION);
     var t = o.TimeStringHelper.getTimeToString(e, o.TimeStringHelper.TWO_TIME_FORMAT, r.Localize.text);
-    C.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleBuySlotDialog, new u.CastleCostInfoDialogProperties(d.CastleModel.costsData.getFinalCostsC2(s.UnitProductionConst.UNLOCK_C2), this.bindFunction(this.buySlot), r.Localize.text("dialog_buyslotUnit_copy"), t, r.Localize.text("help_recuit_slot")));
+    C.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleBuySlotDialog, new u.CastleCostInfoDialogProperties(d.CastleModel.costsData.getFinalCostsC2(s.UnitProductionConst.UNLOCK_C2), this.bindFunction(this.buySlot), r.Localize.text("dialog_buyslotTool_copy"), t, r.Localize.text("help_recuit_slot")));
   };
-  CastleUnitSlotPremiumShopVO.prototype.buySlot = function (e = null) {
-    d.CastleModel.smartfoxClient.sendCommandVO(new c.C2SUnlockPackageSlotVO(0));
+  CastleToolSlotPremiumShopVO.prototype.buySlot = function (e = null) {
+    d.CastleModel.smartfoxClient.sendCommandVO(new c.C2SUnlockPackageSlotVO(1));
   };
-  CastleUnitSlotPremiumShopVO.prototype.createVisualMovieClip = function () {
-    return new Library.CastleInterfaceElements_Icons.Icon_AddUnitSlot();
+  CastleToolSlotPremiumShopVO.prototype.createVisualMovieClip = function () {
+    return new Library.CastleInterfaceElements_Icons.Icon_AddToolSlot();
   };
-  Object.defineProperty(CastleUnitSlotPremiumShopVO.prototype, "offsetIcon", {
+  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "offsetIcon", {
     get: function () {
-      return new h(4, -3);
+      return new h(5, -3);
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "offsetIcon").set.call(this, e);
@@ -109,10 +109,10 @@ var g = function (e) {
     enumerable: true,
     configurable: true
   });
-  return CastleUnitSlotPremiumShopVO;
+  return CastleToolSlotPremiumShopVO;
 }(p.CastlePremiumMarketShopVO);
-exports.CastleUnitSlotPremiumShopVO = g;
+exports.CastleToolSlotPremiumShopVO = g;
 var C = require("./9.js");
-var _ = require("./976.js");
+var _ = require("./977.js");
 var m = require("./170.js");
 a.classImplementsInterfaces(g, "IPremiumMarketShopVO");

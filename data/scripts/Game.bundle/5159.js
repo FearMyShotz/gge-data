@@ -5,16 +5,16 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
+var r = require("./137.js");
 var l = require("./10.js");
 var c = function (e) {
-  function STECommand() {
+  function TSHCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(STECommand, e);
-  Object.defineProperty(STECommand.prototype, "cmdId", {
+  n.__extends(TSHCommand, e);
+  Object.defineProperty(TSHCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SELECT_TITLE_EVENT;
+      return s.ClientConstSF.S2C_TEMPORARY_SERVER_HIGHSCORE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,25 +22,20 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  STECommand.prototype.executeCommand = function (e, t) {
+  TSHCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        if (t.length > 0) {
-          var i = JSON.parse(t[1]);
-          r.CastleModel.titleData.parseSTE(i);
-          if (u.CastleLayoutManager.getInstance().isInState(u.CastleLayoutManager.STATE_WORLDMAP)) {
-            var n = u.CastleLayoutManager.getInstance().worldmapScreen.renderer.camera.getAreaViewportRectangle();
-            r.CastleModel.worldmapData.updateAreaRange(n.x, n.y, n.x + n.width, n.y + n.height);
-          }
+        var i = JSON.parse(t[1]);
+        if (r.TempServerHelper.tmpServerEvent) {
+          r.TempServerHelper.tmpServerEvent.parseOwnRanks(i);
         }
-        break;
+        return true;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return STECommand;
+  return TSHCommand;
 }(l.CastleCommand);
-exports.STECommand = c;
-var u = require("./17.js");
+exports.TSHCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

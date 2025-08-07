@@ -3,16 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./969.js");
+var a = require("./7.js");
 var s = function (e) {
-  function CastleHunterValueChangerController(t, i, n) {
-    return e.call(this, t, i, n) || this;
+  function C2SHunterInfoVO(t) {
+    var i = this;
+    i.FB = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).FB = t;
+    return i;
   }
-  n.__extends(CastleHunterValueChangerController, e);
-  CastleHunterValueChangerController.prototype.addSlider = function (e, t = 0) {
-    var i = new a.CastleSliderValueComponent(this, this._minValue, this._maxValue, e, "", t);
-    this.addValueComponent(i);
+  n.__extends(C2SHunterInfoVO, e);
+  C2SHunterInfoVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_HUNTER_INFO;
   };
-  return CastleHunterValueChangerController;
-}(o.ValueChangerController);
-exports.CastleHunterValueChangerController = s;
+  return C2SHunterInfoVO;
+}(o.BasicCommandVO);
+exports.C2SHunterInfoVO = s;

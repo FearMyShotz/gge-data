@@ -2,88 +2,98 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
+var o = require("./2.js");
+var a = require("./1.js");
 var s = require("./3.js");
-var r = require("./90.js");
-var l = require("./64.js");
-var c = require("./124.js");
-var u = createjs.Container;
-var d = function (e) {
-  function EventdungeonMapobject() {
-    return e.call(this) || this;
+var r = require("./3.js");
+var l = require("./32.js");
+var c = require("./90.js");
+var u = require("./15.js");
+var d = require("./64.js");
+var p = require("./124.js");
+var h = createjs.Container;
+var g = function (e) {
+  function DaimyoTownshipMapobject() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(EventdungeonMapobject, e);
-  EventdungeonMapobject.prototype.initVisualRep = function () {
+  n.__extends(DaimyoTownshipMapobject, e);
+  DaimyoTownshipMapobject.prototype.initVisualRep = function () {
     if (!this.disp) {
-      this.disp = new u();
-      this.mapobjectVO.addEventListener(l.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
+      this.disp = new h();
+      this.mapobjectVO.addEventListener(d.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
     }
-    this.drawDungeon();
+    this.drawDaimyoTownship();
+    if (this.isOwnMapobject) {
+      u.CastleBasicController.getInstance().addEventListener(l.CastleUserDataEvent.CHANGE_USER_AVATAR, this.bindFunction(this.onChangeCrest));
+    }
   };
-  EventdungeonMapobject.prototype.drawDungeon = function () {
+  DaimyoTownshipMapobject.prototype.drawDaimyoTownship = function () {
     this.clearObjectContainer();
     if (this.mapobjectVO.isVisibleOnMap) {
-      this.objectContainer = this.eventdungeonMapObjectVO.getDisplayObjectClipContainer(false, null, false);
-      if (this.eventdungeonMapObjectVO.isDefeated) {
+      this.objectContainer = this.daimyoTownshipMapobjectVO.getDisplayObjectClipContainer(true, null, false);
+      if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0) {
         this.showFlames();
       }
       this.addObjectContainer();
       this.addMouseListener();
     }
   };
-  EventdungeonMapobject.prototype.getFlamesClip = function () {
-    return this.getAsExternalClip("Eventdungeon_FlamesLayer");
+  DaimyoTownshipMapobject.prototype.getFlamesClip = function () {
+    return this.getAsExternalClip("DaimyoTownship_Cooldown");
   };
-  EventdungeonMapobject.prototype.showRingMenu = function () {
-    if (!this.eventdungeonMapObjectVO.isDefeated) {
-      this.worldmapRenderer.dispatchEvent(new r.CastleWorldmapEvent(r.CastleWorldmapEvent.SHOW_MENU, [this, r.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
-    }
+  DaimyoTownshipMapobject.prototype.showRingMenu = function () {
+    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.SHOW_MENU, [this, c.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
   };
-  EventdungeonMapobject.prototype.onRollOver = function (t) {
+  DaimyoTownshipMapobject.prototype.onRollOver = function (t) {
     if (!this.worldmapRenderer.camera.isWorldDragging) {
       if (!this.hasRingMenu) {
-        this.worldmapRenderer.dispatchEvent(new r.CastleWorldmapEvent(r.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
+        this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
       }
       e.prototype.onRollOver.call(this, t);
     }
   };
-  EventdungeonMapobject.prototype.onRollOut = function (t) {
-    this.worldmapRenderer.dispatchEvent(new r.CastleWorldmapEvent(r.CastleWorldmapEvent.INFOTOOLTIP, [false]));
+  DaimyoTownshipMapobject.prototype.onRollOut = function (t) {
+    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [false]));
     e.prototype.onRollOut.call(this, t);
   };
-  Object.defineProperty(EventdungeonMapobject.prototype, "eventdungeonMapObjectVO", {
+  Object.defineProperty(DaimyoTownshipMapobject.prototype, "line1Content", {
+    get: function () {
+      return new r.LocalizedTextVO("township");
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.InteractiveMapobject.prototype, "line1Content").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DaimyoTownshipMapobject.prototype, "line2Content", {
+    get: function () {
+      return new r.LocalizedTextVO("rank_value", [this.daimyoTownshipMapobjectVO.daimyoXmlVO.rank]);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DaimyoTownshipMapobject.prototype, "line3Content", {
+    get: function () {
+      return new r.LocalizedTextVO(o.GenericTextIds.VALUE_ASSIGN_COLON, [s.Localize.text("level"), this.daimyoTownshipMapobjectVO.daimyoXmlVO.level]);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DaimyoTownshipMapobject.prototype, "daimyoTownshipMapobjectVO", {
     get: function () {
       return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EventdungeonMapobject.prototype, "line2Content", {
-    get: function () {
-      return new s.TextVO(this.eventdungeonMapObjectVO.ownerInfo.playerName);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(c.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventdungeonMapobject.prototype, "line3Content", {
-    get: function () {
-      if (this.eventdungeonMapObjectVO.isDefeated) {
-        return new a.LocalizedTextVO("dialog_treasureMap_DefeatedTooltipp");
-      } else {
-        return null;
-      }
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(c.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return EventdungeonMapobject;
-}(c.InteractiveMapobject);
-exports.EventdungeonMapobject = d;
-o.classImplementsInterfaces(d, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+  return DaimyoTownshipMapobject;
+}(p.InteractiveMapobject);
+exports.DaimyoTownshipMapobject = g;
+a.classImplementsInterfaces(g, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");

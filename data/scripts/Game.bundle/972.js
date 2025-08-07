@@ -1,20 +1,18 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = function (e) {
-  function CastleStartOpenGateDialogProperties(t, i, n) {
-    var o = this;
-    o.castleID = 0;
-    o.kingdomID = 0;
-    o.castleSelectionVisible = false;
-    CONSTRUCTOR_HACK;
-    (o = e.call(this) || this).castleID = t;
-    o.kingdomID = i;
-    o.castleSelectionVisible = n;
-    return o;
-  }
-  n.__extends(CastleStartOpenGateDialogProperties, e);
-  return CastleStartOpenGateDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleStartOpenGateDialogProperties = o;
+var n = function () {
+  function ClientConstXmlProperties() {}
+  ClientConstXmlProperties.ID_BATTLE_REPORT_LARGE_NORMAL_WIN = 1;
+  ClientConstXmlProperties.ID_BATTLE_REPORT_NORMAL_CLOSE_WIN = 2;
+  ClientConstXmlProperties.ID_BATTLE_REPORT_NORMAL_CLOSE_LOSS = 3;
+  ClientConstXmlProperties.ID_SAMURAI_MEDAL_BOOSTER_BOOST = 11;
+  ClientConstXmlProperties.ID_SAMURAI_MEDAL_BOOSTER_LIMIT = 12;
+  ClientConstXmlProperties.ID_SHOGUN_POINT_BOOSTER_BOOST = 13;
+  ClientConstXmlProperties.ID_SHOGUN_POINT_BOOSTER_LIMIT = 14;
+  ClientConstXmlProperties.INVASION_CAMP_SIZE_SMALL = 0;
+  ClientConstXmlProperties.INVASION_CAMP_SIZE_MEDIUM = 1;
+  ClientConstXmlProperties.INVASION_CAMP_SIZE_LARGE = 2;
+  return ClientConstXmlProperties;
+}();
+exports.ClientConstXmlProperties = n;

@@ -116,5 +116,5 @@ var p = function (e) {
   return CastleRotationPanel;
 }(require("./131.js").CastlePanel);
 exports.CastleRotationPanel = p;
-var h = require("./33.js");
+var h = require("./34.js");
 p.__initialize_static_members();

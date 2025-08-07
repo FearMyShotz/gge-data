@@ -7,13 +7,13 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./10.js");
 var l = function (e) {
-  function DFRCommand() {
+  function AFRCommand() {
     return e.call(this) || this;
   }
-  n.__extends(DFRCommand, e);
-  Object.defineProperty(DFRCommand.prototype, "cmdId", {
+  n.__extends(AFRCommand, e);
+  Object.defineProperty(AFRCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_DECLINE_FRIEND_REQUEST;
+      return s.ClientConstSF.S2C_ACCEPT_FRIEND_REQUEST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -21,7 +21,7 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  DFRCommand.prototype.executeCommand = function (e, t) {
+  AFRCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         break;
@@ -30,7 +30,7 @@ var l = function (e) {
     }
     return false;
   };
-  return DFRCommand;
+  return AFRCommand;
 }(r.CastleCommand);
-exports.DFRCommand = l;
+exports.AFRCommand = l;
 o.classImplementsInterfaces(l, "IExecCommand");

@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function UTCCommand() {
+  function GATCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(UTCCommand, e);
-  Object.defineProperty(UTCCommand.prototype, "cmdId", {
+  n.__extends(GATCommand, e);
+  Object.defineProperty(GATCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_ALLIANCE_UNREAD_TOPICS_COUNT;
+      return s.ClientConstSF.S2C_GET_ALLIANCE_TOPICS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  UTCCommand.prototype.executeCommand = function (e, t) {
+  GATCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.castleForumData.parseUTC(i);
+        r.CastleModel.castleForumData.parseGAT(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return UTCCommand;
+  return GATCommand;
 }(l.CastleCommand);
-exports.UTCCommand = c;
+exports.GATCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

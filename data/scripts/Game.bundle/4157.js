@@ -45,6 +45,6 @@ var r = function (e) {
 exports.CastleUnderworldSeasonMapItemCreator = r;
 var l = require("./1134.js");
 var c = require("./4158.js");
-var u = require("./1866.js");
+var u = require("./1868.js");
 var d = require("./1135.js");
 o.classImplementsInterfaces(r, "ITreasureMapItemCreator");

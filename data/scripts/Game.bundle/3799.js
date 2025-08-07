@@ -2,87 +2,119 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./370.js");
-var s = require("./40.js");
-var r = require("./76.js");
-var l = require("./78.js");
-var c = require("./77.js");
-var u = function (e) {
-  function InfiniteScrollPackageShopList(t, i) {
-    var n = this;
-    n._buyType = -1;
-    n._buyTypeId = -1;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this, t) || this)._assetName = i;
-    n.init();
-    return n;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./100.js");
+var l = require("./1.js");
+var c = require("./3.js");
+var u = require("./3.js");
+var d = require("./3.js");
+var p = require("./3.js");
+var h = require("./6.js");
+var g = require("./32.js");
+var C = require("./31.js");
+var _ = require("./19.js");
+var m = require("./4.js");
+var f = require("./190.js");
+var O = require("./24.js");
+var E = require("./14.js");
+var y = require("./20.js");
+var b = require("./81.js");
+var D = require("./8.js");
+var I = require("./25.js");
+var T = require("./167.js");
+var v = require("./206.js");
+var S = createjs.Point;
+var A = function (e) {
+  function InfiniteScrollPackageShopListItem() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(InfiniteScrollPackageShopList, e);
-  InfiniteScrollPackageShopList.prototype.init = function () {
-    var e = new r.InfiniteScrollListClips(this.disp);
-    e.addMaskMc(this.disp.mc_items.mask);
-    var t = new c.InfiniteScrollListOptions(p.InfiniteScrollPackageShopListItem, InfiniteScrollPackageShopList.ITEM_ASSET_NAME, this._assetName);
-    t.isMultiColumn = true;
-    t.useSmoothScroll = true;
-    t.itemPaddingY = 4;
-    t.itemPaddingX = 4;
-    this._scrollComponent = new l.InfiniteScrollListComponent(e, t);
+  n.__extends(InfiniteScrollPackageShopListItem, e);
+  InfiniteScrollPackageShopListItem.prototype.initLoaded = function () {
+    e.prototype.initLoaded.call(this);
+    D.ButtonHelper.initButtons([this.getItemMc()], y.ClickFeedbackButtonHover, 1);
   };
-  InfiniteScrollPackageShopList.prototype.onShow = function () {
-    e.prototype.onShow.call(this);
-    this._scrollComponent.onShow();
-    d.CastleComponent.controller.addEventListener(a.CastlePackageEvent.PACKAGEINFO_UPDATED, this.bindFunction(this.onPackageInfoUpdated));
-  };
-  InfiniteScrollPackageShopList.prototype.onHide = function () {
-    if (this._scrollComponent) {
-      this._scrollComponent.onHide();
+  InfiniteScrollPackageShopListItem.prototype.fill = function () {
+    this.destroyCollectableRenderList();
+    var e;
+    var t = !m.CastleModel.eventPackageData.getEventPackageByID(this.shopListItemVO.eventPackageVO.packageID).isAvailable();
+    var i = this.shopListItemVO.eventPackageVO.reward;
+    var n = new C.CollectableRenderClips().addIconMc(this.getItemMc().mc_icon).addTextfield(this.getItemMc().txt_text);
+    var l = I.CollectableRenderHelper.createCollectableLevelIndicatorVO(i, new S(0.5, 0.5), new S(-31, -22));
+    var g = this.shopListItemVO.eventPackageVO.isGiftPackage ? InfiniteScrollPackageShopListItem.ICON_SIZE_GIFT : InfiniteScrollPackageShopListItem.ICON_SIZE;
+    if (l) {
+      n.addDynamicLevelIndicatorVO(l);
+      (e = new _.CollectableRenderOptions(_.CollectableRenderOptions.ICON | _.CollectableRenderOptions.DYNAMIC_LEVEL_INDICATOR, g)).icon.selfLoadlevelIndicator = false;
+    } else {
+      e = new _.CollectableRenderOptions(_.CollectableRenderOptions.ICON, g);
     }
-    d.CastleComponent.controller.removeEventListener(a.CastlePackageEvent.PACKAGEINFO_UPDATED, this.bindFunction(this.onPackageInfoUpdated));
-  };
-  InfiniteScrollPackageShopList.prototype.updateWithNewData = function (e, t, i = -1, n = -1) {
-    this._eventVO = t;
-    this._currentEventPackages = e;
-    this._buyType = i;
-    this._buyTypeId = n;
-    var o = this._currentEventPackages.map(function (e) {
-      return new h.InfiniteScrollPackageShopListItemVO(e, t, i, n);
-    });
-    this._scrollComponent.updateWithNewData(o);
-  };
-  InfiniteScrollPackageShopList.prototype.scrollToPackage = function (e) {
-    var t = null;
-    this._scrollComponent.items.forEach(function (i) {
-      if (i.data && i.data.eventPackageVO.packageID == e.packageID) {
-        t = i;
+    I.CollectableRenderHelper.displaySingleItemAndAddToRenderList(this, n, i, e);
+    I.CollectableRenderHelper.displaySingleItemAndAddToRenderList(this, new C.CollectableRenderClips(this.getItemMc().mc_cost), this.shopListItemVO.eventPackageVO.price, new _.CollectableRenderOptions(_.CollectableRenderOptions.SET_COST_LIST_NO_TOOLTIP, new S(30, 20)));
+    if (this.shopListItemVO.eventPackageVO.isGiftPackage) {
+      var y = s.BasicModel.basicLoaderData.getVersionedItemAssetUrl("GiftTraderPackageIcon");
+      var b = new O.CastleGoodgameExternalClip("GiftTraderPackageIcon", y, null, 0, false);
+      b.clipSizeComponent = new a.ClipSizeComponent(InfiniteScrollPackageShopListItem.ICON_SIZE_GIFT_BG.x, InfiniteScrollPackageShopListItem.ICON_SIZE_GIFT_BG.y);
+      b.y = -5;
+      this.getItemMc().mc_icon.addChildAt(b, 0);
+      E.CastleComponent.textFieldManager.registerTextField(this.getItemMc().txt_name, new p.LocalizedTextVO("dialog_giftTrader_giftColonPlaceholder", [d.Localize.text(i.getNameTextId(), i.getNameTextParams())]), new r.InternalGGSTextFieldConfigVO(true)).autoFitToBounds = true;
+    } else {
+      E.CastleComponent.textFieldManager.registerTextField(this.getItemMc().txt_name, new p.LocalizedTextVO(i.getNameTextId(), i.getNameTextParams()), new r.InternalGGSTextFieldConfigVO(true)).autoFitToBounds = true;
+    }
+    E.CastleComponent.textFieldManager.registerTextField(this.getItemMc().txt_text, new p.LocalizedTextVO("generic_amount_reward", [i.amount, new u.TextVO(" ")]), new r.InternalGGSTextFieldConfigVO(true));
+    E.CastleComponent.textFieldManager.registerTextField(this.getItemMc().mc_soldOut.txt_text, new p.LocalizedTextVO("dialog_shop_soldOut"), new r.InternalGGSTextFieldConfigVO(true)).autoFitToBounds = true;
+    this.getItemMc().mc_soldOut.visible = t;
+    var D = h.int(f.EventPackagePrimeSaleEventVO.getPackageDiscountC2(this.shopListItemVO.eventPackageVO.packageID));
+    this.getItemMc().mc_discount.visible = D > 0;
+    this.getItemMc().mc_oldCost.visible = D > 0;
+    E.CastleComponent.textFieldManager.registerTextField(this.getItemMc().mc_discount.txt_priceReduction, new p.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, [D]), new r.InternalGGSTextFieldConfigVO(true)).autoFitToBounds = true;
+    E.CastleComponent.textFieldManager.registerTextField(this.getItemMc().mc_oldCost.txt_oldCost, new c.LocalizedNumberVO(this.shopListItemVO.eventPackageVO.basicPriceC2), new r.InternalGGSTextFieldConfigVO(true)).autoFitToBounds = true;
+    this.getItemMc().mc_bestseller.visible = false;
+    if (m.CastleModel.settingsData.showPackageIDToolTips) {
+      this.disp.toolTipText = "packageID: " + this.shopListItemVO.eventPackageVO.packageID;
+    } else if (t) {
+      if (this.shopListItemVO.eventPackageVO.notRebuyable) {
+        this.disp.toolTipText = "dialogs_shop_soldOut_permanently_tooltip";
+      } else {
+        this.disp.toolTipText = "dialog_merchant_outOfStock_tooltip";
       }
-    });
-    if (t) {
-      this._scrollComponent.scrollToItem(t);
+    } else {
+      this.disp.toolTipText = "dialog_equipmentMerchantEvent_tooltip";
     }
   };
-  InfiniteScrollPackageShopList.prototype.onPackageInfoUpdated = function (e) {
-    this._scrollComponent.updateWithNewData(this._scrollComponent.dataList, false);
+  InfiniteScrollPackageShopListItem.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    E.CastleComponent.controller.addEventListener(g.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onCurrencyChanged));
   };
-  Object.defineProperty(InfiniteScrollPackageShopList.prototype, "buyType", {
+  InfiniteScrollPackageShopListItem.prototype.removeEventListener = function () {
+    e.prototype.removeEventListener.call(this);
+    E.CastleComponent.controller.removeEventListener(g.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onCurrencyChanged));
+  };
+  InfiniteScrollPackageShopListItem.prototype.onCurrencyChanged = function (e) {
+    this.update();
+  };
+  InfiniteScrollPackageShopListItem.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (this.shopListItemVO.eventPackageVO) {
+      var i = new T.CastleGenericBuyDialogProperties();
+      i.parseDataFromScrollItem(this.shopListItemVO);
+      E.CastleComponent.dialogHandler.registerDefaultDialogs(v.ModernPackageShopBuyDialog, i);
+    }
+  };
+  Object.defineProperty(InfiniteScrollPackageShopListItem.prototype, "shopListItemVO", {
     get: function () {
-      return this._buyType;
+      return this.data;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(InfiniteScrollPackageShopList.prototype, "buyTypeId", {
-    get: function () {
-      return this._buyTypeId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  InfiniteScrollPackageShopList.ITEM_ASSET_NAME = "ModernFilterableShop_ShopItem";
-  return InfiniteScrollPackageShopList;
-}(s.CastleItemRenderer);
-exports.InfiniteScrollPackageShopList = u;
-var d = require("./14.js");
-var p = require("./3800.js");
-var h = require("./3801.js");
-o.classImplementsInterfaces(u, "ICollectableRendererList", "IPackageShopList");
+  InfiniteScrollPackageShopListItem.__initialize_static_members = function () {
+    InfiniteScrollPackageShopListItem.ICON_SIZE = new S(64, 64);
+    InfiniteScrollPackageShopListItem.ICON_SIZE_GIFT = new S(43, 43);
+    InfiniteScrollPackageShopListItem.ICON_SIZE_GIFT_BG = new S(65, 65);
+  };
+  return InfiniteScrollPackageShopListItem;
+}(b.AInfiniteScrollListItem);
+exports.InfiniteScrollPackageShopListItem = A;
+l.classImplementsInterfaces(A, "ICollectableRendererList");
+A.__initialize_static_members();

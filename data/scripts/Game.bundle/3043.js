@@ -2,24 +2,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./62.js");
+var o = require("./2.js");
+var a = require("./970.js");
 var s = function (e) {
-  function HuntertentBuildingVE() {
-    return e !== null && e.apply(this, arguments) || this;
+  function CastleHunterValueChangerController(t, i, n) {
+    return e.call(this, t, i, n) || this;
   }
-  n.__extends(HuntertentBuildingVE, e);
-  Object.defineProperty(HuntertentBuildingVE.prototype, "buildingGroundIconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Food;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return HuntertentBuildingVE;
-}(a.ABasicBuildingVE);
-exports.HuntertentBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  n.__extends(CastleHunterValueChangerController, e);
+  CastleHunterValueChangerController.prototype.addSlider = function (e, t = 0) {
+    var i = new a.CastleSliderValueComponent(this, this._minValue, this._maxValue, e, "", t);
+    this.addValueComponent(i);
+  };
+  return CastleHunterValueChangerController;
+}(o.ValueChangerController);
+exports.CastleHunterValueChangerController = s;

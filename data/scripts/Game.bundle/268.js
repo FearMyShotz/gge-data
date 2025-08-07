@@ -3,16 +3,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CollectableItemStoneVO(t = 0) {
+  function CollectableItemWoodVO(t = 0) {
     CONSTRUCTOR_HACK;
     return e.call(this, t) || this;
   }
-  n.__extends(CollectableItemStoneVO, e);
-  CollectableItemStoneVO.__initialize_static_members = function () {
-    CollectableItemStoneVO.SERVER_KEY = "S";
-    CollectableItemStoneVO.XML_KEY = "stone";
+  n.__extends(CollectableItemWoodVO, e);
+  CollectableItemWoodVO.__initialize_static_members = function () {
+    CollectableItemWoodVO.SERVER_KEY = "W";
+    CollectableItemWoodVO.XML_KEY = "wood";
   };
-  return CollectableItemStoneVO;
+  return CollectableItemWoodVO;
 }(require("./254.js").ACollectableItemResourceVO);
-exports.CollectableItemStoneVO = o;
+exports.CollectableItemWoodVO = o;
 o.__initialize_static_members();

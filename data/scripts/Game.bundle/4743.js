@@ -6,17 +6,17 @@ var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./4.js");
-var l = require("./266.js");
+var l = require("./265.js");
 var c = require("./211.js");
 var u = require("./10.js");
 var d = function (e) {
-  function ALICommand() {
+  function ADICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ALICommand, e);
-  Object.defineProperty(ALICommand.prototype, "cmdId", {
+  n.__extends(ADICommand, e);
+  Object.defineProperty(ADICommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ATTACK_INFO_LANDMARK;
+      return s.ClientConstSF.S2C_GET_ATTACK_DUNGEON_INFOS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -24,11 +24,11 @@ var d = function (e) {
     enumerable: true,
     configurable: true
   });
-  ALICommand.prototype.executeCommand = function (e, t) {
+  ADICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        var n = r.CastleModel.attackData.parse_ALI(i);
+        var n = r.CastleModel.attackData.parse_ADI(i);
         p.CastleDialogHandler.getInstance().registerDefaultDialogs(c.AttackDialog, new l.CastleAttackDialogProperties(n));
         break;
       default:
@@ -36,8 +36,8 @@ var d = function (e) {
     }
     return false;
   };
-  return ALICommand;
+  return ADICommand;
 }(u.CastleCommand);
-exports.ALICommand = d;
+exports.ADICommand = d;
 var p = require("./9.js");
 o.classImplementsInterfaces(d, "IExecCommand");

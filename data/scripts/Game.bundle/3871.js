@@ -1,73 +1,76 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./20.js");
-var o = require("./8.js");
-var a = require("./117.js");
-var s = require("./361.js");
-var r = createjs.MouseEvent;
-var l = function () {
-  function AttackDialogWaveHandlerFinalYardWaveInfoDetail(e) {
-    this.CONST_MAX_SLOTS = 8;
+var n = require("./318.js");
+var o = require("./20.js");
+var a = require("./8.js");
+var s = require("./115.js");
+var r = require("./361.js");
+var l = require("./1797.js");
+var c = createjs.MouseEvent;
+var u = function () {
+  function AttackDialogWaveHandlerSupportToolDetail(e) {
+    this.CONST_MAX_TOOL_SLOTS = 3;
     this._disp = e;
-    o.ButtonHelper.initButtons([this._disp.btn_clear], n.ClickFeedbackButtonHover, 1);
+    a.ButtonHelper.initButtons([this._disp.btn_clear], o.ClickFeedbackButtonHover, 1);
     this._disp.btn_clear.toolTipText = "deleteAll";
     this._disp.mc_detailViewBG.doCache();
   }
-  AttackDialogWaveHandlerFinalYardWaveInfoDetail.prototype.setVisibility = function (e) {
+  AttackDialogWaveHandlerSupportToolDetail.prototype.setVisibility = function (e) {
     this._disp.visible = e;
     if (e) {
       this.fill();
       this.controller.onSelectedWaveInfoSlotContainerChanged.add(this.bindFunction(this.fill));
       this.controller.updateAllWaveInfo.add(this.bindFunction(this.fill));
-      this._disp.addEventListener(r.CLICK, this.bindFunction(this.onClick));
+      this._disp.addEventListener(c.CLICK, this.bindFunction(this.onClick));
     } else {
       this.controller.onSelectedWaveInfoSlotContainerChanged.remove(this.bindFunction(this.fill));
       this.controller.updateAllWaveInfo.remove(this.bindFunction(this.fill));
-      this._disp.removeEventListener(r.CLICK, this.bindFunction(this.onClick));
+      this._disp.removeEventListener(c.CLICK, this.bindFunction(this.onClick));
     }
   };
-  AttackDialogWaveHandlerFinalYardWaveInfoDetail.prototype.fill = function () {
+  AttackDialogWaveHandlerSupportToolDetail.prototype.fill = function () {
     var e;
-    this._disp.mc_units.gotoAndStop(1);
+    this._disp.mc_tools.gotoAndStop(1);
     e = 0;
-    for (; e < this.CONST_MAX_SLOTS; e++) {
-      s.AttackDialogWaveInfoHelper.fillUnitContainer(e, this._disp.mc_units, this.controller.attackVO.yardWaveContainer, false);
+    for (; e < this.CONST_MAX_TOOL_SLOTS; e++) {
+      r.AttackDialogWaveInfoHelper.fillUnitContainer(e, this._disp.mc_tools, this.controller.attackVO.supportItemContainer, true, true);
     }
     this._disp.btn_clear.visible = this.getSelectedSlot().sumOfItems > 0;
-    s.AttackDialogWaveInfoHelper.showFinalWave(this._disp, this.getSelectedSlot());
+    r.AttackDialogWaveInfoHelper.showSupportWave(this._disp, this.getSelectedSlot());
   };
-  AttackDialogWaveHandlerFinalYardWaveInfoDetail.prototype.onClick = function (e) {
+  AttackDialogWaveHandlerSupportToolDetail.prototype.onClick = function (e) {
     switch (e.target) {
       case this._disp.btn_clear:
-        s.AttackDialogWaveInfoHelper.clearContainer(this.controller.attackVO.yardWaveContainer);
+        var t = this.controller.attackVO.supportItemContainer.getTotalBonusByToolEffect(n.ToolEffectType.ADDITIONAL_WAVE) > 0;
+        r.AttackDialogWaveInfoHelper.clearContainer(this.controller.attackVO.supportItemContainer);
+        if (t) {
+          this.controller.onLordChanged.dispatch();
+        }
         this.controller.updateAllWaveInfo.dispatch();
     }
     if (!this.controller.draggedUnitVO) {
       switch (e.target.parent) {
-        case this._disp.mc_units:
+        case this._disp.mc_tools:
           this.selectContainer();
       }
     }
   };
-  AttackDialogWaveHandlerFinalYardWaveInfoDetail.prototype.selectContainer = function () {
-    this.controller.setSelectedWaveInfoSlotMC(this.getSelectedSlot(), null, -1, AttackDialogWaveHandlerFinalYardWaveInfoDetail.CONST_WAVE_NAME);
-    if (this.controller.selectedWaveInfoSlotContainer) {
-      this.controller.onOpenUnitPicker.dispatch(this.controller.selectedWaveInfoSlotContainer.items[0]);
-      this.controller.openSpyInfoFlank("keep");
-    }
+  AttackDialogWaveHandlerSupportToolDetail.prototype.selectContainer = function () {
+    this.controller.setSelectedWaveInfoSlotMC(this.controller.attackVO.supportItemContainer, null, -1, l.AttackDialogWaveHandlerSupportToolWaveInfoItem.CONST_WAVE_NAME);
+    this.controller.onOpenUnitPicker.dispatch(this.controller.selectedWaveInfoSlotContainer.items[0]);
   };
-  AttackDialogWaveHandlerFinalYardWaveInfoDetail.prototype.getSelectedSlot = function () {
-    return this.controller.attackVO.yardWaveContainer;
-  };
-  Object.defineProperty(AttackDialogWaveHandlerFinalYardWaveInfoDetail.prototype, "controller", {
+  Object.defineProperty(AttackDialogWaveHandlerSupportToolDetail.prototype, "controller", {
     get: function () {
-      return a.AttackDialogController.getInstance();
+      return s.AttackDialogController.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  AttackDialogWaveHandlerFinalYardWaveInfoDetail.CONST_WAVE_NAME = "yardWave";
-  return AttackDialogWaveHandlerFinalYardWaveInfoDetail;
+  AttackDialogWaveHandlerSupportToolDetail.prototype.getSelectedSlot = function () {
+    return this.controller.attackVO.supportItemContainer;
+  };
+  AttackDialogWaveHandlerSupportToolDetail.CONST_WAVE_NAME = "support";
+  return AttackDialogWaveHandlerSupportToolDetail;
 }();
-exports.AttackDialogWaveHandlerFinalYardWaveInfoDetail = l;
+exports.AttackDialogWaveHandlerSupportToolDetail = u;

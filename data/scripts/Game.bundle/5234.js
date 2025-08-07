@@ -4,20 +4,19 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function IsoCommandObjectsInitModel(t, i) {
-    var n = e.call(this, t) || this;
-    n._objectsType = i;
-    return n;
+  function IsoCommandObjectChangePosView(t) {
+    var i = e.call(this) || this;
+    i._vo = t;
+    return i;
   }
-  n.__extends(IsoCommandObjectsInitModel, e);
-  IsoCommandObjectsInitModel.prototype.execute = function () {
-    var e = this.isoData.objects.getGroupByType(this._objectsType);
+  n.__extends(IsoCommandObjectChangePosView, e);
+  IsoCommandObjectChangePosView.prototype.execute = function () {
+    var e = this.isoRenderer.objects.provider.getObjectByVO(this._vo);
     if (e) {
-      e.initObjects();
-      this.isoData.objects.invalidateCompleteObjectsList();
+      e.updatePosition();
     }
   };
-  return IsoCommandObjectsInitModel;
-}(require("./310.js").AIsoCommandModel);
-exports.IsoCommandObjectsInitModel = a;
+  return IsoCommandObjectChangePosView;
+}(require("./311.js").AIsoCommandView);
+exports.IsoCommandObjectChangePosView = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList");

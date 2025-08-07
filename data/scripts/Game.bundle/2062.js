@@ -4,28 +4,43 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = function (e) {
-  function IsoStatusIconProgressBarMine() {
+var s = require("./87.js");
+var r = function (e) {
+  function IsoStatusIconProgressBarBuilding() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IsoStatusIconProgressBarMine, e);
-  IsoStatusIconProgressBarMine.prototype.getBarText = function () {
-    return o.TimeStringHelper.getShortTimeStringBySeconds(this.mineBuildingVE.mineBuildingVO.getTimeLeftForCollect());
+  n.__extends(IsoStatusIconProgressBarBuilding, e);
+  IsoStatusIconProgressBarBuilding.prototype.getDispFrame = function () {
+    var e = 1;
+    switch (this.buildingVE.buildingVO.buildingState) {
+      case s.IsoBuildingStateEnum.BUILD_IN_PROGRESS:
+        e = 1;
+        break;
+      case s.IsoBuildingStateEnum.UPGRADE_IN_PROGRESS:
+        e = 2;
+        break;
+      case s.IsoBuildingStateEnum.DISASSEMBLE_IN_PROGRESS:
+        e = 3;
+        break;
+      case s.IsoBuildingStateEnum.REPAIR_IN_PROGRESS:
+        e = 4;
+    }
+    return e;
   };
-  IsoStatusIconProgressBarMine.prototype.getBarFillFactor = function () {
-    return this.mineBuildingVE.mineBuildingVO.getPercentRechargingCompletion();
+  IsoStatusIconProgressBarBuilding.prototype.getBarText = function () {
+    return o.TimeStringHelper.getShortTimeStringBySeconds(this.buildingVE.buildingVO.getTimeLeftForBuilding());
   };
-  IsoStatusIconProgressBarMine.prototype.getDispFrame = function () {
-    return 5;
+  IsoStatusIconProgressBarBuilding.prototype.getBarFillFactor = function () {
+    return this.buildingVE.buildingVO.getPercentCompletedForBuilding();
   };
-  Object.defineProperty(IsoStatusIconProgressBarMine.prototype, "mineBuildingVE", {
+  Object.defineProperty(IsoStatusIconProgressBarBuilding.prototype, "buildingVE", {
     get: function () {
       return this.ve;
     },
     enumerable: true,
     configurable: true
   });
-  return IsoStatusIconProgressBarMine;
-}(require("./694.js").AIsoStatusIconProgressBar);
-exports.IsoStatusIconProgressBarMine = s;
-a.classImplementsInterfaces(s, "ICollectableRendererList");
+  return IsoStatusIconProgressBarBuilding;
+}(require("./696.js").AIsoStatusIconProgressBar);
+exports.IsoStatusIconProgressBarBuilding = r;
+a.classImplementsInterfaces(r, "ICollectableRendererList");

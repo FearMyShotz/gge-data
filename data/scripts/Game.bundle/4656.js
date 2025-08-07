@@ -2,29 +2,40 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
+var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./18.js");
-var r = require("./306.js");
-var l = require("./4.js");
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
 var c = function (e) {
-  function NFOCastleCommand() {
+  function LVBCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(NFOCastleCommand, e);
-  NFOCastleCommand.prototype.executeCommand = function (t, i) {
-    switch (t) {
+  n.__extends(LVBCommand, e);
+  Object.defineProperty(LVBCommand.prototype, "cmdId", {
+    get: function () {
+      return s.ClientConstSF.S2C_EMAIL_VERIFIED_POPUP;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  LVBCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
       case a.ERROR.ALL_OK:
-        var n = JSON.parse(i[1]);
-        s.ClientConstCastle.setWorldmapSizeViaGGC(n.sectorCountX, n.sectorCountY);
-        this.env.versionInformation.serverXMLVersion = n.XML_EP;
-        if (l.CastleModel.worldmapData) {
-          l.CastleModel.worldmapData.reset();
-        }
-        r.CastleVersionInformation.versionInstance.serverXMLVersion = n.XML_EP;
+        r.CastleModel.userData.userValidatedEmail();
+        u.CastleDialogHandler.getInstance().registerDefaultDialogs(d.CastleMailGiftDialog);
+        break;
+      default:
+        this.showErrorDialog(e, t);
     }
-    return e.prototype.executeCommand.call(this, t, i);
+    return false;
   };
-  return NFOCastleCommand;
-}(o.NFOCommand);
-exports.NFOCastleCommand = c;
+  return LVBCommand;
+}(l.CastleCommand);
+exports.LVBCommand = c;
+var u = require("./9.js");
+var d = require("./1684.js");
+o.classImplementsInterfaces(c, "IExecCommand");

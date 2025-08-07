@@ -15125,5 +15125,78 @@
     "mightValue": "0",
     "canSlotGem": "0",
     "skinID": "127"
+  },
+  {
+    "equipmentID": "1312",
+    "wearerID": "2",
+    "slotID": "5",
+    "effects": "21&8,334&25,66&10",
+    "duration": "120",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "128"
+  },
+  {
+    "equipmentID": "1313",
+    "wearerID": "1",
+    "slotID": "5",
+    "effects": "335&45,37&25000",
+    "duration": "120",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "129"
+  },
+  {
+    "equipmentID": "1314",
+    "wearerID": "2",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "1196",
+    "effects": "21&6,334&25",
+    "duration": "120",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "106"
+  },
+  {
+    "equipmentID": "1315",
+    "wearerID": "2",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "1196",
+    "effects": "21&7,334&5",
+    "duration": "120",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "106"
+  },
+  {
+    "equipmentID": "1316",
+    "wearerID": "2",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "1196",
+    "effects": "21&4,20&15,66&5",
+    "duration": "120",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "106"
+  },
+  {
+    "equipmentID": "1317",
+    "wearerID": "1",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "926",
+    "effects": "335&45,37&25000",
+    "duration": "120",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "71"
+  },
+  {
+    "equipmentID": "1318",
+    "wearerID": "2",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "923",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "69"
   }
 ]

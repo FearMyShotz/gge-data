@@ -3,23 +3,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./62.js");
-var s = function (e) {
-  function MilitarycampBuildingVE() {
+var a = function (e) {
+  function MetropolstorageBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MilitarycampBuildingVE, e);
-  Object.defineProperty(MilitarycampBuildingVE.prototype, "buildingGroundIconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Knights;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return MilitarycampBuildingVE;
-}(a.ABasicBuildingVE);
-exports.MilitarycampBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  n.__extends(MetropolstorageBuildingVE, e);
+  return MetropolstorageBuildingVE;
+}(require("./1030.js").StorageBuildingVE);
+exports.MetropolstorageBuildingVE = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

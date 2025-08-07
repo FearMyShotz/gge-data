@@ -3,22 +3,18 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./225.js");
+var a = require("./226.js");
 var s = function (e) {
-  function CastleNomadInvasionEventRewardDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+  function CastleLuckyPointEventRewardDialog() {
+    var t = e.call(this) || this;
+    t.noRewardFrame = a.CastleGenericRewardDialog.FRAME_NOREWARD_LUCKY;
+    t.headerFrame = a.CastleGenericRewardDialog.FRAME_HEADER_LUCKY;
+    return t;
   }
-  n.__extends(CastleNomadInvasionEventRewardDialog, e);
-  CastleNomadInvasionEventRewardDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    this.noRewardFrame = a.CastleGenericRewardDialog.FRAME_NOREWARD_NOMAD;
-    this.headerFrame = a.CastleGenericRewardDialog.FRAME_HEADER_NOMAD;
-    this.wonFrame = a.CastleGenericRewardDialog.FRAME_WON_NOMAD;
-    e.prototype.applyPropertiesLoaded.call(this, t);
-  };
-  Object.defineProperty(CastleNomadInvasionEventRewardDialog.prototype, "firstPlaceTitleTextId", {
+  n.__extends(CastleLuckyPointEventRewardDialog, e);
+  Object.defineProperty(CastleLuckyPointEventRewardDialog.prototype, "firstPlaceTitleTextId", {
     get: function () {
-      return "dialog_nomadInvasion_gotRoyalReward_title";
+      return "dialog_luckyWheel_pointsEvent_gotRoyalReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "firstPlaceTitleTextId").set.call(this, e);
@@ -26,9 +22,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNomadInvasionEventRewardDialog.prototype, "firstPlaceCopyTextId", {
+  Object.defineProperty(CastleLuckyPointEventRewardDialog.prototype, "firstPlaceCopyTextId", {
     get: function () {
-      return "dialog_nomadInvasion_gotRoyalReward_desc";
+      return "dialog_luckyWheel_pointsEvent_gotRoyalReward_desc";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "firstPlaceCopyTextId").set.call(this, e);
@@ -36,9 +32,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNomadInvasionEventRewardDialog.prototype, "topXTitleTextId", {
+  Object.defineProperty(CastleLuckyPointEventRewardDialog.prototype, "topXTitleTextId", {
     get: function () {
-      return "dialog_nomadInvasion_gotTopXReward_title";
+      return "dialog_luckyWheel_pointsEvent_gotTopxReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXTitleTextId").set.call(this, e);
@@ -46,9 +42,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNomadInvasionEventRewardDialog.prototype, "topXCopyTextId", {
+  Object.defineProperty(CastleLuckyPointEventRewardDialog.prototype, "topXCopyTextId", {
     get: function () {
-      return "dialog_nomadInvasion_gotTopXReward_desc";
+      return "dialog_luckyWheel_pointsEvent_gotTopxReward_desc";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXCopyTextId").set.call(this, e);
@@ -56,7 +52,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNomadInvasionEventRewardDialog.prototype, "topXCopyTextReplacements", {
+  Object.defineProperty(CastleLuckyPointEventRewardDialog.prototype, "topXCopyTextReplacements", {
     get: function () {
       return [this.dialogProperties.points, this.dialogProperties.topXCount];
     },
@@ -66,9 +62,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNomadInvasionEventRewardDialog.prototype, "gotRewardTitleTextId", {
+  Object.defineProperty(CastleLuckyPointEventRewardDialog.prototype, "gotRewardTitleTextId", {
     get: function () {
-      return "dialog_nomadInvasion_gotReward_title";
+      return "dialog_luckyWheel_pointsEvent_gotReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "gotRewardTitleTextId").set.call(this, e);
@@ -76,9 +72,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNomadInvasionEventRewardDialog.prototype, "gotRewardCopyTextId", {
+  Object.defineProperty(CastleLuckyPointEventRewardDialog.prototype, "gotRewardCopyTextId", {
     get: function () {
-      return "dialog_nomadInvasion_gotReward_desc";
+      return "dialog_luckyWheel_pointsEvent_gotReward_desc";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "gotRewardCopyTextId").set.call(this, e);
@@ -86,9 +82,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNomadInvasionEventRewardDialog.prototype, "noRewardTitleTextId", {
+  Object.defineProperty(CastleLuckyPointEventRewardDialog.prototype, "noRewardTitleTextId", {
     get: function () {
-      return "dialog_nomadInvasion_eventEnd_title";
+      return "dialog_luckyWheel_pointsEvent_eventEnd_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "noRewardTitleTextId").set.call(this, e);
@@ -96,9 +92,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleNomadInvasionEventRewardDialog.prototype, "noRewardCopyTextId", {
+  Object.defineProperty(CastleLuckyPointEventRewardDialog.prototype, "noRewardCopyTextId", {
     get: function () {
-      return "dialog_nomadInvasion_eventEnd_desc";
+      return "dialog_luckyWheel_pointsEvent_eventEnd_desc";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "noRewardCopyTextId").set.call(this, e);
@@ -106,11 +102,11 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastleNomadInvasionEventRewardDialog.__initialize_static_members = function () {
-    CastleNomadInvasionEventRewardDialog.NAME = "CastleNomadInvasionEventReward";
+  CastleLuckyPointEventRewardDialog.__initialize_static_members = function () {
+    CastleLuckyPointEventRewardDialog.NAME = "CastleLuckyEventReward";
   };
-  return CastleNomadInvasionEventRewardDialog;
+  return CastleLuckyPointEventRewardDialog;
 }(a.CastleGenericRewardDialog);
-exports.CastleNomadInvasionEventRewardDialog = s;
+exports.CastleLuckyPointEventRewardDialog = s;
 s.__initialize_static_members();
 o.classImplementsInterfaces(s, "ICollectableRendererList");

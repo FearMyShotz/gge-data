@@ -1,57 +1,32 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CastleForumTopicDetailVO() {
-    this._topicName = "";
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./437.js");
+var s = function (e) {
+  function FilterTrade() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  CastleForumTopicDetailVO.prototype.parseGTR = function (e) {
-    this._topicName = s.TextValide.parseChatJSONMessage(e.TN);
-    this._visibleRankingGroups = e.RG;
-    this._author = e.CN;
-    this._posts = [];
-    if (e.R) {
-      for (var t = 0; t < e.R.length; ++t) {
-        var i = new a.CastleForumPostVO();
-        i.parseGTRItem(e.R[t]);
-        this._posts.push(i);
-      }
-    }
+  n.__extends(FilterTrade, e);
+  FilterTrade.prototype.filterFunction = function (e, t, i) {
+    return o.instanceOfClass(e, "MarketMapmovementVO");
   };
-  CastleForumTopicDetailVO.prototype.hasRightsToChangeVisibility = function () {
-    return o.CastleAllianceForumData.hasTopicRightsToDeleteOrAnswerOrChangeVisibility(this.author, this.visibleRankingGroups);
+  Object.defineProperty(FilterTrade.prototype, "name", {
+    get: function () {
+      return FilterTrade.NAME;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.AMovementFilterStrategy.prototype, "name").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  FilterTrade.__initialize_static_members = function () {
+    FilterTrade.NAME = "FilterTrade";
   };
-  Object.defineProperty(CastleForumTopicDetailVO.prototype, "posts", {
-    get: function () {
-      return this._posts;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleForumTopicDetailVO.prototype, "topicName", {
-    get: function () {
-      return this._topicName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleForumTopicDetailVO.prototype, "visibleRankingGroups", {
-    get: function () {
-      return this._visibleRankingGroups;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleForumTopicDetailVO.prototype, "author", {
-    get: function () {
-      return this._author;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleForumTopicDetailVO;
-}();
-exports.CastleForumTopicDetailVO = n;
-var o = require("./223.js");
-var a = require("./2380.js");
-var s = require("./2.js");
+  return FilterTrade;
+}(a.AMovementFilterStrategy);
+exports.FilterTrade = s;
+s.__initialize_static_members();

@@ -1,60 +1,24 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./6.js");
-var o = require("./22.js");
-var a = function () {
-  function XmlSeasonEndRewardVO() {
-    this._id = 0;
-    this._rewardSetId = 0;
-    this._minHighscoreRank = 0;
-    this._rewardIds = [];
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./6.js");
+var s = require("./7.js");
+var r = function (e) {
+  function C2SSetSeasonEventStartSeenEventVO(t, i) {
+    var n = this;
+    n.KLS = 0;
+    n.KLSE = 0;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this).KLSE = a.int(t ? 1 : 0);
+    n.KLS = a.int(i ? 1 : 0);
+    return n;
   }
-  XmlSeasonEndRewardVO.prototype.parseXml = function (e) {
-    this._id = n.int(o.CastleXMLUtils.getIntAttribute("id", e, -1));
-    this._rewardSetId = n.int(o.CastleXMLUtils.getIntAttribute("rewardSetID", e, -1));
-    this._minHighscoreRank = n.int(o.CastleXMLUtils.getIntAttribute("minHighscoreRank", e, -1));
-    this._rewardIds = o.CastleXMLUtils.createIntListFromAttribute("rewardIDs", e);
-    this._leaguetypeID = o.CastleXMLUtils.getIntAttribute("leaguetypeID", e, 0);
+  n.__extends(C2SSetSeasonEventStartSeenEventVO, e);
+  C2SSetSeasonEventStartSeenEventVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_SET_SEASON_EVENT_START_SEEN;
   };
-  Object.defineProperty(XmlSeasonEndRewardVO.prototype, "id", {
-    get: function () {
-      return this._id;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlSeasonEndRewardVO.prototype, "rewardSetId", {
-    get: function () {
-      return this._rewardSetId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlSeasonEndRewardVO.prototype, "minHighscoreRank", {
-    get: function () {
-      return this._minHighscoreRank;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlSeasonEndRewardVO.prototype, "rewardIds", {
-    get: function () {
-      return this._rewardIds;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlSeasonEndRewardVO.prototype, "leaguetypeID", {
-    get: function () {
-      return this._leaguetypeID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  XmlSeasonEndRewardVO.prototype.matchesLeagueType = function (e) {
-    return this._leaguetypeID == 0 || this._leaguetypeID == e;
-  };
-  return XmlSeasonEndRewardVO;
-}();
-exports.XmlSeasonEndRewardVO = a;
+  return C2SSetSeasonEventStartSeenEventVO;
+}(o.BasicCommandVO);
+exports.C2SSetSeasonEventStartSeenEventVO = r;

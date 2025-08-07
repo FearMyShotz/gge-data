@@ -10,13 +10,13 @@ var l = require("./7.js");
 var c = require("./4.js");
 var u = require("./10.js");
 var d = function (e) {
-  function BADCommand() {
+  function WSPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BADCommand, e);
-  Object.defineProperty(BADCommand.prototype, "cmdId", {
+  n.__extends(WSPCommand, e);
+  Object.defineProperty(WSPCommand.prototype, "cmdId", {
     get: function () {
-      return l.ClientConstSF.S2C_ADD_BOOKMARK;
+      return l.ClientConstSF.S2C_SEARCH_PLAYER;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -24,29 +24,28 @@ var d = function (e) {
     enumerable: true,
     configurable: true
   });
-  BADCommand.prototype.executeCommand = function (e, t) {
+  WSPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case s.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        c.CastleModel.bookmarkData.parse_BAD(i);
+        c.CastleModel.otherPlayerData.parseOwnerInfoArray(i.gaa.OI);
+        c.CastleModel.worldmapData.parseAreaInfos(i.gaa.AI);
+        c.CastleModel.worldmapData.parseSearchInfos(i);
         break;
-      case s.ERROR.NO_SELF_TARGET:
-        p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_watchout"), r.Localize.text("alert_noSelfBookmark")));
+      case s.ERROR.PLAYER_NOT_FOUND:
+        p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_information"), r.Localize.text("player_not_found")));
         break;
-      case s.ERROR.BOOKMARK_MAX_ENTRYS:
-        p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_watchout"), r.Localize.text("alert_bookmarkLimitReached")));
-        break;
-      case s.ERROR.BOOKMARK_ALREADY_ADDED:
-        p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_watchout"), r.Localize.text("ringmenu_markLocation_exists_tooltip")));
+      case s.ERROR.PLAYER_NOT_ON_MAP:
+        p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_information"), r.Localize.text("player_not_on_map")));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return BADCommand;
+  return WSPCommand;
 }(u.CastleCommand);
-exports.BADCommand = d;
+exports.WSPCommand = d;
 var p = require("./9.js");
 var h = require("./38.js");
 a.classImplementsInterfaces(d, "IExecCommand");

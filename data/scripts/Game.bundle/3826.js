@@ -4,28 +4,22 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./4.js");
-var r = require("./159.js");
-var l = function (e) {
-  function JoinCastleWithoutPositionSaveCommand() {
+var s = require("./6.js");
+var r = require("./4.js");
+var l = require("./159.js");
+var c = function (e) {
+  function JoinMyMainCastleCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(JoinCastleWithoutPositionSaveCommand, e);
-  JoinCastleWithoutPositionSaveCommand.prototype.execute = function (e = null) {
-    var t = u.castAs(e, "IWorldmapObjectVO");
-    if (t) {
-      if (!c.FlashBlockHelper.checkFlashBlock(t.spaceID)) {
-        s.CastleModel.worldmapCameraData.savedMapPosition = null;
-        if (s.CastleModel.worldmapData) {
-          s.CastleModel.worldmapData.allowGAARequests = false;
-        }
-        s.CastleModel.smartfoxClient.sendCommandVO(new r.C2SJoinCastleVO(t.objectId, t.kingdomID));
-      }
+  n.__extends(JoinMyMainCastleCommand, e);
+  JoinMyMainCastleCommand.prototype.execute = function (e = null) {
+    var t = s.int(r.CastleModel.userData.castleList.getHomeCastle().objectId);
+    if (r.CastleModel.worldmapData) {
+      r.CastleModel.worldmapData.allowGAARequests = false;
     }
+    r.CastleModel.smartfoxClient.sendCommandVO(new l.C2SJoinCastleVO(t, 0));
   };
-  return JoinCastleWithoutPositionSaveCommand;
+  return JoinMyMainCastleCommand;
 }(o.SimpleCommand);
-exports.JoinCastleWithoutPositionSaveCommand = l;
-a.classImplementsInterfaces(l, "ISimpleCommand");
-var c = require("./160.js");
-var u = require("./1.js");
+exports.JoinMyMainCastleCommand = c;
+a.classImplementsInterfaces(c, "ISimpleCommand");

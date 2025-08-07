@@ -2,98 +2,84 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./6.js");
-var o = require("./22.js");
-var a = require("./221.js");
-var s = require("./4.js");
-var r = require("./165.js");
-var l = function () {
-  function XmlSubscriptionBuffVO() {
-    this._id = 0;
-    this._subscriptionTypeId = 0;
-    this._tier = 0;
-    this._boni = [];
-    this._displayOrder = 0;
-    this._seriesId = 0;
-    this._requiredMembers = 0;
-    this._packageType = a.SubscriptionPackageEnum.UNKNOWN;
+var o = require("./222.js");
+var a = function () {
+  function SubscriptionPackageVO() {
+    this._shopId = 0;
+    this._price = 0;
+    this._providerIds = [];
+    this._isVisible = false;
+    this._type = o.SubscriptionPackageEnum.UNKNOWN;
   }
-  XmlSubscriptionBuffVO.prototype.parseXml = function (e) {
-    this._id = n.int(o.CastleXMLUtils.getIntAttribute("subscriptionBuffID", e, -1));
-    this._subscriptionTypeId = n.int(o.CastleXMLUtils.getIntAttribute("subscriptionTypeID", e, -1));
-    this._tier = n.int(o.CastleXMLUtils.getIntAttribute("tier", e, -1));
-    this._displayOrder = n.int(o.CastleXMLUtils.getIntAttribute("displayOrder", e, -1));
-    this._seriesId = n.int(o.CastleXMLUtils.getIntAttribute("seriesID", e, -1));
-    this._requiredMembers = n.int(o.CastleXMLUtils.getIntAttribute("requiredMembers", e, -1));
-    this._packageType = a.SubscriptionPackageEnum.getTypeByServerId(this._subscriptionTypeId);
-    var t = o.CastleXMLUtils.getStringAttribute("effects", e);
-    if (t != "") {
-      for (var i = 0, l = t.split(","); i < l.length; i++) {
-        var c = l[i];
-        if (c.length > 0) {
-          var u = c.split("&");
-          var d = s.CastleModel.effectsData.getEffectByID(parseInt(u[0]));
-          var p = new r.BonusVO().parseFromValueString(d, u[1]);
-          this._boni.push(p);
-        }
+  SubscriptionPackageVO.prototype.parseServerObject = function (e) {
+    this._shopId = n.int(e.id);
+    this._price = n.int(e.price);
+    this._currencyCode = e.currencyCode;
+    this._providerType = e.providerType;
+    this._providerIds = [];
+    for (var t = 0, i = e.providerIds; t < i.length; t++) {
+      var a = i[t];
+      if (a !== undefined) {
+        this._providerIds.push(parseInt(a));
       }
     }
+    this._isVisible = e.isVisible;
+    if (e.gamePayout && e.gamePayout.length > 0) {
+      this._type = o.SubscriptionPackageEnum.getTypeByShopId(e.gamePayout[0].type);
+    }
   };
-  Object.defineProperty(XmlSubscriptionBuffVO.prototype, "id", {
+  SubscriptionPackageVO.prototype.getFirstProviderId = function () {
+    return n.int(this._providerIds.length > 0 ? this._providerIds[0] : -1);
+  };
+  Object.defineProperty(SubscriptionPackageVO.prototype, "shopId", {
     get: function () {
-      return this._id;
+      return this._shopId;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSubscriptionBuffVO.prototype, "subscriptionTypeId", {
+  Object.defineProperty(SubscriptionPackageVO.prototype, "price", {
     get: function () {
-      return this._subscriptionTypeId;
+      return this._price;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSubscriptionBuffVO.prototype, "tier", {
+  Object.defineProperty(SubscriptionPackageVO.prototype, "currencyCode", {
     get: function () {
-      return this._tier;
+      return this._currencyCode;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSubscriptionBuffVO.prototype, "boni", {
+  Object.defineProperty(SubscriptionPackageVO.prototype, "providerType", {
     get: function () {
-      return this._boni;
+      return this._providerType;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSubscriptionBuffVO.prototype, "displayOrder", {
+  Object.defineProperty(SubscriptionPackageVO.prototype, "providerIds", {
     get: function () {
-      return this._displayOrder;
+      return this._providerIds;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSubscriptionBuffVO.prototype, "seriesId", {
+  Object.defineProperty(SubscriptionPackageVO.prototype, "isVisible", {
     get: function () {
-      return this._seriesId;
+      return this._isVisible;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSubscriptionBuffVO.prototype, "requiredMembers", {
+  Object.defineProperty(SubscriptionPackageVO.prototype, "type", {
     get: function () {
-      return this._requiredMembers;
+      return this._type;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSubscriptionBuffVO.prototype, "packageType", {
-    get: function () {
-      return this._packageType;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return XmlSubscriptionBuffVO;
+  return SubscriptionPackageVO;
 }();
-exports.XmlSubscriptionBuffVO = l;
+exports.SubscriptionPackageVO = a;

@@ -2,55 +2,37 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./3.js");
-var s = require("./82.js");
-var r = require("./59.js");
-var l = require("./14.js");
-var c = function (e) {
-  function ModernTextScrollComponent(t, i) {
-    var n = e.call(this) || this;
-    n.itxt_text = l.CastleComponent.textFieldManager.registerTextField(i, new a.TextVO(""));
-    var o = Math.floor(n.itxt_text.height / (n.itxt_text.textHeight / n.itxt_text.numLines - 4));
-    n._scrollComponent = new s.ModernSliderScrollComponent(t, new r.DynamicSizeScrollStrategyVertical(true, o));
-    return n;
+var o = require("./1.js");
+var a = require("./1372.js");
+var s = function (e) {
+  function HorizontalCallbackProgressBehaviour(t, i, n = a.HorizontalProgressBehaviour.DEFAULT_DURATION) {
+    var o = e.call(this, n) || this;
+    o._onUpdateCallback = t;
+    o._onCompleteCallback = i;
+    return o;
   }
-  n.__extends(ModernTextScrollComponent, e);
-  ModernTextScrollComponent.prototype.onShow = function () {
-    this._scrollComponent.init(1, Math.floor(this.itxt_text.maxScrollV), 2, 2);
-    this._scrollComponent.setVisibility(Math.floor(this.itxt_text.maxScrollV) > 1);
-    this._scrollComponent.show();
-    this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScrollValueChange));
-    this.itxt_text.change.add(this.bindFunction(this.onTextChanged));
+  n.__extends(HorizontalCallbackProgressBehaviour, e);
+  HorizontalCallbackProgressBehaviour.prototype.getFromVars = function (t) {
+    return e.prototype.getFromVars.call(this, t);
   };
-  ModernTextScrollComponent.prototype.onHide = function () {
-    this._scrollComponent.hide();
-    this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScrollValueChange));
-    this.itxt_text.change.remove(this.bindFunction(this.onTextChanged));
+  HorizontalCallbackProgressBehaviour.prototype.getToVars = function (t) {
+    var i = e.prototype.getToVars.call(this, t);
+    i.onUpdate = this.bindFunction(this._onUpdateCallback);
+    i.onUpdateParams = ["{self}", "scaleX"];
+    i.onComplete = this.bindFunction(this._onCompleteCallback);
+    return i;
   };
-  ModernTextScrollComponent.prototype.onTextChanged = function (e) {
-    this._scrollComponent.init(1, Math.floor(this.itxt_text.maxScrollV), 2, 2);
-    this._scrollComponent.setVisibility(Math.floor(this.itxt_text.maxScrollV) > 1);
-    this._scrollComponent.scrollToValue(this.itxt_text.scrollV, false);
-  };
-  ModernTextScrollComponent.prototype.onScrollValueChange = function () {
-    this.itxt_text.scrollV = o.MathBase.clamp(this._scrollComponent.currentValue, 1, this.itxt_text.maxScrollV);
-  };
-  ModernTextScrollComponent.prototype.scrollToStart = function () {
-    this._scrollComponent.scrollToValue(0);
-  };
-  ModernTextScrollComponent.prototype.setText = function (e) {
-    this.itxt_text.textContentVO.stringValue = e;
-    this.onShow();
-    this._scrollComponent.scrollToValue(0);
-  };
-  Object.defineProperty(ModernTextScrollComponent.prototype, "scrollComponent", {
+  Object.defineProperty(HorizontalCallbackProgressBehaviour.prototype, "duration", {
     get: function () {
-      return this._scrollComponent;
+      return this._duration;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.HorizontalProgressBehaviour.prototype, "duration").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return ModernTextScrollComponent;
-}(l.CastleComponent);
-exports.ModernTextScrollComponent = c;
+  return HorizontalCallbackProgressBehaviour;
+}(a.HorizontalProgressBehaviour);
+exports.HorizontalCallbackProgressBehaviour = s;
+o.classImplementsInterfaces(s, "IProgressBarChangeBehaviour");

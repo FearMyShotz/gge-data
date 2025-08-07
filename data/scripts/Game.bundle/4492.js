@@ -4,60 +4,44 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./4.js");
-var u = require("./833.js");
-var d = function (e) {
-  function CastlePointEventHighscoreDialog() {
+var s = require("./1918.js");
+var r = function (e) {
+  function PointEventEventVO(t = 0) {
+    var i = this;
     CONSTRUCTOR_HACK;
-    return e.call(this, CastlePointEventHighscoreDialog.ASSET_NAME) || this;
+    (i = e.call(this, t) || this)._eventId = a.EventConst.EVENTTYPE_POINT_EVENT;
+    return i;
   }
-  n.__extends(CastlePointEventHighscoreDialog, e);
-  CastlePointEventHighscoreDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.dialogDisp.mc_header.gotoAndStop(1);
-    this.dialogDisp.mc_scoreIcon.gotoAndStop(1);
-    this.dialogDisp.mc_scoreIcon.toolTipText = "dialog_pointsEvent_nobilityPoints";
-  };
-  CastlePointEventHighscoreDialog.prototype.showLoaded = function (t = null) {
-    this.updateEventVO();
-    if (!this._eventVO) {
-      this.hide();
-    }
-    e.prototype.showLoaded.call(this, t);
-  };
-  Object.defineProperty(CastlePointEventHighscoreDialog.prototype, "helpTextId", {
+  n.__extends(PointEventEventVO, e);
+  Object.defineProperty(PointEventEventVO.prototype, "eventBuildingNameId", {
     get: function () {
-      return "help_highscore_pointsEvent";
+      return "eventBuilding_PointEvent";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleGenericHighscoreDialog.prototype, "helpTextId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.APointEventTypeScoreEventVO.prototype, "eventBuildingNameId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastlePointEventHighscoreDialog.prototype.onGetHighscoreData = function (t) {
-    this.updateEventVO();
-    var i = l.int(this._eventVO.leagueLevels(t.leagueId)[0]);
-    var n = l.int(this._eventVO.leagueLevels(t.leagueId)[1]);
-    if (n > s.PlayerConst.LEVEL_CAP) {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_leagueRange, new r.LocalizedTextVO(i != n ? "dialog_ranking_legendFilter" : "legendaryLevel_placeholder", [Math.max(i - s.PlayerConst.LEVEL_CAP, 1), n - s.PlayerConst.LEVEL_CAP])).autoFitToBounds = true;
-    } else {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_leagueRange, new r.LocalizedTextVO("levelrange_placeholder", [i, n])).autoFitToBounds = true;
-    }
-    e.prototype.onGetHighscoreData.call(this, t);
+  Object.defineProperty(PointEventEventVO.prototype, "eventBuildingWOD", {
+    get: function () {
+      return PointEventEventVO.EVENT_BUILDING_WOD;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.APointEventTypeScoreEventVO.prototype, "eventBuildingWOD").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  PointEventEventVO.prototype.openDialog = function (e = true) {
+    this.executeOpenDialog(e, l.CastlePointEventDialog);
   };
-  CastlePointEventHighscoreDialog.prototype.updateEventVO = function () {
-    this._eventVO = c.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_POINT_EVENT);
+  PointEventEventVO.__initialize_static_members = function () {
+    PointEventEventVO.EVENT_BUILDING_WOD = 397;
   };
-  CastlePointEventHighscoreDialog.__initialize_static_members = function () {
-    CastlePointEventHighscoreDialog.NAME = "CastlePointEventHighscore";
-    CastlePointEventHighscoreDialog.ASSET_NAME = "CastleGenericHighscore_D";
-  };
-  return CastlePointEventHighscoreDialog;
-}(u.CastleGenericHighscoreDialog);
-exports.CastlePointEventHighscoreDialog = d;
-o.classImplementsInterfaces(d, "ICollectableRendererList");
-d.__initialize_static_members();
+  return PointEventEventVO;
+}(s.APointEventTypeScoreEventVO);
+exports.PointEventEventVO = r;
+var l = require("./4493.js");
+o.classImplementsInterfaces(r, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable");
+r.__initialize_static_members();

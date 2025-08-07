@@ -1,110 +1,61 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function DetailedPlayerBattleWaveVO(e, t = null, i = false) {
-    this.isPreOrPostWave = false;
-    if (t) {
-      this.initAsSummary(t, i);
-    } else {
-      this.initByParams(e);
-    }
+var n = require("./4.js");
+var o = function () {
+  function BattleLogAbilityVO(e) {
+    this._waveValues = [];
+    this.parseFromParamOj(e);
   }
-  DetailedPlayerBattleWaveVO.prototype.initAsSummary = function (e, t) {
-    var i = [];
-    var n = [];
-    var a = [];
-    var s = [];
-    if (e != null) {
-      for (var r = 0, l = e; r < l.length; r++) {
-        var c = l[r];
-        if (c !== undefined) {
-          if (c.flankLeft) {
-            c.flankLeft.isPreOrPostWave = c.isPreOrPostWave;
-            i.push(c.flankLeft);
-          }
-          if (c.flankMiddle) {
-            c.flankMiddle.isPreOrPostWave = c.isPreOrPostWave;
-            n.push(c.flankMiddle);
-          }
-          if (c.flankRight) {
-            c.flankRight.isPreOrPostWave = c.isPreOrPostWave;
-            a.push(c.flankRight);
-          }
-          if (c.courtyard) {
-            c.courtyard.isPreOrPostWave = c.isPreOrPostWave;
-            s.push(c.courtyard);
-          }
-        }
+  BattleLogAbilityVO.prototype.parseFromParamOj = function (e) {
+    if (e) {
+      this._abilityID = e[0];
+      for (var t = 0, i = e[1]; t < i.length; t++) {
+        var n = i[t];
+        this._waveValues.push({
+          waveID: n[0],
+          waveValue: n[1],
+          flankName: n[2]
+        });
       }
     }
-    this._flankLeft = new o.FlankVO(null, i, t);
-    this._flankMiddle = new o.FlankVO(null, n, t);
-    this._flankRight = new o.FlankVO(null, a, t);
-    this._courtyard = new o.FlankVO(null, s, t);
   };
-  DetailedPlayerBattleWaveVO.prototype.initByParams = function (e) {
-    if (e && e.length > DetailedPlayerBattleWaveVO.FLANKS_START_AT) {
-      this._flankLeft = new o.FlankVO(e[DetailedPlayerBattleWaveVO.FLANKS_START_AT + a.ClientConstCastle.FLANK_LEFT]);
-      this._flankMiddle = new o.FlankVO(e[DetailedPlayerBattleWaveVO.FLANKS_START_AT + a.ClientConstCastle.FLANK_MIDDLE]);
-      this._flankRight = new o.FlankVO(e[DetailedPlayerBattleWaveVO.FLANKS_START_AT + a.ClientConstCastle.FLANK_RIGHT]);
-      this._courtyard = new o.FlankVO(e[DetailedPlayerBattleWaveVO.FLANKS_START_AT + a.ClientConstCastle.FLANK_YARD]);
+  BattleLogAbilityVO.prototype.getValueForWave = function (e, t) {
+    var i = 0;
+    var n = 0;
+    this._waveValues.forEach(function (o) {
+      if ((e === undefined || e == o.waveID) && (t === undefined || t == o.flankName)) {
+        i = o.waveValue;
+        if (Math.abs(n) < Math.abs(i)) {
+          n = i;
+        }
+      }
+    });
+    if (e === undefined) {
+      return n;
+    } else {
+      return i;
     }
   };
-  DetailedPlayerBattleWaveVO.prototype.getFlank = function (e) {
-    switch (e) {
-      case a.ClientConstCastle.FLANK_LEFT:
-        return this.flankLeft;
-      case a.ClientConstCastle.FLANK_MIDDLE:
-        return this.flankMiddle;
-      case a.ClientConstCastle.FLANK_RIGHT:
-        return this.flankRight;
-      case a.ClientConstCastle.FLANK_YARD:
-        return this.courtyard;
-    }
-    return null;
+  BattleLogAbilityVO.prototype.isTriggerdInWave = function (e, t) {
+    return this._waveValues.some(function (i) {
+      return (e === undefined || e == i.waveID) && (t == "" || t == i.flankName);
+    });
   };
-  Object.defineProperty(DetailedPlayerBattleWaveVO.prototype, "flankMiddle", {
+  Object.defineProperty(BattleLogAbilityVO.prototype, "abilityID", {
     get: function () {
-      return this._flankMiddle;
+      return this._abilityID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DetailedPlayerBattleWaveVO.prototype, "flankRight", {
+  Object.defineProperty(BattleLogAbilityVO.prototype, "abilityXmlVO", {
     get: function () {
-      return this._flankRight;
+      return n.CastleModel.generalsData.getAbilityByID(this.abilityID);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DetailedPlayerBattleWaveVO.prototype, "flankLeft", {
-    get: function () {
-      return this._flankLeft;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DetailedPlayerBattleWaveVO.prototype, "courtyard", {
-    get: function () {
-      return this._courtyard;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DetailedPlayerBattleWaveVO.prototype, "hasOnlyAuxiliaries", {
-    get: function () {
-      return !!this._flankLeft.hasOnlyAuxiliariesOrNothing && !!this._flankMiddle.hasOnlyAuxiliariesOrNothing && !!this._flankRight.hasOnlyAuxiliariesOrNothing && (this._flankLeft.soldiers.length > 0 || this._flankMiddle.soldiers.length > 0 || this._flankMiddle.soldiers.length > 0 || this._courtyard.soldiers.length > 0);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  DetailedPlayerBattleWaveVO.__initialize_static_members = function () {
-    DetailedPlayerBattleWaveVO.FLANKS_START_AT = 1;
-  };
-  return DetailedPlayerBattleWaveVO;
+  return BattleLogAbilityVO;
 }();
-exports.DetailedPlayerBattleWaveVO = n;
-var o = require("./5556.js");
-var a = require("./18.js");
-n.__initialize_static_members();
+exports.BattleLogAbilityVO = o;

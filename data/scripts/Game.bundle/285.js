@@ -2,91 +2,146 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./8.js");
-var a = require("./20.js");
-var s = require("./40.js");
-var r = createjs.MouseEvent;
-var l = function (e) {
-  function HighlightAndClearInputTextBehaviour(t, i, n = true) {
-    var s = e.call(this, t) || this;
-    s._itxt_text = i;
-    s._defaultText = s._itxt_text.text;
-    s._hasDefaultText = n;
-    o.ButtonHelper.initButtons([s.disp.mc_selected.btn_clear], a.ClickFeedbackButtonHover);
-    return s;
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./6.js");
+var r = require("./22.js");
+var l = require("./4.js");
+var c = require("./97.js");
+var u = require("./636.js");
+var d = require("./482.js");
+var p = function (e) {
+  function AResourceProductionBuildingVO() {
+    var t = this;
+    t._resourceProductions = new C.CollectableList();
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(HighlightAndClearInputTextBehaviour, e);
-  HighlightAndClearInputTextBehaviour.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    if (this._itxt_text) {
-      this._itxt_text.focusIn.add(this.bindFunction(this.onFocusInSearchText));
-      this._itxt_text.focusOut.add(this.bindFunction(this.onFocusOutSearchText));
-    }
-    if (this.disp) {
-      this.disp.addEventListener(r.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
-    }
+  n.__extends(AResourceProductionBuildingVO, e);
+  AResourceProductionBuildingVO.prototype.parseXmlNode = function (t) {
+    e.prototype.parseXmlNode.call(this, t);
+    this._resourceProductions = h.CollectableManager.parser.createGoodsListSave(new b.CollectableItemWoodVO(r.CastleXMLUtils.getIntAttribute("Woodproduction", t)), new y.CollectableItemStoneVO(r.CastleXMLUtils.getIntAttribute("Stoneproduction", t)), new m.CollectableItemFoodVO(r.CastleXMLUtils.getIntAttribute("Foodproduction", t)), new _.CollectableItemCoalVO(r.CastleXMLUtils.getIntAttribute("Coalproduction", t)), new E.CollectableItemOilVO(r.CastleXMLUtils.getIntAttribute("Oilproduction", t)), new f.CollectableItemGlassVO(r.CastleXMLUtils.getIntAttribute("Glassproduction", t)), new O.CollectableItemIronVO(r.CastleXMLUtils.getIntAttribute("Ironproduction", t)), new D.CollectableItemMeadVO(r.CastleXMLUtils.getIntAttribute("Meadproduction", t)), new d.CollectableItemBeefVO(r.CastleXMLUtils.getIntAttribute("Beefproduction", t)), new I.CollectableItemHoneyVO(r.CastleXMLUtils.getIntAttribute("Honeyproduction", t)));
   };
-  HighlightAndClearInputTextBehaviour.prototype.removeEventListener = function () {
-    e.prototype.removeEventListener.call(this);
-    if (this._itxt_text) {
-      if (this._itxt_text.textContentVO) {
-        this._itxt_text.textContentVO.stringValue = this._defaultText;
-      }
-      this._itxt_text.focusIn.remove(this.bindFunction(this.onFocusInSearchText));
-      this._itxt_text.focusOut.remove(this.bindFunction(this.onFocusOutSearchText));
+  AResourceProductionBuildingVO.prototype.getBaseProductionValue = function () {
+    var e = this.resourceProductions.getAmountOrDefaultByType(this.resourceType);
+    switch (this.resourceType) {
+      case g.CollectableEnum.WOOD:
+        e += this.getConstructionItemEffectValue(c.CastleEffectEnum.WOODPRODUCTION);
+        break;
+      case g.CollectableEnum.STONE:
+        e += this.getConstructionItemEffectValue(c.CastleEffectEnum.STONEPRODUCTION);
+        break;
+      case g.CollectableEnum.FOOD:
+        e += this.getConstructionItemEffectValue(c.CastleEffectEnum.FOODPRODUCTION);
+        break;
+      case g.CollectableEnum.COAL:
+        e += this.getConstructionItemEffectValue(c.CastleEffectEnum.COALPRODUCTION);
+        break;
+      case g.CollectableEnum.OIL:
+        e += this.getConstructionItemEffectValue(c.CastleEffectEnum.OILPRODUCTION);
+        break;
+      case g.CollectableEnum.GLASS:
+        e += this.getConstructionItemEffectValue(c.CastleEffectEnum.GLASSPRODUCTION);
+        break;
+      case g.CollectableEnum.IRON:
+        e += this.getConstructionItemEffectValue(c.CastleEffectEnum.IRONPRODUCTION);
+        break;
+      case g.CollectableEnum.HONEY:
+        e += this.getEffectValue(T.EffectTypeEnum.EFFECT_TYPE_HONEY_PRODUCTION_INCREASE).strength;
+        break;
+      case g.CollectableEnum.MEAD:
+        e += this.getEffectValue(T.EffectTypeEnum.EFFECT_TYPE_MEAD_PRODUCTION_INCREASE).strength;
+        break;
+      case g.CollectableEnum.BEEF:
+        e += this.getEffectValue(T.EffectTypeEnum.EFFECT_TYPE_BEEF_PRODUCTION_INCREASE).strength;
     }
-    if (this.disp) {
-      this.disp.addEventListener(r.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
-      this.disp.mc_selected.visible = false;
+    return e;
+  };
+  AResourceProductionBuildingVO.prototype.getFinalProductionValue = function () {
+    var e = this.getBaseProductionValue();
+    e *= this.getFinalProductivityFactor();
+    switch (this.resourceType) {
+      case g.CollectableEnum.WOOD:
+        e += this.getConstructionItemEffectValue(c.CastleEffectEnum.UNBOOSTEDWOODPRODUCTION);
+        break;
+      case g.CollectableEnum.STONE:
+        e += this.getConstructionItemEffectValue(c.CastleEffectEnum.UNBOOSTEDSTONEPRODUCTION);
+        break;
+      case g.CollectableEnum.FOOD:
+        e += this.getConstructionItemEffectValue(c.CastleEffectEnum.UNBOOSTEDFOODPRODUCTION);
+        break;
+      case g.CollectableEnum.HONEY:
+        e += this.getEffectValue(T.EffectTypeEnum.EFFECT_TYPE_UNBOOSTED_HONEY_PRODUCTION).strength;
+        break;
+      case g.CollectableEnum.MEAD:
+        e += this.getEffectValue(T.EffectTypeEnum.EFFECT_TYPE_UNBOOSTED_MEAD_PRODUCTION).strength;
+        break;
+      case g.CollectableEnum.BEEF:
+        e += this.getEffectValue(T.EffectTypeEnum.EFFECT_TYPE_UNBOOSTED_BEEF_PRODUCTION).strength;
     }
+    return e;
   };
-  HighlightAndClearInputTextBehaviour.prototype.onMouseDown = function (e) {
-    switch (e.target) {
-      case this.disp.mc_selected.btn_clear:
-        this._itxt_text.clearText();
-        if (this._hasDefaultText && this._itxt_text.text == "" && this._hasDefaultText) {
-          this._itxt_text.textContentVO.stringValue = this._defaultText;
-        }
-        this._itxt_text.change.dispatch(null);
-        this._itxt_text.focusOut.dispatch(null);
-    }
+  AResourceProductionBuildingVO.prototype.getBaseProductivityFactor = function () {
+    var e = l.CastleModel.areaData.getActiveStorageItem(this.resourceType).boostFactor;
+    return l.CastleModel.areaData.activeCommonInfo.getLawAndOrderFactor() * e * this.getLaboratoryBoostFactor() * a.ConstructionConst.getDamageFactor(this.hitPoints);
   };
-  HighlightAndClearInputTextBehaviour.prototype.onFocusInSearchText = function (e) {
-    this.disp.mc_selected.visible = true;
-    if (this._itxt_text.text == this._defaultText && this._hasDefaultText) {
-      this._itxt_text.clearText();
-    }
+  AResourceProductionBuildingVO.prototype.getFinalProductivityFactor = function () {
+    return this.efficiency / 100 * this.getBaseProductivityFactor();
   };
-  HighlightAndClearInputTextBehaviour.prototype.onFocusOutSearchText = function (e) {
-    this.disp.mc_selected.visible = false;
-    if (this._itxt_text.text == "" && this._hasDefaultText) {
-      this._itxt_text.textContentVO.stringValue = this._defaultText;
-    }
-  };
-  HighlightAndClearInputTextBehaviour.prototype.isEmpty = function () {
-    return this._hasDefaultText && this._itxt_text.text == this.defaultText || this._itxt_text.text == "";
-  };
-  Object.defineProperty(HighlightAndClearInputTextBehaviour.prototype, "text", {
+  Object.defineProperty(AResourceProductionBuildingVO.prototype, "isInfluencedByLaboratoryInKingdom", {
     get: function () {
-      if (this.isEmpty()) {
-        return "";
-      } else {
-        return this._itxt_text.text;
-      }
+      return null;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(HighlightAndClearInputTextBehaviour.prototype, "defaultText", {
+  AResourceProductionBuildingVO.prototype.getLaboratoryBoostFactor = function () {
+    var e = this.isInfluencedByLaboratoryInKingdom;
+    if (e) {
+      return s.int(u.CastleLaboratoryEffectHelper.laboratoryResourceBonus(e.id)) / 100 + 1;
+    } else {
+      return 1;
+    }
+  };
+  Object.defineProperty(AResourceProductionBuildingVO.prototype, "isOverseerBoosted", {
     get: function () {
-      return this._defaultText;
-    },
-    set: function (e) {
-      this._defaultText = e;
+      var e = l.CastleModel.boostData.getOverseer(this.resourceType);
+      return !!e && e.isActive;
     },
     enumerable: true,
     configurable: true
   });
-  return HighlightAndClearInputTextBehaviour;
-}(s.CastleItemRenderer);
-exports.HighlightAndClearInputTextBehaviour = l;
+  Object.defineProperty(AResourceProductionBuildingVO.prototype, "resourceType", {
+    get: function () {
+      return g.CollectableEnum.UNKNOWN;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AResourceProductionBuildingVO.prototype.needsResourceTypeInCastle = function (t) {
+    return this.resourceProductions.getAmountOrDefaultByType(t) > 0 || e.prototype.needsResourceTypeInCastle.call(this, t);
+  };
+  Object.defineProperty(AResourceProductionBuildingVO.prototype, "resourceProductions", {
+    get: function () {
+      return this._resourceProductions;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AResourceProductionBuildingVO;
+}(require("./452.js").AProductionBuildingVO);
+exports.AResourceProductionBuildingVO = p;
+var h = require("./50.js");
+var g = require("./12.js");
+var C = require("./48.js");
+var _ = require("./505.js");
+var m = require("./453.js");
+var f = require("./506.js");
+var O = require("./507.js");
+var E = require("./508.js");
+var y = require("./267.js");
+var b = require("./268.js");
+var D = require("./533.js");
+var I = require("./637.js");
+var T = require("./33.js");
+o.classImplementsInterfaces(p, "IShopVO", "ICostVO", "IInventoryVO");

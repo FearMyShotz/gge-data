@@ -2,110 +2,148 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./26.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
 var r = require("./4.js");
-var l = require("./9.js");
-var c = require("./20.js");
-var u = require("./1778.js");
-var d = require("./1779.js");
-var p = require("./3796.js");
-var h = require("./8.js");
-var g = require("./11.js");
-var C = require("./1780.js");
-var _ = require("./1781.js");
-var m = function (e) {
-  function AGlobalLeaderBoardDialog(t) {
+var l = function (e) {
+  function AGlobalLeaderBoardItem(t) {
     return e.call(this, t) || this;
   }
-  n.__extends(AGlobalLeaderBoardDialog, e);
-  AGlobalLeaderBoardDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    h.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help, this.dialogDisp.btn_rewards], c.ClickFeedbackButtonHover);
-    this._globalLeaderBoardComponent = new d.GlobalLeaderBoardComponent(this.dialogDisp, this.getListItemClass(), this.getDefaultSearchString());
+  n.__extends(AGlobalLeaderBoardItem, e);
+  AGlobalLeaderBoardItem.prototype.updateWithData = function (e, t) {
+    this._data = e;
+    this._searchScoreID = t;
+    this.update();
   };
-  AGlobalLeaderBoardDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this._globalLeaderBoardComponent.init(this.listType, new p.GlobalLeaderBoardLeagueComponent(this.dialogDisp, this.eventID));
-    this._globalLeaderBoardComponent.onShow();
-    this._globalLeaderBoardComponent.openRewardDialogSignal.add(this.bindFunction(this.showRewards));
-    r.CastleModel.specialEventData.addEventListener(s.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveSpecialEvent));
+  AGlobalLeaderBoardItem.prototype.updateWithRank = function (e) {
+    this._data = this.createRankOnlyData(e);
+    this._searchScoreID = "";
+    this.update();
   };
-  AGlobalLeaderBoardDialog.prototype.hideLoaded = function (t = null) {
-    e.prototype.hideLoaded.call(this, t);
-    if (this._globalLeaderBoardComponent) {
-      this._globalLeaderBoardComponent.onHide();
-      this._globalLeaderBoardComponent.openRewardDialogSignal.removeAll();
-    }
-    r.CastleModel.specialEventData.removeEventListener(s.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveSpecialEvent));
+  AGlobalLeaderBoardItem.prototype.updateWithUnknown = function () {
+    this._data = {};
+    this._searchScoreID = "";
+    this.update();
   };
-  AGlobalLeaderBoardDialog.prototype.onRemoveSpecialEvent = function (e) {
-    if (e.specialEventVO.eventId == this.eventID) {
-      this.hide();
-    }
+  AGlobalLeaderBoardItem.prototype.updateWithNull = function () {
+    this._data = null;
+    this.update();
   };
-  AGlobalLeaderBoardDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_close:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_help:
-        this.showHelp();
-    }
+  AGlobalLeaderBoardItem.prototype.update = function () {};
+  AGlobalLeaderBoardItem.prototype.createRankOnlyData = function (e) {
+    return {
+      R: e
+    };
   };
-  AGlobalLeaderBoardDialog.prototype.showHelp = function () {
-    l.CastleDialogHandler.getInstance().showHelper("", a.Localize.text(this.helpTextId));
-  };
-  AGlobalLeaderBoardDialog.prototype.showRewards = function (e = -1) {
-    l.CastleDialogHandler.getInstance().registerDefaultDialogs(_.GlobalLeaderboardRankingRankingRewardsDialog, new C.DonationRankingRewardsDialogProperties(this.rewardDialogTextID, this.getGlobalLeaderBoardRewards(e)));
-  };
-  AGlobalLeaderBoardDialog.prototype.getListItemClass = function () {
-    return u.DefaultGlobalLeaderBoardItem;
-  };
-  AGlobalLeaderBoardDialog.prototype.getDefaultSearchString = function () {
-    return "dialog_highscore_name_alliance_search";
-  };
-  Object.defineProperty(AGlobalLeaderBoardDialog.prototype, "helpTextId", {
+  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "rank", {
     get: function () {
-      return "help_highscore";
+      if (this._data) {
+        return this._data.R;
+      } else {
+        return -1;
+      }
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AGlobalLeaderBoardDialog.prototype, "rewardDialogTextID", {
+  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "rankText", {
     get: function () {
-      return "";
+      if (this.rank > -1) {
+        return s.Localize.number(this.rank);
+      } else {
+        return "???";
+      }
     },
     enumerable: true,
     configurable: true
   });
-  AGlobalLeaderBoardDialog.prototype.getGlobalLeaderBoardRewards = function (e = -1) {
-    return [];
+  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "playerName", {
+    get: function () {
+      if (this._data && this._data.P) {
+        return this._data.P;
+      } else {
+        return "???";
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "allianceName", {
+    get: function () {
+      if (this._data) {
+        return this._data.A || "-";
+      } else {
+        return "???";
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "instanceId", {
+    get: function () {
+      if (this._data) {
+        return this._data.I;
+      } else {
+        return -1;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "points", {
+    get: function () {
+      if (this._data && this._data.S) {
+        return s.Localize.number(this._data.S);
+      } else {
+        return "???";
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "scoreID", {
+    get: function () {
+      if (this._data && this._data.SI) {
+        return this._data.SI;
+      } else {
+        return "";
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AGlobalLeaderBoardItem.prototype, "serverName", {
+    get: function () {
+      var e = this;
+      var t = o.BasicModel.instanceProxy.instanceMap;
+      if (!AGlobalLeaderBoardItem.LOCA_ID_COUNT_MAP) {
+        AGlobalLeaderBoardItem.LOCA_ID_COUNT_MAP = new Map();
+        t.forEach(function (e) {
+          return AGlobalLeaderBoardItem.LOCA_ID_COUNT_MAP.set(e.instanceLocaId, (AGlobalLeaderBoardItem.LOCA_ID_COUNT_MAP.get(e.instanceLocaId) || 0) + 1);
+        });
+      }
+      var i;
+      var n = o.BasicModel.instanceProxy.instanceMap.find(function (t) {
+        return t.instanceId == e.instanceId;
+      });
+      if (n) {
+        i = s.Localize.text(n.instanceLocaId);
+        if (AGlobalLeaderBoardItem.LOCA_ID_COUNT_MAP.get(n.instanceLocaId) > 1) {
+          i = i + ": " + n.instanceCountID;
+        }
+      } else {
+        i = "???";
+      }
+      return i;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AGlobalLeaderBoardItem.prototype.isOwnPlayer = function () {
+    return this.playerName == r.CastleModel.userData.userName && this.instanceId == r.CastleModel.instanceProxy.selectedInstanceVO.instanceId;
   };
-  Object.defineProperty(AGlobalLeaderBoardDialog.prototype, "eventID", {
-    get: function () {
-      return -1;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGlobalLeaderBoardDialog.prototype, "listType", {
-    get: function () {
-      return -1;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGlobalLeaderBoardDialog.prototype, "leagueTypeID", {
-    get: function () {
-      return -1;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AGlobalLeaderBoardDialog;
-}(g.CastleExternalDialog);
-exports.AGlobalLeaderBoardDialog = m;
-o.classImplementsInterfaces(m, "ICollectableRendererList");
+  return AGlobalLeaderBoardItem;
+}(require("./40.js").CastleItemRenderer);
+exports.AGlobalLeaderBoardItem = l;
+a.classImplementsInterfaces(l, "ICollectableRendererList");

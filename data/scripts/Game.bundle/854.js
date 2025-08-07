@@ -1,50 +1,57 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1994.js");
-var o = createjs.Point;
-var a = function () {
-  function GeneralsSkillTooltipHelper() {}
-  GeneralsSkillTooltipHelper.hideToolTip = function () {
-    GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.visible = false;
-    GeneralsSkillTooltipHelper._currentTarget = null;
-  };
-  GeneralsSkillTooltipHelper.showToolTip = function (e, t, i) {
-    GeneralsSkillTooltipHelper._currentTarget = e;
-    GeneralsSkillTooltipHelper._generalsSkillTooltip.initToolTip(t, i);
-    var n = e.localToGlobal(new o(0, 0));
-    GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.x = n.x;
-    GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.y = Math.max(GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.bg.height, n.y) - e.height / 2;
-    if (GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.y - GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.bg.height < 0) {
-      GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.y = n.y + e.height / 2 + GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.bg.height;
-    }
-    if (GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.y > GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.stage.stageHeight) {
-      GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.y = GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.stage.stageHeight;
-      GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.x = n.x + e.width / 2 + GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.bg.width / 2;
-      if (GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.x + GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.bg.width / 2 > GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.stage.stageWidth) {
-        GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.x = n.x - e.width / 2 - GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.bg.width / 2;
+var n = require("./2.js");
+var o = require("./3.js");
+var a = require("./229.js");
+var s = createjs.Point;
+var r = function () {
+  function TextDarkTooltip() {}
+  Object.defineProperty(TextDarkTooltip, "textDarkTooltip", {
+    get: function () {
+      if (a.isUndefined(this._textDarkTooltip)) {
+        this._textDarkTooltip = new Library.CastleInterfaceElements.TextDark_Tooltip();
       }
+      return this._textDarkTooltip;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  TextDarkTooltip.prototype.showTooltip = function (e, t) {
+    this._itxt_text = TextDarkTooltip.textFieldManager.registerTextField(this.disp.txt_text, new o.TextVO(t));
+    var i = this._itxt_text.textHeight;
+    this.disp.bg.height = i + TextDarkTooltip.TEXT_MARGIN * 2;
+    this._itxt_text.y = -(i + TextDarkTooltip.TEXT_MARGIN);
+    var n = e.localToGlobal(new s(0, 0));
+    this.disp.x = n.x;
+    this.disp.y = Math.max(this.disp.bg.height, n.y) - e.height / 2;
+    if (this.disp.y - this.disp.bg.height < 0) {
+      this.disp.y = n.y + e.height / 2 + this.disp.bg.height;
     }
-    GeneralsSkillTooltipHelper._generalsSkillTooltip.disp.visible = true;
+    this.disp.visible = true;
   };
-  Object.defineProperty(GeneralsSkillTooltipHelper, "disp", {
+  TextDarkTooltip.prototype.hideTooltip = function () {
+    this.disp.visible = false;
+  };
+  Object.defineProperty(TextDarkTooltip, "textFieldManager", {
     get: function () {
-      return GeneralsSkillTooltipHelper._generalsSkillTooltip.disp;
+      return n.GoodgameTextFieldManager.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(GeneralsSkillTooltipHelper, "currentTarget", {
+  Object.defineProperty(TextDarkTooltip.prototype, "disp", {
     get: function () {
-      return GeneralsSkillTooltipHelper._currentTarget;
+      return TextDarkTooltip.textDarkTooltip;
     },
     enumerable: true,
     configurable: true
   });
-  GeneralsSkillTooltipHelper.__initialize_static_members = function () {
-    GeneralsSkillTooltipHelper._generalsSkillTooltip = new n.GeneralSkillTooltip();
+  TextDarkTooltip.getInstance = function () {
+    this._instance ||= new TextDarkTooltip();
+    return this._instance;
   };
-  return GeneralsSkillTooltipHelper;
+  TextDarkTooltip.TEXT_MARGIN = 5;
+  return TextDarkTooltip;
 }();
-exports.GeneralsSkillTooltipHelper = a;
-a.__initialize_static_members();
+exports.TextDarkTooltip = r;

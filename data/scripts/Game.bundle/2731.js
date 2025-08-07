@@ -3,188 +3,98 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./487.js");
-var s = require("./2732.js");
-var r = function (e) {
-  function IsoViewObjects() {
+var a = require("./5.js");
+var s = require("./5.js");
+var r = require("./4.js");
+var l = require("./488.js");
+var c = createjs.Rectangle;
+var u = function (e) {
+  function IsoViewSettings() {
     var t = this;
-    t._groups = new Map();
-    t._isoLayerObjects = [];
-    t._completeTempObjectList = [];
-    t._isCompleteObjectListValid = false;
+    t._scrollBounds = new c();
+    t._minScrollBounds = new c();
+    t._isDebugCrossVisible = false;
+    t._isDebugPosVisible = false;
+    t._isZSortChildIndexVisible = false;
     CONSTRUCTOR_HACK;
-    (t = e.call(this) || this)._provider = new s.IsoViewObjectsProvider(t);
-    t._groups = c.IsoHelper.data.createObjectGroupDic(true);
-    return t;
+    return t = e.call(this) || this;
   }
-  n.__extends(IsoViewObjects, e);
-  IsoViewObjects.prototype.init = function (t) {
-    e.prototype.init.call(this, t);
-    if (this.groups != null) {
-      for (var i = 0, n = Array.from(this.groups.values()); i < n.length; i++) {
-        n[i].init(t);
-      }
-    }
-  };
-  IsoViewObjects.prototype.reset = function () {
-    e.prototype.reset.call(this);
-    this.invalidateCompleteObjectsList();
-    this._isoLayerObjects.length = 0;
-  };
-  IsoViewObjects.prototype.setup = function () {
+  n.__extends(IsoViewSettings, e);
+  IsoViewSettings.prototype.setup = function () {
     e.prototype.setup.call(this);
-    if (this.groups != null) {
-      for (var t = 0, i = Array.from(this.groups.values()); t < i.length; t++) {
-        i[t].initObjects();
-      }
+    this._scrollBounds = this.createScrollBounds();
+  };
+  IsoViewSettings.prototype.createScrollBounds = function () {
+    var e = this.isoRenderer.isoData.areaData;
+    var t = new c();
+    if (r.CastleModel.userData.level < 10) {
+      t.bottom = 1200;
+    } else {
+      t.bottom = 1800;
     }
-    this.invalidateCompleteObjectsList();
-  };
-  IsoViewObjects.prototype.destroy = function () {
-    e.prototype.destroy.call(this);
-    this._isoLayerObjects.length = 0;
-    if (this.groups != null) {
-      for (var t = 0, i = Array.from(this.groups.values()); t < i.length; t++) {
-        i[t].destroy();
-      }
+    t.left = -1000;
+    t.right = 1000;
+    t.top = -1400;
+    this.minScrollBounds.right = 2000;
+    if (e.areaInfo.kingdomID == s.WorldIsland.KINGDOM_ID) {
+      t.top = -1300;
+      t.bottom = 1800;
+    } else if (e.isKingdomCastle) {
+      t.top = -1800;
+      t.left = -1650;
+    } else if (e.isTreasureCamp && r.CastleModel.specialEventData.activeSeasonVO.eventId == a.EventConst.EVENTTYPE_CRUSADE_SEAQUEEN) {
+      t.bottom = 1750;
     }
-    this.invalidateCompleteObjectsList();
+    return t;
   };
-  IsoViewObjects.prototype.render = function (e = false) {
-    if (this.groups != null) {
-      for (var t = 0, i = Array.from(this.groups.values()); t < i.length; t++) {
-        i[t].render(e);
-      }
-    }
-  };
-  IsoViewObjects.prototype.getGroupByType = function (e) {
-    return this._groups.get(e);
-  };
-  IsoViewObjects.prototype.invalidateCompleteObjectsList = function () {
-    this._isCompleteObjectListValid = false;
-    if (this._completeTempObjectList.length > 0) {
-      this._completeTempObjectList = [];
-    }
-  };
-  IsoViewObjects.prototype.getCompleteObjectsList = function () {
-    if (!this._isCompleteObjectListValid) {
-      if (this.groups != null) {
-        for (var e = 0, t = Array.from(this.groups.values()); e < t.length; e++) {
-          t[e].fillInCompleteList(this._completeTempObjectList);
-        }
-      }
-      this._isCompleteObjectListValid = true;
-    }
-    return this._completeTempObjectList;
-  };
-  Object.defineProperty(IsoViewObjects.prototype, "background", {
+  Object.defineProperty(IsoViewSettings.prototype, "scrollBounds", {
     get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.BACKGROUND);
+      return this._scrollBounds;
+    },
+    set: function (e) {
+      this._scrollBounds = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewObjects.prototype, "innerBuildings", {
+  Object.defineProperty(IsoViewSettings.prototype, "isDebugCrossVisible", {
     get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.INNER_BUILDINGS);
+      return this._isDebugCrossVisible;
+    },
+    set: function (e) {
+      this._isDebugCrossVisible = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewObjects.prototype, "eventBuildings", {
+  Object.defineProperty(IsoViewSettings.prototype, "isDebugPosVisible", {
     get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.EVENT_BUILDINGS);
+      return this._isDebugPosVisible;
+    },
+    set: function (e) {
+      this._isDebugPosVisible = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewObjects.prototype, "defenceObjects", {
+  Object.defineProperty(IsoViewSettings.prototype, "minScrollBounds", {
     get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.DEFENCE);
+      return this._minScrollBounds;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewObjects.prototype, "fixedPositions", {
+  Object.defineProperty(IsoViewSettings.prototype, "isZSortChildIndexVisible", {
     get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.FIXED_POSITIONS);
+      return this._isZSortChildIndexVisible;
+    },
+    set: function (e) {
+      this._isZSortChildIndexVisible = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewObjects.prototype, "groundObjects", {
-    get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.GROUNDS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoViewObjects.prototype, "surroundings", {
-    get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.SURROUNDINGS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoViewObjects.prototype, "effects", {
-    get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.EFFECTS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoViewObjects.prototype, "expansions", {
-    get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.EXPANSIONS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoViewObjects.prototype, "floorMarks", {
-    get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.FLOOR_MARKS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoViewObjects.prototype, "movements", {
-    get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.MOVEMENTS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoViewObjects.prototype, "judgements", {
-    get: function () {
-      return this.getGroupByType(l.IsoObjectGroupEnum.JUDGEMENTS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoViewObjects.prototype, "groups", {
-    get: function () {
-      return this._groups;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoViewObjects.prototype, "isoLayerObjects", {
-    get: function () {
-      return this._isoLayerObjects;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoViewObjects.prototype, "provider", {
-    get: function () {
-      return this._provider;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IsoViewObjects;
-}(a.AIsoViewComponent);
-exports.IsoViewObjects = r;
-var l = require("./143.js");
-var c = require("./46.js");
-o.classImplementsInterfaces(r, "ICollectableRendererList");
+  return IsoViewSettings;
+}(l.AIsoViewComponent);
+exports.IsoViewSettings = u;
+o.classImplementsInterfaces(u, "ICollectableRendererList");

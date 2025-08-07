@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function DFKCommand() {
+  function CRUNCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DFKCommand, e);
-  Object.defineProperty(DFKCommand.prototype, "cmdId", {
+  n.__extends(CRUNCommand, e);
+  Object.defineProperty(CRUNCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_DEFENSE_KEEP;
+      return s.ClientConstSF.S2C_CRAFTING_UNLOCK;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  DFKCommand.prototype.executeCommand = function (e, t) {
+  CRUNCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.defenceData.parse_DFK(i);
+        r.CastleModel.craftingData.parseBuildingQueueData(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return DFKCommand;
+  return CRUNCommand;
 }(l.CastleCommand);
-exports.DFKCommand = c;
+exports.CRUNCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

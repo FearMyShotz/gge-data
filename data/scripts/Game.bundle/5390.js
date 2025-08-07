@@ -3,22 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./7.js");
-var r = function (e) {
-  function C2SBattleLogShortVO(t, i) {
-    var n = this;
-    n.MID = 0;
-    n.IM = 0;
+var a = require("./7.js");
+var s = function (e) {
+  function C2SBattleLogDetailVO(t) {
+    var i = this;
+    i.LID = 0;
     CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).MID = t;
-    n.IM = a.int(i ? 1 : 0);
-    return n;
+    (i = e.call(this) || this).LID = t;
+    return i;
   }
-  n.__extends(C2SBattleLogShortVO, e);
-  C2SBattleLogShortVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_BATTLE_LOG_SHORT;
+  n.__extends(C2SBattleLogDetailVO, e);
+  C2SBattleLogDetailVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_BATTLE_LOG_DETAIL;
   };
-  return C2SBattleLogShortVO;
+  return C2SBattleLogDetailVO;
 }(o.BasicCommandVO);
-exports.C2SBattleLogShortVO = r;
+exports.C2SBattleLogDetailVO = s;

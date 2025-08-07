@@ -65,8 +65,8 @@ var h = function (e) {
 }(c.CastleComponent);
 exports.SubscriptionDialogOfferItem = h;
 o.classImplementsInterfaces(h, "ICollectableRendererList");
-var g = require("./611.js");
+var g = require("./612.js");
 var C = require("./46.js");
 var _ = require("./25.js");
-var m = require("./522.js");
+var m = require("./523.js");
 var f = require("./1.js");

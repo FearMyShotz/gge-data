@@ -7,13 +7,13 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./10.js");
 var l = function (e) {
-  function MFBCommand() {
+  function LPLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MFBCommand, e);
-  Object.defineProperty(MFBCommand.prototype, "cmdId", {
+  n.__extends(LPLCommand, e);
+  Object.defineProperty(LPLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_FORWARD_BATTLE_LOG;
+      return s.ClientConstSF.S2C_GET_LOGIN_POPUP_LIST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -21,16 +21,20 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  MFBCommand.prototype.executeCommand = function (e, t) {
+  LPLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        var n = !!i.P && i.P.length > 2;
+        c.CastlePopUpHelper.displayPopUps(i, n);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return MFBCommand;
+  return LPLCommand;
 }(r.CastleCommand);
-exports.MFBCommand = l;
+exports.LPLCommand = l;
+var c = require("./405.js");
 o.classImplementsInterfaces(l, "IExecCommand");

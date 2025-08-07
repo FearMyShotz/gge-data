@@ -2,44 +2,64 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = function (e) {
-  function CastleTreasureMapRouteManager() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./4.js");
+var a = require("./1331.js");
+var s = require("./2359.js");
+var r = function (e) {
+  function CastleTreasureMapRenderer() {
+    return e.call(this) || this;
   }
-  n.__extends(CastleTreasureMapRouteManager, e);
-  CastleTreasureMapRouteManager.prototype.updateComponent = function (e) {
-    if (e) {
-      var t;
-      var i;
-      var n;
-      var o = 0;
-      var a = 0;
-      if (e.treasureMovementsVOs) {
-        i = e.treasureMovementsVOs[0];
-      }
-      for (var s = 0; s < e.tMapNodeVOs.length; s++) {
-        if (!(t = e.tMapNodeVOs[s]).isStartNode) {
-          var r;
-          var l = t;
-          do {
-            r = l;
-            o = (l = e.getNodeById(r.orUnlockIDs[0])).nodeID;
-            a = r.nodeID;
-            (n = this._routeLayer["path_" + o + "_" + a]).mouseEnabled = false;
-            if (i && i.tMapNodeID == t.nodeID) {
-              n.gotoAndStop(3);
-            } else if (r.isUnlocked && e.hasAllPieces) {
-              n.gotoAndStop(2);
-            } else {
-              n.gotoAndStop(1);
-            }
-          } while (l && l.isTreasureHuntObstacle);
-        }
-      }
-    }
-  };
-  return CastleTreasureMapRouteManager;
-}(require("./1332.js").ATreasureMapRouteManager);
-exports.CastleTreasureMapRouteManager = a;
-o.classImplementsInterfaces(a, "ITreasureUpdateComponent");
+  n.__extends(CastleTreasureMapRenderer, e);
+  Object.defineProperty(CastleTreasureMapRenderer.prototype, "movementCreator", {
+    get: function () {
+      return new u.CastleTreasureMovementCreator();
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastleBaseTreasureMapRenderer.prototype, "movementCreator").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureMapRenderer.prototype, "mapItemCreator", {
+    get: function () {
+      return new c.CastleTreasureMapItemCreator();
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastleBaseTreasureMapRenderer.prototype, "mapItemCreator").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureMapRenderer.prototype, "routeManager", {
+    get: function () {
+      return new s.CastleTreasureMapRouteManager();
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastleBaseTreasureMapRenderer.prototype, "routeManager").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureMapRenderer.prototype, "treasureMapVO", {
+    get: function () {
+      return o.CastleModel.treasureHuntData.treasureHuntMapVO;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastleBaseTreasureMapRenderer.prototype, "treasureMapVO").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTreasureMapRenderer.prototype, "treasureUpdateComponents", {
+    get: function () {
+      return [new l.CastleTreasureMapHintComponent()];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleTreasureMapRenderer;
+}(a.CastleBaseTreasureMapRenderer);
+exports.CastleTreasureMapRenderer = r;
+var l = require("./2360.js");
+var c = require("./2362.js");
+var u = require("./2369.js");

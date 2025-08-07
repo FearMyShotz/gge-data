@@ -3,78 +3,63 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./13.js");
-var c = require("./8.js");
-var u = require("./11.js");
-var d = require("./3518.js");
-var p = require("./36.js");
-var h = require("./137.js");
-var g = function (e) {
-  function CastleTempServerWelcomeDialog() {
-    var t = this;
-    t.pages = 2;
-    t._currentPageIndex = -1;
+var a = require("./19.js");
+var s = require("./11.js");
+var r = createjs.Point;
+var l = function (e) {
+  function ARandomDungeonRewardDialog(t) {
+    var i = this;
+    i.emptyRewardPosX = 0;
+    i.rewardOffset = 0;
     CONSTRUCTOR_HACK;
-    return t = e.call(this, CastleTempServerWelcomeDialog.NAME) || this;
+    return i = e.call(this, t) || this;
   }
-  n.__extends(CastleTempServerWelcomeDialog, e);
-  CastleTempServerWelcomeDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    c.ButtonHelper.initButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close, this.dialogDisp.btn_left, this.dialogDisp.btn_right], p.ClickFeedbackButton);
+  n.__extends(ARandomDungeonRewardDialog, e);
+  ARandomDungeonRewardDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.centeredRewardListComponent = new u.CastleCenteredRewardRendererListComponent(this.dialogDisp.mc_rewards, new r(34, 34), a.CollectableRenderOptions.SET_ADVANCED, this.bindFunction(this.preRenderFunc));
+    this.emptyRewardPosX = this.dialogDisp.mc_rewardsEmpty.x;
+    this.rewardOffset = (this.dialogDisp.mc_rewardsEmpty.emptyItem1.x - this.dialogDisp.mc_rewardsEmpty.emptyItem0.x) / 2;
   };
-  CastleTempServerWelcomeDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("dialog_tempServer_start_header")));
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_ok.txt_value, new s.LocalizedTextVO("dialog_tempServer_welcomePopup_startButton"));
-    this.setPageIndex(0);
-    this.dialogDisp.mc_teaser.gotoAndStop(h.TempServerHelper.getAssetFrame());
-    this._itemList.onShow();
-  };
-  CastleTempServerWelcomeDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_left:
-        this.changePage(-1);
-        break;
-      case this.dialogDisp.btn_right:
-        this.changePage(1);
+  ARandomDungeonRewardDialog.prototype.preRenderFunc = function (e) {
+    if (e.itemVO) {
+      var t = e.getRenderer(a.CollectableRenderOptions.ICON_TRANSFORM);
+      switch (e.itemVO.itemType) {
+        case c.CollectableEnum.EQUIPMENT_RARENESS:
+        case c.CollectableEnum.EQUIPMENT_UNIQUE:
+        case c.CollectableEnum.HERO_RANDOM:
+        case c.CollectableEnum.GEM:
+        case c.CollectableEnum.GEM_RANDOM:
+        case c.CollectableEnum.BOOSTER:
+        case c.CollectableEnum.BUILDING:
+        case c.CollectableEnum.EXTINGUISH_FIRE:
+        case c.CollectableEnum.ALLIANCE_GIFT:
+        case c.CollectableEnum.DUNGEON_PROTECTION:
+          t.transform.offset.y = 5;
+      }
     }
   };
-  CastleTempServerWelcomeDialog.prototype.changePage = function (e) {
-    if (this._currentPageIndex + e >= this.pages) {
-      this.setPageIndex(0);
-    } else if (this._currentPageIndex + e < 0) {
-      this.setPageIndex(this.pages - 1);
+  ARandomDungeonRewardDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.centeredRewardListComponent.showRewards(this.rewards);
+    if (this.rewards.length % 2) {
+      this.dialogDisp.mc_rewardsEmpty.mc_lastEmptyItem.visible = false;
+      this.dialogDisp.mc_rewardsEmpty.x = this.emptyRewardPosX + this.rewardOffset;
     } else {
-      this.setPageIndex(this._currentPageIndex + e);
+      this.dialogDisp.mc_rewardsEmpty.mc_lastEmptyItem.visible = true;
+      this.dialogDisp.mc_rewardsEmpty.x = this.emptyRewardPosX;
     }
   };
-  CastleTempServerWelcomeDialog.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    if (this._itemList) {
-      this._itemList.onHide();
-    }
-  };
-  CastleTempServerWelcomeDialog.prototype.updateItems = function () {
-    this._itemList ||= new d.TempServerWelcomeDialogList(this.dialogDisp);
-    this._itemList.update(this._currentPageIndex);
-  };
-  CastleTempServerWelcomeDialog.prototype.setPageIndex = function (e) {
-    if (this._currentPageIndex != e) {
-      var t = [a.Localize.text("dialog_tempServer_welcomePopup_pageCounter", [e + 1, this.pages])];
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO("dialog_tempServer_welcomePopup_pageHeader_" + (e + 1), t));
-      this._currentPageIndex = e;
-      this.updateItems();
-    }
-  };
-  CastleTempServerWelcomeDialog.NAME = "CastleTempServerWelcome";
-  return CastleTempServerWelcomeDialog;
-}(u.CastleExternalDialog);
-exports.CastleTempServerWelcomeDialog = g;
-o.classImplementsInterfaces(g, "ICollectableRendererList");
+  Object.defineProperty(ARandomDungeonRewardDialog.prototype, "rewards", {
+    get: function () {
+      return null;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ARandomDungeonRewardDialog;
+}(s.CastleExternalDialog);
+exports.ARandomDungeonRewardDialog = l;
+var c = require("./12.js");
+var u = require("./400.js");
+o.classImplementsInterfaces(l, "ICollectableRendererList");

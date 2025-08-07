@@ -8,7 +8,7 @@ var s = require("./3.js");
 var r = require("./58.js");
 var l = require("./39.js");
 var c = require("./4.js");
-var u = require("./670.js");
+var u = require("./672.js");
 var d = require("./89.js");
 var p = function (e) {
   function ManagementPanelButton() {
@@ -52,5 +52,5 @@ var p = function (e) {
 exports.ManagementPanelButton = p;
 var h = require("./46.js");
 var g = require("./14.js");
-var C = require("./671.js");
+var C = require("./673.js");
 o.classImplementsInterfaces(p, "ICollectableRendererList");

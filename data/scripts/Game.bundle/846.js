@@ -2,110 +2,63 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./1.js");
-var c = require("./15.js");
-var u = createjs.Container;
-var d = createjs.Event;
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./3.js");
+var r = require("./18.js");
+var l = require("./4.js");
+var c = require("./236.js");
+var u = require("./263.js");
+var d = require("./89.js");
 var p = function (e) {
-  function CastleScreen(t) {
-    var i = this;
-    i._backgroundColor = 0;
-    CONSTRUCTOR_HACK;
-    return i = e.call(this, t) || this;
+  function RecruitPanelButton() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleScreen, e);
-  CastleScreen.prototype.drawBackground = function (e, t) {
-    this._backgroundColor = t;
-    if (this._background && e.contains(this._background)) {
-      e.removeChild(this._background);
-    }
-    this._background = new u();
-    this._background.graphics.beginFill(this._backgroundColor, 1);
-    this._background.graphics.drawRect(0, 0, e.stage.stageWidth, e.stage.stageHeight);
-    this._background.graphics.endFill();
-    this._background.addEventListener(d.ADDED_TO_STAGE, this.bindFunction(this.onBackGroundAddedToStage));
-    e.addChildAt(this._background, 0);
+  n.__extends(RecruitPanelButton, e);
+  RecruitPanelButton.prototype.updateOnVisible = function () {
+    this.iconMc.gotoAndStop(l.CastleModel.kingdomData.activeKingdomID == a.FactionConst.KINGDOM_ID ? 2 : 1);
   };
-  CastleScreen.prototype.onBackGroundAddedToStage = function (e) {
-    this._background.removeEventListener(d.ADDED_TO_STAGE, this.bindFunction(this.onBackGroundAddedToStage));
-    window.addEventListener(d.RESIZE, this.bindFunction(this.onResizeBG));
-    this.onResizeBG(null);
-  };
-  CastleScreen.prototype.onResizeBG = function (e) {
-    if (this._background.stage) {
-      this._background.graphics.clear();
-      this._background.graphics.beginFill(this._backgroundColor, 1);
-      this._background.graphics.drawRect(0, 0, this._background.stage.stageWidth, this._background.stage.stageHeight);
-      this._background.graphics.endFill();
-      h.CastleLayoutManager.getInstance().gamestage.update();
-      h.CastleLayoutManager.getInstance().renderBGStage();
-    }
-  };
-  CastleScreen.prototype.removeBackground = function (e) {
-    if (this._background) {
-      window.removeEventListener(d.RESIZE, this.bindFunction(this.onResizeBG));
-      if (e.contains(this._background)) {
-        e.removeChild(this._background);
+  Object.defineProperty(RecruitPanelButton.prototype, "iconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements.Btn_Recruit;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.APanelButton.prototype, "iconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  RecruitPanelButton.prototype.getButtonTooltip = function () {
+    if (this.isButtonEnabled()) {
+      if (l.CastleModel.kingdomData.activeKingdomID == a.FactionConst.KINGDOM_ID) {
+        return "hire";
+      } else {
+        return "panel_action_recruit";
       }
+    } else {
+      return "alert_never_available";
     }
   };
-  CastleScreen.prototype.destroy = function () {
-    if (this._background) {
-      this._background.removeEventListener(d.ADDED_TO_STAGE, this.bindFunction(this.onBackGroundAddedToStage));
-      window.removeEventListener(d.RESIZE, this.bindFunction(this.onResizeBG));
-    }
-    e.prototype.destroy.call(this);
+  RecruitPanelButton.prototype.isButtonEnabled = function () {
+    return !!g.Iso.data && C.CastleComponent.layoutManager.isInMyCastle && !C.CastleComponent.layoutManager.isInMyOccupiedCastle && (g.Iso.data.objects.provider.hasFunctionalBuildingByType(h.IsoObjectEnum.BARRACKS) || g.Iso.data.objects.provider.hasFunctionalBuildingByType(h.IsoObjectEnum.FACTION_BARRACKS));
   };
-  CastleScreen.prototype.onMouseOver = function (t) {
-    e.prototype.onMouseOver.call(this, t);
-    if (s.BasicToolTipManager.TOOLTIP_LABEL in t.target && t.target.toolTipText) {
-      this.layoutManager.tooltipManager.show(t.target.toolTipText, t.target);
-    }
+  RecruitPanelButton.prototype.isButtonVisible = function () {
+    return C.CastleComponent.layoutManager.currentState == f.CastleLayoutManager.STATE_ISO;
   };
-  CastleScreen.prototype.onMouseOut = function (t) {
-    e.prototype.onMouseOut.call(this, t);
-    this.layoutManager.tooltipManager.hide();
-    this.layoutManager.customCursor.setCursorType(o.BasicCustomCursor.CURSOR_ARROW);
-  };
-  CastleScreen.prototype.onCursorOver = function (e) {
-    if (l.instanceOfClass(e.target, "BasicButton")) {
-      if (e.target.enabled) {
-        this.layoutManager.customCursor.setCursorType(o.BasicCustomCursor.CURSOR_CLICK);
-      }
-    } else if (CastleScreen.ACTLIKEBUTTON_LABEL in e.target && e.target.actLikeButton) {
-      this.layoutManager.customCursor.setCursorType(o.BasicCustomCursor.CURSOR_CLICK);
+  RecruitPanelButton.prototype.onButtonClicked = function () {
+    if (l.CastleModel.areaData.activeArea.isFactionCamp ? l.CastleModel.militaryData.isBuildingCategoryAllowed(r.ClientConstCastle.UNIT_BUILDINGTYPE_FACTION_BARRACKS) : l.CastleModel.militaryData.isBuildingCategoryAllowed(r.ClientConstCastle.UNIT_BUILDINGTYPE_BARRACKS)) {
+      C.CastleComponent.dialogHandler.registerDefaultDialogs(m.CastleRecruitDialog, new u.CastleRecruitDialogProperties(l.CastleModel.areaData.activeArea.isFactionCamp ? r.ClientConstCastle.UNIT_CATEGORY_AUXILIARIES : r.ClientConstCastle.UNIT_CATEGORY_SOLDIERS));
+    } else {
+      C.CastleComponent.dialogHandler.registerDefaultDialogs(_.CastleCharacterYesNoOKDialog, new c.CastleCharacterYesNoOKDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("alert_noBaracks_copy"), 4, null, null, false));
     }
   };
-  Object.defineProperty(CastleScreen.prototype, "layoutManager", {
-    get: function () {
-      return h.CastleLayoutManager.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleScreen.prototype, "controller", {
-    get: function () {
-      return c.CastleBasicController.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleScreen.prototype, "textFieldManager", {
-    get: function () {
-      return r.GoodgameTextFieldManager.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleScreen.__initialize_static_members = function () {
-    CastleScreen.ACTLIKEBUTTON_LABEL = "actLikeButton";
-  };
-  return CastleScreen;
-}(a.BasicScreen);
-exports.CastleScreen = p;
-var h = require("./17.js");
-p.__initialize_static_members();
+  return RecruitPanelButton;
+}(d.APanelButton);
+exports.RecruitPanelButton = p;
+var h = require("./80.js");
+var g = require("./34.js");
+var C = require("./14.js");
+var _ = require("./238.js");
+var m = require("./225.js");
+var f = require("./17.js");
+o.classImplementsInterfaces(p, "ICollectableRendererList");

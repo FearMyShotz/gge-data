@@ -1,40 +1,61 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./7.js");
-var r = function (e) {
-  function C2SBuyEventPackageVO(t, i, n, o, s, r = -1, l = -1, c = false, u = -1, d = false) {
-    var p = this;
-    p.PID = 0;
-    p.BT = 0;
-    p.TID = 0;
-    p.AMT = 0;
-    p.KID = 0;
-    p.AID = 0;
-    p.PC2 = 0;
-    p.BA = 0;
-    p.PWR = 0;
-    p._PO = 0;
-    CONSTRUCTOR_HACK;
-    (p = e.call(this) || this).PID = t;
-    p.BT = i;
-    p.TID = n;
-    p.AMT = o;
-    p.KID = s;
-    p.AID = r;
-    p.PC2 = a.int(l);
-    p.BA = a.int(c ? 1 : 0);
-    p.PWR = d == 1 ? 1 : 0;
-    p._PO = u;
-    return p;
+var n = createjs.Point;
+var o = createjs.MouseEvent;
+var a = require("./1.js");
+var s = function () {
+  function TouchScrollHelper() {
+    this._valid = false;
+    this.touchStageRefPoint = new n();
   }
-  n.__extends(C2SBuyEventPackageVO, e);
-  C2SBuyEventPackageVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_BUY_EVENTPACKAGE;
+  TouchScrollHelper.prototype.setup = function (e, t = null, i = null) {
+    if (this.disp) {
+      this.dispose();
+    }
+    if (a.currentBrowserInfo.isMobile) {
+      this.disp = e;
+      this.disp.addEventListener(o.MOUSE_DOWN, this.bindFunction(this.onTouchDown));
+      this.disp.addEventListener(o.MOUSE_UP, this.bindFunction(this.onTouchUp));
+      this.onTouchDownCallback = t;
+      this.onTouchUpCallback = i;
+    }
   };
-  return C2SBuyEventPackageVO;
-}(o.BasicCommandVO);
-exports.C2SBuyEventPackageVO = r;
+  TouchScrollHelper.prototype.dispose = function () {
+    if (this.disp) {
+      this.disp.removeEventListener(o.MOUSE_DOWN, this.bindFunction(this.onTouchDown));
+      this.disp.removeEventListener(o.MOUSE_UP, this.bindFunction(this.onTouchUp));
+      this.onTouchDownCallback = null;
+      this.onTouchUpCallback = null;
+    }
+  };
+  Object.defineProperty(TouchScrollHelper.prototype, "valid", {
+    get: function () {
+      return this._valid;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  TouchScrollHelper.prototype.onTouchDown = function (e) {
+    if (a.currentBrowserInfo.isTouchEvent(e)) {
+      this.touchStageRefPoint.x = e.stageX;
+      this.touchStageRefPoint.y = e.stageY;
+      this._valid = true;
+      if (this.onTouchDownCallback) {
+        this.onTouchDownCallback();
+      }
+    }
+  };
+  TouchScrollHelper.prototype.onTouchUp = function (e) {
+    if (a.currentBrowserInfo.isTouchEvent(e)) {
+      this.touchStageRefPoint.x = 0;
+      this.touchStageRefPoint.y = 0;
+      this._valid = false;
+      if (this.onTouchUpCallback) {
+        this.onTouchUpCallback();
+      }
+    }
+  };
+  return TouchScrollHelper;
+}();
+exports.TouchScrollHelper = s;

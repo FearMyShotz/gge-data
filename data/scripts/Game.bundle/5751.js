@@ -1,28 +1,83 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./22.js");
-var o = function () {
-  function ABGAllianceTowerInfoVO() {
-    this.allianceTowerID = 0;
-    this.countVictory = 0;
-    this.level = 0;
-    this.lordID = 0;
-    this.unitCapacity = 0;
-    this.defeatedPVPBasePoints = 0;
-    this.allianceTowerLevelMultiplier = 0;
-    this.addStatuette = 0;
+var n = require("./6.js");
+var o = require("./934.js");
+var a = require("./5.js");
+var s = function () {
+  function ABGAllianceTowerEffectVO(e) {
+    this.currentLevel = 0;
+    this.selectedLevel = 0;
+    this.towerEffectXML = e;
   }
-  ABGAllianceTowerInfoVO.prototype.parseXML = function (e) {
-    this.allianceTowerID = parseInt(n.CastleXMLUtils.getValueOrDefault("allianceTowerID", e, "0"));
-    this.countVictory = parseInt(n.CastleXMLUtils.getValueOrDefault("countVictory", e, "0"));
-    this.level = parseInt(n.CastleXMLUtils.getValueOrDefault("level", e, "0"));
-    this.lordID = parseInt(n.CastleXMLUtils.getValueOrDefault("lordID", e, "0"));
-    this.unitCapacity = parseInt(n.CastleXMLUtils.getValueOrDefault("unitCapacity", e, "0"));
-    this.defeatedPVPBasePoints = parseInt(n.CastleXMLUtils.getValueOrDefault("defeatedPVPBasePoints", e, "0"));
-    this.allianceTowerLevelMultiplier = parseInt(n.CastleXMLUtils.getValueOrDefault("allianceTowerLevelMultiplier", e, "0"));
-    this.addStatuette = parseInt(n.CastleXMLUtils.getValueOrDefault("addStatuette", e, "0"));
+  ABGAllianceTowerEffectVO.prototype.parseServerParams = function (e) {
+    this.currentLevel = n.int(e.L);
+    this.selectedLevel = this.currentLevel;
+    this.currentBonusVO = new o.RawLordEffectBonusVO();
+    this.currentBonusVO.parseFromValueArray(this.towerEffectXML.effectVO, [this.getEffectValueForLevel(this.currentLevel)]);
   };
-  return ABGAllianceTowerInfoVO;
+  ABGAllianceTowerEffectVO.prototype.reset = function () {
+    this.currentLevel = 0;
+    this.selectedLevel = 0;
+    this.currentBonusVO = new o.RawLordEffectBonusVO();
+    this.currentBonusVO.parseFromValueArray(this.towerEffectXML.effectVO, [0]);
+  };
+  ABGAllianceTowerEffectVO.prototype.getBonusVOForLevel = function (e) {
+    var t = new o.RawLordEffectBonusVO();
+    t.parseFromValueArray(this.towerEffectXML.effectVO, [this.getEffectValueForLevel(e)]);
+    return t;
+  };
+  ABGAllianceTowerEffectVO.prototype.getTotalCostForSelectedLevel = function () {
+    return n.int(a.AllianceBattleGroundConst.calculateBuffCosts(this.currentLevel, this.selectedLevel, this.effectBasePrice));
+  };
+  ABGAllianceTowerEffectVO.prototype.getCostForLevel = function (e) {
+    return n.int(a.AllianceBattleGroundConst.calculateBuffCosts(e - 1, e, this.effectBasePrice));
+  };
+  ABGAllianceTowerEffectVO.prototype.getEffectValueForLevel = function (e) {
+    return n.int(n.int(e > 0 ? a.AllianceBattleGroundConst.calculateEffectStrength(e, this.effectStartValue, this.effectIncrease) : 0));
+  };
+  Object.defineProperty(ABGAllianceTowerEffectVO.prototype, "allianceTowerEffectID", {
+    get: function () {
+      return this.towerEffectXML.allianceTowerEffectID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ABGAllianceTowerEffectVO.prototype, "effectID", {
+    get: function () {
+      return this.towerEffectXML.effectID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ABGAllianceTowerEffectVO.prototype, "effectBasePrice", {
+    get: function () {
+      return this.towerEffectXML.effectBasePrice;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ABGAllianceTowerEffectVO.prototype, "effectMaxLevel", {
+    get: function () {
+      return this.towerEffectXML.effectMaxLevel;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ABGAllianceTowerEffectVO.prototype, "effectStartValue", {
+    get: function () {
+      return this.towerEffectXML.effectStartValue;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ABGAllianceTowerEffectVO.prototype, "effectIncrease", {
+    get: function () {
+      return this.towerEffectXML.effectIncrease;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ABGAllianceTowerEffectVO;
 }();
-exports.ABGAllianceTowerInfoVO = o;
+exports.ABGAllianceTowerEffectVO = s;

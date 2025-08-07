@@ -5,51 +5,49 @@ var n = require("./2.js");
 var o = require("./1.js");
 var a = require("./3.js");
 var s = function () {
-  function EffectValueMindClarity() {
-    this._values = [];
+  function EffectValueLongbows() {
+    this._value = 0;
   }
-  EffectValueMindClarity.prototype.parseFromValueString = function (e) {
-    this._values[0] = parseFloat(e);
+  EffectValueLongbows.prototype.parseFromValueString = function (e) {
+    this._value = parseFloat(e);
     return this;
   };
-  EffectValueMindClarity.prototype.parseFromValueArray = function (e) {
-    this._values = e;
+  EffectValueLongbows.prototype.parseFromValueArray = function (e) {
+    this._value = parseFloat(e[0]);
     return this;
   };
-  EffectValueMindClarity.prototype.add = function (e, t) {
-    this._values[0] = t ? Math.min(t[0], this._values[0] + e.rawValues[0]) : this._values[0] + e.rawValues[0];
+  EffectValueLongbows.prototype.add = function (e, t) {
+    this._value = t ? Math.min(t[0], this._value + e.rawValues[0]) : this._value + e.rawValues[0];
     return this;
   };
-  Object.defineProperty(EffectValueMindClarity.prototype, "textReplacements", {
+  Object.defineProperty(EffectValueLongbows.prototype, "textReplacements", {
     get: function () {
-      var e = n.MathBase.round(this._values[0], 1);
-      var t = n.MathBase.round(this._values[1], 1);
-      return [new a.LocalizedNumberVO(e, true, 1), new a.LocalizedNumberVO(n.MathBase.round(t, 1), true, 1)];
+      return [new a.LocalizedNumberVO(n.MathBase.round(Math.abs(this._value), 1), true, 1), new a.LocalizedNumberVO(n.MathBase.round(Math.abs(this._value * 0.1), 1), true, 1)];
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EffectValueMindClarity.prototype, "rawValues", {
+  Object.defineProperty(EffectValueLongbows.prototype, "rawValues", {
     get: function () {
-      return this._values;
+      return [this._value];
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EffectValueMindClarity.prototype, "strength", {
+  Object.defineProperty(EffectValueLongbows.prototype, "strength", {
     get: function () {
-      return this._values[0];
+      return this._value;
     },
     enumerable: true,
     configurable: true
   });
-  EffectValueMindClarity.prototype.clone = function () {
-    return new EffectValueMindClarity().parseFromValueArray(this.rawValues);
+  EffectValueLongbows.prototype.clone = function () {
+    return new EffectValueLongbows().parseFromValueArray(this.rawValues);
   };
-  EffectValueMindClarity.prototype.getContextTextReplacements = function (e) {
+  EffectValueLongbows.prototype.getContextTextReplacements = function (e) {
     return this.textReplacements;
   };
-  return EffectValueMindClarity;
+  return EffectValueLongbows;
 }();
-exports.EffectValueMindClarity = s;
+exports.EffectValueLongbows = s;
 o.classImplementsInterfaces(s, "IEffectValue");

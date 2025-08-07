@@ -2,31 +2,62 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./61.js");
+var o = require("./6.js");
+var a = require("./4.js");
 var s = function (e) {
-  function CollectableItemCrestSymbolVE() {
-    return e !== null && e.apply(this, arguments) || this;
+  function CollectableItemCrestSymbolVO(t = 0) {
+    var i = this;
+    i._id = -1;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this, 1) || this).id = t;
+    return i;
   }
-  n.__extends(CollectableItemCrestSymbolVE, e);
-  CollectableItemCrestSymbolVE.prototype.init = function (t, i) {
-    e.prototype.init.call(this, t, i);
-    this.triggerOnAllIconDispLoadedManually = true;
+  n.__extends(CollectableItemCrestSymbolVO, e);
+  CollectableItemCrestSymbolVO.prototype.parseServerObject = function (t) {
+    e.prototype.parseServerObject.call(this, t);
+    this.id = o.int(t);
   };
-  CollectableItemCrestSymbolVE.prototype.iconCreate = function () {
-    this.dispCreator.addDisp(a.CrestHelper.getCrestSymbolGraphic(this.itemCrestSystemVO.crestSymbolVO, this.options.icon.dimension.x, this.options.icon.dimension.y, false, this.bindFunction(this.onAllDispClipsLoaded)));
+  CollectableItemCrestSymbolVO.prototype.parseXmlObject = function (e) {
+    this.id = o.int(e);
   };
-  CollectableItemCrestSymbolVE.prototype.tooltipCreate = function () {
-    return this.tooltipCreateByAmount(this.itemCrestSystemVO.crestSymbolVO.toolTipText);
+  CollectableItemCrestSymbolVO.prototype.updateCrestSymbolVO = function () {
+    this._crestSymbolVO = a.CastleModel.crestSymbolData.getCrestSymbolVOByID(this._id);
   };
-  Object.defineProperty(CollectableItemCrestSymbolVE.prototype, "itemCrestSystemVO", {
+  CollectableItemCrestSymbolVO.prototype.clone = function () {
+    var t = e.prototype.clone.call(this);
+    t.crestSymbolVO = this.crestSymbolVO;
+    return t;
+  };
+  CollectableItemCrestSymbolVO.prototype.isCombineAbleWith = function (e) {
+    return false;
+  };
+  Object.defineProperty(CollectableItemCrestSymbolVO.prototype, "crestSymbolVO", {
     get: function () {
-      return this.vo;
+      return this._crestSymbolVO;
+    },
+    set: function (e) {
+      this._crestSymbolVO = e;
+      this._id = o.int(this.crestSymbolVO ? this.crestSymbolVO.id : -1);
     },
     enumerable: true,
     configurable: true
   });
-  return CollectableItemCrestSymbolVE;
-}(require("./158.js").ACollectableItemVE);
-exports.CollectableItemCrestSymbolVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  Object.defineProperty(CollectableItemCrestSymbolVO.prototype, "id", {
+    get: function () {
+      return this._id;
+    },
+    set: function (e) {
+      this._id = e;
+      this.updateCrestSymbolVO();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CollectableItemCrestSymbolVO.__initialize_static_members = function () {
+    CollectableItemCrestSymbolVO.SERVER_KEY = "CS";
+    CollectableItemCrestSymbolVO.XML_KEY = "crestSymbolIDs";
+  };
+  return CollectableItemCrestSymbolVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemCrestSymbolVO = s;
+s.__initialize_static_members();

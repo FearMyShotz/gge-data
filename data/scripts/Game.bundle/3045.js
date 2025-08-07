@@ -3,23 +3,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./62.js");
-var s = function (e) {
-  function ImperialCouncilHallBuildingVE() {
+var a = function (e) {
+  function IcepalaceBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ImperialCouncilHallBuildingVE, e);
-  Object.defineProperty(ImperialCouncilHallBuildingVE.prototype, "buildingGroundIconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_UnitToolProductionBoost;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return ImperialCouncilHallBuildingVE;
-}(a.ABasicBuildingVE);
-exports.ImperialCouncilHallBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  n.__extends(IcepalaceBuildingVE, e);
+  return IcepalaceBuildingVE;
+}(require("./647.js").APalaceBuildingVE);
+exports.IcepalaceBuildingVE = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

@@ -11,8 +11,8 @@ var c = require("./84.js");
 var u = require("./13.js");
 var d = require("./4.js");
 var p = require("./174.js");
-var h = require("./955.js");
-var g = require("./956.js");
+var h = require("./956.js");
+var g = require("./957.js");
 var C = createjs.Point;
 var _ = function (e) {
   function SeasonLeagueMainDialogInfo(t) {
@@ -124,16 +124,16 @@ var _ = function (e) {
   return SeasonLeagueMainDialogInfo;
 }(h.AModernInfoCatalogDialogSublayer);
 exports.SeasonLeagueMainDialogInfo = _;
-var m = require("./748.js");
+var m = require("./750.js");
 var f = require("./359.js");
-var O = require("./3421.js");
-var E = require("./3422.js");
-var y = require("./3423.js");
-var b = require("./806.js");
+var O = require("./3422.js");
+var E = require("./3423.js");
+var y = require("./3424.js");
+var b = require("./808.js");
 var D = require("./8.js");
 var I = require("./20.js");
 var T = require("./9.js");
-var v = require("./808.js");
-var S = require("./3542.js");
-var A = require("./1069.js");
+var v = require("./810.js");
+var S = require("./3541.js");
+var A = require("./1070.js");
 o.classImplementsInterfaces(_, "ICollectableRendererList", "ISublayer");

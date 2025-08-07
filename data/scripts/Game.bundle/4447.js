@@ -3,41 +3,74 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./6.js");
-var r = require("./12.js");
-var l = require("./31.js");
-var c = require("./19.js");
-var u = require("./4.js");
-var d = require("./14.js");
-var p = require("./81.js");
-var h = require("./25.js");
-var g = createjs.Point;
-var C = function (e) {
-  function FortuneTellerEventRewardInfoDialogItem() {
-    return e !== null && e.apply(this, arguments) || this;
+var a = require("./5.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./13.js");
+var c = require("./4.js");
+var u = require("./76.js");
+var d = require("./78.js");
+var p = require("./77.js");
+var h = require("./8.js");
+var g = require("./11.js");
+var C = require("./4448.js");
+var _ = function (e) {
+  function FortuneTellerEventRewardInfoDialog() {
+    return e.call(this, FortuneTellerEventRewardInfoDialog.NAME) || this;
   }
-  n.__extends(FortuneTellerEventRewardInfoDialogItem, e);
-  FortuneTellerEventRewardInfoDialogItem.prototype.fill = function () {
-    var e = s.int(this.data);
-    var t = this.getItemMc();
-    var i = u.CastleModel.rewardData.getCopiedListById(e).getItemByIndex(0);
-    t.mc_item.mouseChildren = true;
-    var n = new l.CollectableRenderClips(t.mc_item).addIconMc(t.mc_item.mc_icon);
-    h.CollectableRenderHelper.displaySingleItemComplete(this, n, i, new c.CollectableRenderOptions(c.CollectableRenderOptions.SET_ADVANCED, new g(55, 55)), this.bindFunction(this.preRenderFunc));
-    t.mc_item.mouseChildren = true;
-    d.CastleComponent.textFieldManager.registerTextField(t.txt_name, new a.LocalizedTextVO(i.getNameTextId()));
+  n.__extends(FortuneTellerEventRewardInfoDialog, e);
+  FortuneTellerEventRewardInfoDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    h.ButtonHelper.initButtons([this.dialogDisp.btn_close], f.ClickFeedbackButton);
+    var i = new p.InfiniteScrollListOptions(C.FortuneTellerEventRewardInfoDialogItem, "FortuneTellerEventRewardInfoItem", m.FortuneTellerEventDialog.NAME);
+    i.itemPaddingY = 0;
+    i.useSmoothScroll = true;
+    this._scrollComponent = new d.InfiniteScrollListComponent(new u.InfiniteScrollListClips(this.dialogDisp.mc_items).addMaskMc(this.dialogDisp.mc_items.mc_mask).addSliderMc(this.dialogDisp.mc_items.mc_slider).addItemContainerMc(this.dialogDisp.mc_items.mc_items), i);
   };
-  FortuneTellerEventRewardInfoDialogItem.prototype.preRenderFunc = function (e) {
-    if (e.itemVO) {
-      var t = e.getRenderer(c.CollectableRenderOptions.ICON_TRANSFORM);
-      if (e.itemVO.itemType == r.CollectableEnum.LONG_TERM_POINT_EVENT_BOOSTER) {
-        t.transform.offset.y = -5;
-        t.transform.scale = 0.9;
-      }
+  FortuneTellerEventRewardInfoDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("divination_info_title")));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new r.LocalizedTextVO("divination_info_desc"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_reward, new s.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("reward")));
+    this._scrollComponent.onShow();
+    this._scrollComponent.updateWithNewData(this.getRewardData());
+  };
+  FortuneTellerEventRewardInfoDialog.prototype.hide = function () {
+    this._scrollComponent.onHide();
+    e.prototype.hide.call(this);
+  };
+  Object.defineProperty(FortuneTellerEventRewardInfoDialog.prototype, "canBuyPrize", {
+    get: function () {
+      return this.eventVO.tryCount <= c.CastleModel.fortuneTeller.maxTriesPerDay;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  FortuneTellerEventRewardInfoDialog.prototype.getRewardData = function () {
+    var e = [];
+    for (var t = c.CastleModel.fortuneTeller.getFortuneTellerClassByCount(this.canBuyPrize ? this.eventVO.tryCount : 1).rewardIDs, i = 0; i < t.length; i++) {
+      e.push(t[i]);
+    }
+    return e;
+  };
+  FortuneTellerEventRewardInfoDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
     }
   };
-  return FortuneTellerEventRewardInfoDialogItem;
-}(p.AInfiniteScrollListItem);
-exports.FortuneTellerEventRewardInfoDialogItem = C;
-o.classImplementsInterfaces(C, "ICollectableRendererList");
+  Object.defineProperty(FortuneTellerEventRewardInfoDialog.prototype, "eventVO", {
+    get: function () {
+      return c.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_FORTUNE_TELLER);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  FortuneTellerEventRewardInfoDialog.NAME = "FortuneTellerEventRewardInfo";
+  return FortuneTellerEventRewardInfoDialog;
+}(g.CastleExternalDialog);
+exports.FortuneTellerEventRewardInfoDialog = _;
+var m = require("./1908.js");
+var f = require("./36.js");
+o.classImplementsInterfaces(_, "ICollectableRendererList");

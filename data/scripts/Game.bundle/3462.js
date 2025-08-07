@@ -2,219 +2,217 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function AchievementSerieVO() {
-    this._achievementSeriesID = 0;
-    this._numberOfAchievementsInSeries = 0;
-    this._currentSeriesStep = 0;
-    this._kingdomID = 0;
-    this._isHidden = false;
+  function AchievementVO(e) {
+    this._achievementID = 0;
+    this._achievementSeriesNumber = 0;
+    this._requiredAchievementID = 0;
+    this._achievementPoints = 0;
+    this._unlocksDifficulty = 0;
+    this._achievementFinished = false;
+    this._achievementSerie = e;
   }
-  AchievementSerieVO.prototype.reset = function () {
-    this._currentSeriesStep = 1;
+  AchievementVO.prototype.reset = function () {
+    this._achievementFinished = false;
   };
-  AchievementSerieVO.prototype.fillFromParamXML = function (e) {
-    this._achievementSeriesID = parseInt(e.achievementSeriesID || "");
-    this._numberOfAchievementsInSeries = parseInt(e.numberOfAchievementsInSeries || "");
-    this._category = e.category || "";
-    this._kingdomID = parseInt(e.triggerKingdomID || "");
-    this._isHidden = parseInt(s.CastleXMLUtils.getValueOrDefault("hidden", e, "0")) == 1;
-    this._hideIconText = s.CastleXMLUtils.getBooleanAttribute("hideIconText", e);
-    this._achievements = [];
-    this._currentSeriesStep = 1;
+  AchievementVO.prototype.fillFromParamXML = function (e) {
+    this._achievementID = parseInt(e.achievementID || 0);
+    this._achievementPoints = parseInt(e.achievementPoints || 0);
+    this._requiredAchievementID = parseInt(e.requiredAchievementID || 0);
+    this._achievementSeriesNumber = parseInt(e.achievementSeriesNumber || 0);
+    this._unlocksDifficulty = parseInt(e.unlocksDifficulty || 0);
+    this._rewards = o.CollectableManager.parser.x2cRewards.createList(e);
+    var t = (e.conditions || "").split("#");
+    this._conditions = [];
+    for (var i = 0; i < t.length; ++i) {
+      this._conditions[i] = new l.AchievementConditionVO(t[i]);
+    }
+    this._achievementFinished = false;
   };
-  AchievementSerieVO.prototype.addAchievementVO = function (e) {
-    this._achievements[e.achievementSeriesNumber] = e;
-  };
-  AchievementSerieVO.prototype.setAndCheckNextStep = function (e) {
-    if (e >= this._currentSeriesStep) {
-      this._currentSeriesStep = e + 1;
+  AchievementVO.prototype.setProgress = function (e) {
+    var t = true;
+    for (var i = 0; i < e.length; ++i) {
+      this._conditions[i].currentProgress = e[i] > -1 ? e[i] : this._conditions[i].amount;
+      t = t && this._conditions[i].hasFinished;
+    }
+    this._achievementFinished = t;
+    if (this._achievementFinished) {
+      this._achievementSerie.setAndCheckNextStep(this._achievementSeriesNumber);
     }
   };
-  Object.defineProperty(AchievementSerieVO.prototype, "achievements", {
+  AchievementVO.prototype.setFinished = function () {
+    if (this._conditions != null) {
+      for (var e = 0, t = this._conditions; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          i.currentProgress = i.amount;
+        }
+      }
+    }
+    this._achievementFinished = true;
+    this._achievementSerie.setAndCheckNextStep(this._achievementSeriesNumber);
+  };
+  Object.defineProperty(AchievementVO.prototype, "totalMaxProgress", {
     get: function () {
-      return this._achievements;
+      var e = 0;
+      if (this._conditions != null) {
+        for (var t = 0, i = this._conditions; t < i.length; t++) {
+          var n = i[t];
+          if (n !== undefined) {
+            e += n.amount;
+          }
+        }
+      }
+      return e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AchievementSerieVO.prototype, "nameString", {
+  AchievementVO.prototype.currentProgress = function () {
+    var e = 0;
+    var t = 0;
+    if (this._conditions != null) {
+      for (var i = 0, n = this._conditions; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          e++;
+          t += o.percentFinished();
+        }
+      }
+    }
+    return t / e;
+  };
+  AchievementVO.prototype.currentRelativeProgress = function () {
+    if (this._achievementSerie.achievementSeriesID != a.CastleAchievementData.MAIN_ACHIEVMENT_SERIESID) {
+      return -1;
+    } else {
+      return this.currentRelativeAchievementPoints() / this.requiredRelativeAchievementPoints();
+    }
+  };
+  AchievementVO.prototype.currentRelativeAchievementPoints = function () {
+    return r.CastleModel.castleAchievementData.achievementPoints - this.previosAchievementRequiredPoints();
+  };
+  AchievementVO.prototype.requiredRelativeAchievementPoints = function () {
+    return this._conditions[0].amount - this.previosAchievementRequiredPoints();
+  };
+  AchievementVO.prototype.previosAchievementRequiredPoints = function () {
+    if (this._requiredAchievementID > 0) {
+      return r.CastleModel.castleAchievementData.getAchievementSeriesByID(a.CastleAchievementData.MAIN_ACHIEVMENT_SERIESID).achievements[this._requiredAchievementID]._conditions[0].amount;
+    } else {
+      return 0;
+    }
+  };
+  Object.defineProperty(AchievementVO.prototype, "totalCurrentProgress", {
     get: function () {
-      return a.Localize.text("achievementName_" + this._achievementSeriesID);
+      var e = 0;
+      if (this._conditions != null) {
+        for (var t = 0, i = this._conditions; t < i.length; t++) {
+          var n = i[t];
+          if (n !== undefined) {
+            e += n.currentProgress;
+          }
+        }
+      }
+      return e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AchievementSerieVO.prototype, "category", {
+  Object.defineProperty(AchievementVO.prototype, "achievementID", {
     get: function () {
-      return this._category;
+      return this._achievementID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AchievementSerieVO.prototype, "achievementSeriesID", {
+  Object.defineProperty(AchievementVO.prototype, "achievementPoints", {
     get: function () {
-      return this._achievementSeriesID;
+      return this._achievementPoints;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AchievementSerieVO.prototype, "numberOfAchievementsInSeries", {
+  Object.defineProperty(AchievementVO.prototype, "requiredAchievementID", {
     get: function () {
-      return this._numberOfAchievementsInSeries;
+      return this._requiredAchievementID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AchievementSerieVO.prototype, "kingdomID", {
+  Object.defineProperty(AchievementVO.prototype, "achievementSeriesNumber", {
     get: function () {
-      return this._kingdomID;
+      return this._achievementSeriesNumber;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AchievementSerieVO.prototype, "isSerieFinished", {
+  Object.defineProperty(AchievementVO.prototype, "conditions", {
     get: function () {
-      return this._currentSeriesStep > this._numberOfAchievementsInSeries;
+      return this._conditions;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AchievementSerieVO.prototype, "achievementInProgress", {
+  Object.defineProperty(AchievementVO.prototype, "achievementSerieVO", {
     get: function () {
-      if (this.isSerieFinished) {
-        return this.achievements[this._currentSeriesStep - 1];
-      } else {
-        return this.achievements[this._currentSeriesStep];
+      return this._achievementSerie;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AchievementVO.prototype, "displayDisp", {
+    get: function () {
+      var e = new s.CastleGoodgameExternalClip(this._achievementSerie.displayName, this._achievementSerie.getFilePath(), null, 0, false);
+      e.recycleAsset = false;
+      return e.asDisplayObject();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AchievementVO.prototype, "hasYellowBar", {
+    get: function () {
+      switch (this.conditions[0].type) {
+        case "tools":
+          return false;
+        default:
+          return this.totalMaxProgress > 1 || this.achievementSerieVO.numberOfAchievementsInSeries > 1;
       }
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AchievementSerieVO.prototype, "currentSeriesStep", {
+  Object.defineProperty(AchievementVO.prototype, "hasDifficultyUnlock", {
     get: function () {
-      return this._currentSeriesStep;
+      return this._unlocksDifficulty > 0;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AchievementSerieVO.prototype, "displayName", {
+  Object.defineProperty(AchievementVO.prototype, "unlocksDifficulty", {
     get: function () {
-      return "Achievement_" + this.achievementSeriesID;
+      return this._unlocksDifficulty;
     },
     enumerable: true,
     configurable: true
   });
-  AchievementSerieVO.prototype.getFilePath = function () {
-    return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(this.displayName);
-  };
-  Object.defineProperty(AchievementSerieVO.prototype, "displayDisp", {
+  Object.defineProperty(AchievementVO.prototype, "rewards", {
     get: function () {
-      if (this.achievementClip) {
-        return this.achievementClip;
-      } else {
-        this.achievementClip = new r.CastleGoodgameExternalClip(this.displayName, this.getFilePath(), null, 0, false);
-        this.achievementClip.recycleAsset = false;
-        return this.achievementClip.asDisplayObject();
-      }
+      return this._rewards;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AchievementSerieVO.prototype, "level", {
+  Object.defineProperty(AchievementVO.prototype, "achievementFinished", {
     get: function () {
-      if (this.isSerieFinished) {
-        return this.numberOfAchievementsInSeries;
-      } else {
-        return this.currentSeriesStep;
-      }
+      return this._achievementFinished;
     },
     enumerable: true,
     configurable: true
   });
-  AchievementSerieVO.prototype.getYellowBarString = function (e = -1) {
-    var t = e < 0 ? this.achievementInProgress : this.achievements[e];
-    switch (this.achievementSeriesID) {
-      case 10:
-        return String(l.CastleModel.wodData.getBuildingVOById(parseInt(t.conditions[0].additionalParams[0])).level);
-      case 203:
-      case 204:
-        return String(t.conditions[0].additionalParams[0]);
-      default:
-        return String(t.totalMaxProgress);
-    }
-  };
-  AchievementSerieVO.prototype.useSingularTextID = function () {
-    var e = this.achievementInProgress;
-    if (e.conditions[0] != null && e.conditions[0].amount == 1) {
-      var t = a.Localize.text("achievementDesc_" + this.achievementSeriesID + "_singular");
-      return t.length > 0 && t != "achievementDesc_" + this.achievementSeriesID + "_singular";
-    }
-    return false;
-  };
-  AchievementSerieVO.prototype.generateDescriptionParameter = function () {
-    var e = this.achievementInProgress;
-    switch (this.achievementSeriesID) {
-      case 10:
-        return [l.CastleModel.wodData.getBuildingVOById(parseInt(e.conditions[0].additionalParams[0])).level];
-      case 203:
-      case 204:
-        return [parseInt(e.conditions[0].additionalParams[0])];
-      case 111:
-      case 118:
-      case 119:
-      case 120:
-        return [e.conditions[0].amount, parseInt(e.conditions[0].additionalParams[0])];
-      case 100:
-      case 101:
-      case 102:
-        return [String(e.conditions[0].amount), l.CastleModel.kingdomData.getKingdomVOByID(this.kingdomID).kingdomNameString];
-      case 103:
-      case 104:
-      case 105:
-      case 106:
-        return [a.Localize.text("research_" + l.CastleModel.researchData.researchVOs.get(parseInt(e.conditions[0].additionalParams[0])).groupID + "_title")];
-      case 116:
-      case 117:
-        return [e.conditions[0].amount, a.Localize.text("equipment_rarity_" + l.CastleModel.equipData.getRareStringFromRareID(parseInt(e.conditions[0].additionalParams[0])).toLowerCase())];
-      case 363:
-        var t = l.CastleModel.constructionItemData.getConstructionItemVO(parseInt(e.conditions[0].additionalParams[0]));
-        return [e.conditions[0].amount, a.Localize.text(t.nameTextId), t.level];
-      case 360:
-        return [e.conditions[0].amount, l.CastleModel.wodData.getBuildingVOById(parseInt(e.conditions[0].additionalParams[0].split("|")[0])).level];
-      case 366:
-      case 367:
-      case 368:
-      case 369:
-        return [l.CastleModel.wodData.getUnitVOByWodId(parseInt(e.conditions[0].additionalParams[0])).level];
-      case 370:
-      case 371:
-      case 372:
-      case 373:
-      case 374:
-        return [e.conditions[0].amount, a.Localize.text(l.CastleModel.eventDifficultyScaling.getDifficultyVOByDifficultyID(parseInt(e.conditions[0].additionalParams[0])).name_textID)];
-      default:
-        return [e.conditions[0].amount];
-    }
-  };
-  Object.defineProperty(AchievementSerieVO.prototype, "isHidden", {
-    get: function () {
-      return this._isHidden;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AchievementSerieVO.prototype, "hideIconText", {
-    get: function () {
-      return this._hideIconText;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AchievementSerieVO;
+  return AchievementVO;
 }();
-exports.AchievementSerieVO = n;
-var o = require("./2.js");
-var a = require("./3.js");
-var s = require("./22.js");
-var r = require("./24.js");
-var l = require("./4.js");
+exports.AchievementVO = n;
+var o = require("./50.js");
+var a = require("./813.js");
+var s = require("./24.js");
+var r = require("./4.js");
+var l = require("./3463.js");

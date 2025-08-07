@@ -1,49 +1,59 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./72.js");
-var r = require("./4.js");
-var l = function (e) {
-  function CastleEilandData(t) {
-    var i = e.call(this) || this;
-    i.fillFromParamXML(t);
-    return i;
+var n = require("./6.js");
+var o = function () {
+  function DecoStorageRegularDecoVO() {
+    this._wodId = -1;
+    this._amount = 0;
+    this._newAmount = 0;
+    this._localStorageAmount = 0;
   }
-  n.__extends(CastleEilandData, e);
-  CastleEilandData.prototype.fillFromParamXML = function (e) {
-    this.parseIslandBlueprints(e);
-  };
-  CastleEilandData.prototype.parseIslandBlueprints = function (e) {
-    this.islandBlueprints = new Map();
-    var t = e.isles;
-    if (t != null) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          var s = a.int(o.IsleID || "");
-          this.islandBlueprints.set(s, new c.CastleIsleBlueprintVO(o));
-        }
-      }
+  DecoStorageRegularDecoVO.prototype.parseData = function (e) {
+    var t = e;
+    if (t) {
+      this._wodId = n.int(t[0]);
+      this._amount = n.int(t[1]);
+      this._newAmount = n.int(t[2]);
     }
   };
-  CastleEilandData.prototype.getIsleBlueprint = function (e) {
-    if (o.DictionaryUtil.containsKey(this.islandBlueprints, e)) {
-      return this.islandBlueprints.get(e);
-    } else {
-      return null;
-    }
-  };
-  Object.defineProperty(CastleEilandData.prototype, "kingTitleVO", {
+  Object.defineProperty(DecoStorageRegularDecoVO.prototype, "wodId", {
     get: function () {
-      return r.CastleModel.titleData.islandKingTitle;
+      return this._wodId;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleEilandData;
-}(s.CastleEventDispatcher);
-exports.CastleEilandData = l;
-var c = require("./5626.js");
+  Object.defineProperty(DecoStorageRegularDecoVO.prototype, "amount", {
+    get: function () {
+      return this._amount;
+    },
+    set: function (e) {
+      this._amount = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DecoStorageRegularDecoVO.prototype, "newAmount", {
+    get: function () {
+      return this._newAmount;
+    },
+    set: function (e) {
+      this._newAmount = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(DecoStorageRegularDecoVO.prototype, "localStorageAmount", {
+    get: function () {
+      return this._localStorageAmount;
+    },
+    set: function (e) {
+      this._localStorageAmount = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return DecoStorageRegularDecoVO;
+}();
+exports.DecoStorageRegularDecoVO = o;

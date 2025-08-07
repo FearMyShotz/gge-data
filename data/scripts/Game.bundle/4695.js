@@ -5,40 +5,50 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./7.js");
-var c = require("./10.js");
-var u = function (e) {
-  function AIPCommand() {
+var r = require("./5.js");
+var l = require("./3.js");
+var c = require("./231.js");
+var u = require("./7.js");
+var d = require("./102.js");
+var p = require("./4.js");
+var h = require("./136.js");
+var g = require("./10.js");
+var C = function (e) {
+  function AFOCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AIPCommand, e);
-  Object.defineProperty(AIPCommand.prototype, "cmdId", {
+  n.__extends(AFOCommand, e);
+  Object.defineProperty(AFOCommand.prototype, "cmdId", {
     get: function () {
-      return l.ClientConstSF.S2C_ALLIANCE_INVITE_PLAYER;
+      return u.ClientConstSF.S2C_FOUND_ALLIANCE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(g.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  AIPCommand.prototype.executeCommand = function (e, t) {
+  AFOCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case s.ERROR.ALL_OK:
-        d.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("invitationSent_title"), r.Localize.text("invitationSent_copy")));
+      case r.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        p.CastleModel.allianceData.parseAllianceInfo(i.A);
+        p.CastleModel.userData.parse_GAL(i.gal);
+        this.controller.dispatchEvent(new d.CastleAllianceDataEvent(d.CastleAllianceDataEvent.ALLIANCE_FOUNDED));
+        _.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleAllianceDialog, new h.CastleAllianceDialogProperties(c.ClientConstAlliance.CAT_OVERVIEW));
         break;
-      case s.ERROR.INVALID_PLAYER_ID:
-        d.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_information"), r.Localize.text("player_not_found")));
+      case r.ERROR.TEXT_TOO_SHORT:
+        _.CastleDialogHandler.getInstance().registerDefaultDialogs(f.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(l.Localize.text("generic_alert_watchout"), l.Localize.text("dialog_alliance_alliancenameTooShort", [s.AllianceConst.NAME_MIN_LENGTH])));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return AIPCommand;
-}(c.CastleCommand);
-exports.AIPCommand = u;
-var d = require("./9.js");
-var p = require("./38.js");
-a.classImplementsInterfaces(u, "IExecCommand");
+  return AFOCommand;
+}(g.CastleCommand);
+exports.AFOCommand = C;
+var _ = require("./9.js");
+var m = require("./125.js");
+var f = require("./38.js");
+a.classImplementsInterfaces(C, "IExecCommand");

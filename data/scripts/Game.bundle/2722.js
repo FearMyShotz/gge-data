@@ -2,35 +2,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./1.js");
-var o = require("./1473.js");
-var a = function () {
-  function ResearchTreeConnectionLine(e) {
-    var t = new (n.getDefinitionByName("ResearchTree_ConnectorLine"))();
-    this._disp = t;
-    this._pos = e;
-    this._disp.height = this.orientation == ResearchTreeConnectionLine.ORIENTATION_HORIZONTAL ? o.ResearchTree.ITEMOFFSETX : o.ResearchTree.ITEMOFFSETY;
-    this._disp.rotation = this.orientation == ResearchTreeConnectionLine.ORIENTATION_HORIZONTAL ? 90 : 0;
+var o = function () {
+  function ResearchTreeConnectionDot() {
+    this._connectingLines = [];
+    var e = new (n.getDefinitionByName("ResearchTree_ConnectorDot"))();
+    this._disp = e;
+    this._disp.visible = false;
   }
-  Object.defineProperty(ResearchTreeConnectionLine.prototype, "disp", {
+  ResearchTreeConnectionDot.prototype.addConnectingLine = function (e) {
+    this._connectingLines.push(e);
+    this.validateVisibility();
+  };
+  ResearchTreeConnectionDot.prototype.validateVisibility = function () {
+    var e = this;
+    var t = !this._connectingLines.every(function (t) {
+      return t.orientation == e._connectingLines[0].orientation;
+    });
+    this._disp.visible = t;
+  };
+  Object.defineProperty(ResearchTreeConnectionDot.prototype, "disp", {
     get: function () {
       return this._disp;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ResearchTreeConnectionLine.prototype, "orientation", {
-    get: function () {
-      if (this._pos.x != Math.floor(this._pos.x)) {
-        return ResearchTreeConnectionLine.ORIENTATION_HORIZONTAL;
-      } else {
-        return ResearchTreeConnectionLine.ORIENTATION_VERTICAL;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ResearchTreeConnectionLine.ORIENTATION_VERTICAL = "vertical";
-  ResearchTreeConnectionLine.ORIENTATION_HORIZONTAL = "horizontal";
-  return ResearchTreeConnectionLine;
+  return ResearchTreeConnectionDot;
 }();
-exports.ResearchTreeConnectionLine = a;
+exports.ResearchTreeConnectionDot = o;

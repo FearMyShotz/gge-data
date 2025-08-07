@@ -1,237 +1,84 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./28.js");
-var l = require("./794.js");
-var c = require("./30.js");
-var u = require("./4.js");
-var d = require("./1159.js");
-var p = function (e) {
-  function UnitPackageSlotVO() {
-    var t = this;
-    t._wodId = 0;
-    t._amount = 0;
-    t._remainingTime = 0;
-    t._unitReadyTimeStamp = 0;
-    t._boostAmount = 0;
-    t._helpAmount = 0;
-    t._recruitmentSpeedAtStart = 0;
-    t._recruitmentID = 0;
-    t._isVIP = false;
-    t._productionTime = 0;
-    t._isFree = false;
-    t._isLocked = false;
-    t._sourceRecruitmentID = 0;
-    t._receivedAllianceHelp = false;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var n = function () {
+  function FlankInfoVO(e, t = null, i = false) {
+    this._soldierAmount = 0;
+    this._soldierAmountLost = 0;
+    this._toolsAmountUsed = 0;
+    this.isPreOrPostWave = false;
+    if (t) {
+      this.initAsSummary(t, i);
+    } else {
+      this.initByParams(e);
+    }
   }
-  n.__extends(UnitPackageSlotVO, e);
-  UnitPackageSlotVO.prototype.fillFromParamObject = function (e) {
-    var t = false;
-    if (e && e.ICT) {
-      this._wodId = s.int(e.WID);
-      this._amount = s.int(e.TUA);
-      this._boostAmount = s.int(e.CBS);
-      t = !!e.RAH;
-      this._receivedAllianceHelp = Boolean(t);
-      this._recruitmentID = s.int(e.PID);
-      this._remainingTime = s.int(e.RCT);
-      this._productionTime = s.int(e.ICT);
-      this._sourceRecruitmentID = s.int(e.SPID);
-      this._isFree = false;
-      this._isCurrentlyRecruiting = true;
-    }
-    if (e && e.P) {
-      this._wodId = s.int(e.P.WID);
-      this._amount = s.int(e.P.TUA);
-      this._boostAmount = s.int(e.P.CBS);
-      t = !!e.P.RAH;
-      this._receivedAllianceHelp = Boolean(t);
-      this._recruitmentID = s.int(e.P.PID);
-    }
-    if (e && e.SI) {
-      this._timeTillLocked = this.amount <= 0 ? e.SI.RUT : -1;
-      t = !!e.SI.VIP;
-      this._isVIP = Boolean(t);
-      this._isLocked = this._timeTillLocked == 0;
-      this._isFree = !this._isLocked && this.amount <= 0;
-    }
-    this._unitReadyTimeStamp = c.CachedTimer.getCachedTimer() + this._remainingTime * r.ClientConstTime.SEC_2_MILLISEC;
-    this.setLockTimestamp();
-  };
-  UnitPackageSlotVO.prototype.initProductionSlot = function () {
-    this._timeTillLocked = -1;
-    this._isLocked = false;
-    this._isFree = !this._isLocked;
-    this._isVIP = false;
-  };
-  UnitPackageSlotVO.prototype.fillFromParamArray = function (e) {
-    this._wodId = s.int(e.shift());
-    this._amount = s.int(e.shift());
-    this._remainingTime = s.int(e.shift());
-    this._recruitmentSpeedAtStart = e.shift() / 100;
-    this._boostAmount = s.int(e.shift());
-    this._helpAmount = s.int(e.shift());
-    this._recruitmentID = s.int(e.shift());
-    this._productionTime = s.int(e.shift());
-    this._timeTillLocked = e.shift();
-    var t = s.int(e.shift());
-    this._isVIP = Boolean(t);
-    this._isFree = this._wodId == a.ConstructionConst.SLOTSTATEUNLOCKED;
-    this._isLocked = this._wodId == a.ConstructionConst.SLOTSTATELOCKED;
-    this._unitReadyTimeStamp = c.CachedTimer.getCachedTimer() + this._remainingTime * r.ClientConstTime.SEC_2_MILLISEC;
-    this.setLockTimestamp();
-  };
-  UnitPackageSlotVO.prototype.update = function () {
-    this._castleSlotVOEvent ||= new l.CastleSlotVOEvent(l.CastleSlotVOEvent.SLOT_UPDATE);
-    this.dispatchEvent(this._castleSlotVOEvent);
-  };
-  Object.defineProperty(UnitPackageSlotVO.prototype, "isFree", {
-    get: function () {
-      return this._isFree;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(d.BasicSlotVO.prototype, "isFree").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "isLocked", {
-    get: function () {
-      return this._isLocked;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(d.BasicSlotVO.prototype, "isLocked").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "isVIP", {
-    get: function () {
-      return this._isVIP;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "wodId", {
-    get: function () {
-      return this._wodId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "amount", {
-    get: function () {
-      return this._amount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "unitReadyTimeStamp", {
-    get: function () {
-      return this._unitReadyTimeStamp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "remainingTimeInSeconds", {
-    get: function () {
-      if (this.isCurrentlyRecruiting) {
-        return Math.ceil(this._unitReadyTimeStamp - c.CachedTimer.getCachedTimer()) * r.ClientConstTime.MILLISEC_2_SEC;
-      } else {
-        return this._remainingTime;
+  FlankInfoVO.prototype.initAsSummary = function (e, t) {
+    var i;
+    this._soldierAmount = 0;
+    this._soldierAmountLost = 0;
+    this._toolsAmountUsed = 0;
+    var n = false;
+    if (e != null) {
+      for (var o = 0, a = e; o < a.length; o++) {
+        var s = a[o];
+        if (s !== undefined) {
+          if (s.isPreOrPostWave) {
+            this._soldierAmount = s._soldierAmount;
+            n = true;
+          } else if (!n) {
+            this._soldierAmount += s.soldierAmount;
+            if (t && i) {
+              this._soldierAmount -= i.soldierAmountSurvived;
+            }
+            i = s;
+          }
+          this._soldierAmountLost += s.soldierAmountLost;
+          this._toolsAmountUsed += s.toolsAmountUsed;
+        }
       }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  UnitPackageSlotVO.prototype.isReady = function () {
-    return c.CachedTimer.getCachedTimer() > this._unitReadyTimeStamp;
+    }
   };
-  Object.defineProperty(UnitPackageSlotVO.prototype, "numOfBoost", {
+  FlankInfoVO.prototype.initByParams = function (e) {
+    this._soldierAmount = o.int(e[FlankInfoVO.SOLDIERS_AMOUNT]);
+    this._toolsAmountUsed = o.int(e[FlankInfoVO.TOOLS_USED]);
+    this._soldierAmountLost = o.int(e[FlankInfoVO.SOLDIERS_LOST]);
+  };
+  Object.defineProperty(FlankInfoVO.prototype, "soldierAmount", {
     get: function () {
-      return this._boostAmount;
+      return this._soldierAmount;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "unitReadyInPercent", {
+  Object.defineProperty(FlankInfoVO.prototype, "soldierAmountLost", {
     get: function () {
-      return Math.max(0, Math.min(1, this.remainingTimeInSeconds / this.productionTime));
+      return this._soldierAmountLost;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "productionTime", {
+  Object.defineProperty(FlankInfoVO.prototype, "toolsAmountUsed", {
     get: function () {
-      return this._productionTime;
+      return this._toolsAmountUsed;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "unitVO", {
+  Object.defineProperty(FlankInfoVO.prototype, "soldierAmountSurvived", {
     get: function () {
-      if (this.wodId > 0) {
-        return u.CastleModel.wodData.voSubList(h.CastleWodData.TYPE_UNIT).get(this.wodId);
-      } else {
-        return null;
-      }
+      return this._soldierAmount + this._soldierAmountLost;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "recruitmentID", {
-    get: function () {
-      return this._recruitmentID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "helpAmount", {
-    get: function () {
-      return this._helpAmount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "hasLoopableUnitAmount", {
-    get: function () {
-      return false;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "sourceRecruitmentID", {
-    get: function () {
-      return this._sourceRecruitmentID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "isCurrentlyRecruiting", {
-    get: function () {
-      return this._isCurrentlyRecruiting;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(d.BasicSlotVO.prototype, "isCurrentlyRecruiting").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(UnitPackageSlotVO.prototype, "receivedAllianceHelp", {
-    get: function () {
-      return this._receivedAllianceHelp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return UnitPackageSlotVO;
-}(d.BasicSlotVO);
-exports.UnitPackageSlotVO = p;
-var h = require("./56.js");
-o.classImplementsInterfaces(p, "ISlotVO", "IEventDispatcher");
+  FlankInfoVO.__initialize_static_members = function () {
+    FlankInfoVO.SOLDIERS_AMOUNT = 0;
+    FlankInfoVO.TOOLS_USED = 1;
+    FlankInfoVO.SOLDIERS_LOST = 2;
+  };
+  return FlankInfoVO;
+}();
+exports.FlankInfoVO = n;
+var o = require("./6.js");
+n.__initialize_static_members();

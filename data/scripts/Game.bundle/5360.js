@@ -2,85 +2,60 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./5361.js");
-var r = require("./5362.js");
-var l = require("./5363.js");
-var c = require("./5364.js");
-var u = require("./1403.js");
-var d = require("./5365.js");
-var p = function (e) {
-  function CastleCollectorEventData(t) {
-    var i = e.call(this) || this;
-    i._collectEventInfoVOs = new Map();
-    var n = t.collectorEventOptions;
-    if (n != null) {
-      for (var o = 0, a = n; o < a.length; o++) {
-        var s = a[o];
-        if (s !== undefined) {
-          var r = new d.CollectEventInfoVO(s);
-          i._collectEventInfoVOs.set(r.collectorEventOptionID, r);
-        }
-      }
-    }
-    var l = t.collectorEventRewards;
-    if (l != null) {
-      for (var c = 0, u = l; c < u.length; c++) {
-        var p = u[c];
-        if (p !== undefined) {
-          var g = new h.CollectorEventRewardVO(p);
-          if (i.getCollectInfoVOByID(g.eventOptionID)) {
-            i.getCollectInfoVOByID(g.eventOptionID).addCollectEventRewardVO(g);
-          }
-        }
-      }
-    }
-    return i;
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./5.js");
+var r = require("./6.js");
+var l = function (e) {
+  function CastleConquerInfoVO() {
+    var t = this;
+    t._availableBarons = 0;
+    t._maxBarons = 0;
+    t.isCapital = false;
+    t.isMetropol = false;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleCollectorEventData, e);
-  CastleCollectorEventData.prototype.getCollectInfoVOByID = function (e) {
-    return this._collectEventInfoVOs.get(e);
-  };
-  CastleCollectorEventData.prototype.isCollectorEventCurrency = function (e) {
-    if (this._collectEventInfoVOs != null) {
-      for (var t = 0, i = Array.from(this._collectEventInfoVOs.values()); t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.collectorCurrencyID == e) {
-          return true;
-        }
-      }
+  n.__extends(CastleConquerInfoVO, e);
+  CastleConquerInfoVO.prototype.fillFromParamObject = function (t) {
+    e.prototype.fillFromParamObject.call(this, t);
+    if (t.gaa.AI) {
+      this._targetArea = p.WorldmapObjectFactory.parseWorldMapArea(t.gaa.AI);
+    } else {
+      this._targetArea = this.isCapital ? new c.CapitalMapobjectVO() : this.isMetropol ? new u.MetropolMapobjectVO() : new d.OutpostMapobjectVO();
+      this._targetArea.parseAreaInfo(t.gaa.AI);
     }
-    return false;
+    this._targetArea.keepLevel = Math.max(1, this._targetArea.keepLevel);
+    this._targetArea.gateLevel = Math.max(1, this._targetArea.gateLevel);
+    this._targetArea.wallLevel = Math.max(1, this._targetArea.wallLevel);
+    this._targetArea.towerLevel = Math.max(1, this._targetArea.towerLevel);
+    this._targetOwner = this._targetArea.controllerWorldMapOwnerInfoVO;
+    if (!this.isCapital && !this.isMetropol) {
+      this.parseBarons(t);
+    }
+    this._army.init(this.targetOwnerLevel, true, this._targetArea.areaType == s.WorldConst.AREA_TYPE_FACTION_TOWER || this._targetArea.areaType == s.WorldConst.AREA_TYPE_FACTION_CAPITAL, this._targetArea);
   };
-  CastleCollectorEventData.prototype.getPlayerCollectorAmount = function (e) {
-    o.BasicModel.smartfoxClient.sendCommandVO(new l.C2SGetPlayerCollectorCurrencyVO(e));
+  CastleConquerInfoVO.prototype.addAdditionalWave = function () {
+    this._army.addAdditionalWave(this.targetOwnerLevel, true, this._targetArea);
   };
-  CastleCollectorEventData.prototype.getTempserverCollectorAmount = function (e) {
-    o.BasicModel.smartfoxClient.sendCommandVO(new c.C2SGetPlayerTempServerCollectorCurrencyVO(e));
+  CastleConquerInfoVO.prototype.deductLastWave = function () {
+    this.unitInventory.addAll(this._army.getUnitVectorFromCompleteWave(this.army.getWaveCount() - 1));
+    this._army.deductLastWave();
   };
-  CastleCollectorEventData.prototype.getABGCollectorAmount = function (e) {
-    o.BasicModel.smartfoxClient.sendCommandVO(new r.C2SAllianceBattleGroundGetPlayerInfluenceVO(e));
+  CastleConquerInfoVO.prototype.parseBarons = function (e) {
+    this._availableBarons = r.int(e.AB);
+    this._maxBarons = r.int(e.MB);
   };
-  CastleCollectorEventData.prototype.getABGAllianceCollectorAmount = function (e) {
-    o.BasicModel.smartfoxClient.sendCommandVO(new s.C2SAllianceBattleGroundGetAllianceInfluenceVO(e));
+  CastleConquerInfoVO.prototype.getLowestTravelSpeed = function (t = false, i = null) {
+    var n = 0;
+    n = this.isCapital ? a.TravelConst.CAPITAL_CONQUER_SPEED : this.isMetropol ? a.TravelConst.METROPOL_CONQUER_SPEED : a.TravelConst.BARON_SPEED;
+    return r.int(Math.min(n, e.prototype.getLowestTravelSpeed.call(this, t, i)));
   };
-  CastleCollectorEventData.prototype.parse_PCC = function (e) {
-    var t = a.int(e.PID);
-    this.lastGotAmountForTarget = a.int(e.CCA);
-    this.dispatchEvent(new u.CastleCollectorEventDataEvent(u.CastleCollectorEventDataEvent.COLLECT_CURRENCY_INFO, t, this.lastGotAmountForTarget));
-  };
-  CastleCollectorEventData.prototype.parse_GPIP = function (e) {
-    var t = a.int(e.PID);
-    this.lastGotAmountForTarget = a.int(e.AMT);
-    this.dispatchEvent(new u.CastleCollectorEventDataEvent(u.CastleCollectorEventDataEvent.COLLECT_CURRENCY_INFO, t, this.lastGotAmountForTarget));
-  };
-  CastleCollectorEventData.prototype.parse_GAIP = function (e) {
-    var t = a.int(e.AID);
-    this.lastGotAmountForTarget = a.int(e.AMT);
-    this.dispatchEvent(new u.CastleCollectorEventDataEvent(u.CastleCollectorEventDataEvent.COLLECT_CURRENCY_INFO, t, this.lastGotAmountForTarget));
-  };
-  return CastleCollectorEventData;
-}(createjs.EventDispatcher);
-exports.CastleCollectorEventData = p;
-var h = require("./5366.js");
+  return CastleConquerInfoVO;
+}(require("./830.js").CastleAttackInfoVO);
+exports.CastleConquerInfoVO = l;
+var c = require("./500.js");
+var u = require("./578.js");
+var d = require("./501.js");
+var p = require("./147.js");
+o.classImplementsInterfaces(l, "IFightScreenVO");

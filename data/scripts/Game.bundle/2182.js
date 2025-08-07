@@ -2,18 +2,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./1.js");
-var o = function () {
-  function LordEffectFilterStrategyFullActive() {}
-  LordEffectFilterStrategyFullActive.prototype.isGroupActive = function (e, t) {
+var o = require("./33.js");
+var a = function () {
+  function LordEffectFilterStrategyDefencePVE() {}
+  LordEffectFilterStrategyDefencePVE.prototype.isGroupActive = function (e, t) {
     return true;
   };
-  LordEffectFilterStrategyFullActive.prototype.getExcludedEffectTypes = function () {
-    return [];
+  LordEffectFilterStrategyDefencePVE.prototype.getExcludedEffectTypes = function () {
+    return [o.EffectTypeEnum.EFFECT_TYPE_DEFENSE_UNIT_AMOUNT_WALL_P_V_P];
   };
-  LordEffectFilterStrategyFullActive.prototype.isEffectTypeIncluded = function (e) {
-    return this.getExcludedEffectTypes().indexOf(e.type) === -1;
+  LordEffectFilterStrategyDefencePVE.prototype.isEffectTypeIncluded = function (e) {
+    return this.getExcludedEffectTypes().indexOf(e.type) === -1 && e.effectCategory != 7;
   };
-  return LordEffectFilterStrategyFullActive;
+  return LordEffectFilterStrategyDefencePVE;
 }();
-exports.LordEffectFilterStrategyFullActive = o;
-n.classImplementsInterfaces(o, "ILordEffectFilterStrategy");
+exports.LordEffectFilterStrategyDefencePVE = a;
+n.classImplementsInterfaces(a, "ILordEffectFilterStrategy");

@@ -6,47 +6,47 @@ var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./5.js");
 var r = require("./7.js");
-var l = require("./10.js");
-var c = function (e) {
-  function LRICommand() {
+var l = require("./1576.js");
+var c = require("./15.js");
+var u = require("./10.js");
+var d = function (e) {
+  function DRICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(LRICommand, e);
-  Object.defineProperty(LRICommand.prototype, "cmdId", {
+  n.__extends(DRICommand, e);
+  Object.defineProperty(DRICommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_LOOP_RECRUITMENT_INFO;
+      return r.ClientConstSF.S2C_DUPLICATE_RECRUITMENT_INFO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  LRICommand.prototype.executeCommand = function (e, t) {
+  DRICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        var n = new h.AutoRecruitmentPurchaseDialogProperties(i);
-        u.CastleDialogHandler.getInstance().registerDefaultDialogs(this.getDialogClassByListId(n.listId), n);
+        c.CastleBasicController.getInstance().dispatchEvent(new l.AutoRecruitmentInfoEvent(l.AutoRecruitmentInfoEvent.ON_DUPLICATE_RECRUITMENT_INFO, true, i));
         break;
       default:
         this.showErrorDialog(e, t);
+        c.CastleBasicController.getInstance().dispatchEvent(new l.AutoRecruitmentInfoEvent(l.AutoRecruitmentInfoEvent.ON_DUPLICATE_RECRUITMENT_INFO, false, null));
     }
     return false;
   };
-  LRICommand.prototype.getDialogClassByListId = function (e) {
+  DRICommand.prototype.getDialogClassByListId = function (e) {
     switch (e) {
       case s.UnitProductionConst.TOOLS_LIST:
-        return d.AutoRecruitmentPurchaseToolsDialog;
+        return p.AutoRecruitmentCopyToolsDialog;
       default:
-        return p.AutoRecruitmentPurchaseUnitsDialog;
+        return h.AutoRecruitmentCopyUnitsDialog;
     }
   };
-  return LRICommand;
-}(l.CastleCommand);
-exports.LRICommand = c;
-var u = require("./9.js");
-var d = require("./5023.js");
-var p = require("./5026.js");
-var h = require("./5027.js");
-o.classImplementsInterfaces(c, "IExecCommand");
+  return DRICommand;
+}(u.CastleCommand);
+exports.DRICommand = d;
+var p = require("./1574.js");
+var h = require("./1579.js");
+o.classImplementsInterfaces(d, "IExecCommand");

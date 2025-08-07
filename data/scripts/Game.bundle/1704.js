@@ -1,22 +1,27 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./5.js");
-var o = require("./3539.js");
-var a = function () {
-  function RewardHubTextsFactory() {}
-  RewardHubTextsFactory.createRewardHubItemTextVO = function (e) {
-    var t;
-    switch (e.mainEventID) {
-      case n.EventConst.EVENTTYPE_KINGDOMS_LEAGUE:
-        var i = "event_title_" + e.mainEventID;
-        t = isNaN(e.promotionID) || e.promotionID == 0 ? new o.RewardHubItemTextVO(i, "dialog_rewardHub_eventEndReward") : new o.RewardHubItemTextVO(i, "dialog_rewardHub_promotionReward");
-        break;
-      default:
-        t = new o.RewardHubItemTextVO("event_title_" + e.mainEventID, "dialog_rewardHub_eventEndReward");
-    }
-    return t;
-  };
-  return RewardHubTextsFactory;
-}();
-exports.RewardHubTextsFactory = a;
+var n = require("./0.js");
+var o = function (e) {
+  function ModernGenericRewardDialogProperties(t, i, n, o = null) {
+    var a = e.call(this) || this;
+    a._rewardList = n;
+    a.additionalInfo = o;
+    a.title = t;
+    a.copy = i;
+    return a;
+  }
+  n.__extends(ModernGenericRewardDialogProperties, e);
+  Object.defineProperty(ModernGenericRewardDialogProperties.prototype, "rewardList", {
+    get: function () {
+      return this._rewardList;
+    },
+    set: function (e) {
+      this._rewardList = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ModernGenericRewardDialogProperties;
+}(require("./2.js").BasicProperties);
+exports.ModernGenericRewardDialogProperties = o;

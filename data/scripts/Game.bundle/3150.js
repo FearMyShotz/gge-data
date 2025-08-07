@@ -3,23 +3,31 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./778.js");
-var s = function (e) {
-  function FactionGateGateVE() {
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./39.js");
+var l = function (e) {
+  function RingMenuButtonWishingWell() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FactionGateGateVE, e);
-  Object.defineProperty(FactionGateGateVE.prototype, "isTransparent", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.BasicGateVE.prototype, "isTransparent").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return FactionGateGateVE;
-}(a.BasicGateVE);
-exports.FactionGateGateVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  n.__extends(RingMenuButtonWishingWell, e);
+  RingMenuButtonWishingWell.prototype.init = function (t, i, n) {
+    e.prototype.init.call(this, t, i, n);
+    this._disp = i.btn_wishingWell;
+    this._disp.visible = a.instanceOfClass(n, "RubyWishingWellFixedPositionBuildingVE");
+    this._disp.enableButton = n.buildingVO.level > 0;
+    this._disp.toolTipText = n.buildingVO.level > 0 ? "" : r.ClientConstTextIds.NOT_AVAILABLE;
+  };
+  RingMenuButtonWishingWell.prototype.onClick = function (e, t) {
+    c.CastleDialogHandler.getInstance().registerDefaultDialogs(u.RubyWishingWellDialog);
+    this.parent.hide();
+  };
+  RingMenuButtonWishingWell.prototype.getInfoText = function () {
+    return s.Localize.text("ringmenu_building_rubyWishingWell");
+  };
+  return RingMenuButtonWishingWell;
+}(require("./98.js").ARingMenuButton);
+exports.RingMenuButtonWishingWell = l;
+var c = require("./9.js");
+var u = require("./1607.js");
+o.classImplementsInterfaces(l, "IRingMenuButton");

@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function CDECommand() {
+  function PCCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CDECommand, e);
-  Object.defineProperty(CDECommand.prototype, "cmdId", {
+  n.__extends(PCCCommand, e);
+  Object.defineProperty(PCCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_COLOSSUS_DEPOSIT_RESOURCES;
+      return s.ClientConstSF.S2C_GET_PLAYER_COLLECTOR_CURRENCY;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,21 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  CDECommand.prototype.executeCommand = function (e, t) {
+  PCCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        this.layoutManager.hideDialog(u.CastleColossusDonateDialog);
         var i = JSON.parse(t[1]);
-        r.CastleModel.specialEventData.parse_CHE(i.che);
-        r.CastleModel.areaData.activeArea.updater.parseGRC(i.grc);
+        r.CastleModel.collectEventData.parse_PCC(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return CDECommand;
+  return PCCCommand;
 }(l.CastleCommand);
-exports.CDECommand = c;
-var u = require("./1900.js");
+exports.PCCCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

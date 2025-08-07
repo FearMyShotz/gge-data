@@ -3,94 +3,39 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function BasicBuildList() {
-    var t = this;
-    t._freeSlots = 0;
-    t._useableSlots = 0;
-    t._slotsInUse = 0;
-    t._waitForUpdate = false;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var a = require("./5.js");
+var s = require("./491.js");
+var r = function (e) {
+  function IsoCommandObjectUpdateConstructionItems(t, i) {
+    var n = e.call(this, t) || this;
+    n._vo = i;
+    return n;
   }
-  n.__extends(BasicBuildList, e);
-  BasicBuildList.prototype.parseList = function (e) {};
-  BasicBuildList.prototype.executeUpdate = function (e) {};
-  BasicBuildList.prototype.switchSlots = function (e, t) {
-    var i = this.getSlotByPos(e);
-    var n = this.getSlotByPos(t);
-    i.pos = t;
-    n.pos = e;
-  };
-  BasicBuildList.prototype.getSlotByPos = function (e) {
-    if (this._slots != null) {
-      for (var t = 0, i = this._slots; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.pos == e) {
-          return n;
+  n.__extends(IsoCommandObjectUpdateConstructionItems, e);
+  IsoCommandObjectUpdateConstructionItems.prototype.execute = function () {
+    var e = this.vo;
+    if (e) {
+      var t = e.getConstructionItem(new s.ConstructionItemSlotVO(a.ConstructionItemConst.APPEARANCE_SLOT_TYPE, 0));
+      e.parseConstructionItems(this.isoData.areaData.constructionItems.constructionItemParams);
+      if (t != e.getConstructionItem(new s.ConstructionItemSlotVO(a.ConstructionItemConst.APPEARANCE_SLOT_TYPE, 0))) {
+        e.updateData();
+        this.isoData.grid.updateBuildingPos(e);
+        var i = l.Iso.renderer.objects.provider.getObjectByVO(e);
+        if (i) {
+          i.updateDisp();
         }
       }
     }
-    return null;
   };
-  Object.defineProperty(BasicBuildList.prototype, "slotsArray", {
+  Object.defineProperty(IsoCommandObjectUpdateConstructionItems.prototype, "vo", {
     get: function () {
-      var e = [];
-      if (this._slots != null) {
-        for (var t = 0, i = this._slots; t < i.length; t++) {
-          var n = i[t];
-          if (n !== undefined) {
-            e.push(n);
-          }
-        }
-      }
-      return e;
+      return this._vo;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(BasicBuildList.prototype, "numOfSlots", {
-    get: function () {
-      if (this._slots) {
-        return this._slots.length;
-      } else {
-        return 0;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BasicBuildList.prototype, "useableSlots", {
-    get: function () {
-      return this._useableSlots;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BasicBuildList.prototype, "slotsInUse", {
-    get: function () {
-      return this._slotsInUse;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  BasicBuildList.prototype.hasFreeSlots = function () {
-    return this._freeSlots > 0;
-  };
-  BasicBuildList.prototype.getSlotByArrayPos = function (e) {
-    return this._slots[e];
-  };
-  BasicBuildList.prototype.allSlotsBought = function () {
-    return false;
-  };
-  BasicBuildList.prototype.playerCanBuyNextSlot = function () {
-    return false;
-  };
-  BasicBuildList.prototype.createSlotVO = function () {
-    return null;
-  };
-  BasicBuildList.prototype.getFreshBuildListFromServer = function () {};
-  return BasicBuildList;
-}(require("./54.js").CastleBasicData);
-exports.BasicBuildList = a;
-o.classImplementsInterfaces(a, "IUpdatable");
+  return IsoCommandObjectUpdateConstructionItems;
+}(require("./310.js").AIsoCommandModel);
+exports.IsoCommandObjectUpdateConstructionItems = r;
+var l = require("./34.js");
+o.classImplementsInterfaces(r, "ICollectableRendererList");

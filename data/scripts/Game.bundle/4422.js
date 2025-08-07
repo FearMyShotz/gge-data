@@ -2,66 +2,68 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./13.js");
-var c = require("./4.js");
-var u = require("./9.js");
-var d = require("./1778.js");
-var p = require("./1779.js");
-var h = require("./34.js");
-var g = require("./1780.js");
-var C = require("./1781.js");
-var _ = function (e) {
-  function DonationEventDialogRanking(t) {
-    var i = this;
-    CONSTRUCTOR_HACK;
-    var n = (i = e.call(this, t) || this).textFieldManager.registerTextField(i.subLayerDisp.txt_allianceName, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("dialog_alliance_name_default")));
-    var a = i.textFieldManager.registerTextField(i.subLayerDisp.txt_points, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("dialog_highscore_totalPoints")));
-    i.textFieldManager.registerTextField(i.subLayerDisp.txt_name, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("dialog_highscore_name")));
-    i.textFieldManager.registerTextField(i.subLayerDisp.txt_server, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("ranking_server"))).verticalAlign = o.GGSVerticalAlign.BOTTOM;
-    i.textFieldManager.registerTextField(i.subLayerDisp.mc_list.txt_empty, new r.LocalizedTextVO("dialog_highscore_noRankings"));
-    a.verticalAlign = o.GGSVerticalAlign.BOTTOM;
-    a.autoFitToBounds = true;
-    i.subLayerDisp.icon_rank.toolTipText = "rankingGlobal";
-    i.subLayerDisp.help_allianceName.toolTipText = "tooltip_rankingGlobal_alliance";
-    i.subLayerDisp.help_points.toolTipText = "tooltip_rankingGlobal_points";
-    i.subLayerDisp.help_allianceName.x = n.x + n.textWidth + i.subLayerDisp.help_allianceName.width;
-    i.subLayerDisp.help_points.x = a.x + a.textWidth + i.subLayerDisp.help_points.width;
-    i._leaderBoard = new p.GlobalLeaderBoardComponent(i.subLayerDisp, d.DefaultGlobalLeaderBoardItem, "dialog_highscore_name_alliance_search");
-    i._leaderBoard.init(i.highscoreID);
-    return i;
+var l = require("./3.js");
+var c = require("./13.js");
+var u = require("./4.js");
+var d = require("./9.js");
+var p = require("./17.js");
+var h = require("./20.js");
+var g = require("./8.js");
+var C = require("./11.js");
+var _ = require("./1142.js");
+var m = function (e) {
+  function DonationEventStartDialog() {
+    return e.call(this, DonationEventStartDialog.NAME) || this;
   }
-  n.__extends(DonationEventDialogRanking, e);
-  DonationEventDialogRanking.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this._leaderBoard.onShow();
-    this._leaderBoard.openRewardDialogSignal.add(this.bindFunction(this.showRewards));
+  n.__extends(DonationEventStartDialog, e);
+  DonationEventStartDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this);
+    g.ButtonHelper.initButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close, this.dialogDisp.btn_help], h.ClickFeedbackButtonHover);
+    this.dialogDisp.btn_help.toolTipText = "generic_help";
   };
-  DonationEventDialogRanking.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    if (this._leaderBoard) {
-      this._leaderBoard.onHide();
-      this._leaderBoard.openRewardDialogSignal.removeAll();
+  DonationEventStartDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new l.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_startDonationEvent_title")));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_new.txt_copy, new l.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("new")));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_teaser, new r.LocalizedTextVO("dialog_startDonationEvent_join"));
+    var i = this.getTextIds();
+    for (var n = 0; n < 3; n++) {
+      this.textFieldManager.registerTextField(this.dialogDisp["txt_title" + n], new l.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId(i[n][0])));
+      var o = new s.HTMLTextCustomVO();
+      o.addLocalizedTextVO(new r.LocalizedTextVO(i[n][1]));
+      this.textFieldManager.registerTextField(this.dialogDisp["txt_copy" + n], o);
     }
   };
-  DonationEventDialogRanking.prototype.showRewards = function (e = -1) {
-    u.CastleDialogHandler.getInstance().registerDefaultDialogs(C.GlobalLeaderboardRankingRankingRewardsDialog, new g.DonationRankingRewardsDialogProperties("ranking_description_DonationEvent", this.getRankingRewards()));
+  DonationEventStartDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_help:
+        d.CastleDialogHandler.getInstance().showHelper("", s.Localize.text("dialog_mainDonationEvent_helpPopup"));
+        break;
+      case this.dialogDisp.btn_ok:
+        this.onOK();
+    }
   };
-  DonationEventDialogRanking.prototype.getRankingRewards = function () {
-    var e = c.CastleModel.specialEventData.getActiveEventByEventId(s.EventConst.EVENTTYPE_DONATION);
-    return c.CastleModel.leaderboardRewardsData.getRewardListForDialogList(e.eventId, e.leaderBoardRewardSetID);
+  DonationEventStartDialog.prototype.onOK = function () {
+    var e = u.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_DONATION);
+    if (e && !p.CastleLayoutManager.getInstance().isDialogVisible(_.DonationEventDialog)) {
+      e.openDialog();
+    }
+    this.hide();
   };
-  Object.defineProperty(DonationEventDialogRanking.prototype, "highscoreID", {
-    get: function () {
-      return s.HighscoreConst.DONATION_EVENT;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return DonationEventDialogRanking;
-}(h.CastleDialogSubLayer);
-exports.DonationEventDialogRanking = _;
-a.classImplementsInterfaces(_, "ICollectableRendererList", "ISublayer");
+  DonationEventStartDialog.prototype.getTextIds = function () {
+    return DonationEventStartDialog.TEXT_DEFAULT;
+  };
+  DonationEventStartDialog.TEXT_DEFAULT = [["dialog_startDonationEvent_subtitle1", "dialog_startDonationEvent_desc1"], ["dialog_startDonationEvent_subtitle2", "dialog_startDonationEvent_desc2"], ["rankingGlobal", "dialog_startDonationEvent_desc4"]];
+  DonationEventStartDialog.NAME = "DonationEventStarter1";
+  return DonationEventStartDialog;
+}(C.CastleExternalDialog);
+exports.DonationEventStartDialog = m;
+o.classImplementsInterfaces(m, "ICollectableRendererList");

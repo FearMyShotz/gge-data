@@ -3,15 +3,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleSlotVOEvent(t, i = true, n = false) {
+  function BasicBuildListEvent(t, i = true, n = false) {
     CONSTRUCTOR_HACK;
     return e.call(this, t, i, n) || this;
   }
-  n.__extends(CastleSlotVOEvent, e);
-  CastleSlotVOEvent.__initialize_static_members = function () {
-    CastleSlotVOEvent.SLOT_UPDATE = "slotUpdate";
+  n.__extends(BasicBuildListEvent, e);
+  BasicBuildListEvent.__initialize_static_members = function () {
+    BasicBuildListEvent.SELECTED_ITEM = "selectedItem";
   };
-  return CastleSlotVOEvent;
+  return BasicBuildListEvent;
 }(createjs.Event);
-exports.CastleSlotVOEvent = o;
+exports.BasicBuildListEvent = o;
 o.__initialize_static_members();

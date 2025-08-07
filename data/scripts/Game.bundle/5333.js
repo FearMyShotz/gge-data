@@ -2,89 +2,111 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./1.js");
-var o = require("./1.js");
-var a = require("./60.js");
-var s = require("./341.js");
-var r = require("./4.js");
-var l = require("./295.js");
-var c = require("./226.js");
-var u = function () {
-  function OfferDescriptionVisualOfferDialog() {
-    this._autoShow = false;
-    this.hasShownAutoShowDialog = false;
+var o = require("./60.js");
+var a = require("./227.js");
+var s = require("./5334.js");
+var r = function () {
+  function OfferDescriptionVisualIsoObject() {
+    this._isVisible = false;
+    this._hiddenByABTest = false;
   }
-  Object.defineProperty(OfferDescriptionVisualOfferDialog.prototype, "name", {
+  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "name", {
     get: function () {
-      return a.ClientConstOffer.OFFER_VISUAL_OFFER_DIALOG;
+      return o.ClientConstOffer.OFFER_VISUAL_ISO_OBJECT;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionVisualOfferDialog.prototype.registerVisualParameter = function (e) {
+  OfferDescriptionVisualIsoObject.prototype.registerVisualParameter = function (e) {
     e.addEntry(this.name, this);
   };
-  OfferDescriptionVisualOfferDialog.prototype.parseFromObjectParam = function (e) {
-    if (e.DN) {
-      this._dialogName = e.DN;
+  OfferDescriptionVisualIsoObject.prototype.parseFromObjectParam = function (e) {
+    var t;
+    this._objectType = e.OT;
+    this._objectName = e.ON;
+    this._areaTypes = e.ATS;
+    this._iconForStates = [];
+    if (e.IFS) {
+      for (var i = 0, n = e.IFS; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined && o.OS) {
+          for (var r = 0, l = o.OS; r < l.length; r++) {
+            var c = l[r];
+            if (c !== undefined) {
+              (t = new s.IconStateVO()).iconClassName = o.ICN;
+              t.offerState = a.PrivateOfferStateEnum.getEnumByStateId(c);
+              this._iconForStates.push(t);
+            }
+          }
+        }
+      }
     }
-    if (e.AS != null) {
-      this._autoShow = !!e.AS;
-    } else {
-      this._autoShow = true;
-    }
-    if (e.DC != null) {
-      this._dialogCustomization = e.DC;
-    }
+    this._isVisible = false;
   };
-  OfferDescriptionVisualOfferDialog.prototype.execute = function (e) {
-    if (e.offerState === c.PrivateOfferStateEnum.OFFER_READY && e.hasAutoAccept() && e.getCostsForOfferAcception().length <= 0) {
-      return true;
+  OfferDescriptionVisualIsoObject.prototype.execute = function (e) {
+    this._isVisible = e.offerState === a.PrivateOfferStateEnum.QUEST_STARTED || e.offerState === a.PrivateOfferStateEnum.QUEST_PENDING || e.offerState === a.PrivateOfferStateEnum.OFFER_READY || e.offerState === a.PrivateOfferStateEnum.OFFER_PENDING;
+    if (this._hiddenByABTest) {
+      this._isVisible = false;
     }
-    if (this._autoShow && !this.hasShownAutoShowDialog) {
-      var t = n.castAs(e.getAdditionalComponentByName(a.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE), "OfferDescriptionAdditionalPrimeSale");
-      var i = n.castAs(e.getAdditionalComponentByName(a.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE_UPGRADE), "OfferDescriptionAdditionalPrimeSaleUpgrade");
-      if (t && !t.primeSaleComponent.isAvailableInKingdom() || i && !i.primeSaleComponent.isAvailableInKingdom()) {
-        return false;
-      }
-      if (e.getAdditionalComponentByName(a.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE_SKIP) && !r.CastleModel.skipDiscountData.isBestOfferSoFar(e)) {
-        return true;
-      }
-      var o = new l.PaymentPopupDialogInfoVO(this._dialogName, new s.CastlePrivateOfferDialogProperties(e), e.getPopupType(), true);
-      var u = p.CastlePrivateOfferDialogCreator.getPrivateOfferDialogClass(this._dialogName);
-      if (u) {
-        d.CastleDialogHandler.getInstance().registerDialogsWithType(u, o.properties, o.blockDialogs, o.priority, 0, o.type);
-      }
-      this.hasShownAutoShowDialog = true;
+    if (l.Iso.data) {
+      l.Iso.data.updater.updateEventBuildings();
     }
     return true;
   };
-  OfferDescriptionVisualOfferDialog.prototype.toExecuteInState = function (e) {
-    return e === c.PrivateOfferStateEnum.OFFER_PENDING || e === c.PrivateOfferStateEnum.OFFER_READY;
+  OfferDescriptionVisualIsoObject.prototype.getIconClassNameForOfferState = function (e) {
+    if (this._iconForStates != null) {
+      for (var t = 0, i = this._iconForStates; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined && n.offerState === e) {
+          return n.iconClassName;
+        }
+      }
+    }
+    return null;
   };
-  Object.defineProperty(OfferDescriptionVisualOfferDialog.prototype, "dialogName", {
+  OfferDescriptionVisualIsoObject.prototype.toExecuteInState = function (e) {
+    return true;
+  };
+  OfferDescriptionVisualIsoObject.prototype.isIsoObjectVisibleByArea = function (e) {
+    return !this._areaTypes || this._areaTypes.indexOf(e) > -1;
+  };
+  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "objectType", {
     get: function () {
-      return this._dialogName;
+      return this._objectType;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(OfferDescriptionVisualOfferDialog.prototype, "autoShow", {
+  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "objectName", {
     get: function () {
-      return this._autoShow;
+      return this._objectName;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(OfferDescriptionVisualOfferDialog.prototype, "dialogCustomization", {
+  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "areaTypes", {
     get: function () {
-      return this._dialogCustomization;
+      return this._areaTypes;
     },
     enumerable: true,
     configurable: true
   });
-  return OfferDescriptionVisualOfferDialog;
+  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "isVisible", {
+    get: function () {
+      return this._isVisible;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferDescriptionVisualIsoObject.prototype, "hiddenByABTest", {
+    set: function (e) {
+      this._hiddenByABTest = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return OfferDescriptionVisualIsoObject;
 }();
-exports.OfferDescriptionVisualOfferDialog = u;
-var d = require("./9.js");
-var p = require("./665.js");
-o.classImplementsInterfaces(u, "IOfferDescriptionVisualParameter");
+exports.OfferDescriptionVisualIsoObject = r;
+var l = require("./34.js");
+n.classImplementsInterfaces(r, "IOfferDescriptionVisualParameter");

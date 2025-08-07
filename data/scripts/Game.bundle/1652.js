@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./188.js");
 var s = require("./8.js");
-var r = require("./608.js");
+var r = require("./609.js");
 var l = require("./1371.js");
 var c = function (e) {
   function FactionEventTitlesSublayer(t) {
@@ -42,6 +42,6 @@ var c = function (e) {
   return FactionEventTitlesSublayer;
 }(l.CastleTitleSublayer);
 exports.FactionEventTitlesSublayer = c;
-var u = require("./34.js");
-var d = require("./609.js");
+var u = require("./35.js");
+var d = require("./610.js");
 o.classImplementsInterfaces(c, "ICollectableRendererList", "ISublayer");

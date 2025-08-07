@@ -1,89 +1,75 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./18.js");
-var a = require("./55.js");
-var s = function () {
-  function AFillWaveStrategy() {
-    this.relevantFilteredUnits = [];
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./6.js");
+var s = require("./18.js");
+var r = require("./715.js");
+var l = require("./1239.js");
+var c = function (e) {
+  function StrongestDefenceCounterRatioConsideredFlankStrategy() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  AFillWaveStrategy.prototype.fillYardContainer = function (e, t, i, n) {
-    var a = this.createFilteredInventory(e.unitInventory, t);
-    this.relevantFilteredUnits = this.extractUnitWodIdsFromInventory(a);
-    this.flankFillStrategy.fillFlankWithSoldiers(i, null, n.getDefenderFlankEffects(o.ClientConstCastle.FLANK_YARD), a, t);
-    this.applyInventoryChanges(a, e.unitInventory);
-    return true;
-  };
-  AFillWaveStrategy.prototype.fillWave = function (e, t, i, n, a) {
-    var s = this.createFilteredInventory(e.unitInventory, t);
-    this.relevantFilteredUnits = this.extractUnitWodIdsFromInventory(s);
-    if (!t || !!t.fillLeftFlank) {
-      this.flankFillStrategy.fillToolStrategyPool();
-      this.flankFillStrategy.fillFlankWithTools(i.itemsLeftWall_tools, n.getAttackerFlankEffects(o.ClientConstCastle.FLANK_LEFT), a.getDefenderFlankEffects(o.ClientConstCastle.FLANK_LEFT), s, a.spaceID, a.defenderArea, i);
-      this.flankFillStrategy.fillFlankWithSoldiers(i.itemsLeftWall_units, n.getAttackerFlankEffects(o.ClientConstCastle.FLANK_LEFT), a.getDefenderFlankEffects(o.ClientConstCastle.FLANK_LEFT), s, t);
-      this.flankFillStrategy.checkFlank(i.itemsLeftWall_tools, i.itemsLeftWall_units, s);
+  n.__extends(StrongestDefenceCounterRatioConsideredFlankStrategy, e);
+  StrongestDefenceCounterRatioConsideredFlankStrategy.prototype.pickSoldierStack = function (e, t, i, n, o) {
+    var c = 0;
+    var u = 0;
+    var d = 0;
+    var p = 0;
+    var h = 0;
+    t ||= new l.AttackerFlankEffectVO();
+    var g = i ? i.getMeleeDefenceValue(0, t.defenderRangeReduction) : 0;
+    var C = i ? i.getRangeDefenceValue(t.defenderRangeReduction, 0) : 0;
+    var _ = 1;
+    var m = 1;
+    if (g + C > 0) {
+      _ = g / (g + C);
+      m = C / (g + C);
     }
-    if (!t || !!t.fillRightFlank) {
-      this.flankFillStrategy.fillToolStrategyPool();
-      this.flankFillStrategy.fillFlankWithTools(i.itemsRightWall_tools, n.getAttackerFlankEffects(o.ClientConstCastle.FLANK_RIGHT), a.getDefenderFlankEffects(o.ClientConstCastle.FLANK_RIGHT), s, a.spaceID, a.defenderArea, i);
-      this.flankFillStrategy.fillFlankWithSoldiers(i.itemsRightWall_units, n.getAttackerFlankEffects(o.ClientConstCastle.FLANK_RIGHT), a.getDefenderFlankEffects(o.ClientConstCastle.FLANK_RIGHT), s, t);
-      this.flankFillStrategy.checkFlank(i.itemsRightWall_tools, i.itemsRightWall_units, s);
-    }
-    if (!t || !!t.fillMiddleFlank) {
-      this.flankFillStrategy.fillToolStrategyPool();
-      this.flankFillStrategy.fillFlankWithTools(i.itemsMiddleWall_tools, n.getAttackerFlankEffects(o.ClientConstCastle.FLANK_MIDDLE), a.getDefenderFlankEffects(o.ClientConstCastle.FLANK_MIDDLE), s, a.spaceID, a.defenderArea, i);
-      this.flankFillStrategy.fillFlankWithSoldiers(i.itemsMiddleWall_units, n.getAttackerFlankEffects(o.ClientConstCastle.FLANK_MIDDLE), a.getDefenderFlankEffects(o.ClientConstCastle.FLANK_MIDDLE), s, t);
-      this.flankFillStrategy.checkFlank(i.itemsMiddleWall_tools, i.itemsMiddleWall_units, s);
-    }
-    this.applyInventoryChanges(s, e.unitInventory);
-    return true;
-  };
-  AFillWaveStrategy.prototype.extractUnitWodIdsFromInventory = function (e) {
-    var t = [];
-    for (var i = 0, n = e.getUnits(null); i < n.length; i++) {
-      var o = n[i];
-      t.push(o.wodId);
-    }
-    return t;
-  };
-  AFillWaveStrategy.prototype.applyInventoryChanges = function (e, t) {
-    if (this.relevantFilteredUnits != null) {
-      for (var i = 0, n = this.relevantFilteredUnits; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          var a = e.getUnit(o);
-          var s = t.getUnit(o);
-          if (s) {
-            if (a && a.inventoryAmount > 0) {
-              s.inventoryAmount = a.inventoryAmount;
-            } else {
-              t.removeUnit(o);
+    var f = n.getSoldiers();
+    if (f != null) {
+      for (var O = 0, E = f; O < E.length; O++) {
+        var y = E[O];
+        if (y !== undefined && (y.isOffensive || y.isAllround)) {
+          if (y.healingCostC1 > 0 && !o.isUnitFilterActive(r.AutoFillOptions.UNIT_FILTER_C1)) {
+            continue;
+          }
+          if (y.healingCostC2 > 0 && !o.isUnitFilterActive(r.AutoFillOptions.UNIT_FILTER_C2)) {
+            continue;
+          }
+          if (y.meadSupply > 0 && !o.isUnitFilterActive(r.AutoFillOptions.UNIT_FILTER_MEAD)) {
+            continue;
+          }
+          if (y.beefSupply > 0 && !o.isUnitFilterActive(r.AutoFillOptions.UNIT_FILTER_BEEF)) {
+            continue;
+          }
+          var b = t.getSoldierStackAttackValue(y, e.freeItems);
+          if (y.unitType == s.ClientConstCastle.UNIT_TYPE_SOLDIER_MELEE && o.isUnitFilterActive(r.AutoFillOptions.UNIT_FILTER_MELEE)) {
+            if (b > c) {
+              c = b;
+              d = a.int(y.wodId);
             }
+          } else if (y.unitType == s.ClientConstCastle.UNIT_TYPE_SOLDIER_RANGE && o.isUnitFilterActive(r.AutoFillOptions.UNIT_FILTER_RANGE) && b > u) {
+            u = b;
+            p = a.int(y.wodId);
           }
         }
       }
     }
-  };
-  AFillWaveStrategy.prototype.createFilteredInventory = function (e, t) {
-    var i = new (a.ClientConstUtils.getClassFromObject(e))();
-    var n = e.getUnits(null);
-    if (n != null) {
-      for (var o = 0, s = n; o < s.length; o++) {
-        var r = s[o];
-        if (r !== undefined) {
-          if (!t || r.toolCategory == "" || !!t.isToolFilterActive(r.toolCategory)) {
-            i.addUnitReference(r);
-          }
-        }
-      }
+    if (c + u == 0) {
+      return null;
     }
-    return i;
+    if (c == 0) {
+      h = p;
+    } else if (u == 0) {
+      h = d;
+    } else {
+      h = c * m >= u * _ ? d : p;
+    }
+    return n.deductUnit(h, e.freeItems);
   };
-  AFillWaveStrategy.prototype.loadFlankFillStrategy = function (e) {
-    this.flankFillStrategy = e;
-  };
-  return AFillWaveStrategy;
-}();
-exports.AFillWaveStrategy = s;
-n.classImplementsInterfaces(s, "IFillWaveStrategy");
+  return StrongestDefenceCounterRatioConsideredFlankStrategy;
+}(require("./1794.js").AFillFlankStrategy);
+exports.StrongestDefenceCounterRatioConsideredFlankStrategy = c;
+o.classImplementsInterfaces(c, "IFillFlankStrategy");

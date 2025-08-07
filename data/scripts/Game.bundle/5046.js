@@ -7,13 +7,13 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./10.js");
 var l = function (e) {
-  function SMDCommand() {
+  function KSSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SMDCommand, e);
-  Object.defineProperty(SMDCommand.prototype, "cmdId", {
+  n.__extends(KSSCommand, e);
+  Object.defineProperty(KSSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_MUTE_DIALOGS;
+      return s.ClientConstSF.S2C_SET_SEASON_EVENT_START_SEEN;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -21,15 +21,16 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  SMDCommand.prototype.executeCommand = function (e, t) {
+  KSSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        this.layoutManager.muteDialogs = i.ST;
+        return true;
+      default:
+        this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SMDCommand;
+  return KSSCommand;
 }(r.CastleCommand);
-exports.SMDCommand = l;
+exports.KSSCommand = l;
 o.classImplementsInterfaces(l, "IExecCommand");

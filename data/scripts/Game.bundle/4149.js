@@ -13,5 +13,5 @@ var o = function (e) {
     }
   };
   return DecoColumnAppearanceItem;
-}(require("./1864.js").SeasonAppearanceItem);
+}(require("./1866.js").SeasonAppearanceItem);
 exports.DecoColumnAppearanceItem = o;

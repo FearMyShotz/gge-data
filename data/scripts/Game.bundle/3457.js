@@ -3,21 +3,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleSlotRewardEventDialogProperties(t) {
-    var i = this;
-    i._isToolSlot = false;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this)._isToolSlot = Boolean(t);
+  function CastleTreasureChestOpenDialogProperties(t) {
+    var i = e.call(this) || this;
+    i.rewardList = t;
     return i;
   }
-  n.__extends(CastleSlotRewardEventDialogProperties, e);
-  Object.defineProperty(CastleSlotRewardEventDialogProperties.prototype, "isToolSlot", {
-    get: function () {
-      return this._isToolSlot;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleSlotRewardEventDialogProperties;
+  n.__extends(CastleTreasureChestOpenDialogProperties, e);
+  return CastleTreasureChestOpenDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastleSlotRewardEventDialogProperties = o;
+exports.CastleTreasureChestOpenDialogProperties = o;

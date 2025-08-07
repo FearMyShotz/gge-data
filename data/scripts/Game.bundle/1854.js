@@ -3,69 +3,87 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
+var a = require("./2.js");
 var s = require("./3.js");
-var r = require("./18.js");
-var l = require("./92.js");
-var c = require("./4.js");
-var u = require("./236.js");
-var d = require("./263.js");
-var p = require("./89.js");
-var h = function (e) {
-  function BuildToolsPanelButton() {
-    return e !== null && e.apply(this, arguments) || this;
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./23.js");
+var u = require("./1701.js");
+var d = require("./21.js");
+var p = require("./338.js");
+var h = require("./53.js");
+var g = require("./4.js");
+var C = require("./27.js");
+var _ = function (e) {
+  function ABGAllianceTowerPanel() {
+    return e.call(this, ABGAllianceTowerPanel.NAME) || this;
   }
-  n.__extends(BuildToolsPanelButton, e);
-  BuildToolsPanelButton.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    _.CastleComponent.controller.addEventListener(l.IsoEvent.ON_BUILDING_CONSTRUCTION_DONE, this.bindFunction(this.onBuildingCompleted));
+  n.__extends(ABGAllianceTowerPanel, e);
+  ABGAllianceTowerPanel.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this);
+    g.CastleModel.timerData.addEventListener(d.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTime));
+    this.txt_time0 = this.textFieldManager.registerTextField(this.panelDisp.txt_time0, new r.LocalizedNumberVO(0));
+    this.txt_time1 = this.textFieldManager.registerTextField(this.panelDisp.txt_time1, new s.TextVO(""));
+    this.txt_time2 = this.textFieldManager.registerTextField(this.panelDisp.txt_time2, new s.TextVO(""));
+    this.panelDisp.mc_tt_time0.mouseChildren = false;
+    this.panelDisp.mc_tt_time0.toolTipText = "currency_name_AllianceStatuette";
+    this.panelDisp.mc_tt_time1.toolTipText = "dialog_remainingTime_AllianceTower_towerReassignment_tooltip";
+    this.panelDisp.mc_tt_time1.mouseChildren = false;
+    this.panelDisp.mc_tt_time2.toolTipText = "dialog_remainingTime_AllianceTower_playerRevive_tooltip";
+    this.panelDisp.mc_tt_time2.mouseChildren = false;
+    this.controller.addEventListener(p.CastlePanelEvent.RESOURCE_PANEL_SHOW_SPECIAL_RESOURCES, this.bindFunction(this.onShowSpecialResources));
+    this.controller.addEventListener(p.CastlePanelEvent.RESOURCE_PANEL_HIDE_SPECIAL_RESOURCES, this.bindFunction(this.onHideSpecialResources));
+    this.onHideSpecialResources();
+    a.BasicModel.smartfoxClient.sendCommandVO(new u.C2SAllianceBattleGroundGetTimersVO());
   };
-  BuildToolsPanelButton.prototype.removeEventListener = function () {
-    _.CastleComponent.controller.removeEventListener(l.IsoEvent.ON_BUILDING_CONSTRUCTION_DONE, this.bindFunction(this.onBuildingCompleted));
-    e.prototype.removeEventListener.call(this);
+  ABGAllianceTowerPanel.prototype.onHideSpecialResources = function (e = null) {
+    c.TweenLite.to(this.panelDisp, 0.3, {
+      autoAlpha: 1,
+      delay: 0.3
+    });
   };
-  Object.defineProperty(BuildToolsPanelButton.prototype, "iconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements.Btn_BuildTools;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(p.APanelButton.prototype, "iconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  BuildToolsPanelButton.prototype.isButtonEnabled = function () {
-    return _.CastleComponent.layoutManager.isInMyCastle && (C.Iso.data.objects.provider.hasFunctionalBuildingByType(g.IsoObjectEnum.WORKSHOP) || C.Iso.data.objects.provider.hasFunctionalBuildingByType(g.IsoObjectEnum.D_WORKSHOP));
+  ABGAllianceTowerPanel.prototype.onShowSpecialResources = function (e) {
+    c.TweenLite.to(this.panelDisp, 0, {
+      autoAlpha: 0,
+      delay: 0
+    });
   };
-  BuildToolsPanelButton.prototype.isButtonVisible = function () {
-    return c.CastleModel.kingdomData.activeKingdomID != a.FactionConst.KINGDOM_ID;
+  ABGAllianceTowerPanel.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this);
+    g.CastleModel.timerData.removeEventListener(d.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTime));
+    this.controller.removeEventListener(p.CastlePanelEvent.RESOURCE_PANEL_SHOW_SPECIAL_RESOURCES, this.bindFunction(this.onShowSpecialResources));
+    this.controller.removeEventListener(p.CastlePanelEvent.RESOURCE_PANEL_HIDE_SPECIAL_RESOURCES, this.bindFunction(this.onHideSpecialResources));
   };
-  BuildToolsPanelButton.prototype.getButtonTooltip = function () {
-    if (this.isButtonEnabled()) {
-      return "panel_action_buildTools";
+  ABGAllianceTowerPanel.prototype.onMouseOver = function (t) {
+    e.prototype.onMouseOver.call(this, t);
+  };
+  ABGAllianceTowerPanel.prototype.updateTime = function (e = null) {
+    if (h.ABGHelper.abgEvent) {
+      var t = l.int(h.ABGHelper.abgEvent.settingVO.allianceCurrencyID);
+      var i = g.CastleModel.allianceData.myAllianceVO.storage.getItemByTypeVO(new f.CollectableTypeVO(m.CollectableEnum.GENERIC_CURRENCY, t));
+      this.txt_time0.textContentVO.numberValue = i ? i.amount : 0;
+      this.txt_time1.textContentVO.stringValue = C.CastleTimeStringHelper.getShortTimeString(g.CastleModel.allianceBattlegroundData.remainingSecondsTillRelink);
+      this.txt_time2.textContentVO.stringValue = C.CastleTimeStringHelper.getShortTimeString(g.CastleModel.allianceBattlegroundData.remainingSecondsTillRevive);
     } else {
-      return "alert_never_available";
+      this.hide();
     }
   };
-  BuildToolsPanelButton.prototype.onButtonClicked = function () {
-    if (c.CastleModel.militaryData.isBuildingCategoryAllowed(r.ClientConstCastle.UNIT_BUILDINGTYPE_DWORKSHOP) || c.CastleModel.militaryData.isBuildingCategoryAllowed(r.ClientConstCastle.UNIT_BUILDINGTYPE_WORKSHOP)) {
-      _.CastleComponent.dialogHandler.registerDefaultDialogs(f.CastleRecruitDialog, new d.CastleRecruitDialogProperties(r.ClientConstCastle.UNIT_CATEGORY_TOOLS));
-    } else {
-      _.CastleComponent.dialogHandler.registerDefaultDialogs(m.CastleCharacterYesNoOKDialog, new u.CastleCharacterYesNoOKDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("alert_noWorkshop_copy"), 4, null, null, false));
+  ABGAllianceTowerPanel.prototype.updatePosition = function () {
+    if (this.externalClip && this.externalClip.stage) {
+      var e = 30;
+      var t = l.int(this.externalClip.stage.stageWidth / 2);
+      if (this.layoutManager.isOnMap) {
+        e -= 10;
+        t += 40;
+      }
+      this.externalClip.y = e;
+      this.externalClip.x = t;
     }
   };
-  BuildToolsPanelButton.prototype.onBuildingCompleted = function (e) {
-    var t = e.params[0];
-    if (t.objectType == g.IsoObjectEnum.WORKSHOP || t.objectType == g.IsoObjectEnum.D_WORKSHOP) {
-      this.update();
-    }
-  };
-  return BuildToolsPanelButton;
-}(p.APanelButton);
-exports.BuildToolsPanelButton = h;
-var g = require("./80.js");
-var C = require("./33.js");
-var _ = require("./14.js");
-var m = require("./238.js");
-var f = require("./224.js");
-o.classImplementsInterfaces(h, "ICollectableRendererList");
+  ABGAllianceTowerPanel.NAME = "ABGPanelAllianceTower";
+  return ABGAllianceTowerPanel;
+}(require("./845.js").CastleExternalPanel);
+exports.ABGAllianceTowerPanel = _;
+var m = require("./12.js");
+var f = require("./74.js");
+o.classImplementsInterfaces(_, "ICollectableRendererList");

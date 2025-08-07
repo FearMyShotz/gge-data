@@ -2,57 +2,70 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./90.js");
-var s = require("./64.js");
-var r = require("./124.js");
-var l = createjs.Container;
-var c = function (e) {
-  function WolfkingCastleMapobject() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./90.js");
+var c = require("./64.js");
+var u = require("./124.js");
+var d = createjs.Container;
+var p = function (e) {
+  function SamuraiCampMapobject() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(WolfkingCastleMapobject, e);
-  WolfkingCastleMapobject.prototype.initVisualRep = function () {
+  n.__extends(SamuraiCampMapobject, e);
+  SamuraiCampMapobject.prototype.initVisualRep = function () {
     if (!this.disp) {
-      this.disp = new l();
-      this.mapobjectVO.addEventListener(s.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
+      this.disp = new d();
+      this.mapobjectVO.addEventListener(c.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
     }
-    this.drawWolfkingCastle();
+    this.drawSamurai();
   };
-  WolfkingCastleMapobject.prototype.drawWolfkingCastle = function () {
+  SamuraiCampMapobject.prototype.drawSamurai = function () {
     this.clearObjectContainer();
     if (this.mapobjectVO.isVisibleOnMap) {
-      this.objectContainer = this.wolfkingCastleMapobjectVO.getDisplayObjectClipContainer(false, null, false);
-      if (this.wolfkingCastleMapobjectVO.isDefeated) {
+      this.objectContainer = this.samuraiMapObjectVO.getDisplayObjectClipContainer(false, null, false);
+      if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0) {
         this.showFlames();
       }
       this.addObjectContainer();
       this.addMouseListener();
     }
   };
-  WolfkingCastleMapobject.prototype.showRingMenu = function () {
-    this.worldmapRenderer.dispatchEvent(new a.CastleWorldmapEvent(a.CastleWorldmapEvent.SHOW_MENU, [this, a.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
+  SamuraiCampMapobject.prototype.showRingMenu = function () {
+    this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.SHOW_MENU, [this, l.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
   };
-  WolfkingCastleMapobject.prototype.onRollOver = function (t) {
+  SamuraiCampMapobject.prototype.onRollOver = function (t) {
     if (!this.worldmapRenderer.camera.isWorldDragging) {
       if (!this.hasRingMenu) {
-        this.worldmapRenderer.dispatchEvent(new a.CastleWorldmapEvent(a.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
+        this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
       }
       e.prototype.onRollOver.call(this, t);
     }
   };
-  WolfkingCastleMapobject.prototype.onRollOut = function (t) {
-    this.worldmapRenderer.dispatchEvent(new a.CastleWorldmapEvent(a.CastleWorldmapEvent.INFOTOOLTIP, [false]));
+  SamuraiCampMapobject.prototype.onRollOut = function (t) {
+    this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.INFOTOOLTIP, [false]));
     e.prototype.onRollOut.call(this, t);
   };
-  Object.defineProperty(WolfkingCastleMapobject.prototype, "wolfkingCastleMapobjectVO", {
+  Object.defineProperty(SamuraiCampMapobject.prototype, "samuraiMapObjectVO", {
     get: function () {
       return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  return WolfkingCastleMapobject;
-}(r.InteractiveMapobject);
-exports.WolfkingCastleMapobject = c;
-o.classImplementsInterfaces(c, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+  Object.defineProperty(SamuraiCampMapobject.prototype, "line2Content", {
+    get: function () {
+      return new r.LocalizedTextVO(o.GenericTextIds.VALUE_ASSIGN_COLON, [s.Localize.text("level"), this.samuraiMapObjectVO.dungeonLevel]);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return SamuraiCampMapobject;
+}(u.InteractiveMapobject);
+exports.SamuraiCampMapobject = p;
+a.classImplementsInterfaces(p, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");

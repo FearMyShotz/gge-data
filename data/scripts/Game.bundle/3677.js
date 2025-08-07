@@ -4,16 +4,15 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
-var s = require("./469.js");
+var s = require("./470.js");
 var r = function (e) {
-  function CastleOverseerTipDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleOverseerTipDialog.NAME) || this;
+  function CastleProductivityTipDialog() {
+    return e.call(this, CastleProductivityTipDialog.NAME) || this;
   }
-  n.__extends(CastleOverseerTipDialog, e);
-  Object.defineProperty(CastleOverseerTipDialog.prototype, "tipPicClassName", {
+  n.__extends(CastleProductivityTipDialog, e);
+  Object.defineProperty(CastleProductivityTipDialog.prototype, "tipPicClassName", {
     get: function () {
-      return "OverseerTip";
+      return "ProductivityTip";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastleBasicTipDialog.prototype, "tipPicClassName").set.call(this, e);
@@ -21,24 +20,24 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastleOverseerTipDialog.prototype.initLoaded = function (t = null) {
+  CastleProductivityTipDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
     this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok]);
     this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_tip_title"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("tip_overseer"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("tip_productivity"));
   };
-  CastleOverseerTipDialog.prototype.onClick = function (e) {
+  CastleProductivityTipDialog.prototype.onClick = function (e) {
     switch (e.target) {
       case this.dialogDisp.btn_close:
       case this.dialogDisp.btn_ok:
         this.hide();
     }
   };
-  CastleOverseerTipDialog.__initialize_static_members = function () {
-    CastleOverseerTipDialog.NAME = "CastleOverseerTipEx";
+  CastleProductivityTipDialog.__initialize_static_members = function () {
+    CastleProductivityTipDialog.NAME = "CastleProductivityTipEx";
   };
-  return CastleOverseerTipDialog;
+  return CastleProductivityTipDialog;
 }(s.CastleBasicTipDialog);
-exports.CastleOverseerTipDialog = r;
-r.__initialize_static_members();
+exports.CastleProductivityTipDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
+r.__initialize_static_members();

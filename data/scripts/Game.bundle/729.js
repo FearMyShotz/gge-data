@@ -1,37 +1,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./6.js");
-var o = function () {
-  function LordFactory() {}
-  LordFactory.createLord = function (e, t = false, i = false) {
-    if (!e) {
-      return null;
-    }
-    var o;
-    var c = n.int(e.DLID || e.ID);
-    if (c < 0) {
-      if (o = i ? r.CastleModel.lordData.getDefaultLordWithoutEquipmentByID(c) : r.CastleModel.lordData.getDefaultLordByID(c)) {
-        o.parseLord(e, true, i);
-        return o;
-      } else {
-        return null;
-      }
-    }
-    switch (e.WID) {
-      case l.EquipmentConst.COMMANDER_WEARER_ID:
-        o = new s.CommanderVO();
-        break;
-      case l.EquipmentConst.BARON_WEARER_ID:
-        o = new a.BaronVO();
-    }
-    o.parseLord(e, t, i);
-    return o;
+var n = function () {
+  function ClientConstURL() {}
+  ClientConstURL.__initialize_static_members = function () {
+    ClientConstURL.FORUM_ID_UPDATES = 62;
+    ClientConstURL.FORUM_ID_ANNOUNCEMENT = "55";
+    ClientConstURL.FORUM_ID_WIKI = "90";
+    ClientConstURL.URL_WIKI_DE = "https://de.board.goodgamestudios.com/empire/showthread.php?13-EMPIRE-WIKI-Inhaltsverzeichnis&p=68&viewfull=1#post68";
+    ClientConstURL.URL_EMPIRE_FORUMS = "https://community.goodgamestudios.com/empire/";
+    ClientConstURL.URL_OFICIAL_EMPIRE_FACEBOOK_PAGE = "https://www.facebook.com/GoodgameEmpire/";
   };
-  return LordFactory;
+  return ClientConstURL;
 }();
-exports.LordFactory = o;
-var a = require("./1321.js");
-var s = require("./1322.js");
-var r = require("./4.js");
-var l = require("./5.js");
+exports.ClientConstURL = n;
+n.__initialize_static_members();

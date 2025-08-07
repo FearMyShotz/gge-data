@@ -2,29 +2,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function SubscriptionDialogProperties(t = "", i = null) {
-    var n = e.call(this) || this;
-    n._preselectedTab = "";
-    n._preselectedTab = t;
-    n._infoTabTopic = i;
-    return n;
+var o = require("./1.js");
+var a = function (e) {
+  function ACastleAllianceDialogTreasurySublayer(t) {
+    var i = e.call(this, t) || this;
+    i.init();
+    return i;
   }
-  n.__extends(SubscriptionDialogProperties, e);
-  Object.defineProperty(SubscriptionDialogProperties.prototype, "preselectedTab", {
-    get: function () {
-      return this._preselectedTab;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SubscriptionDialogProperties.prototype, "infoTabTopic", {
-    get: function () {
-      return this._infoTabTopic;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return SubscriptionDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.SubscriptionDialogProperties = o;
+  n.__extends(ACastleAllianceDialogTreasurySublayer, e);
+  ACastleAllianceDialogTreasurySublayer.prototype.init = function () {};
+  ACastleAllianceDialogTreasurySublayer.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    this.disp.visible = true;
+    this.update();
+  };
+  ACastleAllianceDialogTreasurySublayer.prototype.onHide = function () {
+    this.disp.visible = false;
+    e.prototype.onHide.call(this);
+  };
+  ACastleAllianceDialogTreasurySublayer.prototype.update = function () {};
+  return ACastleAllianceDialogTreasurySublayer;
+}(require("./40.js").CastleItemRenderer);
+exports.ACastleAllianceDialogTreasurySublayer = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList");

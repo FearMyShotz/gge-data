@@ -10,9 +10,9 @@ var l = require("./3.js");
 var c = require("./3.js");
 var u = require("./6.js");
 var d = require("./4.js");
-var p = require("./34.js");
+var p = require("./35.js");
 var h = createjs.MouseEvent;
-var g = require("./696.js");
+var g = require("./698.js");
 var C = function (e) {
   function CastleAchievementDialogCategoryList(t) {
     var i = this;

@@ -1,57 +1,44 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
-var o = require("./3.js");
-var a = require("./16.js");
-var s = require("./4.js");
-var r = require("./1146.js");
-var l = require("./1914.js");
-var c = function () {
-  function CastleLuckyWheelSpinComponent(e, t) {
-    this._eventID = 0;
-    this.disp = e;
-    this._eventID = t;
-    this._spinButton = new l.CastleLuckyWheelSpinButton(e.btn_spin, t);
-    this._autoPlayButton = new r.CastleLuckyWheelCheckboxWrapper(e.checkbox_autospin, "mc_box", "dialog_luckyWheel_fastSpinBox_checked", "dialog_luckyWheel_fastStopBox_empty");
-    e.checkbox_autospin.mc_spin.mouseChildren = false;
-    e.checkbox_autospin.mc_spin.toolTipText = "dialog_luckyWheel_fastSpinIcon";
-    e.box_ticketCount.toolTipText = "tooltip_tickets";
-    e.box_ticketCount.mouseChildren = false;
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./6.js");
+var s = function (e) {
+  function CastleLuckyWheelScoreBar(t, i, n) {
+    var o = e.call(this, t, i) || this;
+    o._eventVO = n;
+    return o;
   }
-  CastleLuckyWheelSpinComponent.prototype.updateTicketCount = function (e) {
-    var t = s.CastleModel.specialEventData.getActiveEventByEventId(this._eventID);
-    if (this._itxt_TicketCount) {
-      this._itxt_TicketCount.textContentVO.textReplacements = [e];
-    } else {
-      this._itxt_TicketCount = n.GoodgameTextFieldManager.getInstance().registerTextField(this.disp.box_ticketCount.txt_amt, new o.LocalizedTextVO("generic_amount_times", [e]));
-    }
-    if (e > s.CastleModel.currencyData.getAmountById(t.currencyID)) {
-      this._itxt_TicketCount.color = a.ClientConstColor.GENERIC_RED;
-    } else {
-      this._itxt_TicketCount.color = a.ClientConstColor.GENERIC_BLACK;
+  n.__extends(CastleLuckyWheelScoreBar, e);
+  CastleLuckyWheelScoreBar.prototype.updateThresholdRewards = function () {
+    var e = 0;
+    for (var t = 0; t < this.numThresholdRewards; t++) {
+      e = t == 0 ? 1 : a.int(this.luckyWheelData.pointThresholds[t - 1]);
+      this.updateReward(t, this.luckyThresholdProgress(this.luckyWheelData.pointThresholds[t], this.luckyWheelData.currentWinClass, this.luckyWheelData.winClassProgress, e));
     }
   };
-  Object.defineProperty(CastleLuckyWheelSpinComponent.prototype, "spinButton", {
+  CastleLuckyWheelScoreBar.prototype.luckyThresholdProgress = function (e, t, i, n) {
+    var o = 0;
+    if (t == e || t > e) {
+      return 1;
+    }
+    if (t < n) {
+      return 0;
+    }
+    var a = 1 / (e - n);
+    o = (t - n) * a;
+    o += i / this.luckyWheelData.getNeededSpinsForClass(t) * a;
+    return o = Math.min(1, o);
+  };
+  Object.defineProperty(CastleLuckyWheelScoreBar.prototype, "luckyWheelData", {
     get: function () {
-      return this._spinButton;
+      return this._eventVO.luckyWheelData;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleLuckyWheelSpinComponent.prototype, "isAutoSpin", {
-    get: function () {
-      return this._autoPlayButton.isEnabled;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleLuckyWheelSpinComponent.prototype.addEventListenerOnShow = function () {
-    this._autoPlayButton.addEventListenerOnShow();
-  };
-  CastleLuckyWheelSpinComponent.prototype.removeEventListenersOnHide = function () {
-    this._autoPlayButton.removeEventListenersOnHide();
-  };
-  return CastleLuckyWheelSpinComponent;
-}();
-exports.CastleLuckyWheelSpinComponent = c;
+  return CastleLuckyWheelScoreBar;
+}(require("./331.js").CastleScoreBarComponent);
+exports.CastleLuckyWheelScoreBar = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");

@@ -3,66 +3,64 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./6.js");
-var l = require("./18.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./1.js");
+var l = require("./5.js");
 var c = require("./7.js");
-var u = require("./678.js");
-var d = require("./4.js");
-var p = require("./5218.js");
-var h = require("./5219.js");
-var g = require("./10.js");
-var C = function (e) {
-  function FWDCommand() {
+var u = require("./10.js");
+var d = require("./661.js");
+var p = require("./660.js");
+var h = function (e) {
+  function UPTCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FWDCommand, e);
-  Object.defineProperty(FWDCommand.prototype, "cmdId", {
+  n.__extends(UPTCommand, e);
+  Object.defineProperty(UPTCommand.prototype, "cmdId", {
     get: function () {
-      return c.ClientConstSF.S2C_SHOW_WELCOMEDATA;
+      return c.ClientConstSF.S2C_GET_UNSENT_PRICE_TRACKING;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(g.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  FWDCommand.prototype.executeCommand = function (e, t) {
+  UPTCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case s.ERROR.ALL_OK:
-        if (l.ClientConstCastle.WELCOME_FEATURE_ENABLED) {
-          var i = JSON.parse(t[1]).FLT;
-          i.sortOn("FTS", Array.NUMERIC | Array.DESCENDING);
-          var n = [];
-          if (i != null) {
-            for (var a = 0, c = i; a < c.length; a++) {
-              var g = c[a];
-              if (g !== undefined) {
-                var C = new p.TeaserVO();
-                C.fillFromParamObject(g);
-                n.push(C);
-              }
-            }
-          }
-          var f = r.int(n[0].id);
-          var O = r.int(d.CastleModel.settingsData.homeScreenID);
-          if ((f != O && O != -1 || d.CastleModel.settingsData.isHomeScreenVisible) && d.CastleModel.tutorialData.isTutorialFinished() && !this.env.isOnSpecialServer) {
-            _.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleWelcomeDialog, new h.CastleWelcomeDialogProperties(n), true, o.BasicDialogHandler.PRIORITY_TOP);
-            d.CastleModel.settingsData.isHomeScreenVisible = true;
-          }
-          d.CastleModel.settingsData.homeScreenID = f;
-          this.controller.dispatchEvent(new u.CastleLoginEvent(u.CastleLoginEvent.LOGIN_PROCESS_COMPLETE));
-        }
+      case l.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        this.trackEvent("purchase", i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return FWDCommand;
-}(g.CastleCommand);
-exports.FWDCommand = C;
-var _ = require("./9.js");
-var m = require("./5220.js");
-a.classImplementsInterfaces(C, "IExecCommand");
+  UPTCommand.prototype.trackEvent = function (e, t) {
+    var i = t.PD;
+    if (i && i != null) {
+      for (var n = 0, r = i; n < r.length; n++) {
+        var l = r[n];
+        if (l !== undefined) {
+          var c = l[0] / 100;
+          var u = l[1];
+          var h = {
+            userid: a.EnvGlobalsHandler.globals.gameId + "-" + a.EnvGlobalsHandler.globals.networkId + "-" + o.BasicModel.instanceProxy.selectedInstanceVO.instanceId + "-" + o.BasicModel.userData.playerID,
+            value: c,
+            currency: u
+          };
+          if (s.ExternalInterface.available) {
+            s.ExternalInterface.call("ggsTrackEvent", e, h);
+            var g = new d.GameSightPayloadVO(p.GamesightEventConstants.PURCHASE);
+            g.additionalInfo = h;
+            o.CommandController.instance.executeCommand(o.BasicController.GAMESIGHT_CALL_GGS_TRACK_EVENT, g);
+          }
+        }
+      }
+    }
+  };
+  return UPTCommand;
+}(u.CastleCommand);
+exports.UPTCommand = h;
+r.classImplementsInterfaces(h, "IExecCommand");

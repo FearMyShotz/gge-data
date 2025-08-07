@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function RDECommand() {
+  function RCCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RDECommand, e);
-  Object.defineProperty(RDECommand.prototype, "cmdId", {
+  n.__extends(RCCCommand, e);
+  Object.defineProperty(RCCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_REMOVE_FROM_DISTRICT;
+      return s.ClientConstSF.S2C_RESOURCE_CART_COLLECT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,19 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  RDECommand.prototype.executeCommand = function (e, t) {
+  RCCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-      case a.ERROR.MOVE_FAILED:
         var i = JSON.parse(t[1]);
-        r.CastleModel.areaData.activeArea.updater.parseEMO(i);
+        r.CastleModel.resourceCartsData.parse_RCC(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return RDECommand;
+  return RCCCommand;
 }(l.CastleCommand);
-exports.RDECommand = c;
+exports.RCCCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

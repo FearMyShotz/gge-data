@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function SPCCommand() {
+  function GSCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SPCCommand, e);
-  Object.defineProperty(SPCCommand.prototype, "cmdId", {
+  n.__extends(GSCCommand, e);
+  Object.defineProperty(GSCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SHOP_CHECKOUT;
+      return s.ClientConstSF.S2C_GET_SHOP_CATALOG;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  SPCCommand.prototype.executeCommand = function (e, t) {
+  GSCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.subscriptionData.parseSPC(i);
+        r.CastleModel.subscriptionData.parseGSC(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SPCCommand;
+  return GSCCommand;
 }(l.CastleCommand);
-exports.SPCCommand = c;
+exports.GSCCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

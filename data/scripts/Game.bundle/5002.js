@@ -4,47 +4,36 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./176.js");
-var u = require("./515.js");
-var d = require("./10.js");
-var p = function (e) {
-  function POLCommand() {
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function ODCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(POLCommand, e);
-  Object.defineProperty(POLCommand.prototype, "cmdId", {
+  n.__extends(ODCCommand, e);
+  Object.defineProperty(ODCCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_PRIVATE_OFFER_LIST;
+      return s.ClientConstSF.S2C_OFFER_DURATION_CHECK;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  POLCommand.prototype.executeCommand = function (t, i) {
-    if (!c.CastleDataHolder.instance.gbdParsed) {
-      u.CommandDelayController.getInstance().addDelayCommandID(r.ClientConstSF.S2C_PRIVATE_OFFER_LIST);
-    }
-    return e.prototype.executeCommand.call(this, t, i);
-  };
-  POLCommand.prototype.exec = function (e) {
-    var t = s.int(e[0]);
-    var i = e[1];
-    switch (t) {
+  ODCCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
       case a.ERROR.ALL_OK:
-      case 10005:
-        var n = JSON.parse(i[1]);
-        l.CastleModel.privateOfferData.parse_POL(n);
+        var i = JSON.parse(t[1]);
+        r.CastleModel.privateOfferData.parse_ODC(i);
         break;
       default:
-        this.showErrorDialog(t, i);
+        this.showErrorDialog(e, t);
     }
+    return false;
   };
-  return POLCommand;
-}(d.CastleCommand);
-exports.POLCommand = p;
-o.classImplementsInterfaces(p, "IExecCommand");
+  return ODCCommand;
+}(l.CastleCommand);
+exports.ODCCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

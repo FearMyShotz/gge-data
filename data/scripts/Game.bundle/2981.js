@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function BGStorehouseBuildingVE() {
+  function BGBakeryBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BGStorehouseBuildingVE, e);
-  return BGStorehouseBuildingVE;
-}(require("./1029.js").StorageBuildingVE);
-exports.BGStorehouseBuildingVE = a;
+  n.__extends(BGBakeryBuildingVE, e);
+  return BGBakeryBuildingVE;
+}(require("./1558.js").BakeryBuildingVE);
+exports.BGBakeryBuildingVE = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

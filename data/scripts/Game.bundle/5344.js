@@ -1,17 +1,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  return function AllianceHelpRequestVO() {
-    this.listID = 0;
-    this.playerID = 0;
-    this.requestTypeId = 0;
-    this.progress = 0;
-    this.alreadyConfirmed = false;
-    this.timeStamp = 0;
-    this.neededProgress = 0;
-    this.isOwnPlayer = false;
-    this.remainingTime = 0;
-  };
-}();
-exports.AllianceHelpRequestVO = n;
+var n = require("./0.js");
+var o = function (e) {
+  function CastleAllianceHelpFeedbackComponentProperties(t, i, n) {
+    var o = this;
+    o.name = "";
+    o.wodID = 0;
+    CONSTRUCTOR_HACK;
+    (o = e.call(this) || this).name = t;
+    o.requestVO = i;
+    o.wodID = n;
+    return o;
+  }
+  n.__extends(CastleAllianceHelpFeedbackComponentProperties, e);
+  return CastleAllianceHelpFeedbackComponentProperties;
+}(require("./2.js").BasicProperties);
+exports.CastleAllianceHelpFeedbackComponentProperties = o;

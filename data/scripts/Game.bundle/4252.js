@@ -64,7 +64,7 @@ var n = function () {
   return CastleBuddyListData;
 }();
 exports.CastleBuddyListData = n;
-var o = require("./1812.js");
+var o = require("./1814.js");
 var a = require("./15.js");
 var s = require("./4253.js");
 n.__initialize_static_members();

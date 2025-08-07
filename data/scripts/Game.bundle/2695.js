@@ -3,29 +3,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SReplaceConstructionItemVO(t, i, n, o, a, s) {
-    var r = this;
-    r.OID = 0;
-    r.CID = 0;
-    r.SID = 0;
-    r.M = 0;
-    r.KID = 0;
-    r.AID = 0;
+var a = require("./6.js");
+var s = require("./7.js");
+var r = require("./4.js");
+var l = function (e) {
+  function C2SDisassembleConstructionItemVO(t, i, n = 1) {
+    var o = this;
+    o.CID = 0;
+    o.KID = 0;
+    o.AID = 0;
+    o.LFID = 0;
+    o.AMT = 1;
     CONSTRUCTOR_HACK;
-    (r = e.call(this) || this).OID = t;
-    r.CID = i;
-    r.SID = n;
-    r.M = o.value;
-    r.KID = a;
-    r.AID = s;
-    return r;
+    (o = e.call(this) || this).CID = t;
+    o.KID = a.int(r.CastleModel.kingdomData.activeKingdomID);
+    o.AID = a.int(r.CastleModel.areaData.activeAreaInfo.objectId);
+    o.LFID = i;
+    o.AMT = n;
+    return o;
   }
-  n.__extends(C2SReplaceConstructionItemVO, e);
-  C2SReplaceConstructionItemVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_CONSTRUCTION_ITEM_REPLACE;
+  n.__extends(C2SDisassembleConstructionItemVO, e);
+  C2SDisassembleConstructionItemVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_DISASSEMBLE_CONSTRUCTION_ITEM;
   };
-  return C2SReplaceConstructionItemVO;
+  return C2SDisassembleConstructionItemVO;
 }(o.BasicCommandVO);
-exports.C2SReplaceConstructionItemVO = s;
+exports.C2SDisassembleConstructionItemVO = l;

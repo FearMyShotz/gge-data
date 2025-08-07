@@ -3,221 +3,179 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
-var l = require("./3.js");
-var c = require("./3.js");
-var u = require("./32.js");
-var d = require("./90.js");
-var p = require("./576.js");
-var h = require("./15.js");
-var g = require("./4.js");
-var C = require("./64.js");
-var _ = require("./124.js");
-var m = createjs.Container;
-var f = function (e) {
-  function CastleMapobject() {
-    return e.call(this) || this;
+var a = require("./1.js");
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./18.js");
+var c = require("./32.js");
+var u = require("./15.js");
+var d = require("./4.js");
+var p = require("./68.js");
+var h = require("./17.js");
+var g = require("./200.js");
+var C = require("./1149.js");
+var _ = createjs.MouseEvent;
+var m = createjs.TimerEvent;
+var f = createjs.Point;
+var O = function (e) {
+  function InteractiveMapmovement() {
+    var t = this;
+    t._hasRingMenu = false;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleMapobject, e);
-  CastleMapobject.prototype.initVisualRep = function () {
-    if (!this.disp) {
-      this.disp = new m();
-      this.mapobjectVO.addEventListener(C.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
-    }
-    this.drawCastle();
-    if (this.isOwnMapobject) {
-      h.CastleBasicController.getInstance().addEventListener(u.CastleUserDataEvent.CHANGE_USER_AVATAR, this.bindFunction(this.onChangeCrest));
+  n.__extends(InteractiveMapmovement, e);
+  InteractiveMapmovement.prototype.initVisualRep = function () {
+    e.prototype.initVisualRep.call(this);
+    this.addMouseListener();
+    if (this.mapMovementVO && this.mapMovementVO.movementOwnerInfo && this.mapMovementVO.movementOwnerInfo.isOwnOwnerInfo) {
+      u.CastleBasicController.getInstance().addEventListener(c.CastleUserDataEvent.CHANGE_USER_AVATAR, this.bindFunction(this.onChangeCrest));
     }
   };
-  CastleMapobject.prototype.onAreaUpdate = function (e) {
-    if (this.castleMapObjectVO.isUseAbleForRelocation && O.CastleLayoutManager.getInstance().currentState == O.CastleLayoutManager.STATE_WORLDMAP_RELOCATION) {
-      this.initVisualRep();
+  InteractiveMapmovement.prototype.onChangeCrest = function (e) {
+    var t = d.CastleModel.otherPlayerData.getOwnInfoVO();
+    if (t) {
+      this.mapMovementVO.updateOwnerInfos(t);
+      this.drawMovementIcon();
     }
   };
-  CastleMapobject.prototype.getFlamesClip = function () {
-    var t = this.getABGFlamesClip("Castle");
-    if (t && t.currentshownDisplayObject) {
-      return t;
-    } else {
-      return e.prototype.getFlamesClip.call(this);
-    }
-  };
-  CastleMapobject.prototype.drawCastle = function () {
-    var e = !!this.worldmapObjectVO && !!this.worldmapObjectVO.ownerInfo && this.castleMapObjectVO.isVisibleOnMap;
-    var t = this.castleMapObjectVO.isUseAbleForRelocation && O.CastleLayoutManager.getInstance().currentState == O.CastleLayoutManager.STATE_WORLDMAP_RELOCATION;
-    var i = !this.worldmapObjectVO.ownerInfo && this.castleMapObjectVO.isOccupied;
-    if (e || t || i) {
-      this.clearObjectContainer();
-      if (e) {
-        if (this.worldmapObjectVO.ownerInfo.isRuin) {
-          if (t) {
-            this.objectContainer = new y.CastleDisplayObjectClipContainer();
-            this.objectContainer.addItem(this.getAsExternalClip("RelocationRuin_Mapobject"));
-          } else {
-            this.objectContainer = this.worldmapObjectVO.getRuinContainer();
-          }
-        } else {
-          this.objectContainer = this.castleMapObjectVO.getCastleContainer(true);
-          if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0) {
-            this.showFlames();
-          }
-        }
-      } else if (i) {
-        this.objectContainer = new y.CastleDisplayObjectClipContainer();
-        this.objectContainer.addItem(this.getAsExternalClip("RelocationSet_Mapobject"));
-        var n = this.worldmapObjectVO;
-        var o = g.CastleModel.otherPlayerData.getOwnerInfoVO(n.occupierID);
-        this.objectContainer.addItem(n.getAsExternalClip("Castle_Flag_Relocate", null, n.getClipColor(o)));
-      } else if (t) {
-        this.objectContainer = new y.CastleDisplayObjectClipContainer();
-        this.objectContainer.addItem(this.castleMapObjectVO.getAsExternalClip("Relocation_Mapobject"));
-      }
-      this.addMouseListener();
-      this.addObjectContainer();
-      this.disp.dispatchEvent(new p.VisualMapObjectEvent(p.VisualMapObjectEvent.VE_UPDATED, [this]));
-    }
-  };
-  CastleMapobject.prototype.remove = function () {
-    h.CastleBasicController.getInstance().removeEventListener(u.CastleUserDataEvent.CHANGE_USER_AVATAR, this.bindFunction(this.onChangeCrest));
-    this.mapobjectVO.removeEventListener(C.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
-    h.CastleBasicController.getInstance().removeEventListener(d.CastleWorldmapEvent.UPDATE_AREA_INFO, this.bindFunction(this.onAreaUpdate));
+  InteractiveMapmovement.prototype.remove = function () {
     e.prototype.remove.call(this);
+    this.removeMouseListener();
+    u.CastleBasicController.getInstance().removeEventListener(c.CastleUserDataEvent.CHANGE_USER_AVATAR, this.bindFunction(this.onChangeCrest));
   };
-  CastleMapobject.prototype.onMouseUp = function (t) {
-    e.prototype.onMouseUp.call(this, t);
-    this.showOwnerLines();
+  InteractiveMapmovement.prototype.addMouseListener = function () {
+    if (this.disp) {
+      this.objectLayer.addEventListener(_.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
+      this.objectLayer.addEventListener(_.ROLL_OVER, this.bindFunction(this.onRollOver));
+      this.objectLayer.addEventListener(_.ROLL_OUT, this.bindFunction(this.onRollOut));
+      this.objectLayer.addEventListener(_.MOUSE_OVER, this.bindFunction(this.onMouseOver));
+      this.objectLayer.addEventListener(_.MOUSE_OUT, this.bindFunction(this.onMouseOut));
+      this.objectLayer.addEventListener(_.CLICK, this.bindFunction(this.onClick));
+      this.objectLayer.addEventListener(_.DOUBLE_CLICK, this.bindFunction(this.onDoubleClick));
+      this.objectLayer.doubleClickEnabled = true;
+      this._doubleClickTimer = new s.Timer(100, 1);
+      this._doubleClickTimer.addEventListener(m.TIMER, this.bindFunction(this.onSingleClick));
+    }
   };
-  CastleMapobject.prototype.showRingMenu = function () {
-    o.info("showing menu");
-    if (this.castleMapObjectVO.ownerInfo && !this.castleMapObjectVO.ownerInfo.isRuin) {
-      this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.SHOW_MENU, [this, d.CastleWorldmapEvent.RINGMENU_CASTLEINFO]));
-    } else if (this.castleMapObjectVO.ownerInfo) {
-      if (this.castleMapObjectVO.ownerInfo.isRuin) {
-        this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.CLICK_RUIN, [this, d.CastleWorldmapEvent.RINGMENU_CASTLEINFO]));
-      }
+  InteractiveMapmovement.prototype.onClick = function (e) {
+    this._doubleClickTimer.start();
+  };
+  InteractiveMapmovement.prototype.onDoubleClick = function (e) {
+    this._doubleClickTimer.stop();
+  };
+  InteractiveMapmovement.prototype.onSingleClick = function (e) {
+    if (!this.mapMovementVO.isStationed || this.mapMovementVO.targetArea.areaType != r.WorldConst.AREA_TYPE_DAIMYO_TOWNSHIP && this.mapMovementVO.targetArea.areaType != r.WorldConst.AREA_TYPE_ALLIANCE_BATTLE_GROUND_TOWER) {
+      this.onMouseUp();
     } else {
-      this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.CLICK_RELOCATE_POSITION, [this, d.CastleWorldmapEvent.RINGMENU_CASTLEINFO]));
-    }
-    o.info("trying to show ownerlines");
-    this.showOwnerLines();
-  };
-  CastleMapobject.prototype.onRollOver = function (t) {
-    if (!this.worldmapRenderer.camera.isWorldDragging) {
-      if (!this.hasRingMenu) {
-        this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
-      }
-      e.prototype.onRollOver.call(this, t);
+      E.CastleDialogHandler.getInstance().registerDefaultDialogs(y.SupportOverviewDialog, new b.SupportOverviewDialogProperties(this.mapMovementVO.targetArea));
     }
   };
-  CastleMapobject.prototype.onRollOut = function (t) {
-    this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.INFOTOOLTIP, [false]));
-    e.prototype.onRollOut.call(this, t);
-  };
-  CastleMapobject.prototype.onDoubleClick = function () {
-    if (!this.worldmapRenderer.camera.isLocked) {
-      if (this.castleMapObjectVO.ownerInfo && !this.castleMapObjectVO.ownerInfo.isRuin) {
-        this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.DOUBLE_CLICK_CASTLE, [this.mapobjectVO]));
-      }
+  InteractiveMapmovement.prototype.removeMouseListener = function () {
+    if (this.objectLayer) {
+      this.objectLayer.removeEventListener(_.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
+      this.objectLayer.removeEventListener(_.ROLL_OVER, this.bindFunction(this.onRollOver));
+      this.objectLayer.removeEventListener(_.ROLL_OUT, this.bindFunction(this.onRollOut));
+      this.objectLayer.removeEventListener(_.MOUSE_OVER, this.bindFunction(this.onMouseOver));
+      this.objectLayer.removeEventListener(_.MOUSE_OUT, this.bindFunction(this.onMouseOut));
+      this.objectLayer.removeEventListener(_.CLICK, this.bindFunction(this.onClick));
+      this.objectLayer.removeEventListener(_.DOUBLE_CLICK, this.bindFunction(this.onDoubleClick));
+    }
+    if (this._doubleClickTimer) {
+      this._doubleClickTimer.removeEventListener(m.TIMER, this.bindFunction(this.onSingleClick));
     }
   };
-  Object.defineProperty(CastleMapobject.prototype, "castleMapObjectVO", {
+  InteractiveMapmovement.prototype.onMouseDown = function (e) {};
+  InteractiveMapmovement.prototype.onMouseUp = function (e = null) {
+    this.showRingMenu();
+  };
+  InteractiveMapmovement.prototype.showRingMenu = function () {};
+  InteractiveMapmovement.prototype.onRollOut = function (e) {
+    this.removeGlow();
+    this.worldmapRenderer.camera.objectUnderMouse = null;
+  };
+  InteractiveMapmovement.prototype.onRollOver = function (e) {
+    this.addGlow();
+  };
+  InteractiveMapmovement.prototype.onMouseOver = function (e) {
+    if (o.BasicToolTipManager.TOOLTIP_LABEL in e.target && e.target.toolTipText) {
+      h.CastleLayoutManager.getInstance().tooltipManager.show(e.target.toolTipText, e.target);
+    }
+  };
+  InteractiveMapmovement.prototype.onMouseOut = function (e) {
+    g.TooltipManagerFacade.hideAllTooltips();
+  };
+  InteractiveMapmovement.prototype.addGlow = function () {
+    var e = d.CastleModel.kingdomData.activeKingdomID == r.WorldIce.KINGDOM_ID ? p.BitmapFilterHelper.FILTER_GLOW_BLUE : p.BitmapFilterHelper.FILTER_GLOW_STANDARD;
+    if (this._arrowLayer && this._arrowLayer.width <= l.ClientConstCastle.MAX_SIZE_FOR_CACHING && this.objectLayer.height <= l.ClientConstCastle.MAX_SIZE_FOR_CACHING) {
+      this._arrowLayer.useFilters(e, true);
+    }
+  };
+  InteractiveMapmovement.prototype.removeGlow = function () {
+    if (this._arrowLayer) {
+      this._arrowLayer.useFilters(p.BitmapFilterHelper.NO_FILTER, false);
+    }
+    if (this._movementIconContainer.children[0]) {
+      this._movementIconContainer.children[0].useFilters(p.BitmapFilterHelper.NO_FILTER, true);
+    }
+  };
+  Object.defineProperty(InteractiveMapmovement.prototype, "hasRingMenu", {
     get: function () {
-      return this.vo;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleMapobject.prototype, "line1Content", {
-    get: function () {
-      var e = this.castleMapObjectVO.ownerInfo;
-      if (!e && this.castleMapObjectVO.isOccupied) {
-        var t = g.CastleModel.otherPlayerData.getOwnerInfoVO(this.castleMapObjectVO.occupierID);
-        return new l.TextVO(E.CastleTitleSystemHelper.getPlayerNameWithTitleFromPlayerInfo(t));
-      }
-      if (!e && this.castleMapObjectVO.isUseAbleForRelocation) {
-        return new c.LocalizedTextVO("relocate_freeWorldmapPosition_toolTip");
-      } else if (e) {
-        return new l.TextVO(E.CastleTitleSystemHelper.getPlayerNameWithTitleFromPlayerInfo(this.castleMapObjectVO.ownerInfo));
-      } else {
-        return null;
-      }
+      return this._hasRingMenu;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(_.InteractiveMapobject.prototype, "line1Content").set.call(this, e);
+      this._hasRingMenu = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMapobject.prototype, "line2Content", {
+  Object.defineProperty(InteractiveMapmovement.prototype, "line1Content", {
     get: function () {
-      var e = this.castleMapObjectVO.ownerInfo;
-      if (!e && this.castleMapObjectVO.isOccupied) {
-        var t = g.CastleModel.otherPlayerData.getOwnerInfoVO(this.castleMapObjectVO.occupierID);
-        if (t.playerID != g.CastleModel.userData.playerID) {
-          if (t.remainingRelocateDuration <= 0) {
-            var i = O.CastleLayoutManager.getInstance().worldmapScreen.renderer.camera.getAreaViewportRectangle();
-            g.CastleModel.worldmapData.updateAreaRange(i.x, i.y, i.x + i.width, i.y + i.height);
-          }
-          return new c.LocalizedTextVO(s.GenericTextIds.VALUE_SIMPLE_COMP, ["dialog_moveOverview_arival", a.TimeStringHelper.getHoureMinuteSecondTimeString(t.remainingRelocateDuration)]);
-        }
-        return new c.LocalizedTextVO(s.GenericTextIds.VALUE_SIMPLE_COMP, ["dialog_moveOverview_arival", a.TimeStringHelper.getHoureMinuteSecondTimeString(g.CastleModel.userData.remainingRelocationDuration)]);
-      }
-      if (!e && this.castleMapObjectVO.isUseAbleForRelocation) {
-        return null;
-      } else if (e) {
-        if (e.isRuin) {
-          return new c.LocalizedTextVO("ruin");
-        } else {
-          return new l.TextVO(this.getHonorLevelString());
-        }
-      } else {
-        return null;
-      }
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(_.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+      return null;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMapobject.prototype, "line3Content", {
+  Object.defineProperty(InteractiveMapmovement.prototype, "line2Content", {
     get: function () {
-      var e = this.castleMapObjectVO.ownerInfo;
-      if (!e && this.castleMapObjectVO.isOccupied) {
-        var t = g.CastleModel.otherPlayerData.getOwnerInfoVO(this.castleMapObjectVO.occupierID);
-        return new l.TextVO(t.allianceName);
-      }
-      if (!e && this.castleMapObjectVO.isUseAbleForRelocation) {
-        return null;
-      } else if (e && this.getAllianceString() != "") {
-        return new l.TextVO(this.getAllianceString());
-      } else {
-        return null;
-      }
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(_.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
+      return null;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMapobject.prototype, "isTimerToolTip", {
+  Object.defineProperty(InteractiveMapmovement.prototype, "line3Content", {
     get: function () {
-      return !this.castleMapObjectVO.ownerInfo && this.castleMapObjectVO.isOccupied;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(_.InteractiveMapobject.prototype, "isTimerToolTip").set.call(this, e);
+      return null;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleMapobject;
-}(_.InteractiveMapobject);
-exports.CastleMapobject = f;
-r.classImplementsInterfaces(f, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
-var O = require("./17.js");
-var E = require("./106.js");
-var y = require("./109.js");
-r.classImplementsInterfaces(f, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+  Object.defineProperty(InteractiveMapmovement.prototype, "isTimerToolTip", {
+    get: function () {
+      return false;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(InteractiveMapmovement.prototype, "toolTipPosition", {
+    get: function () {
+      var e = this.movementIconContainer.getBounds(null);
+      return new f(this.movementIconContainer.x + e.x + e.width / 2, this.movementIconContainer.y + e.y + e.height / 2);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(InteractiveMapmovement.prototype, "clampToViewport", {
+    get: function () {
+      return false;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return InteractiveMapmovement;
+}(C.BasicMapmovement);
+exports.InteractiveMapmovement = O;
+a.classImplementsInterfaces(O, "IIngameUICapable", "IWorldmapTooltipData");
+var E = require("./9.js");
+var y = require("./962.js");
+var b = require("./963.js");

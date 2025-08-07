@@ -4,56 +4,21 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
-var s = require("./6.js");
-var r = require("./19.js");
-var l = require("./13.js");
-var c = function (e) {
-  function ModernPackageShopBuyElementCommonInfoRelic() {
+var s = function (e) {
+  function ModernPackageShopBuyElementCommonInfoBundle() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ModernPackageShopBuyElementCommonInfoRelic, e);
-  ModernPackageShopBuyElementCommonInfoRelic.prototype.updateText = function () {
-    u.CastleComponent.textFieldManager.registerTextField(this.disp.txt_name, new a.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId(this.parentDialog.dialogProperties.eventPackageVO.nameTextID, this.parentDialog.dialogProperties.eventPackageVO.nameParams)));
-    u.CastleComponent.textFieldManager.registerTextField(this.disp.txt_desc, new a.TextVO(this.getDescriptionText()));
-    u.CastleComponent.textFieldManager.registerTextField(this.disp.txt_sell, new a.TextVO(this.getSellPriceText()));
+  n.__extends(ModernPackageShopBuyElementCommonInfoBundle, e);
+  ModernPackageShopBuyElementCommonInfoBundle.prototype.updateText = function () {
+    var e;
+    var t = this.parentDialog.dialogProperties.eventPackageVO;
+    r.CastleComponent.textFieldManager.registerTextField(this.disp.txt_name, new a.LocalizedTextVO(t.nameTextID, t.nameParams)).autoFitToBounds = true;
+    r.CastleComponent.textFieldManager.registerTextField(this.disp.txt_desc, new a.LocalizedTextVO(t.descriptionTextID, t.descriptionParams)).autoFitToBounds = true;
+    e = t.isNotRebuyable ? t.remainingStock > 1 ? "dialog_bundlePackage_purchase_stockCounter_multi" : t.remainingStock == 1 ? "dialog_bundlePackage_purchase_stockCounter_single" : "dialog_shop_soldOut" : " ";
+    r.CastleComponent.textFieldManager.registerTextField(this.disp.txt_left, new a.LocalizedTextVO(e, [t.remainingStock])).autoFitToBounds = true;
   };
-  ModernPackageShopBuyElementCommonInfoRelic.prototype.getSellPriceText = function () {
-    if (d.instanceOfClass(this.relicVO, "RelicEquipmentVO")) {
-      return this.relicVO.relicInfoVO.getSellPriceText();
-    } else if (d.instanceOfClass(this.relicVO, "RelicGemVO")) {
-      return this.relicVO.relicInfoVO.getSellPriceText();
-    } else {
-      return "";
-    }
-  };
-  Object.defineProperty(ModernPackageShopBuyElementCommonInfoRelic.prototype, "relicVO", {
-    get: function () {
-      if (d.instanceOfClass(this.parentDialog.dialogProperties.eventPackageVO.reward, "CollectableItemRelicVO")) {
-        return this.parentDialog.dialogProperties.eventPackageVO.reward.vo;
-      } else {
-        return null;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ModernPackageShopBuyElementCommonInfoRelic.prototype.getDescriptionText = function () {
-    if (d.instanceOfClass(this.relicVO, "RelicEquipmentVO")) {
-      return this.relicVO.getDescriptionText();
-    } else if (d.instanceOfClass(this.relicVO, "RelicGemVO")) {
-      return this.relicVO.getDescriptionText();
-    } else {
-      return null;
-    }
-  };
-  ModernPackageShopBuyElementCommonInfoRelic.prototype.getRewardIconOptions = function () {
-    var t = e.prototype.getRewardIconOptions.call(this);
-    t.renderMask = s.int(r.CollectableRenderOptions.SET_BASIC ^ r.CollectableRenderOptions.TOOLTIP);
-    return t;
-  };
-  return ModernPackageShopBuyElementCommonInfoRelic;
-}(require("./905.js").ModernPackageShopBuyElementCommonInfo);
-exports.ModernPackageShopBuyElementCommonInfoRelic = c;
-var u = require("./14.js");
-o.classImplementsInterfaces(c, "ICollectableRendererList");
-var d = require("./1.js");
+  return ModernPackageShopBuyElementCommonInfoBundle;
+}(require("./906.js").ModernPackageShopBuyElementCommonInfo);
+exports.ModernPackageShopBuyElementCommonInfoBundle = s;
+var r = require("./14.js");
+o.classImplementsInterfaces(s, "ICollectableRendererList");

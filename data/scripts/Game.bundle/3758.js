@@ -3,117 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./3759.js");
-var l = require("./4.js");
-var c = function (e) {
-  function CastleTransferResToSeasonProperties() {
-    return e.call(this) || this;
+var a = require("./7.js");
+var s = function (e) {
+  function C2STreasuremapGoodsTransferVO(t, i, n, o) {
+    var a = this;
+    a.MID = 0;
+    a.SCID = 0;
+    a.KID = 0;
+    CONSTRUCTOR_HACK;
+    (a = e.call(this) || this).MID = t;
+    a.SCID = i;
+    a.KID = n;
+    a.G = o;
+    return a;
   }
-  n.__extends(CastleTransferResToSeasonProperties, e);
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "infoText", {
-    get: function () {
-      return "dialog_season_sendRes_info";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "travelTime", {
-    get: function () {
-      if (this.treasuremapVO) {
-        return this.treasuremapVO.travelTime;
-      } else {
-        return 0;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "exceptingKingdomIDs", {
-    get: function () {
-      return [s.FactionConst.KINGDOM_ID];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleTransferResToSeasonProperties.prototype.isSpecialEvent = function (e) {
-    return !this.seasonVO || this.seasonVO.eventId == e;
+  n.__extends(C2STreasuremapGoodsTransferVO, e);
+  C2STreasuremapGoodsTransferVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_TREASUREMAP_GOODS_TRANSFER;
   };
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "travelTaxRate", {
-    get: function () {
-      return (100 - this.seasonVO.treasureMapVO.resourceTravelTaxRate) / 100;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "targetResources", {
-    get: function () {
-      return this.treasuremapVO.resources;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "maxStorage", {
-    get: function () {
-      return this.treasuremapVO.resStorageMaxMixedCapacity;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "hasInsufficientTime", {
-    get: function () {
-      return this.seasonVO.remainingEventTimeInSeconds < this.treasuremapVO.travelTime;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "treasuremapVO", {
-    get: function () {
-      return this.seasonVO.treasureMapVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "seasonVO", {
-    get: function () {
-      return l.CastleModel.specialEventData.activeSeasonVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleTransferResToSeasonProperties.prototype.getSendResourcesCommand = function (e, t, i) {
-    return new r.C2STreasuremapGoodsTransferVO(this.treasuremapVO.mapID, e, t, i);
-  };
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "hideTabs", {
-    get: function () {
-      return true;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "resourceStorageCapacity", {
-    get: function () {
-      return this.treasuremapVO.resourceStorageCapacity;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "targetInitialized", {
-    get: function () {
-      return this.treasuremapVO != null;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTransferResToSeasonProperties.prototype, "isSubscriptionBuffed", {
-    get: function () {
-      return false;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleTransferResToSeasonProperties;
-}(o.BasicProperties);
-exports.CastleTransferResToSeasonProperties = c;
-a.classImplementsInterfaces(c, "ITransferResourcesDialogProperties");
+  return C2STreasuremapGoodsTransferVO;
+}(o.BasicCommandVO);
+exports.C2STreasuremapGoodsTransferVO = s;

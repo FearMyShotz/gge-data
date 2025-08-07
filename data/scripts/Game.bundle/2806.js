@@ -1,212 +1,75 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = createjs.Container;
-var o = function () {
-  function IsoMoatPartVE(e, t, i) {
-    this._parentVE = e;
-    this._partType = t;
-    this._rawPosition = i;
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./6.js");
+var r = require("./1197.js");
+var l = require("./4.js");
+var c = require("./8.js");
+var u = require("./98.js");
+var d = createjs.Point;
+var p = function (e) {
+  function RingMenuButtonBuildingDistrictAdd() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  IsoMoatPartVE.prototype.createDisp = function () {
-    this._disp = null;
-    if (this.canBeShown) {
-      this._disp = new n();
-      this._dispComponent = new r.DispCreatorComponent();
-      this._dispComponent.cacheBehaviour = new a.IsoDispCreatorCacheBehaviour();
-      this._dispComponent.init(this._disp);
-      this._dispComponent.switchCreationState(true);
-      this._dispComponent.addClip(this.parentVE.loadSubDispClip(this.assetClipName));
-      if (this.hasDetailClip) {
-        this._dispComponent.addClip(this.parentVE.loadSubDispClip(this.detailClipName));
-      }
-      this._dispComponent.onLoadedSignal.addOnce(this.bindFunction(this.onAllDispClipsLoaded));
-      this._dispComponent.switchCreationState(false);
-      var e = this.screenPos;
-      this._disp.x = e.x;
-      this._disp.y = e.y;
-      if (this.partType == d.IsoMoatPartEnum.WALL && (this.rawPosition.rot == 1 || this.rawPosition.rot == 2)) {
-        this.disp.x += s.IsoConst.GRID_TILE_DIMENSION_TRANSLATED.x;
-      }
-      return this._disp;
+  n.__extends(RingMenuButtonBuildingDistrictAdd, e);
+  RingMenuButtonBuildingDistrictAdd.prototype.init = function (t, i, n) {
+    e.prototype.init.call(this, t, i, n);
+    this._disp = i.btn_buildingDistrictAdd;
+    this._disp.visible = this.isVisible;
+    if (this._disp.visible) {
+      var o = this.isEnabled;
+      c.ButtonHelper.enableButton(this._disp, o);
+      this._disp.toolTipText = o ? null : "alert_districtFull";
     }
-    return null;
-  };
-  IsoMoatPartVE.prototype.destroy = function () {
-    if (this._disp) {
-      this._dispComponent.destroy();
-      this._disp.removeChildren();
-      this._disp = null;
-    }
-  };
-  IsoMoatPartVE.prototype.updateRotation = function () {
-    if (this.partType == d.IsoMoatPartEnum.WALL && this.disp) {
-      this.disp.scaleX = this.rawPosition.rot == 1 || this.rawPosition.rot == 2 ? -1 : 1;
-    }
-  };
-  IsoMoatPartVE.prototype.onAllDispClipsLoaded = function () {};
-  Object.defineProperty(IsoMoatPartVE.prototype, "assetClipName", {
-    get: function () {
-      var e = this.parentVE.assetNamePrefix + "_" + this.moatVO.group;
-      var t = this.moatVO.type;
-      switch (this.moatVO.buildingState) {
-        case u.IsoBuildingStateEnum.BUILD_IN_PROGRESS:
-        case u.IsoBuildingStateEnum.BUILD_STOPPED:
-        case u.IsoBuildingStateEnum.UPGRADE_IN_PROGRESS:
-        case u.IsoBuildingStateEnum.UPGRADE_STOPPED:
-          t = "Level1";
-      }
-      if (this.partType == d.IsoMoatPartEnum.GATE) {
-        return e + "_Bridge_" + t + "_" + this.kingdomName;
-      } else if (this.partType == d.IsoMoatPartEnum.INNER_CORNER || this.partType == d.IsoMoatPartEnum.OUTER_CORNER) {
-        return e + "_Corner" + this.getCornerNumber() + "_" + t + "_" + this.kingdomName;
-      } else {
-        return e + "_Part" + this.getWallVariationNumber() + "_Dir" + (this.rawPosition.rot == 3 || this.rawPosition.rot == 2 ? 2 : 1) + "_" + t + "_" + this.kingdomName;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  IsoMoatPartVE.prototype.getCornerNumber = function () {
-    if (this.partType == d.IsoMoatPartEnum.INNER_CORNER) {
-      switch (this.rawPosition.rot) {
-        case 0:
-          return 1;
-        case 1:
-          return 4;
-        case 2:
-          return 5;
-        case 3:
-          return 6;
-      }
+    this._disp.gotoAndStop(s.int(n.buildingVO.districtTypeID));
+    if (this.targetBuilding.buildingVO.storeable) {
+      this._disp.x = RingMenuButtonBuildingDistrictAdd.POS_STORABLE.x;
+      this._disp.y = RingMenuButtonBuildingDistrictAdd.POS_STORABLE.y;
     } else {
-      switch (this.rawPosition.rot) {
-        case 0:
-          return 0;
-        case 1:
-          return 3;
-        case 2:
-          return 2;
-        case 3:
-          return 7;
-      }
+      this._disp.x = RingMenuButtonBuildingDistrictAdd.POS_DEFAULT.x;
+      this._disp.y = RingMenuButtonBuildingDistrictAdd.POS_DEFAULT.y;
     }
-    return 0;
   };
-  Object.defineProperty(IsoMoatPartVE.prototype, "canBeShown", {
+  Object.defineProperty(RingMenuButtonBuildingDistrictAdd.prototype, "isEnabled", {
     get: function () {
-      if (this.parentVE.isoRenderer.isoData.areaData.isSeasonCamp) {
-        return true;
-      }
-      switch (this.partType) {
-        case d.IsoMoatPartEnum.OUTER_CORNER:
-        case d.IsoMoatPartEnum.INNER_CORNER:
-          return this.rawPosition.rot != 3;
-        case d.IsoMoatPartEnum.GATE:
-          return true;
-        case d.IsoMoatPartEnum.WALL:
-          return this.rawPosition.rot == 0 || this.rawPosition.rot == 1;
-      }
-      return false;
+      var e = l.CastleModel.areaData.activeCommonInfo;
+      var t = s.int(this.targetBuilding.buildingVO.districtTypeID);
+      return !!e && !e.isDistrictFull(t);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoMoatPartVE.prototype, "screenPos", {
+  Object.defineProperty(RingMenuButtonBuildingDistrictAdd.prototype, "isVisible", {
     get: function () {
-      return this.parentVE.isoRenderer.camera.getScreenPosByGridPos(this.rawPosition.pos);
+      var e = l.CastleModel.areaData.activeCommonInfo;
+      var t = s.int(this.targetBuilding.buildingVO.districtTypeID);
+      var i = h.Iso.data.objects.provider.getObjectById(e.getDistrictObjectId(t));
+      return t > 0 && !this.targetBuilding.buildingVO.isDistrict && !this.targetBuilding.buildingVO.isInBuildingDistrict && !!e && e.hasDistrictOfType(t) && !this.isBuildingInProgress() && !i.isDisassembling();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoMoatPartVE.prototype, "detailClipName", {
-    get: function () {
-      switch (this.moatVO.buildingState) {
-        case u.IsoBuildingStateEnum.BUILD_IN_PROGRESS:
-        case u.IsoBuildingStateEnum.BUILD_STOPPED:
-        case u.IsoBuildingStateEnum.UPGRADE_IN_PROGRESS:
-        case u.IsoBuildingStateEnum.UPGRADE_STOPPED:
-          return "Buildinglot_" + this.moatVO.group + "_Part_Detail" + this.getDetailVariationNumber() + "_Dir1_" + this.kingdomName;
-        default:
-          return this.moatVO.name + "_" + this.moatVO.group + "_" + this.moatVO.type + "_Detail" + this.getDetailVariationNumber() + "_Dir1_" + this.kingdomName;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  IsoMoatPartVE.prototype.getWallVariationNumber = function () {
-    return c.int(new l.SimpleRandom(this.moatVO.isoData.areaData.areaInfo.objectId + this.rawPosition.pos.x + this.rawPosition.pos.y).nextInt(2));
+  RingMenuButtonBuildingDistrictAdd.prototype.onClick = function (e, t) {
+    if (c.ButtonHelper.isButtonEnabled(this._disp)) {
+      var i = s.int(l.CastleModel.areaData.activeCommonInfo.getDistrictObjectId(this.targetBuilding.buildingVO.districtTypeID));
+      l.CastleModel.smartfoxClient.sendCommandVO(new r.C2SMoveToDistrictVO(this.targetBuilding.vo.objectId, i));
+      this.targetBuilding.elementContainer.parent.removeChild(this.targetBuilding.elementContainer);
+      this.parent.hide();
+    }
   };
-  IsoMoatPartVE.prototype.getDetailVariationNumber = function () {
-    return c.int(new l.SimpleRandom(this.moatVO.isoData.areaData.areaInfo.objectId + this.rawPosition.pos.x + this.rawPosition.pos.y).nextInt(10));
+  RingMenuButtonBuildingDistrictAdd.prototype.getInfoText = function () {
+    return a.Localize.text("ringmenu_addToDistrict");
   };
-  Object.defineProperty(IsoMoatPartVE.prototype, "hasDetailClip", {
-    get: function () {
-      if (this.partType != d.IsoMoatPartEnum.WALL) {
-        return false;
-      }
-      var e = this.getDetailVariationNumber();
-      return e >= 0 && e <= 2;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMoatPartVE.prototype, "kingdomName", {
-    get: function () {
-      return this._parentVE.kingdomName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMoatPartVE.prototype, "moatVO", {
-    get: function () {
-      return this.parentVE.vo;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMoatPartVE.prototype, "parentVE", {
-    get: function () {
-      return this._parentVE;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMoatPartVE.prototype, "disp", {
-    get: function () {
-      return this._disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMoatPartVE.prototype, "dispComponent", {
-    get: function () {
-      return this._dispComponent;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMoatPartVE.prototype, "partType", {
-    get: function () {
-      return this._partType;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(IsoMoatPartVE.prototype, "rawPosition", {
-    get: function () {
-      return this._rawPosition;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IsoMoatPartVE;
-}();
-exports.IsoMoatPartVE = o;
-var a = require("./1188.js");
-var s = require("./144.js");
-var r = require("./290.js");
-var l = require("./2.js");
-var c = require("./6.js");
-var u = require("./87.js");
-var d = require("./1528.js");
+  RingMenuButtonBuildingDistrictAdd.__initialize_static_members = function () {
+    this.POS_DEFAULT = new d(58, -72);
+    this.POS_STORABLE = new d(93, 27);
+  };
+  return RingMenuButtonBuildingDistrictAdd;
+}(u.ARingMenuButton);
+exports.RingMenuButtonBuildingDistrictAdd = p;
+var h = require("./34.js");
+o.classImplementsInterfaces(p, "IRingMenuButton");
+p.__initialize_static_members();

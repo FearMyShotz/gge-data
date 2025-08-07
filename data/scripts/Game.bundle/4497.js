@@ -8,32 +8,40 @@ var s = require("./4498.js");
 var r = require("./4.js");
 var l = require("./295.js");
 var c = function (e) {
-  function PrimeSaleReviveAllEventVO() {
-    var t = this;
-    t._discount = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+  function PrimeSaleEventVO() {
+    return e.call(this) || this;
   }
-  n.__extends(PrimeSaleReviveAllEventVO, e);
-  PrimeSaleReviveAllEventVO.prototype.parseParamObject = function (e) {
-    this._discount = parseInt(e.DIS);
+  n.__extends(PrimeSaleEventVO, e);
+  PrimeSaleEventVO.prototype.parseParamObject = function (e) {
+    var t = [];
+    for (var i = 0, n = e.WID; i < n.length; i++) {
+      var o = n[i];
+      if (o !== undefined) {
+        t.push(o);
+      }
+    }
+    if (t.length == 0 && typeof e.WID == "number") {
+      t.push(e.WID);
+    }
+    this._primeSaleComponent = new p.PrimeSaleComponent(t, e.DIS);
   };
-  PrimeSaleReviveAllEventVO.prototype.openDialog = function (e = true) {
+  PrimeSaleEventVO.prototype.openDialog = function (e = true) {
     if (!r.CastleModel.privateOfferData.isHiddenEvent(this._eventId)) {
-      var t = new l.PaymentPopupDialogInfoVO(d.CastlePrimeSaleReviveAllDialog, new s.CastlePrimeSaleDialogReviveAllDialogProperties(this), a.CastleDialogConsts.DIALOG_TYPE_PAYMENT_PRIME_SALE);
+      var t = new l.PaymentPopupDialogInfoVO(d.CastlePrimeSaleDialog, new s.CastlePrimeSaleDialogProperties(this), a.CastleDialogConsts.DIALOG_TYPE_PAYMENT_PRIME_SALE);
       u.CastleDialogHandler.getInstance().registerDialogsWithType(t.dialogClass, t.properties, t.blockDialogs, t.priority, 0, t.type);
     }
   };
-  Object.defineProperty(PrimeSaleReviveAllEventVO.prototype, "discount", {
+  Object.defineProperty(PrimeSaleEventVO.prototype, "primeSaleComponent", {
     get: function () {
-      return this._discount;
+      return this._primeSaleComponent;
     },
     enumerable: true,
     configurable: true
   });
-  return PrimeSaleReviveAllEventVO;
+  return PrimeSaleEventVO;
 }(require("./79.js").ASpecialEventVO);
-exports.PrimeSaleReviveAllEventVO = c;
+exports.PrimeSaleEventVO = c;
 var u = require("./9.js");
-var d = require("./4499.js");
+var d = require("./1083.js");
+var p = require("./1147.js");
 o.classImplementsInterfaces(c, "IEventOverviewable");

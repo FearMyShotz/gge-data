@@ -6,7 +6,7 @@ var o = require("./1.js");
 var a = require("./3.js");
 var s = require("./67.js");
 var r = require("./19.js");
-var l = require("./666.js");
+var l = require("./667.js");
 var c = createjs.Point;
 var u = function () {
   function CastleTieredPrimeDayRewardBoxVE(e, t, i) {

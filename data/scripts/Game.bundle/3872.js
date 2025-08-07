@@ -1,76 +1,129 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./318.js");
-var o = require("./20.js");
-var a = require("./8.js");
-var s = require("./117.js");
-var r = require("./361.js");
-var l = require("./1795.js");
-var c = createjs.MouseEvent;
-var u = function () {
-  function AttackDialogWaveHandlerSupportToolDetail(e) {
-    this.CONST_MAX_TOOL_SLOTS = 3;
+var n = require("./20.js");
+var o = require("./8.js");
+var a = require("./115.js");
+var s = require("./361.js");
+var r = createjs.MouseEvent;
+var l = function () {
+  function AttackDialogWaveHandlerWaveInfoDetail(e) {
+    this.CONST_MAX_FLANK_SLOTS = 2;
+    this.CONST_MAX_MIDDLE_TOOL_SLOTS = 3;
+    this.CONST_MAX_MIDDLE_SOLDIER_SLOTS = 6;
+    this._waveIndex = 0;
     this._disp = e;
-    a.ButtonHelper.initButtons([this._disp.btn_clear], o.ClickFeedbackButtonHover, 1);
+    o.ButtonHelper.initButtons([this._disp.btn_clear], n.ClickFeedbackButtonHover, 1);
     this._disp.btn_clear.toolTipText = "deleteAll";
     this._disp.mc_detailViewBG.doCache();
   }
-  AttackDialogWaveHandlerSupportToolDetail.prototype.setVisibility = function (e) {
+  AttackDialogWaveHandlerWaveInfoDetail.prototype.setVisibility = function (e, t) {
     this._disp.visible = e;
+    this._waveIndex = t;
+    if (!this.waveInfo) {
+      e = false;
+    }
     if (e) {
       this.fill();
       this.controller.onSelectedWaveInfoSlotContainerChanged.add(this.bindFunction(this.fill));
       this.controller.updateAllWaveInfo.add(this.bindFunction(this.fill));
-      this._disp.addEventListener(c.CLICK, this.bindFunction(this.onClick));
+      this._disp.addEventListener(r.CLICK, this.bindFunction(this.onClick));
     } else {
       this.controller.onSelectedWaveInfoSlotContainerChanged.remove(this.bindFunction(this.fill));
       this.controller.updateAllWaveInfo.remove(this.bindFunction(this.fill));
-      this._disp.removeEventListener(c.CLICK, this.bindFunction(this.onClick));
+      this._disp.removeEventListener(r.CLICK, this.bindFunction(this.onClick));
     }
   };
-  AttackDialogWaveHandlerSupportToolDetail.prototype.fill = function () {
-    var e;
-    this._disp.mc_tools.gotoAndStop(1);
-    e = 0;
-    for (; e < this.CONST_MAX_TOOL_SLOTS; e++) {
-      r.AttackDialogWaveInfoHelper.fillUnitContainer(e, this._disp.mc_tools, this.controller.attackVO.supportItemContainer, true, true);
+  AttackDialogWaveHandlerWaveInfoDetail.prototype.fill = function () {
+    if (this.waveInfo) {
+      var e;
+      this._disp.mc_left_tools.gotoAndStop(1);
+      this._disp.mc_right_tools.gotoAndStop(1);
+      this._disp.mc_left_units.gotoAndStop(1);
+      this._disp.mc_right_units.gotoAndStop(1);
+      this._disp.mc_middle_tools.gotoAndStop(1);
+      this._disp.mc_middle_units.gotoAndStop(1);
+      e = 0;
+      for (; e < this.CONST_MAX_FLANK_SLOTS; e++) {
+        s.AttackDialogWaveInfoHelper.fillUnitContainer(e, this._disp.mc_left_tools, this.waveInfo.itemsLeftWall_tools, true, false, this._waveIndex);
+        s.AttackDialogWaveInfoHelper.fillUnitContainer(e, this._disp.mc_right_tools, this.waveInfo.itemsRightWall_tools, true, false, this._waveIndex);
+        s.AttackDialogWaveInfoHelper.fillUnitContainer(e, this._disp.mc_left_units, this.waveInfo.itemsLeftWall_units, false, false, this._waveIndex);
+        s.AttackDialogWaveInfoHelper.fillUnitContainer(e, this._disp.mc_right_units, this.waveInfo.itemsRightWall_units, false, false, this._waveIndex);
+      }
+      for (e = 0; e < this.CONST_MAX_MIDDLE_TOOL_SLOTS; e++) {
+        s.AttackDialogWaveInfoHelper.fillUnitContainer(e, this._disp.mc_middle_tools, this.waveInfo.itemsMiddleWall_tools, true, false, this._waveIndex);
+      }
+      for (e = 0; e < this.CONST_MAX_MIDDLE_SOLDIER_SLOTS; e++) {
+        s.AttackDialogWaveInfoHelper.fillUnitContainer(e, this._disp.mc_middle_units, this.waveInfo.itemsMiddleWall_units, false, false, this._waveIndex);
+      }
+      this._disp.btn_clear.visible = this.waveInfo.getSumOfItems() > 0;
+      s.AttackDialogWaveInfoHelper.showNormalWave(this._disp, this.waveInfo, this._waveIndex + 1);
     }
-    this._disp.btn_clear.visible = this.getSelectedSlot().sumOfItems > 0;
-    r.AttackDialogWaveInfoHelper.showSupportWave(this._disp, this.getSelectedSlot());
   };
-  AttackDialogWaveHandlerSupportToolDetail.prototype.onClick = function (e) {
-    switch (e.target) {
-      case this._disp.btn_clear:
-        var t = this.controller.attackVO.supportItemContainer.getTotalBonusByToolEffect(n.ToolEffectType.ADDITIONAL_WAVE) > 0;
-        r.AttackDialogWaveInfoHelper.clearContainer(this.controller.attackVO.supportItemContainer);
-        if (t) {
-          this.controller.onLordChanged.dispatch();
+  AttackDialogWaveHandlerWaveInfoDetail.prototype.onClick = function (e) {
+    if (this.waveInfo) {
+      switch (e.target) {
+        case this._disp.btn_clear:
+          s.AttackDialogWaveInfoHelper.clearContainer(this.waveInfo.itemsLeftWall_tools);
+          s.AttackDialogWaveInfoHelper.clearContainer(this.waveInfo.itemsLeftWall_units);
+          s.AttackDialogWaveInfoHelper.clearContainer(this.waveInfo.itemsMiddleWall_tools);
+          s.AttackDialogWaveInfoHelper.clearContainer(this.waveInfo.itemsMiddleWall_units);
+          s.AttackDialogWaveInfoHelper.clearContainer(this.waveInfo.itemsRightWall_tools);
+          s.AttackDialogWaveInfoHelper.clearContainer(this.waveInfo.itemsRightWall_units);
+          this.controller.updateAllWaveInfo.dispatch();
+      }
+      if (!this.controller.draggedUnitVO) {
+        switch (e.target.parent) {
+          case this._disp.mc_left_tools:
+            this.selectContainer(this.waveInfo.itemsLeftWall_tools);
+            this.controller.openSpyInfoFlank("left");
+            break;
+          case this._disp.mc_right_tools:
+            this.selectContainer(this.waveInfo.itemsRightWall_tools);
+            this.controller.openSpyInfoFlank("right");
+            break;
+          case this._disp.mc_left_units:
+            this.selectContainer(this.waveInfo.itemsLeftWall_units);
+            this.controller.openSpyInfoFlank("left");
+            break;
+          case this._disp.mc_right_units:
+            this.selectContainer(this.waveInfo.itemsRightWall_units);
+            this.controller.openSpyInfoFlank("right");
+            break;
+          case this._disp.mc_middle_tools:
+            this.selectContainer(this.waveInfo.itemsMiddleWall_tools);
+            this.controller.openSpyInfoFlank("middle");
+            break;
+          case this._disp.mc_middle_units:
+            this.selectContainer(this.waveInfo.itemsMiddleWall_units);
+            this.controller.openSpyInfoFlank("middle");
         }
-        this.controller.updateAllWaveInfo.dispatch();
-    }
-    if (!this.controller.draggedUnitVO) {
-      switch (e.target.parent) {
-        case this._disp.mc_tools:
-          this.selectContainer();
       }
     }
   };
-  AttackDialogWaveHandlerSupportToolDetail.prototype.selectContainer = function () {
-    this.controller.setSelectedWaveInfoSlotMC(this.controller.attackVO.supportItemContainer, null, -1, l.AttackDialogWaveHandlerSupportToolWaveInfoItem.CONST_WAVE_NAME);
-    this.controller.onOpenUnitPicker.dispatch(this.controller.selectedWaveInfoSlotContainer.items[0]);
+  AttackDialogWaveHandlerWaveInfoDetail.prototype.selectContainer = function (e) {
+    this.controller.setSelectedWaveInfoSlotMC(e, this.waveInfo, this._waveIndex);
+    if (this.controller.selectedWaveInfoSlotContainer) {
+      this.controller.onOpenUnitPicker.dispatch(this.controller.selectedWaveInfoSlotContainer.items[0]);
+    }
   };
-  Object.defineProperty(AttackDialogWaveHandlerSupportToolDetail.prototype, "controller", {
+  Object.defineProperty(AttackDialogWaveHandlerWaveInfoDetail.prototype, "waveInfo", {
     get: function () {
-      return s.AttackDialogController.getInstance();
+      return this.controller.attackVO.army.waves[this._waveIndex];
     },
     enumerable: true,
     configurable: true
   });
-  AttackDialogWaveHandlerSupportToolDetail.prototype.getSelectedSlot = function () {
+  Object.defineProperty(AttackDialogWaveHandlerWaveInfoDetail.prototype, "controller", {
+    get: function () {
+      return a.AttackDialogController.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AttackDialogWaveHandlerWaveInfoDetail.prototype.getSelectedSlot = function () {
     return this.controller.attackVO.supportItemContainer;
   };
-  AttackDialogWaveHandlerSupportToolDetail.CONST_WAVE_NAME = "support";
-  return AttackDialogWaveHandlerSupportToolDetail;
+  return AttackDialogWaveHandlerWaveInfoDetail;
 }();
-exports.AttackDialogWaveHandlerSupportToolDetail = u;
+exports.AttackDialogWaveHandlerWaveInfoDetail = l;

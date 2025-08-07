@@ -4,13 +4,13 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./262.js");
-var s = require("./2923.js");
+var s = require("./2924.js");
 var r = require("./4.js");
 var l = require("./177.js");
 var c = require("./12.js");
 var u = require("./15.js");
 var d = require("./71.js");
-var p = require("./1024.js");
+var p = require("./1025.js");
 var h = function (e) {
   function RelicBreweryBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;

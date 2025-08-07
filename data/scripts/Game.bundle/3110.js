@@ -3,23 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./457.js");
+var a = require("./62.js");
 var s = function (e) {
-  function StonemasonBuildingVE() {
+  function StableBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(StonemasonBuildingVE, e);
-  Object.defineProperty(StonemasonBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(StableBuildingVE, e);
+  Object.defineProperty(StableBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourStone;
+      return Library.CastleInterfaceElements.Icon_Horse;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.AProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return StonemasonBuildingVE;
-}(a.AProductionBuildingVE);
-exports.StonemasonBuildingVE = s;
+  return StableBuildingVE;
+}(a.ABasicBuildingVE);
+exports.StableBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

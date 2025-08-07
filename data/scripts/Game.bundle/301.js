@@ -127,6 +127,6 @@ var h = function (e) {
 exports.SeasonLeagueSimpleRewardsComponent = h;
 o.classImplementsInterfaces(h, "ICollectableRendererList");
 var g = require("./48.js");
-var C = require("./523.js");
+var C = require("./524.js");
 var _ = require("./82.js");
 var m = require("./25.js");

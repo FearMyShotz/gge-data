@@ -2,59 +2,51 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./14.js");
-var s = require("./115.js");
-var r = require("./120.js");
-var l = require("./63.js");
-var c = require("./19.js");
-var u = require("./195.js");
-var d = require("./4.js");
-var p = function (e) {
-  function CollectableItemUnitVE() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./55.js");
+var r = require("./24.js");
+var l = require("./46.js");
+var c = require("./158.js");
+var u = createjs.Point;
+var d = function (e) {
+  function CollectableItemEffectVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemUnitVE, e);
-  CollectableItemUnitVE.prototype.init = function (t, i) {
-    e.prototype.init.call(this, t, i);
-    this.triggerOnAllIconDispLoadedManually = true;
+  n.__extends(CollectableItemEffectVE, e);
+  CollectableItemEffectVE.prototype.iconCreate = function () {
     this.scaleManually = true;
-  };
-  CollectableItemUnitVE.prototype.iconCreate = function () {
-    var e = this.renderer.getRenderer(c.CollectableRenderOptions.ICON_TRANSFORM);
-    var t = 1;
-    if (e) {
-      t = e.transform.scale;
-      e.transform.scale = 1;
+    var e = CollectableItemEffectVE.ASSET_NAME_PREFIX + this.effectVO.effectId;
+    if (o.BasicModel.basicLoaderData.isItemAssetVersioned(e)) {
+      this.dispCreator.addClip(new r.CastleGoodgameExternalClip(e, l.IsoHelper.view.getAssetFileURL(e), null, 0, false));
     }
-    l.WodPicHelper.addUnitPic(this.unitItemVO.unitVO, this.dispCreator.dispContainer, this.options.icon.dimension.x * t, this.options.icon.dimension.y * t, d.CastleModel.userData.playerCrest.colorsTwo[0], d.CastleModel.userData.playerCrest.colorsTwo[1], this.options.icon.unitLevelDimension.x, this.options.icon.unitLevelOffset, true, true, true, this.bindFunction(this.onAllDispClipsLoaded), this.renderer.clips.unitLevelMC, this.options.icon.selfLoadlevelIndicator);
-  };
-  CollectableItemUnitVE.prototype.textfieldUpdate = function () {
-    this.textfieldSetTextAsNumber(this.vo.amount);
-  };
-  CollectableItemUnitVE.prototype.textfieldBackgroundVisible = function () {
-    return true;
-  };
-  CollectableItemUnitVE.prototype.tooltipCreate = function () {
-    if (this.renderer.options.tooltip.useSimpleTooltips) {
-      return this.unitItemVO.unitVO.getNameString();
-    } else {
-      return this.tooltipCreateByAmount(this.unitItemVO.unitVO.getNameString());
+    if (this.effectVO.isTemporary) {
+      this.dispCreator.addClip(new r.CastleGoodgameExternalClip(CollectableItemEffectVE.TEMP_ASSET_NAME, l.IsoHelper.view.getAssetFileURL(CollectableItemEffectVE.TEMP_ASSET_NAME), null, 0, false));
     }
   };
-  CollectableItemUnitVE.prototype.onInfoButtonClicked = function () {
-    if (this.unitItemVO.unitVO) {
-      a.CastleComponent.layoutManager.showDialog(s.CastleRecruitInfoDialog, new r.CastleRecruitInfoDialogProperties(this.unitItemVO.unitVO));
+  CollectableItemEffectVE.prototype.onAllDispClipsLoaded = function (t = null) {
+    var i = this.options.icon.dimension;
+    for (var n = 0, o = this.dispCreator.clipList; n < o.length; n++) {
+      var a = o[n];
+      if (a !== undefined) {
+        a.scaleX = a.scaleY = s.ClientConstUtils.getScaleFactorForFitInBounds(new u(a.width, a.height), i);
+      }
     }
+    e.prototype.onAllDispClipsLoaded.call(this, t);
   };
-  Object.defineProperty(CollectableItemUnitVE.prototype, "unitItemVO", {
+  Object.defineProperty(CollectableItemEffectVE.prototype, "effectVO", {
     get: function () {
       return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  return CollectableItemUnitVE;
-}(u.ACollectableItemSimpleIconVE);
-exports.CollectableItemUnitVE = p;
-o.classImplementsInterfaces(p, "ICollectableRendererList");
+  CollectableItemEffectVE.__initialize_static_members = function () {
+    CollectableItemEffectVE.TEMP_ASSET_NAME = CollectableItemEffectVE.ASSET_NAME_PREFIX + "Temp";
+  };
+  CollectableItemEffectVE.ASSET_NAME_PREFIX = "Effect_Icon_";
+  return CollectableItemEffectVE;
+}(c.ACollectableItemVE);
+exports.CollectableItemEffectVE = d;
+a.classImplementsInterfaces(d, "ICollectableRendererList");
+d.__initialize_static_members();

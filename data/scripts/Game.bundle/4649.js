@@ -3,48 +3,40 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = function (e) {
-  function CastleWelcomebackDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleWelcomebackDialog.NAME) || this;
+var a = require("./5.js");
+var s = require("./6.js");
+var r = require("./7.js");
+var l = require("./4650.js");
+var c = require("./10.js");
+var u = function (e) {
+  function LCBCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleWelcomebackDialog, e);
-  CastleWelcomebackDialog.prototype.initLoaded = function (t = null) {
-    this.initBasicButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close]);
-    e.prototype.initLoaded.call(this, t);
-  };
-  CastleWelcomebackDialog.prototype.showLoaded = function (t = null) {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_comeback_title")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_comeback_copy"));
-    this.itxt_value ||= this.textFieldManager.registerTextField(this.dialogDisp.txt_value, new a.LocalizedTextVO("value_multiplied", [0]));
-    this.itxt_value.textContentVO.textId = "value_multiplied";
-    this.itxt_value.textContentVO.textReplacements = [this.dialogProperties.amountC2];
-    e.prototype.showLoaded.call(this, t);
-    if (!this.isOutOfTutorial()) {
-      this.hide();
-    }
-  };
-  CastleWelcomebackDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_close:
-      case this.dialogDisp.btn_ok:
-        this.hide();
-    }
-  };
-  Object.defineProperty(CastleWelcomebackDialog.prototype, "dialogProperties", {
+  n.__extends(LCBCommand, e);
+  Object.defineProperty(LCBCommand.prototype, "cmdId", {
     get: function () {
-      return this.properties;
+      return r.ClientConstSF.C2S_USER_ACHIEVED_RANKS;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleWelcomebackDialog.__initialize_static_members = function () {
-    CastleWelcomebackDialog.NAME = "CastleWellcomeBack";
+  LCBCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        d.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleWelcomebackDialog, new l.CastleWelcomebackDialogProperties(s.int(i.C2)));
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    return false;
   };
-  return CastleWelcomebackDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleWelcomebackDialog = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
-s.__initialize_static_members();
+  return LCBCommand;
+}(c.CastleCommand);
+exports.LCBCommand = u;
+var d = require("./9.js");
+var p = require("./4651.js");
+o.classImplementsInterfaces(u, "IExecCommand");

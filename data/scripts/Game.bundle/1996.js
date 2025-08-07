@@ -1,95 +1,106 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./4.js");
+var n = require("./2.js");
+var o = require("./1.js");
 var a = function () {
-  function EquippableEffectValueSupportUnits() {
-    this._amount = 0;
-    this._wodID = 0;
-    this._amount2 = 0;
-    this._wodID2 = 0;
+  function EffectValueMap() {
+    this._map = new Map();
   }
-  EquippableEffectValueSupportUnits.prototype.parseFromValueString = function (e) {
-    var t = e.split(/\D/g);
-    return this.parseFromValueArray(t);
-  };
-  EquippableEffectValueSupportUnits.prototype.parseFromValueArray = function (e) {
-    this._wodID = parseInt(e[0]);
-    this._amount = parseInt(e[1]);
-    this._wodID2 = parseInt(e[2]);
-    this._amount2 = parseInt(e[3]) ? parseInt(e[3]) : 0;
-    this._troopsPackageTextID = this.getTroopPackageTypeByWodId();
-    return this;
-  };
-  EquippableEffectValueSupportUnits.prototype.add = function (e, t) {
-    if (this._wodID == 0) {
-      this._wodID = e.rawValues[0];
-    } else if (this._wodID2 == 0) {
-      this._wodID2 = e.rawValues[2];
-    } else if (e.rawValues[0] == this._wodID) {
-      this._amount += e.rawValues[1];
-      this._amount += e.rawValues[3];
+  EffectValueMap.prototype.parseFromValueString = function (e) {
+    var t;
+    var i = [];
+    t = e.indexOf(",") > -1 ? e.split(",") : e.indexOf("+") > -1 ? e.split("+") : [e];
+    for (var n = 0; n < t.length; ++n) {
+      i.push(parseInt(t[n]));
     }
-    if (e.rawValues.length == 1) {
-      this._amount += Math.ceil(e.rawValues[0]);
+    return this.parseFromValueArray(i);
+  };
+  EffectValueMap.prototype.parseFromValueArray = function (e) {
+    this._map = new Map();
+    for (var t = 0; t < e.length; t += 2) {
+      this._map.set(e[t], t + 1 < e.length ? e[t + 1] : 0);
     }
     return this;
   };
-  Object.defineProperty(EquippableEffectValueSupportUnits.prototype, "textReplacements", {
-    get: function () {
-      return [this._amount + this._amount2, this._troopsPackageTextID];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EquippableEffectValueSupportUnits.prototype, "rawValues", {
-    get: function () {
-      return [this._wodID, this._amount, this._wodID2, this._amount2];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EquippableEffectValueSupportUnits.prototype, "strength", {
-    get: function () {
-      return this._amount + this._amount2;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  EquippableEffectValueSupportUnits.prototype.clone = function () {
-    return new EquippableEffectValueSupportUnits().parseFromValueArray(this.rawValues);
+  EffectValueMap.prototype.add = function (e, t) {
+    var i = e;
+    if (!i || !i._map) {
+      return this;
+    }
+    for (var n = 0, o = Array.from(i._map.keys()); n < o.length; n++) {
+      var a = o[n];
+      if (this._map.has(a)) {
+        this._map.set(a, this._map.get(a) + i._map.get(a));
+      } else {
+        this._map.set(a, i._map.get(a));
+      }
+    }
+    return null;
   };
-  EquippableEffectValueSupportUnits.prototype.getTroopPackageTypeByWodId = function () {
-    switch (this._wodID) {
-      case EquippableEffectValueSupportUnits.TRAVELING_KNIGHTS_WOD_ID:
-        return "troops_package_travellingKnight";
-      case EquippableEffectValueSupportUnits.DEMON_WARRIORS_WOD_ID:
-        return "troops_package_demonWarriors";
-      case EquippableEffectValueSupportUnits.DESERT_ELITE_WOD_ID:
-        return "troops_package_desertElite";
-      case EquippableEffectValueSupportUnits.KINGSGUARD_WOD_ID:
-        return "troops_package_kingsguard";
-      default:
-        var e = o.CastleModel.wodData.getUnitVOByWodId(this._wodID);
-        if (e) {
-          return e.getNameString();
-        } else {
-          return "";
+  Object.defineProperty(EffectValueMap.prototype, "rawValues", {
+    get: function () {
+      var e = [];
+      if (this._map != null) {
+        for (var t = 0, i = Array.from(this._map.keys()); t < i.length; t++) {
+          var n = i[t];
+          if (n !== undefined) {
+            e.push(n);
+            e.push(this._map.get(n));
+          }
         }
+      }
+      return e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EffectValueMap.prototype.clone = function () {
+    var e = new EffectValueMap();
+    e.parseFromValueArray(this.rawValues);
+    return e;
+  };
+  Object.defineProperty(EffectValueMap.prototype, "strength", {
+    get: function () {
+      var e = 0;
+      if (this._map != null) {
+        for (var t = 0, i = Array.from(this._map.values()); t < i.length; t++) {
+          var n = i[t];
+          if (n !== undefined) {
+            e = n;
+            break;
+          }
+        }
+      }
+      return e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EffectValueMap.prototype, "textReplacements", {
+    get: function () {
+      return [this.strength];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EffectValueMap.prototype.hasWodId = function (e) {
+    return this._map.has(e);
+  };
+  EffectValueMap.prototype.getValueforId = function (e) {
+    if (this._map.get(e)) {
+      return this._map.get(e);
+    } else {
+      return 0;
     }
   };
-  EquippableEffectValueSupportUnits.prototype.getContextTextReplacements = function (e) {
+  EffectValueMap.prototype.getWodIds = function () {
+    return n.DictionaryUtil.getKeys(this._map);
+  };
+  EffectValueMap.prototype.getContextTextReplacements = function (e) {
     return this.textReplacements;
   };
-  EquippableEffectValueSupportUnits.__initialize_static_members = function () {
-    EquippableEffectValueSupportUnits.TRAVELING_KNIGHTS_WOD_ID = 655;
-    EquippableEffectValueSupportUnits.DEMON_WARRIORS_WOD_ID = 714;
-    EquippableEffectValueSupportUnits.DESERT_ELITE_WOD_ID = 723;
-    EquippableEffectValueSupportUnits.KINGSGUARD_WOD_ID = 686;
-  };
-  return EquippableEffectValueSupportUnits;
+  return EffectValueMap;
 }();
-exports.EquippableEffectValueSupportUnits = a;
-n.classImplementsInterfaces(a, "IEffectValue");
-a.__initialize_static_members();
+exports.EffectValueMap = a;
+o.classImplementsInterfaces(a, "IEffectValue");

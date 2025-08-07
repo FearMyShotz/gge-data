@@ -3,18 +3,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./18.js");
-var r = function (e) {
-  function CastleHighscoreDialogProperties(t, i = a.int(s.ClientConstCastle.CATEGORY_HONOR)) {
+var a = require("./7.js");
+var s = function (e) {
+  function C2SAllianceUpgradeVO(t, i = 1) {
     var n = this;
-    n.startCategory = 0;
+    n.BT = 0;
+    n.L = 0;
     CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).startTimeSpan = t;
-    n.startCategory = i;
+    (n = e.call(this) || this).BT = t;
+    n.L = i;
     return n;
   }
-  n.__extends(CastleHighscoreDialogProperties, e);
-  return CastleHighscoreDialogProperties;
-}(o.BasicProperties);
-exports.CastleHighscoreDialogProperties = r;
+  n.__extends(C2SAllianceUpgradeVO, e);
+  C2SAllianceUpgradeVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_ALLIANCE_UPGRADE;
+  };
+  return C2SAllianceUpgradeVO;
+}(o.BasicCommandVO);
+exports.C2SAllianceUpgradeVO = s;

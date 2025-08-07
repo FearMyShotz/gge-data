@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./31.js");
 var s = require("./19.js");
-var r = require("./1879.js");
+var r = require("./1881.js");
 var l = createjs.Point;
 var c = function (e) {
   function AutoSellGemPopoverVE() {
@@ -21,6 +21,6 @@ var c = function (e) {
   return AutoSellGemPopoverVE;
 }(r.AAutoSellPopoverVE);
 exports.AutoSellGemPopoverVE = c;
-var u = require("./926.js");
+var u = require("./927.js");
 var d = require("./25.js");
 o.classImplementsInterfaces(c, "ICollectableRendererList");

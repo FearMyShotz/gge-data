@@ -4,14 +4,17 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function TutorialConfirmBuildToolsCommand() {
+  function TutorialConfirmAttackRobberBaronCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TutorialConfirmBuildToolsCommand, e);
-  TutorialConfirmBuildToolsCommand.prototype.getTrackOnQuestConfirmID = function () {
-    return "s_090_020_dialog_confirmed";
+  n.__extends(TutorialConfirmAttackRobberBaronCommand, e);
+  TutorialConfirmAttackRobberBaronCommand.prototype.finishStep = function () {
+    e.prototype.finishStep.call(this);
   };
-  return TutorialConfirmBuildToolsCommand;
+  TutorialConfirmAttackRobberBaronCommand.prototype.getTrackOnQuestConfirmID = function () {
+    return "s_080_050_dialog_confirmed";
+  };
+  return TutorialConfirmAttackRobberBaronCommand;
 }(require("./253.js").TutorialBasicQuestStarterActionCommand);
-exports.TutorialConfirmBuildToolsCommand = a;
+exports.TutorialConfirmAttackRobberBaronCommand = a;
 o.classImplementsInterfaces(a, "ISimpleCommand");

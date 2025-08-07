@@ -41,7 +41,7 @@ var n = function () {
   return RewardsDialogScoreBarComponentExternal;
 }();
 exports.RewardsDialogScoreBarComponentExternal = n;
-var o = require("./3407.js");
+var o = require("./3408.js");
 var a = require("./24.js");
 var s = require("./2.js");
 var r = require("./2.js");

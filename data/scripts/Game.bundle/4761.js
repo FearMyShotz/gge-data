@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function BMSCommand() {
+  function BIECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BMSCommand, e);
-  Object.defineProperty(BMSCommand.prototype, "cmdId", {
+  n.__extends(BIECommand, e);
+  Object.defineProperty(BIECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_MARAUDER_START;
+      return s.ClientConstSF.S2C_GLOBAL_EFFECT_BOOSTER_INFO_EVENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,19 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  BMSCommand.prototype.executeCommand = function (e, t) {
+  BIECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        r.CastleModel.boostData.parse_BOI(i.boi);
+        r.CastleModel.globalEffectData.parse_GIE(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return BMSCommand;
+  return BIECommand;
 }(l.CastleCommand);
-exports.BMSCommand = c;
+exports.BIECommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

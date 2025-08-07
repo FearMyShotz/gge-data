@@ -2,71 +2,53 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
-var l = require("./5.js");
-var c = require("./3.js");
-var u = require("./7.js");
-var d = require("./726.js");
-var p = require("./4.js");
-var h = require("./43.js");
-var g = require("./10.js");
-var C = function (e) {
-  function FCSCommand() {
+var o = require("./5.js");
+var a = require("./7.js");
+var s = require("./37.js");
+var r = require("./10.js");
+var l = function (e) {
+  function CPNECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FCSCommand, e);
-  Object.defineProperty(FCSCommand.prototype, "cmdId", {
+  n.__extends(CPNECommand, e);
+  Object.defineProperty(CPNECommand.prototype, "cmdId", {
     get: function () {
-      return u.ClientConstSF.S2C_MAP_FACEBOOK;
+      return a.ClientConstSF.S2C_CHANGE_PLAYER_NAME_EVENT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(g.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  FCSCommand.prototype.executeCommand = function (e, t) {
+  CPNECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case l.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        p.CastleModel.userData.parse_FCS(i);
-        this.controller.dispatchEvent(new d.CastleFacebookEvent(d.CastleFacebookEvent.FACEBOOK_MAPPING_UPDATED));
+      case o.ERROR.ALL_OK:
+        this.dispatchForShowPopUp("dialog_options_newName_success_desc", true);
         break;
-      case l.ERROR.FACEBOOK_MAPPING_NOT_ESTABLISHED:
-        this.facebookAccMappedToDifferentPlayer();
+      case o.ERROR.USAGE_OF_BADWORDS:
+        this.dispatchForShowPopUp("error_badword", false);
         break;
-      case l.ERROR.FACEBOOK_WRONG_USER_ID:
-        this.resetFacebookPlayerData();
-        this.couldNotMapPlayer();
+      case o.ERROR.NAME_ALREADY_IN_USE:
+        this.dispatchForShowPopUp("dialog_options_error_nameAlreadyInUse_desc", false);
+        break;
+      case o.ERROR.INVALID_NAME:
+        this.dispatchForShowPopUp("errorCode_98", false);
+        break;
+      case o.ERROR.NAME_HAS_ONLY_NUMBERS:
+        this.dispatchForShowPopUp("error_name_is_number", false);
+        break;
+      case o.ERROR.COOLING_DOWN:
+        this.dispatchForShowPopUp("errorCode_95", false);
         break;
       default:
-        p.CastleModel.userData.resetFacebookData();
-        this.controller.dispatchEvent(new d.CastleFacebookEvent(d.CastleFacebookEvent.FACEBOOK_MAPPING_ERROR));
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  FCSCommand.prototype.resetFacebookPlayerData = function (e = null) {
-    p.CastleModel.userData.resetFacebookData();
-    this.controller.dispatchEvent(new d.CastleFacebookEvent(d.CastleFacebookEvent.FACEBOOK_MAPPING_ERROR));
+  CPNECommand.prototype.dispatchForShowPopUp = function (e, t) {
+    this.controller.dispatchEvent(new s.CastleServerMessageArrivedEvent(s.CastleServerMessageArrivedEvent.CPNE_ARRIVED, [e, t]));
   };
-  FCSCommand.prototype.facebookAccMappedToDifferentPlayer = function () {
-    m.CastleDialogHandler.getInstance().registerDialogsWithType(O.CastleStandardYesNoDialog, new a.BasicStandardYesNoDialogProperties(c.Localize.text("dialog_fbAlreadyUsed_header"), c.Localize.text("dialog_fbAlreadyUsed_desc"), this.bindFunction(this.onSwitchToFacebookAccount), this.bindFunction(this.resetFacebookPlayerData)), true, h.CastleDialogConsts.PRIORITY_TOP, 0, h.CastleDialogConsts.DIALOG_TYPE_MODAL);
-  };
-  FCSCommand.prototype.onSwitchToFacebookAccount = function (e = null) {
-    s.CommandController.instance.executeCommand(_.IngameClientCommands.SWITCH_TO_CACHED_FACEBOOK_ACCOUNT);
-  };
-  FCSCommand.prototype.couldNotMapPlayer = function () {
-    m.CastleDialogHandler.getInstance().registerDialogsWithType(f.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(c.Localize.text("dialog_fbAlreadyUsed_header"), c.Localize.text("dialog_facebookPlayerAccountAlreadyLinked_desc")), false, h.CastleDialogConsts.PRIORITY_LOW, 0, h.CastleDialogConsts.DIALOG_TYPE_MODAL);
-  };
-  return FCSCommand;
-}(g.CastleCommand);
-exports.FCSCommand = C;
-var _ = require("./29.js");
-var m = require("./9.js");
-var f = require("./38.js");
-var O = require("./151.js");
-r.classImplementsInterfaces(C, "IExecCommand");
+  return CPNECommand;
+}(r.CastleCommand);
+exports.CPNECommand = l;

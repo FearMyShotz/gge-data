@@ -2,35 +2,82 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function BUSCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function MysteryBoxOpeningDialogProperties(t, i, n, o, a, s, r) {
+    var l = e.call(this) || this;
+    l._lootBoxVO = t;
+    l._selectedKey = i;
+    l._progressValue = n;
+    l._oldProgressValue = o;
+    l.barTimesFilled = a;
+    l._rewards = s;
+    l._rewardIds = r;
+    return l;
   }
-  n.__extends(BUSCommand, e);
-  Object.defineProperty(BUSCommand.prototype, "cmdId", {
+  n.__extends(MysteryBoxOpeningDialogProperties, e);
+  Object.defineProperty(MysteryBoxOpeningDialogProperties.prototype, "boxId", {
     get: function () {
-      return s.ClientConstSF.S2C_BUY_UNLOCKED_SYMBOL;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      return this._lootBoxVO.lootBoxID;
     },
     enumerable: true,
     configurable: true
   });
-  BUSCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        break;
-      default:
-        this.showErrorDialog(e, t);
-    }
-    return false;
-  };
-  return BUSCommand;
-}(r.CastleCommand);
-exports.BUSCommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  Object.defineProperty(MysteryBoxOpeningDialogProperties.prototype, "boxRarity", {
+    get: function () {
+      return this._lootBoxVO.rarity;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MysteryBoxOpeningDialogProperties.prototype, "boxName", {
+    get: function () {
+      return this._lootBoxVO.name;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MysteryBoxOpeningDialogProperties.prototype, "tombolaId", {
+    get: function () {
+      return this._lootBoxVO.lootBoxTombolaID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MysteryBoxOpeningDialogProperties.prototype, "selectedKey", {
+    get: function () {
+      return this._selectedKey;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MysteryBoxOpeningDialogProperties.prototype, "progressValue", {
+    get: function () {
+      return this._progressValue;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MysteryBoxOpeningDialogProperties.prototype, "oldProgressValue", {
+    get: function () {
+      return this._oldProgressValue;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MysteryBoxOpeningDialogProperties.prototype, "rewards", {
+    get: function () {
+      return this._rewards;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MysteryBoxOpeningDialogProperties.prototype, "rewardIds", {
+    get: function () {
+      return this._rewardIds;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return MysteryBoxOpeningDialogProperties;
+}(require("./2.js").BasicProperties);
+exports.MysteryBoxOpeningDialogProperties = o;

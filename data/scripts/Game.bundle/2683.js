@@ -1,61 +1,23 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CastleEffectVO() {
-    this._value = 0;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SSkipUnitPackageVO(t, i) {
+    var n = this;
+    n.LID = 0;
+    n.S = 0;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this).LID = t;
+    n.S = i;
+    return n;
   }
-  CastleEffectVO.createFromXML = function (e) {
-    var t = [];
-    for (var i in o.CastleEffectEnum.allValues) {
-      var n = o.CastleEffectEnum.allValues[i];
-      if (n !== undefined) {
-        var a = e[n.name] || "";
-        if (a.length > 0) {
-          var s = new CastleEffectVO();
-          s.type = n;
-          s.value = Number(a);
-          t.push(s);
-        }
-      }
-    }
-    return t;
+  n.__extends(C2SSkipUnitPackageVO, e);
+  C2SSkipUnitPackageVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_SKIP_UNIT_PRODUCTION;
   };
-  Object.defineProperty(CastleEffectVO.prototype, "type", {
-    get: function () {
-      return this._type;
-    },
-    set: function (e) {
-      this._type = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleEffectVO.prototype, "value", {
-    get: function () {
-      return this._value;
-    },
-    set: function (e) {
-      this._value = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleEffectVO.prototype, "constructionItemTextId", {
-    get: function () {
-      return "ci_effect_" + this.type.name;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleEffectVO.prototype, "buildingTextId", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleEffectVO;
-}();
-exports.CastleEffectVO = n;
-var o = require("./97.js");
+  return C2SSkipUnitPackageVO;
+}(o.BasicCommandVO);
+exports.C2SSkipUnitPackageVO = s;

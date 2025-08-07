@@ -2,22 +2,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CollectableItemXpBoosterVO() {
-    CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./299.js");
+var r = function (e) {
+  function CollectableItemGloryBoosterVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemXpBoosterVO, e);
-  CollectableItemXpBoosterVO.prototype.getTooltipTextId = function () {
-    return "xpBooster_name";
+  n.__extends(CollectableItemGloryBoosterVE, e);
+  Object.defineProperty(CollectableItemGloryBoosterVE.prototype, "percentageIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements_Icons.Icon_GloryBooster;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.ACollectableItemPercentageBoosterVE.prototype, "percentageIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CollectableItemGloryBoosterVE.prototype.tooltipCreate = function () {
+    var e = this.itemPercentageBoosterVO.percentageBoosterVO.duration / 3600;
+    if (e > 1) {
+      return {
+        t: "fameBoost_package_hours_plural",
+        p: [new a.LocalizedNumberVO(this.itemPercentageBoosterVO.percentageBoosterVO.percentage), new a.LocalizedNumberVO(e)]
+      };
+    } else {
+      return {
+        t: "fameBoost_package_hours_singular",
+        p: [new a.LocalizedNumberVO(this.itemPercentageBoosterVO.percentageBoosterVO.percentage)]
+      };
+    }
   };
-  CollectableItemXpBoosterVO.prototype.getDescriptionTextId = function () {
-    return "xpBooster_short_info";
-  };
-  CollectableItemXpBoosterVO.__initialize_static_members = function () {
-    CollectableItemXpBoosterVO.SERVER_KEY = "XPB";
-  };
-  return CollectableItemXpBoosterVO;
-}(require("./328.js").ACollectableItemPercentageBoosterVO);
-exports.CollectableItemXpBoosterVO = o;
-o.__initialize_static_members();
+  return CollectableItemGloryBoosterVE;
+}(s.ACollectableItemPercentageBoosterVE);
+exports.CollectableItemGloryBoosterVE = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList");

@@ -3,24 +3,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function SkipCooldownEvent(t, i, n = false, o = false) {
-    var a = this;
-    CONSTRUCTOR_HACK;
-    (a = e.call(this, t, n, o) || this)._mapObjectVO = i;
-    return a;
+  function SkippableCooldownDialogProperties(t, i, n) {
+    var o = e.call(this) || this;
+    o.mapObjectVO = t;
+    o._cooldownFinished = i;
+    o._cooldownFinishedParamList = n;
+    return o;
   }
-  n.__extends(SkipCooldownEvent, e);
-  Object.defineProperty(SkipCooldownEvent.prototype, "mapObjectVO", {
-    get: function () {
-      return this._mapObjectVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SkipCooldownEvent.__initialize_static_members = function () {
-    SkipCooldownEvent.UPDATE = "update";
+  n.__extends(SkippableCooldownDialogProperties, e);
+  SkippableCooldownDialogProperties.prototype.callCooldownFinishedFunction = function () {
+    this._cooldownFinished(this._cooldownFinishedParamList);
   };
-  return SkipCooldownEvent;
-}(createjs.Event);
-exports.SkipCooldownEvent = o;
-o.__initialize_static_members();
+  return SkippableCooldownDialogProperties;
+}(require("./2.js").BasicProperties);
+exports.SkippableCooldownDialogProperties = o;

@@ -4,98 +4,117 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./3.js");
-var l = require("./4.js");
-var c = require("./35.js");
-var u = require("./141.js");
-var d = require("./401.js");
-var p = require("./287.js");
-var h = require("./1633.js");
-var g = function (e) {
-  function ResourcePanelToolTipLawAndOrder() {
-    return e.call(this, C.ResourcePanelToolTipManager.TOOL_TIP_TYPE_LAW_AND_ORDER) || this;
+var s = require("./2.js");
+var r = require("./1.js");
+var l = require("./3.js");
+var c = require("./3.js");
+var u = require("./16.js");
+var d = require("./44.js");
+var p = require("./4.js");
+var h = require("./33.js");
+var g = require("./141.js");
+var C = require("./185.js");
+var _ = require("./401.js");
+var m = require("./286.js");
+var f = createjs.Point;
+var O = function (e) {
+  function ResourcePanelToolTipFood() {
+    return e.call(this, y.ResourcePanelToolTipManager.TOOL_TIP_TYPE_FOOD) || this;
   }
-  n.__extends(ResourcePanelToolTipLawAndOrder, e);
-  ResourcePanelToolTipLawAndOrder.prototype.createItems = function () {
-    this._title = new p.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextBold());
-    this._deco = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
-    this._protection = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
-    this._population = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
-    this._riot = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
-    this._subscription = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
-    this._baron = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
-    this._productivity = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipIconTwoShortTexts());
-    this._items.push(this._title);
-    this._items.push(this._deco);
-    this._items.push(this._protection);
-    this._items.push(this._population);
-    this._items.push(this._riot);
-    this._items.push(this._subscription);
-    this._items.push(this._baron);
-    this._items.push(new Library.CastleInterfaceElements.divider());
-    this._items.push(this._productivity);
+  n.__extends(ResourcePanelToolTipFood, e);
+  ResourcePanelToolTipFood.prototype.createItems = function () {
+    this._title = new m.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextBold());
+    this._productionPerHour = new m.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._eatPerHour = new m.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._foodUse = new m.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._amount = new m.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._foodIsEmpty = new m.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._hunterActive = new m.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._metropolBoost = new m.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._meadProduction = new m.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._foodUseFrozen = new b.ResourcePaneltoolTipIconWithText(new Library.CastleInterfaceElements.McToolTipDynamicIconWithTextLong(), new Library.CastleInterfaceElements_Icons.Icon_Freeze_M());
+    this._eatPerHourFrozen = new b.ResourcePaneltoolTipIconWithText(new Library.CastleInterfaceElements.McToolTipDynamicIconWithTextLong(), new Library.CastleInterfaceElements_Icons.Icon_Freeze_M());
+    this._productionPerHourFrozen = new b.ResourcePaneltoolTipIconWithText(new Library.CastleInterfaceElements.McToolTipDynamicIconWithTextLong(), new Library.CastleInterfaceElements_Icons.Icon_Freeze_M());
+    this._meadProductionFrozen = new b.ResourcePaneltoolTipIconWithText(new Library.CastleInterfaceElements.McToolTipDynamicIconWithTextLong(), new Library.CastleInterfaceElements_Icons.Icon_Freeze_M());
+    this._foodUseFrozen.tf.color = u.ClientConstColor.FONT_FROZEN;
+    this._eatPerHourFrozen.tf.color = u.ClientConstColor.FONT_FROZEN;
+    this._productionPerHourFrozen.tf.color = u.ClientConstColor.FONT_FROZEN;
+    this._meadProductionFrozen.tf.color = u.ClientConstColor.FONT_FROZEN;
+    this._divider = new Library.CastleInterfaceElements.divider();
   };
-  ResourcePanelToolTipLawAndOrder.prototype.updateContent = function () {
-    u.CastleTextFieldHelper.safeSetText(this._title.tf, "publicOrder");
-    if (o.GGSCountryController.instance.currentCountry.isLanguageWrittenRightToLeft) {
-      this.updateDeco(this._deco.tf2, this._deco.tf1);
-      this.updateProtection(this._protection.tf2, this._protection.tf1);
-      this.updatePopulation(this._population.tf2, this._population.tf1);
-      this.updateRiot(this._riot.tf2, this._riot.tf1);
-      this.updateSubscription(this._subscription.tf2, this._subscription.tf1);
-      this.updateBaron(this._baron.tf2, this._baron.tf1);
-      this.updateProductivity(this._productivity.tf2, this._productivity.tf1);
+  ResourcePanelToolTipFood.prototype.updateContent = function () {
+    this._items.length = 0;
+    this._divider.scaleX = 0.1;
+    g.CastleTextFieldHelper.safeSetText(this._title.tf, "food");
+    if (p.CastleModel.areaData.activeCommonInfo && p.CastleModel.areaData.activeCommonInfo.foodBaseProduction > 0) {
+      g.CastleTextFieldHelper.safeSetText(this._productionPerHour.tf, "foodproduction_value", [a.MathBase.floor(p.CastleModel.areaData.activeCommonInfo.foodBaseProduction, 1)]);
+      g.CastleTextFieldHelper.safeSetText(this._productionPerHourFrozen.tf, "foodproduction_freeze_value", [a.MathBase.floor(p.CastleModel.areaData.activeCommonInfo.foodBaseProduction, 1)]);
     } else {
-      this.updateDeco(this._deco.tf1, this._deco.tf2);
-      this.updateProtection(this._protection.tf1, this._protection.tf2);
-      this.updatePopulation(this._population.tf1, this._population.tf2);
-      this.updateRiot(this._riot.tf1, this._riot.tf2);
-      this.updateSubscription(this._subscription.tf1, this._subscription.tf2);
-      this.updateBaron(this._baron.tf1, this._baron.tf2);
-      this.updateProductivity(this._productivity.tf1, this._productivity.tf2);
+      g.CastleTextFieldHelper.safeSetText(this._productionPerHour.tf, "noProduction");
+      g.CastleTextFieldHelper.safeSetText(this._productionPerHourFrozen.tf, "noProduction");
     }
-  };
-  ResourcePanelToolTipLawAndOrder.prototype.updateDeco = function (e, t) {
-    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("decoration")]);
-    if (l.CastleModel.areaData.activeCommonInfo) {
-      u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo.getDecoPoints() - l.CastleModel.areaData.activeCommonInfo.populationPenalty);
+    g.CastleTextFieldHelper.safeSetText(this._eatPerHour.tf, "foodwastage_troops_value", [p.CastleModel.areaData.activeCommonInfo.foodConsumption]);
+    g.CastleTextFieldHelper.safeSetText(this._eatPerHourFrozen.tf, "foodwastage_freeze_value", [p.CastleModel.areaData.activeCommonInfo.foodConsumption]);
+    g.CastleTextFieldHelper.safeSetText(this._amount.tf, "storage_capacity_colon", [p.CastleModel.areaData.getActiveStorageItem(E.CollectableEnum.FOOD).maxAmount]);
+    var e = !!p.CastleModel.subscriptionData.getEffectValue(h.EffectTypeEnum.EFFECT_TYPE_FOOD_CAPACITY_BONUS, p.CastleModel.areaData.activeAreaInfo.areaType, p.CastleModel.areaData.activeAreaInfo.kingdomID);
+    C.SubscriptionHelper.showSubscriptionStarToTextField(this._amount.tf, e, 15, new f(-7, -8), true, 4469542);
+    this._amount.x = e ? 15 : 0;
+    this._items.push(this._title);
+    if (p.CastleModel.userData.foodFrozen) {
+      this._items.push(this._productionPerHourFrozen);
+    } else {
+      this._items.push(this._productionPerHour);
     }
+    if (p.CastleModel.hunterData.isBoosted && !p.CastleModel.areaData.activeArea.isSeasonCamp) {
+      g.CastleTextFieldHelper.safeSetText(this._hunterActive.tf, "commons_hunter_hint_HuntActive", [new l.LocalizedTextVO(s.GenericTextIds.VALUE_NOMINAL_ADD, [p.CastleModel.hunterData.foodBoost])]);
+      this._items.push(this._hunterActive);
+    }
+    if (p.CastleModel.areaData.activeCommonInfo.metropolBoost > 0) {
+      g.CastleTextFieldHelper.safeSetText(this._metropolBoost.tf, d.SpecialServerHelper.checkTextIDForSkinText("commons_alliance_hint_metropolBonus"), [p.CastleModel.areaData.activeCommonInfo.metropolBoost]);
+      this._items.push(this._metropolBoost);
+    }
+    if (p.CastleModel.userData.foodFrozen) {
+      this._items.push(this._eatPerHourFrozen);
+    } else {
+      this._items.push(this._eatPerHour);
+    }
+    if (p.CastleModel.breweryData.isMeadProductionActive) {
+      var t = p.CastleModel.breweryData.breweryBuildingVO.meadProduction * (p.CastleModel.breweryData.percentForMead / 100) * p.CastleModel.breweryData.breweryBuildingVO.foodRatio;
+      var i = p.CastleModel.areaData.getActiveStorageItem(E.CollectableEnum.FOOD).productionPerSec + t;
+      g.CastleTextFieldHelper.safeSetText(this._productionPerHour.tf, "foodproduction_value", [a.MathBase.floor(i, 1)]);
+      g.CastleTextFieldHelper.safeSetText(this._productionPerHourFrozen.tf, "foodproduction_freeze_value", [a.MathBase.floor(i, 1)]);
+      g.CastleTextFieldHelper.safeSetText(this._meadProduction.tf, "foodwastage_brewery_value", [t]);
+      g.CastleTextFieldHelper.safeSetText(this._meadProductionFrozen.tf, "foodwastage_brewery_freeze_value", [t]);
+      if (p.CastleModel.userData.foodFrozen) {
+        this._items.push(this._meadProductionFrozen);
+      } else {
+        this._items.push(this._meadProduction);
+      }
+    }
+    this._items.push(this._divider);
+    if (p.CastleModel.userData.foodFrozen) {
+      this._items.push(this._foodUseFrozen);
+    } else {
+      this._items.push(this._foodUse);
+    }
+    if (p.CastleModel.areaData.activeCommonInfo.foodProduction < 0) {
+      g.CastleTextFieldHelper.safeSetText(this._foodUse.tf, "xPerHour", [a.MathBase.floor(p.CastleModel.areaData.activeCommonInfo.foodProduction, 1)]);
+      g.CastleTextFieldHelper.safeSetText(this._foodUseFrozen.tf, "xPerHour_freeze", [a.MathBase.floor(p.CastleModel.areaData.activeCommonInfo.foodProduction, 1)]);
+      g.CastleTextFieldHelper.safeSetText(this._foodIsEmpty.tf, "emptyIn", [o.TimeStringHelper.getTimeToString(p.CastleModel.areaData.activeCommonInfo.foodIsEmptyTimeInSeconds, o.TimeStringHelper.ONE_TIME_FORMAT, c.Localize.text)]);
+      this._foodUse.tf.color = u.ClientConstColor.GENERIC_BRIGHT_RED;
+      this._foodIsEmpty.tf.color = u.ClientConstColor.GENERIC_BRIGHT_RED;
+      this._items.push(this._foodIsEmpty);
+    } else {
+      g.CastleTextFieldHelper.safeSetText(this._foodUse.tf, "xPerHour", [a.MathBase.floor(p.CastleModel.areaData.activeCommonInfo.foodProduction, 1)]);
+      g.CastleTextFieldHelper.safeSetText(this._foodUseFrozen.tf, "xPerHour_freeze", [a.MathBase.floor(p.CastleModel.areaData.activeCommonInfo.foodProduction, 1)]);
+      this._foodUse.tf.color = u.ClientConstColor.FONT_DEFAULT_COLOR;
+    }
+    this._items.push(this._amount);
   };
-  ResourcePanelToolTipLawAndOrder.prototype.updateProtection = function (e, t) {
-    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("protection")]);
-    u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo ? l.CastleModel.areaData.activeCommonInfo.protection : 0);
-  };
-  ResourcePanelToolTipLawAndOrder.prototype.updateResearch = function (e, t) {
-    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("research")]);
-    u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.researchData.getResearchEffectValue(c.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BONUS, l.CastleModel.areaData.activeAreaInfo.areaType, l.CastleModel.areaData.activeArea.spaceId).strength);
-  };
-  ResourcePanelToolTipLawAndOrder.prototype.updatePopulation = function (e, t) {
-    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("population")]);
-    u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo.populationPenalty);
-  };
-  ResourcePanelToolTipLawAndOrder.prototype.updateRiot = function (e, t) {
-    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("riot")]);
-    u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo.riot * -1);
-  };
-  ResourcePanelToolTipLawAndOrder.prototype.updateSubscription = function (e, t) {
-    var i = l.CastleModel.areaData.activeCommonInfo.getPublicOrderSubscriptionBonus();
-    this._subscription.visible = i > 0;
-    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("dialog_subscriptions_HUD_subscriptionBonus")]);
-    u.CastleTextFieldHelper.safeSetNumber(t, i);
-  };
-  ResourcePanelToolTipLawAndOrder.prototype.updateBaron = function (e, t) {
-    var i = l.CastleModel.areaData.activeCommonInfo.getPublicOrderBaronBonus();
-    this._baron.visible = i > 0;
-    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("equipment_itemType_baron")]);
-    u.CastleTextFieldHelper.safeSetNumber(t, i);
-  };
-  ResourcePanelToolTipLawAndOrder.prototype.updateProductivity = function (e, t) {
-    u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_PERCENTAGE, [Math.round(l.CastleModel.areaData.activeCommonInfo.getLawAndOrderFactor() * 100)]);
-    u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo.getLawAndOrderValue());
-  };
-  return ResourcePanelToolTipLawAndOrder;
-}(d.AResourcePanelToolTip);
-exports.ResourcePanelToolTipLawAndOrder = g;
-var C = require("./152.js");
-s.classImplementsInterfaces(g, "Container");
+  return ResourcePanelToolTipFood;
+}(_.AResourcePanelToolTip);
+exports.ResourcePanelToolTipFood = O;
+var E = require("./12.js");
+var y = require("./152.js");
+var b = require("./802.js");
+r.classImplementsInterfaces(O, "Container");

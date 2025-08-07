@@ -49,6 +49,6 @@ var s = function (e) {
     configurable: true
   });
   return GuardTowerVE;
-}(require("./639.js").ATowerVE);
+}(require("./640.js").ATowerVE);
 exports.GuardTowerVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

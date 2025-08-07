@@ -7,7 +7,7 @@ var a = require("./2.js");
 var s = require("./2.js");
 var r = require("./3.js");
 var l = require("./3.js");
-var c = require("./2524.js");
+var c = require("./2525.js");
 var u = require("./37.js");
 var d = require("./53.js");
 var p = require("./13.js");
@@ -64,7 +64,7 @@ var g = function (e) {
 }(require("./11.js").CastleExternalDialog);
 exports.CastleAllianceBattleGroundBuyInfoDialog = g;
 var C = require("./317.js");
-var _ = require("./750.js");
+var _ = require("./752.js");
 var m = require("./36.js");
-var f = require("./614.js");
+var f = require("./615.js");
 o.classImplementsInterfaces(g, "ICollectableRendererList");

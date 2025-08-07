@@ -4,31 +4,24 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
-var l = require("./599.js");
-var c = require("./15.js");
-var u = require("./4.js");
-var d = function (e) {
-  function CastleFacebookSwitchToCachedAccountCommand() {
+var s = require("./1.js");
+var r = require("./44.js");
+var l = require("./4.js");
+var c = function (e) {
+  function CastleFacebookLoginRegistrationCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleFacebookSwitchToCachedAccountCommand, e);
-  CastleFacebookSwitchToCachedAccountCommand.prototype.execute = function (e = null) {
-    a.CommandController.instance.executeCommand(o.BasicController.COMMAND_LOGOUT);
-    a.CommandController.instance.executeCommand(o.BasicController.COMMAND_CONNECT_CLIENT);
-    c.CastleBasicController.getInstance().addEventListener(l.CastleFacebookSDKEvent.CONNECTED, this.bindFunction(this.onGetFacebookStatus));
-    p.CastleFacebookModule.checkLoginStatus();
+  n.__extends(CastleFacebookLoginRegistrationCommand, e);
+  CastleFacebookLoginRegistrationCommand.prototype.execute = function (e = null) {
+    l.CastleModel.localData.saveLoginData("", "");
+    l.CastleModel.localData.saveFacebookID(d.CastleFacebookModule.userID);
+    if (!!d.CastleFacebookModule.accessToken && d.CastleFacebookModule.accessToken != "" && !r.SpecialServerHelper.isOnSpecialServer && !o.EnvGlobalsHandler.globals.isSpecialServerConnectStarted && !l.CastleModel.userData.isConnectedToFacebook) {
+      o.CommandController.instance.executeCommand(u.IngameClientCommands.MAP_USER_TO_FACEBOOK, true);
+    }
   };
-  CastleFacebookSwitchToCachedAccountCommand.prototype.onGetFacebookStatus = function (e) {
-    c.CastleBasicController.getInstance().removeEventListener(l.CastleFacebookSDKEvent.CONNECTED, this.bindFunction(this.onGetFacebookStatus));
-    u.CastleModel.localData.saveFacebookID(e.authResponse.userID);
-    a.CommandController.instance.executeCommand(o.BasicController.COMMAND_LOGIN);
-    a.CommandController.instance.executeCommand(h.IngameClientCommands.INIT_EQUIPMENT_FAVORITES);
-  };
-  return CastleFacebookSwitchToCachedAccountCommand;
-}(s.SimpleCommand);
-exports.CastleFacebookSwitchToCachedAccountCommand = d;
-var p = require("./193.js");
-var h = require("./29.js");
-r.classImplementsInterfaces(d, "ISimpleCommand");
+  return CastleFacebookLoginRegistrationCommand;
+}(a.SimpleCommand);
+exports.CastleFacebookLoginRegistrationCommand = c;
+var u = require("./29.js");
+var d = require("./193.js");
+s.classImplementsInterfaces(c, "ISimpleCommand");

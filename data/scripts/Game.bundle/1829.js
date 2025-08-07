@@ -3,171 +3,183 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./23.js");
-var s = require("./23.js");
-var r = require("./265.js");
-var l = require("./50.js");
-var c = require("./48.js");
-var u = require("./46.js");
-var d = require("./24.js");
-var p = require("./14.js");
-var h = require("./20.js");
-var g = require("./76.js");
-var C = require("./78.js");
-var _ = require("./77.js");
-var m = require("./8.js");
-var f = require("./362.js");
-var O = require("./556.js");
-var E = require("./3932.js");
-var y = createjs.Point;
-var b = function (e) {
-  function GachaComponentRewards(t) {
-    var i = e.call(this, t) || this;
-    m.ButtonHelper.initButtons([i.disp.btn_back], h.ClickFeedbackButtonHover);
-    var n = new g.InfiniteScrollListClips(i.disp.rewardList).addMaskMc(i.disp.rewardList.mc_items.mask).addMouseWheelAreaMc(i.disp.parent);
-    var o = new _.InfiniteScrollListOptions(E.GachaEventMainRewardItem, "GachaEventMain_RewardContainer", O.GachaEventMainDialog.NAME);
-    o.sliderInvisibleWhenNotScrollable = true;
-    o.isMultiColumn = true;
-    o.itemPaddingX = 60;
-    o.itemPaddingY = 60;
-    i._rewardList = new C.InfiniteScrollListComponent(n, o);
-    i._defaultPos = new y(i.disp.rewardList.x, i.disp.rewardList.y);
-    i.disp.visible = false;
-    return i;
+var a = require("./3.js");
+var s = require("./266.js");
+var r = require("./7.js");
+var l = require("./3930.js");
+var c = require("./516.js");
+var u = require("./107.js");
+var d = require("./288.js");
+var p = require("./32.js");
+var h = require("./74.js");
+var g = require("./31.js");
+var C = require("./19.js");
+var _ = require("./13.js");
+var m = require("./4.js");
+var f = require("./14.js");
+var O = require("./20.js");
+var E = require("./8.js");
+var y = require("./25.js");
+var b = require("./367.js");
+var D = require("./66.js");
+var I = require("./594.js");
+var T = require("./362.js");
+var v = createjs.Point;
+var S = function (e) {
+  function GachaComponentPull(t, i = null) {
+    var n = e.call(this, t) || this;
+    n._animationInProgress = false;
+    E.ButtonHelper.initButtons([n.disp.btn_pull, n.disp.btn_shop, n.disp.btn_minus, n.disp.btn_plus, n.disp.btn_max], O.ClickFeedbackButtonHover);
+    n.itxt_label = f.CastleComponent.textFieldManager.registerTextField(n.disp.btn_pull.txt_label, new a.TextVO(""));
+    var o = {
+      sourceId: u.CXFSourceTrackingConstants.CXF_SOURCE_WEB_SHOP_BUTTON
+    };
+    if (i) {
+      o.page = i;
+    }
+    m.CastleModel.userData.splitRunData.handleHCShopABTestPayload(o);
+    s.registerUIComponentToCXF(n.disp.btn_shop, "btn_webshop", o);
+    n.disp.btn_shop.toolTipText = "goToTheShop";
+    n.inputTextField = new I.SelectInputFieldComponent(n.disp.mc_pickerTxt, n.bindFunction(n.onPercentValueInput), "1");
+    n.inputTextField.searchField.restrict = "0-9";
+    f.CastleComponent.controller.addEventListener(d.GachaEvent.SHINE_ANIMATION_LOADED, n.bindFunction(n.onShineAnimationLoaded));
+    return n;
   }
-  n.__extends(GachaComponentRewards, e);
-  GachaComponentRewards.prototype.onShow = function () {
+  n.__extends(GachaComponentPull, e);
+  GachaComponentPull.prototype.onShow = function () {
     e.prototype.onShow.call(this);
-    this.disp.visible = false;
-    this._rewardList.onShow();
+    this._animationInProgress = false;
+    this.updateText();
+    this.updateCurrency();
+    this.inputTextField.searchField.text = this.currencyAmountPerPull.toString();
+    this.updateButtons();
   };
-  GachaComponentRewards.prototype.onHide = function () {
+  GachaComponentPull.prototype.onHide = function () {
     e.prototype.onHide.call(this);
-    if (this._rewardList) {
-      this._rewardList.onHide();
-    }
+    this.destroyCollectableRenderList();
+    c.CommandDelayController.getInstance().finishDelayOfAllCommands();
   };
-  GachaComponentRewards.prototype.addEventListener = function () {
+  GachaComponentPull.prototype.addEventListener = function () {
     e.prototype.addEventListener.call(this);
-    p.CastleComponent.controller.addEventListener(r.GachaEvent.SPIN, this.bindFunction(this.onSpin));
-    p.CastleComponent.controller.addEventListener(r.GachaEvent.SPIN_ANIMATION_COMPLETE, this.bindFunction(this.onSpinComplete));
+    f.CastleComponent.controller.addEventListener(d.GachaEvent.UPDATED, this.bindFunction(this.onGachaUpdate));
+    f.CastleComponent.controller.addEventListener(d.GachaEvent.SPIN, this.bindFunction(this.onSpin));
+    f.CastleComponent.controller.addEventListener(d.GachaEvent.SPIN_ANIMATION_COMPLETE, this.bindFunction(this.onSpinComplete));
+    f.CastleComponent.controller.addEventListener(p.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onCurrencyUpdate));
   };
-  GachaComponentRewards.prototype.removeEventListener = function () {
+  GachaComponentPull.prototype.removeEventListener = function () {
     e.prototype.removeEventListener.call(this);
-    p.CastleComponent.controller.addEventListener(r.GachaEvent.SPIN, this.bindFunction(this.onSpin));
-    p.CastleComponent.controller.addEventListener(r.GachaEvent.SPIN_ANIMATION_COMPLETE, this.bindFunction(this.onSpinComplete));
+    f.CastleComponent.controller.removeEventListener(d.GachaEvent.UPDATED, this.bindFunction(this.onGachaUpdate));
+    f.CastleComponent.controller.removeEventListener(d.GachaEvent.SPIN, this.bindFunction(this.onSpin));
+    f.CastleComponent.controller.removeEventListener(d.GachaEvent.SPIN_ANIMATION_COMPLETE, this.bindFunction(this.onSpinComplete));
+    f.CastleComponent.controller.removeEventListener(p.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onCurrencyUpdate));
   };
-  GachaComponentRewards.prototype.onSpin = function (e) {
-    var t = this;
-    if (this.disp.visible) {
-      this.startRewardAnimation(e);
-    } else {
-      this.delayedSpin = function () {
-        t.startRewardAnimation(e);
-      };
-    }
-  };
-  GachaComponentRewards.prototype.startRewardAnimation = function (e) {
-    var t = this;
-    this.removeAnimations();
-    var i = new c.CollectableList();
-    var n = [];
+  GachaComponentPull.prototype.onGachaUpdate = function (e) {
     if (e.eventVO.eventId == this.getEventVO().eventId) {
-      e.params.forEach(function (e, t) {
-        var o = l.CollectableManager.parser.s2cParamList.createList(e.RR);
-        if (o) {
-          i.addList(o);
-          o.list.forEach(function (t) {
-            n.push(e.R);
-          });
-        }
-      });
-    }
-    this._rewardList.updateWithNewData(i.list);
-    var o = i.length <= GachaComponentRewards.THRESHOLD_SHOW_RARITY;
-    if (o) {
-      this.disp.rewardList.x = this._defaultPos.x + (GachaComponentRewards.THRESHOLD_SHOW_RARITY - i.list.length) * 71;
-      this.disp.rewardList.y = this._defaultPos.y + 71;
-      n.forEach(function (e, i) {
-        t.addRarityAnimation(e, i);
-      });
-    } else {
-      this.disp.rewardList.x = this._defaultPos.x;
-      this.disp.rewardList.y = this._defaultPos.y;
-    }
-    var r = o ? 0.2 : 0;
-    this._rewardList.items.forEach(function (e, i) {
-      if (e.isVisible) {
-        var n = t.disp.rewardList["anim_" + i];
-        e.disp.alpha = 0;
-        a.TweenMax.fromTo(e.disp, 0.5, {
-          alpha: 0
-        }, {
-          alpha: 1,
-          delay: r * i,
-          ease: s.Linear.easeIn,
-          onStart: function () {
-            if (n && n.children.length > 0) {
-              n.getChildAt(0).doWhenLoaded(function (e) {
-                e.currentshownDisplayObject.gotoAndPlay(1);
-              });
-            }
-          }
-        });
-      }
-    });
-    this.disp.visible = true;
-  };
-  GachaComponentRewards.prototype.addRarityAnimation = function (e, t) {
-    if (!(t >= GachaComponentRewards.THRESHOLD_SHOW_RARITY)) {
-      var i;
-      var n;
-      var a = this.disp.rewardList["anim_" + t];
-      switch (e) {
-        case 1:
-          i = "_Common";
-          break;
-        case 2:
-          i = "_Rare";
-          break;
-        case 3:
-          i = "_Epic";
-          break;
-        case 4:
-          i = "_Legendary";
-          break;
-        default:
-          i = "_Common";
-      }
-      var s = "Rewards_Animation_" + this.getEventVO().assetName();
-      n = o.BasicModel.basicLoaderData.isItemAssetVersioned(s) ? new d.CastleGoodgameExternalClip(s, u.IsoHelper.view.getAssetFileURL(s), null, 24, false) : new d.CastleGoodgameExternalClip("RewardAnimation" + i, u.IsoHelper.view.getAssetFileURL("Rewards_Animation"), null, 24, false);
-      a.addChild(n);
+      this.updateCurrency();
     }
   };
-  GachaComponentRewards.prototype.removeAnimations = function () {
-    for (var e = 0; e < GachaComponentRewards.THRESHOLD_SHOW_RARITY; e++) {
-      var t = this.disp.rewardList["anim_" + e];
-      o.MovieClipHelper.clearMovieClip(t);
-    }
+  GachaComponentPull.prototype.onSpin = function (e) {
+    this._animationInProgress = true;
+    E.ButtonHelper.enableButton(this.disp.btn_pull, this.isPullPossible());
+    this.setSelectedAmount(this.selectedAmount);
   };
-  GachaComponentRewards.prototype.onSpinComplete = function (e) {
-    if (this.delayedSpin) {
-      this.delayedSpin();
-      this.delayedSpin = null;
-    }
+  GachaComponentPull.prototype.onSpinComplete = function (e) {
+    this._animationInProgress = false;
+    E.ButtonHelper.enableButton(this.disp.btn_pull, this.isPullPossible());
+    c.CommandDelayController.getInstance().finishDelayOfAllCommands();
+    this.updateButtons();
   };
-  GachaComponentRewards.prototype.onClick = function (t) {
+  GachaComponentPull.prototype.onShineAnimationLoaded = function (e) {
+    f.CastleComponent.controller.removeEventListener(d.GachaEvent.SHINE_ANIMATION_LOADED, this.bindFunction(this.onShineAnimationLoaded));
+    this.updateButtons();
+  };
+  GachaComponentPull.prototype.onCurrencyUpdate = function (e) {
+    this.updateCurrency();
+    this.updateButtons();
+  };
+  GachaComponentPull.prototype.updateButtons = function () {
+    E.ButtonHelper.enableButton(this.disp.btn_pull, this.isPullPossible());
+    var e = this.maxOfferings > this.currencyAmountPerPull;
+    E.ButtonHelper.enableButton(this.disp.btn_minus, e);
+    E.ButtonHelper.enableButton(this.disp.btn_plus, e);
+    E.ButtonHelper.enableButton(this.disp.btn_max, e);
+  };
+  GachaComponentPull.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.disp.btn_back:
-        this.removeAnimations();
-        this.disp.visible = false;
+    if (E.ButtonHelper.isButtonEnabled(t.target)) {
+      switch (t.target) {
+        case this.disp.btn_pull:
+          c.CommandDelayController.getInstance().addDelayCommandID(r.ClientConstSF.S2C_SHOW_POPUP, true);
+          m.CastleModel.smartfoxClient.sendCommandVO(new l.C2SGachaSpinVO(this.getEventVO().eventId, this.selectedAmount / this.currencyAmountPerPull));
+          this._animationInProgress = true;
+          E.ButtonHelper.enableButton(this.disp.btn_pull, this.isPullPossible());
+          break;
+        case this.disp.btn_minus:
+          this.setSelectedAmount(this.selectedAmount > this.currencyAmountPerPull ? this.selectedAmount - this.currencyAmountPerPull : this.currencyAmountPerPull);
+          break;
+        case this.disp.btn_plus:
+          this.setSelectedAmount(this.selectedAmount < this.maxOfferings ? this.selectedAmount + this.currencyAmountPerPull : this.maxOfferings);
+          break;
+        case this.disp.btn_max:
+          this.setSelectedAmount(this.maxOfferings);
+      }
     }
   };
-  GachaComponentRewards.prototype.getEventVO = function () {
+  GachaComponentPull.prototype.updateCurrency = function () {
+    var e = this.getEventVO().getCurrentGachaVO().costs.list[0];
+    var t = new g.CollectableRenderClips(this.disp.mc_icon).addIconMc(this.disp.mc_icon).addTextfield(this.disp.txt_text);
+    var i = new C.CollectableRenderOptions(C.CollectableRenderOptions.SET_COST_LIST, new v(30, 30));
+    i.costTextfield.defaultColor = 15921906;
+    y.CollectableRenderHelper.displaySingleItemComplete(this, t, e, i);
+  };
+  GachaComponentPull.prototype.updateText = function () {
+    this.itxt_label.textContentVO.stringValue = _.TextHelper.toUpperCaseLocaSafeTextId("gachaPull_button_" + this.getEventVO().assetName());
+  };
+  GachaComponentPull.prototype.isPullPossible = function () {
+    var e = D.CostHelper.canAfford(new b.CollectablesCosts(this.getEventVO().getCurrentGachaVO().costs));
+    return !this._animationInProgress && e;
+  };
+  GachaComponentPull.prototype.onPercentValueInput = function () {
+    var e = o.MathBase.clamp(this.selectedAmount, 1, this.maxOfferings);
+    this.setSelectedAmount(e);
+  };
+  GachaComponentPull.prototype.setSelectedAmount = function (e) {
+    e = Math.floor(e / this.currencyAmountPerPull) * this.currencyAmountPerPull;
+    e = o.MathBase.clamp(e, this.currencyAmountPerPull, this.maxOfferings);
+    this.inputTextField.updateText(e.toString());
+    this.getEventVO().currentMultiPull = this.selectedAmount / this.currencyAmountPerPull;
+  };
+  Object.defineProperty(GachaComponentPull.prototype, "selectedAmount", {
+    get: function () {
+      return parseInt(this.inputTextField.text);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(GachaComponentPull.prototype, "maxOfferings", {
+    get: function () {
+      var e = this.getEventVO().getCurrentGachaVO().multiPullMax;
+      var t = new h.CollectableTypeVO().initByCollectable(this.getEventVO().getCurrentGachaVO().costs.getItemByIndex(0));
+      var i = Math.floor(D.CostHelper.getAvailableGoods(t) / this.currencyAmountPerPull) * this.currencyAmountPerPull;
+      var n = (this.getEventVO().getCurrentGachaVO().maxPulls + 1 - this.getEventVO().ownPoints) * this.currencyAmountPerPull;
+      if (n <= 0) {
+        n = Number.MAX_VALUE;
+      }
+      return Math.min(e * this.currencyAmountPerPull, i, n);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(GachaComponentPull.prototype, "currencyAmountPerPull", {
+    get: function () {
+      return this.getEventVO().getCurrentGachaVO().costs.getItemByIndex(0).amount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  GachaComponentPull.prototype.getEventVO = function () {
     return this._params[0];
   };
-  GachaComponentRewards.THRESHOLD_SHOW_RARITY = 3;
-  return GachaComponentRewards;
-}(f.AGachaComponent);
-exports.GachaComponentRewards = b;
+  return GachaComponentPull;
+}(T.AGachaComponent);
+exports.GachaComponentPull = S;

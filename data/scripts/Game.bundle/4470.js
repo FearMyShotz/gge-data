@@ -1,106 +1,110 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = function () {
-  function SomeDistributableItem() {
-    this.timeOutID = 0;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./6.js");
+var r = require("./72.js");
+var l = require("./8.js");
+var c = createjs.Point;
+var u = function (e) {
+  function CircularItemDistributor(t) {
+    var i = e.call(this) || this;
+    i.itemContainer = t;
+    o.MovieClipHelper.clearMovieClip(i.itemContainer);
+    i.itemContainer.rotation = -90;
+    return i;
   }
-  SomeDistributableItem.prototype.clone = function () {
-    return new SomeDistributableItem();
+  n.__extends(CircularItemDistributor, e);
+  CircularItemDistributor.prototype.init = function (e = null) {
+    if (e != null) {
+      this.properties = e;
+    }
+    if (this.properties != null) {
+      this.createAndDistributeItems();
+    }
   };
-  Object.defineProperty(SomeDistributableItem.prototype, "disp", {
-    get: function () {
-      return this._disp;
-    },
-    set: function (e) {
-      this._disp = e;
-      if (o.instanceOfClass(this._disp, "MovieClip")) {
-        this._disp.gotoAndStop(SomeDistributableItem.FRAME_DEFAULT);
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SomeDistributableItem.prototype, "x", {
-    get: function () {
-      return this._disp.x;
-    },
-    set: function (e) {
-      this._disp.x = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SomeDistributableItem.prototype, "y", {
-    get: function () {
-      return this._disp.y;
-    },
-    set: function (e) {
-      this._disp.y = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SomeDistributableItem.prototype, "scaleX", {
-    get: function () {
-      return this._disp.scaleX;
-    },
-    set: function (e) {
-      this._disp.scaleX = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SomeDistributableItem.prototype, "scaleY", {
-    get: function () {
-      return this._disp.scaleY;
-    },
-    set: function (e) {
-      this._disp.scaleY = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SomeDistributableItem.prototype.highlight = function (e, t) {
-    if (e >= 1 && e <= this._disp.totalFrames) {
-      if (t > 0) {
-        window.clearTimeout(this.timeOutID);
-        this.timeOutID = a.int(window.setTimeout(this.bindFunction(this.doHighlight), t * 1000, e));
-      } else {
-        this.doHighlight(e);
+  CircularItemDistributor.prototype.highlightItems = function (e, t, i, n, o = false) {
+    for (var a = s.int(this.items.length), r = 0, l = 0, c = 0; c < a; c++) {
+      if (this.highlightItemByID(c, a, e, t)) {
+        l = ++r * this.properties.animationDelay;
+        if (o) {
+          l = 0;
+        }
+        this.items[c].highlight(i, l);
+        this.items[c].disp.toolTipText = n;
       }
     }
   };
-  SomeDistributableItem.prototype.doHighlight = function (e) {
-    this._disp.gotoAndStop(e);
+  CircularItemDistributor.prototype.highlightItemByID = function (e, t, i, n) {
+    if (n == 0) {
+      return false;
+    }
+    var o = e / t * 100;
+    return o >= i && o <= n;
   };
-  SomeDistributableItem.prototype.dehighlight = function () {
-    this._disp.gotoAndStop(SomeDistributableItem.FRAME_DEFAULT);
+  CircularItemDistributor.prototype.createAndDistributeItems = function () {
+    this.itemPositions = this.calculateItemPositions();
+    this.createItems();
   };
-  Object.defineProperty(SomeDistributableItem.prototype, "isHighlighted", {
-    get: function () {
-      return this._disp.currentFrame != SomeDistributableItem.FRAME_DEFAULT;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SomeDistributableItem.prototype, "highlightType", {
-    get: function () {
-      return this._disp.currentFrame;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SomeDistributableItem.__initialize_static_members = function () {
-    SomeDistributableItem.FRAME_DEFAULT = 1;
-    SomeDistributableItem.FRAME_ANOUNCED_PROGRESS = 2;
-    SomeDistributableItem.FRAME_PROGRESS = 3;
+  CircularItemDistributor.prototype.createItems = function () {
+    var e;
+    var t;
+    var i = a.getDefinitionByName(this.properties.dispClassName);
+    this.items = [];
+    for (var n = 0; n < this.properties.amountItems; n++) {
+      e = new this.properties.itemClass();
+      t = new i();
+      l.ButtonHelper.initBasicButton(t);
+      t.basicButton.useHandCursor = false;
+      e.disp = t;
+      this.itemContainer.addChild(e.disp);
+      e.x = this.itemPositions[n].x;
+      e.y = this.itemPositions[n].y;
+      this.items.push(e);
+    }
   };
-  return SomeDistributableItem;
-}();
-exports.SomeDistributableItem = s;
-n.classImplementsInterfaces(s, "IDistributableItem");
-s.__initialize_static_members();
+  CircularItemDistributor.prototype.calculateItemPositions = function () {
+    return this.calculatePositionsOnCircle(this.properties.amountItems, this.properties.targetCircleRadius);
+  };
+  CircularItemDistributor.prototype.calculatePositionsOnCircle = function (e, t, i = false) {
+    var n;
+    var o = [];
+    var a = 360 / e;
+    var s = i ? a / 2 : 0;
+    for (var r = 0; r < e; r++) {
+      n = this.pointOnCircle(t, r * a + s, new c(0, 0));
+      o.push(n);
+    }
+    return o;
+  };
+  CircularItemDistributor.prototype.pointOnCircle = function (e, t, i) {
+    var n = t * Math.PI / 180;
+    var o = e * Math.cos(n) + i.x;
+    var a = e * Math.sin(n) + i.y;
+    return new c(o, a);
+  };
+  CircularItemDistributor.prototype.drawDebug = function () {
+    this.itemContainer.graphics.clear();
+    this.drawDebugCircle();
+    this.drawItemDummies();
+  };
+  CircularItemDistributor.prototype.drawItemDummies = function () {
+    for (var e = 0; e < this.properties.amountItems; e++) {
+      this.itemContainer.graphics.moveTo(0, 0);
+      this.itemContainer.graphics.lineTo(this.itemPositions[e].x, this.itemPositions[e].y);
+      this.itemContainer.graphics.beginFill(16711680, 0.5);
+      this.itemContainer.graphics.drawCircle(this.itemPositions[e].x, this.itemPositions[e].y, 5);
+      this.itemContainer.graphics.endFill();
+    }
+  };
+  CircularItemDistributor.prototype.drawDebugCircle = function () {
+    this.itemContainer.graphics.lineStyle(1, 0, 0.5);
+    this.itemContainer.graphics.beginFill(65280, 0.5);
+    this.itemContainer.graphics.drawCircle(0, 0, this.properties.targetCircleRadius);
+    this.itemContainer.graphics.endFill();
+  };
+  return CircularItemDistributor;
+}(r.CastleEventDispatcher);
+exports.CircularItemDistributor = u;

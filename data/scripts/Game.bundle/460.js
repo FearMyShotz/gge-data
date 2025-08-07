@@ -355,6 +355,6 @@ var d = function (e) {
   return AScoreEventVO;
 }(require("./79.js").ASpecialEventVO);
 exports.AScoreEventVO = d;
-var p = require("./570.js");
+var p = require("./571.js");
 var h = require("./5.js");
 o.classImplementsInterfaces(d, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable");

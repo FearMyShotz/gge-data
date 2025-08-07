@@ -2,50 +2,35 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./8.js");
-var s = require("./924.js");
+var o = require("./2.js");
+var a = require("./5.js");
+var s = require("./7.js");
 var r = function (e) {
-  function AutoSellDialogActiveStateCheckbox(t, i, n) {
-    var o = this;
-    o._row = -1;
-    o._column = -1;
-    CONSTRUCTOR_HACK;
-    (o = e.call(this, t) || this)._row = i;
-    o._column = n;
-    return o;
-  }
-  n.__extends(AutoSellDialogActiveStateCheckbox, e);
-  AutoSellDialogActiveStateCheckbox.prototype.onClick = function (t) {
-    if (a.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (this.currentState) {
-        case s.AAutoSellDialogCheckbox.STATE_UNSELECTED:
-          this.setState(s.AAutoSellDialogCheckbox.STATE_SELECTED);
-          break;
-        case s.AAutoSellDialogCheckbox.STATE_SELECTED:
-          this.setState(s.AAutoSellDialogCheckbox.STATE_UNSELECTED);
-          break;
-        case s.AAutoSellDialogCheckbox.STATE_MIXED:
-          this.setState(s.AAutoSellDialogCheckbox.STATE_SELECTED);
+  function C2SSetAutoSellEquipmentConditionsEventVO(t) {
+    var i = e.call(this) || this;
+    i.ECS = [];
+    for (var n = 0, o = Array.from(t.actives.keys()); n < o.length; n++) {
+      var s = o[n];
+      if (s !== undefined) {
+        var r = t.actives.get(s);
+        if (r != null) {
+          for (var l = 0, c = Array.from(r.keys()); l < c.length; l++) {
+            var u = c[l];
+            if (u !== undefined) {
+              if (r.get(u)) {
+                i.ECS.push([s, s == a.EquipmentConst.SLOT_HERO ? a.EquipmentConst.RARENESS_HERO_COMMON - 1 + u : u]);
+              }
+            }
+          }
+        }
       }
     }
+    return i;
+  }
+  n.__extends(C2SSetAutoSellEquipmentConditionsEventVO, e);
+  C2SSetAutoSellEquipmentConditionsEventVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_SET_AUTO_SELL_EQUIPMENT_CONDITIONS;
   };
-  Object.defineProperty(AutoSellDialogActiveStateCheckbox.prototype, "row", {
-    get: function () {
-      return this._row;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AutoSellDialogActiveStateCheckbox.prototype, "column", {
-    get: function () {
-      return this._column;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AutoSellDialogActiveStateCheckbox;
-}(s.AAutoSellDialogCheckbox);
-exports.AutoSellDialogActiveStateCheckbox = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList");
+  return C2SSetAutoSellEquipmentConditionsEventVO;
+}(o.BasicCommandVO);
+exports.C2SSetAutoSellEquipmentConditionsEventVO = r;

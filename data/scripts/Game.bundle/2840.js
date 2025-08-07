@@ -3,55 +3,104 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
+var a = require("./3.js");
 var s = require("./3.js");
-var r = require("./16.js");
-var l = require("./4.js");
-var c = require("./97.js");
-var u = function (e) {
-  function DecoDistrict2x2BuildingVO() {
-    return e !== null && e.apply(this, arguments) || this;
+var r = require("./6.js");
+var l = require("./16.js");
+var c = require("./274.js");
+var u = require("./325.js");
+var d = function (e) {
+  function CustomDecoBuildingVO() {
+    var t = this;
+    t._customDecoPoints = 0;
+    t._customId = -1;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(DecoDistrict2x2BuildingVO, e);
-  DecoDistrict2x2BuildingVO.prototype.createInfoPanelItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Storage, "districtSpace_tt", new s.LocalizedNumberVO(this.districtSlots), this.getInfoItemTextColor(c.CastleEffectEnum.DISTRICTSLOTS), true);
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_DecoPointsCombined, "publicOrder_combined", new s.LocalizedNumberVO(this.getDistrictDecoPoints()), r.ClientConstColor.FONT_DEFAULT_COLOR);
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_MightPointsCombined, "mightPoints_combined", new s.LocalizedNumberVO(this.getDistrictMightPoints()), r.ClientConstColor.FONT_DEFAULT_COLOR);
+  n.__extends(CustomDecoBuildingVO, e);
+  CustomDecoBuildingVO.prototype.parseServerObject = function (t) {
+    e.prototype.parseServerObject.call(this, t);
+    this._customDecoPoints = r.int(t.length > 0 ? t.shift() : 0);
   };
-  DecoDistrict2x2BuildingVO.prototype.createInfoDialogItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Storage, "districtSpace_tt", new s.LocalizedNumberVO(this.districtSlots), this.getInfoItemTextColor(c.CastleEffectEnum.DISTRICTSLOTS), true);
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_LawAndOrder_neutral, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), this.getInfoItemTextColor(c.CastleEffectEnum.DECOPOINTS), true);
-    var t = this.getDistrictDecoPoints();
-    var i = this.getDistrictMightPoints();
-    if (t > 0 && l.CastleModel.areaData && l.CastleModel.areaData.activeCommonInfo && !l.CastleModel.areaData.activeCommonInfo.isDistrictEmpty(this.districtTypeID)) {
-      e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_DecoPointsCombined, "publicOrder_combined", new s.LocalizedNumberVO(t), r.ClientConstColor.FONT_DEFAULT_COLOR, t > 0);
-    }
-    if (i > 0 && l.CastleModel.areaData && l.CastleModel.areaData.activeCommonInfo && !l.CastleModel.areaData.activeCommonInfo.isDistrictEmpty(this.districtTypeID)) {
-      e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_MightPointsCombined, "mightPoints_combined", new s.LocalizedNumberVO(i), r.ClientConstColor.FONT_DEFAULT_COLOR, i > 0);
+  CustomDecoBuildingVO.prototype.parseServerInfoShort = function (t) {
+    e.prototype.parseServerInfoShort.call(this, t);
+    this._customDecoPoints = r.int(t.DP);
+  };
+  CustomDecoBuildingVO.prototype.cloneFrom = function (t) {
+    e.prototype.cloneFrom.call(this, t);
+    var i = t;
+    if (i) {
+      this._customDecoPoints = i._customDecoPoints;
+      this._customId = i._customId;
     }
   };
-  Object.defineProperty(DecoDistrict2x2BuildingVO.prototype, "buildingSlotAssetName", {
+  CustomDecoBuildingVO.prototype.getNameString = function () {
+    var e = this.isoData ? this.isoData.areaData.areaInfo.ownerInfo.playerName : p.Iso.data.areaData.areaInfo.ownerInfo.playerName;
+    return a.Localize.text(this.name.toLowerCase() + "_" + this.type.toLowerCase() + "_name", [e]);
+  };
+  CustomDecoBuildingVO.prototype.getShortInfoString = function () {
+    return a.Localize.text("deco_short_info");
+  };
+  CustomDecoBuildingVO.prototype.getVisualClassName = function () {
+    var e = this.name + "_" + this.group + "_" + this.type;
+    if (this.type == "Colossus" || this.type == "ColossusRider" || this.type == "CoinColossus") {
+      return e + "_Size" + String(c.ClientConstEvent.getColossusSize(this.decoPoints, this.wodId));
+    } else {
+      return e;
+    }
+  };
+  Object.defineProperty(CustomDecoBuildingVO.prototype, "decoPoints", {
     get: function () {
-      return "BuildingDistrictItem_DecoDistrict2x2";
+      return this._customDecoPoints;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.ADecoBuildingVO.prototype, "decoPoints").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DecoDistrict2x2BuildingVO.prototype, "buildingScaleFactor", {
+  CustomDecoBuildingVO.prototype.getInfoTooltipLine2 = function () {
+    return "";
+  };
+  CustomDecoBuildingVO.prototype.isFusionRelevant = function () {
+    return false;
+  };
+  Object.defineProperty(CustomDecoBuildingVO.prototype, "uniqueBuildingId", {
     get: function () {
-      return 0.425;
+      return this._customId;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.ADecoBuildingVO.prototype, "uniqueBuildingId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DecoDistrict2x2BuildingVO.prototype, "gachaEventID", {
-    get: function () {
-      return a.EventConst.EVENTTYPE_DECO_GACHA;
+  CustomDecoBuildingVO.prototype.isUnique = function () {
+    return true;
+  };
+  CustomDecoBuildingVO.prototype.createInfoPanelItems = function (e) {
+    if (this.morality > 0) {
+      e.addInfoItem(Library.CastleInterfaceElements.Icon_Morality, "morality", new s.LocalizedNumberVO(this.morality), l.ClientConstColor.FONT_DEFAULT_COLOR, true);
+    } else {
+      e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), l.ClientConstColor.FONT_DEFAULT_COLOR, true);
+    }
+  };
+  Object.defineProperty(CustomDecoBuildingVO.prototype, "customDecoPoints", {
+    set: function (e) {
+      this._customDecoPoints = e;
     },
     enumerable: true,
     configurable: true
   });
-  return DecoDistrict2x2BuildingVO;
-}(require("./446.js").ADistrictBuildingVO);
-exports.DecoDistrict2x2BuildingVO = u;
-o.classImplementsInterfaces(u, "IShopVO", "ICostVO", "IInventoryVO");
+  Object.defineProperty(CustomDecoBuildingVO.prototype, "customId", {
+    set: function (e) {
+      this._customId = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CustomDecoBuildingVO;
+}(u.ADecoBuildingVO);
+exports.CustomDecoBuildingVO = d;
+var p = require("./34.js");
+o.classImplementsInterfaces(d, "IShopVO", "ICostVO", "IInventoryVO", "IUniqueBuildingVO");

@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2STempServerGetChargeCampEffectsEventVO(t, i) {
+  function C2STempServerApplyChargeCampEffectsEventVO(t, i) {
     var n = this;
     n.XPOS = 0;
     n.YPOS = 0;
@@ -14,10 +14,10 @@ var s = function (e) {
     n.YPOS = i;
     return n;
   }
-  n.__extends(C2STempServerGetChargeCampEffectsEventVO, e);
-  C2STempServerGetChargeCampEffectsEventVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_TEMP_SERVER_CHARGE_CHAMP_EFFECTS;
+  n.__extends(C2STempServerApplyChargeCampEffectsEventVO, e);
+  C2STempServerApplyChargeCampEffectsEventVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_TEMP_SERVER_CHARGE_CHAMP_EFFECTS_APPLY;
   };
-  return C2STempServerGetChargeCampEffectsEventVO;
+  return C2STempServerApplyChargeCampEffectsEventVO;
 }(o.BasicCommandVO);
-exports.C2STempServerGetChargeCampEffectsEventVO = s;
+exports.C2STempServerApplyChargeCampEffectsEventVO = s;

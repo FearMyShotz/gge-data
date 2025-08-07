@@ -5,17 +5,13 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SIsoStoreObjectVO(t) {
-    var i = this;
-    i.OID = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).OID = t;
-    return i;
+  function C2SIsoResourceCitizenVO() {
+    return e.call(this) || this;
   }
-  n.__extends(C2SIsoStoreObjectVO, e);
-  C2SIsoStoreObjectVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_STORE_OBJECT;
+  n.__extends(C2SIsoResourceCitizenVO, e);
+  C2SIsoResourceCitizenVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_RESOURCE_CITIZEN;
   };
-  return C2SIsoStoreObjectVO;
+  return C2SIsoResourceCitizenVO;
 }(o.BasicCommandVO);
-exports.C2SIsoStoreObjectVO = s;
+exports.C2SIsoResourceCitizenVO = s;

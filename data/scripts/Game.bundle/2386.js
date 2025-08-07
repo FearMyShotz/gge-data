@@ -2,13 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastlePlayerInfoCastleListEntryVO(t) {
-    var i = e.call(this) || this;
-    i.worldMapobjectVO = t;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SSendFriendRequestVO(t) {
+    var i = this;
+    i.PID = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).PID = t;
     return i;
   }
-  n.__extends(CastlePlayerInfoCastleListEntryVO, e);
-  return CastlePlayerInfoCastleListEntryVO;
-}(require("./2.js").ScrollItemVO);
-exports.CastlePlayerInfoCastleListEntryVO = o;
+  n.__extends(C2SSendFriendRequestVO, e);
+  C2SSendFriendRequestVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_SEND_FRIEND_REQUEST;
+  };
+  return C2SSendFriendRequestVO;
+}(o.BasicCommandVO);
+exports.C2SSendFriendRequestVO = s;

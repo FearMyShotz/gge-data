@@ -2,23 +2,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleRefineryToolsmithDialogProperties(t = 1) {
-    var i = e.call(this) || this;
-    i._queueID = t;
-    return i;
+var o = require("./1.js");
+var a = require("./62.js");
+var s = function (e) {
+  function StorageBuildingVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleRefineryToolsmithDialogProperties, e);
-  Object.defineProperty(CastleRefineryToolsmithDialogProperties.prototype, "queueID", {
+  n.__extends(StorageBuildingVE, e);
+  Object.defineProperty(StorageBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return this._queueID;
+      return Library.CastleInterfaceElements_Icons.Icon_Storage;
     },
     set: function (e) {
-      this._queueID = e;
+      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return CastleRefineryToolsmithDialogProperties;
-}(require("./219.js").BasicProperties);
-exports.CastleRefineryToolsmithDialogProperties = o;
+  return StorageBuildingVE;
+}(a.ABasicBuildingVE);
+exports.StorageBuildingVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

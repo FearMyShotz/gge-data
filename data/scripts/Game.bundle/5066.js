@@ -7,54 +7,44 @@ var a = require("./5.js");
 var s = require("./5.js");
 var r = require("./7.js");
 var l = require("./37.js");
-var c = require("./4.js");
-var u = require("./147.js");
-var d = require("./10.js");
-var p = function (e) {
-  function TPICommand() {
+var c = require("./147.js");
+var u = require("./10.js");
+var d = function (e) {
+  function TIECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TPICommand, e);
-  Object.defineProperty(TPICommand.prototype, "cmdId", {
+  n.__extends(TIECommand, e);
+  Object.defineProperty(TIECommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_ALLIANCE_TOWER_CASTLES_INFO;
+      return r.ClientConstSF.S2C_ALLIANCE_TOWER_INFO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  TPICommand.prototype.executeCommand = function (e, t) {
+  TIECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case s.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        if (i[a.CommKeys.OWNER_INFO_2]) {
-          for (var n = 0, o = i[a.CommKeys.OWNER_INFO_2]; n < o.length; n++) {
-            var r = o[n];
-            if (r !== undefined) {
-              c.CastleModel.otherPlayerData.parseOwnerInfo(r);
+        var i = JSON.parse(t[1])[a.CommKeys.TOWERS];
+        var n = [];
+        if (i != null) {
+          for (var o = 0, r = i; o < r.length; o++) {
+            var u = r[o];
+            if (u !== undefined) {
+              n.push(c.WorldmapObjectFactory.parseWorldMapArea(u));
             }
           }
         }
-        var d = i[a.CommKeys.CASTLES];
-        var p = [];
-        if (d != null) {
-          for (var h = 0, g = d; h < g.length; h++) {
-            var C = g[h];
-            if (C !== undefined) {
-              p.push(u.WorldmapObjectFactory.parseWorldMapArea(C));
-            }
-          }
-        }
-        this.controller.dispatchEvent(new l.CastleServerMessageArrivedEvent(l.CastleServerMessageArrivedEvent.ABG_TOWER_CASTLES_INFO, p));
+        this.controller.dispatchEvent(new l.CastleServerMessageArrivedEvent(l.CastleServerMessageArrivedEvent.ABG_TOWERS_LIST_INFO, n));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return TPICommand;
-}(d.CastleCommand);
-exports.TPICommand = p;
-o.classImplementsInterfaces(p, "IExecCommand");
+  return TIECommand;
+}(u.CastleCommand);
+exports.TIECommand = d;
+o.classImplementsInterfaces(d, "IExecCommand");

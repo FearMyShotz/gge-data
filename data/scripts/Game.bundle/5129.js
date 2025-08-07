@@ -2,38 +2,44 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function CPICommand() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./7.js");
+var l = require("./15.js");
+var c = require("./4.js");
+var u = require("./10.js");
+var d = function (e) {
+  function TSCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CPICommand, e);
-  Object.defineProperty(CPICommand.prototype, "cmdId", {
+  n.__extends(TSCCommand, e);
+  Object.defineProperty(TSCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_PLAGUEMONK_INFO;
+      return r.ClientConstSF.S2C_TEMPORARY_SERVER_SELECT_CASTLE_COMPLETE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CPICommand.prototype.executeCommand = function (e, t) {
+  TSCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.spyData.parse_CPI(i);
+      case s.ERROR.ALL_OK:
+        if (c.CastleModel.userData.connectToTempServer) {
+          o.CommandController.instance.executeCommand(l.CastleBasicController.CONNECT_TO_TEMPORARY_SERVER);
+        }
+        if (c.CastleModel.userData.connectToABGServer) {
+          o.CommandController.instance.executeCommand(l.CastleBasicController.CONNECT_TO_ALLIANCE_BATTLE_GROUND_SERVER);
+        }
         break;
       default:
         this.showErrorDialog(e, t);
     }
-    return false;
+    return true;
   };
-  return CPICommand;
-}(l.CastleCommand);
-exports.CPICommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return TSCCommand;
+}(u.CastleCommand);
+exports.TSCCommand = d;
+a.classImplementsInterfaces(d, "IExecCommand");

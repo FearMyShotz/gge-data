@@ -3,19 +3,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SGetAllianceTopicRepliesVO(t) {
-    var i = this;
-    i.TID = -1;
+var a = require("./2.js");
+var s = require("./7.js");
+var r = require("./224.js");
+var l = function (e) {
+  function C2SAllianceAnswerTopicVO(t, i) {
+    var n = this;
+    n.TID = 0;
     CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).TID = t;
-    return i;
+    (n = e.call(this) || this).TID = t;
+    n.RT = a.TextValide.getValideSmartFoxJSONTextMessage(r.CastleAllianceForumData.getForumValidText(i));
+    return n;
   }
-  n.__extends(C2SGetAllianceTopicRepliesVO, e);
-  C2SGetAllianceTopicRepliesVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_ALLIANCE_TOPIC_REPLIES;
+  n.__extends(C2SAllianceAnswerTopicVO, e);
+  C2SAllianceAnswerTopicVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_ALLIANCE_ANSWER_TOPIC;
   };
-  return C2SGetAllianceTopicRepliesVO;
+  return C2SAllianceAnswerTopicVO;
 }(o.BasicCommandVO);
-exports.C2SGetAllianceTopicRepliesVO = s;
+exports.C2SAllianceAnswerTopicVO = l;

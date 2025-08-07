@@ -44,5 +44,5 @@ var d = function (e) {
 }(require("./98.js").ARingMenuButton);
 exports.RingMenuButtonRecruit = d;
 var p = require("./9.js");
-var h = require("./224.js");
+var h = require("./225.js");
 a.classImplementsInterfaces(d, "IRingMenuButton");

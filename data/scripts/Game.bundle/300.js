@@ -59,7 +59,7 @@ var n = function () {
   return CastleTutorialArrowController;
 }();
 exports.CastleTutorialArrowController = n;
-var o = require("./2360.js");
+var o = require("./2361.js");
 var a = function () {
   return function SingletonBlocker() {};
 }();

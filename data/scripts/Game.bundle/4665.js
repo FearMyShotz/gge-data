@@ -2,42 +2,53 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./7.js");
-var l = require("./10.js");
-var c = function (e) {
-  function SMGCommand() {
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./44.js");
+var l = require("./1114.js");
+var c = require("./10.js");
+var u = require("./472.js");
+var d = require("./2.js");
+var p = require("./1812.js");
+var h = require("./4.js");
+var g = require("./1113.js");
+var C = function (e) {
+  function SLMSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SMGCommand, e);
-  Object.defineProperty(SMGCommand.prototype, "cmdId", {
+  n.__extends(SLMSCommand, e);
+  Object.defineProperty(SLMSCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_SERVER_MESSAGE;
+      return s.ClientConstSF.S2C_SOCIAL_LOGIN_MIGRATION_STATUS;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  SMGCommand.prototype.executeCommand = function (e, t) {
+  SLMSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case s.ERROR.ALL_OK:
+      case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        if (i.BIG == 1) {
-          u.CastleDialogHandler.getInstance().registerDialogs(d.CastleServerMessageBigDialog, new o.BasicStandardOkDialogProperties("SERVER MESSAGE", i.MSG));
-        } else {
-          u.CastleDialogHandler.getInstance().registerDialogs(p.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties("SERVER MESSAGE", i.MSG));
+        if ((!!r.SpecialServerHelper.isOnKeyLoginToNormalLoginServer || l.UserSocialLoginMigrationHelper.getNameByInstanceID(d.EnvGlobalsHandler.globals.networkId) != " ") && i.hasPassword !== undefined) {
+          if (Boolean(i.hasPassword)) {
+            h.CastleModel.userData.toShowDialogsAfterJAA.push(g.CastleChangePasswordForSocialMigrationConfirmedDialog);
+          } else {
+            if (u.CastleTutorialSpotlight.instance.isVisible) {
+              u.CastleTutorialSpotlight.instance.clear();
+            }
+            h.CastleModel.userData.toShowDialogsAfterJAA.push(p.CastleChangePasswordForSocialMigrationDialog);
+          }
         }
+        return true;
+      default:
+        this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SMGCommand;
-}(l.CastleCommand);
-exports.SMGCommand = c;
-var u = require("./9.js");
-var d = require("./1002.js");
-var p = require("./38.js");
-a.classImplementsInterfaces(c, "IExecCommand");
+  return SLMSCommand;
+}(c.CastleCommand);
+exports.SLMSCommand = C;
+o.classImplementsInterfaces(C, "IExecCommand");

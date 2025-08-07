@@ -5,43 +5,36 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./1471.js");
-var l = require("./37.js");
-var c = require("./4.js");
-var u = require("./475.js");
-var d = function (e) {
-  function GCCCommand() {
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function GCACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GCCCommand, e);
-  Object.defineProperty(GCCCommand.prototype, "cmdId", {
+  n.__extends(GCACommand, e);
+  Object.defineProperty(GCACommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_CONSTRUCTION_CRAFTING_INFO;
+      return s.ClientConstSF.S2C_GET_CASTLE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleDispatchingCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  GCCCommand.prototype.executeCommand = function (t, i) {
-    switch (t) {
+  GCACommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
       case a.ERROR.ALL_OK:
-        c.CastleModel.craftingMaterialData.dispatchEvent(new r.CastleCraftingMaterialEvent(r.CastleCraftingMaterialEvent.MATERIAL_INVENTORY_UPDATED));
+        var i = JSON.parse(t[1]);
+        r.CastleModel.otherPlayerData.parseOwnerInfo(i.O);
+        r.CastleModel.areaData.activeArea.updater.parseGCA(i.gca);
+        break;
+      default:
+        this.showErrorDialog(e, t);
     }
-    return e.prototype.executeCommand.call(this, t, i);
+    return false;
   };
-  Object.defineProperty(GCCCommand.prototype, "eventType", {
-    get: function () {
-      return l.CastleServerMessageArrivedEvent.GCC_ARRIVED;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleDispatchingCommand.prototype, "eventType").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return GCCCommand;
-}(u.CastleDispatchingCommand);
-exports.GCCCommand = d;
-o.classImplementsInterfaces(d, "IExecCommand");
+  return GCACommand;
+}(l.CastleCommand);
+exports.GCACommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

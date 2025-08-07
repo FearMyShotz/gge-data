@@ -5,21 +5,13 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SShopCheckoutEventVO(t, i, n, o) {
-    var a = this;
-    a.IID = 0;
-    a.PID = 0;
-    CONSTRUCTOR_HACK;
-    (a = e.call(this) || this).IID = t;
-    a.PID = i;
-    a.LOC = n;
-    a.GSID = o;
-    return a;
+  function C2SGetShopCatalogEventVO() {
+    return e.call(this) || this;
   }
-  n.__extends(C2SShopCheckoutEventVO, e);
-  C2SShopCheckoutEventVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_SHOP_CHECKOUT;
+  n.__extends(C2SGetShopCatalogEventVO, e);
+  C2SGetShopCatalogEventVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_GET_SHOP_CATALOG;
   };
-  return C2SShopCheckoutEventVO;
+  return C2SGetShopCatalogEventVO;
 }(o.BasicCommandVO);
-exports.C2SShopCheckoutEventVO = s;
+exports.C2SGetShopCatalogEventVO = s;

@@ -2,90 +2,120 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
+var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./5.js");
+var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./90.js");
-var c = require("./4.js");
-var u = require("./64.js");
-var d = require("./124.js");
-var p = createjs.Container;
-var h = function (e) {
-  function NomadKhanCampMapobject() {
-    return e !== null && e.apply(this, arguments) || this;
+var l = require("./3.js");
+var c = require("./6.js");
+var u = require("./28.js");
+var d = require("./577.js");
+var p = require("./53.js");
+var h = require("./44.js");
+var g = require("./4.js");
+var C = require("./27.js");
+var _ = require("./1150.js");
+var m = function (e) {
+  function MetropolMapobject() {
+    return e.call(this) || this;
   }
-  n.__extends(NomadKhanCampMapobject, e);
-  NomadKhanCampMapobject.prototype.initVisualRep = function () {
-    if (!this.disp) {
-      this.disp = new p();
-      this.mapobjectVO.addEventListener(u.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
-    }
-    this.drawNomad();
-  };
-  NomadKhanCampMapobject.prototype.drawNomad = function () {
+  n.__extends(MetropolMapobject, e);
+  MetropolMapobject.prototype.drawOutpost = function () {
     this.clearObjectContainer();
     if (this.mapobjectVO.isVisibleOnMap) {
-      this.objectContainer = this.nomadKhanCampMapObjectVO.getDisplayObjectClipContainer(false, null, false);
+      if (!this.worldmapObjectVO.ownerInfo || this.worldmapObjectVO.ownerInfo && this.worldmapObjectVO.ownerInfo.isOutpostOwner) {
+        this.objectContainer = this.worldmapObjectVO.getDisplayObjectClipContainer(false, null, false);
+      } else {
+        this.objectContainer = this.metropolVO.getDisplayObjectClipContainer(true, null, false);
+        this.setOccupiedMarker();
+      }
       if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0) {
         this.showFlames();
       }
       this.addObjectContainer();
       this.addMouseListener();
-    }
-  };
-  NomadKhanCampMapobject.prototype.showRingMenu = function () {
-    this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.SHOW_MENU, [this, l.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
-  };
-  NomadKhanCampMapobject.prototype.onRollOver = function (t) {
-    if (!this.worldmapRenderer.camera.isWorldDragging) {
-      if (!this.hasRingMenu) {
-        this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
+      this.disp.dispatchEvent(new d.VisualMapObjectEvent(d.VisualMapObjectEvent.VE_UPDATED, [this]));
+      if (this.occupiedMarker && this.disp.contains(this.occupiedMarker.disp)) {
+        this.disp.setChildIndex(this.occupiedMarker.disp, this.disp.numChildren - 1);
       }
-      e.prototype.onRollOver.call(this, t);
     }
   };
-  NomadKhanCampMapobject.prototype.onRollOut = function (t) {
-    this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.INFOTOOLTIP, [false]));
-    e.prototype.onRollOut.call(this, t);
+  MetropolMapobject.prototype.getFlamesClip = function () {
+    var t = this.getABGFlamesClip("Metropol");
+    return t || e.prototype.getFlamesClip.call(this);
   };
-  Object.defineProperty(NomadKhanCampMapobject.prototype, "nomadKhanCampMapObjectVO", {
+  Object.defineProperty(MetropolMapobject.prototype, "ignorePeaceProtection", {
     get: function () {
-      return this.vo;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(NomadKhanCampMapobject.prototype, "line2Content", {
-    get: function () {
-      return new r.LocalizedTextVO("level_placeholder", [this.nomadKhanCampMapObjectVO.dungeonLevel]);
+      return true;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(_.OutpostMapobject.prototype, "ignorePeaceProtection").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(NomadKhanCampMapobject.prototype, "line3Content", {
+  Object.defineProperty(MetropolMapobject.prototype, "metropolVO", {
     get: function () {
-      var e = o.castAs(c.CastleModel.specialEventData.getActiveEventByEventId(s.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE), "AllianceNomadInvasionEventVO");
-      if (e) {
-        if (this.nomadKhanCampMapObjectVO.allianceInvasionCampNode.rageNeededForLevelUp < 1) {
-          return new r.LocalizedTextVO("levelCapReached");
-        } else {
-          return new r.LocalizedTextVO("khanCamp_rageLevelUp_tooltip", [e.allianceRage, this.nomadKhanCampMapObjectVO.allianceInvasionCampNode.rageNeededForLevelUp]);
+      return this.mapobjectVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MetropolMapobject.prototype, "line1Content", {
+    get: function () {
+      var e = this.metropolVO.ownerInfo;
+      if (e && !e.isOutpostOwner) {
+        return new s.TextVO(f.CastleTitleSystemHelper.getPlayerNameWithTitleFromPlayerInfo(this.metropolVO.ownerInfo));
+      } else {
+        return new s.TextVO(this.metropolVO.areaNameString);
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(_.OutpostMapobject.prototype, "line1Content").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MetropolMapobject.prototype, "line2Content", {
+    get: function () {
+      var e = this.metropolVO.ownerInfo;
+      if (e && e.isRuin) {
+        return new r.LocalizedTextVO("ruin");
+      } else {
+        return new r.LocalizedTextVO(h.SpecialServerHelper.checkTextIDForSkinText("metropol_worldmap_tooltip"), [this.metropolVO.abgMaxInfluencePoints]);
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(_.OutpostMapobject.prototype, "line2Content").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MetropolMapobject.prototype, "line3Content", {
+    get: function () {
+      var e = this.metropolVO.ownerInfo;
+      if (p.ABGHelper.isOnABGAndCollector) {
+        if (e && !e.isOutpostOwner) {
+          return new r.LocalizedTextVO("beyondTheHorizon_cityStates_countdown", [C.CastleTimeStringHelper.getFullTimeString(this.metropolVO.abgMineOutRemainingSeconds)]);
         }
+        var t = g.CastleModel.mineData.getMineVOByObjectID(26);
+        var i = c.int(t.maxInfluencePoints / (t.amountInfluencePerMinute * (1 / u.ClientConstTime.MINUTES_2_SEC)));
+        return new r.LocalizedTextVO("beyondTheHorizon_cityStates_occupationTime", [o.TimeStringHelper.getTimeToString(i, o.TimeStringHelper.ONE_TIME_HOURS_FORMAT, l.Localize.text)]);
+      }
+      if (e && !e.isOutpostOwner) {
+        return new s.TextVO(this.getAllianceString());
       } else {
         return null;
       }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(_.OutpostMapobject.prototype, "line3Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return NomadKhanCampMapobject;
-}(d.InteractiveMapobject);
-exports.NomadKhanCampMapobject = h;
-a.classImplementsInterfaces(h, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+  return MetropolMapobject;
+}(_.OutpostMapobject);
+exports.MetropolMapobject = m;
+a.classImplementsInterfaces(m, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+var f = require("./117.js");

@@ -2,18 +2,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CollectableItemKahnMedalBoosterVO() {
+var o = require("./1.js");
+var a = require("./299.js");
+var s = function (e) {
+  function CollectableItemRageBoosterVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemKahnMedalBoosterVO, e);
-  CollectableItemKahnMedalBoosterVO.prototype.getTooltipTextId = function () {
-    return "khanMedalBooster_name";
+  n.__extends(CollectableItemRageBoosterVE, e);
+  Object.defineProperty(CollectableItemRageBoosterVE.prototype, "percentageIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements_Icons.Icon_RageBooster;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.ACollectableItemPercentageBoosterVE.prototype, "percentageIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CollectableItemRageBoosterVE.prototype.getBoosterTooltipId = function () {
+    return "dialog_rageBooster_boost_tt";
   };
-  CollectableItemKahnMedalBoosterVO.prototype.getDescriptionTextId = function () {
-    return "khanMedalBooster_short_info";
-  };
-  CollectableItemKahnMedalBoosterVO.SERVER_KEY = "KMB";
-  return CollectableItemKahnMedalBoosterVO;
-}(require("./328.js").ACollectableItemPercentageBoosterVO);
-exports.CollectableItemKahnMedalBoosterVO = o;
+  return CollectableItemRageBoosterVE;
+}(a.ACollectableItemPercentageBoosterVE);
+exports.CollectableItemRageBoosterVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");

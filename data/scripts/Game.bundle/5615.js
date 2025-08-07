@@ -3,37 +3,39 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./6.js");
 var o = require("./22.js");
-var a = require("./12.js");
-var s = function () {
-  function XmlResourceVO() {
-    this._resourceID = -1;
-    this._name = "";
+var a = function () {
+  function XmlCurrencyRangeVO() {
+    this._typeID = -1;
+    this._typeName = "";
+    this._currencyIDRange = [];
   }
-  XmlResourceVO.prototype.parseXml = function (e) {
-    this._resourceID = n.int(o.CastleXMLUtils.getIntAttribute("resourceID", e, -1));
-    this._name = o.CastleXMLUtils.getStringAttribute("name", e, "");
+  XmlCurrencyRangeVO.prototype.parseXml = function (e) {
+    this._typeID = n.int(o.CastleXMLUtils.getIntAttribute("typeID", e, -1));
+    this._typeName = o.CastleXMLUtils.getStringAttribute("typeName", e, "");
+    this._currencyIDRange = o.CastleXMLUtils.getStringAttribute("currencyIDRange", e, "").split("-");
+    this._currencyIDRange = [parseInt(this._currencyIDRange[0]), parseInt(this._currencyIDRange[1])];
   };
-  Object.defineProperty(XmlResourceVO.prototype, "resourceID", {
+  Object.defineProperty(XmlCurrencyRangeVO.prototype, "typeID", {
     get: function () {
-      return this._resourceID;
+      return this._typeID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlResourceVO.prototype, "name", {
+  Object.defineProperty(XmlCurrencyRangeVO.prototype, "typeName", {
     get: function () {
-      return this._name;
+      return this._typeName;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlResourceVO.prototype, "resourceEnum", {
+  Object.defineProperty(XmlCurrencyRangeVO.prototype, "currencyIDRange", {
     get: function () {
-      return a.CollectableEnum.getTypeByXmlKey(this.name);
+      return this._currencyIDRange;
     },
     enumerable: true,
     configurable: true
   });
-  return XmlResourceVO;
+  return XmlCurrencyRangeVO;
 }();
-exports.XmlResourceVO = s;
+exports.XmlCurrencyRangeVO = a;

@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GASCommand() {
+  function SMLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GASCommand, e);
-  Object.defineProperty(GASCommand.prototype, "cmdId", {
+  n.__extends(SMLCommand, e);
+  Object.defineProperty(SMLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_PREDEFINED_ATTACK_SETUP;
+      return s.ClientConstSF.S2C_ALLIANCE_SEARCH_MEMBER_LIST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,20 +22,19 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GASCommand.prototype.executeCommand = function (e, t) {
+  SMLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        try {
-          var i = JSON.parse(t[1]);
-          r.CastleModel.fightPresetData.parsePresets(i);
-        } catch (e) {}
+        var i = JSON.parse(t[1]);
+        r.CastleModel.otherPlayerData.parseOwnerInfoArray(i.OI);
+        r.CastleModel.allianceData.parse_SML(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GASCommand;
+  return SMLCommand;
 }(l.CastleCommand);
-exports.GASCommand = c;
+exports.SMLCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

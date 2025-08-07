@@ -2,148 +2,108 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
+var o = require("./1.js");
 var a = require("./2.js");
-var s = require("./1.js");
+var s = require("./2.js");
 var r = require("./3.js");
 var l = require("./3.js");
-var c = require("./6.js");
-var u = require("./16.js");
-var d = require("./503.js");
-var p = require("./4.js");
-var h = require("./203.js");
-var g = require("./8.js");
-var C = require("./34.js");
-var _ = require("./2426.js");
+var c = require("./3.js");
+var u = require("./28.js");
+var d = require("./21.js");
+var p = require("./53.js");
+var h = require("./4.js");
+var g = require("./81.js");
+var C = require("./8.js");
+var _ = createjs.Point;
 var m = function (e) {
-  function CastleAllianceDialogBookmarks(t) {
-    var i = this;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).textFieldManager.registerTextField(i.subLayerDisp.mc_emptyText.txt_value, new l.LocalizedTextVO("Bookmarks_alliance_Menu_copy"));
-    i.initButtons();
-    i.initScrollList();
-    i.setTooltips();
-    return i;
+  function CastleAllianceCentersOfPowerDialogItem() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleAllianceDialogBookmarks, e);
-  CastleAllianceDialogBookmarks.prototype.setDefaultFilters = function () {
-    this.activeFilters = [h.EWorldmapBookmarkType.ALLIANCE_FREE_ATTACK, h.EWorldmapBookmarkType.ALLIANCE_DEFEND, h.EWorldmapBookmarkType.ALLIANCE_ATTACK_ORDER];
-    this.subLayerDisp.mc_filterFreeAttacks.cb_filter.gotoAndStop(CastleAllianceDialogBookmarks.FRAME_CHECK_BOX_CHECKED);
-    this.subLayerDisp.mc_filterDefend.cb_filter.gotoAndStop(CastleAllianceDialogBookmarks.FRAME_CHECK_BOX_CHECKED);
-    this.subLayerDisp.mc_filterAttackOrder.cb_filter.gotoAndStop(CastleAllianceDialogBookmarks.FRAME_CHECK_BOX_CHECKED);
-  };
-  CastleAllianceDialogBookmarks.prototype.initScrollList = function () {
-    this.scrollList = new a.ItemScrollList(this.subLayerDisp);
-    this.scrollList.scrollItemClass = O.CastleAllianceBookmarkScrollItem;
-    this.scrollList.hideButtons = true;
-  };
-  CastleAllianceDialogBookmarks.prototype.initButtons = function () {
-    var e = [this.subLayerDisp.btn_up, this.subLayerDisp.btn_down];
-    var t = 0;
-    for (var i = this.subLayerDisp["item" + t]; i != null;) {
-      e.push(i.btn_jumpTo, i.btn_delete);
-      t++;
-      i = this.subLayerDisp["item" + t];
+  n.__extends(CastleAllianceCentersOfPowerDialogItem, e);
+  CastleAllianceCentersOfPowerDialogItem.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    if (y.instanceOfClass(this.wmo, "MetropolMapobjectVO")) {
+      h.CastleModel.timerData.addEventListener(d.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateTimer));
     }
-    g.ButtonHelper.initBasicButtons(e);
   };
-  CastleAllianceDialogBookmarks.prototype.setTooltips = function () {
-    this.subLayerDisp.mc_counter.toolTipText = "dialog_alliance_bookmarks_counter_tooltip";
-    this.subLayerDisp.mc_counter.mouseChildren = false;
-    this.subLayerDisp.mc_filterFreeAttacks.mc_icon.toolTipText = "dialog_alliance_bookmarks_freeTarget_tooltip";
-    this.subLayerDisp.mc_filterFreeAttacks.cb_filter.actLikeButton = true;
-    this.subLayerDisp.mc_filterFreeAttacks.cb_filter.mouseChildren = false;
-    this.subLayerDisp.mc_filterFreeAttacks.cb_filter.toolTipText = "dialog_alliance_bookmarks_freeTarget_active_tooltip";
-    this.subLayerDisp.mc_filterDefend.mc_icon.toolTipText = "dialog_alliance_bookmarks_supportTarget_tooltip";
-    this.subLayerDisp.mc_filterDefend.cb_filter.actLikeButton = true;
-    this.subLayerDisp.mc_filterDefend.cb_filter.mouseChildren = false;
-    this.subLayerDisp.mc_filterDefend.cb_filter.toolTipText = "dialog_alliance_bookmarks_supportTarget_active_tooltip";
-    this.subLayerDisp.mc_filterAttackOrder.mc_icon.toolTipText = "dialog_alliance_bookmarks_plannedTarget_tooltip";
-    this.subLayerDisp.mc_filterAttackOrder.cb_filter.actLikeButton = true;
-    this.subLayerDisp.mc_filterAttackOrder.cb_filter.mouseChildren = false;
-    this.subLayerDisp.mc_filterAttackOrder.cb_filter.toolTipText = "dialog_alliance_bookmarks_plannedTarget_active_tooltip";
+  CastleAllianceCentersOfPowerDialogItem.prototype.onHide = function () {
+    e.prototype.onHide.call(this);
+    h.CastleModel.timerData.removeEventListener(d.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateTimer));
   };
-  CastleAllianceDialogBookmarks.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    p.CastleModel.bookmarkData.addEventListener(d.CastleBookmarkDataEvent.ON_LIST_CHANGED, this.bindFunction(this.onBookmarkListChanged));
-    this.setDefaultFilters();
-    this.update();
-  };
-  CastleAllianceDialogBookmarks.prototype.update = function () {
-    var e = c.int(p.CastleModel.bookmarkData.allianceBookmarks.length);
-    var t = c.int(p.CastleModel.bookmarkData.maxAllianceBookmarks);
-    var i = this.textFieldManager.registerTextField(this.subLayerDisp.mc_counter.txt_numBookmarks, new l.LocalizedTextVO(o.GenericTextIds.VALUE_PROPORTIONAL_VALUE, [e, t]));
-    if (e >= t) {
-      i.color = u.ClientConstColor.GENERIC_RED;
-      this.subLayerDisp.mc_counter.toolTipText = "Bookmarks_Menu_counterLimit_tooltip";
-    } else {
-      i.color = u.ClientConstColor.FONT_DEFAULT_COLOR;
-      this.subLayerDisp.mc_counter.toolTipText = "dialog_alliance_bookmarks_counter_tooltip";
+  CastleAllianceCentersOfPowerDialogItem.prototype.fill = function () {
+    var e = this.getItemMc();
+    C.ButtonHelper.initButtons([e.btn_goTo], D.ClickFeedbackButton);
+    e.mc_icon.addChild(E.WorldmapObjectIconHelper.drawMapObjectIcon(this.wmo, new _(78, 62), true, false, false));
+    O.CastleComponent.textFieldManager.registerTextField(e.txt_areaName, new r.TextVO(this.wmo.areaNameString));
+    O.CastleComponent.textFieldManager.registerTextField(e.txt_playerName, new r.TextVO(this.playerName));
+    e.mc_collectionTime.toolTipText = "depletion_influence_tt";
+    e.mc_allInfluence.toolTipText = "currency_name_AllianceInfluence";
+    e.mc_attack.toolTipText = "kingstower_worldmap_tooltip_" + p.ABGHelper.skinName;
+    e.btn_goTo.toolTipText = "jumpTo";
+    e.mc_collectionTime.visible = y.instanceOfClass(this.wmo, "MetropolMapobjectVO");
+    e.mc_collectionTime.mouseChildren = false;
+    e.mc_allInfluence.visible = y.instanceOfClass(this.wmo, "CapitalMapobjectVO");
+    e.mc_allInfluence.mouseChildren = false;
+    e.mc_attack.visible = y.instanceOfClass(this.wmo, "KingstowerMapobjectVO");
+    e.mc_attack.mouseChildren = false;
+    if (y.instanceOfClass(this.wmo, "MetropolMapobjectVO")) {
+      this.onUpdateTimer();
     }
-    this.updateList();
-  };
-  CastleAllianceDialogBookmarks.prototype.updateList = function () {
-    this.scrollList.clear();
-    var e = p.CastleModel.bookmarkData.getFilteredBookmarks(this.activeFilters);
-    this.subLayerDisp.mc_emptyText.visible = p.CastleModel.bookmarkData.allianceBookmarks.length == 0;
-    if (e != null) {
-      for (var t = 0, i = e; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          this.scrollList.pushContent(new _.CastleAllianceBookmarkScrollItemVO(n));
-        }
-      }
+    if (y.instanceOfClass(this.wmo, "CapitalMapobjectVO")) {
+      O.CastleComponent.textFieldManager.registerTextField(e.txt_value, new c.LocalizedNumberVO(this.additionalInformation));
     }
-    this.scrollList.initList(0);
+    if (y.instanceOfClass(this.wmo, "KingstowerMapobjectVO")) {
+      O.CastleComponent.textFieldManager.registerTextField(e.txt_value, new l.LocalizedTextVO("relicequip_dialog_relicIncrease_value_single", [this.additionalInformation]));
+    }
   };
-  CastleAllianceDialogBookmarks.prototype.onBookmarkListChanged = function (e) {
-    this.update();
+  CastleAllianceCentersOfPowerDialogItem.prototype.onUpdateTimer = function (e = null) {
+    O.CastleComponent.textFieldManager.registerTextField(this.getItemMc().txt_value, new r.TextVO(a.TimeStringHelper.getHoureMinutesTimeString(Math.max(this.additionalInformation - (b.CachedTimer.getCachedTimer() - this.dataGainTime) * u.ClientConstTime.MILLISEC_2_SEC))));
   };
-  CastleAllianceDialogBookmarks.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    p.CastleModel.bookmarkData.removeEventListener(d.CastleBookmarkDataEvent.ON_LIST_CHANGED, this.bindFunction(this.onBookmarkListChanged));
-  };
-  CastleAllianceDialogBookmarks.prototype.onClick = function (t) {
+  CastleAllianceCentersOfPowerDialogItem.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    if (g.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.subLayerDisp.mc_filterFreeAttacks.cb_filter:
-          this.onCheckBoxClick(t.target, h.EWorldmapBookmarkType.ALLIANCE_FREE_ATTACK, "dialog_alliance_bookmarks_freeTarget");
-          break;
-        case this.subLayerDisp.mc_filterDefend.cb_filter:
-          this.onCheckBoxClick(t.target, h.EWorldmapBookmarkType.ALLIANCE_DEFEND, "dialog_alliance_bookmarks_supportTarget");
-          break;
-        case this.subLayerDisp.mc_filterAttackOrder.cb_filter:
-          this.onCheckBoxClick(t.target, h.EWorldmapBookmarkType.ALLIANCE_ATTACK_ORDER, "dialog_alliance_bookmarks_plannedTarget");
+    if (t.target == this.getItemMc().btn_goTo) {
+      s.CommandController.instance.executeCommand(f.IngameClientCommands.SWITCH_TO_WORLDMAP_COMMAND, this.wmo);
+    }
+  };
+  Object.defineProperty(CastleAllianceCentersOfPowerDialogItem.prototype, "wmo", {
+    get: function () {
+      if (this.data) {
+        return this.data[0];
+      } else {
+        return null;
       }
-    }
-  };
-  CastleAllianceDialogBookmarks.prototype.onCheckBoxClick = function (e, t, i) {
-    var n;
-    var o = c.int(this.activeFilters.indexOf(t));
-    if (o == -1) {
-      this.activeFilters.push(t);
-      e.gotoAndStop(CastleAllianceDialogBookmarks.FRAME_CHECK_BOX_CHECKED);
-      n = "_active";
-    } else {
-      this.activeFilters.splice(o, 1);
-      e.gotoAndStop(CastleAllianceDialogBookmarks.FRAME_CHECK_BOX_NOT_CHECKED);
-      n = "_inactive";
-    }
-    e.toolTipText = i + n + "_tooltip";
-    this.updateList();
-  };
-  CastleAllianceDialogBookmarks.prototype.showHelp = function () {
-    f.CastleDialogHandler.getInstance().showHelper("", r.Localize.text("help_alliance_bookmarks"));
-  };
-  CastleAllianceDialogBookmarks.__initialize_static_members = function () {
-    CastleAllianceDialogBookmarks.FRAME_CHECK_BOX_NOT_CHECKED = 1;
-    CastleAllianceDialogBookmarks.FRAME_CHECK_BOX_CHECKED = 2;
-  };
-  return CastleAllianceDialogBookmarks;
-}(C.CastleDialogSubLayer);
-exports.CastleAllianceDialogBookmarks = m;
-var f = require("./9.js");
-var O = require("./2427.js");
-s.classImplementsInterfaces(m, "ICollectableRendererList", "ISublayer");
-m.__initialize_static_members();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleAllianceCentersOfPowerDialogItem.prototype, "playerName", {
+    get: function () {
+      return this.data[1];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleAllianceCentersOfPowerDialogItem.prototype, "additionalInformation", {
+    get: function () {
+      return this.data[2];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleAllianceCentersOfPowerDialogItem.prototype, "dataGainTime", {
+    get: function () {
+      return this.data[3];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleAllianceCentersOfPowerDialogItem;
+}(g.AInfiniteScrollListItem);
+exports.CastleAllianceCentersOfPowerDialogItem = m;
+var f = require("./29.js");
+var O = require("./14.js");
+var E = require("./70.js");
+o.classImplementsInterfaces(m, "ICollectableRendererList");
+var y = require("./1.js");
+var b = require("./30.js");
+var D = require("./36.js");

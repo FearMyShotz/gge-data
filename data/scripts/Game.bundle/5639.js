@@ -2,84 +2,57 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function XmlFusionSystemVO() {
+  function XmlFusionCostSequenceVO() {
     this._id = -1;
-    this._energyRechargeIntervalInSeconds = 0;
-    this._assembleCatalystEnergyCost = 0;
-    this._disassembleCatalystEnergyCost = 0;
-    this._baseBonusFusionXPChance = 0;
-    this._premiumBonusFusionXPChance = 0;
-    this._skipRechargeHardCurrencyCost = 0;
-    this._skipRechargeHardCurrencyCostFactor = 0;
+    this._forgeId = -1;
+    this._fusionTargetLevelIterationIndex = -1;
+    this._costJSONKey = "";
+    this._costAmount = 0;
   }
-  XmlFusionSystemVO.prototype.parseXml = function (e) {
+  XmlFusionCostSequenceVO.prototype.parseXml = function (e) {
     this._id = o.int(a.CastleXMLUtils.getIntAttribute("id", e, -1));
-    this._energyRechargeIntervalInSeconds = o.int(a.CastleXMLUtils.getIntAttribute("energyRechargeIntervalInSeconds", e, 0));
-    this._assembleCatalystEnergyCost = o.int(a.CastleXMLUtils.getIntAttribute("assembleCatalystEnergyCost", e, 0));
-    this._disassembleCatalystEnergyCost = o.int(a.CastleXMLUtils.getIntAttribute("disassembleCatalystEnergyCost", e, 0));
-    this._baseBonusFusionXPChance = o.int(a.CastleXMLUtils.getIntAttribute("baseBonusFusionXPChance", e, 0));
-    this._premiumBonusFusionXPChance = o.int(a.CastleXMLUtils.getIntAttribute("premiumBonusFusionXPChance", e, 0));
-    this._skipRechargeHardCurrencyCost = o.int(a.CastleXMLUtils.getIntAttribute("skipRechargeHardCurrencyCost", e, 0));
-    this._skipRechargeHardCurrencyCostFactor = a.CastleXMLUtils.getNumberAttribute("skipRechargeHardCurrencyCostFactor", e);
+    this._forgeId = o.int(a.CastleXMLUtils.getIntAttribute("forgeID", e, -1));
+    this._fusionTargetLevelIterationIndex = o.int(a.CastleXMLUtils.getIntAttribute("fusionTargetLevelIterationIndex", e, -1));
+    this._costJSONKey = a.CastleXMLUtils.getStringAttribute("costJSONKey", e, "");
+    this._costAmount = o.int(a.CastleXMLUtils.getIntAttribute("costAmount", e, 0));
   };
-  Object.defineProperty(XmlFusionSystemVO.prototype, "id", {
+  Object.defineProperty(XmlFusionCostSequenceVO.prototype, "id", {
     get: function () {
       return this._id;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionSystemVO.prototype, "energyRechargeIntervalInSeconds", {
+  Object.defineProperty(XmlFusionCostSequenceVO.prototype, "forgeId", {
     get: function () {
-      return this._energyRechargeIntervalInSeconds;
+      return this._forgeId;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionSystemVO.prototype, "assembleCatalystEnergyCost", {
+  Object.defineProperty(XmlFusionCostSequenceVO.prototype, "fusionTargetLevelIterationIndex", {
     get: function () {
-      return this._assembleCatalystEnergyCost;
+      return this._fusionTargetLevelIterationIndex;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionSystemVO.prototype, "disassembleCatalystEnergyCost", {
+  Object.defineProperty(XmlFusionCostSequenceVO.prototype, "costJSONKey", {
     get: function () {
-      return this._disassembleCatalystEnergyCost;
+      return this._costJSONKey;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionSystemVO.prototype, "baseBonusFusionXPChance", {
+  Object.defineProperty(XmlFusionCostSequenceVO.prototype, "costAmount", {
     get: function () {
-      return this._baseBonusFusionXPChance;
+      return this._costAmount;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlFusionSystemVO.prototype, "premiumBonusFusionXPChance", {
-    get: function () {
-      return this._premiumBonusFusionXPChance;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlFusionSystemVO.prototype, "skipRechargeHardCurrencyCost", {
-    get: function () {
-      return this._skipRechargeHardCurrencyCost;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlFusionSystemVO.prototype, "skipRechargeHardCurrencyCostFactor", {
-    get: function () {
-      return this._skipRechargeHardCurrencyCostFactor;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return XmlFusionSystemVO;
+  return XmlFusionCostSequenceVO;
 }();
-exports.XmlFusionSystemVO = n;
+exports.XmlFusionCostSequenceVO = n;
 var o = require("./6.js");
 var a = require("./22.js");

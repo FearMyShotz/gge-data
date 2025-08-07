@@ -1,18 +1,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function NameCastleItemVO(e, t, i) {
-    this.titleId = e;
-    this.descriptionId = t;
-    this.insertTitleId = i;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function HeroDecisionVO(t) {
+    var i = this;
+    i.HID = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).HID = t;
+    return i;
   }
-  NameCastleItemVO.__initialize_static_members = function () {
-    NameCastleItemVO.TEXT_ID_TYPE_TITLE = "titleId";
-    NameCastleItemVO.TEXT_ID_TYPE_DESCRIPTION = "descriptionId";
-    NameCastleItemVO.TEXT_ID_TYPE_INSERT_TITLE = "insertTitleId";
+  n.__extends(HeroDecisionVO, e);
+  HeroDecisionVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_HERO_DECISION_COMMAND;
   };
-  return NameCastleItemVO;
-}();
-exports.NameCastleItemVO = n;
-n.__initialize_static_members();
+  return HeroDecisionVO;
+}(o.BasicCommandVO);
+exports.HeroDecisionVO = s;

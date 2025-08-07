@@ -4,8 +4,8 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
-var s = require("./2418.js");
-var r = require("./2419.js");
+var s = require("./2419.js");
+var r = require("./2420.js");
 var l = require("./4.js");
 var c = function (e) {
   function CastleForumDeleteDialog() {

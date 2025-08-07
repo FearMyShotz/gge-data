@@ -2,30 +2,33 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./457.js");
-var s = function (e) {
-  function OfficersSchoolBuildingVE() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./145.js");
+var r = function (e) {
+  function OfferBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(OfficersSchoolBuildingVE, e);
-  OfficersSchoolBuildingVE.prototype.getRingMenuButtons = function () {
-    var t = e.prototype.getRingMenuButtons.call(this);
-    t.push(new r.RingMenuButtonOfficerSchool());
-    return t;
+  n.__extends(OfferBuildingVE, e);
+  OfferBuildingVE.prototype.createDisp = function () {
+    this.dispComponent.addClip(this.loadExternalClip(this.assetClipName));
   };
-  Object.defineProperty(OfficersSchoolBuildingVE.prototype, "buildingGroundIconClass", {
+  OfferBuildingVE.prototype.createAdditionalClips = function () {
+    this.additionalClips.addClips(s.IsoAdditionalClipEnum.CAMP_FIRE);
+    this.additionalClips.addClips(s.IsoAdditionalClipEnum.EXCLAMATION_MARK);
+  };
+  OfferBuildingVE.prototype.onMouseClick = function () {
+    o.CommandController.instance.executeCommand(l.IngameClientCommands.OPEN_PRIVATE_OFFER_DIALOG_COMMAND, this.offerBuildingVO.offerVO);
+  };
+  Object.defineProperty(OfferBuildingVE.prototype, "offerBuildingVO", {
     get: function () {
-      return Library.CastleInterfaceElements.Icon_Recruit;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.AProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  return OfficersSchoolBuildingVE;
-}(a.AProductionBuildingVE);
-exports.OfficersSchoolBuildingVE = s;
-var r = require("./3074.js");
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  return OfferBuildingVE;
+}(require("./1032.js").AEventBuildingVE);
+exports.OfferBuildingVE = r;
+var l = require("./29.js");
+a.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

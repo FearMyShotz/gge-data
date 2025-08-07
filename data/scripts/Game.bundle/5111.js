@@ -4,36 +4,41 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function GDACommand() {
+var s = require("./6.js");
+var r = require("./7.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function PEPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GDACommand, e);
-  Object.defineProperty(GDACommand.prototype, "cmdId", {
+  n.__extends(PEPCommand, e);
+  Object.defineProperty(PEPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_DAIMYO_AREAS_EVENT;
+      return r.ClientConstSF.S2C_POINT_EVENT_POINTS;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  GDACommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
+  PEPCommand.prototype.exec = function (e) {
+    var t = s.int(e[0]);
+    var i = e[1];
+    switch (t) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.samuraiDaimyoData.server.parseGDA(i);
+        var n = JSON.parse(i[1]);
+        var o = l.CastleModel.specialEventData.getActiveEventByEventId(n.EID);
+        if (o) {
+          o.setRankAndPoints(n.OR, n.OP, n.PT);
+        }
         break;
       default:
-        this.showErrorDialog(e, t);
+        this.showErrorDialog(t, i);
     }
-    return false;
   };
-  return GDACommand;
-}(l.CastleCommand);
-exports.GDACommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return PEPCommand;
+}(c.CastleCommand);
+exports.PEPCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

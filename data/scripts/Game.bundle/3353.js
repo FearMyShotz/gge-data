@@ -2,137 +2,121 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
+var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./163.js");
-var r = require("./14.js");
-var l = require("./8.js");
-var c = createjs.MouseEvent;
-var u = function (e) {
-  function QuestMapTile() {
-    var t = this;
-    t._startIndex = 0;
-    t._height = 0;
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./23.js");
+var u = require("./23.js");
+var d = require("./13.js");
+var p = require("./276.js");
+var h = require("./14.js");
+var g = require("./47.js");
+var C = require("./59.js");
+var _ = require("./42.js");
+var m = require("./8.js");
+var f = require("./41.js");
+var O = require("./413.js");
+var E = createjs.Rectangle;
+var y = function (e) {
+  function QuestMapComponent(t) {
+    var i = this;
+    i._startY = 0;
     CONSTRUCTOR_HACK;
-    (t = e.call(this) || this)._disp = new (a.getDefinitionByName("QuestMapTileMC"))();
-    l.ButtonHelper.initBasicButtons([t._disp.quest0, t._disp.quest1, t._disp.quest2, t._disp.quest3]);
-    return t;
+    (i = e.call(this) || this)._disp = t;
+    i._startY = t.mc_mask.y;
+    i._itemContainer = t.mc_ItemContainer;
+    f.CastleMovieClipHelper.applyMaskFromMovieClip(i._itemContainer, t.mc_mask);
+    m.ButtonHelper.initButton(i._disp.mc_slider.btn_minus, 1, I.ClickFeedbackButton);
+    m.ButtonHelper.initButton(i._disp.mc_slider.btn_slider, 1, O.ClickFeedBackSliderButton);
+    m.ButtonHelper.initButton(i._disp.mc_slider.btn_plus, 1, I.ClickFeedbackButton);
+    i._sliderButton = i._disp.mc_slider.btn_slider.basicButton;
+    var n = new C.DynamicSizeScrollStrategyVertical(true);
+    i.layoutStrategy = new p.SimpleLayoutStrategyVertical();
+    i.scrollComponent = new b.SimpleScrollComponent(new g.SimpleScrollVO().initByParent(i._disp.mc_slider).addMouseWheelElements([i._disp]), n);
+    i.scrollComponent.strategy.visibleValue = i._itemContainer.mask.height;
+    i.mapTilePool = [];
+    h.CastleComponent.textFieldManager.registerTextField(i._disp.txt_title, new r.TextVO(d.TextHelper.toUpperCaseLocaSafe(s.Localize.text("dialog_questbook_taskInfo")))).verticalAlign = _.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    i.hide();
+    return i;
   }
-  n.__extends(QuestMapTile, e);
-  QuestMapTile.prototype.show = function (e, t) {
-    var i;
-    var n;
-    var o;
-    this._quests = e;
-    this._startIndex = t;
-    this._disp.path0.visible = t >= 0;
-    var a = 0;
-    for (var s = 0; s <= QuestMapTile.QUESTS_PER_TILE; s++) {
-      i = this._disp["quest" + s];
-      n = this._disp["path" + s];
-      if (o = this._quests.length > t + s ? this._quests[t + s].questVO : null) {
-        if (s < QuestMapTile.QUESTS_PER_TILE) {
-          i.gotoAndStop(o.isCompleted ? 2 : o.isFailed ? 3 : 1);
-          i.icon.gotoAndStop(o.isEpicQuest ? 2 : 1);
-          i.visible = true;
-          i.mouseChildren = false;
-          a = s;
+  n.__extends(QuestMapComponent, e);
+  QuestMapComponent.prototype.show = function (e) {
+    var t;
+    var i = 0;
+    var n = 0;
+    o.MovieClipHelper.clearMovieClip(this._itemContainer);
+    this.mapTiles = [];
+    while (n < e.length) {
+      if (this.mapTilePool.length <= i) {
+        this.mapTilePool.push(new D.QuestMapTile());
+      }
+      t = this.mapTilePool[i];
+      this._itemContainer.addChild(t.disp);
+      this.mapTiles.push(t);
+      t.show(e, n);
+      i++;
+      n = l.int(i * QuestMapComponent.QUESTS_PER_TILE);
+    }
+    this.updateSlider();
+    this.scrollComponent.show();
+    this.scrollComponent.onScrollSignal.add(this.bindFunction(this.onScrollValueChange));
+    this._disp.visible = true;
+  };
+  QuestMapComponent.prototype.onScrollValueChange = function () {
+    u.TweenMax.killTweensOf(this._itemContainer);
+    u.TweenMax.to(this._itemContainer, QuestMapComponent.SCOLL_DURATION, {
+      y: this._startY - this.scrollComponent.currentValue,
+      ease: c.Power1.easeOut
+    });
+  };
+  QuestMapComponent.prototype.hide = function () {
+    if (this.mapTilePool != null) {
+      for (var e = 0, t = this.mapTilePool; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          i.hide();
         }
-        n.gotoAndStop(o.isCompleted ? 1 : o.isFailed ? 2 : o.isLocked ? 3 : 4);
-        n.visible = t + s > 0;
-      } else {
-        if (s < QuestMapTile.QUESTS_PER_TILE) {
-          i.visible = false;
-        }
-        n.visible = false;
       }
     }
-    this._height = a == QuestMapTile.QUESTS_PER_TILE - 1 ? this.disp.height : this.disp["quest" + a].y + 55;
-    this._disp.addEventListener(c.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-    this._disp.addEventListener(c.CLICK, this.bindFunction(this.onMouseClick));
+    this.scrollComponent.hide();
+    this.scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScrollValueChange));
+    o.MovieClipHelper.clearMovieClip(this._itemContainer);
+    this.mapTiles = [];
+    this._disp.visible = false;
   };
-  QuestMapTile.prototype.hide = function () {
-    this._disp.addEventListener(c.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-    this._disp.addEventListener(c.CLICK, this.bindFunction(this.onMouseClick));
-    this._quests = null;
+  QuestMapComponent.prototype.updateSlider = function (e = false) {
+    var t;
+    var i;
+    var n;
+    i = this.applyLayout().height;
+    t = l.int(Math.max(0, i - this._itemContainer.mask.height));
+    n = this._itemContainer.mask.height / i;
+    this._sliderButton.setSize(this.scrollComponent.scrollVO.sliderLine.height * n);
+    var o = l.int(e ? 0 : this.scrollComponent.currentValue);
+    this.scrollComponent.init(0, t, QuestMapComponent.SCROLL_STEP_PIXELS, QuestMapComponent.SCROLL_STEP_PIXELS);
+    this.scrollComponent.scrollToValue(Math.min(o, t));
+    this._disp.mc_slider.visible = t > 0;
+    this.scrollComponent.setVisibility(t > 0);
   };
-  QuestMapTile.prototype.onMouseOver = function (e) {
-    switch (e.target) {
-      case this._disp.quest0:
-        p.QuestMapTooltipHelper.showToolTip(e.target, this._quests[this._startIndex].questVO);
-        break;
-      case this._disp.quest1:
-        p.QuestMapTooltipHelper.showToolTip(e.target, this._quests[this._startIndex + 1].questVO);
-        break;
-      case this._disp.quest2:
-        p.QuestMapTooltipHelper.showToolTip(e.target, this._quests[this._startIndex + 2].questVO);
-        break;
-      case this._disp.quest3:
-        p.QuestMapTooltipHelper.showToolTip(e.target, this._quests[this._startIndex + 3].questVO);
-    }
+  QuestMapComponent.prototype.scrollToTop = function () {
+    this.updateSlider(true);
+    this._itemContainer.y = this._startY;
   };
-  QuestMapTile.prototype.onMouseClick = function (e) {
-    switch (e.target) {
-      case this._disp.quest0:
-        this._quests[this._startIndex].select(true, true);
-        d.TooltipManagerFacade.hideAllTooltips();
-        break;
-      case this._disp.quest1:
-        this._quests[this._startIndex + 1].select(true, true);
-        d.TooltipManagerFacade.hideAllTooltips();
-        break;
-      case this._disp.quest2:
-        this._quests[this._startIndex + 2].select(true, true);
-        d.TooltipManagerFacade.hideAllTooltips();
-        break;
-      case this._disp.quest3:
-        this._quests[this._startIndex + 3].select(true, true);
-        d.TooltipManagerFacade.hideAllTooltips();
-    }
+  QuestMapComponent.prototype.applyLayout = function () {
+    return this.layoutStrategy.apply(this.mapTiles, new E());
   };
-  Object.defineProperty(QuestMapTile.prototype, "disp", {
-    get: function () {
-      return this._disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(QuestMapTile.prototype, "isLayoutEnabled", {
-    get: function () {
-      return true;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(QuestMapTile.prototype, "height", {
-    get: function () {
-      return this._height;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(QuestMapTile.prototype, "width", {
-    get: function () {
-      return this.disp.width;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(QuestMapTile.prototype, "margin", {
-    get: function () {
-      return QuestMapTile.MARGIN;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  QuestMapTile.__initialize_static_members = function () {
-    QuestMapTile.QUESTS_PER_TILE = 4;
-    QuestMapTile.MARGIN = new s.LayoutMargin(0, 0, 0, 0);
+  QuestMapComponent.__initialize_static_members = function () {
+    QuestMapComponent.QUESTS_PER_TILE = 4;
+    QuestMapComponent.SCROLL_STEP_PIXELS = 109;
+    QuestMapComponent.SCOLL_DURATION = 0.2;
   };
-  return QuestMapTile;
-}(r.CastleComponent);
-exports.QuestMapTile = u;
-var d = require("./200.js");
-var p = require("./1056.js");
-o.classImplementsInterfaces(u, "ICollectableRendererList", "ILayoutable");
-u.__initialize_static_members();
+  return QuestMapComponent;
+}(h.CastleComponent);
+exports.QuestMapComponent = y;
+var b = require("./95.js");
+var D = require("./3354.js");
+var I = require("./36.js");
+a.classImplementsInterfaces(y, "ICollectableRendererList");
+y.__initialize_static_members();

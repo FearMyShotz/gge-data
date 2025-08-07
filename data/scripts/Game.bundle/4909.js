@@ -3,37 +3,38 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function CLBCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var a = require("./3.js");
+var s = function (e) {
+  function CastleNotifyDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleNotifyDialog.NAME) || this;
   }
-  n.__extends(CLBCommand, e);
-  Object.defineProperty(CLBCommand.prototype, "cmdId", {
+  n.__extends(CastleNotifyDialog, e);
+  CastleNotifyDialog.prototype.initLoaded = function (t = null) {
+    this.initBasicButtons([this.dialogDisp.btn_ok]);
+    e.prototype.initLoaded.call(this, t);
+  };
+  CastleNotifyDialog.prototype.applyPropertiesLoaded = function (e = null) {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.TextVO(this.dialogProperties.copy));
+  };
+  CastleNotifyDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (t.target == this.dialogDisp.btn_ok) {
+      this.hide();
+    }
+  };
+  Object.defineProperty(CastleNotifyDialog.prototype, "dialogProperties", {
     get: function () {
-      return s.ClientConstSF.S2C_CATCH_LOGIN_BONUS;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CLBCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.loginBonusData.parseALB(i.alb);
-        break;
-      default:
-        this.showErrorDialog(e, t);
-    }
-    return false;
+  CastleNotifyDialog.__initialize_static_members = function () {
+    CastleNotifyDialog.NAME = "CastleNotifyEx";
   };
-  return CLBCommand;
-}(l.CastleCommand);
-exports.CLBCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return CastleNotifyDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleNotifyDialog = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");
+s.__initialize_static_members();

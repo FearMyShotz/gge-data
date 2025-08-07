@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./195.js");
 var s = function (e) {
-  function CollectableItemUnlockAllPassVE() {
+  function CollectableItemSeasonLeaguePromotionPassVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemUnlockAllPassVE, e);
-  Object.defineProperty(CollectableItemUnlockAllPassVE.prototype, "iconClass", {
+  n.__extends(CollectableItemSeasonLeaguePromotionPassVE, e);
+  Object.defineProperty(CollectableItemSeasonLeaguePromotionPassVE.prototype, "iconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_UnlockAllPass;
+      return Library.CastleInterfaceElements_Icons.Icon_SeasonPassPromotion;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return CollectableItemUnlockAllPassVE;
+  return CollectableItemSeasonLeaguePromotionPassVE;
 }(a.ACollectableItemSimpleIconVE);
-exports.CollectableItemUnlockAllPassVE = s;
+exports.CollectableItemSeasonLeaguePromotionPassVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList");

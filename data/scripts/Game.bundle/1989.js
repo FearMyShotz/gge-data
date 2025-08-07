@@ -1,17 +1,27 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SGetUnsentPriceTrackingVO() {
-    return e.call(this) || this;
-  }
-  n.__extends(C2SGetUnsentPriceTrackingVO, e);
-  C2SGetUnsentPriceTrackingVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_UNSENT_PRICE_TRACKING;
+var n = function () {
+  function ClassHierarchyUtil() {}
+  ClassHierarchyUtil.inheritsFrom = function (e, t, i = false, n = false) {
+    if (t.prototype.isPrototypeOf(e.prototype)) {
+      return true;
+    }
+    if (i) {
+      if (n) {
+        throw new Error(o.getQualifiedClassName(e) + " does not inherit from " + o.getQualifiedClassName(t));
+      }
+      return false;
+    }
+    if (t.prototype === e.prototype) {
+      return true;
+    }
+    if (n) {
+      throw new Error(o.getQualifiedClassName(e) + " does not inherit from " + o.getQualifiedClassName(t));
+    }
+    return false;
   };
-  return C2SGetUnsentPriceTrackingVO;
-}(o.BasicCommandVO);
-exports.C2SGetUnsentPriceTrackingVO = s;
+  return ClassHierarchyUtil;
+}();
+exports.ClassHierarchyUtil = n;
+var o = require("./1.js");

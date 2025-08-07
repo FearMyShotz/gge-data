@@ -5,178 +5,186 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
 var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./13.js");
-var c = require("./8.js");
-var u = require("./11.js");
-var d = createjs.Point;
-var p = function (e) {
-  function SeasonLeaguePromotionDialog() {
-    var t = e.call(this, SeasonLeaguePromotionDialog.NAME) || this;
-    t._hasBoughtSeasonPassInThisDialog = false;
-    t.hasBoughtRewardHubPassInThisDialog = false;
-    return t;
+var r = require("./13.js");
+var l = require("./4.js");
+var c = require("./467.js");
+var u = require("./8.js");
+var d = require("./112.js");
+var p = createjs.Point;
+var h = function (e) {
+  function SeasonLeagueEndDialog() {
+    return e.call(this, SeasonLeagueEndDialog.NAME) || this;
   }
-  n.__extends(SeasonLeaguePromotionDialog, e);
-  SeasonLeaguePromotionDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(SeasonLeagueEndDialog, e);
+  SeasonLeagueEndDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    c.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_buy], I.ClickFeedbackButtonHover);
-    c.ButtonHelper.initButtons([this.dialogDisp.btn_pickUp], I.ClickFeedbackButtonHover);
-    this.dialogDisp.btn_buy.toolTipText = "dialog_seasonLeague_seasonPass_purchaseButton_promotionPass_tooltip";
+    u.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok], f.ClickFeedbackButtonHover);
+    u.ButtonHelper.initButtons([this.dialogDisp.btn_pickUp], f.ClickFeedbackButtonHover);
+    u.ButtonHelper.initBasicButton(this.dialogDisp.btn_tabRewards, 1.025);
+    u.ButtonHelper.initBasicButton(this.dialogDisp.btn_tabMedals, 1.025);
+    u.ButtonHelper.initBasicButton(this.dialogDisp.btn_tabMedalsAlliance, 1.025);
+    this.dialogDisp.mc_rankInfoPlayer.mc_placementIcon.toolTipText = "dialog_seasonLeague_divisionRanking_position_tooltip";
+    this.dialogDisp.mc_rankInfoAllianceEvent.mc_placementIcon.toolTipText = "dialog_seasonLeague_divisionRanking_position_tooltip";
+    this.dialogDisp.mc_rankInfoAllianceSeason.mc_placementIcon.toolTipText = "dialog_seasonLeague_divisionRanking_position_tooltip";
+    this.dialogDisp.mc_rankInfoAllianceEvent.mc_placementIconAlliance.toolTipText = "dialog_seasonLeague_eventEnd_finalAllianceRanking_tooltip";
+    this.dialogDisp.mc_rankInfoAllianceSeason.mc_placementIconAlliance.toolTipText = "dialog_seasonLeague_seasonEnd_finalAllianceRanking_tooltip";
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_pickUp.txt_copy, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("collect")));
+    this._subLayer = new Map();
+    this._subLayer.set(SeasonLeagueEndDialog.TAB_REWARDS, new _.SeasonLeagueEndDialogRewards(this.dialogDisp.mc_tab_rewards));
+    this._subLayer.set(SeasonLeagueEndDialog.TAB_REWARDS_EVENT, new m.SeasonLeagueEndDialogRewardsEvent(this.dialogDisp.mc_tab_rewards_event));
+    this._subLayer.set(SeasonLeagueEndDialog.TAB_MEDALS, new C.SeasonLeagueEndDialogMedals(this.dialogDisp.mc_tab_medals));
+    this._subLayer.set(SeasonLeagueEndDialog.TAB_ALLIANCE_MEDALS, new C.SeasonLeagueEndDialogMedals(this.dialogDisp.mc_tab_medals, true));
   };
-  SeasonLeaguePromotionDialog.prototype.showLoaded = function (t = null) {
+  SeasonLeagueEndDialog.prototype.showLoaded = function (t = null) {
     e.prototype.showLoaded.call(this, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("dialog_seasonLeague_promotionGained_header")));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_reward1, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("dialog_seasonLeague_standardRewards_desc")));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_reward2, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("dialog_seasonLeague_bonusRewards_desc")));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_name, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId(this.dialogProperties.promotionVO.getNameTextId())));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new s.LocalizedTextVO("dialog_seasonLeague_promotionGained_copy", [a.Localize.text(this.dialogProperties.promotionVO.getNameTextId())]));
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_pickUp.txt_copy, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("collect")));
-    var i = a.Localize.text(O.CastleModel.seasonLeagueData.server.passSeasonActive ? "status_active" : "status_inactive");
-    var n = a.Localize.text(O.CastleModel.seasonLeagueData.server.passEventActive ? "status_active" : "status_inactive");
-    var o = a.Localize.text(this.promotionPassActive ? "status_active" : "status_inactive");
-    this.dialogDisp.mc_info.toolTipText = a.Localize.text("dialog_seasonLeague_promotionRanks_promotionReward_tooltip", [i, n, o]);
-    this.dialogDisp.mc_info.visible = !this.dialogProperties.rewardHubVO;
-    this._promotionIcon = new h.SeasonLeaguePromotionIconComponent(this.dialogDisp.mc_icon, h.SeasonLeaguePromotionIconComponent.TYPE_BIG, new d(200, 200));
-    this.controller.addEventListener(E.SeasonLeagueEvent.ON_PASS_PROMOTION_BOUGHT, this.bindFunction(this.onPassPurchased));
-    this.controller.addEventListener(E.SeasonLeagueEvent.ON_PASS_SEASON_BOUGHT, this.bindFunction(this.onPassPurchased));
-    v.CastleRewardHubMicroservice.Instance.onUpgradeRewardsSuccessSignal.add(this.bindFunction(this.onRewardHubPassPurchased));
-    this.dialogDisp.mc_item0.mc_overlay.visible = false;
-    this.dialogDisp.mc_item1.mc_overlay.visible = false;
-    this.dialogDisp.mc_item0.mc_background.visible = false;
-    this.dialogDisp.mc_item1.mc_background.visible = false;
-    this.dialogDisp.mc_rewards.mc_item0.mc_background.visible = false;
-    this.dialogDisp.mc_rewards.mc_item1.mc_background.visible = false;
-    this.hasBoughtSeasonPassInThisDialog = false;
-    this.hasBoughtRewardHubPassInThisDialog = false;
-    this.updateInfos();
+    this._subLayer.get(SeasonLeagueEndDialog.TAB_REWARDS_EVENT).reset();
+    this._subLayer.get(SeasonLeagueEndDialog.TAB_REWARDS).reset();
+    this.updateText();
+    this.initTabs();
+    this.updateTeaser();
+    this.updateRankInfo();
   };
-  SeasonLeaguePromotionDialog.prototype.updateInfos = function () {
-    S.MicroServiceRequestPreloader.hidePreloader();
-    this._promotionIcon.updateWithNewVO(this.dialogProperties.promotionVO);
-    var e = this.dialogProperties.getPromotionRewardsVO();
-    if (this.isPassActive) {
-      this.dialogDisp.mc_rewards.mc_item0.mc_overlay.visible = !this.dialogProperties.getPromotionRewardsVO().isUnlocked;
-      this.dialogDisp.mc_rewards.mc_item1.mc_overlay.visible = !this.dialogProperties.getPromotionRewardsVO().isUnlocked;
-      this.dialogDisp.mc_rewards.mc_item0.mc_background.visible = (this.hasBoughtRewardHubPassInThisDialog || this.hasBoughtSeasonPassInThisDialog || this.dialogProperties.getPromotionRewardsVO().isUnlocked) && e.premiumRewards.length > 0;
-      this.dialogDisp.mc_rewards.mc_item1.mc_background.visible = (this.hasBoughtRewardHubPassInThisDialog || this.hasBoughtSeasonPassInThisDialog || this.dialogProperties.getPromotionRewardsVO().isUnlocked) && e.premiumRewards.length > 0;
-      var t = this.dialogProperties.getPromotionRewardsVO().isUnlocked ? 2 : 1;
-      this.dialogDisp.mc_rewards.mc_item0.mc_background.gotoAndStop(t);
-      this.dialogDisp.mc_rewards.mc_item1.mc_background.gotoAndStop(t);
-      this.dialogDisp.mc_rewards.mc_lockBG.visible = false;
-      this.dialogDisp.mc_rewards.mc_lock0.visible = !this.dialogProperties.getPromotionRewardsVO().isUnlocked;
-      this.dialogDisp.mc_rewards.mc_lock1.visible = !this.dialogProperties.getPromotionRewardsVO().isUnlocked;
-      this.dialogDisp.btn_buy.visible = !this.dialogProperties.getPromotionRewardsVO().isUnlocked;
-      this.dialogDisp.mc_check2.visible = this.dialogProperties.getPromotionRewardsVO().isUnlocked;
-    } else {
-      this.dialogDisp.mc_rewards.mc_item0.mc_overlay.visible = e.premiumRewards.length > 0;
-      this.dialogDisp.mc_rewards.mc_item1.mc_overlay.visible = e.premiumRewards.length > 0;
-      this.dialogDisp.mc_rewards.mc_lockBG.visible = false;
-      this.dialogDisp.mc_rewards.mc_lock0.visible = e.premiumRewards.length > 0;
-      this.dialogDisp.mc_rewards.mc_lock1.visible = e.premiumRewards.length > 0;
-      this.dialogDisp.btn_buy.visible = e.premiumRewards.length > 0;
-      this.dialogDisp.mc_check2.visible = false;
+  SeasonLeagueEndDialog.prototype.hide = function () {
+    if (this._subLayer) {
+      this._subLayer.get(SeasonLeagueEndDialog.TAB_REWARDS).hasBoughtSeasonPassInThisDialog = false;
     }
-    this.updateRewards();
-  };
-  SeasonLeaguePromotionDialog.prototype.hide = function () {
-    this.controller.removeEventListener(E.SeasonLeagueEvent.ON_PASS_PROMOTION_BOUGHT, this.bindFunction(this.onPassPurchased));
-    this.controller.removeEventListener(E.SeasonLeagueEvent.ON_PASS_SEASON_BOUGHT, this.bindFunction(this.onPassPurchased));
-    v.CastleRewardHubMicroservice.Instance.onUpgradeRewardsSuccessSignal.remove(this.bindFunction(this.onRewardHubPassPurchased));
     e.prototype.hide.call(this);
   };
-  SeasonLeaguePromotionDialog.prototype.updateRewards = function () {
-    var e = this.dialogProperties.getPromotionRewardsVO();
-    g.CollectableRenderHelper.displayMultipleItemsComplete(this, new C.CollectableRenderClipsList(this.dialogDisp, "mc_item").addItemMcs("mc_item").addInfoBtns("parent.btn_info").addBuildingLevelMc("parent.mc_buildingLevel"), e.normalRewards, new _.CollectableRenderOptions(_.CollectableRenderOptions.SET_ADVANCED, new d(55, 55)), function (e) {
-      e.getRenderer(_.CollectableRenderOptions.ICON_TRANSFORM).transform.offset.y = e.itemVE && e.itemVE.textfieldBackgroundVisible() ? 0 : 7;
-    });
-    g.CollectableRenderHelper.displayMultipleItemsComplete(new m.CollectableRendererList(), new C.CollectableRenderClipsList(this.dialogDisp.mc_rewards, "mc_item").addItemMcs("mc_item").addInfoBtns("parent.btn_info").addBuildingLevelMc("parent.mc_buildingLevel"), e.premiumRewards, new _.CollectableRenderOptions(_.CollectableRenderOptions.SET_ADVANCED, new d(55, 55)), function (e) {
-      e.getRenderer(_.CollectableRenderOptions.ICON_TRANSFORM).transform.offset.y = e.itemVE && e.itemVE.textfieldBackgroundVisible() ? 0 : 7;
-    });
+  SeasonLeagueEndDialog.prototype.changeCategory = function (t) {
+    function updateButton(e, t) {
+      e.mc_default.visible = !t;
+      e.mc_selected.visible = t;
+    }
+    if (t == SeasonLeagueEndDialog.TAB_REWARDS && this.dialogProperties.isSeasonEventEndDialog) {
+      t = SeasonLeagueEndDialog.TAB_REWARDS_EVENT;
+    }
+    if (this._currentCategory != t) {
+      e.prototype.changeCategory.call(this, t);
+      this.showSublayer(this._subLayer.get(t), [this.dialogProperties]);
+      updateButton(this.dialogDisp.btn_tabRewards, this._currentCategory == SeasonLeagueEndDialog.TAB_REWARDS || this._currentCategory == SeasonLeagueEndDialog.TAB_REWARDS_EVENT);
+      updateButton(this.dialogDisp.btn_tabMedals, this._currentCategory == SeasonLeagueEndDialog.TAB_MEDALS);
+      updateButton(this.dialogDisp.btn_tabMedalsAlliance, this._currentCategory == SeasonLeagueEndDialog.TAB_ALLIANCE_MEDALS);
+    }
   };
-  SeasonLeaguePromotionDialog.prototype.onClick = function (t) {
-    if (c.ButtonHelper.isButtonEnabled(t.target)) {
+  SeasonLeagueEndDialog.prototype.initTabs = function () {
+    var e = this.hasAllianceInfo();
+    u.ButtonHelper.enableButton(this.dialogDisp.btn_tabMedalsAlliance, e);
+    var t = "";
+    if (!e) {
+      t = l.CastleModel.userData.isInAlliance ? "dialog_seasonLeague_eventEnd_medalsAllianceInactive_tooltip" : "dialog_alliance_invite_notaMember_tooltip";
+    }
+    this.dialogDisp.btn_tabMedalsAlliance.toolTipText = t;
+    this.changeCategory(SeasonLeagueEndDialog.TAB_REWARDS);
+  };
+  SeasonLeagueEndDialog.prototype.updateText = function () {
+    if (this.dialogProperties.isSeasonEventEndDialog) {
+      this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("dialog_seasonLeague_eventEnd_" + this.dialogProperties.getEventName() + "_header"))).autoFitToBounds = true;
+      this.setTabButtonText(this.dialogDisp.btn_tabRewards, "dialog_seasonLeague_eventEnd_rewards_tab");
+      this.setTabButtonText(this.dialogDisp.btn_tabMedals, "dialog_seasonLeague_eventEnd_medalsPlayer_tab");
+      this.setTabButtonText(this.dialogDisp.btn_tabMedalsAlliance, "dialog_seasonLeague_eventEnd_medalsAlliance_tab");
+    } else {
+      this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("dialog_seasonLeague_seasonEnd_header"))).autoFitToBounds = true;
+      this.setTabButtonText(this.dialogDisp.btn_tabRewards, "dialog_seasonLeague_seasonEnd_rewards_tab");
+      this.setTabButtonText(this.dialogDisp.btn_tabMedals, "dialog_seasonLeague_seasonEnd_medalsPlayer_tab");
+      this.setTabButtonText(this.dialogDisp.btn_tabMedalsAlliance, "dialog_seasonLeague_seasonEnd_medalsAlliance_tab");
+    }
+  };
+  SeasonLeagueEndDialog.prototype.setTabButtonText = function (e, t) {
+    this.textFieldManager.registerTextField(e.mc_default.txt_text, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId(t))).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(e.mc_selected.txt_text, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId(t))).autoFitToBounds = true;
+  };
+  SeasonLeagueEndDialog.prototype.updateTeaser = function () {
+    for (var e = this.dialogDisp.mc_teaser, t = 0; t < e.numChildren; ++t) {
+      e.getChildAt(t).visible = false;
+    }
+    e.getChildByName(this.dialogProperties.getEventName()).visible = true;
+  };
+  SeasonLeagueEndDialog.prototype.updateRankInfo = function () {
+    var e = this.hasAllianceInfo();
+    this.dialogDisp.mc_rankInfoPlayer.visible = false;
+    this.dialogDisp.mc_rankInfoAllianceEvent.visible = false;
+    this.dialogDisp.mc_rankInfoAllianceSeason.visible = false;
+    if (e) {
+      if (this.dialogProperties.isSeasonEventEndDialog) {
+        this.setRankInfo(this.dialogDisp.mc_rankInfoAllianceEvent);
+      } else {
+        this.setRankInfo(this.dialogDisp.mc_rankInfoAllianceSeason);
+      }
+    } else {
+      this.setRankInfo(this.dialogDisp.mc_rankInfoPlayer);
+    }
+  };
+  SeasonLeagueEndDialog.prototype.setRankInfo = function (e) {
+    e.visible = true;
+    if (e.mc_rankIcon) {
+      new g.SeasonLeaguePromotionIconComponent(e.mc_rankIcon, g.SeasonLeaguePromotionIconComponent.TYPE_NORMAL, new p(75, 65)).updateWithNewVO(this.dialogProperties.promotionVO);
+    }
+    if (e.txt_rankName) {
+      this.textFieldManager.registerTextField(e.txt_rankName, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId(this.dialogProperties.promotionVO.getNameTextId()))).autoFitToBounds = true;
+    }
+    if (e.txt_placement) {
+      this.textFieldManager.registerTextField(e.txt_placement, this.dialogProperties.rank > 0 ? new a.LocalizedNumberVO(this.dialogProperties.rank) : new s.TextVO("-")).autoFitToBounds = true;
+    }
+    if (e.mc_pointsIcon) {
+      e.mc_pointsIcon.gotoAndStop(c.ClientConstSeasonLeague.getPointsIconFrame(this.dialogProperties.eventId));
+      e.mc_pointsIcon.toolTipText = c.ClientConstSeasonLeague.getPointsIconTooltipTextId(this.dialogProperties.eventId);
+    }
+    if (e.txt_points) {
+      var t = this.textFieldManager.registerTextField(e.txt_points, new a.LocalizedNumberVO(this.dialogProperties.points));
+      t.autoFitToBounds = true;
+      t.visible = this.dialogProperties.isSeasonEventEndDialog;
+    }
+    if (e.txt_placementAlliance) {
+      this.textFieldManager.registerTextField(e.txt_placementAlliance, this.dialogProperties.allianceRank > 0 ? new a.LocalizedNumberVO(this.dialogProperties.allianceRank) : new s.TextVO("-")).autoFitToBounds = true;
+    }
+  };
+  SeasonLeagueEndDialog.prototype.hasAllianceInfo = function () {
+    return this.dialogProperties.allianceRank > 0;
+  };
+  SeasonLeagueEndDialog.prototype.onClick = function (t) {
+    if (u.ButtonHelper.isButtonEnabled(t.target)) {
       e.prototype.onClick.call(this, t);
       switch (t.target) {
         case this.dialogDisp.btn_close:
+        case this.dialogDisp.btn_ok:
           this.hide();
           break;
-        case this.dialogDisp.btn_buy:
-          if (this.dialogProperties.rewardHubVO) {
-            var i = new T.CollectableItemUnlockAllPassVO();
-            i.hubRewardIdsToUnlock = [this.dialogProperties.rewardHubVO.hubRewardID];
-            f.CastleDialogHandler.getInstance().registerDialogs(y.SeasonLeagueBuyPassConfirmDialog, new b.SeasonLeagueBuyPassConfirmDialogProperties(i, this.dialogProperties.rewardHubVO.extraTierUnlockCostC2, 0, -1, -1, -1, -1, b.SeasonLeagueBuyPassConfirmDialogProperties.SOURCE_REWARD_HUB_PROMOTION));
-          } else {
-            f.CastleDialogHandler.getInstance().registerDialogs(y.SeasonLeagueBuyPassConfirmDialog, new b.SeasonLeagueBuyPassConfirmDialogProperties(new D.CollectableItemSeasonLeaguePromotionPassVO(), O.CastleModel.seasonLeagueData.currentSetting.seasonPassPromotionPrice, 0, this.dialogProperties.promotionVO.id, -1, -1, this.dialogProperties.seasonID));
-          }
+        case this.dialogDisp.btn_tabRewards:
+          this.changeCategory(SeasonLeagueEndDialog.TAB_REWARDS);
+          break;
+        case this.dialogDisp.btn_tabMedals:
+          this.changeCategory(SeasonLeagueEndDialog.TAB_MEDALS);
+          break;
+        case this.dialogDisp.btn_tabMedalsAlliance:
+          this.changeCategory(SeasonLeagueEndDialog.TAB_ALLIANCE_MEDALS);
           break;
         case this.dialogDisp.btn_pickUp:
           if (this.dialogProperties.rewardHubVO) {
-            v.CastleRewardHubMicroservice.Instance.pickRewardsSignal.dispatch([this.dialogProperties.rewardHubVO.hubRewardID]);
+            O.CastleRewardHubMicroservice.Instance.pickRewardsSignal.dispatch([this.dialogProperties.rewardHubVO.hubRewardID]);
           }
           this.hide();
       }
     }
   };
-  SeasonLeaguePromotionDialog.prototype.onPassPurchased = function (e = null) {
-    if (!this.hasBoughtSeasonPassInThisDialog && this.isPassActive) {
-      this.hasBoughtSeasonPassInThisDialog = true;
-    }
-    this.updateInfos();
-  };
-  Object.defineProperty(SeasonLeaguePromotionDialog.prototype, "isPassActive", {
-    get: function () {
-      return O.CastleModel.seasonLeagueData.server.passSeasonActive || this.promotionPassActive || this.dialogProperties.isSeasonPassEnabled || this.hasBoughtSeasonPassInThisDialog || this.hasBoughtRewardHubPassInThisDialog || this.dialogProperties.getPromotionRewardsVO().isUnlocked;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeaguePromotionDialog.prototype, "promotionPassActive", {
-    get: function () {
-      return O.CastleModel.seasonLeagueData.server.boughtPromoPassForPromoID(this.dialogProperties.promotionVO.id) || this.dialogProperties.isPromoPassEnabled;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SeasonLeaguePromotionDialog.prototype.onRewardHubPassPurchased = function (e = null) {
-    this.hasBoughtRewardHubPassInThisDialog ||= true;
-    this.updateInfos();
-    O.CastleModel.seasonLeagueData.server.requestKLI();
-  };
-  Object.defineProperty(SeasonLeaguePromotionDialog.prototype, "hasBoughtSeasonPassInThisDialog", {
-    get: function () {
-      return this._hasBoughtSeasonPassInThisDialog;
-    },
-    set: function (e) {
-      this._hasBoughtSeasonPassInThisDialog = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeaguePromotionDialog.prototype, "dialogProperties", {
+  Object.defineProperty(SeasonLeagueEndDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  SeasonLeaguePromotionDialog.NAME = "SeasonLeagueTitlePromotion_RewardHub";
-  return SeasonLeaguePromotionDialog;
-}(u.CastleExternalDialog);
-exports.SeasonLeaguePromotionDialog = p;
-var h = require("./359.js");
-var g = require("./25.js");
-var C = require("./67.js");
-var _ = require("./19.js");
-var m = require("./104.js");
-var f = require("./9.js");
-var O = require("./4.js");
-var E = require("./174.js");
-var y = require("./547.js");
-var b = require("./403.js");
-var D = require("./542.js");
-var I = require("./20.js");
-var T = require("./651.js");
-var v = require("./360.js");
-var S = require("./549.js");
-o.classImplementsInterfaces(p, "ICollectableRendererList");
+  SeasonLeagueEndDialog.NAME = "SeasonLeagueEnd_RewardHub";
+  SeasonLeagueEndDialog.TAB_REWARDS = "tab_rewards";
+  SeasonLeagueEndDialog.TAB_REWARDS_EVENT = "tab_rewards_event";
+  SeasonLeagueEndDialog.TAB_MEDALS = "tab_medals";
+  SeasonLeagueEndDialog.TAB_ALLIANCE_MEDALS = "tab_allianceMedals";
+  return SeasonLeagueEndDialog;
+}(d.CastleExternalSubLayerDialog);
+exports.SeasonLeagueEndDialog = h;
+var g = require("./359.js");
+var C = require("./3485.js");
+var _ = require("./3486.js");
+var m = require("./3488.js");
+var f = require("./20.js");
+var O = require("./360.js");
+o.classImplementsInterfaces(h, "ICollectableRendererList");

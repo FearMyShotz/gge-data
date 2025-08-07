@@ -5,38 +5,35 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./10.js");
-var l = require("./4.js");
-var c = require("./2.js");
-var u = require("./5202.js");
-var d = function (e) {
-  function MVFCommand() {
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function GXPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MVFCommand, e);
-  Object.defineProperty(MVFCommand.prototype, "cmdId", {
+  n.__extends(GXPCommand, e);
+  Object.defineProperty(GXPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_MOVEMENT_FILTER_OPTION_EVENT;
+      return s.ClientConstSF.S2C_GET_XP;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  MVFCommand.prototype.executeCommand = function (e, t) {
+  GXPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        l.CastleModel.settingsData.parse_MVF(i);
-        c.BasicModel.smartfoxClient.sendCommandVO(new u.C2SGetAllMovementsVO());
+        r.CastleModel.userData.parse_GXP(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return MVFCommand;
-}(r.CastleCommand);
-exports.MVFCommand = d;
-o.classImplementsInterfaces(d, "IExecCommand");
+  return GXPCommand;
+}(l.CastleCommand);
+exports.GXPCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

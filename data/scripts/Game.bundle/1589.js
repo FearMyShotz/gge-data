@@ -27,5 +27,5 @@ var s = function (e) {
   return AHunterBuildingVE;
 }(a.ABasicBuildingVE);
 exports.AHunterBuildingVE = s;
-var r = require("./3040.js");
+var r = require("./3041.js");
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

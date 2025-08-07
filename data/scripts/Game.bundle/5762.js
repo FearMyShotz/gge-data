@@ -2,77 +2,47 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./6.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./37.js");
 var r = require("./54.js");
 var l = require("./4.js");
-var c = require("./56.js");
+var c = require("./5763.js");
 var u = function (e) {
-  function CastleBuildingDistrictData(t) {
+  function CastleFortuneTellerData(t) {
     var i = e.call(this) || this;
-    i.createPossibleBuildingLists();
+    i._fortuneTellerClassVOs = new Map();
+    i.parseXML(t);
     return i;
   }
-  n.__extends(CastleBuildingDistrictData, e);
-  CastleBuildingDistrictData.prototype.createPossibleBuildingLists = function () {
-    this._possibleBuildingsForType = new Map();
-    for (var e = 0, t = Array.from(l.CastleModel.wodData.voSubList(c.CastleWodData.TYPE_BUILDING).values()); e < t.length; e++) {
-      var i = t[e];
-      if (i !== undefined) {
-        var n = d.castAs(i, "ABasicBuildingVO");
-        if (n && (!n || n.districtTypeID && !n.isDistrict)) {
-          if (!this._possibleBuildingsForType.get(n.districtTypeID)) {
-            this._possibleBuildingsForType.set(n.districtTypeID, new Map());
-          }
-          var o = n.wodId.toString();
-          if (n.name == "Deco") {
-            o = n.name + n.type;
-          }
-          if (!this._possibleBuildingsForType.get(n.districtTypeID).get(o) && n.level == 1) {
-            this._possibleBuildingsForType.get(n.districtTypeID).set(o, n);
-          }
-        }
-      }
-    }
-    if (this._possibleBuildingsForType != null) {
-      for (var a = 0, s = Array.from(this._possibleBuildingsForType.keys()); a < s.length; a++) {
-        var r = s[a];
-        if (r !== undefined) {
-          var u = [];
-          for (var p = 0, h = Array.from(this._possibleBuildingsForType.get(r).values()); p < h.length; p++) {
-            var g = h[p];
-            if (g !== undefined) {
-              u.push(g);
-            }
-          }
-          u.sort(CastleBuildingDistrictData.sortByName);
-          this._possibleBuildingsForType.set(r, u);
-        }
+  n.__extends(CastleFortuneTellerData, e);
+  CastleFortuneTellerData.prototype.parseXML = function (e) {
+    for (var t = 0, i = e.fortuneTellerClasses; t < i.length; t++) {
+      var n = i[t];
+      if (n !== undefined) {
+        var o = new c.FortuneTellerClassVO();
+        o.parseXML(n);
+        this._fortuneTellerClassVOs.set(o.id, o);
       }
     }
   };
-  CastleBuildingDistrictData.sortByName = function (e, t) {
-    var i = s.int(a.Localize.text(e.getNameString()).localeCompare(a.Localize.text(t.getNameString())));
-    if (i != 0) {
-      return i;
-    } else {
-      return 0;
+  Object.defineProperty(CastleFortuneTellerData.prototype, "maxTriesPerDay", {
+    get: function () {
+      return o.DictionaryUtil.getDictionaryLength(this._fortuneTellerClassVOs);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleFortuneTellerData.prototype.getFortuneTellerClassByCount = function (e) {
+    return this._fortuneTellerClassVOs.get(e);
+  };
+  CastleFortuneTellerData.prototype.parseFTL = function (e) {
+    if (e && e.RIDS) {
+      var t = l.CastleModel.rewardData.getCopiedListById(e.RIDS[0]);
+      this.dispatchEvent(new s.CastleServerMessageArrivedEvent(s.CastleServerMessageArrivedEvent.FORTUNE_TELLER_REWARD_ARRIVED, [t]));
     }
   };
-  CastleBuildingDistrictData.prototype.getPossibleBuildingsForType = function (e, t, i) {
-    var n = [];
-    if (this._possibleBuildingsForType.has(e)) {
-      this._possibleBuildingsForType.get(e).forEach(function (e) {
-        if (e.isAvailableInAreaType(i)) {
-          n.push(e);
-        }
-      });
-    }
-    return n;
-  };
-  return CastleBuildingDistrictData;
+  return CastleFortuneTellerData;
 }(r.CastleBasicData);
-exports.CastleBuildingDistrictData = u;
-o.classImplementsInterfaces(u, "IUpdatable", "ICastleBasicData");
-var d = require("./1.js");
+exports.CastleFortuneTellerData = u;
+a.classImplementsInterfaces(u, "IUpdatable", "ICastleBasicData");

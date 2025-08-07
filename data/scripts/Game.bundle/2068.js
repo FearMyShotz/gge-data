@@ -5,23 +5,23 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SIsoMoveObjectVO(t, i, n, o) {
+  function C2SIsoBuyExpansionVO(t, i, n, o) {
     var a = this;
-    a.OID = 0;
     a.X = 0;
     a.Y = 0;
     a.R = 0;
+    a.CT = 0;
     CONSTRUCTOR_HACK;
-    (a = e.call(this) || this).OID = t;
-    a.X = i;
-    a.Y = n;
-    a.R = o;
+    (a = e.call(this) || this).X = t;
+    a.Y = i;
+    a.R = n;
+    a.CT = o;
     return a;
   }
-  n.__extends(C2SIsoMoveObjectVO, e);
-  C2SIsoMoveObjectVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_EDITOR_MOVE_OBJECT;
+  n.__extends(C2SIsoBuyExpansionVO, e);
+  C2SIsoBuyExpansionVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_BUY_EXPANSION;
   };
-  return C2SIsoMoveObjectVO;
+  return C2SIsoBuyExpansionVO;
 }(o.BasicCommandVO);
-exports.C2SIsoMoveObjectVO = s;
+exports.C2SIsoBuyExpansionVO = s;

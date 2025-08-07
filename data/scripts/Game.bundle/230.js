@@ -2,78 +2,241 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = function (e) {
-  function CastleLegendSkillEffectsEnum(t, i, n) {
-    var a = this;
-    a._id = 0;
+var o = require("./49.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./2.js");
+var c = require("./2.js");
+var u = require("./1.js");
+var d = require("./1.js");
+var p = require("./1.js");
+var h = require("./1.js");
+var g = require("./1.js");
+var C = require("./1.js");
+var _ = require("./1.js");
+var m = require("./103.js");
+var f = require("./199.js");
+var O = require("./15.js");
+var E = require("./4.js");
+var y = require("./685.js");
+var b = require("./41.js");
+var D = createjs.MovieClip;
+var I = createjs.Container;
+var T = createjs.Event;
+var v = createjs.MouseEvent;
+var S = createjs.TimerEvent;
+var A = function (e) {
+  function CastleDialog(t) {
+    var i = this;
+    i._isLocked = false;
+    i.isWaitingForServerMessage = false;
+    i._collectableRenderList = [];
     CONSTRUCTOR_HACK;
-    (a = e.call(this, t, o.BasicEnum.instantiationKey) || this)._tooltipTextId = i;
-    a._id = n;
-    return a;
+    (i = e.call(this, t) || this).dispBounds = t.getBounds();
+    t.mouseChildren = true;
+    t.addEventListener(v.MOUSE_OVER, i.bindFunction(i.onMouseOver));
+    t.addEventListener(v.MOUSE_OUT, i.bindFunction(i.onMouseOut));
+    return i;
   }
-  n.__extends(CastleLegendSkillEffectsEnum, e);
-  CastleLegendSkillEffectsEnum.getTypeById = function (e) {
-    return this.getByProperty(CastleLegendSkillEffectsEnum, "id", e, CastleLegendSkillEffectsEnum.TYPE_UNKNOWN);
+  n.__extends(CastleDialog, e);
+  CastleDialog.prototype.onKeyUp = function (t) {
+    e.prototype.onKeyUp.call(this, t);
   };
-  CastleLegendSkillEffectsEnum.getTypeByName = function (e) {
-    return this.getByProperty(CastleLegendSkillEffectsEnum, "name", e, CastleLegendSkillEffectsEnum.TYPE_UNKNOWN);
+  CastleDialog.prototype.destroy = function () {
+    this.destroyCollectableRenderList();
+    e.prototype.destroy.call(this);
+    this.disp.removeEventListener(v.MOUSE_OVER, this.bindFunction(this.onMouseOver));
+    this.disp.removeEventListener(v.MOUSE_OUT, this.bindFunction(this.onMouseOut));
   };
-  Object.defineProperty(CastleLegendSkillEffectsEnum.prototype, "id", {
+  CastleDialog.prototype.onBGAddedToStage = function (e) {
+    this.bg.removeEventListener(T.ADDED_TO_STAGE, this.bindFunction(this.onBGAddedToStage));
+    if (this.bg.width != 0) {
+      this.bg.width = this.bg.stage.stageWidth + 10;
+      this.bg.height = this.bg.stage.stageHeight + 10;
+    }
+    this.bg.x = -(this.disp.x + 5);
+    this.bg.y = -(this.disp.y + 5);
+    this.bg.doCache();
+  };
+  CastleDialog.prototype.updateBackground = function () {
+    if (this.bg && this.bg.stage) {
+      this.bg.graphics.clear();
+      this.bg.graphics.beginFill(0, 1);
+      this.bg.graphics.drawRect(0, 0, this.disp.stage.stageWidth / this.disp.scaleX + 10, this.disp.stage.stageHeight / this.disp.scaleY + 10);
+      this.bg.graphics.endFill();
+      this.bg.x = -this.disp.x / this.disp.scaleX - 5;
+      this.bg.y = -this.disp.y / this.disp.scaleY - 5;
+      this.bg.updateBounds();
+      this.bg.doCache();
+    }
+  };
+  CastleDialog.prototype.initDelayedButtons = function (e) {
+    if (e) {
+      this.delayTimerArray = [];
+      this.buttonArray = [];
+      this.delayButtonArray = e;
+      for (var t = 0; t < e.length; t++) {
+        var i = new p.Timer(500, 1);
+        e[t].basicButton = new o.BasicButton(e[t], true);
+        e[t].basicButton.enableButton = false;
+        this.delayTimerArray.push(i);
+        this.buttonArray.push(e[t].basicButton);
+        i.addEventListener(S.TIMER, this.onBtnDelayOver(i, e[t]));
+        i.start();
+      }
+    }
+  };
+  CastleDialog.prototype.onBtnDelayOver = function (e, t) {
+    return function (i) {
+      e.stop();
+      e.removeEventListener(S.TIMER, this.bindFunction(this.onBtnDelayOver));
+      e = null;
+      t.basicButton.enableButton = true;
+    };
+  };
+  CastleDialog.prototype.lockDialog = function () {
+    this._isLocked = true;
+  };
+  CastleDialog.prototype.unLockDialog = function () {
+    this._isLocked = false;
+  };
+  Object.defineProperty(CastleDialog.prototype, "isLocked", {
     get: function () {
-      return this._id;
+      return this._isLocked;
     },
     enumerable: true,
     configurable: true
   });
-  CastleLegendSkillEffectsEnum.__initialize_static_members = function () {
-    CastleLegendSkillEffectsEnum.TYPE_UNKNOWN = new CastleLegendSkillEffectsEnum("unknown", "unknown", -1);
-    CastleLegendSkillEffectsEnum.GATE_REDUCTION = new CastleLegendSkillEffectsEnum("gateReduction", "tooltip_gateReduction", 1);
-    CastleLegendSkillEffectsEnum.LOOT_BONUS = new CastleLegendSkillEffectsEnum("lootBonus", "", 2);
-    CastleLegendSkillEffectsEnum.HONOR_BONUS = new CastleLegendSkillEffectsEnum("honorBonus", "tooltip_hotooltip_lootBonusnorBonus", 3);
-    CastleLegendSkillEffectsEnum.ATTACK_MELEE_BONUS = new CastleLegendSkillEffectsEnum("attackMeleeBonus", "tooltip_attackMeleeBonus", 4);
-    CastleLegendSkillEffectsEnum.SPY_AMOUNT_BONUS = new CastleLegendSkillEffectsEnum("spyAmountBonus", "tooltip_spyAmountBonus", 5);
-    CastleLegendSkillEffectsEnum.COOLDOWN_REDUCTION = new CastleLegendSkillEffectsEnum("cooldownReduction", "tooltip_cooldownReduction", 6);
-    CastleLegendSkillEffectsEnum.ATTACK_RANGE_BONUS = new CastleLegendSkillEffectsEnum("attackRangeBonus", "tooltip_attackRangeBonus", 7);
-    CastleLegendSkillEffectsEnum.TRAVEL_COST_REDUCTION = new CastleLegendSkillEffectsEnum("travelCostReduction", "tooltip_travelCostReduction", 8);
-    CastleLegendSkillEffectsEnum.SMASH_CHANCE_BONUS = new CastleLegendSkillEffectsEnum("smashChanceBonus", "tooltip_smashChanceBonus", 9);
-    CastleLegendSkillEffectsEnum.ADDITIONAL_UNIT_AMOUNT_ON_FRONT = new CastleLegendSkillEffectsEnum("additionalUnitAmountOnFront", "tooltip_additionalUnitAmountOnFront", 10);
-    CastleLegendSkillEffectsEnum.FIRE_BONUS = new CastleLegendSkillEffectsEnum("fireBonus", "tooltip_fireBonus", 11);
-    CastleLegendSkillEffectsEnum.XP_ATTACK_PV_PBONUS = new CastleLegendSkillEffectsEnum("XPAttackPvPBonus", "tooltip_XPAttackPvPBonus", 12);
-    CastleLegendSkillEffectsEnum.WALL_REDUCTION = new CastleLegendSkillEffectsEnum("wallReduction", "tooltip_wallReduction", 14);
-    CastleLegendSkillEffectsEnum.ATTACK_YARD_BONUS = new CastleLegendSkillEffectsEnum("attackYardBonus", "tooltip_attackYardBonus", 15);
-    CastleLegendSkillEffectsEnum.TRAVEL_ATTACK_BOOST = new CastleLegendSkillEffectsEnum("travelAttackBoost", "tooltip_travelAttackBoost", 16);
-    CastleLegendSkillEffectsEnum.FAME_ATTACK_BONUS = new CastleLegendSkillEffectsEnum("fameAttackBonus", "tooltip_fameAttackBonus", 17);
-    CastleLegendSkillEffectsEnum.TRAVEL_RETURN_PV_PBOOST = new CastleLegendSkillEffectsEnum("travelReturnPvPBoost", "tooltip_travelReturnPvPBoost", 18);
-    CastleLegendSkillEffectsEnum.ADDITIONAL_UNIT_AMOUNT_ON_FLANK = new CastleLegendSkillEffectsEnum("additionalUnitAmountOnFlank", "tooltip_additionalUnitAmountOnFlank", 19);
-    CastleLegendSkillEffectsEnum.LOOT_CAPACITY_BONUS = new CastleLegendSkillEffectsEnum("lootCapacityBonus", "tooltip_lootCapacityBonus", 20);
-    CastleLegendSkillEffectsEnum.ADDITIONAL_ATTACK_TOOL_AMOUNT_FLANK = new CastleLegendSkillEffectsEnum("additionalAttackToolAmountFlank", "tooltip_additionalAttackToolAmountFlank", 21);
-    CastleLegendSkillEffectsEnum.ADDITIONAL_WAVE = new CastleLegendSkillEffectsEnum("additionalWave", "tooltip_additionalWave", 22);
-    CastleLegendSkillEffectsEnum.MOAT_REDUCTION = new CastleLegendSkillEffectsEnum("moatReduction", "tooltip_moatReduction", 23);
-    CastleLegendSkillEffectsEnum.GATE_BONUS = new CastleLegendSkillEffectsEnum("gateBonus", "tooltip_gateBonus", 24);
-    CastleLegendSkillEffectsEnum.LOOT_REDUCTION = new CastleLegendSkillEffectsEnum("lootReduction", "tooltip_lootReduction", 25);
-    CastleLegendSkillEffectsEnum.XP_CONSTRUCTION_BONUS = new CastleLegendSkillEffectsEnum("XPConstructionBonus", "tooltip_XPConstructionBonus", 26);
-    CastleLegendSkillEffectsEnum.DEFENSE_MELEE_BONUS = new CastleLegendSkillEffectsEnum("defenseMeleeBonus", "tooltip_defenseMeleeBonus", 27);
-    CastleLegendSkillEffectsEnum.GUARD_AMOUNT_BONUS = new CastleLegendSkillEffectsEnum("guardAmountBonus", "tooltip_guardAmountBonus", 28);
-    CastleLegendSkillEffectsEnum.XP_DEFENSE_BONUS = new CastleLegendSkillEffectsEnum("XPDefenseBonus", "tooltip_XPDefenseBonus", 29);
-    CastleLegendSkillEffectsEnum.DEFENSE_RANGE_BONUS = new CastleLegendSkillEffectsEnum("defenseRangeBonus", "tooltip_defenseRangeBonus", 30);
-    CastleLegendSkillEffectsEnum.TRAVEL_CONQUER_BOOST = new CastleLegendSkillEffectsEnum("travelConquerBoost", "tooltip_travelConquerBoost", 31);
-    CastleLegendSkillEffectsEnum.ADDITIONAL_PEASANTS_AMOUNT = new CastleLegendSkillEffectsEnum("additionalPeasantsAmount", "tooltip_additionalPeasantsAmount", 31);
-    CastleLegendSkillEffectsEnum.ADDITIONAL_UNIT_AMOUNT_ON_WALL = new CastleLegendSkillEffectsEnum("additionalUnitAmountOnWall", "tooltip_additionalUnitAmountOnWall", 32);
-    CastleLegendSkillEffectsEnum.FIRE_BRIGADEBONUS = new CastleLegendSkillEffectsEnum("fireBrigadebonus", "tooltip_fireBrigadebonus", 33);
-    CastleLegendSkillEffectsEnum.XP_ATTACK_PV_EBONUS = new CastleLegendSkillEffectsEnum("XPAttackPvEBonus", "tooltip_XPAttackPvEBonus", 34);
-    CastleLegendSkillEffectsEnum.WALL_BONUS = new CastleLegendSkillEffectsEnum("wallBonus", "tooltip_wallBonus", 35);
-    CastleLegendSkillEffectsEnum.DEFENSE_YARD_BONUS = new CastleLegendSkillEffectsEnum("defenseYardBonus", "tooltip_defenseYardBonus", 36);
-    CastleLegendSkillEffectsEnum.MAGIC_FIND_BONUS = new CastleLegendSkillEffectsEnum("magicFindBonus", "tooltip_magicFindBonus", 37);
-    CastleLegendSkillEffectsEnum.FAME_DEFENSE_BONUS = new CastleLegendSkillEffectsEnum("fameDefenseBonus", "tooltip_fameDefenseBonus", 38);
-    CastleLegendSkillEffectsEnum.TRAVEL_RETURN_PV_EBOOST = new CastleLegendSkillEffectsEnum("travelReturnPvEBoostBonus", "tooltip_travelReturnPvEBoost", 39);
-    CastleLegendSkillEffectsEnum.HIDEOUT_CAPACITY_BONUS = new CastleLegendSkillEffectsEnum("hideoutCapacityBonus", "tooltip_hideoutCapacityBonus", 40);
-    CastleLegendSkillEffectsEnum.ADDITIONAL_DEFENSE_TOOL_SLOT_FLANK = new CastleLegendSkillEffectsEnum("additionalDefenseToolSlotFlank", "tooltip_additionalDefenseToolSlotFlank", 41);
-    CastleLegendSkillEffectsEnum.MOAT_BONUS = new CastleLegendSkillEffectsEnum("moatBonus", "tooltip_moatBonus", 42);
-    CastleLegendSkillEffectsEnum.ATTACK_BONUS = new CastleLegendSkillEffectsEnum("attackBonus", "tooltip_attackBonus", 43);
-    CastleLegendSkillEffectsEnum.DEFENSE_BONUS = new CastleLegendSkillEffectsEnum("defenseBonus", "", 44);
+  CastleDialog.prototype.onMouseOver = function (t) {
+    this.controller.dispatchEvent(m.EventInstanceMapper.getEvent(f.CastleDialogEvent, f.CastleDialogEvent.MOUSE_ON_DIALOG));
+    e.prototype.onMouseOver.call(this, t);
+    var i = b.CastleMovieClipHelper.getFirstMovieClipParent(t.target);
+    if (i && r.BasicToolTipManager.TOOLTIP_LABEL in i && i.toolTipText) {
+      this.layoutManager.tooltipManager.show(i.toolTipText, i);
+    }
   };
-  return CastleLegendSkillEffectsEnum;
-}(o.BasicEnum);
-exports.CastleLegendSkillEffectsEnum = a;
-a.__initialize_static_members();
+  CastleDialog.prototype.onMouseOut = function (t) {
+    e.prototype.onMouseOut.call(this, t);
+    M.TooltipManagerFacade.hideAllTooltips();
+  };
+  CastleDialog.prototype.onCursorOver = function (e) {
+    if (_.instanceOfClass(e.target, "BasicButton") || e.target instanceof D && e.target.basicButton != null) {
+      if (e.target.enabled) {
+        this.layoutManager.customCursor.setCursorType(a.BasicCustomCursor.CURSOR_CLICK);
+      }
+    } else if (e.target.actLikeButton || e.target.parent.actLikeButton) {
+      this.layoutManager.customCursor.setCursorType(a.BasicCustomCursor.CURSOR_CLICK);
+    } else if (e.target instanceof d.TextField && e.target.selectable) {
+      this.layoutManager.customCursor.setCursorType(y.CastleNativeCustomCursor.CURSOR_INPUT);
+    }
+  };
+  CastleDialog.prototype.onCursorOut = function (e) {
+    this.layoutManager.customCursor.setCursorType(a.BasicCustomCursor.CURSOR_ARROW);
+  };
+  CastleDialog.prototype.onResize = function (t) {
+    e.prototype.onResize.call(this, t);
+    this.updatePosition();
+    this.updateBackground();
+  };
+  Object.defineProperty(CastleDialog.prototype, "env", {
+    get: function () {
+      return l.EnvGlobalsHandler.globals;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.BasicDialog.prototype, "env").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleDialog, "dialogHandler", {
+    get: function () {
+      return L.CastleDialogHandler.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleDialog.prototype, "layoutManager", {
+    get: function () {
+      return P.CastleLayoutManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleDialog.prototype, "controller", {
+    get: function () {
+      return O.CastleBasicController.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleDialog.prototype.hide = function () {
+    e.prototype.hide.call(this);
+    if (this.buttonArray != null) {
+      for (var t = 0, i = this.buttonArray; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.resetHoverState();
+          n.removeMouseEventListener();
+          n.enableButton = true;
+        }
+      }
+    }
+    this.layoutManager.hideDialog(g.getDefinitionByName(C.getQualifiedClassName(this)));
+    this.destroyCollectableRenderList();
+    if (this.disp && this.disp.parent) {
+      this.disp.parent.removeChild(this.disp);
+    }
+    this.layoutManager.restrictToHighestDialog();
+  };
+  CastleDialog.prototype.show = function () {
+    if (this.disp instanceof I) {
+      if (this.disp.numChildren > 0) {
+        e.prototype.show.call(this);
+        this.layoutManager.restrictToHighestDialog();
+        if (u.currentBrowserInfo.isMobile && this.layoutManager.worldmapScreen && this.layoutManager.worldmapScreen.renderer) {
+          this.layoutManager.worldmapScreen.renderer.renderNavForMobile(true);
+        }
+      }
+    } else {
+      console.warn("is Invalid --> maybe Empty");
+    }
+    this.layoutManager.hideAllRingMenus();
+  };
+  Object.defineProperty(CastleDialog.prototype, "textFieldManager", {
+    get: function () {
+      return c.GoodgameTextFieldManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleDialog.prototype.destroyCollectableRenderList = function () {
+    if (this._collectableRenderList) {
+      for (var e = 0; e < this._collectableRenderList.length; ++e) {
+        this._collectableRenderList[e].destroy();
+      }
+    }
+    this._collectableRenderList = [];
+  };
+  Object.defineProperty(CastleDialog.prototype, "collectableRenderList", {
+    get: function () {
+      return this._collectableRenderList;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleDialog.prototype.isOutOfTutorial = function () {
+    return !E.CastleModel.tutorialData.isTutorialActive;
+  };
+  CastleDialog.prototype.setTickEnablement = function () {
+    this.disp.tickEnabled = true;
+  };
+  CastleDialog.prototype.onRemovedFromStage = function (e) {};
+  CastleDialog.ACTLIKEBUTTON_LABEL = "actLikeButton";
+  return CastleDialog;
+}(s.BasicDialog);
+exports.CastleDialog = A;
+var L = require("./9.js");
+var P = require("./17.js");
+var M = require("./200.js");
+h.classImplementsInterfaces(A, "ICollectableRendererList");

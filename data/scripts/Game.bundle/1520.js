@@ -6,8 +6,8 @@ var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./3.js");
 var r = require("./6.js");
-var l = require("./868.js");
-var c = require("./2782.js");
+var l = require("./869.js");
+var c = require("./2783.js");
 var u = require("./87.js");
 var d = require("./4.js");
 var p = function (e) {
@@ -102,8 +102,8 @@ var p = function (e) {
   return BuildingMinuteSkipProperties;
 }(o.BasicProperties);
 exports.BuildingMinuteSkipProperties = p;
-var h = require("./33.js");
+var h = require("./34.js");
 var g = require("./63.js");
-var C = require("./638.js");
+var C = require("./639.js");
 var _ = require("./208.js");
 a.classImplementsInterfaces(p, "IMinuteSkipProperties");

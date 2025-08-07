@@ -3,22 +3,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./225.js");
+var a = require("./226.js");
 var s = function (e) {
-  function CastleSamuraiInvasionAllianceRewardDialog() {
+  function CastleSamuraiInvasionEventRewardDialog() {
     return e.call(this) || this;
   }
-  n.__extends(CastleSamuraiInvasionAllianceRewardDialog, e);
-  CastleSamuraiInvasionAllianceRewardDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    this.noRewardFrame = a.CastleGenericRewardDialog.FRAME_NOREWARD_SAMURAI_ALLIANCE;
-    this.headerFrame = a.CastleGenericRewardDialog.FRAME_HEADER_SAMURAI_ALLIANCE;
-    this.wonFrame = a.CastleGenericRewardDialog.FRAME_WON_SAMURAI_ALLIANCE;
-    this.gotReward = a.CastleGenericRewardDialog.FRAME_GOT_REWARD_SAMURAI_ALLIANCE;
+  n.__extends(CastleSamuraiInvasionEventRewardDialog, e);
+  CastleSamuraiInvasionEventRewardDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    this.noRewardFrame = a.CastleGenericRewardDialog.FRAME_NOREWARD_SAMURAI;
+    this.headerFrame = a.CastleGenericRewardDialog.FRAME_HEADER_SAMURAI;
+    this.wonFrame = a.CastleGenericRewardDialog.FRAME_WON_SAMURAI;
+    this.gotReward = a.CastleGenericRewardDialog.FRAME_GOT_REWARD_SAMURAI;
     e.prototype.applyPropertiesLoaded.call(this, t);
   };
-  Object.defineProperty(CastleSamuraiInvasionAllianceRewardDialog.prototype, "firstPlaceTitleTextId", {
+  Object.defineProperty(CastleSamuraiInvasionEventRewardDialog.prototype, "firstPlaceTitleTextId", {
     get: function () {
-      return "dialog_samuraiInvasionAlliance_gotRoyalReward_title";
+      return "dialog_samuraiInvasion_gotRoyalReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "firstPlaceTitleTextId").set.call(this, e);
@@ -26,9 +26,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSamuraiInvasionAllianceRewardDialog.prototype, "firstPlaceCopyTextId", {
+  Object.defineProperty(CastleSamuraiInvasionEventRewardDialog.prototype, "firstPlaceCopyTextId", {
     get: function () {
-      return "dialog_samuraiInvasionAlliance_gotRoyalReward" + this.grantTypeSuffix + "_copy";
+      return "dialog_samuraiInvasion_gotRoyalReward_desc";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "firstPlaceCopyTextId").set.call(this, e);
@@ -36,9 +36,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSamuraiInvasionAllianceRewardDialog.prototype, "topXTitleTextId", {
+  Object.defineProperty(CastleSamuraiInvasionEventRewardDialog.prototype, "topXTitleTextId", {
     get: function () {
-      return "dialog_samuraiInvasionAlliance_gotTopxReward_title";
+      return "dialog_samuraiInvasion_gotTopXReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXTitleTextId").set.call(this, e);
@@ -46,9 +46,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSamuraiInvasionAllianceRewardDialog.prototype, "topXCopyTextId", {
+  Object.defineProperty(CastleSamuraiInvasionEventRewardDialog.prototype, "topXCopyTextId", {
     get: function () {
-      return "dialog_samuraiInvasionAlliance_gotTopxReward" + this.grantTypeSuffix + "_copy";
+      return "dialog_samuraiInvasion_gotTopXReward_copy";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXCopyTextId").set.call(this, e);
@@ -56,7 +56,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSamuraiInvasionAllianceRewardDialog.prototype, "topXCopyTextReplacements", {
+  Object.defineProperty(CastleSamuraiInvasionEventRewardDialog.prototype, "topXCopyTextReplacements", {
     get: function () {
       return [this.dialogProperties.points, this.dialogProperties.topXCount];
     },
@@ -66,9 +66,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSamuraiInvasionAllianceRewardDialog.prototype, "gotRewardTitleTextId", {
+  Object.defineProperty(CastleSamuraiInvasionEventRewardDialog.prototype, "gotRewardTitleTextId", {
     get: function () {
-      return "dialog_samuraiInvasionAlliance_gotReward_title";
+      return "dialog_samuraiInvasion_gotReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "gotRewardTitleTextId").set.call(this, e);
@@ -76,9 +76,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSamuraiInvasionAllianceRewardDialog.prototype, "gotRewardCopyTextId", {
+  Object.defineProperty(CastleSamuraiInvasionEventRewardDialog.prototype, "gotRewardCopyTextId", {
     get: function () {
-      return "dialog_samuraiInvasionAlliance_gotReward" + this.grantTypeSuffix + "_copy";
+      return "dialog_samuraiInvasion_gotReward_copy";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "gotRewardCopyTextId").set.call(this, e);
@@ -86,9 +86,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSamuraiInvasionAllianceRewardDialog.prototype, "noRewardTitleTextId", {
+  Object.defineProperty(CastleSamuraiInvasionEventRewardDialog.prototype, "noRewardTitleTextId", {
     get: function () {
-      return "dialog_samuraiInvasionAlliance_eventEnd_title";
+      return "dialog_samuraiInvasion_eventEnd_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "noRewardTitleTextId").set.call(this, e);
@@ -96,9 +96,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSamuraiInvasionAllianceRewardDialog.prototype, "noRewardCopyTextId", {
+  Object.defineProperty(CastleSamuraiInvasionEventRewardDialog.prototype, "noRewardCopyTextId", {
     get: function () {
-      return "dialog_samuraiInvasionAlliance_eventEnd_copy";
+      return "dialog_samuraiInvasion_eventEnd_copy";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "noRewardCopyTextId").set.call(this, e);
@@ -106,11 +106,11 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastleSamuraiInvasionAllianceRewardDialog.__initialize_static_members = function () {
-    CastleSamuraiInvasionAllianceRewardDialog.NAME = "CastleSamuraiInvasionAllianceReward";
+  CastleSamuraiInvasionEventRewardDialog.__initialize_static_members = function () {
+    CastleSamuraiInvasionEventRewardDialog.NAME = "CastleSamuraiInvasionEventReward";
   };
-  return CastleSamuraiInvasionAllianceRewardDialog;
+  return CastleSamuraiInvasionEventRewardDialog;
 }(a.CastleGenericRewardDialog);
-exports.CastleSamuraiInvasionAllianceRewardDialog = s;
+exports.CastleSamuraiInvasionEventRewardDialog = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList");
 s.__initialize_static_members();

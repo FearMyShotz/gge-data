@@ -1,123 +1,131 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./6.js");
-var l = require("./55.js");
-var c = require("./84.js");
-var u = require("./4.js");
-var d = function () {
-  function IsoHelperData() {}
-  IsoHelperData.prototype.createIsoObjectVOByXml = function (e, t = null, i = true) {
-    var n = u.CastleModel.wodData.createVObyWOD(e, p.CastleWodData.TYPE_BUILDING) || u.CastleModel.wodData.createVObyWOD(e, p.CastleWodData.TYPE_RUBY_WISHING_WELL);
-    if (n) {
-      n.init(t || g.Iso.data);
+var n = createjs.Point;
+var o = function () {
+  function IsoHelperWalkmap() {
+    this.walkMapCache = new Map();
+    this.spawnPointCache = new Map();
+  }
+  IsoHelperWalkmap.prototype.generateWalkmap = function (e) {
+    var t = this.walkMapCache.get(e);
+    if (t === undefined) {
+      var i = this.getBitmapData(e);
       if (i) {
-        n.updateData();
-      }
-    }
-    return n;
-  };
-  IsoHelperData.prototype.createIsoObjectVOByServer = function (e, t = null, i = true) {
-    var a = e.O ? e.O : e;
-    var s = r.int(a.shift());
-    var l = o.castAs(u.CastleModel.wodData.createVObyWOD(s, p.CastleWodData.TYPE_BUILDING), "AIsoObjectVO");
-    if (l) {
-      l.init(t || g.Iso.data);
-      l.parseServerObject(a);
-      if (i) {
-        l.updateData();
-      }
-      return l;
-    } else {
-      n.debug("--- IsoHelperData.createIsoObjectVOByServer(): " + s + "was not found in wodData.");
-      return null;
-    }
-  };
-  IsoHelperData.prototype.createIsoObjectVOByType = function (e, t = null, i = true) {
-    var n = new e.dataClass();
-    n.init(t);
-    if (i) {
-      n.updateData();
-    }
-    return n;
-  };
-  IsoHelperData.prototype.createObjectGroupDic = function (e) {
-    var t = new Map();
-    for (var i = 0, n = c.CastleEnum.getEnumListByClass(h.IsoObjectGroupEnum); i < n.length; i++) {
-      var o = n[i];
-      if (a.instanceOfClass(o, "IsoObjectGroupEnum")) {
-        var s = o;
-        var r = e ? s.viewClass : s.dataClass;
-        if (!r) {
-          continue;
-        }
-        t.set(s, new r());
-        t.get(s).groupType = s;
+        var n = this.getWalkMapFromBitmapData(i);
+        var o = n.walkMap;
+        var a = n.spawnPoints;
+        this.spawnPointCache.add(e, a);
+        this.walkMapCache.add(e, o);
+        t = o;
+      } else {
+        t = null;
+        this.walkMapCache.add(e, t);
+        this.spawnPointCache.add(e, []);
       }
     }
     return t;
   };
-  IsoHelperData.prototype.cloneIsoObject = function (e) {
-    if (!e) {
-      return null;
-    }
-    var t = this.createIsoObjectVOByXml(e.wodId, e.isoData, true);
-    t.cloneFrom(e);
-    return t;
-  };
-  IsoHelperData.prototype.updateIsoObjectByServer = function (e, t) {
-    var i = t;
-    var n = r.int(i.shift());
-    var o = r.int(e.wodId);
-    if (o >= 0 && o != n) {
-      var a = u.CastleModel.wodData.wodXmlElements.get(p.CastleWodData.TYPE_BUILDING).get(n);
-      if (a) {
-        e.parseXmlNode(a);
+  IsoHelperWalkmap.prototype.getSpawnPoints = function (e) {
+    var t = this.spawnPointCache.get(e);
+    if (t === undefined) {
+      var i = this.getBitmapData(e);
+      if (i) {
+        var n = this.getWalkMapFromBitmapData(i);
+        var o = n.walkMap;
+        var a = n.spawnPoints;
+        this.spawnPointCache.add(e, a);
+        this.walkMapCache.add(e, o);
+        t = a;
+      } else {
+        t = [];
+        this.spawnPointCache.add(e, t);
+        this.walkMapCache.add(e, null);
       }
     }
-    e.parseServerObject(i);
-    e.updateData();
-    e.dispatchValueObjectChanged();
+    return t;
   };
-  IsoHelperData.prototype.destroyAndCreateNewVOList = function (e) {
-    if (e) {
-      for (var t = 0, i = e; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && "destroy" in n) {
-          n.destroy();
+  IsoHelperWalkmap.prototype.getWalkMapFromBitmapData = function (e) {
+    var t;
+    var i = Array(e.height);
+    var o = [];
+    for (var a = 0; a < e.height; a++) {
+      i[a] = Array(e.width);
+      for (var s = 0; s < e.width; s++) {
+        t = e.getPixel(s, a);
+        i[a][s] = t != IsoHelperWalkmap.BLOCKED;
+        if (t > IsoHelperWalkmap.SPAWNPOINT || t == IsoHelperWalkmap.SPAWNPOINT2) {
+          o.push(new n(s, a));
         }
       }
     }
-    if (a.instanceOfClass(e, "Array")) {
+    return {
+      walkMap: i,
+      spawnPoints: o
+    };
+  };
+  IsoHelperWalkmap.prototype.getBitmapData = function (e) {
+    var t;
+    if (/wall|guard_tower|crane|deco|event|moat|gate|univ|forg/i.test(e)) {
+      return null;
+    }
+    try {
+      if (t = a.getDefinitionByNameFromLibrary(e)) {
+        return new t();
+      } else {
+        return null;
+      }
+    } catch (e) {
+      return null;
+    }
+  };
+  IsoHelperWalkmap.prototype.createWalkmapWithWalkableL = function (e) {
+    for (var t = Array(e.y), i = 0; i < t.length; ++i) {
+      t[i] = Array(e.x);
+      for (var n = 0; n < t[i].length; ++n) {
+        t[i][n] = i == t.length - 1 || n == t[i].length - 1;
+      }
+    }
+    return t;
+  };
+  IsoHelperWalkmap.prototype.createWalkmapFullBlocked = function (e) {
+    var t = new n(Math.floor(e.x), Math.floor(e.y));
+    if (t.x <= 0 || t.y <= 0) {
       return [];
-    } else {
-      return new (l.ClientConstUtils.getClassFromObject(e))();
     }
-  };
-  IsoHelperData.prototype.getAreaKingdomName = function (e, t = -1) {
-    if (t == s.WorldConst.AREA_TYPE_TREASURE_CAMP) {
-      return u.CastleModel.specialEventData.activeSeasonVO.eventType;
-    } else {
-      return u.CastleModel.kingdomData.getKingdomVOByID(e).kingdomName;
+    for (var i = Array(e.y), o = 0; o < i.length; ++o) {
+      i[o] = Array(e.x);
+      for (var a = 0; a < i[o].length; ++a) {
+        i[o][a] = false;
+      }
     }
+    return i;
   };
-  IsoHelperData.prototype.getBackgroundType = function (e) {
-    if (e.areaData.areaInfo.areaType == s.WorldConst.AREA_TYPE_TREASURE_CAMP) {
-      return "Season" + u.CastleModel.specialEventData.activeSeasonVO.eventId;
-    } else {
-      return u.CastleModel.kingdomData.getKingdomVOByID(e.areaData.areaInfo.kingdomID).kingdomName;
+  IsoHelperWalkmap.prototype.mirrorWalkmap = function (e) {
+    var t = Array(e[0].length);
+    for (var i = 0; i < e[0].length; ++i) {
+      t[i] = Array(e.length);
+      for (var n = 0; n < e.length; ++n) {
+        t[i][n] = e[n][i];
+      }
     }
+    return t;
   };
-  IsoHelperData.prototype.getMovementWaypointClasses = function (e) {
-    return new e.dataClass().getWaypoints();
+  IsoHelperWalkmap.prototype.mirrorSpawnPoints = function (e) {
+    var t = new Array(e.length);
+    for (var i = 0; i < e.length; ++i) {
+      t[i] = new n(e[i].y, e[i].x);
+    }
+    return t;
   };
-  return IsoHelperData;
+  IsoHelperWalkmap.__initialize_static_members = function () {
+    IsoHelperWalkmap.WALKABLE = 16777215;
+    IsoHelperWalkmap.BLOCKED = 0;
+    IsoHelperWalkmap.SPAWNPOINT = 16711680;
+    IsoHelperWalkmap.SPAWNPOINT2 = 16711681;
+  };
+  return IsoHelperWalkmap;
 }();
-exports.IsoHelperData = d;
-var p = require("./56.js");
-var h = require("./143.js");
-var g = require("./33.js");
+exports.IsoHelperWalkmap = o;
+var a = require("./1.js");
+o.__initialize_static_members();

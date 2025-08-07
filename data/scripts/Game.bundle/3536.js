@@ -2,20 +2,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleRewardHubPickAllDialogProperties(t) {
-    var i = e.call(this) || this;
-    i._hasLockedRewards = t;
-    return i;
+var o = require("./2.js");
+var a = require("./4.js");
+var s = require("./3537.js");
+var r = require("./1706.js");
+var l = function (e) {
+  function RewardHubManageAllDialogProperties() {
+    var t = e.call(this) || this;
+    t.createDataVOs();
+    return t;
   }
-  n.__extends(CastleRewardHubPickAllDialogProperties, e);
-  Object.defineProperty(CastleRewardHubPickAllDialogProperties.prototype, "hasLockedRewards", {
+  n.__extends(RewardHubManageAllDialogProperties, e);
+  RewardHubManageAllDialogProperties.prototype.createDataVOs = function () {
+    this._listItemVOs = [];
+    if (a.CastleModel.rewardHubData.rewardHubVOs) {
+      var e;
+      var t;
+      for (var i = 0; i < a.CastleModel.rewardHubData.rewardHubVOs.length; i++) {
+        t = a.CastleModel.rewardHubData.rewardHubVOs[i];
+        e = new s.RewardHubManagedListItemVO(t, r.RewardHubTextsFactory.createRewardHubItemTextVO(t));
+        this._listItemVOs.push(e);
+      }
+    }
+  };
+  RewardHubManageAllDialogProperties.prototype.updateItemVOs = function () {
+    this.createDataVOs();
+  };
+  Object.defineProperty(RewardHubManageAllDialogProperties.prototype, "listItemVOs", {
     get: function () {
-      return this._hasLockedRewards;
+      return this._listItemVOs;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleRewardHubPickAllDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleRewardHubPickAllDialogProperties = o;
+  return RewardHubManageAllDialogProperties;
+}(o.BasicProperties);
+exports.RewardHubManageAllDialogProperties = l;

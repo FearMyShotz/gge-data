@@ -10,20 +10,17 @@ var l = require("./6.js");
 var c = require("./22.js");
 var u = require("./4.js");
 var d = require("./97.js");
-var p = require("./2030.js");
-var h = require("./481.js");
+var p = require("./2031.js");
+var h = require("./482.js");
 var g = require("./87.js");
 var C = function (e) {
   function AEffectBuildingVO() {
     var t = this;
     t._resourceStorage = new O.CollectableList();
     t._hideout = 0;
-    t._sightRadiusBonus = 0;
     t._resourceBoosts = new O.CollectableList();
     t._recruitSpeedBoost = 0;
     t._alliFoodProductionBoost = 0;
-    t._surviveBoost = 0;
-    t._fireBrigadeBoost = 0;
     t._shownTravelBoost = 0;
     t._buildSpeedBoost = 0;
     t._buildingCostReduction = 0;
@@ -47,13 +44,10 @@ var C = function (e) {
     e.prototype.parseXmlNode.call(this, t);
     this._resourceStorage = m.CollectableManager.parser.createGoodsListSave(new v.CollectableItemWoodVO(c.CastleXMLUtils.getIntAttribute("woodStorage", t)), new T.CollectableItemStoneVO(c.CastleXMLUtils.getIntAttribute("stoneStorage", t)), new y.CollectableItemFoodVO(c.CastleXMLUtils.getIntAttribute("foodStorage", t)), new E.CollectableItemCoalVO(c.CastleXMLUtils.getIntAttribute("coalStorage", t)), new I.CollectableItemOilVO(c.CastleXMLUtils.getIntAttribute("oilStorage", t)), new b.CollectableItemGlassVO(c.CastleXMLUtils.getIntAttribute("glassStorage", t)), new D.CollectableItemIronVO(c.CastleXMLUtils.getIntAttribute("ironStorage", t)), new S.CollectableItemMeadVO(c.CastleXMLUtils.getIntAttribute("meadStorage", t)), new h.CollectableItemBeefVO(c.CastleXMLUtils.getIntAttribute("beefStorage", t)), new A.CollectableItemHoneyVO(c.CastleXMLUtils.getIntAttribute("honeyStorage", t)), new L.CollectableItemAquamarineVO(c.CastleXMLUtils.getIntAttribute("aquamarineStorage", t)));
     this._hideout = l.int(c.CastleXMLUtils.getIntAttribute("Hideout", t));
-    this._sightRadiusBonus = l.int(c.CastleXMLUtils.getIntAttribute("sightRadiusBonus", t));
     this._resourceBoosts = m.CollectableManager.parser.createGoodsListSave(new v.CollectableItemWoodVO(c.CastleXMLUtils.getIntAttribute("Woodboost", t)), new T.CollectableItemStoneVO(c.CastleXMLUtils.getIntAttribute("Stoneboost", t)), new y.CollectableItemFoodVO(c.CastleXMLUtils.getIntAttribute("Foodboost", t)), new E.CollectableItemCoalVO(c.CastleXMLUtils.getIntAttribute("Coalboost", t)), new I.CollectableItemOilVO(c.CastleXMLUtils.getIntAttribute("Oilboost", t)), new b.CollectableItemGlassVO(c.CastleXMLUtils.getIntAttribute("Glassboost", t)), new D.CollectableItemIronVO(c.CastleXMLUtils.getIntAttribute("Ironboost", t)), new S.CollectableItemMeadVO(c.CastleXMLUtils.getIntAttribute("Meadboost", t)), new h.CollectableItemBeefVO(c.CastleXMLUtils.getIntAttribute("Beefboost", t)), new A.CollectableItemHoneyVO(c.CastleXMLUtils.getIntAttribute("Honeyboost", t)));
     this._alliFoodProductionBoost = l.int(c.CastleXMLUtils.getIntAttribute("alliFoodProductionBonus", t));
     this._recruitSpeedBoost = l.int(c.CastleXMLUtils.getIntAttribute("recruitSpeedBoost", t));
     this._shownTravelBoost = c.CastleXMLUtils.getNumberAttribute("shownTravelBonus", t);
-    this._fireBrigadeBoost = l.int(c.CastleXMLUtils.getIntAttribute("fireBrigadeBoost", t));
-    this._surviveBoost = l.int(c.CastleXMLUtils.getIntAttribute("surviveBoost", t));
     this._buildSpeedBoost = l.int(c.CastleXMLUtils.getIntAttribute("buildSpeedBoost", t));
     this._foodReduction = l.int(c.CastleXMLUtils.getIntAttribute("Foodreduction", t));
     this._buildingCostReduction = l.int(c.CastleXMLUtils.getIntAttribute("buildingCostReduction", t));
@@ -172,13 +166,6 @@ var C = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AEffectBuildingVO.prototype, "sightRadiusBonus", {
-    get: function () {
-      return this._sightRadiusBonus;
-    },
-    enumerable: true,
-    configurable: true
-  });
   Object.defineProperty(AEffectBuildingVO.prototype, "recruitSpeedBoost", {
     get: function () {
       return this._recruitSpeedBoost;
@@ -189,20 +176,6 @@ var C = function (e) {
   Object.defineProperty(AEffectBuildingVO.prototype, "alliFoodProductionBoost", {
     get: function () {
       return this._alliFoodProductionBoost;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AEffectBuildingVO.prototype, "surviveBoost", {
-    get: function () {
-      return this._surviveBoost;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AEffectBuildingVO.prototype, "fireBrigadeBoost", {
-    get: function () {
-      return this._fireBrigadeBoost;
     },
     enumerable: true,
     configurable: true
@@ -324,20 +297,20 @@ var C = function (e) {
     configurable: true
   });
   return AEffectBuildingVO;
-}(require("./482.js").ABasicBuildingVO);
+}(require("./483.js").ABasicBuildingVO);
 exports.AEffectBuildingVO = C;
 var _ = require("./86.js");
 var m = require("./50.js");
 var f = require("./12.js");
 var O = require("./48.js");
-var E = require("./504.js");
+var E = require("./505.js");
 var y = require("./453.js");
-var b = require("./505.js");
-var D = require("./506.js");
-var I = require("./507.js");
-var T = require("./268.js");
-var v = require("./269.js");
-var S = require("./532.js");
-var A = require("./636.js");
-var L = require("./1012.js");
+var b = require("./506.js");
+var D = require("./507.js");
+var I = require("./508.js");
+var T = require("./267.js");
+var v = require("./268.js");
+var S = require("./533.js");
+var A = require("./637.js");
+var L = require("./1013.js");
 o.classImplementsInterfaces(C, "IShopVO", "ICostVO", "IInventoryVO");

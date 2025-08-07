@@ -86,7 +86,7 @@ var _ = function (e) {
     CastleAchievementDialogOverview.NO_ACHIEVEMENT_NAME = "Achievement_0";
   };
   return CastleAchievementDialogOverview;
-}(require("./34.js").CastleDialogSubLayer);
+}(require("./35.js").CastleDialogSubLayer);
 exports.CastleAchievementDialogOverview = _;
 var m = require("./12.js");
 var f = require("./61.js");

@@ -3,15 +3,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SGetIgnoredPlayersVO() {
-    return e.call(this) || this;
+var a = require("./6.js");
+var s = require("./7.js");
+var r = function (e) {
+  function C2SBattleLogShortVO(t, i) {
+    var n = this;
+    n.MID = 0;
+    n.IM = 0;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this).MID = t;
+    n.IM = a.int(i ? 1 : 0);
+    return n;
   }
-  n.__extends(C2SGetIgnoredPlayersVO, e);
-  C2SGetIgnoredPlayersVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_IGNORED_PLAYERS;
+  n.__extends(C2SBattleLogShortVO, e);
+  C2SBattleLogShortVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_BATTLE_LOG_SHORT;
   };
-  return C2SGetIgnoredPlayersVO;
+  return C2SBattleLogShortVO;
 }(o.BasicCommandVO);
-exports.C2SGetIgnoredPlayersVO = s;
+exports.C2SBattleLogShortVO = r;

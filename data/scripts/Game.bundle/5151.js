@@ -2,39 +2,56 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function TXSCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./1.js");
+var l = require("./3.js");
+var c = require("./51.js");
+var u = require("./106.js");
+var d = function (e) {
+  function CastleGetTaxDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleGetTaxDialog.NAME) || this;
   }
-  n.__extends(TXSCommand, e);
-  Object.defineProperty(TXSCommand.prototype, "cmdId", {
+  n.__extends(CastleGetTaxDialog, e);
+  CastleGetTaxDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.initBasicButtons([this.dialogDisp.btn_yes, this.dialogDisp.btn_close]);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new l.LocalizedTextVO("dialog_collectedtaxes_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new l.LocalizedTextVO("dialog_collectedtaxes_copy"), new s.InternalGGSTextFieldConfigVO(true));
+  };
+  CastleGetTaxDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    this.itxt_amountC1 ||= this.textFieldManager.registerTextField(this.dialogDisp.txt_amountC1, new l.LocalizedTextVO(a.GenericTextIds.VALUE_MULTIPLIED, [String(this.dialogProperties.collectedTax)], true));
+    u.CharacterHelper.createCharacterBig(c.ClientConstCharacter.CHAR_ID_TAXCOLLECTOR, this.dialogDisp.mc_char, 194, 138);
+    this.itxt_amountC1.textContentVO.textId = a.GenericTextIds.VALUE_MULTIPLIED;
+    this.itxt_amountC1.textContentVO.textReplacements = [String(this.dialogProperties.collectedTax)];
+    e.prototype.applyPropertiesLoaded.call(this, t);
+  };
+  CastleGetTaxDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_yes:
+        this.hide();
+        o.CommandController.instance.executeCommand(p.IngameClientCommands.OPEN_ACTIVE_TAX_DIALOG_COMMAND);
+    }
+  };
+  Object.defineProperty(CastleGetTaxDialog.prototype, "dialogProperties", {
     get: function () {
-      return s.ClientConstSF.S2C_START_COLLECT_TAX;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  TXSCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        r.CastleModel.taxData.parse_TXI(i.txi);
-        break;
-      default:
-        this.showErrorDialog(e, t);
-    }
-    return false;
+  CastleGetTaxDialog.__initialize_static_members = function () {
+    CastleGetTaxDialog.NAME = "CastleGetTax";
   };
-  return TXSCommand;
-}(l.CastleCommand);
-exports.TXSCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return CastleGetTaxDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleGetTaxDialog = d;
+var p = require("./29.js");
+r.classImplementsInterfaces(d, "ICollectableRendererList");
+d.__initialize_static_members();

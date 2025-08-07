@@ -2,98 +2,131 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./123.js");
-var c = require("./4.js");
-var u = require("./256.js");
-var d = require("./941.js");
-var p = function (e) {
-  function PlayerGiftMerchantDialog() {
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./1.js");
+var l = require("./5.js");
+var c = require("./5.js");
+var u = require("./3.js");
+var d = require("./3.js");
+var p = require("./3.js");
+var h = require("./6.js");
+var g = require("./21.js");
+var C = require("./26.js");
+var _ = require("./396.js");
+var m = require("./4.js");
+var f = require("./8.js");
+var O = require("./11.js");
+var E = require("./167.js");
+var y = function (e) {
+  function CastlePlagueMonkEventDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, PlayerGiftMerchantDialog.NAME) || this;
+    return e.call(this, CastlePlagueMonkEventDialog.NAME) || this;
   }
-  n.__extends(PlayerGiftMerchantDialog, e);
-  PlayerGiftMerchantDialog.prototype.hideLoaded = function (t = null) {
-    e.prototype.hideLoaded.call(this, t);
-    this.tabs.hide();
+  n.__extends(CastlePlagueMonkEventDialog, e);
+  CastlePlagueMonkEventDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this);
+    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_addMonk]);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_speechBubble, new d.LocalizedTextVO("dialog_plagueEvent_speechBubble")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc1, new d.LocalizedTextVO("dialog_plagueEvent_desc1"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc2, new d.LocalizedTextVO("dialog_plagueEvent_desc2"));
+    this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.mc_timeBg.txt_time, new p.TextVO(""));
+    this.itxt_discount = this.textFieldManager.registerTextField(this.dialogDisp.btn_addMonk.mc_discount.txt_value, new d.LocalizedTextVO(a.GenericTextIds.VALUE_PERCENTAGE));
+    this.itxt_time.textAlign = o.GGSTextAlign.LEFT;
+    this.itxt_monkcount = this.textFieldManager.registerTextField(this.dialogDisp.mc_countBg.txt_monkCount, new u.LocalizedNumberVO(0));
   };
-  PlayerGiftMerchantDialog.prototype.showLoaded = function (t = null) {
-    var i = this.packageContainer.getVisiblePackages(c.CastleModel.userData.userLevel, c.CastleModel.userData.userLegendLevel, c.CastleModel.areaData.activeAreaInfo.areaType);
-    this.tabs.updateTabsEnablement(i);
-    this.tabs.show();
-    e.prototype.showLoaded.call(this, t);
+  CastlePlagueMonkEventDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this);
+    m.CastleModel.timerData.addEventListener(g.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateSpecialEvent));
+    m.CastleModel.specialEventData.addEventListener(C.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveEvent));
+    m.CastleModel.specialEventData.addEventListener(C.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onAddEvent));
+    m.CastleModel.spyData.addEventListener(_.CastleSpyDataEvent.PLAGUEMONK_COUNT_UPDATE, this.bindFunction(this.onPreSpyInfoUpdate));
+    this.dialogDisp.mc_countBg.toolTipText = "spy_dialog_plagueMonkCount";
+    this.dialogDisp.mc_timeBg.toolTipText = "resttime";
+    this.onUpdateSpecialEvent(null);
+    this.showMonkCount();
+    this.showMonkDiscount();
   };
-  PlayerGiftMerchantDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.tabs = new d.PackageTabComponent(this.dialogDisp, this.bindFunction(this.onFilterChanged));
-    this.tabs.addTab(this.dialogDisp.tabAll, "dialog_giftTrader_allGifts_tooltip", function (e) {
-      return true;
-    });
-    this.tabs.addTab(this.dialogDisp.tabRes, "dialog_giftTrader_resources_tooltip", function (e) {
-      return a.instanceOfClass(e.reward, "ACollectableItemResourceVO");
-    });
-    this.tabs.addTab(this.dialogDisp.tabGold, "dialog_giftTrader_coins_tooltip", function (e) {
-      return e.reward.itemType == h.CollectableEnum.C1;
-    });
-    this.tabs.addTab(this.dialogDisp.tabTool, "dialog_giftTrader_toolsAndUnits_tooltip", function (e) {
-      return e.packageType == l.ClientConstPackages.PACKAGE_TYPE_TOOL || e.packageType == l.ClientConstPackages.PACKAGE_TYPE_SOLDIER;
-    });
-    this.tabs.addTab(this.dialogDisp.tabEquipment, "dialog_giftTrader_equipment_tooltip", function (e) {
-      return e.packageType == l.ClientConstPackages.PACKAGE_TYPE_ITEM || e.packageType == l.ClientConstPackages.PACKAGE_TYPE_GEM || e.packageType == l.ClientConstPackages.PACKAGE_TYPE_HERO;
-    });
-    this.tabs.init();
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.LocalizedTextVO("dialog_giftTrader_desc"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new r.LocalizedTextVO("dialog_giftTrader_infoGraphic_tooltip"));
-    this.dialogDisp.btn_help.toolTipText = "generic_help";
+  CastlePlagueMonkEventDialog.prototype.onAddEvent = function (e) {
+    if (e.specialEventVO.eventId == l.EventConst.EVENTTYPE_EVENT_PACKAGE_PRIME_SALES) {
+      this.showMonkDiscount();
+    }
   };
-  Object.defineProperty(PlayerGiftMerchantDialog.prototype, "merchantScrollItem", {
+  CastlePlagueMonkEventDialog.prototype.onPreSpyInfoUpdate = function (e) {
+    this.showMonkCount();
+  };
+  CastlePlagueMonkEventDialog.prototype.showMonkCount = function () {
+    var e = h.int(m.CastleModel.spyData.totalPlagueMonks);
+    var t = h.int(m.CastleModel.spyData.availablePlagueMonks);
+    this.itxt_monkcount.textContentVO.numberValue = t;
+    if (e < c.SpyConst.MAX_OWNABLE_PLAGUEMONKS) {
+      f.ButtonHelper.enableButton(this.dialogDisp.btn_addMonk, true);
+      this.dialogDisp.btn_addMonk.toolTipText = "dialog_plagueEvent_buyMonk";
+    } else {
+      f.ButtonHelper.enableButton(this.dialogDisp.btn_addMonk, false);
+      this.dialogDisp.btn_addMonk.toolTipText = "dialog_plagueEvent_maxPlaguemonkCount";
+    }
+  };
+  CastlePlagueMonkEventDialog.prototype.showMonkDiscount = function () {
+    var e = 0;
+    for (var t = 0; t < this.dialogProperties.plagueEventVO.eventPackages.length; t++) {
+      if ((e = h.int(b.EventPackagePrimeSaleEventVO.getPackageDiscountC2(this.dialogProperties.plagueEventVO.eventPackages[t].packageID))) > 0) {
+        this.itxt_discount.textContentVO.textReplacements = [-e];
+        break;
+      }
+    }
+    this.dialogDisp.btn_addMonk.mc_discount.visible = e != 0;
+  };
+  CastlePlagueMonkEventDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_addMonk:
+        if (this.dialogDisp.btn_addMonk.enabled) {
+          this.addPlagueMonks();
+        }
+        break;
+      case this.dialogDisp.btn_close:
+        this.hide();
+    }
+  };
+  CastlePlagueMonkEventDialog.prototype.addPlagueMonks = function () {
+    var e = new E.CastleGenericBuyDialogProperties();
+    e.specialEventVO = this.dialogProperties.plagueEventVO;
+    e.eventPackageVO = this.dialogProperties.plagueEventVO.eventPackages[0];
+    O.CastleExternalDialog.dialogHandler.registerDefaultDialogs(D.CastlePlagueUnitEventBuyDialog, e);
+  };
+  CastlePlagueMonkEventDialog.prototype.onUpdateSpecialEvent = function (e) {
+    this.itxt_time.textContentVO.stringValue = s.TimeStringHelper.getShortTimeStringBySeconds(this.dialogProperties.plagueEventVO.remainingEventTimeInSeconds);
+  };
+  CastlePlagueMonkEventDialog.prototype.onRemoveEvent = function (e) {
+    if (e.specialEventVO.eventId == l.EventConst.EVENTTYPE_PLAGUE) {
+      this.hide();
+    } else if (e.specialEventVO.eventId == l.EventConst.EVENTTYPE_EVENT_PACKAGE_PRIME_SALES) {
+      this.showMonkDiscount();
+    }
+  };
+  CastlePlagueMonkEventDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this);
+    m.CastleModel.timerData.removeEventListener(g.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateSpecialEvent));
+    m.CastleModel.specialEventData.removeEventListener(C.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveEvent));
+    m.CastleModel.specialEventData.removeEventListener(C.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onAddEvent));
+    m.CastleModel.spyData.removeEventListener(_.CastleSpyDataEvent.PLAGUEMONK_COUNT_UPDATE, this.bindFunction(this.onPreSpyInfoUpdate));
+  };
+  Object.defineProperty(CastlePlagueMonkEventDialog.prototype, "dialogProperties", {
     get: function () {
-      return C.PlayerGiftMerchantScrollItem;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleGenericMerchantDialog.prototype, "merchantScrollItem").set.call(this, e);
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  PlayerGiftMerchantDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_close:
-        this.hide();
-        return;
-      case this.dialogDisp.btn_help:
-        this.onHelpButton();
-    }
+  CastlePlagueMonkEventDialog.__initialize_static_members = function () {
+    CastlePlagueMonkEventDialog.NAME = "CastlePlagueMonkEvent";
   };
-  PlayerGiftMerchantDialog.prototype.onHelpButton = function () {
-    g.CastleDialogHandler.getInstance().showHelper("", s.Localize.text("help_giftTrader"));
-  };
-  PlayerGiftMerchantDialog.prototype.initBasicButtons = function (t) {
-    t = t.concat([this.dialogDisp.btn_close, this.dialogDisp.itemList.btn_up, this.dialogDisp.itemList.btn_down, this.dialogDisp.btn_help]);
-    e.prototype.initBasicButtons.call(this, t);
-  };
-  PlayerGiftMerchantDialog.prototype.createScrollItem = function (t) {
-    if (this.tabs.isPackageInCurrentTab(t)) {
-      return e.prototype.createScrollItem.call(this, t);
-    } else {
-      return null;
-    }
-  };
-  PlayerGiftMerchantDialog.prototype.onFilterChanged = function () {
-    this.buyPackagesComponent.update(0);
-  };
-  PlayerGiftMerchantDialog.__initialize_static_members = function () {
-    PlayerGiftMerchantDialog.NAME = "CastleGiftTraderExternal";
-  };
-  return PlayerGiftMerchantDialog;
-}(u.CastleGenericMerchantDialog);
-exports.PlayerGiftMerchantDialog = p;
-var h = require("./12.js");
-var g = require("./9.js");
-var C = require("./4489.js");
-o.classImplementsInterfaces(p, "ICollectableRendererList");
-p.__initialize_static_members();
+  return CastlePlagueMonkEventDialog;
+}(O.CastleExternalDialog);
+exports.CastlePlagueMonkEventDialog = y;
+var b = require("./190.js");
+var D = require("./1406.js");
+r.classImplementsInterfaces(y, "ICollectableRendererList");
+y.__initialize_static_members();

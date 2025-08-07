@@ -47,6 +47,6 @@ var n = function () {
   return ClientConstWorldmapDeco;
 }();
 exports.ClientConstWorldmapDeco = n;
-var o = require("./701.js");
-var a = require("./2123.js");
+var o = require("./703.js");
+var a = require("./2124.js");
 n.__initialize_static_members();

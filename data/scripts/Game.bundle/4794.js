@@ -3,38 +3,46 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function MDECommand() {
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./7.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function IRCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MDECommand, e);
-  Object.defineProperty(MDECommand.prototype, "cmdId", {
+  n.__extends(IRCCommand, e);
+  Object.defineProperty(IRCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_MOVE_TO_DISTRICT;
+      return r.ClientConstSF.S2C_RESOURCE_CITIZEN;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  MDECommand.prototype.executeCommand = function (e, t) {
+  IRCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case a.ERROR.ALL_OK:
-      case a.ERROR.MOVE_FAILED:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.areaData.activeArea.updater.parseEMO(i);
+      case s.ERROR.ALL_OK:
+        var i;
+        if (d.Iso.renderer && l.CastleModel.resourcePoolData.ownerMovementVO) {
+          i = o.castAs(d.Iso.renderer.objects.provider.getObjectByVO(l.CastleModel.resourcePoolData.ownerMovementVO), "AIsoMovementVE");
+        }
+        var n = JSON.parse(t[1]);
+        l.CastleModel.resourcePoolData.parseIRC(n);
+        if (i) {
+          i.updateResourceIcon();
+        }
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return MDECommand;
-}(l.CastleCommand);
-exports.MDECommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return IRCCommand;
+}(c.CastleCommand);
+exports.IRCCommand = u;
+var d = require("./34.js");
+a.classImplementsInterfaces(u, "IExecCommand");

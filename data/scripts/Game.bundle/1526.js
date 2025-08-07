@@ -6,11 +6,11 @@ var o = require("./1.js");
 var a = require("./3.js");
 var s = require("./436.js");
 var r = require("./4.js");
-var l = require("./274.js");
+var l = require("./273.js");
 var c = require("./1207.js");
 var u = require("./8.js");
 var d = require("./11.js");
-var p = require("./2798.js");
+var p = require("./2799.js");
 var h = function (e) {
   function PrivateResourceVillageShopDialog() {
     return e.call(this, PrivateResourceVillageShopDialog.ASSET_NAME) || this;
@@ -88,6 +88,6 @@ var h = function (e) {
 exports.PrivateResourceVillageShopDialog = h;
 var g = require("./9.js");
 var C = require("./314.js");
-var _ = require("./2799.js");
+var _ = require("./2800.js");
 var m = require("./1527.js");
 o.classImplementsInterfaces(h, "ICollectableRendererList");

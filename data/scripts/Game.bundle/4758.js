@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function BFSCommand() {
+  function BCSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BFSCommand, e);
-  Object.defineProperty(BFSCommand.prototype, "cmdId", {
+  n.__extends(BCSCommand, e);
+  Object.defineProperty(BCSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_FESTIVAL_START;
+      return s.ClientConstSF.S2C_CARAVAN_OVERLOADER_START;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,19 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  BFSCommand.prototype.executeCommand = function (e, t) {
+  BCSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.boostData.parse_bfs(i);
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.boostData.parse_BOI(i.boi);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return BFSCommand;
+  return BCSCommand;
 }(l.CastleCommand);
-exports.BFSCommand = c;
+exports.BCSCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

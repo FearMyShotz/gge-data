@@ -1,23 +1,61 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1346.js");
-var a = function (e) {
-  function ComboboxItemRendererCastleListCI() {
-    return e !== null && e.apply(this, arguments) || this;
+var n = function () {
+  function CastleEffectVO() {
+    this._value = 0;
   }
-  n.__extends(ComboboxItemRendererCastleListCI, e);
-  Object.defineProperty(ComboboxItemRendererCastleListCI.prototype, "itemMCClass", {
+  CastleEffectVO.createFromXML = function (e) {
+    var t = [];
+    for (var i in o.CastleEffectEnum.allValues) {
+      var n = o.CastleEffectEnum.allValues[i];
+      if (n !== undefined) {
+        var a = e[n.name] || "";
+        if (a.length > 0) {
+          var s = new CastleEffectVO();
+          s.type = n;
+          s.value = Number(a);
+          t.push(s);
+        }
+      }
+    }
+    return t;
+  };
+  Object.defineProperty(CastleEffectVO.prototype, "type", {
     get: function () {
-      return Library.CastleInterfaceElements.CastleScrollableComboboxItem_CI;
+      return this._type;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(o.ComboboxItemRendererCastleList.prototype, "itemMCClass").set.call(this, e);
+      this._type = e;
     },
     enumerable: true,
     configurable: true
   });
-  return ComboboxItemRendererCastleListCI;
-}(o.ComboboxItemRendererCastleList);
-exports.ComboboxItemRendererCastleListCI = a;
+  Object.defineProperty(CastleEffectVO.prototype, "value", {
+    get: function () {
+      return this._value;
+    },
+    set: function (e) {
+      this._value = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleEffectVO.prototype, "constructionItemTextId", {
+    get: function () {
+      return "ci_effect_" + this.type.name;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleEffectVO.prototype, "buildingTextId", {
+    get: function () {
+      return "";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleEffectVO;
+}();
+exports.CastleEffectVO = n;
+var o = require("./97.js");

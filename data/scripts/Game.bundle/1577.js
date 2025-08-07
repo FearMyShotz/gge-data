@@ -6,7 +6,7 @@ var o = require("./1.js");
 var a = require("./31.js");
 var s = require("./67.js");
 var r = require("./19.js");
-var l = require("./539.js");
+var l = require("./540.js");
 var c = require("./40.js");
 var u = createjs.Point;
 var d = function (e) {
@@ -60,6 +60,6 @@ var d = function (e) {
 }(c.CastleItemRenderer);
 exports.AutoRecruitmentCostComponent = d;
 var p = require("./25.js");
-var h = require("./645.js");
+var h = require("./646.js");
 o.classImplementsInterfaces(d, "ICollectableRendererList");
 d.__initialize_static_members();

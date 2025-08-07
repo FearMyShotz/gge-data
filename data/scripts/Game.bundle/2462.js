@@ -1,14 +1,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = function (e) {
-  function CastleAllianceMemberSettingsDialogProperties(t) {
-    var i = e.call(this) || this;
-    i.playerInfoVO = t;
-    return i;
-  }
-  n.__extends(CastleAllianceMemberSettingsDialogProperties, e);
-  return CastleAllianceMemberSettingsDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleAllianceMemberSettingsDialogProperties = o;
+exports.instanceOf_IWorldMapOwnerInfoVO = function instanceOf_IWorldMapOwnerInfoVO(e) {
+  return e.playerID !== undefined && e.playerName !== undefined && e.playerLevel !== undefined && e.level !== undefined && e.playerLegendLevel !== undefined && e.isLegend !== undefined && e.achievementPoints !== undefined && e.crest !== undefined && e.allianceID !== undefined && e.allianceRank !== undefined && e.allianceName !== undefined && e.isSearchingAlliance !== undefined && e.isInAlliance !== undefined && e.viaReferAFriend !== undefined && e.allianceCrestVO !== undefined && e.hasVIPFlag !== undefined && e.hasPremiumFlag !== undefined && e.playerPrefix !== undefined && e.playerSuffix !== undefined && e.honor !== undefined && e.might !== undefined && e.getMainCastlePositionByKingdomID !== undefined && e.getCastlePosListByKingdomID !== undefined && e.isNoobProtected !== undefined && e.isPeaceProtected !== undefined && e.isFactionProtected !== undefined && e.remainingNoobTime !== undefined && e.remainingPeaceTime !== undefined && e.remainingFactionProtectionTimeInSeconds !== undefined && e.remainingRelocateDuration !== undefined && e.isOwnOwnerInfo !== undefined && e.isOutpostOwner !== undefined && e.isRuin !== undefined && e.isDungeonOwner !== undefined && e.isShareableDungeon !== undefined && e.isDummy !== undefined && e.hasCapital !== undefined && e.hasMonument !== undefined && e.hasLaboratory !== undefined && e.hasKingstower !== undefined && e.hasMetropolis !== undefined && e.factionID !== undefined && e.splitRunData !== undefined && e.factionID !== undefined && e.playerLevel !== undefined;
+};

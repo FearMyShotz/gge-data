@@ -2,20 +2,30 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleMovementItemVO(t) {
-    var i = e.call(this) || this;
-    i._movement = t;
-    return i;
+var o = require("./437.js");
+var a = function (e) {
+  function FilterAll() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  n.__extends(CastleMovementItemVO, e);
-  Object.defineProperty(CastleMovementItemVO.prototype, "movement", {
+  n.__extends(FilterAll, e);
+  FilterAll.prototype.filterFunction = function (e, t, i) {
+    return true;
+  };
+  Object.defineProperty(FilterAll.prototype, "name", {
     get: function () {
-      return this._movement;
+      return FilterAll.NAME;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(o.AMovementFilterStrategy.prototype, "name").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return CastleMovementItemVO;
-}(require("./2.js").ScrollItemVO);
-exports.CastleMovementItemVO = o;
+  FilterAll.__initialize_static_members = function () {
+    FilterAll.NAME = "FilterAll";
+  };
+  return FilterAll;
+}(o.AMovementFilterStrategy);
+exports.FilterAll = a;
+a.__initialize_static_members();

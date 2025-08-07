@@ -1,16 +1,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = function (e) {
-  function CastleTutorialEvent(t, i = null, n = false, o = false) {
-    var a = e.call(this, t, n, o) || this;
-    a.params = i;
-    return a;
-  }
-  n.__extends(CastleTutorialEvent, e);
-  CastleTutorialEvent.QUEST_INFO_SHOWN = "QUEST_INFO_SHOWN";
-  CastleTutorialEvent.STEP_FINISHED = "STEP_FINISHED";
-  return CastleTutorialEvent;
-}(createjs.Event);
-exports.CastleTutorialEvent = o;
+var n = require("./2.js");
+var o = function () {
+  function ClientConstReCaptcha() {}
+  ClientConstReCaptcha.getSiteKey = function () {
+    if (n.EnvGlobalsHandler.globals.isLocal) {
+      return ClientConstReCaptcha.RECAPTCHA_SITE_KEY_LOCAL;
+    } else if (n.EnvGlobalsHandler.globals.isTest) {
+      return ClientConstReCaptcha.RECAPTCHA_SITE_KEY_TEST;
+    } else {
+      return ClientConstReCaptcha.RECAPTCHA_SITE_KEY;
+    }
+  };
+  ClientConstReCaptcha.RECAPTCHA_SITE_KEY_LOCAL = "6Lf0aFooAAAAAASMeebUEt4Y9ir7jbXfLCPEWnrA";
+  ClientConstReCaptcha.RECAPTCHA_SITE_KEY_TEST = "6Lf0aFooAAAAAASMeebUEt4Y9ir7jbXfLCPEWnrA";
+  ClientConstReCaptcha.RECAPTCHA_SITE_KEY = "6Lc7w34oAAAAAFKhfmln41m96VQm4MNqEdpCYm-k";
+  return ClientConstReCaptcha;
+}();
+exports.ClientConstReCaptcha = o;

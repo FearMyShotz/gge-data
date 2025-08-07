@@ -4,33 +4,30 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./5.js");
-var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function CRINCommand() {
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function SCLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CRINCommand, e);
-  Object.defineProperty(CRINCommand.prototype, "cmdId", {
+  n.__extends(SCLCommand, e);
+  Object.defineProperty(SCLCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_GET_CRAFTING_INFO;
+      return s.ClientConstSF.S2C_SHOW_CONSTRUCTION_LIST;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CRINCommand.prototype.executeCommand = function (e, t) {
+  SCLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case s.ERROR.ALL_OK:
+      case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        if (i[a.CommKeys.CRAFTING_AREA_INFO]) {
-          l.CastleModel.craftingData.parseAllQueueData(i);
-        } else {
-          l.CastleModel.craftingData.parseBuildingQueueData(i);
+        if (r.CastleModel.areaData.activeArea) {
+          r.CastleModel.areaData.activeArea.updater.parseSCL(i);
         }
         break;
       default:
@@ -38,7 +35,7 @@ var u = function (e) {
     }
     return false;
   };
-  return CRINCommand;
-}(c.CastleCommand);
-exports.CRINCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return SCLCommand;
+}(l.CastleCommand);
+exports.SCLCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

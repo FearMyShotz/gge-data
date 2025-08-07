@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./118.js");
+var a = require("./116.js");
 var s = require("./6.js");
 var r = require("./7.js");
 var l = a.getLogger("C2SRegisterWithNameVO");

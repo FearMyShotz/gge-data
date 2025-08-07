@@ -3,23 +3,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./62.js");
-var s = function (e) {
-  function PdwellingBuildingVE() {
+var a = function (e) {
+  function PalaceBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(PdwellingBuildingVE, e);
-  Object.defineProperty(PdwellingBuildingVE.prototype, "buildingGroundIconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements.Icon_Population;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return PdwellingBuildingVE;
-}(a.ABasicBuildingVE);
-exports.PdwellingBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  n.__extends(PalaceBuildingVE, e);
+  return PalaceBuildingVE;
+}(require("./647.js").APalaceBuildingVE);
+exports.PalaceBuildingVE = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

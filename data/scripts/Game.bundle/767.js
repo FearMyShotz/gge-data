@@ -6,52 +6,47 @@ var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./16.js");
-var u = require("./22.js");
-var d = require("./44.js");
-var p = require("./4.js");
-var h = require("./35.js");
-var g = function (e) {
-  function StrongholdBuildingVO() {
-    var t = this;
-    t._hiddenSoldiersSpace = 0;
+var l = require("./442.js");
+var c = require("./259.js");
+var u = function (e) {
+  function CastleTimedYesNoDialog() {
     CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+    return e.call(this, CastleTimedYesNoDialog.NAME) || this;
   }
-  n.__extends(StrongholdBuildingVO, e);
-  StrongholdBuildingVO.prototype.parseXmlNode = function (t) {
-    e.prototype.parseXmlNode.call(this, t);
-    this._hiddenSoldiersSpace = l.int(u.CastleXMLUtils.getIntAttribute("hiddenSoldiersSpace", t));
+  n.__extends(CastleTimedYesNoDialog, e);
+  CastleTimedYesNoDialog.prototype.initLoaded = function (t = null) {
+    this.timerField ||= this.textFieldManager.registerTextField(this.dialogDisp.txt_timer, new r.TextVO(""));
+    e.prototype.initLoaded.call(this, t);
   };
-  StrongholdBuildingVO.prototype.createInfoPanelItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Units, "dialog_stronghold_capacity", new r.LocalizedTextVO(o.GenericTextIds.VALUE_PROPORTIONAL_VALUE, [p.CastleModel.militaryData.strongholdUnitCount, p.CastleModel.militaryData.currentHiddenSoldierCapacity]));
-    e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    if (!d.SpecialServerHelper.isOnSpecialServer) {
-      e.addInfoItem(Library.CastleInterfaceElements.Icon_UnitAmount_Keep, "unitsInCourtyard_limit_player_tooltip", new s.LocalizedNumberVO(this.getEffectValue(h.EffectTypeEnum.EFFECT_TYPE_DEFENSE_UNIT_AMOUNT_YARD_BONUS).strength));
-    }
-    if (!d.SpecialServerHelper.isOnSpecialServer) {
-      e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_AllianceDefenseUnitAmountYardBonus, "allianceDefenseUnitAmount", new s.LocalizedNumberVO(this.getEffectValue(h.EffectTypeEnum.EFFECT_TYPE_ALLIANCE_DEFENSE_UNIT_AMOUNT_YARD_BONUS).strength));
-    }
+  CastleTimedYesNoDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    e.prototype.applyPropertiesLoaded.call(this, t);
+    this.timer = new c.CastleTimerComponent(this.timerField, this.bindFunction(this.getTimeString), this.timedDialogProperties.remainingTimeInSeconds);
+    this.timer.addEventListener(l.CastleTimerComponentEvent.TIMER_EXPIRED, this.bindFunction(this.onTimerExpired));
   };
-  StrongholdBuildingVO.prototype.createInfoDialogItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Units, "dialog_stronghold_capacity", new s.LocalizedNumberVO(this._hiddenSoldiersSpace), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    if (!d.SpecialServerHelper.isOnSpecialServer) {
-      e.addInfoItem(Library.CastleInterfaceElements.Icon_UnitAmount_Keep, "unitsInCourtyard_limit_player_tooltip", new s.LocalizedNumberVO(this.getEffectValue(h.EffectTypeEnum.EFFECT_TYPE_DEFENSE_UNIT_AMOUNT_YARD_BONUS).strength), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    }
-    if (!d.SpecialServerHelper.isOnSpecialServer) {
-      e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_AllianceDefenseUnitAmountYardBonus, "allianceDefenseUnitAmount", new s.LocalizedNumberVO(this.getEffectValue(h.EffectTypeEnum.EFFECT_TYPE_ALLIANCE_DEFENSE_UNIT_AMOUNT_YARD_BONUS).strength), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    }
+  CastleTimedYesNoDialog.prototype.getTimeString = function (e) {
+    return s.Localize.text(this.timedDialogProperties.timerTextID, [o.TimeStringHelper.getShortTimeStringBySeconds(e, o.TimeStringHelper.HOURS_MINUTES_SECONDS_FORMAT)]);
   };
-  Object.defineProperty(StrongholdBuildingVO.prototype, "hiddenSoldiersSpace", {
+  CastleTimedYesNoDialog.prototype.onTimerExpired = function (e) {
+    this.hide();
+  };
+  CastleTimedYesNoDialog.prototype.hideLoaded = function (t = null) {
+    if (!this.timer.isExpired()) {
+      this.timer.stop();
+    }
+    e.prototype.hideLoaded.call(this, t);
+  };
+  Object.defineProperty(CastleTimedYesNoDialog.prototype, "timedDialogProperties", {
     get: function () {
-      return this._hiddenSoldiersSpace;
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  return StrongholdBuildingVO;
-}(require("./65.js").AEffectBuildingVO);
-exports.StrongholdBuildingVO = g;
-a.classImplementsInterfaces(g, "IShopVO", "ICostVO", "IInventoryVO");
+  CastleTimedYesNoDialog.__initialize_static_members = function () {
+    CastleTimedYesNoDialog.NAME = "CastleTimedYesNoEx";
+  };
+  return CastleTimedYesNoDialog;
+}(require("./449.js").CastleLargeYesNoDialog);
+exports.CastleTimedYesNoDialog = u;
+a.classImplementsInterfaces(u, "ICollectableRendererList");
+u.__initialize_static_members();

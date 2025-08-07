@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function MCDCommand() {
+  function LFECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MCDCommand, e);
-  Object.defineProperty(MCDCommand.prototype, "cmdId", {
+  n.__extends(LFECommand, e);
+  Object.defineProperty(LFECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_MESSAGE_RESTRICTION;
+      return s.ClientConstSF.S2C_LOST_AND_FOUND_LIST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  MCDCommand.prototype.executeCommand = function (e, t) {
+  LFECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.messageData.parse_MCD(i);
+        r.CastleModel.lostAndFoundData.parse_LFE(i.lfe);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return MCDCommand;
+  return LFECommand;
 }(l.CastleCommand);
-exports.MCDCommand = c;
+exports.LFECommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

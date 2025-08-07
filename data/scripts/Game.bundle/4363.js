@@ -18,7 +18,7 @@ var _ = require("./167.js");
 var m = require("./244.js");
 var f = require("./249.js");
 var O = require("./4.js");
-var E = require("./1891.js");
+var E = require("./1893.js");
 var y = require("./184.js");
 var b = function (e) {
   function AllianceBattleGroundEventVO() {

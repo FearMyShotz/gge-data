@@ -1,66 +1,61 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
+var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./5.js");
+var s = require("./1.js");
+var r = require("./3.js");
 var l = require("./3.js");
-var c = require("./436.js");
-var u = require("./24.js");
-var d = function () {
-  function CastlePrivateResourceVillageRenderHelper() {}
-  CastlePrivateResourceVillageRenderHelper.renderVillage = function (e, t, i = 36, o = 30) {
-    var a = n.BasicModel.basicLoaderData.getVersionedItemAssetUrl("PrivateResourceVillage");
-    var r = new u.CastleGoodgameExternalClip("PrivateResourceVillage", a, null, 0, false);
-    s.MovieClipHelper.clearMovieClip(t);
-    t.addChild(r);
-    r.doWhenLoaded(function (t) {
-      t.currentshownDisplayObject.gotoAndStop(e + 1);
-      h.CastleMovieClipHelper.scaleWithAntiAliasing(t, i, o);
-    });
-    return r;
-  };
-  CastlePrivateResourceVillageRenderHelper.fillResourceBonus = function (e, t, i, n = 36, a = 30) {
-    CastlePrivateResourceVillageRenderHelper.textFieldManager.registerTextField(e.txt_resourceBonus, new l.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE_ADD, [i]));
-    s.MovieClipHelper.clearMovieClip(e.mc_iconHolder);
-    p.WodPicHelper.addIcon(CastlePrivateResourceVillageRenderHelper.getProductivityIconClass(t), e.mc_iconHolder, n, a);
-    e.mouseChildren = false;
-    e.toolTipText = CastlePrivateResourceVillageRenderHelper.getBonusToolTip(t);
-  };
-  CastlePrivateResourceVillageRenderHelper.getBonusToolTip = function (e) {
-    return c.ClientConstKingdom.getVillageTypeName(e).toLowerCase() + "Bonus";
-  };
-  CastlePrivateResourceVillageRenderHelper.getProductivityIconClass = function (e) {
-    switch (e) {
-      case r.WorldConst.VILLAGE_TYPE_WOOD:
-        return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourWood;
-      case r.WorldConst.VILLAGE_TYPE_STONE:
-        return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourStone;
-      case r.WorldConst.VILLAGE_TYPE_FOOD:
-        return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourFood;
-      case r.WorldConst.VILLAGE_TYPE_COAL:
-        return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourCoal;
-      case r.WorldConst.VILLAGE_TYPE_OIL:
-        return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourOliveoil;
-      case r.WorldConst.VILLAGE_TYPE_GLASS:
-        return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourGlass;
-      case r.WorldConst.VILLAGE_TYPE_IRON:
-        return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourIron;
-      default:
-        return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourWood;
-    }
-  };
-  Object.defineProperty(CastlePrivateResourceVillageRenderHelper, "textFieldManager", {
+var c = require("./3.js");
+var u = require("./16.js");
+var d = require("./4.js");
+var p = require("./97.js");
+var h = require("./33.js");
+var g = require("./285.js");
+var C = function (e) {
+  function WoodcutterBuildingVO() {
+    return e !== null && e.apply(this, arguments) || this;
+  }
+  n.__extends(WoodcutterBuildingVO, e);
+  Object.defineProperty(WoodcutterBuildingVO.prototype, "isBoostableBuilding", {
     get: function () {
-      return a.GoodgameTextFieldManager.getInstance();
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AResourceProductionBuildingVO.prototype, "isBoostableBuilding").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return CastlePrivateResourceVillageRenderHelper;
-}();
-exports.CastlePrivateResourceVillageRenderHelper = d;
-var p = require("./63.js");
-var h = require("./41.js");
+  Object.defineProperty(WoodcutterBuildingVO.prototype, "resourceType", {
+    get: function () {
+      return _.CollectableEnum.WOOD;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AResourceProductionBuildingVO.prototype, "resourceType").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  WoodcutterBuildingVO.prototype.createInfoPanelItems = function (e) {
+    var t = d.CastleModel.subscriptionData.isEffectTypeActive(h.EffectTypeEnum.EFFECT_TYPE_WOOD_PRODUCTION_BOOST);
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourWood, "basicProduktion", new l.LocalizedNumberVO(a.MathBase.round(this.getBaseProductionValue(), 1)), this.getInfoItemTextColor(p.CastleEffectEnum.WOODPRODUCTION));
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Forest, "utilization", new c.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [this.efficiency]));
+    e.addInfoItem(Library.CastleInterfaceElements.Icon_Productivity, "productivity", new c.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [Math.round(this.getBaseProductivityFactor() * 100)]), u.ClientConstColor.FONT_DEFAULT_COLOR, false, t);
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourWood, {
+      t: "xPerHour",
+      p: [r.Localize.text("wood")]
+    }, new l.LocalizedNumberVO(a.MathBase.round(this.getFinalProductionValue(), 1)), this.getInfoItemTextColor(p.CastleEffectEnum.UNBOOSTEDWOODPRODUCTION), false, t);
+    if (this.decoPoints > 0) {
+      e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new l.LocalizedNumberVO(this.decoPoints), this.getInfoItemTextColor(p.CastleEffectEnum.DECOPOINTS), true);
+    }
+  };
+  WoodcutterBuildingVO.prototype.createInfoDialogItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourWood, "woodproduction", new l.LocalizedNumberVO(this.resourceProductions.getAmountOrDefaultByType(this.resourceType)), u.ClientConstColor.FONT_DEFAULT_COLOR, true);
+  };
+  return WoodcutterBuildingVO;
+}(g.AResourceProductionBuildingVO);
+exports.WoodcutterBuildingVO = C;
+var _ = require("./12.js");
+s.classImplementsInterfaces(C, "IShopVO", "ICostVO", "IInventoryVO");

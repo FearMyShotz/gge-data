@@ -5,16 +5,16 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
+var r = require("./140.js");
 var l = require("./10.js");
 var c = function (e) {
-  function ARDCommand() {
+  function ANLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ARDCommand, e);
-  Object.defineProperty(ARDCommand.prototype, "cmdId", {
+  n.__extends(ANLCommand, e);
+  Object.defineProperty(ANLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ALLIANCE_REFUSE_DIPLOMACY;
+      return s.ClientConstSF.S2C_ALLIANCE_NEWSLETTER;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  ARDCommand.prototype.executeCommand = function (e, t) {
+  ANLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.allianceData.parseAllianceInfo(i.A);
-        break;
+        this.controller.dispatchEvent(new r.CastleMessageDataEvent(r.CastleMessageDataEvent.SENT_OK));
+        return true;
       default:
         this.showErrorDialog(e, t);
+        this.controller.dispatchEvent(new r.CastleMessageDataEvent(r.CastleMessageDataEvent.SENT_ERROR));
     }
     return false;
   };
-  return ARDCommand;
+  return ANLCommand;
 }(l.CastleCommand);
-exports.ARDCommand = c;
+exports.ANLCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

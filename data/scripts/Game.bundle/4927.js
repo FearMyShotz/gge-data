@@ -4,43 +4,35 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./7.js");
-var l = require("./560.js");
-var c = require("./4.js");
-var u = require("./10.js");
-var d = function (e) {
-  function BLDCommand() {
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function RMMCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BLDCommand, e);
-  Object.defineProperty(BLDCommand.prototype, "cmdId", {
+  n.__extends(RMMCommand, e);
+  Object.defineProperty(RMMCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_BATTLE_LOG_DETAIL;
+      return s.ClientConstSF.S2C_REFRESH_MERCENARY_MISSION;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  BLDCommand.prototype.executeCommand = function (e, t) {
+  RMMCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        var n = s.int(i.LID);
-        c.CastleModel.messageData.parseBattleLogDetail(i);
-        var o = c.CastleModel.messageData.getBattleLogById(n);
-        if (o) {
-          this.controller.dispatchEvent(new l.CastleLogDataEvent(l.CastleLogDataEvent.NEW_FULL_LOG, o));
-        }
         break;
       default:
         this.showErrorDialog(e, t);
+        r.CastleModel.mercenaryData.waitingForServer = false;
     }
     return false;
   };
-  return BLDCommand;
-}(u.CastleCommand);
-exports.BLDCommand = d;
-o.classImplementsInterfaces(d, "IExecCommand");
+  return RMMCommand;
+}(l.CastleCommand);
+exports.RMMCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

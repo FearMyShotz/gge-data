@@ -3,30 +3,60 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./18.js");
-var l = require("./263.js");
-var c = function (e) {
-  function RingMenuButtonFactionBarracks() {
+var a = require("./1033.js");
+var s = require("./303.js");
+var r = function (e) {
+  function FactionBarracksBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RingMenuButtonFactionBarracks, e);
-  RingMenuButtonFactionBarracks.prototype.init = function (t, i, n) {
-    e.prototype.init.call(this, t, i, n);
-    this._disp = i.btn_berimond_unit;
-    this._disp.visible = a.instanceOfClass(n, "FactionBarracksBuildingVE") && n.buildingVO.buildingState.isFunctionally;
+  n.__extends(FactionBarracksBuildingVE, e);
+  FactionBarracksBuildingVE.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    l.CastleComponent.controller.addEventListener(a.UnitPackageListEvent.PACKAGE_UPDATE, this.bindFunction(this.onPackageUpdate));
   };
-  RingMenuButtonFactionBarracks.prototype.onClick = function (e, t) {
-    u.CastleDialogHandler.getInstance().registerDefaultDialogs(d.CastleRecruitDialog, new l.CastleRecruitDialogProperties(r.ClientConstCastle.UNIT_CATEGORY_AUXILIARIES));
-    this.parent.hide();
+  FactionBarracksBuildingVE.prototype.removeEventListener = function () {
+    l.CastleComponent.controller.removeEventListener(a.UnitPackageListEvent.PACKAGE_UPDATE, this.bindFunction(this.onPackageUpdate));
+    e.prototype.removeEventListener.call(this);
   };
-  RingMenuButtonFactionBarracks.prototype.getInfoText = function () {
-    return s.Localize.text("hire");
+  FactionBarracksBuildingVE.prototype.createStatusIcons = function () {
+    e.prototype.createStatusIcons.call(this);
+    if (!this.statusIcons.isUpgradeIconActive) {
+      if (this.unitProductionBuildingVO.isProductive) {
+        this.statusIcons.addIcon(this.unitProductionBuildingVO.isFestivalActive ? u.IsoStatusIconEnum.PRODUCTIVE_FESTIVAL : u.IsoStatusIconEnum.PRODUCTIVE);
+      } else if (!this.buildingVO.buildingState.isUnderConstruction) {
+        this.statusIcons.addIcon(this.unitProductionBuildingVO.isFestivalActive ? u.IsoStatusIconEnum.UNPRODUCTIVE_FESTIVAL : u.IsoStatusIconEnum.UNPRODUCTIVE);
+      }
+    }
   };
-  return RingMenuButtonFactionBarracks;
-}(require("./1583.js").RingMenuButtonRecruit);
-exports.RingMenuButtonFactionBarracks = c;
-var u = require("./9.js");
-var d = require("./224.js");
-o.classImplementsInterfaces(c, "IRingMenuButton");
+  FactionBarracksBuildingVE.prototype.getRingMenuButtons = function () {
+    var t = e.prototype.getRingMenuButtons.call(this);
+    t.push(new c.RingMenuButtonFactionBarracks());
+    return t;
+  };
+  Object.defineProperty(FactionBarracksBuildingVE.prototype, "buildingGroundIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements.Icon_Recruit;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.AFactionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  FactionBarracksBuildingVE.prototype.onPackageUpdate = function (e) {
+    this.updateStatusIcon();
+  };
+  Object.defineProperty(FactionBarracksBuildingVE.prototype, "unitProductionBuildingVO", {
+    get: function () {
+      return this.vo;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return FactionBarracksBuildingVE;
+}(s.AFactionBuildingVE);
+exports.FactionBarracksBuildingVE = r;
+var l = require("./14.js");
+var c = require("./3017.js");
+var u = require("./177.js");
+o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

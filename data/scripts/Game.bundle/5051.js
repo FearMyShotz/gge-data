@@ -5,16 +5,16 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./53.js");
+var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function ABGPHCommand() {
+  function RCECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ABGPHCommand, e);
-  Object.defineProperty(ABGPHCommand.prototype, "cmdId", {
+  n.__extends(RCECommand, e);
+  Object.defineProperty(RCECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ABG_GET_POINT_HIGHSCORE;
+      return s.ClientConstSF.S2C_GET_ALIEN_REPLACE_COUNT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,20 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  ABGPHCommand.prototype.executeCommand = function (e, t) {
+  RCECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        if (r.ABGHelper.abgEvent) {
-          r.ABGHelper.abgEvent.parseOwnRanks(i);
-        }
+        r.CastleModel.alienRerollData.parse_RCE(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return ABGPHCommand;
+  return RCECommand;
 }(l.CastleCommand);
-exports.ABGPHCommand = c;
+exports.RCECommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

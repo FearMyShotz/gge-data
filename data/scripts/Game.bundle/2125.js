@@ -1,20 +1,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CastleWorldmapSectorUpdateVO(e = -1, t = 0) {
-    this.kingdomId = 0;
-    this.lastUpdate = 0;
-    this.status = CastleWorldmapSectorUpdateVO.STATUS_INITIAL;
-    this.kingdomId = e;
-    this.lastUpdate = t;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SGetFactionPointsVO() {
+    return e.call(this) || this;
   }
-  CastleWorldmapSectorUpdateVO.__initialize_static_members = function () {
-    CastleWorldmapSectorUpdateVO.STATUS_INITIAL = 0;
-    CastleWorldmapSectorUpdateVO.STATUS_INITIAL_GAA_PENDING = 1;
-    CastleWorldmapSectorUpdateVO.STATUS_READY_FOR_RENDERING = 2;
+  n.__extends(C2SGetFactionPointsVO, e);
+  C2SGetFactionPointsVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_GET_FACTION_POINTS;
   };
-  return CastleWorldmapSectorUpdateVO;
-}();
-exports.CastleWorldmapSectorUpdateVO = n;
-n.__initialize_static_members();
+  return C2SGetFactionPointsVO;
+}(o.BasicCommandVO);
+exports.C2SGetFactionPointsVO = s;

@@ -5,35 +5,33 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function GATCommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function ATCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GATCommand, e);
-  Object.defineProperty(GATCommand.prototype, "cmdId", {
+  n.__extends(ATCCommand, e);
+  Object.defineProperty(ATCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_ALLIANCE_TOPICS;
+      return s.ClientConstSF.S2C_ALLIANCE_TOPIC_CREATE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  GATCommand.prototype.executeCommand = function (e, t) {
+  ATCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.castleForumData.parseGAT(i);
+        JSON.parse(t[1]);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GATCommand;
-}(l.CastleCommand);
-exports.GATCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return ATCCommand;
+}(r.CastleCommand);
+exports.ATCCommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

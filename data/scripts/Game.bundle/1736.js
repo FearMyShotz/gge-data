@@ -2,34 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./88.js");
-var s = require("./116.js");
-var r = function (e) {
-  function CastlePaymentRewardSpecialOfferBlackFridayDialog() {
-    return e.call(this, CastlePaymentRewardSpecialOfferBlackFridayDialog.NAME) || this;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SOneTimeOfferCancelled(t) {
+    var i = this;
+    i.OID = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).OID = t;
+    return i;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferBlackFridayDialog, e);
-  CastlePaymentRewardSpecialOfferBlackFridayDialog.prototype.setTextIDs = function () {
-    e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_blackFriday_title";
-    this.descriptionTextID = "dialog_primeday_blackFriday_description";
+  n.__extends(C2SOneTimeOfferCancelled, e);
+  C2SOneTimeOfferCancelled.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_ONE_TIME_OFFER_CANCELLED;
   };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferBlackFridayDialog.prototype, "skinType", {
-    get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_BLACK_FRIDAY;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastlePaymentRewardSpecialOfferBlackFridayDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferBlackFridayDialog.NAME = "CastlePaymentRewardSpecialOfferBlackFriday";
-  };
-  return CastlePaymentRewardSpecialOfferBlackFridayDialog;
-}(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferBlackFridayDialog = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList");
-r.__initialize_static_members();
+  return C2SOneTimeOfferCancelled;
+}(o.BasicCommandVO);
+exports.C2SOneTimeOfferCancelled = s;

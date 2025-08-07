@@ -7,13 +7,13 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./10.js");
 var l = function (e) {
-  function KBPCommand() {
+  function BEPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(KBPCommand, e);
-  Object.defineProperty(KBPCommand.prototype, "cmdId", {
+  n.__extends(BEPCommand, e);
+  Object.defineProperty(BEPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_BUY_SEASON_PASS;
+      return s.ClientConstSF.S2C_BUY_SEASON_PASS_EVENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -21,19 +21,19 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  KBPCommand.prototype.executeCommand = function (e, t) {
+  BEPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        c.CastleBasicController.getInstance().dispatchEvent(new u.SeasonLeagueEvent(u.SeasonLeagueEvent.ON_PASS_SEASON_BOUGHT));
+        c.CastleBasicController.getInstance().dispatchEvent(new u.SeasonLeagueEvent(u.SeasonLeagueEvent.ON_PASS_EVENT_BOUGHT));
         return true;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return KBPCommand;
+  return BEPCommand;
 }(r.CastleCommand);
-exports.KBPCommand = l;
+exports.BEPCommand = l;
 var c = require("./15.js");
 var u = require("./174.js");
 o.classImplementsInterfaces(l, "IExecCommand");

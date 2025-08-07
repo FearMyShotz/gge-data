@@ -2,73 +2,99 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./12.js");
-var s = require("./74.js");
-var r = require("./84.js");
-var l = require("./52.js");
-var c = function (e) {
-  function ModernPackageShopResourceTipEnum(t, i, n, a) {
-    var s = e.call(this, t.type.name + "_" + t.id, o.BasicEnum.instantiationKey) || this;
-    s._worldmapObjectFrame = 0;
-    s._typeVO = t;
-    s._titleTextId = i;
-    s._descTextId = n;
-    s._worldmapObjectFrame = a;
-    return s;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./12.js");
+var l = require("./45.js");
+var c = require("./31.js");
+var u = require("./19.js");
+var d = require("./13.js");
+var p = require("./52.js");
+var h = require("./8.js");
+var g = require("./25.js");
+var C = require("./11.js");
+var _ = require("./985.js");
+var m = createjs.Point;
+var f = require("./36.js");
+var O = function (e) {
+  function ModernPackageShopResourceTipDialog() {
+    return e.call(this, ModernPackageShopResourceTipDialog.NAME) || this;
   }
-  n.__extends(ModernPackageShopResourceTipEnum, e);
-  ModernPackageShopResourceTipEnum.getTypeByVO = function (e) {
-    for (var t = 0, i = r.CastleEnum.getEnumListByClass(ModernPackageShopResourceTipEnum); t < i.length; t++) {
-      var n = i[t];
-      if (n.typeVO.isSameAs(e)) {
-        return n;
-      }
+  n.__extends(ModernPackageShopResourceTipDialog, e);
+  ModernPackageShopResourceTipDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    h.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok], f.ClickFeedbackButton);
+  };
+  ModernPackageShopResourceTipDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.updateDialog();
+  };
+  ModernPackageShopResourceTipDialog.prototype.updateDialog = function () {
+    this.dialogDisp.mc_arrow.visible = false;
+    this.dialogDisp.mc_worldmapObject.visible = false;
+    this.dialogDisp.mc_currency0.visible = false;
+    this.dialogDisp.mc_currency1.visible = false;
+    this.destroyCollectableRenderList();
+    if (this.dialogProperties.relevantCurrencyTypes.length >= 2) {
+      this.setCurrencyByMultiple();
+    } else if (this.dialogProperties.relevantCurrencyTypes.length == 1) {
+      this.setCurrencyBySingle();
     }
-    return ModernPackageShopResourceTipEnum.NONE;
   };
-  Object.defineProperty(ModernPackageShopResourceTipEnum.prototype, "typeVO", {
-    get: function () {
-      return this._typeVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ModernPackageShopResourceTipEnum.prototype, "titleTextId", {
-    get: function () {
-      return this._titleTextId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ModernPackageShopResourceTipEnum.prototype, "descTextId", {
-    get: function () {
-      return this._descTextId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ModernPackageShopResourceTipEnum.prototype, "worldmapObjectFrame", {
-    get: function () {
-      return this._worldmapObjectFrame;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ModernPackageShopResourceTipEnum.__initialize_static_members = function () {
-    ModernPackageShopResourceTipEnum.NONE = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(), "", "", 1);
-    ModernPackageShopResourceTipEnum.AQUAMARINE = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(a.CollectableEnum.AQUAMARINE), "dialog_eiland_aquamarinShop_noAquamarin_header", "dialog_eiland_aquamarinShop_noAquamarin_description", 4);
-    ModernPackageShopResourceTipEnum.KHAN_TABLET = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(a.CollectableEnum.GENERIC_CURRENCY, l.ClientConstCurrency.ID_KHAN_TABLET), "dialog_nomadInvasion_tip_title", "dialog_nomadInvasion_tip_description", 1);
-    ModernPackageShopResourceTipEnum.SKULL_RELIC = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(a.CollectableEnum.GENERIC_CURRENCY, l.ClientConstCurrency.ID_SKULL_RELIC), "dialog_thornking_tip_title", "dialog_thornking_tip_description", 2);
-    ModernPackageShopResourceTipEnum.PEARL_RELIC = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(a.CollectableEnum.GENERIC_CURRENCY, l.ClientConstCurrency.ID_PEARL_RELIC), "dialog_seaqueen_tip_title", "dialog_seaqueen_tip_description", 3);
-    ModernPackageShopResourceTipEnum.GREEN_SKULL_RELIC = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(a.CollectableEnum.GENERIC_CURRENCY, l.ClientConstCurrency.ID_GREEN_SKULL_RELIC), "dialog_thornking_tip_greenSkull_title", "dialog_thornking_tip_greenSkull_description", 2);
-    ModernPackageShopResourceTipEnum.SAMURAI_TOKEN = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(a.CollectableEnum.GENERIC_CURRENCY, l.ClientConstCurrency.ID_SAMURAI_TOKEN), "dialog_samuraiShop_tip_title", "dialog_samuraiShop_tip_description", 6);
-    ModernPackageShopResourceTipEnum.SILVER_RUNE = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(a.CollectableEnum.GENERIC_CURRENCY, l.ClientConstCurrency.ID_SILVER_RUNE), "dialog_underworld_tip_title_dummy", "dialog_underworld_tip_description", 7);
-    ModernPackageShopResourceTipEnum.GOLD_RUNE = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(a.CollectableEnum.GENERIC_CURRENCY, l.ClientConstCurrency.ID_GOLD_RUNE), "dialog_underworld_tip_gold_title", "dialog_underworld_tip2_description", 8);
-    ModernPackageShopResourceTipEnum.KHAN_MEDAL = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(a.CollectableEnum.GENERIC_CURRENCY, l.ClientConstCurrency.ID_KHAN_MEDAL), "dialog_notEnoughCurrency_title", "dialog_notEnoughCurrency_desc_khanMedals", 10);
-    ModernPackageShopResourceTipEnum.SAMURAI_MEDAL = new ModernPackageShopResourceTipEnum(new s.CollectableTypeVO(a.CollectableEnum.GENERIC_CURRENCY, l.ClientConstCurrency.ID_SAMURAI_MEDAL), "dialog_notEnoughCurrency_title", "dialog_notEnoughCurrency_samuraiMedal_desc", 5);
+  ModernPackageShopResourceTipDialog.prototype.setCurrencyByMultiple = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.TextVO(d.TextHelper.toUpperCaseLocaSafeTextId("dialog_notEnoughCurrency_title"))).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new s.LocalizedTextVO(this.getDescTextIdByMultiple()));
+    for (var e = 0; e < ModernPackageShopResourceTipDialog.MAX_CURRENCIES_TO_SHOW; ++e) {
+      this.addCurrencyIcon(this.dialogDisp.getChildByName("mc_currency" + e), this.dialogProperties.relevantCurrencyTypes[e]);
+    }
   };
-  return ModernPackageShopResourceTipEnum;
-}(r.CastleEnum);
-exports.ModernPackageShopResourceTipEnum = c;
-c.__initialize_static_members();
+  ModernPackageShopResourceTipDialog.prototype.setCurrencyBySingle = function () {
+    var e = this.dialogProperties.relevantCurrencyTypes[0];
+    var t = _.ModernPackageShopResourceTipEnum.getTypeByVO(e);
+    this.dialogDisp.mc_arrow.visible = true;
+    this.dialogDisp.mc_worldmapObject.visible = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.TextVO(d.TextHelper.toUpperCaseLocaSafeTextId(t.titleTextId))).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new s.LocalizedTextVO(t.descTextId));
+    this.dialogDisp.mc_worldmapObject.gotoAndStop(t.worldmapObjectFrame);
+    this.addCurrencyIcon(this.dialogDisp.mc_currency1, e);
+  };
+  ModernPackageShopResourceTipDialog.prototype.addCurrencyIcon = function (e, t) {
+    var i = new u.CollectableRenderOptions(u.CollectableRenderOptions.SET_ICON, ModernPackageShopResourceTipDialog.CURRENCY_ICON_DIMENSION);
+    i.tooltip.useAmount = false;
+    g.CollectableRenderHelper.displaySingleItemComplete(this, new c.CollectableRenderClips(e), l.CollectableHelper.createVO(t.type, 1, t.id), i);
+  };
+  ModernPackageShopResourceTipDialog.prototype.getDescTextIdByMultiple = function () {
+    var e = this.dialogProperties.relevantCurrencyTypes[0];
+    var t = this.dialogProperties.relevantCurrencyTypes[1];
+    if (e.type == r.CollectableEnum.GENERIC_CURRENCY && e.id == p.ClientConstCurrency.ID_SAMURAI_TOKEN && t.type == r.CollectableEnum.GENERIC_CURRENCY && t.id == p.ClientConstCurrency.ID_SAMURAI_MEDAL) {
+      return "dialog_notEnoughCurrency_samuraiMedalAndTokens_desc";
+    } else {
+      return "dialog_notEnoughCurrency_generic_multiCurrency_desc";
+    }
+  };
+  ModernPackageShopResourceTipDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+      case this.dialogDisp.btn_ok:
+        this.hide();
+    }
+  };
+  Object.defineProperty(ModernPackageShopResourceTipDialog.prototype, "dialogProperties", {
+    get: function () {
+      return this.properties;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ModernPackageShopResourceTipDialog.__initialize_static_members = function () {
+    ModernPackageShopResourceTipDialog.CURRENCY_ICON_DIMENSION = new m(100, 100);
+  };
+  ModernPackageShopResourceTipDialog.NAME = "ModernPackageShopResourceTip";
+  ModernPackageShopResourceTipDialog.MAX_CURRENCIES_TO_SHOW = 2;
+  return ModernPackageShopResourceTipDialog;
+}(C.CastleExternalDialog);
+exports.ModernPackageShopResourceTipDialog = O;
+o.classImplementsInterfaces(O, "ICollectableRendererList");
+O.__initialize_static_members();

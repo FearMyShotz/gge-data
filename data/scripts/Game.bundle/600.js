@@ -2,16 +2,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SGetGemInventory() {
-    return e.call(this) || this;
+var o = function (e) {
+  function CastleFacebookSDKEvent(t, i = null, n = false, o = false) {
+    var a = e.call(this, t, n, o) || this;
+    a.authResponse = i;
+    return a;
   }
-  n.__extends(C2SGetGemInventory, e);
-  C2SGetGemInventory.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_GEMS_EVENT;
-  };
-  return C2SGetGemInventory;
-}(o.BasicCommandVO);
-exports.C2SGetGemInventory = s;
+  n.__extends(CastleFacebookSDKEvent, e);
+  CastleFacebookSDKEvent.CONNECTED = "connected";
+  CastleFacebookSDKEvent.NOT_AUTHORIZED = "notAuthorized";
+  CastleFacebookSDKEvent.NOT_CONNECTED = "notConnected";
+  CastleFacebookSDKEvent.LOGGED_OUT = "loggedOut";
+  return CastleFacebookSDKEvent;
+}(createjs.Event);
+exports.CastleFacebookSDKEvent = o;

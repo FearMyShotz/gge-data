@@ -10,7 +10,7 @@ var l = require("./21.js");
 var c = require("./26.js");
 var u = require("./4.js");
 var d = require("./27.js");
-var p = require("./815.js");
+var p = require("./817.js");
 var h = require("./4381.js");
 var g = createjs.Point;
 var C = function (e) {
@@ -119,7 +119,7 @@ var C = function (e) {
 exports.CastleArtifactEventDialog = C;
 var _ = require("./400.js");
 var m = require("./11.js");
-var f = require("./1749.js");
+var f = require("./1751.js");
 var O = require("./4382.js");
 a.classImplementsInterfaces(C, "ICollectableRendererList");
 C.__initialize_static_members();

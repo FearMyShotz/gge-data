@@ -2,21 +2,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
+var o = require("./2.js");
+var a = require("./1.js");
 var s = require("./5.js");
-var r = require("./7.js");
-var l = require("./1576.js");
-var c = require("./15.js");
+var r = require("./6.js");
+var l = require("./7.js");
+var c = require("./4.js");
 var u = require("./10.js");
 var d = function (e) {
-  function DRICommand() {
+  function QSTCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DRICommand, e);
-  Object.defineProperty(DRICommand.prototype, "cmdId", {
+  n.__extends(QSTCommand, e);
+  Object.defineProperty(QSTCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_DUPLICATE_RECRUITMENT_INFO;
+      return l.ClientConstSF.S2C_QUEST_START;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -24,29 +24,24 @@ var d = function (e) {
     enumerable: true,
     configurable: true
   });
-  DRICommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        c.CastleBasicController.getInstance().dispatchEvent(new l.AutoRecruitmentInfoEvent(l.AutoRecruitmentInfoEvent.ON_DUPLICATE_RECRUITMENT_INFO, true, i));
+  QSTCommand.prototype.exec = function (e) {
+    var t = r.int(e[0]);
+    var i = e[1];
+    switch (t) {
+      case s.ERROR.ALL_OK:
+        for (var n = 0, a = JSON.parse(i[1]).QIDS; n < a.length; n++) {
+          var l = a[n];
+          if (l) {
+            o.ClientFunnelTrackingController.getInstance().trackState("quest_QuestID_" + l);
+            c.CastleModel.questData.startQuest(l);
+          }
+        }
         break;
       default:
-        this.showErrorDialog(e, t);
-        c.CastleBasicController.getInstance().dispatchEvent(new l.AutoRecruitmentInfoEvent(l.AutoRecruitmentInfoEvent.ON_DUPLICATE_RECRUITMENT_INFO, false, null));
-    }
-    return false;
-  };
-  DRICommand.prototype.getDialogClassByListId = function (e) {
-    switch (e) {
-      case s.UnitProductionConst.TOOLS_LIST:
-        return p.AutoRecruitmentCopyToolsDialog;
-      default:
-        return h.AutoRecruitmentCopyUnitsDialog;
+        this.showErrorDialog(t, i);
     }
   };
-  return DRICommand;
+  return QSTCommand;
 }(u.CastleCommand);
-exports.DRICommand = d;
-var p = require("./1574.js");
-var h = require("./1579.js");
-o.classImplementsInterfaces(d, "IExecCommand");
+exports.QSTCommand = d;
+a.classImplementsInterfaces(d, "IExecCommand");

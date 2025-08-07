@@ -1,55 +1,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CastleLegendEffectTextComposer() {}
-  CastleLegendEffectTextComposer.composeLegendSkillBonuses = function (e) {
-    var t = [];
-    if (e != null) {
-      for (var i = 0, n = e; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          t.push(a.CastleModel.legendSkillData.getSkillByID(o));
-        }
-      }
-    }
-    return CastleLegendEffectTextComposer.composeEffectsText(t);
+var n = require("./0.js");
+var o = function (e) {
+  function CastleFightDataEvent(t, i = null, n = true, o = false) {
+    var a = this;
+    CONSTRUCTOR_HACK;
+    (a = e.call(this, t, n, o) || this).params = i;
+    return a;
+  }
+  n.__extends(CastleFightDataEvent, e);
+  CastleFightDataEvent.__initialize_static_members = function () {
+    CastleFightDataEvent.NEW_TOOL_BOUGHT = "newtoolbought";
   };
-  CastleLegendEffectTextComposer.composeEffectsText = function (e) {
-    var t;
-    var i;
-    var n = "";
-    var s = new Map();
-    for (var r = 0, l = e; r < l.length; r++) {
-      t = l[r];
-      i = o.Localize.text(t.shortDescriptionTextID);
-      if (s.get(i) == undefined) {
-        s.set(i, [t.shortDescriptionTextID, a.CastleModel.legendSkillData.getTotalSkillValue(t)]);
-      } else {
-        s.set(i, [s.get(i)[0], s.get(i)[1] + a.CastleModel.legendSkillData.getTotalSkillValue(t)]);
-      }
-    }
-    if (s != null) {
-      for (var c = 0, u = Array.from(s.keys()); c < u.length; c++) {
-        if ((i = u[c]) !== undefined) {
-          n += o.Localize.text(s.get(i)[0], [s.get(i)[1]]) + "\n";
-        }
-      }
-    }
-    return n;
-  };
-  CastleLegendEffectTextComposer.getLegendBonusText = function (e) {
-    var t = "";
-    if (e) {
-      t += CastleLegendEffectTextComposer.composeLegendSkillBonuses(e);
-    }
-    if (t.length > 0) {
-      t = o.Localize.text("dialog_battleLog_legendTemple_tooltip_header") + "\n" + t;
-    }
-    return t;
-  };
-  return CastleLegendEffectTextComposer;
-}();
-exports.CastleLegendEffectTextComposer = n;
-var o = require("./3.js");
-var a = require("./4.js");
+  return CastleFightDataEvent;
+}(createjs.Event);
+exports.CastleFightDataEvent = o;
+o.__initialize_static_members();

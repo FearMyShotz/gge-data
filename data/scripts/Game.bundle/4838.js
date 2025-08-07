@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function EEQCommand() {
+  function CGECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(EEQCommand, e);
-  Object.defineProperty(EEQCommand.prototype, "cmdId", {
+  n.__extends(CGECommand, e);
+  Object.defineProperty(CGECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_EQUIP_EQUIPMENT;
+      return s.ClientConstSF.S2C_CRAFT_GEM;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,17 +22,21 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  EEQCommand.prototype.executeCommand = function (e, t) {
+  CGECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        r.CastleModel.equipData.parse_EEQ();
+        var i = JSON.parse(t[1]);
+        r.CastleModel.gemData.parse_CGE(i);
+        r.CastleModel.equipData.parse_ESL(i.esl);
+        r.CastleModel.gemData.parse_ESL(i.esl);
         break;
       default:
-        r.CastleModel.equipData.error_EEQ(e);
+        this.showErrorDialog(e, t);
+        r.CastleModel.gemData.cgeError();
     }
     return false;
   };
-  return EEQCommand;
+  return CGECommand;
 }(l.CastleCommand);
-exports.EEQCommand = c;
+exports.CGECommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

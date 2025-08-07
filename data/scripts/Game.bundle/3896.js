@@ -2,14 +2,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleLocaToolProperties(t, i) {
-    var n = e.call(this) || this;
-    n.textId = t;
-    n.params = i;
-    return n;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SSetPasswordForSocialLoginMigrationVO(t) {
+    var i = e.call(this) || this;
+    i.NPW = t;
+    return i;
   }
-  n.__extends(CastleLocaToolProperties, e);
-  return CastleLocaToolProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleLocaToolProperties = o;
+  n.__extends(C2SSetPasswordForSocialLoginMigrationVO, e);
+  C2SSetPasswordForSocialLoginMigrationVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_SET_PASSWORD_FOR_SOCIAL_LOGIN_MIGRATION;
+  };
+  return C2SSetPasswordForSocialLoginMigrationVO;
+}(o.BasicCommandVO);
+exports.C2SSetPasswordForSocialLoginMigrationVO = s;

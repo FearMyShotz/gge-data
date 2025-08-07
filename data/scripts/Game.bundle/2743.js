@@ -2,148 +2,76 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./55.js");
+var o = require("./6.js");
 var a = require("./451.js");
-var s = require("./631.js");
+var s = require("./632.js");
 var r = createjs.Point;
 var l = function (e) {
-  function IsoGeneratorDefenceCommon() {
-    return e !== null && e.apply(this, arguments) || this;
+  function IsoGeneratorDefenceWall() {
+    var t = this;
+    t._collisionList = [];
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(IsoGeneratorDefenceCommon, e);
-  IsoGeneratorDefenceCommon.prototype.execute = function () {
-    var e;
-    var t;
-    var i = [];
-    var n = [];
-    for (var o = 0, a = this.parentGenerator.grounds; o < a.length; o++) {
-      if ((e = a[o]).rotatedWidth == 20 && e.rotatedHeight == 20) {
-        i.push(new r(e.x, e.y + 10 - 1));
-        i.push(new r(e.x2, e.y + 10 - 1));
-        i.push(new r(e.x + 10 - 1, e.y));
-        i.push(new r(e.x + 10 - 1, e.y2));
-        i.push(new r(e.x, e.y + 10));
-        i.push(new r(e.x2, e.y + 10));
-        i.push(new r(e.x + 10, e.y));
-        i.push(new r(e.x + 10, e.y2));
-      }
-      i.push(new r(e.x, e.y));
-      i.push(new r(e.x, e.y2));
-      i.push(new r(e.x2, e.y));
-      i.push(new r(e.x2, e.y2));
-      n.push(new r(e.x, e.y));
-      n.push(new r(e.x, e.y2));
-      n.push(new r(e.x2, e.y));
-      n.push(new r(e.x2, e.y2));
-    }
-    for (var s = 0, l = this.parentGenerator.grounds; s < l.length; s++) {
-      if ((e = l[s]).rotatedWidth != 20 || e.rotatedHeight != 20) {
-        if (e.rotatedWidth > e.rotatedHeight) {
-          i.push(new r(e.x + 10, e.y));
-          i.push(new r(e.x + 10, e.y2));
-        } else {
-          i.push(new r(e.x, e.y + 10));
-          i.push(new r(e.x2, e.y + 10));
+  n.__extends(IsoGeneratorDefenceWall, e);
+  IsoGeneratorDefenceWall.prototype.execute = function () {
+    this.initCollisionList();
+    for (var e = 0, t = this.parentGenerator.grounds; e < t.length; e++) {
+      var i = t[e];
+      if (i !== undefined) {
+        for (var n = o.int(i.x); n <= i.x2; ++n) {
+          this.addPossiblePositionToList(new r(n, i.y));
+          this.addPossiblePositionToList(new r(n, i.y2));
+        }
+        for (var a = o.int(i.y); a <= i.y2; ++a) {
+          this.addPossiblePositionToList(new r(i.x, a));
+          this.addPossiblePositionToList(new r(i.x2, a));
         }
       }
     }
-    i.sort(IsoGeneratorDefenceCommon.sortByViewDistanceFunc);
-    n.sort(IsoGeneratorDefenceCommon.sortByViewDistanceFunc);
-    for (var c = 0, u = i; c < u.length; c++) {
-      t = u[c];
-      this.addPossiblePositionToList(this.parentGenerator.result.outerCorners, this.bindFunction(this.getPossibleOuterCornerPosition), t);
-    }
-    for (var d = 0, p = i; d < p.length; d++) {
-      t = p[d];
-      this.addPossiblePositionToList(this.parentGenerator.result.innerCorners, this.bindFunction(this.getPossibleInnerCornerPosition), t);
-    }
-    for (var h = 0, g = i; h < g.length; h++) {
-      t = g[h];
-      this.addPossiblePositionToList(this.parentGenerator.result.sides, this.bindFunction(this.getPossibleSidePosition), t);
-    }
-    for (var C = 0, _ = n; C < _.length; C++) {
-      t = _[C];
-      this.addPossiblePositionToList(this.parentGenerator.result.groundCornerSides, this.bindFunction(this.getPossibleSidePosition), t);
-    }
   };
-  IsoGeneratorDefenceCommon.sortByViewDistanceFunc = function (e, t) {
-    return o.ClientConstUtils.distanceSquared(c.IsoConst.Z_SORT_LOOK_POINT, e) - o.ClientConstUtils.distanceSquared(c.IsoConst.Z_SORT_LOOK_POINT, t);
+  IsoGeneratorDefenceWall.prototype.cleanup = function () {
+    this._collisionList.length = 0;
   };
-  IsoGeneratorDefenceCommon.prototype.addPossiblePositionToList = function (e, t, i) {
-    var n = t(i);
-    if (n) {
-      e.push(n);
-    }
+  IsoGeneratorDefenceWall.prototype.initCollisionList = function () {
+    this._collisionList = this.parentGenerator.result.necessaryTowers.concat(this.parentGenerator.result.emptyTowers);
+    this._collisionList.push(this.parentGenerator.result.gate);
   };
-  IsoGeneratorDefenceCommon.prototype.getPossibleOuterCornerPosition = function (e) {
-    var t = -1;
-    if (this.map[e.y][e.x].hasGround) {
-      if (this.map[e.y + 1][e.x].hasGround || this.map[e.y + 1][e.x - 1].hasGround || this.map[e.y][e.x - 1].hasGround) {
-        if (this.map[e.y - 1][e.x].hasGround || this.map[e.y - 1][e.x - 1].hasGround || this.map[e.y][e.x - 1].hasGround) {
-          if (this.map[e.y - 1][e.x].hasGround || this.map[e.y - 1][e.x + 1].hasGround || this.map[e.y][e.x + 1].hasGround) {
-            if (!this.map[e.y + 1][e.x].hasGround && !this.map[e.y + 1][e.x + 1].hasGround && !this.map[e.y][e.x + 1].hasGround) {
-              t = 0;
-            }
-          } else {
-            t = 2;
+  IsoGeneratorDefenceWall.prototype.addPossiblePositionToList = function (e) {
+    var t = this.getWallPositions(e);
+    if (t && t != null) {
+      for (var i = 0, n = t; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          if (!this.isCollidingWithAnyOtherPosition(this._collisionList, o)) {
+            this._collisionList.push(o);
+            this.parentGenerator.result.walls.push(o);
           }
-        } else {
-          t = 3;
         }
-      } else {
-        t = 1;
       }
     }
-    if (t >= 0) {
-      return new a.IsoDefencePosition(e, t);
-    } else {
-      return null;
-    }
   };
-  IsoGeneratorDefenceCommon.prototype.getPossibleInnerCornerPosition = function (e) {
-    var t = -1;
-    var i = e;
-    if (this.map[e.y][e.x].hasGround) {
-      if (this.map[e.y - 1][e.x].hasGround && this.map[e.y][e.x + 1].hasGround && !this.map[e.y - 1][e.x + 1].hasGround) {
-        t = 2;
-      } else if (this.map[e.y + 1][e.x].hasGround && this.map[e.y][e.x + 1].hasGround && !this.map[e.y + 1][e.x + 1].hasGround) {
-        t = 0;
-      } else if (this.map[e.y][e.x - 1].hasGround && this.map[e.y + 1][e.x - 1].hasGround && !this.map[e.y + 1][e.x].hasGround) {
-        i = new r(e.x - 1, e.y);
-        t = 0;
-      } else if (this.map[e.y + 1][e.x].hasGround && this.map[e.y][e.x - 1].hasGround && !this.map[e.y + 1][e.x - 1].hasGround) {
-        t = 1;
-      } else if (this.map[e.y - 1][e.x].hasGround && this.map[e.y][e.x - 1].hasGround && !this.map[e.y - 1][e.x - 1].hasGround) {
-        t = 3;
-      }
+  IsoGeneratorDefenceWall.prototype.getWallPositions = function (e) {
+    var t;
+    var i;
+    if (!!this.map[e.y][e.x].hasGround && !this.map[e.y][e.x - 1].hasGround && !this.map[e.y][e.x - 2].hasGround) {
+      i = new r(e.x - 1, e.y);
+      t = this.addPosToListOrCreateOne(t, new a.IsoDefencePosition(i, 3, new r(2, 1), new r(i.x - 2, i.y)));
     }
-    if (t >= 0) {
-      return new a.IsoDefencePosition(i, t);
-    } else {
-      return null;
+    if (!!this.map[e.y][e.x].hasGround && !this.map[e.y + 1][e.x].hasGround && !this.map[e.y + 2][e.x].hasGround) {
+      i = new r(e.x, e.y + 1);
+      t = this.addPosToListOrCreateOne(t, new a.IsoDefencePosition(i, 1, new r(1, 2)));
     }
+    if (!!this.map[e.y][e.x].hasGround && !this.map[e.y - 1][e.x].hasGround && !this.map[e.y - 2][e.x].hasGround) {
+      i = new r(e.x, e.y - 1);
+      t = this.addPosToListOrCreateOne(t, new a.IsoDefencePosition(i, 2, new r(1, 3), new r(i.x, i.y - 1)));
+    }
+    if (!!this.map[e.y][e.x].hasGround && !this.map[e.y][e.x + 1].hasGround && !this.map[e.y][e.x + 2].hasGround) {
+      i = new r(e.x + 1, e.y);
+      t = this.addPosToListOrCreateOne(t, new a.IsoDefencePosition(i, 0, new r(3, 1)));
+    }
+    return t;
   };
-  IsoGeneratorDefenceCommon.prototype.getPossibleSidePosition = function (e) {
-    var t = -1;
-    if (this.map[e.y][e.x].hasGround && this.map[e.y][e.x - 1].hasGround && this.map[e.y][e.x + 1].hasGround && this.map[e.y - 1][e.x].hasGround && this.map[e.y - 1][e.x - 1].hasGround && this.map[e.y - 1][e.x + 1].hasGround && !this.map[e.y + 1][e.x].hasGround && !this.map[e.y + 1][e.x - 1].hasGround && !this.map[e.y + 1][e.x + 1].hasGround) {
-      t = 1;
-    }
-    if (this.map[e.y][e.x].hasGround && this.map[e.y + 1][e.x].hasGround && this.map[e.y - 1][e.x].hasGround && this.map[e.y][e.x - 1].hasGround && this.map[e.y - 1][e.x - 1].hasGround && this.map[e.y + 1][e.x - 1].hasGround && !this.map[e.y][e.x + 1].hasGround && !this.map[e.y + 1][e.x + 1].hasGround && !this.map[e.y - 1][e.x + 1].hasGround) {
-      t = 0;
-    }
-    if (this.map[e.y][e.x].hasGround && this.map[e.y][e.x - 1].hasGround && this.map[e.y][e.x + 1].hasGround && this.map[e.y + 1][e.x].hasGround && this.map[e.y + 1][e.x - 1].hasGround && this.map[e.y + 1][e.x + 1].hasGround && !this.map[e.y - 1][e.x].hasGround && !this.map[e.y - 1][e.x - 1].hasGround && !this.map[e.y - 1][e.x + 1].hasGround) {
-      t = 3;
-    }
-    if (this.map[e.y][e.x].hasGround && this.map[e.y + 1][e.x].hasGround && this.map[e.y - 1][e.x].hasGround && this.map[e.y][e.x + 1].hasGround && this.map[e.y - 1][e.x + 1].hasGround && this.map[e.y + 1][e.x + 1].hasGround && !this.map[e.y][e.x - 1].hasGround && !this.map[e.y + 1][e.x - 1].hasGround && !this.map[e.y - 1][e.x - 1].hasGround) {
-      t = 2;
-    }
-    if (t >= 0) {
-      return new a.IsoDefencePosition(e, t);
-    } else {
-      return null;
-    }
-  };
-  return IsoGeneratorDefenceCommon;
+  return IsoGeneratorDefenceWall;
 }(s.AIsoGeneratorDefenceComponent);
-exports.IsoGeneratorDefenceCommon = l;
-var c = require("./144.js");
+exports.IsoGeneratorDefenceWall = l;

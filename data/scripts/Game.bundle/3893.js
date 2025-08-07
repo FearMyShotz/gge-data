@@ -1,47 +1,100 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
-var o = require("./1.js");
-var a = require("./5.js");
+var n = require("./0.js");
+var o = require("./49.js");
+var a = require("./1.js");
 var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = function () {
-  function SurveyTextInput(e, t) {
-    this.questionId = 0;
-    this.questionId = e;
-    this.disp = t;
-    this.answerTextfield = n.GoodgameTextFieldManager.getInstance().registerTextField(t.txt_answer, new r.TextVO(""));
-    this.answerTextfield.maxChars = a.SurveyConst.MAX_ANSWER_LENGTH;
-    this.remainingCharactersTextfield = n.GoodgameTextFieldManager.getInstance().registerTextField(t.txt_remainingCharacters, new s.LocalizedTextVO("dialog_messageLimit_charactersLeft"));
-    this.remainingCharactersTextfield.visible = false;
+var r = require("./4.js");
+var l = function (e) {
+  function QA_TextIDCheckerDialog() {
+    var t = this;
+    t._showExistingTextIDs = false;
+    t._scrollByLineAmount = 10;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this, QA_TextIDCheckerDialog.NAME) || this;
   }
-  SurveyTextInput.prototype.show = function () {
-    this.answerTextfield.change.add(this.bindFunction(this.handleMaxSymbols));
+  n.__extends(QA_TextIDCheckerDialog, e);
+  QA_TextIDCheckerDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.initBasicButtons([this.dialogDisp.btn_show_existing, this.dialogDisp.btn_show_missing, this.dialogDisp.checkbox_short_descriptions, this.dialogDisp.btn_help, this.dialogDisp.btn_close, this.dialogDisp.btn_up, this.dialogDisp.btn_down]);
+    this._checkboxShowShortDescriptions = new o.CheckBoxButton(this.dialogDisp.checkbox_short_descriptions);
+    this._checkboxShowShortDescriptions.deselected();
+    this._showExistingTextIDs = false;
+    this.createHelpTooltip();
+    this.checkEffectTextIDs();
   };
-  SurveyTextInput.prototype.hide = function () {
-    this.answerTextfield.change.remove(this.bindFunction(this.handleMaxSymbols));
-  };
-  SurveyTextInput.prototype.handleMaxSymbols = function (e) {
-    var t = l.int(Math.max(0, a.SurveyConst.MAX_ANSWER_LENGTH - this.answerTextfield.text.length));
-    var i = t < SurveyTextInput.MIN_CHARS_LEFT_NO_COUNTDOWN;
-    this.remainingCharactersTextfield.visible = i;
-    if (i) {
-      this.remainingCharactersTextfield.textContentVO.textReplacements = [t];
+  QA_TextIDCheckerDialog.prototype.checkEffectTextIDs = function () {
+    this.dialogDisp.txt_output.text = "";
+    var e;
+    var t;
+    var i = "equip_effect_description_";
+    var n = 0;
+    if (this._checkboxShowShortDescriptions.isSelected) {
+      i = "equip_effect_description_short_";
+    }
+    for (var o = 1; o < 333; o++) {
+      var a = r.CastleModel.effectsData.getEffectByID(o);
+      e = a ? a.name : "";
+      t = s.Localize.text(i + e);
+      if (e != "") {
+        if (this._showExistingTextIDs || i + e != t) {
+          if (this._showExistingTextIDs && i + e != t) {
+            this.dialogDisp.txt_title.text = "show existing textIDs with translation";
+            n++;
+            this.dialogDisp.txt_output.text += "\n--------------------\n(" + n + ") textID: " + (i + e) + ":\nlocalized text: " + t;
+          }
+        } else {
+          this.dialogDisp.txt_title.text = "show missing textIDs";
+          n++;
+          this.dialogDisp.txt_output.text += "\n--------------------\n(" + n + ") textID: " + (i + e);
+        }
+      }
     }
   };
-  SurveyTextInput.prototype.getJson = function () {
-    return {
-      ID: this.questionId,
-      T: this.answerTextfield.text
-    };
+  QA_TextIDCheckerDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_show_existing:
+        this._showExistingTextIDs = true;
+        this.checkEffectTextIDs();
+        break;
+      case this.dialogDisp.btn_show_missing:
+        this._showExistingTextIDs = false;
+        this.checkEffectTextIDs();
+        break;
+      case this._checkboxShowShortDescriptions.disp:
+        if (this._checkboxShowShortDescriptions.isSelected) {
+          this._checkboxShowShortDescriptions.deselected();
+        } else {
+          this._checkboxShowShortDescriptions.selected();
+        }
+        this.checkEffectTextIDs();
+        break;
+      case this.dialogDisp.btn_up:
+        this.scrollText(-this._scrollByLineAmount);
+        break;
+      case this.dialogDisp.btn_down:
+        this.scrollText(this._scrollByLineAmount);
+        break;
+      case this.dialogDisp.btn_close:
+        this.hide();
+    }
   };
-  SurveyTextInput.__initialize_static_members = function () {
-    SurveyTextInput.MIN_CHARS_LEFT_NO_COUNTDOWN = 100;
+  QA_TextIDCheckerDialog.prototype.scrollText = function (e) {
+    this.dialogDisp.txt_output.scrollV += e;
   };
-  return SurveyTextInput;
-}();
-exports.SurveyTextInput = c;
-o.classImplementsInterfaces(c, "ISurveyFormField");
-c.__initialize_static_members();
+  QA_TextIDCheckerDialog.prototype.createHelpTooltip = function () {
+    var e = "HELP!";
+    e += "\nThis dialog shows:";
+    e += "\n- existing textIDs for the hero-effects and the localized textIDs";
+    e += "\nor";
+    e += "\n- missing textIDs";
+    e += "\n\nchoose the short or the long version of effect descriptions by toggling the checkbox";
+    this.dialogDisp.btn_help.toolTipText = e;
+  };
+  QA_TextIDCheckerDialog.NAME = "QA_TextIDCheckerDialog";
+  return QA_TextIDCheckerDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.QA_TextIDCheckerDialog = l;
+a.classImplementsInterfaces(l, "ICollectableRendererList");

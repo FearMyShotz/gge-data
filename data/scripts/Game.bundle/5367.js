@@ -1,159 +1,123 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./261.js");
-var r = function (e) {
-  function CastleDailyQuestData(t) {
-    var i = this;
-    i._xmlQuestDic = new Map();
-    i._currentQuests = [];
-    i._thresholdRewards = [];
-    i._playerQuestLevel = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).xmlData = t;
-    i._xmlQuestDic = i.createXmlQuestDic();
-    return i;
+var n = require("./22.js");
+var o = function () {
+  function CollectEventInfoVO(e) {
+    this._collectorEventOptionID = 0;
+    this._collectorCurrencyID = 0;
+    this._collectorKeyCurrencyID = 0;
+    this._collectorKeyBoost = 0;
+    this._collectorKeyLimit = 0;
+    this._collectorKeyPackageID = 0;
+    this._baseCollectorBoost = 0;
+    this._eventStartCurrencyAmount = 0;
+    this._dailyCurrencyIncrease = 0;
+    this._collectorEventColor = 0;
+    this._rewards = [];
+    this._collectorEventOptionID = parseInt(n.CastleXMLUtils.getValueOrDefault("collectorEventOptionID", e, "0", true));
+    this._collectorCurrencyID = parseInt(n.CastleXMLUtils.getValueOrDefault("collectorCurrencyID", e, "0", true));
+    this._collectorKeyCurrencyID = parseInt(n.CastleXMLUtils.getValueOrDefault("collectorKeyCurrencyID", e, "0", true));
+    this._collectorKeyBoost = parseInt(n.CastleXMLUtils.getValueOrDefault("collectorKeyBoost", e, "0", true));
+    this._collectorKeyLimit = parseInt(n.CastleXMLUtils.getValueOrDefault("collectorKeyLimit", e, "0", true));
+    this._collectorKeyPackageID = parseInt(n.CastleXMLUtils.getValueOrDefault("collectorKeyPackageID", e, "0", true));
+    this._baseCollectorBoost = parseInt(n.CastleXMLUtils.getValueOrDefault("baseCollectorBoost", e, "0", true));
+    this._eventStartCurrencyAmount = parseInt(n.CastleXMLUtils.getValueOrDefault("eventStartCurrencyAmount", e, "0", true));
+    this._dailyCurrencyIncrease = parseInt(n.CastleXMLUtils.getValueOrDefault("dailyCurrencyIncrease", e, "0", true));
+    this._collectorEventSkinName = n.CastleXMLUtils.getValueOrDefault("collectorEventSkinName", e, "Default", true);
+    this._collectorEventColor = parseInt("0x" + n.CastleXMLUtils.getValueOrDefault("collectorEventColor", e, "FF88FF"));
   }
-  n.__extends(CastleDailyQuestData, e);
-  CastleDailyQuestData.prototype.reset = function () {
-    e.prototype.reset.call(this);
-    this._currentQuests = [];
-    this._thresholdRewards = [];
-    this._playerQuestLevel = 0;
-    if (this._xmlQuestDic != null) {
-      for (var t = 0, i = Array.from(this._xmlQuestDic.values()); t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.reset();
-        }
-      }
-    }
+  CollectEventInfoVO.prototype.addCollectEventRewardVO = function (e) {
+    this._rewards.push(e);
+    this._rewards.sort(this.bindFunction(this.sortByMinPoints));
   };
-  CastleDailyQuestData.prototype.parse_DQL = function (e) {
-    if (e) {
-      this.createXmlQuestDic();
-      this.parseThresholdRewardList(e.RS);
-      this._playerQuestLevel = a.int(e.PQL);
-      this._currentQuests = [];
-      this.parse_FDQ(e.FDQ);
-      this.parse_RDQ(e.RDQ);
-      this._currentQuests.sort(l.ClientConstSort.sortByDailyQuestID);
-      this.dispatchEvent(new s.CastleQuestDataEvent(s.CastleQuestDataEvent.DAILYQUEST_REFRESHED));
-    }
+  CollectEventInfoVO.prototype.sortByMinPoints = function (e, t) {
+    return e.minCurrencyAmount - t.minCurrencyAmount;
   };
-  CastleDailyQuestData.prototype.parse_RDQ = function (e) {
-    if (e && e != null) {
-      for (var t = 0, i = e; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && this._xmlQuestDic.get(n.QID)) {
-          var o = this._xmlQuestDic.get(n.QID);
-          o.setProgress(n.P);
-          this._currentQuests.push(o);
-        }
-      }
-    }
-  };
-  CastleDailyQuestData.prototype.parse_FDQ = function (e) {
-    if (e) {
-      for (var t = 0; t < e.length; ++t) {
-        var i = a.int(e[t]);
-        if (this._xmlQuestDic.get(i)) {
-          var n = this._xmlQuestDic.get(i);
-          n.setFinished();
-          this._currentQuests.push(n);
-        }
-      }
-    }
-  };
-  CastleDailyQuestData.prototype.parseThresholdRewardList = function (e) {
-    if (e) {
-      this._thresholdRewards = [];
-      for (var t = 0; t < e.length; t++) {
-        this._thresholdRewards.push(c.CollectableManager.parser.s2cParamList.createList(e[t]));
-      }
-    }
-  };
-  CastleDailyQuestData.prototype.createXmlQuestDic = function () {
-    var e = new Map();
-    var t = this.xmlData.dailyactivities;
-    if (t != null) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          var a = new u.DailyQuestVO();
-          a.fillFromParamXML(o);
-          e.set(a.questID, a);
-        }
-      }
-    }
-    return e;
-  };
-  CastleDailyQuestData.prototype.getFinishedQuests = function () {
-    var e = [];
-    if (this._currentQuests != null) {
-      for (var t = 0, i = this._currentQuests; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.isFinished && !n.isTempServerQuest) {
-          e.push(n);
-        }
-      }
-    }
-    return e;
-  };
-  CastleDailyQuestData.prototype.getRunningQuestCount = function () {
-    var e = 0;
-    if (this._currentQuests != null) {
-      for (var t = 0, i = this._currentQuests; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          if (!n.isFinished && !n.isTempServerQuest) {
-            e++;
-          }
-        }
-      }
-    }
-    return e;
-  };
-  CastleDailyQuestData.prototype.getTempServerQuests = function () {
-    var e = [];
-    if (this._currentQuests != null) {
-      for (var t = 0, i = this._currentQuests; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.isTempServerQuest) {
-          e.push(n);
-        }
-      }
-    }
-    return e;
-  };
-  Object.defineProperty(CastleDailyQuestData.prototype, "thresholdRewards", {
+  Object.defineProperty(CollectEventInfoVO.prototype, "collectorEventOptionID", {
     get: function () {
-      return this._thresholdRewards;
+      return this._collectorEventOptionID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleDailyQuestData.prototype, "playerQuestLevel", {
+  Object.defineProperty(CollectEventInfoVO.prototype, "collectorCurrencyID", {
     get: function () {
-      return this._playerQuestLevel;
+      return this._collectorCurrencyID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleDailyQuestData.prototype, "currentQuests", {
+  Object.defineProperty(CollectEventInfoVO.prototype, "collectorKeyCurrencyID", {
     get: function () {
-      return this._currentQuests;
+      return this._collectorKeyCurrencyID;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleDailyQuestData;
-}(require("./54.js").CastleBasicData);
-exports.CastleDailyQuestData = r;
-var l = require("./75.js");
-var c = require("./50.js");
-var u = require("./5368.js");
-o.classImplementsInterfaces(r, "IUpdatable");
+  Object.defineProperty(CollectEventInfoVO.prototype, "collectorKeyBoost", {
+    get: function () {
+      return this._collectorKeyBoost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CollectEventInfoVO.prototype, "collectorKeyLimit", {
+    get: function () {
+      return this._collectorKeyLimit;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CollectEventInfoVO.prototype, "collectorKeyPackageID", {
+    get: function () {
+      return this._collectorKeyPackageID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CollectEventInfoVO.prototype, "baseCollectorBoost", {
+    get: function () {
+      return this._baseCollectorBoost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CollectEventInfoVO.prototype, "eventStartCurrencyAmount", {
+    get: function () {
+      return this._eventStartCurrencyAmount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CollectEventInfoVO.prototype, "dailyCurrencyIncrease", {
+    get: function () {
+      return this._dailyCurrencyIncrease;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CollectEventInfoVO.prototype, "collectorEventSkinName", {
+    get: function () {
+      return this._collectorEventSkinName;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CollectEventInfoVO.prototype, "rewards", {
+    get: function () {
+      return this._rewards;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CollectEventInfoVO.prototype, "collectorEventColor", {
+    get: function () {
+      return this._collectorEventColor;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CollectEventInfoVO;
+}();
+exports.CollectEventInfoVO = o;

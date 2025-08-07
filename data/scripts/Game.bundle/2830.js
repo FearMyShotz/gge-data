@@ -5,44 +5,36 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./16.js");
+var r = require("./16.js");
+var l = require("./33.js");
 var c = function (e) {
-  function ButcherShopBuildingVO() {
-    return e !== null && e.apply(this, arguments) || this;
+  function BuildersQuartersBuildingVO() {
+    var t = this;
+    t._additionalConstructionSlotCount = 0;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(ButcherShopBuildingVO, e);
-  Object.defineProperty(ButcherShopBuildingVO.prototype, "resourceType", {
+  n.__extends(BuildersQuartersBuildingVO, e);
+  BuildersQuartersBuildingVO.prototype.parseXmlNode = function (t) {
+    var i = this;
+    e.prototype.parseXmlNode.call(this, t);
+    this.allShowableBuildingEffects.forEach(function (e) {
+      if (e.effect.effectType.type == l.EffectTypeEnum.EFFECT_TYPE_SIMULTANEOUS_CONSTRUCTION) {
+        i._additionalConstructionSlotCount = e.strength;
+      }
+    });
+  };
+  BuildersQuartersBuildingVO.prototype.createInfoPanelItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements.Icon_SimultaneousConstruction, "buildersQuarters_slot_number", new s.LocalizedTextVO(o.GenericTextIds.VALUE_NOMINAL_ADD, [this.additionalConstructionSlotCount]), r.ClientConstColor.FONT_DEFAULT_COLOR, true);
+  };
+  Object.defineProperty(BuildersQuartersBuildingVO.prototype, "additionalConstructionSlotCount", {
     get: function () {
-      return u.CollectableEnum.BEEF;
+      return this._additionalConstructionSlotCount;
     },
     enumerable: true,
     configurable: true
   });
-  ButcherShopBuildingVO.prototype.createInfoPanelItems = function (t) {
-    e.prototype.createInfoPanelItems.call(this, t);
-    if (this.decoPoints > 0) {
-      t.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), l.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    }
-    if (this.mightValue > 0) {
-      t.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Might, "playerMight", new s.LocalizedNumberVO(this.mightValue), l.ClientConstColor.FONT_DEFAULT_COLOR, false);
-    }
-    this.allShowableBuildingEffects.forEach(function (e) {
-      var i = e.effect.effectType.type.simpleEffectIconClass;
-      var n = {
-        t: "effect_name_" + e.effect.getEnhancedName(e.effectValue),
-        p: e.effectValue.textReplacements
-      };
-      var o = new r.LocalizedTextVO(e.effect.effectType.type.simpleValueTextID, e.effectValue.textReplacements);
-      t.addInfoItem(i, n, o, l.ClientConstColor.FONT_DEFAULT_COLOR, true, false, false);
-    });
-    t.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BeefBoost, "beefbooster", new r.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [this.resourceBoosts.getAmountOrDefaultByType(u.CollectableEnum.BEEF)]), l.ClientConstColor.FONT_DEFAULT_COLOR, true);
-  };
-  ButcherShopBuildingVO.prototype.createInfoDialogItems = function (t) {
-    e.prototype.createInfoDialogItems.call(this, t);
-  };
-  return ButcherShopBuildingVO;
+  return BuildersQuartersBuildingVO;
 }(require("./65.js").AEffectBuildingVO);
-exports.ButcherShopBuildingVO = c;
-var u = require("./12.js");
+exports.BuildersQuartersBuildingVO = c;
 a.classImplementsInterfaces(c, "IShopVO", "ICostVO", "IInventoryVO");

@@ -1,108 +1,105 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
+var n = require("./2.js");
 var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./3415.js");
-var u = function (e) {
-  function GenericScoreBarRewardListSublayer(t) {
-    var i = this;
-    i._rewardPerPage = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this)._rewardPerPage = i.countRewardsPerPage();
-    i._rewardScrollListComponent = new d.CastleBasicItemListScrollComponent(i.subLayerDisp.btn_down, i.subLayerDisp.btn_up, i.subLayerDisp.txt_page_counter, i._rewardPerPage);
-    i._itxt_rewardsDesc = i.textFieldManager.registerTextField(i.subLayerDisp.txt_description, new s.LocalizedTextVO(""));
-    return i;
+var l = require("./3.js");
+var c = require("./6.js");
+var u = require("./4.js");
+var d = require("./223.js");
+var p = require("./43.js");
+var h = require("./93.js");
+var g = require("./8.js");
+var C = createjs.Point;
+var _ = function () {
+  function CastleSingleplayerRankingItem(e) {
+    this._rank = 0;
+    this._amount = 0;
+    this._disp = e;
+    g.ButtonHelper.initBasicButton(this._disp, 1.02);
   }
-  n.__extends(GenericScoreBarRewardListSublayer, e);
-  GenericScoreBarRewardListSublayer.prototype.countRewardsPerPage = function () {
-    for (var e = 0; this.subLayerDisp["reward_" + e];) {
-      e++;
-    }
-    return e;
-  };
-  GenericScoreBarRewardListSublayer.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_title, new s.LocalizedTextVO("dialog_pointsEvent_rewardsList_header"));
-    if (this.dialogProperties.additionalText && this.subLayerDisp.txt_additionalText) {
-      this.textFieldManager.registerTextField(this.subLayerDisp.txt_additionalText, new r.TextVO(t.additionalText));
-    }
-    this.initScrollList();
-    this.updateRewardDesc();
-    this.setupRewardScrollList();
-  };
-  GenericScoreBarRewardListSublayer.prototype.setupRewardScrollList = function () {
-    this._rewardScrollListComponent.amountOfItems = this.dialogProperties.pointThreshholds.length;
-    this._rewardScrollListComponent.startItemIndex = this.dialogProperties.rewardsReceived;
-    this._rewardScrollListComponent.show(this._itemScrollList);
-  };
-  GenericScoreBarRewardListSublayer.prototype.initScrollList = function () {
-    this.disposeScrollList();
-    this._itemScrollList = new o.ItemScrollList(this.subLayerDisp);
-    this._itemScrollList.scrollInstanceName = "reward_";
-    this._itemScrollList.scrollStep = this._rewardPerPage;
-    this._itemScrollList.scrollItemClass = p.GenericScoreBarRewardListScrollItem;
-    this.populateScrollList(this._itemScrollList);
-  };
-  GenericScoreBarRewardListSublayer.prototype.populateScrollList = function (e) {
-    for (var t = 0; t < this.dialogProperties.pointThreshholds.length; t++) {
-      var i = new c.CastleBasicPointEventRewardListScrollItemVO();
-      i.collectableList = this.dialogProperties.rewardList[t];
-      i.received = t < this.dialogProperties.rewardsReceived;
-      i.thresholdPoints = l.int(this.dialogProperties.pointThreshholds[t]);
-      i.grantType = l.int(this.dialogProperties.rewardList[t].grantType);
-      i.customPointTextID = this.dialogProperties.customPointTextID;
-      i.customGrantTypeTextID = this.dialogProperties.customGrantTypeTextID;
-      i.isPlayerQualifiedForRewards = this.dialogProperties.isPlayerQualifiedForRewards();
-      e.pushContent(i);
+  CastleSingleplayerRankingItem.prototype.onMouseOver = function (e) {};
+  CastleSingleplayerRankingItem.prototype.onMouseOut = function (e) {};
+  CastleSingleplayerRankingItem.prototype.onClick = function (e) {
+    if (g.ButtonHelper.isButtonEnabled(e.target)) {
+      f.CastleDialogHandler.getInstance().registerDialogsWithTypeAndDefaultValues(E.CastlePlayerInfoDialog, new h.CastlePlayerInfoDialogProperties(this._ownerInfo.playerID), p.CastleDialogConsts.DIALOG_TYPE_SINGLE);
     }
   };
-  GenericScoreBarRewardListSublayer.prototype.disposeScrollList = function () {
-    if (this._itemScrollList) {
-      this._itemScrollList.clear();
-      this._itemScrollList.remove();
-      this._itemScrollList = null;
-    }
-  };
-  GenericScoreBarRewardListSublayer.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    this._rewardScrollListComponent.hide();
-    this.disposeScrollList();
-  };
-  GenericScoreBarRewardListSublayer.prototype.showHelp = function () {
-    e.prototype.showHelp.call(this);
-  };
-  GenericScoreBarRewardListSublayer.prototype.updateRewardDesc = function () {
-    if (this.dialogProperties.isPlayerQualifiedForRewards()) {
-      if (this.dialogProperties.rewardsReceived < this.dialogProperties.rewardList.length) {
-        this._itxt_rewardsDesc.textContentVO.textId = "dialog_pointsEvent_rewardsList_rewards";
-        this._itxt_rewardsDesc.textContentVO.textReplacements = [this.dialogProperties.rewardsReceived, this.dialogProperties.pointThreshholds.length];
-      } else {
-        this._itxt_rewardsDesc.textContentVO.textId = "dialog_pointsEvent_rewardsList_rewards_all";
-      }
+  CastleSingleplayerRankingItem.prototype.update = function (e, t, i) {
+    this._ownerInfo = new m.WorldMapOwnerInfoVO();
+    if (e.length > 2) {
+      this._ownerInfo.fillFromParamObject(e[2]);
+      this._rank = c.int(e[0]);
+      this._amount = c.int(e[1]);
     } else {
-      if (this.dialogProperties.rewardsReceived == 1) {
-        this._itxt_rewardsDesc.textContentVO.textId = "dialog_pointsEvent_rewardsList_allianceContest_notQualified_rewards_singular";
-      } else {
-        this._itxt_rewardsDesc.textContentVO.textId = "dialog_pointsEvent_rewardsList_allianceContest_notQualified_rewards_plural";
-      }
-      this._itxt_rewardsDesc.textContentVO.textReplacements = [0, this.dialogProperties.rewardList.length, this.dialogProperties.rewardsReceived];
+      this._ownerInfo.fillFromParamObject(e[1]);
+      this._rank = c.int(e[0]);
+      this._amount = 0;
+    }
+    var n = i != "" ? i : u.CastleModel.userData.userName;
+    var a = this._rank <= 1;
+    var d = this._rank == 2;
+    var p = this.isSearchedForPlayer(n);
+    this.disp.mc_first.visible = a && !p;
+    this.disp.mc_second.visible = d && !p;
+    this.disp.mc_own.visible = p || a || d;
+    CastleSingleplayerRankingItem.textFieldManager.registerTextField(this.disp.txt_rank, new s.LocalizedNumberVO(this._rank), new o.InternalGGSTextFieldConfigVO(true));
+    CastleSingleplayerRankingItem.textFieldManager.registerTextField(this.disp.txt_name, new l.TextVO(this._ownerInfo.playerName), new o.InternalGGSTextFieldConfigVO(true));
+    CastleSingleplayerRankingItem.textFieldManager.registerTextField(this.disp.txt_alliance, new l.TextVO(this._ownerInfo.isInAlliance ? this._ownerInfo.allianceName : " - "), new o.InternalGGSTextFieldConfigVO(true));
+    CastleSingleplayerRankingItem.textFieldManager.registerTextField(this.disp.txt_level, new r.NumberVO(this._ownerInfo.playerLevel), new o.InternalGGSTextFieldConfigVO(true));
+    CastleSingleplayerRankingItem.textFieldManager.registerTextField(this.disp.txt_distance, new s.LocalizedNumberVO(this.getDistanceToOwnMainCastle()), new o.InternalGGSTextFieldConfigVO(true));
+    if (this.disp.txt_amount) {
+      CastleSingleplayerRankingItem.textFieldManager.registerTextField(this.disp.txt_amount, new s.LocalizedNumberVO(this._amount), new o.InternalGGSTextFieldConfigVO(true));
     }
   };
-  Object.defineProperty(GenericScoreBarRewardListSublayer.prototype, "dialogProperties", {
+  CastleSingleplayerRankingItem.prototype.getDistanceToOwnMainCastle = function () {
+    var e = u.CastleModel.userData.castleList.getHomeCastle();
+    return Math.round(d.MapHelper.getShortestDistance(this._ownerInfo.getMainCastlePositionByKingdomID(0), new C(e.absAreaPosX, e.absAreaPosY)));
+  };
+  CastleSingleplayerRankingItem.prototype.isSearchedForPlayer = function (e) {
+    var t = parseInt(e);
+    if (isNaN(t)) {
+      return this._ownerInfo.playerName == e;
+    } else {
+      return t == this._rank;
+    }
+  };
+  Object.defineProperty(CastleSingleplayerRankingItem.prototype, "disp", {
     get: function () {
-      return this._params;
+      return this._disp;
     },
     enumerable: true,
     configurable: true
   });
-  return GenericScoreBarRewardListSublayer;
-}(require("./34.js").CastleDialogSubLayer);
-exports.GenericScoreBarRewardListSublayer = u;
-var d = require("./1655.js");
-var p = require("./3416.js");
-a.classImplementsInterfaces(u, "ICollectableRendererList", "ISublayer");
+  Object.defineProperty(CastleSingleplayerRankingItem.prototype, "rank", {
+    get: function () {
+      return this._rank;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleSingleplayerRankingItem, "layoutManager", {
+    get: function () {
+      return O.CastleLayoutManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleSingleplayerRankingItem, "textFieldManager", {
+    get: function () {
+      return n.GoodgameTextFieldManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleSingleplayerRankingItem;
+}();
+exports.CastleSingleplayerRankingItem = _;
+var m = require("./316.js");
+var f = require("./9.js");
+var O = require("./17.js");
+var E = require("./94.js");
+a.classImplementsInterfaces(_, "ICastleGenericRankingItem");

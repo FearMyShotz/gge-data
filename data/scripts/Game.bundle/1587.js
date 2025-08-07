@@ -58,6 +58,6 @@ var l = function (e) {
 }(r.ABasicBuildingVE);
 exports.HospitalBuildingVE = l;
 var c = require("./14.js");
-var u = require("./3020.js");
+var u = require("./3021.js");
 var d = require("./177.js");
 o.classImplementsInterfaces(l, "ICollectableRendererList", "IIngameUICapable");

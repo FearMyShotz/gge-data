@@ -2,78 +2,41 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = function (e) {
-  function AModernHighscoreComponentItem(t, i) {
-    var n = e.call(this, t) || this;
-    n._rank = 0;
-    n._parentComponent = i;
-    n.init();
-    return n;
+var o = require("./2.js");
+var a = require("./5.js");
+var s = function (e) {
+  function CastleSpecialServerPreBuildCastleSelectionDialogProperties(t) {
+    var i = e.call(this) || this;
+    i._type = t;
+    return i;
   }
-  n.__extends(AModernHighscoreComponentItem, e);
-  AModernHighscoreComponentItem.prototype.init = function () {};
-  AModernHighscoreComponentItem.prototype.updateWithNewData = function (e, t) {
-    this._rank = e;
-    this._data = t;
-    this.update();
-  };
-  AModernHighscoreComponentItem.prototype.update = function () {
-    this.fillContentWithAny();
-    if (this.data) {
-      this.setVisibility(true);
-      this.fillContentWithData();
-    } else if (this.rank > 0 && this.rank <= this.maxRank) {
-      this.setVisibility(true);
-      this.fillContentWithEmpty();
-    } else {
-      this.setVisibility(false);
-    }
-  };
-  AModernHighscoreComponentItem.prototype.fillContentWithAny = function () {};
-  AModernHighscoreComponentItem.prototype.fillContentWithData = function () {};
-  AModernHighscoreComponentItem.prototype.fillContentWithEmpty = function () {};
-  AModernHighscoreComponentItem.prototype.setItemIndicatorSearchedName = function () {};
-  Object.defineProperty(AModernHighscoreComponentItem.prototype, "maxRank", {
+  n.__extends(CastleSpecialServerPreBuildCastleSelectionDialogProperties, e);
+  Object.defineProperty(CastleSpecialServerPreBuildCastleSelectionDialogProperties.prototype, "globalServerID", {
     get: function () {
-      return this.parentComponent.maxRank;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AModernHighscoreComponentItem.prototype, "parentComponent", {
-    get: function () {
-      return this._parentComponent;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AModernHighscoreComponentItem.prototype, "rank", {
-    get: function () {
-      return this._rank;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AModernHighscoreComponentItem.prototype, "data", {
-    get: function () {
-      return this._data;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AModernHighscoreComponentItem.prototype, "name", {
-    get: function () {
-      if (this.data && this.data[2] && this.data[2].N) {
-        return this.data[2].N;
+      if (this._type == CastleSpecialServerPreBuildCastleSelectionDialogProperties.TYPE_TEMPSERVER) {
+        return a.GlobalServerConst.TEMP_SERVER;
+      } else if (this._type == CastleSpecialServerPreBuildCastleSelectionDialogProperties.TYPE_ABG) {
+        return a.GlobalServerConst.ALLIANCE_BATTLE_GROUND_SERVER;
       } else {
-        return null;
+        return -1;
       }
     },
     enumerable: true,
     configurable: true
   });
-  return AModernHighscoreComponentItem;
-}(require("./40.js").CastleItemRenderer);
-exports.AModernHighscoreComponentItem = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList");
+  CastleSpecialServerPreBuildCastleSelectionDialogProperties.prototype.isEvent = function () {
+    return this.globalServerID > -1;
+  };
+  Object.defineProperty(CastleSpecialServerPreBuildCastleSelectionDialogProperties.prototype, "type", {
+    get: function () {
+      return this._type;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleSpecialServerPreBuildCastleSelectionDialogProperties.TYPE_TEMPSERVER = "Temp";
+  CastleSpecialServerPreBuildCastleSelectionDialogProperties.TYPE_ABG = "ABG";
+  CastleSpecialServerPreBuildCastleSelectionDialogProperties.TYPE_STORMISLANDS = "StormIslands";
+  return CastleSpecialServerPreBuildCastleSelectionDialogProperties;
+}(o.BasicProperties);
+exports.CastleSpecialServerPreBuildCastleSelectionDialogProperties = s;

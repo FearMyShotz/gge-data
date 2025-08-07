@@ -12,7 +12,7 @@ var u = require("./4.js");
 var d = require("./52.js");
 var p = require("./42.js");
 var h = require("./8.js");
-var g = require("./907.js");
+var g = require("./908.js");
 var C = function (e) {
   function CastleReplaceSocketDialog() {
     return e.call(this, CastleReplaceSocketDialog.NAME) || this;

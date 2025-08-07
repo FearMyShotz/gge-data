@@ -3,77 +3,97 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./3.js");
-var s = require("./9.js");
-var r = require("./20.js");
-var l = require("./178.js");
-var c = require("./1317.js");
-var u = require("./8.js");
-var d = require("./151.js");
-var p = require("./344.js");
-var h = require("./3853.js");
-var g = function (e) {
-  function AttackDialogPresetPicker(t) {
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./929.js");
+var l = require("./191.js");
+var c = require("./8.js");
+var u = createjs.MouseEvent;
+var d = function (e) {
+  function ComboboxItemRendererAttackDialogPreset() {
     CONSTRUCTOR_HACK;
-    return e.call(this, t) || this;
+    return e.call(this) || this;
   }
-  n.__extends(AttackDialogPresetPicker, e);
-  AttackDialogPresetPicker.prototype.init = function () {
-    e.prototype.init.call(this);
-    u.ButtonHelper.initButtons([this.buttonEdit], this.buttonClass());
-    this.buttonEdit.mouseChildren = false;
-    this.buttonEdit.toolTipText = "dialog_troopPreset_rename_header";
+  n.__extends(ComboboxItemRendererAttackDialogPreset, e);
+  ComboboxItemRendererAttackDialogPreset.prototype.renderItem = function (e, t, i, n, s) {
+    var r = new this.itemMCClass();
+    r.actLikeButton = true;
+    r.mouseChildren = false;
+    r.txt_label_dark.defaultCacheScale = 2;
+    r.txt_label_light.defaultCacheScale = 2;
+    this.presetVO = e.data;
+    r.mc_bg_locked.visible = !this.presetVO.unlocked;
+    r.mc_c2.visible = !this.presetVO.unlocked;
+    r.mc_bg_selected.visible = false;
+    r.itxt_item_light = o.GoodgameTextFieldManager.getInstance().registerTextField(r.txt_label_light, new s(e.itemLabel), new a.InternalGGSTextFieldConfigVO(true));
+    r.itxt_item_dark = o.GoodgameTextFieldManager.getInstance().registerTextField(r.txt_label_dark, new s(e.itemLabel), new a.InternalGGSTextFieldConfigVO(true));
+    r.itxt_item_light.visible = true;
+    r.itxt_item_dark.visible = false;
+    r.mc_down.visible = false;
+    if (this.presetVO.unlocked) {
+      r.tooltipText = "";
+    } else {
+      r.tooltipText = "dialog_troopPreset_unlock_header";
+    }
+    this.initListener(r);
+    r.itxt_item_light.visible = true;
+    r.itxt_item_dark.visible = false;
+    r.id = t;
+    return r;
   };
-  AttackDialogPresetPicker.prototype.getNewCombobox = function () {
-    return new l.ComboboxComponent(this.disp.mc_presetComboBox, "", l.ComboboxComponent.OPEN_UP, 32, 32, -1, 15, new h.ComboboxItemRendererAttackDialogPreset(), 0, true, false, 0, "", -2, false, -33, -20, 8, 10);
+  ComboboxItemRendererAttackDialogPreset.prototype.initListener = function (e) {
+    var t = this;
+    e.addEventListener(u.MOUSE_OVER, this.bindFunction(this.onMouseOver));
+    e.addEventListener(u.MOUSE_OUT, this.bindFunction(this.onMouseOut));
+    e.addEventListener(u.MOUSE_UP, this.bindFunction(this.onMouseUp));
+    e.addEventListener(u.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
+    function i(n) {
+      e.removeEventListener(createjs.Event.REMOVED_FROM_STAGE, i);
+      e.removeEventListener(u.MOUSE_OVER, t.bindFunction(t.onMouseOver));
+      e.removeEventListener(u.MOUSE_OUT, t.bindFunction(t.onMouseOut));
+      e.removeEventListener(u.MOUSE_UP, t.bindFunction(t.onMouseUp));
+      e.removeEventListener(u.MOUSE_DOWN, t.bindFunction(t.onMouseDown));
+    }
+    e.addEventListener(createjs.Event.REMOVED_FROM_STAGE, i);
   };
-  AttackDialogPresetPicker.prototype.buttonClass = function () {
-    return r.ClickFeedbackButtonHover;
+  ComboboxItemRendererAttackDialogPreset.prototype.onMouseOver = function (e) {
+    e.target.mc_bg_selected.visible = true;
+    e.target.itxt_item_light.visible = false;
+    e.target.itxt_item_dark.visible = true;
   };
-  Object.defineProperty(AttackDialogPresetPicker.prototype, "buttonEdit", {
-    get: function () {
-      return this.disp.btn_edit;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AttackDialogPresetPicker.prototype, "buttonFirstWave", {
-    get: function () {
-      return this.disp.btn_first_wave;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AttackDialogPresetPicker.prototype.onClick = function (e) {
-    if (u.ButtonHelper.isButtonEnabled(e.target)) {
-      switch (e.target) {
-        case this.buttonFirstWave:
-          if (this.selectedPreset && this.selectedPreset.unlocked) {
-            this.onPresetActivated.dispatch(this.selectedPreset, AttackDialogPresetPicker.PRESET_FILL_FIRST_WAVE);
-            p.AttackDialogTrackingHelper.getInstance().trackDetailCounter(p.AttackDialogTrackingHelper.TRACK_PRESET_1ST_WAVE);
-          }
-          break;
-        case this.buttonMultiWave:
-          if (this.selectedPreset && this.selectedPreset.unlocked) {
-            this.onPresetActivated.dispatch(this.selectedPreset, AttackDialogPresetPicker.PRESET_FILL_SELECTED_WAVES);
-            p.AttackDialogTrackingHelper.getInstance().trackDetailCounter(p.AttackDialogTrackingHelper.TRACK_PRESET_SELECTED);
-          }
-          break;
-        case this.buttonSingleWave:
-          if (this.selectedPreset && this.selectedPreset.unlocked) {
-            this.onPresetActivated.dispatch(this.selectedPreset, AttackDialogPresetPicker.PRESET_FILL_NEXT_WAVE);
-            p.AttackDialogTrackingHelper.getInstance().trackDetailCounter(p.AttackDialogTrackingHelper.TRACK_PRESET_NEXT_WAVE);
-          }
-          break;
-        case this.buttonSave:
-          s.CastleDialogHandler.getInstance().registerDialogs(d.CastleStandardYesNoDialog, new o.BasicStandardYesNoDialogProperties(a.Localize.text("generic_alert_watchout"), a.Localize.text("dialog_troopPreset_overwritePreset_copy"), this.bindFunction(this.onSaveButton)));
-      }
+  ComboboxItemRendererAttackDialogPreset.prototype.onMouseOut = function (e) {
+    e.target.mc_bg_selected.visible = false;
+    e.target.itxt_item_light.visible = true;
+    e.target.itxt_item_dark.visible = false;
+    if (e.target.mc_down) {
+      e.target.mc_down.visible = false;
     }
   };
-  AttackDialogPresetPicker.prototype.update = function () {};
-  AttackDialogPresetPicker.PRESET_FILL_FIRST_WAVE = "first";
-  AttackDialogPresetPicker.PRESET_FILL_NEXT_WAVE = "next";
-  AttackDialogPresetPicker.PRESET_FILL_SELECTED_WAVES = "selected";
-  return AttackDialogPresetPicker;
-}(c.FightPresetPicker);
-exports.AttackDialogPresetPicker = g;
+  ComboboxItemRendererAttackDialogPreset.prototype.onMouseDown = function (e) {
+    if (e.target.mc_down) {
+      e.target.mc_down.visible = true;
+    }
+  };
+  ComboboxItemRendererAttackDialogPreset.prototype.onMouseUp = function (e) {
+    if (e.target.mc_down) {
+      e.target.mc_down.visible = false;
+    }
+  };
+  ComboboxItemRendererAttackDialogPreset.prototype.handleOptions = function (e) {
+    if (c.ButtonHelper.isButtonEnabled(e.target)) {
+      e.target.parent.dispatchEvent(new r.CastlePresetComboboxItemRendererEvent(r.CastlePresetComboboxItemRendererEvent.OPTIONS, e.target.presetVO));
+    }
+  };
+  Object.defineProperty(ComboboxItemRendererAttackDialogPreset.prototype, "itemMCClass", {
+    get: function () {
+      return s.getDefinitionByName("Preset_List_Element");
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ComboboxItemRenderer.prototype, "itemMCClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ComboboxItemRendererAttackDialogPreset;
+}(l.ComboboxItemRenderer);
+exports.ComboboxItemRendererAttackDialogPreset = d;

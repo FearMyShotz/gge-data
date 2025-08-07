@@ -1,158 +1,110 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function AIsoViewObjectGroup() {}
-  AIsoViewObjectGroup.prototype.init = function (e) {
-    this._isoRenderer = e;
-  };
-  AIsoViewObjectGroup.prototype.destroy = function () {};
-  AIsoViewObjectGroup.prototype.initObjects = function () {};
-  AIsoViewObjectGroup.prototype.render = function (e = false) {};
-  AIsoViewObjectGroup.prototype.addObject = function (e) {};
-  AIsoViewObjectGroup.prototype.removeObjectByVE = function (e) {};
-  AIsoViewObjectGroup.prototype.isObjectForThisList = function (e) {
-    return e.objectType.groupType == this.groupType;
-  };
-  AIsoViewObjectGroup.prototype.containsObject = function (e) {
-    return false;
-  };
-  AIsoViewObjectGroup.prototype.fillInCompleteList = function (e) {};
-  AIsoViewObjectGroup.prototype.destroyObject = function (e) {
-    if (e) {
-      if (e.getVELayerType() == u.IsoLayerEnum.ISO_OBJECTS) {
-        var t = this.isoRenderer.objects.isoLayerObjects;
-        if (t.length > 0) {
-          var i = c.int(t.indexOf(e));
-          if (i >= 0) {
-            t.splice(i, 1);
-          }
-        }
-      }
-      e.destroy();
-    }
-    return null;
-  };
-  AIsoViewObjectGroup.prototype.destroyAndCreateNewObjectList = function (e) {
-    if (e != null) {
-      for (var t = 0, i = e; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          this.destroyObject(n);
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./4.js");
+var r = require("./105.js");
+var l = require("./209.js");
+var c = function (e) {
+  function SlumSurroundingsVO(t, i) {
+    var n = this;
+    n._slumParts = [];
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this)._name = "Slum";
+    n._slumParts = i;
+    if (i != null) {
+      for (var o = 0, a = i; o < a.length; o++) {
+        var s = a[o];
+        if (s !== undefined) {
+          s.parentVO = n;
         }
       }
     }
-    if (l.instanceOfClass(e, "Array")) {
-      return [];
-    } else {
-      return new (r.ClientConstUtils.getClassFromObject(e))();
-    }
-  };
-  AIsoViewObjectGroup.prototype.createObjectsAndAddToLayerAndList = function (e, t) {
-    if (e != null) {
-      for (var i = 0, n = e; i < n.length; i++) {
+    n._posOrigin = r.IsoGridOriginEnum.TOP_CORNER;
+    n._posOffset = t;
+    return n;
+  }
+  n.__extends(SlumSurroundingsVO, e);
+  SlumSurroundingsVO.prototype.init = function (t = null) {
+    e.prototype.init.call(this, t);
+    if (this.slumParts != null) {
+      for (var i = 0, n = this.slumParts; i < n.length; i++) {
         var o = n[i];
         if (o !== undefined) {
-          this.createObjectAndAddToLayerAndList(o, t);
+          o.init(t);
         }
       }
     }
   };
-  AIsoViewObjectGroup.prototype.createObjectAndAddToLayerAndList = function (e, t) {
-    var i = this.createObjectAndAddToLayer(e);
-    if (i) {
-      t.push(i);
-      this.isoRenderer.objects.invalidateCompleteObjectsList();
-      return i;
-    } else {
-      return null;
-    }
-  };
-  AIsoViewObjectGroup.prototype.createObjectAndAddToLayer = function (e) {
-    if (!e) {
-      return null;
-    }
-    var t = s.IsoHelper.view.createIsoObjectVEFromVO(e);
-    if (t) {
-      if (!e.isoData) {
-        e.init(o.Iso.data);
-      }
-      this.addObjectToLayer(t);
-      return t;
-    } else {
-      return null;
-    }
-  };
-  AIsoViewObjectGroup.prototype.addObjectToLayerAndList = function (e, t) {
-    if (e) {
-      this.addObjectToLayer(e);
-      t.push(e);
-      return e;
-    } else {
-      return null;
-    }
-  };
-  AIsoViewObjectGroup.prototype.addObjectToLayer = function (e) {
-    if (!e) {
-      return null;
-    }
-    if (e.vo && e.vo.isInBuildingDistrict) {
-      return null;
-    }
-    var t = e.getVELayerType();
-    var i = this.isoRenderer.layers.getIsoLayer(t);
-    if (i) {
-      i.addChild(e.elementContainer);
-    } else {
-      console.warn("Couldn't add disp to layer. -> Layer not found.");
-    }
-    this.isoRenderer.objects.invalidateCompleteObjectsList();
-    if (t == u.IsoLayerEnum.ISO_OBJECTS) {
-      this.isoRenderer.objects.isoLayerObjects.push(e);
-      o.Iso.controller.processor.executeCommand(new a.IsoCommandZSortObject(e));
-    }
-    return e;
-  };
-  AIsoViewObjectGroup.prototype.removeObjectFromList = function (e, t) {
-    if (t) {
-      var i = c.int(t.indexOf(e));
-      if (i >= 0) {
-        this.destroyObject(e);
-        t.splice(i, 1);
+  SlumSurroundingsVO.prototype.updateData = function () {
+    if (this.slumParts != null) {
+      for (var t = 0, i = this.slumParts; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.updateData();
+        }
       }
     }
+    e.prototype.updateData.call(this);
   };
-  Object.defineProperty(AIsoViewObjectGroup.prototype, "isoData", {
+  SlumSurroundingsVO.prototype.getInfoTooltipLine1 = function () {
+    return a.Localize.text("dialog_village_iso");
+  };
+  SlumSurroundingsVO.prototype.getInfoTooltipLine2 = function () {
+    if (this.isClickAvailable) {
+      return a.Localize.text(this.slumLevel > 0 && this.slumLevel < 4 ? "clickToUpgrade" : "clickToOpen");
+    } else {
+      return a.Localize.text("building_level", [s.CastleModel.areaData.activeArea.slum.slumLevel]);
+    }
+  };
+  SlumSurroundingsVO.prototype.getInfoTooltipLine3 = function () {
+    if (this.isClickAvailable) {
+      return a.Localize.text("building_level", [s.CastleModel.areaData.activeArea.slum.slumLevel]);
+    } else {
+      return "";
+    }
+  };
+  Object.defineProperty(SlumSurroundingsVO.prototype, "isRingmenuAvailable", {
     get: function () {
-      return this.isoRenderer.isoData;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AIsoViewObjectGroup.prototype, "isoRenderer", {
-    get: function () {
-      return this._isoRenderer;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AIsoViewObjectGroup.prototype, "groupType", {
-    get: function () {
-      return this._groupType;
+      return false;
     },
     set: function (e) {
-      this._groupType = e;
+      Object.getOwnPropertyDescriptor(l.ASurroundingBuildingVO.prototype, "isRingmenuAvailable").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return AIsoViewObjectGroup;
-}();
-exports.AIsoViewObjectGroup = n;
-var o = require("./33.js");
-var a = require("./486.js");
-var s = require("./46.js");
-var r = require("./55.js");
-var l = require("./1.js");
-var c = require("./6.js");
-var u = require("./113.js");
+  Object.defineProperty(SlumSurroundingsVO.prototype, "slumLevel", {
+    get: function () {
+      return this.slumData.slumLevel;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SlumSurroundingsVO.prototype, "kingdomId", {
+    get: function () {
+      return this.isoData.areaData.areaInfo.kingdomID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SlumSurroundingsVO.prototype, "slumParts", {
+    get: function () {
+      return this._slumParts;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SlumSurroundingsVO.prototype, "slumData", {
+    get: function () {
+      return this.isoData.areaData.slum;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return SlumSurroundingsVO;
+}(l.ASurroundingBuildingVO);
+exports.SlumSurroundingsVO = c;
+o.classImplementsInterfaces(c, "IRelativeGridBuildingVO");

@@ -2,41 +2,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
+var o = require("./2.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = require("./37.js");
-var u = function (e) {
-  function PRECommand() {
+var s = require("./18.js");
+var r = require("./306.js");
+var l = require("./4.js");
+var c = function (e) {
+  function NFOCastleCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(PRECommand, e);
-  Object.defineProperty(PRECommand.prototype, "cmdId", {
-    get: function () {
-      return s.ClientConstSF.S2C_PENDING_REWARDS;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  PRECommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
+  n.__extends(NFOCastleCommand, e);
+  NFOCastleCommand.prototype.executeCommand = function (t, i) {
+    switch (t) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.rewardHubData.setAmountOfPendingRewards(i[a.CommKeys.AMOUNT], true);
-        r.CastleModel.rewardHubData.countPendingSent();
-        this.controller.dispatchEvent(new c.CastleServerMessageArrivedEvent(c.CastleServerMessageArrivedEvent.PRE_ARRIVED));
-        break;
-      default:
-        this.showErrorDialog(e, t);
+        var n = JSON.parse(i[1]);
+        s.ClientConstCastle.setWorldmapSizeViaGGC(n.sectorCountX, n.sectorCountY);
+        this.env.versionInformation.serverXMLVersion = n.XML_EP;
+        if (l.CastleModel.worldmapData) {
+          l.CastleModel.worldmapData.reset();
+        }
+        r.CastleVersionInformation.versionInstance.serverXMLVersion = n.XML_EP;
     }
-    return false;
+    return e.prototype.executeCommand.call(this, t, i);
   };
-  return PRECommand;
-}(l.CastleCommand);
-exports.PRECommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return NFOCastleCommand;
+}(o.NFOCommand);
+exports.NFOCastleCommand = c;

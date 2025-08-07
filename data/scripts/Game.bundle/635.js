@@ -1,17 +1,61 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CastleLaboratoryEffectHelper() {}
-  CastleLaboratoryEffectHelper.laboratoryResourceBonus = function (e) {
-    if (a.CastleModel.userData.isInAlliance) {
-      return o.int(a.CastleModel.allianceData.myAllianceVO.landmarksList.getLaboratoryKingdomResourceBonus(e));
-    } else {
-      return o.int(a.CastleModel.userData.laboratoryList.getLandmarkBonus(e));
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./3.js");
+var l = require("./3.js");
+var c = require("./3.js");
+var u = require("./16.js");
+var d = require("./4.js");
+var p = require("./97.js");
+var h = require("./33.js");
+var g = require("./285.js");
+var C = function (e) {
+  function FarmBuildingVO() {
+    return e !== null && e.apply(this, arguments) || this;
+  }
+  n.__extends(FarmBuildingVO, e);
+  Object.defineProperty(FarmBuildingVO.prototype, "isBoostableBuilding", {
+    get: function () {
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AResourceProductionBuildingVO.prototype, "isBoostableBuilding").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(FarmBuildingVO.prototype, "resourceType", {
+    get: function () {
+      return _.CollectableEnum.FOOD;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AResourceProductionBuildingVO.prototype, "resourceType").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  FarmBuildingVO.prototype.createInfoPanelItems = function (e) {
+    var t = d.CastleModel.subscriptionData.isEffectTypeActive(h.EffectTypeEnum.EFFECT_TYPE_FOOD_PRODUCTION_BOOST);
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourFood, "basicProduktion", new l.LocalizedNumberVO(a.MathBase.round(this.getBaseProductionValue(), 1)), this.getInfoItemTextColor(p.CastleEffectEnum.FOODPRODUCTION));
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Farm, "utilization", new c.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [this.efficiency]));
+    e.addInfoItem(Library.CastleInterfaceElements.Icon_Productivity, "productivity", new c.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [Math.round(this.getBaseProductivityFactor() * 100)]), u.ClientConstColor.FONT_DEFAULT_COLOR, false, t);
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourFood, {
+      t: "xPerHour",
+      p: [r.Localize.text("food")]
+    }, new l.LocalizedNumberVO(a.MathBase.round(this.getFinalProductionValue(), 1)), this.getInfoItemTextColor(p.CastleEffectEnum.UNBOOSTEDFOODPRODUCTION), false, t);
+    if (this.decoPoints > 0) {
+      e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new l.LocalizedNumberVO(this.decoPoints), this.getInfoItemTextColor(p.CastleEffectEnum.DECOPOINTS));
     }
   };
-  return CastleLaboratoryEffectHelper;
-}();
-exports.CastleLaboratoryEffectHelper = n;
-var o = require("./6.js");
-var a = require("./4.js");
+  FarmBuildingVO.prototype.createInfoDialogItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourFood, "foodproduction", new l.LocalizedNumberVO(this.resourceProductions.getAmountOrDefaultByType(this.resourceType)), u.ClientConstColor.FONT_DEFAULT_COLOR, true);
+  };
+  return FarmBuildingVO;
+}(g.AResourceProductionBuildingVO);
+exports.FarmBuildingVO = C;
+var _ = require("./12.js");
+s.classImplementsInterfaces(C, "IShopVO", "ICostVO", "IInventoryVO");

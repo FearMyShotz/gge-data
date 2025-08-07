@@ -3,57 +3,47 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./242.js");
-var s = createjs.MouseEvent;
-var r = function (e) {
-  function CollectableRendererTooltip() {
-    var t = e !== null && e.apply(this, arguments) || this;
-    t.onMobileClickCount = 0;
-    return t;
+var a = require("./3.js");
+var s = function (e) {
+  function CollectableRendererTextfield() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableRendererTooltip, e);
-  CollectableRendererTooltip.prototype.reset = function () {
-    var e = this.renderer.clips.getTooltipTargetMc();
-    if (e) {
-      e.toolTipText = null;
-    }
+  n.__extends(CollectableRendererTextfield, e);
+  CollectableRendererTextfield.prototype.reset = function () {
+    this.setText("");
   };
-  CollectableRendererTooltip.prototype.addListener = function () {
-    var e = this.renderer.clips.getTooltipTargetMc();
-    if (e) {
-      e.addEventListener(s.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-      e.addEventListener(s.CLICK, this.bindFunction(this.onMobileClick));
-    }
-  };
-  CollectableRendererTooltip.prototype.removeListener = function () {
-    var e = this.renderer.clips.getTooltipTargetMc();
-    if (e) {
-      e.removeEventListener(s.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-      e.removeEventListener(s.CLICK, this.bindFunction(this.onMobileClick));
-    }
-  };
-  CollectableRendererTooltip.prototype.update = function () {
-    this.itemVE.tooltipUpdate();
-  };
-  CollectableRendererTooltip.prototype.onMouseOver = function (e) {
-    var t = this.renderer.clips.getTooltipTargetMc();
-    if (this.itemVE && t && e.target == t && !this.renderer.options.tooltip.useSimpleTooltips) {
-      this.itemVE.isTouch = o.currentBrowserInfo.isTouchEvent(e);
-      this.itemVE.tooltipShowAdvanced();
-    }
-  };
-  CollectableRendererTooltip.prototype.onMobileClick = function (e) {
-    if (o.currentBrowserInfo.isTouchEvent(e)) {
-      if (this.onMobileClickCount === 0) {
-        this.onMouseOver(e);
-        e.stopPropagation();
-        this.onMobileClickCount = 1;
+  CollectableRendererTextfield.prototype.update = function () {
+    if (this.clips.textfield) {
+      if (this.renderer.options.textfield.forceRender) {
+        this.itemVE.textfieldSetTextAsNumber(this.itemVO.amount);
       } else {
-        this.onMobileClickCount = 0;
+        this.itemVE.textfieldUpdate();
+      }
+      this.clips.textfield.visible = this.itemVE.textfieldBackgroundVisible() || this.renderer.options.textfield.forceRender;
+    }
+  };
+  CollectableRendererTextfield.prototype.setVisibility = function (e) {
+    if (this.clips.textfield) {
+      this.clips.textfield.visible = e;
+    }
+  };
+  CollectableRendererTextfield.prototype.setText = function (e) {
+    if (this.clips.textfield) {
+      var t = r.CastleComponent.textFieldManager.getTextField(this.clips.textfield);
+      if (t && t.textContentVO) {
+        t.textContentVO.stringValue = "";
+      } else {
+        var i = r.CastleComponent.textFieldManager.registerTextField(this.clips.textfield, new a.TextVO(""), new l.InternalGGSTextFieldConfigVO(true));
+        if (this.renderer.options.textfield.verticalAlign != "") {
+          i.verticalAlign = this.renderer.options.textfield.verticalAlign;
+        }
+        i.autoFitToBounds = this.renderer.options.textfield.useAutoFitToBounds;
       }
     }
   };
-  return CollectableRendererTooltip;
-}(a.ACollectableRenderComponent);
-exports.CollectableRendererTooltip = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList");
+  return CollectableRendererTextfield;
+}(require("./242.js").ACollectableRenderComponent);
+exports.CollectableRendererTextfield = s;
+var r = require("./14.js");
+var l = require("./2.js");
+o.classImplementsInterfaces(s, "ICollectableRendererList");

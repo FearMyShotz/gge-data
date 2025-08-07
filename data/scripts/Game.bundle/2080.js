@@ -1,76 +1,104 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
+var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./3.js");
-var s = function () {
-  function RingmenuBuildingInfoArea(e) {
-    this.infostate = 0;
-    this.ringMenu = e;
-    this.progressInfo = new l.RingmenuBuildingProgressInfo(e.progressInfo);
-    this.priceInfo = new r.RingmenuBuildingPriceInfo(e.mc_priceInfo);
-    this.iinfotxtInfo = o.GoodgameTextFieldManager.getInstance().registerTextField(e.mc_infoText.txt_info, new a.LocalizedTextVO(""));
-    this.iinfotxtInfo.textAlign = n.GGSTextAlign.CENTER;
-    this.iinfotxtInfo.autoFitToBounds = true;
+var a = require("./23.js");
+var s = require("./23.js");
+var r = require("./92.js");
+var l = require("./64.js");
+var c = require("./415.js");
+var u = function (e) {
+  function IsoWorldRingMenu(t) {
+    var i = e.call(this, t) || this;
+    i.isPermanent = true;
+    return i;
   }
-  RingmenuBuildingInfoArea.prototype.onMouseOver = function (e) {
-    var t = e.getInfoText();
-    if (t) {
-      this.showInfoText(t);
-    } else {
-      this.showPriceInfo(e.getAction());
+  n.__extends(IsoWorldRingMenu, e);
+  Object.defineProperty(IsoWorldRingMenu.prototype, "worldLayer", {
+    get: function () {
+      return d.Iso.renderer.layers.transformLayer;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(c.BasicIngameUIComponent.prototype, "worldLayer").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoWorldRingMenu.prototype, "targetBuilding", {
+    get: function () {
+      return this._target;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  IsoWorldRingMenu.prototype.initComponent = function () {
+    this.targetBuilding.buildingVO.removeEventListener(l.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onTargetDataChange));
+    this.targetBuilding.buildingVO.addEventListener(l.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onTargetDataChange));
+  };
+  IsoWorldRingMenu.prototype.updateComponent = function () {};
+  IsoWorldRingMenu.prototype.updateMenuPosition = function () {
+    var e = this.target;
+    if (e) {
+      var t = e.uiPos;
+      if (e.vo && e.vo.isInBuildingDistrict) {
+        t.y = Math.max(-80, t.y);
+      }
+      var i = e.uiDisp.localToGlobal(t);
+      this.disp.x = i.x;
+      this.disp.y = i.y;
     }
   };
-  RingmenuBuildingInfoArea.prototype.onMouseOut = function () {
-    this.hideInfoTexts();
+  Object.defineProperty(IsoWorldRingMenu.prototype, "target", {
+    get: function () {
+      return Object.getOwnPropertyDescriptor(c.BasicIngameUIComponent.prototype, "target").get.call(this);
+    },
+    set: function (t) {
+      if (this.targetBuilding != t) {
+        if (this.targetBuilding) {
+          this.targetBuilding.buildingVO.removeEventListener(l.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onTargetDataChange));
+          this.targetBuilding.hasRingMenu = false;
+        }
+        this._target = t;
+        if (t) {
+          this.targetBuilding.hasRingMenu = true;
+          e.prototype.updateMenuPosition.call(this);
+          this.initComponent();
+          this._isLocked = true;
+          s.TweenMax.fromTo(this.disp, 0.1, {
+            scaleX: 0,
+            scaleY: 0
+          }, {
+            scaleX: 1,
+            scaleY: 1,
+            ease: a.Linear.easeIn,
+            onComplete: this.bindFunction(this.onTweenComplete)
+          });
+          this.show();
+        } else {
+          this.hide();
+        }
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  IsoWorldRingMenu.prototype.onTweenComplete = function () {
+    this._isLocked = false;
   };
-  RingmenuBuildingInfoArea.prototype.init = function (e) {
-    this.targetBuilding = e;
-    this.progressInfo.init(e);
-    this.priceInfo.init(e);
-    this.hideInfoTexts();
-  };
-  RingmenuBuildingInfoArea.prototype.update = function () {
-    if (this.infostate == RingmenuBuildingInfoArea.INFOSTATE_PROGRESS) {
-      this.progressInfo.update();
-    } else if (this.infostate == RingmenuBuildingInfoArea.INFOSTATE_PRICEINFO) {
-      this.priceInfo.update();
+  IsoWorldRingMenu.prototype.hide = function () {
+    if (this.targetBuilding) {
+      this.targetBuilding.hasRingMenu = false;
+      this.controller.dispatchEvent(new r.IsoEvent(r.IsoEvent.HIDE_PANEL_INFO, []));
+      this.targetBuilding.buildingVO.removeEventListener(l.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onTargetDataChange));
+      this.layoutManager.nativeCursor.setCursorType(o.BasicCustomCursor.CURSOR_ARROW);
     }
+    e.prototype.hide.call(this);
   };
-  RingmenuBuildingInfoArea.prototype.showPriceInfo = function (e) {
-    this.setInfoState(RingmenuBuildingInfoArea.INFOSTATE_PRICEINFO);
-    this.priceInfo.setAction(e);
+  IsoWorldRingMenu.prototype.onTargetDataChange = function (e) {
+    this.updateComponent();
   };
-  RingmenuBuildingInfoArea.prototype.showInfoText = function (e) {
-    this.setInfoState(RingmenuBuildingInfoArea.INFOSTATE_SIMPLEINFO);
-    this.iinfotxtInfo.textContentVO.textId = e;
-  };
-  RingmenuBuildingInfoArea.prototype.hideInfoTexts = function () {
-    this.setInfoState(RingmenuBuildingInfoArea.INFOSTATE_PROGRESS);
-    this.progressInfo.update();
-  };
-  RingmenuBuildingInfoArea.prototype.setInfoState = function (e) {
-    this.infostate = e;
-    this.ringMenu.progressInfo.visible = false;
-    this.ringMenu.mc_infoText.visible = false;
-    this.ringMenu.mc_priceInfo.visible = false;
-    switch (e) {
-      case RingmenuBuildingInfoArea.INFOSTATE_SIMPLEINFO:
-        this.ringMenu.mc_infoText.visible = true;
-        break;
-      case RingmenuBuildingInfoArea.INFOSTATE_PRICEINFO:
-        this.ringMenu.mc_priceInfo.visible = true;
-        break;
-      case RingmenuBuildingInfoArea.INFOSTATE_PROGRESS:
-        this.ringMenu.progressInfo.visible = true;
-    }
-  };
-  RingmenuBuildingInfoArea.INFOSTATE_PROGRESS = 0;
-  RingmenuBuildingInfoArea.INFOSTATE_PRICEINFO = 1;
-  RingmenuBuildingInfoArea.INFOSTATE_SIMPLEINFO = 2;
-  return RingmenuBuildingInfoArea;
-}();
-exports.RingmenuBuildingInfoArea = s;
-var r = require("./2081.js");
-var l = require("./2620.js");
+  return IsoWorldRingMenu;
+}(c.BasicIngameUIComponent);
+exports.IsoWorldRingMenu = u;
+var d = require("./34.js");

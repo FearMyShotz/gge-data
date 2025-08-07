@@ -3,46 +3,33 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./666.js");
-var s = require("./88.js");
-var r = require("./116.js");
-var l = function (e) {
-  function CastlePrimeDayPOSMSDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+var a = require("./88.js");
+var s = require("./114.js");
+var r = function (e) {
+  function CastlePaymentRewardSpecialOfferHalloweenDialog() {
+    return e.call(this, CastlePaymentRewardSpecialOfferHalloweenDialog.NAME) || this;
   }
-  n.__extends(CastlePrimeDayPOSMSDialog, e);
-  CastlePrimeDayPOSMSDialog.prototype.setTextIDs = function () {
-    this.titleTextID = "dialog_primeday_specialoffer_title";
-    this.descriptionTextID = "dialog_primeday_smsOffer_description";
-    this.dialogPrimedaySpecialofferEndTimerTextID = "dialog_primeday_specialoffer_endTimer";
+  n.__extends(CastlePaymentRewardSpecialOfferHalloweenDialog, e);
+  CastlePaymentRewardSpecialOfferHalloweenDialog.prototype.setTextIDs = function () {
+    e.prototype.setTextIDs.call(this);
+    this.titleTextID = "dialog_primeday_halloween_title";
+    this.descriptionTextID = "dialog_primeday_halloween_description";
   };
-  Object.defineProperty(CastlePrimeDayPOSMSDialog.prototype, "offerType", {
+  Object.defineProperty(CastlePaymentRewardSpecialOfferHalloweenDialog.prototype, "skinType", {
     get: function () {
-      return s.CastlePaymentRewardSpecialOfferConstants.SPECIAL_OFFER_FINISH_SMS;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_HALLOWEEN;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastlePaymentRewardSpecialOfferDialog.prototype, "offerType").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastlePrimeDayPOSMSDialog.prototype, "currencyValue", {
-    get: function () {
-      return a.CastleHardCurrencyHelper.shownCurrencyValueForPO(this.dialogPropertiesPrivateOffer.offerVO);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastlePaymentRewardSpecialOfferDialog.prototype, "currencyValue").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastlePrimeDayPOSMSDialog.prototype.onPaymentUpdate = function (e) {};
-  CastlePrimeDayPOSMSDialog.__initialize_static_members = function () {
-    CastlePrimeDayPOSMSDialog.NAME = "CastlePrimeDayPOSMS";
+  CastlePaymentRewardSpecialOfferHalloweenDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferHalloweenDialog.NAME = "CastlePaymentRewardSpecialOfferHalloween";
   };
-  return CastlePrimeDayPOSMSDialog;
-}(r.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePrimeDayPOSMSDialog = l;
-o.classImplementsInterfaces(l, "ICollectableRendererList");
-l.__initialize_static_members();
+  return CastlePaymentRewardSpecialOfferHalloweenDialog;
+}(s.CastlePaymentRewardSpecialOfferDialog);
+exports.CastlePaymentRewardSpecialOfferHalloweenDialog = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList");
+r.__initialize_static_members();

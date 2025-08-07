@@ -139,7 +139,7 @@ var m = function (e) {
 }(C.CastleExternalDialog);
 exports.CastleHelperDialog = m;
 var f = require("./95.js");
-var O = require("./1075.js");
+var O = require("./1076.js");
 var E = require("./36.js");
 a.classImplementsInterfaces(m, "ICollectableRendererList");
 m.__initialize_static_members();

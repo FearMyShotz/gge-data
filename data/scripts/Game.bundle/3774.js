@@ -1,212 +1,187 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CastleAttackWaveVO(e, t = 0, i = null) {
-    this._allItems = [];
-    this._allTools = [];
-    this._allUnits = [];
-    this._target = i;
-    e = l.int(Math.max(e, t));
-    var n = 0;
-    if (i && i.ownerInfo && (i.hasOtherPlayerInfo && !a.PlayerHelper.isNPCPlayer(i.ownerInfo.playerID) || a.PlayerHelper.isNpcPvpPlayer(i.ownerInfo.playerID)) && e >= r.PlayerConst.LEVEL_CAP && c.CastleModel.userData.userLevel >= r.PlayerConst.LEVEL_CAP) {
-      n += c.CastleModel.legendSkillData.getTotalValueOfLegendSkillEffect(u.CastleLegendSkillEffectsEnum.ADDITIONAL_ATTACK_TOOL_AMOUNT_FLANK);
-    }
-    var d = l.int(s.CombatConst.getTotalAmountToolsFlank(e, n));
-    var p = l.int(s.CombatConst.getAmountSoldiersFlank(e, 0));
-    var h = l.int(s.CombatConst.getTotalAmountToolsMiddle(e));
-    var g = l.int(s.CombatConst.getAmountSoldiersMiddle(e, 0));
-    this._itemsLeftWall_tools = new o.CastleFightItemContainer(s.CombatConst.ITEMS_LEFTWALL_TOOLS, s.CombatConst.LEVELS_LEFTWALL_TOOLS, e, d);
-    this._itemsLeftWall_units = new o.CastleFightItemContainer(s.CombatConst.ITEMS_LEFTWALL_UNITS, s.CombatConst.LEVELS_LEFTWALL_UNITS, e, p);
-    this._itemsMiddleWall_tools = new o.CastleFightItemContainer(s.CombatConst.ITEMS_MIDDLEWALL_TOOLS, s.CombatConst.LEVELS_MIDDLEWALL_TOOLS, e, h);
-    this._itemsMiddleWall_units = new o.CastleFightItemContainer(s.CombatConst.ITEMS_MIDDLEWALL_UNITS, s.CombatConst.LEVELS_MIDDLEWALL_UNITS, e, g);
-    this._itemsRightWall_tools = new o.CastleFightItemContainer(s.CombatConst.ITEMS_RIGHTWALL_TOOLS, s.CombatConst.LEVELS_RIGHTWALL_TOOLS, e, d);
-    this._itemsRightWall_units = new o.CastleFightItemContainer(s.CombatConst.ITEMS_RIGHTWALL_UNITS, s.CombatConst.LEVELS_RIGHTWALL_UNITS, e, p);
-    this._allTools.push(this._itemsMiddleWall_tools);
-    this._allTools.push(this._itemsLeftWall_tools);
-    this._allTools.push(this._itemsRightWall_tools);
-    this._allUnits.push(this._itemsMiddleWall_units);
-    this._allUnits.push(this._itemsLeftWall_units);
-    this._allUnits.push(this._itemsRightWall_units);
-    this._allItems = this._allTools.concat(this._allUnits);
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./1.js");
+var l = require("./1.js");
+var c = require("./5.js");
+var u = require("./5.js");
+var d = require("./5.js");
+var p = require("./3.js");
+var h = require("./3.js");
+var g = require("./3.js");
+var C = require("./3.js");
+var _ = require("./3.js");
+var m = require("./6.js");
+var f = require("./23.js");
+var O = require("./23.js");
+var E = require("./18.js");
+var y = require("./51.js");
+var b = require("./16.js");
+var D = require("./28.js");
+var I = require("./4.js");
+var T = require("./33.js");
+var v = require("./27.js");
+var S = require("./8.js");
+var A = require("./106.js");
+var L = require("./11.js");
+var P = require("./135.js");
+var M = function (e) {
+  function CastlePostAttackTreasureDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastlePostAttackTreasureDialog.NAME) || this;
   }
-  CastleAttackWaveVO.prototype.getWaveInfoObject = function () {
-    var e = {
-      L: {},
-      R: {},
-      M: {}
-    };
-    e.L.T = this._itemsLeftWall_tools.getSlotList();
-    e.L.U = this._itemsLeftWall_units.getSlotList();
-    e.M.T = this._itemsMiddleWall_tools.getSlotList();
-    e.M.U = this._itemsMiddleWall_units.getSlotList();
-    e.R.T = this._itemsRightWall_tools.getSlotList();
-    e.R.U = this._itemsRightWall_units.getSlotList();
-    return e;
+  n.__extends(CastlePostAttackTreasureDialog, e);
+  CastlePostAttackTreasureDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new C.LocalizedTextVO("dialog_postAttack_title")).verticalAlign = o.GGSVerticalAlign.MIDDLE;
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_toolTip.txt_name, new C.LocalizedTextVO("dialog_postAttack_instantTravel"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_arrivel, new C.LocalizedTextVO("dialog_postAttack_arrival"));
+    this.dialogDisp.mc_travelcost.toolTipText = "costs";
+    this.dialogDisp.mc_traveltime.toolTipText = "travelTime";
+    this.dialogDisp.mc_wait.icon.toolTipText = "dialog_postAttack_supportTime";
+    this.dialogDisp.mc_estimatedHonor.toolTipText = "dialog_postAttack_estimatedHonor";
+    this.dialogDisp.mc_siegeTime.toolTipText = "dialog_postAttack_siegeTime";
+    this.i_travelcost_txt_value = this.textFieldManager.registerTextField(this.dialogDisp.mc_travelcost.txt_value, new _.TextVO(""));
+    this.i_txt_cost0 = this.textFieldManager.registerTextField(this.dialogDisp.mc_toolTip.txt_cost0.txt_cost, new g.LocalizedNumberVO(0));
+    this.i_siegetime_txt_value = this.textFieldManager.registerTextField(this.dialogDisp.mc_siegeTime.txt_value, new _.TextVO(""));
+    this.itxt_date = this.textFieldManager.registerTextField(this.dialogDisp.txt_date, new _.TextVO(""));
+    this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.txt_time, new _.TextVO(""));
+    this.i_traveltime_txt_value = this.textFieldManager.registerTextField(this.dialogDisp.mc_traveltime.txt_value, new _.TextVO(""));
+    this.i_honor_txt_value = this.textFieldManager.registerTextField(this.dialogDisp.mc_estimatedHonor.txt_value, new _.TextVO(""));
+    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok, this.dialogDisp.btn_back, this.dialogDisp.btn_travelboost]);
   };
-  CastleAttackWaveVO.prototype.getLowestTravelSpeed = function (e = false, t = null) {
-    var i = l.int(Number.MAX_VALUE);
-    if (this._allItems != null) {
-      for (var n = 0, o = this._allItems; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined) {
-          i = l.int(Math.min(i, a.getLowestTravelSpeed(e, t)));
-        }
+  CastlePostAttackTreasureDialog.prototype.applyPropertiesLoaded = function (e = null) {
+    if (this.dialogDisp.mc_charPlaceHolder) {
+      A.CharacterHelper.createCharacterBig(y.ClientConstCharacter.CHAR_ID_GENERAL, this.dialogDisp.mc_charPlaceHolder, 144, 186);
+    }
+    this.setArivalDateAndTime(this.fightScreenInfoVO.getTravelTime(this.dialogProperties.attackInfoVO.targetArea, this.dialogProperties.selectedLord));
+    this.i_travelcost_txt_value.textContentVO.stringValue = String(this.fightScreenInfoVO.getTravelCost(this.dialogProperties.selectedLord));
+    this.i_txt_cost0.textContentVO.numberValue = I.CastleModel.costsData.getFinalCostsC2(d.TravelConst.getTravelBoostCostC2(this.fightScreenInfoVO.distance));
+    this.i_siegetime_txt_value.textContentVO.stringValue = s.TimeStringHelper.getTimeToString(u.OutpostConst.SIEGE_TIME, s.TimeStringHelper.ONE_TIME_FORMAT, h.Localize.text);
+    this.dialogDisp.mc_toolTip.visible = false;
+    this.dialogDisp.mc_toolTip.txt_cost0.mc_icon.gotoAndStop(5);
+    this.dialogDisp.mc_wait.visible = false;
+    this.dialogDisp.mc_siegeTime.visible = this.fightScreenInfoVO.isConquerAttack && !this.fightScreenInfoVO.targetOwner.isOutpostOwner;
+    this.dialogDisp.mc_estimatedHonor.visible = (this.fightScreenInfoVO.targetActionType == E.ClientConstCastle.ACTION_TYPE_ATTACK || this.fightScreenInfoVO.targetActionType == E.ClientConstCastle.ACTION_TYPE_CONQUERATTACK) && this.fightScreenInfoVO.targetActionType != E.ClientConstCastle.ACTION_TYPE_SUPPORTDEFENSE && this.fightScreenInfoVO.targetActionType != E.ClientConstCastle.ACTION_TYPE_SENDTROUPS;
+    if (l.instanceOfClass(this.fightScreenInfoVO, "CastleTreasureHuntFightscreenVO")) {
+      this.dialogDisp.mc_estimatedHonor.visible = false;
+    }
+    if (this.dialogDisp.mc_estimatedHonor.visible) {
+      var t = m.int(c.CombatConst.getHonorChange(I.CastleModel.userData.userHonor, this.fightScreenInfoVO.targetOwner.honor, I.CastleModel.userData.userLevel, this.fightScreenInfoVO.targetOwnerLevel, true) * (1 + I.CastleModel.researchData.getResearchEffectValue(T.EffectTypeEnum.EFFECT_TYPE_HONOR_BONUS).strength / 100));
+      this.i_honor_txt_value.textContentVO.stringValue = String(t);
+      this.i_honor_txt_value.color = t < 0 ? b.ClientConstColor.FONT_INSUFFICIENT_COLOR : b.ClientConstColor.FONT_DEFAULT_COLOR;
+      if (t >= 0) {
+        this.textFieldManager.registerTextField(this.dialogDisp.mc_estimatedHonor.txt_value, new C.LocalizedTextVO(a.GenericTextIds.VALUE_NOMINAL_ADD, [this.dialogDisp.mc_estimatedHonor.txt_value.text]));
       }
     }
-    return i;
+    this.dialogDisp.btn_travelboost.visible = true;
   };
-  CastleAttackWaveVO.prototype.isWaveComplete = function () {
-    return this.getSumOfUnits() > 0;
+  CastlePostAttackTreasureDialog.prototype.setArivalDateAndTime = function (e) {
+    var t = new Date();
+    t.setTime(t.getTime() + e * D.ClientConstTime.SEC_2_MILLISEC);
+    this.itxt_date.textContentVO.stringValue = v.CastleTimeStringHelper.getDateStringFromDate(t);
+    this.itxt_time.textContentVO.stringValue = h.Localize.datetime(t, p.DateTimeStyle.NONE, p.DateTimeStyle.SHORT);
+    this.i_traveltime_txt_value.textContentVO.stringValue = s.TimeStringHelper.getShortTimeStringBySeconds(e);
   };
-  CastleAttackWaveVO.prototype.getSumOfItems = function () {
-    var e = 0;
-    if (this._allItems != null) {
-      for (var t = 0, i = this._allItems; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          e += n.sumOfItems;
-        }
+  CastlePostAttackTreasureDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (S.ButtonHelper.isButtonEnabled(t.target)) {
+      switch (t.target) {
+        case this.dialogDisp.btn_close:
+        case this.dialogDisp.btn_back:
+          this.hide();
+          break;
+        case this.dialogDisp.btn_ok:
+          this.sendMovement(2, 0);
+          this.callHideFunction();
+          this.hide();
+          break;
+        case this.dialogDisp.btn_travelboost:
+          if (I.CastleModel.currencyData.c2Amount < I.CastleModel.costsData.getFinalCostsC2(d.TravelConst.getTravelBoostCostC2(this.fightScreenInfoVO.distance))) {
+            V.CastleDialogHandler.getInstance().registerDefaultDialogs(x.CastleNoMoneyC2Dialog, new P.CastleNoMoneyC2DialogProperties());
+          } else {
+            this.sendMovement(1, 0);
+            this.callHideFunction();
+            this.hide();
+          }
       }
     }
-    return e;
   };
-  CastleAttackWaveVO.prototype.getSumOfUnits = function () {
-    var e = 0;
-    if (this._allUnits != null) {
-      for (var t = 0, i = this._allUnits; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          e += n.sumOfItems;
-        }
-      }
-    }
-    return e;
-  };
-  CastleAttackWaveVO.prototype.getSumOfTools = function () {
-    var e = 0;
-    if (this._allTools != null) {
-      for (var t = 0, i = this._allTools; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          e += n.sumOfItems;
-        }
-      }
-    }
-    return e;
-  };
-  CastleAttackWaveVO.prototype.getSumOfToolsByTool = function (e) {
-    var t = 0;
-    if (this._allTools != null) {
-      for (var i = 0, n = this._allTools; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          t += l.int(o.getAmountOfToolInContainer(e));
-        }
-      }
-    }
-    return t;
-  };
-  Object.defineProperty(CastleAttackWaveVO.prototype, "itemsLeftWall_tools", {
-    get: function () {
-      return this._itemsLeftWall_tools;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackWaveVO.prototype, "itemsLeftWall_units", {
-    get: function () {
-      return this._itemsLeftWall_units;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackWaveVO.prototype, "itemsMiddleWall_tools", {
-    get: function () {
-      return this._itemsMiddleWall_tools;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackWaveVO.prototype, "itemsMiddleWall_units", {
-    get: function () {
-      return this._itemsMiddleWall_units;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackWaveVO.prototype, "itemsRightWall_tools", {
-    get: function () {
-      return this._itemsRightWall_tools;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackWaveVO.prototype, "itemsRightWall_units", {
-    get: function () {
-      return this._itemsRightWall_units;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleAttackWaveVO.prototype.findEffectingFlankTools = function (e) {
-    if (this.itemsLeftWall_units.containsUnit(e)) {
-      return this.itemsLeftWall_tools;
-    } else if (this.itemsMiddleWall_units.containsUnit(e)) {
-      return this.itemsMiddleWall_tools;
-    } else if (this.itemsRightWall_units.containsUnit(e)) {
-      return this.itemsRightWall_tools;
-    } else {
-      return null;
+  CastlePostAttackTreasureDialog.prototype.sendMovement = function (e, t) {
+    if (l.instanceOfClass(this.fightScreenInfoVO, "CastleTreasureHuntFightscreenVO")) {
+      this.sendTreasureHuntAttack(e, t);
+    } else if (l.instanceOfClass(this.fightScreenInfoVO, "CastleAttackInfoVO")) {
+      this.sendAttack(e, t);
+    } else if (l.instanceOfClass(this.fightScreenInfoVO, "CastleSupportDefenceVO")) {
+      this.sendSupport(e, t);
+    } else if (l.instanceOfClass(this.fightScreenInfoVO, "CastleTroopSupportVO")) {
+      this.sendTroops(e, t);
     }
   };
-  Object.defineProperty(CastleAttackWaveVO.prototype, "target", {
+  CastlePostAttackTreasureDialog.prototype.sendTreasureHuntAttack = function (e, t) {
+    I.CastleModel.treasureMapData.sendTreasureHuntAttack(this.fightScreenInfoVO, e, t, this.dialogProperties.selectedLord, false);
+  };
+  CastlePostAttackTreasureDialog.prototype.sendAttack = function (e, t) {
+    I.CastleModel.attackData.sendAttack(this.fightScreenInfoVO, e, t, false, 0, this.dialogProperties.selectedLord, false, 0);
+  };
+  CastlePostAttackTreasureDialog.prototype.sendSupport = function (e, t) {
+    I.CastleModel.attackData.sendSupport(this.fightScreenInfoVO, e, t, this.dialogProperties.selectedLord, false, 0);
+  };
+  CastlePostAttackTreasureDialog.prototype.sendTroops = function (e, t) {
+    R.CastleTroopSupportData.sendTroops(this.fightScreenInfoVO, e, t, this.dialogProperties.selectedLord, this.fightScreenInfoVO.targetArea.kingdomID, false, 0);
+  };
+  CastlePostAttackTreasureDialog.prototype.callHideFunction = function () {
+    if (this.dialogProperties.hideFunction != null) {
+      this.dialogProperties.hideFunction();
+    }
+  };
+  CastlePostAttackTreasureDialog.prototype.onMouseOut = function (t) {
+    e.prototype.onMouseOut.call(this, t);
+    this.dialogDisp.mc_toolTip.visible = false;
+    this.setArivalDateAndTime(this.fightScreenInfoVO.getTravelTime(this.dialogProperties.attackInfoVO.targetArea, this.dialogProperties.selectedLord));
+    this.i_traveltime_txt_value.color = b.ClientConstColor.FONT_DEFAULT_COLOR;
+  };
+  CastlePostAttackTreasureDialog.prototype.onMouseOver = function (t) {
+    e.prototype.onMouseOver.call(this, t);
+    if (t.target == this.dialogDisp.btn_travelboost) {
+      this.dialogDisp.setChildIndex(this.dialogDisp.mc_toolTip, this.dialogDisp.numChildren - 1);
+      this.dialogDisp.mc_toolTip.visible = true;
+      O.TweenMax.fromTo(this.dialogDisp.mc_toolTip, 0.2, {
+        alpha: 0
+      }, {
+        alpha: 1,
+        ease: f.Linear.easeIn
+      });
+      this.i_traveltime_txt_value.color = b.ClientConstColor.GENERIC_DARK_GREEN;
+      this.setArivalDateAndTime(this.fightScreenInfoVO.getBoostedTravelTime(this.dialogProperties.attackInfoVO.targetArea, 0, this.dialogProperties.selectedLord));
+    }
+  };
+  Object.defineProperty(CastlePostAttackTreasureDialog.prototype, "fightScreenInfoVO", {
     get: function () {
-      return this._target;
+      return this.dialogProperties.attackInfoVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAttackWaveVO.prototype, "flanks", {
+  Object.defineProperty(CastlePostAttackTreasureDialog.prototype, "dialogProperties", {
     get: function () {
-      return this._allItems;
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleAttackWaveVO.prototype.getAllUnitsAsVector = function () {
-    var e = [];
-    var t = 0;
-    for (t = 0; t < this._allUnits.length; t++) {
-      for (var i = 0, n = this._allUnits[t].items; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && o.unitVO) {
-          e.push(o.unitVO);
-        }
-      }
-    }
-    for (t = 0; t < this._allTools.length; t++) {
-      for (var a = 0, s = this._allTools[t].items; a < s.length; a++) {
-        var r = s[a];
-        if (r !== undefined && r.unitVO) {
-          e.push(r.unitVO);
-        }
-      }
-    }
-    return e;
+  CastlePostAttackTreasureDialog.__initialize_static_members = function () {
+    CastlePostAttackTreasureDialog.NAME = "CastlePostAttackTreasure";
   };
-  CastleAttackWaveVO.prototype.exceedsUnitLimit = function () {
-    return this._allUnits.some(function (e) {
-      return e.exceedsLimit();
-    });
-  };
-  return CastleAttackWaveVO;
-}();
-exports.CastleAttackWaveVO = n;
-var o = require("./552.js");
-var a = require("./112.js");
-var s = require("./5.js");
-var r = require("./5.js");
-var l = require("./6.js");
-var c = require("./4.js");
-var u = require("./230.js");
+  return CastlePostAttackTreasureDialog;
+}(L.CastleExternalDialog);
+exports.CastlePostAttackTreasureDialog = M;
+var R = require("./1103.js");
+var V = require("./9.js");
+var x = require("./138.js");
+r.classImplementsInterfaces(M, "ICollectableRendererList");
+M.__initialize_static_members();

@@ -3,59 +3,44 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./69.js");
-var s = require("./8.js");
+var a = require("./3.js");
+var s = require("./3199.js");
 var r = function (e) {
-  function CastleSlumPackageBuyDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleSlumPackageBuyDialog.ASSET_NAME) || this;
+  function SlumPackageScrollItem(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(CastleSlumPackageBuyDialog, e);
-  CastleSlumPackageBuyDialog.prototype.handleBuyButton = function () {
-    var t = this.slumBuyDialogProperties;
-    if (t.activeSlumLevel < t.level) {
-      s.ButtonHelper.enableButton(this.dialogDisp.btn_ok, false);
-      this.dialogDisp.btn_ok.toolTipText = {
-        t: "dialog_village_buy_levellock",
-        p: [t.level]
-      };
-    } else {
-      e.prototype.handleBuyButton.call(this);
+  n.__extends(SlumPackageScrollItem, e);
+  Object.defineProperty(SlumPackageScrollItem.prototype, "isLocked", {
+    get: function () {
+      var e = this.slumPackageScrollItemVO;
+      return e.activeSlumLevel < e.level;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SlumPackageScrollItem.prototype.customFillItem = function () {
+    e.prototype.customFillItem.call(this);
+    this.disp.mc_locked.visible = this.isLocked;
+  };
+  SlumPackageScrollItem.prototype.handleTooltip = function () {
+    e.prototype.handleTooltip.call(this);
+    if (this.isLocked) {
+      this.disp.toolTipText = new a.LocalizedTextVO("dialog_village_buy_levellock", [this.slumPackageScrollItemVO.level]);
     }
   };
-  Object.defineProperty(CastleSlumPackageBuyDialog.prototype, "titleTextColor", {
-    get: function () {
-      throw new a.AbstractMethodError();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSlumPackageBuyDialog.prototype, "titleBackgroundFrame", {
-    get: function () {
-      throw new a.AbstractMethodError();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleSlumPackageBuyDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    e.prototype.applyPropertiesLoaded.call(this, t);
-    this.setTitleTextColor(this.titleTextColor);
-    this.dialogDisp.mc_titleBG.gotoAndStop(this.titleBackgroundFrame);
-    this.dialogProperties.eventPackageVO;
-    this.dialogDisp.mc_ring.visible = false;
+  SlumPackageScrollItem.prototype.createDialogProperties = function () {
+    var e = new s.CastleSlumPackageBuyDialogProperties();
+    e.parseDataFromSlumPackageScrollItemVO(this.slumPackageScrollItemVO);
+    return e;
   };
-  Object.defineProperty(CastleSlumPackageBuyDialog.prototype, "slumBuyDialogProperties", {
+  Object.defineProperty(SlumPackageScrollItem.prototype, "slumPackageScrollItemVO", {
     get: function () {
-      return this.dialogProperties;
+      return this.packageScrollItemVO;
     },
     enumerable: true,
     configurable: true
   });
-  CastleSlumPackageBuyDialog.__initialize_static_members = function () {
-    CastleSlumPackageBuyDialog.ASSET_NAME = "CastleSlumPackageBuy";
-  };
-  return CastleSlumPackageBuyDialog;
-}(require("./168.js").CastleGenericSliderBuyDialog);
-exports.CastleSlumPackageBuyDialog = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList");
-r.__initialize_static_members();
+  return SlumPackageScrollItem;
+}(require("./173.js").AMerchantScrollItem);
+exports.SlumPackageScrollItem = r;
+o.classImplementsInterfaces(r, "MovieClip");

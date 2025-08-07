@@ -2,117 +2,78 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./1396.js");
-var l = require("./4.js");
-var c = require("./964.js");
-var u = require("./1397.js");
-var d = function (e) {
-  function CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector(t, i) {
-    var n = this;
-    n.SORT_CONQUERED = "SORT_CONQUERED";
-    n.SORT_ATTACK = "SORT_ATTACK";
-    n.SORT_ALLIANCE_INFLUENCE = "SORT_ALLIANCE_INFLUENCE";
-    CONSTRUCTOR_HACK;
-    return n = e.call(this, t, i) || this;
+var o = require("./1.js");
+var a = require("./2.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./21.js");
+var c = require("./53.js");
+var u = require("./13.js");
+var d = require("./4.js");
+var p = require("./27.js");
+var h = require("./8.js");
+var g = function (e) {
+  function CastleAllianceBattlegroundJoinBlockerDialog() {
+    return e.call(this, CastleAllianceBattlegroundJoinBlockerDialog.NAME) || this;
   }
-  n.__extends(CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector, e);
-  Object.defineProperty(CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector.prototype, "scrollListItemClass", {
-    get: function () {
-      return h.CastleAllianceBattlegroundEventDialogPerformanceAllianceListItem;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleAllianceBattlegroundEventDialogPerformanceAlliance.prototype, "scrollListItemClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector.prototype, "scrollListItemAssetName", {
-    get: function () {
-      return "ABG_AlliancePerformance_ListItem";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleAllianceBattlegroundEventDialogPerformanceAlliance.prototype, "scrollListItemAssetName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector.prototype, "sortTypes", {
-    get: function () {
-      return [this.SORT_ALLIANCE_INFLUENCE, this.SORT_ATTACK, this.SORT_CONQUERED];
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleAllianceBattlegroundEventDialogPerformanceAlliance.prototype, "sortTypes").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector.prototype, "defaultSortType", {
-    get: function () {
-      return this.SORT_ALLIANCE_INFLUENCE;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleAllianceBattlegroundEventDialogPerformanceAlliance.prototype, "defaultSortType").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this.subLayerDisp.icon_attack_ML.toolTipText = this.subLayerDisp.mc_attack.toolTipText = "stats_capitalsLooted";
-    this.subLayerDisp.icon_alliance_influence_points_ML.toolTipText = this.subLayerDisp.mc_allPoints.toolTipText = "stats_contributeAllianceInfluence";
-    this.subLayerDisp.icon_conquered_ML.toolTipText = this.subLayerDisp.mc_conquered.toolTipText = "stats_cityStatesConquered";
-    this.subLayerDisp.mc_rank.toolTipText = "rank";
-    this.subLayerDisp.mc_currentPoints.toolTipText = "currentInfluence";
+  n.__extends(CastleAllianceBattlegroundJoinBlockerDialog, e);
+  CastleAllianceBattlegroundJoinBlockerDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this);
+    h.ButtonHelper.initButtons([this.dialogDisp.btn_showMe, this.dialogDisp.btn_close], _.ClickFeedbackButton);
   };
-  CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector.prototype.sendPerformanceCommand = function () {
-    o.BasicModel.smartfoxClient.sendCommandVO(new r.C2SAllianceBattleGroundGetAlliancePerformanceVO(l.CastleModel.userData.allianceID, s.EventConst.EVENTTYPE_ALLIANCE_BATTLEGROUND));
+  CastleAllianceBattlegroundJoinBlockerDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId("dialog_beyondTheHorizon_eventParticipationBlocker_infoDialog_header")));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new r.LocalizedTextVO("dialog_beyondTheHorizon_eventParticipationBlocker_infoDialog_desc"));
+    this.itxt_remain = this.textFieldManager.registerTextField(this.dialogDisp.txt_remain, new s.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId("dialog_beyondTheHorizon_eventParticipationBlocker_infoDialog_timer")));
+    this.itxt_remain.autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_showMe.txt_value, new s.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId("showMe_simple")));
+    this.itxt_timer = this.textFieldManager.registerTextField(this.dialogDisp.txt_time, new s.TextVO(" "));
+    this.updateTime();
   };
-  CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector.prototype.updateDialogElements = function () {
-    this.subLayerDisp.icon_attack_ML.visible = this.subLayerDisp.mc_attack.visible = this.currentSorting == this.SORT_ATTACK;
-    this.subLayerDisp.icon_alliance_influence_points_ML.visible = this.subLayerDisp.mc_allPoints.visible = this.currentSorting == this.SORT_ALLIANCE_INFLUENCE;
-    this.subLayerDisp.icon_conquered_ML.visible = this.subLayerDisp.mc_conquered.visible = this.currentSorting == this.SORT_CONQUERED;
+  CastleAllianceBattlegroundJoinBlockerDialog.prototype.addEventListenerOnShow = function () {
+    d.CastleModel.timerData.addEventListener(l.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTime));
   };
-  CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector.prototype.sortPerformances = function () {
-    if (this.alliancePerformanceVOs) {
-      switch (this.currentSorting) {
-        case this.SORT_ALLIANCE_INFLUENCE:
-          this.alliancePerformanceVOs.sort(c.AllianceBattlegroundAlliancePerformanceVO.sortByInfluenceAlliancePoints);
+  CastleAllianceBattlegroundJoinBlockerDialog.prototype.removeEventListenerOnHide = function () {
+    d.CastleModel.timerData.removeEventListener(l.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTime));
+  };
+  CastleAllianceBattlegroundJoinBlockerDialog.prototype.updateTime = function (e = null) {
+    if (c.ABGHelper.abgEvent.remainingTimeInSecondsUntilJoinBlock > 0) {
+      this.itxt_timer.textContentVO.stringValue = p.CastleTimeStringHelper.getShortTimeString(c.ABGHelper.abgEvent.remainingTimeInSecondsUntilJoinBlock);
+      this.itxt_remain.textContentVO.stringValue = u.TextHelper.toUpperCaseLocaSafeTextId("dialog_beyondTheHorizon_eventParticipationBlocker_infoDialog_timer");
+      h.ButtonHelper.enableButton(this.dialogDisp.btn_showMe, true);
+      this.dialogDisp.btn_showMe.toolTipText = null;
+      this.dialogDisp.mc_time.visible = true;
+    } else {
+      this.itxt_timer.textContentVO.stringValue = " ";
+      h.ButtonHelper.enableButton(this.dialogDisp.btn_showMe, c.ABGHelper.abgEvent.castleBought);
+      this.itxt_remain.textContentVO.stringValue = u.TextHelper.toUpperCaseLocaSafeTextId("dialog_beyondTheHorizon_main_eventParticipationBlocker_blocked");
+      this.dialogDisp.btn_showMe.toolTipText = h.ButtonHelper.isButtonEnabled(this.dialogDisp.btn_showMe) ? null : "dialog_beyondTheHorizon_main_eventParticipationBlocker_blocked_tooltip";
+      this.dialogDisp.mc_time.visible = false;
+    }
+  };
+  CastleAllianceBattlegroundJoinBlockerDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (h.ButtonHelper.isButtonEnabled(t.target)) {
+      switch (t.target) {
+        case this.dialogDisp.btn_close:
+          this.hide();
           break;
-        case this.SORT_ATTACK:
-          this.alliancePerformanceVOs.sort(c.AllianceBattlegroundAlliancePerformanceVO.sortByAttackPoints);
-          break;
-        case this.SORT_CONQUERED:
-          this.alliancePerformanceVOs.sort(c.AllianceBattlegroundAlliancePerformanceVO.sortByConquerPoints);
+        case this.dialogDisp.btn_showMe:
+          this.onOK();
       }
     }
   };
-  CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector.prototype.getPointsFromVO = function (e) {
-    switch (this.currentSorting) {
-      case this.SORT_ALLIANCE_INFLUENCE:
-        return e.influenceAlliancePoints;
-      case this.SORT_ATTACK:
-        return e.attackPoints;
-      case this.SORT_CONQUERED:
-        return e.conquerPoints;
+  CastleAllianceBattlegroundJoinBlockerDialog.prototype.onOK = function () {
+    if (!c.ABGHelper.abgEvent.castleBought) {
+      a.BasicDialogHandler.getInstance().registerDialogs(C.CastleAllianceBattleGroundBuyInfoDialog);
     }
-    return 0;
+    this.hide();
   };
-  CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.subLayerDisp.btn_alliance:
-        this.mainDialog.setCategory(p.CastleAllianceBattleGroundEventDialog.TAB_PERFORMANCE_ALLIANCE_COLLECTOR);
-        break;
-      case this.subLayerDisp.btn_player:
-        this.mainDialog.setCategory(p.CastleAllianceBattleGroundEventDialog.TAB_PERFORMANCE_PLAYER_COLLECTOR);
-    }
-  };
-  return CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector;
-}(u.CastleAllianceBattlegroundEventDialogPerformanceAlliance);
-exports.CastleAllianceBattlegroundEventDialogPerformanceAllianceCollector = d;
-a.classImplementsInterfaces(d, "ICollectableRendererList", "ISublayer");
-var p = require("./249.js");
-var h = require("./1398.js");
+  CastleAllianceBattlegroundJoinBlockerDialog.NAME = "CastleAllianceBattleGroundMessage";
+  return CastleAllianceBattlegroundJoinBlockerDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleAllianceBattlegroundJoinBlockerDialog = g;
+var C = require("./1392.js");
+var _ = require("./36.js");
+o.classImplementsInterfaces(g, "ICollectableRendererList");

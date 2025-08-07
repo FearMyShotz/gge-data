@@ -3,158 +3,45 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./51.js");
-var r = require("./4.js");
-var l = function (e) {
-  function EventAnnouncementDialogProperties(t, i, n, o) {
-    var a = this;
-    a._eventId = 0;
-    a._durationTS = 0;
-    a._alreadyClaimed = false;
-    CONSTRUCTOR_HACK;
-    (a = e.call(this) || this)._eventId = t;
-    a._durationTS = i;
-    a._possibleRewards = n;
-    a._claimableRewards = o;
-    return a;
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./1.js");
+var l = require("./1.js");
+var c = require("./3.js");
+var u = require("./6.js");
+var d = require("./4.js");
+var p = require("./3398.js");
+var h = function (e) {
+  function OpenEventAnnouncementDialogCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(EventAnnouncementDialogProperties, e);
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "eventId", {
-    get: function () {
-      return this._eventId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "durationTS", {
-    get: function () {
-      return this._durationTS;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "alreadyClaimed", {
-    get: function () {
-      this._alreadyClaimed = r.CastleModel.eventAnnouncementData.isClaimed(this._durationTS);
-      return this._alreadyClaimed;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "possibleRewards", {
-    get: function () {
-      return this._possibleRewards;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "claimableRewards", {
-    get: function () {
-      return this._claimableRewards;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "dialogTitleTextId", {
-    get: function () {
-      var e;
-      switch (this.eventId) {
-        case EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION:
-          e = "dialog_eventAnnouncement_alienInvasion_header";
-          break;
-        case EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION_ALLIANCE:
-          e = "dialog_eventAnnouncement_alienInvasionAlliance_header";
+  n.__extends(OpenEventAnnouncementDialogCommand, e);
+  OpenEventAnnouncementDialogCommand.prototype.execute = function (e = null) {
+    if (!e || !l.instanceOfClass(e, "MessageEventAnnouncementVO")) {
+      throw new Error("OpenEventAnnouncementDialogCommand expects a MessageEventAnnouncementVO as its commandVars");
+    }
+    this.messageEventAnnouncementVO = e;
+    var t = this.messageEventAnnouncementVO.eventId;
+    var i = this.messageEventAnnouncementVO.durationTS;
+    d.CastleModel.eventAnnouncementData.isClaimed(i);
+    if (d.CastleModel.eventAnnouncementData.isAvailable(i)) {
+      var n = u.int(d.CastleModel.eventAnnouncementData.getLeagueTypeId(t));
+      if (n != -1) {
+        var s = d.CastleModel.eventAnnouncementData.getEventAnnouncementVO(t, n);
+        var r = g.CollectableManager.parser.createListFromRewardIdsString(s.teaserRewardIDs);
+        var h = d.CastleModel.rewardData.getListById(s.messageRewardID);
+        var f = new p.EventAnnouncementDialogProperties(t, i, r, h);
+        C.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleEventTeaserDialog, f);
       }
-      return e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "eventTitleTextId", {
-    get: function () {
-      return "dialog_eventAnnoucement_startIn";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "durationText", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "possibleEventRewardsDescription", {
-    get: function () {
-      var e;
-      switch (this.eventId) {
-        case EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION:
-        case EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION_ALLIANCE:
-          e = "dialog_eventAnnouncement_rewards";
-      }
-      return e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "announcementDescription", {
-    get: function () {
-      var e;
-      switch (this.eventId) {
-        case EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION:
-          e = "dialog_eventAnnouncement_alienInvasion_description";
-          break;
-        case EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION_ALLIANCE:
-          e = "dialog_eventAnnouncement_alienInvasionAlliance_description";
-      }
-      return e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "claimButtonLabel", {
-    get: function () {
-      if (this.alreadyClaimed) {
-        return "dialog_eventAnnouncements_collectButton_collected";
-      } else {
-        return "dialog_eventAnnouncements_collectButton";
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "backgroundName", {
-    get: function () {
-      var e;
-      switch (this.eventId) {
-        case EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION:
-        case EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION_ALLIANCE:
-          e = "AlienEventTeaserTheme";
-      }
-      return e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventAnnouncementDialogProperties.prototype, "characterId", {
-    get: function () {
-      var e = 0;
-      switch (this.eventId) {
-        case EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION:
-        case EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION_ALLIANCE:
-          e = a.int(s.ClientConstCharacter.CHAR_ID_SPY);
-      }
-      return e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  EventAnnouncementDialogProperties.__initialize_static_members = function () {
-    EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION = 11;
-    EventAnnouncementDialogProperties.EVENT_ID_ALIEN_INVASION_ALLIANCE = 71;
+    } else {
+      C.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(c.Localize.text(a.GenericTextIds.ALERT_INFORMATION), c.Localize.text("dialog_eventAnnouncements_expired")));
+    }
   };
-  return EventAnnouncementDialogProperties;
-}(o.BasicProperties);
-exports.EventAnnouncementDialogProperties = l;
-l.__initialize_static_members();
+  return OpenEventAnnouncementDialogCommand;
+}(s.SimpleCommand);
+exports.OpenEventAnnouncementDialogCommand = h;
+var g = require("./50.js");
+var C = require("./9.js");
+var _ = require("./38.js");
+var m = require("./3399.js");
+r.classImplementsInterfaces(h, "ISimpleCommand");

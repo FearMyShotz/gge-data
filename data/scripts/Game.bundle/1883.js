@@ -2,123 +2,236 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./2.js");
-var c = require("./2.js");
-var u = require("./2.js");
-var d = require("./1.js");
-var p = require("./2.js");
-var h = require("./1.js");
-var g = require("./267.js");
-var C = require("./37.js");
-var _ = require("./160.js");
-var m = require("./15.js");
-var f = require("./4.js");
-var O = require("./176.js");
-var E = require("./4231.js");
-var y = require("./4232.js");
-var b = require("./9.js");
-var D = require("./17.js");
-var I = require("./1211.js");
-var T = function (e) {
-  function CastleConnectToSpecialServerCommand() {
-    var t = e !== null && e.apply(this, arguments) || this;
-    t.BLOCK_ACCESS = false;
-    return t;
+var o = require("./1.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./6.js");
+var l = require("./146.js");
+var c = require("./21.js");
+var u = require("./26.js");
+var d = require("./4.js");
+var p = require("./27.js");
+var h = require("./11.js");
+var g = require("./4213.js");
+var C = function (e) {
+  function CastleTieredPrimeDayDialog() {
+    var t = this;
+    t._subTitleGGSTF = null;
+    t._timesLeftGGSTF = null;
+    t.startingPositionX = 0;
+    t.BOX_POSITION_Y = -10;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this, CastleTieredPrimeDayDialog.NAME) || this;
   }
-  n.__extends(CastleConnectToSpecialServerCommand, e);
-  CastleConnectToSpecialServerCommand.prototype.execute = function (e = null) {
-    f.CastleModel.userData.resetApiToken();
-    if (e == "login") {
-      this.doLogin();
+  n.__extends(CastleTieredPrimeDayDialog, e);
+  CastleTieredPrimeDayDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this);
+    this.setupStaticTexts();
+    this.initBasicButtons(this.dialogButtons);
+  };
+  CastleTieredPrimeDayDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.setupBoxes();
+    this.setupProgressBar();
+    this.updateTimerText();
+    this.updateProgress();
+  };
+  CastleTieredPrimeDayDialog.prototype.hideLoaded = function (t = null) {
+    this.removeBoxes();
+    this.removeProgressBar();
+    this.destroyBoxes();
+    e.prototype.hideLoaded.call(this, t);
+  };
+  CastleTieredPrimeDayDialog.prototype.destroyBoxes = function () {
+    for (var e = 0; e < this._rewardBoxes.length; e++) {
+      this._rewardBoxes[e].destroyCollectableRenderList();
+    }
+  };
+  CastleTieredPrimeDayDialog.prototype.addEventListenerOnShow = function () {
+    e.prototype.addEventListenerOnShow.call(this);
+    d.CastleModel.specialEventData.addEventListener(u.CastleSpecialEventEvent.REFRESH_SPECIALEVENT, this.bindFunction(this.onEventUpdate));
+    d.CastleModel.specialEventData.addEventListener(u.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventRemoval));
+    d.CastleModel.timerData.addEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
+  };
+  CastleTieredPrimeDayDialog.prototype.removeEventListenerOnHide = function () {
+    e.prototype.removeEventListenerOnHide.call(this);
+    d.CastleModel.specialEventData.removeEventListener(u.CastleSpecialEventEvent.REFRESH_SPECIALEVENT, this.bindFunction(this.onEventUpdate));
+    d.CastleModel.specialEventData.removeEventListener(u.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventRemoval));
+    d.CastleModel.timerData.removeEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
+  };
+  CastleTieredPrimeDayDialog.prototype.onEventRemoval = function (e) {
+    if (e.specialEventVO == this.props.eventVO) {
+      this.hide();
+    }
+  };
+  CastleTieredPrimeDayDialog.prototype.onEventUpdate = function (e) {
+    if (e.specialEventVO == this.props.eventVO) {
+      this.updateProgress();
+    }
+  };
+  CastleTieredPrimeDayDialog.prototype.updateProgress = function () {
+    this._tieredProgressBar.updateProgress();
+    this.updateRewardBoxes();
+    this.updateBoughtRewardsText();
+  };
+  CastleTieredPrimeDayDialog.prototype.updateBoughtRewardsText = function () {
+    var e = r.int(this.props.eventVO.maxBuyCount - this.props.eventVO.boughtAllRewardsCount);
+    if (e > 1) {
+      this._timesLeftGGSTF.textContentVO.textId = "dialog_primeday_paymentTier_charges";
+      this._timesLeftGGSTF.textContentVO.textReplacements = [e];
+    } else if (e == 1) {
+      this._timesLeftGGSTF.textContentVO.textId = "dialog_primeday_paymentTier_charges_singular";
     } else {
-      this.connectToSpecialServer();
+      this.hide();
     }
   };
-  CastleConnectToSpecialServerCommand.prototype.connectToSpecialServer = function () {
-    if (!_.FlashBlockHelper.BLOCK_ACCESS || this.env.isTest) {
-      f.CastleModel.smartfoxClient.sendCommandVO(new E.C2SGetTemporaryServerLoginTokenVO(this.externalServerID));
-      this.controller.addEventListener(C.CastleServerMessageArrivedEvent.SPECIAL_SEVER_INFO_ARRIVED, this.bindFunction(this.onTempServerInfoArrived));
+  CastleTieredPrimeDayDialog.prototype.updateRewardBoxes = function () {
+    for (var e = 0; e < this._rewardBoxes.length; e++) {
+      this._rewardBoxes[e].isCollected = this.props.eventVO.isBoughtInCurrentCycle(e);
+    }
+  };
+  CastleTieredPrimeDayDialog.prototype.removeBoxes = function () {
+    if (this._rewardBoxes != null) {
+      for (var e = 0, t = this._rewardBoxes; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          this.dialogDisp.mc_bg.removeChild(i.disp);
+        }
+      }
+    }
+    this._rewardBoxes = [];
+  };
+  CastleTieredPrimeDayDialog.prototype.removeProgressBar = function () {
+    this._tieredProgressBar = null;
+  };
+  CastleTieredPrimeDayDialog.prototype.setupBoxes = function () {
+    this.setupRewardBoxes();
+    this.setStartingXPositionOfBoxes();
+    this.setBoxesIndex();
+  };
+  CastleTieredPrimeDayDialog.prototype.setupProgressBar = function () {
+    var e = [];
+    if (this._rewardBoxes != null) {
+      for (var t = 0, i = this._rewardBoxes; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          e.push(n.activeBoxMC);
+        }
+      }
+    }
+    this._tieredProgressBar = new g.CastleTieredPrimeDayProgressBar(this.dialogDisp.mc_barDispComponent, e, this.props.eventVO);
+  };
+  CastleTieredPrimeDayDialog.prototype.setupRewardBoxes = function () {
+    this._rewardBoxes = [];
+    for (var e = 0; e < CastleTieredPrimeDayDialog.TIERS_COUNT;) {
+      var t = new (a.getDefinitionByName("CastleTieredPrimeDayRewardBox"))();
+      var i = new m.CastleTieredPrimeDayRewardBoxVE(t, e + 1, this.props.eventVO.rewards[e]);
+      this._rewardBoxes.push(i);
+      this.dialogDisp.mc_bg.addChild(i.disp);
+      i.disp.y = this.BOX_POSITION_Y;
+      e++;
+    }
+  };
+  CastleTieredPrimeDayDialog.prototype.setupStaticTexts = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_bonus, new s.LocalizedTextVO("dialog_primeday_paymentTier_subtitle"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new s.LocalizedTextVO("dialog_primeday_paymentTier_copy"));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_buy.txt_buy, new s.LocalizedTextVO("add_Gold"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("dialog_primeday_paymentTier_header"));
+    this._subTitleGGSTF = this.textFieldManager.registerTextField(this.dialogDisp.txt_subTitle, new s.LocalizedTextVO(""));
+    this._timesLeftGGSTF = this.textFieldManager.registerTextField(this.dialogDisp.txt_timesLeft, new s.LocalizedTextVO(""));
+  };
+  CastleTieredPrimeDayDialog.prototype.onTimerUpdate = function (e) {
+    if (this.props.eventVO.remainingEventTimeInSeconds <= 0) {
+      this.hide();
     } else {
-      b.CastleDialogHandler.getInstance().registerDefaultDialogs(I.CastleDarkOkLabeledDialog, new o.BasicStandardOkDialogProperties("dialog_clientVersion_switch_confirmDialog_header", this.blockerTextID, this.bindFunction(this.onConfirmSwitch), "dialog_clientVersion_confirmSwitch", this.bindFunction(this.onClose)));
+      this.updateTimerText();
     }
   };
-  CastleConnectToSpecialServerCommand.prototype.onClose = function (e = null) {
-    D.CastleLayoutManager.getInstance().hideAllDialogs();
-  };
-  Object.defineProperty(CastleConnectToSpecialServerCommand.prototype, "blockerTextID", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleConnectToSpecialServerCommand.prototype.onConfirmSwitch = function (e = null) {
-    o.ClientFunnelTrackingController.getInstance().trackState("SWITCH_TO_FLASH");
-    d.ExternalInterface.call("ggsChangeGameClient");
-  };
-  CastleConnectToSpecialServerCommand.prototype.onTempServerInfoArrived = function (e) {
-    this.controller.removeEventListener(C.CastleServerMessageArrivedEvent.SPECIAL_SEVER_INFO_ARRIVED, this.bindFunction(this.onTempServerInfoArrived));
-    this.loginToken = f.CastleModel.userData.specialServerLoginToken;
-    this.env.isSpecialServerConnectStarted = true;
-    this.doLogout();
-    this.changeInstance();
-  };
-  CastleConnectToSpecialServerCommand.prototype.doLogout = function () {
-    o.EnvGlobalsHandler.globals.isFirstVisitOfGGS = false;
-    l.BasicController.getInstance().onLogOut();
-    p.BasicModel.sessionData.resetLoggedinTimer();
-    p.BasicModel.smartfoxClient.logout();
-    u.BasicLayoutManager.getInstance().revertFullscreen();
-    g.cxfResetCommandCache();
-    O.CastleDataHolder.instance.gbdParsed = false;
-    f.CastleModel.userData.joinCastleCount = 0;
-    f.CastleModel.userData.persistentLogin = false;
-  };
-  CastleConnectToSpecialServerCommand.prototype.doLogin = function () {
-    var e = new y.C2STemporaryServerLoginVO(f.CastleModel.userData.specialServerLoginToken);
-    a.BasicDialogHandler.getInstance().blockDialogs = true;
-    f.CastleModel.smartfoxClient.sendCommandVO(e);
-  };
-  CastleConnectToSpecialServerCommand.prototype.changeInstance = function () {
-    f.CastleModel.userData.resetConnectToFlags();
-    this.setConnectFlag();
-    f.CastleModel.userData.specialServerLoginToken = this.loginToken;
-    this.env.originalInstanceVOBeforeSpecialServer = p.BasicModel.instanceProxy.selectedInstanceVO;
-    var e = this.env.specialServer;
-    var t = window.ggs.worldAssignment;
-    if (e.instanceId != t.facade.selectedNetworkInstance.instanceId) {
-      t.selectInstance(e);
+  CastleTieredPrimeDayDialog.prototype.updateTimerText = function () {
+    var e = r.int(this.props.eventVO.remainingEventTimeInSeconds);
+    if (!this.props.eventVO.isTimeless || e <= _.PaymentrewardEventVO.REMAINING_TIME_ALERT) {
+      this._subTitleGGSTF.textContentVO.textId = "dialog_primeday_paymentTier_endTimer";
+      this._subTitleGGSTF.textContentVO.textReplacements = [p.CastleTimeStringHelper.getEventTimeString(e)];
+    } else {
+      this._subTitleGGSTF.textContentVO.textId = "limitedOffer";
     }
-    r.info("Connect to instance: " + e);
-    c.CommandController.instance.executeCommand(l.BasicController.COMMAND_CHECK_MAINTENANCE, l.BasicController.COMMAND_CONNECT_CLIENT);
   };
-  Object.defineProperty(CastleConnectToSpecialServerCommand.prototype, "externalServerID", {
+  CastleTieredPrimeDayDialog.prototype.onClick = function (e) {
+    switch (e.target) {
+      case this.dialogDisp.btn_exit:
+        this.hide();
+        return;
+      case this.dialogDisp.btn_buy:
+        l.CastleOpenShopExecutor.open(r.int(l.CastleOpenShopExecutor.SOURCE_UNKNOWN), f.CXFSourceTrackingConstants.SOURCE_TIERED_PRIME_DAY_DIALOG);
+        return;
+    }
+  };
+  CastleTieredPrimeDayDialog.prototype.setStartingXPositionOfBoxes = function () {
+    switch (this.amountOfBigBoxesByRewards) {
+      case 0:
+        this.startingPositionX = CastleTieredPrimeDayDialog.START_X_POS_NO_BIG_BOXES;
+        break;
+      case 1:
+        this.startingPositionX = CastleTieredPrimeDayDialog.START_X_POS_ONE_BIG_BOX;
+        break;
+      case 2:
+        this.startingPositionX = CastleTieredPrimeDayDialog.START_X_POS_TWO_BIG_BOXES;
+        break;
+      default:
+        throw new Error("TieredPrimeDayDialog.placeBoxes -> this dialog cannot handle more than 3 Big RewardBoxes!");
+    }
+    for (var e = 0; e < this._rewardBoxes.length; e++) {
+      var t = this._rewardBoxes[e];
+      var i = e > 0 ? this._rewardBoxes[e - 1].width - CastleTieredPrimeDayDialog.BOX_SHADOW_LENGTH + this._rewardBoxes[e - 1].disp.x : this.startingPositionX;
+      t.disp.x = i;
+    }
+  };
+  CastleTieredPrimeDayDialog.prototype.setBoxesIndex = function () {
+    for (var e = 0; e < this._rewardBoxes.length; e++) {
+      this.dialogDisp.mc_bg.setChildIndex(this._rewardBoxes[e].disp, this.dialogDisp.mc_bg.numChildren - (e + 1));
+    }
+  };
+  Object.defineProperty(CastleTieredPrimeDayDialog.prototype, "amountOfBigBoxesByRewards", {
     get: function () {
-      return 0;
+      var e = 0;
+      for (var t = 0; t < this.props.eventVO.rewards.length; ++t) {
+        if (this.props.eventVO.rewards[t].rewardList.length > CastleTieredPrimeDayDialog.BORDER_REWARD_AMOUNT_FOR_BIG_BOX) {
+          e++;
+        }
+      }
+      return e;
     },
     enumerable: true,
     configurable: true
   });
-  CastleConnectToSpecialServerCommand.prototype.setConnectFlag = function () {};
-  Object.defineProperty(CastleConnectToSpecialServerCommand.prototype, "env", {
+  Object.defineProperty(CastleTieredPrimeDayDialog.prototype, "dialogButtons", {
     get: function () {
-      return o.EnvGlobalsHandler.globals;
+      return [this.dialogDisp.btn_exit, this.dialogDisp.btn_buy];
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleConnectToSpecialServerCommand.prototype, "controller", {
+  Object.defineProperty(CastleTieredPrimeDayDialog.prototype, "props", {
     get: function () {
-      return m.CastleBasicController.getInstance();
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleConnectToSpecialServerCommand;
-}(s.SimpleCommand);
-exports.CastleConnectToSpecialServerCommand = T;
-h.classImplementsInterfaces(T, "ISimpleCommand");
+  CastleTieredPrimeDayDialog.__initialize_static_members = function () {
+    CastleTieredPrimeDayDialog.BOX_SHADOW_LENGTH = 3;
+    CastleTieredPrimeDayDialog.TIERS_COUNT = 3;
+    CastleTieredPrimeDayDialog.BORDER_REWARD_AMOUNT_FOR_BIG_BOX = 4;
+    CastleTieredPrimeDayDialog.NAME = "CastleTieredPrimeDay";
+  };
+  CastleTieredPrimeDayDialog.START_X_POS_NO_BIG_BOXES = -277;
+  CastleTieredPrimeDayDialog.START_X_POS_ONE_BIG_BOX = -315;
+  CastleTieredPrimeDayDialog.START_X_POS_TWO_BIG_BOXES = -353;
+  return CastleTieredPrimeDayDialog;
+}(h.CastleExternalDialog);
+exports.CastleTieredPrimeDayDialog = C;
+var _ = require("./818.js");
+var m = require("./4214.js");
+var f = require("./107.js");
+o.classImplementsInterfaces(C, "ICollectableRendererList");
+C.__initialize_static_members();

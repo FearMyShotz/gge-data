@@ -12,12 +12,12 @@ var u = require("./18.js");
 var d = require("./393.js");
 var p = require("./241.js");
 var h = require("./429.js");
-var g = require("./511.js");
+var g = require("./512.js");
 var C = require("./210.js");
 var _ = require("./15.js");
 var m = require("./4.js");
 var f = require("./251.js");
-var O = require("./1893.js");
+var O = require("./1895.js");
 var E = createjs.Point;
 var y = function (e) {
   function CastleAllianceTournamentEventDialog() {
@@ -189,10 +189,10 @@ var y = function (e) {
 }(O.ACastleTournamentEventDialog);
 exports.CastleAllianceTournamentEventDialog = y;
 y.__initialize_static_members();
-var b = require("./715.js");
-var D = require("./1719.js");
+var b = require("./717.js");
+var D = require("./1721.js");
 var I = require("./331.js");
-var T = require("./1894.js");
+var T = require("./1896.js");
 var v = require("./4370.js");
 o.classImplementsInterfaces(y, "ICollectableRendererList", "IPaginationContainer", "IPaginationArrowsContainer");
 y.__initialize_static_members();

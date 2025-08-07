@@ -101,5 +101,5 @@ var d = function (e) {
 exports.ABGResourceTowerMapobjectVO = d;
 var p = require("./387.js");
 var h = require("./101.js");
-var g = require("./109.js");
+var g = require("./108.js");
 a.classImplementsInterfaces(d, "IDetailViewAble", "IWorldmapObjectVO", "IDungeonMapobjectVO");

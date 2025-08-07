@@ -1,47 +1,41 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = function (e) {
-  function CollectableParserS2CParamObject() {
-    return e !== null && e.apply(this, arguments) || this;
-  }
-  n.__extends(CollectableParserS2CParamObject, e);
-  CollectableParserS2CParamObject.prototype.createList = function (e) {
-    var t;
-    var i = new s.CollectableList();
-    if (e) {
-      for (t in e) {
-        var n = e[t];
-        if (n != null) {
-          for (var o = 0; o < n.length; ++o) {
-            var r = n[o];
-            var l = a.CollectableHelper.getTypeByServerKey(t, r);
-            var c = a.CollectableHelper.createVO(l.type, -Number.MAX_VALUE, l.id);
-            if (c) {
-              c.parseServerObject(r);
-              i.addItem(c);
-            }
-          }
+var n = require("./6.js");
+var o = require("./52.js");
+var a = function () {
+  function CollectableParserS2COldGoods() {}
+  Object.defineProperty(CollectableParserS2COldGoods, "OLD_STYLE_GOODS_ORDER", {
+    get: function () {
+      if (this._OLD_STYLE_GOODS_ORDER == undefined) {
+        this._OLD_STYLE_GOODS_ORDER = [s.CollectableEnum.WOOD, s.CollectableEnum.STONE, s.CollectableEnum.FOOD, s.CollectableEnum.C1, s.CollectableEnum.C2, s.CollectableEnum.COAL, s.CollectableEnum.OIL, s.CollectableEnum.GLASS, o.ClientConstCurrency.ID_KHAN_TABLET, o.ClientConstCurrency.ID_SKULL_RELIC, o.ClientConstCurrency.ID_PEARL_RELIC, s.CollectableEnum.AQUAMARINE, s.CollectableEnum.IRON, o.ClientConstCurrency.ID_SILVER_RUNE, o.ClientConstCurrency.ID_GOLD_RUNE, o.ClientConstCurrency.ID_GREEN_SKULL_RELIC, o.ClientConstCurrency.ID_SAMURAI_TOKEN, o.ClientConstCurrency.ID_ROYAL_CAPITAL_TOKEN, o.ClientConstCurrency.ID_APPRENTICE_TOKEN];
+      }
+      return this._OLD_STYLE_GOODS_ORDER;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CollectableParserS2COldGoods.prototype.createList = function (e) {
+    var t = new l.CollectableList();
+    CollectableParserS2COldGoods.createByParamListOldGoods(t, e);
+    return t;
+  };
+  CollectableParserS2COldGoods.createByParamListOldGoods = function (e, t) {
+    for (var i = t, o = 0; o < i.length; ++o) {
+      var a = n.int(i[o]);
+      var l = CollectableParserS2COldGoods.OLD_STYLE_GOODS_ORDER[o];
+      if (a != 0) {
+        if (typeof l == "number") {
+          e.addItem(r.CollectableHelper.createVO(s.CollectableEnum.GENERIC_CURRENCY, a, l));
         } else {
-          console.warn("Rewards object from server contained null! This is an error on server side, but the client can cope with it. Please report to a server dev.");
+          e.addItem(r.CollectableHelper.createVO(l, a));
         }
       }
     }
-    return i = CollectableParserS2CParamObject.parseSortOrder(i, e.SO);
   };
-  CollectableParserS2CParamObject.parseSortOrder = function (e, t) {
-    if (t) {
-      var i = t;
-      if (i != "-1" && i != "") {
-        return r.CollectableManager.sorter.sortListBySortOrderExpression(e, i);
-      }
-    }
-    return e;
-  };
-  return CollectableParserS2CParamObject;
-}(require("./1176.js").CollectableParserS2CParamList);
-exports.CollectableParserS2CParamObject = o;
-var a = require("./45.js");
-var s = require("./48.js");
-var r = require("./50.js");
+  return CollectableParserS2COldGoods;
+}();
+exports.CollectableParserS2COldGoods = a;
+var s = require("./12.js");
+var r = require("./45.js");
+var l = require("./48.js");

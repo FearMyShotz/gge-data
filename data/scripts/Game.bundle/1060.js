@@ -3,128 +3,77 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./429.js");
-var l = require("./511.js");
-var c = require("./31.js");
-var u = require("./19.js");
-var d = require("./8.js");
-var p = require("./41.js");
-var h = createjs.Event;
-var g = createjs.EventDispatcher;
-var C = createjs.MouseEvent;
-var _ = function (e) {
-  function PaginatedCollectableRenderListWrapper(t, i, n, o = 6, a = null, c = null, d = "mc_item", p = "mc_itemHolder", h = "parent.btn_info", g = "mc_icon", _ = "txt_text", m = "mc_textBackground", f = s.int(u.CollectableRenderOptions.SET_DEFAULT), O = null) {
-    var E = this;
-    E.collectableRenderOption = 0;
-    E.itemsInLayout = 0;
-    E.leftBasicBtn = null;
-    E.rightBasicBtn = null;
-    E._currentPage = 0;
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./2.js");
+var c = require("./1.js");
+var u = require("./1.js");
+var d = require("./5.js");
+var p = require("./3.js");
+var h = require("./3.js");
+var g = require("./3.js");
+var C = require("./6.js");
+var _ = require("./51.js");
+var m = require("./4.js");
+var f = require("./24.js");
+var O = require("./8.js");
+var E = function (e) {
+  function CastleCollectTaxProgressDialog() {
     CONSTRUCTOR_HACK;
-    (E = e.call(this) || this).disp = t;
-    E._collectableRenderList = n;
-    E.itemName = d;
-    E.itemHolderName = p;
-    E.iconHolder = g;
-    E.itemTxt = _;
-    E.itemInfoBtn = h;
-    E.itemTxtBkgr = m;
-    E.collectableList = i;
-    E.collectableRenderOption = f;
-    E.iconSize = O;
-    E.btn_right = c;
-    E.btn_left = a;
-    E.itemsInLayout = o;
-    if (E.btn_right && E.btn_left && E.itemsInLayout < E.collectableList.length) {
-      E.btn_right.visible = true;
-      E.btn_left.visible = true;
-      E.paginationMember = new r.Pagination(E, Math.ceil(E.collectableList.length / E.itemsInLayout));
-      E.paginationMember.addControl(new l.PaginationArrows(E, E.paginationMember));
-      E.btn_right.addEventListener(C.CLICK, E.bindFunction(E.onClick));
-      E.btn_left.addEventListener(C.CLICK, E.bindFunction(E.onClick));
-      E.paginationMember.reset();
-    } else {
-      if (E.btn_right) {
-        E.btn_right.visible = false;
-      }
-      if (E.btn_left) {
-        E.btn_left.visible = false;
-      }
-      E.fillInfo();
-    }
-    return E;
+    return e.call(this, CastleCollectTaxProgressDialog.NAME) || this;
   }
-  n.__extends(PaginatedCollectableRenderListWrapper, e);
-  PaginatedCollectableRenderListWrapper.prototype.onClick = function (e) {
-    if (d.ButtonHelper.isButtonEnabled(e.target) && this.paginationMember.handleClick(e)) {
-      this.dispatchEvent(new h(o.ScrollItemEvent.ON_SCROLL, false, false));
+  n.__extends(CastleCollectTaxProgressDialog, e);
+  CastleCollectTaxProgressDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.txtInfo ||= this.textFieldManager.registerTextField(this.dialogDisp.txtInfo, new h.LocalizedTextVO("collect_taxCollecting_description"));
+    this.txtInfoPopulation ||= this.textFieldManager.registerTextField(this.dialogDisp.infoPopulation.txt_value, new g.TextVO(""));
+    this.txtInfoBribeBonus ||= this.textFieldManager.registerTextField(this.dialogDisp.infoBribeBonus.txt_value, new h.LocalizedTextVO("-"));
+    this.dialogDisp.infoPopulation.toolTipText = "population";
+    this.dialogDisp.btn_bribe.toolTipText = "dialog_collecttax_btn_bribe";
+    this.dialogDisp.progressBar.toolTipText = null;
+    this.dialogDisp.infoBribeBonus.mouseChildren = false;
+    this.dialogDisp.infoPopulation.mouseChildren = false;
+  };
+  CastleCollectTaxProgressDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    if (this.taxInfoVO.isCollecting && this.dialogDisp.btn_collect.enabled) {
+      O.ButtonHelper.delayEnableButton(this.dialogDisp.btn_collect, true);
     }
   };
-  PaginatedCollectableRenderListWrapper.prototype.fillInfo = function () {
-    var e;
-    var t;
-    var i = 0;
-    this.cleanRenderList(this._collectableRenderList);
-    for (var n = this._currentPage * this.itemsInLayout; n < this._currentPage * this.itemsInLayout + this.itemsInLayout; n++) {
-      t = this.disp.getChildByName(this.itemName + i);
-      i++;
-      if (t) {
-        if (n >= this.collectableList.length) {
-          t.visible = false;
-        } else {
-          t.visible = true;
-          (e = new c.CollectableRenderClips(t)).addItemMc(t.getChildByName(this.itemHolderName));
-          e.addIconMc(p.CastleMovieClipHelper.iterateThroughMc(e.itemMc, this.iconHolder));
-          e.addInfoBtn(p.CastleMovieClipHelper.iterateThroughMc(e.itemMc, this.itemInfoBtn));
-          if (this.itemTxt) {
-            e.addTextfield(p.CastleMovieClipHelper.iterateThroughMc(e.itemMc, this.itemTxt));
-          }
-          if (this.itemTxtBkgr) {
-            e.addTextfieldBgMc(p.CastleMovieClipHelper.iterateThroughMc(e.itemMc, this.itemTxtBkgr));
-          }
-          this._collectableRenderList.push(m.CollectableRenderHelper.displaySingleItem(e, this.collectableList.getItemByIndex(n), new u.CollectableRenderOptions(this.collectableRenderOption, this.iconSize)));
-        }
-      }
+  CastleCollectTaxProgressDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    e.prototype.applyPropertiesLoaded.call(this, t);
+    r.MovieClipHelper.clearMovieClip(this.dialogDisp.charHolder);
+    var i = new f.CastleGoodgameExternalClip("CharTaxes", o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("CharTaxes"), null, 0, false, u.getDefinitionByName("QuestGiverBig_" + _.ClientConstCharacter.CHAR_ID_UNKNOWN));
+    i.clipSizeComponent = new a.ClipSizeComponent(189, 213);
+    this.dialogDisp.charHolder.addChild(i);
+    O.ButtonHelper.enableButton(this.dialogDisp.btn_help, true);
+  };
+  CastleCollectTaxProgressDialog.prototype.onTaxDataUpdated = function (t = null) {
+    this.txtInfoPopulation.textContentVO.stringValue = String(this.taxInfoVO.population);
+    e.prototype.onTaxDataUpdated.call(this, t);
+    if (this.taxInfoVO.isBoostedCollection || m.CastleModel.boostData.taxBribeVO.isActive) {
+      this.dialogDisp.infoBribeBonus.toolTipText = l.TimeStringHelper.getTimeToString(m.CastleModel.boostData.taxBribeVO.remainingTimeInSeconds, l.TimeStringHelper.TWO_TIME_FORMAT, p.Localize.text);
+      this.txtInfoBribeBonus.textContentVO.textId = s.GenericTextIds.VALUE_PERCENTAGE;
+      this.txtInfoBribeBonus.textContentVO.textReplacements = [Math.round(d.BoosterConst.TAX_BRIBE_BOOST * 100)];
+    } else {
+      this.dialogDisp.infoBribeBonus.toolTipText = "dialog_collecttax_bribebonus";
+      O.ButtonHelper.enableButton(this.dialogDisp.btn_bribe, this.isOutOfTutorial());
+      this.txtInfoBribeBonus.textContentVO.textId = "-";
+    }
+    var i = C.int(m.CastleModel.boosterSaleData.getDiscount(d.BoosterConst.TAX));
+    if (this.isOutOfTutorial() && i > 0) {
+      this.dialogDisp.btn_bribe.mc_discount.visible = true;
+      this.textFieldManager.registerTextField(this.dialogDisp.btn_bribe.mc_discount.txt_value, new h.LocalizedTextVO(s.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, [i]));
+    } else {
+      this.dialogDisp.btn_bribe.mc_discount.visible = false;
     }
   };
-  PaginatedCollectableRenderListWrapper.prototype.destroy = function () {
-    if (this.rightBasicBtn && this.leftBasicBtn) {
-      this.rightBasicBtn.disp.removeEventListener(C.CLICK, this.bindFunction(this.onClick));
-      this.leftBasicBtn.disp.removeEventListener(C.CLICK, this.bindFunction(this.onClick));
-    }
+  CastleCollectTaxProgressDialog.__initialize_static_members = function () {
+    CastleCollectTaxProgressDialog.NAME = "CastleCollectTaxProgress";
   };
-  PaginatedCollectableRenderListWrapper.prototype.cleanRenderList = function (e) {
-    if (e) {
-      while (e.length > 0) {
-        e.pop().destroy();
-      }
-    }
-  };
-  PaginatedCollectableRenderListWrapper.prototype.updatePages = function (e, t) {
-    this._currentPage = t;
-    this.fillInfo();
-  };
-  PaginatedCollectableRenderListWrapper.prototype.getLeftArrow = function () {
-    return this.btn_left;
-  };
-  PaginatedCollectableRenderListWrapper.prototype.getRightArrow = function () {
-    return this.btn_right;
-  };
-  PaginatedCollectableRenderListWrapper.prototype.changeArrow = function (e, t) {
-    e.visible = t;
-    return true;
-  };
-  Object.defineProperty(PaginatedCollectableRenderListWrapper.prototype, "currentPage", {
-    get: function () {
-      return this._currentPage;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return PaginatedCollectableRenderListWrapper;
-}(g);
-exports.PaginatedCollectableRenderListWrapper = _;
-var m = require("./25.js");
-a.classImplementsInterfaces(_, "IPaginationContainer", "IPaginationArrowsContainer");
+  return CastleCollectTaxProgressDialog;
+}(require("./3383.js").CastleCollectTaxDialog);
+exports.CastleCollectTaxProgressDialog = E;
+c.classImplementsInterfaces(E, "ICollectableRendererList");
+E.__initialize_static_members();

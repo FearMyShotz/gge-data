@@ -114,7 +114,7 @@ var h = function (e) {
 }(require("./98.js").ARingMenuButton);
 exports.RingMenuButtonUpgradeBuilding = h;
 var g = require("./86.js");
-var C = require("./33.js");
+var C = require("./34.js");
 var _ = require("./1199.js");
 var m = require("./369.js");
 a.classImplementsInterfaces(h, "IRingMenuButton");

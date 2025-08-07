@@ -2,322 +2,382 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./2.js");
-var s = require("./5.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./1.js");
 var r = require("./5.js");
 var l = require("./5.js");
-var c = require("./6.js");
-var u = require("./18.js");
-var d = require("./58.js");
-var p = require("./103.js");
-var h = require("./53.js");
-var g = require("./44.js");
-var C = require("./4.js");
-var _ = require("./502.js");
-var m = require("./699.js");
-var f = require("./187.js");
-var O = require("./422.js");
-var E = require("./64.js");
-var y = require("./245.js");
-var b = require("./205.js");
-var D = function (e) {
-  function CastleMapobjectVO() {
-    var t = e.call(this) || this;
-    t._isABGTowerAttackable = false;
-    t._abgPlayerTowerPoints = 0;
-    t.name = "Castle";
+var c = require("./5.js");
+var u = require("./3.js");
+var d = require("./6.js");
+var p = require("./18.js");
+var h = require("./44.js");
+var g = require("./4.js");
+var C = require("./108.js");
+var _ = require("./422.js");
+var m = require("./275.js");
+var f = require("./205.js");
+var O = function (e) {
+  function OutpostMapobjectVO() {
+    var t = this;
+    t._woodAmount = 0;
+    t._stoneAmount = 0;
+    t._fieldAmount = 0;
+    t._useFlag = false;
+    CONSTRUCTOR_HACK;
+    (t = e.call(this) || this).name = "Outpost";
     t.group = "Mapobject";
-    t._areaType = s.WorldConst.AREA_TYPE_CASTLE;
+    t._isVisibleOnMap = true;
+    t._secondsSinceEspionage = -1;
+    t._areaType = c.WorldConst.AREA_TYPE_OUTPOST;
+    t._keepLevel = -1;
     return t;
   }
-  n.__extends(CastleMapobjectVO, e);
-  CastleMapobjectVO.prototype.getDisplayObjectClipContainer = function (e, t, i = false) {
-    if (this.ownerInfo && this.ownerInfo.isRuin) {
-      return this.getRuinContainer();
+  n.__extends(OutpostMapobjectVO, e);
+  OutpostMapobjectVO.prototype.getEmptyOutpostContainer = function () {
+    var e = new C.CastleDisplayObjectClipContainer();
+    var t = "Outpost_Mapobject_" + this.fieldAmount + "_" + this.woodAmount + "_" + this.stoneAmount + "_" + h.SpecialServerHelper.skinName;
+    var i = "Outpost_Mapobject_EventSkin_" + h.SpecialServerHelper.skinName;
+    if (h.SpecialServerHelper.useSkin && o.BasicModel.basicLoaderData.isItemAssetVersioned(t)) {
+      e.addItem(this.getAsExternalClip(t));
+    } else if (h.SpecialServerHelper.useSkin && o.BasicModel.basicLoaderData.isItemAssetVersioned(i)) {
+      e.addItem(this.getAsExternalClip(i));
     } else {
-      return this.getCastleContainer(e);
+      var n = "Outpost_Mapobject_" + this.fieldAmount + "_" + this.woodAmount + "_" + this.stoneAmount;
+      e.addItem(this.getAsExternalClip(n));
+      e.addItem(this.getAsExternalClip("Outpost_Empty"));
     }
-  };
-  CastleMapobjectVO.prototype.getRuinContainer = function () {
-    var e = new S.CastleDisplayObjectClipContainer();
-    e.addItem(this.getBackgroundClip());
-    e.addItem(this.getAsExternalClip(CastleMapobjectVO.MAPOBJECT_RUIN));
     return e;
   };
-  CastleMapobjectVO.prototype.getBackgroundClip = function () {
-    if (h.ABGHelper.isOnABGServer) {
-      return null;
+  OutpostMapobjectVO.prototype.getPlayerOwnedOutpostContainer = function (e) {
+    var t;
+    if (e === undefined) {
+      e = true;
+    }
+    var i;
+    var n;
+    var a = new C.CastleDisplayObjectClipContainer();
+    var s = "Outpost_Mapobject_" + this.fieldAmount + "_" + this.woodAmount + "_" + this.stoneAmount + "_" + h.SpecialServerHelper.skinName;
+    if (!h.SpecialServerHelper.useSkin || !o.BasicModel.basicLoaderData.isItemAssetVersioned(s)) {
+      a.addItem(this.getBackgroundClip());
+    }
+    if (e) {
+      t = this.getOutpostFlagClip(this.ownerInfo);
+      if (this.ownerInfo.hasVIPFlag) {
+        t.scaleX = t.scaleY *= m.CastleWorldmapConst.ZOOM_MAX;
+      } else {
+        t.scaleX = t.scaleY = m.CastleWorldmapConst.ZOOM_MAX;
+      }
+      a.addItem(t);
+    }
+    var r = this.equipmentUniqueIdSkin > 0 ? g.CastleModel.equipData.getEquipmentByUniqueID(this.equipmentUniqueIdSkin) : null;
+    if (r) {
+      i = "Outpost_Mapobject_Special_" + r.skinAssetID;
+      n = r.skinDefinesOutpostResourceAssets ? "Outpost_Mapobject_Special_" + r.skinAssetID + "_" + this.fieldAmount + "_" + this.woodAmount + "_" + this.stoneAmount + "_Icon" : "Outpost_Mapobject_" + this.fieldAmount + "_" + this.woodAmount + "_" + this.stoneAmount + "_Icon";
     } else {
-      return e.prototype.getBackgroundClip.call(this);
+      i = "Outpost_Mapobject_Level" + (this.outpostLevel > 0 ? this.outpostLevel : 1);
+      n = "Outpost_Mapobject_" + this.fieldAmount + "_" + this.woodAmount + "_" + this.stoneAmount + "_Icon";
+    }
+    if (h.SpecialServerHelper.useSkin && o.BasicModel.basicLoaderData.isItemAssetVersioned(s)) {
+      n = s;
+      a.addItem(this.getAsExternalClip(n));
+    }
+    var l = "Outpost_Mapobject_EventSkin_" + h.SpecialServerHelper.skinName;
+    if (h.SpecialServerHelper.useSkin && o.BasicModel.basicLoaderData.isItemAssetVersioned(l)) {
+      i = l;
+    } else {
+      a.addItem(this.getAsExternalClip(n));
+    }
+    var c = this.getAsExternalClip(i);
+    a.addItem(c);
+    if (c && t) {
+      _.WorldmapObjectFlagHelper.watchAndFix(c, t);
+    }
+    return a;
+  };
+  OutpostMapobjectVO.prototype.getOutpostFlagClip = function (e) {
+    return this.getFlagClip(e, "Outpost");
+  };
+  OutpostMapobjectVO.prototype.getDisplayObjectClipContainer = function (e, t, i = false) {
+    if (!this.ownerInfo || this.ownerInfo && this.ownerInfo.playerID == 0 || this.ownerInfo && this.ownerInfo.isOutpostOwner) {
+      if (s.instanceOfClass(this, "CapitalMapobjectVO")) {
+        return this.getEmptyCapitalContainer();
+      } else if (s.instanceOfClass(this, "MetropolMapobjectVO")) {
+        return this.getEmptyMetropolisContainer();
+      } else {
+        return this.getEmptyOutpostContainer();
+      }
+    } else if (s.instanceOfClass(this, "CapitalMapobjectVO")) {
+      return this.getPlayerOwnedCapitalContainer(e);
+    } else if (s.instanceOfClass(this, "MetropolMapobjectVO")) {
+      return this.getPlayerOwnedMetropolisContainer(e);
+    } else {
+      return this.getPlayerOwnedOutpostContainer(e);
     }
   };
-  CastleMapobjectVO.prototype.getCastleContainer = function (e = true) {
-    var t = new S.CastleDisplayObjectClipContainer();
-    if (this.getBackgroundClip()) {
-      t.addItem(this.getBackgroundClip());
-    }
-    var i = this.getMoatClip();
-    if (i) {
-      t.addItem(i);
-    }
-    var n = this.getKeepClip();
-    t.addItem(n);
-    if (this.ownerInfo && e) {
-      A.renderScheduler.addTask(this.addFlagCallback.bind(this, t, n));
-    }
-    return t;
+  OutpostMapobjectVO.prototype.parseAreaInfoBattleLog = function (t) {
+    e.prototype.parseAreaInfoBattleLog.call(this, t);
+    this.outpostType = t.RT;
   };
-  CastleMapobjectVO.prototype.addFlagCallback = function (e, t) {
-    e.asDisplayObject();
-    if (e.isDisposed) {
-      return true;
+  Object.defineProperty(OutpostMapobjectVO.prototype, "areaNameString", {
+    get: function () {
+      if (this._areaNameString == "" || this._areaNameString == null) {
+        return u.Localize.text(h.SpecialServerHelper.checkTextIDForSkinText("outpost"));
+      } else {
+        return this._areaNameString;
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(E.InteractiveMapobjectVO.prototype, "areaNameString").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OutpostMapobjectVO.prototype, "outpostLevel", {
+    get: function () {
+      return this._keepLevel;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OutpostMapobjectVO.prototype, "outpostType", {
+    get: function () {
+      return Object.getOwnPropertyDescriptor(E.InteractiveMapobjectVO.prototype, "outpostType").get.call(this);
+    },
+    set: function (e) {
+      this._outpostType = e;
+      if (!(e < 0)) {
+        this._woodAmount = d.int(c.WorldConst.OUTPOST_TYPE_LIST[this._outpostType][3]);
+        this._stoneAmount = d.int(c.WorldConst.OUTPOST_TYPE_LIST[this._outpostType][4]);
+        this._fieldAmount = d.int(c.WorldConst.OUTPOST_TYPE_LIST[this._outpostType][5]);
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OutpostMapobjectVO.prototype, "resAmountString", {
+    get: function () {
+      var e = "";
+      if (this._fieldAmount > this._woodAmount && this._fieldAmount > this._stoneAmount) {
+        if (this._fieldAmount > 0) {
+          e += String(u.Localize.text("resAmount_food", [this._fieldAmount]) + " ");
+        }
+        if (this._woodAmount > 0) {
+          e += String(u.Localize.text("resAmount_wood", [this._woodAmount]) + " ");
+        }
+        if (this._stoneAmount > 0) {
+          e += String(u.Localize.text("resAmount_stone", [this._stoneAmount]));
+        }
+      } else {
+        if (this._woodAmount > 0) {
+          e += String(u.Localize.text("resAmount_wood", [this._woodAmount]) + " ");
+        }
+        if (this._stoneAmount > 0) {
+          e += String(u.Localize.text("resAmount_stone", [this._stoneAmount]) + " ");
+        }
+        if (this._fieldAmount > 0) {
+          e += String(u.Localize.text("resAmount_food", [this._fieldAmount]));
+        }
+      }
+      return e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OutpostMapobjectVO.prototype, "woodAmount", {
+    get: function () {
+      return this._woodAmount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OutpostMapobjectVO.prototype, "stoneAmount", {
+    get: function () {
+      return this._stoneAmount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OutpostMapobjectVO.prototype, "fieldAmount", {
+    get: function () {
+      return this._fieldAmount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OutpostMapobjectVO.prototype, "isUnderConquerControl", {
+    get: function () {
+      return this._occupierID > 0;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "isUnderConquerControl").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OutpostMapobjectVO.prototype, "isConqueredByMe", {
+    get: function () {
+      var e = this.controllerWorldMapOwnerInfoVO;
+      return !!e && e.playerID == g.CastleModel.userData.playerID;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "isConqueredByMe").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OutpostMapobjectVO.prototype, "isConqueredByAllianceMember", {
+    get: function () {
+      var e = this.controllerWorldMapOwnerInfoVO;
+      return !!e && g.CastleModel.userData.isUserInMyAlliance(e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  OutpostMapobjectVO.prototype.canBeConquered = function () {
+    var e = this.ownerInfo;
+    var t = this.isOwnMapobject && this.isUnderConquerControl;
+    return (!e || !!e.isOutpostOwner || !(this.ownerInfo.playerID > 0)) && !t && !this.isConqueredByAllianceMember;
+  };
+  OutpostMapobjectVO.prototype.canBeAttackedAndConquered = function () {
+    var e = this.ownerInfo;
+    var t = this.isOwnMapobject;
+    var i = g.CastleModel.userData.isUserInMyAlliance(e);
+    var n = !!e && g.CastleModel.allianceData.getStatusByAlliance(e.allianceID) == r.AllianceConst.DIPLOMACY_REAL_ALLIED;
+    var o = !!e && !e.isOutpostOwner && this.ownerInfo.playerID > 0;
+    return !t && !i && !this.isConqueredByAllianceMember && !this.isConqueredByMe && o && !n;
+  };
+  OutpostMapobjectVO.prototype.canBeTroupsSended = function () {
+    return this.isOwnMapobject && g.CastleModel.userData.hasOutpostsInKingdom(this.kingdomID) && !this.isUnderConquerControl;
+  };
+  OutpostMapobjectVO.prototype.canBeSupported = function () {
+    return !!this.ownerInfo && !!(this.ownerInfo.playerID > 0) && (this.isOwnMapobject ? !this.isUnderConquerControl && !this.canBeTroupsSended() : this.isConqueredByAllianceMember || this.isConqueredByMe || g.CastleModel.userData.isUserInMyAlliance(this.ownerInfo) && !this.isUnderConquerControl);
+  };
+  OutpostMapobjectVO.prototype.canBePlagueAttacked = function () {
+    return !!this.ownerInfo && !!(this.ownerInfo.playerID > 0) && (!this.isOwnMapobject && !this.isConqueredByMe && !this.ownerInfo.isOutpostOwner || this.isOwnMapobject && this.isUnderConquerControl);
+  };
+  OutpostMapobjectVO.prototype.canBeAttacked = function () {
+    if (this.ownerInfo && !this.ownerInfo.isOutpostOwner && this.ownerInfo.playerID > 0) {
+      var e = this.isOwnMapobject;
+      var t = g.CastleModel.userData.isUserInMyAlliance(this.ownerInfo);
+      var i = !this.isConqueredByAllianceMember && !this.isConqueredByMe;
+      var n = this.ownerInfo.remainingPeaceTime < 1;
+      var o = g.CastleModel.allianceData.getStatusByAlliance(this.ownerInfo.allianceID) != r.AllianceConst.DIPLOMACY_REAL_ALLIED;
+      var a = (e || t || !o) && this.isUnderConquerControl && this.remainingCooldownTimeInSeconds < 1;
+      return !e && !t && i && n && o || a;
     }
-    var i = this.getCastleFlagClip(this.ownerInfo);
-    i.scaleX = i.scaleY *= L.CastleWorldmapConst.ZOOM_MAX;
-    e.addItem(i, 1);
-    O.WorldmapObjectFlagHelper.watchAndFix(t, i);
-    e.clipSizeComponent &&= e.clipSizeComponent;
     return false;
   };
-  CastleMapobjectVO.prototype.getKeepClip = function () {
-    var e = "Castle_Mapobject_EventSkin_" + g.SpecialServerHelper.skinName + "_" + Math.max(1, this.keepLevel);
-    if (g.SpecialServerHelper.useSkin && a.BasicModel.basicLoaderData.isItemAssetVersioned(e)) {
-      return this.getAsExternalClip(e);
-    }
-    var t = !!this.ownerInfo && (!!this.ownerInfo.playerPrefix && this.ownerInfo.playerPrefix.isIslandTitle || !!this.ownerInfo.playerSuffix && this.ownerInfo.playerSuffix.isIslandTitle);
-    var i = this.equipmentUniqueIdSkin > 0 ? C.CastleModel.equipData.getEquipmentByUniqueID(this.equipmentUniqueIdSkin) : null;
-    if (i) {
-      var n = "";
-      if (i.skinDefinesAssetForAllCastleLevels) {
-        n = "_" + Math.max(1, this.keepLevel);
-      }
-      return this.getAsExternalClip("Castle_Mapobject_Special_" + i.skinAssetID + n);
-    }
-    if (t) {
-      if (T.CastleTitleSystemHelper.isIslandKing(this.ownerInfo)) {
-        return this.getAsExternalClip("Castle_Eiland_King");
-      } else {
-        return this.getAsExternalClip("Castle_Eiland_Pos_Title");
-      }
-    }
-    if (P.TempServerHelper.isOnTempServer && this.kingdomID == r.WorldClassic.KINGDOM_ID && P.TempServerHelper.tmpServerEvent && P.TempServerHelper.tmpServerEvent.settingVO.isCastleTransportationOnly) {
-      return this.getAsExternalClip("Castle_Mapobject_EventSkin_CastleTransportation");
-    }
-    var o;
-    var s = this.assetFileURL(v.WorldmapObjectIconHelper.FILE_NAME_CASTLE_PARTS);
-    var l = -1;
-    switch (this.keepLevel) {
-      case 1:
-        for (var u = (l = c.int(v.WorldmapObjectIconHelper.KEEP_LEVEL_1_STAGES.length)) - 1; u >= 0; u--) {
-          if (this.ownerInfo.playerLevel < v.WorldmapObjectIconHelper.KEEP_LEVEL_1_STAGES[u]) {
-            l = u > 0 && this.ownerInfo.playerLevel >= v.WorldmapObjectIconHelper.KEEP_LEVEL_1_STAGES[u - 1] ? u : 1;
-          }
-        }
-        o = "Castlepart_Keep_" + this.keepLevel + "_stage_" + l;
-        break;
-      case 2:
-        for (var d = (l = c.int(v.WorldmapObjectIconHelper.KEEP_LEVEL_2_STAGES.length)) - 1; d >= 0; d--) {
-          if (this.ownerInfo.playerLevel < v.WorldmapObjectIconHelper.KEEP_LEVEL_2_STAGES[d]) {
-            l = d > 0 && this.ownerInfo.playerLevel >= v.WorldmapObjectIconHelper.KEEP_LEVEL_2_STAGES[d - 1] ? d : d + 1;
-          }
-        }
-        o = "Castlepart_Keep_" + this.keepLevel + "_stage_" + l;
-        break;
-      default:
-        o = "Castlepart_Keep_" + this.keepLevel;
-        o = "Castlepart_Keep_" + this.keepLevel;
-    }
-    return this.getAsExternalClip(o, s);
+  OutpostMapobjectVO.prototype.canBeAttackedButHasPeacemode = function () {
+    return !!this.ownerInfo && !this.ownerInfo.isOutpostOwner && (!this.isOwnMapobject && !g.CastleModel.userData.isUserInMyAlliance(this.ownerInfo) && !this.isConqueredByAllianceMember && !this.isConqueredByMe && this.ownerInfo.remainingPeaceTime > 1 && g.CastleModel.allianceData.getStatusByAlliance(this.ownerInfo.allianceID) != r.AllianceConst.DIPLOMACY_REAL_ALLIED || this.isOwnMapobject && this.isUnderConquerControl || !this.isOwnMapobject && g.CastleModel.userData.isUserInMyAlliance(this.ownerInfo) && this.isUnderConquerControl);
   };
-  CastleMapobjectVO.prototype.colorizeFlag = function (e, t) {
-    return function () {
-      f.CastleAllianceCrestHelper.colorizeFlags(e.getChildAt(0), t);
-    };
-  };
-  CastleMapobjectVO.prototype.getMoatClip = function () {
-    var e = C.CastleModel.kingdomData.getKingdomVOByID(this.kingdomID).kingdomName;
-    var t = this.assetFileURL(v.WorldmapObjectIconHelper.FILE_NAME_CASTLE_PARTS);
-    if (this.moatLevel > 0) {
-      if (h.ABGHelper.isOnABGServer) {
-        return null;
-      }
-      var i = this.equipmentUniqueIdSkin > 0 ? C.CastleModel.equipData.getEquipmentByUniqueID(this.equipmentUniqueIdSkin) : null;
-      if (i) {
-        if (i && i.skinDefinesIncreasedAsset) {
-          return this.getAsExternalClip(CastleMapobjectVO.CASTLE_PART_MOAT + e + "_25", t);
-        }
-        if (i && i.skinDefinesAssetForMoat) {
-          return this.getAsExternalClip(CastleMapobjectVO.CASTLE_PART_MOAT + e + CastleMapobjectVO.FILE_NAME_FLAG_SPECIAL + i.skinAssetID);
-        }
-      }
-      return this.getAsExternalClip(CastleMapobjectVO.CASTLE_PART_MOAT + e, t);
-    }
-    return null;
-  };
-  CastleMapobjectVO.prototype.parseAreaInfo = function (t) {
-    if (t.length <= 4) {
-      this._areaType = t[0];
-      this._absAreaPosX = t[1];
-      this._absAreaPosY = t[2];
-      this._occupierID = t[3];
-      if (this.isOccupied) {
-        C.CastleModel.worldmapData ||= C.CastleModel.addModel(new _.CastleWorldmapData());
-        C.CastleModel.worldmapData.relocationObjects.push(this);
-      }
-      this._ownerInfo = null;
-      this.dispatchEvent(p.EventInstanceMapper.getEvent(E.VisualVOEvent, E.VisualVOEvent.VALUEOBJECT_CHANGE));
-    } else {
-      e.prototype.parseAreaInfo.call(this, t);
-      if (h.ABGHelper.isOnABGAndTower) {
-        var i = new m.ABGTowerConnectionVO();
-        var n = [t[18][0], t[18][1], this.ownerInfo.playerName, t[18][2] ? 1 : 0];
-        i.fillFromConnectionValues(n);
-        this._customConnections = [];
-        this.customConnections.push(i);
-        this._isABGTowerAttackable = t[18][2];
-        this._abgPlayerTowerPoints = c.int(t[18][3]);
-      }
-    }
-  };
-  Object.defineProperty(CastleMapobjectVO.prototype, "isVisibleOnMap", {
+  Object.defineProperty(OutpostMapobjectVO.prototype, "canBeTraded", {
     get: function () {
-      if (this._ownerInfo) {
-        return this._ownerInfo.playerID > 0 && this._ownerInfo.playerLevel >= d.ClientConstLevelRestrictions.MIN_LEVEL_TO_THE_WORLD_MAP;
-      } else {
-        return this._occupierID > 0 || this.isUseAbleForRelocation && I.CastleLayoutManager.getInstance().currentState == I.CastleLayoutManager.STATE_WORLDMAP_RELOCATION;
-      }
+      return !!this.ownerInfo && !this.ownerInfo.isOutpostOwner && !this.ownerInfo.isRuin && this.ownerInfo.playerID > 0;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(y.BasicMapobjectVO.prototype, "isVisibleOnMap").set.call(this, e);
+      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "canBeTraded").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleMapobjectVO.prototype.canBeTroupsSended = function () {
-    return this.isOwnMapobject && (C.CastleModel.userData.hasOutpostsInKingdom(this.kingdomID) || C.CastleModel.userData.laboratoryList.hasLaboratoryInKingdom(this.kingdomID) || C.CastleModel.userData.villageList.getAmountInKingdomID(C.CastleModel.kingdomData.activeKingdomID) > 0 || C.CastleModel.kingdomData.activeKingdomID == r.WorldClassic.KINGDOM_ID && (C.CastleModel.userData.kingstowerList.kingstowerAmount > 0 || C.CastleModel.userData.monumentList.amount > 0));
-  };
-  CastleMapobjectVO.prototype.canBeSupported = function () {
-    return !this.isOwnMapobject && C.CastleModel.userData.isUserInMyAlliance(this.ownerInfo);
-  };
-  CastleMapobjectVO.prototype.canBePlagueAttacked = function () {
-    return !!this.ownerInfo && !this.isOwnMapobject;
-  };
-  CastleMapobjectVO.prototype.canBeAttacked = function () {
-    return !!this.ownerInfo && !this.isOwnMapobject && !C.CastleModel.userData.isUserInMyAlliance(this.ownerInfo) && C.CastleModel.allianceData.getStatusByAlliance(this.ownerInfo.allianceID) != l.AllianceConst.DIPLOMACY_REAL_ALLIED;
-  };
-  Object.defineProperty(CastleMapobjectVO.prototype, "canBeTraded", {
-    get: function () {
-      return this.isOwnMapobject && C.CastleModel.userData.hasOutpostsInKingdom(this.kingdomID) || !this.isOwnMapobject;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "canBeTraded").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleMapobjectVO.prototype, "canBeVisited", {
+  Object.defineProperty(OutpostMapobjectVO.prototype, "canBeVisited", {
     get: function () {
       return true;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "canBeVisited").set.call(this, e);
+      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "canBeVisited").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMapobjectVO.prototype, "canBeSpied", {
+  Object.defineProperty(OutpostMapobjectVO.prototype, "canBeSpied", {
     get: function () {
-      return !this.isOwnMapobject;
+      if (this.isOwnMapobject) {
+        return this.isUnderConquerControl;
+      } else {
+        return !this.isConqueredByMe;
+      }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "canBeSpied").set.call(this, e);
+      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "canBeSpied").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMapobjectVO.prototype, "canBeSabotaged", {
+  Object.defineProperty(OutpostMapobjectVO.prototype, "canBeSabotaged", {
     get: function () {
-      return !this.isOwnMapobject && this._ownerInfo != null && this._ownerInfo.playerLevel >= d.ClientConstLevelRestrictions.MIN_LEVEL_SABOTAGE && !h.ABGHelper.isOnABGServer;
+      return !this.isOwnMapobject && this._ownerInfo != null && !y.ABGHelper.isOnABGServer;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "canBeSabotaged").set.call(this, e);
+      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "canBeSabotaged").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMapobjectVO.prototype, "hasOtherPlayerInfo", {
+  Object.defineProperty(OutpostMapobjectVO.prototype, "hasOtherPlayerInfo", {
     get: function () {
-      return !this.isOwnMapobject;
+      return this.ownerInfo != null && !this.isOwnMapobject && (!this.ownerInfo || !this.ownerInfo.isOutpostOwner);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "hasOtherPlayerInfo").set.call(this, e);
+      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "hasOtherPlayerInfo").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMapobjectVO.prototype, "isUseAbleForRelocation", {
+  Object.defineProperty(OutpostMapobjectVO.prototype, "ownerInfo", {
     get: function () {
-      return (!this.ownerInfo && !this.isOccupied || !!this.ownerInfo && this.ownerInfo.isRuin) && C.CastleModel.worldmapData.isSectorPopulated(this._absAreaPosX, this._absAreaPosY);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleMapobjectVO.prototype, "hasNameLabel", {
-    get: function () {
-      return true;
+      var e = Object.getOwnPropertyDescriptor(E.InteractiveMapobjectVO.prototype, "ownerInfo").get.call(this);
+      e ||= g.CastleModel.otherPlayerData.getOwnerInfoVO(l.OutpostConst.OUTPOST_DEFAULT_OWNER_ID);
+      return e;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "hasNameLabel").set.call(this, e);
+      Object.getOwnPropertyDescriptor(E.InteractiveMapobjectVO.prototype, "ownerInfo").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMapobjectVO.prototype, "attackType", {
+  Object.defineProperty(OutpostMapobjectVO.prototype, "controllerWorldMapOwnerInfoVO", {
     get: function () {
-      return u.ClientConstCastle.ACTION_TYPE_ATTACK;
+      if (this.isUnderConquerControl) {
+        return g.CastleModel.otherPlayerData.getOwnerInfoVO(this._occupierID);
+      } else {
+        return this.ownerInfo;
+      }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ContainerBuilderMapobjectVO.prototype, "attackType").set.call(this, e);
+      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "controllerWorldMapOwnerInfoVO").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMapobjectVO.prototype, "isABGTowerAttackable", {
+  Object.defineProperty(OutpostMapobjectVO.prototype, "isConqueredByRealAlliedAlliance", {
     get: function () {
-      return this._isABGTowerAttackable;
+      return !!this.controllerWorldMapOwnerInfoVO && g.CastleModel.allianceData.getStatusByAlliance(this.controllerWorldMapOwnerInfoVO.allianceID) == r.AllianceConst.DIPLOMACY_REAL_ALLIED;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMapobjectVO.prototype, "abgPlayerTowerPoints", {
+  Object.defineProperty(OutpostMapobjectVO.prototype, "attackType", {
     get: function () {
-      return this._abgPlayerTowerPoints;
+      return p.ClientConstCastle.ACTION_TYPE_OUTPOSTATTACK;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "attackType").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleMapobjectVO.prototype.getMinConnectionsAsABGTowerConnection = function () {
-    return this._customConnections;
-  };
-  Object.defineProperty(CastleMapobjectVO.prototype, "canChangeDefenceOnWorldmap", {
+  Object.defineProperty(OutpostMapobjectVO.prototype, "canChangeDefenceOnWorldmap", {
     get: function () {
-      return this.isOwnMapobject;
+      return this.isConqueredByMe || this.isOwnMapobject && !this.isUnderConquerControl;
     },
     enumerable: true,
     configurable: true
   });
-  CastleMapobjectVO.CASTLE_PART_MOAT = "Castlepart_Moat_";
-  CastleMapobjectVO.MAPOBJECT_RUIN = "Ruin_Mapobject";
-  CastleMapobjectVO.FILE_NAME_FLAG_SPECIAL = "_Special_";
-  return CastleMapobjectVO;
-}(b.ContainerBuilderMapobjectVO);
-exports.CastleMapobjectVO = D;
-o.classImplementsInterfaces(D, "IDetailViewAble", "IWorldmapObjectVO");
-var I = require("./17.js");
-var T = require("./106.js");
-var v = require("./70.js");
-var S = require("./109.js");
-var A = require("./408.js");
-var L = require("./276.js");
-var P = require("./137.js");
+  return OutpostMapobjectVO;
+}(f.ContainerBuilderMapobjectVO);
+exports.OutpostMapobjectVO = O;
+a.classImplementsInterfaces(O, "IDetailViewAble", "IWorldmapObjectVO");
+var E = require("./101.js");
+var y = require("./53.js");

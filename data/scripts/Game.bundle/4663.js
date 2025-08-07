@@ -5,22 +5,17 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./44.js");
-var l = require("./1113.js");
+var r = require("./37.js");
+var l = require("./4.js");
 var c = require("./10.js");
-var u = require("./471.js");
-var d = require("./2.js");
-var p = require("./1810.js");
-var h = require("./4.js");
-var g = require("./1112.js");
-var C = function (e) {
-  function SLMSCommand() {
+var u = function (e) {
+  function SCDCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SLMSCommand, e);
-  Object.defineProperty(SLMSCommand.prototype, "cmdId", {
+  n.__extends(SCDCommand, e);
+  Object.defineProperty(SCDCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SOCIAL_LOGIN_MIGRATION_STATUS;
+      return s.ClientConstSF.S2C_SET_CREDENTIALS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -28,27 +23,25 @@ var C = function (e) {
     enumerable: true,
     configurable: true
   });
-  SLMSCommand.prototype.executeCommand = function (e, t) {
+  SCDCommand.prototype.executeCommand = function (e, t) {
+    var i = null;
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        if ((!!r.SpecialServerHelper.isOnKeyLoginToNormalLoginServer || l.UserSocialLoginMigrationHelper.getNameByInstanceID(d.EnvGlobalsHandler.globals.networkId) != " ") && i.hasPassword !== undefined) {
-          if (Boolean(i.hasPassword)) {
-            h.CastleModel.userData.toShowDialogsAfterJAA.push(g.CastleChangePasswordForSocialMigrationConfirmedDialog);
-          } else {
-            if (u.CastleTutorialSpotlight.instance.isVisible) {
-              u.CastleTutorialSpotlight.instance.clear();
-            }
-            h.CastleModel.userData.toShowDialogsAfterJAA.push(p.CastleChangePasswordForSocialMigrationDialog);
-          }
+        if (t && t.length > 0) {
+          i = JSON.parse(t[1]);
         }
-        return true;
-      default:
+        l.CastleModel.userData.parse_SCD(i);
+        break;
+      case a.ERROR.INVALID_OBJECT_STATE:
         this.showErrorDialog(e, t);
     }
+    this.dispatchArrivedEvent(e, i);
     return false;
   };
-  return SLMSCommand;
+  SCDCommand.prototype.dispatchArrivedEvent = function (e, t) {
+    this.controller.dispatchEvent(new r.CastleServerMessageArrivedEvent(r.CastleServerMessageArrivedEvent.SDC_ARRIVED, [e, t]));
+  };
+  return SCDCommand;
 }(c.CastleCommand);
-exports.SLMSCommand = C;
-o.classImplementsInterfaces(C, "IExecCommand");
+exports.SCDCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

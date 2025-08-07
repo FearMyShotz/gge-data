@@ -6,131 +6,129 @@ var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./5.js");
 var r = require("./3.js");
-var l = require("./3.js");
-var c = require("./6.js");
-var u = require("./26.js");
-var d = require("./90.js");
-var p = require("./4.js");
-var h = require("./64.js");
-var g = require("./1151.js");
-var C = require("./124.js");
-var _ = createjs.Container;
-var m = function (e) {
-  function FactionTowerMapobject() {
+var l = require("./26.js");
+var c = require("./90.js");
+var u = require("./4.js");
+var d = require("./64.js");
+var p = require("./1151.js");
+var h = require("./124.js");
+var g = createjs.Container;
+var C = function (e) {
+  function FactionCapitalMapobject() {
     return e.call(this) || this;
   }
-  n.__extends(FactionTowerMapobject, e);
-  FactionTowerMapobject.prototype.initialize = function (t, i) {
+  n.__extends(FactionCapitalMapobject, e);
+  FactionCapitalMapobject.prototype.initialize = function (t, i) {
     e.prototype.initialize.call(this, t, i);
-    p.CastleModel.specialEventData.addEventListener(u.CastleSpecialEventEvent.FACTION_ATTACKABLE_DATA_UPDATED, this.bindFunction(this.onAttackableDataUpdate));
+    u.CastleModel.specialEventData.addEventListener(l.CastleSpecialEventEvent.FACTION_ATTACKABLE_DATA_UPDATED, this.bindFunction(this.onAttackableDataUpdate));
   };
-  FactionTowerMapobject.prototype.onAttackableDataUpdate = function (e) {
+  FactionCapitalMapobject.prototype.onAttackableDataUpdate = function (e) {
     if (this.hasRingMenu) {
       this.showRingMenu();
     }
   };
-  FactionTowerMapobject.prototype.initVisualRep = function () {
+  FactionCapitalMapobject.prototype.initVisualRep = function () {
     if (!this.disp) {
-      this.disp = new _();
-      this.mapobjectVO.addEventListener(h.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
+      this.disp = new g();
+      this.mapobjectVO.addEventListener(d.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
     }
     this.clearObjectContainer();
     if (this.mapobjectVO.isVisibleOnMap) {
       this.objectContainer = this.vo.getDisplayObjectClipContainer(false, null, false);
       this.addObjectContainer();
       this.addMouseListener();
-      if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0) {
-        this.showFlames();
-      }
     }
   };
-  Object.defineProperty(FactionTowerMapobject.prototype, "areaNameString", {
+  Object.defineProperty(FactionCapitalMapobject.prototype, "areaNameString", {
     get: function () {
-      return r.Localize.text("faction_tower");
+      return "DUMMY CAPITAL";
     },
     enumerable: true,
     configurable: true
   });
-  FactionTowerMapobject.prototype.showRingMenu = function () {
-    if (!this.towerVO.isDestroyed) {
-      this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.SHOW_MENU, [this, d.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
+  FactionCapitalMapobject.prototype.showRingMenu = function () {
+    if (!this.capitalVO.isDestroyed) {
+      this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.SHOW_MENU, [this, c.CastleWorldmapEvent.RINGMENU_CASTLEINFO]));
     }
     this.showOwnerLines();
   };
-  FactionTowerMapobject.prototype.onRollOver = function (t) {
+  FactionCapitalMapobject.prototype.onRollOver = function (t) {
     if (!this.worldmapRenderer.camera.isWorldDragging) {
       if (!this.hasRingMenu) {
-        this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
+        this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
       }
       e.prototype.onRollOver.call(this, t);
     }
   };
-  FactionTowerMapobject.prototype.onRollOut = function (t) {
-    this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.INFOTOOLTIP, [false]));
+  FactionCapitalMapobject.prototype.onRollOut = function (t) {
+    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [false]));
     e.prototype.onRollOut.call(this, t);
   };
-  FactionTowerMapobject.prototype.remove = function () {
-    this.mapobjectVO.removeEventListener(h.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
-    p.CastleModel.specialEventData.removeEventListener(u.CastleSpecialEventEvent.FACTION_ATTACKABLE_DATA_UPDATED, this.bindFunction(this.onAttackableDataUpdate));
+  FactionCapitalMapobject.prototype.showOwnerLines = function () {
+    this.worldmapRenderer.hideLines();
+    var e = FactionCapitalMapobject.factionEventVO.getCapitalByID(this.capitalVO.specialCampID);
+    var t = FactionCapitalMapobject.factionEventVO.getTowerLanesByCapitalID(e.specialCampID);
+    if (t != null) {
+      for (var i = 0, n = t; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          p.FactionLaneRenderHelper.showLane(this.worldmapRenderer, o, e);
+        }
+      }
+    }
+  };
+  FactionCapitalMapobject.prototype.remove = function () {
+    u.CastleModel.specialEventData.removeEventListener(l.CastleSpecialEventEvent.FACTION_ATTACKABLE_DATA_UPDATED, this.bindFunction(this.onAttackableDataUpdate));
     e.prototype.remove.call(this);
   };
-  FactionTowerMapobject.prototype.showOwnerLines = function () {
-    this.worldmapRenderer.hideLines();
-    var e = FactionTowerMapobject.factionEventVO.getTowerByID(this.towerVO.specialCampID);
-    var t = FactionTowerMapobject.factionEventVO.getTowersByLane(e.laneID);
-    var i = FactionTowerMapobject.factionEventVO.getVillagesByTower(e.specialCampID);
-    var n = FactionTowerMapobject.factionEventVO.getCapitalByLane(e.laneID);
-    g.FactionLaneRenderHelper.showLane(this.worldmapRenderer, t, n, e, i);
-  };
-  Object.defineProperty(FactionTowerMapobject.prototype, "towerVO", {
+  Object.defineProperty(FactionCapitalMapobject.prototype, "capitalVO", {
     get: function () {
       return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FactionTowerMapobject.prototype, "line2Content", {
+  Object.defineProperty(FactionCapitalMapobject.prototype, "line2Content", {
     get: function () {
-      var e = this.towerVO.ownerInfo;
+      var e = this.capitalVO.ownerInfo;
       if (e) {
         if (e.factionID == s.FactionConst.BLUE_FACTION) {
-          return new l.LocalizedTextVO("blue_faction");
+          return new r.LocalizedTextVO("blue_faction");
         } else {
-          return new l.LocalizedTextVO("red_faction");
+          return new r.LocalizedTextVO("red_faction");
         }
       } else {
         return null;
       }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(C.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(h.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FactionTowerMapobject.prototype, "line3Content", {
+  Object.defineProperty(FactionCapitalMapobject.prototype, "line3Content", {
     get: function () {
-      var e = c.int(this.towerVO.attacksLeft);
-      if (e > 0 && !this.towerVO.isDestroyed) {
-        return new l.LocalizedTextVO("factiontower_attacksLeft_tooltip", [e]);
+      if (this.capitalVO.isDestroyed) {
+        return new r.LocalizedTextVO("mapobject_destroyed");
       } else {
-        return new l.LocalizedTextVO("mapobject_destroyed");
+        return null;
       }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(C.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(h.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FactionTowerMapobject, "factionEventVO", {
+  Object.defineProperty(FactionCapitalMapobject, "factionEventVO", {
     get: function () {
-      return p.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_FACTION);
+      return u.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_FACTION);
     },
     enumerable: true,
     configurable: true
   });
-  return FactionTowerMapobject;
-}(C.InteractiveMapobject);
-exports.FactionTowerMapobject = m;
-o.classImplementsInterfaces(m, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+  return FactionCapitalMapobject;
+}(h.InteractiveMapobject);
+exports.FactionCapitalMapobject = C;
+o.classImplementsInterfaces(C, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");

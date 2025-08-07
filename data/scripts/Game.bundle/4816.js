@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function CRUNCommand() {
+  function CRSKCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CRUNCommand, e);
-  Object.defineProperty(CRUNCommand.prototype, "cmdId", {
+  n.__extends(CRSKCommand, e);
+  Object.defineProperty(CRSKCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_CRAFTING_UNLOCK;
+      return s.ClientConstSF.S2C_CRAFTING_SKIP;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,7 +22,7 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  CRUNCommand.prototype.executeCommand = function (e, t) {
+  CRSKCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
@@ -33,7 +33,7 @@ var c = function (e) {
     }
     return false;
   };
-  return CRUNCommand;
+  return CRSKCommand;
 }(l.CastleCommand);
-exports.CRUNCommand = c;
+exports.CRSKCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

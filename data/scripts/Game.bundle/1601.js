@@ -59,8 +59,8 @@ var r = function (e) {
     CastleListDetailOverviewSublayerMilitary.FILTER_TOOLS_DEFENCE = 4;
   };
   return CastleListDetailOverviewSublayerMilitary;
-}(require("./1040.js").CastleListDetailOverviewSublayer);
+}(require("./1041.js").CastleListDetailOverviewSublayer);
 exports.CastleListDetailOverviewSublayerMilitary = r;
-var l = require("./3124.js");
+var l = require("./3125.js");
 a.classImplementsInterfaces(r, "ICollectableRendererList", "ISublayer");
 r.__initialize_static_members();

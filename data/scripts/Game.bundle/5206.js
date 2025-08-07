@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function SKRCommand() {
+  function SKLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SKRCommand, e);
-  Object.defineProperty(SKRCommand.prototype, "cmdId", {
+  n.__extends(SKLCommand, e);
+  Object.defineProperty(SKLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SKILLS_RESET;
+      return s.ClientConstSF.S2C_GET_SKILLS_LIST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,17 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  SKRCommand.prototype.executeCommand = function (e, t) {
+  SKLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        r.CastleModel.legendSkillData.resetSkills();
+        var i = JSON.parse(t[1]);
+        r.CastleModel.legendSkillData.parse_SKL(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SKRCommand;
+  return SKLCommand;
 }(l.CastleCommand);
-exports.SKRCommand = c;
+exports.SKLCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

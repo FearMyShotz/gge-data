@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function FactionPMoatMoatVE() {
+  function FactionMoatMoatVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FactionPMoatMoatVE, e);
-  return FactionPMoatMoatVE;
-}(require("./1608.js").PremiumMoatVE);
-exports.FactionPMoatMoatVE = a;
+  n.__extends(FactionMoatMoatVE, e);
+  return FactionMoatMoatVE;
+}(require("./782.js").BasicMoatVE);
+exports.FactionMoatMoatVE = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

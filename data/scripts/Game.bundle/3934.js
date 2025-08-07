@@ -16,5 +16,5 @@ var a = function (e) {
     configurable: true
   });
   return StatusIconSeasonGacha_Easter;
-}(require("./1119.js").AStatusIconSeasonGacha);
+}(require("./841.js").AStatusIconSeasonGacha);
 exports.StatusIconSeasonGacha_Easter = a;

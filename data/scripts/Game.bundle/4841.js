@@ -5,17 +5,17 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./119.js");
-var l = require("./15.js");
+var r = require("./4.js");
+var l = require("./517.js");
 var c = require("./10.js");
 var u = function (e) {
-  function ERECommand() {
+  function EGECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ERECommand, e);
-  Object.defineProperty(ERECommand.prototype, "cmdId", {
+  n.__extends(EGECommand, e);
+  Object.defineProperty(EGECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ENCHANT_RELIC_ITEM_EVENT;
+      return s.ClientConstSF.S2C_EXTRACT_GEM;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -23,22 +23,18 @@ var u = function (e) {
     enumerable: true,
     configurable: true
   });
-  ERECommand.prototype.executeCommand = function (e, t) {
+  EGECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        l.CastleBasicController.getInstance().dispatchEvent(new r.CastleEquipmentEvent(r.CastleEquipmentEvent.RELIC_UPGRADE_RECEIVED, [i.E]));
-        break;
-      case a.ERROR.ENCHANTING_FAILED:
-        l.CastleBasicController.getInstance().dispatchEvent(new r.CastleEquipmentEvent(r.CastleEquipmentEvent.RELIC_UPGRADE_RECEIVED, []));
+        r.CastleModel.gemData.gemExtractionSuccess();
+        r.CastleModel.smartfoxClient.sendCommandVO(new l.C2SGetEquipmentInventory());
         break;
       default:
         this.showErrorDialog(e, t);
-        l.CastleBasicController.getInstance().dispatchEvent(new r.CastleEquipmentEvent(r.CastleEquipmentEvent.RELIC_UPGRADE_RECEIVED, []));
     }
     return false;
   };
-  return ERECommand;
+  return EGECommand;
 }(c.CastleCommand);
-exports.ERECommand = u;
+exports.EGECommand = u;
 o.classImplementsInterfaces(u, "IExecCommand");

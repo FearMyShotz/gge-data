@@ -1,22 +1,26 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./390.js");
-var a = function (e) {
-  function CastleTradeData() {
-    return e !== null && e.apply(this, arguments) || this;
+var n = require("./50.js");
+var o = require("./22.js");
+var a = function () {
+  function CastleTempServerDailyTaskRewardVO() {
+    this.id = 0;
+    this.minDailyTaskPointsPerDay = 0;
   }
-  n.__extends(CastleTradeData, e);
-  CastleTradeData.prototype.parse_CMI = function (e) {
-    var t = new s.CastleTradeInfoVO();
-    t.fillCastleList(e.C);
-    this.dispatchEvent(new o.CastleTradeDataEvent(o.CastleTradeDataEvent.GET_MARKET_INFOS, t));
+  CastleTempServerDailyTaskRewardVO.prototype.parseXML = function (e) {
+    this.id = parseInt(o.CastleXMLUtils.getValueOrDefault("tempServerDailyTaskRewardID", e, "0"));
+    var t = parseInt(o.CastleXMLUtils.getValueOrDefault("rewardID", e, "0"));
+    this.minDailyTaskPointsPerDay = parseInt(o.CastleXMLUtils.getValueOrDefault("minDailyTaskPointsPerDay", e, "0"));
+    this.rankRewards = n.CollectableManager.parser.createListFromRewardIdsString(t.toString());
   };
-  CastleTradeData.prototype.dispatchFailedMarketInfo = function () {
-    this.dispatchEvent(new o.CastleTradeDataEvent(o.CastleTradeDataEvent.GET_MARKET_INFOS, null, false));
-  };
-  return CastleTradeData;
-}(require("./72.js").CastleEventDispatcher);
-exports.CastleTradeData = a;
-var s = require("./5598.js");
+  Object.defineProperty(CastleTempServerDailyTaskRewardVO.prototype, "minDailyTaskPoints", {
+    get: function () {
+      return this.minDailyTaskPointsPerDay;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleTempServerDailyTaskRewardVO;
+}();
+exports.CastleTempServerDailyTaskRewardVO = a;

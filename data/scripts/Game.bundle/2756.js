@@ -2,81 +2,57 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./18.js");
-var l = require("./55.js");
-var c = require("./87.js");
-var u = function (e) {
-  function IsoDataObjectGroupInnerBuilding() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./18.js");
+var a = require("./358.js");
+var s = createjs.Point;
+var r = function (e) {
+  function IsoDataObjectGroupGround() {
+    var t = this;
+    t._startPoint = new s();
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(IsoDataObjectGroupInnerBuilding, e);
-  IsoDataObjectGroupInnerBuilding.prototype.checkProductionTip = function (e) {
-    if (this.isoData.areaData.isMyHomeCastle && l.ClientConstUtils.isObjectClassOf(e, [g.FarmBuildingVO, C.QuarryBuildingVO, _.WoodcutterBuildingVO])) {
-      var t = this.isoData.areaData.storage;
-      if (t) {
-        var i;
-        if (a.instanceOfClass(e, "FarmBuildingVO")) {
-          i = p.CollectableEnum.FOOD;
-        } else if (a.instanceOfClass(e, "QuarryBuildingVO")) {
-          i = p.CollectableEnum.STONE;
-        } else if (a.instanceOfClass(e, "WoodcutterBuildingVO")) {
-          i = p.CollectableEnum.WOOD;
-        }
-        var n = s.int(t.getItem(i).fieldEfficiency);
-        if (e.level == 1) {
-          var c = s.int(this.isoData.objects.provider.getObjectAmountByType(e.objectType));
-          if (c == n + 1 || c == n + 2) {
-            o.CommandController.instance.executeCommand(d.IngameClientCommands.OPEN_TIP_DIALOG_COMMAND, [r.ClientConstCastle.TIP_EFFICIENCY]);
-          }
-        }
-      }
-    }
-  };
-  IsoDataObjectGroupInnerBuilding.prototype.addObject = function (t) {
+  n.__extends(IsoDataObjectGroupGround, e);
+  IsoDataObjectGroupGround.prototype.addObject = function (t) {
+    t.type = l.IsoHelper.data.getBackgroundType(this.isoData);
     e.prototype.addObject.call(this, t);
-    this.checkProductionTip(t);
+    this.isoData.grid.updateGrounds();
   };
-  IsoDataObjectGroupInnerBuilding.prototype.updateObjectByServer = function (e, t) {
-    if (this.list != null) {
-      for (var i = 0, n = this.list; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && o.objectId == e) {
-          h.IsoHelper.data.updateIsoObjectByServer(o, t);
-          var a = o;
-          switch (a.buildingState) {
-            case c.IsoBuildingStateEnum.DISASSEMBLED_COMPLETED:
-            case c.IsoBuildingStateEnum.UPGRADE_COMPLETED:
-              this.isoData.updater.removeObjectByObjectId(a.objectId);
-          }
-          return o;
-        }
-      }
-    }
-    return null;
-  };
-  IsoDataObjectGroupInnerBuilding.prototype.parseGCA = function (e) {
-    var t = e.BD;
+  IsoDataObjectGroupGround.prototype.parseGCA = function (e) {
+    var t = e.BG;
     if (t) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          var a = h.IsoHelper.data.createIsoObjectVOByServer(o, this.isoData);
-          if (a) {
-            this.list.push(a);
+      var i;
+      this.resetList();
+      if (t != null) {
+        for (var n = 0, a = t; n < a.length; n++) {
+          var r = a[n];
+          if (r !== undefined) {
+            (i = l.IsoHelper.data.createIsoObjectVOByServer(r, this.isoData)).type = l.IsoHelper.data.getBackgroundType(this.isoData);
+            this.list.push(i);
+            if (i.wodId == o.ClientConstCastle.START_GROUND_WOD_ID) {
+              this._startPoint = new s(i.x, i.y);
+            }
           }
         }
       }
+      this.isoData.grid.updateGrounds();
     }
   };
-  return IsoDataObjectGroupInnerBuilding;
-}(require("./358.js").AIsoDataObjectGroupSimpleList);
-exports.IsoDataObjectGroupInnerBuilding = u;
-var d = require("./29.js");
-var p = require("./12.js");
-var h = require("./46.js");
-var g = require("./634.js");
-var C = require("./637.js");
-var _ = require("./533.js");
+  Object.defineProperty(IsoDataObjectGroupGround.prototype, "expansionAmount", {
+    get: function () {
+      return this.list.length - 1;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoDataObjectGroupGround.prototype, "startPoint", {
+    get: function () {
+      return this._startPoint;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return IsoDataObjectGroupGround;
+}(a.AIsoDataObjectGroupSimpleList);
+exports.IsoDataObjectGroupGround = r;
+var l = require("./46.js");

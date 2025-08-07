@@ -2,50 +2,38 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./539.js");
-var s = function (e) {
-  function AutoRecruitmentCopyCostSublayer(t) {
-    var i = e.call(this, t) || this;
-    i._costComponent = new r.AutoRecruitmentCostComponent(t, true);
-    return i;
+var o = function (e) {
+  function AutoRecruitmentCopySublayerProperties(t, i, n) {
+    var o = this;
+    o._listId = 0;
+    CONSTRUCTOR_HACK;
+    (o = e.call(this) || this)._listId = t;
+    o._loopFeeCosts = i;
+    o._listComponent = n;
+    return o;
   }
-  n.__extends(AutoRecruitmentCopyCostSublayer, e);
-  AutoRecruitmentCopyCostSublayer.prototype.updateCosts = function () {
-    this._costComponent.updateWithNewCosts(this.getCurrentCosts());
-  };
-  AutoRecruitmentCopyCostSublayer.prototype.getCurrentCosts = function () {
-    var e = new l.AutoRecruitmentCosts();
-    e.priceType = a.AutoRecruitmentPriceEnum.getTypeByListId(this._properties.listId);
-    for (var t = 0, i = this._properties.listComponent.listData; t < i.length; t++) {
-      var n = i[t];
-      if (n !== undefined) {
-        e.priceType = n.costs.priceType;
-        if (n.isSelected) {
-          e.costs.addList(n.costs.costs, true);
-          e.duplicatingCosts.amount += n.costs.duplicatingCosts.amount;
-        }
-      }
-    }
-    e.loopFee.amount = this._properties.loopFeeCosts.amount * this._properties.listComponent.getSelectedCastlesCount();
-    return e;
-  };
-  AutoRecruitmentCopyCostSublayer.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this._properties = t;
-    this._properties.listComponent.onSelectionChanged.add(this.bindFunction(this.onItemSelectionChanged));
-    this.updateCosts();
-  };
-  AutoRecruitmentCopyCostSublayer.prototype.onItemSelectionChanged = function () {
-    this.updateCosts();
-  };
-  AutoRecruitmentCopyCostSublayer.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    this._properties.listComponent.onSelectionChanged.remove(this.bindFunction(this.onItemSelectionChanged));
-  };
-  return AutoRecruitmentCopyCostSublayer;
-}(require("./34.js").CastleDialogSubLayer);
-exports.AutoRecruitmentCopyCostSublayer = s;
-var r = require("./1577.js");
-var l = require("./645.js");
-o.classImplementsInterfaces(s, "ICollectableRendererList", "ISublayer");
+  n.__extends(AutoRecruitmentCopySublayerProperties, e);
+  Object.defineProperty(AutoRecruitmentCopySublayerProperties.prototype, "listId", {
+    get: function () {
+      return this._listId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AutoRecruitmentCopySublayerProperties.prototype, "loopFeeCosts", {
+    get: function () {
+      return this._loopFeeCosts;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AutoRecruitmentCopySublayerProperties.prototype, "listComponent", {
+    get: function () {
+      return this._listComponent;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AutoRecruitmentCopySublayerProperties;
+}(require("./2.js").BasicProperties);
+exports.AutoRecruitmentCopySublayerProperties = o;

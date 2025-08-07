@@ -2,55 +2,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./583.js");
-var r = require("./24.js");
-var l = require("./8.js");
-var c = function (e) {
-  function EquipmentGemSocket(t, i = false) {
-    var n = e.call(this) || this;
-    n._enableExtractBehaviour = false;
-    n._equipmentVO = t;
-    n._enableExtractBehaviour = i;
-    l.ButtonHelper.initBasicButton(n);
-    n._gemClip = new r.CastleGoodgameExternalClip("Equipment_SocketTop_Relicus", o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("Equipment_SocketTop_Relicus"), null, 0, true);
-    if (n._gemClip.isLoaded) {
-      u.EquipmentIconHelper.addGem(n._gemClip, n._equipmentVO)(n._gemClip);
-      n.onLoaded(n._gemClip);
-    } else {
-      n._gemClip.clipLoaded.addOnce(u.EquipmentIconHelper.addGem(n._gemClip, n._equipmentVO));
-      n._gemClip.clipLoaded.addOnce(n.bindFunction(n.onLoaded));
+var o = function (e) {
+  function LayoutManagerErrorLOFactory(t, i) {
+    var n = this;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this)._error = t;
+    n._dialogId = i;
+    if (t.stack) {
+      n._stackLines = t.stack.split("]");
     }
-    n.addChild(n._gemClip.asDisplayObject());
     return n;
   }
-  n.__extends(EquipmentGemSocket, e);
-  EquipmentGemSocket.prototype.onLoaded = function (e) {
-    this.toolTipText = "dialog_gemExtract_tooltip";
-    this.showArrow(false);
-    this.mouseEnabled = this._enableExtractBehaviour;
+  n.__extends(LayoutManagerErrorLOFactory, e);
+  LayoutManagerErrorLOFactory.prototype.create = function () {
+    var t = e.prototype.create.call(this);
+    t.logData.set(LayoutManagerErrorLOFactory.PARAM_EVENT_ERROR_TYPE, this._error);
+    t.logData.set(LayoutManagerErrorLOFactory.PARAM_EVENT_ERROR_ID, this._error.errorID);
+    t.logData.set(LayoutManagerErrorLOFactory.PARAM_EVENT_ERROR_TARGET, this._error.name);
+    t.logData.set(LayoutManagerErrorLOFactory.PARAM_EVENT_ERROR_TEXT, this._error.message);
+    if (this._stackLines) {
+      t.logData.set(LayoutManagerErrorLOFactory.PARAM_EVENT_ERROR_STACKTRACE, this._stackLines[0] + " " + this._stackLines[1]);
+    }
+    t.logData.set(LayoutManagerErrorLOFactory.PARAM_DIALOG_ID, this._dialogId);
+    return t;
   };
-  EquipmentGemSocket.prototype.showArrow = function (e) {};
-  Object.defineProperty(EquipmentGemSocket.prototype, "disp", {
-    get: function () {
-      return this._gemClip.currentshownDisplayObject;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EquipmentGemSocket.prototype, "equipmentVO", {
-    get: function () {
-      return this._equipmentVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  EquipmentGemSocket.ANIM_DURATION = 0.4;
-  EquipmentGemSocket.MASK_POSITIONS = [-39, 7];
-  EquipmentGemSocket.GEM_POSITIONS = [-16.55, 15];
-  return EquipmentGemSocket;
-}(s.CastleMovieClip);
-exports.EquipmentGemSocket = c;
-var u = require("./73.js");
-a.classImplementsInterfaces(c, "MovieClip");
+  LayoutManagerErrorLOFactory.__initialize_static_members = function () {
+    LayoutManagerErrorLOFactory.PARAM_EVENT_ERROR_TYPE = "eventErrorType";
+    LayoutManagerErrorLOFactory.PARAM_EVENT_ERROR_ID = "eventErrorId";
+    LayoutManagerErrorLOFactory.PARAM_EVENT_ERROR_TARGET = "eventErrorTarget";
+    LayoutManagerErrorLOFactory.PARAM_EVENT_ERROR_TEXT = "eventErrorText";
+    LayoutManagerErrorLOFactory.PARAM_EVENT_ERROR_STACKTRACE = "eventErrorStackTrace";
+    LayoutManagerErrorLOFactory.PARAM_DIALOG_ID = "dialogId";
+  };
+  return LayoutManagerErrorLOFactory;
+}(require("./2.js").BasicLogObjectFactory);
+exports.LayoutManagerErrorLOFactory = o;
+o.__initialize_static_members();

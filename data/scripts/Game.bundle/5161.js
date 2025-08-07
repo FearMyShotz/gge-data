@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function THICommand() {
+  function STECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(THICommand, e);
-  Object.defineProperty(THICommand.prototype, "cmdId", {
+  n.__extends(STECommand, e);
+  Object.defineProperty(STECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_TREASUREHUNT_INFO;
+      return s.ClientConstSF.S2C_SELECT_TITLE_EVENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,25 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  THICommand.prototype.executeCommand = function (e, t) {
+  STECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.treasureHuntData.parse_THI(i);
+        if (t.length > 0) {
+          var i = JSON.parse(t[1]);
+          r.CastleModel.titleData.parseSTE(i);
+          if (u.CastleLayoutManager.getInstance().isInState(u.CastleLayoutManager.STATE_WORLDMAP)) {
+            var n = u.CastleLayoutManager.getInstance().worldmapScreen.renderer.camera.getAreaViewportRectangle();
+            r.CastleModel.worldmapData.updateAreaRange(n.x, n.y, n.x + n.width, n.y + n.height);
+          }
+        }
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return THICommand;
+  return STECommand;
 }(l.CastleCommand);
-exports.THICommand = c;
+exports.STECommand = c;
+var u = require("./17.js");
 o.classImplementsInterfaces(c, "IExecCommand");

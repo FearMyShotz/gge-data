@@ -2,28 +2,50 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function IsoCommandPackageObjectChangePos(t, i) {
-    var n = e.call(this, t) || this;
-    n._newPos = i;
-    return n;
+var o = require("./1.js");
+var a = require("./562.js");
+var s = require("./5231.js");
+var r = function (e) {
+  function IsoData() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IsoCommandPackageObjectChangePos, e);
-  IsoCommandPackageObjectChangePos.prototype.createCommandList = function () {
-    var e = [];
-    e.push(new a.IsoCommandObjectChangePosModel(this.vo.isoData, this.vo, this.newPos), new s.IsoCommandObjectChangePosView(this.vo), new r.IsoCommandZSortObject(this.vo));
-    return e;
+  n.__extends(IsoData, e);
+  IsoData.prototype.init = function (t) {
+    e.prototype.init.call(this, t);
+    this._objects = new c.IsoDataObjects(this);
+    this._grid = new l.IsoDataGrid(this);
+    this._updater = new s.IsoUpdaterData(this);
+    this._updater.init();
   };
-  Object.defineProperty(IsoCommandPackageObjectChangePos.prototype, "newPos", {
+  IsoData.prototype.destroy = function () {
+    e.prototype.destroy.call(this);
+    this._updater.destroy();
+    this._updater = null;
+  };
+  Object.defineProperty(IsoData.prototype, "updater", {
     get: function () {
-      return this._newPos;
+      return this._updater;
     },
     enumerable: true,
     configurable: true
   });
-  return IsoCommandPackageObjectChangePos;
-}(require("./633.js").AIsoCommandPackageObject);
-exports.IsoCommandPackageObjectChangePos = o;
-var a = require("./5231.js");
-var s = require("./5232.js");
-var r = require("./486.js");
+  Object.defineProperty(IsoData.prototype, "objects", {
+    get: function () {
+      return this._objects;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoData.prototype, "grid", {
+    get: function () {
+      return this._grid;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return IsoData;
+}(a.AAreaDataComponent);
+exports.IsoData = r;
+var l = require("./5249.js");
+var c = require("./5252.js");
+o.classImplementsInterfaces(r, "ICollectableRendererList", "IAreaDataComponent");

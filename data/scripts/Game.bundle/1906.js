@@ -3,21 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function CastleFactionArmorerEventBuyDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleFactionArmorerEventBuyDialog.NAME) || this;
+var a = require("./173.js");
+var s = function (e) {
+  function FactionArmorerMerchantScrollItem(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(CastleFactionArmorerEventBuyDialog, e);
-  CastleFactionArmorerEventBuyDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    e.prototype.applyPropertiesLoaded.call(this, t);
-    this.setDescriptionText("dialog_faction_armorerBuy_desc");
-  };
-  CastleFactionArmorerEventBuyDialog.__initialize_static_members = function () {
-    CastleFactionArmorerEventBuyDialog.NAME = "CastleFactionArmorerEventBuyExternal";
-  };
-  return CastleFactionArmorerEventBuyDialog;
-}(require("./168.js").CastleGenericSliderBuyDialog);
-exports.CastleFactionArmorerEventBuyDialog = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList");
-a.__initialize_static_members();
+  n.__extends(FactionArmorerMerchantScrollItem, e);
+  Object.defineProperty(FactionArmorerMerchantScrollItem.prototype, "dialogKey", {
+    get: function () {
+      return r.CastleFactionArmorerEventBuyDialog;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.AMerchantScrollItem.prototype, "dialogKey").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return FactionArmorerMerchantScrollItem;
+}(a.AMerchantScrollItem);
+exports.FactionArmorerMerchantScrollItem = s;
+var r = require("./1907.js");
+o.classImplementsInterfaces(s, "MovieClip");

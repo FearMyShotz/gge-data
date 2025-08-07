@@ -1,3 +1,8 @@
-module.exports = function () {
-  return new Worker(require.p + "717e1b2fb5de321e9902.worker.js");
-};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var n = new (require("./2051.js"))();
+exports.worker = n;
+window.addEventListener("beforeunload", function (e) {
+  n.terminate();
+});

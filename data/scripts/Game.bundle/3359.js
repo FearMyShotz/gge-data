@@ -4,82 +4,124 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./240.js");
-var l = function (e) {
-  function AllianceCoinBoosterShopVO() {
-    var t = this;
-    t._bonusPercentage = 0;
+var s = require("./3.js");
+var r = require("./4.js");
+var l = require("./204.js");
+var c = function (e) {
+  function CastleHeroBoosterShopVO(t, i, n, o) {
+    var a = this;
+    a._level = 0;
     CONSTRUCTOR_HACK;
-    return t = e.call(this, "", "", 0, "") || this;
+    (a = e.call(this, t, i, [u.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_HERO], n) || this)._heroName = o;
+    a._level = 0;
+    return a;
   }
-  n.__extends(AllianceCoinBoosterShopVO, e);
-  AllianceCoinBoosterShopVO.prototype.reset = function () {
+  n.__extends(CastleHeroBoosterShopVO, e);
+  CastleHeroBoosterShopVO.prototype.reset = function () {
     e.prototype.reset.call(this);
-    this._bonusPercentage = 0;
+    this._level = 0;
   };
-  AllianceCoinBoosterShopVO.prototype.parseServerInfo = function (t) {
-    e.prototype.parseServerInfo.call(this, t);
-    this._bonusPercentage = s.int(t.B);
-  };
-  Object.defineProperty(AllianceCoinBoosterShopVO.prototype, "id", {
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "level", {
     get: function () {
-      return a.BoosterConst.ALLIANCE_COIN_BOOST_ID;
+      return this._level;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleHeroDefaultBoosterShopVO.prototype, "id").set.call(this, e);
+      this._level = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceCoinBoosterShopVO.prototype, "isVisible", {
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "costString", {
     get: function () {
-      return false;
+      if (this.isActive) {
+        return String(Math.ceil(this.finalCostsC2));
+      } else {
+        return Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "costString").get.call(this);
+      }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleHeroDefaultBoosterShopVO.prototype, "isVisible").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "costString").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceCoinBoosterShopVO.prototype, "canBeBought", {
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "finalCostsC2", {
     get: function () {
-      return false;
+      return r.CastleModel.costsData.getFinalCostsC2(this.baseCosts, this.hasRebuyDiscount, r.CastleModel.boosterSaleData.getDiscount(this.id) * 0.01);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleHeroDefaultBoosterShopVO.prototype, "canBeBought").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "finalCostsC2").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceCoinBoosterShopVO.prototype, "hasRebuyDiscount", {
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "rebuyDiscount", {
     get: function () {
-      return false;
+      return a.BoosterConst.DISCOUNT_FACTOR * 100;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "rebuyDiscountString", {
+    get: function () {
+      return String(this.rebuyDiscount);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "hasVisualBonus", {
+    get: function () {
+      return true;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleHeroDefaultBoosterShopVO.prototype, "hasRebuyDiscount").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "hasVisualBonus").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceCoinBoosterShopVO.prototype, "isExtendable", {
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "hasVisualTimeWhenNotActive", {
     get: function () {
-      return false;
+      return true;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleHeroDefaultBoosterShopVO.prototype, "isExtendable").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenNotActive").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceCoinBoosterShopVO.prototype, "bonusPercentage", {
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "cantBeBoughtButtonToolTip", {
     get: function () {
-      return this._bonusPercentage;
+      return "noAvailableOffer";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "cantBeBoughtButtonToolTip").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return AllianceCoinBoosterShopVO;
-}(r.CastleHeroDefaultBoosterShopVO);
-exports.AllianceCoinBoosterShopVO = l;
-o.classImplementsInterfaces(l, "IPremiumMarketShopVO", "IDefaultBoosterDataVO", "IBoosterDataVO");
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "id", {
+    get: function () {
+      return -1;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "heroName", {
+    get: function () {
+      return s.Localize.text(this._heroName);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "nonLocalizedHeroName", {
+    get: function () {
+      return this._heroName;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleHeroBoosterShopVO;
+}(l.CastlePremiumMarketShopVO);
+exports.CastleHeroBoosterShopVO = c;
+var u = require("./170.js");
+o.classImplementsInterfaces(c, "IPremiumMarketShopVO");

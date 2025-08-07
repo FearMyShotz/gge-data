@@ -1,83 +1,99 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = function () {
-  function IsoCommandProcessor() {
-    this._queue = [];
+var n = createjs.TimerEvent;
+var o = function () {
+  function IsoController() {
+    this._updateTimer = new d.Timer(1000, 0);
+    this._updateTimer.start();
+    this._updateTimer.addEventListener(n.TIMER, this.bindFunction(this.onTimerUpdate));
+    this._processor = new r.IsoCommandProcessor();
+    this._server = new p.IsoServerCommands();
+    this._keyWords = new l.IsoKeyWordManager();
   }
-  IsoCommandProcessor.prototype.addPackageToQueue = function (e) {
-    var t = e.createCommandList();
-    if (t != null) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          this.addCommandToQueue(o);
-        }
-      }
+  IsoController.prototype.destroy = function () {
+    if (this._updateTimer) {
+      this._updateTimer.removeEventListener(n.TIMER, this.bindFunction(this.onTimerUpdate));
+      this._updateTimer = null;
     }
+    this.unregisterViewUpdater();
+    this._keyWords = null;
+    this._server = null;
+    this._processor = null;
   };
-  IsoCommandProcessor.prototype.addCommandToQueue = function (e) {
-    this._queue.push(e);
+  IsoController.prototype.registerViewUpdater = function () {
+    if (this.viewUpdater) {
+      this.unregisterViewUpdater();
+    }
+    this._viewUpdater = new c.IsoUpdaterView();
+    this.viewUpdater.init();
+    return this.viewUpdater;
   };
-  IsoCommandProcessor.prototype.executeQueue = function (e = true) {
-    if (!(this._queue.length <= 0)) {
+  IsoController.prototype.unregisterViewUpdater = function () {
+    if (this.viewUpdater) {
+      this.viewUpdater.destroy();
+    }
+    this._viewUpdater = null;
+  };
+  Object.defineProperty(IsoController.prototype, "dataUpdater", {
+    get: function () {
+      var e = a.Iso.data;
       if (e) {
-        this.optimizeQueue(this._queue);
+        return e.updater;
+      } else {
+        return null;
       }
-      if (this._queue != null) {
-        for (var t = 0, i = this._queue; t < i.length; t++) {
-          var n = i[t];
-          if (n !== undefined) {
-            this.executeCommand(n);
-          }
-        }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  IsoController.prototype.onTimerUpdate = function (e) {
+    var t = u.CachedTimer.getCachedTimer();
+    if (s.IsoHelper.view.isInIsoScreen) {
+      if (this.dataUpdater) {
+        this.dataUpdater.update(t);
       }
-      this._queue.length = 0;
-    }
-  };
-  IsoCommandProcessor.prototype.executeCommand = function (e) {
-    if (!e.isExecuted) {
-      e.execute();
-      e.isExecuted = true;
-    }
-  };
-  IsoCommandProcessor.prototype.executePackage = function (e, t = true) {
-    var i = e.createCommandList();
-    if (i && !(i.length <= 0) && (t && this.optimizeQueue(i), i != null)) {
-      for (var n = 0, o = i; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined) {
-          this.executeCommand(a);
-        }
+      if (this.viewUpdater && this.viewUpdater.isoRenderer.isReady) {
+        this.viewUpdater.updateOnTimer(t);
       }
     }
   };
-  IsoCommandProcessor.prototype.optimizeQueue = function (e) {
-    this.removeDuplicatedCommandsByClass(e, r.IsoCommandAreaDataUpdated);
-    this.removeDuplicatedCommandsByClass(e, l.IsoCommandGridUpdate);
-    this.removeDuplicatedCommandsByClass(e, c.IsoCommandZSortAll);
-  };
-  IsoCommandProcessor.prototype.removeDuplicatedCommandsByClass = function (e, t) {
-    var i = this.getIndicesOfCommands(e, t);
-    for (var n = a.int(i.length - 2); n >= 0; --n) {
-      e.splice(i[n], 1);
-    }
-  };
-  IsoCommandProcessor.prototype.getIndicesOfCommands = function (e, t) {
-    var i = [];
-    for (var a = 0; a < e.length; ++a) {
-      if (o.instanceOfClass(e[a], n.getQualifiedClassName(t))) {
-        i.push(a);
-      }
-    }
-    return i;
-  };
-  return IsoCommandProcessor;
+  Object.defineProperty(IsoController.prototype, "viewUpdater", {
+    get: function () {
+      return this._viewUpdater;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoController.prototype, "keyWords", {
+    get: function () {
+      return this._keyWords;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoController.prototype, "processor", {
+    get: function () {
+      return this._processor;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoController.prototype, "server", {
+    get: function () {
+      return this._server;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return IsoController;
 }();
-exports.IsoCommandProcessor = s;
-var r = require("./484.js");
-var l = require("./864.js");
-var c = require("./689.js");
+exports.IsoController = o;
+var a = require("./34.js");
+var s = require("./46.js");
+var r = require("./2044.js");
+var l = require("./2045.js");
+var c = require("./2054.js");
+var u = require("./30.js");
+var d = require("./1.js");
+var p = require("./2067.js");

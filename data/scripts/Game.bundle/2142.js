@@ -6,24 +6,27 @@ var o = require("./2.js");
 var a = require("./6.js");
 var s = require("./7.js");
 var r = function (e) {
-  function C2SDefenceMoatVO(t, i, n, o, s) {
-    var r = this;
-    r.CX = 0;
-    r.CY = 0;
-    r.AID = 0;
+  function C2SDefenceKeepVO(t, i, n, o, s = 0, r = 50) {
+    var l = this;
+    l.CX = 0;
+    l.CY = 0;
+    l.AID = 0;
+    l.MAUCT = 0;
+    l.UC = 0;
     CONSTRUCTOR_HACK;
-    (r = e.call(this) || this).CX = a.int(t.x);
-    r.CY = a.int(t.y);
-    r.AID = i;
-    r.LS = n;
-    r.MS = o;
-    r.RS = s;
-    return r;
+    (l = e.call(this) || this).CX = a.int(t.x);
+    l.CY = a.int(t.y);
+    l.AID = i;
+    l.S = n;
+    l.STS = o;
+    l.UC = r;
+    l.MAUCT = s;
+    return l;
   }
-  n.__extends(C2SDefenceMoatVO, e);
-  C2SDefenceMoatVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_DEFENSE_MOAT;
+  n.__extends(C2SDefenceKeepVO, e);
+  C2SDefenceKeepVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_DEFENSE_KEEP;
   };
-  return C2SDefenceMoatVO;
+  return C2SDefenceKeepVO;
 }(o.BasicCommandVO);
-exports.C2SDefenceMoatVO = r;
+exports.C2SDefenceKeepVO = r;

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./3.js");
-var a = require("./672.js");
+var a = require("./674.js");
 var s = function (e) {
   function DailyTabButton(t, i) {
     var n = this;

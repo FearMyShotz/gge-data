@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GSMCommand() {
+  function UPSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GSMCommand, e);
-  Object.defineProperty(GSMCommand.prototype, "cmdId", {
+  n.__extends(UPSCommand, e);
+  Object.defineProperty(UPSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_STATUS_MINES;
+      return s.ClientConstSF.S2C_UNLOCK_PACKAGE_SLOT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,20 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GSMCommand.prototype.executeCommand = function (e, t) {
+  UPSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.mineData.parse_GSM(i);
+        r.CastleModel.militaryData.parse_SPL(i.spl);
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.boostData.parse_BOI(i.boi);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GSMCommand;
+  return UPSCommand;
 }(l.CastleCommand);
-exports.GSMCommand = c;
+exports.UPSCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

@@ -3,39 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./1042.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function GLPCommand() {
+var a = require("./7.js");
+var s = require("./1156.js");
+var r = function (e) {
+  function FECCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GLPCommand, e);
-  Object.defineProperty(GLPCommand.prototype, "cmdId", {
+  n.__extends(FECCommand, e);
+  Object.defineProperty(FECCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_LABORITORY_PROGRESS_EVENT;
+      return a.ClientConstSF.S2C_FIND_NEXT_ENEMY_CASTLE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.FNMCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  GLPCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        l.CastleModel.laboratoryData.updateLandmark(i);
-        this.controller.dispatchEvent(new r.CastleMonumentProgressEvent(r.CastleMonumentProgressEvent.NEW_PROGRESS, [i.OID, i.CP]));
-        break;
-      default:
-        this.showErrorDialog(e, t);
-    }
-    return false;
-  };
-  return GLPCommand;
-}(c.CastleCommand);
-exports.GLPCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return FECCommand;
+}(s.FNMCommand);
+exports.FECCommand = r;
+o.classImplementsInterfaces(r, "IExecCommand");

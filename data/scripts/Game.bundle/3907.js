@@ -2,25 +2,21 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./99.js");
-var s = require("./9.js");
-var r = require("./215.js");
-var l = require("./196.js");
-var c = function (e) {
-  function CheatOfferIDsInHeaderCommand() {
+var o = require("./196.js");
+var a = function (e) {
+  function CheatQuestIDsCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CheatOfferIDsInHeaderCommand, e);
-  CheatOfferIDsInHeaderCommand.prototype.execute = function (e = null) {
-    l.ClientCheatsHelper.performCommand("toggleOfferIDsInMessageSubject");
-    if (a.AMessageVO.showOfferIDsInSubject) {
-      s.CastleDialogHandler.getInstance().registerDefaultDialogs(r.DarkOkDialog, new o.BasicStandardOkDialogProperties("OfferIDs", "OfferIDs are shown now in the MessageHeader"));
+  n.__extends(CheatQuestIDsCommand, e);
+  CheatQuestIDsCommand.prototype.execute = function (e = null) {
+    var t = prompt("'on' or 'off' ", "on");
+    if (t == "on") {
+      o.ClientCheatsHelper.performCommand("showQuestIDs on");
     }
-    if (!a.AMessageVO.showOfferIDsInSubject) {
-      s.CastleDialogHandler.getInstance().registerDefaultDialogs(r.DarkOkDialog, new o.BasicStandardOkDialogProperties("OfferIDs", "OfferIDs are invisible"));
+    if (t == "off") {
+      o.ClientCheatsHelper.performCommand("showQuestIDs on");
     }
   };
-  return CheatOfferIDsInHeaderCommand;
+  return CheatQuestIDsCommand;
 }(require("./212.js").ABotCommand);
-exports.CheatOfferIDsInHeaderCommand = c;
+exports.CheatQuestIDsCommand = a;

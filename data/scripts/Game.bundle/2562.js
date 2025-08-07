@@ -5,137 +5,108 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./2.js");
 var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./2.js");
-var c = require("./1.js");
-var u = require("./1.js");
-var d = require("./5.js");
-var p = require("./5.js");
-var h = require("./5.js");
-var g = require("./3.js");
-var C = require("./3.js");
-var _ = require("./6.js");
-var m = require("./18.js");
-var f = require("./51.js");
-var O = require("./4.js");
-var E = require("./222.js");
-var y = require("./107.js");
-var b = require("./966.js");
-var D = function (e) {
-  function CastleSpyDialogSabotageState(t) {
-    return e.call(this, t) || this;
+var r = require("./1.js");
+var l = require("./1.js");
+var c = require("./3.js");
+var u = require("./3.js");
+var d = require("./6.js");
+var p = require("./881.js");
+var h = function (e) {
+  function InputMaxPicker(t) {
+    var i = this;
+    i._minAmount = 1;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this, t) || this).initTextField();
+    return i;
   }
-  n.__extends(CastleSpyDialogSabotageState, e);
-  CastleSpyDialogSabotageState.prototype.initElements = function () {
-    e.prototype.initElements.call(this);
-    this.dialogDisp.sabotageDamage.visible = false;
-    this.dialogDisp.sabotageTargets.visible = false;
+  n.__extends(InputMaxPicker, e);
+  InputMaxPicker.prototype.initTextField = function () {
+    this._disp.txt_pick.type = l.TextFieldType.INPUT;
+    this._itxt_pick = this.textFieldManager.registerTextField(this._disp.txt_pick, new u.LocalizedTextVO("textMaxPicker_value", ["", 0, 0]), new a.InternalGGSTextFieldConfigVO(true));
+    this._itxt_pick.textAlign = o.GGSTextAlign.CENTER;
+    this.enableTextfield(this._isEnabled);
+    this.itxt_pick.focusIn.add(this.bindFunction(this.onPickerFocusIn));
+    this.itxt_pick.focusOut.add(this.bindFunction(this.onPickerFocusOut));
+    this.itxt_pick.click.add(this.bindFunction(this.onClickInPicker));
+    this.itxt_pick.keyDown.add(this.bindFunction(this.onPickerKeyDown));
   };
-  CastleSpyDialogSabotageState.prototype.updateElements = function () {
-    e.prototype.updateElements.call(this);
-    this.dialogDisp.sabotageDamage.visible = true;
-    this.dialogDisp.sabotageTargets.visible = true;
-    this.dialogDisp.amountPicker.mc_icon.gotoAndStop(1);
-    this.dialogDisp.btnTabSabotage.gotoAndStop(2);
-    this.addCastleList();
-    var t = 0;
-    var i = c.castAs(O.CastleModel.specialEventData.getActiveEventByEventId(d.EventConst.EVENTTYPE_PLAGUE), "PlagueEventVO");
-    if (i) {
-      for (var n = 0; n < i.eventPackages.length; n++) {
-        if ((t = _.int(T.EventPackagePrimeSaleEventVO.getPackageDiscountC2(i.eventPackages[n].packageID))) > 0) {
-          this.textFieldManager.registerTextField(this.dialogDisp.btnAddMonk.mc_discount.txt_value, new C.LocalizedTextVO(s.GenericTextIds.VALUE_PERCENTAGE, [-t]));
-          break;
-        }
-      }
-    }
-    this.dialogDisp.btnAddMonk.mc_discount.visible = t != 0;
-    this.amountPicker.setNumItems(this.startSpyVO.availableSpies);
-    this.amountPicker.enabled = this.startSpyVO.availableSpies > 0;
-    this.amountPicker.setSelectedValueWithoutLoop(this.startSpyVO.availableSpies - 1);
+  InputMaxPicker.prototype.onClickInPicker = function (e = null) {
+    this.itxt_pick.setSelection(0, this.itxt_pick.text.length);
+    this.itxt_pick.restrict = "0-9";
+    this.itxt_pick.maxChars = 3;
+    this.itxt_pick.textContentVO = new c.LocalizedNumberVO(this._selectedValue + 1);
   };
-  CastleSpyDialogSabotageState.prototype.updateTexts = function () {
-    e.prototype.updateTexts.call(this);
-    this.tfTitle.textContentVO.textId = "dialog_spy_titleSabotage";
-    this.dialogDisp.amountPicker.toolTipText = "spy_dialog_spyCount";
-    this.dialogDisp.guardAmount.toolTipText = "spy_dialog_guardCount";
-    this.dialogDisp.costs.toolTipText = "spy_dialog_sabotageCosts";
-    this.dialogDisp.sabotageDamage.toolTipText = "spy_dialog_sabotageDamage";
-    this.dialogDisp.sabotageTargets.toolTipText = "spy_dialog_sabotageTargetCount";
-    this.dialogDisp.risk.toolTipText = "spy_dialog_spyRisk";
-    this.dialogDisp.travelTime.toolTipText = "spy_dialog_travelTime";
-    this.slider.toolTips = [g.Localize.text("spy_dialog_sabotageDamage")];
-  };
-  CastleSpyDialogSabotageState.prototype.updateSpyVO = function () {
-    this.startSpyVO.distance = E.MapHelper.getDistanceByMapobjects(this.castleList.selectedData, this.dialogProperties.worldmapObjectVO);
-    this.startSpyVO.spyType = m.ClientConstCastle.SPYTYPE_SABOTAGE;
-    this.updateSliderForDamage();
-    this.tfTravelTime.textContentVO.stringValue = l.TimeStringHelper.getShortTimeStringBySeconds(this.startSpyVO.getTravelTime(this.startSpyVO.spyType, this.dialogProperties.worldmapObjectVO.areaType == h.WorldConst.AREA_TYPE_DUNGEON));
-  };
-  CastleSpyDialogSabotageState.prototype.addBgCharacter = function () {
-    r.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_char);
-    y.CharacterHelper.createCharacterBig(f.ClientConstCharacter.CHAR_ID_SPY, this.dialogDisp.mc_char, 178, 155);
-  };
-  CastleSpyDialogSabotageState.prototype.spyCastle = function () {
-    if (this.startSpyVO.availableSpies <= 0) {
-      b.ACastleSpyDialogState.dialogHandler.registerDefaultDialogs(v.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(g.Localize.text("generic_alert_information"), g.Localize.text("errorCode_105")));
-    } else {
-      var e = _.int(this.castleList.selectedData.objectId);
-      this.startSpyVO.worldmapObjectVO = this.dialogProperties.worldmapObjectVO;
-      this.startSpyVO.spyType = m.ClientConstCastle.SPYTYPE_SABOTAGE;
-      this.startSpyVO.startCastleId = e;
-      a.CommandController.instance.executeCommand(I.IngameClientCommands.OPEN_POSTATTACK_DIALOG_COMMAND, [m.ClientConstCastle.SPYTYPE_SABOTAGE, this.bindFunction(this.onHidePostDialog), this.startSpyVO, null]);
+  InputMaxPicker.prototype.onPickerKeyDown = function (e) {
+    e.stopPropagation();
+    if (e.keyCode == r.Keyboard.ENTER) {
+      this.disp.stage.focus = null;
     }
   };
-  CastleSpyDialogSabotageState.prototype.resetState = function () {
-    e.prototype.resetState.call(this);
-    this.dialogDisp.sabotageDamage.visible = false;
-    this.dialogDisp.sabotageTargets.visible = false;
-    this.dialogDisp.btnTabSabotage.gotoAndStop(1);
+  InputMaxPicker.prototype.onPickerFocusIn = function (e) {
+    this.onClickInPicker();
   };
-  Object.defineProperty(CastleSpyDialogSabotageState.prototype, "costHolder", {
+  InputMaxPicker.prototype.onPickerFocusOut = function (e) {
+    this.setFromInput();
+  };
+  InputMaxPicker.prototype.setFromInput = function () {
+    this.selectedValue = Math.max(0, Math.min(this._maxNumItems - 1, d.int(this._itxt_pick.text) - 1));
+    this.updateInfo();
+  };
+  InputMaxPicker.prototype.updateInfo = function () {
+    this.initTextField();
+    this.itxt_pick.restrict = null;
+    this.itxt_pick.maxChars = 20;
+    if (this._numItems == 0) {
+      this._itxt_pick.textContentVO = new u.LocalizedTextVO("textMaxPicker_value", ["", 0, 0]);
+    } else if (this.selectedValue > -1) {
+      this._itxt_pick.textContentVO = new u.LocalizedTextVO("textMaxPicker_value", ["", this.selectedValue + 1, this._maxNumItems]);
+    }
+  };
+  Object.defineProperty(InputMaxPicker.prototype, "enabled", {
     get: function () {
-      return this.dialogDisp.sabotageCostsHolder;
+      return Object.getOwnPropertyDescriptor(p.BasicPicker.prototype, "enabled").get.call(this);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ACastleSpyDialogState.prototype, "costHolder").set.call(this, e);
+      Object.getOwnPropertyDescriptor(p.BasicPicker.prototype, "enabled").set.call(this, e);
+      this.enableTextfield(e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSpyDialogSabotageState.prototype, "riskHolder", {
+  InputMaxPicker.prototype.enableTextfield = function (e) {
+    if (this._itxt_pick) {
+      this._itxt_pick.tabEnabled = e;
+      this._itxt_pick.mouseEnabled = e;
+    }
+  };
+  Object.defineProperty(InputMaxPicker.prototype, "textFieldManager", {
     get: function () {
-      return this.dialogDisp.sabotageRiskHolder;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ACastleSpyDialogState.prototype, "riskHolder").set.call(this, e);
+      return s.GoodgameTextFieldManager.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSpyDialogSabotageState.prototype, "scaleGreen", {
+  Object.defineProperty(InputMaxPicker.prototype, "itxt_pick", {
     get: function () {
-      return Math.max(0, this.getDamageByRisk(this.startSpyVO.spiesInUse, this.startSpyVO.guardCount, 33) - p.SpyConst.MIN_DAMAGE) / 40;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ACastleSpyDialogState.prototype, "scaleGreen").set.call(this, e);
+      return this._itxt_pick;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleSpyDialogSabotageState.prototype, "scaleYellow", {
+  InputMaxPicker.prototype.dispose = function () {
+    e.prototype.dispose.call(this);
+    this.textFieldManager.unregisterTextFieldByReference(this._itxt_pick);
+  };
+  Object.defineProperty(InputMaxPicker.prototype, "minAmount", {
     get: function () {
-      return Math.max(0, this.getDamageByRisk(this.startSpyVO.spiesInUse, this.startSpyVO.guardCount, 66) - p.SpyConst.MIN_DAMAGE) / 40;
+      return this._minAmount;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(b.ACastleSpyDialogState.prototype, "scaleYellow").set.call(this, e);
+      this._minAmount = e;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleSpyDialogSabotageState;
-}(b.ACastleSpyDialogState);
-exports.CastleSpyDialogSabotageState = D;
-var I = require("./29.js");
-var T = require("./190.js");
-var v = require("./38.js");
-u.classImplementsInterfaces(D, "ICastleSpyDialogState");
+  return InputMaxPicker;
+}(p.BasicPicker);
+exports.InputMaxPicker = h;

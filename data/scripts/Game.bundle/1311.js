@@ -19,6 +19,6 @@ var a = function (e) {
     configurable: true
   });
   return AAutoSellDialogSublayer;
-}(require("./34.js").CastleDialogSubLayer);
+}(require("./35.js").CastleDialogSubLayer);
 exports.AAutoSellDialogSublayer = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList", "ISublayer");

@@ -2,50 +2,41 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1143.js");
-var s = require("./4.js");
-var r = require("./5.js");
-var l = require("./28.js");
-var c = require("./30.js");
+var o = require("./5.js");
+var a = require("./9.js");
+var s = require("./669.js");
+var r = require("./670.js");
+var l = require("./557.js");
+var c = createjs.Point;
 var u = function (e) {
-  function GlobalEffectBuffEventVO() {
+  function SummerGachaEventVO() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GlobalEffectBuffEventVO, e);
-  GlobalEffectBuffEventVO.prototype.parseParamObject = function (t) {
-    e.prototype.parseParamObject.call(this, t);
-    this.boostAbleEffects = t.GEB;
-    var i = s.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_GLOBAL_EFFECTS);
-    this._endTimestamp = i ? i.remainingEventTimeInSeconds * l.ClientConstTime.SEC_2_MILLISEC + c.CachedTimer.getCachedTimer() : 0;
+  n.__extends(SummerGachaEventVO, e);
+  SummerGachaEventVO.prototype.openDialog = function (e = true) {
+    a.CastleDialogHandler.getInstance().registerDialogs(s.SeasonGachaEventMainDialog, new r.SeasonGachaEventMainDialogProperties(this));
   };
-  GlobalEffectBuffEventVO.prototype.getBoostValues = function (e) {
-    for (var t = 0, i = this.boostAbleEffects; t < i.length; t++) {
-      var n = i[t];
-      if (n !== undefined && n.GEID == e) {
-        return n;
-      }
-    }
-    return null;
-  };
-  GlobalEffectBuffEventVO.prototype.getBoostC2CostForGlobalEffect = function (e) {
-    if (this.getBoostValues(e)) {
-      return this.getBoostValues(e).C2;
-    } else {
-      return 0;
-    }
-  };
-  GlobalEffectBuffEventVO.prototype.getBoostValueForGlobalEffect = function (e) {
-    if (this.getBoostValues(e)) {
-      return this.getBoostValues(e).BV;
-    } else {
-      return 0;
-    }
-  };
-  GlobalEffectBuffEventVO.prototype.isEffectBoostable = function (e) {
-    return !!this.getBoostValues(e);
-  };
-  return GlobalEffectBuffEventVO;
-}(a.ATriggerEventVO);
-exports.GlobalEffectBuffEventVO = u;
-o.classImplementsInterfaces(u, "IEventOverviewable");
+  Object.defineProperty(SummerGachaEventVO.prototype, "animationPos", {
+    get: function () {
+      return new c(391, 385);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SummerGachaEventVO.prototype, "currencyMerchantEventID", {
+    get: function () {
+      return o.EventConst.EVENTTYPE_APPRENTICE_TOKEN_VENDOR;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SummerGachaEventVO.prototype, "eventName", {
+    get: function () {
+      return "SummerGacha";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return SummerGachaEventVO;
+}(l.AGachaEventVO);
+exports.SummerGachaEventVO = u;

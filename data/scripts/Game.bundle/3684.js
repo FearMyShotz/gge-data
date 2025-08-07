@@ -2,25 +2,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2STreasuremapUnitTransferVO(t, i, n, o) {
-    var a = this;
-    a.MID = 0;
-    a.SCID = 0;
-    a.KID = 0;
+var o = require("./1.js");
+var a = require("./26.js");
+var s = require("./4.js");
+var r = function (e) {
+  function CastleSendTroopsToSeasonAddUnitsDialog() {
     CONSTRUCTOR_HACK;
-    (a = e.call(this) || this).MID = t;
-    a.SCID = i;
-    a.KID = n;
-    a.I = o;
-    return a;
+    return e.call(this, CastleSendTroopsToSeasonAddUnitsDialog.NAME) || this;
   }
-  n.__extends(C2STreasuremapUnitTransferVO, e);
-  C2STreasuremapUnitTransferVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_TREASUREMAP_UNIT_TRANSFER;
+  n.__extends(CastleSendTroopsToSeasonAddUnitsDialog, e);
+  CastleSendTroopsToSeasonAddUnitsDialog.prototype.addEventListenerOnShow = function () {
+    s.CastleModel.specialEventData.addEventListener(a.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
   };
-  return C2STreasuremapUnitTransferVO;
-}(o.BasicCommandVO);
-exports.C2STreasuremapUnitTransferVO = s;
+  CastleSendTroopsToSeasonAddUnitsDialog.prototype.removeEventListenerOnHide = function () {
+    s.CastleModel.specialEventData.removeEventListener(a.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
+  };
+  CastleSendTroopsToSeasonAddUnitsDialog.prototype.onSpecialEventRemoved = function (e) {
+    this.hide();
+  };
+  CastleSendTroopsToSeasonAddUnitsDialog.__initialize_static_members = function () {
+    CastleSendTroopsToSeasonAddUnitsDialog.NAME = "CastleAttackAddUnitsEx";
+  };
+  return CastleSendTroopsToSeasonAddUnitsDialog;
+}(require("./1073.js").CastleSendTroopsAddUnitsDialog);
+exports.CastleSendTroopsToSeasonAddUnitsDialog = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList");
+r.__initialize_static_members();

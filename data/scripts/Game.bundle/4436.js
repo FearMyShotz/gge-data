@@ -3,61 +3,53 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./4.js");
-var r = require("./1904.js");
-var l = function (e) {
-  function FactionHunterEventDialog() {
+var a = require("./166.js");
+var s = require("./774.js");
+var r = function (e) {
+  function FactionHunterEventVO() {
     CONSTRUCTOR_HACK;
     return e.call(this) || this;
   }
-  n.__extends(FactionHunterEventDialog, e);
-  Object.defineProperty(FactionHunterEventDialog.prototype, "remainingEventTimeInSeconds", {
+  n.__extends(FactionHunterEventVO, e);
+  Object.defineProperty(FactionHunterEventVO.prototype, "eventBuildingWOD", {
     get: function () {
-      return s.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_UNITDEALER_FACTION_INVASION).remainingEventTimeInSeconds;
+      return FactionHunterEventVO.EVENT_BUILDING_WOD_0;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleFactionArmorerEventDialog.prototype, "remainingEventTimeInSeconds").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.UnitDealerEventVO.prototype, "eventBuildingWOD").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FactionHunterEventDialog.prototype, "merchantScrollItem", {
+  Object.defineProperty(FactionHunterEventVO.prototype, "eventBuildingNameId", {
     get: function () {
-      return c.FactionHunterMerchantScrollItem;
+      return "eventBuilding_FactionInvasionHunter";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleFactionArmorerEventDialog.prototype, "merchantScrollItem").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.UnitDealerEventVO.prototype, "eventBuildingNameId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FactionHunterEventDialog.prototype, "speechBubbleTextID", {
+  Object.defineProperty(FactionHunterEventVO.prototype, "primesaleDescriptionTextID", {
     get: function () {
-      return "dialog_berimondInvasion_armorer_speechBubble";
+      return "dialog_primeday_primesale_berimond_description";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleFactionArmorerEventDialog.prototype, "speechBubbleTextID").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.UnitDealerEventVO.prototype, "primesaleDescriptionTextID").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FactionHunterEventDialog.prototype, "descriptionTextID", {
-    get: function () {
-      return "dialog_berimondInvasion_armorer_hint";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleFactionArmorerEventDialog.prototype, "descriptionTextID").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  FactionHunterEventDialog.__initialize_static_members = function () {
-    FactionHunterEventDialog.NAME = "FactionHunterEventDialog";
+  FactionHunterEventVO.prototype.openMerchantDialog = function (e, t) {
+    this.executeOpenDialog(e, l.FactionHunterEventDialog, new a.CastleGenericMerchantDialogProperties(this, t));
   };
-  return FactionHunterEventDialog;
-}(r.CastleFactionArmorerEventDialog);
-exports.FactionHunterEventDialog = l;
-var c = require("./4437.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList");
-l.__initialize_static_members();
+  FactionHunterEventVO.__initialize_static_members = function () {
+    FactionHunterEventVO.EVENT_BUILDING_WOD_0 = 761;
+  };
+  return FactionHunterEventVO;
+}(s.UnitDealerEventVO);
+exports.FactionHunterEventVO = r;
+var l = require("./4437.js");
+o.classImplementsInterfaces(r, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
+r.__initialize_static_members();

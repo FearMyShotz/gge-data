@@ -3,12 +3,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleABGTowerEffectsDialogProperties(t) {
-    var i = e.call(this) || this;
-    i.allianceTowerMapObjectVO = t;
-    return i;
+  function CastleABGTowerEffectsActivateDialogProperties(t, i) {
+    var n = e.call(this) || this;
+    n.allianceTowerMapObjectVO = t;
+    n.currentAllianceTowerBuffInfoVO = i;
+    return n;
   }
-  n.__extends(CastleABGTowerEffectsDialogProperties, e);
-  return CastleABGTowerEffectsDialogProperties;
+  n.__extends(CastleABGTowerEffectsActivateDialogProperties, e);
+  return CastleABGTowerEffectsActivateDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastleABGTowerEffectsDialogProperties = o;
+exports.CastleABGTowerEffectsActivateDialogProperties = o;

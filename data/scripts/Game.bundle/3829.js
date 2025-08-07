@@ -4,72 +4,29 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./5.js");
-var l = require("./37.js");
-var c = require("./15.js");
-var u = require("./4.js");
-var d = function (e) {
-  function GotoMainCastleUniqueBuildingCommand() {
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./1.js");
+var c = require("./4.js");
+var u = function (e) {
+  function OpenVoucherOfferCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GotoMainCastleUniqueBuildingCommand, e);
-  GotoMainCastleUniqueBuildingCommand.prototype.execute = function (e = null) {
-    this.buildingType = e[0];
-    var t = u.CastleModel.userData.castleList.getMainCastleByKingdomID(r.WorldClassic.KINGDOM_ID);
-    if (this.layoutManager.isInMyCastle && u.CastleModel.areaData.activeAreaInfo.equalsOtherWMO(t.objectId, t.kingdomID)) {
-      this.showBuilding();
+  n.__extends(OpenVoucherOfferCommand, e);
+  OpenVoucherOfferCommand.prototype.execute = function (t = null) {
+    e.prototype.execute.call(this, t);
+    var i = t.offerID;
+    var n = c.CastleModel.privateOfferData.getOfferById(i);
+    if (n) {
+      s.CommandController.instance.executeCommand(d.IngameClientCommands.OPEN_PRIVATE_OFFER_DIALOG_COMMAND, n);
     } else {
-      o.CommandController.instance.executeCommand(g.IngameClientCommands.JOIN_AREA_AND_SAVE_POSITION_COMMAND, t);
-      GotoMainCastleUniqueBuildingCommand.controller.addEventListener(l.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.bindFunction(this.oJAAArrived));
+      p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.PrivateOfferFailedStandardDialog, new a.BasicStandardOkDialogProperties(o.BasicModel.languageData.getTextById("alert_voucherOffer_redeemed_title"), o.BasicModel.languageData.getTextById("alert_voucherOffer_redeemed_copy")));
     }
   };
-  GotoMainCastleUniqueBuildingCommand.prototype.oJAAArrived = function (e) {
-    GotoMainCastleUniqueBuildingCommand.controller.removeEventListener(l.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.bindFunction(this.oJAAArrived));
-    this.showBuilding();
-  };
-  GotoMainCastleUniqueBuildingCommand.prototype.showBuilding = function () {
-    var e = f.castAs(p.Iso.renderer.objects.provider.getObjectByType(this.buildingType), "ABasicBuildingVE");
-    if (e) {
-      p.Iso.renderer.camera.scrollToGridPos(e.vo.pos);
-      p.Iso.renderer.mouse.changeSelectedTarget(e);
-    } else {
-      p.Iso.controller.viewUpdater.switchBuildModeInOwnCastle(true);
-      var t = this.layoutManager.getPanel(m.CastleDecoShopPanel);
-      var i = u.CastleModel.wodData.voSubList(C.CastleWodData.TYPE_BUILDING);
-      if (i != null) {
-        for (var n = 0, o = Array.from(i.values()); n < o.length; n++) {
-          var a = o[n];
-          if (a !== undefined && a instanceof h.ABasicBuildingVO && a instanceof this.buildingType.dataClass && a.level == 1) {
-            t.centerAndHighlightBuildingInShop(a);
-            break;
-          }
-        }
-      }
-    }
-  };
-  Object.defineProperty(GotoMainCastleUniqueBuildingCommand.prototype, "layoutManager", {
-    get: function () {
-      return _.CastleLayoutManager.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GotoMainCastleUniqueBuildingCommand, "controller", {
-    get: function () {
-      return c.CastleBasicController.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return GotoMainCastleUniqueBuildingCommand;
-}(a.SimpleCommand);
-exports.GotoMainCastleUniqueBuildingCommand = d;
-s.classImplementsInterfaces(d, "ISimpleCommand");
-var p = require("./33.js");
-var h = require("./482.js");
-var g = require("./29.js");
-var C = require("./56.js");
-var _ = require("./17.js");
-var m = require("./260.js");
-var f = require("./1.js");
+  return OpenVoucherOfferCommand;
+}(r.SimpleCommand);
+exports.OpenVoucherOfferCommand = u;
+var d = require("./29.js");
+var p = require("./9.js");
+var h = require("./564.js");
+l.classImplementsInterfaces(u, "ISimpleCommand");

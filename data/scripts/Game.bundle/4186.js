@@ -10,7 +10,7 @@ var l = require("./5.js");
 var c = require("./18.js");
 var u = require("./4.js");
 var d = require("./24.js");
-var p = require("./618.js");
+var p = require("./619.js");
 var h = function (e) {
   function ButtonAttackCollectorComponent(t) {
     return e.call(this, t.basicButton) || this;

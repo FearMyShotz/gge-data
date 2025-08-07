@@ -46,7 +46,7 @@ var c = function (e) {
     TooltipDisplayLite.MIN_WIDTH = 90;
   };
   return TooltipDisplayLite;
-}(require("./583.js").CastleMovieClip);
+}(require("./584.js").CastleMovieClip);
 exports.TooltipDisplayLite = c;
 r.classImplementsInterfaces(c, "MovieClip");
 c.__initialize_static_members();

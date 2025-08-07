@@ -2,49 +2,62 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./8.js");
-var r = function (e) {
-  function CastleShoppingCartPrimeDaySelectedItem(t, i) {
-    var n = e.call(this, t, "select", i) || this;
-    n.setPlaceholderVisibility(true);
-    n.itemMc.blocker.visible = true;
-    delete n.itemMc.blocker.toolTipText;
-    s.ButtonHelper.enableButton(n.itemMc.mc_item, true);
-    n.showShadow();
+var o = require("./6.js");
+var a = require("./4.js");
+var s = function (e) {
+  function CastleShoppingCartPrimeDaySelectedGroup(t, i) {
+    var n = e.call(this, t, a.CastleModel.shoppingCartPrimeDayData.optionCount) || this;
+    for (var s = 0; s < i.length; s++) {
+      var r = o.int(i[s]);
+      var l = t.choosableGroup.getItemByOptionId(r);
+      n.items[s].select(l);
+    }
     return n;
   }
-  n.__extends(CastleShoppingCartPrimeDaySelectedItem, e);
-  CastleShoppingCartPrimeDaySelectedItem.prototype.clear = function () {
-    e.prototype.clear.call(this);
-    this.node = null;
+  n.__extends(CastleShoppingCartPrimeDaySelectedGroup, e);
+  CastleShoppingCartPrimeDaySelectedGroup.prototype.createItem = function (e) {
+    return new r.CastleShoppingCartPrimeDaySelectedItem(this._category, e);
   };
-  CastleShoppingCartPrimeDaySelectedItem.prototype.showShadow = function () {
-    var e = castAs(this.itemMc.getChildByName("shadow"), "MovieClip");
-    if (e) {
-      e.visible = true;
-      e.gotoAndStop(this.category.groupId);
+  CastleShoppingCartPrimeDaySelectedGroup.prototype.getSelectedOptions = function () {
+    var e = [];
+    for (var t = 0; t < this._size; t++) {
+      var i = this.items[t];
+      if (!i.isEmpty()) {
+        e.push(i.optionId);
+      }
+    }
+    return e;
+  };
+  CastleShoppingCartPrimeDaySelectedGroup.prototype.checkClick = function (t) {
+    var i = e.prototype.checkClick.call(this, t);
+    if (i) {
+      this.compact();
+    }
+    return i;
+  };
+  CastleShoppingCartPrimeDaySelectedGroup.prototype.compact = function () {
+    for (var e = 0; e < this._size; e++) {
+      var t = this.items[e];
+      if (t.isEmpty()) {
+        for (var i = e + 1; i < this._size; i++) {
+          var n = this.items[i];
+          if (!n.isEmpty()) {
+            t.switchWith(n);
+            break;
+          }
+        }
+      }
     }
   };
-  CastleShoppingCartPrimeDaySelectedItem.prototype.checkClick = function (e) {
-    return !!this.selectedItem && e == this.itemMc.mc_item && (this.selectedItem.unselect(), this.unselect(), true);
+  CastleShoppingCartPrimeDaySelectedGroup.prototype.select = function (e) {
+    for (var t = 0; t < this._size; t++) {
+      if (this.items[t].select(e)) {
+        return true;
+      }
+    }
+    return false;
   };
-  CastleShoppingCartPrimeDaySelectedItem.prototype.select = function (t) {
-    return !!o.instanceOfClass(t, "CastleShoppingCartPrimeDayChoosableItem") && !!e.prototype.select.call(this, t) && (t.decreaseStock(), this.selectedItem = t, true);
-  };
-  CastleShoppingCartPrimeDaySelectedItem.prototype.unselect = function () {
-    this.optionId = -1;
-    this.selectedItem = null;
-  };
-  CastleShoppingCartPrimeDaySelectedItem.prototype.switchWith = function (e) {
-    var t = a.int(this.optionId);
-    var i = this.selectedItem;
-    this.optionId = e.optionId;
-    this.selectedItem = e.selectedItem;
-    e.optionId = t;
-    e.selectedItem = i;
-  };
-  return CastleShoppingCartPrimeDaySelectedItem;
-}(require("./1204.js").CastleShoppingCartPrimeDayAbstractItem);
-exports.CastleShoppingCartPrimeDaySelectedItem = r;
+  return CastleShoppingCartPrimeDaySelectedGroup;
+}(require("./1203.js").CastleShoppingCartPrimeDayAbstractGroup);
+exports.CastleShoppingCartPrimeDaySelectedGroup = s;
+var r = require("./2090.js");

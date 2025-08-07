@@ -1,27 +1,24 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./4.js");
-var s = function (e) {
-  function CastlePrimeSaleScrollItemVO(t, i) {
-    var n = this;
-    n._packageID = 0;
-    n._discount = 0;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this) || this)._packageID = t;
-    n._discount = i;
-    return n;
+var n = function () {
+  function CastlePrimeSaleQuantityComponent(e) {
+    this._quantityDisp = e;
+    this._itxt_quantity = this.textFieldManager.registerTextField(e.txt_quantity, new a.LocalizedNumberVO(0));
   }
-  n.__extends(CastlePrimeSaleScrollItemVO, e);
-  Object.defineProperty(CastlePrimeSaleScrollItemVO.prototype, "packageVO", {
+  CastlePrimeSaleQuantityComponent.prototype.update = function (e) {
+    this._itxt_quantity.textContentVO.numberValue = e.reward.amount;
+    this._quantityDisp.visible = e.reward.amount > 1;
+  };
+  Object.defineProperty(CastlePrimeSaleQuantityComponent.prototype, "textFieldManager", {
     get: function () {
-      return a.CastleModel.eventPackageData.getEventPackageByID(this._packageID);
+      return o.GoodgameTextFieldManager.getInstance();
     },
     enumerable: true,
     configurable: true
   });
-  return CastlePrimeSaleScrollItemVO;
-}(o.ScrollItemVO);
-exports.CastlePrimeSaleScrollItemVO = s;
+  return CastlePrimeSaleQuantityComponent;
+}();
+exports.CastlePrimeSaleQuantityComponent = n;
+var o = require("./2.js");
+var a = require("./3.js");

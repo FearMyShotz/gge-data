@@ -24,11 +24,11 @@ var a = function (e) {
     t.showPanelRedirecter(c.CastleActionPanel, null, false);
   };
   return CastleLayoutWorldmap;
-}(require("./1817.js").CastleBasicLayout);
+}(require("./1819.js").CastleBasicLayout);
 exports.CastleLayoutWorldmap = a;
-var s = require("./1851.js");
-var r = require("./1852.js");
-var l = require("./1853.js");
-var c = require("./558.js");
-var u = require("./1872.js");
+var s = require("./1853.js");
+var r = require("./1854.js");
+var l = require("./1855.js");
+var c = require("./559.js");
+var u = require("./1874.js");
 var d = require("./1138.js");

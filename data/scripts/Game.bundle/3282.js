@@ -2,30 +2,52 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./1621.js");
-var r = function (e) {
-  function CollectableItemAllianceGiftVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./1621.js");
+var a = function (e) {
+  function CollectableItemAllianceGiftVO(t = null) {
+    var i = this;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this, 1) || this)._giftType = t || o.AllianceGiftTypeEnum.TYPE_UNKNOWN;
+    return i;
   }
-  n.__extends(CollectableItemAllianceGiftVE, e);
-  CollectableItemAllianceGiftVE.prototype.iconCreate = function () {
-    var e = s.AllianceGiftTypeEnum.getTypeById(this.itemAllianceGiftVO.giftType.id);
-    var t = new (a.getDefinitionByName(e.iconName))();
-    this.dispCreator.addDisp(t);
+  n.__extends(CollectableItemAllianceGiftVO, e);
+  CollectableItemAllianceGiftVO.prototype.parseServerObject = function (t) {
+    e.prototype.parseServerObject.call(this, t);
+    this._giftType = t.T ? o.AllianceGiftTypeEnum.getTypeByName(t.T) : o.AllianceGiftTypeEnum.TYPE_UNKNOWN;
   };
-  CollectableItemAllianceGiftVE.prototype.tooltipCreate = function () {
-    return s.AllianceGiftTypeEnum.getTypeById(this.itemAllianceGiftVO.giftType.id).tooltipTextId;
+  CollectableItemAllianceGiftVO.prototype.parseXmlObject = function (e) {
+    var t = e.split("+");
+    this.giftType = o.AllianceGiftTypeEnum.getTypeByName(t[0]);
   };
-  Object.defineProperty(CollectableItemAllianceGiftVE.prototype, "itemAllianceGiftVO", {
+  CollectableItemAllianceGiftVO.prototype.getTooltipTextId = function () {
+    return "gift_name";
+  };
+  CollectableItemAllianceGiftVO.prototype.getDescriptionTextId = function () {
+    return "gift_short_info";
+  };
+  CollectableItemAllianceGiftVO.prototype.clone = function () {
+    var t = e.prototype.clone.call(this);
+    t.giftType = this.giftType;
+    return t;
+  };
+  CollectableItemAllianceGiftVO.prototype.isCombineAbleWith = function (e) {
+    return false;
+  };
+  Object.defineProperty(CollectableItemAllianceGiftVO.prototype, "giftType", {
     get: function () {
-      return this.vo;
+      return this._giftType;
+    },
+    set: function (e) {
+      this._giftType = e;
     },
     enumerable: true,
     configurable: true
   });
-  return CollectableItemAllianceGiftVE;
-}(require("./158.js").ACollectableItemVE);
-exports.CollectableItemAllianceGiftVE = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList");
+  CollectableItemAllianceGiftVO.__initialize_static_members = function () {
+    CollectableItemAllianceGiftVO.SERVER_KEY = "AG";
+    CollectableItemAllianceGiftVO.XML_KEY = "allianceGift";
+  };
+  return CollectableItemAllianceGiftVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemAllianceGiftVO = a;
+a.__initialize_static_members();

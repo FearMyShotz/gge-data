@@ -1,59 +1,83 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
+var n = require("./1.js");
 var o = require("./1.js");
-var a = require("./1.js");
-var s = function (e) {
-  function IsoKeyWordManager() {
-    var t = this;
-    t._inputBuffer = "";
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var a = require("./6.js");
+var s = function () {
+  function IsoCommandProcessor() {
+    this._queue = [];
   }
-  n.__extends(IsoKeyWordManager, e);
-  IsoKeyWordManager.prototype.addEventListener = function () {
-    l.CastleLayoutManager.getInstance().gamestage.addEventListener(o.KeyboardEvent.KEY_UP, this.bindFunction(this.onKeyUp));
-  };
-  IsoKeyWordManager.prototype.removeEventListener = function () {
-    l.CastleLayoutManager.getInstance().gamestage.removeEventListener(o.KeyboardEvent.KEY_UP, this.bindFunction(this.onKeyUp));
-  };
-  IsoKeyWordManager.prototype.checkForContainingKeyWorld = function () {
-    var e = "";
-    for (var t = 0, i = Array.from(r.IsoConst.KEY_WORD_FUNCTIONS.keys()); t < i.length; t++) {
-      var n = i[t];
-      if (n !== undefined && this.inputBuffer.indexOf(n) >= 0) {
-        e = n;
-        break;
-      }
-    }
-    if (e != "") {
-      this._inputBuffer = "";
-      var o = r.IsoConst.KEY_WORD_FUNCTIONS.get(e);
-      if (o) {
-        o();
+  IsoCommandProcessor.prototype.addPackageToQueue = function (e) {
+    var t = e.createCommandList();
+    if (t != null) {
+      for (var i = 0, n = t; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          this.addCommandToQueue(o);
+        }
       }
     }
   };
-  IsoKeyWordManager.prototype.onKeyUp = function (e) {
-    var t = e.key;
-    if (this.inputBuffer.length >= r.IsoConst.KEY_WORD_BUFFER_LENGTH) {
-      this._inputBuffer = this.inputBuffer.substring(1, r.IsoConst.KEY_WORD_BUFFER_LENGTH - 1) + t;
-    } else {
-      this._inputBuffer += t;
-    }
-    this.checkForContainingKeyWorld();
+  IsoCommandProcessor.prototype.addCommandToQueue = function (e) {
+    this._queue.push(e);
   };
-  Object.defineProperty(IsoKeyWordManager.prototype, "inputBuffer", {
-    get: function () {
-      return this._inputBuffer;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IsoKeyWordManager;
-}(require("./14.js").CastleComponent);
-exports.IsoKeyWordManager = s;
-var r = require("./144.js");
-var l = require("./17.js");
-a.classImplementsInterfaces(s, "ICollectableRendererList");
+  IsoCommandProcessor.prototype.executeQueue = function (e = true) {
+    if (!(this._queue.length <= 0)) {
+      if (e) {
+        this.optimizeQueue(this._queue);
+      }
+      if (this._queue != null) {
+        for (var t = 0, i = this._queue; t < i.length; t++) {
+          var n = i[t];
+          if (n !== undefined) {
+            this.executeCommand(n);
+          }
+        }
+      }
+      this._queue.length = 0;
+    }
+  };
+  IsoCommandProcessor.prototype.executeCommand = function (e) {
+    if (!e.isExecuted) {
+      e.execute();
+      e.isExecuted = true;
+    }
+  };
+  IsoCommandProcessor.prototype.executePackage = function (e, t = true) {
+    var i = e.createCommandList();
+    if (i && !(i.length <= 0) && (t && this.optimizeQueue(i), i != null)) {
+      for (var n = 0, o = i; n < o.length; n++) {
+        var a = o[n];
+        if (a !== undefined) {
+          this.executeCommand(a);
+        }
+      }
+    }
+  };
+  IsoCommandProcessor.prototype.optimizeQueue = function (e) {
+    this.removeDuplicatedCommandsByClass(e, r.IsoCommandAreaDataUpdated);
+    this.removeDuplicatedCommandsByClass(e, l.IsoCommandGridUpdate);
+    this.removeDuplicatedCommandsByClass(e, c.IsoCommandZSortAll);
+  };
+  IsoCommandProcessor.prototype.removeDuplicatedCommandsByClass = function (e, t) {
+    var i = this.getIndicesOfCommands(e, t);
+    for (var n = a.int(i.length - 2); n >= 0; --n) {
+      e.splice(i[n], 1);
+    }
+  };
+  IsoCommandProcessor.prototype.getIndicesOfCommands = function (e, t) {
+    var i = [];
+    for (var a = 0; a < e.length; ++a) {
+      if (o.instanceOfClass(e[a], n.getQualifiedClassName(t))) {
+        i.push(a);
+      }
+    }
+    return i;
+  };
+  return IsoCommandProcessor;
+}();
+exports.IsoCommandProcessor = s;
+var r = require("./485.js");
+var l = require("./865.js");
+var c = require("./691.js");

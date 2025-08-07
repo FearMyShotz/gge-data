@@ -9,13 +9,13 @@ var r = require("./397.js");
 var l = require("./4.js");
 var c = require("./10.js");
 var u = function (e) {
-  function MSRCommand() {
+  function MSKCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MSRCommand, e);
-  Object.defineProperty(MSRCommand.prototype, "cmdId", {
+  n.__extends(MSKCommand, e);
+  Object.defineProperty(MSKCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_MINUTE_SKIP_RESEARCH;
+      return s.ClientConstSF.S2C_MINUTE_SKIP_KINGDOM_TRANSFER;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -23,11 +23,11 @@ var u = function (e) {
     enumerable: true,
     configurable: true
   });
-  MSRCommand.prototype.executeCommand = function (e, t) {
+  MSKCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        l.CastleModel.researchData.parse_REI(i.rei);
+        l.CastleModel.kingdomData.parse_KPI(i.kpi);
         this.controller.dispatchEvent(new r.CastleMinuteSkipEvent(r.CastleMinuteSkipEvent.MINUTESKIP_USE_SUCESS));
         break;
       default:
@@ -36,7 +36,7 @@ var u = function (e) {
     }
     return false;
   };
-  return MSRCommand;
+  return MSKCommand;
 }(c.CastleCommand);
-exports.MSRCommand = u;
+exports.MSKCommand = u;
 o.classImplementsInterfaces(u, "IExecCommand");

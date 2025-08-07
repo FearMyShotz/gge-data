@@ -9,8 +9,8 @@ var n = function () {
     this.walkmap = new o.IsoHelperWalkmap();
   };
 }();
-var o = require("./2039.js");
-var a = require("./2040.js");
-var s = require("./2820.js");
-var r = require("./2822.js");
+var o = require("./2040.js");
+var a = require("./2041.js");
+var s = require("./2821.js");
+var r = require("./2823.js");
 exports.IsoHelper = new n();

@@ -68,7 +68,7 @@ var u = function (e) {
   return BuildMenuPanelButton;
 }(l.APanelButton);
 exports.BuildMenuPanelButton = u;
-var d = require("./33.js");
+var d = require("./34.js");
 var p = require("./17.js");
 var h = require("./14.js");
 o.classImplementsInterfaces(u, "ICollectableRendererList");

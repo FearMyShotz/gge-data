@@ -2,25 +2,28 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function PrebuiltCastleBuildingVO(e, t) {
-    this._amount = 0;
-    this._buildingVO = e;
-    this._amount = t;
+  function PartpaypriceVO() {
+    this._id = -1;
   }
-  Object.defineProperty(PrebuiltCastleBuildingVO.prototype, "amount", {
+  PartpaypriceVO.prototype.fillFromParamXml = function (e) {
+    this._id = parseInt(e.partPayPriceID || "");
+    this._costsList = o.CollectableManager.parser.x2cRewards.createList(e);
+  };
+  Object.defineProperty(PartpaypriceVO.prototype, "id", {
     get: function () {
-      return this._amount;
+      return this._id;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(PrebuiltCastleBuildingVO.prototype, "buildingVO", {
+  Object.defineProperty(PartpaypriceVO.prototype, "costsList", {
     get: function () {
-      return this._buildingVO;
+      return this._costsList;
     },
     enumerable: true,
     configurable: true
   });
-  return PrebuiltCastleBuildingVO;
+  return PartpaypriceVO;
 }();
-exports.PrebuiltCastleBuildingVO = n;
+exports.PartpaypriceVO = n;
+var o = require("./50.js");

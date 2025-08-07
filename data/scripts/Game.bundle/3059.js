@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./62.js");
 var s = function (e) {
-  function MarketBuildingVE() {
+  function MaintentBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MarketBuildingVE, e);
-  Object.defineProperty(MarketBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(MaintentBuildingVE, e);
+  Object.defineProperty(MaintentBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_MarketCarrige;
+      return Library.CastleInterfaceElements_Icons.Icon_Keep;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return MarketBuildingVE;
+  return MaintentBuildingVE;
 }(a.ABasicBuildingVE);
-exports.MarketBuildingVE = s;
+exports.MaintentBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

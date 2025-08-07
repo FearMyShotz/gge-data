@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function SIECommand() {
+  function ASGCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SIECommand, e);
-  Object.defineProperty(SIECommand.prototype, "cmdId", {
+  n.__extends(ASGCommand, e);
+  Object.defineProperty(ASGCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_SUBSCRIPTION_PACKAGES;
+      return s.ClientConstSF.S2C_GET_AUTO_SELL_CONDITIONS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  SIECommand.prototype.executeCommand = function (e, t) {
+  ASGCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.subscriptionData.parseSIE(i);
+        r.CastleModel.subscriptionData.parseASG(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SIECommand;
+  return ASGCommand;
 }(l.CastleCommand);
-exports.SIECommand = c;
+exports.ASGCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

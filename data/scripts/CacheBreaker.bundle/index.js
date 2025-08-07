@@ -3,9 +3,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 var o = require("./0.js");
 var r = require("./2.js");
-var s = require("./1977.js");
-var i = require("./1978.js");
-var a = require("./1979.js");
+var s = require("./1978.js");
+var i = require("./1979.js");
+var a = require("./1980.js");
 var l = require("./306.js");
 var c = require("./334.js");
 a.wrapper(l.appVersion);

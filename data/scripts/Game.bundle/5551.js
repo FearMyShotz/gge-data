@@ -12,48 +12,48 @@ var u = require("./24.js");
 var d = require("./2.js");
 var p = require("./20.js");
 var h = function (e) {
-  function CastleMessageFoodFreezeEndDialog() {
+  function CastleMessageFoodFreezeStartDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleMessageFoodFreezeEndDialog.NAME) || this;
+    return e.call(this, CastleMessageFoodFreezeStartDialog.NAME) || this;
   }
-  n.__extends(CastleMessageFoodFreezeEndDialog, e);
-  CastleMessageFoodFreezeEndDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(CastleMessageFoodFreezeStartDialog, e);
+  CastleMessageFoodFreezeStartDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
     r.ButtonHelper.initButtons([this.dialogDisp.btn_close], p.ClickFeedbackButtonHover);
   };
-  CastleMessageFoodFreezeEndDialog.prototype.showLoaded = function (t = null) {
+  CastleMessageFoodFreezeStartDialog.prototype.showLoaded = function (t = null) {
     e.prototype.showLoaded.call(this, t);
     c.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_teaser);
     switch (this.dialogProperties.messageScope) {
       case l.MessageDowntimeStatusVO.SCOPE_FOOD:
-        this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("message_productionDownTime_unfreeze_food_header"));
-        this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO("message_productionDownTime_unfreeze_food_desc"));
-        this.dialogDisp.mc_teaser.addChild(new u.CastleGoodgameExternalClip(CastleMessageFoodFreezeEndDialog.FOOD_TEASER, d.BasicModel.basicLoaderData.getVersionedItemAssetUrl(CastleMessageFoodFreezeEndDialog.FOOD_TEASER), null, 0, false));
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("message_productionDownTime_freeze_food_header"));
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO("message_productionDownTime_freeze_food_desc"));
+        this.dialogDisp.mc_teaser.addChild(new u.CastleGoodgameExternalClip(CastleMessageFoodFreezeStartDialog.FOOD_TEASER, d.BasicModel.basicLoaderData.getVersionedItemAssetUrl(CastleMessageFoodFreezeStartDialog.FOOD_TEASER), null, 0, false));
         break;
       case l.MessageDowntimeStatusVO.SCOPE_FOOD_MEAD:
-        this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("message_productionDownTime_unfreeze_foodmead_header"));
-        this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO("message_productionDownTime_unfreeze_foodmead_desc"));
-        this.dialogDisp.mc_teaser.addChild(new u.CastleGoodgameExternalClip(CastleMessageFoodFreezeEndDialog.FOOD_MEAD_TEASER, d.BasicModel.basicLoaderData.getVersionedItemAssetUrl(CastleMessageFoodFreezeEndDialog.FOOD_MEAD_TEASER), null, 0, false));
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("message_productionDownTime_freeze_foodmead_header"));
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO("message_productionDownTime_freeze_foodmead_desc"));
+        this.dialogDisp.mc_teaser.addChild(new u.CastleGoodgameExternalClip(CastleMessageFoodFreezeStartDialog.FOOD_MEAD_TEASER, d.BasicModel.basicLoaderData.getVersionedItemAssetUrl(CastleMessageFoodFreezeStartDialog.FOOD_MEAD_TEASER), null, 0, false));
     }
   };
-  CastleMessageFoodFreezeEndDialog.prototype.onClick = function (t) {
+  CastleMessageFoodFreezeStartDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
     switch (t.target) {
       case this.dialogDisp.btn_close:
         this.hide();
     }
   };
-  Object.defineProperty(CastleMessageFoodFreezeEndDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastleMessageFoodFreezeStartDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleMessageFoodFreezeEndDialog.NAME = "FoodFreezeEndExt";
-  CastleMessageFoodFreezeEndDialog.FOOD_TEASER = "FoodFreezeTeaser_Food";
-  CastleMessageFoodFreezeEndDialog.FOOD_MEAD_TEASER = "FoodFreezeTeaser_FoodMead";
-  return CastleMessageFoodFreezeEndDialog;
+  CastleMessageFoodFreezeStartDialog.NAME = "FoodFreezeEndExt";
+  CastleMessageFoodFreezeStartDialog.FOOD_TEASER = "FoodFreezeTeaser_Food";
+  CastleMessageFoodFreezeStartDialog.FOOD_MEAD_TEASER = "FoodFreezeTeaser_FoodMead";
+  return CastleMessageFoodFreezeStartDialog;
 }(s.CastleExternalDialog);
-exports.CastleMessageFoodFreezeEndDialog = h;
+exports.CastleMessageFoodFreezeStartDialog = h;
 o.classImplementsInterfaces(h, "ICollectableRendererList");

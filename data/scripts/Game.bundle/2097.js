@@ -1,21 +1,31 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function PackagePriceVO(t) {
-    var i = this;
-    i.PKID = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).PKID = t;
-    return i;
-  }
-  n.__extends(PackagePriceVO, e);
-  PackagePriceVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_PACKAGE_PRICE;
+var n = require("./1.js");
+var o = function () {
+  function HorizontalSliderStrategy() {}
+  HorizontalSliderStrategy.prototype.getElementLength = function (e) {
+    return e.width;
   };
-  return PackagePriceVO;
-}(o.BasicCommandVO);
-exports.PackagePriceVO = s;
+  HorizontalSliderStrategy.prototype.setPosition = function (e, t) {
+    e.x = t;
+  };
+  HorizontalSliderStrategy.prototype.getPosition = function (e) {
+    return e.x;
+  };
+  HorizontalSliderStrategy.prototype.getMouseValue = function (e) {
+    return e.localX;
+  };
+  HorizontalSliderStrategy.prototype.transformMousePosition = function (e, t) {
+    return this.getPosition(e) + this.getMouseValue(t);
+  };
+  HorizontalSliderStrategy.prototype.getMousePosition = function (e) {
+    return e.mouseX;
+  };
+  HorizontalSliderStrategy.prototype.getElementScale = function (e) {
+    return e.scaleX;
+  };
+  return HorizontalSliderStrategy;
+}();
+exports.HorizontalSliderStrategy = o;
+n.classImplementsInterfaces(o, "ISliderChangeStrategy");

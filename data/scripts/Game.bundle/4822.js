@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function DDICommand() {
-    return e.call(this) || this;
+  function DFWCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DDICommand, e);
-  Object.defineProperty(DDICommand.prototype, "cmdId", {
+  n.__extends(DFWCommand, e);
+  Object.defineProperty(DFWCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_DONATE_DONATION_ITEM;
+      return s.ClientConstSF.S2C_DEFENSE_WALL;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  DDICommand.prototype.executeCommand = function (e, t) {
+  DFWCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.donationEventData.parseGDTI(i);
+        r.CastleModel.defenceData.parse_DFW(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return DDICommand;
+  return DFWCommand;
 }(l.CastleCommand);
-exports.DDICommand = c;
+exports.DFWCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

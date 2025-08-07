@@ -2,42 +2,47 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = function (e) {
-  function CastlePlayerGiftSentDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastlePlayerGiftSentDialog.NAME) || this;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./5.js");
+var l = require("./3.js");
+var c = require("./7.js");
+var u = require("./4.js");
+var d = require("./5095.js");
+var p = require("./10.js");
+var h = function (e) {
+  function GPGCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastlePlayerGiftSentDialog, e);
-  CastlePlayerGiftSentDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("dialog_giftTrader_sendGift_title"));
-    this.initBasicButtons([this.dialogDisp.btn_ok]);
-  };
-  CastlePlayerGiftSentDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new s.LocalizedTextVO(a.Localize.text("dialog_giftSent_desc", [this.dialogProperties.playerName])));
-  };
-  CastlePlayerGiftSentDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-        this.hide();
-    }
-  };
-  Object.defineProperty(CastlePlayerGiftSentDialog.prototype, "dialogProperties", {
+  n.__extends(GPGCommand, e);
+  Object.defineProperty(GPGCommand.prototype, "cmdId", {
     get: function () {
-      return this.properties;
+      return c.ClientConstSF.S2C_GRANT_PLAYERGIFT;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastlePlayerGiftSentDialog.__initialize_static_members = function () {
-    CastlePlayerGiftSentDialog.NAME = "CastlePlayerGiftSent";
+  GPGCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case s.ERROR.ALL_OK:
+        g.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastlePlayerGiftSentDialog, new d.CastlePlayerGiftSentDialogProperties(u.CastleModel.playerGiftData.playerName));
+        break;
+      case s.ERROR.TOO_MANY_PACKAGES_SENT_TODAY:
+        g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(l.Localize.text("generic_alert_watchout"), l.Localize.text("giftTrader_giftLimitReached", [r.PackageConst.MAX_PLAYER_GIFT_PER_DAY])));
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    return true;
   };
-  return CastlePlayerGiftSentDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastlePlayerGiftSentDialog = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList");
-r.__initialize_static_members();
+  return GPGCommand;
+}(p.CastleCommand);
+exports.GPGCommand = h;
+var g = require("./9.js");
+var C = require("./38.js");
+var _ = require("./5096.js");
+a.classImplementsInterfaces(h, "IExecCommand");

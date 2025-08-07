@@ -1,89 +1,240 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./222.js");
-var s = function (e) {
-  function AllianceMemberScrollItemVO(t, i, n, o, s = false, r = false, l = true) {
-    var c = this;
-    c._selected = false;
-    c._distanceToTarget = 0;
-    c._legendXPShown = false;
-    c._honorShown = false;
-    c._coinShown = true;
-    CONSTRUCTOR_HACK;
-    (c = e.call(this) || this)._legendXPShown = !!s;
-    c._honorShown = !!r;
-    c._coinShown = !!l;
-    c._additionalMemberInfoVO = i;
-    c._ownerInfoVO = t;
-    var u = t.getMainCastlePositionByKingdomID(o);
-    c._distanceToTarget = a.MapHelper.getShortestDistance(n, u);
-    return c;
-  }
-  n.__extends(AllianceMemberScrollItemVO, e);
-  Object.defineProperty(AllianceMemberScrollItemVO.prototype, "selected", {
-    get: function () {
-      return this._selected;
-    },
-    set: function (e) {
-      this._selected = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AllianceMemberScrollItemVO.prototype, "distanceToTarget", {
-    get: function () {
-      return this._distanceToTarget;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AllianceMemberScrollItemVO.prototype, "ownerInfoVO", {
-    get: function () {
-      return this._ownerInfoVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AllianceMemberScrollItemVO.prototype, "additionalMemberInfoVO", {
-    get: function () {
-      return this._additionalMemberInfoVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AllianceMemberScrollItemVO.prototype, "legendXPShown", {
-    get: function () {
-      return this._legendXPShown;
-    },
-    set: function (e) {
-      this._legendXPShown = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AllianceMemberScrollItemVO.prototype, "honorShown", {
-    get: function () {
-      return this._honorShown;
-    },
-    set: function (e) {
-      this._honorShown = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AllianceMemberScrollItemVO.prototype, "coinShown", {
-    get: function () {
-      return this._coinShown;
-    },
-    set: function (e) {
-      this._coinShown = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AllianceMemberScrollItemVO;
-}(o.ScrollItemVO);
-exports.AllianceMemberScrollItemVO = s;
+var n = function () {
+  function AllianceMemberScrollItemComparer() {}
+  AllianceMemberScrollItemComparer.comparePrimaryRank = function (e, t) {
+    var i = e.ownerInfoVO;
+    var n = t.ownerInfoVO;
+    var a = o.int(AllianceMemberScrollItemComparer.compareRank(i, n));
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareName(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareLevel(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareDistance(e, t));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareSelected(e, t));
+    }
+    return a;
+  };
+  AllianceMemberScrollItemComparer.comparePrimaryName = function (e, t) {
+    var i = e.ownerInfoVO;
+    var n = t.ownerInfoVO;
+    var a = o.int(AllianceMemberScrollItemComparer.compareName(i, n));
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareRank(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareLevel(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareDistance(e, t));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareSelected(e, t));
+    }
+    return a;
+  };
+  AllianceMemberScrollItemComparer.comparePrimaryLevel = function (e, t) {
+    var i = e.ownerInfoVO;
+    var n = t.ownerInfoVO;
+    var a = o.int(AllianceMemberScrollItemComparer.compareLevel(i, n));
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareRank(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareName(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareDistance(e, t));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareSelected(e, t));
+    }
+    return a;
+  };
+  AllianceMemberScrollItemComparer.compareLegendLevelValue = function (e, t) {
+    var i = e.ownerInfoVO;
+    var n = t.ownerInfoVO;
+    var a = o.int(AllianceMemberScrollItemComparer.compareLegendLevel(e, t));
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareRank(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareName(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareDistance(e, t));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareSelected(e, t));
+    }
+    return a;
+  };
+  AllianceMemberScrollItemComparer.comparePrimaryDistance = function (e, t) {
+    var i = o.int(AllianceMemberScrollItemComparer.compareDistance(e, t));
+    var n = e.ownerInfoVO;
+    var a = t.ownerInfoVO;
+    if (i == 0) {
+      i = o.int(AllianceMemberScrollItemComparer.compareRank(n, a));
+    }
+    if (i == 0) {
+      i = o.int(AllianceMemberScrollItemComparer.compareName(n, a));
+    }
+    if (i == 0) {
+      i = o.int(AllianceMemberScrollItemComparer.compareLevel(n, a));
+    }
+    if (i == 0) {
+      i = o.int(AllianceMemberScrollItemComparer.compareSelected(e, t));
+    }
+    return i;
+  };
+  AllianceMemberScrollItemComparer.comparePrimarySelected = function (e, t) {
+    var i = o.int(AllianceMemberScrollItemComparer.compareSelected(e, t));
+    var n = e.ownerInfoVO;
+    var a = t.ownerInfoVO;
+    if (i == 0) {
+      i = o.int(AllianceMemberScrollItemComparer.compareRank(n, a));
+    }
+    if (i == 0) {
+      i = o.int(AllianceMemberScrollItemComparer.compareName(n, a));
+    }
+    if (i == 0) {
+      i = o.int(AllianceMemberScrollItemComparer.compareLevel(n, a));
+    }
+    if (i == 0) {
+      i = o.int(AllianceMemberScrollItemComparer.compareDistance(e, t));
+    }
+    return i;
+  };
+  AllianceMemberScrollItemComparer.compareHonorValue = function (e, t) {
+    var i = e.ownerInfoVO;
+    var n = t.ownerInfoVO;
+    var a = o.int(AllianceMemberScrollItemComparer.compareHonor(e, t));
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareRank(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareName(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareLevel(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareDistance(e, t));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareSelected(e, t));
+    }
+    return a;
+  };
+  AllianceMemberScrollItemComparer.compareMightValue = function (e, t) {
+    var i = e.ownerInfoVO;
+    var n = t.ownerInfoVO;
+    var a = o.int(AllianceMemberScrollItemComparer.compareMight(e, t));
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareRank(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareName(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareLevel(i, n));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareDistance(e, t));
+    }
+    if (a == 0) {
+      a = o.int(AllianceMemberScrollItemComparer.compareSelected(e, t));
+    }
+    return a;
+  };
+  AllianceMemberScrollItemComparer.compareRank = function (e, t) {
+    if (e.allianceRank < t.allianceRank) {
+      return -1;
+    } else if (e.allianceRank > t.allianceRank) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  AllianceMemberScrollItemComparer.compareName = function (e, t) {
+    if (e.playerName.toLowerCase() < t.playerName.toLowerCase()) {
+      return -1;
+    } else if (e.playerName.toLowerCase() > t.playerName.toLowerCase()) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  AllianceMemberScrollItemComparer.compareLevel = function (e, t) {
+    if (e.playerLevel < t.playerLevel) {
+      return -1;
+    } else if (e.playerLevel > t.playerLevel) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  AllianceMemberScrollItemComparer.compareDistance = function (e, t) {
+    if (e.distanceToTarget < t.distanceToTarget) {
+      return -1;
+    } else if (e.distanceToTarget > t.distanceToTarget) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  AllianceMemberScrollItemComparer.compareSelected = function (e, t) {
+    if (e.selected == 1 && t.selected == 0) {
+      return -1;
+    } else if (e.selected == 0 && t.selected == 1) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  AllianceMemberScrollItemComparer.compareHonor = function (e, t) {
+    if (e.ownerInfoVO.honor < t.ownerInfoVO.honor) {
+      return -1;
+    } else if (e.ownerInfoVO.honor > t.ownerInfoVO.honor) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  AllianceMemberScrollItemComparer.compareMight = function (e, t) {
+    if (e.ownerInfoVO.might < t.ownerInfoVO.might) {
+      return -1;
+    } else if (e.ownerInfoVO.might > t.ownerInfoVO.might) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  AllianceMemberScrollItemComparer.compareLegendLevel = function (e, t) {
+    if (e.ownerInfoVO.playerLegendLevel < t.ownerInfoVO.playerLegendLevel) {
+      return -1;
+    } else if (e.ownerInfoVO.playerLegendLevel > t.ownerInfoVO.playerLegendLevel) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  AllianceMemberScrollItemComparer.compareInt = function (e, t) {
+    if (e < t) {
+      return -1;
+    } else if (e > t) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+  return AllianceMemberScrollItemComparer;
+}();
+exports.AllianceMemberScrollItemComparer = n;
+var o = require("./6.js");

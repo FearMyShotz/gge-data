@@ -3,120 +3,118 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./1.js");
-var c = require("./3.js");
-var u = require("./3.js");
-var d = require("./3.js");
-var p = require("./4.js");
-var h = require("./43.js");
-var g = require("./93.js");
-var C = function (e) {
-  function CastleEilandPlayerRankingItem(t) {
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./4.js");
+var c = require("./821.js");
+var u = require("./8.js");
+var d = function (e) {
+  function CastleEilandRankingDialogRules(t) {
     var i = this;
+    i._currentPage = 0;
     CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this)._disp.gotoAndStop(CastleEilandPlayerRankingItem.FRAME_REGULAR_TEXT);
-    i._disp.bg.gotoAndStop(1);
-    i._disp.txt_alliancePoints.mouseEnabled = false;
-    i._disp.txt_rank.mouseEnabled = false;
-    i._disp.txt_name.mouseEnabled = false;
-    i._disp.txt_level.mouseEnabled = false;
-    i._disp.mc_allianceRank.mouseChildren = false;
+    (i = e.call(this, t) || this).pages = i.initPages();
+    i.initBasicButtons([i.sublayerDisp.btn_arrowLeft, i.sublayerDisp.btn_arrowRight]);
     return i;
   }
-  n.__extends(CastleEilandPlayerRankingItem, e);
-  CastleEilandPlayerRankingItem.prototype.customFillItem = function () {
-    this.setFontWeight();
-    this._disp.mc_kingIndicator.visible = false;
-    this.setTexts();
-    this.setAllianceRankIcon(this.itemVO.allianceRank);
-    this._disp.mc_kingIndicator.visible = this.isKing();
-  };
-  CastleEilandPlayerRankingItem.prototype.isKing = function () {
-    var e = p.CastleModel.eilandData.kingTitleVO;
-    return this.itemVO.playerName == e.currentAssignee;
-  };
-  CastleEilandPlayerRankingItem.prototype.setTexts = function () {
-    if (this.itemVO.hasUnlockedEiland) {
-      this._disp.bg.gotoAndStop(1);
-      this.textFieldManager.registerTextField(this._disp.txt_alliancePoints, new u.LocalizedNumberVO(this.itemVO.aquaPoints));
-      this.textFieldManager.registerTextField(this._disp.txt_rank, new u.LocalizedNumberVO(this.itemVO.rank));
-    } else {
-      this._disp.bg.gotoAndStop(CastleEilandPlayerRankingItem.BG_FRAME_GREY);
-      this.textFieldManager.registerTextField(this._disp.txt_alliancePoints, new d.TextVO("-"));
-      this.textFieldManager.registerTextField(this._disp.txt_rank, new d.TextVO("-"));
+  n.__extends(CastleEilandRankingDialogRules, e);
+  CastleEilandRankingDialogRules.prototype.initPages = function () {
+    var e = [];
+    for (var t = CastleEilandRankingDialogRules.MIN_PAGE + 1; t <= CastleEilandRankingDialogRules.MAX_PAGE + 1; t++) {
+      var i = this.sublayerDisp["page" + t];
+      i.visible = false;
+      e.push(i);
     }
-    this.textFieldManager.registerTextField(this._disp.txt_name, new d.TextVO(this.itemVO.playerName));
-    this.textFieldManager.registerTextField(this._disp.txt_level, new u.LocalizedNumberVO(this.itemVO.playerLevel));
+    return e;
   };
-  CastleEilandPlayerRankingItem.prototype.setFontWeight = function () {
-    if (this.itemVO.isSearchResult) {
-      this._disp.gotoAndStop(CastleEilandPlayerRankingItem.FRAME_BOLD_TEXT);
-    } else {
-      this._disp.gotoAndStop(CastleEilandPlayerRankingItem.FRAME_REGULAR_TEXT);
+  CastleEilandRankingDialogRules.prototype.show = function (t) {
+    e.prototype.show.call(this, t);
+    this.itxt_pageIndicator = this.textFieldManager.registerTextField(this.sublayerDisp.txt_page, new s.LocalizedTextVO(o.GenericTextIds.VALUE_PROPORTIONAL_VALUE, [CastleEilandRankingDialogRules.MIN_PAGE + 1, CastleEilandRankingDialogRules.MAX_PAGE + 1]));
+    u.ButtonHelper.enableButton(this.sublayerDisp.btn_arrowLeft, this.scroll(CastleEilandRankingDialogRules.MIN_PAGE));
+    u.ButtonHelper.enableButton(this.sublayerDisp.btn_arrowRight, true);
+  };
+  CastleEilandRankingDialogRules.prototype.onClick = function (e) {
+    if (u.ButtonHelper.isButtonEnabled(e.target)) {
+      switch (e.target) {
+        case this.sublayerDisp.btn_arrowRight:
+          u.ButtonHelper.enableButton(this.sublayerDisp.btn_arrowRight, this.scroll(this._currentPage + CastleEilandRankingDialogRules.SCROLL_RIGHT));
+          u.ButtonHelper.enableButton(this.sublayerDisp.btn_arrowLeft, CastleEilandRankingDialogRules.MIN_PAGE != CastleEilandRankingDialogRules.MAX_PAGE);
+          break;
+        case this.sublayerDisp.btn_arrowLeft:
+          u.ButtonHelper.enableButton(this.sublayerDisp.btn_arrowLeft, this.scroll(this._currentPage + CastleEilandRankingDialogRules.SCROLL_LEFT));
+          u.ButtonHelper.enableButton(this.sublayerDisp.btn_arrowRight, CastleEilandRankingDialogRules.MIN_PAGE != CastleEilandRankingDialogRules.MAX_PAGE);
+      }
     }
   };
-  CastleEilandPlayerRankingItem.prototype.onMouseClick = function (t) {
-    e.prototype.onMouseClick.call(this, t);
-    m.CastleDialogHandler.getInstance().registerDialogsWithTypeAndDefaultValues(O.CastlePlayerInfoDialog, new g.CastlePlayerInfoDialogProperties(this.itemVO.playerID), h.CastleDialogConsts.DIALOG_TYPE_SINGLE);
+  CastleEilandRankingDialogRules.prototype.scroll = function (e) {
+    this.currentPage = e;
+    return this.currentPage != CastleEilandRankingDialogRules.MIN_PAGE && this.currentPage != CastleEilandRankingDialogRules.MAX_PAGE;
   };
-  CastleEilandPlayerRankingItem.prototype.setAllianceRankIcon = function (e) {
-    s.MovieClipHelper.clearMovieClip(this._disp.mc_allianceRank.mc_rankPlaceholder);
-    var t = new Library.CastleInterfaceElements.Icon_AllianceRank();
-    t.gotoAndStop(e + 1);
-    this._disp.mc_allianceRank.mc_rankPlaceholder.addChild(t);
-    this._disp.mc_allianceRank.toolTipText = c.Localize.text("dialog_alliance_rank" + _.CastleAllianceData.getTextIDForRank(e));
-  };
-  Object.defineProperty(CastleEilandPlayerRankingItem.prototype, "textFieldManager", {
+  Object.defineProperty(CastleEilandRankingDialogRules.prototype, "sublayerDisp", {
     get: function () {
-      return a.GoodgameTextFieldManager.getInstance();
+      return this.disp;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleEilandPlayerRankingItem.prototype, "layoutManager", {
+  Object.defineProperty(CastleEilandRankingDialogRules.prototype, "currentPage", {
     get: function () {
-      return f.CastleLayoutManager.getInstance();
+      return this._currentPage;
     },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleEilandPlayerRankingItem.prototype, "itemVO", {
-    get: function () {
-      return this._scrollItemVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleEilandPlayerRankingItem.prototype, "highlight", {
     set: function (e) {
-      this.itemVO.isSearchResult = e;
-      this.customFillItem();
+      this.pages[this._currentPage].visible = false;
+      this._currentPage = e;
+      this.pages[this._currentPage].visible = true;
+      this.itxt_pageIndicator.textContentVO.textReplacements = [this._currentPage + 1, CastleEilandRankingDialogRules.MAX_PAGE + 1];
+      switch (e) {
+        case 0:
+          this.textFieldManager.registerTextField(this.pages[e].txt_title, new s.LocalizedTextVO("dialog_eiland_manual_page1_header"));
+          this.textFieldManager.registerTextField(this.pages[e].txt_1, new s.LocalizedTextVO("dialog_eiland_manual_page1_textbox1"));
+          this.textFieldManager.registerTextField(this.pages[e].txt_2, new s.LocalizedTextVO("dialog_eiland_manual_page1_textbox2"));
+          this.textFieldManager.registerTextField(this.pages[e].txt_3, new s.LocalizedTextVO("dialog_eiland_manual_page1_textbox3"));
+          break;
+        case 1:
+          this.textFieldManager.registerTextField(this.pages[e].txt_title, new s.LocalizedTextVO("dialog_eiland_manual_page2_header"));
+          this.textFieldManager.registerTextField(this.pages[e].txt_1, new s.LocalizedTextVO("dialog_eiland_manual_page2_textbox1"));
+          this.textFieldManager.registerTextField(this.pages[e].txt_2, new s.LocalizedTextVO("dialog_eiland_manual_page2_textbox2"));
+          break;
+        case 2:
+          this.textFieldManager.registerTextField(this.pages[e].txt_title, new s.LocalizedTextVO("dialog_eiland_manual_page3_header"));
+          this.textFieldManager.registerTextField(this.pages[e].txt_1, new s.LocalizedTextVO("dialog_eiland_manual_page3_textbox"));
+          break;
+        case 3:
+          this.textFieldManager.registerTextField(this.pages[e].txt_1, new s.LocalizedTextVO("dialog_eiland_manual_page4_textbox"));
+          break;
+        case 4:
+          this.textFieldManager.registerTextField(this.pages[e].txt_1, new s.LocalizedTextVO("dialog_eiland_manual_page5_textbox"));
+          break;
+        case 5:
+          this.textFieldManager.registerTextField(this.pages[e].txt_1, new s.LocalizedTextVO("dialog_eiland_manual_page6_textbox1"));
+          this.textFieldManager.registerTextField(this.pages[e].txt_2, new s.LocalizedTextVO("dialog_eiland_manual_page6_textbox2"));
+          break;
+        case 6:
+          this.textFieldManager.registerTextField(this.pages[e].txt_1, new s.LocalizedTextVO("dialog_eiland_manual_page7_textbox2"));
+          this.textFieldManager.registerTextField(this.pages[e].txt_2, new s.LocalizedTextVO("dialog_eiland_manual_page7_textbox3"));
+          var t = l.CastleModel.titleData.getTitleByTitleID(52);
+          var i = l.CastleModel.titleData.getTitleByTitleID(57);
+          this.textFieldManager.registerTextField(this.pages[e].txt_title_positive, new s.LocalizedTextVO(t.textID));
+          this.textFieldManager.registerTextField(this.pages[e].txt_title_negative, new s.LocalizedTextVO(i.textID));
+          this.textFieldManager.registerTextField(this.pages[e].txt_bonus_1, new r.TextVO(c.CastleEilandTextComposer.generateBonusText(t)));
+          this.textFieldManager.registerTextField(this.pages[e].txt_bonus_2, new r.TextVO(c.CastleEilandTextComposer.generateBonusText(i)));
+      }
     },
     enumerable: true,
     configurable: true
   });
-  CastleEilandPlayerRankingItem.prototype.onRollOver = function (t) {
-    e.prototype.onRollOver.call(this, t);
-    this.layoutManager.nativeCursor.setCursorType(o.BasicCustomCursor.CURSOR_CLICK);
+  CastleEilandRankingDialogRules.__initialize_static_members = function () {
+    CastleEilandRankingDialogRules.MIN_PAGE = 0;
+    CastleEilandRankingDialogRules.MAX_PAGE = 6;
+    CastleEilandRankingDialogRules.SCROLL_RIGHT = 1;
   };
-  CastleEilandPlayerRankingItem.prototype.onRollOut = function (t) {
-    e.prototype.onRollOut.call(this, t);
-    this.layoutManager.nativeCursor.setCursorType(o.BasicCustomCursor.CURSOR_ARROW);
-  };
-  CastleEilandPlayerRankingItem.__initialize_static_members = function () {
-    CastleEilandPlayerRankingItem.BG_FRAME_GREY = 4;
-    CastleEilandPlayerRankingItem.FRAME_REGULAR_TEXT = 1;
-    CastleEilandPlayerRankingItem.FRAME_BOLD_TEXT = 2;
-  };
-  return CastleEilandPlayerRankingItem;
-}(r.ScrollItem);
-exports.CastleEilandPlayerRankingItem = C;
-var _ = require("./317.js");
-var m = require("./9.js");
-var f = require("./17.js");
-var O = require("./94.js");
-l.classImplementsInterfaces(C, "MovieClip");
-C.__initialize_static_members();
+  CastleEilandRankingDialogRules.SCROLL_LEFT = -1;
+  return CastleEilandRankingDialogRules;
+}(require("./35.js").CastleDialogSubLayer);
+exports.CastleEilandRankingDialogRules = d;
+a.classImplementsInterfaces(d, "ICollectableRendererList", "ISublayer");
+d.__initialize_static_members();

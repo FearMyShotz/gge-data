@@ -1,58 +1,65 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
+var n = require("./2.js");
 var o = require("./1.js");
-var a = require("./4.js");
-var s = require("./8.js");
-var r = require("./1025.js");
-var l = require("./120.js");
-var c = require("./1565.js");
-var u = createjs.Point;
-var d = function (e) {
-  function HospitalInventoryListItemComponent(t, i, n) {
-    var o = e.call(this, t, i) || this;
-    o.onSelectCallback = n;
-    s.ButtonHelper.initBasicButtons([o.disp.item, o.disp.btn_dismiss, o.disp.btn_info]);
-    o.disp.mouseChildren = true;
-    o.disp.btn_dismiss.toolTipText = "dialog_dismissUnit_tooltip";
-    return o;
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./23.js");
+var l = require("./23.js");
+var c = function () {
+  function HospitalInventoryTooltipComponent(e) {
+    this.disp = e;
+    this.tooltipInfoTextfield = HospitalInventoryTooltipComponent.textFieldManager.registerTextField(this.disp.txt_info, new s.LocalizedTextVO(""));
+    this.tooltipNameTextfield = HospitalInventoryTooltipComponent.textFieldManager.registerTextField(this.disp.txt_name, new s.LocalizedTextVO(""));
+    this.tooltipCostTextfield = HospitalInventoryTooltipComponent.textFieldManager.registerTextField(this.disp.txt_cost, new a.LocalizedNumberVO(0));
+    HospitalInventoryTooltipComponent.textFieldManager.registerTextField(this.disp.txt_status, new s.LocalizedTextVO("hospital_unitInside"));
+    this.tooltipNameTextfield.autoFitToBounds = true;
+    this.disp.visible = false;
+    this.disp.mouseChildren = false;
+    this.disp.mouseEnabled = false;
   }
-  n.__extends(HospitalInventoryListItemComponent, e);
-  HospitalInventoryListItemComponent.prototype.onClickUnit = function () {
-    this.onSelectCallback(this.unitVO);
-  };
-  HospitalInventoryListItemComponent.prototype.onClickUnitInfo = function () {
-    p.CastleDialogHandler.getInstance().registerDefaultDialogs(g.CastleRecruitInfoDialog, new l.CastleRecruitInfoDialogProperties(this.unitVO));
-  };
-  HospitalInventoryListItemComponent.prototype.onClickDismissUnit = function () {
-    p.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleHospitalDismissUnitsDialog, new c.CastleDismissUnitsDialogProperties(this.unitVO, this.unitVO.inventoryAmount));
-  };
-  HospitalInventoryListItemComponent.prototype.update = function () {
-    if (this.unitVO) {
-      this.disp.visible = true;
-      this.tooltip.hide();
-      h.WodPicHelper.addUnitPic(this.unitVO, this.disp.item.mc_contentHolder.mc_content, this.disp.item.width / this.disp.item.scaleX, this.disp.item.height / this.disp.item.scaleY, a.CastleModel.userData.playerCrest.colorsTwo[0], a.CastleModel.userData.playerCrest.colorsTwo[1], 26, new u(12, 14), true, true, true, null, this.disp.item.mc_level);
-      this.disp.item.mc_contentHolder.infoAmount.visible = this.unitVO.inventoryAmount > 0;
-      this.infoAmountText.textContentVO.numberValue = this.unitVO.inventoryAmount;
-      this.dismissButtonVisibility = false;
-      if (this.disp.mc_discount) {
-        this.disp.mc_discount.visible = false;
-      }
+  HospitalInventoryTooltipComponent.prototype.show = function (e, t) {
+    var i = e;
+    this.tooltipInfoTextfield.textContentVO.textId = i.getShortInfoString();
+    this.tooltipNameTextfield.textContentVO.textId = i.getNameString();
+    var n = 0;
+    var o = 0;
+    if (i.healingCostC2 > 0) {
+      n = i.healingCostC2;
+      o = 2;
     } else {
-      this.disp.visible = false;
+      n = i.healingCostC1;
+      o = 1;
     }
+    this.tooltipCostTextfield.textContentVO.numberValue = n;
+    this.disp.cost_icon.gotoAndStop(o);
+    this.disp.x = t.x;
+    this.disp.visible = true;
+    l.TweenMax.fromTo(this.disp, 0.2, {
+      y: t.y + 60
+    }, {
+      y: t.y + 40,
+      ease: r.Linear.easeIn
+    });
+    l.TweenMax.fromTo(this.disp, 0.2, {
+      alpha: 0
+    }, {
+      alpha: 1,
+      ease: r.Linear.easeIn
+    });
   };
-  HospitalInventoryListItemComponent.prototype.destroy = function () {
-    _.MovieClipHelper.clearMovieClip(this.disp.item.mc_level);
-    e.prototype.destroy.call(this);
+  HospitalInventoryTooltipComponent.prototype.hide = function () {
+    this.disp.visible = false;
   };
-  return HospitalInventoryListItemComponent;
-}(r.AInventoryListItem);
-exports.HospitalInventoryListItemComponent = d;
-var p = require("./9.js");
-var h = require("./63.js");
-var g = require("./115.js");
-var C = require("./2942.js");
-var _ = require("./2.js");
-o.classImplementsInterfaces(d, "IInventoryListItem");
+  Object.defineProperty(HospitalInventoryTooltipComponent, "textFieldManager", {
+    get: function () {
+      return n.GoodgameTextFieldManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return HospitalInventoryTooltipComponent;
+}();
+exports.HospitalInventoryTooltipComponent = c;
+o.classImplementsInterfaces(c, "IInventoryTooltip");

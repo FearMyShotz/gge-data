@@ -189,5 +189,5 @@ var O = function () {
 exports.OccupiedMarker = O;
 var E = require("./202.js");
 var y = require("./17.js");
-var b = require("./106.js");
+var b = require("./117.js");
 s.classImplementsInterfaces(O, "IIngameUICapable", "IWorldmapTooltipData");

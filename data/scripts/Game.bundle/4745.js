@@ -6,17 +6,17 @@ var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./4.js");
-var l = require("./266.js");
+var l = require("./265.js");
 var c = require("./211.js");
 var u = require("./10.js");
 var d = function (e) {
-  function CCICommand() {
+  function ALICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CCICommand, e);
-  Object.defineProperty(CCICommand.prototype, "cmdId", {
+  n.__extends(ALICommand, e);
+  Object.defineProperty(ALICommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_CONQUER_INFO_CAPITAL;
+      return s.ClientConstSF.S2C_ATTACK_INFO_LANDMARK;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -24,11 +24,11 @@ var d = function (e) {
     enumerable: true,
     configurable: true
   });
-  CCICommand.prototype.executeCommand = function (e, t) {
+  ALICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        var n = r.CastleModel.attackData.parse_CCI(i);
+        var n = r.CastleModel.attackData.parse_ALI(i);
         p.CastleDialogHandler.getInstance().registerDefaultDialogs(c.AttackDialog, new l.CastleAttackDialogProperties(n));
         break;
       default:
@@ -36,8 +36,8 @@ var d = function (e) {
     }
     return false;
   };
-  return CCICommand;
+  return ALICommand;
 }(u.CastleCommand);
-exports.CCICommand = d;
+exports.ALICommand = d;
 var p = require("./9.js");
 o.classImplementsInterfaces(d, "IExecCommand");

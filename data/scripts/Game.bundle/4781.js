@@ -3,37 +3,35 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function GABCommand() {
+var a = require("./476.js");
+var s = require("./37.js");
+var r = require("./7.js");
+var l = function (e) {
+  function FCECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GABCommand, e);
-  Object.defineProperty(GABCommand.prototype, "cmdId", {
+  n.__extends(FCECommand, e);
+  Object.defineProperty(FCECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_AREA_BOOSTER;
+      return r.ClientConstSF.S2C_GET_FEAST_COST_REDUCTION;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleDispatchingCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  GABCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.areaData.activeArea.updater.parseGAB(i);
-        break;
-      default:
-        this.showErrorDialog(e, t);
-    }
-    return false;
-  };
-  return GABCommand;
-}(l.CastleCommand);
-exports.GABCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  Object.defineProperty(FCECommand.prototype, "eventType", {
+    get: function () {
+      return s.CastleServerMessageArrivedEvent.FCE_ARRIVED;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastleDispatchingCommand.prototype, "eventType").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return FCECommand;
+}(a.CastleDispatchingCommand);
+exports.FCECommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

@@ -2,90 +2,106 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./3.js");
-var c = require("./231.js");
-var u = require("./28.js");
-var d = require("./43.js");
-var p = require("./149.js");
-var h = require("./136.js");
-var g = function (e) {
-  function CastleAllianceWarPeaceMessageDialog() {
+var o = require("./5.js");
+var a = require("./3.js");
+var s = require("./5414.js");
+var r = require("./83.js");
+var l = require("./99.js");
+var c = function (e) {
+  function MessageAllianceWarVO() {
+    var t = this;
+    t._subtypeAllianceWar = 0;
+    t._alliedMemberOrAllianceID = 0;
+    t._enemyAllianceID = 0;
+    t._enemyPeaceOfferEndTimeStamp = -1;
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleAllianceWarPeaceMessageDialog.NAME) || this;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleAllianceWarPeaceMessageDialog, e);
-  CastleAllianceWarPeaceMessageDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_alliance, this.dialogDisp.btn_close, this.dialogDisp.btn_diplomacy]);
-  };
-  CastleAllianceWarPeaceMessageDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.dialogDisp.btn_diplomacy.toolTipText = "dialog_alliance_diplomacy";
-    var i = new l.TextVO(this.dialogProperties.messageVO.enemyAllianceName);
-    var n = new l.TextVO(this.dialogProperties.messageVO.alliedMemberOrAllianceName);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new l.TextVO(this.dialogProperties.messageVO.subject));
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_alliance.txt_value, i);
-    switch (this.dialogProperties.messageVO.subtypeAllianceWar) {
-      case a.MessageConst.SUBTYPE_ALLIANCE_ENEMY_ATTACK_WAR:
-        this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new r.LocalizedTextVO(CastleAllianceWarPeaceMessageDialog.TEXT_ID_ENEMY_ATTACK_WAR, [i, n]));
-        break;
-      case a.MessageConst.SUBTYPE_ALLIANCE_ENEMY_DECLARED_WAR:
-        this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new r.LocalizedTextVO(CastleAllianceWarPeaceMessageDialog.TEXT_ID_ENEMY_DECLARED_WAR, [i]));
-        break;
-      case a.MessageConst.SUBTYPE_ALLIANCE_OUR_DECLARED_WAR:
-        this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new r.LocalizedTextVO(CastleAllianceWarPeaceMessageDialog.TEXT_ID_WE_DECLARED_WAR, [n, i]));
-        break;
-      case a.MessageConst.SUBTYPE_ALLIANCE_ENEMY_END_WAR:
-        var o = new Date();
-        o.setTime(this.dialogProperties.messageVO.enemyPeaceOfferEndTimeStamp * u.ClientConstTime.SEC_2_MILLISEC);
-        this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new r.LocalizedTextVO(CastleAllianceWarPeaceMessageDialog.TEXT_ID_PEACE_OFFER, [i, new s.LocalizedDateTimeVO(o)]));
-        break;
-      case a.MessageConst.SUBTYPE_ALLIANCE_OUR_ATTACK_WAR:
-        this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new r.LocalizedTextVO(CastleAllianceWarPeaceMessageDialog.TEXT_ID_WE_ATTACKED_OTHER_ALLY, [i]));
-        break;
-      case a.MessageConst.SUBTYPE_ALLIANCE_OUR_SABOTAGE_WAR:
-        this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new r.LocalizedTextVO(CastleAllianceWarPeaceMessageDialog.TEXT_ID_WE_SABOTAGED_OTHER_ALLIANCE, [i]));
+  n.__extends(MessageAllianceWarVO, e);
+  MessageAllianceWarVO.prototype.parseMessageHeader = function (e) {
+    var t = e.split("*");
+    this._subtypeAllianceWar = parseInt(t[0]);
+    this._alliedMemberOrAllianceID = parseInt(t[1]);
+    this._alliedMemberOrAllianceName = t[2];
+    this._enemyAllianceID = parseInt(t[3]);
+    this._enemyAllianceName = t[4];
+    if (this.subtypeAllianceWar == o.MessageConst.SUBTYPE_ALLIANCE_ENEMY_END_WAR && t.length > 5) {
+      this._enemyPeaceOfferEndTimeStamp = parseFloat(t[5]);
     }
   };
-  CastleAllianceWarPeaceMessageDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_alliance:
-        C.CastleDialogHandler.getInstance().registerDialogsWithTypeAndDefaultValues(_.CastleAllianceInfoDialog, new p.CastleAllianceInfoDialogProperties(this.dialogProperties.messageVO.enemyAllianceID), d.CastleDialogConsts.DIALOG_TYPE_SINGLE);
-        break;
-      case this.dialogDisp.btn_close:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_diplomacy:
-        C.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleAllianceDialog, new h.CastleAllianceDialogProperties(c.ClientConstAlliance.CAT_DIPLOMACY));
-        this.hide();
+  MessageAllianceWarVO.prototype.parseSubject = function () {
+    if (this._subtypeAllianceWar == o.MessageConst.SUBTYPE_ALLIANCE_ENEMY_END_WAR) {
+      return a.Localize.text("dialog_allianceDiplomacy_peaceOffer_title");
+    } else {
+      return a.Localize.text("message_autoWar_subject");
     }
   };
-  Object.defineProperty(CastleAllianceWarPeaceMessageDialog.prototype, "dialogProperties", {
+  MessageAllianceWarVO.prototype.parseSender = function () {
+    return this._enemyAllianceName;
+  };
+  Object.defineProperty(MessageAllianceWarVO.prototype, "dialogInfo", {
     get: function () {
-      return this.properties;
+      return new r.DialogInfoVO(u.CastleAllianceWarPeaceMessageDialog, new s.CastleAllianceWarPeaceMessageDialogProperties(this));
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.AMessageVO.prototype, "dialogInfo").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleAllianceWarPeaceMessageDialog.__initialize_static_members = function () {
-    CastleAllianceWarPeaceMessageDialog.NAME = "CastleAllianceWarPeaceMessageEx";
-    CastleAllianceWarPeaceMessageDialog.TEXT_ID_ENEMY_DECLARED_WAR = "message_autoWar_enemy_declare";
-    CastleAllianceWarPeaceMessageDialog.TEXT_ID_WE_DECLARED_WAR = "message_autoWar_ownAlliance_declare";
-    CastleAllianceWarPeaceMessageDialog.TEXT_ID_WE_ATTACKED_OTHER_ALLY = "message_autoWar_ownAlliance_attack";
-    CastleAllianceWarPeaceMessageDialog.TEXT_ID_WE_SABOTAGED_OTHER_ALLIANCE = "message_autoWar_ownAlliance_sabotage";
-    CastleAllianceWarPeaceMessageDialog.TEXT_ID_ENEMY_ATTACK_WAR = "message_autoWar_enemy_attack";
-    CastleAllianceWarPeaceMessageDialog.TEXT_ID_PEACE_OFFER = "message_peaceOffer_copy";
-  };
-  return CastleAllianceWarPeaceMessageDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleAllianceWarPeaceMessageDialog = g;
-var C = require("./9.js");
-var _ = require("./132.js");
-var m = require("./125.js");
-o.classImplementsInterfaces(g, "ICollectableRendererList");
-g.__initialize_static_members();
+  Object.defineProperty(MessageAllianceWarVO.prototype, "additionalIconName", {
+    get: function () {
+      return "CastleMessageIconsAutowar";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.AMessageVO.prototype, "additionalIconName").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessageAllianceWarVO.prototype, "subtypeAllianceWar", {
+    get: function () {
+      return this._subtypeAllianceWar;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessageAllianceWarVO.prototype, "alliedMemberOrAllianceID", {
+    get: function () {
+      return this._alliedMemberOrAllianceID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessageAllianceWarVO.prototype, "alliedMemberOrAllianceName", {
+    get: function () {
+      return this._alliedMemberOrAllianceName;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessageAllianceWarVO.prototype, "enemyAllianceID", {
+    get: function () {
+      return this._enemyAllianceID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessageAllianceWarVO.prototype, "enemyAllianceName", {
+    get: function () {
+      return this._enemyAllianceName;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessageAllianceWarVO.prototype, "enemyPeaceOfferEndTimeStamp", {
+    get: function () {
+      return this._enemyPeaceOfferEndTimeStamp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return MessageAllianceWarVO;
+}(l.AMessageVO);
+exports.MessageAllianceWarVO = c;
+var u = require("./5415.js");

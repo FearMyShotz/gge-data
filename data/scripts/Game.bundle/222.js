@@ -1,133 +1,54 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
+var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./5.js");
-var s = require("./5.js");
-var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./6.js");
-var u = require("./18.js");
-var d = require("./137.js");
-var p = require("./4.js");
-var h = require("./386.js");
-var g = createjs.Point;
-var C = function () {
-  function MapHelper() {}
-  MapHelper.pixelPosToSectorGridPos = function (e) {
-    return new g(Math.floor(e.x / u.ClientConstCastle.SECTORPIXELSIZE_X), Math.floor(e.y / u.ClientConstCastle.SECTORPIXELSIZE_Y));
+var s = function (e) {
+  function SubscriptionPackageEnum(t, i, n, a = "") {
+    var s = this;
+    s._serverId = 0;
+    CONSTRUCTOR_HACK;
+    (s = e.call(this, t, o.BasicEnum.instantiationKey) || this)._serverId = i;
+    s._shopId = n;
+    s._nameTextId = a;
+    return s;
+  }
+  n.__extends(SubscriptionPackageEnum, e);
+  SubscriptionPackageEnum.getTypeByServerId = function (e) {
+    return this.getByProperty(SubscriptionPackageEnum, "serverId", e, SubscriptionPackageEnum.UNKNOWN);
   };
-  MapHelper.pixelPosToAreaGridPos = function (e) {
-    return new g(Math.floor(e.x / u.ClientConstCastle.MAPTILESIZE_X), Math.floor(e.y / u.ClientConstCastle.MAPTILESIZE_Y));
+  SubscriptionPackageEnum.getTypeByShopId = function (e) {
+    return this.getByProperty(SubscriptionPackageEnum, "shopId", e, SubscriptionPackageEnum.UNKNOWN);
   };
-  MapHelper.pixelPosToAreaGridPosUnrounded = function (e) {
-    return new g(e.x / u.ClientConstCastle.MAPTILESIZE_X, e.y / u.ClientConstCastle.MAPTILESIZE_Y);
-  };
-  MapHelper.sectorGridPosToPixelpos = function (e) {
-    return new g(e.x * a.WorldConst.SECTOR_WIDTH * u.ClientConstCastle.MAPTILESIZE_X, e.y * a.WorldConst.SECTOR_HEIGHT * u.ClientConstCastle.MAPTILESIZE_Y);
-  };
-  MapHelper.getDistanceByMapobjects = function (e, t, i = true, o = -1) {
-    if (o == u.ClientConstCastle.ACTION_TYPE_COLLECTOR_ATTACK) {
-      return r.TravelConst.COLLECTOR_TRAVEL_DISTANCE;
-    }
-    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_ALIEN_CAMP) > -1 && i) {
-      return r.TravelConst.ALIEN_TRAVEL_DISTANCE;
-    }
-    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_RED_ALIEN_CAMP) > -1 && i) {
-      return r.TravelConst.ALIEN_TRAVEL_DISTANCE;
-    }
-    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_NOMAD_CAMP) > -1 && i) {
-      return r.TravelConst.NOMAD_TRAVEL_DISTANCE;
-    }
-    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_ALLIANCE_NOMAD_CAMP) > -1 && i) {
-      return r.TravelConst.ALLIANCE_INVASION_CAMP_TRAVEL_DISTANCE;
-    }
-    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_SAMURAI_CAMP) > -1 && i) {
-      return r.TravelConst.SAMURAI_TRAVEL_DISTANCE;
-    }
-    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_DAIMYO_CASTLE) > -1 && i) {
-      return r.TravelConst.DAIMYO_CASTLE_TRAVEL_DISTANCE;
-    }
-    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_DAIMYO_TOWNSHIP) > -1 && i) {
-      return r.TravelConst.DAIMYO_TOWNSHIP_TRAVEL_DISTANCE;
-    }
-    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_FACTION_INVASION_CAMP) > -1 && i) {
-      return r.TravelConst.FACTION_TRAVEL_DISTANCE;
-    }
-    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_ALLIANCE_BATTLE_GROUND_TOWER) > -1 && i) {
-      return r.TravelConst.ALLIANCE_BATTLE_GROUND_TOWER_DISTANCE;
-    }
-    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_ALLIANCE_BATTLE_GROUND_RESOURCE_TOWER) > -1 && i) {
-      return r.TravelConst.ALLIANCE_BATTLE_GROUND_RESOURCE_TOWER_DISTANCE;
-    }
-    if (t.areaType == a.WorldConst.AREA_TYPE_FACTION_VILLAGE || t.areaType == a.WorldConst.AREA_TYPE_FACTION_TOWER || t.areaType == a.WorldConst.AREA_TYPE_FACTION_CAPITAL) {
-      if (MapHelper.factionEventVO) {
-        var s = c.int(t.specialCampID);
-        return MapHelper.factionEventVO.distanceMap.get(s);
-      }
-    } else if (MapHelper.isTempServerRankSwapAttack(t, o)) {
-      return r.TravelConst.TEMPSERVER_RANKSWAP_TRAVEL_DISTANCE;
-    }
-    return n.MathBase.round(MapHelper.getShortestDistance(e.absAreaPos, t.absAreaPos), 1);
-  };
-  MapHelper.getShortestDistance = function (e, t) {
-    if (!e || !t) {
-      return 0;
-    }
-    var i = c.int(e.y - t.y);
-    var n = Math.abs(e.x - t.x);
-    var o = u.ClientConstCastle.WORLD_WIDTH - n;
-    var a = c.int(Math.min(n, o));
-    var s = Math.sqrt(a * a + i * i);
-    return s = Math.round(s * 10) / 10;
-  };
-  MapHelper.getRotationToShortestDistance = function (e, t) {
-    var i = e.x - t.x;
-    var n = e.y - t.y;
-    if (Math.abs(i) > u.ClientConstCastle.WORLD_WIDTH / 2) {
-      if (i > 0) {
-        i -= u.ClientConstCastle.WORLD_WIDTH;
-      } else {
-        i += u.ClientConstCastle.WORLD_WIDTH;
-      }
-    }
-    return Math.atan2(n, i) * 180 / Math.PI - 90;
-  };
-  MapHelper.areaToPixelTopLeft = function (e) {
-    var t = new g();
-    t.x = e.x * u.ClientConstCastle.MAPTILESIZE_X;
-    t.y = e.y * u.ClientConstCastle.MAPTILESIZE_Y;
-    return t;
-  };
-  MapHelper.areaToPixelCenter = function (e) {
-    var t = new g();
-    t.x = e.x * u.ClientConstCastle.MAPTILESIZE_X;
-    t.y = e.y * u.ClientConstCastle.MAPTILESIZE_Y;
-    t.x += u.ClientConstCastle.MAPTILESIZE_X / 2;
-    t.y += u.ClientConstCastle.MAPTILESIZE_Y / 2;
-    return t;
-  };
-  MapHelper.getRealPos = function (e) {
-    var t = new g();
-    t.y = e.y;
-    if (e.x % u.ClientConstCastle.WORLD_WIDTH < 0) {
-      t.x = e.x % u.ClientConstCastle.WORLD_WIDTH + u.ClientConstCastle.WORLD_WIDTH;
-    } else {
-      t.x = e.x % u.ClientConstCastle.WORLD_WIDTH;
-    }
-    return t;
-  };
-  Object.defineProperty(MapHelper, "factionEventVO", {
+  Object.defineProperty(SubscriptionPackageEnum.prototype, "serverId", {
     get: function () {
-      return p.CastleModel.specialEventData.getActiveEventByEventId(l.EventConst.EVENTTYPE_FACTION);
+      return this._serverId;
     },
     enumerable: true,
     configurable: true
   });
-  MapHelper.isTempServerRankSwapAttack = function (e, t) {
-    return !!o.EnvGlobalsHandler.globals.isOnTemporaryServer && e.areaType == a.WorldConst.AREA_TYPE_CASTLE && e.kingdomID == s.WorldClassic.KINGDOM_ID && t == u.ClientConstCastle.ACTION_TYPE_ATTACK && !!d.TempServerHelper.tmpServerEvent && d.TempServerHelper.tmpServerEvent.settingVO.scoringSystem == h.TempServerConfigurationVO.SCORING_SYSTEM_RANK_SWAP;
+  Object.defineProperty(SubscriptionPackageEnum.prototype, "shopId", {
+    get: function () {
+      return this._shopId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SubscriptionPackageEnum.prototype, "nameTextId", {
+    get: function () {
+      return this._nameTextId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SubscriptionPackageEnum.__initialize_static_members = function () {
+    SubscriptionPackageEnum.UNKNOWN = new SubscriptionPackageEnum("unknown", -1, "");
+    SubscriptionPackageEnum.PLAYER = new SubscriptionPackageEnum("player", a.SubscriptionConst.PLAYER_SUBSCRIPTION_PACKAGE_TYPE_ID, "individualSubscription", "dialog_subscriptionOverview_singleSub_1_title");
+    SubscriptionPackageEnum.PREMIUM = new SubscriptionPackageEnum("premium", a.SubscriptionConst.PLAYER_SUBSCRIPTION_PREMIUM_PACKAGE_TYPE_ID, "premiumIndividualSubscription", "dialog_subscriptionOverview_singleSub_2_title");
+    SubscriptionPackageEnum.ALLIANCE = new SubscriptionPackageEnum("alliance", a.SubscriptionConst.ALLIANCE_SUBSCRIPTION_PACKAGE_TYPE_ID, "allianceSubscription", "dialog_subscriptionOverview_allianceSub_1_title");
   };
-  return MapHelper;
-}();
-exports.MapHelper = C;
+  return SubscriptionPackageEnum;
+}(require("./84.js").CastleEnum);
+exports.SubscriptionPackageEnum = s;
+s.__initialize_static_members();

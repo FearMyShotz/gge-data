@@ -2,44 +2,31 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./55.js");
+var o = require("./1.js");
+var a = require("./18.js");
 var s = function (e) {
-  function JudgementSpotEnum(t, i = null) {
-    var n = this;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this, t, o.BasicEnum.instantiationKey) || this)._veClass = i;
-    return n;
+  function ATowerVO() {
+    var t = e.call(this) || this;
+    t._name = "Basic";
+    t._group = a.ClientConstCastle.GROUP_TOWER;
+    t._width = 2;
+    t._height = 2;
+    return t;
   }
-  n.__extends(JudgementSpotEnum, e);
-  JudgementSpotEnum.getTypeFromName = function (e) {
-    return this.getByProperty(JudgementSpotEnum, "name", e, JudgementSpotEnum.UNKNOWN);
+  n.__extends(ATowerVO, e);
+  ATowerVO.prototype.canUpgrade = function () {
+    return e.prototype.canUpgrade.call(this) && this.level < this.isoData.objects.defences.currentWallLevel;
   };
-  JudgementSpotEnum.getTypeFromVEClass = function (e) {
-    return this.getByProperty(JudgementSpotEnum, "veClass", e, JudgementSpotEnum.UNKNOWN);
+  ATowerVO.prototype.getNameString = function () {
+    return this.name.toLowerCase() + "_" + this.group.toLowerCase() + "_name";
   };
-  Object.defineProperty(JudgementSpotEnum.prototype, "spawnType", {
-    get: function () {
-      return a.ClientConstUtils.capitalizeFirstLetter(this.name, false);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(JudgementSpotEnum.prototype, "veClass", {
-    get: function () {
-      return this._veClass;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  JudgementSpotEnum.__initialize_static_members = function () {
-    JudgementSpotEnum.UNKNOWN = new JudgementSpotEnum("unknown");
-    JudgementSpotEnum.RESOURCE_FOOD = new JudgementSpotEnum("resourceFood", l.ResourceFieldSpotJudgementVE);
-    JudgementSpotEnum.KEEP_BUILDING = new JudgementSpotEnum("keep", r.KeepSpotJudgementVE);
+  ATowerVO.prototype.getShortInfoString = function () {
+    return this.name.toLowerCase() + "_" + this.group.toLowerCase() + "_short_info";
   };
-  return JudgementSpotEnum;
-}(require("./84.js").CastleEnum);
-exports.JudgementSpotEnum = s;
-var r = require("./2758.js");
-var l = require("./2759.js");
-s.__initialize_static_members();
+  ATowerVO.prototype.getUpgradeInfoString = function () {
+    return this.name.toLowerCase() + "_" + this.group.toLowerCase() + "_upgrade_info";
+  };
+  return ATowerVO;
+}(require("./633.js").ADefenceBuildingVO);
+exports.ATowerVO = s;
+o.classImplementsInterfaces(s, "IShopVO", "ICostVO", "IInventoryVO");

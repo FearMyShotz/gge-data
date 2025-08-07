@@ -280,7 +280,7 @@ var f = function (e) {
   CastleMessageInboxDialog.MESSAGE_CATEGORY_BATTLE_AND_SPY_REPORT = 5;
   CastleMessageInboxDialog.MESSAGE_CATEGORY_BATTLE_AND_SPY_REPORT_FORWARDED = 6;
   return CastleMessageInboxDialog;
-}(require("./114.js").CastleExternalSubLayerDialog);
+}(require("./112.js").CastleExternalSubLayerDialog);
 exports.CastleMessageInboxDialog = f;
 var O = require("./9.js");
 var E = require("./4067.js");

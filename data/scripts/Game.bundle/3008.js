@@ -2,25 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./647.js");
-var s = require("./538.js");
-var r = function (e) {
-  function DragonHoardBuildingVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CastleSkipCraftingDialogProperties(t) {
+    var i = e.call(this) || this;
+    i._slotVO = t;
+    return i;
   }
-  n.__extends(DragonHoardBuildingVE, e);
-  Object.defineProperty(DragonHoardBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(CastleSkipCraftingDialogProperties, e);
+  Object.defineProperty(CastleSkipCraftingDialogProperties.prototype, "slotVO", {
     get: function () {
-      return Library.CastleInterfaceElements.Btn_DragonHoardLow;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.AUnitProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      return this._slotVO;
     },
     enumerable: true,
     configurable: true
   });
-  return DragonHoardBuildingVE;
-}(a.ACraftingBuildingVE);
-exports.DragonHoardBuildingVE = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");
+  return CastleSkipCraftingDialogProperties;
+}(require("./220.js").BasicProperties);
+exports.CastleSkipCraftingDialogProperties = o;

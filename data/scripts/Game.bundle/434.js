@@ -229,7 +229,7 @@ var d = require("./2.js");
 var p = require("./6.js");
 var h = require("./15.js");
 var g = require("./4.js");
-var C = require("./2288.js");
+var C = require("./2289.js");
 o.__initialize_static_members();
 exports.getFacebookReferralLink = function () {
   return g.CastleModel.inviteFriendsData.referralLink + o.SUFFIX_REFER_METHOD_FACEBOOK;

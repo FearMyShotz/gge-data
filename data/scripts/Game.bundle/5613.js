@@ -1,41 +1,34 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./6.js");
-var o = require("./22.js");
-var a = function () {
-  function XmlCurrencyRangeVO() {
-    this._typeID = -1;
-    this._typeName = "";
-    this._currencyIDRange = [];
+var n = require("./0.js");
+var o = require("./1.js");
+var a = function (e) {
+  function CraftingMaterialData(t) {
+    var i = e.call(this) || this;
+    i.parseFromXML(t);
+    return i;
   }
-  XmlCurrencyRangeVO.prototype.parseXml = function (e) {
-    this._typeID = n.int(o.CastleXMLUtils.getIntAttribute("typeID", e, -1));
-    this._typeName = o.CastleXMLUtils.getStringAttribute("typeName", e, "");
-    this._currencyIDRange = o.CastleXMLUtils.getStringAttribute("currencyIDRange", e, "").split("-");
-    this._currencyIDRange = [parseInt(this._currencyIDRange[0]), parseInt(this._currencyIDRange[1])];
+  n.__extends(CraftingMaterialData, e);
+  CraftingMaterialData.prototype.parseFromXML = function (e) {
+    this._craftingMaterialBags = new Map();
+    for (var t = 0, i = e.rewardBags; t < i.length; t++) {
+      var n = i[t];
+      if (n) {
+        var o = new s.CraftingMaterialBagVO(n);
+        this._craftingMaterialBags.set(o.bagID, o);
+      }
+    }
   };
-  Object.defineProperty(XmlCurrencyRangeVO.prototype, "typeID", {
+  Object.defineProperty(CraftingMaterialData.prototype, "craftingMaterialBags", {
     get: function () {
-      return this._typeID;
+      return this._craftingMaterialBags;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlCurrencyRangeVO.prototype, "typeName", {
-    get: function () {
-      return this._typeName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlCurrencyRangeVO.prototype, "currencyIDRange", {
-    get: function () {
-      return this._currencyIDRange;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return XmlCurrencyRangeVO;
-}();
-exports.XmlCurrencyRangeVO = a;
+  return CraftingMaterialData;
+}(require("./54.js").CastleBasicData);
+exports.CraftingMaterialData = a;
+var s = require("./1056.js");
+o.classImplementsInterfaces(a, "IUpdatable");

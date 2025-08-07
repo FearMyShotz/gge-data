@@ -1,31 +1,24 @@
 var n = require("./257.js");
-module.exports = n.isStandardBrowserEnv() ? function standardBrowserEnv() {
-  var e;
-  var t = /(msie|trident)/i.test(navigator.userAgent);
-  var i = document.createElement("a");
-  function resolveURL(e) {
-    var n = e;
-    if (t) {
-      i.setAttribute("href", n);
-      n = i.href;
-    }
-    i.setAttribute("href", n);
-    return {
-      href: i.href,
-      protocol: i.protocol ? i.protocol.replace(/:$/, "") : "",
-      host: i.host,
-      search: i.search ? i.search.replace(/^\?/, "") : "",
-      hash: i.hash ? i.hash.replace(/^#/, "") : "",
-      hostname: i.hostname,
-      port: i.port,
-      pathname: i.pathname.charAt(0) === "/" ? i.pathname : "/" + i.pathname
-    };
+var o = ["age", "authorization", "content-length", "content-type", "etag", "expires", "from", "host", "if-modified-since", "if-unmodified-since", "last-modified", "location", "max-forwards", "proxy-authorization", "referer", "retry-after", "user-agent"];
+module.exports = function parseHeaders(e) {
+  var t;
+  var i;
+  var a;
+  var s = {};
+  if (e) {
+    n.forEach(e.split("\n"), function parser(e) {
+      a = e.indexOf(":");
+      t = n.trim(e.substr(0, a)).toLowerCase();
+      i = n.trim(e.substr(a + 1));
+      if (t) {
+        if (s[t] && o.indexOf(t) >= 0) {
+          return;
+        }
+        s[t] = t === "set-cookie" ? (s[t] ? s[t] : []).concat([i]) : s[t] ? s[t] + ", " + i : i;
+      }
+    });
+    return s;
+  } else {
+    return s;
   }
-  e = resolveURL(window.location.href);
-  return function isURLSameOrigin(t) {
-    var i = n.isString(t) ? resolveURL(t) : t;
-    return i.protocol === e.protocol && i.host === e.host;
-  };
-}() : function isURLSameOrigin() {
-  return true;
 };

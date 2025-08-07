@@ -10,7 +10,7 @@ var l = require("./32.js");
 var c = require("./92.js");
 var u = require("./4.js");
 var d = require("./8.js");
-var p = require("./2079.js");
+var p = require("./2080.js");
 var h = createjs.MouseEvent;
 var g = createjs.TimerEvent;
 var C = function (e) {
@@ -281,5 +281,5 @@ var C = function (e) {
 }(p.IsoWorldRingMenu);
 exports.RingMenuBuilding = C;
 var _ = require("./46.js");
-var m = require("./33.js");
-var f = require("./2080.js");
+var m = require("./34.js");
+var f = require("./2081.js");

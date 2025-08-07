@@ -53,5 +53,5 @@ var c = function (e) {
   return DecoBuildingVE;
 }(l.ADecoBuildingVE);
 exports.DecoBuildingVE = c;
-var u = require("./2919.js");
+var u = require("./2920.js");
 o.classImplementsInterfaces(c, "ICollectableRendererList", "IIngameUICapable");

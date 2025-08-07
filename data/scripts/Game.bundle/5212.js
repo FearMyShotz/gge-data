@@ -4,44 +4,36 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./1928.js");
-var u = require("./10.js");
-var d = function (e) {
-  function UFACommand() {
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function UACCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(UFACommand, e);
-  Object.defineProperty(UFACommand.prototype, "cmdId", {
+  n.__extends(UACCommand, e);
+  Object.defineProperty(UACCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_GET_FAME;
+      return s.ClientConstSF.S2C_ACTIVITY_CHEST_INFO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  UFACommand.prototype.executeCommand = function (e, t) {
+  UACCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        l.CastleModel.titleData.parseUFA(i);
-        var n = s.int(i.NHT);
-        if (n > 0) {
-          p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleTitleAchievedDialog, new c.CastleTitleAchievedDialogProperties(l.CastleModel.titleData.getTitleByTitleID(n)));
-        }
+        r.CastleModel.activityBonusData.parse_UAC(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return UFACommand;
-}(u.CastleCommand);
-exports.UFACommand = d;
-var p = require("./9.js");
-var h = require("./1929.js");
-o.classImplementsInterfaces(d, "IExecCommand");
+  return UACCommand;
+}(l.CastleCommand);
+exports.UACCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

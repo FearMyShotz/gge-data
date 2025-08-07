@@ -2,121 +2,192 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
+var o = require("./1.js");
 var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./13.js");
-var l = require("./4.js");
-var c = require("./1095.js");
-var u = require("./157.js");
-var d = require("./8.js");
-var p = require("./41.js");
-var h = require("./288.js");
-var g = require("./824.js");
-var C = createjs.MouseEvent;
-var _ = function (e) {
-  function DifficultyScalingRewardDialogListItemSingleHeader(t, i, n = null) {
-    var o = e.call(this, n || new (a.getDefinitionByName("DiffRewSingleHeader"))(), i) || this;
-    o._data = t;
-    o.fill();
-    return o;
+var s = require("./5.js");
+var r = require("./6.js");
+var l = require("./51.js");
+var c = require("./9.js");
+var u = require("./825.js");
+var d = require("./1097.js");
+var p = require("./1094.js");
+var h = require("./1088.js");
+var g = require("./460.js");
+var C = function (e) {
+  function SamuraiInvasionEventVO() {
+    var t = this;
+    t._daimyoInfoVO = new f.SamuraiInvasionDaimyoInfoVO();
+    CONSTRUCTOR_HACK;
+    (t = e.call(this) || this).scoreEventVO = new _.ALeagueTypeScoreEventVO();
+    t.alliancescoreEventVO = new _.ALeagueTypeScoreEventVO();
+    t.buyPackagesEventVO = new m.BuyPackagesEventVO();
+    return t;
   }
-  n.__extends(DifficultyScalingRewardDialogListItemSingleHeader, e);
-  Object.defineProperty(DifficultyScalingRewardDialogListItemSingleHeader.prototype, "difficulty", {
+  n.__extends(SamuraiInvasionEventVO, e);
+  SamuraiInvasionEventVO.prototype.parseData = function (t, i, n) {
+    e.prototype.parseData.call(this, t, i, n);
+    this.scoreEventVO = new _.ALeagueTypeScoreEventVO();
+    this.scoreEventVO.eventId = s.EventConst.EVENTTYPE_SAMURAI_INVASION;
+    this.scoreEventVO.parseData(t, i, n.SP);
+    this.scoreEventVO.difficultyIDChoosen = this._difficultyIDChoosen;
+    this.scoreEventVO.difficultyScalingEnabled = this._difficultyScalingEnabled;
+    this.alliancescoreEventVO = new _.ALeagueTypeScoreEventVO(s.EventConst.LEAGUETYPE_EVENT_SUBTYPE_SAMURAI_INVASION);
+    this.alliancescoreEventVO.eventId = s.EventConst.EVENTTYPE_SAMURAI_INVASION;
+    this.alliancescoreEventVO.parseData(t, i, n.A);
+    this.alliancescoreEventVO.difficultyIDChoosen = this._difficultyIDChoosen;
+    this.alliancescoreEventVO.difficultyScalingEnabled = this._difficultyScalingEnabled;
+    this.alliancescoreEventVO.isAllianceRewardScore = true;
+    this.buyPackagesEventVO.parseData(t, i, n);
+    this._daimyoInfoVO.parseServerObject(n.DY);
+  };
+  SamuraiInvasionEventVO.prototype.parseParamObject = function (t) {
+    e.prototype.parseParamObject.call(this, t);
+    this.refreshWorldMap();
+  };
+  Object.defineProperty(SamuraiInvasionEventVO.prototype, "eventPackagesVO", {
     get: function () {
-      return l.CastleModel.eventDifficultyScaling.getDifficultyVOByDifficultyID(this._data[0][0]);
+      return this.buyPackagesEventVO;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "eventPackagesVO").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(DifficultyScalingRewardDialogListItemSingleHeader.prototype, "rewardArrays", {
+  Object.defineProperty(SamuraiInvasionEventVO.prototype, "scoreBarVO", {
     get: function () {
-      return this._data[1];
+      return this.scoreEventVO;
     },
     enumerable: true,
     configurable: true
   });
-  DifficultyScalingRewardDialogListItemSingleHeader.prototype.fill = function () {
-    this._headerMC.mouseChildren = false;
-    this._headerMC.actLikeButton = true;
-    h.DifficultyScalingHelper.addDifficultyIcon(this._headerMC.mc0.mc_icon, this.difficulty, 46, 46, null);
-    o.MovieClipHelper.clearMovieClip(this._contentMC);
-    var e = 0;
-    for (var t = 0; t < this.rewardArrays.length; t++) {
-      var i = new (a.getDefinitionByName("EventDifficultyRewardListItem"))();
-      g.DifficultyScalingRewardDialogListItemHelper.fillRewardMC(i, [0, this.rewardArrays[t][0], this.rewardArrays[t][1], 4]);
-      if (i.headerMC && i.headerMC.mc_end) {
-        i.headerMC.mc_end.visible = false;
+  Object.defineProperty(SamuraiInvasionEventVO.prototype, "allianceBarVO", {
+    get: function () {
+      return this.alliancescoreEventVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SamuraiInvasionEventVO.prototype, "eventBuildingWOD", {
+    get: function () {
+      return SamuraiInvasionEventVO.EVENT_BUILDING_WOD;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "eventBuildingWOD").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SamuraiInvasionEventVO.prototype, "eventBuildingNameId", {
+    get: function () {
+      return "eventBuilding_samuraiInvasion";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "eventBuildingNameId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SamuraiInvasionEventVO.prototype, "eventFullsizeCharacterName", {
+    get: function () {
+      return l.ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SAMURAI_HUNTER;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "eventFullsizeCharacterName").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SamuraiInvasionEventVO.prototype.openDialog = function (e = true) {
+    if (this.needToOpenDifficultyDialog()) {
+      if (!c.CastleDialogHandler.getInstance().isDialogRegistered(u.DifficultyScalingSelectDialog)) {
+        c.CastleDialogHandler.getInstance().registerDefaultDialogs(u.DifficultyScalingSelectDialog, new d.DifficultyScalingSelectDialogProperties(this.eventId));
       }
-      this._contentMC.addChild(i);
-      i.y = e;
-      e += i.height;
-    }
-    if (this.difficulty.difficultyType.difficultyTypeID != c.EventAutoScalingDifficultyTypeVO.EASY_TYPE_ID) {
-      var n = new (a.getDefinitionByName("LowerRewardsIncludedMC"))();
-      this._contentMC.addChild(n);
-      n.y = e;
-      o.GoodgameTextFieldManager.getInstance().registerTextField(n.txt_copy, new s.LocalizedTextVO("dialog_difficultyScaling_rewardInfo_desc"));
-    }
-    this.disp.headerMC.mouseChildren = false;
-    this.disp.mouseChildren = true;
-    this.disp.headerMC.actLikeButton = true;
-    this._contentMC.mask = null;
-    p.CastleMovieClipHelper.applyMask(this._contentMC);
-    this._contentMC.alpha = 0;
-    this._contentMC.visible = false;
-    this._contentMC.mask.height = 0;
-    this._headerMC.mc_over.visible = false;
-    this._headerMC.mc_down.visible = false;
-    this.applyStateChange();
-  };
-  DifficultyScalingRewardDialogListItemSingleHeader.prototype.applyStateChange = function () {
-    e.prototype.applyStateChange.call(this);
-    this._headerMC.mc_selected.visible = this.isExpanded;
-    this._contentMC.visible = this.isExpanded;
-    if (this.difficulty) {
-      o.GoodgameTextFieldManager.getInstance().registerTextField(this._headerMC.mc0.txt_selected, new s.TextVO(r.TextHelper.toUpperCaseLocaSafe(s.Localize.text(this.difficulty.name_textID)))).visible = this.isExpanded;
-      o.GoodgameTextFieldManager.getInstance().registerTextField(this._headerMC.mc0.txt_unselected, new s.TextVO(r.TextHelper.toUpperCaseLocaSafe(s.Localize.text(this.difficulty.name_textID)))).visible = !this.isExpanded;
+    } else if (this.pointThresholds) {
+      this.executeOpenDialog(e, p.CastleAllianceSamuraiInvasionDialog, new h.CastleAllianceSamuraiInvasionEventDialogProperties(this));
     }
   };
-  DifficultyScalingRewardDialogListItemSingleHeader.prototype.onClick = function (t) {
-    if (d.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.disp.headerMC:
-          this.expand(!this.isExpanded, true);
-      }
+  SamuraiInvasionEventVO.prototype.baseCampLevel = function () {
+    return r.int(this.scoreEventVO.countVictories(this.scoreEventVO.leagueID)[0]);
+  };
+  SamuraiInvasionEventVO.prototype.onDestroy = function () {
+    this.refreshWorldMap();
+  };
+  SamuraiInvasionEventVO.prototype.setRankAndPoints = function (e, t, i) {
+    this.scoreEventVO.setRankAndPoints([e[0]], [t[0]], null);
+    this.alliancescoreEventVO.setRankAndPoints([e[1]], [t[1]], null);
+  };
+  Object.defineProperty(SamuraiInvasionEventVO.prototype, "ownRank", {
+    get: function () {
+      return this.scoreEventVO.ownRank;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "ownRank").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(SamuraiInvasionEventVO.prototype, "ownPoints", {
+    get: function () {
+      return this.scoreEventVO.ownPoints;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "ownPoints").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SamuraiInvasionEventVO.prototype.isOwnWmoVO = function (e) {
+    return a.instanceOfClass(e, "SamuraiCampMapObjectVO");
+  };
+  Object.defineProperty(SamuraiInvasionEventVO.prototype, "addToOverview", {
+    get: function () {
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "addToOverview").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SamuraiInvasionEventVO.prototype.hasRewards = function () {
+    return true;
+  };
+  SamuraiInvasionEventVO.prototype.getRewards = function (e) {
+    if (e) {
+      return this.alliancescoreEventVO.rewardLists;
+    } else {
+      return this.scoreEventVO.rewardLists;
     }
   };
-  DifficultyScalingRewardDialogListItemSingleHeader.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    if (this.disp) {
-      this.disp.addEventListener(C.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
-      this.disp.addEventListener(C.MOUSE_UP, this.bindFunction(this.onMouseUp));
-    }
+  SamuraiInvasionEventVO.prototype.getRank = function (e) {
+    return r.int(e ? this.alliancescoreEventVO.ownRank : this.scoreEventVO.ownRank);
   };
-  DifficultyScalingRewardDialogListItemSingleHeader.prototype.removeEventListener = function () {
-    e.prototype.removeEventListener.call(this);
-    if (this.disp) {
-      this.disp.removeEventListener(C.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
-      this.disp.removeEventListener(C.MOUSE_UP, this.bindFunction(this.onMouseUp));
-    }
+  SamuraiInvasionEventVO.prototype.getScore = function (e) {
+    return r.int(e ? this.alliancescoreEventVO.ownPoints : this.scoreEventVO.ownPoints);
   };
-  DifficultyScalingRewardDialogListItemSingleHeader.prototype.onMouseOver = function (e) {
-    this._headerMC.mc_over.visible = true;
+  Object.defineProperty(SamuraiInvasionEventVO.prototype, "daimyoInfoVO", {
+    get: function () {
+      return this._daimyoInfoVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  SamuraiInvasionEventVO.prototype.isPlayerQualifiedForAllianceRewards = function () {
+    return this.scoreEventVO.isPlayerQualifiedForAllianceRewards;
   };
-  DifficultyScalingRewardDialogListItemSingleHeader.prototype.onMouseOut = function (e) {
-    this._headerMC.mc_over.visible = false;
-    this._headerMC.mc_down.visible = false;
+  SamuraiInvasionEventVO.prototype.allianceRewardThresholdPoints = function () {
+    return this.scoreEventVO.allianceRewardThresholdPoints;
   };
-  DifficultyScalingRewardDialogListItemSingleHeader.prototype.onMouseDown = function (e) {
-    this._headerMC.mc_down.visible = true;
-    this._headerMC.mc_over.visible = false;
+  SamuraiInvasionEventVO.__initialize_static_members = function () {
+    SamuraiInvasionEventVO.EVENT_BUILDING_WOD = 635;
   };
-  DifficultyScalingRewardDialogListItemSingleHeader.prototype.onMouseUp = function (e) {
-    this._headerMC.mc_down.visible = false;
-  };
-  return DifficultyScalingRewardDialogListItemSingleHeader;
-}(u.ACollapsibleItem);
-exports.DifficultyScalingRewardDialogListItemSingleHeader = _;
-a.classImplementsInterfaces(_, "ICollectableRendererList", "ICollapsibleItem", "ILayoutable");
+  SamuraiInvasionEventVO.EVENT_BUILDING_WOD = 635;
+  return SamuraiInvasionEventVO;
+}(g.AScoreEventVO);
+exports.SamuraiInvasionEventVO = C;
+var _ = require("./327.js");
+var m = require("./184.js");
+var f = require("./3734.js");
+o.classImplementsInterfaces(C, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable", "IAllianceRewardsQualifiable");
+C.__initialize_static_members();

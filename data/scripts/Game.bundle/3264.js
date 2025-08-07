@@ -3,38 +3,40 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./39.js");
-var s = require("./4.js");
-var r = require("./195.js");
-var l = function (e) {
-  function CollectableItemXpVE() {
+var a = require("./27.js");
+var s = require("./195.js");
+var r = function (e) {
+  function CollectableItemVipTimeVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemXpVE, e);
-  CollectableItemXpVE.prototype.textfieldUpdate = function () {
-    this.textfieldSetTextAsNumber(this.vo.amount);
-  };
-  CollectableItemXpVE.prototype.textfieldBackgroundVisible = function () {
-    return true;
-  };
-  CollectableItemXpVE.prototype.tooltipCreate = function () {
-    return this.tooltipCreateByTextId(s.CastleModel.userData.isLegend ? a.ClientConstTextIds.LEGEND_XP : this.vo.getTooltipTextId());
-  };
-  Object.defineProperty(CollectableItemXpVE.prototype, "iconClass", {
+  n.__extends(CollectableItemVipTimeVE, e);
+  Object.defineProperty(CollectableItemVipTimeVE.prototype, "iconClass", {
     get: function () {
-      if (s.CastleModel.userData.isLegend) {
-        return Library.CastleInterfaceElements_Icons.Icon_XP_Legend_Big;
-      } else {
-        return Library.CastleInterfaceElements_Icons.Icon_XP_Big;
-      }
+      return Library.CastleInterfaceElements_Icons.Icon_VipTime;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return CollectableItemXpVE;
-}(r.ACollectableItemSimpleIconVE);
-exports.CollectableItemXpVE = l;
-o.classImplementsInterfaces(l, "ICollectableRendererList");
+  CollectableItemVipTimeVE.prototype.textfieldBackgroundVisible = function () {
+    return true;
+  };
+  CollectableItemVipTimeVE.prototype.tooltipCreate = function () {
+    return {
+      t: "dialog_StarterDailyLoginBonus_premiumTime_v2",
+      p: [a.CastleTimeStringHelper.getFullTimeString(this.itemVipTimeVO.duration)]
+    };
+  };
+  Object.defineProperty(CollectableItemVipTimeVE.prototype, "itemVipTimeVO", {
+    get: function () {
+      return this.vo;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CollectableItemVipTimeVE;
+}(s.ACollectableItemSimpleIconVE);
+exports.CollectableItemVipTimeVE = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList");

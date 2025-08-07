@@ -1,66 +1,35 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function PaymentrewardRewardVO(e, t) {
-    this._xmlNode = e;
-    this._rewardList = t;
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./88.js");
+var s = require("./114.js");
+var r = function (e) {
+  function CastlePaymentRewardSpecialOfferAlienDialog() {
+    return e.call(this, CastlePaymentRewardSpecialOfferAlienDialog.NAME) || this;
   }
-  Object.defineProperty(PaymentrewardRewardVO.prototype, "c2ForReward", {
-    get: function () {
-      return this._xmlNode.c2ForReward;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PaymentrewardRewardVO.prototype, "shownOfferBonus", {
-    get: function () {
-      return this._xmlNode.shownOfferBonus;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PaymentrewardRewardVO.prototype, "shownValue", {
-    get: function () {
-      var e = 1;
-      if (this._xmlNode.displayType == PaymentrewardRewardVO.DISPLAY_TYPE_REAL_CURRENCY || this._xmlNode.displayType == PaymentrewardRewardVO.DISPLAY_TYPE_UNDEFINED) {
-        e = o.CastleHardCurrencyHelper.currencyFactor;
-      }
-      return this._xmlNode.shownCurrencyValue * e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PaymentrewardRewardVO.prototype, "displayTypeTextID", {
-    get: function () {
-      switch (this._xmlNode.displayType) {
-        case PaymentrewardRewardVO.DISPLAY_TYPE_PERCENT:
-          return "value_percentage";
-        case PaymentrewardRewardVO.DISPLAY_TYPE_RUBIES:
-          return "dialog_primeday_paymentTier_worth_rubies";
-        case PaymentrewardRewardVO.DISPLAY_TYPE_REAL_CURRENCY:
-          return "amountCurrency";
-      }
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PaymentrewardRewardVO.prototype, "rewardList", {
-    get: function () {
-      return this._rewardList;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  PaymentrewardRewardVO.__initialize_static_members = function () {
-    PaymentrewardRewardVO.DISPLAY_TYPE_PERCENT = 0;
-    PaymentrewardRewardVO.DISPLAY_TYPE_RUBIES = 1;
-    PaymentrewardRewardVO.DISPLAY_TYPE_REAL_CURRENCY = 2;
+  n.__extends(CastlePaymentRewardSpecialOfferAlienDialog, e);
+  CastlePaymentRewardSpecialOfferAlienDialog.prototype.setTextIDs = function () {
+    e.prototype.setTextIDs.call(this);
+    this.titleTextID = "dialog_primeday_alienInvasion_title";
+    this.descriptionTextID = "dialog_primeday_alienInvasion_description";
   };
-  PaymentrewardRewardVO.DISPLAY_TYPE_UNDEFINED = -1;
-  return PaymentrewardRewardVO;
-}();
-exports.PaymentrewardRewardVO = n;
-var o = require("./666.js");
-n.__initialize_static_members();
+  Object.defineProperty(CastlePaymentRewardSpecialOfferAlienDialog.prototype, "skinType", {
+    get: function () {
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_ALIEN;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastlePaymentRewardSpecialOfferAlienDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferAlienDialog.NAME = "CastlePaymentRewardSpecialOfferAlien";
+  };
+  return CastlePaymentRewardSpecialOfferAlienDialog;
+}(s.CastlePaymentRewardSpecialOfferDialog);
+exports.CastlePaymentRewardSpecialOfferAlienDialog = r;
+r.__initialize_static_members();
+o.classImplementsInterfaces(r, "ICollectableRendererList");

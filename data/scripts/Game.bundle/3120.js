@@ -2,22 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleLaboratoryProgressEvent(t, i, n = false, o = false) {
-    var s = this;
-    s.donatedAmount = 0;
-    s.objectID = 0;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SGetLaboratoryProgressVO(t) {
+    var i = this;
+    i.ID = 0;
     CONSTRUCTOR_HACK;
-    (s = e.call(this, t, n, o) || this).donatedAmount = i[1];
-    s.objectID = a.int(i[0]);
-    return s;
+    (i = e.call(this) || this).ID = t;
+    return i;
   }
-  n.__extends(CastleLaboratoryProgressEvent, e);
-  CastleLaboratoryProgressEvent.__initialize_static_members = function () {
-    CastleLaboratoryProgressEvent.NEW_PROGRESS = "new_progress";
+  n.__extends(C2SGetLaboratoryProgressVO, e);
+  C2SGetLaboratoryProgressVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_LABORITORY_PROGRESS_EVENT;
   };
-  return CastleLaboratoryProgressEvent;
-}(createjs.Event);
-exports.CastleLaboratoryProgressEvent = o;
-var a = require("./6.js");
-o.__initialize_static_members();
+  return C2SGetLaboratoryProgressVO;
+}(o.BasicCommandVO);
+exports.C2SGetLaboratoryProgressVO = s;

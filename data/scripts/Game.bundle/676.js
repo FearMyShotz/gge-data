@@ -2,83 +2,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function ACastleLegendSkillTreeNode(e) {
-    this._id = 0;
-    this._id = e;
-    this._childs = [];
-    this._unlockRequirements = [];
-  }
-  ACastleLegendSkillTreeNode.prototype.insertSkill = function (e) {
-    if (this.childNodeClass != null) {
-      if (!this.getChildNode(this.childIDProperty(e))) {
-        this._childs.push(new this.childNodeClass(this.childIDProperty(e)));
-      }
-      this.getChildNode(this.childIDProperty(e)).insertSkill(e);
-    }
+  function ClientConstMailFilter() {}
+  ClientConstMailFilter.__initialize_static_members = function () {
+    ClientConstMailFilter.TYPELIST_INBOX = [o.MessageConst.MESSAGE_TYPE_SYSTEM, o.MessageConst.MESSAGE_TYPE_USER_IN, o.MessageConst.MESSAGE_TYPE_ALLIANCE_REQUEST, o.MessageConst.MESSAGE_TYPE_BATTLE_LOG, o.MessageConst.MESSAGE_TYPE_CONQUERABLE_AREA, o.MessageConst.MESSAGE_TYPE_SPY_NPC, o.MessageConst.MESSAGE_TYPE_SPY_PLAYER, o.MessageConst.MESSAGE_TYPE_SPY_CANCELLED, o.MessageConst.MESSAGE_TYPE_ATTACK_CANCELLED, o.MessageConst.MESSAGE_TYPE_STARVE_INFO, o.MessageConst.MESSAGE_TYPE_BUILDING_DISABLED, o.MessageConst.MESSAGE_TYPE_MARKET_CARRIAGE_ARRIVED, o.MessageConst.MESSAGE_TYPE_ABO, o.MessageConst.MESSAGE_TYPE_PAYMENT_DOPPLER, o.MessageConst.MESSAGE_TYPE_REBUY, o.MessageConst.MESSAGE_TYPE_STARVE_VILLAGE_LOST, o.MessageConst.MESSAGE_TYPE_STARVE_ISLE_RESOURCE_LOST, o.MessageConst.MESSAGE_TYPE_SPECIAL_EVENT, o.MessageConst.MESSAGE_TYPE_TOURNAMENT_OVER, o.MessageConst.MESSAGE_RUIN_INFO, o.MessageConst.MESSAGE_TYPE_SUBSCRIPTION, o.MessageConst.MESSAGE_TYPE_THANKY_YOU_PACKAGE, o.MessageConst.MESSAGE_TYPE_HIGHSCORE_BONUS, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_TITLE, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_REWARD, o.MessageConst.MESSAGE_TYPE_ALLIANCE_WAR, o.MessageConst.MESSAGE_TYPE_ALLIANCE_NEWSLETTER, o.MessageConst.MESSAGE_TYPE_PLAYER_GIFT, o.MessageConst.MESSAGE_TYPE_ALLIANCE_BOOKMARK, o.MessageConst.MESSAGE_TYPE_FIND_A_FRIEND, o.MessageConst.MESSAGE_TYPE_FRIEND_INVITE_TEASER, o.MessageConst.MESSAGE_TYPE_FRIEND_JOIN_THE_GAME, o.MessageConst.MESSAGE_TYPE_FRIEND_REACHED_A_LEVEL, o.MessageConst.MESSAGE_TYPE_X_FRIENDS_BOUGHT_RUBIES, o.MessageConst.MESSAGE_TYPE_FRIEND_BOUGHT_RUBIES, o.MessageConst.MESSAGE_TYPE_PATCH_NOTES, o.MessageConst.MESSAGE_TYPE_EVENT_ANNOUNCEMENT, o.MessageConst.MESSAGE_TYPE_LOWLEVEL_UNDERWORLD, o.MessageConst.MESSAGE_TYPE_USER_SURVEY, o.MessageConst.MESSAGE_TYPE_FRIEND_INVITE, o.MessageConst.MESSAGE_TYPE_NEW_FRIENDSHIP, o.MessageConst.MESSAGE_TYPE_TEXT_ID, o.MessageConst.MESSAGE_TYPE_POPUP, o.MessageConst.MESSAGE_TYPE_DOWNTIME_STATUS, o.MessageConst.MESSAGE_TYPE_ATTACK_COUNT_THRESHOLD, o.MessageConst.MESSAGE_TYPE_ATTACK_ADVISOR_FAILURE, o.MessageConst.MESSAGE_TYPE_ATTACK_ADVISOR_SUMMARY];
+    ClientConstMailFilter.TYPELIST_OUTBOX = [o.MessageConst.MESSAGE_TYPE_USER_OUT];
+    ClientConstMailFilter.TYPELIST_PLAYER = [o.MessageConst.MESSAGE_TYPE_USER_IN, o.MessageConst.MESSAGE_TYPE_SYSTEM, o.MessageConst.MESSAGE_TYPE_PATCH_NOTES, o.MessageConst.MESSAGE_TYPE_ALLIANCE_REQUEST, o.MessageConst.MESSAGE_TYPE_ATTACK_CANCELLED, o.MessageConst.MESSAGE_TYPE_STARVE_INFO, o.MessageConst.MESSAGE_TYPE_BUILDING_DISABLED, o.MessageConst.MESSAGE_TYPE_MARKET_CARRIAGE_ARRIVED, o.MessageConst.MESSAGE_TYPE_ABO, o.MessageConst.MESSAGE_TYPE_PAYMENT_DOPPLER, o.MessageConst.MESSAGE_TYPE_REBUY, o.MessageConst.MESSAGE_TYPE_STARVE_VILLAGE_LOST, o.MessageConst.MESSAGE_TYPE_STARVE_ISLE_RESOURCE_LOST, o.MessageConst.MESSAGE_TYPE_SPECIAL_EVENT, o.MessageConst.MESSAGE_TYPE_TOURNAMENT_OVER, o.MessageConst.MESSAGE_RUIN_INFO, o.MessageConst.MESSAGE_TYPE_SUBSCRIPTION, o.MessageConst.MESSAGE_TYPE_THANKY_YOU_PACKAGE, o.MessageConst.MESSAGE_TYPE_HIGHSCORE_BONUS, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_TITLE, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_REWARD, o.MessageConst.MESSAGE_TYPE_CONQUERABLE_AREA, o.MessageConst.MESSAGE_TYPE_ALLIANCE_WAR, o.MessageConst.MESSAGE_TYPE_ALLIANCE_NEWSLETTER, o.MessageConst.MESSAGE_TYPE_ALLIANCE_BOOKMARK, o.MessageConst.MESSAGE_TYPE_FIND_A_FRIEND, o.MessageConst.MESSAGE_TYPE_FRIEND_INVITE_TEASER, o.MessageConst.MESSAGE_TYPE_FRIEND_JOIN_THE_GAME, o.MessageConst.MESSAGE_TYPE_FRIEND_REACHED_A_LEVEL, o.MessageConst.MESSAGE_TYPE_X_FRIENDS_BOUGHT_RUBIES, o.MessageConst.MESSAGE_TYPE_FRIEND_BOUGHT_RUBIES, o.MessageConst.MESSAGE_TYPE_EVENT_ANNOUNCEMENT, o.MessageConst.MESSAGE_TYPE_POPUP, o.MessageConst.MESSAGE_TYPE_DOWNTIME_STATUS];
+    ClientConstMailFilter.TYPELIST_SYSTEM = [o.MessageConst.MESSAGE_TYPE_SYSTEM, o.MessageConst.MESSAGE_TYPE_PATCH_NOTES, o.MessageConst.MESSAGE_TYPE_ALLIANCE_REQUEST, o.MessageConst.MESSAGE_TYPE_BATTLE_LOG, o.MessageConst.MESSAGE_TYPE_CONQUERABLE_AREA, o.MessageConst.MESSAGE_TYPE_ATTACK_CANCELLED, o.MessageConst.MESSAGE_TYPE_STARVE_INFO, o.MessageConst.MESSAGE_TYPE_BUILDING_DISABLED, o.MessageConst.MESSAGE_TYPE_MARKET_CARRIAGE_ARRIVED, o.MessageConst.MESSAGE_TYPE_ABO, o.MessageConst.MESSAGE_TYPE_PAYMENT_DOPPLER, o.MessageConst.MESSAGE_TYPE_REBUY, o.MessageConst.MESSAGE_TYPE_STARVE_VILLAGE_LOST, o.MessageConst.MESSAGE_TYPE_STARVE_ISLE_RESOURCE_LOST, o.MessageConst.MESSAGE_TYPE_SPECIAL_EVENT, o.MessageConst.MESSAGE_TYPE_TOURNAMENT_OVER, o.MessageConst.MESSAGE_RUIN_INFO, o.MessageConst.MESSAGE_TYPE_SUBSCRIPTION, o.MessageConst.MESSAGE_TYPE_THANKY_YOU_PACKAGE, o.MessageConst.MESSAGE_TYPE_HIGHSCORE_BONUS, o.MessageConst.MESSAGE_TYPE_PRIVATE_OFFER, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_TITLE, o.MessageConst.MESSAGE_TYPE_ISLAND_KINGDOM_REWARD, o.MessageConst.MESSAGE_TYPE_ALLIANCE_WAR, o.MessageConst.MESSAGE_TYPE_EVENT_ANNOUNCEMENT, o.MessageConst.MESSAGE_TYPE_LOWLEVEL_UNDERWORLD, o.MessageConst.MESSAGE_TYPE_USER_SURVEY, o.MessageConst.MESSAGE_TYPE_TEXT_ID, o.MessageConst.MESSAGE_TYPE_POPUP, o.MessageConst.MESSAGE_TYPE_DOWNTIME_STATUS];
+    ClientConstMailFilter.TYPELIST_SPY = [o.MessageConst.MESSAGE_TYPE_SPY_PLAYER, o.MessageConst.MESSAGE_TYPE_SPY_NPC, o.MessageConst.MESSAGE_TYPE_SPY_CANCELLED];
+    ClientConstMailFilter.TYPELIST_BATTLE_AND_SPY = [o.MessageConst.MESSAGE_TYPE_BATTLE_LOG, o.MessageConst.MESSAGE_TYPE_SPY_NPC, o.MessageConst.MESSAGE_TYPE_SPY_PLAYER, o.MessageConst.MESSAGE_TYPE_SPY_CANCELLED];
+    ClientConstMailFilter.TYPELIST_SPECIAL_OFFER = [o.MessageConst.MESSAGE_TYPE_PRIVATE_OFFER];
   };
-  Object.defineProperty(ACastleLegendSkillTreeNode.prototype, "childNodeClass", {
-    get: function () {
-      return null;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ACastleLegendSkillTreeNode.prototype.childIDProperty = function (e) {
-    return 0;
-  };
-  ACastleLegendSkillTreeNode.prototype.getChildNode = function (e) {
-    if (this._childs != null) {
-      for (var t = 0, i = this._childs; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.id == e) {
-          return n;
-        }
-      }
-    }
-    return null;
-  };
-  Object.defineProperty(ACastleLegendSkillTreeNode.prototype, "id", {
-    get: function () {
-      return this._id;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ACastleLegendSkillTreeNode.prototype, "childs", {
-    get: function () {
-      return this._childs;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ACastleLegendSkillTreeNode.prototype, "unlockRequirements", {
-    get: function () {
-      return this._unlockRequirements;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ACastleLegendSkillTreeNode.prototype.isUnlocked = function () {
-    for (var e = 0; e < this._unlockRequirements.length; e++) {
-      if (!this._unlockRequirements[e].isUnlocked()) {
-        return false;
-      }
-    }
-    return true;
-  };
-  ACastleLegendSkillTreeNode.prototype.getUnlockText = function () {
-    var e = "";
-    for (var t = 0; t < this._unlockRequirements.length; t++) {
-      var i = this._unlockRequirements[t];
-      if (!i.isUnlocked() && (e += e != "" ? "\n" : "", e += i.getUnlockRequirementText(), !i.showFollowingRequirements)) {
-        break;
-      }
-    }
-    return e;
-  };
-  ACastleLegendSkillTreeNode.prototype.addUnlockRequirement = function (e) {
-    this._unlockRequirements.push(e);
-  };
-  return ACastleLegendSkillTreeNode;
+  return ClientConstMailFilter;
 }();
-exports.ACastleLegendSkillTreeNode = n;
+exports.ClientConstMailFilter = n;
+var o = require("./5.js");
+n.__initialize_static_members();

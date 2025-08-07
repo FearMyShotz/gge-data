@@ -10,7 +10,7 @@ var l = require("./18.js");
 var c = require("./51.js");
 var u = require("./53.js");
 var d = require("./4.js");
-var p = require("./524.js");
+var p = require("./525.js");
 var h = require("./236.js");
 var g = function (e) {
   function ButtonSupportDefenceComponent(t) {
@@ -71,4 +71,4 @@ var _ = require("./395.js");
 var m = require("./238.js");
 o.classImplementsInterfaces(g, "IWorldMapObjectRingmenuButtonComponent");
 var f = require("./1.js");
-var O = require("./581.js");
+var O = require("./582.js");

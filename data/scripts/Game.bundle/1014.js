@@ -2,71 +2,34 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./4.js");
-var r = function (e) {
-  function AUnitProductionBuildingVO() {
-    var t = this;
-    t._productionSpeed = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./97.js");
+var c = require("./452.js");
+var u = function (e) {
+  function BakeryBuildingVO() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AUnitProductionBuildingVO, e);
-  AUnitProductionBuildingVO.prototype.parseServerObject = function (t) {
-    e.prototype.parseServerObject.call(this, t);
-    this._productionSpeed = a.int(t.shift());
-  };
-  AUnitProductionBuildingVO.prototype.cloneFrom = function (t) {
-    e.prototype.cloneFrom.call(this, t);
-    var i = t;
-    if (i) {
-      this._productionSpeed = i._productionSpeed;
+  n.__extends(BakeryBuildingVO, e);
+  Object.defineProperty(BakeryBuildingVO.prototype, "isBoostableBuilding", {
+    get: function () {
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(c.AProductionBuildingVO.prototype, "isBoostableBuilding").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  BakeryBuildingVO.prototype.createInfoPanelItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_FoodConsumption, "foodwastage", new r.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, [this.foodReduction]), this.getInfoItemTextColor(l.CastleEffectEnum.FOODREDUCTION), true);
+    if (this.decoPoints > 0) {
+      e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), this.getInfoItemTextColor(l.CastleEffectEnum.DECOPOINTS), true);
     }
   };
-  Object.defineProperty(AUnitProductionBuildingVO.prototype, "unitCategory", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AUnitProductionBuildingVO.prototype, "isProductive", {
-    get: function () {
-      return false;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AUnitProductionBuildingVO.prototype, "isFestivalActive", {
-    get: function () {
-      return s.CastleModel.boostData.festivalVO.isActive;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AUnitProductionBuildingVO.prototype, "recruitCategory", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AUnitProductionBuildingVO.prototype, "recruitFilter", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AUnitProductionBuildingVO.prototype, "productionSpeed", {
-    get: function () {
-      return this._productionSpeed;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AUnitProductionBuildingVO;
-}(require("./452.js").AProductionBuildingVO);
-exports.AUnitProductionBuildingVO = r;
-o.classImplementsInterfaces(r, "IShopVO", "ICostVO", "IInventoryVO");
+  return BakeryBuildingVO;
+}(c.AProductionBuildingVO);
+exports.BakeryBuildingVO = u;
+a.classImplementsInterfaces(u, "IShopVO", "ICostVO", "IInventoryVO");

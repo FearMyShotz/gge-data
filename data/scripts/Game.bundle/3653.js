@@ -8,128 +8,177 @@ var s = require("./1.js");
 var r = require("./3.js");
 var l = require("./3.js");
 var c = require("./3.js");
-var u = require("./39.js");
-var d = require("./21.js");
-var p = require("./4.js");
-var h = require("./130.js");
-var g = require("./8.js");
-var C = function (e) {
-  function CastlePrivateOfferBrandDialog() {
+var u = require("./6.js");
+var d = require("./60.js");
+var p = require("./146.js");
+var h = require("./21.js");
+var g = require("./4.js");
+var C = require("./130.js");
+var _ = require("./227.js");
+var m = require("./27.js");
+var f = require("./307.js");
+var O = require("./1746.js");
+var E = require("./11.js");
+var y = createjs.MovieClip;
+var b = function (e) {
+  function CastlePrivateOfferCoinmineDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, CastlePrivateOfferBrandDialog.NAME) || this;
+    return e.call(this, CastlePrivateOfferCoinmineDialog.NAME) || this;
   }
-  n.__extends(CastlePrivateOfferBrandDialog, e);
-  CastlePrivateOfferBrandDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.mc_pay.btn_ok]);
-    this.setMouseChildren();
-    this.setTitleText();
-  };
-  CastlePrivateOfferBrandDialog.prototype.initPayment = function () {
-    this.dialogDisp.mc_pay.btn_ok.toolTipText = "dialog_specialOfferBrand_takeOffer";
-    this.dialogDisp.mc_pay.mc_info_icon.toolTipText = u.ClientConstTextIds.C2;
-  };
-  CastlePrivateOfferBrandDialog.prototype.initReward = function () {
-    this._rewardList = this.dialogProperties.offerVO.getTotalRewardListFromOfferVO();
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_reward.txt_title, new l.LocalizedTextVO("dialog_specialOfferBrand_takeOffer"), new o.InternalGGSTextFieldConfigVO(true));
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_pay.mc_info_icon.txt_value, new r.LocalizedNumberVO(p.CastleModel.costsData.getFinalCostsC2(this.dialogProperties.offerVO.getCostsForOfferAcception().getAmountOrDefaultByType(_.CollectableEnum.C2))), new o.InternalGGSTextFieldConfigVO(true));
-    this.initRewardItem(this.dialogDisp.mc_reward.mc_item_1, 0, this._rewardList.getAmountOrDefaultByType(_.CollectableEnum.C1));
-    this.initRewardItem(this.dialogDisp.mc_reward.mc_item_2, 1, this._rewardList.getAmountOrDefaultByType(_.CollectableEnum.FOOD));
-    this.initRewardItem(this.dialogDisp.mc_reward.mc_item_3, 2, this._rewardList.getAmountOrDefaultByType(_.CollectableEnum.STONE));
-  };
-  CastlePrivateOfferBrandDialog.prototype.initRewardItem = function (e, t, i) {
-    this.textFieldManager.registerTextField(e.txt_value, new r.LocalizedNumberVO(t != 2 ? this._rewardList.getItemByType(_.CollectableEnum.UNITS).amount : this._rewardList.getAmountOrDefaultByType(_.CollectableEnum.FOOD)), new o.InternalGGSTextFieldConfigVO(true));
-  };
-  CastlePrivateOfferBrandDialog.prototype.initInfos = function (e, t, i) {
-    this.initInfo(this.dialogDisp.mc_info_1, e, "dialog_specialOfferBrand_check1");
-    this.initInfo(this.dialogDisp.mc_info_2, t, "dialog_specialOfferBrand_check2");
-    this.initInfo(this.dialogDisp.mc_info_3, i, "dialog_specialOfferBrand_check3");
-  };
-  CastlePrivateOfferBrandDialog.prototype.initInfo = function (e, t, i) {
-    if (t) {
-      e.mc_checkBox.gotoAndStop("enabled");
-    } else {
-      e.mc_checkBox.gotoAndStop("disabled");
-    }
-    this.textFieldManager.registerTextField(e.txt_unit, new l.LocalizedTextVO(i), new o.InternalGGSTextFieldConfigVO(true));
-  };
-  CastlePrivateOfferBrandDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    this.initReward();
-    this.initPayment();
-    this.initInfos(true, true, true);
-    this.setRemainingTime();
-    this.setIconRewardInfo();
-    p.CastleModel.timerData.addEventListener(d.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.setRemainingTime));
-    p.CastleModel.privateOfferData.addEventListener(h.PrivateOfferDataEvent.PRIVATE_OFFER_REMOVED, this.bindFunction(this.onOfferEnded));
-  };
-  CastlePrivateOfferBrandDialog.prototype.onOfferEnded = function (e) {
-    if (e.offerVO == this.dialogProperties.offerVO) {
-      this.hide();
-    }
-  };
-  CastlePrivateOfferBrandDialog.prototype.setIconRewardInfo = function () {
-    var e = this._rewardList.containsType(_.CollectableEnum.EXTINGUISH_FIRE);
-    var t = this._rewardList.getFilteredListByType(_.CollectableEnum.UNITS);
-    for (var i = 1; i <= 2; i++) {
-      var n = t.getItemByIndex(i - 1).unitVO;
-      this.dialogDisp.mc_reward["mc_item_" + i].mc_icon.gotoAndStop(6);
-      m.WodPicHelper.addUnitPic(n, this.dialogDisp.mc_reward["mc_item_" + i].mc_icon.mc_units, 32, 32, 0, 0);
-      this.dialogDisp.mc_reward["mc_item_" + i].toolTipText = n.getNameString();
-    }
-    this.dialogDisp.mc_reward.mc_item_3.mc_icon.gotoAndStop(5);
-    this.dialogDisp.mc_reward.mc_item_3.toolTipText = "food";
-    this.dialogDisp.mc_reward.mc_image.mouseChildren = false;
-    this.dialogDisp.mc_reward.mc_image.visible = e;
-    this.dialogDisp.mc_reward.mc_image.toolTipText = "repairAll";
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_reward.txt_title, new l.LocalizedTextVO("reward"), new o.InternalGGSTextFieldConfigVO(true));
-    this.dialogDisp.mc_reward.mc_item_1.mouseChildren = this.dialogDisp.mc_reward.mc_item_2.mouseChildren = this.dialogDisp.mc_reward.mc_item_3.mouseChildren = false;
-  };
-  CastlePrivateOfferBrandDialog.prototype.setMouseChildren = function () {
-    this.dialogDisp.mc_reward.mouseChildren = true;
-    this.dialogDisp.mc_pay.mouseChildren = true;
-    this.dialogDisp.mc_pay.mc_info_icon.mouseChildren = false;
-  };
-  CastlePrivateOfferBrandDialog.prototype.setRemainingTime = function (e = null) {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_time, new c.TextVO(a.TimeStringHelper.getHoureMinuteSecondTimeString(this.dialogProperties.offerVO.remainingSeconds)));
-  };
-  CastlePrivateOfferBrandDialog.prototype.setCopyTexts = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new l.LocalizedTextVO("dialog_specialOfferBrand_copy"), new o.InternalGGSTextFieldConfigVO(true));
-  };
-  CastlePrivateOfferBrandDialog.prototype.setTitleText = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new l.LocalizedTextVO("dialog_specialOfferBrand_title"), new o.InternalGGSTextFieldConfigVO(true));
-  };
-  CastlePrivateOfferBrandDialog.prototype.onClick = function (t) {
-    if (g.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-          this.hide();
-          break;
-        case this.dialogDisp.mc_pay.btn_ok:
-          p.CastleModel.privateOfferData.sendOfferPay(this.dialogProperties.offerVO.id);
-          this.hide();
-      }
-    }
-  };
-  CastlePrivateOfferBrandDialog.prototype.hideLoaded = function (t = null) {
-    e.prototype.hideLoaded.call(this);
-    p.CastleModel.timerData.removeEventListener(d.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.setRemainingTime));
-    p.CastleModel.privateOfferData.removeEventListener(h.PrivateOfferDataEvent.PRIVATE_OFFER_STATE_CHANGED, this.bindFunction(this.onOfferEnded));
-  };
-  Object.defineProperty(CastlePrivateOfferBrandDialog.prototype, "dialogProperties", {
+  n.__extends(CastlePrivateOfferCoinmineDialog, e);
+  Object.defineProperty(CastlePrivateOfferCoinmineDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastlePrivateOfferBrandDialog.__initialize_static_members = function () {
-    CastlePrivateOfferBrandDialog.NAME = "CastlePrivateOfferBrand";
+  CastlePrivateOfferCoinmineDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this);
+    this.initBasicButtons([this.dialogDisp.btn_build, this.dialogDisp.btn_close, this.dialogDisp.mc_progress.btn_payment]);
+    this.mc_tooltip = new Library.CastleInterfaceElements.DecoShopPanel_BuildingTooltip();
   };
-  return CastlePrivateOfferBrandDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastlePrivateOfferBrandDialog = C;
-var _ = require("./12.js");
-var m = require("./63.js");
-s.classImplementsInterfaces(C, "ICollectableRendererList");
-C.__initialize_static_members();
+  CastlePrivateOfferCoinmineDialog.prototype.applyPropertiesLoaded = function (t = null) {
+    e.prototype.applyPropertiesLoaded.call(this, t);
+    var i = this.dialogProperties.offerVO.getAdditionalComponentByName(d.ClientConstOffer.OFFER_ADDITIONAL_BUILDING_ID).ID;
+    var n = g.CastleModel.wodData.createVObyWOD(i, D.CastleWodData.TYPE_BUILDING);
+    var a = n.mineTypeId;
+    var s = g.CastleModel.mineData.getMineVOByObjectID(a);
+    var p = s.totalAmount;
+    var h = s.totalLootableAmount;
+    var C = s.waitingTime;
+    var m = u.int(s.amountPerCollect);
+    var f = h * C;
+    var O = u.int(f / 60 / 60 / 24);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_short_description, new l.LocalizedTextVO("alert_goldmine_bonustext", [new r.LocalizedNumberVO(O), new r.LocalizedNumberVO(p)]));
+    this.dialogDisp.mc_progress.btn_payment.toolTipText = "add_gold";
+    this.dialogDisp.mc_progress.mc_progbarcontainer.toolTipText = "panel_quest_progress";
+    this.dialogDisp.mc_progress.mc_progbarcontainer.mouseChildren = false;
+    this.dialogDisp.mc_progress.icon_ruby.toolTipText = "gold";
+    var E = c.Localize.number(n.decoPoints);
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_publicOrder.txt_value, new c.TextVO(E));
+    this.dialogDisp.mc_publicOrder.mouseChildren = false;
+    this.dialogDisp.mc_publicOrder.toolTipText = "dialog_buildingInfo_publicOrder";
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_time.txt_remaning_time, new c.TextVO("")).textAlign = o.GGSTextAlign.LEFT;
+    if (this.dialogProperties.offerVO.offerState === _.PrivateOfferStateEnum.OFFER_PENDING || this.dialogProperties.offerVO.offerState === _.PrivateOfferStateEnum.OFFER_READY) {
+      this.setBuildAbleState();
+    } else {
+      this.setOfferProgressState(O, m);
+    }
+    this.onUpdateEventTime(null);
+    this.dialogDisp.icon_mine.mouseChildren = false;
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.showToolTip = function () {
+    var e = this.dialogProperties.offerVO.getVisualComponentByName(d.ClientConstOffer.OFFER_VISUAL_OFFER_DIALOG);
+    var t = u.int(e.dialogCustomization.BID);
+    var i = g.CastleModel.wodData.createVObyWOD(t, D.CastleWodData.TYPE_BUILDING);
+    f.DecoBuildingToolTipManager.showToolTip(this.dialogDisp.icon_mine, i);
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this);
+    f.DecoBuildingToolTipManager.hideToolTip();
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.addEventListenerOnShow = function () {
+    e.prototype.addEventListenerOnShow.call(this);
+    g.CastleModel.timerData.addEventListener(h.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateEventTime));
+    g.CastleModel.privateOfferData.addEventListener(C.PrivateOfferDataEvent.PRIVATE_OFFER_REMOVED, this.bindFunction(this.onOfferRemoved));
+    g.CastleModel.privateOfferData.addEventListener(C.PrivateOfferDataEvent.PRIVATE_OFFER_UPDATED, this.bindFunction(this.onOfferUpdated));
+    g.CastleModel.privateOfferData.addEventListener(C.PrivateOfferDataEvent.PRIVATE_OFFER_STATE_CHANGED, this.bindFunction(this.onOfferUpdated));
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.removeEventListenerOnHide = function () {
+    g.CastleModel.privateOfferData.removeEventListener(C.PrivateOfferDataEvent.PRIVATE_OFFER_REMOVED, this.bindFunction(this.onOfferRemoved));
+    g.CastleModel.privateOfferData.removeEventListener(C.PrivateOfferDataEvent.PRIVATE_OFFER_UPDATED, this.bindFunction(this.onOfferUpdated));
+    g.CastleModel.privateOfferData.removeEventListener(C.PrivateOfferDataEvent.PRIVATE_OFFER_STATE_CHANGED, this.bindFunction(this.onOfferUpdated));
+    g.CastleModel.timerData.removeEventListener(h.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateEventTime));
+    e.prototype.removeEventListenerOnHide.call(this);
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.onOfferUpdated = function (e) {
+    if (e.offerVO.id == this.dialogProperties.offerVO.id) {
+      if (this.dialogProperties.offerVO.offerState === _.PrivateOfferStateEnum.OFFER_PENDING || this.dialogProperties.offerVO.offerState === _.PrivateOfferStateEnum.OFFER_READY) {
+        this.setBuildAbleState();
+      } else {
+        this.setProgress();
+      }
+    }
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.setOfferProgressState = function (e, t) {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new l.LocalizedTextVO("dialog_coinmine_desc")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_condition, new l.LocalizedTextVO("dialog_coinmine_desc_detail", [e, t]));
+    this.setProgress();
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.setBuildAbleState = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new l.LocalizedTextVO("dialog_coinmine_desc_bought")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_condition, new l.LocalizedTextVO("dialog_coinmine_desc_bought_detail"));
+    this.setBuildBtn();
+    this.dialogDisp.btn_build.toolTipText = "build";
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.setProgress = function () {
+    var e = this.dialogProperties.offerVO.getQuestConditionByName(d.ClientConstOffer.QUEST_CONDITION_PAYMENT_MIN_WITH_UPDATE);
+    var t = e.conditionTextReplacements[0];
+    var i = e.conditionTextReplacements[1];
+    this.dialogDisp.mc_progress.visible = true;
+    this.dialogDisp.btn_build.visible = false;
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_progress.txt_progress, new l.LocalizedTextVO(a.GenericTextIds.VALUE_PROPORTIONAL_VALUE, [new r.LocalizedNumberVO(t), new r.LocalizedNumberVO(i)])).autoFitToBounds;
+    this.dialogDisp.mc_progress.mc_progbarcontainer.progress_bar.scaleX = t / i;
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.setBuildBtn = function () {
+    this.dialogDisp.mc_progress.visible = false;
+    this.dialogDisp.btn_build.visible = true;
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.mc_progress.btn_payment:
+        p.CastleOpenShopExecutor.open(p.CastleOpenShopExecutor.SOURCE_PRIVATE_OFFER_COINMINE, I.CXFSourceTrackingConstants.SOURCE_PRIVATE_OFFER_COINMINE);
+        break;
+      case this.dialogDisp.btn_build:
+        this.onBuildingBuy();
+        this.hide();
+    }
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.onMouseOver = function (t) {
+    e.prototype.onMouseOver.call(this, t);
+    if (t.target instanceof y) {
+      this.mc_tooltip.visible = t.target == this.dialogDisp.icon_mine || t.target == this.dialogDisp.mc_tooltip;
+      if (t.target == this.dialogDisp.icon_mine || t.target == this.dialogDisp.mc_tooltip) {
+        this.showToolTip();
+      } else {
+        f.DecoBuildingToolTipManager.hideToolTip();
+      }
+    }
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.onMouseOut = function (t) {
+    e.prototype.onMouseOut.call(this, t);
+    this.mc_tooltip.visible = false;
+    f.DecoBuildingToolTipManager.hideToolTip();
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.onBuildingBuy = function () {
+    var e = this.dialogProperties.offerVO.getAdditionalComponentByName(d.ClientConstOffer.OFFER_ADDITIONAL_BUILDING_ID);
+    this.layoutManager.showEventBuildingPanel(new O.CastleEventBuildingPanelProperties(e.ID, this.dialogProperties.offerVO));
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.onUpdateEventTime = function (e) {
+    var t = u.int(this.dialogProperties.offerVO.remainingSeconds);
+    m.CastleTimeStringHelper.setEventTime(this.dialogDisp.mc_time.txt_remaning_time, t, null, null, true);
+    m.CastleTimeStringHelper.setEventTimeToolTip(this.dialogDisp.mc_time, t);
+  };
+  CastlePrivateOfferCoinmineDialog.prototype.onOfferRemoved = function (e) {
+    if (e.offerVO.id == this.dialogProperties.offerVO.id) {
+      this.hide();
+    }
+  };
+  CastlePrivateOfferCoinmineDialog.__initialize_static_members = function () {
+    CastlePrivateOfferCoinmineDialog.NAME = "CastlePrivateOfferCoinmine";
+  };
+  return CastlePrivateOfferCoinmineDialog;
+}(E.CastleExternalDialog);
+exports.CastlePrivateOfferCoinmineDialog = b;
+var D = require("./56.js");
+var I = require("./107.js");
+s.classImplementsInterfaces(b, "ICollectableRendererList");
+b.__initialize_static_members();

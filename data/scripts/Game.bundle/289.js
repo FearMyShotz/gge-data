@@ -225,6 +225,6 @@ var c = function (e) {
   return CollectableItemRelicVO;
 }(require("./96.js").ACollectableItemVO);
 exports.CollectableItemRelicVO = c;
-var u = require("./684.js");
-var d = require("./610.js");
+var u = require("./686.js");
+var d = require("./611.js");
 var p = require("./1.js");

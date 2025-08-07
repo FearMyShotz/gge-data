@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function UPSCommand() {
+  function STSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(UPSCommand, e);
-  Object.defineProperty(UPSCommand.prototype, "cmdId", {
+  n.__extends(STSCommand, e);
+  Object.defineProperty(STSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_UNLOCK_PACKAGE_SLOT;
+      return s.ClientConstSF.S2C_STORE_SOLDIERS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,20 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  UPSCommand.prototype.executeCommand = function (e, t) {
+  STSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.militaryData.parse_SPL(i.spl);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        r.CastleModel.boostData.parse_BOI(i.boi);
+        r.CastleModel.militaryData.parse_GUI(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return UPSCommand;
+  return STSCommand;
 }(l.CastleCommand);
-exports.UPSCommand = c;
+exports.STSCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

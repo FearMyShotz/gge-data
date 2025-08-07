@@ -3,30 +3,51 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./4.js");
-var l = function (e) {
-  function RingMenuButtonConstructor() {
+var a = require("./62.js");
+var s = function (e) {
+  function ConstructorBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RingMenuButtonConstructor, e);
-  RingMenuButtonConstructor.prototype.init = function (t, i, n) {
-    e.prototype.init.call(this, t, i, n);
-    this._disp = i.btn_constructor;
-    this._disp.visible = a.instanceOfClass(n, "ConstructorBuildingVE") && n.buildingVO.buildingState.isFunctionally && n.buildingVO.requiredLevel <= r.CastleModel.userData.level;
+  n.__extends(ConstructorBuildingVE, e);
+  Object.defineProperty(ConstructorBuildingVE.prototype, "buildingGroundIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements.Icon_Constructor;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ConstructorBuildingVE.prototype.createAdditionalClips = function () {
+    e.prototype.createAdditionalClips.call(this);
+    if (c.CastleModel.areaData.activeArea && c.CastleModel.areaData.activeArea.isMyArea && c.CastleModel.constructionItemData.hasNewExpiredItems()) {
+      this.additionalClips.addClips(l.IsoAdditionalClipEnum.EXCLAMATION_MARK);
+    }
   };
-  RingMenuButtonConstructor.prototype.onClick = function (e, t) {
-    c.CastleDialogHandler.getInstance().registerDefaultDialogs(u.CastleConstructionItemsMainDialog, new d.CastleConstructionItemsMainDialogProperties());
-    this.parent.hide();
+  ConstructorBuildingVE.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    c.CastleModel.constructionItemData.addEventListener(u.CastleConstructionItemsEvent.LAST_EXPIRATION_TIME_SAVED, this.bindFunction(this.onExpirationDataChanged));
+    c.CastleModel.constructionItemData.addEventListener(u.CastleConstructionItemsEvent.NEC_RECEIVED, this.bindFunction(this.onExpirationDataChanged));
   };
-  RingMenuButtonConstructor.prototype.getInfoText = function () {
-    return s.Localize.text("ringmenu_building_constructor");
+  ConstructorBuildingVE.prototype.removeEventListener = function () {
+    e.prototype.removeEventListener.call(this);
+    c.CastleModel.constructionItemData.removeEventListener(u.CastleConstructionItemsEvent.LAST_EXPIRATION_TIME_SAVED, this.bindFunction(this.onExpirationDataChanged));
+    c.CastleModel.constructionItemData.removeEventListener(u.CastleConstructionItemsEvent.NEC_RECEIVED, this.bindFunction(this.onExpirationDataChanged));
   };
-  return RingMenuButtonConstructor;
-}(require("./98.js").ARingMenuButton);
-exports.RingMenuButtonConstructor = l;
-var c = require("./9.js");
-var u = require("./323.js");
-var d = require("./357.js");
-o.classImplementsInterfaces(l, "IRingMenuButton");
+  ConstructorBuildingVE.prototype.onExpirationDataChanged = function (e) {
+    this.updateAdditionalClips();
+  };
+  ConstructorBuildingVE.prototype.getRingMenuButtons = function () {
+    var t = e.prototype.getRingMenuButtons.call(this);
+    t.push(new r.RingMenuButtonConstructor());
+    return t;
+  };
+  return ConstructorBuildingVE;
+}(a.ABasicBuildingVE);
+exports.ConstructorBuildingVE = s;
+var r = require("./2993.js");
+var l = require("./145.js");
+var c = require("./4.js");
+var u = require("./496.js");
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

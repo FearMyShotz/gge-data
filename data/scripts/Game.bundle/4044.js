@@ -8,7 +8,7 @@ var s = require("./26.js");
 var r = require("./32.js");
 var l = require("./4.js");
 var c = require("./461.js");
-var u = require("./543.js");
+var u = require("./544.js");
 var d = require("./363.js");
 var p = function (e) {
   function StatusIconSeasonEvent() {
@@ -133,5 +133,5 @@ var p = function (e) {
 }(d.AEventHubItemStatusIcon);
 exports.StatusIconSeasonEvent = p;
 var h = require("./9.js");
-var g = require("./1097.js");
-var C = require("./1099.js");
+var g = require("./1098.js");
+var C = require("./1100.js");

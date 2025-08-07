@@ -3,15 +3,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1044.js");
+var a = require("./1045.js");
 var s = function (e) {
-  function SoldierRangedMovementVE() {
+  function SoldierMeleeMovementVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SoldierRangedMovementVE, e);
-  Object.defineProperty(SoldierRangedMovementVE.prototype, "assetClipName", {
+  n.__extends(SoldierMeleeMovementVE, e);
+  Object.defineProperty(SoldierMeleeMovementVE.prototype, "assetClipName", {
     get: function () {
-      return "Soldier_Ranged";
+      return "Soldier_Melee";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.ASoldierMovementVE.prototype, "assetClipName").set.call(this, e);
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return SoldierRangedMovementVE;
+  return SoldierMeleeMovementVE;
 }(a.ASoldierMovementVE);
-exports.SoldierRangedMovementVE = s;
+exports.SoldierMeleeMovementVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

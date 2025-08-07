@@ -8,16 +8,16 @@ var s = require("./5.js");
 var r = require("./6.js");
 var l = require("./162.js");
 var c = function (e) {
-  function FactionVillageDetailView(t, i, n, o) {
+  function FactionTowerDetailView(t, i, n, o) {
     var a = this;
     a._factionFrame = 0;
     CONSTRUCTOR_HACK;
     return a = e.call(this, t, i, n, o) || this;
   }
-  n.__extends(FactionVillageDetailView, e);
-  Object.defineProperty(FactionVillageDetailView.prototype, "assetCastleFileURL", {
+  n.__extends(FactionTowerDetailView, e);
+  Object.defineProperty(FactionTowerDetailView.prototype, "assetCastleFileURL", {
     get: function () {
-      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("DetailView_Village_Faction");
+      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("DetailView_Dungeon_" + this._kingdomVO.kingdomName + "_Level2");
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.FightDetailView.prototype, "assetCastleFileURL").set.call(this, e);
@@ -25,29 +25,34 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  FactionVillageDetailView.prototype.drawCastleVO = function () {
-    var e = r.int(this._detailDrawAble.ownerInfo.factionID);
-    this._factionFrame = r.int(e == s.FactionConst.RED_FACTION ? 1 : 2);
-    var t = "_" + this._kingdomVO.kingdomName;
+  FactionTowerDetailView.prototype.drawCastleVO = function () {
+    var e = "_" + this._kingdomVO.kingdomName;
+    var t = r.int(this._detailDrawAble.ownerInfo.factionID);
+    this._factionFrame = r.int(t == s.FactionConst.RED_FACTION ? 1 : 2);
     this.initLayer();
-    this._layerKeep.addChild(this.getMovieClipByName(FactionVillageDetailView.CLASSNAME_KEEP + t, this.bindFunction(this.onClipLoaded)));
-    this._layerLeft.addChild(this.getMovieClipByName(FactionVillageDetailView.CLASSNAME_BACKWALL + "_Left" + t, this.bindFunction(this.onClipLoaded)));
-    this._layerMiddle.addChild(this.getMovieClipByName(FactionVillageDetailView.CLASSNAME_FRONTWALL + "_Left" + t, this.bindFunction(this.onClipLoaded)));
-    this._layerMiddle.addChild(this.getMovieClipByName(FactionVillageDetailView.CLASSNAME_FRONTWALL + "_Right" + t, this.bindFunction(this.onClipLoaded)));
-    this._layerMiddle.addChild(this.getMovieClipByName(FactionVillageDetailView.CLASSNAME_GATE + t, this.bindFunction(this.onClipLoaded)));
-    this._layerRight.addChild(this.getMovieClipByName(FactionVillageDetailView.CLASSNAME_BACKWALL + "_Right" + t, this.bindFunction(this.onClipLoaded)));
+    this._castleLayer.y = 15;
+    this._castleLayer.x = -7;
+    this._layerBackground.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_SHADOW + 2 + e));
+    this._layerKeep.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_KEEP + 2 + e, this.bindFunction(this.onClipLoaded)));
+    this._layerLeft.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_BACKWALL + "_Left_Level2" + e, this.bindFunction(this.onClipLoaded)));
+    this._layerMiddle.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_FRONTWALL + "_Left_Level2" + e, this.bindFunction(this.onClipLoaded)));
+    this._layerMiddle.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_FRONTWALL + "_Right_Level2" + e, this.bindFunction(this.onClipLoaded)));
+    this._layerMiddle.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_GATE + 2 + e, this.bindFunction(this.onClipLoaded)));
+    this._layerRight.addChild(this.getMovieClipByName(FactionTowerDetailView.CLASSNAME_BACKWALL + "_Right_Level2" + e, this.bindFunction(this.onClipLoaded)));
   };
-  FactionVillageDetailView.prototype.onClipLoaded = function (e) {
+  FactionTowerDetailView.prototype.onClipLoaded = function (e) {
     e.gotoAndStop(this._factionFrame);
   };
-  FactionVillageDetailView.__initialize_static_members = function () {
-    FactionVillageDetailView.CLASSNAME_KEEP = "Village_Keep";
-    FactionVillageDetailView.CLASSNAME_BACKWALL = "Village_BackWall";
-    FactionVillageDetailView.CLASSNAME_FRONTWALL = "Village_FrontWall";
-    FactionVillageDetailView.CLASSNAME_GATE = "Village_Gate";
+  FactionTowerDetailView.__initialize_static_members = function () {
+    FactionTowerDetailView.CLASSNAME_KEEP = "Dungeon_Keep_Level";
+    FactionTowerDetailView.CLASSNAME_BACKWALL = "Dungeon_BackWall";
+    FactionTowerDetailView.CLASSNAME_FRONTWALL = "Dungeon_FrontWall";
+    FactionTowerDetailView.CLASSNAME_GATE = "Dungeon_Gate_Level";
+    FactionTowerDetailView.CLASSNAME_DETAIL = "Dungeon_Detail_Level";
+    FactionTowerDetailView.CLASSNAME_SHADOW = "Dungeon_Shadow_Level";
   };
-  return FactionVillageDetailView;
+  return FactionTowerDetailView;
 }(l.FightDetailView);
-exports.FactionVillageDetailView = c;
+exports.FactionTowerDetailView = c;
 a.classImplementsInterfaces(c, "IFightDetailView");
 c.__initialize_static_members();

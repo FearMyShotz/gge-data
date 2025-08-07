@@ -9,8 +9,8 @@ var r = require("./3.js");
 var l = require("./3.js");
 var c = require("./3.js");
 var u = require("./6.js");
-var d = require("./112.js");
-var p = require("./1850.js");
+var d = require("./119.js");
+var p = require("./1852.js");
 var h = function () {
   function FactionWorldMapObjectInfoCreator() {}
   FactionWorldMapObjectInfoCreator.prototype.createWorldMapInfo = function (e) {

@@ -8,20 +8,18 @@ var s = require("./1.js");
 var r = require("./3.js");
 var l = require("./241.js");
 var c = require("./21.js");
-var u = require("./265.js");
-var d = require("./26.js");
-var p = require("./13.js");
-var h = require("./15.js");
-var g = require("./4.js");
-var C = require("./1821.js");
-var _ = require("./27.js");
-var m = require("./24.js");
-var f = require("./20.js");
-var O = require("./8.js");
-var E = require("./11.js");
-var y = require("./114.js");
-var b = require("./3930.js");
-var D = function (e) {
+var u = require("./26.js");
+var d = require("./13.js");
+var p = require("./4.js");
+var h = require("./1823.js");
+var g = require("./27.js");
+var C = require("./24.js");
+var _ = require("./20.js");
+var m = require("./8.js");
+var f = require("./11.js");
+var O = require("./112.js");
+var E = require("./3929.js");
+var y = function (e) {
   function GachaEventMainDialog() {
     CONSTRUCTOR_HACK;
     return e.call(this, GachaEventMainDialog.NAME) || this;
@@ -29,10 +27,10 @@ var D = function (e) {
   n.__extends(GachaEventMainDialog, e);
   GachaEventMainDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    O.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help, this.dialogDisp.btn_district, this.dialogDisp.tab_0, this.dialogDisp.tab_1, this.dialogDisp.tab_2, this.dialogDisp.tab_3], f.ClickFeedbackButtonHover);
-    this.itxt_title = this.textFieldManager.registerTextField(this.dialogDisp.txt_text, new r.TextVO(p.TextHelper.toUpperCaseLocaSafeTextId("dialog_tenthAnniversary_timer")));
+    m.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help, this.dialogDisp.btn_district, this.dialogDisp.tab_0, this.dialogDisp.tab_1, this.dialogDisp.tab_2, this.dialogDisp.tab_3], _.ClickFeedbackButtonHover);
+    this.itxt_title = this.textFieldManager.registerTextField(this.dialogDisp.txt_text, new r.TextVO(d.TextHelper.toUpperCaseLocaSafeTextId("dialog_tenthAnniversary_timer")));
     this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.mc_timer.txt_time, new r.TextVO(""));
-    var i = new b.GachaEventMainDistrict(this.dialogDisp.sublayer_gacha);
+    var i = new E.GachaEventMainDistrict(this.dialogDisp.sublayer_gacha);
     this._subLayer = new Map();
     for (var n = 0; n < GachaEventMainDialog.MAX_TABS; n++) {
       this._subLayer.set("tab_" + n, i);
@@ -45,17 +43,13 @@ var D = function (e) {
   GachaEventMainDialog.prototype.showLoaded = function (t = null) {
     e.prototype.showLoaded.call(this, t);
     this.changeCategory(GachaEventMainDialog.TAB_MAIN);
-    g.CastleModel.timerData.addEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
-    h.CastleBasicController.getInstance().addEventListener(u.GachaEvent.LOCK_DIALOG, this.bindFunction(this.onLockDialog));
-    h.CastleBasicController.getInstance().addEventListener(u.GachaEvent.UNLOCK_DIALOG, this.bindFunction(this.onUnlockDialog));
-    g.CastleModel.specialEventData.addEventListener(d.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
+    p.CastleModel.timerData.addEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
+    p.CastleModel.specialEventData.addEventListener(u.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
   };
   GachaEventMainDialog.prototype.hideLoaded = function (t = null) {
     e.prototype.hideLoaded.call(this, t);
-    g.CastleModel.timerData.removeEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
-    h.CastleBasicController.getInstance().removeEventListener(u.GachaEvent.LOCK_DIALOG, this.bindFunction(this.onLockDialog));
-    h.CastleBasicController.getInstance().removeEventListener(u.GachaEvent.UNLOCK_DIALOG, this.bindFunction(this.onUnlockDialog));
-    g.CastleModel.specialEventData.removeEventListener(d.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
+    p.CastleModel.timerData.removeEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
+    p.CastleModel.specialEventData.removeEventListener(u.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
   };
   GachaEventMainDialog.prototype.onSpecialEventRemoved = function (e) {
     if (this.getActiveGachaEvents().length < 1) {
@@ -76,8 +70,8 @@ var D = function (e) {
   };
   GachaEventMainDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    if (!this.isLocked && O.ButtonHelper.isButtonEnabled(t.target)) {
-      if (t.target.name && t.target.name.indexOf("tab_") == 0 && O.ButtonHelper.isButtonEnabled(t.target)) {
+    if (!this.isLocked && m.ButtonHelper.isButtonEnabled(t.target)) {
+      if (t.target.name && t.target.name.indexOf("tab_") == 0 && m.ButtonHelper.isButtonEnabled(t.target)) {
         this.changeCategory(t.target.name);
       } else {
         switch (t.target) {
@@ -85,7 +79,7 @@ var D = function (e) {
             this.hide();
             break;
           case this.dialogDisp.btn_help:
-            E.CastleExternalDialog.dialogHandler.showHelper("", "helpPopup_GachaDeco2x2");
+            f.CastleExternalDialog.dialogHandler.showHelper("", "helpPopup_GachaDeco2x2");
             break;
           case this.dialogDisp.btn_district:
             this.hide();
@@ -107,7 +101,7 @@ var D = function (e) {
       }
     }
     this.showSublayer(this._subLayer.get(t), [this._selectedEvent]);
-    g.CastleModel.smartfoxClient.sendCommandVO(new l.C2SPointEventGetPointsVO(this._selectedEvent.eventId));
+    p.CastleModel.smartfoxClient.sendCommandVO(new l.C2SPointEventGetPointsVO(this._selectedEvent.eventId));
   };
   GachaEventMainDialog.prototype.loadTabIcons = function () {
     var e = this;
@@ -115,21 +109,21 @@ var D = function (e) {
     this.getActiveGachaEvents().forEach(function (i, n) {
       var s = GachaEventMainDialog.NAME + "_Elements_" + i.assetName();
       var r = GachaEventMainDialog.NAME + "_TabIcon_" + i.assetName();
-      var l = new m.CastleGoodgameExternalClip(r, a.BasicModel.basicLoaderData.getVersionedItemAssetUrl(s), null, 0, false);
+      var l = new C.CastleGoodgameExternalClip(r, a.BasicModel.basicLoaderData.getVersionedItemAssetUrl(s), null, 0, false);
       var c = e.dialogDisp["tab_" + n];
       c.toolTipText = i.eventBuildingNameId;
       o.MovieClipHelper.clearMovieClip(c.mc_icon);
       c.mc_icon.addChild(l);
-      O.ButtonHelper.enableButton(c, true);
+      m.ButtonHelper.enableButton(c, true);
       t++;
     });
     if (t < GachaEventMainDialog.MAX_TABS - 1) {
-      var i = new m.CastleGoodgameExternalClip("GenericGachaIcon", a.BasicModel.basicLoaderData.getVersionedItemAssetUrl(GachaEventMainDialog.NAME), null, 0, false);
+      var i = new C.CastleGoodgameExternalClip("GenericGachaIcon", a.BasicModel.basicLoaderData.getVersionedItemAssetUrl(GachaEventMainDialog.NAME), null, 0, false);
       var n = this.dialogDisp["tab_" + t];
       n.toolTipText = "comingSoon";
       o.MovieClipHelper.clearMovieClip(n.mc_icon);
       n.mc_icon.addChild(i);
-      O.ButtonHelper.enableButton(n, false);
+      m.ButtonHelper.enableButton(n, false);
     }
   };
   GachaEventMainDialog.prototype.updateActiveEvent = function () {
@@ -138,10 +132,10 @@ var D = function (e) {
     var i = t[e].assetName();
     var n = GachaEventMainDialog.NAME + "_Elements_" + i;
     var s = GachaEventMainDialog.NAME + "_DistrictIcon_" + i;
-    var r = new m.CastleGoodgameExternalClip(s, a.BasicModel.basicLoaderData.getVersionedItemAssetUrl(n), null, 0, false);
+    var r = new C.CastleGoodgameExternalClip(s, a.BasicModel.basicLoaderData.getVersionedItemAssetUrl(n), null, 0, false);
     o.MovieClipHelper.clearMovieClip(this.dialogDisp.btn_district.mc_icon);
     this.dialogDisp.btn_district.mc_icon.addChild(r);
-    O.ButtonHelper.enableButton(this.dialogDisp.btn_district, t[e].hasDistrict());
+    m.ButtonHelper.enableButton(this.dialogDisp.btn_district, t[e].hasDistrict());
     if (t[e].hasDistrict()) {
       this.dialogDisp.btn_district.toolTipText = t[e].getDistrictBuildingVO().getNameString();
     } else {
@@ -152,20 +146,20 @@ var D = function (e) {
   };
   GachaEventMainDialog.prototype.updateTimer = function () {
     var e = this._selectedEvent.remainingEventTimeInSeconds;
-    this.itxt_time.textContentVO.stringValue = _.CastleTimeStringHelper.getEventTimeString(e);
+    this.itxt_time.textContentVO.stringValue = g.CastleTimeStringHelper.getEventTimeString(e);
   };
   GachaEventMainDialog.prototype.openDistrictDialog = function () {
     this._selectedEvent.openDistrictDialog();
   };
   GachaEventMainDialog.prototype.getActiveGachaEvents = function () {
-    return Array.from(g.CastleModel.specialEventData.activeEvents.values()).filter(function (e) {
-      return e instanceof C.ADistrictGachaEventVO;
+    return Array.from(p.CastleModel.specialEventData.activeEvents.values()).filter(function (e) {
+      return e instanceof h.ADistrictGachaEventVO;
     });
   };
   GachaEventMainDialog.NAME = "GachaEventMain";
   GachaEventMainDialog.TAB_MAIN = "tab_0";
   GachaEventMainDialog.MAX_TABS = 4;
   return GachaEventMainDialog;
-}(y.CastleExternalSubLayerDialog);
-exports.GachaEventMainDialog = D;
-s.classImplementsInterfaces(D, "ICollectableRendererList");
+}(O.CastleExternalSubLayerDialog);
+exports.GachaEventMainDialog = y;
+s.classImplementsInterfaces(y, "ICollectableRendererList");

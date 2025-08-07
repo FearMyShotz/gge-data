@@ -1,26 +1,23 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./50.js");
-var o = require("./22.js");
-var a = function () {
-  function CastleTempServerDailyTaskRewardVO() {
-    this.id = 0;
-    this.minDailyTaskPointsPerDay = 0;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2STempServerGetChargeCampEffectsEventVO(t, i) {
+    var n = this;
+    n.XPOS = 0;
+    n.YPOS = 0;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this).XPOS = t;
+    n.YPOS = i;
+    return n;
   }
-  CastleTempServerDailyTaskRewardVO.prototype.parseXML = function (e) {
-    this.id = parseInt(o.CastleXMLUtils.getValueOrDefault("tempServerDailyTaskRewardID", e, "0"));
-    var t = parseInt(o.CastleXMLUtils.getValueOrDefault("rewardID", e, "0"));
-    this.minDailyTaskPointsPerDay = parseInt(o.CastleXMLUtils.getValueOrDefault("minDailyTaskPointsPerDay", e, "0"));
-    this.rankRewards = n.CollectableManager.parser.createListFromRewardIdsString(t.toString());
+  n.__extends(C2STempServerGetChargeCampEffectsEventVO, e);
+  C2STempServerGetChargeCampEffectsEventVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_GET_TEMP_SERVER_CHARGE_CHAMP_EFFECTS;
   };
-  Object.defineProperty(CastleTempServerDailyTaskRewardVO.prototype, "minDailyTaskPoints", {
-    get: function () {
-      return this.minDailyTaskPointsPerDay;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleTempServerDailyTaskRewardVO;
-}();
-exports.CastleTempServerDailyTaskRewardVO = a;
+  return C2STempServerGetChargeCampEffectsEventVO;
+}(o.BasicCommandVO);
+exports.C2STempServerGetChargeCampEffectsEventVO = s;

@@ -8,7 +8,7 @@ var s = require("./5.js");
 var r = require("./6.js");
 var l = require("./4196.js");
 var c = require("./4.js");
-var u = require("./754.js");
+var u = require("./756.js");
 var d = require("./4197.js");
 var p = function (e) {
   function ButtonTauntComponent(t) {
@@ -104,7 +104,7 @@ var p = function (e) {
 }(require("./150.js").ButtonBasicComponent);
 exports.ButtonTauntComponent = p;
 var h = require("./9.js");
-var g = require("./755.js");
-var C = require("./1766.js");
+var g = require("./757.js");
+var C = require("./1768.js");
 var _ = require("./4198.js");
 o.classImplementsInterfaces(p, "IWorldMapObjectRingmenuButtonComponent");

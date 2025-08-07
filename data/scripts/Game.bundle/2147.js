@@ -1,23 +1,34 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function AttackerEffectVO() {
-    this._attackerFlankEffects = new Map();
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./6.js");
+var s = require("./7.js");
+var r = function (e) {
+  function C2SDefenceInstantBuyToolVO(t, i, n, o, s, r = -1) {
+    var l = this;
+    l.W = 0;
+    l.A = 0;
+    l.CX = 0;
+    l.CY = 0;
+    l.MID = 0;
+    l.KID = 0;
+    l.PID = 0;
+    CONSTRUCTOR_HACK;
+    (l = e.call(this) || this).W = t;
+    l.A = i;
+    l.CX = a.int(n.x);
+    l.CY = a.int(n.y);
+    l.KID = o;
+    l.MID = s;
+    l.PID = r;
+    return l;
   }
-  AttackerEffectVO.prototype.addAttackerFlankEffects = function (e, t) {
-    if (t != o.ClientConstCastle.FLANK_LEFT && t != o.ClientConstCastle.FLANK_MIDDLE && t != o.ClientConstCastle.FLANK_RIGHT) {
-      throw new Error("INCORRECT FLANK CHOSEN");
-    }
-    this._attackerFlankEffects.set(t, e);
+  n.__extends(C2SDefenceInstantBuyToolVO, e);
+  C2SDefenceInstantBuyToolVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_INSTANT_BUY_TOOL;
   };
-  AttackerEffectVO.prototype.getAttackerFlankEffects = function (e) {
-    if (e != o.ClientConstCastle.FLANK_LEFT && e != o.ClientConstCastle.FLANK_MIDDLE && e != o.ClientConstCastle.FLANK_RIGHT) {
-      throw new Error("INCORRECT FLANK CHOSEN");
-    }
-    return this._attackerFlankEffects.get(e);
-  };
-  return AttackerEffectVO;
-}();
-exports.AttackerEffectVO = n;
-var o = require("./18.js");
+  return C2SDefenceInstantBuyToolVO;
+}(o.BasicCommandVO);
+exports.C2SDefenceInstantBuyToolVO = r;

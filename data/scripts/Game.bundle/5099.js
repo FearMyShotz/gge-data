@@ -2,39 +2,28 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function LWCCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = function (e) {
+  function CastleMysteryBoxResultDialogProperties(t, i = 0, n = false) {
+    var o = this;
+    o._skinId = 0;
+    o.isTest = false;
+    CONSTRUCTOR_HACK;
+    (o = e.call(this) || this).rewardList = t;
+    o._skinId = i;
+    o.isTest = n;
+    return o;
   }
-  n.__extends(LWCCommand, e);
-  LWCCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.luckyWheelData.parseLWC(i);
-        break;
-      default:
-        r.CastleModel.luckyWheelData.showIncreaseWinClassDialog = true;
-        this.showErrorDialog(e, t);
-    }
-    return false;
-  };
-  Object.defineProperty(LWCCommand.prototype, "cmdId", {
+  n.__extends(CastleMysteryBoxResultDialogProperties, e);
+  Object.defineProperty(CastleMysteryBoxResultDialogProperties.prototype, "skinId", {
     get: function () {
-      return s.ClientConstSF.S2C_LUCKY_WHEEL_INCREASE_PRIZE_CLASS;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      return this._skinId;
     },
     enumerable: true,
     configurable: true
   });
-  return LWCCommand;
-}(l.CastleCommand);
-exports.LWCCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return CastleMysteryBoxResultDialogProperties;
+}(o.BasicProperties);
+exports.CastleMysteryBoxResultDialogProperties = s;
+a.classImplementsInterfaces(s, "ISkinnable");

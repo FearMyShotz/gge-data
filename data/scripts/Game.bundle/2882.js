@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function MilitaryDistrictBuildingVO() {
-    return e.call(this) || this;
+  function MetropolstorageBuildingVO() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MilitaryDistrictBuildingVO, e);
-  return MilitaryDistrictBuildingVO;
-}(require("./446.js").ADistrictBuildingVO);
-exports.MilitaryDistrictBuildingVO = a;
+  n.__extends(MetropolstorageBuildingVO, e);
+  return MetropolstorageBuildingVO;
+}(require("./641.js").StorageBuildingVO);
+exports.MetropolstorageBuildingVO = a;
 o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");

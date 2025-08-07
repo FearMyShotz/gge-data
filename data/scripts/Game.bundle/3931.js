@@ -2,22 +2,28 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SGachaSpinVO(t, i = 1) {
-    var n = e.call(this) || this;
-    n.EID = 0;
-    n.AMT = 1;
-    n.OB = 0;
-    n.EID = t;
-    n.AMT = i;
-    return n;
+var o = require("./1.js");
+var a = require("./31.js");
+var s = require("./19.js");
+var r = require("./81.js");
+var l = require("./25.js");
+var c = createjs.Point;
+var u = function (e) {
+  function GachaEventMainRewardItem() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(C2SGachaSpinVO, e);
-  C2SGachaSpinVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GACHA_SPIN;
+  n.__extends(GachaEventMainRewardItem, e);
+  GachaEventMainRewardItem.prototype.fill = function () {
+    var e = new s.CollectableRenderOptions(s.CollectableRenderOptions.SET_DEFAULT, new c(73, 71));
+    l.CollectableRenderHelper.displaySingleItemComplete(this, new a.CollectableRenderClips(this.getItemMc().mc_item).addInfoBtn(this.getItemMc().btn_info), this.getReward(), e);
   };
-  return C2SGachaSpinVO;
-}(o.BasicCommandVO);
-exports.C2SGachaSpinVO = s;
+  GachaEventMainRewardItem.prototype.getReward = function () {
+    return this.data;
+  };
+  GachaEventMainRewardItem.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+  };
+  return GachaEventMainRewardItem;
+}(r.AInfiniteScrollListItem);
+exports.GachaEventMainRewardItem = u;
+o.classImplementsInterfaces(u, "ICollectableRendererList");

@@ -1,37 +1,65 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./3.js");
-var o = require("./28.js");
-var a = require("./1847.js");
+var n = require("./0.js");
+var o = require("./72.js");
+var a = require("./5776.js");
 var s = require("./30.js");
-var r = require("./15.js");
-var l = require("./4.js");
-var c = function () {
-  function DeleteAccountData() {
-    this._remainingTimeTillDeleteTimeStamp = -1;
+var r = require("./28.js");
+var l = require("./37.js");
+var c = require("./15.js");
+var u = function (e) {
+  function ChangePlayerNameData(t) {
+    var i = e.call(this) || this;
+    i._currentNumNameChange = 0;
+    i._resetNameChangeCooldownTimestamp = 0;
+    i.parseXml(t);
+    return i;
   }
-  Object.defineProperty(DeleteAccountData.prototype, "isAccountDeletionStarted", {
-    get: function () {
-      return this._remainingTimeTillDeleteTimeStamp && this._remainingTimeTillDeleteTimeStamp != -1 && this.remainingTimeTillDeleteTimeStamp > 0;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DeleteAccountData.prototype, "remainingTimeTillDeleteTimeStamp", {
-    get: function () {
-      return this._remainingTimeTillDeleteTimeStamp - s.CachedTimer.getCachedTimer() * o.ClientConstTime.MILLISEC_2_SEC;
-    },
-    set: function (e) {
-      this._remainingTimeTillDeleteTimeStamp = e;
-      r.CastleBasicController.getInstance().dispatchEvent(new a.CastleAccountDeletionEvent(a.CastleAccountDeletionEvent.ACCOUNT_DELETION_TIMER_UPDATED));
-    },
-    enumerable: true,
-    configurable: true
-  });
-  DeleteAccountData.prototype.getDateForDelete = function () {
-    return n.Localize.datetime(new Date(Date.now() + l.CastleModel.deleteAccountData.remainingTimeTillDeleteTimeStamp * o.ClientConstTime.SEC_2_MILLISEC), n.DateTimeStyle.LONG, n.DateTimeStyle.NONE);
+  n.__extends(ChangePlayerNameData, e);
+  ChangePlayerNameData.prototype.parseXml = function (e) {
+    this._c2Costs = [];
+    var t = e.playerNameChanges;
+    if (t != null) {
+      var i = undefined;
+      for (var n = 0, o = t; n < o.length; n++) {
+        var s = o[n];
+        if (s !== undefined) {
+          (i = new a.ChangePlayerNameVO()).nameChangeID = parseInt(s.nameChangeID || "");
+          i.costC2 = parseInt(s.costC2 || "");
+          this._c2Costs.push(i);
+        }
+      }
+    }
   };
-  return DeleteAccountData;
-}();
-exports.DeleteAccountData = c;
+  ChangePlayerNameData.prototype.parse_GNCI = function (e) {
+    this._currentNumNameChange = parseInt(e.PNCC) + 1;
+    this._currentNumNameChange = Math.min(this._currentNumNameChange, this._c2Costs[this._c2Costs.length - 1].nameChangeID);
+    this._resetNameChangeCooldownTimestamp = e.PNCD;
+    c.CastleBasicController.getInstance().dispatchEvent(new l.CastleServerMessageArrivedEvent(l.CastleServerMessageArrivedEvent.GNCI_ARRIVED, [this.getCurrentC2Cost, this.resetNameChangeCooldownTimestamp]));
+  };
+  Object.defineProperty(ChangePlayerNameData.prototype, "getCurrentC2Cost", {
+    get: function () {
+      var e = this;
+      var t = this._c2Costs.find(function (t) {
+        return t.nameChangeID === e._currentNumNameChange;
+      });
+      if (t) {
+        return t.costC2;
+      } else {
+        return 0;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ChangePlayerNameData.prototype, "resetNameChangeCooldownTimestamp", {
+    get: function () {
+      return this._resetNameChangeCooldownTimestamp - s.CachedTimer.getCachedTimer() * r.ClientConstTime.MILLISEC_2_SEC;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ChangePlayerNameData;
+}(o.CastleEventDispatcher);
+exports.ChangePlayerNameData = u;

@@ -1,61 +1,64 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = createjs.Point;
-var o = createjs.MouseEvent;
+var n = require("./0.js");
+var o = require("./2.js");
 var a = require("./1.js");
-var s = function () {
-  function TouchScrollHelper() {
-    this._valid = false;
-    this.touchStageRefPoint = new n();
+var s = require("./3.js");
+var r = function (e) {
+  function AIsoStatusIconProgressBar() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  TouchScrollHelper.prototype.setup = function (e, t = null, i = null) {
-    if (this.disp) {
-      this.dispose();
-    }
-    if (a.currentBrowserInfo.isMobile) {
-      this.disp = e;
-      this.disp.addEventListener(o.MOUSE_DOWN, this.bindFunction(this.onTouchDown));
-      this.disp.addEventListener(o.MOUSE_UP, this.bindFunction(this.onTouchUp));
-      this.onTouchDownCallback = t;
-      this.onTouchUpCallback = i;
+  n.__extends(AIsoStatusIconProgressBar, e);
+  AIsoStatusIconProgressBar.prototype.createDisp = function () {
+    var e = new this.iconType.dispClass();
+    this.dispComponent.addDisp(e);
+    e.scaleX = e.scaleY = 2;
+  };
+  AIsoStatusIconProgressBar.prototype.updateFrame = function () {
+    var e = this.getBarClip();
+    if (e) {
+      e.mc_icon.gotoAndStop(this.getDispFrame());
     }
   };
-  TouchScrollHelper.prototype.dispose = function () {
-    if (this.disp) {
-      this.disp.removeEventListener(o.MOUSE_DOWN, this.bindFunction(this.onTouchDown));
-      this.disp.removeEventListener(o.MOUSE_UP, this.bindFunction(this.onTouchUp));
-      this.onTouchDownCallback = null;
-      this.onTouchUpCallback = null;
-    }
-  };
-  Object.defineProperty(TouchScrollHelper.prototype, "valid", {
-    get: function () {
-      return this._valid;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  TouchScrollHelper.prototype.onTouchDown = function (e) {
-    if (a.currentBrowserInfo.isTouchEvent(e)) {
-      this.touchStageRefPoint.x = e.stageX;
-      this.touchStageRefPoint.y = e.stageY;
-      this._valid = true;
-      if (this.onTouchDownCallback) {
-        this.onTouchDownCallback();
+  AIsoStatusIconProgressBar.prototype.updateBarContent = function () {
+    var e = this.getBarClip();
+    if (e) {
+      var t = l.CastleComponent.textFieldManager.getTextField(e.txt_time);
+      if (t && t.textContentVO) {
+        t.textContentVO.stringValue = this.getBarText();
+      } else {
+        l.CastleComponent.textFieldManager.registerTextField(e.txt_time, new s.TextVO(this.getBarText()), new o.InternalGGSTextFieldConfigVO(true));
       }
+      e.barMc.scaleX = this.getBarFillFactor();
     }
   };
-  TouchScrollHelper.prototype.onTouchUp = function (e) {
-    if (a.currentBrowserInfo.isTouchEvent(e)) {
-      this.touchStageRefPoint.x = 0;
-      this.touchStageRefPoint.y = 0;
-      this._valid = false;
-      if (this.onTouchUpCallback) {
-        this.onTouchUpCallback();
-      }
-    }
+  AIsoStatusIconProgressBar.prototype.update = function (e) {
+    this.updateBarContent();
+    this.dispComponent.updateCache();
   };
-  return TouchScrollHelper;
-}();
-exports.TouchScrollHelper = s;
+  AIsoStatusIconProgressBar.prototype.getDispFrame = function () {
+    return 1;
+  };
+  AIsoStatusIconProgressBar.prototype.getBarText = function () {
+    return "";
+  };
+  AIsoStatusIconProgressBar.prototype.getBarFillFactor = function () {
+    return 0;
+  };
+  AIsoStatusIconProgressBar.prototype.getBarClip = function () {
+    return this.dispComponent.dispContainer.getChildAt(0);
+  };
+  AIsoStatusIconProgressBar.prototype.getDispHeight = function () {
+    return e.prototype.getDispHeight.call(this) + 40;
+  };
+  AIsoStatusIconProgressBar.prototype.onAllDispClipsLoaded = function () {
+    e.prototype.onAllDispClipsLoaded.call(this);
+    this.updateFrame();
+    this.updateBarContent();
+  };
+  return AIsoStatusIconProgressBar;
+}(require("./1189.js").AIsoStatusIcon);
+exports.AIsoStatusIconProgressBar = r;
+var l = require("./14.js");
+a.classImplementsInterfaces(r, "ICollectableRendererList");

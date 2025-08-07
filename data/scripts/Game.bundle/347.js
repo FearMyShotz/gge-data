@@ -9,8 +9,8 @@ var r = require("./6.js");
 var l = require("./18.js");
 var c = require("./22.js");
 var u = require("./4.js");
-var d = require("./35.js");
-var p = require("./510.js");
+var d = require("./33.js");
+var p = require("./511.js");
 var h = function (e) {
   function SoldierUnitVO() {
     var t = this;
@@ -251,6 +251,6 @@ var h = function (e) {
   return SoldierUnitVO;
 }(p.BasicUnitVO);
 exports.SoldierUnitVO = h;
-var g = require("./106.js");
+var g = require("./117.js");
 var C = require("./181.js");
 o.classImplementsInterfaces(h, "IInventoryVO", "IShopVO", "ICostVO");

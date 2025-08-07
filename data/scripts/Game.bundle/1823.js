@@ -2,53 +2,42 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./32.js");
-var a = require("./155.js");
-var s = require("./31.js");
-var r = require("./19.js");
-var l = require("./4.js");
-var c = require("./14.js");
-var u = require("./25.js");
-var d = require("./362.js");
-var p = createjs.Point;
-var h = function (e) {
-  function GachaComponentCurrency(t) {
-    return e.call(this, t) || this;
+var o = require("./69.js");
+var a = require("./34.js");
+var s = require("./9.js");
+var r = require("./697.js");
+var l = require("./872.js");
+var c = require("./556.js");
+var u = function (e) {
+  function ADistrictGachaEventVO() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GachaComponentCurrency, e);
-  GachaComponentCurrency.prototype.onShow = function () {
-    e.prototype.onShow.call(this);
-    this.updateCurrency();
+  n.__extends(ADistrictGachaEventVO, e);
+  ADistrictGachaEventVO.prototype.hasDistrict = function () {
+    return !!this.getDistrictBuildingVO();
   };
-  GachaComponentCurrency.prototype.onHide = function () {
-    e.prototype.onHide.call(this);
-    this.destroyCollectableRenderList();
+  ADistrictGachaEventVO.prototype.getDistrictBuildingVO = function () {
+    return a.Iso.data.objects.provider.getFunctionalBuildingByType(this.getDistrictType());
   };
-  GachaComponentCurrency.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    c.CastleComponent.controller.addEventListener(o.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onCurrencyUpdate));
+  ADistrictGachaEventVO.prototype.openDialog = function (e = true) {
+    s.CastleDialogHandler.getInstance().registerDialogs(c.GachaEventMainDialog);
   };
-  GachaComponentCurrency.prototype.removeEventListener = function () {
-    e.prototype.removeEventListener.call(this);
-    c.CastleComponent.controller.removeEventListener(o.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onCurrencyUpdate));
-  };
-  GachaComponentCurrency.prototype.onCurrencyUpdate = function (e) {
-    this.updateCurrency();
-  };
-  GachaComponentCurrency.prototype.updateCurrency = function () {
-    var e = this.getEventVO().getCurrentGachaVO().costs.list[0];
-    if (e instanceof a.CollectableItemGenericCurrencyVO) {
-      var t = e.id;
-      var i = new a.CollectableItemGenericCurrencyVO(t, l.CastleModel.currencyData.getAmountById(t));
-      var n = new s.CollectableRenderClips(this.disp);
-      var o = new r.CollectableRenderOptions(r.CollectableRenderOptions.SET_DEFAULT, new p(20, 20));
-      o.tooltip.useAmount = false;
-      u.CollectableRenderHelper.displaySingleItemComplete(this, n, i, o);
+  ADistrictGachaEventVO.prototype.openDistrictDialog = function () {
+    var e = this.getDistrictBuildingVO();
+    if (e) {
+      s.CastleDialogHandler.getInstance().registerDefaultDialogs(r.BuildingDistrictDialog, new l.BuildingDistrictDialogProperties(e));
     }
   };
-  GachaComponentCurrency.prototype.getEventVO = function () {
-    return this._params[0];
+  ADistrictGachaEventVO.prototype.getDistrictType = function () {
+    throw new o.AbstractMethodError();
   };
-  return GachaComponentCurrency;
-}(d.AGachaComponent);
-exports.GachaComponentCurrency = h;
+  Object.defineProperty(ADistrictGachaEventVO.prototype, "animationFPS", {
+    get: function () {
+      return 24;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ADistrictGachaEventVO;
+}(require("./557.js").AGachaEventVO);
+exports.ADistrictGachaEventVO = u;

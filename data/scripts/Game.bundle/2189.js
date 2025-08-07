@@ -1,46 +1,49 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./3.js");
-var a = require("./163.js");
-var s = require("./1251.js");
-var r = require("./590.js");
-var l = function (e) {
-  function TooltipLordEffectItemCreator() {
-    CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+var n = require("./2.js");
+var o = require("./24.js");
+var a = createjs.MovieClip;
+var s = function () {
+  function LordEffectSourceItem(e) {
+    var t = this;
+    this._bonusVO = e;
+    this._disp = new a();
+    var i = this._bonusVO.effectSources.length > 1;
+    e.effectSources.sort(function (e, t) {
+      return e.order - t.order;
+    }).forEach(function (n, o) {
+      var a = t.createSourceMC(n, i);
+      t._disp.addChild(a);
+      a.x = t.getLayout(e.effectSources.length)[o][0];
+      a.y = t.getLayout(e.effectSources.length)[o][1];
+    });
   }
-  n.__extends(TooltipLordEffectItemCreator, e);
-  TooltipLordEffectItemCreator.prototype.getTotalEffectMC = function (e = null) {
-    if (e && e.length > 1) {
-      return new Library.CastleInterfaceElements.LordEffectTotalItemBold_Tooltip();
-    } else {
-      return new Library.CastleInterfaceElements.LordEffectTotalItemWithSource_Tooltip();
+  LordEffectSourceItem.prototype.createSourceMC = function (e, t) {
+    var i = LordEffectSourceItem.ASSET_CLIP_PREFIX + e.name + (t ? LordEffectSourceItem.ASSET_CLIP_SMALL_SUFFIX : "");
+    return new o.CastleGoodgameExternalClip(i, n.BasicModel.basicLoaderData.getVersionedItemAssetUrl(LordEffectSourceItem.ASSET_NAME), null, 24, false);
+  };
+  LordEffectSourceItem.prototype.getLayout = function (e) {
+    switch (e) {
+      case 1:
+        return LordEffectSourceItem.LAYOUT[0];
+      case 2:
+        return LordEffectSourceItem.LAYOUT[1];
+      default:
+        return LordEffectSourceItem.LAYOUT[2];
     }
   };
-  TooltipLordEffectItemCreator.prototype.getDetailEffectMC = function () {
-    return new Library.CastleInterfaceElements.LordEffectDetailItemWithSources_Tooltip();
-  };
-  TooltipLordEffectItemCreator.prototype.getSeperatorLineMC = function () {
-    return new Library.CastleInterfaceElements.LordEffectSeperator_Tooltip();
-  };
-  TooltipLordEffectItemCreator.prototype.getCapGroupMC = function () {
-    return new Library.CastleInterfaceElements.LordEffectCapItem_Tooltip();
-  };
-  TooltipLordEffectItemCreator.prototype.getMargin = function () {
-    return TooltipLordEffectItemCreator.MARGIN;
-  };
-  TooltipLordEffectItemCreator.prototype.createCategoryItem = function (e) {
-    var t = new r.LordEffectItem(new Library.CastleInterfaceElements.LordEffectCategoryItem_Tooltip(), this.getMargin());
-    t.disp.mc_textBackground.gotoAndStop(e);
-    t.applyText(o.Localize.text("effect_category_" + e), false, 3);
-    return t;
-  };
-  TooltipLordEffectItemCreator.__initialize_static_members = function () {
-    TooltipLordEffectItemCreator.MARGIN = new a.LayoutMargin(0, 3, 0, 0);
-  };
-  return TooltipLordEffectItemCreator;
-}(s.ALordEffectItemCreator);
-exports.TooltipLordEffectItemCreator = l;
-l.__initialize_static_members();
+  Object.defineProperty(LordEffectSourceItem.prototype, "disp", {
+    get: function () {
+      return this._disp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  LordEffectSourceItem.ASSET_NAME = "Effect_Source_Icons";
+  LordEffectSourceItem.ASSET_CLIP_PREFIX = "Effect_Source_";
+  LordEffectSourceItem.ASSET_CLIP_SMALL_SUFFIX = "_Small";
+  LordEffectSourceItem.LAYOUT = [[[0, 0]], [[-5, 0], [5, 0]], [[-5, -5], [5, -5], [-5, 5], [5, 5]]];
+  return LordEffectSourceItem;
+}();
+exports.LordEffectSourceItem = s;

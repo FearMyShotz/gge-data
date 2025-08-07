@@ -4,104 +4,98 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
-var s = require("./6.js");
-var r = require("./1309.js");
-var l = require("./1311.js");
-var c = createjs.Point;
+var s = require("./3.js");
+var r = require("./16.js");
+var l = require("./4.js");
+var c = require("./8.js");
 var u = function (e) {
-  function AutoSellDialogEquipments(t) {
-    var i = this;
-    i.NUMBER_OF_ACTIVE_STATE_CHECKBOXES = new c(4, 5);
-    CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).init();
-    return i;
+  function AutoSellDialog() {
+    return e.call(this, AutoSellDialog.NAME) || this;
   }
-  n.__extends(AutoSellDialogEquipments, e);
-  AutoSellDialogEquipments.prototype.init = function () {
-    this.textFieldManager.registerTextField(this.subLayerDisp.txt_selectAll, new a.LocalizedTextVO("selectAll")).autoFitToBounds = true;
-    this.subLayerDisp.mc_icon_hero.toolTipText = "equipment_slotType_hero_heroine";
-    this.subLayerDisp.mc_icon_helmet.toolTipText = "equipment_slotType_helmet";
-    this.subLayerDisp.mc_icon_armor.toolTipText = "equipment_slotType_armor";
-    this.subLayerDisp.mc_icon_weapon.toolTipText = "equipment_slotType_weapon";
-    this.subLayerDisp.mc_icon_artifact.toolTipText = "equipment_slotType_artifact";
-    this.subLayerDisp.mc_icon_common.toolTipText = "equipment_rarity_common";
-    this.subLayerDisp.mc_icon_rare.toolTipText = "equipment_rarity_rare";
-    this.subLayerDisp.mc_icon_epic.toolTipText = "equipment_rarity_epic";
-    this.subLayerDisp.mc_icon_legendary.toolTipText = "equipment_rarity_legendary";
-    this._selectAllCheckbox = new h.AutoSellDialogSelectAllCheckbox(this.subLayerDisp.btn_selectAll);
-    this._activeStateCheckboxes = [];
-    for (var e = 0; e < this.NUMBER_OF_ACTIVE_STATE_CHECKBOXES.y; ++e) {
-      this._activeStateCheckboxes[e] = [];
-      for (var t = 0; t < this.NUMBER_OF_ACTIVE_STATE_CHECKBOXES.x; ++t) {
-        this._activeStateCheckboxes[e][t] = new p.AutoSellDialogActiveStateCheckbox(this.subLayerDisp.getChildByName("mc_active_" + t + "_" + e), t, e);
-      }
-    }
+  n.__extends(AutoSellDialog, e);
+  AutoSellDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    c.ButtonHelper.initButtons([this.dialogDisp.btn_help, this.dialogDisp.btn_close, this.dialogDisp.btn_save], g.ClickFeedbackButton);
+    c.ButtonHelper.initBasicButton(this.dialogDisp.btn_tab_equipments, 1.025);
+    c.ButtonHelper.initBasicButton(this.dialogDisp.btn_tab_gems, 1.025);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("dialog_autoSellSettings_title")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new s.LocalizedTextVO("dialog_autoSellSettings_desc")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_save.txt_text, new s.LocalizedTextVO("save")).autoFitToBounds = true;
+    this._tfTabBtnEquipment = this.textFieldManager.registerTextField(this.dialogDisp.btn_tab_equipments.txt_text, new s.LocalizedTextVO("equipment"));
+    this._tfTabBtnEquipment.autoFitToBounds = true;
+    this._tfTabBtnGems = this.textFieldManager.registerTextField(this.dialogDisp.btn_tab_gems.txt_text, new s.LocalizedTextVO("gems"));
+    this._tfTabBtnGems.autoFitToBounds = true;
+    this._subLayer = new Map();
+    this._subLayer.set(AutoSellDialog.TAB_EQUIPMENTS, new p.AutoSellDialogEquipments(this.dialogDisp.tab_equipments));
+    this._subLayer.set(AutoSellDialog.TAB_GEMS, new h.AutoSellDialogGems(this.dialogDisp.tab_gems));
   };
-  AutoSellDialogEquipments.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this._selectAllCheckbox.onStateChanged.add(this.bindFunction(this.onSelectAllCheckboxChanged));
-    this._selectAllCheckbox.onShow();
-    for (var i = 0; i < this.NUMBER_OF_ACTIVE_STATE_CHECKBOXES.y; ++i) {
-      for (var n = 0; n < this.NUMBER_OF_ACTIVE_STATE_CHECKBOXES.x; ++n) {
-        var o = this._activeStateCheckboxes[i][n];
-        o.onShow();
-        o.onStateChanged.add(this.bindFunction(this.onActiveStateCheckboxChanged));
-      }
-    }
-    this.updateSelectAllCheckbox();
-    this.updateActiveCheckboxes();
+  AutoSellDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.cloneAutoSellVOFromModel();
+    this.changeCategory(AutoSellDialog.TAB_EQUIPMENTS);
   };
-  AutoSellDialogEquipments.prototype.hide = function () {
-    this._selectAllCheckbox.onHide();
-    for (var t = 0; t < this.NUMBER_OF_ACTIVE_STATE_CHECKBOXES.y; ++t) {
-      for (var i = 0; i < this.NUMBER_OF_ACTIVE_STATE_CHECKBOXES.x; ++i) {
-        var n = this._activeStateCheckboxes[t][i];
-        n.onStateChanged.remove(this.bindFunction(this.onActiveStateCheckboxChanged));
-        n.onHide();
-      }
-    }
-    this._selectAllCheckbox.onStateChanged.remove(this.bindFunction(this.onSelectAllCheckboxChanged));
+  AutoSellDialog.prototype.hide = function () {
     e.prototype.hide.call(this);
   };
-  AutoSellDialogEquipments.prototype.updateActiveCheckboxes = function () {
-    for (var e = 0; e < this.NUMBER_OF_ACTIVE_STATE_CHECKBOXES.y; ++e) {
-      for (var t = 0; t < this.NUMBER_OF_ACTIVE_STATE_CHECKBOXES.x; ++t) {
-        this._activeStateCheckboxes[e][t].setState(this.getActiveStateFromData(t, e), false);
+  AutoSellDialog.prototype.changeCategory = function (t) {
+    function updateButton(e, t, i) {
+      e.mc_background.gotoAndStop(i ? 2 : 1);
+      t.color = i ? AutoSellDialog.TAB_BTN_COLOR_SELECTED : AutoSellDialog.TAB_BTN_COLOR_DEFAULT;
+    }
+    if (this._currentCategory != t) {
+      e.prototype.changeCategory.call(this, t);
+      this.showSublayer(this._subLayer.get(t), []);
+      updateButton(this.dialogDisp.btn_tab_equipments, this._tfTabBtnEquipment, this._currentCategory == AutoSellDialog.TAB_EQUIPMENTS);
+      updateButton(this.dialogDisp.btn_tab_gems, this._tfTabBtnGems, this._currentCategory == AutoSellDialog.TAB_GEMS);
+    }
+  };
+  AutoSellDialog.prototype.cloneAutoSellVOFromModel = function () {
+    this._autoSellVO = l.CastleModel.subscriptionData.autoSell.clone();
+    if (this._subLayer != null) {
+      for (var e = 0, t = Array.from(this._subLayer.values()); e < t.length; e++) {
+        t[e].autoSellVO = this._autoSellVO;
       }
     }
   };
-  AutoSellDialogEquipments.prototype.updateSelectAllCheckbox = function () {
-    var e = s.int(this.autoSellVO.equipments.getCurrentActiveStatesCount());
-    var t = -1;
-    t = e <= 0 ? s.int(d.AAutoSellDialogCheckbox.STATE_UNSELECTED) : e >= r.AutoSellEquipmentsVO.NUMBER_OF_ACTIVE_STATES ? s.int(d.AAutoSellDialogCheckbox.STATE_SELECTED) : s.int(d.AAutoSellDialogCheckbox.STATE_MIXED);
-    this._selectAllCheckbox.setState(t, false);
-  };
-  AutoSellDialogEquipments.prototype.getActiveStateFromData = function (e, t) {
-    return s.int(this.autoSellVO.equipments.isActive(r.AutoSellEquipmentsVO.SLOT_ORDER[t], r.AutoSellEquipmentsVO.RARITY_ORDER[e]) ? d.AAutoSellDialogCheckbox.STATE_SELECTED : d.AAutoSellDialogCheckbox.STATE_UNSELECTED);
-  };
-  AutoSellDialogEquipments.prototype.setActiveStateInData = function (e, t, i) {
-    this.autoSellVO.equipments.setActive(r.AutoSellEquipmentsVO.SLOT_ORDER[t], r.AutoSellEquipmentsVO.RARITY_ORDER[e], i);
-  };
-  AutoSellDialogEquipments.prototype.onSelectAllCheckboxChanged = function (e) {
-    switch (e.currentState) {
-      case d.AAutoSellDialogCheckbox.STATE_UNSELECTED:
-      case d.AAutoSellDialogCheckbox.STATE_MIXED:
-        this.autoSellVO.equipments.setAllActiveStates(false);
-        break;
-      case d.AAutoSellDialogCheckbox.STATE_SELECTED:
-        this.autoSellVO.equipments.setAllActiveStates(true);
+  AutoSellDialog.prototype.onClick = function (t) {
+    if (c.ButtonHelper.isButtonEnabled(t.target)) {
+      e.prototype.onClick.call(this, t);
+      switch (t.target) {
+        case this.dialogDisp.btn_close:
+          this.hide();
+          break;
+        case this.dialogDisp.btn_tab_equipments:
+          this.changeCategory(AutoSellDialog.TAB_EQUIPMENTS);
+          break;
+        case this.dialogDisp.btn_tab_gems:
+          this.changeCategory(AutoSellDialog.TAB_GEMS);
+          break;
+        case this.dialogDisp.btn_help:
+          d.CastleExternalDialog.dialogHandler.showHelper("", a.Localize.text("dialog_autoSellSettings_help"));
+          break;
+        case this.dialogDisp.btn_save:
+          this.onSaveButtonClicked();
+      }
     }
-    this.updateActiveCheckboxes();
   };
-  AutoSellDialogEquipments.prototype.onActiveStateCheckboxChanged = function (e) {
-    var t = e;
-    this.setActiveStateInData(t.row, t.column, e.currentState == d.AAutoSellDialogCheckbox.STATE_SELECTED);
-    this.updateSelectAllCheckbox();
+  AutoSellDialog.prototype.onSaveButtonClicked = function () {
+    l.CastleModel.subscriptionData.autoSell.applyNewConfig(this._autoSellVO);
+    l.CastleModel.subscriptionData.autoSell.sendConfigToServer();
+    this.hide();
   };
-  return AutoSellDialogEquipments;
-}(l.AAutoSellDialogSublayer);
-exports.AutoSellDialogEquipments = u;
-var d = require("./924.js");
-var p = require("./2325.js");
-var h = require("./2326.js");
-o.classImplementsInterfaces(u, "ICollectableRendererList", "ISublayer");
+  AutoSellDialog.__initialize_static_members = function () {
+    AutoSellDialog.TAB_BTN_COLOR_DEFAULT = r.ClientConstColor.MODERN_DEFAULT_BRIGHT;
+  };
+  AutoSellDialog.NAME = "AutoSell";
+  AutoSellDialog.TAB_BTN_COLOR_SELECTED = 15921906;
+  AutoSellDialog.TAB_EQUIPMENTS = "tab_equipments";
+  AutoSellDialog.TAB_GEMS = "tab_gems";
+  return AutoSellDialog;
+}(require("./112.js").CastleExternalSubLayerDialog);
+exports.AutoSellDialog = u;
+var d = require("./11.js");
+var p = require("./2324.js");
+var h = require("./2328.js");
+var g = require("./36.js");
+o.classImplementsInterfaces(u, "ICollectableRendererList");
+u.__initialize_static_members();

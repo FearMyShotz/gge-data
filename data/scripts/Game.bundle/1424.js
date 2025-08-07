@@ -12,13 +12,13 @@ var u = require("./1.js");
 var d = require("./1.js");
 var p = require("./3.js");
 var h = require("./3.js");
-var g = require("./977.js");
-var C = require("./2608.js");
+var g = require("./978.js");
+var C = require("./2609.js");
 var _ = require("./32.js");
 var m = require("./4.js");
 var f = require("./8.js");
 var O = require("./11.js");
-var E = require("./979.js");
+var E = require("./980.js");
 var y = function (e) {
   function InviteAFriendLinkDialog() {
     var t = this;
@@ -143,6 +143,6 @@ var y = function (e) {
 exports.InviteAFriendLinkDialog = y;
 var b = require("./434.js");
 var D = require("./9.js");
-var I = require("./978.js");
+var I = require("./979.js");
 d.classImplementsInterfaces(y, "ICollectableRendererList");
 y.__initialize_static_members();

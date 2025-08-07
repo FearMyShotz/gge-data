@@ -4,22 +4,22 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./456.js");
 var a = function (e) {
-  function WoodcutterMovementVO() {
+  function StonecutterMovementVO() {
     var t = e.call(this) || this;
-    t._name = "Woodcutter";
+    t._name = "Stonecutter";
     return t;
   }
-  n.__extends(WoodcutterMovementVO, e);
-  WoodcutterMovementVO.prototype.getWaypoints = function () {
-    return new o.IsoMovementWaypointClassesVO([p.WoodcutterBuildingVO, r.KeepBuildingVO, l.LumbermillBuildingVO, d.TavernBuildingVO, c.MarketBuildingVO, u.StorehouseBuildingVO, s.AHunterBuildingVO]);
+  n.__extends(StonecutterMovementVO, e);
+  StonecutterMovementVO.prototype.getWaypoints = function () {
+    return new o.IsoMovementWaypointClassesVO([c.QuarryBuildingVO, r.KeepBuildingVO, u.StonemasonBuildingVO, p.TavernBuildingVO, l.MarketBuildingVO, d.StorehouseBuildingVO, s.AHunterBuildingVO]);
   };
-  return WoodcutterMovementVO;
-}(require("./537.js").AIsoMovementVO);
-exports.WoodcutterMovementVO = a;
+  return StonecutterMovementVO;
+}(require("./538.js").AIsoMovementVO);
+exports.StonecutterMovementVO = a;
 var s = require("./412.js");
 var r = require("./399.js");
-var l = require("./1545.js");
-var c = require("./536.js");
-var u = require("./791.js");
-var d = require("./455.js");
-var p = require("./533.js");
+var l = require("./537.js");
+var c = require("./638.js");
+var u = require("./1551.js");
+var d = require("./793.js");
+var p = require("./455.js");

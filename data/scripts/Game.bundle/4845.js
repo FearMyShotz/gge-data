@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GEICommand() {
+  function FRCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GEICommand, e);
-  Object.defineProperty(GEICommand.prototype, "cmdId", {
+  n.__extends(FRCCommand, e);
+  Object.defineProperty(FRCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_EQUIPMENT_INVENTORY;
+      return s.ClientConstSF.S2C_REQUEST_FORGE_CRAFT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,25 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GEICommand.prototype.executeCommand = function (e, t) {
+  FRCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.equipData.parse_GEI(i);
+        r.CastleModel.allianceData.myAllianceVO.fillFromParamObject(i.ain.A);
+        if (i.E) {
+          r.CastleModel.equipData.parse_FRC(i);
+        } else {
+          r.CastleModel.gemData.parse_FRC(i);
+        }
+        r.CastleModel.equipData.parse_ESL(i.esl);
+        r.CastleModel.gemData.parse_ESL(i.esl);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GEICommand;
+  return FRCCommand;
 }(l.CastleCommand);
-exports.GEICommand = c;
+exports.FRCCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

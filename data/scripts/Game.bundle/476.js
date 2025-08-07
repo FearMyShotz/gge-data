@@ -2,28 +2,36 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./99.js");
-var a = function (e) {
-  function AMessageFriendInviteVO() {
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./69.js");
+var r = require("./37.js");
+var l = function (e) {
+  function CastleDispatchingCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AMessageFriendInviteVO, e);
-  AMessageFriendInviteVO.prototype.parseMessageHeader = function (e) {
-    this._senderName = e;
+  n.__extends(CastleDispatchingCommand, e);
+  CastleDispatchingCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case a.ERROR.ALL_OK:
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    this.dispatchArrivedEvent(e, t);
+    return false;
   };
-  AMessageFriendInviteVO.prototype.parseSender = function () {
-    return this._senderName;
+  CastleDispatchingCommand.prototype.dispatchArrivedEvent = function (e, t) {
+    this.controller.dispatchEvent(new r.CastleServerMessageArrivedEvent(this.eventType, [e, t]));
   };
-  Object.defineProperty(AMessageFriendInviteVO.prototype, "additionalIconName", {
+  Object.defineProperty(CastleDispatchingCommand.prototype, "eventType", {
     get: function () {
-      return "CastleMessageIconsFriendInvite";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(o.AMessageVO.prototype, "additionalIconName").set.call(this, e);
+      throw new s.AbstractMethodError();
     },
     enumerable: true,
     configurable: true
   });
-  return AMessageFriendInviteVO;
-}(o.AMessageVO);
-exports.AMessageFriendInviteVO = a;
+  return CastleDispatchingCommand;
+}(require("./10.js").CastleCommand);
+exports.CastleDispatchingCommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

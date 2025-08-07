@@ -2,28 +2,30 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleStormIslandsTitleLostDialogProperties(t) {
-    var i = e.call(this) || this;
-    i._messageVO = t;
-    return i;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = function (e) {
+  function CastleEilandTitleNewKingMessageDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  n.__extends(CastleStormIslandsTitleLostDialogProperties, e);
-  Object.defineProperty(CastleStormIslandsTitleLostDialogProperties.prototype, "isStormLord", {
-    get: function () {
-      return this.messageVO.titleID == CastleStormIslandsTitleLostDialogProperties.STORM_LORD_TITLE_ID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleStormIslandsTitleLostDialogProperties.prototype, "messageVO", {
-    get: function () {
-      return this._messageVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleStormIslandsTitleLostDialogProperties.STORM_LORD_TITLE_ID = 50;
-  return CastleStormIslandsTitleLostDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleStormIslandsTitleLostDialogProperties = o;
+  n.__extends(CastleEilandTitleNewKingMessageDialog, e);
+  CastleEilandTitleNewKingMessageDialog.prototype.parseParams = function (t) {
+    e.prototype.parseParams.call(this, t);
+    this.kingAlliance = this.paramArray[2];
+  };
+  CastleEilandTitleNewKingMessageDialog.prototype.onGetTitleData = function (t) {
+    e.prototype.onGetTitleData.call(this, t);
+    this.dialogDisp.mc_titleBonus.visible = false;
+    var i = [this.kingName, this.kingAlliance];
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_eiland_titleMessage_newLeft_copy", i));
+    this.adjustTextSize();
+  };
+  CastleEilandTitleNewKingMessageDialog.__initialize_static_members = function () {
+    CastleEilandTitleNewKingMessageDialog.NAME = "CastleEilandTitleNewKingMessage";
+  };
+  return CastleEilandTitleNewKingMessageDialog;
+}(require("./1162.js").CastleEilandTitleMessageDialog);
+exports.CastleEilandTitleNewKingMessageDialog = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");
+s.__initialize_static_members();

@@ -3,35 +3,40 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function GGSGiftEventVO() {
-    var t = this;
-    t._hasBeenCollected = false;
-    t._skinID = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var a = require("./5.js");
+var s = require("./80.js");
+var r = require("./1823.js");
+var l = require("./557.js");
+var c = function (e) {
+  function GachaDeco2x2EventVO() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GGSGiftEventVO, e);
-  GGSGiftEventVO.prototype.collect = function () {
-    this._hasBeenCollected = true;
+  n.__extends(GachaDeco2x2EventVO, e);
+  GachaDeco2x2EventVO.prototype.getDistrictType = function () {
+    return s.IsoObjectEnum.DECO_DISTRICT_2X2;
   };
-  GGSGiftEventVO.prototype.parseParamObject = function (e) {
-    this._hasBeenCollected = e.AC > 0;
-    if (e.SID) {
-      this._skinID = parseInt(e.SID);
-    }
-  };
-  GGSGiftEventVO.prototype.isCollectable = function () {
-    return !this._hasBeenCollected && this.remainingEventTimeInSeconds > 0;
-  };
-  Object.defineProperty(GGSGiftEventVO.prototype, "skinID", {
+  Object.defineProperty(GachaDeco2x2EventVO.prototype, "currencyMerchantEventID", {
     get: function () {
-      return this._skinID;
+      return a.EventConst.EVENTTYPE_APPRENTICE_TOKEN_VENDOR;
     },
     enumerable: true,
     configurable: true
   });
-  return GGSGiftEventVO;
-}(require("./79.js").ASpecialEventVO);
-exports.GGSGiftEventVO = a;
-o.classImplementsInterfaces(a, "IEventOverviewable");
+  Object.defineProperty(GachaDeco2x2EventVO.prototype, "eventName", {
+    get: function () {
+      return "GachaDeco2x2";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(GachaDeco2x2EventVO.prototype, "animationFPS", {
+    get: function () {
+      return 24;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return GachaDeco2x2EventVO;
+}(r.ADistrictGachaEventVO);
+exports.GachaDeco2x2EventVO = c;
+o.classImplementsInterfaces(l.AGachaEventVO, "IEventOverviewable");

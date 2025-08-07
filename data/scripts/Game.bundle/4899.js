@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function SJCCommand() {
+  function SOBCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SJCCommand, e);
-  Object.defineProperty(SJCCommand.prototype, "cmdId", {
+  n.__extends(SOBCommand, e);
+  Object.defineProperty(SOBCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_START_JUDGEMENT_CITIZEN;
+      return s.ClientConstSF.S2C_STORE_OBJECT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,19 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  SJCCommand.prototype.executeCommand = function (e, t) {
+  SOBCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.judgementData.parse_SJC(i);
+        r.CastleModel.areaData.activeArea.updater.parseSOB(i);
+        r.CastleModel.decoStorage.parseSIN(i.sin);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SJCCommand;
+  return SOBCommand;
 }(l.CastleCommand);
-exports.SJCCommand = c;
+exports.SOBCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

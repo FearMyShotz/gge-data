@@ -5,47 +5,67 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./3.js");
-var r = require("./58.js");
-var l = require("./4.js");
-var c = require("./236.js");
-var u = require("./705.js");
-var d = require("./89.js");
-var p = function (e) {
-  function DefencePanelButton() {
+var r = require("./18.js");
+var l = require("./92.js");
+var c = require("./4.js");
+var u = require("./236.js");
+var d = require("./263.js");
+var p = require("./89.js");
+var h = function (e) {
+  function BuildToolsPanelButton() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DefencePanelButton, e);
-  DefencePanelButton.prototype.addEventListener = function () {
+  n.__extends(BuildToolsPanelButton, e);
+  BuildToolsPanelButton.prototype.addEventListener = function () {
     e.prototype.addEventListener.call(this);
-    this.listenOnXPChanged();
+    _.CastleComponent.controller.addEventListener(l.IsoEvent.ON_BUILDING_CONSTRUCTION_DONE, this.bindFunction(this.onBuildingCompleted));
   };
-  Object.defineProperty(DefencePanelButton.prototype, "iconClass", {
+  BuildToolsPanelButton.prototype.removeEventListener = function () {
+    _.CastleComponent.controller.removeEventListener(l.IsoEvent.ON_BUILDING_CONSTRUCTION_DONE, this.bindFunction(this.onBuildingCompleted));
+    e.prototype.removeEventListener.call(this);
+  };
+  Object.defineProperty(BuildToolsPanelButton.prototype, "iconClass", {
     get: function () {
-      return Library.CastleInterfaceElements.Btn_Defence;
+      return Library.CastleInterfaceElements.Btn_BuildTools;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.APanelButton.prototype, "iconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(p.APanelButton.prototype, "iconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  DefencePanelButton.prototype.isButtonEnabled = function () {
-    return (h.CastleComponent.layoutManager.isInMyCastle || !!l.CastleModel.areaData && !!l.CastleModel.areaData.activeArea && !!l.CastleModel.areaData.activeAreaInfo && l.CastleModel.areaData.activeAreaInfo.isConqueredByMe) && l.CastleModel.userData.hasLevelFor(r.ClientConstLevelRestrictions.MIN_LEVEL_DEFENCE_DIALOG);
+  BuildToolsPanelButton.prototype.isButtonEnabled = function () {
+    return _.CastleComponent.layoutManager.isInMyCastle && (C.Iso.data.objects.provider.hasFunctionalBuildingByType(g.IsoObjectEnum.WORKSHOP) || C.Iso.data.objects.provider.hasFunctionalBuildingByType(g.IsoObjectEnum.D_WORKSHOP));
   };
-  DefencePanelButton.prototype.getButtonTooltip = function () {
-    return "panel_action_defence";
+  BuildToolsPanelButton.prototype.isButtonVisible = function () {
+    return c.CastleModel.kingdomData.activeKingdomID != a.FactionConst.KINGDOM_ID;
   };
-  DefencePanelButton.prototype.onButtonClicked = function () {
-    if (l.CastleModel.userData.userCanOpenDefenceScreen) {
-      h.CastleComponent.dialogHandler.registerDefaultDialogs(C.CastleDefenceDialog, new u.CastleDefenceDialogProperties(l.CastleModel.areaData.activeAreaInfo, a.DefenseConst.TOOL_TYPE_WALL));
+  BuildToolsPanelButton.prototype.getButtonTooltip = function () {
+    if (this.isButtonEnabled()) {
+      return "panel_action_buildTools";
     } else {
-      h.CastleComponent.dialogHandler.registerDefaultDialogs(g.CastleCharacterYesNoOKDialog, new c.CastleCharacterYesNoOKDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("panel_action_levelBlockDefencescreen"), 4, null, null, false));
+      return "alert_never_available";
     }
   };
-  return DefencePanelButton;
-}(d.APanelButton);
-exports.DefencePanelButton = p;
-var h = require("./14.js");
-var g = require("./238.js");
-var C = require("./426.js");
-o.classImplementsInterfaces(p, "ICollectableRendererList");
+  BuildToolsPanelButton.prototype.onButtonClicked = function () {
+    if (c.CastleModel.militaryData.isBuildingCategoryAllowed(r.ClientConstCastle.UNIT_BUILDINGTYPE_DWORKSHOP) || c.CastleModel.militaryData.isBuildingCategoryAllowed(r.ClientConstCastle.UNIT_BUILDINGTYPE_WORKSHOP)) {
+      _.CastleComponent.dialogHandler.registerDefaultDialogs(f.CastleRecruitDialog, new d.CastleRecruitDialogProperties(r.ClientConstCastle.UNIT_CATEGORY_TOOLS));
+    } else {
+      _.CastleComponent.dialogHandler.registerDefaultDialogs(m.CastleCharacterYesNoOKDialog, new u.CastleCharacterYesNoOKDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("alert_noWorkshop_copy"), 4, null, null, false));
+    }
+  };
+  BuildToolsPanelButton.prototype.onBuildingCompleted = function (e) {
+    var t = e.params[0];
+    if (t.objectType == g.IsoObjectEnum.WORKSHOP || t.objectType == g.IsoObjectEnum.D_WORKSHOP) {
+      this.update();
+    }
+  };
+  return BuildToolsPanelButton;
+}(p.APanelButton);
+exports.BuildToolsPanelButton = h;
+var g = require("./80.js");
+var C = require("./34.js");
+var _ = require("./14.js");
+var m = require("./238.js");
+var f = require("./225.js");
+o.classImplementsInterfaces(h, "ICollectableRendererList");

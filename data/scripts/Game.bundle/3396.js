@@ -5,43 +5,36 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./2.js");
 var s = require("./2.js");
-var r = require("./1.js");
+var r = require("./2.js");
 var l = require("./1.js");
-var c = require("./3.js");
-var u = require("./6.js");
-var d = require("./4.js");
-var p = require("./3397.js");
-var h = function (e) {
-  function OpenEventAnnouncementDialogCommand() {
+var c = require("./4.js");
+var u = function (e) {
+  function OpenDungenTreasureChestOfferCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(OpenEventAnnouncementDialogCommand, e);
-  OpenEventAnnouncementDialogCommand.prototype.execute = function (e = null) {
-    if (!e || !l.instanceOfClass(e, "MessageEventAnnouncementVO")) {
-      throw new Error("OpenEventAnnouncementDialogCommand expects a MessageEventAnnouncementVO as its commandVars");
-    }
-    this.messageEventAnnouncementVO = e;
-    var t = this.messageEventAnnouncementVO.eventId;
-    var i = this.messageEventAnnouncementVO.durationTS;
-    d.CastleModel.eventAnnouncementData.isClaimed(i);
-    if (d.CastleModel.eventAnnouncementData.isAvailable(i)) {
-      var n = u.int(d.CastleModel.eventAnnouncementData.getLeagueTypeId(t));
-      if (n != -1) {
-        var s = d.CastleModel.eventAnnouncementData.getEventAnnouncementVO(t, n);
-        var r = g.CollectableManager.parser.createListFromRewardIdsString(s.teaserRewardIDs);
-        var h = d.CastleModel.rewardData.getListById(s.messageRewardID);
-        var f = new p.EventAnnouncementDialogProperties(t, i, r, h);
-        C.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleEventTeaserDialog, f);
-      }
+  n.__extends(OpenDungenTreasureChestOfferCommand, e);
+  OpenDungenTreasureChestOfferCommand.prototype.execute = function (t = null) {
+    e.prototype.execute.call(this, t);
+    var i = t.offerID;
+    var n = c.CastleModel.privateOfferData.getOfferById(i);
+    if (n) {
+      s.CommandController.instance.executeCommand(d.IngameClientCommands.OPEN_PRIVATE_OFFER_DIALOG_COMMAND, n);
     } else {
-      C.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(c.Localize.text(a.GenericTextIds.ALERT_INFORMATION), c.Localize.text("dialog_eventAnnouncements_expired")));
+      p.CastleDialogHandler.getInstance().registerDefaultDialogs(g.PrivateOfferFailedStandardDialog, new a.BasicStandardOkDialogProperties(o.BasicModel.languageData.getTextById("dungeonTreasureChestOfferFailed_title"), o.BasicModel.languageData.getTextById("dungeonTreasureChestOfferFailed_copy")));
     }
   };
-  return OpenEventAnnouncementDialogCommand;
-}(s.SimpleCommand);
-exports.OpenEventAnnouncementDialogCommand = h;
-var g = require("./50.js");
-var C = require("./9.js");
-var _ = require("./38.js");
-var m = require("./3398.js");
-r.classImplementsInterfaces(h, "ISimpleCommand");
+  Object.defineProperty(OpenDungenTreasureChestOfferCommand.prototype, "layoutManager", {
+    get: function () {
+      return h.CastleLayoutManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return OpenDungenTreasureChestOfferCommand;
+}(r.SimpleCommand);
+exports.OpenDungenTreasureChestOfferCommand = u;
+var d = require("./29.js");
+var p = require("./9.js");
+var h = require("./17.js");
+var g = require("./564.js");
+l.classImplementsInterfaces(u, "ISimpleCommand");

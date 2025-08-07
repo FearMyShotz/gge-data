@@ -3,133 +3,99 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./1892.js");
-var r = require("./4.js");
-var l = require("./79.js");
+var a = require("./5.js");
+var s = require("./5.js");
+var r = require("./6.js");
+var l = require("./4.js");
 var c = function (e) {
-  function TournamentEventVO() {
+  function TimeLimitedCampaignEventEventVO() {
     var t = this;
-    t._famePerDay = 0;
-    t._ownRank = 0;
-    t._ownEarnedFamePoints = 0;
-    t._minimumFamepointsForBoobyprice = 0;
-    t._ownLeague = 0;
+    t._receivedReward = false;
+    t._endRewardValue = 0;
     CONSTRUCTOR_HACK;
-    (t = e.call(this) || this)._ranking = new Map();
-    return t;
+    return t = e.call(this) || this;
   }
-  n.__extends(TournamentEventVO, e);
-  TournamentEventVO.prototype.parseEventXmlNode = function (e) {
-    this._famePerDay = parseInt(e.famePerDay || "");
-  };
-  TournamentEventVO.prototype.parseParamObject = function (e) {
-    this._winnerRewardList = r.CastleModel.rewardData.getListById(parseInt(e.WR));
-    this._topXRewardList = r.CastleModel.rewardData.getListById(parseInt(e.TR));
-    this._boobyRewardList = r.CastleModel.rewardData.getListById(parseInt(e.BR));
-    if (e.R) {
-      for (var t = 0, i = e.R; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          this._ranking.set(n[0], {
-            O: r.CastleModel.otherPlayerData.parseOwnerInfo(n[2]),
-            EFP: a.int(n[1])
-          });
+  n.__extends(TimeLimitedCampaignEventEventVO, e);
+  TimeLimitedCampaignEventEventVO.prototype.parseParamObject = function (e) {
+    this._rewardList = l.CastleModel.rewardData.getListByIdArray(e.RIDS);
+    this._receivedReward = e.COL == 1;
+    this._endRewardValue = r.int(e[a.CommKeys.END_REWARD_VALUE]);
+    this._campaignQuests = [];
+    var t = e.CQS;
+    if (t != null) {
+      for (var i = 0, n = t; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          var s = l.CastleModel.questData.createQuest(o.QID);
+          s.fillFromParams(o);
+          this._campaignQuests.push(s);
         }
       }
     }
-    this._ownRank = a.int(e.OR);
-    this._ownEarnedFamePoints = a.int(e.OEP);
-    this._minimumFamepointsForBoobyprice = a.int(e.MFB);
+    this._campaignQuests.sort(this.bindFunction(this.sortByOrder));
+    for (var c = 0; c < this._campaignQuests.length; c++) {
+      this.campaignQuests[c].campaignSortOrder = c + 1;
+    }
   };
-  Object.defineProperty(TournamentEventVO.prototype, "eventBuildingWOD", {
-    get: function () {
-      return TournamentEventVO.EVENT_BUILDING_WOD;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.ASpecialEventVO.prototype, "eventBuildingWOD").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(TournamentEventVO.prototype, "eventBuildingNameId", {
-    get: function () {
-      return "eventBuilding_Tournement";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.ASpecialEventVO.prototype, "eventBuildingNameId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(TournamentEventVO.prototype, "famePerDay", {
-    get: function () {
-      return this._famePerDay;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  TournamentEventVO.prototype.getRankObject = function (e) {
-    return this._ranking.get(e);
+  TimeLimitedCampaignEventEventVO.prototype.sortByOrder = function (e, t) {
+    if (e.campaignQuestTimeStamp != t.campaignQuestTimeStamp) {
+      return e.campaignQuestTimeStamp - t.campaignQuestTimeStamp;
+    } else {
+      return e.campaignQuestID - t.campaignQuestID;
+    }
   };
-  Object.defineProperty(TournamentEventVO.prototype, "ownRank", {
-    get: function () {
-      return this._ownRank;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(TournamentEventVO.prototype, "ownEarnedFamePoints", {
-    get: function () {
-      return this._ownEarnedFamePoints;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(TournamentEventVO.prototype, "minimumFamepointsForBoobyprice", {
-    get: function () {
-      return this._minimumFamepointsForBoobyprice;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(TournamentEventVO.prototype, "winnerRewardList", {
-    get: function () {
-      return this._winnerRewardList;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(TournamentEventVO.prototype, "topXRewardList", {
-    get: function () {
-      return this._topXRewardList;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(TournamentEventVO.prototype, "boobyRewardList", {
-    get: function () {
-      return this._boobyRewardList;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(TournamentEventVO.prototype, "ownLeague", {
-    get: function () {
-      return this._ownLeague;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  TournamentEventVO.prototype.openDialog = function (e = true) {
-    this.executeOpenDialog(e, u.CastleTournamentEventDialog, new s.ACastleTournamentEventDialogProperties(this));
+  TimeLimitedCampaignEventEventVO.prototype.getQuestByID = function (e) {
+    if (this.campaignQuests != null) {
+      for (var t = 0, i = this.campaignQuests; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined && n.questID == e) {
+          return n;
+        }
+      }
+    }
+    return null;
   };
-  TournamentEventVO.__initialize_static_members = function () {
-    TournamentEventVO.EVENT_BUILDING_WOD = 217;
+  TimeLimitedCampaignEventEventVO.prototype.parseCQS = function (e) {
+    this.parseParamObject(e);
   };
-  return TournamentEventVO;
-}(l.ASpecialEventVO);
-exports.TournamentEventVO = c;
-var u = require("./4550.js");
+  Object.defineProperty(TimeLimitedCampaignEventEventVO.prototype, "rewards", {
+    get: function () {
+      return this._rewardList;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TimeLimitedCampaignEventEventVO.prototype, "receivedReward", {
+    get: function () {
+      return this._receivedReward;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TimeLimitedCampaignEventEventVO.prototype, "buyCost", {
+    get: function () {
+      var e = 0;
+      if (this._campaignQuests != null) {
+        for (var t = 0, i = this._campaignQuests; t < i.length; t++) {
+          var n = i[t];
+          if (n !== undefined && n.isCompleted) {
+            e++;
+          }
+        }
+      }
+      return s.TimeLimitedCampaignConst.calculateEndRewardPurchaseCost(this._endRewardValue, this._campaignQuests.length, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(TimeLimitedCampaignEventEventVO.prototype, "campaignQuests", {
+    get: function () {
+      return this._campaignQuests;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return TimeLimitedCampaignEventEventVO;
+}(require("./79.js").ASpecialEventVO);
+exports.TimeLimitedCampaignEventEventVO = c;
 o.classImplementsInterfaces(c, "IEventOverviewable");
-c.__initialize_static_members();

@@ -40,7 +40,7 @@ var o = function () {
 }();
 exports.CastleSeasonMapItemCreator = o;
 var a = require("./1134.js");
-var s = require("./1865.js");
-var r = require("./1866.js");
+var s = require("./1867.js");
+var r = require("./1868.js");
 var l = require("./1135.js");
 n.classImplementsInterfaces(o, "ITreasureMapItemCreator");

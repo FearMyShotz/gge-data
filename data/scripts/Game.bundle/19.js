@@ -2,11 +2,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./6.js");
-var o = require("./2007.js");
-var a = require("./2008.js");
-var s = require("./2009.js");
-var r = require("./2010.js");
-var l = require("./2011.js");
+var o = require("./2008.js");
+var a = require("./2009.js");
+var s = require("./2010.js");
+var r = require("./2011.js");
+var l = require("./2012.js");
 var c = function () {
   function CollectableRenderOptions(e = n.int(CollectableRenderOptions.SET_ADVANCED), t = null) {
     this._icon = new a.CollectableRenderOptionsIcon();

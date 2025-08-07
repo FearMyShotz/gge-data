@@ -73,10 +73,10 @@ var u = function (e) {
   return HunterPanelButton;
 }(c.APanelButton);
 exports.HunterPanelButton = u;
-var d = require("./33.js");
+var d = require("./34.js");
 var p = require("./17.js");
 var h = require("./14.js");
 var g = require("./1590.js");
 var C = require("./260.js");
-var _ = require("./626.js");
+var _ = require("./627.js");
 o.classImplementsInterfaces(u, "ICollectableRendererList");

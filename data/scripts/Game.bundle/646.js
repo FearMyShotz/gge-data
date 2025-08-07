@@ -1,25 +1,72 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./62.js");
-var s = function (e) {
-  function APalaceBuildingVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var n = function () {
+  function AutoRecruitmentCosts() {
+    this._costs = new o.CollectableList();
+    this._loopFee = new s.CollectableItemC2VO(0);
+    this._duplicatingCosts = new s.CollectableItemC2VO(0);
+    this._priceType = c.AutoRecruitmentPriceEnum.SOLDIERS;
   }
-  n.__extends(APalaceBuildingVE, e);
-  Object.defineProperty(APalaceBuildingVE.prototype, "buildingGroundIconClass", {
+  AutoRecruitmentCosts.prototype.fillByServerData = function (e) {
+    this._costs = new o.CollectableList();
+    if (e.CW) {
+      this.costs.addItem(new l.CollectableItemWoodVO(e.CW));
+    }
+    if (e.CS) {
+      this.costs.addItem(new r.CollectableItemStoneVO(e.CS));
+    }
+    if (e.C1) {
+      this.costs.addItem(new a.CollectableItemC1VO(e.C1));
+    }
+    this._duplicatingCosts = new s.CollectableItemC2VO(e.DC);
+  };
+  Object.defineProperty(AutoRecruitmentCosts.prototype, "costs", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Palace;
+      return this._costs;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      this._costs = e;
     },
     enumerable: true,
     configurable: true
   });
-  return APalaceBuildingVE;
-}(a.ABasicBuildingVE);
-exports.APalaceBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  Object.defineProperty(AutoRecruitmentCosts.prototype, "duplicatingCosts", {
+    get: function () {
+      return this._duplicatingCosts;
+    },
+    set: function (e) {
+      this._duplicatingCosts = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AutoRecruitmentCosts.prototype, "priceType", {
+    get: function () {
+      return this._priceType;
+    },
+    set: function (e) {
+      this._priceType = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AutoRecruitmentCosts.prototype, "loopFee", {
+    get: function () {
+      return this._loopFee;
+    },
+    set: function (e) {
+      this._loopFee = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AutoRecruitmentCosts;
+}();
+exports.AutoRecruitmentCosts = n;
+var o = require("./48.js");
+var a = require("./234.js");
+var s = require("./128.js");
+var r = require("./267.js");
+var l = require("./268.js");
+var c = require("./540.js");

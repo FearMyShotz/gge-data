@@ -5,53 +5,96 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./5.js");
-var r = require("./6.js");
-var l = require("./162.js");
-var c = function (e) {
-  function FactionCampDetailView(t, i, n, o) {
-    var a = this;
-    a._factionFrame = 0;
+var r = require("./5.js");
+var l = require("./4.js");
+var c = require("./162.js");
+var u = function (e) {
+  function EventDungeonDetailView(t, i, n, o) {
     CONSTRUCTOR_HACK;
-    return a = e.call(this, t, i, n, o) || this;
+    return e.call(this, t, i, n, o) || this;
   }
-  n.__extends(FactionCampDetailView, e);
-  Object.defineProperty(FactionCampDetailView.prototype, "assetCastleFileURL", {
+  n.__extends(EventDungeonDetailView, e);
+  Object.defineProperty(EventDungeonDetailView.prototype, "assetBackgroundFileURL", {
     get: function () {
-      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("DetailView_Camp_Faction");
+      switch (this.skinID) {
+        case s.DungeonConst.DUNGEON_SKIN_ST_PATRICKS_DAY:
+        case s.DungeonConst.DUNGEON_SKIN_EASTER:
+          return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("DetailView_Background_EventDungeon_3");
+        default:
+          return Object.getOwnPropertyDescriptor(c.FightDetailView.prototype, "assetBackgroundFileURL").get.call(this);
+      }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.FightDetailView.prototype, "assetCastleFileURL").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.FightDetailView.prototype, "assetBackgroundFileURL").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  FactionCampDetailView.prototype.drawCastleVO = function () {
-    var e = "_" + this._kingdomVO.kingdomName;
-    var t = r.int(this._detailDrawAble.ownerInfo.factionID);
-    this._factionFrame = r.int(t == s.FactionConst.RED_FACTION ? 1 : 2);
-    this.initLayer();
-    this._layerKeep.addChild(this.getMovieClipByName(FactionCampDetailView.CLASSNAME_KEEP, this.bindFunction(this.onClipLoaded)));
-    this._layerLeft.addChild(this.getMovieClipByName(FactionCampDetailView.CLASSNAME_BACKWALL + "_Left" + e, this.bindFunction(this.onClipLoaded)));
-    this._layerMiddle.addChild(this.getMovieClipByName(FactionCampDetailView.CLASSNAME_FRONTWALL + "_Left" + e, this.bindFunction(this.onClipLoaded)));
-    this._layerMiddle.addChild(this.getMovieClipByName(FactionCampDetailView.CLASSNAME_FRONTWALL + "_Right" + e, this.bindFunction(this.onClipLoaded)));
-    this._layerMiddle.addChild(this.getMovieClipByName(FactionCampDetailView.CLASSNAME_GATE, this.bindFunction(this.onClipLoaded)));
-    this._layerRight.addChild(this.getMovieClipByName(FactionCampDetailView.CLASSNAME_BACKWALL + "_Right" + e, this.bindFunction(this.onClipLoaded)));
-    if (this._detailDrawAble.moatLevel > 0) {
-      this._layerMoat.addChild(this.getMovieClipByName(FactionCampDetailView.CLASSNAME_MOAT + e + this._detailDrawAble.moatLevel, this.bindFunction(this.onClipLoaded)));
+  EventDungeonDetailView.prototype.getBackgroundClassName = function () {
+    switch (this.skinID) {
+      case s.DungeonConst.DUNGEON_SKIN_ST_PATRICKS_DAY:
+      case s.DungeonConst.DUNGEON_SKIN_EASTER:
+        return "DetailView_Background_EventDungeon_3";
+      default:
+        return "Castle_Landscape_Classic_Dungeon";
     }
   };
-  FactionCampDetailView.prototype.onClipLoaded = function (e) {
-    e.gotoAndStop(this._factionFrame);
+  Object.defineProperty(EventDungeonDetailView.prototype, "assetCastleFileURL", {
+    get: function () {
+      var e = this.hasCastleSkin ? "DetailView_EventDungeon_" + this.skinID : "DetailView_EventDungeon";
+      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(e);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(c.FightDetailView.prototype, "assetCastleFileURL").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EventDungeonDetailView.prototype.drawCastleVO = function () {
+    var e = this.hasCastleSkin ? "_" + this.skinID : "";
+    this.initLayer();
+    this._castleLayer.y = 15;
+    this._castleLayer.x = -7;
+    this._layerKeep.addChild(this.getMovieClipByName(EventDungeonDetailView.CLASSNAME_KEEP + e));
+    this._layerLeft.addChild(this.getMovieClipByName(EventDungeonDetailView.CLASSNAME_BACKWALL + "_Left" + e));
+    this._layerMiddle.addChild(this.getMovieClipByName(EventDungeonDetailView.CLASSNAME_FRONTWALL + "_Left" + e));
+    this._layerMiddle.addChild(this.getMovieClipByName(EventDungeonDetailView.CLASSNAME_FRONTWALL + "_Right" + e));
+    this._layerMiddle.addChild(this.getMovieClipByName(EventDungeonDetailView.CLASSNAME_GATE + e));
+    this._layerRight.addChild(this.getMovieClipByName(EventDungeonDetailView.CLASSNAME_BACKWALL + "_Right" + e));
   };
-  FactionCampDetailView.__initialize_static_members = function () {
-    FactionCampDetailView.CLASSNAME_KEEP = "Camp_Keep_Faction";
-    FactionCampDetailView.CLASSNAME_BACKWALL = "Camp_BackWall";
-    FactionCampDetailView.CLASSNAME_FRONTWALL = "Camp_FrontWall";
-    FactionCampDetailView.CLASSNAME_GATE = "Camp_Gate_Faction";
-    FactionCampDetailView.CLASSNAME_MOAT = "Camp_Moat";
+  Object.defineProperty(EventDungeonDetailView.prototype, "hasCastleSkin", {
+    get: function () {
+      switch (this.skinID) {
+        case s.DungeonConst.DUNGEON_SKIN_ROBBER_BARON_KING:
+        case s.DungeonConst.DUNGEON_SKIN_COW:
+          return false;
+        default:
+          return true;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventDungeonDetailView.prototype, "skinID", {
+    get: function () {
+      var e = l.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_DUNGEON);
+      if (e) {
+        return e.skinID;
+      } else {
+        return s.DungeonConst.DUNGEON_SKIN_ROBBER_BARON_KING;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EventDungeonDetailView.__initialize_static_members = function () {
+    EventDungeonDetailView.CLASSNAME_KEEP = "EventDungeon_Keep";
+    EventDungeonDetailView.CLASSNAME_BACKWALL = "EventDungeon_BackWall";
+    EventDungeonDetailView.CLASSNAME_FRONTWALL = "EventDungeon_FrontWall";
+    EventDungeonDetailView.CLASSNAME_GATE = "EventDungeon_Gate";
   };
-  return FactionCampDetailView;
-}(l.FightDetailView);
-exports.FactionCampDetailView = c;
-a.classImplementsInterfaces(c, "IFightDetailView");
-c.__initialize_static_members();
+  return EventDungeonDetailView;
+}(c.FightDetailView);
+exports.EventDungeonDetailView = u;
+a.classImplementsInterfaces(u, "IFightDetailView");
+u.__initialize_static_members();

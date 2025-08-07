@@ -1,21 +1,20 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function AllianceHighscoreInfoVO() {
-    this.allianceId = 0;
-    this.memberAmount = 0;
-    this.allianceCurrentFame = 0;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./6.js");
+var s = require("./18.js");
+var r = function (e) {
+  function CastleHighscoreDialogProperties(t, i = a.int(s.ClientConstCastle.CATEGORY_HONOR)) {
+    var n = this;
+    n.startCategory = 0;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this).startTimeSpan = t;
+    n.startCategory = i;
+    return n;
   }
-  AllianceHighscoreInfoVO.prototype.fillFromParamObject = function (e) {
-    if (e && Array.isArray(e)) {
-      this.allianceId = o.int(e.shift());
-      this.allianceName = e.shift();
-      this.memberAmount = o.int(e.shift());
-      this.allianceCurrentFame = o.int(e.shift());
-    }
-  };
-  return AllianceHighscoreInfoVO;
-}();
-exports.AllianceHighscoreInfoVO = n;
-var o = require("./6.js");
+  n.__extends(CastleHighscoreDialogProperties, e);
+  return CastleHighscoreDialogProperties;
+}(o.BasicProperties);
+exports.CastleHighscoreDialogProperties = r;

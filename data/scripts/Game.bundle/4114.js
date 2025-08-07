@@ -36,7 +36,7 @@ var r = function (e) {
 }(s.APanelButton);
 exports.LegendHallPanelButton = r;
 var l = require("./80.js");
-var c = require("./33.js");
+var c = require("./34.js");
 var u = require("./9.js");
 var d = require("./14.js");
 var p = require("./448.js");

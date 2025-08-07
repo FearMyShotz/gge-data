@@ -3,89 +3,71 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./18.js");
-var l = require("./42.js");
-var c = require("./8.js");
-var u = require("./11.js");
-var d = require("./371.js");
-var p = function (e) {
-  function InviteAFriendRewardReceivedDialog(t = "") {
-    var i = this;
+var a = function (e) {
+  function CastleInGameHelpCategoriesEnum(t, i) {
+    var n = this;
+    n._key = 0;
     CONSTRUCTOR_HACK;
-    (i = e.call(this, t == "" ? InviteAFriendRewardReceivedDialog.NAME : t) || this).additionalButtons = [];
-    return i;
+    (n = e.call(this, t, o.BasicEnum.instantiationKey) || this)._key = i;
+    return n;
   }
-  n.__extends(InviteAFriendRewardReceivedDialog, e);
-  InviteAFriendRewardReceivedDialog.prototype.registerRewardHolder = function () {};
-  InviteAFriendRewardReceivedDialog.prototype.fillRewards = function () {};
-  InviteAFriendRewardReceivedDialog.prototype.handleTextIDs = function () {};
-  InviteAFriendRewardReceivedDialog.prototype.updateRewardHolder = function () {};
-  InviteAFriendRewardReceivedDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    var i = [this.dialogDisp.btn_close, this.dialogDisp.btn_ok, this.dialogDisp.btn_invite_a_friend];
-    if (this.additionalButtons && this.additionalButtons.length > 0) {
-      i = i.concat(this.additionalButtons);
-    }
-    this.initBasicButtons(i);
-    this.textFieldManager.registerTextField(this.dialogDisp.tf_title, new s.LocalizedTextVO(this.getTitle())).verticalAlign = l.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
-    this.itxt_description = this.textFieldManager.registerTextField(this.dialogDisp.tf_top_description, new s.LocalizedTextVO(this.getDescription(), this.getDescriptionReplacements()));
-    this.textFieldManager.registerTextField(this.dialogDisp.tf_bottom_description, new s.LocalizedTextVO(this.getBottomDescription()));
-    if (this.dialogDisp.btn_invite_a_friend.tf_sign_up_more) {
-      this.dialogDisp.btn_invite_a_friend.toolTipText = "";
-      this.textFieldManager.registerTextField(this.dialogDisp.btn_invite_a_friend.tf_sign_up_more, new s.LocalizedTextVO(InviteAFriendRewardReceivedDialog.INVITE_MORE_FRIENDS)).verticalAlign = l.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
-    } else {
-      this.dialogDisp.btn_invite_a_friend.toolTipText = InviteAFriendRewardReceivedDialog.INVITE_A_FRIEND_TOOLTIP;
-      this.textFieldManager.registerTextField(this.dialogDisp.tf_sign_up_more, new s.LocalizedTextVO(InviteAFriendRewardReceivedDialog.INVITE_MORE_FRIENDS)).verticalAlign = l.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
-    }
-    this.itxt_description.verticalAlign = o.GGSVerticalAlign.MIDDLE;
-    this.registerRewardHolder();
-    this.fillRewards();
-    this.handleTextIDs();
-    this.updateRewardHolder();
+  n.__extends(CastleInGameHelpCategoriesEnum, e);
+  Object.defineProperty(CastleInGameHelpCategoriesEnum.prototype, "key", {
+    get: function () {
+      return this._key;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleInGameHelpCategoriesEnum.getInGameHelpCategories = function () {
+    return [CastleInGameHelpCategoriesEnum.WELCOME, CastleInGameHelpCategoriesEnum.YOUR_CASTLE, CastleInGameHelpCategoriesEnum.OUTPOSTS, CastleInGameHelpCategoriesEnum.BUILDINGS, CastleInGameHelpCategoriesEnum.RESOURCES, CastleInGameHelpCategoriesEnum.COINS_AND_TAXES, CastleInGameHelpCategoriesEnum.RUBIES, CastleInGameHelpCategoriesEnum.PUBLIC_ORDER, CastleInGameHelpCategoriesEnum.LEVEL, CastleInGameHelpCategoriesEnum.WORLD_MAP, CastleInGameHelpCategoriesEnum.UNITS_AND_TOOLS, CastleInGameHelpCategoriesEnum.ATTACK, CastleInGameHelpCategoriesEnum.DEFENSES, CastleInGameHelpCategoriesEnum.ROBBER_AND_BARON_CASTLES, CastleInGameHelpCategoriesEnum.HONOR, CastleInGameHelpCategoriesEnum.ALLIANCES, CastleInGameHelpCategoriesEnum.EQUIPMENT, CastleInGameHelpCategoriesEnum.AGENTS, CastleInGameHelpCategoriesEnum.KINGDOMS, CastleInGameHelpCategoriesEnum.MILITARY_HOSPITAL, CastleInGameHelpCategoriesEnum.COMMAND_CENTRES, CastleInGameHelpCategoriesEnum.BOOKMARKS, CastleInGameHelpCategoriesEnum.EVENTS, CastleInGameHelpCategoriesEnum.MIGHT_POINTS];
   };
-  InviteAFriendRewardReceivedDialog.prototype.onClick = function (e) {
-    if (c.ButtonHelper.isButtonEnabled(e.target)) {
-      switch (e.target) {
-        case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_ok:
-          this.hide();
-          break;
-        case this.dialogDisp.btn_invite_a_friend:
-          h.CastleDialogHandler.getInstance().registerDefaultDialogs(g.CastlePremiumMarketPlaceDialog, new d.CastlePremiumMarketPlaceDialogProperties(r.ClientConstCastle.CATEGORY_MARKETPLACE_INVITE_A_FRIEND));
-          this.hide();
+  CastleInGameHelpCategoriesEnum.prototype.getCategoryText = function () {
+    return "ingameHelp_category_" + (this._key + 1);
+  };
+  CastleInGameHelpCategoriesEnum.prototype.getCategoryContentText = function () {
+    return "ingameHelp_category_" + (this._key + 1) + "_text_1";
+  };
+  CastleInGameHelpCategoriesEnum.getCategoryFromKey = function (e) {
+    var t = CastleInGameHelpCategoriesEnum.getInGameHelpCategories();
+    if (t != null) {
+      for (var i = 0, n = t; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined && o.key == e) {
+          return o;
+        }
       }
     }
+    return CastleInGameHelpCategoriesEnum.UNDEFINED;
   };
-  InviteAFriendRewardReceivedDialog.prototype.getTitle = function () {
-    return InviteAFriendRewardReceivedDialog.TITLE;
+  CastleInGameHelpCategoriesEnum.__initialize_static_members = function () {
+    CastleInGameHelpCategoriesEnum.UNDEFINED = new CastleInGameHelpCategoriesEnum("UNDEFINED", 0);
+    CastleInGameHelpCategoriesEnum.WELCOME = new CastleInGameHelpCategoriesEnum("WELCOME", 0);
+    CastleInGameHelpCategoriesEnum.YOUR_CASTLE = new CastleInGameHelpCategoriesEnum("YOUR_CASTLE", 1);
+    CastleInGameHelpCategoriesEnum.OUTPOSTS = new CastleInGameHelpCategoriesEnum("OUTPOSTS", 2);
+    CastleInGameHelpCategoriesEnum.BUILDINGS = new CastleInGameHelpCategoriesEnum("BUILDINGS", 3);
+    CastleInGameHelpCategoriesEnum.RESOURCES = new CastleInGameHelpCategoriesEnum("RESOURCES", 4);
+    CastleInGameHelpCategoriesEnum.COINS_AND_TAXES = new CastleInGameHelpCategoriesEnum("COINS_AND_TAXES", 5);
+    CastleInGameHelpCategoriesEnum.RUBIES = new CastleInGameHelpCategoriesEnum("RUBIES", 6);
+    CastleInGameHelpCategoriesEnum.PUBLIC_ORDER = new CastleInGameHelpCategoriesEnum("PUBLIC_ORDER", 7);
+    CastleInGameHelpCategoriesEnum.LEVEL = new CastleInGameHelpCategoriesEnum("LEVEL", 8);
+    CastleInGameHelpCategoriesEnum.WORLD_MAP = new CastleInGameHelpCategoriesEnum("WORLD_MAP", 9);
+    CastleInGameHelpCategoriesEnum.UNITS_AND_TOOLS = new CastleInGameHelpCategoriesEnum("UNITS_AND_TOOLS", 10);
+    CastleInGameHelpCategoriesEnum.ATTACK = new CastleInGameHelpCategoriesEnum("ATTACK", 11);
+    CastleInGameHelpCategoriesEnum.DEFENSES = new CastleInGameHelpCategoriesEnum("DEFENSES", 12);
+    CastleInGameHelpCategoriesEnum.ROBBER_AND_BARON_CASTLES = new CastleInGameHelpCategoriesEnum("ROBBER_AND_BARON_CASTLES", 13);
+    CastleInGameHelpCategoriesEnum.HONOR = new CastleInGameHelpCategoriesEnum("HONOR", 14);
+    CastleInGameHelpCategoriesEnum.ALLIANCES = new CastleInGameHelpCategoriesEnum("ALLIANCES", 15);
+    CastleInGameHelpCategoriesEnum.EQUIPMENT = new CastleInGameHelpCategoriesEnum("EQUIPMENT", 16);
+    CastleInGameHelpCategoriesEnum.AGENTS = new CastleInGameHelpCategoriesEnum("AGENTS", 17);
+    CastleInGameHelpCategoriesEnum.KINGDOMS = new CastleInGameHelpCategoriesEnum("KINGDOMS", 18);
+    CastleInGameHelpCategoriesEnum.MILITARY_HOSPITAL = new CastleInGameHelpCategoriesEnum("MILITARY_HOSPITAL", 19);
+    CastleInGameHelpCategoriesEnum.COMMAND_CENTRES = new CastleInGameHelpCategoriesEnum("COMMAND_CENTRES", 20);
+    CastleInGameHelpCategoriesEnum.BOOKMARKS = new CastleInGameHelpCategoriesEnum("BOOKMARKS", 21);
+    CastleInGameHelpCategoriesEnum.EVENTS = new CastleInGameHelpCategoriesEnum("EVENTS", 22);
+    CastleInGameHelpCategoriesEnum.MIGHT_POINTS = new CastleInGameHelpCategoriesEnum("MIGHT_POINTS", 23);
   };
-  InviteAFriendRewardReceivedDialog.prototype.getDescription = function () {
-    return InviteAFriendRewardReceivedDialog.DESCRIPTION;
-  };
-  InviteAFriendRewardReceivedDialog.prototype.getBottomDescription = function () {
-    return InviteAFriendRewardReceivedDialog.BOTTOM_DESCRIPTION;
-  };
-  InviteAFriendRewardReceivedDialog.prototype.getGainedRewardDescription = function () {
-    return InviteAFriendRewardReceivedDialog.GAINED_REWARD;
-  };
-  InviteAFriendRewardReceivedDialog.prototype.getDescriptionReplacements = function () {
-    return null;
-  };
-  InviteAFriendRewardReceivedDialog.__initialize_static_members = function () {
-    InviteAFriendRewardReceivedDialog.NAME = "InviteAFriendRewardReceived";
-    InviteAFriendRewardReceivedDialog.INVITE_A_FRIEND_TOOLTIP = "dialog_referFriend_inviteDialog_invite_tooltip";
-    InviteAFriendRewardReceivedDialog.TITLE = "dialog_referFriend_gainReward_header";
-    InviteAFriendRewardReceivedDialog.DESCRIPTION = "dialog_referFriend_gainReward_description_02";
-    InviteAFriendRewardReceivedDialog.BOTTOM_DESCRIPTION = "dialog_referFriend_gainReward_helpFriends_info";
-    InviteAFriendRewardReceivedDialog.INVITE_MORE_FRIENDS = "dialog_referFriend_gainReward_inviteFriends_info";
-    InviteAFriendRewardReceivedDialog.GAINED_REWARD = "dialog_referFriend_gainReward_rewardboxHeader_01";
-  };
-  return InviteAFriendRewardReceivedDialog;
-}(u.CastleExternalDialog);
-exports.InviteAFriendRewardReceivedDialog = p;
-var h = require("./9.js");
-var g = require("./315.js");
-a.classImplementsInterfaces(p, "ICollectableRendererList");
-p.__initialize_static_members();
+  return CastleInGameHelpCategoriesEnum;
+}(o.BasicEnum);
+exports.CastleInGameHelpCategoriesEnum = a;
+a.__initialize_static_members();

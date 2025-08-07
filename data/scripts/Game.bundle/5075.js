@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function CHECommand() {
+  function CCDCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CHECommand, e);
-  Object.defineProperty(CHECommand.prototype, "cmdId", {
+  n.__extends(CCDCommand, e);
+  Object.defineProperty(CCDCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_COLOSSUS_GET_HIGHSCORE;
+      return s.ClientConstSF.S2C_COLOSSUS_COIN_DEPOSIT_RESOURCES;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,20 +22,22 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  CHECommand.prototype.executeCommand = function (e, t) {
+  CCDCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
+        this.layoutManager.hideDialog(u.CastleCoinColossusDonateDialog);
         var i = JSON.parse(t[1]);
-        r.CastleModel.specialEventData.parse_CHE(i);
-        break;
-      case a.ERROR.SPECIALEVENT_NOT_RUNNING:
+        r.CastleModel.specialEventData.parse_CHE(i.che);
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.areaData.activeArea.updater.parseGRC(i.grc);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return CHECommand;
+  return CCDCommand;
 }(l.CastleCommand);
-exports.CHECommand = c;
+exports.CCDCommand = c;
+var u = require("./1901.js");
 o.classImplementsInterfaces(c, "IExecCommand");

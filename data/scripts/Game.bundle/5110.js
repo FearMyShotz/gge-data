@@ -4,38 +4,37 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function CDDCommand() {
+var s = require("./5.js");
+var r = require("./7.js");
+var l = require("./4.js");
+var c = require("./241.js");
+var u = require("./10.js");
+var d = function (e) {
+  function BKPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CDDCommand, e);
-  Object.defineProperty(CDDCommand.prototype, "cmdId", {
+  n.__extends(BKPCommand, e);
+  Object.defineProperty(BKPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_CREATE_DAIMYO_DEFENSE_MOVEMENT;
+      return r.ClientConstSF.S2C_BUY_BEGGINGKNIGHTS_POINT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CDDCommand.prototype.executeCommand = function (e, t) {
+  BKPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        r.CastleModel.otherPlayerData.parseOwnerInfoArray(i.O);
-        r.CastleModel.armyData.parseMapMovementArray([i.A]);
+        l.CastleModel.smartfoxClient.sendCommandVO(new c.C2SPointEventGetPointsVO(s.EventConst.EVENTTYPE_BEGGING_KNIGHTS));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return CDDCommand;
-}(l.CastleCommand);
-exports.CDDCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return BKPCommand;
+}(u.CastleCommand);
+exports.BKPCommand = d;
+o.classImplementsInterfaces(d, "IExecCommand");

@@ -3,20 +3,26 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./16.js");
+var a = require("./6.js");
+var s = require("./22.js");
 var r = function (e) {
-  function EmporiumBuildingVO() {
-    return e !== null && e.apply(this, arguments) || this;
+  function ACraftingBuildingVO() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  n.__extends(EmporiumBuildingVO, e);
-  EmporiumBuildingVO.prototype.createInfoPanelItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourFood, "foodbooster", new a.LocalizedNumberVO(this.alliFoodProductionBoost));
+  n.__extends(ACraftingBuildingVO, e);
+  ACraftingBuildingVO.prototype.parseXmlNode = function (t) {
+    e.prototype.parseXmlNode.call(this, t);
+    this._craftingQueueId = a.int(s.CastleXMLUtils.getIntAttribute("craftingQueueId", t));
   };
-  EmporiumBuildingVO.prototype.createInfoDialogItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_BoostPerHourFood, "emporium_short_info", new a.LocalizedNumberVO(this.alliFoodProductionBoost), s.ClientConstColor.FONT_DEFAULT_COLOR, true);
-  };
-  return EmporiumBuildingVO;
+  Object.defineProperty(ACraftingBuildingVO.prototype, "craftingQueueId", {
+    get: function () {
+      return this._craftingQueueId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ACraftingBuildingVO;
 }(require("./65.js").AEffectBuildingVO);
-exports.EmporiumBuildingVO = r;
+exports.ACraftingBuildingVO = r;
 o.classImplementsInterfaces(r, "IShopVO", "ICostVO", "IInventoryVO");

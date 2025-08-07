@@ -108,11 +108,11 @@ var f = function (e) {
   return SamuraiDaimyoTauntDialog;
 }(_.CastleExternalDialog);
 exports.SamuraiDaimyoTauntDialog = f;
-var O = require("./526.js");
+var O = require("./527.js");
 var E = require("./9.js");
 var y = require("./61.js");
 var b = require("./70.js");
-var D = require("./1777.js");
+var D = require("./1779.js");
 var I = require("./36.js");
 a.classImplementsInterfaces(f, "ICollectableRendererList");
 f.__initialize_static_members();

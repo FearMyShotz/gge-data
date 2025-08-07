@@ -1,123 +1,65 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
-var o = function () {
-  function UserSocialLoginMigrationHelper() {}
-  Object.defineProperty(UserSocialLoginMigrationHelper, "isOvergamezAndNeedsRedirectByJS", {
-    get: function () {
-      return (n.EnvGlobalsHandler.globals.networkId == 86 || n.EnvGlobalsHandler.globals.networkId == 87 || n.EnvGlobalsHandler.globals.networkId == 88) && n.EnvGlobalsHandler.globals.requestPayByJS == 0;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  UserSocialLoginMigrationHelper.getNameByInstanceID = function (e) {
-    if (this.data[e]) {
-      return this.data[e].name;
-    } else {
-      return " ";
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./16.js");
+var l = require("./1114.js");
+var c = require("./11.js");
+var u = require("./13.js");
+var d = require("./4.js");
+var p = require("./8.js");
+var h = require("./20.js");
+var g = function (e) {
+  function CastleChangePasswordForSocialMigrationConfirmedDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleChangePasswordForSocialMigrationConfirmedDialog.NAME) || this;
+  }
+  n.__extends(CastleChangePasswordForSocialMigrationConfirmedDialog, e);
+  CastleChangePasswordForSocialMigrationConfirmedDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    p.ButtonHelper.initButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close, this.dialogDisp.btn_support], h.ClickFeedbackButtonHover);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId("nk_savedAccount_title")));
+    var i = new s.HTMLTextCustomVO();
+    i.addLocalizedTextVO(new s.LocalizedTextVO("nk_savedAccount_copy", [s.Localize.datetime(l.UserSocialLoginMigrationHelper.getDateOfChange(), s.DateTimeStyle.SHORT, s.DateTimeStyle.NONE), d.CastleModel.userData.userName, "[url=" + l.UserSocialLoginMigrationHelper.getLinkByInstanceID(this.env.networkId) + "]" + l.UserSocialLoginMigrationHelper.getLinkByInstanceID(this.env.networkId) + "[/url]"]));
+    var n = new s.HTMLLinkFormatVO(r.ClientConstColor.GENERIC_LIGHT_BLUE2, o.GGSTextDecoration.UNDERLINE);
+    var a = new s.HTMLLinkFormatVO(r.ClientConstColor.GENERIC_LIGHT_BLUE2, o.GGSTextDecoration.UNDERLINE);
+    var c = new s.HTMLLinkFormatVO(r.ClientConstColor.GENERIC_LIGHT_BLUE2, o.GGSTextDecoration.UNDERLINE);
+    i.linkFormats = new s.HTMLLinkFormatsVO(n, a, c);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, i).htmlLinkClick.add(this.bindFunction(this.onClickLink));
+    this.dialogDisp.btn_support.toolTipText = "generic_support";
+    this.dialogDisp.btn_ok.visible = !this.env.loginIsKeyBased || o.EnvGlobalsHandler.globals.networkId == 86 || o.EnvGlobalsHandler.globals.networkId == 87;
+    this.dialogDisp.btn_close.visible = !this.env.loginIsKeyBased || o.EnvGlobalsHandler.globals.networkId == 86 || o.EnvGlobalsHandler.globals.networkId == 87;
+  };
+  CastleChangePasswordForSocialMigrationConfirmedDialog.prototype.onClickSupport = function () {
+    o.SupportUtil.navigateToSupport(o.BasicModel.instanceProxy.selectedInstanceVO.instanceId, this.env.versionText, d.CastleModel.userData.userName, d.CastleModel.userData.playerID, d.CastleModel.userData.userID, o.GGSCountryController.instance.currentCountry.ggsLanguageCode);
+  };
+  CastleChangePasswordForSocialMigrationConfirmedDialog.prototype.onClickLink = function (e, t) {
+    try {
+      var i = new a.URLRequest(t);
+      a.navigateToURL(i, "goodgamestudios");
+    } catch (e) {
+      o.error("cant navigate to url");
     }
   };
-  UserSocialLoginMigrationHelper.getLinkByInstanceID = function (e) {
-    if (this.data[e]) {
-      return this.data[e].newLink;
-    } else {
-      return " ";
+  CastleChangePasswordForSocialMigrationConfirmedDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_ok:
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_support:
+        this.onClickSupport();
     }
   };
-  UserSocialLoginMigrationHelper.getDateOfChange = function () {
-    if (n.EnvGlobalsHandler.globals.networkId == 86 || n.EnvGlobalsHandler.globals.networkId == 87 || n.EnvGlobalsHandler.globals.networkId == 88) {
-      return new Date("2022-06-30T00:00:00");
-    } else {
-      return new Date("2022-05-31T00:00:00");
-    }
+  CastleChangePasswordForSocialMigrationConfirmedDialog.__initialize_static_members = function () {
+    CastleChangePasswordForSocialMigrationConfirmedDialog.NAME = "CastleChangePasswordForSocialMigrationConfirmed";
   };
-  UserSocialLoginMigrationHelper.data = {
-    26: {
-      name: "jetztspielen.de",
-      newLink: "https://www.jetztspielen.de/spiel/goodgame-empire-online"
-    },
-    28: {
-      name: "jeux.fr",
-      newLink: "https://www.jeux.fr/jeu/goodgame-empire-online"
-    },
-    29: {
-      name: "gioco.it",
-      newLink: "https://www.gioco.it/gioco/goodgame-empire-online"
-    },
-    30: {
-      name: "gry.pl",
-      newLink: "https://www.gry.pl/gra/goodgame-empire-online"
-    },
-    33: {
-      name: "spielen.com",
-      newLink: "https://www.spielen.com/spiel/goodgame-empire-online"
-    },
-    35: {
-      name: "jeu.fr",
-      newLink: "https://www.jeu.fr/jeu/goodgame-empire-online"
-    },
-    40: {
-      name: "spela.se",
-      newLink: "https://www.spela.se/spel_/goodgame-empire-online"
-    },
-    53: {
-      name: "spel.nl",
-      newLink: "https://www.spel.nl/spel/goodgame-empire-online"
-    },
-    58: {
-      name: "spelletjes.nl",
-      newLink: "https://www.spelletjes.nl/spel/goodgame-empire-online"
-    },
-    63: {
-      name: "giochi.it",
-      newLink: "https://www.giochi.it/gioco/goodgame-empire-online"
-    },
-    34: {
-      name: "agame.com",
-      newLink: "https://www.agame.com/game/goodgame-empire-online"
-    },
-    36: {
-      name: "games.co.uk",
-      newLink: "https://www.games.co.uk/game/goodgame-empire-online"
-    },
-    37: {
-      name: "gamesgames.com",
-      newLink: "https://www.gamesgames.com/game/goodgame-empire-online"
-    },
-    38: {
-      name: "juegos.com",
-      newLink: "https://www.juegos.com/juego/goodgame-empire-online"
-    },
-    59: {
-      name: "ojogos.com.br",
-      newLink: "https://www.ojogos.com.br/jogo/goodgame-empire-online"
-    },
-    39: {
-      name: "ourgames.ru",
-      newLink: "https://www.ourgames.ru/igra/goodgame-empire-online"
-    },
-    52: {
-      name: "flashgames.ru",
-      newLink: "https://www.flashgames.ru/igra/goodgame-empire-online"
-    },
-    61: {
-      name: "games.co.id",
-      newLink: "https://www.games.co.id/permainan_/goodgame-empire-online"
-    },
-    86: {
-      name: "vk.com",
-      newLink: "https://empire.goodgamestudios.com/vk/"
-    },
-    87: {
-      name: "ok.ru",
-      newLink: "https://empire.goodgamestudios.com/vk/"
-    },
-    88: {
-      name: "my.mail.ru",
-      newLink: "https://empire.goodgamestudios.com/mail/"
-    }
-  };
-  return UserSocialLoginMigrationHelper;
-}();
-exports.UserSocialLoginMigrationHelper = o;
+  return CastleChangePasswordForSocialMigrationConfirmedDialog;
+}(c.CastleExternalDialog);
+exports.CastleChangePasswordForSocialMigrationConfirmedDialog = g;
+a.classImplementsInterfaces(g, "ICollectableRendererList");
+g.__initialize_static_members();

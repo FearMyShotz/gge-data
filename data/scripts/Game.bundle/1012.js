@@ -2,19 +2,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CollectableItemAquamarineVO(t = 0) {
-    return e.call(this, t) || this;
+var o = require("./1.js");
+var a = require("./111.js");
+var s = function (e) {
+  function AIsoFloorMarkVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemAquamarineVO, e);
-  CollectableItemAquamarineVO.prototype.getTooltipTextId = function () {
-    return "aquamarin_tooltip";
+  n.__extends(AIsoFloorMarkVE, e);
+  AIsoFloorMarkVE.prototype.getVELayerType = function () {
+    return a.IsoLayerEnum.INTERACTION;
   };
-  CollectableItemAquamarineVO.prototype.getDescriptionTextId = function () {
-    return "aquamarin_short_info";
-  };
-  CollectableItemAquamarineVO.SERVER_KEY = "A";
-  CollectableItemAquamarineVO.XML_KEY = "aquamarine";
-  return CollectableItemAquamarineVO;
-}(require("./254.js").ACollectableItemResourceVO);
-exports.CollectableItemAquamarineVO = o;
+  return AIsoFloorMarkVE;
+}(require("./313.js").AIsoObjectVE);
+exports.AIsoFloorMarkVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

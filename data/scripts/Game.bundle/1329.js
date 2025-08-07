@@ -21,7 +21,7 @@ var O = require("./307.js");
 var E = require("./8.js");
 var y = require("./41.js");
 var b = require("./11.js");
-var D = require("./2356.js");
+var D = require("./2357.js");
 var I = createjs.MovieClip;
 var T = createjs.Event;
 var v = function (e) {
@@ -260,8 +260,8 @@ var v = function (e) {
 }(b.CastleExternalDialog);
 exports.CastleTreasureMapDialog = v;
 var S = require("./12.js");
-var A = require("./2357.js");
+var A = require("./2358.js");
 var L = require("./63.js");
 var P = require("./70.js");
-var M = require("./2369.js");
+var M = require("./2370.js");
 s.classImplementsInterfaces(v, "ICollectableRendererList");

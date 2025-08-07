@@ -2,39 +2,44 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./22.js");
-var a = require("./4.js");
-var s = require("./245.js");
-var r = function (e) {
-  function EmptyMapobjectVO() {
+var o = require("./5.js");
+var a = require("./6.js");
+var s = require("./16.js");
+var r = require("./53.js");
+var l = function (e) {
+  function ABGTowerConnectionVO() {
     var t = e.call(this) || this;
-    t._group = "Mapobject";
-    t._name = "Empty";
-    t._kingdomID = -1;
-    t._isVisibleOnMap = true;
+    t._status = 0;
     return t;
   }
-  n.__extends(EmptyMapobjectVO, e);
-  EmptyMapobjectVO.prototype.parseXmlNode = function (t) {
-    e.prototype.parseXmlNode.call(this, t);
-    this._kingdomID = parseInt(o.CastleXMLUtils.getValueOrDefault("kIDs", t, "-1"));
+  n.__extends(ABGTowerConnectionVO, e);
+  ABGTowerConnectionVO.prototype.fillFromConnectionValues = function (e) {
+    this.absAreaPos.x = e[0];
+    this.absAreaPos.y = e[1];
+    this._playerName = e[2];
+    this._status = a.int(e[3]);
+    this.useSpecialConnectionLineColor = true;
+    if (r.ABGHelper.isOnABGServer) {
+      this.specialConnectionLineColor = this.status == 1 ? s.ClientConstColor.COLORBLIND_RED : s.ClientConstColor.COLORBLIND_GREEN;
+    } else {
+      this.specialConnectionLineColor = this.status == 1 ? s.ClientConstColor.GENERIC_RED : s.ClientConstColor.GENERIC_GREEN;
+    }
+    this.kingdomId = o.WorldClassic.KINGDOM_ID;
   };
-  EmptyMapobjectVO.prototype.fillByListInit = function (e, t, i, n) {
-    this._wodId = e;
-    this._type = t;
-    this._width = i;
-    this._height = n;
-  };
-  Object.defineProperty(EmptyMapobjectVO.prototype, "actualVisClassName", {
+  Object.defineProperty(ABGTowerConnectionVO.prototype, "playerName", {
     get: function () {
-      return this.getVisualClassName() + "_" + a.CastleModel.kingdomData.activeKingdomVO.kingdomName;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.BasicMapobjectVO.prototype, "actualVisClassName").set.call(this, e);
+      return this._playerName;
     },
     enumerable: true,
     configurable: true
   });
-  return EmptyMapobjectVO;
-}(s.BasicMapobjectVO);
-exports.EmptyMapobjectVO = r;
+  Object.defineProperty(ABGTowerConnectionVO.prototype, "status", {
+    get: function () {
+      return this._status;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ABGTowerConnectionVO;
+}(require("./498.js").MinWorldMapCastleInfoVO);
+exports.ABGTowerConnectionVO = l;

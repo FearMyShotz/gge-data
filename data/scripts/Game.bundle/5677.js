@@ -2,176 +2,203 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./51.js");
-var r = require("./1438.js");
-var l = require("./122.js");
-var c = require("./92.js");
-var u = require("./4.js");
-var d = require("./252.js");
-var p = createjs.Point;
-var h = function (e) {
-  function TutorialBuildBuildingActionCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./51.js");
+var u = require("./91.js");
+var d = require("./37.js");
+var p = require("./32.js");
+var h = require("./1875.js");
+var g = require("./92.js");
+var C = require("./4.js");
+var _ = require("./211.js");
+var m = require("./1058.js");
+var f = require("./264.js");
+var O = require("./252.js");
+var E = createjs.Point;
+var y = function (e) {
+  function TutorialAttackRobberBaronCommand() {
+    var t = this;
+    t._sideQuests = [];
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(TutorialBuildBuildingActionCommand, e);
-  TutorialBuildBuildingActionCommand.prototype.internalExecute = function () {
-    if (this.layoutManager.isInMyCastle) {
-      this.highlightBuildMenuButtonOnPanel();
-    } else {
-      this.tutorialController.waitForLayoutStateChangeFinished(f.CastleLayoutManager.STATE_ISO, this.bindFunction(this.waitUntilPlayerSwitchToMainCastle));
-    }
-  };
-  TutorialBuildBuildingActionCommand.prototype.actionConditionValid = function () {
-    for (var e = 0, t = _.Iso.renderer.objects.provider.getObjectsByGroupType(g.IsoObjectGroupEnum.INNER_BUILDINGS); e < t.length; e++) {
-      if (t[e].vo.wodId == this._tutorialStepVO.attributes.get(d.TutorialBasicActionCommand.WODID)) {
-        return false;
-      }
-    }
-    return true;
-  };
-  TutorialBuildBuildingActionCommand.prototype.waitUntilPlayerSwitchToMainCastle = function () {
-    this.highlightBuildMenuButtonOnPanel();
-  };
-  TutorialBuildBuildingActionCommand.prototype.highlightBuildMenuButtonOnPanel = function () {
+  n.__extends(TutorialAttackRobberBaronCommand, e);
+  TutorialAttackRobberBaronCommand.prototype.internalExecute = function () {
     this.filter.allowNoDialogs();
-    var e = this.getActionPanelButtonDisp(E.BuildMenuPanelButton);
-    this.arrows.replace(e, true, false, 1, new p(15, 5));
-    this.replaceActionPanelButtonInBlocker(E.BuildMenuPanelButton);
-    this.spotlight.replace(e);
-    this.layoutManager.tutorialPanel.showWithText("tutorial_openBuildshop_copy_duplicate", s.ClientConstCharacter.CHAR_ID_FEMALE_TUTORIAL_CHARACTER);
-    this.tutorialController.waitForLayoutStateChangeFinished(f.CastleLayoutManager.STATE_ISO, this.bindFunction(this.onPlayerOpenedBuildMenu));
+    if (this._tutorialStepVO.attributes.hasOwnProperty(TutorialAttackRobberBaronCommand.SIDE_QUESTIDS)) {
+      this._sideQuests = this._tutorialStepVO.attributes.get(TutorialAttackRobberBaronCommand.SIDE_QUESTIDS).split(",");
+    }
+    this.layoutManager.dispatchEvent(new u.CastleLayoutManagerEvent(u.CastleLayoutManagerEvent.LOCK_CAMERA, [false]));
+    this.goToWorldMap();
   };
-  TutorialBuildBuildingActionCommand.prototype.onPlayerOpenedBuildMenu = function (e = null) {
-    if (_.Iso.renderer.strategies.currentStrategy.isActive(l.IsoRenderStrategyEnum.BUILD_MODE)) {
-      this.trackStep("010_030_build_menu_opened");
-      this.layoutManager.tutorialPanel.hide();
-      this.layoutManager.getPanel(O.CastleDecoShopPanel).changeCategory(this.getBuildingCategory());
-      this.waitUntilPlayerDragBuilding();
+  TutorialAttackRobberBaronCommand.prototype.goToWorldMap = function () {
+    if (this.layoutManager.isOnMap) {
+      this.arrivedAtWorldmap();
+    } else {
+      if (!this.layoutManager.isInState(I.CastleLayoutManager.STATE_ISO)) {
+        this.layoutManager.state = I.CastleLayoutManager.STATE_ISO;
+      }
+      b.Iso.controller.viewUpdater.switchBuildModeInOwnCastle(false);
+      var e = this.getActionPanelButtonDisp(R.WorldmapPanelButton);
+      this.arrows.replace(e, true, false, 1, O.TutorialBasicActionCommand.TUT_ARROW_ACTION_PANEL_OFFSET);
+      this.replaceActionPanelButtonInBlocker(R.WorldmapPanelButton);
+      this.spotlight.replace(e);
+      this.tutorialController.registerComplexListener(this.controller, h.CastleWorldmapScreenEvent.WORLDMAP_LOADED, this.bindFunction(this.arrivedAtWorldmap));
     }
   };
-  TutorialBuildBuildingActionCommand.prototype.onDecoShopPanelClose = function () {
-    if (this.layoutManager.isInMyCastle) {
-      this.removeTutorialMarker();
-      this.tutorialController.removeListeners();
-      this.highlightBuildMenuButtonOnPanel();
+  TutorialAttackRobberBaronCommand.prototype.arrivedAtWorldmap = function (e = null) {
+    this.trackStep("s_080_070_worldmap_opened");
+    this.tutorialController.removeComplexListener(this.controller, h.CastleWorldmapScreenEvent.WORLDMAP_LOADED, this.bindFunction(this.arrivedAtWorldmap));
+    this.findValidRobberBaron();
+  };
+  TutorialAttackRobberBaronCommand.prototype.onPlayernameSelected = function (e = null) {
+    this.tutorialController.removeComplexListener(this.controller, p.CastleUserDataEvent.CHANGE_USER_NAME, this.bindFunction(this.onPlayernameSelected));
+    if (this._sideQuests != null) {
+      for (var t = 0, i = this._sideQuests; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          C.CastleModel.smartfoxClient.sendCommandVO(new m.C2SQuestStarterClickVO(n));
+        }
+      }
     }
+    this.highlightDungeon();
   };
-  TutorialBuildBuildingActionCommand.prototype.waitUntilPlayerDragBuilding = function () {
-    this.layoutManager.tutorialPanel.showWithText("tut_secondQuestBuildWoodcutter_copy_duplicate", s.ClientConstCharacter.CHAR_ID_FEMALE_TUTORIAL_CHARACTER);
-    var e = this.layoutManager.getPanel(O.CastleDecoShopPanel);
-    var t = TutorialBuildBuildingActionCommand.getMCByBuildingVO(m.WoodcutterBuildingVO, e.decoShopPanel);
-    this.arrows.replace(t);
-    this.blocker.replace(t);
-    this.spotlight.replace(t);
-    this.tutorialController.waitForLayoutStateChangeFinished(f.CastleLayoutManager.STATE_ISO, this.bindFunction(this.onDecoShopPanelClose));
-    this.tutorialController.registerComplexListener(this.controller, c.IsoEvent.ON_DECO_SHOP_DRAG_START, this.bindFunction(this.onPlayerSelectBuildingInBuildMenu));
+  TutorialAttackRobberBaronCommand.prototype.findValidRobberBaron = function () {
+    this.tutorialController.registerComplexListener(this.controller, d.CastleServerMessageArrivedEvent.FNM_ARRIVED, this.bindFunction(this.waitUntilFoundValidRobberBaronMapObject));
+    C.CastleModel.smartfoxClient.sendCommandVO(new f.C2SFindNextMapObjectVO(l.WorldConst.AREA_TYPE_DUNGEON, r.WorldClassic.KINGDOM_ID, 1, 1));
   };
-  TutorialBuildBuildingActionCommand.prototype.onPlayerSelectBuildingInBuildMenu = function (e) {
-    if (e.params[0].wodId == this._tutorialStepVO.attributes.get(d.TutorialBasicActionCommand.WODID)) {
-      this.showTutorialMarker();
-      this.layoutManager.tutorialPanel.showWithText("tut_secondQuestConfirmPlacement_copy_duplicate", s.ClientConstCharacter.CHAR_ID_FEMALE_TUTORIAL_CHARACTER);
-      this.trackStep("010_040_woodcutter_selected");
-      this.tutorialController.registerComplexListener(this.controller, c.IsoEvent.ON_DRAG_OF_NEW_OBJECT_DONE, this.bindFunction(this.onBuildingPlacedOnValidPosition));
-      this.tutorialController.removeComplexListener(this.controller, c.IsoEvent.ON_DECO_SHOP_DRAG_START, this.bindFunction(this.onPlayerSelectBuildingInBuildMenu));
-      this.tutorialController.registerComplexListener(this.controller, c.IsoEvent.ON_DECO_SHOP_DRAG_STOP, this.bindFunction(this.onBuildingLost));
-      this.tutorialController.registerComplexListener(this.controller, c.IsoEvent.ON_DRAG_INVALID, this.bindFunction(this.onBuildingPositionInvalid));
-      this.tutorialController.registerComplexListener(this.controller, r.CastleDecoShopPanelEvent.CHANGE_CATEGORY, this.bindFunction(this.onCategoryChanged));
-      this.tutorialController.registerComplexListener(this.controller, c.IsoEvent.ON_DRAG_OF_NEW_OBJECT_DONE, this.bindFunction(this.onPlayerPlacedBuilding));
-      this.clearBlockers();
-      this.filter.allowNoDialogs();
-    }
+  TutorialAttackRobberBaronCommand.prototype.waitUntilFoundValidRobberBaronMapObject = function (e) {
+    this.tutorialController.removeComplexListener(this.controller, d.CastleServerMessageArrivedEvent.FNM_ARRIVED, this.bindFunction(this.waitUntilFoundValidRobberBaronMapObject));
+    this.showRobberBaron(new E(e.params[0], e.params[1]));
   };
-  TutorialBuildBuildingActionCommand.prototype.onPlayerPlacedBuilding = function (e) {
-    this.tutorialController.removeComplexListener(this.controller, c.IsoEvent.ON_DECO_SHOP_DRAG_STOP, this.bindFunction(this.onBuildingLost));
-  };
-  TutorialBuildBuildingActionCommand.prototype.onCategoryChanged = function (e) {
-    if (this.tutorialData().isInTutorial()) {
-      if (e.newCategory != this.getBuildingCategory()) {
-        this.removeTutorialMarker();
-        this.layoutManager.tutorialPanel.hide();
-        var t = this.getPanelDisp(O.CastleDecoShopPanel)["btn_" + this.getBuildingCategory().toLowerCase()];
-        this.arrows.replace(t, true, false, 1, new p(18, 17));
-        this.blocker.replace(t);
+  TutorialAttackRobberBaronCommand.prototype.showRobberBaron = function (e) {
+    if (this.layoutManager.worldmapScreen.renderer) {
+      this.layoutManager.dispatchEvent(new u.CastleLayoutManagerEvent(u.CastleLayoutManagerEvent.LOCK_CAMERA, [true]));
+      this.layoutManager.worldmapScreen.camera.centerArea(e);
+      this._dungeonVE = C.CastleModel.worldmapData.getAreaVEByXY(e, true);
+      if (C.CastleModel.userData.isPlayerNameTemporary) {
+        M.CastleTutorialDialogFilter.instance.add(A.CastleSelectUserName);
+        this.tutorialController.waitForDialogShow(A.CastleSelectUserName, this.bindFunction(this.onShowSelectUsername));
+        D.CastleDialogHandler.getInstance().registerDefaultDialogs(A.CastleSelectUserName);
       } else {
-        this.tutorialController.removeListeners();
-        this.waitUntilPlayerDragBuilding();
+        this.highlightDungeon();
+      }
+    } else {
+      o.debug("[AttackRobberBaron] No worldmapScreen renderer!");
+      this.tutorialController.registerComplexListener(this.controller, d.CastleServerMessageArrivedEvent.GAA_ARRIVED, this.bindFunction(this.recheckRobberBaron));
+    }
+  };
+  TutorialAttackRobberBaronCommand.prototype.onShowSelectUsername = function () {
+    L.CastleTutorialArrowController.instance.clear();
+    P.CastleTutorialClickBlocker.instance.clear();
+    T.CastleTutorialSpotlight.instance.clear();
+    this.tutorialController.registerComplexListener(this.controller, p.CastleUserDataEvent.CHANGE_USER_NAME, this.bindFunction(this.onPlayernameSelected));
+  };
+  TutorialAttackRobberBaronCommand.prototype.highlightDungeon = function (e = null) {
+    this.tutorialController.removeComplexListener(this.controller, g.IsoEvent.HIDE_PANEL_INFO, this.bindFunction(this.highlightDungeon));
+    if (!this._dungeonVE) {
+      a.error("No dungeon found! Releasing blockers!");
+      a.error(new Error().stack);
+      this.clearBlockers();
+      return;
+    }
+    if (!this.layoutManager.isDialogVisibleByName(S.CastleStartAttackDialog)) {
+      o.debug("[AttackRobberBaron] Dungeon found!");
+      if (!e) {
+        this.layoutManager.worldmapScreen.renderer.camera.centerArea(this._dungeonVE.dungeonMapObjectVO.absAreaPos);
+      }
+      this.arrows.replace(this._dungeonVE.disp, true, true, 1, O.TutorialBasicActionCommand.TUT_ARROW_DUNGEON_OFFSET);
+      this.blocker.replace(this._dungeonVE.disp);
+      this.spotlight.replace(this._dungeonVE.disp, O.TutorialBasicActionCommand.TUT_ARROW_DUNGEON_OFFSET);
+      if (this.layoutManager && this.layoutManager.tutorialPanel) {
+        this.layoutManager.tutorialPanel.showWithText("tut_dungeon_onWorldMap_copy_duplicate", c.ClientConstCharacter.CHAR_ID_GENERAL);
+        this.tutorialController.registerComplexListener(this.controller, u.CastleLayoutManagerEvent.RING_MENU_SHOWN, this.bindFunction(this.onRingMenu));
+        this.tutorialController.registerComplexListener(this.controller, d.CastleServerMessageArrivedEvent.GAA_ARRIVED, this.bindFunction(this.updateSpotlight));
+      } else {
+        this.clearBlockers();
       }
     }
   };
-  TutorialBuildBuildingActionCommand.prototype.onBuildingLost = function (e) {
-    this.tutorialController.removeComplexListener(this.controller, c.IsoEvent.ON_DECO_SHOP_DRAG_STOP, this.bindFunction(this.onBuildingLost));
-    if (e.params[0].vo.wodId == this._tutorialStepVO.attributes.get(d.TutorialBasicActionCommand.WODID)) {
-      this.removeTutorialMarker();
-      this.tutorialController.removeComplexListener(this.controller, c.IsoEvent.ON_DRAG_OF_NEW_OBJECT_DONE, this.bindFunction(this.onBuildingPlacedOnValidPosition));
-      this.tutorialController.removeComplexListener(this.controller, c.IsoEvent.ON_DRAG_OF_NEW_OBJECT_DONE, this.bindFunction(this.onPlayerPlacedBuilding));
-      this.waitUntilPlayerDragBuilding();
+  TutorialAttackRobberBaronCommand.prototype.updateSpotlight = function (e = null) {
+    this.spotlight.replace(this._dungeonVE.disp, O.TutorialBasicActionCommand.TUT_ARROW_DUNGEON_OFFSET);
+  };
+  TutorialAttackRobberBaronCommand.prototype.recheckRobberBaron = function (e) {
+    this.tutorialController.removeComplexListener(this.controller, d.CastleServerMessageArrivedEvent.GAA_ARRIVED, this.bindFunction(this.recheckRobberBaron));
+    this.findValidRobberBaron();
+  };
+  TutorialAttackRobberBaronCommand.prototype.onRingMenu = function (e) {
+    if (e && e.params && e.params.length == 2 && e.params[1] == this._dungeonVE) {
+      this.trackStep("s_080_080_enemy_selected");
+      this.tutorialController.removeComplexListener(this.controller, g.IsoEvent.HIDE_PANEL_INFO, this.bindFunction(this.highlightDungeon));
+      this.tutorialController.removeComplexListener(this.controller, u.CastleLayoutManagerEvent.RING_MENU_SHOWN, this.bindFunction(this.onRingMenu));
+      this.tutorialController.removeComplexListener(this.controller, d.CastleServerMessageArrivedEvent.GAA_ARRIVED, this.bindFunction(this.updateSpotlight));
+      var t = e.params[0].disp.btn_attack;
+      this.arrows.replace(t);
+      this.blocker.replace(t);
+      this.spotlight.replace(t);
+      this.layoutManager.tutorialPanel.showWithText("tut_dungeon_onWorldMap_copy2_duplicate", c.ClientConstCharacter.CHAR_ID_GENERAL);
+      this.filter.replace(S.CastleStartAttackDialog);
+      this.tutorialController.waitForExternalDialogShow(S.CastleStartAttackDialog, this.bindFunction(this.confirmAttack));
     }
   };
-  TutorialBuildBuildingActionCommand.prototype.onBuildingPositionInvalid = function (e) {
-    this.removeTutorialMarker();
-    this.tutorialController.removeComplexListener(this.controller, c.IsoEvent.ON_DRAG_INVALID, this.bindFunction(this.onBuildingPositionInvalid));
-    this.tutorialController.removeComplexListener(this.controller, c.IsoEvent.ON_DECO_SHOP_DRAG_STOP, this.bindFunction(this.onBuildingLost));
-    this.tutorialController.removeComplexListener(this.controller, c.IsoEvent.ON_DRAG_OF_NEW_OBJECT_DONE, this.bindFunction(this.onBuildingPlacedOnValidPosition));
-    this.waitUntilPlayerDragBuilding();
+  TutorialAttackRobberBaronCommand.prototype.confirmAttack = function () {
+    this.tutorialController.removeComplexListener(this.controller, g.IsoEvent.HIDE_PANEL_INFO, this.bindFunction(this.highlightDungeon));
+    this.trackStep("s_080_090_attack_selected");
+    var e = this.layoutManager.getDialog(S.CastleStartAttackDialog).dialogDisp.btn_yes;
+    this.arrows.replace(e);
+    this.blocker.replace(e);
+    this.spotlight.replace(e);
+    this.filter.add(_.AttackDialog);
+    this.tutorialController.waitForExternalDialogShow(_.AttackDialog, this.bindFunction(this.fillAttack));
   };
-  TutorialBuildBuildingActionCommand.prototype.onBuildingPlacedOnValidPosition = function (e) {
-    if (e.params[0] == this._tutorialStepVO.attributes.get(d.TutorialBasicActionCommand.WODID)) {
-      this.filter.allowNoDialogs();
-      this.blocker.allowNoClicks();
-      this.tutorialController.removeListeners();
-      this.tutorialController.registerComplexListener(this.controller, c.IsoEvent.ON_SHOW_RING_MENU, this.bindFunction(this.onRingMenuOpen));
-      if (!this.layoutManager.isInState(f.CastleLayoutManager.STATE_ISO)) {
-        this.layoutManager.state = f.CastleLayoutManager.STATE_ISO;
-      }
-      _.Iso.controller.viewUpdater.switchBuildModeInOwnCastle(false);
-      this.removeTutorialMarker();
-      this.layoutManager.tutorialPanel.hide();
-      this.tutorialController.registerComplexListener(this.controller, c.IsoEvent.ON_BUILDING_CONSTRUCTION_DONE, this.bindFunction(this.onBuildBuildingComplete));
-    }
+  TutorialAttackRobberBaronCommand.prototype.fillAttack = function () {
+    this.trackStep("s_080_100_pre_attack_confirmed");
+    var e = this.layoutManager.getDialog(_.AttackDialog).dialogDisp.mc_autofill_filter.mc_open.mc_autoFillAndPreset.btn_fill_waves;
+    this.tutorialController.onClick(e, this.bindFunction(this.onAutoFill));
+    this.arrows.replace(e);
+    this.blocker.replace(e);
+    this.spotlight.replace(e);
+    this.layoutManager.tutorialPanel.showWithText("tut_autoFillAll_copy", c.ClientConstCharacter.CHAR_ID_GENERAL);
   };
-  TutorialBuildBuildingActionCommand.prototype.onRingMenuOpen = function (e) {
-    if (this.layoutManager) {
-      C.IsoHelper.view.showRingMenu(false);
-    }
+  TutorialAttackRobberBaronCommand.prototype.onAutoFill = function () {
+    this.trackStep("s_080_110_autofill_selected");
+    var e = this.layoutManager.getDialog(_.AttackDialog).attackButton;
+    this.arrows.replace(e);
+    this.blocker.replace(e);
+    this.spotlight.replace(e);
+    this.layoutManager.tutorialPanel.showWithText("tut_clickAttack_copy_duplicate", c.ClientConstCharacter.CHAR_ID_GENERAL);
+    this.filter.add(v.CastlePostAttackDialog);
+    this.tutorialController.waitForExternalDialogShow(v.CastlePostAttackDialog, this.bindFunction(this.onTravelPlanning));
   };
-  TutorialBuildBuildingActionCommand.prototype.onBuildBuildingComplete = function (e) {
-    this.onRingMenuOpen(null);
-    this.tutorialController.removeComplexListener(this.controller, c.IsoEvent.ON_SHOW_RING_MENU, this.bindFunction(this.onRingMenuOpen));
-    this.tutorialController.removeComplexListener(this.controller, c.IsoEvent.ON_BUILDING_CONSTRUCTION_DONE, this.bindFunction(this.onBuildBuildingComplete));
-    this.tutorialController.removeComplexListener(this.controller, r.CastleDecoShopPanelEvent.CHANGE_CATEGORY, this.bindFunction(this.onCategoryChanged));
-    this.trackStep("010_050_woodcutter_confirmed");
+  TutorialAttackRobberBaronCommand.prototype.onTravelPlanning = function () {
+    this.layoutManager.tutorialPanel.hide();
+    var e = this.layoutManager.getDialog(v.CastlePostAttackDialog).dialogDisp.btn_ok;
+    this.arrows.replace(e);
+    this.blocker.replace(e);
+    this.spotlight.replace(e);
+    this.tutorialController.waitForExternalDialogHide(_.AttackDialog, this.bindFunction(this.onAttackSelected));
+  };
+  TutorialAttackRobberBaronCommand.prototype.onAttackSelected = function () {
+    this.trackStep("s_080_120_attack_selected");
     this.finishStep();
   };
-  TutorialBuildBuildingActionCommand.getMCByBuildingVO = function (e, t) {
-    var i = e.toString();
-    i = (i = i.substr("function ".length)).substr(0, i.indexOf("("));
-    for (var n = 0; n < 4; ++n) {
-      var o = t["i" + n];
-      if (o.shopVO && a.instanceOfClass(o.shopVO, i)) {
-        return o;
-      }
-    }
-    return null;
-  };
-  TutorialBuildBuildingActionCommand.prototype.showTutorialMarker = function () {
-    _.Iso.renderer.objects.floorMarks.tutorialMarkerVE.show(new p(205, 212), new p(5, 5));
-  };
-  TutorialBuildBuildingActionCommand.prototype.removeTutorialMarker = function () {
-    _.Iso.renderer.objects.floorMarks.tutorialMarkerVE.hide();
-  };
-  TutorialBuildBuildingActionCommand.prototype.getBuildingCategory = function () {
-    return u.CastleModel.wodData.getBuildingVOById(this._tutorialStepVO.attributes.get(d.TutorialBasicActionCommand.WODID)).shopCategory;
-  };
-  return TutorialBuildBuildingActionCommand;
-}(d.TutorialBasicActionCommand);
-exports.TutorialBuildBuildingActionCommand = h;
-var g = require("./143.js");
-var C = require("./46.js");
-var _ = require("./33.js");
-var m = require("./533.js");
-var f = require("./17.js");
-var O = require("./260.js");
-var E = require("./1132.js");
-o.classImplementsInterfaces(h, "ISimpleCommand");
+  TutorialAttackRobberBaronCommand.SIDE_QUESTIDS = "sideQuestIDs";
+  return TutorialAttackRobberBaronCommand;
+}(O.TutorialBasicActionCommand);
+exports.TutorialAttackRobberBaronCommand = y;
+var b = require("./34.js");
+var D = require("./9.js");
+var I = require("./17.js");
+var T = require("./472.js");
+var v = require("./1102.js");
+var S = require("./395.js");
+var A = require("./5678.js");
+var L = require("./300.js");
+var P = require("./433.js");
+var M = require("./326.js");
+var R = require("./1861.js");
+s.classImplementsInterfaces(y, "ISimpleCommand");

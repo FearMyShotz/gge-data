@@ -96,7 +96,7 @@ var a = function (e) {
     configurable: true
   });
   return ARewardHubDialogSublayer;
-}(require("./34.js").CastleDialogSubLayer);
+}(require("./35.js").CastleDialogSubLayer);
 exports.ARewardHubDialogSublayer = a;
 var s = require("./8.js");
 var r = require("./20.js");

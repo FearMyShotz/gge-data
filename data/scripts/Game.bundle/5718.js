@@ -3,45 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./198.js");
-var r = require("./127.js");
-var l = function (e) {
-  function RandomEquipmentVO(t) {
-    var i = this;
+var a = require("./6.js");
+var s = require("./7.js");
+var r = function (e) {
+  function C2SEquipEquipmentVO(t, i, n) {
+    var o = this;
+    o.EID = 0;
+    o.LID = 0;
+    o.E = 0;
     CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).parseEquipFromArray([0, r.BasicEquippableVO.SLOT_TYPE_ALL, r.BasicEquippableVO.LORD_TYPE_ALL, t, "asdf", [], 0, -1, 0, 0, s.BasicEquipmentVO.NO_GEM_ID]);
-    return i;
+    (o = e.call(this) || this).EID = t;
+    o.LID = i;
+    o.E = a.int(n ? 1 : 0);
+    return o;
   }
-  n.__extends(RandomEquipmentVO, e);
-  Object.defineProperty(RandomEquipmentVO.prototype, "nameString", {
-    get: function () {
-      return RandomEquipmentVO.ASSET_NAME.toLowerCase() + "_" + this.rarity.toLowerCase();
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.BasicEquipmentVO.prototype, "nameString").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(RandomEquipmentVO.prototype, "visClassName", {
-    get: function () {
-      return RandomEquipmentVO.ASSET_NAME + "_" + this.visualRareID;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.BasicEquipmentVO.prototype, "visClassName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  RandomEquipmentVO.prototype.getFilePath = function () {
-    return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(RandomEquipmentVO.ASSET_NAME);
+  n.__extends(C2SEquipEquipmentVO, e);
+  C2SEquipEquipmentVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_EQUIP_EQUIPMENT;
   };
-  RandomEquipmentVO.__initialize_static_members = function () {
-    RandomEquipmentVO.ASSET_NAME = "Random_Equipment";
-  };
-  return RandomEquipmentVO;
-}(s.BasicEquipmentVO);
-exports.RandomEquipmentVO = l;
-a.classImplementsInterfaces(l, "IEquippableVO");
-l.__initialize_static_members();
+  return C2SEquipEquipmentVO;
+}(o.BasicCommandVO);
+exports.C2SEquipEquipmentVO = r;

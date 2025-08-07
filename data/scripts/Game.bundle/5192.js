@@ -7,14 +7,15 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
-var c = function (e) {
-  function GLLCommand() {
+var c = createjs.Point;
+var u = function (e) {
+  function GHWCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GLLCommand, e);
-  Object.defineProperty(GLLCommand.prototype, "cmdId", {
+  n.__extends(GHWCommand, e);
+  Object.defineProperty(GHWCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_LABORATORY_LIST_EVENT;
+      return s.ClientConstSF.S2C_HELLO_WORLD;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +23,23 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GLLCommand.prototype.executeCommand = function (e, t) {
+  GHWCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.userData.laboratoryList.parseGLL(i);
+        var n = r.CastleModel.areaData.activeArea;
+        if (n) {
+          r.CastleModel.areaData.changePosOfOwnArea(new c(i.X, i.Y));
+          r.CastleModel.worldmapCameraData.lastVisitedCastlePosition = n.areaInfo.absAreaPos;
+        }
+        r.CastleModel.worldmapCameraData.savedMapPosition = null;
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GLLCommand;
+  return GHWCommand;
 }(l.CastleCommand);
-exports.GLLCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+exports.GHWCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

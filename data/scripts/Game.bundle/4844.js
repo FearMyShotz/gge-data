@@ -4,36 +4,42 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function GECCommand() {
+var s = require("./6.js");
+var r = require("./7.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function ESLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GECCommand, e);
-  Object.defineProperty(GECCommand.prototype, "cmdId", {
+  n.__extends(ESLCommand, e);
+  Object.defineProperty(ESLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GEM_CHANGE;
+      return r.ClientConstSF.S2C_EQUIPMENT_INVENTORY_SPACE_LEFT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  GECCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
+  ESLCommand.prototype.executeCommand = function (t, i) {
+    return e.prototype.executeCommand.call(this, t, i);
+  };
+  ESLCommand.prototype.exec = function (e) {
+    var t = s.int(e[0]);
+    var i = e[1];
+    switch (t) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.gemData.parse_GEC(i.GEM);
+        var n = JSON.parse(i[1]);
+        l.CastleModel.equipData.parse_ESL(n);
+        l.CastleModel.gemData.parse_ESL(n);
         break;
       default:
-        this.showErrorDialog(e, t);
+        this.showErrorDialog(t, i);
     }
-    return false;
   };
-  return GECCommand;
-}(l.CastleCommand);
-exports.GECCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return ESLCommand;
+}(c.CastleCommand);
+exports.ESLCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

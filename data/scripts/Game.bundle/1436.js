@@ -1,7 +1,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2622.js");
+var n = require("./2623.js");
 var o = require("./4.js");
 var a = function () {
   function ConstructionItemExpiredAreaVO() {

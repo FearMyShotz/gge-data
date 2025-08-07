@@ -5,21 +5,21 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SDeleteBookmark(t) {
+  function C2SDeleteAllianceBookmark(t) {
     var i = e.call(this) || this;
     i.BM = t;
     return i;
   }
-  n.__extends(C2SDeleteBookmark, e);
-  C2SDeleteBookmark.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_DELETE_BOOKMARK;
+  n.__extends(C2SDeleteAllianceBookmark, e);
+  C2SDeleteAllianceBookmark.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_DELETE_ALLIANCE_BOOKMARK;
   };
-  C2SDeleteBookmark.createFromVo = function (e) {
-    return new C2SDeleteBookmark([C2SDeleteBookmark.voToCommandContent(e)]);
+  C2SDeleteAllianceBookmark.createFromVo = function (e, t = false) {
+    return new C2SDeleteAllianceBookmark([C2SDeleteAllianceBookmark.voToCommandContent(e, t)]);
   };
-  C2SDeleteBookmark.voToCommandContent = function (e) {
-    return [e.kingdomId, e.posX, e.posY];
+  C2SDeleteAllianceBookmark.voToCommandContent = function (e, t = false) {
+    return [e.bookmarkID, t ? 1 : 0];
   };
-  return C2SDeleteBookmark;
+  return C2SDeleteAllianceBookmark;
 }(o.BasicCommandVO);
-exports.C2SDeleteBookmark = s;
+exports.C2SDeleteAllianceBookmark = s;

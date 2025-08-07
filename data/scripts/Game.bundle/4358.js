@@ -7,7 +7,7 @@ var a = require("./5.js");
 var s = require("./3.js");
 var r = require("./6.js");
 var l = require("./4.js");
-var c = require("./1091.js");
+var c = require("./1092.js");
 var u = function (e) {
   function CastleAllianceAlienInvasionHighscoreDialog() {
     CONSTRUCTOR_HACK;

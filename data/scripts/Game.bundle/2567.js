@@ -3,95 +3,54 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./1408.js");
-var u = require("./2568.js");
-var d = require("./756.js");
-var p = require("./15.js");
-var h = createjs.Point;
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./1.js");
+var l = require("./3.js");
+var c = require("./3.js");
+var u = require("./16.js");
+var d = require("./31.js");
+var p = require("./19.js");
+var h = require("./8.js");
 var g = function (e) {
-  function SkippableCooldownMinuteSkipProperties(t, i = false) {
-    var n = e.call(this) || this;
-    n.useSubscription = false;
-    n.mapobjectVO = t;
-    n.useSubscription = i;
-    p.CastleBasicController.getInstance().addEventListener(d.SkipCooldownEvent.UPDATE, n.bindFunction(n.onMapobjectVOUpdated));
-    return n;
+  function CastleMinuteSkipScrollItem(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(SkippableCooldownMinuteSkipProperties, e);
-  SkippableCooldownMinuteSkipProperties.prototype.onMapobjectVOUpdated = function (e) {
-    var t = this.mapobjectVO.ownerInfo;
-    if (e.mapObjectVO) {
-      this.mapobjectVO = e.mapObjectVO;
-      this.mapobjectVO.ownerInfo = t;
-    }
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.isSkipAppliable = function () {
-    return this.mapobjectVO.isVisibleOnMap && this.mapobjectVO.remainingCooldownTimeInSeconds > 0;
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.isFreeSkipActive = function () {
-    return false;
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.isPrimeSaleActive = function () {
-    return false;
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getNameText = function () {
-    return new s.TextVO(this.mapobjectVO.areaNameString);
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getAdditionalInfo = function () {
-    return new r.LocalizedTextVO("Coldown_timer_header");
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getIconFrame = function () {
-    return l.int(_.CastleMinuteSkipDialog.ICONFRAME_ATTACK_COOLDOWN);
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getIconToolTipText = function () {
-    return "dialog_timeSkip_attackCooldown_tooltip";
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.displayPicture = function (e) {
+  n.__extends(CastleMinuteSkipScrollItem, e);
+  CastleMinuteSkipScrollItem.prototype.customFillItem = function () {
     var t;
-    var i = new h(_.CastleMinuteSkipDialog.PICTURE_WIDTH, _.CastleMinuteSkipDialog.PICTURE_HEIGHT);
-    t = m.instanceOfClass(this.mapobjectVO, "TreasureDungeonMapObjectVO") ? C.WorldmapObjectIconHelper.drawMapObjectIcon(this.mapobjectVO, i, true, false, false, "", this.mapobjectVO.tMapNode) : C.WorldmapObjectIconHelper.drawMapObjectIcon(this.mapobjectVO, i, true, false, false);
-    return e.addChild(t);
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getTotalTime = function () {
-    return this.mapobjectVO.totalCooldownTime;
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getRemainingTime = function () {
-    return this.mapobjectVO.remainingCooldownTimeInSeconds;
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getSkipCost = function () {
-    return this.mapobjectVO.skipCooldownCostC2 >> 0;
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getFullSkipCommand = function () {
-    if (m.instanceOfClass(this.mapobjectVO, "TreasureDungeonMapObjectVO")) {
-      return new c.C2SSkipDungeonCooldownVO(this.mapobjectVO.absAreaPos, this.mapobjectVO.kingdomID, this.mapobjectVO.tMapNode);
+    e.prototype.customFillItem.call(this);
+    C.CollectableRenderHelper.displaySingleItem(new d.CollectableRenderClips(this.disp.mc_item), this.minuteSkipVO, new p.CollectableRenderOptions(p.CollectableRenderOptions.SET_ICON));
+    var i = 0;
+    if (this.minuteSkipVO.xmlCurrencyVO.minutesSkipValue > 5 && this.minuteSkipVO.amount > 30) {
+      t = new c.LocalizedTextVO(o.GenericTextIds.VALUE_PROPORTIONAL_VALUE, [this.minuteSkipVO.amount, this.minuteSkipVO.xmlCurrencyVO.softCap]);
+      i = this.minuteSkipVO.amount >= this.minuteSkipVO.xmlCurrencyVO.softCap ? u.ClientConstColor.GENERIC_RED : u.ClientConstColor.FONT_DEFAULT_COLOR;
     } else {
-      return new c.C2SSkipDungeonCooldownVO(this.mapobjectVO.absAreaPos, this.mapobjectVO.kingdomID, null);
+      t = new l.LocalizedNumberVO(this.minuteSkipVO.amount);
+      i = u.ClientConstColor.FONT_DEFAULT_COLOR;
     }
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getMinuteSkipCommand = function (e) {
-    if (m.instanceOfClass(this.mapobjectVO, "TreasureDungeonMapObjectVO")) {
-      return new u.C2SMinuteSkipDungeonVO(e, this.mapobjectVO.kingdomID, this.mapobjectVO.absAreaPos.x, this.mapobjectVO.absAreaPos.y, this.mapobjectVO.tMapNode);
+    if (this.minuteSkipVO.amount > 0) {
+      this.disp.btn_skip.toolTipText = "dialog_timeSkip_timeSkipButton_tooltip";
+      if (!h.ButtonHelper.isEnablingDelayed(this.disp.btn_skip)) {
+        h.ButtonHelper.enableButton(this.disp.btn_skip, true);
+      }
     } else {
-      return new u.C2SMinuteSkipDungeonVO(e, this.mapobjectVO.kingdomID, this.mapobjectVO.absAreaPos.x, this.mapobjectVO.absAreaPos.y, null);
+      this.disp.btn_skip.toolTipText = "dialog_timeSkip_timeSkipButton_disabled_tooltip";
+      h.ButtonHelper.delayEnableButton(this.disp.btn_skip, false);
     }
+    this.itxt_amount = a.GoodgameTextFieldManager.getInstance().registerTextField(this.disp.txt_amount, t);
+    this.itxt_amount.color = i;
+    this.itxt_amount.autoFitToBounds = true;
   };
-  SkippableCooldownMinuteSkipProperties.prototype.getPrimeSaleDiscount = function () {
-    return 0;
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getRemainingTimeUntilFreeSkip = function () {
-    return 0;
-  };
-  SkippableCooldownMinuteSkipProperties.prototype.getRemainingPrimeSaleTime = function () {
-    return 0;
-  };
-  return SkippableCooldownMinuteSkipProperties;
-}(o.BasicProperties);
-exports.SkippableCooldownMinuteSkipProperties = g;
-var C = require("./70.js");
-var _ = require("./208.js");
-a.classImplementsInterfaces(g, "IMinuteSkipProperties");
-var m = require("./1.js");
+  Object.defineProperty(CastleMinuteSkipScrollItem.prototype, "minuteSkipVO", {
+    get: function () {
+      return this.scrollItemVO.minuteSkipVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleMinuteSkipScrollItem;
+}(s.ScrollItem);
+exports.CastleMinuteSkipScrollItem = g;
+var C = require("./25.js");
+r.classImplementsInterfaces(g, "MovieClip");

@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function RCCCommand() {
+  function PIOCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RCCCommand, e);
-  Object.defineProperty(RCCCommand.prototype, "cmdId", {
+  n.__extends(PIOCommand, e);
+  Object.defineProperty(PIOCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_RESOURCE_CART_COLLECT;
+      return s.ClientConstSF.S2C_PLACE_CUSTOM_INVENTORY_OBJECT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,27 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  RCCCommand.prototype.executeCommand = function (e, t) {
+  PIOCommand.prototype.executeCommand = function (e, t) {
+    var i;
+    u.Iso.renderer.mouse.cancelDraggedTarget();
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.resourceCartsData.parse_RCC(i);
+        var n = (i = JSON.parse(t[1])).NO[1];
+        r.CastleModel.areaData.activeArea.updater.parseNewIsoObject(i);
+        r.CastleModel.decoStorage.parseSIN(i.sin);
+        if (u.Iso.data.areaData.isoData) {
+          u.Iso.data.updater.onGainedBuildingPoints(n, -1);
+        }
+        break;
+      case a.ERROR.INVALID_POSITION:
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return RCCCommand;
+  return PIOCommand;
 }(l.CastleCommand);
-exports.RCCCommand = c;
+exports.PIOCommand = c;
+var u = require("./34.js");
 o.classImplementsInterfaces(c, "IExecCommand");

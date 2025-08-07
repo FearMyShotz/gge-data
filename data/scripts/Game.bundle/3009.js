@@ -3,23 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./62.js");
-var s = function (e) {
-  function DrillgroundBuildingVE() {
+var a = require("./648.js");
+var s = require("./539.js");
+var r = function (e) {
+  function DragonHoardBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DrillgroundBuildingVE, e);
-  Object.defineProperty(DrillgroundBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(DragonHoardBuildingVE, e);
+  Object.defineProperty(DragonHoardBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_RecruitmentBoost;
+      return Library.CastleInterfaceElements.Btn_DragonHoardLow;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.AUnitProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return DrillgroundBuildingVE;
-}(a.ABasicBuildingVE);
-exports.DrillgroundBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  return DragonHoardBuildingVE;
+}(a.ACraftingBuildingVE);
+exports.DragonHoardBuildingVE = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

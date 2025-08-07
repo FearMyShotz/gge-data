@@ -3,31 +3,50 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./18.js");
-var l = require("./263.js");
-var c = function (e) {
-  function RingMenuButtonStronghold() {
+var a = require("./129.js");
+var s = require("./4.js");
+var r = require("./62.js");
+var l = function (e) {
+  function StrongholdBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RingMenuButtonStronghold, e);
-  RingMenuButtonStronghold.prototype.init = function (t, i, n) {
-    e.prototype.init.call(this, t, i, n);
-    this._disp = i.btn_stronghold;
-    this._disp.visible = a.instanceOfClass(n, "StrongholdBuildingVE") && n.buildingVO.buildingState.isFunctionally;
+  n.__extends(StrongholdBuildingVE, e);
+  StrongholdBuildingVE.prototype.addEventListener = function () {
+    c.CastleComponent.controller.addEventListener(a.CastleMilitaryDataEvent.INVENTORY_UPDATED, this.bindFunction(this.onInventoryUpdated));
+    e.prototype.addEventListener.call(this);
   };
-  RingMenuButtonStronghold.prototype.onClick = function (e, t) {
-    this.targetBuilding;
-    u.CastleDialogHandler.getInstance().registerDefaultDialogs(d.CastleRecruitDialog, new l.CastleRecruitDialogProperties(r.ClientConstCastle.CATEGORY_STRONGHOLD));
-    this.parent.hide();
+  StrongholdBuildingVE.prototype.removeEventListener = function () {
+    c.CastleComponent.controller.removeEventListener(a.CastleMilitaryDataEvent.INVENTORY_UPDATED, this.bindFunction(this.onInventoryUpdated));
+    e.prototype.removeEventListener.call(this);
   };
-  RingMenuButtonStronghold.prototype.getInfoText = function () {
-    return s.Localize.text("stronghold_name");
+  StrongholdBuildingVE.prototype.createStatusIcons = function () {
+    e.prototype.createStatusIcons.call(this);
+    if (s.CastleModel.militaryData.strongholdUnitCount > 0 && !this.statusIcons.isUpgradeIconActive) {
+      this.statusIcons.addIcon(d.IsoStatusIconEnum.STRONGHOLD);
+    }
   };
-  return RingMenuButtonStronghold;
-}(require("./98.js").ARingMenuButton);
-exports.RingMenuButtonStronghold = c;
-var u = require("./9.js");
-var d = require("./224.js");
-o.classImplementsInterfaces(c, "IRingMenuButton");
+  Object.defineProperty(StrongholdBuildingVE.prototype, "buildingGroundIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements.Icon_Stronghold_Big;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  StrongholdBuildingVE.prototype.getRingMenuButtons = function () {
+    var t = e.prototype.getRingMenuButtons.call(this);
+    t.push(new u.RingMenuButtonStronghold());
+    return t;
+  };
+  StrongholdBuildingVE.prototype.onInventoryUpdated = function (e) {
+    this.updateStatusIcon();
+  };
+  return StrongholdBuildingVE;
+}(r.ABasicBuildingVE);
+exports.StrongholdBuildingVE = l;
+var c = require("./14.js");
+var u = require("./3129.js");
+var d = require("./177.js");
+o.classImplementsInterfaces(l, "ICollectableRendererList", "IIngameUICapable");

@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function FSRCommand() {
+  function FFICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FSRCommand, e);
-  Object.defineProperty(FSRCommand.prototype, "cmdId", {
+  n.__extends(FFICommand, e);
+  Object.defineProperty(FFICommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SKIP_FUSION_RECHARGE;
+      return s.ClientConstSF.S2C_GET_FUSION_FORGE_INFO;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  FSRCommand.prototype.executeCommand = function (e, t) {
+  FFICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.fusionForgeData.parseFSR(i);
+        r.CastleModel.fusionForgeData.parseFFI(i.FI);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return FSRCommand;
+  return FFICommand;
 }(l.CastleCommand);
-exports.FSRCommand = c;
+exports.FFICommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

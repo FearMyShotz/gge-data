@@ -8,14 +8,15 @@ var s = require("./7.js");
 var r = require("./102.js");
 var l = require("./4.js");
 var c = require("./10.js");
-var u = function (e) {
-  function SAWCommand() {
+var u = createjs.Event;
+var d = function (e) {
+  function SAECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SAWCommand, e);
-  Object.defineProperty(SAWCommand.prototype, "cmdId", {
+  n.__extends(SAECommand, e);
+  Object.defineProperty(SAECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ALLIANCE_SET_AUTO_WAR;
+      return s.ClientConstSF.S2C_SET_ALLIANCE_EMBLEM;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -23,19 +24,17 @@ var u = function (e) {
     enumerable: true,
     configurable: true
   });
-  SAWCommand.prototype.executeCommand = function (e, t) {
+  SAECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        l.CastleModel.allianceData.myAllianceVO.autoWarOn = i.AW == 1;
-        l.CastleModel.allianceData.dispatchEvent(new r.CastleAllianceDataEvent(r.CastleAllianceDataEvent.ALLIANCE_AUTO_WAR_UPDATED));
+        l.CastleModel.allianceData.dispatchEvent(new u(r.CastleAllianceDataEvent.ALLIANCE_CREST_SAVED_OK, false, false));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SAWCommand;
+  return SAECommand;
 }(c.CastleCommand);
-exports.SAWCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+exports.SAECommand = d;
+o.classImplementsInterfaces(d, "IExecCommand");

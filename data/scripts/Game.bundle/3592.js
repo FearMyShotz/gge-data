@@ -3,97 +3,115 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./21.js");
-var c = require("./139.js");
-var u = require("./15.js");
-var d = require("./4.js");
-var p = require("./8.js");
-var h = function (e) {
-  function CastleMarketMovmentDialog() {
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./1.js");
+var l = require("./3.js");
+var c = require("./3.js");
+var u = require("./3.js");
+var d = require("./51.js");
+var p = require("./21.js");
+var h = require("./139.js");
+var g = require("./15.js");
+var C = require("./4.js");
+var _ = require("./24.js");
+var m = require("./106.js");
+var f = require("./11.js");
+var O = createjs.Point;
+var E = function (e) {
+  function CastlePlaguemonkInfoDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleMarketMovmentDialog.NAME, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("CastleMovementDetails_APR25")) || this;
+    return e.call(this, CastlePlaguemonkInfoDialog.NAME) || this;
   }
-  n.__extends(CastleMarketMovmentDialog, e);
-  CastleMarketMovmentDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(CastlePlaguemonkInfoDialog, e);
+  CastlePlaguemonkInfoDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    this.itxt_title = this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.LocalizedTextVO("dialog_marketMovement_title"));
-    this.itxt_description = this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new r.LocalizedTextVO("dialog_marketMovement_desc_hasGoods"));
+    this.initBasicButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close, this.dialogDisp.btn_help]);
+    this._movementDetails = new b.CastleMovementDetailsComponent(this.dialogDisp.mc_movementInfo);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new u.LocalizedTextVO("dialog_plagueMonkInfo_description"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new u.LocalizedTextVO("dialog_spy_titlePlague")).verticalAlign = a.GGSVerticalAlign.MIDDLE;
+    this.itxt_spyCount = this.textFieldManager.registerTextField(this.dialogDisp.mc_spyCount.txt_value, new c.LocalizedNumberVO(0));
+    this.itxt_spyRisk = this.textFieldManager.registerTextField(this.dialogDisp.mc_spyRisk.txt_value, new u.LocalizedTextVO(s.GenericTextIds.VALUE_PERCENTAGE));
+    this.itxt_spyEffect = this.textFieldManager.registerTextField(this.dialogDisp.mc_spyEffect.txt_value, new u.LocalizedTextVO(s.GenericTextIds.VALUE_PERCENTAGE));
+    this.dialogDisp.mc_spyCount.toolTipText = "spy_dialog_plagueMonkCount";
+    this.dialogDisp.mc_spyRisk.toolTipText = "spy_dialog_spyRisk";
+    this.dialogDisp.mc_char.gotoAndStop(2);
+    this.plagueIconSize = new O(this.dialogDisp.mc_spyCount.mc_icon.width, this.dialogDisp.mc_spyCount.mc_icon.height);
+    this.dialogDisp.mc_spyCount.mc_icon.gotoAndStop(2);
+    var i = new _.CastleGoodgameExternalClip("Icon_PlaqueC2R", o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("Icon_PlaqueC2R"), null, 0, false);
+    this.dialogDisp.mc_spyCount.mc_icon.addChild(i);
+    i.doWhenLoaded(this.bindFunction(this.setIconSizeWhenLoaded));
+    this.dialogDisp.mc_movementInfo.btn_retreat.visible = false;
+    this.dialogDisp.btn_help.visible = false;
     this.dialogDisp.btn_help.toolTipText = "generic_help";
-    this._movementResourceList = new _.CastleResourceListComponent(this.dialogDisp.mc_ressourceList, Library.CastleInterfaceElements.ResourceListCompnent_Item);
-    this._movementDetails = new C.CastleMovementDetailsComponent(this.dialogDisp.mc_movementInfo);
-    p.ButtonHelper.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help, this.dialogDisp.btn_ok, this.dialogDisp.mc_movementInfo.btn_retreat, this.dialogDisp.mc_movementInfo.btn_sendHome]);
   };
-  CastleMarketMovmentDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    var i = this.mapMovementVO;
-    if (i.lootList.length > 0) {
-      this.itxt_description.textContentVO.textId = "dialog_marketMovement_desc_hasGoods";
-    } else {
-      this.itxt_description.textContentVO.textId = "dialog_marketMovement_desc_hasNoGoods";
-    }
-    this.dialogDisp.mc_ressourceList.visible = i.lootList.length > 0;
-    this._movementResourceList.updateComponent(i.lootList, s.Localize.text("goods"));
-    d.CastleModel.timerData.addEventListener(l.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onArmyDataUpdated));
-    u.CastleBasicController.getInstance().addEventListener(c.CastleArmyDataEvent.REMOVE_MOVEMENT, this.bindFunction(this.onArmyRemoved));
-    this._movementDetails.initComponent(i, this.bindFunction(this.hide));
-    this.onArmyDataUpdated(null);
+  CastlePlaguemonkInfoDialog.prototype.setIconSizeWhenLoaded = function () {
+    var e = this.dialogDisp.mc_spyCount.mc_icon.getChildAt(0);
+    e.width = this.plagueIconSize.x;
+    e.height = this.plagueIconSize.y;
+    e.doCache();
   };
-  CastleMarketMovmentDialog.prototype.onArmyRemoved = function (e) {
-    if (e.mapmovementVO.objectId == this.mapMovementVO.objectId) {
+  CastlePlaguemonkInfoDialog.prototype.applyPropertiesLoaded = function (e = null) {
+    m.CharacterHelper.createCharacterBig(d.ClientConstCharacter.CHAR_ID_PLAGUE_MONK, this.dialogDisp.mc_char, 300, 160);
+    this.itxt_spyCount.textContentVO.numberValue = this.spyMapmovementVO.plagueMonkCount;
+    this.itxt_spyRisk.textContentVO.textReplacements = [this.spyMapmovementVO.plagueMonkRisk];
+    this.dialogDisp.mc_spyEffect.mc_icon.gotoAndStop(2);
+    this.itxt_spyEffect.textContentVO.textReplacements = [this.spyMapmovementVO.plagueDamage];
+    this.dialogDisp.mc_spyEffect.toolTipText = "spy_dialog_sabotageDamage";
+    C.CastleModel.timerData.addEventListener(p.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onArmyDataUpdated));
+    g.CastleBasicController.getInstance().addEventListener(h.CastleArmyDataEvent.REMOVE_MOVEMENT, this.bindFunction(this.onArmyRemoved));
+    this._movementDetails.initComponent(this.spyMapmovementVO, this.bindFunction(this.hide));
+  };
+  CastlePlaguemonkInfoDialog.prototype.onArmyRemoved = function (e) {
+    if (e.mapmovementVO.objectId == this.spyMapmovementVO.objectId) {
       this.hide();
     }
   };
-  CastleMarketMovmentDialog.prototype.onArmyDataUpdated = function (e) {
-    if (this.mapMovementVO.shouldBeShown()) {
+  CastlePlaguemonkInfoDialog.prototype.onArmyDataUpdated = function (e) {
+    if (this.spyMapmovementVO.getTimeUnitMovmentReachTargetInSeconds() < 2) {
+      this.hide();
+    } else {
       this._movementDetails.updateComponent();
-    } else {
-      this.hide();
     }
   };
-  CastleMarketMovmentDialog.prototype.onClick = function (t) {
-    if (p.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_ok:
-          this.hide();
-          break;
-        case this.dialogDisp.btn_help:
-          g.CastleDialogHandler.getInstance().showHelper("", s.Localize.text("help_marketMovment"));
-      }
+  CastlePlaguemonkInfoDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_ok:
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_help:
+        y.CastleDialogHandler.getInstance().showHelper("", l.Localize.text("help_spyMove"));
     }
   };
-  CastleMarketMovmentDialog.prototype.hideLoaded = function (t = null) {
-    this._movementDetails.destroy();
-    d.CastleModel.timerData.removeEventListener(l.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onArmyDataUpdated));
-    u.CastleBasicController.getInstance().removeEventListener(c.CastleArmyDataEvent.REMOVE_MOVEMENT, this.bindFunction(this.onArmyRemoved));
+  CastlePlaguemonkInfoDialog.prototype.hideLoaded = function (t = null) {
     e.prototype.hideLoaded.call(this, t);
+    this._movementDetails.destroy();
+    C.CastleModel.timerData.removeEventListener(p.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onArmyDataUpdated));
+    g.CastleBasicController.getInstance().removeEventListener(h.CastleArmyDataEvent.REMOVE_MOVEMENT, this.bindFunction(this.onArmyRemoved));
   };
-  Object.defineProperty(CastleMarketMovmentDialog.prototype, "mapMovementVO", {
+  Object.defineProperty(CastlePlaguemonkInfoDialog.prototype, "spyMapmovementVO", {
     get: function () {
       return this.dialogProperties.mapMovementVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleMarketMovmentDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastlePlaguemonkInfoDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleMarketMovmentDialog.__initialize_static_members = function () {
-    CastleMarketMovmentDialog.NAME = "CastleMarketMovement";
+  CastlePlaguemonkInfoDialog.__initialize_static_members = function () {
+    CastlePlaguemonkInfoDialog.NAME = "CastleSpyInfoEx";
   };
-  return CastleMarketMovmentDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleMarketMovmentDialog = h;
-var g = require("./9.js");
-var C = require("./468.js");
-var _ = require("./320.js");
-a.classImplementsInterfaces(h, "ICollectableRendererList");
-h.__initialize_static_members();
+  return CastlePlaguemonkInfoDialog;
+}(f.CastleExternalDialog);
+exports.CastlePlaguemonkInfoDialog = E;
+var y = require("./9.js");
+var b = require("./469.js");
+r.classImplementsInterfaces(E, "ICollectableRendererList");
+E.__initialize_static_members();

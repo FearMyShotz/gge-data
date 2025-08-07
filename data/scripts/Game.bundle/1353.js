@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./51.js");
-var s = require("./107.js");
+var s = require("./106.js");
 var r = function (e) {
   function CastlePostSendGoodsHorseDialog() {
     CONSTRUCTOR_HACK;
@@ -20,7 +20,7 @@ var r = function (e) {
     CastlePostSendGoodsHorseDialog.NAME = "CastlePostActionHorse_S";
   };
   return CastlePostSendGoodsHorseDialog;
-}(require("./944.js").CastlePostSendGoodsDialog);
+}(require("./945.js").CastlePostSendGoodsDialog);
 exports.CastlePostSendGoodsHorseDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
 r.__initialize_static_members();

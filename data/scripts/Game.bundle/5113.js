@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GDWCommand() {
+  function GDACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GDWCommand, e);
-  Object.defineProperty(GDWCommand.prototype, "cmdId", {
+  n.__extends(GDACommand, e);
+  Object.defineProperty(GDACommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_DAIMYO_WAR_EFFORTS;
+      return s.ClientConstSF.S2C_GET_DAIMYO_AREAS_EVENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GDWCommand.prototype.executeCommand = function (e, t) {
+  GDACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.samuraiDaimyoData.server.parseGDW(i);
+        r.CastleModel.samuraiDaimyoData.server.parseGDA(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GDWCommand;
+  return GDACommand;
 }(l.CastleCommand);
-exports.GDWCommand = c;
+exports.GDACommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

@@ -6,36 +6,36 @@ var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./6.js");
 var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function BCRCommand() {
+var l = require("./10.js");
+var c = function (e) {
+  function UPVCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BCRCommand, e);
-  Object.defineProperty(BCRCommand.prototype, "cmdId", {
+  n.__extends(UPVCommand, e);
+  Object.defineProperty(UPVCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_BUY_CAMPAIGN_REWARD;
+      return r.ClientConstSF.S2C_UPGRADE_PRIVATE_RESOURCE_VILLAGE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  BCRCommand.prototype.exec = function (e) {
+  UPVCommand.prototype.executeCommand = function (t, i) {
+    return e.prototype.executeCommand.call(this, t, i);
+  };
+  UPVCommand.prototype.exec = function (e) {
     var t = s.int(e[0]);
     var i = e[1];
     switch (t) {
       case a.ERROR.ALL_OK:
-        var n = JSON.parse(i[1]);
-        l.CastleModel.currencyData.parseGCU(n.gcu);
         break;
       default:
         this.showErrorDialog(t, i);
     }
   };
-  return BCRCommand;
-}(c.CastleCommand);
-exports.BCRCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return UPVCommand;
+}(l.CastleCommand);
+exports.UPVCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

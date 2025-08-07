@@ -7,13 +7,13 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./10.js");
 var l = function (e) {
-  function BSPCommand() {
+  function SSACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BSPCommand, e);
-  Object.defineProperty(BSPCommand.prototype, "cmdId", {
+  n.__extends(SSACommand, e);
+  Object.defineProperty(SSACommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_BUY_SEASON_PASS_PROMOTION;
+      return s.ClientConstSF.S2C_SKIP_SCEAT_SKILL_ACTIVATION;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -21,19 +21,16 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  BSPCommand.prototype.executeCommand = function (e, t) {
+  SSACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        c.CastleBasicController.getInstance().dispatchEvent(new u.SeasonLeagueEvent(u.SeasonLeagueEvent.ON_PASS_PROMOTION_BOUGHT));
-        return true;
+        break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return BSPCommand;
+  return SSACommand;
 }(r.CastleCommand);
-exports.BSPCommand = l;
-var c = require("./15.js");
-var u = require("./174.js");
+exports.SSACommand = l;
 o.classImplementsInterfaces(l, "IExecCommand");

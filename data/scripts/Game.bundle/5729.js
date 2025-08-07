@@ -1,68 +1,110 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./6.js");
-var a = require("./22.js");
-var s = function () {
-  function XmlEquipmentGroupVO() {
-    this._id = 0;
-    this._wearerId = 0;
-    this._slotId = 0;
-    this._picId = 0;
-    this._dropRate = 0;
+var n = require("./6.js");
+var o = require("./22.js");
+var a = require("./4.js");
+var s = require("./5730.js");
+var r = require("./5731.js");
+var l = require("./5732.js");
+var c = require("./5733.js");
+var u = require("./5734.js");
+var d = function () {
+  function EquipmentXml() {
+    this._equipmentEffects = new Map();
+    this._equipmentSets = new Map();
+    this._equipmentRareness = new Map();
+    this._equipmentGroups = new Map();
+    this._worldmapSkins = new Map();
   }
-  XmlEquipmentGroupVO.prototype.parseXml = function (e) {
-    this._id = o.int(a.CastleXMLUtils.getIntAttribute("itemGroupID", e, -1));
-    this._name = a.CastleXMLUtils.getStringAttribute("name", e);
-    this._wearerId = o.int(a.CastleXMLUtils.getIntAttribute("wearerID", e, -1));
-    this._slotId = o.int(a.CastleXMLUtils.getIntAttribute("slotID", e, -1));
-    this._picId = o.int(a.CastleXMLUtils.getIntAttribute("picID", e, -1));
-    this._dropRate = o.int(a.CastleXMLUtils.getIntAttribute("dropRate", e, -1));
+  EquipmentXml.prototype.parseXml = function (e) {
+    this._equipmentEffects = o.CastleXMLUtils.createDicFromXmlNode(e, "equipment_effects", s.XmlEquipmentEffectVO);
+    this.parseEquipmentSets(e);
+    this._equipmentRareness = o.CastleXMLUtils.createDicFromXmlNode(e, "equipment_rarenesses", l.XmlEquipmentRarenessVO);
+    this._equipmentGroups = o.CastleXMLUtils.createDicFromXmlNode(e, "equipment_groups", r.XmlEquipmentGroupVO);
+    this._worldmapSkins = o.CastleXMLUtils.createDicFromXmlNode(e, "worldmapskins", u.XmlWorldmapSkinVO);
   };
-  Object.defineProperty(XmlEquipmentGroupVO.prototype, "id", {
+  EquipmentXml.prototype.parseEquipmentSets = function (e) {
+    this._equipmentSets = new Map();
+    var t = e.equipment_sets;
+    if (t != null) {
+      for (var i = 0, n = t; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          var a = parseInt(o.setID || "");
+          if (this._equipmentSets.get(a)) {
+            this._equipmentSets.get(a).addEffect(o);
+          } else {
+            this._equipmentSets.set(a, new c.XmlEquipmentSetVO(a, o));
+          }
+        }
+      }
+    }
+  };
+  EquipmentXml.prototype.getEquipmentSet = function (e) {
+    return this._equipmentSets.get(e);
+  };
+  EquipmentXml.prototype.getEquipmentEffect = function (e) {
+    return this._equipmentEffects.get(e);
+  };
+  EquipmentXml.prototype.getEquipmentRareness = function (e) {
+    return this._equipmentRareness.get(e);
+  };
+  EquipmentXml.prototype.getEquipmentGroup = function (e) {
+    return this._equipmentGroups.get(e);
+  };
+  EquipmentXml.prototype.getWorldmapSkin = function (e) {
+    return this._worldmapSkins.get(e);
+  };
+  EquipmentXml.prototype.getEquippableEffectByEquipmentEffect = function (e) {
+    return a.CastleModel.effectsData.getEffectByID(this.getEquipmentEffect(e) ? this.getEquipmentEffect(e).effectId : e);
+  };
+  EquipmentXml.prototype.getEffectGroupIdByEffectId = function (e) {
+    return n.int(this.getEquipmentEffect(e).getItemGroupIdSafe());
+  };
+  EquipmentXml.prototype.getEnchantmentFactor = function (e, t) {
+    var i = this.getEquipmentEffect(e);
+    if (t) {
+      return i.enchantmentPrimaryBonus;
+    } else {
+      return i.enchantmentSecondaryBonus;
+    }
+  };
+  Object.defineProperty(EquipmentXml.prototype, "equipmentEffects", {
     get: function () {
-      return this._id;
+      return this._equipmentEffects;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlEquipmentGroupVO.prototype, "name", {
+  Object.defineProperty(EquipmentXml.prototype, "equipmentSets", {
     get: function () {
-      return this._name;
+      return this._equipmentSets;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlEquipmentGroupVO.prototype, "wearerId", {
+  Object.defineProperty(EquipmentXml.prototype, "equipmentRareness", {
     get: function () {
-      return this._wearerId;
+      return this._equipmentRareness;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlEquipmentGroupVO.prototype, "slotId", {
+  Object.defineProperty(EquipmentXml.prototype, "equipmentGroups", {
     get: function () {
-      return this._slotId;
+      return this._equipmentGroups;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlEquipmentGroupVO.prototype, "picId", {
+  Object.defineProperty(EquipmentXml.prototype, "worldmapSkins", {
     get: function () {
-      return this._picId;
+      return this._worldmapSkins;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlEquipmentGroupVO.prototype, "dropRate", {
-    get: function () {
-      return this._dropRate;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return XmlEquipmentGroupVO;
+  return EquipmentXml;
 }();
-exports.XmlEquipmentGroupVO = s;
-n.classImplementsInterfaces(s, "IXmlElementVO");
+exports.EquipmentXml = d;

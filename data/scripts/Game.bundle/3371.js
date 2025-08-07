@@ -3,112 +3,202 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
+var a = require("./2.js");
 var s = require("./1.js");
 var r = require("./5.js");
-var l = require("./3.js");
-var c = require("./3.js");
-var u = require("./39.js");
-var d = require("./3372.js");
-var p = require("./220.js");
-var h = require("./4.js");
-var g = require("./270.js");
-var C = require("./8.js");
-var _ = require("./11.js");
-var m = createjs.TimerEvent;
-var f = function (e) {
-  function CastleBuyReturnSpeedBoosterDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleBuyReturnSpeedBoosterDialog.NAME) || this;
+var l = require("./24.js");
+var c = require("./4.js");
+var u = require("./240.js");
+var d = createjs.MovieClip;
+var p = function (e) {
+  function CastleReturnSpeedBoosterPremiumShopVO() {
+    return e.call(this, "dialog_marketReturnSpeed_title", "dialog_marketReturnSpeed_desc", 990, "returnSpeedGuy") || this;
   }
-  n.__extends(CastleBuyReturnSpeedBoosterDialog, e);
-  CastleBuyReturnSpeedBoosterDialog.prototype.initLoaded = function (t = null) {
-    this.initBasicButtons([this.dialogDisp.btn_cancel, this.dialogDisp.btn_close]);
-    this.initDelayedButtons([this.dialogDisp.btn_ok]);
-    this.itxt_booster = this.textFieldManager.registerTextField(this.dialogDisp.mc_booster.tfAmount, new c.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE_ADD, [0]));
-    this.itxt_desc = this.textFieldManager.registerTextField(this.dialogDisp.txtDesc, new c.LocalizedTextVO("dialog_buyReturnSpeed_copy", [0]));
-    this.itxt_curCapacity = this.textFieldManager.registerTextField(this.dialogDisp.curCapacity.tfAmount, new c.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [0]));
-    this.itxt_nextCapacity = this.textFieldManager.registerTextField(this.dialogDisp.nextCapacity.tfAmount, new c.LocalizedTextVO(o.GenericTextIds.VALUE_PERCENTAGE, [0]));
-    this.itxt_costsLabel = this.textFieldManager.registerTextField(this.dialogDisp.costs.tfLabel, new c.LocalizedTextVO("costs"));
-    this.itxt_costsValue = this.textFieldManager.registerTextField(this.dialogDisp.costs.tfAmount, new l.LocalizedNumberVO(0));
-    this.dialogDisp.curCapacity.toolTipText = "dialog_buyReturnSpeed_currentSpeed_tooltip";
-    this.dialogDisp.curCapacity.mouseChildren = false;
-    this.dialogDisp.nextCapacity.toolTipText = "dialog_buyReturnSpeed_futureSpeed_tooltip";
-    this.dialogDisp.nextCapacity.mouseChildren = false;
-    this.dialogDisp.mc_booster.mouseChildren = false;
-    this.dialogDisp.costs.toolTipText = u.ClientConstTextIds.C2;
-    this.dialogDisp.costs.mouseChildren = false;
-    e.prototype.initLoaded.call(this);
+  n.__extends(CastleReturnSpeedBoosterPremiumShopVO, e);
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "bonusValue", {
+    get: function () {
+      return c.CastleModel.boostData.getBoostForReturningSpeedLevel(this.level);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "bonusValue").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "bonusValueDifference", {
+    get: function () {
+      return this.bonusValueForNextLevel - this.bonusValue;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "bonusValueForNextLevel", {
+    get: function () {
+      return c.CastleModel.boostData.getBoostForReturningSpeedLevel(this.level + 1);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "bonusValueForNextLevel").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleReturnSpeedBoosterPremiumShopVO.prototype.createVisualMovieClip = function () {
+    var e = new d();
+    var t = new l.CastleGoodgameExternalClip("ReturnSpeedBoosterIcon", o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("ReturnSpeedBoosterIcon"), null, 0, false);
+    e.addChild(t);
+    t.doWhenLoaded(this.bindFunction(this.onLoadedIcon));
+    return e;
   };
-  CastleBuyReturnSpeedBoosterDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.setTexts();
-    C.ButtonHelper.enableButton(this.dialogDisp.btn_ok, false);
-    this.btnDelayTimer = new a.Timer(500, 1);
-    this.btnDelayTimer.addEventListener(m.TIMER, this.bindFunction(this.onBtnDelayOver_0));
-    this.btnDelayTimer.start();
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "listSortPriority", {
+    get: function () {
+      return 80;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "bonusIconFrame", {
+    get: function () {
+      return 10;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "bonusIconFrame").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "baseIconFrame", {
+    get: function () {
+      return 2;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "baseIconFrame").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "bonusToolTip", {
+    get: function () {
+      return "dialog_marketCurrentSpeed_tooltip";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "bonusToolTip").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "nextBonusToolTip", {
+    get: function () {
+      return {
+        t: "dialog_marketFutureSpeed_tooltip",
+        p: [this.bonusValueDifference]
+      };
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "nextBonusToolTip").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "isMaxLevel", {
+    get: function () {
+      return c.CastleModel.boostData.getReturningSpeedBoosterMaxLevel() == this.level;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "isMaxLevel").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "finalCostsC2", {
+    get: function () {
+      return c.CastleModel.costsData.getFinalCostsC2(c.CastleModel.boostData.getCostsForNextReturningSpeedLevel(this.level), this.hasRebuyDiscount, c.CastleModel.boosterSaleData.getDiscount(this.id) * 0.01);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "finalCostsC2").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "baseCosts", {
+    get: function () {
+      return c.CastleModel.boostData.getCostsForNextReturningSpeedLevel(this.level);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "baseCosts").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "isVisible", {
+    get: function () {
+      return c.CastleModel.boostData.getReturningSpeedBoosterMaxLevel() > this.level;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "isVisible").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "id", {
+    get: function () {
+      return r.BoosterConst.RETURNING_SPEED;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "id").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "isExtendable", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "isExtendable").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleReturnSpeedBoosterPremiumShopVO.prototype.clickedBuyButton = function () {
+    h.CastleDialogHandler.getInstance().registerDefaultDialogs(g.CastleBuyReturnSpeedBoosterDialog);
   };
-  CastleBuyReturnSpeedBoosterDialog.prototype.addEventListenerOnShow = function () {
-    e.prototype.addEventListenerOnShow.call(this);
-    h.CastleModel.boostData.addEventListener(p.CastleResourceBoosterEvent.BOOSTERDATA_REFRESHED, this.bindFunction(this.onBoosterDataChanges));
-    h.CastleModel.boosterSaleData.addEventListener(g.CastleBoosterSaleData.BOOSTER_SALE_UPDATE, this.bindFunction(this.onBoosterDataChanges));
-  };
-  CastleBuyReturnSpeedBoosterDialog.prototype.hideLoaded = function (t = null) {
-    this.stopTimer();
-    e.prototype.hideLoaded.call(this, t);
-  };
-  CastleBuyReturnSpeedBoosterDialog.prototype.onBtnDelayOver_0 = function (e) {
-    this.stopTimer();
-    C.ButtonHelper.enableButton(this.dialogDisp.btn_ok, true);
-  };
-  CastleBuyReturnSpeedBoosterDialog.prototype.stopTimer = function () {
-    if (this.btnDelayTimer) {
-      this.btnDelayTimer.stop();
-      this.btnDelayTimer.removeEventListener(m.TIMER, this.onBtnDelayOver_0);
-      this.btnDelayTimer = null;
-    }
-  };
-  CastleBuyReturnSpeedBoosterDialog.prototype.onBoosterDataChanges = function (e) {
-    this.setTexts();
-  };
-  CastleBuyReturnSpeedBoosterDialog.prototype.setTexts = function () {
-    this.itxt_booster.textContentVO.textReplacements = [h.CastleModel.boostData.returnSpeedBoosterVO.bonusValueDifference];
-    this.itxt_desc.textContentVO.textReplacements = [h.CastleModel.boostData.returnSpeedBoosterVO.bonusValueDifference];
-    this.itxt_curCapacity.textContentVO.textReplacements = [h.CastleModel.boostData.returnSpeedBoosterVO.returnSpeedForCurrentLevel];
-    this.itxt_nextCapacity.textContentVO.textReplacements = [h.CastleModel.boostData.returnSpeedBoosterVO.returnSpeedForNextLevel];
-    this.itxt_costsValue.textContentVO.numberValue = h.CastleModel.boostData.returnSpeedBoosterVO.finalCostsC2;
-    O.CostHelper.setCostC2TextFieldColor(this.itxt_costsValue, h.CastleModel.boostData.returnSpeedBoosterVO.finalCostsC2);
-    this.dialogDisp.mc_booster.toolTipText = {
-      t: "dialog_buyReturnSpeed_additionalSpeed_tooltip",
-      p: [h.CastleModel.boostData.returnSpeedBoosterVO.bonusValueDifference]
-    };
-    h.CastleModel.boosterSaleData.handleMc(this.dialogDisp.costs.mc_discount, r.BoosterConst.RETURNING_SPEED);
-  };
-  CastleBuyReturnSpeedBoosterDialog.prototype.removeEventListenerOnHide = function () {
-    e.prototype.removeEventListenerOnHide.call(this);
-    h.CastleModel.boostData.removeEventListener(p.CastleResourceBoosterEvent.BOOSTERDATA_REFRESHED, this.bindFunction(this.onBoosterDataChanges));
-    h.CastleModel.boosterSaleData.removeEventListener(g.CastleBoosterSaleData.BOOSTER_SALE_UPDATE, this.bindFunction(this.onBoosterDataChanges));
-  };
-  CastleBuyReturnSpeedBoosterDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    if (C.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.dialogDisp.btn_cancel:
-        case this.dialogDisp.btn_close:
-          this.hide();
-          break;
-        case this.dialogDisp.btn_ok:
-          h.CastleModel.smartfoxClient.sendCommandVO(new d.C2SReturnSpeedBoosterStartVO(h.CastleModel.boosterSaleData.getOfferId(r.BoosterConst.RETURNING_SPEED)));
-          this.hide();
-      }
-    }
-  };
-  CastleBuyReturnSpeedBoosterDialog.__initialize_static_members = function () {
-    CastleBuyReturnSpeedBoosterDialog.NAME = "CastleBuyReturnSpeedBoost";
-  };
-  return CastleBuyReturnSpeedBoosterDialog;
-}(_.CastleExternalDialog);
-exports.CastleBuyReturnSpeedBoosterDialog = f;
-var O = require("./66.js");
-s.classImplementsInterfaces(f, "ICollectableRendererList");
-f.__initialize_static_members();
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "bonusTextForNextLevel", {
+    get: function () {
+      return [a.GenericTextIds.VALUE_PERCENTAGE, this.bonusValueForNextLevel];
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "bonusTextForNextLevel").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "returnSpeedForCurrentLevel", {
+    get: function () {
+      return c.CastleModel.boostData.getBoostForReturningSpeedLevel(this.level);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "returnSpeedForNextLevel", {
+    get: function () {
+      return c.CastleModel.boostData.getBoostForReturningSpeedLevel(this.level + 1);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleReturnSpeedBoosterPremiumShopVO.prototype, "isPermanentBooster", {
+    get: function () {
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleHeroDefaultBoosterShopVO.prototype, "isPermanentBooster").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleReturnSpeedBoosterPremiumShopVO;
+}(u.CastleHeroDefaultBoosterShopVO);
+exports.CastleReturnSpeedBoosterPremiumShopVO = p;
+var h = require("./9.js");
+var g = require("./3372.js");
+s.classImplementsInterfaces(p, "IPremiumMarketShopVO", "IDefaultBoosterDataVO", "IBoosterDataVO");

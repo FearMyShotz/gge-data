@@ -27,6 +27,6 @@ var r = function (e) {
     configurable: true
   });
   return CastleFlaggedInboxMessageList;
-}(require("./843.js").ACastleBaseInboxMessageList);
+}(require("./844.js").ACastleBaseInboxMessageList);
 exports.CastleFlaggedInboxMessageList = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList", "ISublayer");

@@ -1,17 +1,28 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SGetUnitInventoryVO() {
-    return e.call(this) || this;
+var n = require("./2.js");
+var o = function () {
+  function ABGTowerConnectionsComponent(e, t, i, o) {
+    n.MovieClipHelper.clearMovieClip(e);
+    this._disp = e;
+    this._connectionComponents = [];
+    for (var s = 0; s < ABGTowerConnectionsComponent.CONNECTION_AMOUNT; s++) {
+      var r = new a.ABGTowerConnectionStateComponent(t, i, true);
+      r.disp.x = s * (i + o);
+      this._connectionComponents.push(r);
+      this._disp.addChild(r.disp);
+    }
   }
-  n.__extends(C2SGetUnitInventoryVO, e);
-  C2SGetUnitInventoryVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_UNIT_INVENTORY;
+  ABGTowerConnectionsComponent.prototype.setConnections = function (e) {
+    for (var t = 0; t < this._connectionComponents.length; t++) {
+      var i = this._connectionComponents[t];
+      var n = e.length > t ? e[t] : null;
+      i.setConnection(n);
+    }
   };
-  return C2SGetUnitInventoryVO;
-}(o.BasicCommandVO);
-exports.C2SGetUnitInventoryVO = s;
+  ABGTowerConnectionsComponent.CONNECTION_AMOUNT = 5;
+  return ABGTowerConnectionsComponent;
+}();
+exports.ABGTowerConnectionsComponent = o;
+var a = require("./424.js");

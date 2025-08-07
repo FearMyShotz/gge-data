@@ -2,18 +2,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SAllianceInvitePlayerVO(t) {
-    var i = e.call(this) || this;
-    i.SV = t;
-    return i;
+var o = function (e) {
+  function UnitInventoryEvent(t, i = null, n = false, o = false) {
+    CONSTRUCTOR_HACK;
+    return e.call(this, t, n, o) || this;
   }
-  n.__extends(C2SAllianceInvitePlayerVO, e);
-  C2SAllianceInvitePlayerVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_ALLIANCE_INVITE_PLAYER;
+  n.__extends(UnitInventoryEvent, e);
+  UnitInventoryEvent.__initialize_static_members = function () {
+    UnitInventoryEvent.UPDATED = "updated";
   };
-  return C2SAllianceInvitePlayerVO;
-}(o.BasicCommandVO);
-exports.C2SAllianceInvitePlayerVO = s;
+  return UnitInventoryEvent;
+}(createjs.Event);
+exports.UnitInventoryEvent = o;
+o.__initialize_static_members();

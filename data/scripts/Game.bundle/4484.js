@@ -3,74 +3,73 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./51.js");
-var s = require("./4485.js");
-var r = require("./184.js");
-var l = function (e) {
-  function PlagueEventVO() {
+var a = require("./5.js");
+var s = require("./819.js");
+var r = require("./4.js");
+var l = require("./79.js");
+var c = function (e) {
+  function NomadInvasionVendorEventVO() {
+    var t = this;
     CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+    (t = e.call(this) || this).buyPackagesEventVO = new d.BuyPackagesEventVO();
+    return t;
   }
-  n.__extends(PlagueEventVO, e);
-  Object.defineProperty(PlagueEventVO.prototype, "eventBuildingWOD", {
-    get: function () {
-      return PlagueEventVO.EVENT_BUILDING_WOD;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "eventBuildingWOD").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PlagueEventVO.prototype, "eventBuildingNameId", {
-    get: function () {
-      return "eventBuilding_Plague";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "eventBuildingNameId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PlagueEventVO.prototype, "eventFullsizeCharacterName", {
-    get: function () {
-      return a.ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_PLAGUE_MONK;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "eventFullsizeCharacterName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  PlagueEventVO.prototype.openMerchantDialog = function (e, t) {
-    this.executeOpenDialog(e, c.CastlePlagueMonkEventDialog, new s.CastlePlagueMonkEventDialogProperties(this));
+  n.__extends(NomadInvasionVendorEventVO, e);
+  NomadInvasionVendorEventVO.prototype.parseData = function (t, i, n) {
+    e.prototype.parseData.call(this, t, i, n);
+    this.buyPackagesEventVO.parseData(t, i, n);
   };
-  Object.defineProperty(PlagueEventVO.prototype, "primesaleDescriptionTextID", {
+  Object.defineProperty(NomadInvasionVendorEventVO.prototype, "eventPackagesVO", {
     get: function () {
-      return "dialog_primeday_primesale_plagueDoctor_description";
+      return this.buyPackagesEventVO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "primesaleDescriptionTextID").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.ASpecialEventVO.prototype, "eventPackagesVO").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(PlagueEventVO.prototype, "primesaleSaveRubiesTextID", {
+  Object.defineProperty(NomadInvasionVendorEventVO.prototype, "eventBuildingWOD", {
     get: function () {
-      return "dialog_primeday_primesale_plagueDoctor_banner";
+      return NomadInvasionVendorEventVO.EVENT_BUILDING_WOD;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.BuyPackagesEventVO.prototype, "primesaleSaveRubiesTextID").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.ASpecialEventVO.prototype, "eventBuildingWOD").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  PlagueEventVO.__initialize_static_members = function () {
-    PlagueEventVO.EVENT_BUILDING_WOD = 289;
+  Object.defineProperty(NomadInvasionVendorEventVO.prototype, "isVisible", {
+    get: function () {
+      var e = r.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE);
+      return !e || !e.isActive;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ASpecialEventVO.prototype, "isVisible").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(NomadInvasionVendorEventVO.prototype, "eventBuildingNameId", {
+    get: function () {
+      return "eventBuilding_NomadInvasion";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(l.ASpecialEventVO.prototype, "eventBuildingNameId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  NomadInvasionVendorEventVO.prototype.openDialog = function (e = true) {
+    this.executeOpenDialog(e, u.CastleAllianceNomadInvasionDialog, new s.CastleAllianceNomadInvasionEventDialogProperties(u.CastleAllianceNomadInvasionDialog.TAB_MERCHANT));
   };
-  return PlagueEventVO;
-}(r.BuyPackagesEventVO);
-exports.PlagueEventVO = l;
-var c = require("./4486.js");
-o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
-l.__initialize_static_members();
+  NomadInvasionVendorEventVO.__initialize_static_members = function () {
+    NomadInvasionVendorEventVO.EVENT_BUILDING_WOD = 74;
+  };
+  return NomadInvasionVendorEventVO;
+}(l.ASpecialEventVO);
+exports.NomadInvasionVendorEventVO = c;
+var u = require("./822.js");
+var d = require("./184.js");
+o.classImplementsInterfaces(c, "IEventOverviewable");
+c.__initialize_static_members();

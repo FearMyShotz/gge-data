@@ -198,12 +198,12 @@ if ((s = typeof (i = function (e, t) {
             value: "#",
             description: "\"#\""
           };
-          function w() {
+          function k() {
             return {
               type: "octothorpe"
             };
           }
-          function k(e) {
+          function w(e) {
             return {
               type: "string",
               val: e.join("")
@@ -214,12 +214,12 @@ if ((s = typeof (i = function (e, t) {
             description: "identifier"
           };
           var W = /^[0-9a-zA-Z$_]/;
-          var V = {
+          var H = {
             type: "class",
             value: "[0-9a-zA-Z$_]",
             description: "[0-9a-zA-Z$_]"
           };
-          var H = /^[^ \t\n\r,.+={}]/;
+          var V = /^[^ \t\n\r,.+={}]/;
           var j = {
             type: "class",
             value: "[^ \\t\\n\\r,.+={}]",
@@ -830,7 +830,7 @@ if ((s = typeof (i = function (e, t) {
               }
             }
             if (t !== i) {
-              t = w();
+              t = k();
             }
             return t;
           }
@@ -853,7 +853,7 @@ if ((s = typeof (i = function (e, t) {
               e = o;
             }
             if (e !== i) {
-              e = k(e);
+              e = w(e);
             }
             return e;
           }
@@ -876,12 +876,12 @@ if ((s = typeof (i = function (e, t) {
               } else {
                 r = i;
                 if (Ae === 0) {
-                  peg$fail(V);
+                  peg$fail(H);
                 }
               }
               if (r !== i) {
                 l = [];
-                if (H.test(e.charAt(Te))) {
+                if (V.test(e.charAt(Te))) {
                   u = e.charAt(Te);
                   Te++;
                 } else {
@@ -892,7 +892,7 @@ if ((s = typeof (i = function (e, t) {
                 }
                 while (u !== i) {
                   l.push(u);
-                  if (H.test(e.charAt(Te))) {
+                  if (V.test(e.charAt(Te))) {
                     u = e.charAt(Te);
                     Te++;
                   } else {

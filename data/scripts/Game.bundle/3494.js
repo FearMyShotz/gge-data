@@ -3,23 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./225.js");
+var a = require("./226.js");
 var s = function (e) {
-  function CastleAllianceTournamentEventRewardDialog() {
+  function CastleBeggingKnightsRewardDialog() {
+    var t = this;
     CONSTRUCTOR_HACK;
-    return e.call(this) || this;
+    (t = e.call(this) || this).noRewardFrame = a.CastleGenericRewardDialog.FRAME_NOREWARD_BEGGING;
+    t.headerFrame = a.CastleGenericRewardDialog.FRAME_HEADER_BEGGING;
+    return t;
   }
-  n.__extends(CastleAllianceTournamentEventRewardDialog, e);
-  CastleAllianceTournamentEventRewardDialog.prototype.applyPropertiesLoaded = function (t = null) {
-    this.noRewardFrame = a.CastleGenericRewardDialog.FRAME_NOREWARD_POINT;
-    this.headerFrame = a.CastleGenericRewardDialog.FRAME_HEADER_SAMURAI;
-    this.wonFrame = a.CastleGenericRewardDialog.FRAME_WON;
-    this.gotReward = a.CastleGenericRewardDialog.FRAME_GOT_REWARD;
-    e.prototype.applyPropertiesLoaded.call(this, t);
-  };
-  Object.defineProperty(CastleAllianceTournamentEventRewardDialog.prototype, "firstPlaceTitleTextId", {
+  n.__extends(CastleBeggingKnightsRewardDialog, e);
+  Object.defineProperty(CastleBeggingKnightsRewardDialog.prototype, "firstPlaceTitleTextId", {
     get: function () {
-      return "dialog_allianceTournament_gotRoyalReward_title";
+      return "dialog_BeggingKnights_gotRoyalReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "firstPlaceTitleTextId").set.call(this, e);
@@ -27,9 +23,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceTournamentEventRewardDialog.prototype, "firstPlaceCopyTextId", {
+  Object.defineProperty(CastleBeggingKnightsRewardDialog.prototype, "firstPlaceCopyTextId", {
     get: function () {
-      return "dialog_allianceTournament_gotRoyalReward_copy";
+      return "dialog_BeggingKnights_gotRoyalReward_copy";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "firstPlaceCopyTextId").set.call(this, e);
@@ -37,9 +33,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceTournamentEventRewardDialog.prototype, "topXTitleTextId", {
+  Object.defineProperty(CastleBeggingKnightsRewardDialog.prototype, "topXTitleTextId", {
     get: function () {
-      return "dialog_allianceTournament_gotTopxReward_title";
+      return "dialog_BeggingKnights_gotMultiReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXTitleTextId").set.call(this, e);
@@ -47,9 +43,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceTournamentEventRewardDialog.prototype, "topXCopyTextId", {
+  Object.defineProperty(CastleBeggingKnightsRewardDialog.prototype, "topXCopyTextId", {
     get: function () {
-      return "dialog_allianceTournament_gotTopxReward_copy";
+      return "dialog_BeggingKnights_gotMultiReward_copy";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXCopyTextId").set.call(this, e);
@@ -57,9 +53,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceTournamentEventRewardDialog.prototype, "topXCopyTextReplacements", {
+  Object.defineProperty(CastleBeggingKnightsRewardDialog.prototype, "topXCopyTextReplacements", {
     get: function () {
-      return [this.dialogProperties.points, this.dialogProperties.topXCount];
+      return [this.dialogProperties.topXCount];
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "topXCopyTextReplacements").set.call(this, e);
@@ -67,9 +63,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceTournamentEventRewardDialog.prototype, "gotRewardTitleTextId", {
+  Object.defineProperty(CastleBeggingKnightsRewardDialog.prototype, "gotRewardTitleTextId", {
     get: function () {
-      return "dialog_allianceTournament_gotReward_title";
+      return "dialog_BeggingKnights_gotReward_title";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "gotRewardTitleTextId").set.call(this, e);
@@ -77,9 +73,9 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAllianceTournamentEventRewardDialog.prototype, "gotRewardCopyTextId", {
+  Object.defineProperty(CastleBeggingKnightsRewardDialog.prototype, "gotRewardCopyTextId", {
     get: function () {
-      return "dialog_allianceTournament_gotReward_copy";
+      return "dialog_BeggingKnights_gotReward_copy";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "gotRewardCopyTextId").set.call(this, e);
@@ -87,11 +83,31 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastleAllianceTournamentEventRewardDialog.__initialize_static_members = function () {
-    CastleAllianceTournamentEventRewardDialog.NAME = "CastleAllianceTournamentEventReward";
+  Object.defineProperty(CastleBeggingKnightsRewardDialog.prototype, "noRewardTitleTextId", {
+    get: function () {
+      return "dialog_BeggingKnights_eventEnd_title";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "noRewardTitleTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleBeggingKnightsRewardDialog.prototype, "noRewardCopyTextId", {
+    get: function () {
+      return "dialog_BeggingKnights_eventEnd_copy";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastleGenericRewardDialog.prototype, "noRewardCopyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleBeggingKnightsRewardDialog.__initialize_static_members = function () {
+    CastleBeggingKnightsRewardDialog.NAME = "CastleBeggingKnightsReward";
   };
-  return CastleAllianceTournamentEventRewardDialog;
+  return CastleBeggingKnightsRewardDialog;
 }(a.CastleGenericRewardDialog);
-exports.CastleAllianceTournamentEventRewardDialog = s;
+exports.CastleBeggingKnightsRewardDialog = s;
 s.__initialize_static_members();
 o.classImplementsInterfaces(s, "ICollectableRendererList");

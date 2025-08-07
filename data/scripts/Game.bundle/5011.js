@@ -9,13 +9,13 @@ var r = require("./7.js");
 var l = require("./4.js");
 var c = require("./10.js");
 var u = function (e) {
-  function DQLCommand() {
+  function BCRCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DQLCommand, e);
-  Object.defineProperty(DQLCommand.prototype, "cmdId", {
+  n.__extends(BCRCommand, e);
+  Object.defineProperty(BCRCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_DAILY_QUEST_LIST;
+      return r.ClientConstSF.S2C_BUY_CAMPAIGN_REWARD;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -23,19 +23,19 @@ var u = function (e) {
     enumerable: true,
     configurable: true
   });
-  DQLCommand.prototype.exec = function (e) {
+  BCRCommand.prototype.exec = function (e) {
     var t = s.int(e[0]);
     var i = e[1];
     switch (t) {
       case a.ERROR.ALL_OK:
         var n = JSON.parse(i[1]);
-        l.CastleModel.dailyQuestData.parse_DQL(n);
+        l.CastleModel.currencyData.parseGCU(n.gcu);
         break;
       default:
         this.showErrorDialog(t, i);
     }
   };
-  return DQLCommand;
+  return BCRCommand;
 }(c.CastleCommand);
-exports.DQLCommand = u;
+exports.BCRCommand = u;
 o.classImplementsInterfaces(u, "IExecCommand");

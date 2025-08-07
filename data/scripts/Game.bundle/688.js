@@ -1,107 +1,124 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./18.js");
-var r = require("./71.js");
-var l = require("./87.js");
-var c = require("./15.js");
-var u = require("./54.js");
-var d = require("./64.js");
-var p = require("./4.js");
-var h = createjs.Event;
-var g = function (e) {
-  function CastleHunterData() {
-    var t = this;
-    t._foodBoost = 0;
-    t._woodStoneReduction = 0;
-    CONSTRUCTOR_HACK;
-    (t = e.call(this) || this)._foodBoost = 0;
-    t._woodStoneReduction = 0;
-    t._hunterBuildingVO = p.CastleModel.wodData.voSubList(C.CastleWodData.TYPE_BUILDING).get(s.ClientConstCastle.HUNTER_BUILDING_WOD);
-    return t;
+var n = function () {
+  function EffectsHandlerVO() {
+    this._boni = [];
   }
-  n.__extends(CastleHunterData, e);
-  CastleHunterData.prototype.parse_HIN = function (e) {
-    this._foodBoost = e.FB;
-    this._woodStoneReduction = e.WSR;
-    c.CastleBasicController.getInstance().dispatchEvent(new h(CastleHunterData.ON_HUNTER_INFO, false, false));
+  EffectsHandlerVO.prototype.getBonusVOsByType = function (e, t) {
+    t = t || a.CastleEffectConditionVO.NULL_CONDITION;
+    var i = [];
+    this._boni.forEach(function (n) {
+      if (n.matchesConditions(e, t.areaType, t.spaceId, t.wodId, t.otherPlayer)) {
+        i.push(n);
+      }
+    });
+    return i;
   };
-  CastleHunterData.prototype.setHunterBuildingData = function (e) {
-    if (this._hunterBuildingVO) {
-      this._hunterBuildingVO.removeEventListener(d.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onHunterVOChanged));
+  EffectsHandlerVO.prototype.getEffectValueByType = function (e, t = -1, i = -1, n = -1, s = null) {
+    var r = o.CastleEffectsHelper.getTotalEffectValue(this.getBonusVOsByType(e, new a.CastleEffectConditionVO(t, i, n)), this.ignoreCap);
+    return r || new e.valueClass();
+  };
+  EffectsHandlerVO.prototype.getBonusVOByEffectType = function (e) {
+    if (e == s.EffectTypeEnum.EFFECT_TYPE_UNKNOWN) {
+      if (this._boni.length > 0) {
+        return this._boni[0];
+      } else {
+        return null;
+      }
     }
-    if (e) {
-      this._hunterBuildingVO = e;
-    } else if (p.CastleModel.kingdomData.activeKingdomID == a.WorldClassic.KINGDOM_ID) {
-      this._hunterBuildingVO = p.CastleModel.wodData.voSubList(C.CastleWodData.TYPE_BUILDING).get(s.ClientConstCastle.HUNTER_BUILDING_WOD);
-    } else {
-      this._hunterBuildingVO = p.CastleModel.wodData.voSubList(C.CastleWodData.TYPE_BUILDING).get(s.ClientConstCastle.KINGDOMHUNTER_BUILDING_WOD);
+    if (this._boni != null) {
+      for (var t = 0, i = this._boni; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined && n.effect.effectTypeID == e.id) {
+          return n;
+        }
+      }
     }
-    c.CastleBasicController.getInstance().dispatchEvent(new r.AreaDataEvent(r.AreaDataEvent.ON_HUNTER_BUILDING_DATA_SET));
-    this._hunterBuildingVO.addEventListener(d.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onHunterVOChanged));
+    return null;
   };
-  CastleHunterData.prototype.onHunterVOChanged = function (e) {
-    c.CastleBasicController.getInstance().dispatchEvent(new r.AreaDataEvent(r.AreaDataEvent.ON_HUNTER_BUILDING_DATA_SET));
+  EffectsHandlerVO.prototype.hasEffects = function () {
+    return this._boni.length > 0;
   };
-  Object.defineProperty(CastleHunterData.prototype, "isBoosted", {
+  Object.defineProperty(EffectsHandlerVO.prototype, "boni", {
     get: function () {
-      return this._foodBoost > 0;
+      return this._boni;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleHunterData.prototype, "isHunterBuildingBuilt", {
-    get: function () {
-      return this.hunterBuildingVO.buildingState.isFunctionally;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleHunterData.prototype, "hunterBuildingVO", {
-    get: function () {
-      return this._hunterBuildingVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleHunterData.prototype, "isHunterBuildingUnderConstruction", {
-    get: function () {
-      return this.hunterBuildingVO.buildingState == l.IsoBuildingStateEnum.BUILD_IN_PROGRESS || this.hunterBuildingVO.buildingState == l.IsoBuildingStateEnum.BUILD_STOPPED;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleHunterData.prototype, "isAllowedToBuild", {
-    get: function () {
-      return this.hunterBuildingVO.isAvailableByLevelAndEffect;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleHunterData.prototype, "foodBoost", {
-    get: function () {
-      return this._foodBoost;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleHunterData.prototype, "woodStoneReduction", {
-    get: function () {
-      return this._woodStoneReduction;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleHunterData.prototype.reset = function () {
-    this._hunterBuildingVO.removeEventListener(d.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onHunterVOChanged));
+  EffectsHandlerVO.prototype.getBoniVOByFirstFoundEffectType = function (e) {
+    if (e && e.length > 0 && this.hasEffects) {
+      for (var t = 0; t < e.length; t++) {
+        if (this._boni != null) {
+          for (var i = 0, n = this._boni; i < n.length; i++) {
+            var o = n[i];
+            if (o !== undefined && o.effect.effectTypeID == e[t].id) {
+              return o;
+            }
+          }
+        }
+      }
+    }
+    return null;
   };
-  CastleHunterData.ON_HUNTER_INFO = "EVENT_HUNTER_INFO";
-  CastleHunterData.RATIO_FACTOR = 100;
-  return CastleHunterData;
-}(u.CastleBasicData);
-exports.CastleHunterData = g;
-var C = require("./56.js");
-o.classImplementsInterfaces(g, "IUpdatable");
+  EffectsHandlerVO.prototype.hasOneOrMoreEffectTypes = function (e, t = false) {
+    if (e && e.length > 0 && this.hasEffects) {
+      for (var i = 0; i < e.length; i++) {
+        if (this._boni != null) {
+          for (var n = 0, o = this._boni; n < o.length; n++) {
+            var a = o[n];
+            if (a !== undefined && a.effect.effectTypeID == e[i].id) {
+              if (!t) {
+                return true;
+              }
+              if (a.effectValue.strength < 0) {
+                return true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return false;
+  };
+  EffectsHandlerVO.prototype.hasAllEffectTypes = function (e) {
+    if (e && e.length > 0 && this.hasEffects) {
+      var t = new Map();
+      for (var i = 0; i < e.length; i++) {
+        t.set(e[i], false);
+        if (this._boni != null) {
+          for (var n = 0, o = this._boni; n < o.length; n++) {
+            r = o[n];
+            if (r !== undefined && r.effect.effectTypeID == e[i].id) {
+              t.set(e[i], true);
+            }
+          }
+        }
+      }
+      if (t != null) {
+        for (var a = 0, s = Array.from(t.values()); a < s.length; a++) {
+          var r;
+          r = s[a];
+          if (r !== undefined && !r) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+    return false;
+  };
+  Object.defineProperty(EffectsHandlerVO.prototype, "ignoreCap", {
+    get: function () {
+      return false;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return EffectsHandlerVO;
+}();
+exports.EffectsHandlerVO = n;
+var o = require("./110.js");
+var a = require("./142.js");
+var s = require("./33.js");

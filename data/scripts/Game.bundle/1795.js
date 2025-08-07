@@ -3,139 +3,118 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./18.js");
-var r = require("./346.js");
-var l = require("./157.js");
-var c = require("./20.js");
-var u = require("./8.js");
-var d = require("./63.js");
-var p = require("./117.js");
-var h = createjs.MouseEvent;
-var g = function (e) {
-  function AttackDialogWaveHandlerSupportToolWaveInfoItem(t) {
-    var i = e.call(this, new (a.getDefinitionByName("WaveListItem_SupportTools"))(), t) || this;
-    i.CONST_MAX_TOOL_SLOTS = 3;
-    i.selectWave = false;
-    i.itemMc.mc_down.visible = false;
-    i.itemMc.mc_hover.visible = false;
-    i.itemMc.cbx_select.gotoAndStop(3);
-    i.fill();
-    i.controller.onSelectedWaveInfoSlotContainerChanged.add(i.bindFunction(i.onSelectionChanged));
-    i.controller.updateAllWaveInfo.add(i.bindFunction(i.fill));
-    return i;
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./1.js");
+var c = require("./3.js");
+var u = require("./3.js");
+var d = require("./266.js");
+var p = require("./16.js");
+var h = require("./3843.js");
+var g = require("./107.js");
+var C = require("./32.js");
+var _ = require("./155.js");
+var m = require("./31.js");
+var f = require("./19.js");
+var O = require("./207.js");
+var E = require("./13.js");
+var y = require("./15.js");
+var b = require("./4.js");
+var D = require("./24.js");
+var I = require("./40.js");
+var T = require("./20.js");
+var v = require("./8.js");
+var S = require("./25.js");
+var A = createjs.Point;
+var L = function (e) {
+  function AdvisorAttackActivationComponent(t, i) {
+    var n = e.call(this, t) || this;
+    n._teaserSuffix = i;
+    a.GoodgameTextFieldManager.getInstance().registerTextField(n.disp.txt_costs, new c.LocalizedTextVO("costs"));
+    a.GoodgameTextFieldManager.getInstance().registerTextField(n.disp.btn_premium.txt_label, new u.TextVO(E.TextHelper.toUpperCaseLocaSafeTextId("button_buyToken")));
+    a.GoodgameTextFieldManager.getInstance().registerTextField(n.disp.btn_free.txt_label, new u.TextVO(E.TextHelper.toUpperCaseLocaSafeTextId("button_freeToken")));
+    a.GoodgameTextFieldManager.getInstance().registerTextField(n.disp.btn_activate.txt_label, new u.TextVO(E.TextHelper.toUpperCaseLocaSafeTextId("button_activateAdvisor")));
+    v.ButtonHelper.initButtons([n.disp.btn_premium, n.disp.btn_free, n.disp.btn_activate], T.ClickFeedbackButtonHover);
+    var o = {
+      page: "promos",
+      sourceId: g.CXFSourceTrackingConstants.CXF_SOURCE_ADVISOR_ACTIVATION
+    };
+    var s = {
+      page: "eventoffers",
+      sourceId: g.CXFSourceTrackingConstants.CXF_SOURCE_ADVISOR_ACTIVATION
+    };
+    b.CastleModel.userData.splitRunData.handleHCShopABTestPayload(o);
+    d.registerUIComponentToCXF(n.disp.btn_premium, "btn_webshop", s);
+    d.registerUIComponentToCXF(n.disp.btn_free, "btn_webshop", o);
+    return n;
   }
-  n.__extends(AttackDialogWaveHandlerSupportToolWaveInfoItem, e);
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.destroy = function () {
-    e.prototype.destroy.call(this);
-    this.controller.onSelectedWaveInfoSlotContainerChanged.remove(this.bindFunction(this.onSelectionChanged));
-    this.controller.updateAllWaveInfo.remove(this.bindFunction(this.fill));
-  };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.onSelectionChanged = function () {
-    this.fill();
-  };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.fill = function () {
-    var e;
-    u.ButtonHelper.initButtons([this.itemMc.mc_tools], c.ClickFeedbackButtonHover, 1);
-    this.itemMc.mc_tools.mouseChildren = false;
-    this.selectWave = false;
-    e = 0;
-    for (; e < this.CONST_MAX_TOOL_SLOTS; e++) {
-      this.fillUnitContainer(e, this.itemMc.mc_tools, this.controller.attackVO.supportItemContainer, true);
+  n.__extends(AdvisorAttackActivationComponent, e);
+  AdvisorAttackActivationComponent.prototype.show = function (e) {
+    this._advisorType = e;
+    r.MovieClipHelper.clearMovieClip(this.disp.mc_teaser);
+    var t = O.AdvisorAttackHelper.getTeaserFileName(this._advisorType);
+    var i = new D.CastleGoodgameExternalClip(t + this._teaserSuffix, s.BasicModel.basicLoaderData.getVersionedItemAssetUrl(t), null, 0, false);
+    this.disp.mc_teaser.addChild(i);
+    var n = this.advisorActivationInfoVO;
+    var l = b.CastleModel.currencyData.getAmountById(n.advisorActivationCurrencyId);
+    var d = l > 0;
+    var h = !this.advisorActivationInfoVO.isAdvisorActivationFree && !d;
+    this.disp.btn_premium.visible = !d && !this.advisorActivationInfoVO.isAdvisorActivationFree;
+    this.disp.btn_free.visible = !d && this.advisorActivationInfoVO.isAdvisorActivationFree;
+    this.disp.btn_activate.visible = d;
+    if (this.disp.txt_title) {
+      a.GoodgameTextFieldManager.getInstance().registerTextField(this.disp.txt_title, new u.TextVO(E.TextHelper.toUpperCaseLocaSafeTextId(h ? "title_advisor_buyToken" : d ? "title_advisor_activate" : "title_advisor_freeToken")));
     }
-    this.itemMc.mc_selected.visible = this.controller.selectedWaveName == AttackDialogWaveHandlerSupportToolWaveInfoItem.CONST_WAVE_NAME;
-  };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.fillUnitContainer = function (e, t, i, n) {
-    var a = t["item" + e];
-    var l = this.getSelectedSlot() == i;
-    var c = i.items[e];
-    var u = !!c.unitVO;
-    var p = !c.unitVO;
-    a.mc_range.visible = !n && u && c.unitVO.unitType == s.ClientConstCastle.UNIT_TYPE_SOLDIER_RANGE;
-    a.mc_melee.visible = !n && u && c.unitVO.unitType == s.ClientConstCastle.UNIT_TYPE_SOLDIER_MELEE;
-    o.MovieClipHelper.clearMovieClip(a.mc_icon);
-    if (n && c.unitVO) {
-      d.WodPicHelper.addToolEffectIcon(c.unitVO, a.mc_icon, 20, 20, 0);
+    a.GoodgameTextFieldManager.getInstance().registerTextField(this.disp.txt_description, new c.LocalizedTextVO(this.descriptionTextID));
+    var g = new m.CollectableRenderClips(this.disp.mc_currency).addIconMc(this.disp.mc_currency);
+    var C = new f.CollectableRenderOptions(f.CollectableRenderOptions.SET_ICON, new A(30, 30));
+    C.tooltip.useAmount = false;
+    var y = new _.CollectableItemGenericCurrencyVO(n.advisorActivationCurrencyId, l);
+    S.CollectableRenderHelper.displaySingleItemComplete(this, g, y, C);
+    var I = a.GoodgameTextFieldManager.getInstance().registerTextField(this.disp.txt_currency, new c.LocalizedTextVO(o.GenericTextIds.VALUE_PROPORTIONAL_VALUE, [1, l]));
+    if (this._teaserSuffix == AdvisorAttackActivationComponent.TEASERSUFFIX_ACTIVATE_SMALL) {
+      I.color = d ? p.ClientConstColor.MODERN_DEFAULT : p.ClientConstColor.FONT_INSUFFICIENT_COLOR;
+    } else {
+      I.color = d ? p.ClientConstColor.MODERN_DEFAULT_BRIGHT : "#F86D6D";
     }
-    a.mc_selected_plus.visible = p && l && c.isUnlocked();
-    a.mc_selected_bg.visible = l;
-    a.mc_error_frame.visible = c.outline != r.CastleFightItemVO.OUTLINE_NONE;
-    a.mc_error_icon.visible = c.outline != r.CastleFightItemVO.OUTLINE_NONE && !c.unitVO;
-    a.mc_filled_bg.visible = u && !l;
-    a.mc_empty_plus.visible = p && !l && c.isUnlocked();
-    a.mc_empty_bg.visible = p && !l;
-    this.selectWave = this.selectWave || l;
+    this.onShow();
   };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.onClick = function (t) {
+  Object.defineProperty(AdvisorAttackActivationComponent.prototype, "descriptionTextID", {
+    get: function () {
+      return "intro_advisor_" + O.AdvisorAttackHelper.getTextIDSuffix(this._advisorType);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AdvisorAttackActivationComponent.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    y.CastleBasicController.getInstance().addEventListener(C.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onCurrenciesUpdated));
+  };
+  AdvisorAttackActivationComponent.prototype.removeEventListener = function () {
+    e.prototype.removeEventListener.call(this);
+    y.CastleBasicController.getInstance().removeEventListener(C.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onCurrenciesUpdated));
+  };
+  AdvisorAttackActivationComponent.prototype.onCurrenciesUpdated = function (e) {
+    this.show(this._advisorType);
+  };
+  AdvisorAttackActivationComponent.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
     switch (t.target) {
-      case this.itemMc.mc_tools:
-      default:
-        this.selectContainer();
+      case this.disp.btn_activate:
+        b.CastleModel.smartfoxClient.sendCommandVO(new h.C2SActivateAttackAdvisorVO());
     }
   };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.selectContainer = function () {
-    this.controller.setSelectedWaveInfoSlotMC(this.controller.attackVO.supportItemContainer, null, -1, AttackDialogWaveHandlerSupportToolWaveInfoItem.CONST_WAVE_NAME);
-    this.controller.onOpenUnitPicker.dispatch(this.controller.selectedWaveInfoSlotContainer.items[0]);
-  };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    if (this.disp) {
-      this.disp.addEventListener(h.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
-      this.disp.addEventListener(h.MOUSE_UP, this.bindFunction(this.onMouseUp));
-    }
-  };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.removeEventListener = function () {
-    e.prototype.removeEventListener.call(this);
-    if (this.disp) {
-      this.disp.removeEventListener(h.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
-      this.disp.removeEventListener(h.MOUSE_UP, this.bindFunction(this.onMouseUp));
-    }
-  };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.onMouseDown = function (e) {
-    this.itemMc.mc_down.visible = true;
-    if (e.target != this.itemMc.mc_tools) {
-      this.controller.setSelectedWaveInfoSlotMC(null, null, -1, AttackDialogWaveHandlerSupportToolWaveInfoItem.CONST_WAVE_NAME);
-    }
-  };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.onMouseUp = function (e) {
-    this.itemMc.mc_down.visible = false;
-  };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.onMouseOver = function (e) {
-    this.controller.onMouseOverWave.dispatch(this.controller.attackVO.supportItemContainer, this.disp);
-    this.itemMc.mc_hover.visible = true;
-  };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.onMouseOut = function (e) {
-    this.controller.onMouseOutWave.dispatch(this.controller.attackVO.supportItemContainer, this.disp);
-    this.itemMc.mc_hover.visible = false;
-    this.itemMc.mc_down.visible = false;
-  };
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype.getSelectedSlot = function () {
-    return this.controller.selectedWaveInfoSlotContainer;
-  };
-  Object.defineProperty(AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype, "controller", {
+  Object.defineProperty(AdvisorAttackActivationComponent.prototype, "advisorActivationInfoVO", {
     get: function () {
-      return p.AttackDialogController.getInstance();
+      return O.AdvisorAttackHelper.getAdvisorActivationInfo(this._advisorType);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype, "itemMc", {
-    get: function () {
-      return this.disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AttackDialogWaveHandlerSupportToolWaveInfoItem.prototype, "height", {
-    get: function () {
-      return this.disp.height;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AttackDialogWaveHandlerSupportToolWaveInfoItem.CONST_WAVE_NAME = "support";
-  return AttackDialogWaveHandlerSupportToolWaveInfoItem;
-}(l.ACollapsibleItem);
-exports.AttackDialogWaveHandlerSupportToolWaveInfoItem = g;
-a.classImplementsInterfaces(g, "ICollectableRendererList");
+  AdvisorAttackActivationComponent.TEASERSUFFIX_ACTIVATE = "_Activate";
+  AdvisorAttackActivationComponent.TEASERSUFFIX_ACTIVATE_SMALL = "_ActivateSmall";
+  return AdvisorAttackActivationComponent;
+}(I.CastleItemRenderer);
+exports.AdvisorAttackActivationComponent = L;
+l.classImplementsInterfaces(L, "ICollectableRendererList");

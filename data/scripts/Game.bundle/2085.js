@@ -2,60 +2,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function CastleShoppingCartPrimeDayCategory(e, t, i, n) {
-    this._groupId = 0;
-    this._categoryMc = e;
-    this._groupId = t + 1;
-    e.gotoAndStop(this._groupId);
-    this._choosableGroup = new o.CastleShoppingCartPrimeDayChoosableGroup(this, i);
-    this._selectedGroup = new a.CastleShoppingCartPrimeDaySelectedGroup(this, n);
-    if (this._selectedGroup.full()) {
-      this._choosableGroup.disable();
-    }
+  function CastleShoppingCartPrimeDayProgressBar(e, t) {
+    this.textRubiesPaid = a.GoodgameTextFieldManager.getInstance().registerTextField(e, new s.LocalizedTextVO(o.GenericTextIds.VALUE_PROPORTIONAL_VALUE, [0, 1]));
+    this.progressBar = t;
   }
-  CastleShoppingCartPrimeDayCategory.prototype.checkClick = function (e) {
-    var t = this._choosableGroup.checkClick(e) || this._selectedGroup.checkClick(e);
-    if (this._selectedGroup.full()) {
-      this._choosableGroup.disable();
-    } else {
-      this._choosableGroup.enable();
+  CastleShoppingCartPrimeDayProgressBar.prototype.updatePlaceholders = function (e, t) {
+    if (!(t < 0)) {
+      var i = e;
+      i = r.int(l.CastleMathHelper.clamp(i, 0, t));
+      this.textRubiesPaid.textContentVO.textReplacements = [i, t];
+      this.progressBar.scaleX = i / t;
     }
-    return t;
   };
-  CastleShoppingCartPrimeDayCategory.prototype.clear = function () {
-    this._choosableGroup.clear();
-    this._selectedGroup.clear();
-  };
-  Object.defineProperty(CastleShoppingCartPrimeDayCategory.prototype, "categoryMc", {
-    get: function () {
-      return this._categoryMc;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleShoppingCartPrimeDayCategory.prototype, "groupId", {
-    get: function () {
-      return this._groupId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleShoppingCartPrimeDayCategory.prototype, "choosableGroup", {
-    get: function () {
-      return this._choosableGroup;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleShoppingCartPrimeDayCategory.prototype, "selectedGroup", {
-    get: function () {
-      return this._selectedGroup;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleShoppingCartPrimeDayCategory;
+  return CastleShoppingCartPrimeDayProgressBar;
 }();
-exports.CastleShoppingCartPrimeDayCategory = n;
-var o = require("./2086.js");
-var a = require("./2088.js");
+exports.CastleShoppingCartPrimeDayProgressBar = n;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./3.js");
+var r = require("./6.js");
+var l = require("./213.js");

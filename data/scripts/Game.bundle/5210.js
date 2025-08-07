@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function UACCommand() {
+  function SLICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(UACCommand, e);
-  Object.defineProperty(UACCommand.prototype, "cmdId", {
+  n.__extends(SLICommand, e);
+  Object.defineProperty(SLICommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ACTIVITY_CHEST_INFO;
+      return s.ClientConstSF.S2C_STARTUP_LOGINBONUS_INFO;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  UACCommand.prototype.executeCommand = function (e, t) {
+  SLICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.activityBonusData.parse_UAC(i);
+        r.CastleModel.startUpBonusData.parse_SLI(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return UACCommand;
+  return SLICommand;
 }(l.CastleCommand);
-exports.UACCommand = c;
+exports.SLICommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

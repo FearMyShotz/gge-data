@@ -3,66 +3,73 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./1.js");
 var o = require("./60.js");
-var a = function () {
-  function OfferQuestConditionVoucherCode() {}
-  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "registerName", {
+var a = require("./341.js");
+var s = require("./295.js");
+var r = require("./227.js");
+var l = function () {
+  function OfferDescriptionVisualQuestDialog() {
+    this._autoShow = false;
+    this._hasBeenAutoShown = false;
+  }
+  Object.defineProperty(OfferDescriptionVisualQuestDialog.prototype, "name", {
     get: function () {
-      return o.ClientConstOffer.QUEST_CONDITION_VOUCHER;
+      return o.ClientConstOffer.OFFER_VISUAL_QUEST_DIALOG;
     },
     enumerable: true,
     configurable: true
   });
-  OfferQuestConditionVoucherCode.prototype.registerOfferCondition = function (e) {
-    e.addEntry(this.registerName, this);
+  OfferDescriptionVisualQuestDialog.prototype.registerVisualParameter = function (e) {
+    e.addEntry(this.name, this);
   };
-  OfferQuestConditionVoucherCode.prototype.parseFromObjectParam = function (e, t, i) {
-    this._voucherCodes = t.value;
-    this._publicID = i;
+  OfferDescriptionVisualQuestDialog.prototype.parseFromObjectParam = function (e) {
+    this._dialogName = e.DN;
+    if (e.AS != null) {
+      this._autoShow = !!e.AS;
+    } else {
+      this._autoShow = true;
+    }
+    if (e.DC != null) {
+      this._dialogCustomization = e.DC;
+    }
   };
-  OfferQuestConditionVoucherCode.prototype.parseProgress = function (e) {};
-  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "conditionPassed", {
+  OfferDescriptionVisualQuestDialog.prototype.execute = function (e) {
+    if (this._autoShow && !this._hasBeenAutoShown) {
+      var t = new s.PaymentPopupDialogInfoVO(this._dialogName, new a.CastlePrivateOfferDialogProperties(e), e.getPopupType(), true);
+      var i = u.CastlePrivateOfferDialogCreator.getPrivateOfferDialogClass(this._dialogName);
+      if (i) {
+        c.CastleDialogHandler.getInstance().registerDialogsWithType(i, t.properties, t.blockDialogs, t.priority, 0, t.type);
+      }
+      this._hasBeenAutoShown = true;
+    }
+    return true;
+  };
+  OfferDescriptionVisualQuestDialog.prototype.toExecuteInState = function (e) {
+    return e === r.PrivateOfferStateEnum.QUEST_STARTED;
+  };
+  Object.defineProperty(OfferDescriptionVisualQuestDialog.prototype, "autoShow", {
     get: function () {
-      return false;
+      return this._autoShow;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "conditionsProgressInPercent", {
+  Object.defineProperty(OfferDescriptionVisualQuestDialog.prototype, "dialogName", {
     get: function () {
-      return 0;
+      return this._dialogName;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "conditionTextId", {
+  Object.defineProperty(OfferDescriptionVisualQuestDialog.prototype, "dialogCustomization", {
     get: function () {
-      return "";
+      return this._dialogCustomization;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "conditionTextReplacements", {
-    get: function () {
-      return null;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "publicID", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "voucherCodes", {
-    get: function () {
-      return this._voucherCodes;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return OfferQuestConditionVoucherCode;
+  return OfferDescriptionVisualQuestDialog;
 }();
-exports.OfferQuestConditionVoucherCode = a;
-n.classImplementsInterfaces(a, "IOfferQuestCondition");
+exports.OfferDescriptionVisualQuestDialog = l;
+var c = require("./9.js");
+var u = require("./666.js");
+n.classImplementsInterfaces(l, "IOfferDescriptionVisualParameter");

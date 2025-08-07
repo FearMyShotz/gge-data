@@ -3,47 +3,30 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./529.js");
-var s = require("./356.js");
-var r = function (e) {
-  function CollectableItemConstructionItemVE() {
+var a = require("./61.js");
+var s = function (e) {
+  function CollectableItemCrestSymbolVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemConstructionItemVE, e);
-  CollectableItemConstructionItemVE.prototype.init = function (t, i) {
+  n.__extends(CollectableItemCrestSymbolVE, e);
+  CollectableItemCrestSymbolVE.prototype.init = function (t, i) {
     e.prototype.init.call(this, t, i);
     this.triggerOnAllIconDispLoadedManually = true;
   };
-  CollectableItemConstructionItemVE.prototype.iconCreate = function () {
-    this.iconContainer.visible = false;
-    (this.options.icon.renderAsBroken ? a.ConstructionItemRenderer.renderBroken : a.ConstructionItemRenderer.render)(this.itemConstructionVO.constructionItemVO, this.bindFunction(this.onAllDispClipsLoaded), this.dispCreator.dispContainer);
+  CollectableItemCrestSymbolVE.prototype.iconCreate = function () {
+    this.dispCreator.addDisp(a.CrestHelper.getCrestSymbolGraphic(this.itemCrestSystemVO.crestSymbolVO, this.options.icon.dimension.x, this.options.icon.dimension.y, false, this.bindFunction(this.onAllDispClipsLoaded)));
   };
-  CollectableItemConstructionItemVE.prototype.textfieldUpdate = function () {
-    this.textfieldSetTextAsNumber(this.vo.amount);
+  CollectableItemCrestSymbolVE.prototype.tooltipCreate = function () {
+    return this.tooltipCreateByAmount(this.itemCrestSystemVO.crestSymbolVO.toolTipText);
   };
-  CollectableItemConstructionItemVE.prototype.textfieldBackgroundVisible = function () {
-    return true;
-  };
-  CollectableItemConstructionItemVE.prototype.tooltipCreate = function () {
-    return null;
-  };
-  CollectableItemConstructionItemVE.prototype.tooltipShowAdvanced = function () {
-    if (this.itemConstructionVO.constructionItemVO) {
-      s.ConstructionItemTooltipHelper.showConstructionItemToolTip(this.renderer.clips.getTooltipTargetMc(), this.itemConstructionVO.constructionItemVO);
-    }
-  };
-  CollectableItemConstructionItemVE.prototype.onAllDispClipsLoaded = function (t = null) {
-    this.iconContainer.visible = true;
-    e.prototype.onAllDispClipsLoaded.call(this, t);
-  };
-  Object.defineProperty(CollectableItemConstructionItemVE.prototype, "itemConstructionVO", {
+  Object.defineProperty(CollectableItemCrestSymbolVE.prototype, "itemCrestSystemVO", {
     get: function () {
       return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  return CollectableItemConstructionItemVE;
+  return CollectableItemCrestSymbolVE;
 }(require("./158.js").ACollectableItemVE);
-exports.CollectableItemConstructionItemVE = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList");
+exports.CollectableItemCrestSymbolVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");

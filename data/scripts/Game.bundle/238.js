@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
 var s = require("./8.js");
-var r = require("./107.js");
+var r = require("./106.js");
 var l = function (e) {
   function CastleCharacterYesNoOKDialog() {
     CONSTRUCTOR_HACK;

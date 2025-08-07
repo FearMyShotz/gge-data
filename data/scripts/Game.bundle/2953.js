@@ -2,24 +2,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SDuplicateRecruitmentInfoVO(t, i, n) {
-    var o = this;
-    o.LID = 0;
-    o.AID = 0;
-    o.SID = 0;
+var o = function (e) {
+  function DoubleUnitsConfirmationProperties(t, i, n, o, a, s) {
+    var r = this;
+    r.isSoldiers = false;
+    r.cost = 0;
+    r.amount = 0;
+    r.listID = 0;
     CONSTRUCTOR_HACK;
-    (o = e.call(this) || this).LID = t;
-    o.AID = i;
-    o.SID = n;
-    return o;
+    (r = e.call(this) || this).isSoldiers = t;
+    r.onDoubleUnitsConfirmed = i;
+    r.cost = n;
+    r.amount = o;
+    r.name = a;
+    r.listID = s;
+    return r;
   }
-  n.__extends(C2SDuplicateRecruitmentInfoVO, e);
-  C2SDuplicateRecruitmentInfoVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_DUPLICATE_RECRUITMENT_INFO;
-  };
-  return C2SDuplicateRecruitmentInfoVO;
-}(o.BasicCommandVO);
-exports.C2SDuplicateRecruitmentInfoVO = s;
+  n.__extends(DoubleUnitsConfirmationProperties, e);
+  return DoubleUnitsConfirmationProperties;
+}(require("./2.js").BasicProperties);
+exports.DoubleUnitsConfirmationProperties = o;

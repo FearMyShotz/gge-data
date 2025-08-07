@@ -2,26 +2,24 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CollectableItemPermanentToolSlotVO() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, 1) || this;
+var o = require("./1.js");
+var a = require("./1622.js");
+var s = function (e) {
+  function CollectableItemPermanentUnitSlotVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemPermanentToolSlotVO, e);
-  CollectableItemPermanentToolSlotVO.prototype.getTooltipTextId = function () {
-    return "productionSlot_name";
-  };
-  CollectableItemPermanentToolSlotVO.prototype.getDescriptionTextId = function () {
-    return "productionSlot_short_info";
-  };
-  CollectableItemPermanentToolSlotVO.prototype.isCombineAbleWith = function (e) {
-    return false;
-  };
-  CollectableItemPermanentToolSlotVO.__initialize_static_members = function () {
-    CollectableItemPermanentToolSlotVO.SERVER_KEY = "PTS";
-    CollectableItemPermanentToolSlotVO.XML_KEY = "toolSlot";
-  };
-  return CollectableItemPermanentToolSlotVO;
-}(require("./96.js").ACollectableItemVO);
-exports.CollectableItemPermanentToolSlotVO = o;
-o.__initialize_static_members();
+  n.__extends(CollectableItemPermanentUnitSlotVE, e);
+  Object.defineProperty(CollectableItemPermanentUnitSlotVE.prototype, "iconMcFrame", {
+    get: function () {
+      return 2;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.ACollectableItemPermanentSlotVE.prototype, "iconMcFrame").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CollectableItemPermanentUnitSlotVE;
+}(a.ACollectableItemPermanentSlotVE);
+exports.CollectableItemPermanentUnitSlotVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");

@@ -2,171 +2,116 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function FusionForgeDataXml() {
-    this._fusionSystems = new Map();
-    this._fusionForges = new Map();
-    this._catalysts = new Map();
-    this._forgeMinuteSkips = new Map();
-    this._fusionCostSequences = new Map();
-    this._fusionShopPackages = new Map();
+  function FightPresetVO() {
+    this.index = 0;
+    this.unlocked = false;
   }
-  FusionForgeDataXml.prototype.parseXml = function (e) {
-    this._fusionSystems = a.CastleXMLUtils.createDicFromXmlNode(e, "fusionSystems", p.XmlFusionSystemVO);
-    this._fusionForges = a.CastleXMLUtils.createDicFromXmlNode(e, "fusionForges", d.XmlFusionForgeVO, "forgeId");
-    this._catalysts = a.CastleXMLUtils.createDicFromXmlNode(e, "catalysts", l.XmlCatalystVO, "currencyId");
-    this._forgeMinuteSkips = a.CastleXMLUtils.createDicFromXmlNode(e, "forgeMinuteSkips", c.XmlForgeMinuteSkipVO);
-    this._fusionCostSequences = a.CastleXMLUtils.createDicFromXmlNode(e, "fusionCostSequences", u.XmlFusionCostSequenceVO);
-    this.parseFusionShopPackages(e);
-  };
-  FusionForgeDataXml.prototype.parseFusionShopPackages = function (e) {
-    this._fusionShopPackages = new Map();
-    for (var t = 0, i = e.fusionShops; t < i.length; t++) {
-      var n = i[t];
-      var s = o.int(a.CastleXMLUtils.getIntAttribute("id", n));
-      var r = [];
-      for (var l = 0, c = a.CastleXMLUtils.getStringAttribute("packageIDs", n).split("+"); l < c.length; l++) {
-        var u = c[l];
-        r.push(parseInt(u));
-      }
-      this._fusionShopPackages.set(s, r);
+  FightPresetVO.prototype.update = function (e) {
+    this.name = e.SN || this.defaultName;
+    if (e.A) {
+      this.deserialize(e.A);
     }
   };
-  FusionForgeDataXml.prototype.getFusionSystem = function (e) {
-    return this._fusionSystems.get(e);
+  FightPresetVO.prototype.reset = function () {
+    this.name = this.defaultName;
+    this.unlocked = false;
+    this._units = [];
   };
-  FusionForgeDataXml.prototype.getFusionForge = function (e) {
-    return this._fusionForges.get(e);
-  };
-  FusionForgeDataXml.prototype.getForgeMinuteSkips = function (e) {
-    return this._forgeMinuteSkips.get(e);
-  };
-  FusionForgeDataXml.prototype.getFusionCostSequences = function (e) {
-    return this._fusionCostSequences.get(e);
-  };
-  FusionForgeDataXml.prototype.getFusionShopPackageIds = function (e) {
-    return this._fusionShopPackages.get(e);
-  };
-  FusionForgeDataXml.prototype.getFusionShopPackages = function (e) {
-    var t = this.getFusionShopPackageIds(e);
-    var i = [];
-    if (t != null) {
-      for (var n = 0, o = t; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined) {
-          i.push(s.CastleModel.eventPackageData.getEventPackageByID(a));
-        }
-      }
-    }
-    i.sort(this.bindFunction(this.sortPackagesBySortOrder));
-    return i;
-  };
-  FusionForgeDataXml.prototype.sortPackagesBySortOrder = function (e, t) {
-    return e.sortOrder - t.sortOrder;
-  };
-  FusionForgeDataXml.prototype.getCostSequenceByTargetLevel = function (e, t) {
-    var i = this.getNumberOfSequenceCostIterations(e);
-    var n = o.int(r.ClientConstFusion.getSequenceCostIterationIndex(i, t));
-    if (this._fusionCostSequences != null) {
-      for (var a = 0, s = Array.from(this._fusionCostSequences.values()); a < s.length; a++) {
-        var l = s[a];
-        if (l !== undefined && e == l.forgeId && n == l.fusionTargetLevelIterationIndex) {
-          return l;
-        }
-      }
-    }
-    return null;
-  };
-  FusionForgeDataXml.prototype.getCatalystInfo = function (e, t) {
-    if (this._catalysts != null) {
-      for (var i = 0, n = Array.from(this._catalysts.values()); i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && e == o.forgeId && t == o.currencyId) {
-          return o;
-        }
-      }
-    }
-    return null;
-  };
-  FusionForgeDataXml.prototype.getCatalystsByForge = function (e) {
-    var t = [];
-    if (this._catalysts != null) {
-      for (var i = 0, n = Array.from(this._catalysts.values()); i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && e == o.forgeId) {
-          t.push(o);
-        }
-      }
-    }
-    return t;
-  };
-  FusionForgeDataXml.prototype.getMinimumCatalystTier = function (e, t) {
-    o.int(s.CastleModel.fusionForgeData.getForge(e).level);
-    if (this._catalysts != null) {
-      for (var i = 0, n = Array.from(this._catalysts.values()); i < n.length; i++) {
-        var a = n[i];
-        if (a !== undefined && a.forgeId == e && t <= a.maxUsableFusionLevel) {
-          return a.tier;
-        }
-      }
-    }
-    return -1;
-  };
-  FusionForgeDataXml.prototype.getNumberOfSequenceCostIterations = function (e) {
-    var t = 0;
-    if (this._fusionCostSequences != null) {
-      for (var i = 0, n = Array.from(this._fusionCostSequences.values()); i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && e == o.forgeId) {
-          t++;
-        }
-      }
-    }
-    return t;
-  };
-  Object.defineProperty(FusionForgeDataXml.prototype, "fusionSystems", {
+  Object.defineProperty(FightPresetVO.prototype, "defaultName", {
     get: function () {
-      return this._fusionSystems;
+      return o.Localize.text("playerTitle_composition_prefix", ["dialog_troopPreset_preset_tt", this.humanReadableIndex]);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FusionForgeDataXml.prototype, "fusionForges", {
+  Object.defineProperty(FightPresetVO.prototype, "humanReadableIndex", {
     get: function () {
-      return this._fusionForges;
+      return this.index + 1;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FusionForgeDataXml.prototype, "catalysts", {
+  FightPresetVO.prototype.deserialize = function (e) {
+    try {
+      this._units = JSON.parse(e);
+    } catch (e) {}
+  };
+  Object.defineProperty(FightPresetVO.prototype, "label", {
     get: function () {
-      return this._catalysts;
+      return o.Localize.text("commander_index", [this.humanReadableIndex, this.unlocked ? new a.TextVO(this.name) : FightPresetVO.TEXT_LOCKED]);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FusionForgeDataXml.prototype, "forgeMinuteSkips", {
+  Object.defineProperty(FightPresetVO.prototype, "data", {
     get: function () {
-      return this._forgeMinuteSkips;
+      return this;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FusionForgeDataXml.prototype, "fusionCostSequences", {
+  Object.defineProperty(FightPresetVO.prototype, "unitsAsString", {
     get: function () {
-      return this._fusionCostSequences;
+      return JSON.stringify(this._units) || "";
     },
     enumerable: true,
     configurable: true
   });
-  return FusionForgeDataXml;
+  FightPresetVO.prototype.getUnitWodId = function (e, t) {
+    var i = t << 1;
+    if (this._units && this._units[e] && this._units[e][i] != null) {
+      return s.int(this._units[e][i]);
+    } else {
+      return -1;
+    }
+  };
+  FightPresetVO.prototype.getSupportTools = function () {
+    if (this._units && this._units.length == 7) {
+      return this._units[6];
+    } else {
+      return [-1, -1, -1];
+    }
+  };
+  FightPresetVO.prototype.getUnitCount = function (e, t) {
+    var i = 1 + (t << 1);
+    if (this._units && this._units[e] && this._units[e][i] != null) {
+      return s.int(this._units[e][i]);
+    } else {
+      return 0;
+    }
+  };
+  FightPresetVO.prototype.setContentFromWave = function (e, t) {
+    this._units = [];
+    if (e) {
+      for (var i = 0; i < e.flanks.length; i++) {
+        for (var n = e.flanks[i], o = [], a = 0; a < n.items.length; a++) {
+          var s = n.items[a];
+          if (s.getWodId() != -1) {
+            o.push(s.getWodId(), s.getAmount());
+          }
+        }
+        this._units.push(o);
+      }
+    }
+  };
+  Object.defineProperty(FightPresetVO.prototype, "hasContent", {
+    get: function () {
+      return this._units != null;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(FightPresetVO.prototype, "locked", {
+    get: function () {
+      return !this.unlocked;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  FightPresetVO.TEXT_LOCKED = "dialog_troopPreset_presetLocked_tt";
+  return FightPresetVO;
 }();
-exports.FusionForgeDataXml = n;
-var o = require("./6.js");
-var a = require("./22.js");
-var s = require("./4.js");
-var r = require("./216.js");
-var l = require("./5635.js");
-var c = require("./5636.js");
-var u = require("./5637.js");
-var d = require("./5638.js");
-var p = require("./5639.js");
+exports.FightPresetVO = n;
+var o = require("./3.js");
+var a = require("./3.js");
+var s = require("./6.js");

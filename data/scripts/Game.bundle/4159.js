@@ -16,7 +16,7 @@ var a = function (e) {
     CastleUnderworldSeasonRepairBridge.NAME = "CastleUnderworldRepair";
   };
   return CastleUnderworldSeasonRepairBridge;
-}(require("./1078.js").CastleSeasonBaseRepairDialog);
+}(require("./1079.js").CastleSeasonBaseRepairDialog);
 exports.CastleUnderworldSeasonRepairBridge = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList");
 a.__initialize_static_members();

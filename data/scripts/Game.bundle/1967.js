@@ -1,46 +1,16 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function RankingRewardVO(e, t, i) {
-    this._rank = 0;
-    this._usePoints = false;
-    this._listIndex = 0;
-    this._collectableList = e;
-    this._rank = t;
-    this._usePoints = i;
+var n = require("./0.js");
+var o = function (e) {
+  function CastleTempServerEventEvent(t, i = null, n = false, o = false) {
+    var a = e.call(this, t, n, o) || this;
+    a.params = i;
+    return a;
   }
-  Object.defineProperty(RankingRewardVO.prototype, "collectableList", {
-    get: function () {
-      return this._collectableList;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(RankingRewardVO.prototype, "rank", {
-    get: function () {
-      return this._rank;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(RankingRewardVO.prototype, "usePoints", {
-    get: function () {
-      return this._usePoints;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(RankingRewardVO.prototype, "listIndex", {
-    get: function () {
-      return this._listIndex;
-    },
-    set: function (e) {
-      this._listIndex = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return RankingRewardVO;
-}();
-exports.RankingRewardVO = n;
+  n.__extends(CastleTempServerEventEvent, e);
+  CastleTempServerEventEvent.TEMPSERVER_CHARGE_EFFECT_ARRIVED = "TEMPSERVER_CHARGE_EFFECT_ARRIVED";
+  CastleTempServerEventEvent.UPV_SENT = "UPV_SENT";
+  return CastleTempServerEventEvent;
+}(createjs.Event);
+exports.CastleTempServerEventEvent = o;

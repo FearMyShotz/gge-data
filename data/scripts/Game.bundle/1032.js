@@ -2,16 +2,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function UnitPackageListEvent(t, i = false, n = false) {
-    CONSTRUCTOR_HACK;
-    return e.call(this, t, i, n) || this;
+var o = require("./1.js");
+var a = require("./111.js");
+var s = function (e) {
+  function AEventBuildingVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(UnitPackageListEvent, e);
-  UnitPackageListEvent.__initialize_static_members = function () {
-    UnitPackageListEvent.PACKAGE_UPDATE = "packageUpdate";
+  n.__extends(AEventBuildingVE, e);
+  AEventBuildingVE.prototype.getVELayerType = function () {
+    return a.IsoLayerEnum.ISO_OBJECTS;
   };
-  return UnitPackageListEvent;
-}(createjs.Event);
-exports.UnitPackageListEvent = o;
-o.__initialize_static_members();
+  return AEventBuildingVE;
+}(require("./490.js").AInteractiveIsoObjectVE);
+exports.AEventBuildingVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

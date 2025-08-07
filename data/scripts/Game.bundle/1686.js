@@ -2,73 +2,101 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./3.js");
-var a = require("./13.js");
-var s = require("./1685.js");
+var o = require("./2.js");
+var a = require("./6.js");
+var s = require("./468.js");
 var r = function (e) {
-  function CastleQuestCompletedDialogProperties(t, i = null) {
-    var n = e.call(this) || this;
-    n.quest = t;
-    if (i && i.GEQ) {
-      n.parseReward(i.GEQ);
-    }
-    return n;
+  function CastleGenericRewardDialogProperties(t, i, n = false) {
+    var o = e.call(this) || this;
+    o._isFirstPrize = false;
+    o._isTopX = false;
+    o._points = 0;
+    o._topXCount = 0;
+    o._ownRank = 0;
+    o._grantType = 0;
+    o._optionID = 0;
+    o._isFirstPrize = t;
+    o._isTopX = n;
+    o._points = a.int(i.OP ? i.OP : -1);
+    o._ownRank = a.int(i.OR ? i.OR : -1);
+    o._topXCount = a.int(i.TX ? i.TX : -1);
+    o._optionID = a.int(i.EOID ? i.EOID : -1);
+    o._rewardList = l.CastlePopUpHelper.createRewardList(i);
+    o._grantType = i.GT ? parseInt(i.GT) : -1;
+    o.getSkinBySkinId(i.SID);
+    return o;
   }
-  n.__extends(CastleQuestCompletedDialogProperties, e);
-  CastleQuestCompletedDialogProperties.prototype.parseReward = function (e) {
-    this._randomEquipmentRewardList = l.CollectableManager.parser.s2cParamList.createList(e);
+  n.__extends(CastleGenericRewardDialogProperties, e);
+  CastleGenericRewardDialogProperties.prototype.getSkinBySkinId = function (e) {
+    this._skin = e ? s.LongTermPointEventSkin.getTypeById(e) : s.LongTermPointEventSkin.DEFAULT;
   };
-  Object.defineProperty(CastleQuestCompletedDialogProperties.prototype, "reward", {
+  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "isFirstPrize", {
     get: function () {
-      return this.quest.getActualRewardList();
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.BasicQuestRewardDialogProperties.prototype, "reward").set.call(this, e);
+      return this._isFirstPrize;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleQuestCompletedDialogProperties.prototype, "crestFrameIndex", {
+  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "rewardList", {
     get: function () {
-      return this.quest.questCategory + 1;
+      return this._rewardList;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(s.BasicQuestRewardDialogProperties.prototype, "crestFrameIndex").set.call(this, e);
+      this._rewardList = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleQuestCompletedDialogProperties.prototype, "titleText", {
+  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "points", {
     get: function () {
-      return a.TextHelper.toUpperCaseLocaSafe(o.Localize.text("dialog_questFinish_MissionComplete"));
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.BasicQuestRewardDialogProperties.prototype, "titleText").set.call(this, e);
+      return this._points;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleQuestCompletedDialogProperties.prototype, "descriptionText", {
+  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "ownRank", {
     get: function () {
-      return a.TextHelper.toUpperCaseLocaSafe(this.quest.getQuestName());
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.BasicQuestRewardDialogProperties.prototype, "descriptionText").set.call(this, e);
+      return this._ownRank;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleQuestCompletedDialogProperties.prototype, "randomEquipmentRewardList", {
+  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "isTopX", {
     get: function () {
-      return this._randomEquipmentRewardList;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.BasicQuestRewardDialogProperties.prototype, "randomEquipmentRewardList").set.call(this, e);
+      return this._isTopX;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleQuestCompletedDialogProperties;
-}(s.BasicQuestRewardDialogProperties);
-exports.CastleQuestCompletedDialogProperties = r;
-var l = require("./50.js");
+  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "topXCount", {
+    get: function () {
+      return this._topXCount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "skin", {
+    get: function () {
+      return this._skin;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "grantType", {
+    get: function () {
+      return this._grantType;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleGenericRewardDialogProperties.prototype, "optionID", {
+    get: function () {
+      return this._optionID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleGenericRewardDialogProperties;
+}(o.BasicProperties);
+exports.CastleGenericRewardDialogProperties = r;
+var l = require("./405.js");

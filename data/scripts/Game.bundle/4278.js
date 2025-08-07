@@ -76,4 +76,4 @@ var n = function () {
 exports.CastleEffectTypeVO = n;
 var o = require("./1.js");
 var a = require("./6.js");
-var s = require("./35.js");
+var s = require("./33.js");

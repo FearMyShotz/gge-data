@@ -4,9 +4,9 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./3.js");
-var s = require("./601.js");
-var r = require("./602.js");
-var l = require("./931.js");
+var s = require("./602.js");
+var r = require("./603.js");
+var l = require("./932.js");
 var c = require("./8.js");
 var u = function (e) {
   function WorldMapArmyAttackMenu() {
@@ -103,5 +103,5 @@ var u = function (e) {
 exports.WorldMapArmyAttackMenu = u;
 var d = require("./29.js");
 var p = require("./9.js");
-var h = require("./935.js");
+var h = require("./936.js");
 u.__initialize_static_members();

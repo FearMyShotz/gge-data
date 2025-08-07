@@ -1,110 +1,122 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = createjs.FocusEvent;
-var o = createjs.MouseEvent;
-var a = function () {
-  function CastleSearchScrollListComponent(e, t, i) {
-    this.inputFieldName = "txt_search";
-    this.disp = e;
-    this.scrollList = t;
-    this.searchPredicate = i;
-  }
-  CastleSearchScrollListComponent.prototype.addEventListener = function () {
-    this.disp.addEventListener(o.CLICK, this.bindFunction(this.onClick));
-    var e = this.disp[this.inputFieldName];
-    e.addEventListener(n.FOCUS_IN, this.bindFunction(this.onFocusInSearchText));
-    e.addEventListener(n.FOCUS_OUT, this.bindFunction(this.onFocusOutSearchText));
-    e.addEventListener(l.KeyboardEvent.KEY_DOWN, this.bindFunction(this.onKeyDown));
-  };
-  CastleSearchScrollListComponent.prototype.removeEventListener = function () {
-    this.disp.removeEventListener(o.CLICK, this.bindFunction(this.onClick));
-    var e = this.disp[this.inputFieldName];
-    e.removeEventListener(n.FOCUS_IN, this.bindFunction(this.onFocusInSearchText));
-    e.removeEventListener(n.FOCUS_OUT, this.bindFunction(this.onFocusOutSearchText));
-    e.removeEventListener(l.KeyboardEvent.KEY_DOWN, this.bindFunction(this.onKeyDown));
-  };
-  CastleSearchScrollListComponent.prototype.show = function () {
-    this.addEventListener();
-    this.scrollToStart();
-    this.searchField = s.GoodgameTextFieldManager.getInstance().registerTextField(this.disp[this.inputFieldName], new u.LocalizedTextVO("dialog_highscore_search"));
-    this.searchField.type = c.TextFieldType.INPUT;
-    this.defaultSearchText = this.searchField.text;
-  };
-  CastleSearchScrollListComponent.prototype.hide = function () {
-    this.removeEventListener();
-  };
-  CastleSearchScrollListComponent.prototype.scrollToStart = function () {
-    this.scrollList.initList();
-  };
-  CastleSearchScrollListComponent.prototype.onClick = function (e) {
-    if (e.target == this.disp.btn_search && p.ButtonHelper.isButtonEnabled(e.target) && this.searchField.text != this.defaultSearchText) {
-      this.scrollToEntry(this.searchField.text);
-    }
-  };
-  CastleSearchScrollListComponent.prototype.onKeyDown = function (e) {
-    if (e.key == r.Keyboard.ENTER && this.searchField.text != "" && this.searchField.text != this.defaultSearchText) {
-      document.activeElement.blur();
-      this.scrollToEntry(this.searchField.text);
-    }
-  };
-  CastleSearchScrollListComponent.prototype.scrollToEntry = function (e) {
-    this.onStartSearch();
-    var t;
-    for (var i = d.int(this.scrollList.voList.length), n = 0; n < i; n++) {
-      var o = this.scrollList.voList[n];
-      if (this.searchPredicate(o, e)) {
-        t = o;
-        break;
-      }
-    }
-    if (t) {
-      this.centerOnItemVO(n);
-      this.onFind(t);
-    } else if (this.notFoundCallback) {
-      this.notFoundCallback();
-    } else {
-      this.scrollToStart();
-    }
-  };
-  CastleSearchScrollListComponent.prototype.onStartSearch = function () {
-    if (this.searchStartedCallback) {
-      this.searchStartedCallback();
-    }
-  };
-  CastleSearchScrollListComponent.prototype.onFind = function (e) {
-    if (this.foundCallback) {
-      for (var t = d.int(this.scrollList.veList.length), i = 0; i < t; i++) {
-        var n = this.scrollList.veList[i];
-        if (n.scrollItemVO == e) {
-          this.foundCallback(n);
-          return;
-        }
-      }
-    }
-  };
-  CastleSearchScrollListComponent.prototype.centerOnItemVO = function (e) {
-    var t = d.int(this.scrollList.itemsVisibleAtOnce / 2);
-    var i = d.int(Math.max(e - t, 0));
-    this.scrollList.initList(i);
-  };
-  CastleSearchScrollListComponent.prototype.onFocusInSearchText = function (e) {
-    if (this.searchField.text == this.defaultSearchText) {
-      this.searchField.clearText();
-    }
-  };
-  CastleSearchScrollListComponent.prototype.onFocusOutSearchText = function (e) {
-    if (this.searchField.text == "") {
-      this.searchField.textContentVO = new u.LocalizedTextVO("dialog_highscore_search");
-    }
-  };
-  return CastleSearchScrollListComponent;
-}();
-exports.CastleSearchScrollListComponent = a;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./2.js");
 var s = require("./2.js");
-var r = require("./1.js");
+var r = require("./2.js");
 var l = require("./1.js");
-var c = require("./1.js");
+var c = require("./3.js");
 var u = require("./3.js");
-var d = require("./6.js");
-var p = require("./8.js");
+var d = require("./3.js");
+var p = require("./4.js");
+var h = require("./43.js");
+var g = require("./93.js");
+var C = function (e) {
+  function CastleEilandPlayerRankingItem(t) {
+    var i = this;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this, t) || this)._disp.gotoAndStop(CastleEilandPlayerRankingItem.FRAME_REGULAR_TEXT);
+    i._disp.bg.gotoAndStop(1);
+    i._disp.txt_alliancePoints.mouseEnabled = false;
+    i._disp.txt_rank.mouseEnabled = false;
+    i._disp.txt_name.mouseEnabled = false;
+    i._disp.txt_level.mouseEnabled = false;
+    i._disp.mc_allianceRank.mouseChildren = false;
+    return i;
+  }
+  n.__extends(CastleEilandPlayerRankingItem, e);
+  CastleEilandPlayerRankingItem.prototype.customFillItem = function () {
+    this.setFontWeight();
+    this._disp.mc_kingIndicator.visible = false;
+    this.setTexts();
+    this.setAllianceRankIcon(this.itemVO.allianceRank);
+    this._disp.mc_kingIndicator.visible = this.isKing();
+  };
+  CastleEilandPlayerRankingItem.prototype.isKing = function () {
+    var e = p.CastleModel.eilandData.kingTitleVO;
+    return this.itemVO.playerName == e.currentAssignee;
+  };
+  CastleEilandPlayerRankingItem.prototype.setTexts = function () {
+    if (this.itemVO.hasUnlockedEiland) {
+      this._disp.bg.gotoAndStop(1);
+      this.textFieldManager.registerTextField(this._disp.txt_alliancePoints, new u.LocalizedNumberVO(this.itemVO.aquaPoints));
+      this.textFieldManager.registerTextField(this._disp.txt_rank, new u.LocalizedNumberVO(this.itemVO.rank));
+    } else {
+      this._disp.bg.gotoAndStop(CastleEilandPlayerRankingItem.BG_FRAME_GREY);
+      this.textFieldManager.registerTextField(this._disp.txt_alliancePoints, new d.TextVO("-"));
+      this.textFieldManager.registerTextField(this._disp.txt_rank, new d.TextVO("-"));
+    }
+    this.textFieldManager.registerTextField(this._disp.txt_name, new d.TextVO(this.itemVO.playerName));
+    this.textFieldManager.registerTextField(this._disp.txt_level, new u.LocalizedNumberVO(this.itemVO.playerLevel));
+  };
+  CastleEilandPlayerRankingItem.prototype.setFontWeight = function () {
+    if (this.itemVO.isSearchResult) {
+      this._disp.gotoAndStop(CastleEilandPlayerRankingItem.FRAME_BOLD_TEXT);
+    } else {
+      this._disp.gotoAndStop(CastleEilandPlayerRankingItem.FRAME_REGULAR_TEXT);
+    }
+  };
+  CastleEilandPlayerRankingItem.prototype.onMouseClick = function (t) {
+    e.prototype.onMouseClick.call(this, t);
+    m.CastleDialogHandler.getInstance().registerDialogsWithTypeAndDefaultValues(O.CastlePlayerInfoDialog, new g.CastlePlayerInfoDialogProperties(this.itemVO.playerID), h.CastleDialogConsts.DIALOG_TYPE_SINGLE);
+  };
+  CastleEilandPlayerRankingItem.prototype.setAllianceRankIcon = function (e) {
+    s.MovieClipHelper.clearMovieClip(this._disp.mc_allianceRank.mc_rankPlaceholder);
+    var t = new Library.CastleInterfaceElements.Icon_AllianceRank();
+    t.gotoAndStop(e + 1);
+    this._disp.mc_allianceRank.mc_rankPlaceholder.addChild(t);
+    this._disp.mc_allianceRank.toolTipText = c.Localize.text("dialog_alliance_rank" + _.CastleAllianceData.getTextIDForRank(e));
+  };
+  Object.defineProperty(CastleEilandPlayerRankingItem.prototype, "textFieldManager", {
+    get: function () {
+      return a.GoodgameTextFieldManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleEilandPlayerRankingItem.prototype, "layoutManager", {
+    get: function () {
+      return f.CastleLayoutManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleEilandPlayerRankingItem.prototype, "itemVO", {
+    get: function () {
+      return this._scrollItemVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleEilandPlayerRankingItem.prototype, "highlight", {
+    set: function (e) {
+      this.itemVO.isSearchResult = e;
+      this.customFillItem();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleEilandPlayerRankingItem.prototype.onRollOver = function (t) {
+    e.prototype.onRollOver.call(this, t);
+    this.layoutManager.nativeCursor.setCursorType(o.BasicCustomCursor.CURSOR_CLICK);
+  };
+  CastleEilandPlayerRankingItem.prototype.onRollOut = function (t) {
+    e.prototype.onRollOut.call(this, t);
+    this.layoutManager.nativeCursor.setCursorType(o.BasicCustomCursor.CURSOR_ARROW);
+  };
+  CastleEilandPlayerRankingItem.__initialize_static_members = function () {
+    CastleEilandPlayerRankingItem.BG_FRAME_GREY = 4;
+    CastleEilandPlayerRankingItem.FRAME_REGULAR_TEXT = 1;
+    CastleEilandPlayerRankingItem.FRAME_BOLD_TEXT = 2;
+  };
+  return CastleEilandPlayerRankingItem;
+}(r.ScrollItem);
+exports.CastleEilandPlayerRankingItem = C;
+var _ = require("./317.js");
+var m = require("./9.js");
+var f = require("./17.js");
+var O = require("./94.js");
+l.classImplementsInterfaces(C, "MovieClip");
+C.__initialize_static_members();

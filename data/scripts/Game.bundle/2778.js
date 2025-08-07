@@ -3,59 +3,59 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./2.js");
-var s = require("./3.js");
-var r = require("./6.js");
-var l = require("./58.js");
-var c = require("./87.js");
-var u = require("./4.js");
-var d = require("./236.js");
-var p = function (e) {
-  function RingMenuButtonDisassemble() {
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./893.js");
+var u = require("./709.js");
+var d = require("./15.js");
+var p = require("./4.js");
+var h = require("./707.js");
+var g = function (e) {
+  function RingMenuButtonDefence() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RingMenuButtonDisassemble, e);
-  RingMenuButtonDisassemble.prototype.init = function (t, i, n) {
+  n.__extends(RingMenuButtonDefence, e);
+  RingMenuButtonDefence.prototype.init = function (t, i, n) {
     e.prototype.init.call(this, t, i, n);
-    this._disp = i.btn_disassemble;
-    this._disp.visible = n.buildingVO.canBeDisassembled;
-    switch (n.buildingVO.buildingState) {
-      case c.IsoBuildingStateEnum.DISASSEMBLE_IN_PROGRESS:
-      case c.IsoBuildingStateEnum.DISASSEMBLE_STOPPED:
-      case c.IsoBuildingStateEnum.REPAIR_IN_PROGRESS:
-      case c.IsoBuildingStateEnum.REPAIR_STOPPED:
-        this._disp.visible = false;
+    this._disp = i.btn_defence;
+    this._disp.visible = a.instanceOfClass(n, "ADefenceBuildingVE") && p.CastleModel.userData.userCanOpenDefenceScreen;
+    this._disp.enableButton = this.enableButton();
+  };
+  RingMenuButtonDefence.prototype.onGetDefenceInfos = function (e) {
+    d.CastleBasicController.getInstance().removeEventListener(u.CastleDefenceDataEvent.GET_DEFENCE_INFOS, this.bindFunction(this.onGetDefenceInfos));
+    this._disp.enableButton = p.CastleModel.defenceData.areaInfo.moatLevel >= 1;
+  };
+  RingMenuButtonDefence.prototype.onClick = function (e, t) {
+    var n = l.int(s.DefenseConst.TOOL_TYPE_WALL);
+    if (a.instanceOfClass(this.targetBuilding, "GuardTowerVE")) {
+      n = l.int(s.DefenseConst.TOOL_TYPE_WALL);
+    } else if (a.instanceOfClass(this.targetBuilding, "BasicGateVE")) {
+      n = l.int(s.DefenseConst.TOOL_TYPE_GATE);
+    } else if (a.instanceOfClass(this.targetBuilding, "BasicMoatVE")) {
+      n = l.int(s.DefenseConst.TOOL_TYPE_MOAT);
+    } else if (a.instanceOfClass(this.targetBuilding, "KeepBuildingVE")) {
+      n = l.int(s.DefenseConst.TOOL_TYPE_KEEP);
     }
-    this._disp.enableButton = u.CastleModel.userData.hasLevelFor(l.ClientConstLevelRestrictions.MIN_LEVEL_DESTRUCTION);
-    if (n.buildingVO.isDistrict) {
-      var o = u.CastleModel.areaData.activeCommonInfo;
-      var a = r.int(n.buildingVO.districtTypeID);
-      this._disp.enableButton = o && o.isDistrictEmpty(a);
-      this._disp.toolTipText = "ringmenu_demolish_districtNotEmpty";
+    this.parent.hide();
+    var o = require("./426.js").CastleDefenceDialog;
+    C.CastleDialogHandler.getInstance().registerDefaultDialogs(o, new h.CastleDefenceDialogProperties(p.CastleModel.areaData.activeAreaInfo, n));
+  };
+  RingMenuButtonDefence.prototype.getInfoText = function () {
+    return r.Localize.text("ringmenu_defence");
+  };
+  RingMenuButtonDefence.prototype.enableButton = function () {
+    if (a.instanceOfClass(this.targetBuilding, "BasicMoatVE") || a.instanceOfClass(this.targetBuilding, "PremiumMoatVE") || a.instanceOfClass(this.targetBuilding, "FactionMoatMoatVE")) {
+      d.CastleBasicController.getInstance().addEventListener(u.CastleDefenceDataEvent.GET_DEFENCE_INFOS, this.bindFunction(this.onGetDefenceInfos));
+      p.CastleModel.smartfoxClient.sendCommandVO(new c.C2SDefenceCompleteVO(p.CastleModel.areaData.activeAreaInfo.absAreaPos, p.CastleModel.areaData.activeAreaInfo.objectId));
+      return false;
     } else {
-      this._disp.toolTipText = null;
+      return this.targetBuilding.buildingVO.buildingState.isFunctionally;
     }
   };
-  RingMenuButtonDisassemble.prototype.onClick = function (e, t) {
-    if (f.instanceOfClass(this.targetBuilding, "DworkshopBuildingVE") && this.targetBuilding.unitProductionBuildingVO.isProductive || f.instanceOfClass(this.targetBuilding, "WorkshopBuildingVE") && this.targetBuilding.unitProductionBuildingVO.isProductive || f.instanceOfClass(this.targetBuilding, "BarracksBuildingVE") && this.targetBuilding.unitProductionBuildingVO.isProductive) {
-      g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleCharacterYesNoOKDialog, new d.CastleCharacterYesNoOKDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("alert_disassembleWhileProductiv"), 4, null, null, false));
-    } else {
-      g.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleStandardYesNoDialog, new a.BasicStandardYesNoDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("alert_disassembleBuilding_copy"), this.bindFunction(this.onDisassemble)));
-    }
-  };
-  RingMenuButtonDisassemble.prototype.onDisassemble = function (e = null) {
-    h.Iso.controller.server.demolishBuilding(this.targetBuilding.vo.objectId);
-  };
-  RingMenuButtonDisassemble.prototype.getAction = function () {
-    return r.int(m.RingMenuBuilding.ACTION_DISASSEMBLE);
-  };
-  return RingMenuButtonDisassemble;
+  return RingMenuButtonDefence;
 }(require("./98.js").ARingMenuButton);
-exports.RingMenuButtonDisassemble = p;
-var h = require("./33.js");
-var g = require("./9.js");
-var C = require("./238.js");
-var _ = require("./151.js");
-var m = require("./369.js");
-o.classImplementsInterfaces(p, "IRingMenuButton");
-var f = require("./1.js");
+exports.RingMenuButtonDefence = g;
+var C = require("./9.js");
+o.classImplementsInterfaces(g, "IRingMenuButton");

@@ -4,35 +4,41 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function SGECommand() {
+var s = require("./6.js");
+var r = require("./7.js");
+var l = require("./4.js");
+var c = require("./10.js");
+var u = function (e) {
+  function NRFCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SGECommand, e);
-  Object.defineProperty(SGECommand.prototype, "cmdId", {
+  n.__extends(NRFCommand, e);
+  Object.defineProperty(NRFCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SELL_GEM;
+      return r.ClientConstSF.S2C_NEW_RELIC_FLAG_EVENT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  SGECommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
+  NRFCommand.prototype.executeCommand = function (t, i) {
+    return e.prototype.executeCommand.call(this, t, i);
+  };
+  NRFCommand.prototype.exec = function (e) {
+    var t = s.int(e[0]);
+    var i = e[1];
+    switch (t) {
       case a.ERROR.ALL_OK:
-        r.CastleModel.gemData.parse_SGE();
+        var n = JSON.parse(i[1]);
+        l.CastleModel.equipData.parseNRF(n);
         break;
       default:
-        this.showErrorDialog(e, t);
+        this.showErrorDialog(t, i);
     }
-    return false;
   };
-  return SGECommand;
-}(l.CastleCommand);
-exports.SGECommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return NRFCommand;
+}(c.CastleCommand);
+exports.NRFCommand = u;
+o.classImplementsInterfaces(u, "IExecCommand");

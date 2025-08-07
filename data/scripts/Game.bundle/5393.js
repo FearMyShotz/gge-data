@@ -3,20 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./7.js");
-var r = function (e) {
-  function C2SSendMessageVO(t, i, n) {
-    var o = e.call(this) || this;
-    o.RN = t;
-    o.MH = a.TextValide.getValideSmartFoxJSONTextMessage(i);
-    o.TXT = a.TextValide.getValideSmartFoxJSONTextMessage(n);
-    return o;
+var a = require("./7.js");
+var s = function (e) {
+  function C2SDeleteMessageVO(t) {
+    var i = this;
+    i.MID = NaN;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).MID = t;
+    return i;
   }
-  n.__extends(C2SSendMessageVO, e);
-  C2SSendMessageVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_SEND_MESSAGE;
+  n.__extends(C2SDeleteMessageVO, e);
+  C2SDeleteMessageVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_DELETE_MESSAGE;
   };
-  return C2SSendMessageVO;
+  return C2SDeleteMessageVO;
 }(o.BasicCommandVO);
-exports.C2SSendMessageVO = r;
+exports.C2SDeleteMessageVO = s;

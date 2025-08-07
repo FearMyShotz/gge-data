@@ -2,35 +2,37 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
+var o = require("./1.js");
 var a = require("./1.js");
-var s = require("./3.js");
+var s = require("./6.js");
 var r = function (e) {
-  function CollectableRendererCostTextfield() {
+  function CollectableRendererColorBackground() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableRendererCostTextfield, e);
-  CollectableRendererCostTextfield.prototype.reset = function () {
-    if (this.clips.textfield) {
-      l.CastleComponent.textFieldManager.registerTextField(this.clips.textfield, new s.TextVO(""), new o.InternalGGSTextFieldConfigVO(true));
+  n.__extends(CollectableRendererColorBackground, e);
+  CollectableRendererColorBackground.prototype.reset = function () {
+    if (this.clips.colorBackgroundMc) {
+      this.clips.colorBackgroundMc.gotoAndStop(5);
     }
   };
-  CollectableRendererCostTextfield.prototype.update = function () {
-    if (this.clips.textfield) {
-      this.itemVE.costTextfieldUpdate();
+  CollectableRendererColorBackground.prototype.update = function () {
+    if (this.clips.colorBackgroundMc) {
+      var e = 5;
+      if (a.instanceOfClass(this.itemVO, "ACollectableItemEquipmentVO")) {
+        var t = s.int(this.itemVO.equipmentVO.visualRareID);
+        if (t >= 1 && t <= 4) {
+          e = t;
+        }
+      }
+      this.clips.colorBackgroundMc.gotoAndStop(e);
     }
   };
-  CollectableRendererCostTextfield.prototype.setText = function (e) {
-    l.CastleComponent.textFieldManager.registerTextField(this.clips.textfield, new s.TextVO(e), new o.InternalGGSTextFieldConfigVO(true));
-  };
-  CollectableRendererCostTextfield.prototype.setTextColor = function (e) {
-    var t = l.CastleComponent.textFieldManager.getTextField(this.clips.textfield);
-    if (t) {
-      t.color = e;
+  CollectableRendererColorBackground.prototype.setVisibility = function (e) {
+    if (this.clips.colorBackgroundMc) {
+      this.clips.colorBackgroundMc.visible = e;
     }
   };
-  return CollectableRendererCostTextfield;
+  return CollectableRendererColorBackground;
 }(require("./242.js").ACollectableRenderComponent);
-exports.CollectableRendererCostTextfield = r;
-var l = require("./14.js");
-a.classImplementsInterfaces(r, "ICollectableRendererList");
+exports.CollectableRendererColorBackground = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList");

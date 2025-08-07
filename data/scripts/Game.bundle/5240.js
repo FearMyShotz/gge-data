@@ -3,53 +3,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function IsoCommandObjectUpdateByIdView(t, i) {
-    var n = this;
-    n._objectId = -1;
-    n._wasFastCompleted = false;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this) || this)._objectId = t;
-    n._wasFastCompleted = i;
-    return n;
+var a = require("./30.js");
+var s = function (e) {
+  function IsoCommandObjectsTriggerUpdateView(t) {
+    var i = e.call(this) || this;
+    i._objectsType = t;
+    return i;
   }
-  n.__extends(IsoCommandObjectUpdateByIdView, e);
-  IsoCommandObjectUpdateByIdView.prototype.execute = function () {
-    var e = this.isoRenderer.objects.provider.getObjectById(this._objectId);
-    if (e) {
-      if (this.mouseHandler.draggedTarget == e) {
-        this.mouseHandler.cancelDraggedTarget();
-      }
-      var t = false;
-      if (this.mouseHandler.selectedTarget == e) {
-        this.mouseHandler.deselectTarget();
-        t = true;
-      }
-      if (this.mouseHandler.focusedTarget == e) {
-        this.mouseHandler.unFocusTarget();
-      }
-      if (r.instanceOfClass(e, "CastlewallDefenceVE")) {
-        this.viewObjects.defenceObjects.updateWalls();
-        this.viewObjects.defenceObjects.updateTowers();
-      } else if (r.instanceOfClass(e, "BasicMoatVE")) {
-        this.viewObjects.defenceObjects.initMoat();
-        (e = this.viewObjects.defenceObjects.moat).updateDisp();
-      } else {
-        e.updateDisp();
-      }
-      var i = e;
-      var n = false;
-      if (i && !this.mouseHandler.isDragging && !this.mouseHandler.selectedTarget && i.interactiveVO.isRingmenuAvailable && (t || this._wasFastCompleted || i.buildingVO.buildingState.isInProgress) && (s.CastleComponent.layoutManager.numVisibleDialogs == 0 && !i.vo.isInBuildingDistrict || r.instanceOfClass(s.CastleComponent.layoutManager.highestShownDialog, "BuildingDistrictDialog") && i.vo.isInBuildingDistrict)) {
-        n = true;
-      }
-      if (n) {
-        this.mouseHandler.changeSelectedTarget(i);
-      }
+  n.__extends(IsoCommandObjectsTriggerUpdateView, e);
+  IsoCommandObjectsTriggerUpdateView.prototype.execute = function () {
+    var e = a.CachedTimer.getCachedTimer();
+    for (var t = 0, i = this.isoRenderer.objects.provider.getObjectsByGroupType(this._objectsType); t < i.length; t++) {
+      i[t].update(e);
     }
   };
-  return IsoCommandObjectUpdateByIdView;
+  return IsoCommandObjectsTriggerUpdateView;
 }(require("./311.js").AIsoCommandView);
-exports.IsoCommandObjectUpdateByIdView = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList");
-var s = require("./14.js");
-var r = require("./1.js");
+exports.IsoCommandObjectsTriggerUpdateView = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");

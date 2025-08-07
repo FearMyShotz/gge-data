@@ -2,16 +2,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SShowConstructionListVO() {
-    return e.call(this) || this;
+var o = require("./1.js");
+var a = function (e) {
+  function IsoStatusIconProgressBarTax() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(C2SShowConstructionListVO, e);
-  C2SShowConstructionListVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_SHOW_CONSTRUCTION_LIST;
+  n.__extends(IsoStatusIconProgressBarTax, e);
+  IsoStatusIconProgressBarTax.prototype.getDispFrame = function () {
+    return 5;
   };
-  return C2SShowConstructionListVO;
-}(o.BasicCommandVO);
-exports.C2SShowConstructionListVO = s;
+  IsoStatusIconProgressBarTax.prototype.getBarText = function () {
+    return this.keepBuildingVE.keepBuildingVO.taxInfoVO.taxAmountString;
+  };
+  IsoStatusIconProgressBarTax.prototype.getBarFillFactor = function () {
+    return this.keepBuildingVE.keepBuildingVO.taxCollectProgressAsFactor;
+  };
+  Object.defineProperty(IsoStatusIconProgressBarTax.prototype, "keepBuildingVE", {
+    get: function () {
+      return this.ve;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return IsoStatusIconProgressBarTax;
+}(require("./696.js").AIsoStatusIconProgressBar);
+exports.IsoStatusIconProgressBarTax = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList");

@@ -3,47 +3,40 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./3.js");
-var r = require("./4.js");
-var l = require("./8.js");
-var c = function (e) {
-  function CastleAllianceNomadInvasionEventTeaserDialog() {
+var a = require("./3.js");
+var s = function (e) {
+  function CastleFactionEventLostLastCampDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleAllianceNomadInvasionEventTeaserDialog.NAME) || this;
+    return e.call(this, CastleFactionEventLostLastCampDialog.NAME) || this;
   }
-  n.__extends(CastleAllianceNomadInvasionEventTeaserDialog, e);
-  CastleAllianceNomadInvasionEventTeaserDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(CastleFactionEventLostLastCampDialog, e);
+  CastleFactionEventLostLastCampDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    l.ButtonHelper.initBasicButton(this.dialogDisp.btn_eventDialog);
+    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok]);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("faction_message_lostlastCamp_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("faction_message_lostlastCamp_copy"));
   };
-  CastleAllianceNomadInvasionEventTeaserDialog.prototype.setText = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("message_header_invasion_start"));
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_eventDialog.txt_label, new s.LocalizedTextVO("panel_action_event"));
-    if (this.getEventVO().khanCampBarVO && r.CastleModel.userData.isLegend) {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new s.LocalizedTextVO("dialog_nomadinvasion_messageKhanContent"));
-      this.dialogDisp.mc_khan.visible = true;
-    } else {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new s.LocalizedTextVO("dialog_nomadinvasion_message"));
-      this.dialogDisp.mc_khan.visible = false;
-    }
+  CastleFactionEventLostLastCampDialog.prototype.applyPropertiesLoaded = function (e = null) {
+    this.dialogDisp.mc_camp.gotoAndStop(this.dialogProperties.factionID);
   };
-  CastleAllianceNomadInvasionEventTeaserDialog.prototype.onClick = function (t) {
+  CastleFactionEventLostLastCampDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_eventDialog:
-        this.layoutManager.hideAllDialogs();
-        this.getEventVO().openDialog();
+    if (t.target == this.dialogDisp.btn_close || t.target == this.dialogDisp.btn_ok) {
+      this.hide();
     }
   };
-  CastleAllianceNomadInvasionEventTeaserDialog.prototype.getEventVO = function () {
-    return r.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE);
+  Object.defineProperty(CastleFactionEventLostLastCampDialog.prototype, "dialogProperties", {
+    get: function () {
+      return this.properties;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleFactionEventLostLastCampDialog.__initialize_static_members = function () {
+    CastleFactionEventLostLastCampDialog.NAME = "CastleFactionEventLostLastCamp";
   };
-  CastleAllianceNomadInvasionEventTeaserDialog.__initialize_static_members = function () {
-    CastleAllianceNomadInvasionEventTeaserDialog.NAME = "CastleAllianceNomadInvasionEventTeaser";
-  };
-  return CastleAllianceNomadInvasionEventTeaserDialog;
-}(require("./679.js").CastleBasicSpecialEventTeaserDialog);
-exports.CastleAllianceNomadInvasionEventTeaserDialog = c;
-o.classImplementsInterfaces(c, "ICollectableRendererList");
-c.__initialize_static_members();
+  return CastleFactionEventLostLastCampDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleFactionEventLostLastCampDialog = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");
+s.__initialize_static_members();

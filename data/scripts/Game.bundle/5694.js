@@ -2,16 +2,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = function (e) {
-  function TutorialConfirmUpgradeBuildingCommand() {
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = function (e) {
+  function TutorialConfirmMainTutorialFinishedCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TutorialConfirmUpgradeBuildingCommand, e);
-  TutorialConfirmUpgradeBuildingCommand.prototype.getTrackOnQuestConfirmID = function () {
-    return "020_010_dialog_confirmed";
+  n.__extends(TutorialConfirmMainTutorialFinishedCommand, e);
+  TutorialConfirmMainTutorialFinishedCommand.prototype.internalExecute = function () {
+    e.prototype.internalExecute.call(this);
+    a.ClientFunnelTrackingController.getInstance().trackState(o.ClientFunnelGameStates.TUTORIAL_END);
   };
-  return TutorialConfirmUpgradeBuildingCommand;
+  TutorialConfirmMainTutorialFinishedCommand.prototype.getTrackOnQuestConfirmID = function () {
+    return "050_020_tutorial_finished";
+  };
+  return TutorialConfirmMainTutorialFinishedCommand;
 }(require("./253.js").TutorialBasicQuestStarterActionCommand);
-exports.TutorialConfirmUpgradeBuildingCommand = a;
-o.classImplementsInterfaces(a, "ISimpleCommand");
+exports.TutorialConfirmMainTutorialFinishedCommand = r;
+s.classImplementsInterfaces(r, "ISimpleCommand");

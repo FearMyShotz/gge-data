@@ -2,33 +2,50 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./1.js");
-var o = require("./6.js");
-var a = require("./60.js");
+var o = require("./60.js");
+var a = require("./4.js");
 var s = function () {
-  function OfferDescriptionCostC1() {
-    this._costC1 = 0;
+  function OfferDescriptionAdditionals() {
+    this._additionals = new Map();
   }
-  Object.defineProperty(OfferDescriptionCostC1.prototype, "name", {
+  Object.defineProperty(OfferDescriptionAdditionals.prototype, "name", {
     get: function () {
-      return a.ClientConstOffer.OFFER_COST_C1;
+      return o.ClientConstOffer.ADDITIONAL_COMPONENT_CONTAINER;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionCostC1.prototype.registerOfferDescription = function (e) {
+  OfferDescriptionAdditionals.prototype.registerOfferDescription = function (e) {
     e.addEntry(this.name, this);
   };
-  OfferDescriptionCostC1.prototype.parseFromObjectParam = function (e) {
-    this._costC1 = o.int(e);
+  OfferDescriptionAdditionals.prototype.parseFromObjectParam = function (e) {
+    for (var t = 0; t < e.length; ++t) {
+      this._additionals.set(e[t].name, a.CastleModel.privateOfferData.createOfferDescriptionAdditionalObject(e[t].name, e[t].params));
+    }
   };
-  Object.defineProperty(OfferDescriptionCostC1.prototype, "costC1", {
+  OfferDescriptionAdditionals.prototype.toString = function () {
+    var e = "Additional-Component Descriptions";
+    if (this._additionals != null) {
+      for (var t = 0, i = Array.from(this._additionals.keys()); t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          e += "\n   " + n + " --> " + this._additionals.get(n);
+        }
+      }
+    }
+    return e;
+  };
+  OfferDescriptionAdditionals.prototype.getByName = function (e) {
+    return this._additionals.get(e);
+  };
+  Object.defineProperty(OfferDescriptionAdditionals.prototype, "additionals", {
     get: function () {
-      return this._costC1;
+      return this._additionals;
     },
     enumerable: true,
     configurable: true
   });
-  return OfferDescriptionCostC1;
+  return OfferDescriptionAdditionals;
 }();
-exports.OfferDescriptionCostC1 = s;
+exports.OfferDescriptionAdditionals = s;
 n.classImplementsInterfaces(s, "IOfferDescription");

@@ -3,34 +3,57 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./24.js");
-var r = require("./46.js");
-var l = function (e) {
-  function CollectableItemSeasonLeagueMedalVE() {
+var a = require("./45.js");
+var s = function (e) {
+  function CollectableItemUnlockVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemSeasonLeagueMedalVE, e);
-  CollectableItemSeasonLeagueMedalVE.prototype.textfieldUpdate = function () {
-    this.textfieldSetTextAsNumber(this.vo.amount);
+  n.__extends(CollectableItemUnlockVE, e);
+  CollectableItemUnlockVE.prototype.init = function (t, i) {
+    e.prototype.init.call(this, t, i);
+    this._collectableVE = a.CollectableHelper.createVE(this.itemUnlockedVO.collectableVO, i);
+    this.iconContainer.addChild(this.collectableVE.iconContainer);
   };
-  CollectableItemSeasonLeagueMedalVE.prototype.textfieldBackgroundVisible = function () {
-    return true;
+  CollectableItemUnlockVE.prototype.destroy = function () {
+    if (this.collectableVE) {
+      this.collectableVE.destroy();
+      this._collectableVE = null;
+    }
+    e.prototype.destroy.call(this);
   };
-  CollectableItemSeasonLeagueMedalVE.prototype.iconCreate = function () {
-    var e = a.int(this.medalVO && this.medalVO.id > 0 ? this.medalVO.id : 0);
-    this.dispCreator.addClip(new s.CastleGoodgameExternalClip(CollectableItemSeasonLeagueMedalVE.ASSET_CLIP_NAME_PREFIX + e, r.IsoHelper.view.getAssetFileURL(CollectableItemSeasonLeagueMedalVE.ASSET_FILE_NAME)));
+  CollectableItemUnlockVE.prototype.iconUpdate = function () {
+    e.prototype.iconUpdate.call(this);
+    if (this.collectableVE) {
+      this.collectableVE.iconUpdate();
+    }
   };
-  Object.defineProperty(CollectableItemSeasonLeagueMedalVE.prototype, "medalVO", {
+  CollectableItemUnlockVE.prototype.iconDestroy = function () {
+    if (this.collectableVE) {
+      this.collectableVE.iconDestroy();
+    }
+    e.prototype.iconDestroy.call(this);
+  };
+  CollectableItemUnlockVE.prototype.textfieldUpdate = function () {
+    this.collectableVE.textfieldUpdate();
+  };
+  CollectableItemUnlockVE.prototype.tooltipUpdate = function () {
+    this.collectableVE.tooltipUpdate();
+  };
+  Object.defineProperty(CollectableItemUnlockVE.prototype, "itemUnlockedVO", {
     get: function () {
       return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  CollectableItemSeasonLeagueMedalVE.ASSET_CLIP_NAME_PREFIX = "SeasonLeagueMedal_";
-  CollectableItemSeasonLeagueMedalVE.ASSET_FILE_NAME = "SeasonLeagueMedals";
-  return CollectableItemSeasonLeagueMedalVE;
+  Object.defineProperty(CollectableItemUnlockVE.prototype, "collectableVE", {
+    get: function () {
+      return this._collectableVE;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CollectableItemUnlockVE;
 }(require("./158.js").ACollectableItemVE);
-exports.CollectableItemSeasonLeagueMedalVE = l;
-o.classImplementsInterfaces(l, "ICollectableRendererList");
+exports.CollectableItemUnlockVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");

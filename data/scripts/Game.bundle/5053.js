@@ -5,16 +5,16 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./37.js");
+var r = require("./53.js");
 var l = require("./10.js");
 var c = function (e) {
-  function CPDCommand() {
+  function ABGPHCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CPDCommand, e);
-  Object.defineProperty(CPDCommand.prototype, "cmdId", {
+  n.__extends(ABGPHCommand, e);
+  Object.defineProperty(ABGPHCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_ALLIANCE_CENTERS_OF_POWER_DETAIL;
+      return s.ClientConstSF.S2C_ABG_GET_POINT_HIGHSCORE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,20 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  CPDCommand.prototype.executeCommand = function (e, t) {
+  ABGPHCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        this.controller.dispatchEvent(new r.CastleServerMessageArrivedEvent(r.CastleServerMessageArrivedEvent.CPD_ARRIVED, [i]));
+        if (r.ABGHelper.abgEvent) {
+          r.ABGHelper.abgEvent.parseOwnRanks(i);
+        }
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return CPDCommand;
+  return ABGPHCommand;
 }(l.CastleCommand);
-exports.CPDCommand = c;
+exports.ABGPHCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

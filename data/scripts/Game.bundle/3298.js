@@ -2,84 +2,81 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./6.js");
-var l = require("./24.js");
-var c = require("./12.js");
-var u = require("./45.js");
-var d = require("./158.js");
-var p = createjs.Point;
-var h = function (e) {
-  function CollectableItemGiftPackageVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./6.js");
+var a = require("./1623.js");
+var s = function (e) {
+  function CollectableItemGiftPackageVO(t = -1, i = 0) {
+    var n = this;
+    n._id = -1;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this, i) || this).id = t;
+    return n;
   }
-  n.__extends(CollectableItemGiftPackageVE, e);
-  CollectableItemGiftPackageVE.prototype.init = function (t, i) {
-    e.prototype.init.call(this, t, i);
-    var n = this.itemGiftPackageVO.getRewardItem();
-    if (n && n.itemType != c.CollectableEnum.GIFT_PACKAGE) {
-      this._rewardVE = u.CollectableHelper.createVE(n, i);
-      this.iconContainer.addChild(this.rewardVE.iconContainer);
+  n.__extends(CollectableItemGiftPackageVO, e);
+  CollectableItemGiftPackageVO.prototype.parseServerObject = function (t) {
+    e.prototype.parseServerObject.call(this, t);
+    this.amount = t[1];
+    this.id = o.int(t[0]);
+  };
+  CollectableItemGiftPackageVO.prototype.parseXmlObject = function (e) {
+    var t = e.split("+");
+    this.amount = o.int(t[1]);
+    this.id = o.int(t[0]);
+  };
+  CollectableItemGiftPackageVO.prototype.updateGiftVO = function () {
+    if (this.id > 0) {
+      this._playerGiftVO = new a.PlayerGiftVO();
+      this._playerGiftVO.parseFromArray([this.id, this.amount]);
     }
   };
-  CollectableItemGiftPackageVE.prototype.destroy = function () {
-    if (this.rewardVE) {
-      this.rewardVE.destroy();
-      this._rewardVE = null;
+  CollectableItemGiftPackageVO.prototype.getTooltipTextId = function () {
+    return "gift_name";
+  };
+  CollectableItemGiftPackageVO.prototype.getDescriptionTextId = function () {
+    return "gift_short_info";
+  };
+  CollectableItemGiftPackageVO.prototype.clone = function () {
+    var t = e.prototype.clone.call(this);
+    t.playerGiftVO = this.playerGiftVO;
+    return t;
+  };
+  CollectableItemGiftPackageVO.prototype.isCombineAbleWith = function (e) {
+    return false;
+  };
+  CollectableItemGiftPackageVO.prototype.getRewardItem = function () {
+    if (this.playerGiftVO) {
+      return this.playerGiftVO.eventPackageVO.reward;
+    } else {
+      return this;
     }
-    e.prototype.destroy.call(this);
   };
-  CollectableItemGiftPackageVE.prototype.iconUpdate = function () {
-    e.prototype.iconUpdate.call(this);
-    if (this.rewardVE) {
-      this.rewardVE.iconUpdate();
-    }
-  };
-  CollectableItemGiftPackageVE.prototype.iconDestroy = function () {
-    if (this.rewardVE) {
-      this.rewardVE.iconDestroy();
-    }
-    e.prototype.iconDestroy.call(this);
-  };
-  CollectableItemGiftPackageVE.prototype.iconCreate = function () {
-    var e = o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("GiftTraderPackageIcon");
-    var t = new l.CastleGoodgameExternalClip("GiftTraderPackageIcon", e, null, 0, false);
-    var i = new p(this.options.icon.dimension.x * 1.4, this.options.icon.dimension.y * 1.4);
-    t.clipSizeComponent = new a.ClipSizeComponent(i.x, i.y);
-    this.dispCreator.addClip(t);
-  };
-  CollectableItemGiftPackageVE.prototype.textfieldUpdate = function () {
-    this.textfieldSetTextAsNumber(this.vo.amount);
-  };
-  CollectableItemGiftPackageVE.prototype.textfieldBackgroundVisible = function () {
-    return true;
-  };
-  CollectableItemGiftPackageVE.prototype.tooltipCreate = function () {
-    var e = this.itemGiftPackageVO.playerGiftVO;
-    var t = e.eventPackageVO.rewards.getItemByIndexSave(0);
-    var i = r.int(t ? t.amount : 0);
-    return {
-      t: "equipmentPackage_tt_" + e.eventPackageVO.packageID,
-      p: [i]
-    };
-  };
-  Object.defineProperty(CollectableItemGiftPackageVE.prototype, "itemGiftPackageVO", {
+  Object.defineProperty(CollectableItemGiftPackageVO.prototype, "id", {
     get: function () {
-      return this.vo;
+      return this._id;
+    },
+    set: function (e) {
+      this._id = e;
+      this.updateGiftVO();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CollectableItemGiftPackageVE.prototype, "rewardVE", {
+  Object.defineProperty(CollectableItemGiftPackageVO.prototype, "playerGiftVO", {
     get: function () {
-      return this._rewardVE;
+      return this._playerGiftVO;
+    },
+    set: function (e) {
+      this._playerGiftVO = e;
+      this._id = o.int(this.playerGiftVO ? this.playerGiftVO.packageID : -1);
     },
     enumerable: true,
     configurable: true
   });
-  return CollectableItemGiftPackageVE;
-}(d.ACollectableItemVE);
-exports.CollectableItemGiftPackageVE = h;
-s.classImplementsInterfaces(h, "ICollectableRendererList");
+  CollectableItemGiftPackageVO.__initialize_static_members = function () {
+    CollectableItemGiftPackageVO.SERVER_KEY = "GT";
+    CollectableItemGiftPackageVO.XML_KEY = "giftPackageIDs";
+  };
+  return CollectableItemGiftPackageVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemGiftPackageVO = s;
+s.__initialize_static_members();

@@ -2,27 +2,32 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CollectableItemPlagueDoctorVO(t = 0) {
+var o = require("./5.js");
+var a = require("./6.js");
+var s = function (e) {
+  function CollectableItemGemRandomVO(t = a.int(-o.EquipmentConst.RARENESS_COMMON), i = 1) {
     CONSTRUCTOR_HACK;
-    return e.call(this, t) || this;
+    return e.call(this, t, i) || this;
   }
-  n.__extends(CollectableItemPlagueDoctorVO, e);
-  CollectableItemPlagueDoctorVO.prototype.parseServerObject = function (t) {
+  n.__extends(CollectableItemGemRandomVO, e);
+  CollectableItemGemRandomVO.prototype.parseServerObject = function (t) {
     e.prototype.parseServerObject.call(this, t);
-    this.amount = t;
+    this.id = -t;
   };
-  CollectableItemPlagueDoctorVO.prototype.getTooltipTextId = function () {
-    return "plaguemonks";
+  CollectableItemGemRandomVO.prototype.parseXmlObject = function (e) {
+    this.id = -a.int(e);
   };
-  CollectableItemPlagueDoctorVO.prototype.getDescriptionTextId = function () {
-    return "plaguemonks_short_info";
+  CollectableItemGemRandomVO.prototype.getTooltipTextId = function () {
+    return "equipmentRareness_name";
   };
-  CollectableItemPlagueDoctorVO.__initialize_static_members = function () {
-    CollectableItemPlagueDoctorVO.SERVER_KEY = "PLD";
-    CollectableItemPlagueDoctorVO.XML_KEY = "plagueDoctor";
+  CollectableItemGemRandomVO.prototype.getDescriptionTextId = function () {
+    return "randomEquipment_short_info";
   };
-  return CollectableItemPlagueDoctorVO;
-}(require("./96.js").ACollectableItemVO);
-exports.CollectableItemPlagueDoctorVO = o;
-o.__initialize_static_members();
+  CollectableItemGemRandomVO.__initialize_static_members = function () {
+    CollectableItemGemRandomVO.SERVER_KEY = "GLID";
+    CollectableItemGemRandomVO.XML_KEY = "gemLevelIDs";
+  };
+  return CollectableItemGemRandomVO;
+}(require("./568.js").ACollectableItemGemVO);
+exports.CollectableItemGemRandomVO = s;
+s.__initialize_static_members();

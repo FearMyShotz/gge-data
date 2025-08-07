@@ -3,243 +3,224 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./1.js");
-var c = require("./3.js");
-var u = require("./3.js");
-var d = require("./6.js");
-var p = require("./28.js");
-var h = require("./46.js");
-var g = require("./30.js");
-var C = require("./355.js");
-var _ = require("./13.js");
-var m = require("./4.js");
-var f = require("./27.js");
-var O = require("./24.js");
-var E = require("./157.js");
-var y = require("./14.js");
-var b = require("./8.js");
-var D = createjs.Point;
-var I = function (e) {
-  function GlobalEffectEventDialogListItem(t, i) {
-    var n = e.call(this, new (l.getDefinitionByName("GlobalEffectEventListItem"))(), i) || this;
-    n._data = t;
-    n.fill();
-    return n;
+var a = require("./5.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./21.js");
+var u = require("./26.js");
+var d = require("./4.js");
+var p = require("./1770.js");
+var h = require("./27.js");
+var g = require("./8.js");
+var C = function (e) {
+  function CastleAllianceSamuraiInvasionDialog() {
+    var t = this;
+    t.activeTab = 0;
+    t.sublayers = new Map();
+    CONSTRUCTOR_HACK;
+    return t = e.call(this, CastleAllianceSamuraiInvasionDialog.NAME) || this;
   }
-  n.__extends(GlobalEffectEventDialogListItem, e);
-  GlobalEffectEventDialogListItem.prototype.updateTimer = function () {
-    f.CastleTimeStringHelper.setEventTime(this.disp.headerMC.txt_time, this.remainingTimeInSeconds);
+  n.__extends(CastleAllianceSamuraiInvasionDialog, e);
+  CastleAllianceSamuraiInvasionDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this);
+    this.sublayers.set(CastleAllianceSamuraiInvasionDialog.TAB_PLAYER, new f.CastleAllianceSamuraiInvasionDialogPlayerSublayer(this.dialogDisp.sublayer_player));
+    this.sublayers.set(CastleAllianceSamuraiInvasionDialog.TAB_ALLIANCE, new _.CastleAllianceSamuraiInvasionDialogAllianceSublayer(this.dialogDisp.sublayer_alliance));
+    this.sublayers.set(CastleAllianceSamuraiInvasionDialog.TAB_MERCHANT, new E.CastleSamuraiInvasionMerchantSublayer(this.dialogDisp.sublayer_merchant));
+    this.sublayers.set(CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO, new m.CastleAllianceSamuraiInvasionDialogDaimyoSublayer(this.dialogDisp.sublayer_daimyo));
+    this.sublayers.set(CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO_SHOP, new O.CastleSamuraiInvasionDaimyoShopSublayer(this.dialogDisp.sublayer_daimyoShop));
+    this.initBasicButtons([this.dialogDisp.btn_help, this.dialogDisp.btn_close]);
+    this.initTabButton(this.dialogDisp.tab_player, "dialog_samuraiInvasion_singleTab_tooltip");
+    this.initTabButton(this.dialogDisp.tab_alliance, "dialog_samuraiInvasion_allianceTab_tooltip");
+    this.initTabButton(this.dialogDisp.tab_merchant, "dialog_samuraiInvasion_shopTab_tooltip");
+    this.initTabButton(this.dialogDisp.tab_daimyo, "samuraiInvasionDaimyo_tt");
+    this.initTabButton(this.dialogDisp.tab_daimyoShop, "dialog_samuraiInvasionDaimyo_shopTab_tooltip");
+    this.dialogDisp.btn_help.toolTipText = "generic_help";
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.LocalizedTextVO("dialog_samuraiInvasion_gambling_header"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new r.LocalizedTextVO("dialog_nomadInvasion_desc"));
+    this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.mc_time.txt_time, new s.TextVO(""));
+    this.dialogDisp.mc_time.mouseChildren = false;
+    this._currentSublayer = this.sublayers.get(CastleAllianceSamuraiInvasionDialog.TAB_PLAYER);
+    this.activeTab = CastleAllianceSamuraiInvasionDialog.TAB_PLAYER;
+    this.updateTabButtons();
+    this.updateSpeechBubbleText();
   };
-  GlobalEffectEventDialogListItem.prototype.fill = function () {
-    b.ButtonHelper.initButton(this.disp.mc_boost.btn_buy, 1, P.ClickFeedbackButtonHover);
-    a.MovieClipHelper.clearMovieClip(this.disp.headerMC.mc_icon);
-    var e = "Global_Effect_Icon_" + this.globalEffectVO.globalEffectID;
-    if (r.BasicModel.basicLoaderData.isItemAssetVersioned(e)) {
-      var t = new O.CastleGoodgameExternalClip(e, h.IsoHelper.view.getAssetFileURL(e));
-      t.clipSizeComponent = new s.ClipSizeComponent(52, 52);
-      this.disp.headerMC.mc_icon.addChild(t);
-    }
-    y.CastleComponent.textFieldManager.registerTextField(this.disp.headerMC.txt_title, new c.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("globaleffect_name_" + this.globalEffectVO.name)));
-    y.CastleComponent.textFieldManager.registerTextField(this.disp.headerMC.txt_copy, new u.LocalizedTextVO("globaleffect_desc_" + this.globalEffectVO.name, [this.globalEffectVO.bonus.strength]));
-    y.CastleComponent.textFieldManager.registerTextField(this.disp.contentMC.txt_copy, new u.LocalizedTextVO("dialog_globalEffects_desc"));
-    this.disp.headerMC.mc_new.visible = this.isNew;
-    this.disp.headerMC.mc_boosted.visible = this.isBoosted;
-    y.CastleComponent.textFieldManager.registerTextField(this.disp.contentMC.txt_kingdoms, new c.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("dialog_globalEffects_kingdoms")));
-    y.CastleComponent.textFieldManager.registerTextField(this.disp.contentMC.txt_events, new c.TextVO(_.TextHelper.toUpperCaseLocaSafeTextId("dialog_globalEffects_events")));
-    for (var i = 0; i < 5; i++) {
-      a.MovieClipHelper.clearMovieClip(this.disp.contentMC["mc_kindom" + i]);
-      if (i < this.globalEffectVO.displayKingdomIDs.length) {
-        this.disp.contentMC["mc_kindom" + i].addChild(new O.CastleGoodgameExternalClip("GlobEff_KingdomIcon_" + this.globalEffectVO.displayKingdomIDs[i], r.BasicModel.basicLoaderData.getVersionedItemAssetUrl(T.GlobalEffectEventDialog.NAME), null, 0, false));
-        this.disp.contentMC["mc_kindom" + i].toolTipText = m.CastleModel.kingdomData.getKingdomVOByID(this.globalEffectVO.displayKingdomIDs[i]).kingdomNameString;
-        this.disp.contentMC["mc_kindom" + i].mouseChildren = false;
-      }
-    }
-    this.disp.contentMC.mc_small.visible = this.useSmallEventMC;
-    this.disp.contentMC.mc_big.visible = !this.useSmallEventMC;
-    var n = 0;
-    for (var o = d.int(this.useSmallEventMC ? 6 : 12), l = 0; l < o; l++) {
-      var p = l < this.eventsToShow.length;
-      var g = this.useEventMC["mc_event" + l];
-      g.visble = p;
-      a.MovieClipHelper.clearMovieClip(g);
-      if (p) {
-        g.addChild(C.EventIconHelper.createEventIconByEventID(this.eventsToShow[n].eventId, new D(50, 50)));
-        g.mouseChildren = false;
-        g.toolTipText = "event_title_" + this.eventsToShow[n].eventId;
-        n++;
-      }
-    }
-    this.disp.mc_boost.visible = !this.isBoosted && this.isBoostAble;
-    y.CastleComponent.textFieldManager.registerTextField(this.disp.mc_boost.txt_copy, new u.LocalizedTextVO("globaleffect_desc_" + this.globalEffectVO.name, [this.boostStrength]));
-    y.CastleComponent.textFieldManager.registerTextField(this.disp.mc_boost.btn_buy.txt_copy, new S.CastleLocalizedNumberVO(this.boostC2));
-    this.updateTimer();
-    this.disp.headerMC.mouseChildren = false;
-    this.disp.mouseChildren = true;
-    this.disp.headerMC.actLikeButton = true;
-    this.applyStateChange();
+  CastleAllianceSamuraiInvasionDialog.prototype.initTabButton = function (e, t) {
+    g.ButtonHelper.initBasicButton(e);
+    e.toolTipText = t;
   };
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "boosterY", {
-    get: function () {
-      if (this.isExpanded) {
-        if (this.useSmallEventMC) {
-          return 270;
-        } else {
-          return 340;
-        }
-      } else {
-        return 70;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "eventsToShow", {
-    get: function () {
-      return m.CastleModel.specialEventData.getActiveEventsByIds(this.globalEffectVO.displayEventIDs);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "useSmallEventMC", {
-    get: function () {
-      return this.eventsToShow.length <= 6;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "useEventMC", {
-    get: function () {
-      if (this.useSmallEventMC) {
-        return this.disp.contentMC.mc_small;
-      } else {
-        return this.disp.contentMC.mc_big;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  GlobalEffectEventDialogListItem.prototype.applyStateChange = function () {
-    e.prototype.applyStateChange.call(this);
-    this.disp.mc_boost.y = this.boosterY;
-    if (this.isExpanded) {
-      this.disp.headerMC.mc_selected.visible = true;
-      this.disp.headerMC.mc_arrow.visible = false;
+  CastleAllianceSamuraiInvasionDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this);
+    if (l.int(this.dialogProperties.eventVO.remainingEventTimeInSeconds) <= 0) {
+      this.hide();
     } else {
-      this.disp.headerMC.mc_selected.visible = false;
-      this.disp.headerMC.mc_arrow.visible = true;
-    }
-  };
-  GlobalEffectEventDialogListItem.prototype.onClick = function (t) {
-    if (b.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.disp.headerMC:
-          this.expand(!this.isExpanded, true);
-          break;
-        case this.disp.mc_boost.btn_buy:
-          A.CastleDialogHandler.getInstance().registerDialogs(L.ModernYesNoDialog, new a.BasicStandardYesNoDialogProperties("dialog_globalEffect_boostBuy_title", "dialog_globalEffect_boostBuy", this.bindFunction(this.onBuy)));
+      var i = d.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_SAMURAI_INVASION);
+      if (this.dialogProperties.sublayerIndex != -1) {
+        this.showTab(this.dialogProperties.sublayerIndex);
+      } else if (this.activeTab != CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO || i.daimyoInfoVO.isEnabled) {
+        this.showCurrentSublayer();
+      } else {
+        this.showTab(CastleAllianceSamuraiInvasionDialog.TAB_PLAYER);
       }
+      d.CastleModel.specialEventData.addEventListener(u.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onEventAdded));
+      d.CastleModel.specialEventData.addEventListener(u.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventRemoved));
+      d.CastleModel.timerData.addEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateEventTime));
+      this.updateTimer();
+      this.updateDaimyo();
     }
   };
-  GlobalEffectEventDialogListItem.prototype.onBuy = function (e = null) {
-    if (m.CastleModel.currencyData.c2Amount >= this.boostC2) {
-      r.BasicModel.smartfoxClient.sendCommandVO(new M.C2SActivateGlobalEffectBuffVO(this.globalEffectVO.globalEffectID));
+  CastleAllianceSamuraiInvasionDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this);
+    this.hideCurrentSublayer();
+    d.CastleModel.specialEventData.removeEventListener(u.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onEventAdded));
+    d.CastleModel.specialEventData.removeEventListener(u.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventRemoved));
+    d.CastleModel.timerData.removeEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onUpdateEventTime));
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.applyPropertiesToSublayers = function () {
+    if (this.samuraiEventVO) {
+      this.sublayers.get(CastleAllianceSamuraiInvasionDialog.TAB_PLAYER).setScoreBarData(this.samuraiEventVO.scoreBarVO);
+      this.sublayers.get(CastleAllianceSamuraiInvasionDialog.TAB_ALLIANCE).setScoreBarData(this.samuraiEventVO.allianceBarVO);
+      this.sublayers.get(CastleAllianceSamuraiInvasionDialog.TAB_MERCHANT).setPackagesData(this.samuraiEventVO.eventPackagesVO, this.dialogProperties.eventVO);
+    }
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.showTab = function (e) {
+    this.activeTab = e;
+    this._currentSublayer = this.sublayers.get(this.activeTab);
+    this.showCurrentSublayer();
+    this.updateTabButtons();
+    this.updateSpeechBubbleText();
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.changeTab = function (e) {
+    if (e != this.activeTab) {
+      this.hideCurrentSublayer();
+      this.showTab(e);
+    }
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.showCurrentSublayer = function () {
+    this.applyPropertiesToSublayers();
+    this._currentSublayer = this.sublayers.get(this.activeTab);
+    this.sublayers.get(this.activeTab).show(null);
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.hideCurrentSublayer = function () {
+    this.sublayers.get(this.activeTab).hide();
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.updateTabButtons = function () {
+    this.dialogDisp.tab_player.gotoAndStop(this.activeTab == CastleAllianceSamuraiInvasionDialog.TAB_PLAYER ? 2 : 1);
+    this.dialogDisp.tab_alliance.gotoAndStop(this.activeTab == CastleAllianceSamuraiInvasionDialog.TAB_ALLIANCE ? 2 : 1);
+    this.dialogDisp.tab_merchant.gotoAndStop(this.activeTab == CastleAllianceSamuraiInvasionDialog.TAB_MERCHANT ? 2 : 1);
+    this.dialogDisp.tab_daimyo.gotoAndStop(this.activeTab == CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO ? 2 : 1);
+    this.dialogDisp.tab_daimyoShop.gotoAndStop(this.activeTab == CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO_SHOP ? 2 : 1);
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.updateDaimyo = function () {
+    var e = d.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_SAMURAI_INVASION);
+    var t = d.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_DAIMYO_SHOP);
+    var i = t != null;
+    var n = !!e && e.isActive;
+    this.dialogDisp.tab_daimyo.visible = !!e && e.daimyoInfoVO.isEnabled;
+    this.dialogDisp.tab_daimyoShop.visible = i;
+    this.dialogDisp.tab_player.visible = n;
+    this.dialogDisp.tab_alliance.visible = n;
+    this.dialogDisp.tab_merchant.visible = n;
+    if (i) {
+      this.sublayers.get(CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO_SHOP).setPackagesData(t.eventPackagesVO, t);
+    }
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.updateTimer = function () {
+    var e = l.int(this.dialogProperties.eventVO.remainingEventTimeInSeconds);
+    this.itxt_time.textContentVO.stringValue = h.CastleTimeStringHelper.getEventTimeString(e);
+    this.dialogDisp.mc_time.toolTipText = h.CastleTimeStringHelper.getEventToolTipString(e);
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.updateSpeechBubbleText = function () {
+    var e = "";
+    switch (this.activeTab) {
+      case CastleAllianceSamuraiInvasionDialog.TAB_PLAYER:
+        e = "dialog_samuraiInvasion_single_desc";
+        break;
+      case CastleAllianceSamuraiInvasionDialog.TAB_ALLIANCE:
+        e = "dialog_samuraiInvasion_alliance_desc";
+        break;
+      case CastleAllianceSamuraiInvasionDialog.TAB_MERCHANT:
+        e = "dialog_samuraiInvasion_samuraiShop_desc";
+        break;
+      case CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO:
+        e = "dialog_samuraiInvasionDaimyo_desc";
+        break;
+      case CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO_SHOP:
+        e = "dialog_samuraiMedalShop_desc_detail";
+    }
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_speechbubble, new r.LocalizedTextVO(e));
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_help:
+        this._currentSublayer.showHelp();
+        break;
+      case this.dialogDisp.tab_player:
+        this.changeTab(CastleAllianceSamuraiInvasionDialog.TAB_PLAYER);
+        break;
+      case this.dialogDisp.tab_alliance:
+        this.changeTab(CastleAllianceSamuraiInvasionDialog.TAB_ALLIANCE);
+        break;
+      case this.dialogDisp.tab_merchant:
+        this.changeTab(CastleAllianceSamuraiInvasionDialog.TAB_MERCHANT);
+        break;
+      case this.dialogDisp.tab_daimyo:
+        this.changeTab(CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO);
+        break;
+      case this.dialogDisp.tab_daimyoShop:
+        this.changeTab(CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO_SHOP);
+    }
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.onUpdateEventTime = function (e) {
+    if (l.int(this.dialogProperties.eventVO.remainingEventTimeInSeconds) <= 0) {
+      this.hide();
     } else {
-      A.CastleDialogHandler.getInstance().registerDefaultDialogs(R.CastleNoMoneyC2Dialog, new V.CastleNoMoneyC2DialogProperties());
+      this.updateTimer();
     }
   };
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "height", {
+  CastleAllianceSamuraiInvasionDialog.prototype.onEventAdded = function (e) {
+    this.updateDaimyo();
+  };
+  CastleAllianceSamuraiInvasionDialog.prototype.onEventRemoved = function (e) {
+    this.updateDaimyo();
+    if (e.specialEventVO.eventId == a.EventConst.EVENTTYPE_SAMURAI_INVASION) {
+      this.hide();
+    }
+  };
+  Object.defineProperty(CastleAllianceSamuraiInvasionDialog.prototype, "samuraiEventVO", {
     get: function () {
-      var e = this.disp.mc_boost.visible ? this.disp.mc_boost.height : 0;
-      if (this.isExpanded) {
-        return this.contentMC.y + this.useEventMC.y + this.useEventMC.height + e;
+      if (this.dialogProperties.eventVO instanceof p.SamuraiInvasionEventVO) {
+        return this.dialogProperties.eventVO;
       } else {
-        return this._headerMC.height + e;
-      }
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(E.ACollapsibleItem.prototype, "height").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "globalEffectVO", {
-    get: function () {
-      return this._data[0];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "remainingTimeInSeconds", {
-    get: function () {
-      return (this._data[1] - g.CachedTimer.getCachedTimer()) * p.ClientConstTime.MILLISEC_2_SEC;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "boostStrength", {
-    get: function () {
-      if (this.boostEvent) {
-        return this.boostEvent.getBoostValueForGlobalEffect(this.globalEffectVO.globalEffectID);
-      } else {
-        return 0;
+        return null;
       }
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "boostC2", {
+  Object.defineProperty(CastleAllianceSamuraiInvasionDialog.prototype, "dialogProperties", {
     get: function () {
-      if (this.boostEvent) {
-        return this.boostEvent.getBoostC2CostForGlobalEffect(this.globalEffectVO.globalEffectID);
-      } else {
-        return 0;
-      }
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "isBoostAble", {
-    get: function () {
-      return !!this.boostEvent && this.boostEvent.isEffectBoostable(this.globalEffectVO.globalEffectID);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "isBoosted", {
-    get: function () {
-      return !!this.boostEvent && this.boostEvent.isEffectBoostable(this.globalEffectVO.globalEffectID) && m.CastleModel.globalEffectData.isEffectBoosted(this.globalEffectVO.globalEffectID);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "boostEvent", {
-    get: function () {
-      return m.CastleModel.specialEventData.getActiveEventByEventId(v.EventConst.EVENTTYPE_GLOBAL_EFFECTS_BOOSTER);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalEffectEventDialogListItem.prototype, "isNew", {
-    get: function () {
-      return !this._data[2];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return GlobalEffectEventDialogListItem;
-}(E.ACollapsibleItem);
-exports.GlobalEffectEventDialogListItem = I;
-var T = require("./1769.js");
-var v = require("./5.js");
-var S = require("./85.js");
-var A = require("./9.js");
-var L = require("./283.js");
-var P = require("./20.js");
-var M = require("./3724.js");
-var R = require("./138.js");
-var V = require("./135.js");
-o.classImplementsInterfaces(I, "ICollectableRendererList", "ICollapsibleItem", "ILayoutable");
+  CastleAllianceSamuraiInvasionDialog.TAB_PLAYER = 1;
+  CastleAllianceSamuraiInvasionDialog.TAB_ALLIANCE = 2;
+  CastleAllianceSamuraiInvasionDialog.TAB_MERCHANT = 3;
+  CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO = 4;
+  CastleAllianceSamuraiInvasionDialog.TAB_DAIMYO_SHOP = 5;
+  CastleAllianceSamuraiInvasionDialog.NAME = "CastleAllianceSamuraiInvasionEvent_Difficulty";
+  return CastleAllianceSamuraiInvasionDialog;
+}(require("./112.js").CastleExternalSubLayerDialog);
+exports.CastleAllianceSamuraiInvasionDialog = C;
+o.classImplementsInterfaces(C, "ICollectableRendererList");
+var _ = require("./3736.js");
+var m = require("./3738.js");
+var f = require("./3750.js");
+var O = require("./3751.js");
+var E = require("./3753.js");

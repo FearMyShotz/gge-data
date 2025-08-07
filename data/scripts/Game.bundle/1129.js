@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./6.js");
-var s = require("./674.js");
+var s = require("./676.js");
 var r = require("./4.js");
 var l = function (e) {
   function CastleTypedInboxMessageList(t, i = null, n = 0) {
@@ -50,6 +50,6 @@ var l = function (e) {
     configurable: true
   });
   return CastleTypedInboxMessageList;
-}(require("./843.js").ACastleBaseInboxMessageList);
+}(require("./844.js").ACastleBaseInboxMessageList);
 exports.CastleTypedInboxMessageList = l;
 o.classImplementsInterfaces(l, "ICollectableRendererList", "ISublayer");

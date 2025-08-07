@@ -4,16 +4,16 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./227.js");
+var s = require("./228.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBerimondDialog() {
+  function CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBlackFridayDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, "CastlePaymentRewardSpecialOfferBerimond") || this;
+    return e.call(this, l.CastlePaymentRewardSpecialOfferBlackFridayDialog.NAME) || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBerimondDialog, e);
-  Object.defineProperty(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBerimondDialog.prototype, "skinType", {
+  n.__extends(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBlackFridayDialog, e);
+  Object.defineProperty(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBlackFridayDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_BERIMOND;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_BLACK_FRIDAY;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayDialog.prototype, "skinType").set.call(this, e);
@@ -21,11 +21,12 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBerimondDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBerimondDialog.NAME = "CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBerimond";
+  CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBlackFridayDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBlackFridayDialog.NAME = "CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBlackFriday";
   };
-  return CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBerimondDialog;
+  return CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBlackFridayDialog;
 }(s.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayDialog);
-exports.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBerimondDialog = r;
+exports.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayBlackFridayDialog = r;
+var l = require("./1738.js");
 o.classImplementsInterfaces(r, "ICollectableRendererList");
 r.__initialize_static_members();

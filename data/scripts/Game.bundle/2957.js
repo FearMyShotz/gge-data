@@ -3,57 +3,49 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./129.js");
-var s = require("./4.js");
-var r = function (e) {
-  function AutoRecruitmentCopyQueueInfoSublayer(t) {
+var a = require("./540.js");
+var s = function (e) {
+  function AutoRecruitmentCopyCostSublayer(t) {
     var i = e.call(this, t) || this;
-    i._buildListComponent = new c.UnitProductionListComponent(i.subLayerDisp.productionElements, l.BasicBuildListComponent.ALIGN_HORIZONTAL);
-    i._buildListComponent.slotsDraggable = false;
-    i._buildListComponent.showProgressbar = false;
+    i._costComponent = new r.AutoRecruitmentCostComponent(t, true);
     return i;
   }
-  n.__extends(AutoRecruitmentCopyQueueInfoSublayer, e);
-  AutoRecruitmentCopyQueueInfoSublayer.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this.controller.addEventListener(a.CastleMilitaryDataEvent.PACKAGELIST_UPDATED, this.bindFunction(this.onPackageListUpdated));
-    this._buildListComponent.fillItems(s.CastleModel.militaryData.getPackageListById(this.sublayerProperties.listId));
-    this._buildListComponent.selectedSlot = -1;
-    this._buildListComponent.productionItem.disp.mouseEnabled = false;
-    var i = this._buildListComponent.items;
-    if (i != null) {
-      for (var n = 0, o = i; n < o.length; n++) {
-        var r = o[n];
-        if (r !== undefined) {
-          r.disp.icon_Lock.visible = false;
-          r.disp.rentedFrame.visible = false;
-          r.disp.vipFrame.visible = false;
-          r.disp.icon_wait.visible = false;
-          r.disp.mouseEnabled = false;
+  n.__extends(AutoRecruitmentCopyCostSublayer, e);
+  AutoRecruitmentCopyCostSublayer.prototype.updateCosts = function () {
+    this._costComponent.updateWithNewCosts(this.getCurrentCosts());
+  };
+  AutoRecruitmentCopyCostSublayer.prototype.getCurrentCosts = function () {
+    var e = new l.AutoRecruitmentCosts();
+    e.priceType = a.AutoRecruitmentPriceEnum.getTypeByListId(this._properties.listId);
+    for (var t = 0, i = this._properties.listComponent.listData; t < i.length; t++) {
+      var n = i[t];
+      if (n !== undefined) {
+        e.priceType = n.costs.priceType;
+        if (n.isSelected) {
+          e.costs.addList(n.costs.costs, true);
+          e.duplicatingCosts.amount += n.costs.duplicatingCosts.amount;
         }
       }
     }
+    e.loopFee.amount = this._properties.loopFeeCosts.amount * this._properties.listComponent.getSelectedCastlesCount();
+    return e;
   };
-  AutoRecruitmentCopyQueueInfoSublayer.prototype.onPackageListUpdated = function (e) {
-    this._buildListComponent.fillItems(s.CastleModel.militaryData.getPackageListById(this.sublayerProperties.listId));
+  AutoRecruitmentCopyCostSublayer.prototype.show = function (t) {
+    e.prototype.show.call(this, t);
+    this._properties = t;
+    this._properties.listComponent.onSelectionChanged.add(this.bindFunction(this.onItemSelectionChanged));
+    this.updateCosts();
   };
-  AutoRecruitmentCopyQueueInfoSublayer.prototype.hide = function () {
+  AutoRecruitmentCopyCostSublayer.prototype.onItemSelectionChanged = function () {
+    this.updateCosts();
+  };
+  AutoRecruitmentCopyCostSublayer.prototype.hide = function () {
     e.prototype.hide.call(this);
-    this.controller.removeEventListener(a.CastleMilitaryDataEvent.PACKAGELIST_UPDATED, this.bindFunction(this.onPackageListUpdated));
-    if (this._buildListComponent.selectedSlot > 0) {
-      this._buildListComponent.selectedSlot = 0;
-    }
+    this._properties.listComponent.onSelectionChanged.remove(this.bindFunction(this.onItemSelectionChanged));
   };
-  Object.defineProperty(AutoRecruitmentCopyQueueInfoSublayer.prototype, "sublayerProperties", {
-    get: function () {
-      return this._params;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AutoRecruitmentCopyQueueInfoSublayer;
-}(require("./34.js").CastleDialogSubLayer);
-exports.AutoRecruitmentCopyQueueInfoSublayer = r;
-var l = require("./458.js");
-var c = require("./1578.js");
-o.classImplementsInterfaces(r, "ICollectableRendererList", "ISublayer");
+  return AutoRecruitmentCopyCostSublayer;
+}(require("./35.js").CastleDialogSubLayer);
+exports.AutoRecruitmentCopyCostSublayer = s;
+var r = require("./1577.js");
+var l = require("./646.js");
+o.classImplementsInterfaces(s, "ICollectableRendererList", "ISublayer");

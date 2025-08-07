@@ -1,271 +1,151 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
+var n = require("./1.js");
+var o = require("./5.js");
+var a = require("./5.js");
 var s = require("./5.js");
 var r = require("./5.js");
 var l = require("./5.js");
-var c = require("./5.js");
-var u = require("./3.js");
-var d = require("./3.js");
-var p = require("./3.js");
-var h = require("./6.js");
-var g = require("./267.js");
-var C = require("./1408.js");
-var _ = require("./108.js");
-var m = require("./26.js");
-var f = require("./756.js");
-var O = require("./44.js");
-var E = require("./13.js");
-var y = require("./4.js");
-var b = require("./35.js");
-var D = require("./1409.js");
-var I = require("./36.js");
-var T = require("./20.js");
-var v = require("./1410.js");
-var S = require("./8.js");
-var A = require("./185.js");
-var L = require("./11.js");
-var P = createjs.MouseEvent;
-var M = createjs.Point;
-var R = function (e) {
-  function SkippableCooldownDialog() {
-    return e.call(this, SkippableCooldownDialog.NAME) || this;
-  }
-  n.__extends(SkippableCooldownDialog, e);
-  SkippableCooldownDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    S.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok, this.dialogDisp.btn_fullSkip, this.dialogDisp.btn_minuteSkip], T.ClickFeedbackButtonHover);
-    this.initAutoskip();
+var c = require("./6.js");
+var u = require("./18.js");
+var d = require("./4.js");
+var p = require("./33.js");
+var h = require("./214.js");
+var g = require("./119.js");
+var C = require("./5.js");
+var _ = function () {
+  function CastleFameHelper() {}
+  CastleFameHelper.canEarnHonorOrFame = function (e, t) {
+    return CastleFameHelper.canEarnOrLoseHonor(e, t) || CastleFameHelper.canEarnFame(e, t);
   };
-  SkippableCooldownDialog.prototype.showLoaded = function (t = null) {
-    this.itxt_description = this.textFieldManager.registerTextField(this.dialogDisp.text_description, new d.LocalizedTextVO(""));
-    this.itxt_name = this.textFieldManager.registerTextField(this.dialogDisp.text_name, new p.TextVO(""));
-    this.itxt_name.autoFitToBounds = true;
-    this.dialogDisp.btn_minuteSkip.toolTipText = "timeSkipButton_tooltip";
-    e.prototype.showLoaded.call(this, t);
-    this.cooldown_component = new v.CastleCooldownComponent(this.dialogDisp.cooldown_component, this.bindFunction(this.onTimeUp), this.dialogProperties.mapObjectVO.remainingCooldownTimeInSeconds, this.dialogProperties.mapObjectVO.totalCooldownTime, this.getHeaderCooldownTextID());
-    this.dialogDisp.btn_fullSkip.addEventListener(P.MOUSE_OVER, this.bindFunction(this.onMouseOverSkipButton));
-    this.controller.addEventListener(f.SkipCooldownEvent.UPDATE, this.bindFunction(this.onMapobjectVOUpdated));
-    y.CastleModel.specialEventData.addEventListener(m.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventRemoved));
-    this.cooldown_component.addEventListenerOnShow();
-    this.updateMapobject();
-    this.updateTime();
-    S.ButtonHelper.delayEnableButton(this.dialogDisp.btn_fullSkip, true);
-    this.showAutoskipPreview();
+  CastleFameHelper.canEarnOrLoseHonor = function (e, t) {
+    var i = c.int(e.ownerInfo.playerID);
+    var n = e.ownerInfo != null;
+    var o = t == u.ClientConstCastle.ACTION_TYPE_ATTACK || t == u.ClientConstCastle.ACTION_TYPE_OUTPOSTATTACK;
+    var a = e.kingdomID == C.WorldIsland.KINGDOM_ID;
+    var s = e.areaType == l.WorldConst.AREA_TYPE_ALLIANCE_BATTLE_GROUND_TOWER;
+    var r = g.PlayerHelper.isNPCPlayer(i);
+    return o && n && !r && !a && !s && !CastleFameHelper.isFactionFight(e);
   };
-  SkippableCooldownDialog.prototype.hideLoaded = function (t = null) {
-    e.prototype.hideLoaded.call(this);
-    this.dialogDisp.btn_fullSkip.removeEventListener(P.MOUSE_OVER, this.bindFunction(this.onMouseOverSkipButton));
-    this.controller.removeEventListener(f.SkipCooldownEvent.UPDATE, this.bindFunction(this.onMapobjectVOUpdated));
-    y.CastleModel.specialEventData.removeEventListener(m.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventRemoved));
-    this.cooldown_component.removeEventListenerOnHide();
+  CastleFameHelper.canEarnFame = function (e, t) {
+    var i = c.int(CastleFameHelper.getUncappedEstimatedHonor(e, t));
+    var o = n.instanceOfClass(e, "AAlienInvasionMapobjectVO");
+    var a = e.kingdomID == C.WorldIsland.KINGDOM_ID;
+    var s = c.int(e.ownerInfo.playerID);
+    var r = g.PlayerHelper.isNPCPlayer(s);
+    return i >= 0 && CastleFameHelper.canEarnOrLoseHonor(e, t) || o || (CastleFameHelper.isFactionFight(e) || a) && CastleFameHelper.isAnAttack(t) && !r;
   };
-  SkippableCooldownDialog.prototype.onEventRemoved = function (e) {
-    if (!this.dialogProperties.mapObjectVO.isVisibleOnMap) {
-      this.hide();
+  CastleFameHelper.isFactionFight = function (e) {
+    return e.kingdomID == r.FactionConst.KINGDOM_ID;
+  };
+  CastleFameHelper.getEstimatedHonor = function (e, t) {
+    var i = c.int(CastleFameHelper.getUncappedEstimatedHonor(e, t));
+    if (d.CastleModel.userData.userHonor + i < 0) {
+      i = c.int(-d.CastleModel.userData.userHonor);
+    }
+    return i;
+  };
+  CastleFameHelper.getUncappedEstimatedHonor = function (e, t) {
+    if (!CastleFameHelper.canEarnOrLoseHonor(e, t)) {
+      return 0;
+    }
+    var i = 0;
+    var o = 1 + d.CastleModel.researchData.getResearchEffectValue(p.EffectTypeEnum.EFFECT_TYPE_HONOR_BONUS).strength / 100;
+    switch (t) {
+      case u.ClientConstCastle.ACTION_TYPE_SUPPORTDEFENSE:
+      case u.ClientConstCastle.ACTION_TYPE_SENDTROUPS:
+        i = 0;
+        break;
+      default:
+        if (n.instanceOfClass(e, "AAlienInvasionMapobjectVO")) {
+          i = 0;
+        } else {
+          if ((i = c.int(a.CombatConst.getHonorChange(d.CastleModel.userData.userHonor, e.controllerWorldMapOwnerInfoVO.honor, d.CastleModel.userData.userLevel, e.controllerWorldMapOwnerInfoVO.playerLevel, true) * o)) > 0 && d.CastleModel.userData.isLegend && e.controllerWorldMapOwnerInfoVO.isLegend) {
+            i = c.int(i * (1 + d.CastleModel.legendSkillData.getTotalValueOfLegendSkillEffect(h.CastleLegendSkillEffectsEnum.HONOR_BONUS) / 100));
+          }
+          if (e.areaType == l.WorldConst.AREA_TYPE_CAPITAL && d.CastleModel.userData.isLegend && e.controllerWorldMapOwnerInfoVO.playerLevel < 51) {
+            i = Math.max(0, i);
+          }
+        }
+    }
+    return i;
+  };
+  CastleFameHelper.getEstimatedFameBonus = function (e, t) {
+    if (!CastleFameHelper.canEarnFame(e, t)) {
+      return 0;
+    }
+    var i = 0;
+    var o = 0;
+    o = n.instanceOfClass(e, "AAlienInvasionMapobjectVO") ? e.dungeonLevel : e.controllerWorldMapOwnerInfoVO.playerLevel;
+    if (d.CastleModel.userData.userLevel - o > a.CombatConst.getMaxLevelDif2(d.CastleModel.userData.userLevel)) {
+      i = 0;
+    } else {
+      var s = c.int(d.CastleModel.userData.userHonor);
+      i = Math.round(a.CombatConst.getFameBonusForHonor(s) * 100);
+    }
+    return Math.round(i);
+  };
+  CastleFameHelper.isAnAttack = function (e) {
+    var t = false;
+    switch (e) {
+      case u.ClientConstCastle.ACTION_TYPE_ATTACK:
+      case u.ClientConstCastle.ACTION_TYPE_CONQUERATTACK:
+      case u.ClientConstCastle.ACTION_TYPE_DUNGEONATTACK:
+      case u.ClientConstCastle.ACTION_TYPE_OUTPOSTATTACK:
+      case u.ClientConstCastle.ACTION_TYPE_TREASUREATTACK:
+      case u.ClientConstCastle.ACTION_TYPE_BOSSDUNGEONATTACK:
+      case u.ClientConstCastle.ACTION_TYPE_VILLAGE_ATTACK:
+      case u.ClientConstCastle.ACTION_TYPE_LANDMARK_ATTACK:
+      case u.ClientConstCastle.ACTION_TYPE_ISLAND_ATTACK:
+      case u.ClientConstCastle.ACTION_TYPE_COLLECTOR_ATTACK:
+        t = true;
+    }
+    return t;
+  };
+  CastleFameHelper.getFameBoosterBonus = function (e = true, t = true) {
+    var i = 0;
+    var n = 0;
+    if (e) {
+      var o = CastleFameHelper.privateFameBooster.remainingTimeInSeconds > 0 ? CastleFameHelper.privateFameBooster.bonusPercentage : 0;
+      var a = CastleFameHelper.gloryBoosterEventVO ? CastleFameHelper.gloryBoosterEventVO.bonusPercentage : 0;
+      i = Math.max(o, a);
+    }
+    if (t) {
+      n = CastleFameHelper.personalFameBooster.remainingTimeInSeconds > 0 ? CastleFameHelper.personalFameBooster.bonusPercentage : 0;
+    }
+    return i + n;
+  };
+  CastleFameHelper.isOfferBonusBetterThanEvent = function () {
+    var e = CastleFameHelper.privateFameBooster.remainingTimeInSeconds > 0 ? CastleFameHelper.privateFameBooster.bonusPercentage : 0;
+    var t = CastleFameHelper.gloryBoosterEventVO ? CastleFameHelper.gloryBoosterEventVO.bonusPercentage : 0;
+    if (e != t) {
+      return e > t;
+    } else {
+      return (CastleFameHelper.privateFameBooster ? CastleFameHelper.privateFameBooster.remainingTimeInSeconds : 0) > (CastleFameHelper.gloryBoosterEventVO ? CastleFameHelper.gloryBoosterEventVO.remainingEventTimeInSeconds : 0);
     }
   };
-  SkippableCooldownDialog.prototype.onMapobjectVOUpdated = function (e) {
-    var t = this.dialogProperties.mapObjectVO.ownerInfo;
-    if (e.mapObjectVO != null) {
-      this.dialogProperties.mapObjectVO = e.mapObjectVO;
-    }
-    this.dialogProperties.mapObjectVO.ownerInfo = t;
-    this.updateMapobject();
-    this.updateTime();
-  };
-  SkippableCooldownDialog.prototype.onMouseOverSkipButton = function (e) {
-    this.dialogDisp.btn_fullSkip.toolTipText = {
-      t: "dungeonCooldown_skip_tooltip",
-      p: [this.dialogProperties.mapObjectVO.skipCooldownCostC2 >> 0]
-    };
-  };
-  SkippableCooldownDialog.prototype.onClick = function (t) {
-    if (S.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_ok:
-          this.hide();
-          break;
-        case this.dialogDisp.btn_fullSkip:
-          this.skipWithRubies();
-          break;
-        case this.dialogDisp.btn_minuteSkip:
-          this.minuteSkip();
-      }
-    }
-  };
-  SkippableCooldownDialog.prototype.minuteSkip = function () {
-    x.CastleDialogHandler.getInstance().registerDefaultDialogs(F.CastleMinuteSkipDialog, new N.SkippableCooldownMinuteSkipProperties(this.dialogProperties.mapObjectVO, this.useSubscription));
-  };
-  SkippableCooldownDialog.prototype.updateTime = function () {
-    if (this.cooldown_component) {
-      if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "TreasureDungeonMapObjectVO")) {
-        this.cooldown_component.updateTime(this.dialogProperties.mapObjectVO.tMapNode.coolDownInRemainingSeconds);
-      } else {
-        this.cooldown_component.updateTime(this.dialogProperties.mapObjectVO.remainingCooldownTimeInSeconds);
-      }
-    }
-  };
-  SkippableCooldownDialog.prototype.onTimeUp = function () {
-    this.hide();
-    this.dialogProperties.callCooldownFinishedFunction();
-  };
-  SkippableCooldownDialog.prototype.updateMapobject = function () {
-    this.updateMapobjectText();
-    this.updateMapobjectCrest();
-    this.updateMapobjectIcon();
-    A.SubscriptionHelper.showSubscriptionStarToTextField(this.cooldown_component.itxt_cooldown_time, this.useSubscription, 20, new M(-8, 0));
-  };
-  Object.defineProperty(SkippableCooldownDialog.prototype, "useSubscription", {
+  Object.defineProperty(CastleFameHelper, "privateFameBooster", {
     get: function () {
-      var e = false;
-      if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "NomadCampMapObjectVO") || k.instanceOfClass(this.dialogProperties.mapObjectVO, "SamuraiCampMapObjectVO") || k.instanceOfClass(this.dialogProperties.mapObjectVO, "NomadKhanCampMapObjectVO")) {
-        e = y.CastleModel.subscriptionData.isEffectTypeActive(b.EffectTypeEnum.EFFECT_TYPE_COOLDOWN_REDUCTION);
-      }
-      return e;
+      return d.CastleModel.boostData.getBoosterByID(o.BoosterConst.GLORY_BOOST_ID);
     },
     enumerable: true,
     configurable: true
   });
-  SkippableCooldownDialog.prototype.updateMapobjectText = function () {
-    this.itxt_name.textContentVO.stringValue = E.TextHelper.toUpperCaseLocaSafe(this.dialogProperties.mapObjectVO.areaNameString);
-    this.itxt_description.textContentVO.textId = this.getMapobjectTextID();
-  };
-  SkippableCooldownDialog.prototype.getHeaderCooldownTextID = function () {
-    if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "DaimyoTownshipMapObjectVO")) {
-      return "dialog_cooldownSkip_township_header";
-    } else {
-      return "Coldown_timer_header";
-    }
-  };
-  SkippableCooldownDialog.prototype.getMapobjectTextID = function () {
-    if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "TreasureDungeonMapObjectVO")) {
-      if (this.dialogProperties.mapObjectVO.tMapNode.isEndNode) {
-        return "dungeonSeaQueen_FinalCastle_Cooldown_skip_copy";
-      } else if (this.dialogProperties.mapObjectVO.tMapNode.isBridgeDungeon) {
-        return "dungeonSeaQueen_fortressCastle_Cooldown_skip_copy";
-      } else {
-        return "dungeonSeaQueen_towerCastle_Cooldown_skip_copy";
-      }
-    }
-    if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "ChargeCampMapobjectVO")) {
-      return "dungeonNormal_Cooldown_skip_tempServer";
-    }
-    if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "DungeonMapobjectVO")) {
-      switch (this.dialogProperties.mapObjectVO.kingdomID) {
-        case l.WorldClassic.KINGDOM_ID:
-          return O.SpecialServerHelper.checkTextIDForSkinText("dungeonNormal_Cooldown_skip_copy");
-        case c.WorldIce.KINGDOM_ID:
-          return "dungeonIcecream_Cooldown_skip_copy";
-        case r.WorldDessert.KINGDOM_ID:
-          return "dungeonDessert_Cooldown_skip_copy";
-        case s.WorldVolcano.KINGDOM_ID:
-          return "dungeonVolcano_Cooldown_skip_copy";
-      }
-    } else {
-      if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "NomadCampMapObjectVO")) {
-        return "dialog_nomadCamp_cooldown";
-      }
-      if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "NomadKhanCampMapObjectVO")) {
-        return "dialog_khanCamp_cooldown";
-      }
-      if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "SamuraiCampMapObjectVO")) {
-        return "dialog_samuraiCamp_cooldown";
-      }
-      if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "DaimyoCastleMapObjectVO")) {
-        return "dialog_cooldownSkip_daimyo_desc";
-      }
-      if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "DaimyoTownshipMapObjectVO")) {
-        return "dialog_cooldownSkip_township_desc";
-      }
-    }
-    return "";
-  };
-  SkippableCooldownDialog.prototype.updateMapobjectCrest = function () {
-    var e = this.dialogProperties.mapObjectVO.ownerInfo.crest;
-    w.CrestHelper.setCrestGraphics(this.dialogDisp.mc_crest_placeholder, e, null, true);
-  };
-  SkippableCooldownDialog.prototype.updateMapobjectIcon = function () {
-    var e;
-    e = k.instanceOfClass(this.dialogProperties.mapObjectVO, "TreasureDungeonMapObjectVO") ? B.WorldmapObjectIconHelper.drawMapObjectIcon(this.dialogProperties.mapObjectVO, new M(70, 60), true, false, false, "", this.dialogProperties.mapObjectVO.tMapNode) : B.WorldmapObjectIconHelper.drawMapObjectIcon(this.dialogProperties.mapObjectVO, new M(70, 60), true, false, false);
-    this.dialogDisp.mc_dungeon_placeholder.removeChildren();
-    this.dialogDisp.mc_dungeon_placeholder.addChild(e);
-    this.dialogDisp.mc_dungeon_placeholder.mouseChildren = false;
-    this.dialogDisp.mc_dungeon_placeholder.toolTipText = this.getMapobjectTooltipString();
-  };
-  SkippableCooldownDialog.prototype.getMapobjectTooltipString = function () {
-    var e = this.dialogProperties.mapObjectVO.areaNameString;
-    if (k.instanceOfClass(this.dialogProperties.mapObjectVO, "DungeonMapobjectVO")) {
-      var t = this.dialogProperties.mapObjectVO;
-      e += "\n" + V.DungeonMapobject.textLine2(t).compose() + "\n" + V.DungeonMapobject.textLine3(t).compose();
-    } else if (D.instanceOf_IDungeonMapobjectVO(this.dialogProperties.mapObjectVO)) {
-      var i = this.dialogProperties.mapObjectVO;
-      e += " " + u.Localize.text(o.GenericTextIds.VALUE_ASSIGN_COLON, [u.Localize.text("level"), i.dungeonLevel]);
-    }
-    return e;
-  };
-  SkippableCooldownDialog.prototype.skipWithRubies = function () {
-    S.ButtonHelper.enableButton(this.dialogDisp.btn_fullSkip, false);
-    var e;
-    var t = this.dialogProperties.mapObjectVO.absAreaPos;
-    var i = h.int(this.dialogProperties.mapObjectVO.kingdomID);
-    e = k.instanceOfClass(this.dialogProperties.mapObjectVO, "TreasureDungeonMapObjectVO") ? new C.C2SSkipDungeonCooldownVO(t, i, this.dialogProperties.mapObjectVO.tMapNode) : new C.C2SSkipDungeonCooldownVO(t, i, null);
-    y.CastleModel.smartfoxClient.sendCommandVO(e);
-  };
-  Object.defineProperty(SkippableCooldownDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastleFameHelper, "personalFameBooster", {
     get: function () {
-      return this.properties;
+      return d.CastleModel.boostData.getBoosterByID(o.BoosterConst.PERSONAL_GLORY_BOOST_ID);
     },
     enumerable: true,
     configurable: true
   });
-  SkippableCooldownDialog.prototype.initAutoskip = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_autoskip_preview.txt_preview, new d.LocalizedTextVO("dialog_cooldownSkip_unlockPreview_desc"));
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_autoskip_preview.mc_tooltip.txt_title, new p.TextVO(E.TextHelper.toUpperCaseLocaSafeTextId("dialog_travelPlanning_autoCooldownSkip_preview_help_header")));
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_autoskip_preview.mc_tooltip.txt_description, new d.LocalizedTextVO("dialog_travelPlanning_autoCooldownSkip_preview_help_desc"));
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_autoskip_preview.btn_buy.txt_label, new p.TextVO(E.TextHelper.toUpperCaseLocaSafeTextId("toTheShop")));
-    this.dialogDisp.mc_autoskip_preview.icon_info.mouseChildren = false;
-    this.dialogDisp.mc_autoskip_preview.mc_tooltip.visible = false;
-    S.ButtonHelper.initButtons([this.dialogDisp.mc_autoskip_preview.btn_buy], I.ClickFeedbackButton);
-    g.registerUIComponentToCXF(this.dialogDisp.mc_autoskip_preview.btn_buy, "btn_webshop", {
-      page: "subscriptions",
-      route: "/offer/3",
-      sourceId: _.CXFSourceTrackingConstants.CXF_SOURCE_TRAVEL_PLANNING_DIALOG_AUTOSKIP_PREVIEW
-    });
-  };
-  SkippableCooldownDialog.prototype.showAutoskipPreview = function () {
-    var e = y.CastleModel.subscriptionData.isAutoSkipTarget(this.dialogProperties.mapObjectVO);
-    var t = y.CastleModel.subscriptionData.isAutoSkipActiveForArea(this.dialogProperties.mapObjectVO);
-    this.dialogDisp.mc_autoskip_preview.visible = e && !t;
-  };
-  SkippableCooldownDialog.prototype.onMouseOver = function (t) {
-    e.prototype.onMouseOver.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.mc_autoskip_preview.icon_info:
-        this.dialogDisp.mc_autoskip_preview.mc_tooltip.visible = true;
-    }
-  };
-  SkippableCooldownDialog.prototype.onMouseOut = function (t) {
-    e.prototype.onMouseOut.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.mc_autoskip_preview.icon_info:
-        this.dialogDisp.mc_autoskip_preview.mc_tooltip.visible = false;
-    }
-  };
-  SkippableCooldownDialog.NAME = "DungeonCooldownEx_JUN23";
-  return SkippableCooldownDialog;
-}(L.CastleExternalDialog);
-exports.SkippableCooldownDialog = R;
-var V = require("./886.js");
-var x = require("./9.js");
-var w = require("./61.js");
-var B = require("./70.js");
-var F = require("./208.js");
-var N = require("./2567.js");
-a.classImplementsInterfaces(R, "ICollectableRendererList");
-var k = require("./1.js");
+  Object.defineProperty(CastleFameHelper, "gloryBoosterEventVO", {
+    get: function () {
+      return d.CastleModel.specialEventData.getActiveEventByEventId(s.EventConst.EVENTTYPE_GLORY_BOOSTER);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleFameHelper;
+}();
+exports.CastleFameHelper = _;

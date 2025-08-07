@@ -2,59 +2,33 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function AIsoGeneratorDefenceComponent() {}
-  AIsoGeneratorDefenceComponent.prototype.init = function (e) {
-    this._parentGenerator = e;
-  };
-  AIsoGeneratorDefenceComponent.prototype.execute = function () {};
-  AIsoGeneratorDefenceComponent.prototype.cleanup = function () {};
-  AIsoGeneratorDefenceComponent.prototype.isCollidingWithAnyOtherPosition = function (e, t) {
-    if (e != null) {
-      for (var i = 0, n = e; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && o.collidesWith(t)) {
-          return true;
+  function ResearchIconHelper() {}
+  ResearchIconHelper.addResearchIcon = function (e, t, i = NaN, n = null) {
+    a.MovieClipHelper.clearMovieClip(t);
+    t.mouseChildren = false;
+    var o = ResearchIconHelper.getIconClip("Icon_Research_Background");
+    t.addChild(o);
+    o.doWhenLoaded(function (a) {
+      var s = e.icon();
+      t.addChild(s);
+      s.doWhenLoaded(function (e) {
+        if (!isNaN(i)) {
+          t.scaleX = t.scaleY = o.scaleY * i / o.height;
         }
-      }
-    }
-    return false;
+        r.CastleMovieClipHelper.updateParentCache(e);
+        if (n) {
+          s.doWhenLoaded(n);
+        }
+      });
+    });
   };
-  AIsoGeneratorDefenceComponent.prototype.addPosToListOrCreateOne = function (e, t) {
-    var i = e;
-    if (t) {
-      i ||= [];
-      i.push(t);
-    }
-    return i;
+  ResearchIconHelper.getIconClip = function (e) {
+    return new s.CastleGoodgameExternalClip(e, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(e), null, 0, false);
   };
-  Object.defineProperty(AIsoGeneratorDefenceComponent.prototype, "parentGenerator", {
-    get: function () {
-      return this._parentGenerator;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AIsoGeneratorDefenceComponent.prototype, "result", {
-    get: function () {
-      return this.parentGenerator.result;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AIsoGeneratorDefenceComponent.prototype, "map", {
-    get: function () {
-      return this.parentGenerator.grid.map;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AIsoGeneratorDefenceComponent.prototype, "grounds", {
-    get: function () {
-      return this.parentGenerator.grounds;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AIsoGeneratorDefenceComponent;
+  return ResearchIconHelper;
 }();
-exports.AIsoGeneratorDefenceComponent = n;
+exports.ResearchIconHelper = n;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./24.js");
+var r = require("./41.js");

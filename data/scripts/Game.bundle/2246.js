@@ -2,70 +2,67 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./2247.js");
-var l = require("./4.js");
-var c = require("./512.js");
-var u = function (e) {
-  function CastleRenameLordDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleRenameLordDialog.NAME) || this;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./233.js");
+var r = require("./4.js");
+var l = require("./52.js");
+var c = require("./8.js");
+var u = require("./908.js");
+var d = function (e) {
+  function CastleExtractSocketDialog() {
+    return e.call(this, CastleExtractSocketDialog.NAME) || this;
   }
-  n.__extends(CastleRenameLordDialog, e);
-  CastleRenameLordDialog.prototype.showLoaded = function (t = null) {
-    this.initStaticText(this.dialogDisp.txt_title, "dialog_renameLord_title");
-    this.initStaticText(this.dialogDisp.txt_copy, "dialog_renameLord_copy");
-    this.initStaticText(this.dialogDisp.txt_insertTitle, "dialog_renameLord_insertText");
-    this.dialogDisp.mc_costs.visible = false;
+  n.__extends(CastleExtractSocketDialog, e);
+  CastleExtractSocketDialog.prototype.showLoaded = function (t = null) {
     e.prototype.showLoaded.call(this, t);
+    this.controller.addEventListener(s.CastleGemEvent.INVENTORY_SPACE_LEFT, this.bindFunction(this.onGemInventoryChanged));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO("dialog_gemExtract_info", [this.dialogProperties.gemVO.nameString, this.dialogProperties.eqVO.nameString]));
+    this.updateOkButton();
   };
-  Object.defineProperty(CastleRenameLordDialog.prototype, "textMaxChars", {
-    get: function () {
-      return s.EquipmentConst.LORD_NAME_MAX_LENGTH;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(c.BasicRenameDialog.prototype, "textMaxChars").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleRenameLordDialog.prototype, "defaultName", {
-    get: function () {
-      return this.dialogProperties.lordVO.defaultName.compose();
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(c.BasicRenameDialog.prototype, "defaultName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleRenameLordDialog.prototype.validate = function () {
-    if (e.prototype.validate.call(this)) {
-      if (o.TextValide.isSmartFoxValide(this.itxt_insert.text) && o.TextValide.isUsernameValide(this.itxt_insert.text)) {
-        return true;
-      }
-      this.alert("generic_alert_watchout", "register_emptyName_copy");
+  CastleExtractSocketDialog.prototype.hide = function () {
+    this.controller.removeEventListener(s.CastleGemEvent.INVENTORY_SPACE_LEFT, this.bindFunction(this.onGemInventoryChanged));
+    e.prototype.hide.call(this);
+  };
+  CastleExtractSocketDialog.prototype.updateCosts = function () {
+    e.prototype.updateCosts.call(this);
+    if (this.getCosts().amount <= 0) {
+      this.textFieldManager.registerTextField(this.dialogDisp.mc_cost.txt_text, new a.LocalizedTextVO("dialog_kingdomStart_prebuiltCastle_chooseCastle_forFree")).autoFitToBounds = true;
     }
-    return false;
   };
-  CastleRenameLordDialog.prototype.sendCommand = function () {
-    l.CastleModel.smartfoxClient.sendCommandVO(new r.C2SRenameLordVO(this.itxt_insert.text, this.dialogProperties.lordVO.id));
-    this.hide();
+  CastleExtractSocketDialog.prototype.updateOkButton = function () {
+    c.ButtonHelper.enableButton(this.dialogDisp.btn_ok, !r.CastleModel.gemData.isInventoryFull);
+    this.dialogDisp.btn_ok.toolTipText = r.CastleModel.gemData.isInventoryFull ? "allyforge_tooltip_inventoryFull_gems" : null;
   };
-  Object.defineProperty(CastleRenameLordDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastleExtractSocketDialog.prototype, "titleTextID", {
     get: function () {
-      return this.properties;
+      return "dialog_gemExtract_title";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.ACastleSocketDialog.prototype, "titleTextID").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleRenameLordDialog.__initialize_static_members = function () {
-    CastleRenameLordDialog.NAME = "CastleNameAlliance";
+  CastleExtractSocketDialog.prototype.getCosts = function () {
+    if (g.instanceOfClass(this.dialogProperties.gemVO, "CastleGemVO")) {
+      return h.CollectableHelper.createVO(p.CollectableEnum.C2, this.dialogProperties.gemVO.levelInfos.removalCostC2);
+    } else {
+      return h.CollectableHelper.createVO(p.CollectableEnum.GENERIC_CURRENCY, C.RelicItemConst.EXTRACT_RELIC_GEM_RELIC_FRAGMENT_COST, l.ClientConstCurrency.ID_RELIC_FRAGMENTS);
+    }
   };
-  return CastleRenameLordDialog;
-}(c.BasicRenameDialog);
-exports.CastleRenameLordDialog = u;
-a.classImplementsInterfaces(u, "ICollectableRendererList");
-u.__initialize_static_members();
+  CastleExtractSocketDialog.prototype.onGemInventoryChanged = function (e) {
+    this.updateOkButton();
+  };
+  CastleExtractSocketDialog.prototype.onValidConfirmClicked = function () {
+    r.CastleModel.gemData.extractGem(this.dialogProperties.eqVO, this.dialogProperties.lordID);
+  };
+  CastleExtractSocketDialog.NAME = "CastleExtractSocket";
+  return CastleExtractSocketDialog;
+}(u.ACastleSocketDialog);
+exports.CastleExtractSocketDialog = d;
+var p = require("./12.js");
+var h = require("./45.js");
+o.classImplementsInterfaces(d, "ICollectableRendererList");
+var g = require("./1.js");
+var C = require("./5.js");

@@ -3,16 +3,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CollectableItemSeasonLeagueEventPassVO() {
+  function CollectableItemSeasonLeagueSeasonPassVO() {
     return e.call(this, 1) || this;
   }
-  n.__extends(CollectableItemSeasonLeagueEventPassVO, e);
-  CollectableItemSeasonLeagueEventPassVO.prototype.getTooltipTextId = function () {
-    return "seasonLeague_eventPass_name";
+  n.__extends(CollectableItemSeasonLeagueSeasonPassVO, e);
+  CollectableItemSeasonLeagueSeasonPassVO.prototype.getTooltipTextId = function () {
+    return "seasonLeague_seasonPass_name";
   };
-  CollectableItemSeasonLeagueEventPassVO.prototype.getDescriptionTextId = function () {
-    return "seasonLeague_eventPass_short_info";
+  CollectableItemSeasonLeagueSeasonPassVO.prototype.getDescriptionTextId = function () {
+    return "seasonLeague_seasonPass_short_info";
   };
-  return CollectableItemSeasonLeagueEventPassVO;
+  return CollectableItemSeasonLeagueSeasonPassVO;
 }(require("./96.js").ACollectableItemVO);
-exports.CollectableItemSeasonLeagueEventPassVO = o;
+exports.CollectableItemSeasonLeagueSeasonPassVO = o;

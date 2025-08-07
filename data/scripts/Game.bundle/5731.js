@@ -1,131 +1,68 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
-var o = require("./3.js");
-var a = require("./6.js");
-var s = require("./562.js");
-var r = function () {
-  function XmlEquipmentSetVO(e, t) {
+var n = require("./1.js");
+var o = require("./6.js");
+var a = require("./22.js");
+var s = function () {
+  function XmlEquipmentGroupVO() {
     this._id = 0;
-    this._neededItemThresholds = [];
-    this._effects = [];
-    this._setItems = [];
-    this._id = e;
-    this.addEffect(t);
+    this._wearerId = 0;
+    this._slotId = 0;
+    this._picId = 0;
+    this._dropRate = 0;
   }
-  XmlEquipmentSetVO.prototype.addEffect = function (e) {
-    var t = a.int(e.neededItems || "");
-    for (var i = (e.effects || "").split(","), n = 0; n < i.length; n++) {
-      if (i[n] != "") {
-        var o = i[n].split("&");
-        this._effects.push(new s.EquipmentBonusVO().parseEquipmentFromValueString(parseInt(o[0]), o[1]));
-        this._neededItemThresholds.push(t);
-      }
-    }
+  XmlEquipmentGroupVO.prototype.parseXml = function (e) {
+    this._id = o.int(a.CastleXMLUtils.getIntAttribute("itemGroupID", e, -1));
+    this._name = a.CastleXMLUtils.getStringAttribute("name", e);
+    this._wearerId = o.int(a.CastleXMLUtils.getIntAttribute("wearerID", e, -1));
+    this._slotId = o.int(a.CastleXMLUtils.getIntAttribute("slotID", e, -1));
+    this._picId = o.int(a.CastleXMLUtils.getIntAttribute("picID", e, -1));
+    this._dropRate = o.int(a.CastleXMLUtils.getIntAttribute("dropRate", e, -1));
   };
-  XmlEquipmentSetVO.prototype.addItem = function (e) {
-    var t = false;
-    if (this._setItems != null) {
-      for (var i = 0, n = this._setItems; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && (l.instanceOfClass(o, "BasicEquipmentVO") && l.instanceOfClass(e, "BasicEquipmentVO") && o.uniqueID == e.uniqueID || l.instanceOfClass(o, "CastleGemVO") && l.instanceOfClass(e, "CastleGemVO") && o.id == e.id)) {
-          t = true;
-        }
-      }
-    }
-    if (!t) {
-      this._setItems.push(e);
-    }
-  };
-  Object.defineProperty(XmlEquipmentSetVO.prototype, "maxNeededItems", {
-    get: function () {
-      return this.neededItemThresholds[this.neededItemThresholds.length - 1];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlEquipmentSetVO.prototype, "name", {
-    get: function () {
-      if (o.Localize.text("equipment_set_" + this.id).length <= 1) {
-        return "QA-TEST-SET";
-      } else {
-        return o.Localize.text("equipment_set_" + this.id);
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  XmlEquipmentSetVO.prototype.getReachedSetBonusText = function (e) {
-    if (!e) {
-      return "";
-    }
-    var t = "";
-    var i = e.setCounts;
-    if (i.get(this._id)) {
-      for (var a = 0; a < this.neededItemThresholds.length; a++) {
-        if (i.get(this._id) >= this.neededItemThresholds[a]) {
-          var s = this.effects[a].descriptionText;
-          t += t.length > 0 ? "\n" : "";
-          t += o.Localize.text(n.GenericTextIds.VALUE_ASSIGN_COLON, [this.neededItemThresholds[a], s]);
-        }
-      }
-    }
-    return t;
-  };
-  XmlEquipmentSetVO.prototype.getNotReachedSetBonusText = function (e) {
-    if (!e) {
-      return this.getSetBonusText();
-    }
-    var t = "";
-    var i = e.setCounts;
-    for (var a = 0; a < this.neededItemThresholds.length; a++) {
-      if (i.get(this._id) < this.neededItemThresholds[a]) {
-        var s = this.effects[a].descriptionText;
-        t += t.length > 0 ? "\n" : "";
-        t += o.Localize.text(n.GenericTextIds.VALUE_ASSIGN_COLON, [this.neededItemThresholds[a], s]);
-      }
-    }
-    return t;
-  };
-  XmlEquipmentSetVO.prototype.getSetBonusText = function () {
-    var e = "";
-    for (var t = 0; t < this.neededItemThresholds.length; t++) {
-      var i = this.effects[t].descriptionText;
-      e += e.length > 0 ? "\n" : "";
-      e += o.Localize.text(n.GenericTextIds.VALUE_ASSIGN_COLON, [this.neededItemThresholds[t], i]);
-    }
-    return e;
-  };
-  Object.defineProperty(XmlEquipmentSetVO.prototype, "setItems", {
-    get: function () {
-      return this._setItems;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlEquipmentSetVO.prototype, "neededItemThresholds", {
-    get: function () {
-      return this._neededItemThresholds;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlEquipmentSetVO.prototype, "effects", {
-    get: function () {
-      return this._effects;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(XmlEquipmentSetVO.prototype, "id", {
+  Object.defineProperty(XmlEquipmentGroupVO.prototype, "id", {
     get: function () {
       return this._id;
     },
     enumerable: true,
     configurable: true
   });
-  return XmlEquipmentSetVO;
+  Object.defineProperty(XmlEquipmentGroupVO.prototype, "name", {
+    get: function () {
+      return this._name;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlEquipmentGroupVO.prototype, "wearerId", {
+    get: function () {
+      return this._wearerId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlEquipmentGroupVO.prototype, "slotId", {
+    get: function () {
+      return this._slotId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlEquipmentGroupVO.prototype, "picId", {
+    get: function () {
+      return this._picId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlEquipmentGroupVO.prototype, "dropRate", {
+    get: function () {
+      return this._dropRate;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return XmlEquipmentGroupVO;
 }();
-exports.XmlEquipmentSetVO = r;
-var l = require("./1.js");
+exports.XmlEquipmentGroupVO = s;
+n.classImplementsInterfaces(s, "IXmlElementVO");

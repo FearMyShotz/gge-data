@@ -1,65 +1,75 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./72.js");
-var a = require("./5774.js");
-var s = require("./30.js");
-var r = require("./28.js");
-var l = require("./37.js");
-var c = require("./15.js");
-var u = function (e) {
-  function ChangePlayerNameData(t) {
-    var i = e.call(this) || this;
-    i._currentNumNameChange = 0;
-    i._resetNameChangeCooldownTimestamp = 0;
-    i.parseXml(t);
-    return i;
+var n = require("./22.js");
+var o = function () {
+  function EventAutoScalingDifficultyEffectVO() {
+    this._eventAutoScalingEffectID = 0;
+    this._difficultyID = 0;
+    this._effectGroup = "";
+    this._effectID = 0;
+    this._minValue = 0;
+    this._maxValue = 0;
+    this._wearerID = 0;
   }
-  n.__extends(ChangePlayerNameData, e);
-  ChangePlayerNameData.prototype.parseXml = function (e) {
-    this._c2Costs = [];
-    var t = e.playerNameChanges;
-    if (t != null) {
-      var i = undefined;
-      for (var n = 0, o = t; n < o.length; n++) {
-        var s = o[n];
-        if (s !== undefined) {
-          (i = new a.ChangePlayerNameVO()).nameChangeID = parseInt(s.nameChangeID || "");
-          i.costC2 = parseInt(s.costC2 || "");
-          this._c2Costs.push(i);
-        }
-      }
-    }
-  };
-  ChangePlayerNameData.prototype.parse_GNCI = function (e) {
-    this._currentNumNameChange = parseInt(e.PNCC) + 1;
-    this._currentNumNameChange = Math.min(this._currentNumNameChange, this._c2Costs[this._c2Costs.length - 1].nameChangeID);
-    this._resetNameChangeCooldownTimestamp = e.PNCD;
-    c.CastleBasicController.getInstance().dispatchEvent(new l.CastleServerMessageArrivedEvent(l.CastleServerMessageArrivedEvent.GNCI_ARRIVED, [this.getCurrentC2Cost, this.resetNameChangeCooldownTimestamp]));
-  };
-  Object.defineProperty(ChangePlayerNameData.prototype, "getCurrentC2Cost", {
+  Object.defineProperty(EventAutoScalingDifficultyEffectVO.prototype, "wearerID", {
     get: function () {
-      var e = this;
-      var t = this._c2Costs.find(function (t) {
-        return t.nameChangeID === e._currentNumNameChange;
-      });
-      if (t) {
-        return t.costC2;
-      } else {
-        return 0;
-      }
+      return this._wearerID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ChangePlayerNameData.prototype, "resetNameChangeCooldownTimestamp", {
+  Object.defineProperty(EventAutoScalingDifficultyEffectVO.prototype, "eventAutoScalingEffectID", {
     get: function () {
-      return this._resetNameChangeCooldownTimestamp - s.CachedTimer.getCachedTimer() * r.ClientConstTime.MILLISEC_2_SEC;
+      return this._eventAutoScalingEffectID;
     },
     enumerable: true,
     configurable: true
   });
-  return ChangePlayerNameData;
-}(o.CastleEventDispatcher);
-exports.ChangePlayerNameData = u;
+  Object.defineProperty(EventAutoScalingDifficultyEffectVO.prototype, "difficultyID", {
+    get: function () {
+      return this._difficultyID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventAutoScalingDifficultyEffectVO.prototype, "effectGroup", {
+    get: function () {
+      return this._effectGroup;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventAutoScalingDifficultyEffectVO.prototype, "effectID", {
+    get: function () {
+      return this._effectID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventAutoScalingDifficultyEffectVO.prototype, "minValue", {
+    get: function () {
+      return this._minValue;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(EventAutoScalingDifficultyEffectVO.prototype, "maxValue", {
+    get: function () {
+      return this._maxValue;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  EventAutoScalingDifficultyEffectVO.prototype.parseXML = function (e) {
+    this._eventAutoScalingEffectID = parseInt(n.CastleXMLUtils.getValueOrDefault("eventAutoScalingLordEffectID", e, "0", true));
+    this._difficultyID = parseInt(n.CastleXMLUtils.getValueOrDefault("difficultyID", e, "0", true));
+    this._effectGroup = n.CastleXMLUtils.getValueOrDefault("effectGroup", e, "0", true);
+    this._effectID = parseInt(n.CastleXMLUtils.getValueOrDefault("effectID", e, "0"));
+    this._minValue = parseInt(n.CastleXMLUtils.getValueOrDefault("minValue", e, "0"));
+    this._maxValue = parseInt(n.CastleXMLUtils.getValueOrDefault("maxValue", e, "0"));
+    this._wearerID = parseInt(n.CastleXMLUtils.getValueOrDefault("wearerID", e, "0"));
+  };
+  return EventAutoScalingDifficultyEffectVO;
+}();
+exports.EventAutoScalingDifficultyEffectVO = o;

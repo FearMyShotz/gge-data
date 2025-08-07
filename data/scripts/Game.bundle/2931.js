@@ -2,44 +2,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./3.js");
-var l = require("./87.js");
-var c = require("./263.js");
-var u = function (e) {
-  function RingMenuButtonProduce() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = require("./4.js");
+var r = function (e) {
+  function C2SSetMeadPrioVO() {
+    var t = this;
+    t.KID = 0;
+    t.AID = 0;
+    t.PPOT = 0;
+    CONSTRUCTOR_HACK;
+    (t = e.call(this) || this).KID = s.CastleModel.areaData.activeArea.areaInfo.kingdomID;
+    t.AID = s.CastleModel.areaData.activeArea.areaInfo.objectId;
+    t.PPOT = s.CastleModel.breweryData.meadPrioSet ? 1 : 0;
+    return t;
   }
-  n.__extends(RingMenuButtonProduce, e);
-  RingMenuButtonProduce.prototype.init = function (t, i, n) {
-    e.prototype.init.call(this, t, i, n);
-    this._disp = i.btn_produce;
-    if (s.instanceOfClass(n, "AUnitProductionBuildingVE")) {
-      var a = o.castAs(n, "AUnitProductionBuildingVE");
-      this._disp.visible = a && a.unitProductionBuildingVO.areValuesActive;
-    } else {
-      this._disp.visible = false;
-    }
-    switch (n.buildingVO.buildingState) {
-      case l.IsoBuildingStateEnum.BUILD_IN_PROGRESS:
-      case l.IsoBuildingStateEnum.BUILD_STOPPED:
-        this._disp.visible = false;
-    }
-    this._disp.enableButton = true;
+  n.__extends(C2SSetMeadPrioVO, e);
+  C2SSetMeadPrioVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_SET_MEAD_PRIORITY;
   };
-  RingMenuButtonProduce.prototype.onClick = function (e, t) {
-    var i = this.targetBuilding;
-    d.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleRecruitDialog, new c.CastleRecruitDialogProperties(i.unitProductionBuildingVO.recruitCategory, i.unitProductionBuildingVO.recruitFilter));
-    this.parent.hide();
-  };
-  RingMenuButtonProduce.prototype.getInfoText = function () {
-    return r.Localize.text("produce");
-  };
-  return RingMenuButtonProduce;
-}(require("./98.js").ARingMenuButton);
-exports.RingMenuButtonProduce = u;
-var d = require("./9.js");
-var p = require("./224.js");
-a.classImplementsInterfaces(u, "IRingMenuButton");
+  return C2SSetMeadPrioVO;
+}(o.BasicCommandVO);
+exports.C2SSetMeadPrioVO = r;

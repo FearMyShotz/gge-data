@@ -10,9 +10,9 @@ var l = require("./16.js");
 var c = require("./44.js");
 var u = require("./4.js");
 var d = require("./97.js");
-var p = require("./35.js");
+var p = require("./33.js");
 var h = require("./87.js");
-var g = require("./286.js");
+var g = require("./285.js");
 var C = function (e) {
   function KeepBuildingVO() {
     return e !== null && e.apply(this, arguments) || this;
@@ -106,5 +106,5 @@ var C = function (e) {
   return KeepBuildingVO;
 }(g.AResourceProductionBuildingVO);
 exports.KeepBuildingVO = C;
-var _ = require("./33.js");
+var _ = require("./34.js");
 a.classImplementsInterfaces(C, "IShopVO", "ICostVO", "IInventoryVO");

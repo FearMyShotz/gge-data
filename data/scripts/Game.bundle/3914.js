@@ -2,25 +2,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./9.js");
-var s = require("./215.js");
-var r = require("./176.js");
-var l = require("./196.js");
-var c = function (e) {
-  function CheatToggleShowEffectTypeIDCommand() {
+var o = require("./196.js");
+var a = function (e) {
+  function CheatUnitWODCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CheatToggleShowEffectTypeIDCommand, e);
-  CheatToggleShowEffectTypeIDCommand.prototype.execute = function (e = null) {
-    l.ClientCheatsHelper.performCommand("toggleShowEffectTypeIDs");
-    if (r.CastleDataHolder.instance.showEffectTypeIDs) {
-      a.CastleDialogHandler.getInstance().registerDefaultDialogs(s.DarkOkDialog, new o.BasicStandardOkDialogProperties("ShowEffectTypeIDs", "ON"));
-    }
-    if (!r.CastleDataHolder.instance.showEffectTypeIDs) {
-      a.CastleDialogHandler.getInstance().registerDefaultDialogs(s.DarkOkDialog, new o.BasicStandardOkDialogProperties("ShowEffectTypeIDs", "OFF"));
-    }
+  n.__extends(CheatUnitWODCommand, e);
+  CheatUnitWODCommand.prototype.execute = function (e = null) {
+    o.ClientCheatsHelper.performCommand("toggleUnitWodID");
   };
-  return CheatToggleShowEffectTypeIDCommand;
+  return CheatUnitWODCommand;
 }(require("./212.js").ABotCommand);
-exports.CheatToggleShowEffectTypeIDCommand = c;
+exports.CheatUnitWODCommand = a;

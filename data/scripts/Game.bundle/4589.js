@@ -2,70 +2,100 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
+var o = require("./1.js");
+var a = require("./3.js");
 var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./90.js");
-var c = require("./64.js");
-var u = require("./124.js");
-var d = createjs.Container;
-var p = function (e) {
-  function AlienInvasionMapobject() {
+var l = require("./32.js");
+var c = require("./90.js");
+var u = require("./15.js");
+var d = require("./64.js");
+var p = require("./124.js");
+var h = createjs.Container;
+var g = function (e) {
+  function ABGAllianceTowerMapobject() {
     return e.call(this) || this;
   }
-  n.__extends(AlienInvasionMapobject, e);
-  AlienInvasionMapobject.prototype.initVisualRep = function () {
+  n.__extends(ABGAllianceTowerMapobject, e);
+  ABGAllianceTowerMapobject.prototype.initVisualRep = function () {
     if (!this.disp) {
-      this.disp = new d();
-      this.mapobjectVO.addEventListener(c.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
+      this.disp = new h();
+      this.mapobjectVO.addEventListener(d.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
     }
-    this.drawAlien();
+    this.drawABGAllianceTower();
   };
-  AlienInvasionMapobject.prototype.drawAlien = function () {
+  ABGAllianceTowerMapobject.prototype.drawABGAllianceTower = function () {
     this.clearObjectContainer();
-    if (this.mapobjectVO.isVisibleOnMap) {
-      this.objectContainer = this.alienMapObjectVO.getDisplayObjectClipContainer(false, null, false);
-      if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0) {
-        this.showFlames();
-      }
-      this.addObjectContainer();
-      this.addMouseListener();
-    }
+    this.objectContainer = this.abgAllianceTowerVO.getDisplayObjectClipContainer(false, null, false);
+    this.addObjectContainer();
+    this.addMouseListener();
   };
-  AlienInvasionMapobject.prototype.showRingMenu = function () {
-    this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.SHOW_MENU, [this, l.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
+  Object.defineProperty(ABGAllianceTowerMapobject.prototype, "abgAllianceTowerVO", {
+    get: function () {
+      return this.mapobjectVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ABGAllianceTowerMapobject.prototype.showRingMenu = function () {
+    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.SHOW_MENU, [this, c.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
+    this.showOwnerLines();
   };
-  AlienInvasionMapobject.prototype.onRollOver = function (t) {
+  ABGAllianceTowerMapobject.prototype.showOwnerLines = function () {
+    this.worldmapRenderer.showLines(this.abgAllianceTowerVO.absAreaPos, this.abgAllianceTowerVO.connections, 0);
+  };
+  ABGAllianceTowerMapobject.prototype.onRollOver = function (t) {
     if (!this.worldmapRenderer.camera.isWorldDragging) {
       if (!this.hasRingMenu) {
-        this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
+        this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
       }
       e.prototype.onRollOver.call(this, t);
     }
   };
-  AlienInvasionMapobject.prototype.onRollOut = function (t) {
-    this.worldmapRenderer.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.INFOTOOLTIP, [false]));
+  ABGAllianceTowerMapobject.prototype.onMouseUp = function (t) {
+    e.prototype.onMouseUp.call(this, t);
+    this.showOwnerLines();
+  };
+  ABGAllianceTowerMapobject.prototype.onRollOut = function (t) {
+    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [false]));
     e.prototype.onRollOut.call(this, t);
   };
-  Object.defineProperty(AlienInvasionMapobject.prototype, "alienMapObjectVO", {
+  ABGAllianceTowerMapobject.prototype.remove = function () {
+    u.CastleBasicController.getInstance().removeEventListener(l.CastleUserDataEvent.CHANGE_USER_AVATAR, this.bindFunction(this.onChangeCrest));
+    this.mapobjectVO.removeEventListener(d.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
+    e.prototype.remove.call(this);
+  };
+  Object.defineProperty(ABGAllianceTowerMapobject.prototype, "line1Content", {
     get: function () {
-      return this.vo;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AlienInvasionMapobject.prototype, "line2Content", {
-    get: function () {
-      return new r.LocalizedTextVO(o.GenericTextIds.VALUE_ASSIGN_COLON, [s.Localize.text("level"), this.alienMapObjectVO.dungeonLevel]);
+      return new a.TextVO(this.abgAllianceTowerVO.areaNameString);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(p.InteractiveMapobject.prototype, "line1Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return AlienInvasionMapobject;
-}(u.InteractiveMapobject);
-exports.AlienInvasionMapobject = p;
-a.classImplementsInterfaces(p, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+  Object.defineProperty(ABGAllianceTowerMapobject.prototype, "line2Content", {
+    get: function () {
+      return new a.TextVO(this.abgAllianceTowerVO.allianceName);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ABGAllianceTowerMapobject.prototype, "line3Content", {
+    get: function () {
+      return new s.LocalizedTextVO("allianceTower_worldmap_tooltip_Maya", [r.Localize.number(this.abgAllianceTowerVO.currentTowerPoints)]);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ABGAllianceTowerMapobject;
+}(p.InteractiveMapobject);
+exports.ABGAllianceTowerMapobject = g;
+o.classImplementsInterfaces(g, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");

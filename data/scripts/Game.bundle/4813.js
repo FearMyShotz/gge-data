@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function CRQMCommand() {
+  function CRCACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CRQMCommand, e);
-  Object.defineProperty(CRQMCommand.prototype, "cmdId", {
+  n.__extends(CRCACommand, e);
+  Object.defineProperty(CRCACommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_CRAFTING_QUEUE_MOVE;
+      return s.ClientConstSF.S2C_CRAFTING_CANCEL;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,7 +22,7 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  CRQMCommand.prototype.executeCommand = function (e, t) {
+  CRCACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
@@ -33,7 +33,7 @@ var c = function (e) {
     }
     return false;
   };
-  return CRQMCommand;
+  return CRCACommand;
 }(l.CastleCommand);
-exports.CRQMCommand = c;
+exports.CRCACommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

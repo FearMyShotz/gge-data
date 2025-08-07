@@ -3,40 +3,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = function (e) {
-  function CastleFactionEventLostLastCampDialog() {
+var a = require("./5.js");
+var s = require("./3.js");
+var r = require("./4.js");
+var l = function (e) {
+  function CastleAllianceAlienInvasionEventTeaserDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleFactionEventLostLastCampDialog.NAME) || this;
+    return e.call(this, CastleAllianceAlienInvasionEventTeaserDialog.NAME) || this;
   }
-  n.__extends(CastleFactionEventLostLastCampDialog, e);
-  CastleFactionEventLostLastCampDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("faction_message_lostlastCamp_title"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("faction_message_lostlastCamp_copy"));
+  n.__extends(CastleAllianceAlienInvasionEventTeaserDialog, e);
+  CastleAllianceAlienInvasionEventTeaserDialog.prototype.setText = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO(CastleAllianceAlienInvasionEventTeaserDialog.TEXT_ID_HEADER));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new s.LocalizedTextVO(CastleAllianceAlienInvasionEventTeaserDialog.TEXT_ID_DESCRIPTION));
   };
-  CastleFactionEventLostLastCampDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    this.dialogDisp.mc_camp.gotoAndStop(this.dialogProperties.factionID);
+  CastleAllianceAlienInvasionEventTeaserDialog.prototype.getEventVO = function () {
+    return r.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_ALIEN_INVASION_ALLIANCE);
   };
-  CastleFactionEventLostLastCampDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    if (t.target == this.dialogDisp.btn_close || t.target == this.dialogDisp.btn_ok) {
-      this.hide();
-    }
+  CastleAllianceAlienInvasionEventTeaserDialog.__initialize_static_members = function () {
+    CastleAllianceAlienInvasionEventTeaserDialog.NAME = "CastleAllianceAlienInvasionEventTeaser";
+    CastleAllianceAlienInvasionEventTeaserDialog.TEXT_ID_HEADER = "dialog_alienInvasion_message_header";
+    CastleAllianceAlienInvasionEventTeaserDialog.TEXT_ID_DESCRIPTION = "dialog_alienInvasionAlliance_message_copy";
   };
-  Object.defineProperty(CastleFactionEventLostLastCampDialog.prototype, "dialogProperties", {
-    get: function () {
-      return this.properties;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleFactionEventLostLastCampDialog.__initialize_static_members = function () {
-    CastleFactionEventLostLastCampDialog.NAME = "CastleFactionEventLostLastCamp";
-  };
-  return CastleFactionEventLostLastCampDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleFactionEventLostLastCampDialog = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
-s.__initialize_static_members();
+  return CastleAllianceAlienInvasionEventTeaserDialog;
+}(require("./681.js").CastleBasicSpecialEventTeaserDialog);
+exports.CastleAllianceAlienInvasionEventTeaserDialog = l;
+o.classImplementsInterfaces(l, "ICollectableRendererList");
+l.__initialize_static_members();

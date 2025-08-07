@@ -3,87 +3,74 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./4.js");
-var s = require("./52.js");
-var r = require("./1919.js");
-var l = function (e) {
-  function CastleUnderworldEventDialog() {
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./6.js");
+var l = require("./43.js");
+var c = require("./8.js");
+var u = require("./93.js");
+var d = require("./1897.js");
+var p = function (e) {
+  function CastleTournamentRankListItem(t) {
+    var i = this;
+    i._playerId = -1;
+    i._playerName = "";
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleUnderworldEventDialog.NAME) || this;
+    return i = e.call(this, t) || this;
   }
-  n.__extends(CastleUnderworldEventDialog, e);
-  Object.defineProperty(CastleUnderworldEventDialog.prototype, "descriptionText", {
-    get: function () {
-      return "dialog_seasonEvent_64_camp_desc";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "descriptionText").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleUnderworldEventDialog.prototype, "detailedDescriptionText", {
-    get: function () {
-      return "dialog_seasonEvent_64_camp_desc_detail";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "detailedDescriptionText").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleUnderworldEventDialog.prototype, "travelTooltipText", {
-    get: function () {
-      if (a.CastleModel.specialEventData.isSeasonEventActive) {
-        return Object.getOwnPropertyDescriptor(r.CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "travelTooltipText").get.call(this);
-      } else {
-        return "event_underworld_eventEnded_tooltip";
-      }
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "travelTooltipText").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleUnderworldEventDialog.prototype, "userCurrency1", {
-    get: function () {
-      return new u.CollectableTypeVO(c.CollectableEnum.GENERIC_CURRENCY, s.ClientConstCurrency.ID_SILVER_RUNE);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "userCurrency1").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleUnderworldEventDialog.prototype, "userCurrency2", {
-    get: function () {
-      return new u.CollectableTypeVO(c.CollectableEnum.GENERIC_CURRENCY, s.ClientConstCurrency.ID_GOLD_RUNE);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "userCurrency2").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleUnderworldEventDialog.prototype, "merchantScrollItem", {
-    get: function () {
-      return d.CastleUnderworldMerchantScrollItem;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "merchantScrollItem").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleUnderworldEventDialog.__initialize_static_members = function () {
-    CastleUnderworldEventDialog.NAME = "CastleUnderworldEvent";
+  n.__extends(CastleTournamentRankListItem, e);
+  CastleTournamentRankListItem.prototype.parseItemData = function (t) {
+    e.prototype.parseItemData.call(this, t);
+    this._playerId = r.int(t[2]);
+    this._playerName = t[3];
   };
-  return CastleUnderworldEventDialog;
-}(r.CastleSpecialCurrencyMerchantDialogTypeHardMode);
-exports.CastleUnderworldEventDialog = l;
-var c = require("./12.js");
-var u = require("./74.js");
-var d = require("./4554.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList");
-l.__initialize_static_members();
+  CastleTournamentRankListItem.prototype.updateBgColor = function () {
+    var e = CastleTournamentRankListItem.BACKGROUND_FRAME_BOBBY;
+    if (this.isSearchTextRelevant) {
+      e = CastleTournamentRankListItem.BACKGROUND_FRAME_RELEVANT;
+    } else if (this.rank <= CastleTournamentRankListItem.COLOR_TOP3_RANK) {
+      e = CastleTournamentRankListItem.BACKGROUND_FRAME_TOP3;
+    } else if (this.rank <= CastleTournamentRankListItem.COLOR_TOPX_RANK) {
+      e = CastleTournamentRankListItem.BACKGROUND_FRAME_TOPX;
+    }
+    this.disp.mc_background.gotoAndStop(e);
+  };
+  Object.defineProperty(CastleTournamentRankListItem.prototype, "isSearchTextRelevant", {
+    get: function () {
+      return this._playerName != "" && this._playerName.toLowerCase() == this.searchFieldValue.toLowerCase();
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.ACastleTournamentRankListItem.prototype, "isSearchTextRelevant").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleTournamentRankListItem.prototype.updateText = function () {
+    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_rank, new a.LocalizedNumberVO(this.rank)).autoFitToBounds = true;
+    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_name, new s.TextVO(this._playerName)).autoFitToBounds = true;
+    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_amount, new a.LocalizedNumberVO(this.points)).autoFitToBounds = true;
+  };
+  CastleTournamentRankListItem.prototype.onClick = function (t) {
+    if (c.ButtonHelper.isButtonEnabled(t.target)) {
+      e.prototype.onClick.call(this, t);
+      t.target;
+      if (this._playerId >= 0) {
+        h.CastleComponent.dialogHandler.registerDialogsWithTypeAndDefaultValues(g.CastlePlayerInfoDialog, new u.CastlePlayerInfoDialogProperties(this._playerId), l.CastleDialogConsts.DIALOG_TYPE_SINGLE);
+      }
+    }
+  };
+  CastleTournamentRankListItem.__initialize_static_members = function () {
+    CastleTournamentRankListItem.COLOR_TOP3_RANK = 3;
+    CastleTournamentRankListItem.COLOR_TOPX_RANK = 100;
+    CastleTournamentRankListItem.BACKGROUND_FRAME_TOP3 = 1;
+    CastleTournamentRankListItem.BACKGROUND_FRAME_TOPX = 2;
+    CastleTournamentRankListItem.BACKGROUND_FRAME_BOBBY = 3;
+    CastleTournamentRankListItem.BACKGROUND_FRAME_RELEVANT = 4;
+  };
+  return CastleTournamentRankListItem;
+}(d.ACastleTournamentRankListItem);
+exports.CastleTournamentRankListItem = p;
+var h = require("./14.js");
+var g = require("./94.js");
+o.classImplementsInterfaces(p, "ICollectableRendererList");
+p.__initialize_static_members();

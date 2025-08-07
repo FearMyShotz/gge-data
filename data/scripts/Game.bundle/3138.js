@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./62.js");
 var s = function (e) {
-  function UniversityBuildingVE() {
+  function UnittentBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(UniversityBuildingVE, e);
-  Object.defineProperty(UniversityBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(UnittentBuildingVE, e);
+  Object.defineProperty(UnittentBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_ResearchTimeBoost;
+      return Library.CastleInterfaceElements_Icons.Icon_Units;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return UniversityBuildingVE;
+  return UnittentBuildingVE;
 }(a.ABasicBuildingVE);
-exports.UniversityBuildingVE = s;
+exports.UnittentBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

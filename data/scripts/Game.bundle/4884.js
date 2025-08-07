@@ -2,40 +2,57 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./832.js");
-var l = require("./15.js");
-var c = require("./10.js");
-var u = function (e) {
-  function LLSWCommand() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./7.js");
+var u = require("./172.js");
+var d = require("./4.js");
+var p = require("./10.js");
+var h = function (e) {
+  function HGHCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(LLSWCommand, e);
-  Object.defineProperty(LLSWCommand.prototype, "cmdId", {
+  n.__extends(HGHCommand, e);
+  Object.defineProperty(HGHCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_LIST_LEADERBOARD_SCORE_WINDOW;
+      return c.ClientConstSF.S2C_GET_HIGHSCORE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(p.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  LLSWCommand.prototype.executeCommand = function (e, t) {
+  HGHCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case a.ERROR.ALL_OK:
+      case s.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        l.CastleBasicController.getInstance().dispatchEvent(new r.LeaderBoardEvent(r.LeaderBoardEvent.LEADERBOARD_SCORE_DATA, i));
+        var n = -1;
+        if (i.LID) {
+          n = l.int(i.LID);
+        }
+        d.CastleModel.highscoreData.dispatchEvent(new u.CastleHighscoreEvent(u.CastleHighscoreEvent.GET_HIGHSCORE_DATA, [i], n));
         return true;
+      case s.ERROR.PLAYER_NOT_FOUND:
+        d.CastleModel.highscoreData.dispatchEvent(new u.CastleHighscoreEvent(u.CastleHighscoreEvent.GET_HIGHSCORE_DATA_ERROR, [i], n));
+        g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_watchout"), r.Localize.text("alert_playerName_notFound")));
+        break;
+      case s.ERROR.ALLI_NOT_FOUND:
+        d.CastleModel.highscoreData.dispatchEvent(new u.CastleHighscoreEvent(u.CastleHighscoreEvent.GET_HIGHSCORE_DATA_ERROR, [i], n));
+        g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_watchout"), r.Localize.text("alert_allianceName_notFound")));
+        break;
       default:
         this.showErrorDialog(e, t);
-        l.CastleBasicController.getInstance().dispatchEvent(new r.LeaderBoardEvent(r.LeaderBoardEvent.LEADERBOARD_DATA_ERROR, e));
+        d.CastleModel.highscoreData.dispatchEvent(new u.CastleHighscoreEvent(u.CastleHighscoreEvent.GET_HIGHSCORE_DATA_ERROR));
     }
     return false;
   };
-  return LLSWCommand;
-}(c.CastleCommand);
-exports.LLSWCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return HGHCommand;
+}(p.CastleCommand);
+exports.HGHCommand = h;
+var g = require("./9.js");
+var C = require("./38.js");
+a.classImplementsInterfaces(h, "IExecCommand");

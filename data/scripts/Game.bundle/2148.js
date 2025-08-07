@@ -2,49 +2,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function DefenderEffectVO(e) {
-    this._spaceID = 0;
-    this._areaType = 0;
-    this._defenderArea = e;
-    this._spaceID = e.mapID > 0 ? e.mapID : e.kingdomID;
-    this._areaType = o.int(e.areaType);
-    this._defenderFlankEffects = new Map();
+  function AttackerEffectVO() {
+    this._attackerFlankEffects = new Map();
   }
-  DefenderEffectVO.prototype.addDefenderFlankEffects = function (e, t) {
-    if (t != a.ClientConstCastle.FLANK_LEFT && t != a.ClientConstCastle.FLANK_MIDDLE && t != a.ClientConstCastle.FLANK_RIGHT && t != a.ClientConstCastle.FLANK_YARD) {
+  AttackerEffectVO.prototype.addAttackerFlankEffects = function (e, t) {
+    if (t != o.ClientConstCastle.FLANK_LEFT && t != o.ClientConstCastle.FLANK_MIDDLE && t != o.ClientConstCastle.FLANK_RIGHT) {
       throw new Error("INCORRECT FLANK CHOSEN");
     }
-    this._defenderFlankEffects.set(t, e);
+    this._attackerFlankEffects.set(t, e);
   };
-  DefenderEffectVO.prototype.getDefenderFlankEffects = function (e) {
-    if (e != a.ClientConstCastle.FLANK_LEFT && e != a.ClientConstCastle.FLANK_MIDDLE && e != a.ClientConstCastle.FLANK_RIGHT && e != a.ClientConstCastle.FLANK_YARD) {
+  AttackerEffectVO.prototype.getAttackerFlankEffects = function (e) {
+    if (e != o.ClientConstCastle.FLANK_LEFT && e != o.ClientConstCastle.FLANK_MIDDLE && e != o.ClientConstCastle.FLANK_RIGHT) {
       throw new Error("INCORRECT FLANK CHOSEN");
     }
-    return this._defenderFlankEffects.get(e);
+    return this._attackerFlankEffects.get(e);
   };
-  Object.defineProperty(DefenderEffectVO.prototype, "spaceID", {
-    get: function () {
-      return this._spaceID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DefenderEffectVO.prototype, "areaType", {
-    get: function () {
-      return this._areaType;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(DefenderEffectVO.prototype, "defenderArea", {
-    get: function () {
-      return this._defenderArea;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return DefenderEffectVO;
+  return AttackerEffectVO;
 }();
-exports.DefenderEffectVO = n;
-var o = require("./6.js");
-var a = require("./18.js");
+exports.AttackerEffectVO = n;
+var o = require("./18.js");

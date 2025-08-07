@@ -1,3 +1,5 @@
-module.exports = function isAxiosError(e) {
-  return typeof e == "object" && e.isAxiosError === true;
+module.exports = function spread(e) {
+  return function wrap(t) {
+    return e.apply(null, t);
+  };
 };

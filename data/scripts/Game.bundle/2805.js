@@ -1,75 +1,136 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./6.js");
-var r = require("./1197.js");
-var l = require("./4.js");
-var c = require("./8.js");
-var u = require("./98.js");
-var d = createjs.Point;
-var p = function (e) {
-  function RingMenuButtonBuildingDistrictAdd() {
-    return e !== null && e.apply(this, arguments) || this;
-  }
-  n.__extends(RingMenuButtonBuildingDistrictAdd, e);
-  RingMenuButtonBuildingDistrictAdd.prototype.init = function (t, i, n) {
-    e.prototype.init.call(this, t, i, n);
-    this._disp = i.btn_buildingDistrictAdd;
-    this._disp.visible = this.isVisible;
-    if (this._disp.visible) {
-      var o = this.isEnabled;
-      c.ButtonHelper.enableButton(this._disp, o);
-      this._disp.toolTipText = o ? null : "alert_districtFull";
+var n = createjs.Container;
+var o = createjs.Point;
+var a = function () {
+  function IsoScaffoldRenderer() {}
+  IsoScaffoldRenderer.prototype.init = function (e, t) {
+    this._target = e;
+    this._isoObjectVO = t;
+  };
+  IsoScaffoldRenderer.prototype.destroy = function () {
+    if (this.disp && this.disp.parent) {
+      this.disp.parent.removeChild(this.disp);
     }
-    this._disp.gotoAndStop(s.int(n.buildingVO.districtTypeID));
-    if (this.targetBuilding.buildingVO.storeable) {
-      this._disp.x = RingMenuButtonBuildingDistrictAdd.POS_STORABLE.x;
-      this._disp.y = RingMenuButtonBuildingDistrictAdd.POS_STORABLE.y;
+    this._disp = null;
+  };
+  IsoScaffoldRenderer.prototype.createDisp = function () {
+    if (this._disp) {
+      this._disp.removeChildren();
     } else {
-      this._disp.x = RingMenuButtonBuildingDistrictAdd.POS_DEFAULT.x;
-      this._disp.y = RingMenuButtonBuildingDistrictAdd.POS_DEFAULT.y;
+      this._target.addChild(this._disp = new n());
     }
   };
-  Object.defineProperty(RingMenuButtonBuildingDistrictAdd.prototype, "isEnabled", {
+  IsoScaffoldRenderer.prototype.addToDisp = function (e) {
+    this._disp.addChild(e);
+  };
+  IsoScaffoldRenderer.prototype.render = function () {
+    this.createDisp();
+    if (u.instanceOfClass(this.isoObjectVO, "ATowerVO") && !u.instanceOfClass(this.isoObjectVO, "FactionLookoutTowerVO")) {
+      this.renderByTower();
+    } else if (u.instanceOfClass(this.isoObjectVO, "BasicGateVO")) {
+      this.renderByGate();
+    } else if (u.instanceOfClass(this.isoObjectVO, "AEffectBuildingVO")) {
+      this.renderByInnerBuilding();
+    }
+  };
+  IsoScaffoldRenderer.prototype.renderByGate = function () {
+    var e = s.BasicModel.basicLoaderData.getVersionedItemAssetUrl(this.assetFileName);
+    var t = l.GoodgameBitmapEngine.clipFactory.getExternalClipSource("Scaffold_Gate", e);
+    var i = new r.GoodgameBitmapClipExternal(t, 0, false);
+    i.x = i.y = 0;
+    this.addToDisp(i);
+  };
+  IsoScaffoldRenderer.prototype.renderByTower = function () {
+    var e = s.BasicModel.basicLoaderData.getVersionedItemAssetUrl(this.assetFileName);
+    var t = l.GoodgameBitmapEngine.clipFactory.getExternalClipSource("Scaffold_Tower", e);
+    var i = new r.GoodgameBitmapClipExternal(t, 0, false);
+    i.x = i.y = 0;
+    this.addToDisp(i);
+  };
+  IsoScaffoldRenderer.prototype.renderByInnerBuilding = function () {
+    var e = new c.SimpleRandom(this.width * this.height);
+    var t = s.BasicModel.basicLoaderData.getVersionedItemAssetUrl(this.assetFileName);
+    for (var i = Math.floor((this.width - 3) / 2) - 1; i >= 0; i--) {
+      var n = this.width - 3 - (i + 1) * 2;
+      var a = this.height - 2;
+      var u = IsoScaffoldRenderer.gridPosToPixelPos(new o(n, a), 40);
+      var d = "Scaffold_Left_" + e.nextInt(2);
+      var p = l.GoodgameBitmapEngine.clipFactory.getExternalClipSource(d, t);
+      var h = new r.GoodgameBitmapClipExternal(p, 0, false);
+      h.x = u.x;
+      h.y = u.y;
+      this.addToDisp(h);
+    }
+    for (var g = Math.floor((this.height - 3) / 2) - 1; g >= 0; g--) {
+      var C = this.width - 2;
+      var _ = this.height - 3 - (g + 1) * 2;
+      var m = IsoScaffoldRenderer.gridPosToPixelPos(new o(C, _), 40);
+      var f = "Scaffold_Right_" + e.nextInt(2);
+      var O = l.GoodgameBitmapEngine.clipFactory.getExternalClipSource(f, t);
+      var E = new r.GoodgameBitmapClipExternal(O, 0, false);
+      E.x = m.x;
+      E.y = m.y;
+      this.addToDisp(E);
+    }
+    var y = IsoScaffoldRenderer.gridPosToPixelPos(new o(this.width - 3, this.height - 3), 40);
+    var b = l.GoodgameBitmapEngine.clipFactory.getExternalClipSource("Scaffold_Front", t);
+    var D = new r.GoodgameBitmapClipExternal(b, 0, false);
+    D.x = y.x;
+    D.y = y.y;
+    this.addToDisp(D);
+  };
+  Object.defineProperty(IsoScaffoldRenderer.prototype, "assetFileName", {
     get: function () {
-      var e = l.CastleModel.areaData.activeCommonInfo;
-      var t = s.int(this.targetBuilding.buildingVO.districtTypeID);
-      return !!e && !e.isDistrictFull(t);
+      return "Scaffold";
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(RingMenuButtonBuildingDistrictAdd.prototype, "isVisible", {
+  IsoScaffoldRenderer.gridPosToPixelPos = function (e, t) {
+    return new o((e.x - e.y) * t, (e.x + e.y) * t / 2);
+  };
+  Object.defineProperty(IsoScaffoldRenderer.prototype, "target", {
     get: function () {
-      var e = l.CastleModel.areaData.activeCommonInfo;
-      var t = s.int(this.targetBuilding.buildingVO.districtTypeID);
-      var i = h.Iso.data.objects.provider.getObjectById(e.getDistrictObjectId(t));
-      return t > 0 && !this.targetBuilding.buildingVO.isDistrict && !this.targetBuilding.buildingVO.isInBuildingDistrict && !!e && e.hasDistrictOfType(t) && !this.isBuildingInProgress() && !i.isDisassembling();
+      return this._target;
     },
     enumerable: true,
     configurable: true
   });
-  RingMenuButtonBuildingDistrictAdd.prototype.onClick = function (e, t) {
-    if (c.ButtonHelper.isButtonEnabled(this._disp)) {
-      var i = s.int(l.CastleModel.areaData.activeCommonInfo.getDistrictObjectId(this.targetBuilding.buildingVO.districtTypeID));
-      l.CastleModel.smartfoxClient.sendCommandVO(new r.C2SMoveToDistrictVO(this.targetBuilding.vo.objectId, i));
-      this.targetBuilding.elementContainer.parent.removeChild(this.targetBuilding.elementContainer);
-      this.parent.hide();
-    }
-  };
-  RingMenuButtonBuildingDistrictAdd.prototype.getInfoText = function () {
-    return a.Localize.text("ringmenu_addToDistrict");
-  };
-  RingMenuButtonBuildingDistrictAdd.__initialize_static_members = function () {
-    this.POS_DEFAULT = new d(58, -72);
-    this.POS_STORABLE = new d(93, 27);
-  };
-  return RingMenuButtonBuildingDistrictAdd;
-}(u.ARingMenuButton);
-exports.RingMenuButtonBuildingDistrictAdd = p;
-var h = require("./33.js");
-o.classImplementsInterfaces(p, "IRingMenuButton");
-p.__initialize_static_members();
+  Object.defineProperty(IsoScaffoldRenderer.prototype, "width", {
+    get: function () {
+      return this.isoObjectVO.width;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoScaffoldRenderer.prototype, "height", {
+    get: function () {
+      return this.isoObjectVO.height;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoScaffoldRenderer.prototype, "disp", {
+    get: function () {
+      return this._disp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoScaffoldRenderer.prototype, "isoObjectVO", {
+    get: function () {
+      return this._isoObjectVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return IsoScaffoldRenderer;
+}();
+exports.IsoScaffoldRenderer = a;
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./2.js");
+var c = require("./2.js");
+var u = require("./1.js");

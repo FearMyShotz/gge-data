@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function AMSCommand() {
+  function MPECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AMSCommand, e);
-  Object.defineProperty(AMSCommand.prototype, "cmdId", {
+  n.__extends(MPECommand, e);
+  Object.defineProperty(MPECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ARCHIVE_MESSAGE;
+      return s.ClientConstSF.S2C_MERCENARY_PACKAGE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,19 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  AMSCommand.prototype.executeCommand = function (e, t) {
+  MPECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.messageData.parseAMS(i);
+        r.CastleModel.mercenaryData.parse_MPE(i);
         break;
       default:
         this.showErrorDialog(e, t);
+        r.CastleModel.mercenaryData.waitingForServer = false;
     }
     return false;
   };
-  return AMSCommand;
+  return MPECommand;
 }(l.CastleCommand);
-exports.AMSCommand = c;
+exports.MPECommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

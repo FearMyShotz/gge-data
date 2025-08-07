@@ -3,15 +3,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleTempServerMultiplierDialogProperties(t, i) {
-    var n = e.call(this) || this;
-    n.minMultiplier = NaN;
-    n.maxMultiplier = NaN;
-    n.minMultiplier = t;
-    n.maxMultiplier = i;
-    return n;
+  function CastleSeasonEventTeaserDialogProperties(t) {
+    var i = this;
+    i.specialEventID = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).specialEventID = t;
+    return i;
   }
-  n.__extends(CastleTempServerMultiplierDialogProperties, e);
-  return CastleTempServerMultiplierDialogProperties;
+  n.__extends(CastleSeasonEventTeaserDialogProperties, e);
+  return CastleSeasonEventTeaserDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastleTempServerMultiplierDialogProperties = o;
+exports.CastleSeasonEventTeaserDialogProperties = o;

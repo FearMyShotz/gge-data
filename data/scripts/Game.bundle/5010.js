@@ -3,47 +3,36 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./5.js");
-var l = require("./6.js");
-var c = require("./7.js");
-var u = require("./1636.js");
-var d = require("./4.js");
-var p = require("./10.js");
-var h = function (e) {
-  function CQSCommand() {
+var a = require("./5.js");
+var s = require("./6.js");
+var r = require("./7.js");
+var l = require("./10.js");
+var c = function (e) {
+  function BCQCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CQSCommand, e);
-  Object.defineProperty(CQSCommand.prototype, "cmdId", {
+  n.__extends(BCQCommand, e);
+  Object.defineProperty(BCQCommand.prototype, "cmdId", {
     get: function () {
-      return c.ClientConstSF.S2C_CAMPAIGN_QUEST_STATUS;
+      return r.ClientConstSF.S2C_BUY_CAMPAIGN_QUEST;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CQSCommand.prototype.exec = function (e) {
-    var t = l.int(e[0]);
+  BCQCommand.prototype.exec = function (e) {
+    var t = s.int(e[0]);
     var i = e[1];
     switch (t) {
-      case s.ERROR.ALL_OK:
-        var n = JSON.parse(i[1]);
-        var a = o.castAs(d.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_TIMELIMITED_CAMPAIGN_EVENT), "TimeLimitedCampaignEventEventVO");
-        if (!a) {
-          return;
-        }
-        a.parseCQS(n);
-        this.controller.dispatchEvent(new u.TimeLimitedCampaignUpdateEvent(u.TimeLimitedCampaignUpdateEvent.CAMPAIGN_UPDATED));
+      case a.ERROR.ALL_OK:
         break;
       default:
         this.showErrorDialog(t, i);
     }
   };
-  return CQSCommand;
-}(p.CastleCommand);
-exports.CQSCommand = h;
-a.classImplementsInterfaces(h, "IExecCommand");
+  return BCQCommand;
+}(l.CastleCommand);
+exports.BCQCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

@@ -4,20 +4,20 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./116.js");
+var s = require("./114.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferSummerDialog() {
-    return e.call(this, CastlePaymentRewardSpecialOfferSummerDialog.NAME) || this;
+  function CastlePaymentRewardSpecialOfferSundayDialog() {
+    return e.call(this, CastlePaymentRewardSpecialOfferSundayDialog.NAME) || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferSummerDialog, e);
-  CastlePaymentRewardSpecialOfferSummerDialog.prototype.setTextIDs = function () {
+  n.__extends(CastlePaymentRewardSpecialOfferSundayDialog, e);
+  CastlePaymentRewardSpecialOfferSundayDialog.prototype.setTextIDs = function () {
     e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_summer_title";
-    this.descriptionTextID = "dialog_primeday_summer_description";
+    this.titleTextID = "dialog_primeday_sunday_title";
+    this.descriptionTextID = "dialog_primeday_sunday_description";
   };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferSummerDialog.prototype, "skinType", {
+  Object.defineProperty(CastlePaymentRewardSpecialOfferSundayDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_SUMMER;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_SUNDAY;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
@@ -25,8 +25,11 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferSummerDialog.NAME = "CastlePaymentRewardSpecialOfferSummer";
-  return CastlePaymentRewardSpecialOfferSummerDialog;
+  CastlePaymentRewardSpecialOfferSundayDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferSundayDialog.NAME = "CastlePaymentRewardSpecialOfferSunday";
+  };
+  return CastlePaymentRewardSpecialOfferSundayDialog;
 }(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferSummerDialog = r;
+exports.CastlePaymentRewardSpecialOfferSundayDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
+r.__initialize_static_members();

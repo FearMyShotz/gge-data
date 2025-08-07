@@ -8,13 +8,24 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GPPCommand() {
+  function LWMCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GPPCommand, e);
-  Object.defineProperty(GPPCommand.prototype, "cmdId", {
+  n.__extends(LWMCommand, e);
+  LWMCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.luckyWheelData.parseLWM(i);
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    return false;
+  };
+  Object.defineProperty(LWMCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_PACKAGE_PRICE;
+      return s.ClientConstSF.S2C_LUCKY_WHEEL_CHANGE_MODE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,20 +33,7 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GPPCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.eventPackageData.getPackagePrice(i);
-        break;
-      default:
-        this.layoutManager.hideDialog(u.CastleResourceMerchantEventBuyDialog);
-        this.showErrorDialog(e, t);
-    }
-    return false;
-  };
-  return GPPCommand;
+  return LWMCommand;
 }(l.CastleCommand);
-exports.GPPCommand = c;
-var u = require("./878.js");
+exports.LWMCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

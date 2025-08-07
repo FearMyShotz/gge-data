@@ -1,123 +1,101 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./2383.js");
-var u = require("./604.js");
-var d = require("./44.js");
-var p = require("./4.js");
-var h = require("./8.js");
-var g = function (e) {
-  function CastleAllianceDialogCommunication(t) {
-    var i = this;
-    i._currentCategory = CastleAllianceDialogCommunication.CAT_NONE;
-    i._isWaitingForServerMessage = false;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).init();
-    return i;
+var n = function () {
+  function CastleForumTopicVO() {
+    this._topicId = -1;
+    this._authorRank = -1;
+    this._answerCount = -1;
+    this._wasRead = false;
   }
-  n.__extends(CastleAllianceDialogCommunication, e);
-  CastleAllianceDialogCommunication.prototype.init = function () {
-    this._subLayers = new Map();
-    this._subLayers.set(CastleAllianceDialogCommunication.CAT_CHAT, new _.CastleCommunicationChat(this.subLayerDisp.cat_chat));
-    this._subLayers.set(CastleAllianceDialogCommunication.CAT_FORUM, new m.CastleCommunicationForum(this.subLayerDisp.cat_forum));
-    this._categoryButtonNames = new Map();
-    this._categoryButtonNames.set(CastleAllianceDialogCommunication.CAT_CHAT, "btn_cat_chat");
-    this._categoryButtonNames.set(CastleAllianceDialogCommunication.CAT_FORUM, "btn_cat_forum");
-    this.textFieldManager.registerTextField(this.subLayerDisp.btn_cat_chat.txt_text, new s.LocalizedTextVO("allianceChat")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.subLayerDisp.btn_cat_forum.txt_text, new s.LocalizedTextVO("dialog_alliance_communication_forum")).autoFitToBounds = true;
-    h.ButtonHelper.initBasicButton(this.subLayerDisp.btn_cat_chat, 1.02);
-    h.ButtonHelper.initBasicButton(this.subLayerDisp.btn_cat_forum, 1.02);
-    h.ButtonHelper.initBasicButtons([this.subLayerDisp.btn_cat_chat, this.subLayerDisp.btn_cat_forum]);
+  CastleForumTopicVO.prototype.parseGAT = function (e) {
+    this._topicId = s.int(e.TID);
+    this._topicName = a.TextValide.parseChatJSONMessage(e.N);
+    this._author = e.CN;
+    this._creationTimestamp = new Date(e.CT * 1000);
+    this._authorRank = s.int(e.CR);
+    this._visibleRankingGroups = e.RG;
+    this._answerCount = s.int(e.RC);
+    this._lastPosterName = e.LRN;
+    this._lastPostTimestamp = new Date(e.LRT * 1000);
+    this._wasRead = !!e.R;
   };
-  CastleAllianceDialogCommunication.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    p.CastleModel.castleForumData.addEventListener(u.CastleAllianceForumEvent.ON_UNREAD_TOPICS_COUNT_UPDATED, this.bindFunction(this.onTopicsCountUpdated));
-    this.subLayerDisp.btn_cat_chat.mc_messageCounter.visible = false;
-    this.subLayerDisp.btn_cat_forum.mc_messageCounter.visible = false;
-    this.changeCategory(CastleAllianceDialogCommunication.CAT_CHAT);
-    this.subLayerDisp.btn_cat_forum.visible = !d.SpecialServerHelper.isCrossplay();
+  CastleForumTopicVO.prototype.hasRightsToDeleteTopicOrAnswer = function () {
+    return o.CastleAllianceForumData.hasTopicRightsToDeleteOrAnswerOrChangeVisibility(this.author, this.visibleRankingGroups);
   };
-  CastleAllianceDialogCommunication.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    p.CastleModel.castleForumData.removeEventListener(u.CastleAllianceForumEvent.ON_UNREAD_TOPICS_COUNT_UPDATED, this.bindFunction(this.onTopicsCountUpdated));
-    if (this._currentCategory != CastleAllianceDialogCommunication.CAT_NONE) {
-      this._subLayers.get(this._currentCategory).hide();
-      this._currentCategory = CastleAllianceDialogCommunication.CAT_NONE;
-    }
-  };
-  CastleAllianceDialogCommunication.prototype.requestTopicCountData = function () {
-    this._isWaitingForServerMessage = true;
-    p.CastleModel.smartfoxClient.sendCommandVO(new c.C2SGetAllianceUnreadTopicsCount());
-  };
-  CastleAllianceDialogCommunication.prototype.onTopicsCountUpdated = function (e = null) {
-    this._isWaitingForServerMessage = false;
-    var t = l.int(p.CastleModel.castleForumData.unreadTopicsCount);
-    this.subLayerDisp.btn_cat_forum.mc_messageCounter.visible = this._currentCategory != CastleAllianceDialogCommunication.CAT_FORUM && t > 0;
-    this.textFieldManager.registerTextField(this.subLayerDisp.btn_cat_forum.mc_messageCounter.txt_value, new r.TextVO("" + t));
-  };
-  CastleAllianceDialogCommunication.prototype.changeCategory = function (e) {
-    if (this._currentCategory != e) {
-      if (this._currentCategory != CastleAllianceDialogCommunication.CAT_NONE) {
-        this._subLayers.get(this._currentCategory).hide();
-      }
-      this._subLayers.get(e).show(this._params);
-      this._currentCategory = e;
-      if (this._currentCategory != CastleAllianceDialogCommunication.CAT_FORUM) {
-        this.requestTopicCountData();
-      } else {
-        this.onTopicsCountUpdated();
-      }
-      this.updateCategoryButtons();
-    }
-  };
-  CastleAllianceDialogCommunication.prototype.updateCategoryButtons = function () {
-    if (this._categoryButtonNames != null) {
-      for (var e = 0, t = Array.from(this._categoryButtonNames.keys()); e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          var n = this._categoryButtonNames.get(i);
-          var o = i == this._currentCategory;
-          this.subLayerDisp[n].mc_background.gotoAndStop(o ? 1 : 2);
-        }
-      }
-    }
-  };
-  CastleAllianceDialogCommunication.prototype.onClick = function (e) {
-    if (h.ButtonHelper.isButtonEnabled(e.target)) {
-      switch (e.target) {
-        case this.subLayerDisp.btn_cat_chat:
-          this.changeCategory(CastleAllianceDialogCommunication.CAT_CHAT);
-          break;
-        case this.subLayerDisp.btn_cat_forum:
-          this.changeCategory(CastleAllianceDialogCommunication.CAT_FORUM);
-      }
-    }
-  };
-  CastleAllianceDialogCommunication.prototype.showHelp = function () {
-    switch (this._currentCategory) {
-      case CastleAllianceDialogCommunication.CAT_CHAT:
-        C.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("help_allianceChat"));
-        break;
-      case CastleAllianceDialogCommunication.CAT_FORUM:
-        this._subLayers.get(CastleAllianceDialogCommunication.CAT_FORUM).showHelp();
-    }
-  };
-  CastleAllianceDialogCommunication.__initialize_static_members = function () {
-    CastleAllianceDialogCommunication.CAT_CHAT = "cat_chat";
-    CastleAllianceDialogCommunication.CAT_FORUM = "cat_forum";
-    CastleAllianceDialogCommunication.CAT_NONE = "cat_none";
-  };
-  return CastleAllianceDialogCommunication;
-}(require("./34.js").CastleDialogSubLayer);
-exports.CastleAllianceDialogCommunication = g;
-var C = require("./9.js");
-var _ = require("./2384.js");
-var m = require("./605.js");
-o.classImplementsInterfaces(g, "ICollectableRendererList", "ISublayer");
-g.__initialize_static_members();
+  Object.defineProperty(CastleForumTopicVO.prototype, "author", {
+    get: function () {
+      return this._author;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumTopicVO.prototype, "topicName", {
+    get: function () {
+      return this._topicName;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumTopicVO.prototype, "creationTimestamp", {
+    get: function () {
+      return this._creationTimestamp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumTopicVO.prototype, "visibleRankingGroups", {
+    get: function () {
+      return this._visibleRankingGroups;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumTopicVO.prototype, "topicId", {
+    get: function () {
+      return this._topicId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumTopicVO.prototype, "answerCount", {
+    get: function () {
+      return this._answerCount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumTopicVO.prototype, "lastPosterName", {
+    get: function () {
+      return this._lastPosterName;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumTopicVO.prototype, "lastPostTimestamp", {
+    get: function () {
+      return this._lastPostTimestamp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumTopicVO.prototype, "wasRead", {
+    get: function () {
+      return this._wasRead;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumTopicVO.prototype, "authorRank", {
+    get: function () {
+      return this._authorRank;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleForumTopicVO;
+}();
+exports.CastleForumTopicVO = n;
+var o = require("./224.js");
+var a = require("./2.js");
+var s = require("./6.js");

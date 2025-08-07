@@ -4,126 +4,125 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
-var s = require("./6.js");
-var r = require("./4.js");
-var l = require("./47.js");
-var c = require("./59.js");
+var s = require("./3.js");
+var r = require("./102.js");
+var l = require("./4.js");
+var c = require("./8.js");
 var u = function (e) {
-  function CastleAllianceDialogTreasuryBooster(t) {
+  function CastleAllianceDialogTreasury(t) {
     var i = this;
-    i._items = [];
+    i._sublayers = new Map();
+    i._tabButtons = new Map();
+    i._currentTab = CastleAllianceDialogTreasury.TAB_STORAGE;
     CONSTRUCTOR_HACK;
-    return i = e.call(this, t) || this;
+    (i = e.call(this, t) || this).init();
+    return i;
   }
-  n.__extends(CastleAllianceDialogTreasuryBooster, e);
-  CastleAllianceDialogTreasuryBooster.prototype.init = function () {
-    e.prototype.init.call(this);
-    d.CastleComponent.textFieldManager.registerTextField(this.disp.txt_desc, new a.LocalizedTextVO("dialog_alliance_treasury_alliBoosters_info"));
-    this._scrollComponent = new p.SimpleScrollComponent(new l.SimpleScrollVO().initByParent(this.disp.mc_slider).addMouseWheelElements([this.disp]).addVisualElements([this.disp.mc_slider]), new c.DynamicSizeScrollStrategyVertical(true));
-  };
-  CastleAllianceDialogTreasuryBooster.prototype.onShow = function () {
-    e.prototype.onShow.call(this);
-    if (this._items != null) {
-      for (var t = 0, i = this._items; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.onShow();
-        }
+  n.__extends(CastleAllianceDialogTreasury, e);
+  CastleAllianceDialogTreasury.prototype.init = function () {
+    this._tabButtons = new Map();
+    this.initTabButton(CastleAllianceDialogTreasury.TAB_STORAGE, this.subLayerDisp.btn_tab_storage, "dialog_alliance_treasury_treasury_header");
+    this.initTabButton(CastleAllianceDialogTreasury.TAB_BOOSTER, this.subLayerDisp.btn_tab_booster, "dialog_alliance_treasury_alliBoosters_header");
+    this.initTabButton(CastleAllianceDialogTreasury.TAB_SUBSCRIPTIONS, this.subLayerDisp.btn_tab_subscriptions, "dialog_alliance_treasury_subscription_header");
+    c.ButtonHelper.enableButton(this.subLayerDisp.btn_tab_subscriptions, l.CastleModel.subscriptionData.isFeatureEnabled());
+    this._sublayers = new Map();
+    this._sublayers.set(CastleAllianceDialogTreasury.TAB_STORAGE, new h.CastleAllianceDialogTreasuryStorage(this.subLayerDisp.tab_storage));
+    this._sublayers.set(CastleAllianceDialogTreasury.TAB_BOOSTER, new p.CastleAllianceDialogTreasuryBooster(this.subLayerDisp.tab_booster));
+    this._sublayers.set(CastleAllianceDialogTreasury.TAB_SUBSCRIPTIONS, new g.CastleAllianceDialogTreasurySubscriptions(this.subLayerDisp.tab_subscriptions));
+    if (this._sublayers != null) {
+      for (var e = 0, t = Array.from(this._sublayers.values()); e < t.length; e++) {
+        t[e].onHide();
       }
     }
-    this._scrollComponent.show();
-    this._scrollComponent.scrollToPercent(0);
   };
-  CastleAllianceDialogTreasuryBooster.prototype.onHide = function () {
-    if (this._items != null) {
-      for (var t = 0, i = this._items; t < i.length; t++) {
+  CastleAllianceDialogTreasury.prototype.initTabButton = function (e, t, i) {
+    c.ButtonHelper.initBasicButton(t, 1.015);
+    this.textFieldManager.registerTextField(t.mc_selected.txt_text, new s.LocalizedTextVO(i)).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(t.mc_default.txt_text, new s.LocalizedTextVO(i)).autoFitToBounds = true;
+    this._tabButtons.set(e, t);
+  };
+  CastleAllianceDialogTreasury.prototype.show = function (t) {
+    e.prototype.show.call(this, t);
+    l.CastleModel.allianceData.addEventListener(r.CastleAllianceDataEvent.MY_ALLIANCEDATA_UPDATED, this.bindFunction(this.onAllianceDataUpdate));
+    if (!this.getSublayer(this._currentTab).isShown) {
+      this.getSublayer(this._currentTab).onShow();
+    }
+    this.updateTabButtons();
+  };
+  CastleAllianceDialogTreasury.prototype.hide = function () {
+    this.getSublayer(this._currentTab).onHide();
+    l.CastleModel.allianceData.removeEventListener(r.CastleAllianceDataEvent.MY_ALLIANCEDATA_UPDATED, this.bindFunction(this.onAllianceDataUpdate));
+    e.prototype.hide.call(this);
+  };
+  CastleAllianceDialogTreasury.prototype.showHelp = function () {
+    d.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("help_allianceTreasury"));
+  };
+  CastleAllianceDialogTreasury.prototype.selectButton = function (e, t) {
+    e.mc_selected.visible = t;
+    e.mc_default.visible = !t;
+  };
+  CastleAllianceDialogTreasury.prototype.changeTab = function (e) {
+    this._currentTab = e;
+    if (this._sublayers != null) {
+      for (var t = 0, i = Array.from(this._sublayers.values()); t < i.length; t++) {
         var n = i[t];
-        if (n !== undefined) {
+        if (n !== undefined && n.isShown) {
           n.onHide();
         }
       }
     }
-    this._scrollComponent.hide();
-    e.prototype.onHide.call(this);
+    this.getSublayer(this._currentTab).onShow();
+    this.updateTabButtons();
   };
-  CastleAllianceDialogTreasuryBooster.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
-  };
-  CastleAllianceDialogTreasuryBooster.prototype.removeEventListener = function () {
-    this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
-    e.prototype.removeEventListener.call(this);
-  };
-  CastleAllianceDialogTreasuryBooster.prototype.update = function () {
-    e.prototype.update.call(this);
-    if (this._items != null) {
-      for (var t = 0, i = this._items; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.destroy();
-        }
+  CastleAllianceDialogTreasury.prototype.updateTabButtons = function () {
+    if (this._tabButtons != null) {
+      for (var e = 0, t = Array.from(this._tabButtons.values()); e < t.length; e++) {
+        var i = t[e];
+        this.selectButton(i, false);
       }
     }
-    this._items = [];
-    var o = this.getItemMc();
-    o.removeChildren();
-    var a = this.getBuffSeriesIds();
-    if (a != null) {
-      for (var l = 0, c = a; l < c.length; l++) {
-        var u = c[l];
-        if (u !== undefined) {
-          var d = r.CastleModel.allianceBuffData.getAllianceBuffVoBySeriesIDAndLevel(u, r.CastleModel.allianceData.myAllianceVO.getBoostLevel(u));
-          n = new (this.getItemClassBySeriesId(u, r.CastleModel.allianceBuffData.getMaxBuffVOByID(d.seriesID).boni.length))(o, d);
-          if (this.isShown) {
-            n.onShow();
+    this.selectButton(this._tabButtons.get(this._currentTab), true);
+  };
+  CastleAllianceDialogTreasury.prototype.getSublayer = function (e) {
+    return this._sublayers.get(e);
+  };
+  CastleAllianceDialogTreasury.prototype.onClick = function (t) {
+    if (c.ButtonHelper.isButtonEnabled(t.target) && (e.prototype.onClick.call(this, t), this._tabButtons != null)) {
+      for (var i = 0, n = Array.from(this._tabButtons.keys()); i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          var a = this._tabButtons.get(o);
+          if (t.target == a) {
+            this.changeTab(o);
+            break;
           }
-          n.update();
-          this._items.push(n);
         }
       }
     }
-    var p = 0;
-    for (var h = 0, g = this._items; h < g.length; h++) {
-      (n = g[h]).disp.y = p;
-      p += n.disp.height;
-    }
-    var C = s.int(Math.max(0, o.height - CastleAllianceDialogTreasuryBooster.ITEM_MASK_HEIGHT));
-    var _ = this._scrollComponent.currentValue;
-    this._scrollComponent.init(0, C, CastleAllianceDialogTreasuryBooster.ITEM_SCROLL_DELTA, CastleAllianceDialogTreasuryBooster.ITEM_SCROLL_DELTA);
-    this._scrollComponent.setVisibility(C > 0);
-    this._scrollComponent.scrollToValue(_);
   };
-  CastleAllianceDialogTreasuryBooster.prototype.updateScrollPosition = function () {
-    this.getItemMc().y = -this._scrollComponent.currentValue;
-  };
-  CastleAllianceDialogTreasuryBooster.prototype.getItemMc = function () {
-    return this.disp.mc_items.mc_transform;
-  };
-  CastleAllianceDialogTreasuryBooster.prototype.getBuffSeriesIds = function () {
-    return r.CastleModel.allianceBuffData.getSeriesIDsOfPurchasableBuffs();
-  };
-  CastleAllianceDialogTreasuryBooster.prototype.getItemClassBySeriesId = function (e, t) {
-    if (r.CastleModel.allianceData.myAllianceVO.isBoosterTemporary(e)) {
-      if (t <= 1) {
-        return g.CastleAllianceDialogTreasuryBoosterItemTemp;
-      } else {
-        return C.CastleAllianceDialogTreasuryBoosterItemTemp_TwoEffects;
+  CastleAllianceDialogTreasury.prototype.onAllianceDataUpdate = function (e) {
+    if (l.CastleModel.userData.isInAlliance) {
+      var t = this.getSublayer(this._currentTab);
+      if (t) {
+        t.update();
       }
-    } else {
-      return h.CastleAllianceDialogTreasuryBoosterItem_OneEffect;
     }
   };
-  CastleAllianceDialogTreasuryBooster.prototype.onScroll = function () {
-    this.updateScrollPosition();
-  };
-  CastleAllianceDialogTreasuryBooster.ITEM_MASK_HEIGHT = 280;
-  CastleAllianceDialogTreasuryBooster.ITEM_SCROLL_DELTA = 80;
-  return CastleAllianceDialogTreasuryBooster;
-}(require("./953.js").ACastleAllianceDialogTreasurySublayer);
-exports.CastleAllianceDialogTreasuryBooster = u;
-var d = require("./14.js");
-var p = require("./95.js");
-var h = require("./1386.js");
-var g = require("./1387.js");
-var C = require("./2497.js");
-o.classImplementsInterfaces(u, "ICollectableRendererList");
+  Object.defineProperty(CastleAllianceDialogTreasury.prototype, "allianceInfoVO", {
+    get: function () {
+      return this._params[0];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleAllianceDialogTreasury.TAB_STORAGE = "tab_storage";
+  CastleAllianceDialogTreasury.TAB_BOOSTER = "tab_booster";
+  CastleAllianceDialogTreasury.TAB_SUBSCRIPTIONS = "tab_subscriptions";
+  return CastleAllianceDialogTreasury;
+}(require("./35.js").CastleDialogSubLayer);
+exports.CastleAllianceDialogTreasury = u;
+var d = require("./9.js");
+var p = require("./2494.js");
+var h = require("./2499.js");
+var g = require("./2502.js");
+o.classImplementsInterfaces(u, "ICollectableRendererList", "ISublayer");

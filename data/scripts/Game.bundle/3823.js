@@ -3,19 +3,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SMarkBuildingInStorageVO(t) {
-    var i = this;
-    i.SID = -1;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).SID = t;
-    return i;
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./4.js");
+var l = function (e) {
+  function SetAddPipesAtEndOfTextCommand(t = false) {
+    return e.call(this, t) || this;
   }
-  n.__extends(C2SMarkBuildingInStorageVO, e);
-  C2SMarkBuildingInStorageVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_MARK_BUILDING_IN_STORAGE;
+  n.__extends(SetAddPipesAtEndOfTextCommand, e);
+  SetAddPipesAtEndOfTextCommand.prototype.execute = function (t = null) {
+    e.prototype.execute.call(this, t);
+    var i = r.CastleModel.localData.readAddPipesOnEndOfText();
+    r.CastleModel.languageData.addPipeToEndOfString = i;
+    s.Localization.usePipe = i;
   };
-  return C2SMarkBuildingInStorageVO;
-}(o.BasicCommandVO);
-exports.C2SMarkBuildingInStorageVO = s;
+  return SetAddPipesAtEndOfTextCommand;
+}(o.SimpleCommand);
+exports.SetAddPipesAtEndOfTextCommand = l;
+a.classImplementsInterfaces(l, "ISimpleCommand");

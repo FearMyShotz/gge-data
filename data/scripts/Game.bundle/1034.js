@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./262.js");
 var s = function (e) {
-  function QuarryBuildingVE() {
+  function FarmBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(QuarryBuildingVE, e);
-  Object.defineProperty(QuarryBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(FarmBuildingVE, e);
+  Object.defineProperty(FarmBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Stone;
+      return Library.CastleInterfaceElements_Icons.Icon_Food;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.AResourceProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return QuarryBuildingVE;
+  return FarmBuildingVE;
 }(a.AResourceProductionBuildingVE);
-exports.QuarryBuildingVE = s;
+exports.FarmBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

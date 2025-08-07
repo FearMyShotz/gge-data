@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./6.js");
-var a = require("./480.js");
+var a = require("./481.js");
 var s = createjs.Point;
 var r = function (e) {
   function BasicMapobjectVO() {

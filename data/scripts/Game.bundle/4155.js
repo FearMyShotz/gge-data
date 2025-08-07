@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./4.js");
-var r = require("./754.js");
+var r = require("./756.js");
 var l = function (e) {
   function SeaQueenVillageSeasonMapScreenItem(t, i) {
     return e.call(this, t, i) || this;
@@ -37,6 +37,6 @@ var l = function (e) {
 exports.SeaQueenVillageSeasonMapScreenItem = l;
 var c = require("./387.js");
 var u = require("./9.js");
-var d = require("./755.js");
-var p = require("./603.js");
+var d = require("./757.js");
+var p = require("./604.js");
 o.classImplementsInterfaces(l, "ITreasureMapItem", "IIngameUICapable", "IWorldmapTooltipData");

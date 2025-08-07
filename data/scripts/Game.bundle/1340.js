@@ -10,7 +10,7 @@ var l = require("./5.js");
 var c = require("./3.js");
 var u = require("./6.js");
 var d = require("./4.js");
-var p = require("./939.js");
+var p = require("./940.js");
 var h = function (e) {
   function ButtonGiftComponent(t) {
     var i = this;
@@ -73,5 +73,5 @@ var h = function (e) {
 }(require("./150.js").ButtonBasicComponent);
 exports.ButtonGiftComponent = h;
 var g = require("./9.js");
-var C = require("./940.js");
+var C = require("./941.js");
 o.classImplementsInterfaces(h, "IWorldMapObjectRingmenuButtonComponent");

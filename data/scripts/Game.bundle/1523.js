@@ -10,7 +10,7 @@ var l = require("./192.js");
 var c = require("./4.js");
 var u = require("./8.js");
 var d = require("./11.js");
-var p = require("./2790.js");
+var p = require("./2791.js");
 var h = function (e) {
   function CastleResourceVillageOverviewDialog() {
     return e.call(this, CastleResourceVillageOverviewDialog.NAME) || this;
@@ -108,8 +108,8 @@ var h = function (e) {
 }(d.CastleExternalDialog);
 exports.CastleResourceVillageOverviewDialog = h;
 var g = require("./314.js");
-var C = require("./2791.js");
-var _ = require("./2797.js");
+var C = require("./2792.js");
+var _ = require("./2798.js");
 var m = require("./1526.js");
 var f = require("./1527.js");
 o.classImplementsInterfaces(h, "ICollectableRendererList");

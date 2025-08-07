@@ -4,29 +4,27 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./116.js");
+var s = require("./228.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferWorldCupDialog() {
-    return e.call(this, CastlePaymentRewardSpecialOfferWorldCupDialog.NAME) || this;
+  function CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog() {
+    return e.call(this, "CastlePaymentRewardSpecialOfferAlien") || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferWorldCupDialog, e);
-  CastlePaymentRewardSpecialOfferWorldCupDialog.prototype.setTextIDs = function () {
-    e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_worldcup_title";
-    this.descriptionTextID = "dialog_primeday_worldcup_description";
-  };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferWorldCupDialog.prototype, "skinType", {
+  n.__extends(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog, e);
+  Object.defineProperty(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_WORLD_CUP;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_ALIEN;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayDialog.prototype, "skinType").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferWorldCupDialog.NAME = "CastlePaymentRewardSpecialOfferWorldCup";
-  return CastlePaymentRewardSpecialOfferWorldCupDialog;
-}(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferWorldCupDialog = r;
+  CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog.NAME = "CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlien";
+  };
+  return CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog;
+}(s.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayDialog);
+exports.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
+r.__initialize_static_members();

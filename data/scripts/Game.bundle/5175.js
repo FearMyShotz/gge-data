@@ -3,37 +3,46 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function ATLCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var a = require("./1.js");
+var s = function (e) {
+  function CastleAdvancedTroopSupportDialogHelper(t) {
+    var i = e.call(this) || this;
+    i._fightDialog = t;
+    i._troopSupportDialog = i._fightDialog.dialogDisp;
+    i._displayType = r.CastleAdvancedTroopSelectionComponent.TYPE_STATION;
+    return i;
   }
-  n.__extends(ATLCommand, e);
-  Object.defineProperty(ATLCommand.prototype, "cmdId", {
-    get: function () {
-      return s.ClientConstSF.S2C_GET_AB_TEST_LIST;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ATLCommand.prototype.executeCommand = function (e, t) {
+  n.__extends(CastleAdvancedTroopSupportDialogHelper, e);
+  CastleAdvancedTroopSupportDialogHelper.prototype.handleTarget = function (e) {
+    var t = this._fightDialog;
     switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.userData.splitRunData.parse_ATL(i);
+      case this._troopSupportDialog.mc_supportItemHolder.toolContainer:
+      case this._troopSupportDialog.mc_supportItemHolder.mc_tools:
+        this._advancedFightScreenConnector = new l.CastleAdvancedFightScreenConnectorHandler(t.supportDefenceVO.supportTools, [this._troopSupportDialog.toolsConnector], l.CastleAdvancedFightScreenConnectorHandler.TOOLFRONT, this._displayType);
+        this.display();
+        break;
+      case this._troopSupportDialog.mc_supportItemHolder.unitContainer:
+      case this._troopSupportDialog.mc_supportItemHolder.mc_units:
+        this._advancedFightScreenConnector = new l.CastleAdvancedFightScreenConnectorHandler(t.supportDefenceVO.supportUnits, [this._troopSupportDialog.unitConnector, this._troopSupportDialog.unitSideConnectors], l.CastleAdvancedFightScreenConnectorHandler.UNITFRONT, this._displayType);
+        this.display();
         break;
       default:
-        this.showErrorDialog(e, t);
+        this.handleDefault(e);
     }
-    return false;
   };
-  return ATLCommand;
-}(l.CastleCommand);
-exports.ATLCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  CastleAdvancedTroopSupportDialogHelper.prototype.handleDialogSlotContainer = function (e) {
+    var t = this._fightDialog;
+    var i = o.castAs(e.itemContainer, "CastleFightItemContainer");
+    var n = e.itemVO;
+    if (t.supportDefenceVO.supportTools == i) {
+      this._advancedFightScreenConnector = new l.CastleAdvancedFightScreenConnectorHandler(i, [this._troopSupportDialog.toolsConnector], l.CastleAdvancedFightScreenConnectorHandler.TOOLFRONT, this._displayType, n);
+    } else if (t.supportDefenceVO.supportUnits == i) {
+      this._advancedFightScreenConnector = new l.CastleAdvancedFightScreenConnectorHandler(i, [this._troopSupportDialog.unitConnector, this._troopSupportDialog.unitSideConnectors], l.CastleAdvancedFightScreenConnectorHandler.UNITFRONT, this._displayType, n);
+    }
+  };
+  return CastleAdvancedTroopSupportDialogHelper;
+}(require("./960.js").CastleBasicAdvancedFightScreenDialogHelper);
+exports.CastleAdvancedTroopSupportDialogHelper = s;
+var r = require("./348.js");
+var l = require("./961.js");
+a.classImplementsInterfaces(s, "IAdvancedFightscreenHandler");

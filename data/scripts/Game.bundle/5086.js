@@ -3,24 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./7.js");
-var s = require("./1156.js");
-var r = function (e) {
-  function FNTCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var a = require("./3.js");
+var s = function (e) {
+  function CastleFactionChooseFactionRedDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleFactionChooseFactionRedDialog.NAME) || this;
   }
-  n.__extends(FNTCommand, e);
-  Object.defineProperty(FNTCommand.prototype, "cmdId", {
-    get: function () {
-      return a.ClientConstSF.S2C_FIND_NEXT_TOWER;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.FNMCommand.prototype, "cmdId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return FNTCommand;
-}(s.FNMCommand);
-exports.FNTCommand = r;
-o.classImplementsInterfaces(r, "IExecCommand");
+  n.__extends(CastleFactionChooseFactionRedDialog, e);
+  CastleFactionChooseFactionRedDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_joinFactionRed_header")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_joinFactionRed_copy"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copyFat, new a.LocalizedTextVO("dialog_choose_faction_copy_red2"));
+  };
+  CastleFactionChooseFactionRedDialog.__initialize_static_members = function () {
+    CastleFactionChooseFactionRedDialog.NAME = "CastleFactionChooseFactionRed";
+  };
+  return CastleFactionChooseFactionRedDialog;
+}(require("./1939.js").ACastleFactionChooseFactionDialog);
+exports.CastleFactionChooseFactionRedDialog = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");
+s.__initialize_static_members();

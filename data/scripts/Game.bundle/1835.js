@@ -6,179 +6,87 @@ var o = require("./2.js");
 var a = require("./2.js");
 var s = require("./1.js");
 var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./5.js");
-var u = require("./3.js");
-var d = require("./3.js");
-var p = require("./3.js");
-var h = require("./3984.js");
-var g = require("./264.js");
-var C = require("./1836.js");
-var _ = require("./37.js");
-var m = require("./139.js");
-var f = require("./207.js");
-var O = require("./13.js");
-var E = require("./29.js");
-var y = require("./4.js");
-var b = require("./9.js");
-var D = require("./20.js");
-var I = require("./76.js");
-var T = require("./78.js");
-var v = require("./77.js");
-var S = require("./8.js");
-var A = require("./11.js");
-var L = require("./601.js");
-var P = require("./602.js");
-var M = require("./1837.js");
-var R = require("./3985.js");
-var V = require("./3986.js");
-var x = function (e) {
-  function AdvisorAttackOverviewDialog() {
-    return e.call(this, AdvisorAttackOverviewDialog.NAME) || this;
+var l = require("./3.js");
+var c = require("./6.js");
+var u = require("./16.js");
+var d = require("./39.js");
+var p = require("./1293.js");
+var h = require("./4.js");
+var g = require("./513.js");
+var C = function (e) {
+  function CastleRenameCastleDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, CastleRenameCastleDialog.NAME) || this;
   }
-  n.__extends(AdvisorAttackOverviewDialog, e);
-  AdvisorAttackOverviewDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    S.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help, this.dialogDisp.btn_cancelAll, this.dialogDisp.mc_idle.btn_selectOnMap], D.ClickFeedbackButtonHover);
-    a.GoodgameTextFieldManager.getInstance().registerTextField(this.dialogDisp.txt_title, new u.TextVO(O.TextHelper.toUpperCaseLocaSafeTextId("title_advisor_AttackOverview")));
-    a.GoodgameTextFieldManager.getInstance().registerTextField(this.dialogDisp.mc_idle.txt_title, new u.TextVO(O.TextHelper.toUpperCaseLocaSafeTextId("attack_setUp")));
-    a.GoodgameTextFieldManager.getInstance().registerTextField(this.dialogDisp.btn_cancelAll.txt_label, new u.TextVO(O.TextHelper.toUpperCaseLocaSafeTextId("button_advisorCancelAll")));
-    a.GoodgameTextFieldManager.getInstance().registerTextField(this.dialogDisp.mc_speechBubble.txt_copy, new p.LocalizedTextVO("advisor_speechBubble_nomad")).autoFitToBounds = true;
-    this.attackSummaryComponent = new M.AdvisorAttackOverviewComponent(this.dialogDisp.mc_summary, false);
-    var i = new I.InfiniteScrollListClips(this.dialogDisp.mc_active).addMaskMc(this.dialogDisp.mc_active.mc_items.mask);
-    var n = new v.InfiniteScrollListOptions(R.AdvisorAttackOverviewScrollItem, "NomadAdvisorOverviewAttackItem", AdvisorAttackOverviewDialog.NAME);
-    this.scrollComponent = new T.InfiniteScrollListComponent(i, n);
-    this.dialogDisp.mc_char.mouseChildren = false;
-  };
-  AdvisorAttackOverviewDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    a.GoodgameTextFieldManager.getInstance().registerTextField(this.dialogDisp.mc_idle.btn_selectOnMap.txt_label, new u.TextVO(O.TextHelper.toUpperCaseLocaSafeTextId("button_SelectCamp_" + f.AdvisorAttackHelper.getTextIDSuffix(this.advisorType))));
-    this.controller.addEventListener(C.AdvisorAttackOverviewEvent.ADVISOR_ATTACK_OVERVIEW_UPDATE, this.bindFunction(this.onAdvisorOverviewReceived));
-    this.controller.addEventListener(m.CastleArmyDataEvent.MOVEMENTS_CHANGED, this.bindFunction(this.onMovementsUpdated));
-    this.onMovementsUpdated();
-    this.dialogDisp.mc_speechBubble.visible = false;
-    this.dialogDisp.mc_char.mc_selected.visible = false;
-  };
-  AdvisorAttackOverviewDialog.prototype.hideLoaded = function (t = null) {
-    e.prototype.hideLoaded.call(this, t);
-    this.controller.removeEventListener(C.AdvisorAttackOverviewEvent.ADVISOR_ATTACK_OVERVIEW_UPDATE, this.bindFunction(this.onAdvisorOverviewReceived));
-    this.controller.removeEventListener(m.CastleArmyDataEvent.MOVEMENTS_CHANGED, this.bindFunction(this.onMovementsUpdated));
-    this.controller.removeEventListener(_.CastleServerMessageArrivedEvent.GAA_ARRIVED, this.bindFunction(this.onGAAarrived));
-    if (this.scrollComponent) {
-      this.scrollComponent.onHide();
-    }
-    if (this.attackSummaryComponent) {
-      this.attackSummaryComponent.onHide();
-    }
-  };
-  AdvisorAttackOverviewDialog.prototype.onAdvisorOverviewReceived = function (e) {
-    this.attackSummaryComponent.update(e.advisorAttackOverviewVO);
-  };
-  AdvisorAttackOverviewDialog.prototype.onMovementsUpdated = function (e = null) {
-    var t = this.getAdvisorMovements();
-    if (t.length == 0) {
-      this.dialogDisp.mc_active.visible = false;
-      this.dialogDisp.mc_idle.visible = true;
-      this.dialogDisp.btn_cancelAll.visible = false;
-      this.scrollComponent.onHide();
+  n.__extends(CastleRenameCastleDialog, e);
+  CastleRenameCastleDialog.prototype.showLoaded = function (t = null) {
+    this.initStaticText(this.dialogDisp.txt_title, "dialog_renameCastle_title");
+    this.initStaticText(this.dialogDisp.txt_copy, "dialog_renameCastle_description");
+    this.initStaticText(this.dialogDisp.txt_insertTitle, "dialog_nameCastle_title");
+    this.initStaticText(this.dialogDisp.mc_costs.txt_title, "costs");
+    this.i_costs_txt_value ||= this.textFieldManager.registerTextField(this.dialogDisp.mc_costs.txt_value, new l.LocalizedNumberVO(0));
+    var i = c.int(h.CastleModel.boostData.premiumAccountVO.isActive ? 0 : h.CastleModel.costsData.getFinalCostsC2(r.PlayerConst.CHANGE_CASTLE_NAME_C2));
+    this.layoutManager.revertFullscreen();
+    this.dialogDisp.mc_costs.toolTipText = d.ClientConstTextIds.C2;
+    this.i_costs_txt_value.textContentVO.numberValue = i;
+    if (h.CastleModel.currencyData.c2Amount < i) {
+      this.i_costs_txt_value.color = u.ClientConstColor.FONT_INSUFFICIENT_COLOR;
     } else {
-      this.dialogDisp.mc_active.visible = true;
-      this.dialogDisp.mc_idle.visible = false;
-      this.dialogDisp.btn_cancelAll.visible = this.getCancellableAdvisorMovements().length > 0;
-      this.scrollComponent.onShow();
-      var i = t.map(function (e) {
-        return new V.AdvisorAttackOverviewScrollItemVO(e);
-      });
-      this.scrollComponent.updateWithNewData(i, !!e);
+      this.i_costs_txt_value.color = u.ClientConstColor.FONT_DEFAULT_COLOR;
     }
-    y.CastleModel.smartfoxClient.sendCommandVO(new h.C2SAdvisorAttackOverviewVO());
+    e.prototype.showLoaded.call(this, t);
   };
-  AdvisorAttackOverviewDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    if (S.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.dialogDisp.btn_close:
-          this.hide();
-          break;
-        case this.dialogDisp.btn_help:
-          A.CastleExternalDialog.dialogHandler.showHelper("", d.Localize.text("description_advisorInformation_" + f.AdvisorAttackHelper.getTextIDSuffix(this.advisorType)));
-          break;
-        case this.dialogDisp.btn_cancelAll:
-          this.cancelAll();
-          break;
-        case this.dialogDisp.mc_idle.btn_selectOnMap:
-          this.selectOnMap();
-      }
-    }
-  };
-  AdvisorAttackOverviewDialog.prototype.cancelAll = function () {
-    b.CastleDialogHandler.getInstance().registerDefaultDialogs(L.AdvisorAttackOverviewCancelDialog, new P.AdvisorAttackOverviewCancelDialogProperties(this.getCancellableAdvisorMovements()));
-  };
-  AdvisorAttackOverviewDialog.prototype.selectOnMap = function () {
-    var e = y.CastleModel.userData.castleList.getMainCastleByKingdomID(c.WorldClassic.KINGDOM_ID);
-    o.CommandController.instance.executeCommand(E.IngameClientCommands.SWITCH_KINGDOM_GOTO_WORLDMAP_AND_CENTER_POS_COMMAND, [e.kingdomID, e.absAreaPosX, e.absAreaPosY]);
-    this.controller.addEventListener(_.CastleServerMessageArrivedEvent.GAA_ARRIVED, this.bindFunction(this.onGAAarrived));
-  };
-  AdvisorAttackOverviewDialog.prototype.onGAAarrived = function (e) {
-    this.controller.removeEventListener(_.CastleServerMessageArrivedEvent.GAA_ARRIVED, this.bindFunction(this.onGAAarrived));
-    y.CastleModel.smartfoxClient.sendCommandVO(new g.C2SFindNextMapObjectVO(l.WorldConst.AREA_TYPE_NOMAD_CAMP, c.WorldClassic.KINGDOM_ID, -1, -1, r.DungeonConst.BASIC_NOMAD_CAMP_PLAYER_ID));
-  };
-  AdvisorAttackOverviewDialog.prototype.getAdvisorMovements = function () {
-    return y.CastleModel.armyData.getAdvisorMovements(this.advisorType);
-  };
-  AdvisorAttackOverviewDialog.prototype.getCancellableAdvisorMovements = function () {
-    return this.getAdvisorMovements().filter(function (e) {
-      return !e.advisorIsLastAttack;
-    });
-  };
-  AdvisorAttackOverviewDialog.prototype.onMouseOver = function (t) {
-    e.prototype.onMouseOver.call(this, t);
-    if (t.target == this.dialogDisp.mc_char) {
-      this.dialogDisp.mc_speechBubble.visible = !this.dialogDisp.mc_speechBubble.visible;
-      this.dialogDisp.mc_char.mc_selected.visible = this.dialogDisp.mc_speechBubble.visible;
-    }
-  };
-  AdvisorAttackOverviewDialog.prototype.onMouseOut = function (t) {
-    e.prototype.onMouseOut.call(this, t);
-    if (t.target == this.dialogDisp.mc_char) {
-      this.dialogDisp.mc_speechBubble.visible = false;
-      this.dialogDisp.mc_char.mc_selected.visible = false;
-    }
-  };
-  AdvisorAttackOverviewDialog.prototype.updatePosition = function () {
-    if (this.disp && this.disp.stage) {
-      var e = 1;
-      if (this.disp.stage.stageHeight < e * 600) {
-        e = this.disp.stage.stageHeight / 600;
-      }
-      e = Math.min(e, 1);
-      this.disp.x = this.disp.stage.stageWidth * 0.5;
-      this.disp.y = this.disp.stage.stageHeight * 0.5;
-      this.disp.scaleX = this.disp.scaleY = e;
-      this.disp.x = this.disp.x | 0;
-      this.disp.y = this.disp.y | 0;
-      this.dialogDisp.mc_speechBubble.x = Math.max(-570, -this.disp.stage.stageWidth / 2 + 160);
-      this.dialogDisp.mc_char.x = Math.max(-570, -this.disp.stage.stageWidth / 2 + 157);
-      this.dialogDisp.mc_char.visible = this.disp.stage.stageWidth >= 1350;
-      this.dialogDisp.mc_char.mc_selected.visible &= this.dialogDisp.mc_speechBubble.visible &= this.dialogDisp.mc_char.visible;
-    }
-  };
-  Object.defineProperty(AdvisorAttackOverviewDialog.prototype, "advisorType", {
+  Object.defineProperty(CastleRenameCastleDialog.prototype, "defaultName", {
     get: function () {
-      return this.dialogProperties.advisorType;
+      return this.nameDialogProperties.prefillName;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.BasicRenameDialog.prototype, "defaultName").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AdvisorAttackOverviewDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastleRenameCastleDialog.prototype, "textMaxChars", {
+    get: function () {
+      return r.PlayerConst.CASTLE_NAME_MAX_LENGTH;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(g.BasicRenameDialog.prototype, "textMaxChars").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleRenameCastleDialog.prototype.validate = function () {
+    if (e.prototype.validate.call(this)) {
+      if (this.itxt_insert.text.length < o.BasicModel.basicLocalization.getUsernameMinLength) {
+        this.alert("generic_alert_watchout", "alert_castlenameTooShort");
+      } else if (a.TextValide.isSmartFoxValide(this.itxt_insert.text) && a.TextValide.isUsernameValide(this.itxt_insert.text)) {
+        if (this.itxt_insert.text != this.nameDialogProperties.worldmapObjectVO.areaNameString) {
+          return true;
+        }
+        this.alert("generic_alert_watchout", "dialog_renameCastle_sameName");
+      } else {
+        this.alert("generic_alert_watchout", "errorCode_28");
+      }
+    }
+    return false;
+  };
+  CastleRenameCastleDialog.prototype.sendCommand = function () {
+    h.CastleModel.smartfoxClient.sendCommandVO(new p.C2SRenameCastleVO(this.nameDialogProperties.worldmapObjectVO.objectId, this.nameDialogProperties.worldmapObjectVO.kingdomID, this.itxt_insert.text, 1, this.nameDialogProperties.worldmapObjectVO.areaType));
+    this.hide();
+  };
+  Object.defineProperty(CastleRenameCastleDialog.prototype, "nameDialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  AdvisorAttackOverviewDialog.NAME = "NomadAdvisorOverviewExt";
-  return AdvisorAttackOverviewDialog;
-}(A.CastleExternalDialog);
-exports.AdvisorAttackOverviewDialog = x;
-s.classImplementsInterfaces(x, "ICollectableRendererList");
+  CastleRenameCastleDialog.__initialize_static_members = function () {
+    CastleRenameCastleDialog.NAME = "CastleNameAlliance";
+  };
+  return CastleRenameCastleDialog;
+}(g.BasicRenameDialog);
+exports.CastleRenameCastleDialog = C;
+s.classImplementsInterfaces(C, "ICollectableRendererList");
+C.__initialize_static_members();

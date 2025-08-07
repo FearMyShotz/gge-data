@@ -5,39 +5,41 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./1939.js");
-var l = require("./15.js");
-var c = require("./10.js");
-var u = function (e) {
-  function GILCommand() {
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function LWSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GILCommand, e);
-  Object.defineProperty(GILCommand.prototype, "cmdId", {
+  n.__extends(LWSCommand, e);
+  Object.defineProperty(LWSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_INSTANCE_LINK;
+      return s.ClientConstSF.S2C_LUCKY_WHEEL_SPIN;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  GILCommand.prototype.executeCommand = function (e, t) {
-    var i;
-    if (t && t.length > 0) {
-      i = JSON.parse(t[1]);
-    }
+  LWSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        l.CastleBasicController.getInstance().dispatchEvent(new r.LinkReceivedEvent(i.L));
+        var i = JSON.parse(t[1]);
+        if (i.LWET && i.LWET == 1) {
+          r.CastleModel.saleDaysLuckyWheelData.parseLWS(i);
+          r.CastleModel.saleDaysLuckyWheelData.onWinningCategoryReceived();
+        } else {
+          r.CastleModel.luckyWheelData.parseLWS(i);
+          r.CastleModel.luckyWheelData.onWinningCategoryReceived();
+        }
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GILCommand;
-}(c.CastleCommand);
-exports.GILCommand = u;
-o.classImplementsInterfaces(u, "IExecCommand");
+  return LWSCommand;
+}(l.CastleCommand);
+exports.LWSCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

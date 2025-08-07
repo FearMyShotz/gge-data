@@ -1,91 +1,71 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./4.js");
-var r = require("./407.js");
-var l = require("./1149.js");
-var c = function (e) {
-  function ArmyattackMapmovement() {
-    return e.call(this) || this;
+var n = createjs.Point;
+var o = function () {
+  function AreaTypeSectorMap(e) {
+    this.markCounter = 0;
+    this.map = e;
   }
-  n.__extends(ArmyattackMapmovement, e);
-  Object.defineProperty(ArmyattackMapmovement.prototype, "arrowColor", {
+  AreaTypeSectorMap.prototype.put = function (e, t, i, n, o) {
+    this.fillWith(AreaTypeSectorMap.BLOCKED_BY_DECO, t, i, n, o);
+    this.map[i][t] = e;
+  };
+  AreaTypeSectorMap.prototype.getFreePositionsForElements = function (e, t) {
+    this.markCounter++;
+    var i = [];
+    for (var o = 0; o < a.WorldConst.SECTOR_HEIGHT; o++) {
+      for (var s = 0; s < a.WorldConst.SECTOR_WIDTH; s++) {
+        if (this.isFreeForElementAt(s, o, e, t)) {
+          i.push(new n(s, o));
+          this.fillWith(this.currentBlockedMarker, s, o, e, t);
+        }
+      }
+    }
+    return i;
+  };
+  AreaTypeSectorMap.prototype.getAsMap = function () {
+    return this.map;
+  };
+  AreaTypeSectorMap.prototype.fillWith = function (e, t, i, n, o) {
+    for (var s = 0; s < o; s++) {
+      for (var r = 0; r < n; r++) {
+        if (!(i + s > a.WorldConst.SECTOR_HEIGHT) && !(t + r > a.WorldConst.SECTOR_WIDTH)) {
+          this.map[i + s][t + r] = e;
+        }
+      }
+    }
+  };
+  AreaTypeSectorMap.prototype.isFreeForElementAt = function (e, t, i, n) {
+    if (e < 0 || t < 0 || e + i > a.WorldConst.SECTOR_WIDTH || t + n > a.WorldConst.SECTOR_HEIGHT) {
+      return false;
+    }
+    for (var o = 0; o < n; o++) {
+      for (var r = 0; r < i; r++) {
+        var l = s.int(this.map[t + o][e + r]);
+        if (!this.isInterpretedAsFree(l)) {
+          return false;
+        }
+      }
+    }
+    return true;
+  };
+  AreaTypeSectorMap.prototype.isInterpretedAsFree = function (e) {
+    return e == a.WorldConst.AREA_TYPE_EMPTY || e > AreaTypeSectorMap.BLOCKED_BY_DECO && e < this.currentBlockedMarker;
+  };
+  Object.defineProperty(AreaTypeSectorMap.prototype, "currentBlockedMarker", {
     get: function () {
-      if (this.mapMovementVO.isMyMovement) {
-        return 16737792;
-      }
-      switch (this.armyAttackMapmovementVO.armyState) {
-        case u.ArmyAttackMapmovementVO.ARMY_FULL:
-          if (this.mapMovementVO.targetOwnerID == s.CastleModel.userData.playerID) {
-            return 16711680;
-          } else {
-            return 7152959;
-          }
-        case u.ArmyAttackMapmovementVO.ARMY_SHORT:
-          if (this.mapMovementVO.targetOwnerID == s.CastleModel.userData.playerID) {
-            return 9326630;
-          } else {
-            return 8336235;
-          }
-      }
-      return Object.getOwnPropertyDescriptor(l.BasicMapmovement.prototype, "arrowColor").get.call(this);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ArmyMapmovement.prototype, "arrowColor").set.call(this, e);
+      return AreaTypeSectorMap.BLOCKED_BY_DECO + this.markCounter;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ArmyattackMapmovement.prototype, "baseClipName", {
-    get: function () {
-      if (this.armyAttackMapmovementVO.isConquerOutpostMovement) {
-        return "Army_Mapmovement_Baron";
-      } else if (this.armyAttackMapmovementVO.isConquerCapitalMovement || this.armyAttackMapmovementVO.isConquerTradeCentralMovement) {
-        return "Army_Mapmovement_Capital";
-      } else if (a.instanceOfClass(this.armyAttackMapmovementVO.sourceArea, "NomadKhanCampMapObjectVO")) {
-        return "Army_Mapmovement_NomadKhanCampAttack";
-      } else if (a.instanceOfClass(this.armyAttackMapmovementVO.sourceArea, "DaimyoCastleMapObjectVO")) {
-        return "Army_Mapmovement_DaimyoAttack";
-      } else if (a.instanceOfClass(this.armyAttackMapmovementVO.sourceArea, "WolfkingCastleMapObjectVO")) {
-        return "Army_Mapmovement_WolfkingAttack";
-      } else if (this.armyAttackMapmovementVO.isNPCMovement) {
-        return "Army_Mapmovement_Dungeon";
-      } else {
-        return Object.getOwnPropertyDescriptor(r.ArmyMapmovement.prototype, "baseClipName").get.call(this);
-      }
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ArmyMapmovement.prototype, "baseClipName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ArmyattackMapmovement.prototype, "kingdomAffix", {
-    get: function () {
-      if (this.armyAttackMapmovementVO.isNPCMovement) {
-        return s.CastleModel.kingdomData.getKingdomVOByID(this.mapMovementVO.kingdomID).kingdomName;
-      } else {
-        return Object.getOwnPropertyDescriptor(r.ArmyMapmovement.prototype, "kingdomAffix").get.call(this);
-      }
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ArmyMapmovement.prototype, "kingdomAffix").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ArmyattackMapmovement.prototype, "armyAttackMapmovementVO", {
-    get: function () {
-      return this.vo;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return ArmyattackMapmovement;
-}(r.ArmyMapmovement);
-exports.ArmyattackMapmovement = c;
-var u = require("./385.js");
-o.classImplementsInterfaces(c, "IIngameUICapable", "IWorldmapTooltipData");
+  AreaTypeSectorMap.__initialize_static_members = function () {
+    AreaTypeSectorMap.BLOCKED_BY_DECO = 65536;
+  };
+  return AreaTypeSectorMap;
+}();
+exports.AreaTypeSectorMap = o;
+var a = require("./5.js");
+var s = require("./6.js");
+o.__initialize_static_members();

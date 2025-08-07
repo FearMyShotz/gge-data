@@ -2,153 +2,123 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1886.js");
-var a = require("./72.js");
-var s = require("./4270.js");
-var r = require("./4271.js");
-var l = require("./4272.js");
-var c = require("./4273.js");
-var u = function (e) {
-  function CastleDonationEventData(t) {
-    var i = this;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).parseXml(t);
-    i._currentSpentPointsForTypes = new Map();
-    return i;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./2.js");
+var c = require("./2.js");
+var u = require("./2.js");
+var d = require("./1.js");
+var p = require("./2.js");
+var h = require("./1.js");
+var g = require("./266.js");
+var C = require("./37.js");
+var _ = require("./160.js");
+var m = require("./15.js");
+var f = require("./4.js");
+var O = require("./176.js");
+var E = require("./4231.js");
+var y = require("./4232.js");
+var b = require("./9.js");
+var D = require("./17.js");
+var I = require("./1211.js");
+var T = function (e) {
+  function CastleConnectToSpecialServerCommand() {
+    var t = e !== null && e.apply(this, arguments) || this;
+    t.BLOCK_ACCESS = false;
+    return t;
   }
-  n.__extends(CastleDonationEventData, e);
-  CastleDonationEventData.prototype.parseXml = function (e) {
-    this._settings = new Map();
-    var t = e.donationSettings;
-    if (t != null) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        if ((m = n[i]) !== undefined) {
-          var o = new c.DonationSettingVO();
-          o.parseXmlNode(m);
-          this._settings.set(o.donationSettingID, o);
-        }
-      }
-    }
-    this._types = new Map();
-    if ((t = e.donationTypes) != null) {
-      for (var a = 0, u = t; a < u.length; a++) {
-        if ((m = u[a]) !== undefined) {
-          var d = new r.DonationTypeVO();
-          d.parseXmlNode(m);
-          this._types.set(d.donationTypeID, d);
-        }
-      }
-    }
-    this._items = new Map();
-    if ((t = e.donationItems) != null) {
-      for (var p = 0, h = t; p < h.length; p++) {
-        if ((m = h[p]) !== undefined) {
-          var g = new s.DonationItemsVO();
-          g.parseXmlNode(m);
-          this._items.set(g.donationItemID, g);
-        }
-      }
-    }
-    this._rewards = new Map();
-    if ((t = e.donationRewards) != null) {
-      for (var C = 0, _ = t; C < _.length; C++) {
-        var m;
-        if ((m = _[C]) !== undefined) {
-          var f = new l.DonationRewardVO();
-          f.parseXmlNode(m);
-          this._rewards.set(f.donationRewardID, f);
-        }
-      }
-    }
-  };
-  CastleDonationEventData.prototype.getItemVOs_By_PointTypeSettingID = function (e) {
-    var t = [];
-    this._items.forEach(function (i) {
-      if (i.donationItemSetID == e) {
-        t.push(i);
-      }
-    });
-    return t;
-  };
-  CastleDonationEventData.prototype.getItemVOs_By_PointTypeSettingID_And_PointTypeID = function (e, t) {
-    var i = [];
-    this.getItemVOs_By_PointTypeSettingID(e).forEach(function (e) {
-      if (e.donationTypeID == t) {
-        i.push(e);
-      }
-    });
-    return i;
-  };
-  CastleDonationEventData.prototype.getRewardVOs_By_RewardSetID = function (e) {
-    var t = [];
-    this._rewards.forEach(function (i) {
-      if (i.rewardSetID == e) {
-        t.push(i);
-      }
-    });
-    return t;
-  };
-  CastleDonationEventData.prototype.getRewardVOs_By_RewardSetID_And_PointTypeID = function (e, t) {
-    var i = [];
-    this.getRewardVOs_By_RewardSetID(e).forEach(function (e) {
-      if (e.donationTypeID == t) {
-        i.push(e);
-      }
-    });
-    return i;
-  };
-  CastleDonationEventData.prototype.getPointTypeVOByID = function (e) {
-    return this._types.get(e);
-  };
-  CastleDonationEventData.prototype.getPointTypeVOs_By_DonationSettingID = function (e) {
-    var t = [];
-    var i = this._settings.get(e);
-    this.getItemVOs_By_PointTypeSettingID(i.donationItemSetID).forEach(function (e) {
-      if (!t.includes(e.pointTypeVO)) {
-        t.push(e.pointTypeVO);
-      }
-    });
-    return t;
-  };
-  CastleDonationEventData.prototype.getSettingVOByID = function (e) {
-    return this._settings.get(e);
-  };
-  CastleDonationEventData.prototype.parseGDTI = function (e) {
-    this._currentSpentPointsForTypes = new Map();
-    for (var t = 0; t < e.DIS.length; t++) {
-      this._currentSpentPointsForTypes.set(e.DIS[t].DII, e.DIS[t].DIP);
-    }
-    this.dispatchEvent(new o.CastleDonationEventDataEvent(o.CastleDonationEventDataEvent.ON_CURRENT_SPENT_POINTS_UPDATED));
-  };
-  CastleDonationEventData.prototype.getCurrentEarnedPointsForItemID = function (e) {
-    if (this._currentSpentPointsForTypes.has(e)) {
-      return this._currentSpentPointsForTypes.get(e);
+  n.__extends(CastleConnectToSpecialServerCommand, e);
+  CastleConnectToSpecialServerCommand.prototype.execute = function (e = null) {
+    f.CastleModel.userData.resetApiToken();
+    if (e == "login") {
+      this.doLogin();
     } else {
-      return 0;
+      this.connectToSpecialServer();
     }
   };
-  CastleDonationEventData.prototype.getCurrentRewardPointsForType = function (e, t) {
-    var i = this;
-    var n = 0;
-    this.getItemVOs_By_PointTypeSettingID_And_PointTypeID(t, e).forEach(function (e) {
-      n += i.getCurrentEarnedPointsForItemID(e.donationItemID);
-    });
-    return n;
-  };
-  CastleDonationEventData.prototype.getRewardLevelByDonationRewardID = function (e) {
-    var t = this._rewards.get(e);
-    if (!t) {
-      return 0;
+  CastleConnectToSpecialServerCommand.prototype.connectToSpecialServer = function () {
+    if (!_.FlashBlockHelper.BLOCK_ACCESS || this.env.isTest) {
+      f.CastleModel.smartfoxClient.sendCommandVO(new E.C2SGetTemporaryServerLoginTokenVO(this.externalServerID));
+      this.controller.addEventListener(C.CastleServerMessageArrivedEvent.SPECIAL_SEVER_INFO_ARRIVED, this.bindFunction(this.onTempServerInfoArrived));
+    } else {
+      b.CastleDialogHandler.getInstance().registerDefaultDialogs(I.CastleDarkOkLabeledDialog, new o.BasicStandardOkDialogProperties("dialog_clientVersion_switch_confirmDialog_header", this.blockerTextID, this.bindFunction(this.onConfirmSwitch), "dialog_clientVersion_confirmSwitch", this.bindFunction(this.onClose)));
     }
-    var i = this.getRewardVOs_By_RewardSetID_And_PointTypeID(t.rewardSetID, t.donationTypeID);
-    return (i = i.sort(function (e, t) {
-      return e.minPoints - t.minPoints;
-    })).indexOf(t) + 1;
   };
-  CastleDonationEventData.prototype.getRewardVOByID = function (e) {
-    return this._rewards.get(e);
+  CastleConnectToSpecialServerCommand.prototype.onClose = function (e = null) {
+    D.CastleLayoutManager.getInstance().hideAllDialogs();
   };
-  CastleDonationEventData.LEADERBOARD_DONATIONTYPE_ID = 2;
-  return CastleDonationEventData;
-}(a.CastleEventDispatcher);
-exports.CastleDonationEventData = u;
+  Object.defineProperty(CastleConnectToSpecialServerCommand.prototype, "blockerTextID", {
+    get: function () {
+      return "";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleConnectToSpecialServerCommand.prototype.onConfirmSwitch = function (e = null) {
+    o.ClientFunnelTrackingController.getInstance().trackState("SWITCH_TO_FLASH");
+    d.ExternalInterface.call("ggsChangeGameClient");
+  };
+  CastleConnectToSpecialServerCommand.prototype.onTempServerInfoArrived = function (e) {
+    this.controller.removeEventListener(C.CastleServerMessageArrivedEvent.SPECIAL_SEVER_INFO_ARRIVED, this.bindFunction(this.onTempServerInfoArrived));
+    this.loginToken = f.CastleModel.userData.specialServerLoginToken;
+    this.env.isSpecialServerConnectStarted = true;
+    this.doLogout();
+    this.changeInstance();
+  };
+  CastleConnectToSpecialServerCommand.prototype.doLogout = function () {
+    o.EnvGlobalsHandler.globals.isFirstVisitOfGGS = false;
+    l.BasicController.getInstance().onLogOut();
+    p.BasicModel.sessionData.resetLoggedinTimer();
+    p.BasicModel.smartfoxClient.logout();
+    u.BasicLayoutManager.getInstance().revertFullscreen();
+    g.cxfResetCommandCache();
+    O.CastleDataHolder.instance.gbdParsed = false;
+    f.CastleModel.userData.joinCastleCount = 0;
+    f.CastleModel.userData.persistentLogin = false;
+  };
+  CastleConnectToSpecialServerCommand.prototype.doLogin = function () {
+    var e = new y.C2STemporaryServerLoginVO(f.CastleModel.userData.specialServerLoginToken);
+    a.BasicDialogHandler.getInstance().blockDialogs = true;
+    f.CastleModel.smartfoxClient.sendCommandVO(e);
+  };
+  CastleConnectToSpecialServerCommand.prototype.changeInstance = function () {
+    f.CastleModel.userData.resetConnectToFlags();
+    this.setConnectFlag();
+    f.CastleModel.userData.specialServerLoginToken = this.loginToken;
+    this.env.originalInstanceVOBeforeSpecialServer = p.BasicModel.instanceProxy.selectedInstanceVO;
+    var e = this.env.specialServer;
+    var t = window.ggs.worldAssignment;
+    if (e.instanceId != t.facade.selectedNetworkInstance.instanceId) {
+      t.selectInstance(e);
+    }
+    r.info("Connect to instance: " + e);
+    c.CommandController.instance.executeCommand(l.BasicController.COMMAND_CHECK_MAINTENANCE, l.BasicController.COMMAND_CONNECT_CLIENT);
+  };
+  Object.defineProperty(CastleConnectToSpecialServerCommand.prototype, "externalServerID", {
+    get: function () {
+      return 0;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleConnectToSpecialServerCommand.prototype.setConnectFlag = function () {};
+  Object.defineProperty(CastleConnectToSpecialServerCommand.prototype, "env", {
+    get: function () {
+      return o.EnvGlobalsHandler.globals;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleConnectToSpecialServerCommand.prototype, "controller", {
+    get: function () {
+      return m.CastleBasicController.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleConnectToSpecialServerCommand;
+}(s.SimpleCommand);
+exports.CastleConnectToSpecialServerCommand = T;
+h.classImplementsInterfaces(T, "ISimpleCommand");

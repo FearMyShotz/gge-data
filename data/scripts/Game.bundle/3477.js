@@ -2,79 +2,68 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
+var o = require("./3.js");
+var a = require("./13.js");
 var s = require("./4.js");
-var r = function (e) {
-  function MultiEventRewardEventInfoVO(t, i, n, o, a, s = null) {
-    var r = this;
-    r._eventID = 0;
-    r._topXCount = 0;
-    r._rank = 0;
-    r._score = 0;
-    CONSTRUCTOR_HACK;
-    (r = e.call(this) || this)._eventID = t;
-    r._rewards = i;
-    r._rank = n;
-    r._score = o;
-    r._topXCount = a;
-    r._skin = s;
-    r._rewards.combineDuplicatedItems();
-    r._rewards.sort(l.ClientConstSort.sortCombinedEventRewards);
-    r._eventTitle = r.setEventTitleByEventID(r._eventID);
-    return r;
+var r = require("./1687.js");
+var l = function (e) {
+  function CastleCampaignRewardDialogProperties(t) {
+    var i = e.call(this) || this;
+    i._reward = s.CastleModel.rewardData.getListByIdArray(t.RIDS);
+    return i;
   }
-  n.__extends(MultiEventRewardEventInfoVO, e);
-  MultiEventRewardEventInfoVO.prototype.setEventTitleByEventID = function (e) {
-    var t = s.CastleModel.specialEventData.createEventVOByEventID(e);
-    if (this._skin && a.instanceOfClass(t, "LongTermPointEventEventVO")) {
-      t.skin = this._skin;
-    }
-    return t.eventBuildingNameId;
-  };
-  Object.defineProperty(MultiEventRewardEventInfoVO.prototype, "eventID", {
+  n.__extends(CastleCampaignRewardDialogProperties, e);
+  Object.defineProperty(CastleCampaignRewardDialogProperties.prototype, "reward", {
     get: function () {
-      return this._eventID;
+      return this._reward;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.BasicQuestRewardDialogProperties.prototype, "reward").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MultiEventRewardEventInfoVO.prototype, "rewards", {
+  Object.defineProperty(CastleCampaignRewardDialogProperties.prototype, "crestFrameIndex", {
     get: function () {
-      return this._rewards;
+      return c.CastleQuestData.CATEGORY_CAMPAIGN + 1;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.BasicQuestRewardDialogProperties.prototype, "crestFrameIndex").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MultiEventRewardEventInfoVO.prototype, "eventTitle", {
+  Object.defineProperty(CastleCampaignRewardDialogProperties.prototype, "titleText", {
     get: function () {
-      return this._eventTitle;
+      return a.TextHelper.toUpperCaseLocaSafe(o.Localize.text("dialog_questFinish_TimeLimitedCampaignComplete"));
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.BasicQuestRewardDialogProperties.prototype, "titleText").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MultiEventRewardEventInfoVO.prototype, "rank", {
+  Object.defineProperty(CastleCampaignRewardDialogProperties.prototype, "descriptionText", {
     get: function () {
-      return this._rank;
+      return o.Localize.text("dialog_questFinish_TimeLimitedCampaignComplete_description");
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.BasicQuestRewardDialogProperties.prototype, "descriptionText").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MultiEventRewardEventInfoVO.prototype, "score", {
+  Object.defineProperty(CastleCampaignRewardDialogProperties.prototype, "randomEquipmentRewardList", {
     get: function () {
-      return this._score;
+      return null;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.BasicQuestRewardDialogProperties.prototype, "randomEquipmentRewardList").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MultiEventRewardEventInfoVO.prototype, "topXCount", {
-    get: function () {
-      return this._topXCount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return MultiEventRewardEventInfoVO;
-}(o.ScrollItemVO);
-exports.MultiEventRewardEventInfoVO = r;
-var l = require("./75.js");
+  return CastleCampaignRewardDialogProperties;
+}(r.BasicQuestRewardDialogProperties);
+exports.CastleCampaignRewardDialogProperties = l;
+var c = require("./545.js");

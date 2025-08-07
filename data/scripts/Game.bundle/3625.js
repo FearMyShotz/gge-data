@@ -4,20 +4,20 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./116.js");
+var s = require("./114.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferUnderworldDialog() {
-    return e.call(this, CastlePaymentRewardSpecialOfferUnderworldDialog.NAME) || this;
+  function CastlePaymentRewardSpecialOfferUSADialog() {
+    return e.call(this, CastlePaymentRewardSpecialOfferUSADialog.NAME) || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferUnderworldDialog, e);
-  CastlePaymentRewardSpecialOfferUnderworldDialog.prototype.setTextIDs = function () {
+  n.__extends(CastlePaymentRewardSpecialOfferUSADialog, e);
+  CastlePaymentRewardSpecialOfferUSADialog.prototype.setTextIDs = function () {
     e.prototype.setTextIDs.call(this);
-    this.titleTextID = "dialog_primeday_underworld_title";
-    this.descriptionTextID = "dialog_primeday_underworld_description";
+    this.titleTextID = "dialog_primeday_independenceDay_title";
+    this.descriptionTextID = "dialog_primeday_independenceDay_description";
   };
-  Object.defineProperty(CastlePaymentRewardSpecialOfferUnderworldDialog.prototype, "skinType", {
+  Object.defineProperty(CastlePaymentRewardSpecialOfferUSADialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_UNDERWORLD;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_USA;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferDialog.prototype, "skinType").set.call(this, e);
@@ -25,11 +25,11 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferUnderworldDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferUnderworldDialog.NAME = "CastlePaymentRewardSpecialOfferUnderworld";
+  CastlePaymentRewardSpecialOfferUSADialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferUSADialog.NAME = "CastlePaymentRewardSpecialOfferUSA";
   };
-  return CastlePaymentRewardSpecialOfferUnderworldDialog;
+  return CastlePaymentRewardSpecialOfferUSADialog;
 }(s.CastlePaymentRewardSpecialOfferDialog);
-exports.CastlePaymentRewardSpecialOfferUnderworldDialog = r;
+exports.CastlePaymentRewardSpecialOfferUSADialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
 r.__initialize_static_members();

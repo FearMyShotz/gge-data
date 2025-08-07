@@ -2,39 +2,76 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./43.js");
-var r = require("./9.js");
-var l = require("./4508.js");
-var c = require("./4509.js");
-var u = require("./4.js");
-var d = require("./295.js");
-var p = function (e) {
-  function RelicEnchanterPrimeSaleEventVO() {
-    var t = this;
-    t._discount = 0;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./5.js");
+var u = require("./264.js");
+var d = function (e) {
+  function CastleRedAllianceAlienInvasionEventDialogProperties(t) {
+    var i = this;
+    i._eventId = 0;
     CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+    (i = e.call(this) || this)._eventId = t;
+    return i;
   }
-  n.__extends(RelicEnchanterPrimeSaleEventVO, e);
-  RelicEnchanterPrimeSaleEventVO.prototype.parseParamObject = function (e) {
-    this._discount = a.int(e.DIS);
-  };
-  RelicEnchanterPrimeSaleEventVO.prototype.openDialog = function (e = true) {
-    if (!u.CastleModel.privateOfferData.isHiddenEvent(this._eventId)) {
-      var t = new d.PaymentPopupDialogInfoVO(l.CastleRelicEnchanterPrimeSaleDialog, new c.CastleRelicEnchanterPrimeSaleDialogProperties(this), s.CastleDialogConsts.DIALOG_TYPE_PAYMENT_PRIME_SALE);
-      r.CastleDialogHandler.getInstance().registerDialogsWithType(t.dialogClass, t.properties, t.blockDialogs, t.priority, 0, t.type);
-    }
-  };
-  Object.defineProperty(RelicEnchanterPrimeSaleEventVO.prototype, "discount", {
+  n.__extends(CastleRedAllianceAlienInvasionEventDialogProperties, e);
+  Object.defineProperty(CastleRedAllianceAlienInvasionEventDialogProperties.prototype, "eventId", {
     get: function () {
-      return this._discount;
+      return this._eventId;
     },
     enumerable: true,
     configurable: true
   });
-  return RelicEnchanterPrimeSaleEventVO;
-}(require("./79.js").ASpecialEventVO);
-exports.RelicEnchanterPrimeSaleEventVO = p;
-o.classImplementsInterfaces(p, "IEventOverviewable");
+  Object.defineProperty(CastleRedAllianceAlienInvasionEventDialogProperties.prototype, "skinFrame", {
+    get: function () {
+      return 2;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleRedAllianceAlienInvasionEventDialogProperties.prototype, "textIDType", {
+    get: function () {
+      return "redAlienInvasion";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleRedAllianceAlienInvasionEventDialogProperties.prototype, "scorbarBackgroundClassName", {
+    get: function () {
+      return "AllianceRedAlienInvasionEvent_Background";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleRedAllianceAlienInvasionEventDialogProperties.prototype, "rewardListDialogClassName", {
+    get: function () {
+      return p.CastleRedAllianceAlienInvasionRewardListDialog;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleRedAllianceAlienInvasionEventDialogProperties.prototype.getFindNextMapObjectVO = function () {
+    return new u.C2SFindNextMapObjectVO(c.WorldConst.AREA_TYPE_RED_ALIEN_CAMP, l.WorldClassic.KINGDOM_ID, -1, -1, s.DungeonConst.BASIC_INVASION_CAMP_PLAYER_ID);
+  };
+  Object.defineProperty(CastleRedAllianceAlienInvasionEventDialogProperties.prototype, "highscorePlayer", {
+    get: function () {
+      return r.HighscoreConst.ALLIANCE_RED_ALIEN_INVASION_PLAYER;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleRedAllianceAlienInvasionEventDialogProperties.prototype, "highscoreAlliance", {
+    get: function () {
+      return r.HighscoreConst.ALLIANCE_RED_ALIEN_INVASION_ALLIANCE;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleRedAllianceAlienInvasionEventDialogProperties;
+}(o.BasicProperties);
+exports.CastleRedAllianceAlienInvasionEventDialogProperties = d;
+var p = require("./4508.js");
+a.classImplementsInterfaces(d, "IAlienInvasionEventDialogProperties");

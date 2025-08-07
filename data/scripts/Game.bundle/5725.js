@@ -5,29 +5,29 @@ var n = require("./1.js");
 var o = require("./6.js");
 var a = require("./22.js");
 var s = function () {
-  function XmlRelicPowerDistributionVO() {
-    this._power = 0;
-    this._shares = 0;
+  function XmlRelicEffectPowerRatingVO() {
+    this._id = 0;
+    this._threshold = 0;
   }
-  XmlRelicPowerDistributionVO.prototype.parseXml = function (e) {
-    this._power = o.int(a.CastleXMLUtils.getIntAttribute("power", e, -1));
-    this._shares = o.int(a.CastleXMLUtils.getIntAttribute("shares", e, -1));
+  XmlRelicEffectPowerRatingVO.prototype.parseXml = function (e) {
+    this._id = o.int(a.CastleXMLUtils.getIntAttribute("id", e, -1));
+    this._threshold = o.int(a.CastleXMLUtils.getIntAttribute("threshold", e, -1));
   };
-  Object.defineProperty(XmlRelicPowerDistributionVO.prototype, "power", {
+  Object.defineProperty(XmlRelicEffectPowerRatingVO.prototype, "id", {
     get: function () {
-      return this._power;
+      return this._id;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlRelicPowerDistributionVO.prototype, "shares", {
+  Object.defineProperty(XmlRelicEffectPowerRatingVO.prototype, "threshold", {
     get: function () {
-      return this._shares;
+      return this._threshold;
     },
     enumerable: true,
     configurable: true
   });
-  return XmlRelicPowerDistributionVO;
+  return XmlRelicEffectPowerRatingVO;
 }();
-exports.XmlRelicPowerDistributionVO = s;
+exports.XmlRelicEffectPowerRatingVO = s;
 n.classImplementsInterfaces(s, "IXmlElementVO");

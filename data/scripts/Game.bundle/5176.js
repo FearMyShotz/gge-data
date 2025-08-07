@@ -7,13 +7,13 @@ var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./10.js");
 var l = function (e) {
-  function BLVCommand() {
+  function ULECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BLVCommand, e);
-  Object.defineProperty(BLVCommand.prototype, "cmdId", {
+  n.__extends(ULECommand, e);
+  Object.defineProperty(ULECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_BUY_LEVEL;
+      return s.ClientConstSF.C2S_UNLOCK_EVENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -21,16 +21,18 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  BLVCommand.prototype.executeCommand = function (e, t) {
+  ULECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
+      case a.ERROR.ALREADY_UNLOCKED:
+      case a.ERROR.NO_EVENT:
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return BLVCommand;
+  return ULECommand;
 }(r.CastleCommand);
-exports.BLVCommand = l;
+exports.ULECommand = l;
 o.classImplementsInterfaces(l, "IExecCommand");

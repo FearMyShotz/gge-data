@@ -8,7 +8,7 @@ var s = require("./5.js");
 var r = require("./3.js");
 var l = require("./6.js");
 var c = require("./4.js");
-var u = require("./833.js");
+var u = require("./835.js");
 var d = function (e) {
   function CastleBeggingKnightsHighscoreDialog() {
     CONSTRUCTOR_HACK;

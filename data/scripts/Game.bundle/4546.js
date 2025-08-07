@@ -3,24 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./816.js");
+var a = require("./173.js");
 var s = function (e) {
-  function TieredPaymentrewardEventVO() {
-    return e !== null && e.apply(this, arguments) || this;
+  function CastleThornkingMerchantScrollItem(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(TieredPaymentrewardEventVO, e);
-  Object.defineProperty(TieredPaymentrewardEventVO.prototype, "skinnedSpecialOfferDialogKey", {
+  n.__extends(CastleThornkingMerchantScrollItem, e);
+  Object.defineProperty(CastleThornkingMerchantScrollItem.prototype, "dialogKey", {
     get: function () {
-      return r.CastleTieredPrimeDayDialog;
+      return r.CastleThornkingEventBuyDialog;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.PaymentrewardEventVO.prototype, "skinnedSpecialOfferDialogKey").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.AMerchantScrollItem.prototype, "dialogKey").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return TieredPaymentrewardEventVO;
-}(a.PaymentrewardEventVO);
-exports.TieredPaymentrewardEventVO = s;
-var r = require("./1881.js");
-o.classImplementsInterfaces(s, "IEventOverviewable");
+  return CastleThornkingMerchantScrollItem;
+}(a.AMerchantScrollItem);
+exports.CastleThornkingMerchantScrollItem = s;
+var r = require("./4547.js");
+o.classImplementsInterfaces(s, "MovieClip");

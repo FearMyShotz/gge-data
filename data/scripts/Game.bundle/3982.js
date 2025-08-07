@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./5.js");
 var a = require("./5.js");
 var s = require("./3.js");
-var r = require("./835.js");
+var r = require("./837.js");
 var l = require("./21.js");
 var c = require("./139.js");
 var u = require("./26.js");
@@ -15,10 +15,10 @@ var h = require("./27.js");
 var g = require("./9.js");
 var C = require("./3983.js");
 var _ = require("./3987.js");
-var m = require("./1835.js");
-var f = require("./1838.js");
+var m = require("./1837.js");
+var f = require("./1840.js");
 var O = require("./305.js");
-var E = require("./110.js");
+var E = require("./109.js");
 var y = function (e) {
   function StatusIconAdvisorAttack() {
     return e.call(this, "Btn_AttackAdvisor", "txt_time", new s.TextVO(""), E.ACastleStatusIcon.PRIORITY_MIDDLE) || this;

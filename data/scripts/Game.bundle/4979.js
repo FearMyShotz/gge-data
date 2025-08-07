@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function CSSCommand() {
+  function CRMCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CSSCommand, e);
-  Object.defineProperty(CSSCommand.prototype, "cmdId", {
+  n.__extends(CRMCommand, e);
+  Object.defineProperty(CRMCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_CREATE_SIEGE_MOVEMENT;
+      return s.ClientConstSF.S2C_CREATE_MARKET_MOVEMENT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,11 +22,14 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  CSSCommand.prototype.executeCommand = function (e, t) {
+  CRMCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
         r.CastleModel.currencyData.parseGCU(i.gcu);
+        if (r.CastleModel.areaData.activeArea) {
+          r.CastleModel.areaData.activeArea.updater.parseGRC(i.grc);
+        }
         r.CastleModel.otherPlayerData.parseOwnerInfoArray(i.O);
         r.CastleModel.armyData.parseMapMovementArray([i.A]);
         break;
@@ -35,7 +38,7 @@ var c = function (e) {
     }
     return false;
   };
-  return CSSCommand;
+  return CRMCommand;
 }(l.CastleCommand);
-exports.CSSCommand = c;
+exports.CRMCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

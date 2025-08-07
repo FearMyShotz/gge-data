@@ -1,292 +1,148 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./28.js");
-var l = require("./1662.js");
-var c = require("./5661.js");
-var u = require("./5662.js");
-var d = require("./5663.js");
-var p = require("./30.js");
-var h = require("./15.js");
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./1.js");
+var l = require("./5.js");
+var c = require("./5.js");
+var u = require("./3.js");
+var d = require("./680.js");
+var p = require("./15.js");
+var h = require("./54.js");
 var g = require("./4.js");
-var C = require("./467.js");
-var _ = require("./174.js");
-var m = function () {
-  function SeasonLeagueServer() {
-    this._divisionId = 0;
-    this._divisionSize = 0;
-    this._passSeasonActive = false;
-    this._passEventActive = false;
-    this._passPromotionBought = [];
-    this._promotionId = 0;
-    this._medalPoints = 0;
-    this._nextMedalPayoutTimestamp = 0;
-    this._seasonEventStartDialogSeen = false;
-    this._seasonStartDialogSeen = false;
-    this._playerSeasonEventRank = 0;
-    this._playerSeasonRank = 0;
-    this.seasonPassPrice = 0;
-    this.seasonPassDiscount = 0;
-    this.resetMedals();
+var C = function (e) {
+  function SeasonLeagueData(t) {
+    var i = this;
+    i._xml = new I.SeasonLeagueXml();
+    i._server = new D.SeasonLeagueServer();
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this)._xml.parseXml(t);
+    p.CastleBasicController.getInstance().addEventListener(d.CastleLoginEvent.ON_GBD_ARRIVED, i.bindFunction(i.onGbdArrived));
+    return i;
   }
-  SeasonLeagueServer.prototype.reset = function () {
-    this._divisionId = 0;
-    this._divisionSize = 0;
-    this._passSeasonActive = false;
-    this._passEventActive = false;
-    this._passPromotionBought = [];
-    this._promotionId = 0;
-    this._medalPoints = 0;
-    this._nextMedalPayoutTimestamp = 0;
-    this._seasonEventStartDialogSeen = false;
-    this._seasonStartDialogSeen = false;
-    this.resetMedals();
+  n.__extends(SeasonLeagueData, e);
+  SeasonLeagueData.prototype.destroy = function () {
+    p.CastleBasicController.getInstance().removeEventListener(d.CastleLoginEvent.ON_GBD_ARRIVED, this.bindFunction(this.onGbdArrived));
   };
-  SeasonLeagueServer.prototype.resetMedals = function () {
-    this._playerMedals = new O.CollectableList();
-    for (var e = 0, t = C.ClientConstSeasonLeague.MEDAL_IDS; e < t.length; e++) {
-      var i = t[e];
-      if (i !== undefined) {
-        this._playerMedals.addItem(new y.CollectableItemSeasonLeagueMedalVO(i, 0));
+  SeasonLeagueData.prototype.reset = function () {
+    e.prototype.reset.call(this);
+    this._server.reset();
+  };
+  SeasonLeagueData.prototype.openEventDialog = function () {
+    if (!this.isSeasonLeagueActive()) {
+      f.CastleDialogHandler.getInstance().registerDefaultDialogs(O.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(u.Localize.text("generic_alert_information"), u.Localize.text("alert_eventendet")));
+    }
+    if (this.server.seasonStartDialogSeen) {
+      if (!this.server.seasonEventStartDialogSeen && this.isAnySeasonEventActive()) {
+        f.CastleDialogHandler.getInstance().registerDefaultDialogs(y.SeasonLeagueMatchmakingDialog);
+        this.server.requestKSS(true, true);
+      } else {
+        f.CastleDialogHandler.getInstance().registerDefaultDialogs(E.SeasonLeagueMainDialog);
+      }
+    } else {
+      var e = this.getSeasonStartMessageVO();
+      if (e) {
+        a.CommandController.instance.executeCommand(m.IngameClientCommands.OPEN_MESSAGE_DIALOG_COMMAND, e);
+      } else {
+        f.CastleDialogHandler.getInstance().registerDefaultDialogs(b.SeasonLeagueStartDialog);
+        this.server.requestKSS(true, true);
       }
     }
-    this._allianceMedals = new O.CollectableList();
-    for (var n = 0, o = C.ClientConstSeasonLeague.MEDAL_IDS; n < o.length; n++) {
-      i = o[n];
-      this._allianceMedals.addItem(new y.CollectableItemSeasonLeagueMedalVO(i, 0));
+  };
+  SeasonLeagueData.prototype.isSeasonLeagueActive = function () {
+    return this.getActiveSeasonLeagueEventVO() != null;
+  };
+  SeasonLeagueData.prototype.getActiveSeasonLeagueEventVO = function () {
+    return g.CastleModel.specialEventData.getActiveEventByEventId(l.EventConst.EVENTTYPE_KINGDOMS_LEAGUE);
+  };
+  SeasonLeagueData.prototype.isAnySeasonEventActive = function () {
+    return this.getActiveSeasonEventVO() != null;
+  };
+  SeasonLeagueData.prototype.getActiveSeasonEventVO = function () {
+    for (var e = 0, t = Array.from(g.CastleModel.specialEventData.activeEvents.values()); e < t.length; e++) {
+      var i = t[e];
+      if (i !== undefined && i.seasonLeague.isModeEnabled) {
+        return i;
+      }
     }
+    return null;
   };
-  SeasonLeagueServer.prototype.requestKLI = function () {
-    g.CastleModel.smartfoxClient.sendCommandVO(new c.C2SGetSeasonInfoEventVO());
+  SeasonLeagueData.prototype.getCurrentPlayerPromotion = function () {
+    return this.xml.getPromotion(this.server.promotionId);
   };
-  SeasonLeagueServer.prototype.parseKLI = function (e) {
-    this.parseDivisionInfo(e.KLD);
-    this.parseMedalInfo(this._playerMedals, e.KLM);
-    this.parseMedalInfo(this._allianceMedals, e.KLAM);
-    this.parsePassInfo(e.KLSP);
-    this.parseRankInfo(e.KLR);
-    this.parseRemainingTimeInfo(e.RD);
-    this.parseDialogInfo(e);
-    h.CastleBasicController.getInstance().dispatchEvent(new _.SeasonLeagueEvent(_.SeasonLeagueEvent.ON_INFO_UPDATED));
+  SeasonLeagueData.prototype.hasReachedHighestPromotion = function () {
+    var e = this.xml.getHighestPromotion();
+    return !!e && this.server.promotionId >= e.id;
   };
-  SeasonLeagueServer.prototype.parseSPP = function (e) {
-    this.seasonPassPrice = e[a.CommKeys.COST_C2];
-    this.seasonPassDiscount = e[a.CommKeys.DISCOUNT];
-    h.CastleBasicController.getInstance().dispatchEvent(new _.SeasonLeagueEvent(_.SeasonLeagueEvent.ON_PASS_PRICES_UPDATED));
-  };
-  SeasonLeagueServer.prototype.parseDivisionInfo = function (e) {
-    if (e) {
-      this._divisionId = s.int(e.KLDID);
-      this._divisionSize = s.int(e.KLDS);
-    }
-  };
-  SeasonLeagueServer.prototype.parseMedalInfo = function (e, t) {
-    if (t && t != null) {
-      for (var i = 0, a = t; i < a.length; i++) {
-        var r = a[i];
-        if (r !== undefined) {
-          var l = s.int(r[0]);
-          var c = s.int(r[1]);
-          var u = o.castAs(e.getItemByTypeVO(new E.CollectableTypeVO(f.CollectableEnum.SEASON_LEAGUE_MEDALS, l)), "CollectableItemSeasonLeagueMedalVO");
-          if (u) {
-            u.amount = c;
-          } else {
-            n.error("SeasonLeagueServer.parseMedalInfo(): Id '" + l + "' is unknown.");
-          }
+  SeasonLeagueData.prototype.getSeasonStartMessageVO = function () {
+    for (var e = 0, t = g.CastleModel.messageData.incomingMails; e < t.length; e++) {
+      var i = t[e];
+      if (i !== undefined && r.instanceOfClass(i, "MessageSpecialEventVO")) {
+        var n = i;
+        if (n && n.subtypeEvent == c.MessageConst.SPECIAL_ID_SPECIAL_EVENT_START && n.additionalInformation[0] == l.EventConst.EVENTTYPE_KINGDOMS_LEAGUE) {
+          return n;
         }
       }
     }
+    return null;
   };
-  SeasonLeagueServer.prototype.parsePassInfo = function (e) {
+  SeasonLeagueData.prototype.getCurrentSeasonPassCost = function () {
+    return this.server.seasonPassPrice;
+  };
+  SeasonLeagueData.prototype.getCurrentSeasonPassCostWithSale = function () {
+    return _.int(this.getCurrentSeasonPassCost());
+  };
+  SeasonLeagueData.prototype.getActiveSeasonEventNameId = function () {
+    var e = this.getActiveSeasonEventVO();
     if (e) {
-      this._passSeasonActive = e[a.CommKeys.SEASON_PASS_ENABLED] == 1;
-      this._passEventActive = e[a.CommKeys.SEASON_EVENT_PASS_ENABLED] == 1;
-      this._passPromotionBought = e[a.CommKeys.SEASON_PROMOTION_PASSES] ? e[a.CommKeys.SEASON_PROMOTION_PASSES] : [];
+      return e.eventBuildingNameId;
+    } else {
+      return "-";
     }
   };
-  SeasonLeagueServer.prototype.boughtPromoPassForPromoID = function (e) {
-    return this._passPromotionBought.indexOf(e) > -1;
+  SeasonLeagueData.prototype.isAllianceRankingEnabled = function () {
+    var e = this.getActiveSeasonLeagueEventVO();
+    return !!e && e.hasAllianceRanking;
   };
-  Object.defineProperty(SeasonLeagueServer.prototype, "amountOfBoughtPromoPasses", {
+  Object.defineProperty(SeasonLeagueData.prototype, "currentSetting", {
     get: function () {
-      return this._passPromotionBought.length;
+      return this.xml.getSetting(1);
     },
     enumerable: true,
     configurable: true
   });
-  SeasonLeagueServer.prototype.parseRankInfo = function (e) {
-    if (e) {
-      this._promotionId = s.int(e.KLRID);
-      this._medalPoints = s.int(e.KLMP);
+  SeasonLeagueData.prototype.onGbdArrived = function (e) {
+    if (this.isSeasonLeagueActive()) {
+      this.server.requestKLI();
     }
   };
-  SeasonLeagueServer.prototype.parseRemainingTimeInfo = function (e) {
-    if (e) {
-      var t = s.int(e);
-      this._nextMedalPayoutTimestamp = p.CachedTimer.getCachedTimer() + t * r.ClientConstTime.SEC_2_MILLISEC;
-    }
-  };
-  SeasonLeagueServer.prototype.parseDialogInfo = function (e) {
-    if (e) {
-      if (e.hasOwnProperty("KLSE")) {
-        this._seasonEventStartDialogSeen = e.KLSE == 1;
-      }
-      if (e.hasOwnProperty("KLS")) {
-        this._seasonStartDialogSeen = e.KLS == 1;
-      }
-    }
-  };
-  SeasonLeagueServer.prototype.requestKLH = function () {
-    g.CastleModel.smartfoxClient.sendCommandVO(new u.C2SGetSeasonLeagueHighscoreEventVO());
-  };
-  SeasonLeagueServer.prototype.parseKLH = function (e) {
-    if (e) {
-      if (e != null) {
-        for (var t = 0, i = e; t < i.length; t++) {
-          var n = i[t];
-          if (n !== undefined) {
-            var o = s.int(n[0]);
-            var r = s.int(n[1]);
-            switch (o) {
-              case a.HighscoreConst.KINGDOMS_LEAGUE_SEASON:
-                this._playerSeasonRank = r;
-                break;
-              case a.HighscoreConst.KINGDOMS_LEAGUE_SEASON_EVENT:
-                this._playerSeasonEventRank = r;
-            }
-          }
-        }
-      }
-      h.CastleBasicController.getInstance().dispatchEvent(new _.SeasonLeagueEvent(_.SeasonLeagueEvent.ON_OWN_RANKS_UPDATED));
-    }
-  };
-  SeasonLeagueServer.prototype.requestKSS = function (e, t) {
-    this._seasonEventStartDialogSeen = e;
-    this._seasonStartDialogSeen = t;
-    g.CastleModel.smartfoxClient.sendCommandVO(new d.C2SSetSeasonEventStartSeenEventVO(e, t));
-  };
-  SeasonLeagueServer.prototype.requestKBP = function () {
-    g.CastleModel.smartfoxClient.sendCommandVO(new l.C2SBuySeasonPassEventVO());
-  };
-  SeasonLeagueServer.prototype.getPlayerMedalAmount = function (e) {
-    var t = this._playerMedals.getItemByTypeVO(new E.CollectableTypeVO(f.CollectableEnum.SEASON_LEAGUE_MEDALS, e));
-    return s.int(t ? t.amount : 0);
-  };
-  SeasonLeagueServer.prototype.getAllianceMedalAmount = function (e) {
-    var t = this._allianceMedals.getItemByTypeVO(new E.CollectableTypeVO(f.CollectableEnum.SEASON_LEAGUE_MEDALS, e));
-    return s.int(t ? t.amount : 0);
-  };
-  SeasonLeagueServer.prototype.getNextPayoutTimeInSec = function () {
-    return s.int(Math.max(0, (this.nextMedalPayoutTimestamp - p.CachedTimer.getCachedTimer()) * r.ClientConstTime.MILLISEC_2_SEC));
-  };
-  SeasonLeagueServer.prototype.hasAnyPlayerMedals = function () {
-    for (var e = 0, t = this._playerMedals.list; e < t.length; e++) {
-      var i = t[e];
-      if (i !== undefined && i && i.amount > 0) {
-        return true;
-      }
-    }
-    return false;
-  };
-  Object.defineProperty(SeasonLeagueServer.prototype, "divisionId", {
+  Object.defineProperty(SeasonLeagueData.prototype, "xml", {
     get: function () {
-      return this._divisionId;
+      return this._xml;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SeasonLeagueServer.prototype, "divisionSize", {
+  Object.defineProperty(SeasonLeagueData.prototype, "server", {
     get: function () {
-      return this._divisionSize;
+      return this._server;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SeasonLeagueServer.prototype, "playerMedals", {
-    get: function () {
-      return this._playerMedals;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeagueServer.prototype, "passSeasonActive", {
-    get: function () {
-      return this._passSeasonActive;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeagueServer.prototype, "passEventActive", {
-    get: function () {
-      return this._passEventActive;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeagueServer.prototype, "promotionId", {
-    get: function () {
-      return this._promotionId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeagueServer.prototype, "medalPoints", {
-    get: function () {
-      return this._medalPoints;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeagueServer.prototype, "seasonEventStartDialogSeen", {
-    get: function () {
-      return this._seasonEventStartDialogSeen;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeagueServer.prototype, "nextMedalPayoutTimestamp", {
-    get: function () {
-      return this._nextMedalPayoutTimestamp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeagueServer.prototype, "playerSeasonEventRank", {
-    get: function () {
-      return this._playerSeasonEventRank;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeagueServer.prototype, "playerSeasonRank", {
-    get: function () {
-      return this._playerSeasonRank;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeagueServer.prototype, "seasonStartDialogSeen", {
-    get: function () {
-      return this._seasonStartDialogSeen;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SeasonLeagueServer.prototype, "allianceMedals", {
-    get: function () {
-      return this._allianceMedals;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return SeasonLeagueServer;
-}();
-exports.SeasonLeagueServer = m;
-var f = require("./12.js");
-var O = require("./48.js");
-var E = require("./74.js");
-var y = require("./1625.js");
+  return SeasonLeagueData;
+}(h.CastleBasicData);
+exports.SeasonLeagueData = C;
+var _ = require("./6.js");
+var m = require("./29.js");
+var f = require("./9.js");
+var O = require("./38.js");
+var E = require("./808.js");
+var y = require("./5661.js");
+var b = require("./1957.js");
+var D = require("./5662.js");
+var I = require("./5666.js");
+s.classImplementsInterfaces(C, "IUpdatable");

@@ -2,176 +2,119 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./3.js");
-var u = require("./6.js");
-var d = require("./18.js");
-var p = require("./28.js");
-var h = require("./103.js");
-var g = require("./4.js");
-var C = require("./109.js");
-var _ = require("./64.js");
-var m = require("./245.js");
-var f = require("./205.js");
-var O = function (e) {
-  function EventdungeonMapobjectVO() {
+var o = require("./5.js");
+var a = require("./3.js");
+var s = require("./6.js");
+var r = require("./18.js");
+var l = require("./148.js");
+var c = require("./28.js");
+var u = require("./4.js");
+var d = require("./108.js");
+var p = function (e) {
+  function WolfkingCastleMapObjectVO() {
     var t = this;
-    t._isDefeated = false;
-    t._dungeonLevel = 0;
+    t._baseMoatBonus = 0;
+    t._baseGateBonus = 0;
+    t._baseWallBonus = 0;
     CONSTRUCTOR_HACK;
-    (t = e.call(this) || this).name = "Eventdungeon";
-    t._areaType = l.WorldConst.AREA_TYPE_EVENT_DUNGEON;
+    (t = e.call(this) || this).name = "WolfkingCastle";
+    t.type = "-";
+    t._areaType = o.WorldConst.AREA_TYPE_WOLF_KING;
     t._isVisibleOnMap = false;
     t._secondsSinceEspionage = -1;
     return t;
   }
-  n.__extends(EventdungeonMapobjectVO, e);
-  EventdungeonMapobjectVO.prototype.getDisplayObjectClipContainer = function (e, t, i = false) {
-    var n;
-    var a = new C.CastleDisplayObjectClipContainer();
-    var l = s.DungeonConst.RANDOM_DUNGEON_EVENT_PLAYER_ID;
-    if (this._ownerInfo && this._ownerInfo.playerID != 0) {
-      l = this._ownerInfo.playerID;
-    } else {
-      var c = o.castAs(g.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_DUNGEON), "RandomdungeonEventVO");
-      if (c) {
-        l = c.playerID;
-      }
-      this._ownerInfo = g.CastleModel.otherPlayerData.getOwnerInfoVO(l);
-    }
-    n = l == s.DungeonConst.APRIL_DUNGEON_EVENT_PLAYER_ID ? "Eventdungeon_Mapobject_Cow" : l == s.DungeonConst.RANDOM_DUNGEON_EVENT_PLAYER_ID ? "Eventdungeon_Mapobject" : "Eventdungeon_Mapobject_" + Math.abs(l);
-    a.addItem(this.getAsExternalClip(n));
-    return a;
+  n.__extends(WolfkingCastleMapObjectVO, e);
+  WolfkingCastleMapObjectVO.prototype.getDisplayObjectClipContainer = function (e, t, i = false) {
+    var n = new d.CastleDisplayObjectClipContainer();
+    var o = this.getAsExternalClip("WolfkingCastle_Mapobject");
+    n.addItem(o);
+    return n;
   };
-  EventdungeonMapobjectVO.prototype.parseAreaInfo = function (e) {
+  WolfkingCastleMapObjectVO.prototype.parseAreaInfo = function (e) {
     this._areaType = e[0];
     this._absAreaPosX = e[1];
     this._absAreaPosY = e[2];
     if (e.length > 3) {
-      this._spyInfoReceivingTime = Date.now() * p.ClientConstTime.MILLISEC_2_SEC;
+      this._spyInfoReceivingTime = Date.now() * c.ClientConstTime.MILLISEC_2_SEC;
       this._secondsSinceEspionage = e[3];
-      this._dungeonLevel = u.int(e[4]);
+      this._dungeonLevel = s.int(e[4]);
       this._isDefeated = e[5] == 1;
+      this._baseWallBonus = e[6];
+      this._baseGateBonus = e[7];
+      this._baseMoatBonus = e[8];
       this._isVisibleOnMap = true;
     } else {
       this._isVisibleOnMap = false;
     }
-    var t = o.castAs(g.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_DUNGEON), "RandomdungeonEventVO");
-    if (t) {
-      this._ownerInfo = g.CastleModel.otherPlayerData.getOwnerInfoVO(t.playerID);
-    }
-    this.dispatchEvent(h.EventInstanceMapper.getEvent(_.VisualVOEvent, _.VisualVOEvent.VALUEOBJECT_CHANGE));
+    this._ownerInfo = u.CastleModel.otherPlayerData.getOwnerInfoVO(l.ClientConstNPCs.NPC_ID_WOLFKING);
   };
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "dungeonLevel", {
+  Object.defineProperty(WolfkingCastleMapObjectVO.prototype, "areaNameString", {
     get: function () {
-      return this._dungeonLevel;
+      return a.Localize.text("kingdom_dungeon_castleName_wolfgard");
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "dungeonWallLevel", {
+  WolfkingCastleMapObjectVO.prototype.canBeAttacked = function () {
+    return true;
+  };
+  Object.defineProperty(WolfkingCastleMapObjectVO.prototype, "canBeSpied", {
     get: function () {
-      return Math.min(s.DungeonConst.getWallUpgradeByLevel(this.dungeonLevel), 2);
+      return true;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "kingdomID", {
-    get: function () {
-      return Object.getOwnPropertyDescriptor(m.BasicMapobjectVO.prototype, "kingdomID").get.call(this);
-    },
-    set: function (e) {
-      this._kingdomID = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "isDefeated", {
+  Object.defineProperty(WolfkingCastleMapObjectVO.prototype, "isDefeated", {
     get: function () {
       return this._isDefeated;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "areaNameString", {
+  Object.defineProperty(WolfkingCastleMapObjectVO.prototype, "dungeonLevel", {
     get: function () {
-      return c.Localize.text("eventDungeon_castleName_" + this._ownerInfo.playerID);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(E.InteractiveMapobjectVO.prototype, "areaNameString").set.call(this, e);
+      return this._dungeonLevel;
     },
     enumerable: true,
     configurable: true
   });
-  EventdungeonMapobjectVO.prototype.canBeAttacked = function () {
-    return true;
-  };
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "canBeSpied", {
+  Object.defineProperty(WolfkingCastleMapObjectVO.prototype, "attackType", {
     get: function () {
-      return true;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "canBeSpied").set.call(this, e);
+      return r.ClientConstCastle.ACTION_TYPE_DUNGEONATTACK;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "wallLevel", {
-    get: function () {
-      return this.dungeonWallLevel;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(E.InteractiveMapobjectVO.prototype, "wallLevel").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "gateLevel", {
-    get: function () {
-      return this.dungeonWallLevel;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(E.InteractiveMapobjectVO.prototype, "gateLevel").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "moatLevel", {
-    get: function () {
-      return 0;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(E.InteractiveMapobjectVO.prototype, "moatLevel").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "attackType", {
-    get: function () {
-      return d.ClientConstCastle.ACTION_TYPE_DUNGEONATTACK;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "attackType").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(EventdungeonMapobjectVO.prototype, "minimumOwnerLevel", {
+  Object.defineProperty(WolfkingCastleMapObjectVO.prototype, "minimumOwnerLevel", {
     get: function () {
       return this.dungeonLevel;
     },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(f.ContainerBuilderMapobjectVO.prototype, "minimumOwnerLevel").set.call(this, e);
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(WolfkingCastleMapObjectVO.prototype, "baseGateBonus", {
+    get: function () {
+      return this._baseGateBonus;
     },
     enumerable: true,
     configurable: true
   });
-  return EventdungeonMapobjectVO;
-}(f.ContainerBuilderMapobjectVO);
-exports.EventdungeonMapobjectVO = O;
-var E = require("./101.js");
-a.classImplementsInterfaces(O, "IDetailViewAble", "IWorldmapObjectVO", "IDungeonMapobjectVO");
+  Object.defineProperty(WolfkingCastleMapObjectVO.prototype, "baseWallBonus", {
+    get: function () {
+      return this._baseWallBonus;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(WolfkingCastleMapObjectVO.prototype, "baseMoatBonus", {
+    get: function () {
+      return this._baseMoatBonus;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return WolfkingCastleMapObjectVO;
+}(require("./205.js").ContainerBuilderMapobjectVO);
+exports.WolfkingCastleMapObjectVO = p;

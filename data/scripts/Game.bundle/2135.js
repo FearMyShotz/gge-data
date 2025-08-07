@@ -1,40 +1,49 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = function () {
-  function MonumentLevelInfoVO() {
-    this._level = 0;
-    this._boost = 0;
-    this._requiredPoints = 0;
+var n = require("./6.js");
+var o = require("./22.js");
+var a = function () {
+  function XmlSamuraiDaimyoRewardVO() {
+    this._id = 0;
+    this._rewardSetId = 0;
+    this._minHighscoreRank = 0;
+    this._rewardIds = [];
   }
-  MonumentLevelInfoVO.prototype.parseXML = function (e) {
-    this._level = parseInt(e.level || "");
-    this._boost = parseInt(e.fameBoost || "");
-    this._requiredPoints = parseInt(e.requiredPoints || "");
+  XmlSamuraiDaimyoRewardVO.prototype.parseXml = function (e) {
+    this._id = n.int(o.CastleXMLUtils.getIntAttribute("id", e, -1));
+    this._rewardSetId = n.int(o.CastleXMLUtils.getIntAttribute("rewardSetID", e, -1));
+    this._minHighscoreRank = n.int(o.CastleXMLUtils.getIntAttribute("minHighscoreRank", e, -1));
+    this._rewardIds = o.CastleXMLUtils.createIntListFromAttribute("rewardIDs", e);
   };
-  Object.defineProperty(MonumentLevelInfoVO.prototype, "level", {
+  Object.defineProperty(XmlSamuraiDaimyoRewardVO.prototype, "id", {
     get: function () {
-      return this._level;
+      return this._id;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MonumentLevelInfoVO.prototype, "landmarkBonus", {
+  Object.defineProperty(XmlSamuraiDaimyoRewardVO.prototype, "rewardSetId", {
     get: function () {
-      return this._boost;
+      return this._rewardSetId;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MonumentLevelInfoVO.prototype, "requiredPoints", {
+  Object.defineProperty(XmlSamuraiDaimyoRewardVO.prototype, "minHighscoreRank", {
     get: function () {
-      return this._requiredPoints;
+      return this._minHighscoreRank;
     },
     enumerable: true,
     configurable: true
   });
-  return MonumentLevelInfoVO;
+  Object.defineProperty(XmlSamuraiDaimyoRewardVO.prototype, "rewardIds", {
+    get: function () {
+      return this._rewardIds;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return XmlSamuraiDaimyoRewardVO;
 }();
-exports.MonumentLevelInfoVO = o;
-n.classImplementsInterfaces(o, "IUpgradableLandmarkLevelInfoVO");
+exports.XmlSamuraiDaimyoRewardVO = a;

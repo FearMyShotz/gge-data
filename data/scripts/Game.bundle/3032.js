@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./62.js");
 var s = function (e) {
-  function GlassboostBuildingVE() {
+  function ForgeBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GlassboostBuildingVE, e);
-  Object.defineProperty(GlassboostBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(ForgeBuildingVE, e);
+  Object.defineProperty(ForgeBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_BoostPerHourGlass;
+      return Library.CastleInterfaceElements_Icons.Icon_ToolProductionBoost;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return GlassboostBuildingVE;
+  return ForgeBuildingVE;
 }(a.ABasicBuildingVE);
-exports.GlassboostBuildingVE = s;
+exports.ForgeBuildingVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

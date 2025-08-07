@@ -2,58 +2,166 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
-var l = require("./5.js");
-var c = require("./3.js");
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./3.js");
+var r = require("./44.js");
+var l = require("./5475.js");
+var c = require("./1956.js");
 var u = require("./4.js");
-var d = require("./9.js");
-var p = require("./11.js");
-var h = require("./354.js");
-var g = require("./435.js");
-var C = function (e) {
-  function CastleForumAdvertisementDialog() {
-    return e.call(this, CastleForumAdvertisementDialog.NAME) || this;
+var d = require("./83.js");
+var p = require("./99.js");
+var h = function (e) {
+  function MessagePrivateOfferVO() {
+    var t = this;
+    t._privateOfferType = 0;
+    t._offerID = 0;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleForumAdvertisementDialog, e);
-  CastleForumAdvertisementDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_goToForum]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_header, new c.LocalizedTextVO(CastleForumAdvertisementDialog.MESSAGE_TITLE));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new c.LocalizedTextVO("dialog_messageTip_body_15"));
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_goToForum.txt_value, new c.LocalizedTextVO("dialog_mailVerification_forum_title"));
+  n.__extends(MessagePrivateOfferVO, e);
+  MessagePrivateOfferVO.prototype.parseMessageHeader = function (e) {
+    var t = e.split("+");
+    this._privateOfferType = parseInt(t[0]);
+    this._offerID = parseInt(t[1]);
+    this.checkMostRecentMessage();
   };
-  CastleForumAdvertisementDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_close:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_goToForum:
-        if (u.CastleModel.userData.email == l.PlayerConst.DEFAULT_MAIL && !a.EnvGlobalsHandler.globals.isOnSpecialServer) {
-          d.CastleDialogHandler.getInstance().registerDefaultDialogs(h.OptionsDialog, new g.OptionsDialogProperties(h.OptionsDialog.TAB_ACCOUNT_DETAILS, true));
-          return;
-        }
-        s.CommandController.instance.executeCommand(o.BasicController.COMMAND_OPEN_FORUM);
-        this.finishForumAdvertisementMessages();
-        this.hide();
+  MessagePrivateOfferVO.prototype.checkMostRecentMessage = function () {
+    var e = u.CastleModel.messageData.mostRecentPOMessages.get(this.offerID);
+    if (e) {
+      var t = o.castAs(u.CastleModel.messageData.getMessageVOById(e), "MessagePrivateOfferVO");
+      if (!t || t && t.getCumulativeSecondsSinceSent() > this.getCumulativeSecondsSinceSent()) {
+        u.CastleModel.messageData.mostRecentPOMessages.set(this.offerID, this.messageID);
+      }
+    } else {
+      u.CastleModel.messageData.mostRecentPOMessages.set(this.offerID, this.messageID);
     }
   };
-  CastleForumAdvertisementDialog.prototype.finishForumAdvertisementMessages = function () {
-    u.CastleModel.privateOfferData.sendOfferQuestAccept(this.dialogProperties.messageVO.offerID, 1);
+  MessagePrivateOfferVO.prototype.parseSubject = function () {
+    switch (this._privateOfferType) {
+      case a.MessageConst.PRIVATE_OFFER_DUNGEON_TREASURE_CHEST:
+        return s.Localize.text("message_header_dungeon_treasure_chest");
+      case a.MessageConst.PRIVATE_OFFER_WHALE_CHEST:
+        return s.Localize.text("eventBuilding_decoOffer");
+      case a.MessageConst.PRIVATE_OFFER_FORUM_ADVERTISING:
+        return s.Localize.text(C.CastleForumAdvertisementDialog.MESSAGE_TITLE);
+      case a.MessageConst.PRIVATE_OFFER_EVENT_GIFT:
+        return s.Localize.text("custom_offer_messageHeader_" + this._offerID);
+      case a.MessageConst.PRIVATE_OFFER_DEFENSE:
+        return s.Localize.text("custom_offer_messageHeader_DefenseOffer");
+      case a.MessageConst.PRIVATE_OFFER_VOUCHER:
+        return s.Localize.text("dialog_specialOffer_title_4");
+      case a.MessageConst.PRIVATE_OFFER_TIME_CHALLENGE:
+        return s.Localize.text("message_header_timeOffer_title");
+      case a.MessageConst.PRIVATE_OFFER_BESTSELLER_SHOP:
+        return s.Localize.text("dialog_privateBestsellerShop_title");
+    }
+    return s.Localize.text("dialog_messageTip_title_" + this._offerID);
   };
-  Object.defineProperty(CastleForumAdvertisementDialog.prototype, "dialogProperties", {
+  Object.defineProperty(MessagePrivateOfferVO.prototype, "subject", {
     get: function () {
-      return this.properties;
+      if (p.AMessageVO.showOfferIDsInSubject) {
+        return this.offerID.toString() + ":" + this._subject;
+      } else {
+        return this._subject;
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.AMessageVO.prototype, "subject").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleForumAdvertisementDialog.NAME = "CastleForumAdvertisement";
-  CastleForumAdvertisementDialog.MESSAGE_TITLE = "dialog_messageTip_title_15";
-  return CastleForumAdvertisementDialog;
-}(p.CastleExternalDialog);
-exports.CastleForumAdvertisementDialog = C;
-r.classImplementsInterfaces(C, "ICollectableRendererList");
+  MessagePrivateOfferVO.prototype.parseSender = function () {
+    if (this._privateOfferType == a.MessageConst.PRIVATE_OFFER_DUNGEON_TREASURE_CHEST) {
+      return s.Localize.text(r.SpecialServerHelper.checkTextIDForSkinText("kingdom_dungeon_castleName_0"));
+    } else {
+      return s.Localize.text("system");
+    }
+  };
+  Object.defineProperty(MessagePrivateOfferVO.prototype, "dialogInfo", {
+    get: function () {
+      switch (this._privateOfferType) {
+        case a.MessageConst.PRIVATE_OFFER_DUNGEON_TREASURE_CHEST:
+          return new d.DialogInfoVO(null, null, g.IngameClientCommands.OPEN_DUNGEON_TREASURE_CHEST_OFFER_DIALOG, this);
+        case a.MessageConst.PRIVATE_OFFER_WHALE_CHEST:
+        case a.MessageConst.PRIVATE_OFFER_EVENT_GIFT:
+        case a.MessageConst.PRIVATE_OFFER_DEFENSE:
+          return new d.DialogInfoVO(null, null, g.IngameClientCommands.OPEN_WHALE_CHEST_OFFER_DIALOG, this);
+        case a.MessageConst.PRIVATE_OFFER_VOUCHER:
+          return new d.DialogInfoVO(null, null, g.IngameClientCommands.OPEN_VOUCHER_OFFER_DIALOG, this);
+        case a.MessageConst.PRIVATE_OFFER_FORUM_ADVERTISING:
+          return new d.DialogInfoVO(C.CastleForumAdvertisementDialog, new l.CastleForumAdvertisementDialogProperties(this));
+        case a.MessageConst.PRIVATE_OFFER_TIME_CHALLENGE:
+        case a.MessageConst.PRIVATE_OFFER_BESTSELLER_SHOP:
+          return new d.DialogInfoVO(null, null, g.IngameClientCommands.OPEN_GENERIC_OFFER_DIALOG, this);
+      }
+      return new d.DialogInfoVO(_.CastleMessageTipDialog, new c.CastleMessageTipDialogProperties(this));
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.AMessageVO.prototype, "dialogInfo").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessagePrivateOfferVO.prototype, "additionalIconName", {
+    get: function () {
+      if (this.isOfferActive()) {
+        switch (this._privateOfferType) {
+          case a.MessageConst.PRIVATE_OFFER_VOUCHER:
+            return "CastleMessageIconsVoucherOffer";
+          case a.MessageConst.PRIVATE_OFFER_TIME_CHALLENGE:
+            return "CastleMessageIconsTimeChallenge";
+          case a.MessageConst.PRIVATE_OFFER_BESTSELLER_SHOP:
+            return "CastleMessageIconsBestsellerShop";
+          default:
+            return "CastleMessageIconsPrivateOffer";
+        }
+      }
+      return "";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.AMessageVO.prototype, "additionalIconName").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessagePrivateOfferVO.prototype, "privateOfferType", {
+    get: function () {
+      return this._privateOfferType;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(MessagePrivateOfferVO.prototype, "offerID", {
+    get: function () {
+      return this._offerID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  MessagePrivateOfferVO.prototype.isOfferActive = function () {
+    switch (this.privateOfferType) {
+      case a.MessageConst.PRIVATE_OFFER_DUNGEON_TREASURE_CHEST:
+      case a.MessageConst.PRIVATE_OFFER_WHALE_CHEST:
+      case a.MessageConst.PRIVATE_OFFER_EVENT_GIFT:
+      case a.MessageConst.PRIVATE_OFFER_DEFENSE:
+      case a.MessageConst.PRIVATE_OFFER_VOUCHER:
+      case a.MessageConst.PRIVATE_OFFER_TIME_CHALLENGE:
+      case a.MessageConst.PRIVATE_OFFER_BESTSELLER_SHOP:
+        return u.CastleModel.privateOfferData.getOfferById(this.offerID) != null && u.CastleModel.messageData.mostRecentPOMessages.get(this.offerID) == this.messageID;
+    }
+    return false;
+  };
+  MessagePrivateOfferVO.prototype.canBeArchived = function () {
+    return e.prototype.canBeArchived.call(this) && this._privateOfferType != a.MessageConst.PRIVATE_OFFER_BESTSELLER_SHOP;
+  };
+  MessagePrivateOfferVO.prototype.canBeDeleted = function () {
+    return !this.isOfferActive() || this._privateOfferType == a.MessageConst.PRIVATE_OFFER_TIME_CHALLENGE;
+  };
+  return MessagePrivateOfferVO;
+}(p.AMessageVO);
+exports.MessagePrivateOfferVO = h;
+var g = require("./29.js");
+var C = require("./5476.js");
+var _ = require("./1161.js");

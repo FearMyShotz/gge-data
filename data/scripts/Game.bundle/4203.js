@@ -2,7 +2,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1875.js");
+var o = require("./1877.js");
 var a = createjs.Point;
 var s = function (e) {
   function WorldMapMovementRingMenu(t) {

@@ -2,63 +2,58 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./3.js");
-var a = require("./4.js");
-var s = require("./8.js");
-var r = require("./1.js");
-var l = require("./649.js");
-var c = require("./36.js");
-var u = require("./403.js");
-var d = require("./547.js");
-var p = require("./9.js");
-var h = require("./2.js");
-var g = require("./1063.js");
-var C = function (e) {
-  function SeasonLeagueBuyPassConfirmWithSeasonOptionDialog() {
-    return e.call(this, SeasonLeagueBuyPassConfirmWithSeasonOptionDialog.NAME) || this;
+var o = require("./8.js");
+var a = require("./11.js");
+var s = require("./1.js");
+var r = require("./3.js");
+var l = require("./13.js");
+var c = require("./49.js");
+var u = require("./78.js");
+var d = require("./77.js");
+var p = require("./76.js");
+var h = require("./3540.js");
+var g = function (e) {
+  function RewardHubErrorsDialog() {
+    return e.call(this, RewardHubErrorsDialog.NAME) || this;
   }
-  n.__extends(SeasonLeagueBuyPassConfirmWithSeasonOptionDialog, e);
-  SeasonLeagueBuyPassConfirmWithSeasonOptionDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(RewardHubErrorsDialog, e);
+  RewardHubErrorsDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    s.ButtonHelper.initButtons([this.dialogDisp.btn_buySeason], c.ClickFeedbackButton);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_season, new o.LocalizedTextVO("dialog_seasonLeague_seasonPass_info_copy"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.TextVO(l.TextHelper.toUpperCaseLocaSafeTextId("generic_alert_bug")));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new r.LocalizedTextVO("dialog_rewardHub_error_pickupBlocked_copy"));
+    o.ButtonHelper.initButtons([this.dialogDisp.btn_close], c.ClickFeedbackButtonHover);
+    this.dialogDisp.btn_close.toolTipText = "generic_btn_close";
+    var i = new d.InfiniteScrollListOptions(h.RewardHubErrorsItem, "Item_RewardHubError", RewardHubErrorsDialog.NAME);
+    i.useSmoothScroll = true;
+    this._scrollList = new u.InfiniteScrollListComponent(new p.InfiniteScrollListClips(this.dialogDisp.mc_list).addMaskMc(this.dialogDisp.mc_list.mc_mask).addItemContainerMc(this.dialogDisp.mc_list.mc_items).addSliderMc(this.dialogDisp.mc_list.mc_slider), i);
   };
-  SeasonLeagueBuyPassConfirmWithSeasonOptionDialog.prototype.showLoaded = function (t = null) {
+  RewardHubErrorsDialog.prototype.showLoaded = function (t = null) {
     e.prototype.showLoaded.call(this, t);
-    h.BasicModel.smartfoxClient.sendCommandVO(new g.C2SGetSeasonPassPriceInfoEventVO());
+    this._scrollList.onShow();
+    this.updateList();
   };
-  SeasonLeagueBuyPassConfirmWithSeasonOptionDialog.prototype.onClick = function (t) {
-    if (s.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      switch (t.target) {
-        case this.dialogDisp.btn_buySeason:
-          p.CastleDialogHandler.getInstance().registerDialogs(d.SeasonLeagueBuyPassConfirmDialog, new u.SeasonLeagueBuyPassConfirmDialogProperties(new l.CollectableItemSeasonLeagueSeasonPassVO(), a.CastleModel.seasonLeagueData.getCurrentSeasonPassCostWithSale(), this.seasonPassSale, a.CastleModel.seasonLeagueData.server.promotionId, this.activeEventID, this.dialogProps.instanceID));
-          this.hide();
-      }
+  RewardHubErrorsDialog.prototype.updateList = function () {
+    this._scrollList.updateWithNewData(this.dialogProperties.listItemVOs);
+  };
+  RewardHubErrorsDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this);
+    this._scrollList.onHide();
+  };
+  RewardHubErrorsDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (t.target == this.dialogDisp.btn_close) {
+      this.hide();
     }
   };
-  Object.defineProperty(SeasonLeagueBuyPassConfirmWithSeasonOptionDialog.prototype, "seasonPassSale", {
+  Object.defineProperty(RewardHubErrorsDialog.prototype, "dialogProperties", {
     get: function () {
-      return Math.max(a.CastleModel.seasonLeagueData.server.seasonPassDiscount, a.CastleModel.seasonLeagueData.currentSetting.seasonPassFullDiscount);
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SeasonLeagueBuyPassConfirmWithSeasonOptionDialog.prototype, "activeEventID", {
-    get: function () {
-      if (this.dialogProps.eventID > 0) {
-        return this.dialogProps.eventID;
-      } else if (a.CastleModel.seasonLeagueData.isAnySeasonEventActive()) {
-        return a.CastleModel.seasonLeagueData.getActiveSeasonEventVO().eventId;
-      } else {
-        return -1;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SeasonLeagueBuyPassConfirmWithSeasonOptionDialog.NAME = "SeasonLeaguePassBuyConfirmWithSeasonOption";
-  return SeasonLeagueBuyPassConfirmWithSeasonOptionDialog;
-}(d.SeasonLeagueBuyPassConfirmDialog);
-exports.SeasonLeagueBuyPassConfirmWithSeasonOptionDialog = C;
-r.classImplementsInterfaces(C, "ICollectableRendererList");
+  RewardHubErrorsDialog.NAME = "CastleRewardHubErrorMessage";
+  return RewardHubErrorsDialog;
+}(a.CastleExternalDialog);
+exports.RewardHubErrorsDialog = g;
+s.classImplementsInterfaces(g, "ICollectableRendererList");

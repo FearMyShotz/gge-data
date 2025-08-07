@@ -3,28 +3,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./4.js");
-var r = function (e) {
-  function RingMenuButtonRelicus() {
+var a = require("./62.js");
+var s = function (e) {
+  function RelicEnchanterBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RingMenuButtonRelicus, e);
-  RingMenuButtonRelicus.prototype.init = function (t, i, n) {
-    e.prototype.init.call(this, t, i, n);
-    this._disp = i.btn_relicus;
-    this._disp.visible = u.instanceOfClass(n, "RelicEnchanterBuildingVE") && n.buildingVO.buildingState.isFunctionally && n.buildingVO.requiredLevel <= s.CastleModel.userData.level;
+  n.__extends(RelicEnchanterBuildingVE, e);
+  Object.defineProperty(RelicEnchanterBuildingVE.prototype, "buildingGroundIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements_Icons.Icon_Relicus;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  RelicEnchanterBuildingVE.prototype.getRingMenuButtons = function () {
+    var t = e.prototype.getRingMenuButtons.call(this);
+    t.push(new r.RingMenuButtonRelicus());
+    return t;
   };
-  RingMenuButtonRelicus.prototype.onClick = function (e, t) {
-    l.CastleDialogHandler.getInstance().registerDefaultDialogs(c.RelicUpgradeDialog);
-  };
-  RingMenuButtonRelicus.prototype.getInfoText = function () {
-    return a.Localize.text("hud_button_relicEnchanter_relicEnchanterUpgrade_tooltip");
-  };
-  return RingMenuButtonRelicus;
-}(require("./98.js").ARingMenuButton);
-exports.RingMenuButtonRelicus = r;
-var l = require("./9.js");
-var c = require("./797.js");
-o.classImplementsInterfaces(r, "IRingMenuButton");
-var u = require("./1.js");
+  return RelicEnchanterBuildingVE;
+}(a.ABasicBuildingVE);
+exports.RelicEnchanterBuildingVE = s;
+var r = require("./3094.js");
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

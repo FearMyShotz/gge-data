@@ -1,25 +1,17 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
+var n = require("./4.js");
 var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SJoinAreaVO(t, i, n) {
-    var o = this;
-    o.PX = 0;
-    o.PY = 0;
-    o.KID = 0;
-    CONSTRUCTOR_HACK;
-    (o = e.call(this) || this).PX = t;
-    o.PY = i;
-    o.KID = n;
-    return o;
-  }
-  n.__extends(C2SJoinAreaVO, e);
-  C2SJoinAreaVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_JOIN_AREA;
+var a = function () {
+  function UpdateDynamicTopXDataService() {}
+  UpdateDynamicTopXDataService.prototype.updateDynamicTopXForVO = function (e, t = -1) {
+    var i = t != -1 ? t : o.BasicModel.instanceProxy.selectedInstanceVO.zoneId;
+    var a = n.CastleModel.dynamicTopXxmlData.getTopX(i, e.eventId, e.leagueID);
+    if (a && a.length > 0 && e.topX.length > 0) {
+      e.setDynamicTopX(a);
+    }
   };
-  return C2SJoinAreaVO;
-}(o.BasicCommandVO);
-exports.C2SJoinAreaVO = s;
+  return UpdateDynamicTopXDataService;
+}();
+exports.UpdateDynamicTopXDataService = a;

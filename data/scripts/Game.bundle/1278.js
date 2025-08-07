@@ -19,6 +19,6 @@ var r = function (e) {
   };
   CastleNewSocketDialog.NAME = "CastleNewSocket";
   return CastleNewSocketDialog;
-}(require("./907.js").ACastleSocketDialog);
+}(require("./908.js").ACastleSocketDialog);
 exports.CastleNewSocketDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");

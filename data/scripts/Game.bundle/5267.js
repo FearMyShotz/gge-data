@@ -5,35 +5,32 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function MRECommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function JEACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MRECommand, e);
-  Object.defineProperty(MRECommand.prototype, "cmdId", {
+  n.__extends(JEACommand, e);
+  Object.defineProperty(JEACommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_MONUMENT_RESET;
+      return s.ClientConstSF.S2C_JOIN_CAMP;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  MRECommand.prototype.executeCommand = function (e, t) {
+  JEACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.monumentsData.parseMRE(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return MRECommand;
-}(l.CastleCommand);
-exports.MRECommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return JEACommand;
+}(r.CastleCommand);
+exports.JEACommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

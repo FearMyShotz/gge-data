@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./279.js");
+var a = require("./278.js");
 var s = require("./8.js");
 var r = function (e) {
   function CastleConstructionItemsMainDialog() {
@@ -64,7 +64,7 @@ var r = function (e) {
   return CastleConstructionItemsMainDialog;
 }(require("./11.js").CastleExternalDialog);
 exports.CastleConstructionItemsMainDialog = r;
-var l = require("./2621.js");
-var c = require("./2708.js");
-var u = require("./2709.js");
+var l = require("./2622.js");
+var c = require("./2709.js");
+var u = require("./2710.js");
 o.classImplementsInterfaces(r, "ICollectableRendererList");

@@ -1,32 +1,31 @@
-var n = require("./1289.js");
-function CancelToken(e) {
-  if (typeof e != "function") {
-    throw new TypeError("executor must be a function.");
-  }
-  var t;
-  this.promise = new Promise(function promiseExecutor(e) {
-    t = e;
-  });
-  var i = this;
-  e(function cancel(e) {
-    if (!i.reason) {
-      i.reason = new n(e);
-      t(i.reason);
-    }
-  });
-}
-CancelToken.prototype.throwIfRequested = function throwIfRequested() {
-  if (this.reason) {
-    throw this.reason;
-  }
-};
-CancelToken.source = function source() {
+var n = require("./257.js");
+module.exports = n.isStandardBrowserEnv() ? function standardBrowserEnv() {
   var e;
-  return {
-    token: new CancelToken(function executor(t) {
-      e = t;
-    }),
-    cancel: e
+  var t = /(msie|trident)/i.test(navigator.userAgent);
+  var i = document.createElement("a");
+  function resolveURL(e) {
+    var n = e;
+    if (t) {
+      i.setAttribute("href", n);
+      n = i.href;
+    }
+    i.setAttribute("href", n);
+    return {
+      href: i.href,
+      protocol: i.protocol ? i.protocol.replace(/:$/, "") : "",
+      host: i.host,
+      search: i.search ? i.search.replace(/^\?/, "") : "",
+      hash: i.hash ? i.hash.replace(/^#/, "") : "",
+      hostname: i.hostname,
+      port: i.port,
+      pathname: i.pathname.charAt(0) === "/" ? i.pathname : "/" + i.pathname
+    };
+  }
+  e = resolveURL(window.location.href);
+  return function isURLSameOrigin(t) {
+    var i = n.isString(t) ? resolveURL(t) : t;
+    return i.protocol === e.protocol && i.host === e.host;
   };
+}() : function isURLSameOrigin() {
+  return true;
 };
-module.exports = CancelToken;

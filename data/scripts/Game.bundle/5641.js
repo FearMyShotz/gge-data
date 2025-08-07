@@ -2,27 +2,84 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function CastlePartpaypriceData(e) {
-    this.parseXml(e);
+  function XmlFusionSystemVO() {
+    this._id = -1;
+    this._energyRechargeIntervalInSeconds = 0;
+    this._assembleCatalystEnergyCost = 0;
+    this._disassembleCatalystEnergyCost = 0;
+    this._baseBonusFusionXPChance = 0;
+    this._premiumBonusFusionXPChance = 0;
+    this._skipRechargeHardCurrencyCost = 0;
+    this._skipRechargeHardCurrencyCostFactor = 0;
   }
-  CastlePartpaypriceData.prototype.parseXml = function (e) {
-    this._partpaypriceVOs = new Map();
-    var t;
-    var i = e.partpayprices;
-    if (i != null) {
-      for (var n = 0, a = i; n < a.length; n++) {
-        var s = a[n];
-        if (s !== undefined) {
-          (t = new o.PartpaypriceVO()).fillFromParamXml(s);
-          this._partpaypriceVOs.set(t.id, t);
-        }
-      }
-    }
+  XmlFusionSystemVO.prototype.parseXml = function (e) {
+    this._id = o.int(a.CastleXMLUtils.getIntAttribute("id", e, -1));
+    this._energyRechargeIntervalInSeconds = o.int(a.CastleXMLUtils.getIntAttribute("energyRechargeIntervalInSeconds", e, 0));
+    this._assembleCatalystEnergyCost = o.int(a.CastleXMLUtils.getIntAttribute("assembleCatalystEnergyCost", e, 0));
+    this._disassembleCatalystEnergyCost = o.int(a.CastleXMLUtils.getIntAttribute("disassembleCatalystEnergyCost", e, 0));
+    this._baseBonusFusionXPChance = o.int(a.CastleXMLUtils.getIntAttribute("baseBonusFusionXPChance", e, 0));
+    this._premiumBonusFusionXPChance = o.int(a.CastleXMLUtils.getIntAttribute("premiumBonusFusionXPChance", e, 0));
+    this._skipRechargeHardCurrencyCost = o.int(a.CastleXMLUtils.getIntAttribute("skipRechargeHardCurrencyCost", e, 0));
+    this._skipRechargeHardCurrencyCostFactor = a.CastleXMLUtils.getNumberAttribute("skipRechargeHardCurrencyCostFactor", e);
   };
-  CastlePartpaypriceData.prototype.getVOById = function (e) {
-    return this._partpaypriceVOs.get(e);
-  };
-  return CastlePartpaypriceData;
+  Object.defineProperty(XmlFusionSystemVO.prototype, "id", {
+    get: function () {
+      return this._id;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlFusionSystemVO.prototype, "energyRechargeIntervalInSeconds", {
+    get: function () {
+      return this._energyRechargeIntervalInSeconds;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlFusionSystemVO.prototype, "assembleCatalystEnergyCost", {
+    get: function () {
+      return this._assembleCatalystEnergyCost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlFusionSystemVO.prototype, "disassembleCatalystEnergyCost", {
+    get: function () {
+      return this._disassembleCatalystEnergyCost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlFusionSystemVO.prototype, "baseBonusFusionXPChance", {
+    get: function () {
+      return this._baseBonusFusionXPChance;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlFusionSystemVO.prototype, "premiumBonusFusionXPChance", {
+    get: function () {
+      return this._premiumBonusFusionXPChance;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlFusionSystemVO.prototype, "skipRechargeHardCurrencyCost", {
+    get: function () {
+      return this._skipRechargeHardCurrencyCost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlFusionSystemVO.prototype, "skipRechargeHardCurrencyCostFactor", {
+    get: function () {
+      return this._skipRechargeHardCurrencyCostFactor;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return XmlFusionSystemVO;
 }();
-exports.CastlePartpaypriceData = n;
-var o = require("./5642.js");
+exports.XmlFusionSystemVO = n;
+var o = require("./6.js");
+var a = require("./22.js");

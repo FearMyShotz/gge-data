@@ -2,41 +2,39 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./3266.js");
-var a = function (e) {
-  function CollectableItemSkipDiscountVO(t = 0, i = 0) {
-    var n = e.call(this, 1) || this;
-    n._skipDiscountVO = new o.SkipDiscountBoosterVO(t, i);
-    return n;
+var o = require("./1.js");
+var a = require("./39.js");
+var s = require("./4.js");
+var r = require("./195.js");
+var l = function (e) {
+  function CollectableItemXpVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemSkipDiscountVO, e);
-  CollectableItemSkipDiscountVO.prototype.parseServerObject = function (t) {
-    e.prototype.parseServerObject.call(this, t);
-    this._skipDiscountVO = new o.SkipDiscountBoosterVO(t[0], t[1]);
+  n.__extends(CollectableItemXpVE, e);
+  CollectableItemXpVE.prototype.textfieldUpdate = function () {
+    this.textfieldSetTextAsNumber(this.vo.amount);
   };
-  CollectableItemSkipDiscountVO.prototype.getTooltipTextId = function () {
-    return "skipDiscount_tooltip";
+  CollectableItemXpVE.prototype.textfieldBackgroundVisible = function () {
+    return true;
   };
-  CollectableItemSkipDiscountVO.prototype.clone = function () {
-    var t = e.prototype.clone.call(this);
-    t.skipDiscountVO = this.skipDiscountVO.clone();
-    return t;
+  CollectableItemXpVE.prototype.tooltipCreate = function () {
+    return this.tooltipCreateByTextId(s.CastleModel.userData.isLegend ? a.ClientConstTextIds.LEGEND_XP : this.vo.getTooltipTextId());
   };
-  CollectableItemSkipDiscountVO.prototype.isCombineAbleWith = function (e) {
-    return false;
-  };
-  Object.defineProperty(CollectableItemSkipDiscountVO.prototype, "skipDiscountVO", {
+  Object.defineProperty(CollectableItemXpVE.prototype, "iconClass", {
     get: function () {
-      return this._skipDiscountVO;
+      if (s.CastleModel.userData.isLegend) {
+        return Library.CastleInterfaceElements_Icons.Icon_XP_Legend_Big;
+      } else {
+        return Library.CastleInterfaceElements_Icons.Icon_XP_Big;
+      }
     },
     set: function (e) {
-      this._skipDiscountVO = e;
+      Object.getOwnPropertyDescriptor(r.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CollectableItemSkipDiscountVO.SERVER_KEY = "SD_DISABLED";
-  CollectableItemSkipDiscountVO.XML_KEY = "skipDiscount";
-  return CollectableItemSkipDiscountVO;
-}(require("./96.js").ACollectableItemVO);
-exports.CollectableItemSkipDiscountVO = a;
+  return CollectableItemXpVE;
+}(r.ACollectableItemSimpleIconVE);
+exports.CollectableItemXpVE = l;
+o.classImplementsInterfaces(l, "ICollectableRendererList");

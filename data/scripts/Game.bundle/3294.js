@@ -2,37 +2,27 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./195.js");
-var r = function (e) {
-  function CollectableItemPaymentDoublerVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CollectableItemPaymentDoublerVO(t = 0) {
+    CONSTRUCTOR_HACK;
+    return e.call(this, t) || this;
   }
-  n.__extends(CollectableItemPaymentDoublerVE, e);
-  CollectableItemPaymentDoublerVE.prototype.textfieldUpdate = function () {
-    this.textfieldSetTextAsNumber(this.vo.amount);
+  n.__extends(CollectableItemPaymentDoublerVO, e);
+  CollectableItemPaymentDoublerVO.prototype.parseServerObject = function (t) {
+    e.prototype.parseServerObject.call(this, t);
+    this.amount = t;
   };
-  CollectableItemPaymentDoublerVE.prototype.textfieldBackgroundVisible = function () {
-    return true;
+  CollectableItemPaymentDoublerVO.prototype.getTooltipTextId = function () {
+    return "paymentdoubler_name";
   };
-  CollectableItemPaymentDoublerVE.prototype.tooltipCreate = function () {
-    return {
-      t: "dialog_paymentdoubler_tootlipp",
-      p: [new a.LocalizedNumberVO(this.vo.amount)]
-    };
+  CollectableItemPaymentDoublerVO.prototype.getDescriptionTextId = function () {
+    return "dialog_paymentdoubler_copy";
   };
-  Object.defineProperty(CollectableItemPaymentDoublerVE.prototype, "iconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_PaymentDoubler;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CollectableItemPaymentDoublerVE;
-}(s.ACollectableItemSimpleIconVE);
-exports.CollectableItemPaymentDoublerVE = r;
-o.classImplementsInterfaces(r, "ICollectableRendererList");
+  CollectableItemPaymentDoublerVO.__initialize_static_members = function () {
+    CollectableItemPaymentDoublerVO.SERVER_KEY = "PD";
+    CollectableItemPaymentDoublerVO.XML_KEY = "paymentDoppler";
+  };
+  return CollectableItemPaymentDoublerVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemPaymentDoublerVO = o;
+o.__initialize_static_members();

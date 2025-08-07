@@ -3,85 +3,89 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./87.js");
-var l = require("./92.js");
-var c = function (e) {
-  function IsoCommandObjectUpdateInfoModel(t, i, n) {
-    var o = this;
-    o._objectId = 0;
-    CONSTRUCTOR_HACK;
-    (o = e.call(this, t) || this)._objectId = i;
-    o._serverObject = n;
-    return o;
+var a = function (e) {
+  function IsoCommandPackageObjectUpdateInfo(t, i) {
+    var n = e.call(this, null) || this;
+    n._isoData = t;
+    n._serverObject = i;
+    return n;
   }
-  n.__extends(IsoCommandObjectUpdateInfoModel, e);
-  IsoCommandObjectUpdateInfoModel.prototype.execute = function () {
-    var e = false;
+  n.__extends(IsoCommandPackageObjectUpdateInfo, e);
+  IsoCommandPackageObjectUpdateInfo.prototype.createCommandList = function () {
+    var e = [];
+    var t = s.IsoHelper.data.createIsoObjectVOByServer(this.createCopyFromServerObject(), this.isoData);
+    if (t && t.objectId >= 0) {
+      if (this.doesObjectHasToBeCreated(t.objectId)) {
+        this.vo = s.IsoHelper.data.createIsoObjectVOByServer(this.getRealServerObject(), this.isoData);
+        e.push(new r.IsoCommandObjectAddModel(this.vo.isoData, this.vo, true), new u.IsoCommandObjectUpdateConstructionItems(this.vo.isoData, this.vo));
+        if (this.vo.objectType.groupType.needsAdvancedUpdates) {
+          e.push(new p.IsoCommandAreaDataUpdated(this.vo.isoData));
+        }
+        e.push(new l.IsoCommandObjectAddView(this.vo), new h.IsoCommandZSortAll());
+      } else {
+        e.push(new d.IsoCommandObjectUpdateInfoModel(t.isoData, t.objectId, this.getRealServerObject()), new u.IsoCommandObjectUpdateConstructionItems(t.isoData, t));
+        if (t.objectType.groupType.needsAdvancedUpdates) {
+          e.push(new p.IsoCommandAreaDataUpdated(t.isoData));
+        }
+        e.push(new c.IsoCommandObjectUpdateByIdView(t.objectId, this.wasFastCompleted), new h.IsoCommandZSortAll());
+      }
+    } else {
+      o.debug("--- The given serverObject is invalid.");
+    }
+    return e;
+  };
+  IsoCommandPackageObjectUpdateInfo.prototype.doesObjectHasToBeCreated = function (e) {
     for (var t = 0, i = Array.from(this.isoData.objects.groups.values()); t < i.length; t++) {
       var n = i[t];
-      if (n !== undefined && n.containsObjectById(this.objectId)) {
-        if (n.groupType == d.IsoObjectGroupEnum.INNER_BUILDINGS) {
-          this.isoData.grid.removeBuildingById(this.objectId);
-        }
-        var a = n.updateObjectByServer(this.objectId, this.serverObject);
-        this.updateOnGrid(a, n.groupType);
-        e = true;
-        u.CastleComponent.controller.dispatchEvent(new l.IsoEvent(l.IsoEvent.ON_OBJECT_UPDATED, [a]));
-        u.CastleComponent.controller.dispatchEvent(new l.IsoEvent(l.IsoEvent.ON_OBJECT_CHANGED, [a]));
-        break;
+      if (n !== undefined && n.containsObjectById(e)) {
+        return false;
       }
     }
-    if (!e) {
-      o.debug("Warning: Object with ID '" + this.objectId + "' was not found in any list.");
+    return true;
+  };
+  IsoCommandPackageObjectUpdateInfo.prototype.createCopyFromServerObject = function () {
+    var e = [];
+    for (var t = this.getRealServerObject(), i = 0; i < t.length; ++i) {
+      e[i] = t[i];
+    }
+    return e;
+  };
+  IsoCommandPackageObjectUpdateInfo.prototype.getRealServerObject = function () {
+    if (this.serverObject.O) {
+      return this.serverObject.O;
+    } else {
+      return this.serverObject;
     }
   };
-  IsoCommandObjectUpdateInfoModel.prototype.updateOnGrid = function (e, t) {
-    switch (t) {
-      case d.IsoObjectGroupEnum.GROUNDS:
-        this.isoData.grid.updateCompleteMap();
-        break;
-      case d.IsoObjectGroupEnum.DEFENCE:
-        this.isoData.grid.updateDefence();
-        break;
-      case d.IsoObjectGroupEnum.INNER_BUILDINGS:
-        this.handleInnerBuildingUpdateOnGrid(e);
-        break;
-      case d.IsoObjectGroupEnum.FIXED_POSITIONS:
-      case d.IsoObjectGroupEnum.SURROUNDINGS:
-      case d.IsoObjectGroupEnum.EVENT_BUILDINGS:
-        this.isoData.grid.updateOuterMap();
-    }
-  };
-  IsoCommandObjectUpdateInfoModel.prototype.handleInnerBuildingUpdateOnGrid = function (e) {
-    if (s.instanceOfClass(e, "ABasicBuildingVO")) {
-      switch (e.buildingState) {
-        case r.IsoBuildingStateEnum.DISASSEMBLED_COMPLETED:
-        case r.IsoBuildingStateEnum.UPGRADE_COMPLETED:
-          break;
-        default:
-          this.isoData.grid.addBuilding(e);
-      }
-    }
-  };
-  Object.defineProperty(IsoCommandObjectUpdateInfoModel.prototype, "serverObject", {
+  Object.defineProperty(IsoCommandPackageObjectUpdateInfo.prototype, "wasFastCompleted", {
+    get: function () {
+      return !!this.serverObject && this.serverObject.F == 1;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(IsoCommandPackageObjectUpdateInfo.prototype, "serverObject", {
     get: function () {
       return this._serverObject;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoCommandObjectUpdateInfoModel.prototype, "objectId", {
+  Object.defineProperty(IsoCommandPackageObjectUpdateInfo.prototype, "isoData", {
     get: function () {
-      return this._objectId;
+      return this._isoData;
     },
     enumerable: true,
     configurable: true
   });
-  return IsoCommandObjectUpdateInfoModel;
-}(require("./310.js").AIsoCommandModel);
-exports.IsoCommandObjectUpdateInfoModel = c;
-var u = require("./14.js");
-var d = require("./143.js");
-a.classImplementsInterfaces(c, "ICollectableRendererList");
+  return IsoCommandPackageObjectUpdateInfo;
+}(require("./634.js").AIsoCommandPackageObject);
+exports.IsoCommandPackageObjectUpdateInfo = a;
+var s = require("./46.js");
+var r = require("./693.js");
+var l = require("./694.js");
+var c = require("./5242.js");
+var u = require("./1948.js");
+var d = require("./5243.js");
+var p = require("./485.js");
+var h = require("./691.js");

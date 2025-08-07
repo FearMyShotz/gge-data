@@ -2,302 +2,138 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./6.js");
-var a = require("./22.js");
-var s = require("./86.js");
-var r = require("./4.js");
-var l = require("./165.js");
-var c = require("./97.js");
-var u = require("./35.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./24.js");
+var c = require("./33.js");
+var u = require("./1965.js");
 var d = function (e) {
-  function AResearchVO() {
-    var t = e !== null && e.apply(this, arguments) || this;
-    t.researchID = 0;
-    t.groupID = 0;
-    t.level = 0;
-    t.prerequisiteIDs = [];
-    t._researchDuration = 0;
-    t._tempServerResearchDuration = 0;
-    t._minResearchTowerLevel = 1;
-    t._requiredLevel = 0;
-    t._requiredLegendLevel = 0;
-    t.onlyWithResearchExpert = false;
-    t._isComplete = false;
-    return t;
+  function ResearchVO() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  n.__extends(AResearchVO, e);
-  AResearchVO.prototype.fillFromParamXML = function (e) {
-    this.researchID = parseInt(a.CastleXMLUtils.getValueOrDefault("researchID", e, "-1", true));
-    this.groupID = parseInt(a.CastleXMLUtils.getValueOrDefault("groupID", e, "-1", true));
-    this.level = parseInt(a.CastleXMLUtils.getValueOrDefault("level", e, "-1", true));
-    var t = a.CastleXMLUtils.getValueOrDefault("prerequisiteIDs", e, "");
-    var i = t == "" ? [] : t.split(",");
-    this.prerequisiteIDs = [];
-    for (var n = 0; n < i.length; n++) {
-      var o = parseInt(i[n]);
-      if (o > 0) {
-        this.prerequisiteIDs.push(o);
-      }
-    }
-    this._minResearchTowerLevel = parseInt(a.CastleXMLUtils.getValueOrDefault("minResearchTowerLevel", e, "1"));
-    this._requiredLevel = parseInt(a.CastleXMLUtils.getValueOrDefault("requiredLevel", e, "0"));
-    this._requiredLegendLevel = parseInt(a.CastleXMLUtils.getValueOrDefault("requiredLegendLevel", e, "0"));
-    this._researchDuration = parseInt(a.CastleXMLUtils.getValueOrDefault("researchDuration", e, "0", true));
-    this._tempServerResearchDuration = parseInt(a.CastleXMLUtils.getValueOrDefault("globalServerResearchDuration", e, "0", true));
-    this._costs = p.CollectableManager.parser.x2cList.createList(e, s.ClientConstCollectable.XML_PREFIX_COST);
-    this._tempServerCosts = p.CollectableManager.parser.x2cList.createList(e, "globalServerCost");
-    this.onlyWithResearchExpert = parseInt(a.CastleXMLUtils.getValueOrDefault("onlyWithResearchExpert", e, "0")) == 1;
-    var c = a.CastleXMLUtils.getValueOrDefault("effects", e, "");
-    if (c != "") {
-      for (var u = 0, d = c.split(","); u < d.length; u++) {
-        var h = d[u];
-        if (h.length > 0) {
-          var g = h.split("&");
-          var C = parseInt(g[0]);
-          var _ = g[1] || "";
-          var m = r.CastleModel.effectsData.getEffectByID(C);
-          var f = new l.BonusVO().parseFromValueString(m, _);
-          this._boni.push(f);
-        }
-      }
-    }
-  };
-  AResearchVO.prototype.setupPrerequisites = function (e) {
-    this._prerequisites = [];
-    if (this.prerequisiteIDs != null) {
-      for (var t = 0, i = this.prerequisiteIDs; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          var o = e.get(n);
-          this._prerequisites.push(o);
-          this.groupVO.addPrerequisite(o.groupVO);
-          if (!o._nextResearch || o._nextResearch.researchID < this.researchID) {
-            o._nextResearch = this;
-          }
-        }
-      }
+  n.__extends(ResearchVO, e);
+  ResearchVO.prototype.getBonusText = function (e) {
+    switch (this.groupID) {
+      case 21:
+      case 31:
+      case 43:
+      case 45:
+      case 46:
+      case 47:
+      case 50:
+      case 85:
+      case 86:
+      case 87:
+      case 88:
+      case 89:
+      case 90:
+      case 97:
+      case 98:
+      case 99:
+      case 100:
+      case 101:
+        return s.Localize.text(a.GenericTextIds.VALUE_NOMINAL_ADD, e);
+      case 22:
+      case 23:
+      case 44:
+      case 36:
+      case 34:
+      case 104:
+      case 105:
+      case 106:
+      case 107:
+      case 108:
+      case 109:
+      case 110:
+      case 111:
+      case 112:
+      case 113:
+      case 114:
+      case 115:
+      case 116:
+        return s.Localize.text(a.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, e);
+      case 41:
+      case 42:
+      case 49:
+        return s.Localize.text(a.GenericTextIds.VALUE_SIMPLE_COMP, [new r.LocalizedTextVO(a.GenericTextIds.VALUE_NOMINAL_SUBTRACT, e), a.GenericTextIds.COMMON_SECOND_SHORT]);
+      default:
+        return s.Localize.text(a.GenericTextIds.VALUE_PERCENTAGE_ADD, e);
     }
   };
-  Object.defineProperty(AResearchVO.prototype, "baseResearchDuration", {
+  Object.defineProperty(ResearchVO.prototype, "effectText", {
     get: function () {
-      if (_.SpecialServerHelper.isOnSpecialServer) {
-        return this._tempServerResearchDuration;
+      if (this.boni[0].effectValue.strength != 0 && this.showEffectValue) {
+        return s.Localize.text(this.descriptionTextId) + "\n" + this.getBonusText(this.boni[0].effectValue.textReplacements);
       } else {
-        return this._researchDuration;
+        return s.Localize.text(this.descriptionTextId);
       }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResearchVO.prototype, "researchDuration", {
-    get: function () {
-      var e = r.CastleModel.researchData.researchBoost + r.CastleModel.researchData.getResearchEffectValue(u.EffectTypeEnum.EFFECT_TYPE_RESEARCH_BOOST).strength;
-      e += r.CastleModel.subscriptionData.getEffectValue(u.EffectTypeEnum.EFFECT_TYPE_RESEARCH_BOOST);
-      e += r.CastleModel.lordData.getTotalBaronEffectValue(u.EffectTypeEnum.EFFECT_TYPE_RESEARCH_BOOST);
-      return o.int(this.baseResearchDuration / (1 + e / 100)) + o.int(r.CastleModel.researchData.getResearchEffectValue(u.EffectTypeEnum.EFFECT_TYPE_RESEARCH_BONUS).strength);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AResearchVO.prototype.getBaseCosts = function () {
-    if (_.SpecialServerHelper.isOnSpecialServer) {
-      return this._tempServerCosts;
-    } else {
-      return this._costs;
-    }
-  };
-  AResearchVO.prototype.getFinalCosts = function () {
-    var e = this.getBaseCosts().clone();
-    e.combineDuplicatedItems();
-    var t = g.castAs(e.getItemByType(h.CollectableEnum.C1), "CollectableItemC1VO");
-    if (t) {
-      t.amount = r.CastleModel.costsData.getFinalCostsC1(t.amount);
-    }
-    var i = g.castAs(e.getItemByType(h.CollectableEnum.C2), "CollectableItemC2VO");
-    if (i) {
-      i.amount = r.CastleModel.costsData.getFinalCostsC1(i.amount);
-    }
-    var n = 0;
-    for (n = 0; n < e.list.length; n++) {
-      if (g.castAs(this._costs.list[n], "ACollectableItemResourceVO")) {
-        e.list[n].amount *= 1 - r.CastleModel.userData.getGlobalConstructionItemEffectByType(c.CastleEffectEnum.REDUCERESEARCHRESOURCECOSTS) / 100;
-      }
-      if (!C.instanceOfClass(e.getItemByIndex(n), "CollectableItemC2VO")) {
-        e.getItemByIndex(n).isSubscriptionBuffed = r.CastleModel.subscriptionData.isEffectTypeActive(u.EffectTypeEnum.EFFECT_TYPE_RESEARCH_COST_BONUS);
-      }
-      if (e.getItemByIndex(n).isSubscriptionBuffed) {
-        e.getItemByIndex(n).amount *= 1 + r.CastleModel.subscriptionData.getEffectValue(u.EffectTypeEnum.EFFECT_TYPE_RESEARCH_COST_BONUS) / 100;
-        e.getItemByIndex(n).useSubscriptionStar = true;
-      }
-    }
-    return e;
-  };
-  Object.defineProperty(AResearchVO.prototype, "minResearchTowerLevel", {
-    get: function () {
-      return this._minResearchTowerLevel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResearchVO.prototype, "isLocked", {
-    get: function () {
-      if (this._minResearchTowerLevel > r.CastleModel.researchData.researchTowerLevel) {
-        return true;
-      }
-      if (this._prerequisites != null) {
-        for (var e = 0, t = this._prerequisites; e < t.length; e++) {
-          var i = t[e];
-          if (i !== undefined && !i.isComplete) {
-            return true;
-          }
-        }
-      }
-      return false;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResearchVO.prototype, "isComplete", {
-    get: function () {
-      return this._isComplete;
     },
     set: function (e) {
-      this._isComplete = e;
+      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "effectText").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AResearchVO.prototype, "isResearchable", {
+  Object.defineProperty(ResearchVO.prototype, "descriptionTextId", {
     get: function () {
-      return !this.isComplete && !this.isLocked && !this.isLockedByLevel();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResearchVO.prototype, "groupVO", {
-    get: function () {
-      return this._groupVO;
+      return "research_" + this.groupID + "_copy";
     },
     set: function (e) {
-      this._groupVO = e;
+      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "descriptionTextId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AResearchVO.prototype, "totalEffectiveBonus", {
+  Object.defineProperty(ResearchVO.prototype, "nameTextId", {
     get: function () {
-      return this._groupVO.getValueOnLevel(this.level);
+      return "research_" + this.groupID + "_title";
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "nameTextId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AResearchVO.prototype, "prerequisites", {
+  Object.defineProperty(ResearchVO.prototype, "fullNameText", {
     get: function () {
-      return this._prerequisites;
+      return s.Localize.text(a.GenericTextIds.VALUE_SIMPLE_COMP, [s.Localize.text(this.nameTextId), s.Localize.text("building_level", [this.level])]);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "fullNameText").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AResearchVO.prototype, "nextResearch", {
-    get: function () {
-      return this._nextResearch;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AResearchVO.prototype.isBlockedBy = function (e) {
-    if (this.prerequisites != null) {
-      for (var t = 0, i = this.prerequisites; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && !n.isComplete && n.groupID == e.id) {
-          return true;
-        }
-      }
-    }
-    return false;
+  ResearchVO.prototype.icon = function () {
+    return new l.CastleGoodgameExternalClip(ResearchVO.ICON_PREFIX_CLASSNAME + this.groupID, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(ResearchVO.ICON_PREFIX_CLASSNAME + this.groupID), null, 0, false);
   };
-  AResearchVO.prototype.getBonusText = function (e) {
-    return "";
+  Object.defineProperty(ResearchVO.prototype, "showEffectValue", {
+    get: function () {
+      return !this.hasOneOrMoreEffectTypes([c.EffectTypeEnum.EFFECT_TYPE_ENABLE_UNITS, c.EffectTypeEnum.EFFECT_TYPE_STRONGER_PEASANT, c.EffectTypeEnum.EFFECT_TYPE_TAX_COLLECTOR_NO_RUBIES, c.EffectTypeEnum.EFFECT_TYPE_ENABLE_CRAFTINGRECIPE]);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "showEffectValue").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(ResearchVO.prototype, "showInfoBtn", {
+    get: function () {
+      return this.hasOneOrMoreEffectTypes([c.EffectTypeEnum.EFFECT_TYPE_ENABLE_UNITS, c.EffectTypeEnum.EFFECT_TYPE_STRONGER_PEASANT, c.EffectTypeEnum.EFFECT_TYPE_ENABLE_CRAFTINGRECIPE]);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.AResearchVO.prototype, "showInfoBtn").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ResearchVO.__initialize_static_members = function () {
+    ResearchVO.ICON_PREFIX_CLASSNAME = "Icon_Research_";
   };
-  Object.defineProperty(AResearchVO.prototype, "effectText", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResearchVO.prototype, "descriptionTextId", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResearchVO.prototype, "descriptionTextReplacements", {
-    get: function () {
-      return [];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResearchVO.prototype, "nameTextId", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResearchVO.prototype, "fullNameText", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AResearchVO.prototype.icon = function () {
-    return null;
-  };
-  Object.defineProperty(AResearchVO.prototype, "showEffectValue", {
-    get: function () {
-      return false;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResearchVO.prototype, "showInfoBtn", {
-    get: function () {
-      return false;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AResearchVO.prototype.onMouseOverResearchIcon = function (e) {};
-  AResearchVO.prototype.onMouseOutResearchIcon = function () {};
-  AResearchVO.prototype.isEmptyResearch = function () {
-    return this.boni.length == 0 && !this.hasEffects();
-  };
-  Object.defineProperty(AResearchVO.prototype, "requiredLegendLevel", {
-    get: function () {
-      return this._requiredLegendLevel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AResearchVO.prototype, "requiredLevel", {
-    get: function () {
-      return this._requiredLevel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AResearchVO.prototype.isLockedByLevel = function () {
-    return r.CastleModel.userData.userLevel < this.requiredLevel || r.CastleModel.userData.userLegendLevel < this.requiredLegendLevel;
-  };
-  return AResearchVO;
-}(require("./686.js").EffectsHandlerVO);
-exports.AResearchVO = d;
-var p = require("./50.js");
-var h = require("./12.js");
-var g = require("./1.js");
-var C = require("./1.js");
-var _ = require("./44.js");
+  return ResearchVO;
+}(u.AResearchVO);
+exports.ResearchVO = d;
+d.__initialize_static_members();

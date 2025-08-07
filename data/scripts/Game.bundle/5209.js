@@ -5,35 +5,32 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./1740.js");
-var l = require("./10.js");
-var c = function (e) {
-  function SUBCommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function SLCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SUBCommand, e);
-  Object.defineProperty(SUBCommand.prototype, "cmdId", {
+  n.__extends(SLCCommand, e);
+  Object.defineProperty(SLCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SHOW_ME_UPGRADABLE_BUILDINGS;
+      return s.ClientConstSF.S2C_STARTUP_LOGINBONUS_COLLECT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  SUBCommand.prototype.executeCommand = function (e, t) {
+  SLCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        this.controller.dispatchEvent(new r.CastleShowUpgradableBuildingsEvent(r.CastleShowUpgradableBuildingsEvent.UPGRADABLE_BUILDINGS_DATA_RECEIVED, i));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SUBCommand;
-}(l.CastleCommand);
-exports.SUBCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return SLCCommand;
+}(r.CastleCommand);
+exports.SLCCommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

@@ -1,125 +1,92 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./28.js");
-var r = require("./265.js");
-var l = require("./30.js");
-var c = require("./15.js");
-var u = require("./4.js");
-var d = require("./327.js");
-var p = createjs.Point;
-var h = function (e) {
-  function AGachaEventVO() {
-    var t = e !== null && e.apply(this, arguments) || this;
-    t._freeChestResetTime = 0;
-    t._currentMultiPull = 1;
-    return t;
+var n = require("./4.js");
+var o = function () {
+  function CastleEilandRewardsVO(e) {
+    this.fillFromParamXML(e);
   }
-  n.__extends(AGachaEventVO, e);
-  AGachaEventVO.prototype.parseEventXmlNode = function (t) {
-    e.prototype.parseEventXmlNode.call(this, t);
-  };
-  AGachaEventVO.prototype.parseParamObject = function (t) {
-    e.prototype.parseParamObject.call(this, t);
-    this.parseGachaEvent(t);
-  };
-  AGachaEventVO.prototype.parseGachaEvent = function (e) {
-    if (e.FCRT) {
-      this._freeChestResetTime = l.CachedTimer.getCachedTimer() + e.FCRT * s.ClientConstTime.SEC_2_MILLISEC;
+  CastleEilandRewardsVO.prototype.fillFromParamXML = function (e) {
+    this._rewardList = [];
+    this._rewardPlayerList = [];
+    var t;
+    var i;
+    var n = e.islandrewardranks;
+    var o = 0;
+    var l = 0;
+    var c = 0;
+    var u = 0;
+    if (n != null) {
+      for (var d = 0, p = n; d < p.length; d++) {
+        if ((i = p[d]) !== undefined) {
+          l = parseInt(i.islandRewardRankID || "");
+          o = parseInt(i.cargoPointRequirement || "0");
+          c = parseInt(s.CastleXMLUtils.getValueOrDefault("topXValue", i, "-1"));
+          t = a.CollectableManager.parser.createListFromRewardIdsString(i.rewardIDs || "");
+          u = parseInt(s.CastleXMLUtils.getValueOrDefault("islandRewardSetID", i, "-1"));
+          this._rewardList.push(new r.CastleEilandRewardItemVO(l, o, t, c, u));
+        }
+      }
     }
-    if (e.OP) {
-      this._ownPoints = a.int(e.OP);
+    if ((n = e.islandPlayerRewards) != null) {
+      for (var h = 0, g = n; h < g.length; h++) {
+        if ((i = g[h]) !== undefined) {
+          l = parseInt(i.islandPlayerRewardID || "");
+          o = parseInt(i.cargoPointRequirement || "0");
+          c = parseInt(s.CastleXMLUtils.getValueOrDefault("topXValue", i, "-1"));
+          t = a.CollectableManager.parser.createListFromRewardIdsString(i.rewardIDs || "");
+          u = parseInt(s.CastleXMLUtils.getValueOrDefault("islandRewardSetID", i, "-1"));
+          this._rewardPlayerList.push(new r.CastleEilandRewardItemVO(l, o, t, c, u));
+        }
+      }
     }
-    if (e.OR) {
-      this._ownRank = a.int(e.OR);
+  };
+  CastleEilandRewardsVO.prototype.getActiveRewardItems = function () {
+    var e = n.CastleModel.kingdomData.getKingdomVOByID(l.WorldIsland.KINGDOM_ID).rewardSet;
+    return this._rewardList.filter(function (t) {
+      var i = [];
+      for (var n = 1; n < arguments.length; n++) {
+        i[n - 1] = arguments[n];
+      }
+      return t.rewardSetID == e;
+    });
+  };
+  CastleEilandRewardsVO.prototype.getActivePlayerRewardItems = function () {
+    var e = n.CastleModel.kingdomData.getKingdomVOByID(l.WorldIsland.KINGDOM_ID).rewardSet;
+    return this._rewardPlayerList.filter(function (t) {
+      var i = [];
+      for (var n = 1; n < arguments.length; n++) {
+        i[n - 1] = arguments[n];
+      }
+      return t.rewardSetID == e;
+    });
+  };
+  CastleEilandRewardsVO.prototype.getReward = function (e) {
+    if (this._rewardList != null) {
+      for (var t = 0, i = this._rewardList; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined && n.id == e) {
+          return n;
+        }
+      }
     }
-    c.CastleBasicController.getInstance().dispatchEvent(new r.GachaEvent(r.GachaEvent.UPDATED, this));
+    return null;
   };
-  AGachaEventVO.prototype.setRankAndPoints = function (t, i, n) {
-    e.prototype.setRankAndPoints.call(this, t, i, n);
-    c.CastleBasicController.getInstance().dispatchEvent(new r.GachaEvent(r.GachaEvent.UPDATED, this));
+  CastleEilandRewardsVO.__initialize_static_members = function () {
+    CastleEilandRewardsVO.REWARD_BOOBY1 = 0;
+    CastleEilandRewardsVO.REWARD_BOOBY2 = 1;
+    CastleEilandRewardsVO.REWARD_BOOBY3 = 2;
+    CastleEilandRewardsVO.REWARD_BOOBY4 = 3;
+    CastleEilandRewardsVO.REWARD_BOOBY5 = 4;
+    CastleEilandRewardsVO.REWARD_BOOBY6 = 5;
+    CastleEilandRewardsVO.REWARD_TOPX = 6;
+    CastleEilandRewardsVO.TOPX_MIN_RANK = 5;
   };
-  AGachaEventVO.prototype.getGachaVOs = function () {
-    return u.CastleModel.gachaData.getGachaVOs(this.eventId, this.rewardSetId, this.leagueID);
-  };
-  AGachaEventVO.prototype.getGachaVOByLevel = function (e) {
-    return u.CastleModel.gachaData.getGachaVOByLevel(this.eventId, this.rewardSetId, this.leagueID, e);
-  };
-  AGachaEventVO.prototype.getCurrentGachaVO = function () {
-    return u.CastleModel.gachaData.getCurrentGachaVO(this.eventId, this.rewardSetId, this.leagueID, this.ownPoints);
-  };
-  AGachaEventVO.prototype.getCurrentLevel = function () {
-    return this.getCurrentGachaVO().gachaLevel;
-  };
-  AGachaEventVO.prototype.getCurrentLevelProgress = function (e = 0) {
-    return this._ownPoints + e - this.getCurrentGachaVO().minPulls;
-  };
-  AGachaEventVO.prototype.getCurrentLevelMaxPulls = function () {
-    return this.getCurrentGachaVO().maxPulls - this.getCurrentGachaVO().minPulls + 1;
-  };
-  AGachaEventVO.prototype.getIsMaxLevel = function () {
-    return this.getCurrentGachaVO().isMaxLevel;
-  };
-  Object.defineProperty(AGachaEventVO.prototype, "freeChestResetTime", {
-    get: function () {
-      return this._freeChestResetTime;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AGachaEventVO.prototype.assetName = function () {
-    return this.eventType;
-  };
-  Object.defineProperty(AGachaEventVO.prototype, "eventName", {
-    get: function () {
-      return this.assetName();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGachaEventVO.prototype, "animationPos", {
-    get: function () {
-      return new p(275, 43);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGachaEventVO.prototype, "animationScale", {
-    get: function () {
-      return 0.25;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGachaEventVO.prototype, "currencyMerchantEventID", {
-    get: function () {
-      return 0;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGachaEventVO.prototype, "eventBuildingNameId", {
-    get: function () {
-      return "tooltip_gachaName_" + this.assetName();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AGachaEventVO.prototype, "currentMultiPull", {
-    get: function () {
-      return this._currentMultiPull;
-    },
-    set: function (e) {
-      this._currentMultiPull = e;
-      c.CastleBasicController.getInstance().dispatchEvent(new r.GachaEvent(r.GachaEvent.MULTIPULL_CHANGED, this));
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AGachaEventVO;
-}(d.ALeagueTypeScoreEventVO);
-exports.AGachaEventVO = h;
-o.classImplementsInterfaces(h, "IEventOverviewable");
+  return CastleEilandRewardsVO;
+}();
+exports.CastleEilandRewardsVO = o;
+var a = require("./50.js");
+var s = require("./22.js");
+var r = require("./3693.js");
+var l = require("./5.js");
+o.__initialize_static_members();

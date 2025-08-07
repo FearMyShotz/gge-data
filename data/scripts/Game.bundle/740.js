@@ -1,68 +1,83 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./49.js");
-var a = require("./1.js");
-var s = require("./23.js");
-var r = require("./1372.js");
-var l = function (e) {
-  function AdvancedProgressBar(t = null, i = null) {
-    var n = this;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this, t) || this).changeStrategy = i || AdvancedProgressBar.DEFAULT_BEHAVIOUR;
-    return n;
-  }
-  n.__extends(AdvancedProgressBar, e);
-  AdvancedProgressBar.prototype.fromTo = function (e, t) {
-    this.applyMask();
-    s.TweenMax.fromTo(this.disp.mask, this._changeBehaviour.duration, this._changeBehaviour.getFromVars(e), this._changeBehaviour.getToVars(t));
+var n = createjs.MouseEvent;
+var o = function () {
+  function CastleTableSorter() {}
+  CastleTableSorter.prototype.init = function (e, t, i) {
+    if (this._columnSorters) {
+      this.destroy();
+    }
+    this._sortableList = e;
+    this._changedCallback = t;
+    this._columnSorters = i;
+    this._currentSortingVO = null;
+    this.forceSort(i[0]);
   };
-  AdvancedProgressBar.prototype.to = function (e) {
-    this.applyMask();
-    s.TweenMax.to(this.disp.mask, this._changeBehaviour.duration, this._changeBehaviour.getToVars(e));
+  CastleTableSorter.prototype.show = function () {
+    this._columnSorters.forEach(this.bindFunction(this.addClickListener));
   };
-  AdvancedProgressBar.prototype.scale = function (e) {
-    this.applyMask();
-    s.TweenMax.to(this.disp.mask, 0, this._changeBehaviour.getToVars(e));
+  CastleTableSorter.prototype.hide = function () {
+    if (this._columnSorters) {
+      this._columnSorters.forEach(this.bindFunction(this.removeClickListener));
+    }
   };
-  Object.defineProperty(AdvancedProgressBar.prototype, "changeStrategy", {
-    set: function (e) {
-      this._changeBehaviour = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AdvancedProgressBar.prototype.kill = function () {
-    s.TweenMax.killTweensOf(this.disp.mask);
+  CastleTableSorter.prototype.destroy = function () {
+    if (this._columnSorters) {
+      this.hide();
+      this._columnSorters = null;
+      this._changedCallback = null;
+      this._sortableList = null;
+    }
   };
-  Object.defineProperty(AdvancedProgressBar.prototype, "currentProgress", {
+  CastleTableSorter.prototype.forceSort = function (e) {
+    if (e != this._currentSortingVO) {
+      this._currentSortingVO = e;
+      this._currentSortingVO.isInAscendingOrder = false;
+    }
+    this._sortableList.sort(e.comparer);
+    e.isInAscendingOrder = !e.isInAscendingOrder;
+    if (!e.isInAscendingOrder) {
+      this._sortableList.reverse();
+    }
+  };
+  CastleTableSorter.prototype.addClickListener = function (e) {
+    var t = [];
+    for (var i = 1; i < arguments.length; i++) {
+      t[i - 1] = arguments[i];
+    }
+    e.sortingTrigger.addEventListener(n.CLICK, this.bindFunction(this.onColumnClick));
+  };
+  CastleTableSorter.prototype.removeClickListener = function (e) {
+    var t = [];
+    for (var i = 1; i < arguments.length; i++) {
+      t[i - 1] = arguments[i];
+    }
+    e.sortingTrigger.removeEventListener(n.CLICK, this.bindFunction(this.onColumnClick));
+  };
+  CastleTableSorter.prototype.onColumnClick = function (e) {
+    var t = null;
+    if (this._columnSorters != null) {
+      for (var i = 0, n = this._columnSorters; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined && o.sortingTrigger == e.target) {
+          this.forceSort(o);
+          t = o;
+          break;
+        }
+      }
+    }
+    if (t != null) {
+      this._changedCallback(t);
+    }
+  };
+  Object.defineProperty(CastleTableSorter.prototype, "currentSortingVO", {
     get: function () {
-      this.applyMask();
-      return this._changeBehaviour.getCurrentProgress(this.disp);
+      return this._currentSortingVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AdvancedProgressBar.prototype, "isTweening", {
-    get: function () {
-      return s.TweenMax.isTweening(this.disp.mask);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AdvancedProgressBar.prototype, "getOriginBarWidth", {
-    get: function () {
-      return this.disp.bitmap_1.width;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AdvancedProgressBar.__initialize_static_members = function () {
-    AdvancedProgressBar.DEFAULT_BEHAVIOUR = new r.HorizontalProgressBehaviour();
-  };
-  return AdvancedProgressBar;
-}(o.BasicProgressBar);
-exports.AdvancedProgressBar = l;
-a.classImplementsInterfaces(l, "MovieClip");
-l.__initialize_static_members();
+  return CastleTableSorter;
+}();
+exports.CastleTableSorter = o;

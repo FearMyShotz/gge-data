@@ -2,205 +2,162 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1270.js");
-var a = require("./1.js");
-var s = require("./23.js");
-var r = require("./23.js");
-var l = require("./23.js");
-var c = require("./23.js");
-var u = function (e) {
-  function AmbientAnimationsHandler(t) {
-    var i = e.call(this, t) || this;
-    i.CANDLE_ANIMATION = "Candlelight_Animation";
-    i.CODE_BASED_ANIMATIONS = "Codebased_Animation_Elements";
-    i.CANDLES_STICKS_ANIMATION = "CandlelightSticks_Back";
-    i.CHANDLELIERS_ANIMATION = "Lightbeams_Chandleliers";
-    i.CANDLE_LIGHT_MIDDLE_BACK1_ANIMATION = "CandleLight_Middle_Back1";
-    i.CANDLE_LIGHT_MIDDLE_BACK2_ANIMATION = "CandleLight_Middle_Back2";
-    i.BEAM_FRONT_1_ANIMATION = "Beam_Front1";
-    i.BEAM_FRONT_2_ANIMATION = "Beam_Front2";
-    i.BEAMS_MIDDLE_ANIMATION = "Lightbeams_Middle";
-    i.BEAMS_BACK_ANIMATION = "Lightbeams_Back";
-    i.PARTICLES_ANIMATION = "Particles";
-    i.DUST_ANIMATION = "Dust";
-    i.animationAssets = [i.CANDLE_ANIMATION, i.CODE_BASED_ANIMATIONS];
-    return i;
+var o = require("./2.js");
+var a = require("./5.js");
+var s = require("./3.js");
+var r = require("./28.js");
+var l = require("./1267.js");
+var c = require("./21.js");
+var u = require("./31.js");
+var d = require("./104.js");
+var p = require("./19.js");
+var h = require("./13.js");
+var g = require("./4.js");
+var C = require("./27.js");
+var _ = require("./9.js");
+var m = require("./20.js");
+var f = require("./8.js");
+var O = require("./25.js");
+var E = require("./415.js");
+var y = require("./167.js");
+var b = require("./206.js");
+var D = createjs.MouseEvent;
+var I = createjs.Point;
+var T = function (e) {
+  function GeneralsHubQuestComponent(t, i) {
+    var n = e.call(this, t) || this;
+    n.tombolaIndex = 0;
+    n.questID = i;
+    n.questVO = g.CastleModel.generalsData.getGeneralsHubQuestVOByCharacterID(n.questID);
+    n.initComponent();
+    return n;
   }
-  n.__extends(AmbientAnimationsHandler, e);
-  AmbientAnimationsHandler.prototype.initialize = function () {
-    this._candlesAnimationsPlaceholders = [this._disp.mc_candlelight_animation_0, this._disp.mc_candlelight_animation_1, this._disp.mc_candlelight_animation_2, this._disp.mc_candlelight_animation_3, this._disp.mc_candlelight_animation_4, this._disp.mc_candlelight_animation_5, this._disp.mc_candlelight_animation_6, this._disp.mc_candlelight_animation_7];
-    var e;
-    var t;
-    var i = a.getDefinitionByName(this.CANDLE_ANIMATION);
-    for (var n = 0; n < this._candlesAnimationsPlaceholders.length; n++) {
-      e = this._candlesAnimationsPlaceholders[n];
-      (t = new i()).framerate = 6;
-      e.addChild(t);
-      e.name = this.CANDLE_ANIMATION;
-      e.mouseEnabled = false;
-    }
-    var o = a.getDefinitionByName(this.CANDLES_STICKS_ANIMATION);
-    this._candlesSticksLightAnimation = new o();
-    this._disp.mc_candlelight_sticks_back_animation.name = this.CANDLES_STICKS_ANIMATION;
-    this._disp.mc_candlelight_sticks_back_animation.addChild(this._candlesSticksLightAnimation);
-    this._disp.mc_candlelight_sticks_back_animation.mouseEnabled = false;
-    var s = a.getDefinitionByName(this.CHANDLELIERS_ANIMATION);
-    this._chandleliersLightAnimation = new s();
-    this._disp.mc_lightbeams_chandleliers_animation.name = this.CHANDLELIERS_ANIMATION;
-    this._disp.mc_lightbeams_chandleliers_animation.addChild(this._chandleliersLightAnimation);
-    this._disp.mc_lightbeams_chandleliers_animation.mouseEnabled = false;
-    var r = a.getDefinitionByName(this.CANDLE_LIGHT_MIDDLE_BACK1_ANIMATION);
-    this._candleLightMiddleBack1 = new r();
-    this._disp.mc_candlelight_middle_back1.name = this.CANDLE_LIGHT_MIDDLE_BACK1_ANIMATION;
-    this._disp.mc_candlelight_middle_back1.addChild(this._candleLightMiddleBack1);
-    this._disp.mc_candlelight_middle_back1.mouseEnabled = false;
-    var l = a.getDefinitionByName(this.CANDLE_LIGHT_MIDDLE_BACK2_ANIMATION);
-    this._candleLightMiddleBack2 = new l();
-    this._disp.mc_candlelight_middle_back2.name = this.CANDLE_LIGHT_MIDDLE_BACK2_ANIMATION;
-    this._disp.mc_candlelight_middle_back2.addChild(this._candleLightMiddleBack1);
-    this._disp.mc_candlelight_middle_back2.mouseEnabled = false;
-    this._candleLightAnimationsPlaceholders = [this._disp.mc_candlelight_sticks_back_animation, this._disp.mc_lightbeams_chandleliers_animation, this._disp.mc_candlelight_middle_back1, this._disp.mc_candlelight_middle_back2];
-    var c = a.getDefinitionByName(this.BEAM_FRONT_1_ANIMATION);
-    this._beamFront1Animation = new c();
-    this._disp.mc_beam_front_1_animation.name = this.BEAM_FRONT_1_ANIMATION;
-    this._disp.mc_beam_front_1_animation.addChild(this._beamFront1Animation);
-    this._disp.mc_beam_front_1_animation.mouseEnabled = false;
-    var u = a.getDefinitionByName(this.BEAM_FRONT_2_ANIMATION);
-    this._beamFront2Animation = new u();
-    this._disp.mc_beam_front_2_animation.name = this.BEAM_FRONT_2_ANIMATION;
-    this._disp.mc_beam_front_2_animation.addChild(this._beamFront2Animation);
-    this._disp.mc_beam_front_2_animation.mouseEnabled = false;
-    var d = a.getDefinitionByName(this.BEAMS_MIDDLE_ANIMATION);
-    this._beamsMiddleAnimation = new d();
-    this._disp.mc_lightbeams_middle_animation.name = this.BEAMS_MIDDLE_ANIMATION;
-    this._disp.mc_lightbeams_middle_animation.addChild(this._beamsMiddleAnimation);
-    this._disp.mc_lightbeams_middle_animation.mouseEnabled = false;
-    var p = a.getDefinitionByName(this.BEAMS_BACK_ANIMATION);
-    this._beamBackAnimation = new p();
-    this._disp.mc_beam_back_animation.name = this.BEAMS_BACK_ANIMATION;
-    this._disp.mc_beam_back_animation.addChild(this._beamBackAnimation);
-    this._disp.mc_beam_back_animation.mouseEnabled = false;
-    this._lightBeamsAnimationsPlaceholders = [this._disp.mc_beam_front_1_animation, this._disp.mc_beam_front_2_animation, this._disp.mc_lightbeams_middle_animation, this._disp.mc_beam_back_animation];
-    var h = a.getDefinitionByName(this.PARTICLES_ANIMATION);
-    this._particlesAnimation = new h();
-    this._disp.mc_particles_animation.name = this.PARTICLES_ANIMATION;
-    this._disp.mc_particles_animation.addChild(this._particlesAnimation);
-    this._disp.mc_particles_animation.mouseEnabled = false;
-    var g = a.getDefinitionByName(this.DUST_ANIMATION);
-    this._dustAnimation = new g();
-    this._disp.mc_dust_animation.name = this.DUST_ANIMATION;
-    this._disp.mc_dust_animation.addChild(this._dustAnimation);
-    this._disp.mc_dust_animation.mouseEnabled = false;
-    this._particlesAnimationsPlaceholders = [this._disp.mc_particles_animation, this._disp.mc_dust_animation];
-    this.animations = [].concat(this._candlesAnimationsPlaceholders, this._candleLightAnimationsPlaceholders, this._lightBeamsAnimationsPlaceholders, this._particlesAnimationsPlaceholders);
+  n.__extends(GeneralsHubQuestComponent, e);
+  GeneralsHubQuestComponent.prototype.initComponent = function () {
+    e.prototype.initComponent.call(this);
+    f.ButtonHelper.initButtons([this.dispClip.btn_left, this.dispClip.btn_right, this.dispClip.btn_offering, this.dispClip.btn_buyOffering, this.dispClip.btn_free], m.ClickFeedbackButtonHover, 1);
   };
-  AmbientAnimationsHandler.prototype.startAnimations = function () {
-    var e;
-    for (var t = 0; t < this._candlesAnimationsPlaceholders.length; t++) {
-      e = this._candlesAnimationsPlaceholders[t];
-      this.playAnimation(e, Math.floor(Math.random() * e.children[0].totalFrames));
-      this.playAnimation(e, Math.floor(Math.random() * e.children[0].totalFrames));
-    }
-    c.TweenMax.fromTo(this._disp.mc_beam_front_1_animation, 6, {
-      alpha: 1
-    }, {
-      alpha: 0.2,
-      ease: r.Power2.easeInOut,
-      delay: 5,
-      yoyo: true,
-      repeat: -1
-    });
-    c.TweenMax.fromTo(this._disp.mc_beam_front_2_animation, 6, {
-      alpha: 1
-    }, {
-      alpha: 0.2,
-      ease: r.Power2.easeInOut,
-      delay: 6,
-      yoyo: true,
-      repeat: -1
-    });
-    c.TweenMax.fromTo(this._disp.mc_beam_back_animation, 6, {
-      alpha: 1
-    }, {
-      alpha: 0.2,
-      ease: r.Power2.easeInOut,
-      delay: 4,
-      yoyo: true,
-      repeat: -1
-    });
-    c.TweenMax.fromTo(this._disp.mc_lightbeams_middle_animation, 6, {
-      alpha: 1
-    }, {
-      alpha: 0.2,
-      ease: r.Power2.easeInOut,
-      delay: 4,
-      yoyo: true,
-      repeat: -1
-    });
-    c.TweenMax.fromTo(this._disp.mc_lightbeams_chandleliers_animation, 6, {
-      alpha: 1
-    }, {
-      alpha: 0.2,
-      ease: r.Power2.easeInOut,
-      delay: 2,
-      yoyo: true,
-      repeat: -1
-    });
-    c.TweenMax.fromTo(this._disp.mc_dust_animation, 40, {
-      alpha: 1
-    }, {
-      alpha: 0.1,
-      ease: l.Power4.easeIn,
-      delay: 4,
-      yoyo: false,
-      repeat: -1
-    });
-    c.TweenMax.fromTo(this._disp.mc_dust_animation, 6, {
-      x: 170
-    }, {
-      x: 220,
-      ease: s.Power1.easeInOut,
-      delay: 0,
-      yoyo: true,
-      repeat: -1
-    });
-    c.TweenMax.fromTo(this._disp.mc_dust_animation, 40, {
-      y: -300
-    }, {
-      y: -250,
-      ease: s.Power1.easeInOut,
-      delay: 0,
-      yoyo: false,
-      repeat: -1
-    });
-    c.TweenMax.fromTo(this._disp.mc_particles_animation, 40, {
-      alpha: 1
-    }, {
-      alpha: 0.1,
-      ease: l.Power4.easeIn,
-      delay: 4,
-      yoyo: false,
-      repeat: -1
-    });
-    c.TweenMax.fromTo(this._disp.mc_particles_animation, 6, {
-      x: -440
-    }, {
-      x: -480,
-      ease: s.Power1.easeInOut,
-      delay: 0,
-      yoyo: true,
-      repeat: -1
-    });
-    c.TweenMax.fromTo(this._disp.mc_particles_animation, 40, {
-      y: -20
-    }, {
-      y: 30,
-      ease: s.Power1.easeInOut,
-      delay: 0,
-      yoyo: true,
-      repeat: -1
-    });
+  GeneralsHubQuestComponent.prototype.updateCostsSection = function () {
+    var e = this.questVO.getCostVOForPayQuest(this.tombolaIndex);
+    var t = new p.CollectableRenderOptions(p.CollectableRenderOptions.ICON, new I(35, 35));
+    var i = new u.CollectableRenderClips().addIconMc(this.dispClip.mc_icon);
+    O.CollectableRenderHelper.displaySingleItemComplete(new d.CollectableRendererList(), i, e, t);
+    this.dispClip.btn_left.visible = this.dispClip.btn_right.visible = this.questVO.amountOfTombolas > 1;
+    var n = new p.CollectableRenderOptions(p.CollectableRenderOptions.ICON, new I(38, 38));
+    n.icon.useDropShadowIcon = true;
+    var o = new u.CollectableRenderClips().addIconMc(this.dispClip.btn_offering.mc_icon);
+    O.CollectableRenderHelper.displaySingleItemComplete(new d.CollectableRendererList(), o, e, n);
   };
-  return AmbientAnimationsHandler;
-}(o.GeneralsHubBasicAnimationsHandler);
-exports.AmbientAnimationsHandler = u;
+  GeneralsHubQuestComponent.prototype.show = function () {
+    e.prototype.show.call(this);
+    this.updateDisp();
+    g.CastleModel.timerData.addEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTime));
+    this.disp.parent.addEventListener(D.CLICK, this.bindFunction(this.onMouseClick));
+  };
+  GeneralsHubQuestComponent.prototype.hide = function () {
+    e.prototype.hide.call(this);
+    g.CastleModel.timerData.removeEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTime));
+    this.disp.parent.removeEventListener(D.CLICK, this.bindFunction(this.onMouseClick));
+  };
+  GeneralsHubQuestComponent.prototype.updateDisp = function () {
+    var e = this.questVO.availableQuests > 0;
+    var t = this.questVO.getTombolaOfferingCurrencyID(this.tombolaIndex);
+    var i = this.questVO.getPackageVOForCurrencyID(t);
+    var n = g.CastleModel.currencyData.getAmountById(t);
+    var a = this.questVO.getTombolaID(this.tombolaIndex) == this.questVO.freeOpeningTombolaID;
+    var r = !e && n > 0;
+    var l = !e && n <= 0;
+    this.dispClip.btn_free.visible = e;
+    this.dispClip.btn_buyOffering.visible = l;
+    this.dispClip.btn_offering.visible = r;
+    o.GoodgameTextFieldManager.getInstance().registerTextField(this.dispClip.txt_title, new s.LocalizedTextVO(this.questVO.nameTextID));
+    this.updateTime();
+    this.dispClip.mc_time.visible = a && !e;
+    o.GoodgameTextFieldManager.getInstance().registerTextField(this.dispClip.btn_free.txt_copy, new s.TextVO(h.TextHelper.toUpperCaseLocaSafeTextId("dialog_generals_inn_draw_button")));
+    var c = "";
+    if (a && e) {
+      c += s.Localize.text("dialog_generals_inn_freeDrawAvailable_tooltip") + "\n";
+      c += s.Localize.text("numbersXY", [this.questVO.availableQuests, this.questVO.maxFreeOpenings]);
+    } else if (!a) {
+      c = s.Localize.text("dialog_generals_inn_noFreeDraw_tooltip");
+    }
+    o.GoodgameTextFieldManager.getInstance().registerTextField(this.dispClip.txt_copy, new s.TextVO(c)).visible = c.length > 0;
+    var u = a && e ? 0 : 1;
+    o.GoodgameTextFieldManager.getInstance().registerTextField(this.dispClip.txt_amount, new s.LocalizedTextVO("xamount", [u]));
+    var d = g.CastleModel.currencyData.getAmountById(this.questVO.getTombolaOfferingCurrencyID(this.tombolaIndex));
+    this.dispClip.btn_free.visible = a && e;
+    this.dispClip.btn_buyOffering.visible = !this.dispClip.btn_free.visible && d <= 1 && !!i;
+    this.dispClip.btn_offering.visible = !this.dispClip.btn_free.visible && d > 0;
+    o.GoodgameTextFieldManager.getInstance().registerTextField(this.dispClip.btn_offering.txt_copy, new s.TextVO(h.TextHelper.toUpperCaseLocaSafeTextId("dialog_generals_inn_offering_button")));
+    o.GoodgameTextFieldManager.getInstance().registerTextField(this.dispClip.btn_buyOffering.txt_copy, new s.TextVO(h.TextHelper.toUpperCaseLocaSafeTextId("dialog_generals_inn_buyOffering_button")));
+    this.updateCostsSection();
+  };
+  GeneralsHubQuestComponent.prototype.updateTime = function () {
+    var e = "";
+    e += s.Localize.text("dialog_generals_inn_freeDrawCountdown_tooltip") + "\n";
+    e += C.CastleTimeStringHelper.getEventTimeString(this.questVO.remainingCoolDownInSeconds, r.ClientConstTime.SECONDS_PER_DAY, 1);
+    var t = o.GoodgameTextFieldManager.getInstance().registerTextField(this.dispClip.txt_time, new s.TextVO(e));
+    if (t.numLines >= 3) {
+      t.textContentVO.stringValue = t.textContentVO.stringValue.replace("\n", " ");
+    }
+    if (t.numLines >= 3) {
+      t.autoFitToBounds = true;
+    }
+    t.visible = this.questVO.getTombolaID(this.tombolaIndex) == this.questVO.freeOpeningTombolaID && this.questVO.availableQuests <= 0;
+  };
+  GeneralsHubQuestComponent.prototype.onMouseClick = function (e) {
+    if (f.ButtonHelper.isButtonEnabled(e.target)) {
+      switch (e.target) {
+        case this.dispClip.btn_offering:
+          this.onPaidQuest();
+          break;
+        case this.dispClip.btn_buyOffering:
+          this.onBuyOffer();
+          break;
+        case this.dispClip.btn_free:
+          this.onFreeQuest();
+          break;
+        case this.dispClip.btn_left:
+          if (this.tombolaIndex <= 0) {
+            this.tombolaIndex = this.questVO.amountOfTombolas - 1;
+          } else {
+            this.tombolaIndex--;
+          }
+          this.updateDisp();
+          break;
+        case this.dispClip.btn_right:
+          if (this.tombolaIndex >= this.questVO.amountOfTombolas - 1) {
+            this.tombolaIndex = 0;
+          } else {
+            this.tombolaIndex++;
+          }
+          this.updateDisp();
+      }
+    }
+  };
+  GeneralsHubQuestComponent.prototype.onFreeQuest = function () {
+    o.BasicModel.smartfoxClient.sendCommandVO(new l.C2SSpinCharacterTombolaVO(this.questID, this.questVO.getTombolaOfferingCurrencyID(this.tombolaIndex), 1, 1));
+    g.CastleModel.generalsData.lastPayedQuestCurrency = this.questVO.getTombolaOfferingCurrencyID(this.tombolaIndex);
+  };
+  GeneralsHubQuestComponent.prototype.onPaidQuest = function () {
+    g.CastleModel.generalsData.lastPayedQuestCurrency = this.questVO.getTombolaOfferingCurrencyID(this.tombolaIndex);
+    if (g.CastleModel.currencyData.getAmountById(this.questVO.getTombolaOfferingCurrencyID(this.tombolaIndex)) > 0) {
+      o.BasicModel.smartfoxClient.sendCommandVO(new l.C2SSpinCharacterTombolaVO(this.questID, this.questVO.getTombolaOfferingCurrencyID(this.tombolaIndex), 0, 1));
+    }
+  };
+  GeneralsHubQuestComponent.prototype.onBuyOffer = function () {
+    var e = new y.CastleGenericBuyDialogProperties();
+    e.eventPackageVO = g.CastleModel.eventPackageData.getEventPackageByID(this.questVO.getPackageVOForCurrencyID(this.questVO.getTombolaOfferingCurrencyID(this.tombolaIndex)).packageID);
+    e.buyType = a.PackageConst.BUY_TYPE_OFFERINGS;
+    _.CastleDialogHandler.getInstance().registerDefaultDialogs(b.ModernPackageShopBuyDialog, e);
+  };
+  Object.defineProperty(GeneralsHubQuestComponent.prototype, "dispClip", {
+    get: function () {
+      return this.disp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return GeneralsHubQuestComponent;
+}(E.BasicIngameUIComponent);
+exports.GeneralsHubQuestComponent = T;

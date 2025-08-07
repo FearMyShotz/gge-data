@@ -2,64 +2,60 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./6.js");
-var l = createjs.Rectangle;
-var c = function (e) {
-  function CastleGGSTextFieldDefaultStrategy(t) {
-    var i = this;
-    i.originalTextSize = 0;
+var o = require("./1.js");
+var a = require("./805.js");
+var s = require("./252.js");
+var r = createjs.Point;
+var l = function (e) {
+  function TutorialStartFromQuestBookActionCommand() {
+    var t = this;
+    t._questGiverID = 0;
     CONSTRUCTOR_HACK;
-    return i = e.call(this, t) || this;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleGGSTextFieldDefaultStrategy, e);
-  CastleGGSTextFieldDefaultStrategy.prototype.fitTextSizeToBounds = function (e = null) {
-    e ||= new l(0, 0, this._textField.model.width, this._textField.model.height);
-    if (this.textWidth != 0 && this.textHeight != 0 && this._textField.text != "") {
-      this.originalTextSize ||= r.int(r.int(this._textField.model.size));
-      var t = r.int(this.originalTextSize);
-      if (!(e.width >= this.textWidth) || !(e.height >= this.textHeight) || !(this._textField.model.size >= t)) {
-        var i = r.int(a.GoodgameTextFieldManager.getInstance().minimumAutoFitFontSize);
-        var n = t + 1;
-        var o = e.height > this.originalTextSize * 2;
-        do {
-          n--;
-          this.updateSize(n);
-        } while (n >= i && (e.width + (o ? n : 0) < this.textWidth || e.height < this.textHeight));
-        this._textField.model.size = n;
-      }
+  n.__extends(TutorialStartFromQuestBookActionCommand, e);
+  TutorialStartFromQuestBookActionCommand.prototype.internalExecute = function () {
+    this.filter.replace(c.CastleQuestDialog);
+    if (this.layoutManager.tutorialPanel) {
+      this.layoutManager.tutorialPanel.showWithText("tut_clickOnQuests_copy", this._questGiverID, o.MobileHelper.isScreenTooSmall() && o.MobileHelper.isLandscape() ? d.CastleTutorialPanel.POS_BOTTOM_RIGHT : d.CastleTutorialPanel.POS_TOP_RIGHT);
     }
+    this.showArrowOnQuestBookButton();
+    this.tutorialController.waitForExternalDialogShow(c.CastleQuestDialog, this.bindFunction(this.showQuestArrowInQuestBook));
   };
-  Object.defineProperty(CastleGGSTextFieldDefaultStrategy.prototype, "textWidth", {
-    get: function () {
-      return this._textField.originalTextField.textWidth + 4;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(o.GGSTextFieldDefaultStrategy.prototype, "textWidth").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleGGSTextFieldDefaultStrategy.prototype, "textHeight", {
-    get: function () {
-      return this._textField.originalTextField.textHeight + 4;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(o.GGSTextFieldDefaultStrategy.prototype, "textHeight").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleGGSTextFieldDefaultStrategy.prototype.dispose = function () {
-    this._textField.originalTextField.y = this._originalPosY;
-    e.prototype.dispose.call(this);
+  TutorialStartFromQuestBookActionCommand.prototype.showArrowOnQuestBookButton = function () {
+    var e = this.layoutManager.getPanel(u.CastleQuestStartPanel);
+    this.arrows.replace(e.disp.btn_questBook);
+    this.blocker.replace(e.disp.btn_questBook);
   };
-  CastleGGSTextFieldDefaultStrategy.prototype.setFocus = function () {
-    this._textField.originalTextField.focus();
+  TutorialStartFromQuestBookActionCommand.prototype.showQuestArrowInQuestBook = function () {
+    this.trackStep(this.getQuestBookOpenedTrackingID());
+    this.layoutManager.tutorialPanel.showWithText("tut_selectQuest_copy", this._questGiverID, o.MobileHelper.isScreenTooSmall() && o.MobileHelper.isLandscape() ? d.CastleTutorialPanel.POS_BOTTOM_RIGHT : d.CastleTutorialPanel.POS_TOP_RIGHT);
+    var e = this.layoutManager.getDialog(c.CastleQuestDialog);
+    this.arrows.replace(e.tutorialRecommendedQuest.disp.headerMC, false, true, 1, new r(0, 35));
+    this.blocker.replace(e.tutorialRecommendedQuest.disp.headerMC);
+    this.tutorialController.registerComplexListener(this.controller, a.CastleTutorialEvent.QUEST_INFO_SHOWN, this.bindFunction(this.onShowQuestInfo));
   };
-  return CastleGGSTextFieldDefaultStrategy;
-}(o.GGSTextFieldDefaultStrategy);
-exports.CastleGGSTextFieldDefaultStrategy = c;
-s.classImplementsInterfaces(c, "ITextFieldStrategy");
+  TutorialStartFromQuestBookActionCommand.prototype.onShowQuestInfo = function (e) {
+    this.tutorialController.removeComplexListener(this.controller, a.CastleTutorialEvent.QUEST_INFO_SHOWN, this.bindFunction(this.onShowQuestInfo));
+    this.trackStep(this.getQuestInfoOpenedTrackingID());
+    this.layoutManager.tutorialPanel.hide();
+    this.handleUntilPlayerClickedOnShowMe();
+  };
+  TutorialStartFromQuestBookActionCommand.prototype.handleUntilPlayerClickedOnShowMe = function () {
+    var e = this.getDialogDisp(c.CastleQuestDialog);
+    this.arrows.replace(e.mc_questInfo.condition0.btn_showMe, true, true, 1, new r(15, -8));
+    this.blocker.replace(e.mc_questInfo.condition0.btn_showMe);
+  };
+  TutorialStartFromQuestBookActionCommand.prototype.getQuestInfoOpenedTrackingID = function () {
+    return "please override the getQuestInfoOpenedTrackingID method";
+  };
+  TutorialStartFromQuestBookActionCommand.prototype.getQuestBookOpenedTrackingID = function () {
+    return "please override the getQuestBookOpenedTrackingID method";
+  };
+  return TutorialStartFromQuestBookActionCommand;
+}(s.TutorialBasicActionCommand);
+exports.TutorialStartFromQuestBookActionCommand = l;
+var c = require("./654.js");
+var u = require("./462.js");
+var d = require("./677.js");
+o.classImplementsInterfaces(l, "ISimpleCommand");

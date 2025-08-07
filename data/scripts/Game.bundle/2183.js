@@ -3,17 +3,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./1.js");
 var o = function () {
-  function LordEffectFilterStrategyFullPassive() {}
-  LordEffectFilterStrategyFullPassive.prototype.isGroupActive = function (e, t) {
-    return false;
+  function LordEffectFilterStrategyFullActive() {}
+  LordEffectFilterStrategyFullActive.prototype.isGroupActive = function (e, t) {
+    return true;
   };
-  LordEffectFilterStrategyFullPassive.prototype.getExcludedEffectTypes = function () {
+  LordEffectFilterStrategyFullActive.prototype.getExcludedEffectTypes = function () {
     return [];
   };
-  LordEffectFilterStrategyFullPassive.prototype.isEffectTypeIncluded = function (e) {
+  LordEffectFilterStrategyFullActive.prototype.isEffectTypeIncluded = function (e) {
     return this.getExcludedEffectTypes().indexOf(e.type) === -1;
   };
-  return LordEffectFilterStrategyFullPassive;
+  return LordEffectFilterStrategyFullActive;
 }();
-exports.LordEffectFilterStrategyFullPassive = o;
+exports.LordEffectFilterStrategyFullActive = o;
 n.classImplementsInterfaces(o, "ILordEffectFilterStrategy");

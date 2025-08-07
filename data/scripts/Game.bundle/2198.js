@@ -3,196 +3,84 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
+var a = require("./1.js");
 var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./169.js");
-var c = require("./179.js");
-var u = require("./13.js");
-var d = require("./4.js");
-var p = require("./9.js");
-var h = require("./20.js");
-var g = require("./718.js");
-var C = require("./133.js");
-var _ = require("./2199.js");
-var m = require("./8.js");
-var f = require("./34.js");
-var O = require("./719.js");
-var E = require("./720.js");
-var y = require("./164.js");
-var b = require("./1257.js");
-var D = require("./1259.js");
-var I = require("./2210.js");
-var T = require("./2229.js");
-var v = createjs.Point;
-var S = function (e) {
-  function GeneralsOverviewDialogInfo(t, i) {
-    var n = e.call(this, t) || this;
-    n.parent = i;
-    m.ButtonHelper.initButtons([n.subLayerDisp.btn_starLevel, n.subLayerDisp.btn_level, n.subLayerDisp.btn_skills, n.subLayerDisp.btn_abilities, n.subLayerDisp.btn_info, n.subLayerDisp.btn_info_selected], h.ClickFeedbackButtonHover);
-    n.textFieldManager.registerTextField(n.subLayerDisp.btn_skills.txt_label, new s.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId("dialog_generals_overview_skills_button"))).autoFitToBounds = true;
-    n.textFieldManager.registerTextField(n.subLayerDisp.btn_abilities.txt_label, new s.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId("dialog_generals_overview_abilities_button"))).autoFitToBounds = true;
-    n.textFieldManager.registerTextField(n.subLayerDisp.txt_abilitiesTitle, new r.LocalizedTextVO("dialog_generals_overview_generalAbilities_header"));
-    n.textFieldManager.registerTextField(n.subLayerDisp.mc_tooltip.txt_desc, new r.LocalizedTextVO("TODO: Capacity tooltip"));
-    n.textFieldManager.registerTextField(n.subLayerDisp.mc_generalInfoTooltip.txt_header, new r.LocalizedTextVO("dialog_attack_rework2022_generals_passiveEffectsList_header"));
-    n.textFieldManager.registerTextField(n.subLayerDisp.txt_effectsTitle, new r.LocalizedTextVO("dialog_generals_overview_strongestEffects"));
-    n._itxt_name = n.textFieldManager.registerTextField(n.subLayerDisp.txt_name, new s.TextVO(""));
-    n._itxt_name.autoFitToBounds = true;
-    n._itxt_level = n.textFieldManager.registerTextField(n.subLayerDisp.txt_level, new r.LocalizedTextVO("dialog_generals_level_current_max"));
-    n._itxt_lord = n.textFieldManager.registerTextField(n.subLayerDisp.txt_lord, new r.LocalizedTextVO(""));
-    n._itxt_xp = n.textFieldManager.registerTextField(n.subLayerDisp.mc_xp.txt_xp, new s.TextVO(""));
-    n._xpProgressWidth = n.subLayerDisp.mc_xp.mc_progressbar.width;
-    n.subLayerDisp.btn_starLevel.toolTipText = "dialog_generals_overview_ratingUp_button_tooltip";
-    n.subLayerDisp.btn_level.toolTipText = "dialog_generals_overview_levelUp_button_tooltip";
-    n.subLayerDisp.btn_info.toolTipText = "dialog_attack_rework2022_generals_passiveEffectsList_tooltip";
-    n.subLayerDisp.btn_info_selected.toolTipText = "dialog_attack_rework2022_generals_passiveEffectsList_tooltip";
-    n.subLayerDisp.mc_generalInfoTooltip.visible = false;
-    n._lordToggleButton = new g.ToggleSwitchButton(n.subLayerDisp.btn_toggleLord);
-    n._lordPicker = new _.GeneralOverviewLordPicker(n.subLayerDisp.mc_lordPicker);
-    return n;
+var l = require("./1254.js");
+var c = require("./4.js");
+var u = require("./20.js");
+var d = require("./95.js");
+var p = require("./47.js");
+var h = require("./59.js");
+var g = require("./8.js");
+var C = require("./11.js");
+var _ = function (e) {
+  function GeneralIntroductionCinematicsPlaylistDialog() {
+    return e.call(this, GeneralIntroductionCinematicsPlaylistDialog.NAME) || this;
   }
-  n.__extends(GeneralsOverviewDialogInfo, e);
-  GeneralsOverviewDialogInfo.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this.subLayerDisp.mc_tooltip.visible = false;
-    this.subLayerDisp.btn_info_selected.visible = false;
-    this.subLayerDisp.mc_generalInfoTooltip.visible = false;
-    this.updateElements();
-    this.updateLordToggleButton();
-    this.updateLordPicker();
-    this.updateLordEffects();
-    this.updateAbilities();
-    d.CastleModel.generalsData.addEventListener(c.GeneralsEvent.GENERALS_UPDATED, this.bindFunction(this.onGeneralsUpdated));
-    this._lordToggleButton.changeSignal.add(this.bindFunction(this.onToggleLord));
+  n.__extends(GeneralIntroductionCinematicsPlaylistDialog, e);
+  GeneralIntroductionCinematicsPlaylistDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    g.ButtonHelper.initButtons([this.dialogDisp.btn_help, this.dialogDisp.btn_close], u.ClickFeedbackButtonHover);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("dialog_generals_inn_cinematics_header_desc"));
+    var i = new p.SimpleScrollVO().initByParent(this.dialogDisp).addSliderBackground(this.dialogDisp.mc_sliderBG).addMouseWheelElements([this.dialogDisp]);
+    var n = new h.DynamicSizeScrollStrategyVertical(false, this.dialogDisp.mc_list.mask.height, true);
+    this._scrollComponent = new d.SimpleScrollComponent(i, n);
+    this._scrollY = this.dialogDisp.mc_list.y;
   };
-  GeneralsOverviewDialogInfo.prototype.hide = function () {
-    e.prototype.hide.call(this);
-    d.CastleModel.generalsData.removeEventListener(c.GeneralsEvent.GENERALS_UPDATED, this.bindFunction(this.onGeneralsUpdated));
-    this._lordToggleButton.changeSignal.remove(this.bindFunction(this.onToggleLord));
-    if (this._lordPicker) {
-      this._lordPicker.removeEventListener(l.BasicPickerEvent.PICKER_CHANGE_VALUE, this.bindFunction(this.onLordChanged));
-      this._lordPicker.hide();
-    }
-    this.subLayerDisp.btn_info_selected.visible = false;
-    this.subLayerDisp.mc_generalInfoTooltip.visible = false;
+  GeneralIntroductionCinematicsPlaylistDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.createPlaylist();
+    var i = this.dialogDisp.mc_list.height;
+    var n = Math.max(0, i - this.dialogDisp.mc_list.mask.height);
+    this._scrollComponent.init(0, n, 110, 110);
+    this._scrollComponent.scrollToValue(0);
+    this._scrollComponent.show();
+    this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
   };
-  GeneralsOverviewDialogInfo.prototype.updateElements = function () {
-    this._itxt_name.textContentVO.stringValue = this.sublayerProperties.generalVO.nameText;
-    y.GeneralsHelper.updateStarLevel(this.subLayerDisp, this.sublayerProperties.generalVO);
-    this._itxt_level.textContentVO.textReplacements = [this.sublayerProperties.generalVO.currentLevel, this.sublayerProperties.generalVO.maxLevel];
-    if (this.sublayerProperties.generalVO.nextLevelXP < 0) {
-      this._itxt_xp.textContentVO.stringValue = s.Localize.text("maximumabbrevation");
-    } else {
-      this._itxt_xp.textContentVO.stringValue = s.Localize.text(a.GenericTextIds.VALUE_PROPORTIONAL_VALUE, [this.sublayerProperties.generalVO.currentLevelXP, this.sublayerProperties.generalVO.nextLevelXP]);
-    }
-    this.subLayerDisp.mc_xp.mc_progressbar_full.visible = this.sublayerProperties.generalVO.currentLevel >= this.sublayerProperties.generalVO.maxLevel;
-    this.subLayerDisp.mc_xp.mc_progressbar.scaleX = this.sublayerProperties.generalVO.getXPProgressFactor();
-    this._itxt_lord.textContentVO.textId = this.isBaron ? "equipment_itemType_baron" : "equipment_itemType_general";
-    this.subLayerDisp.btn_starLevel.visible = this.sublayerProperties.generalVO.isStarLevelUpgradeable;
-    this.subLayerDisp.btn_level.visible = this.sublayerProperties.generalVO.isXpUpgradeable;
-    o.GoodgameTextFieldManager.getInstance().registerTextField(this.subLayerDisp.mc_generalInfoTooltip.txt_effects, new s.TextVO(this.sublayerProperties.generalVO.getPassiveEffectsText())).autoFitToBounds = true;
+  GeneralIntroductionCinematicsPlaylistDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this, t);
+    this._scrollComponent.hide();
+    this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
   };
-  GeneralsOverviewDialogInfo.prototype.onGeneralsUpdated = function (e) {
-    this.updateElements();
-    this.updateLordEffects();
-    this.updateAbilities();
-    this.parent.onGeneralsUpdated();
-  };
-  GeneralsOverviewDialogInfo.prototype.onToggleLord = function () {
-    this.updateLordPicker(true);
-    this.updateLordEffects();
-    this.updateAbilities();
-  };
-  GeneralsOverviewDialogInfo.prototype.updateLordPicker = function (e = false) {
-    var t = this.isBaron ? d.CastleModel.lordData.barons : d.CastleModel.lordData.commanders;
-    this._lordPicker.removeEventListener(l.BasicPickerEvent.PICKER_CHANGE_VALUE, this.bindFunction(this.onLordChanged));
-    this._lordPicker.show(t, this.sublayerProperties.generalVO);
-    this._lordPicker.addEventListener(l.BasicPickerEvent.PICKER_CHANGE_VALUE, this.bindFunction(this.onLordChanged));
-    this.onLordChanged(e);
-  };
-  GeneralsOverviewDialogInfo.prototype.updateLordToggleButton = function () {
-    var e = this.sublayerProperties.generalVO.assignedLord;
-    var t = e && e.isBaron;
-    this._lordToggleButton.setValue(!t, false);
-    this._lordToggleButton.enableComponent(!e || e && e.isAvailableForGeneralAssignement);
-    this._lordToggleButton.disp.toolTipText = this._lordToggleButton.isEnabled ? null : {
-      t: "dialog_generals_generalTravelling_tooltip",
-      p: [this.sublayerProperties.generalVO.nameTextShort]
-    };
-    this._itxt_lord.textContentVO.textId = this.isBaron ? "equipment_itemType_baron" : "equipment_itemType_general";
-    var i = !e || e.isAvailableForGeneralAssignement;
-    m.ButtonHelper.enableButton(this.subLayerDisp.btn_skills, i);
-    m.ButtonHelper.enableButton(this.subLayerDisp.btn_abilities, i);
-    this.subLayerDisp.btn_skills.toolTipText = i ? null : "dialog_generals_skills_generalTravelling_tooltip";
-    this.subLayerDisp.btn_abilities.toolTipText = i ? null : "dialog_generals_abilities_generalTravelling_tooltip";
-  };
-  GeneralsOverviewDialogInfo.prototype.onLordChanged = function (e = true) {
-    if (this._lordPicker.selectedLord) {
-      if (e) {
-        d.CastleModel.lordData.assignGeneral(this._lordPicker.selectedLord, this.sublayerProperties.generalVO);
-      }
-      if (this._lordPicker.selectedLord.isBaron) {
-        var t = this._lordPicker.selectedLord;
-        this._lordPicker.lordTooltipTrigger.setProperties(this._lordPicker.selectedLord, d.CastleModel.userData.castleList.getCastleVOByID(t.lockedInCastleID), null, C.LordEffectHelper.STRATEGY_FULL_PASSIVE);
-      } else {
-        this._lordPicker.lordTooltipTrigger.setProperties(this._lordPicker.selectedLord, null, null, C.LordEffectHelper.STRATEGY_FULL_PASSIVE);
-      }
-    } else {
-      var i = this.sublayerProperties.generalVO.assignedLord;
-      if (e && i) {
-        d.CastleModel.lordData.assignGeneral(i, null);
-      }
-      this._lordPicker.lordTooltipTrigger.setProperties(null);
+  GeneralIntroductionCinematicsPlaylistDialog.prototype.createPlaylist = function () {
+    o.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_list);
+    var e = 0;
+    for (var t = 0, i = this.getAvailableCinematics(); t < i.length; t++) {
+      var n = i[t];
+      var r = new (a.getDefinitionByName("GeneralIntroductionCinematicsPlaylist_Item"))();
+      var l = new (a.getDefinitionByName("GeneralIntroductionCinematics_Thumbnail_" + n.id))();
+      this.dialogDisp.mc_list.addChild(r);
+      this.textFieldManager.registerTextField(r.txt_title, new s.LocalizedTextVO(n.title));
+      this.textFieldManager.registerTextField(r.txt_desc, new s.LocalizedTextVO(n.description));
+      this.textFieldManager.registerTextField(r.txt_length, new s.LocalizedTextVO(n.length));
+      g.ButtonHelper.initButton(r, 1, u.ClickFeedbackButtonHover);
+      r.mc_thumbnail.addChild(l);
+      r.cinematicVO = n;
+      r.y = e;
+      e = e + r.height + 3;
     }
   };
-  GeneralsOverviewDialogInfo.prototype.updateLordEffects = function () {
-    var e = this._lordPicker.selectedLord ? this._lordPicker.selectedLord.getUniqueBoni(false, null, -1, null, true) : [];
-    var t = !!this._lordPicker.selectedLord && this._lordPicker.selectedLord.isBaron;
-    y.GeneralsHelper.showLordMainEffects(this.subLayerDisp, e, new v(40, 40), t);
+  GeneralIntroductionCinematicsPlaylistDialog.prototype.onScroll = function () {
+    this.dialogDisp.mc_list.y = this._scrollY - this._scrollComponent.currentValue;
   };
-  GeneralsOverviewDialogInfo.prototype.updateAbilities = function () {
-    a.MovieClipHelper.clearMovieClip(this.subLayerDisp.mc_abilities);
-    var e = this.sublayerProperties.generalVO.getSelectedAbilities(!this.isBaron);
-    for (var t = 0; t < 5 && (!this.isBaron || !(this.sublayerProperties.generalVO.defenseSlots.length <= t)) && (this.isBaron || !(this.sublayerProperties.generalVO.attackSlots.length <= t)); t++) {
-      var i = y.GeneralsHelper.getGeneralAbilityClip(e[t] ? e[t].abilityGroupID : -1, 80, e[t] ? e[t].abilityID : -1, !this.isBaron);
-      i.x = t * 94;
-      this.subLayerDisp.mc_abilities.addChild(i);
-    }
-  };
-  Object.defineProperty(GeneralsOverviewDialogInfo.prototype, "isBaron", {
-    get: function () {
-      return !this._lordToggleButton.value;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  GeneralsOverviewDialogInfo.prototype.onClick = function (t) {
+  GeneralIntroductionCinematicsPlaylistDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    if (m.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.subLayerDisp.btn_starLevel:
-        case this.subLayerDisp.btn_level:
-          p.CastleDialogHandler.getInstance().registerDefaultDialogs(b.GeneralsLevelUPDialog, new D.GeneralsLevelUPDialogProperties(this.sublayerProperties.generalVO.generalID));
-          break;
-        case this.subLayerDisp.btn_skills:
-          p.CastleDialogHandler.getInstance().registerDefaultDialogs(I.GeneralsSkillTreeDialog, new T.GeneralsSkillTreeDialogProperties(this.sublayerProperties.generalVO, !this.isBaron));
-          break;
-        case this.subLayerDisp.btn_abilities:
-          p.CastleDialogHandler.getInstance().registerDefaultDialogs(O.GeneralsAbilityDialog, new E.GeneralsAbilityDialogProperties(this.sublayerProperties.generalVO, !this.isBaron));
-          break;
-        case this.subLayerDisp.btn_info:
-        case this.subLayerDisp.btn_info_selected:
-          this.subLayerDisp.btn_info_selected.visible = this.subLayerDisp.mc_generalInfoTooltip.visible = !this.subLayerDisp.mc_generalInfoTooltip.visible;
-      }
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_help:
+        C.CastleExternalDialog.dialogHandler.showHelper("", r.Localize.text("help_generals_inn_cinematics_header_desc"));
+    }
+    if (t.target && t.target.cinematicVO) {
+      l.CinematicController.getInstance().playCinematic(t.target.cinematicVO);
     }
   };
-  Object.defineProperty(GeneralsOverviewDialogInfo.prototype, "sublayerProperties", {
-    get: function () {
-      return this._params;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return GeneralsOverviewDialogInfo;
-}(f.CastleDialogSubLayer);
-exports.GeneralsOverviewDialogInfo = S;
+  GeneralIntroductionCinematicsPlaylistDialog.prototype.getAvailableCinematics = function () {
+    return c.CastleModel.generalsIntroductionData.getAvailableCinematics();
+  };
+  GeneralIntroductionCinematicsPlaylistDialog.NAME = "GeneralIntroductionCinematicsPlaylistExt";
+  return GeneralIntroductionCinematicsPlaylistDialog;
+}(C.CastleExternalDialog);
+exports.GeneralIntroductionCinematicsPlaylistDialog = _;

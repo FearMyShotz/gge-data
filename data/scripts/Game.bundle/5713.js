@@ -1,99 +1,92 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./6.js");
-var o = require("./22.js");
-var a = require("./4.js");
-var s = require("./165.js");
-var r = function () {
-  function GlobalEffectVO() {
-    this.id = 0;
-    this.globalEffectID = 0;
-    this.minLevel = 0;
-    this.maxLevel = 0;
-    this.rawBonus = new s.BonusVO();
-    this.displayEventIDs = [];
-    this.displayKingdomIDs = [];
-    this.buffStrength = 0;
+var n = require("./5.js");
+var o = require("./6.js");
+var a = require("./436.js");
+var s = require("./4.js");
+var r = require("./165.js");
+var l = function () {
+  function PrivateResourceVillageInfoVO() {
+    this._villageID = 0;
+    this._type = 0;
+    this._villageLevel = 0;
+    this._kingdomID = 0;
+    this._tokenCost = 0;
+    this._tokenCostTotal = 0;
   }
-  GlobalEffectVO.prototype.parseXml = function (e) {
-    this.id = n.int(o.CastleXMLUtils.getIntAttribute("ID", e, -1));
-    this.name = o.CastleXMLUtils.getStringAttribute("name", e);
-    this.globalEffectID = n.int(o.CastleXMLUtils.getIntAttribute("globalEffectID", e, -1));
-    this.minLevel = n.int(o.CastleXMLUtils.getIntAttribute("minLevel", e, -1));
-    this.maxLevel = n.int(o.CastleXMLUtils.getIntAttribute("maxLevel", e, -1));
-    this.displayEventIDs = o.CastleXMLUtils.getStringAttribute("displayEventIDs", e).split(",");
-    this.displayKingdomIDs = o.CastleXMLUtils.getStringAttribute("displayKingdomIDs", e).split(",");
-    for (var t = 0; t < this.displayKingdomIDs.length; t++) {
-      this.displayKingdomIDs[t] = parseInt(this.displayKingdomIDs[t]);
-    }
-    for (t = 0; t < this.displayEventIDs.length; t++) {
-      this.displayEventIDs[t] = parseInt(this.displayEventIDs[t]);
-    }
-    var i = o.CastleXMLUtils.getStringAttribute("effects", e);
-    if (i != "" && i.length > 0) {
-      var r = i.split("&");
-      var c = a.CastleModel.effectsData.getEffectByID(parseInt(r[0]));
-      var u = new s.BonusVO().parseFromValueString(c, r[1]);
-      if (l.instanceOfClass(u.effectValue, "EffectValueMap")) {
-        var d = r[1].split("#");
-        var p = "";
-        if (d != null) {
-          for (var h = 0, g = d; h < g.length; h++) {
-            var C = g[h];
-            if (C !== undefined) {
-              var _ = C.split("+");
-              if (p.length > 0) {
-                p += ",";
-              }
-              p += _[0] + "," + _[1];
-            }
-          }
-        }
-        u.parseFromValueString(c, p);
-      }
-      this.rawBonus = u;
-    }
+  PrivateResourceVillageInfoVO.prototype.fillFromParamXML = function (e) {
+    this._villageID = parseInt(e.villageID || "");
+    this._typeString = e.type || "";
+    this._villageLevel = parseInt(e.villageLevel || "");
+    this._kingdomID = parseInt(e.kID || "");
+    this._tokenCost = parseInt(e.costResourceVillageTokenLevel || "");
+    this._tokenCostTotal = parseInt(e.costResourceVillageToken || "");
+    this._type = o.int(n.WorldConst["VILLAGE_TYPE_" + this._typeString.toUpperCase()]);
+    var t = (e.effects || "").split("&");
+    var i = s.CastleModel.effectsData.getEffectByID(parseInt(t[0]));
+    this._bonus = new r.BonusVO().parseFromValueString(i, t[1]);
   };
-  Object.defineProperty(GlobalEffectVO.prototype, "canBeUsed", {
+  Object.defineProperty(PrivateResourceVillageInfoVO.prototype, "villageID", {
     get: function () {
-      return a.CastleModel.userData.userLevel >= this.minLevel && a.CastleModel.userData.userLevel <= this.maxLevel;
+      return this._villageID;
     },
     enumerable: true,
     configurable: true
   });
-  GlobalEffectVO.prototype.addBuffStrengthValue = function (e) {
-    this.buffStrength = e;
-    this.buffedBonus = this.rawBonus.clone();
-    this.setEffectStrength(this.buffedBonus.strength + e, this.buffedBonus);
-  };
-  Object.defineProperty(GlobalEffectVO.prototype, "bonus", {
+  Object.defineProperty(PrivateResourceVillageInfoVO.prototype, "type", {
     get: function () {
-      if (a.CastleModel.globalEffectData.isEffectBoosted(this.globalEffectID)) {
-        return this.buffedBonus;
+      return this._type;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(PrivateResourceVillageInfoVO.prototype, "typeString", {
+    get: function () {
+      if (this._type == n.WorldConst.VILLAGE_TYPE_OIL) {
+        return "oliveoil";
       } else {
-        return this.rawBonus;
+        return a.ClientConstKingdom.getVillageTypeName(this._type);
       }
     },
     enumerable: true,
     configurable: true
   });
-  GlobalEffectVO.prototype.setEffectStrength = function (e, t) {
-    var i = "";
-    if (l.instanceOfClass(t.effectValue, "EffectValueMap")) {
-      for (var n = t.effectValue.getWodIds(), o = 0; o < n.length; o++) {
-        i += n[o];
-        i += "," + e;
-        if (o + 1 < n.length) {
-          i += ",";
-        }
-      }
-    } else {
-      i += e;
-    }
-    t.parseFromValueString(t.effect, i);
-  };
-  return GlobalEffectVO;
+  Object.defineProperty(PrivateResourceVillageInfoVO.prototype, "villageLevel", {
+    get: function () {
+      return this._villageLevel;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(PrivateResourceVillageInfoVO.prototype, "kingdomID", {
+    get: function () {
+      return this._kingdomID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(PrivateResourceVillageInfoVO.prototype, "bonus", {
+    get: function () {
+      return this._bonus;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(PrivateResourceVillageInfoVO.prototype, "tokenCost", {
+    get: function () {
+      return this._tokenCost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(PrivateResourceVillageInfoVO.prototype, "tokenCostTotal", {
+    get: function () {
+      return this._tokenCostTotal;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return PrivateResourceVillageInfoVO;
 }();
-exports.GlobalEffectVO = r;
-var l = require("./1.js");
+exports.PrivateResourceVillageInfoVO = l;

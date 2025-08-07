@@ -31,6 +31,6 @@ var o = function (e) {
     DailySpecialBonusButton.STATE_REWARD_COLLECTED = 2;
   };
   return DailySpecialBonusButton;
-}(require("./672.js").DailyLoginBonusStateButton);
+}(require("./674.js").DailyLoginBonusStateButton);
 exports.DailySpecialBonusButton = o;
 o.__initialize_static_members();

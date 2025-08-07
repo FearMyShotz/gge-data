@@ -3,34 +3,66 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function CMCCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var a = require("./1.js");
+var s = require("./1.js");
+var r = require("./3.js");
+var l = require("./28.js");
+var c = require("./4.js");
+var u = require("./230.js");
+var d = createjs.TimerEvent;
+var p = function (e) {
+  function CastleTimedNoClickDialog() {
+    var t = this;
+    CONSTRUCTOR_HACK;
+    (t = e.call(this, new (o.getDefinitionByName("CastleTimedNoClick"))()) || this).itxt_title = t.textFieldManager.registerTextField(t.timedNoClickDialog.txt_title, new r.TextVO(""));
+    t.itxt_copy = t.textFieldManager.registerTextField(t.timedNoClickDialog.txt_copy, new r.TextVO(""));
+    t.itxt_copy.autoFitToBounds = true;
+    return t;
   }
-  n.__extends(CMCCommand, e);
-  Object.defineProperty(CMCCommand.prototype, "cmdId", {
+  n.__extends(CastleTimedNoClickDialog, e);
+  CastleTimedNoClickDialog.prototype.applyProperties = function () {
+    this.itxt_title.textContentVO.stringValue = this.dialogProperties.title;
+    this.itxt_copy.textContentVO.stringValue = this.dialogProperties.copy;
+    this.startCountdown();
+  };
+  CastleTimedNoClickDialog.prototype.hide = function () {
+    c.CastleModel.userData.blockDialogs = false;
+    this.stopCountdown();
+    e.prototype.hide.call(this);
+  };
+  CastleTimedNoClickDialog.prototype.startCountdown = function () {
+    if (this.dialogProperties.remainingTimeInSeconds > 0 && this.dialogProperties.remainingTimeInSeconds < l.ClientConstTime.SECONDS_PER_DAY) {
+      this._timer = new a.Timer(this.dialogProperties.remainingTimeInSeconds * l.ClientConstTime.SEC_2_MILLISEC, 1);
+      this._timer.addEventListener(d.TIMER_COMPLETE, this.bindFunction(this.onTimerComplete));
+      this._timer.start();
+    }
+  };
+  CastleTimedNoClickDialog.prototype.onTimerComplete = function (e) {
+    this.hide();
+  };
+  CastleTimedNoClickDialog.prototype.stopCountdown = function () {
+    if (this._timer) {
+      this._timer.stop();
+      this._timer.removeEventListener(d.TIMER_COMPLETE, this.bindFunction(this.onTimerComplete));
+      this._timer = null;
+    }
+  };
+  Object.defineProperty(CastleTimedNoClickDialog.prototype, "dialogProperties", {
     get: function () {
-      return s.ClientConstSF.S2C_CANCEL_MAIL_CHANGE;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CMCCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        break;
-      default:
-        this.showErrorDialog(e, t);
-    }
-    return false;
-  };
-  return CMCCommand;
-}(r.CastleCommand);
-exports.CMCCommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  Object.defineProperty(CastleTimedNoClickDialog.prototype, "timedNoClickDialog", {
+    get: function () {
+      return this.disp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleTimedNoClickDialog.NAME = "CastleTimedNoClick";
+  return CastleTimedNoClickDialog;
+}(u.CastleDialog);
+exports.CastleTimedNoClickDialog = p;
+s.classImplementsInterfaces(p, "ICollectableRendererList");

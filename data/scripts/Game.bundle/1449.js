@@ -9,8 +9,8 @@ var r = require("./3.js");
 var l = require("./13.js");
 var c = require("./8.js");
 var u = require("./11.js");
-var d = require("./988.js");
-var p = require("./2647.js");
+var d = require("./989.js");
+var p = require("./2648.js");
 var h = function (e) {
   function DecorationForgeQuickGuideDialog() {
     return e.call(this, DecorationForgeQuickGuideDialog.NAME) || this;
@@ -76,7 +76,7 @@ var h = function (e) {
   return DecorationForgeQuickGuideDialog;
 }(u.CastleExternalDialog);
 exports.DecorationForgeQuickGuideDialog = h;
-var g = require("./989.js");
-var C = require("./2648.js");
+var g = require("./990.js");
+var C = require("./2649.js");
 var _ = require("./36.js");
 o.classImplementsInterfaces(h, "ICollectableRendererList");

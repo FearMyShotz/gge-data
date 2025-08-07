@@ -5,30 +5,30 @@ var n = require("./1.js");
 var o = require("./5.js");
 var a = require("./16.js");
 var s = function () {
-  function EventSkinColorsWinterOffensive() {}
-  EventSkinColorsWinterOffensive.prototype.getIsoBackgroundColor = function (e) {
+  function EventSkinColorsWinter() {}
+  EventSkinColorsWinter.prototype.getIsoBackgroundColor = function (e) {
     var t = 0;
     switch (e) {
       case o.WorldClassic.KINGDOM_ID:
-        t = 15070454;
+        t = 15987442;
         break;
       default:
         t = a.ClientConstColor.USE_DEFAULT_COLOR;
     }
     return t;
   };
-  EventSkinColorsWinterOffensive.prototype.getWorldmapBackgroundColor = function (e) {
+  EventSkinColorsWinter.prototype.getWorldmapBackgroundColor = function (e) {
     var t = 0;
     switch (e) {
       case o.WorldClassic.KINGDOM_ID:
-        t = 7512743;
+        t = 15596025;
         break;
       default:
         t = a.ClientConstColor.USE_DEFAULT_COLOR;
     }
     return t;
   };
-  return EventSkinColorsWinterOffensive;
+  return EventSkinColorsWinter;
 }();
-exports.EventSkinColorsWinterOffensive = s;
+exports.EventSkinColorsWinter = s;
 n.classImplementsInterfaces(s, "IEventSkinColors");

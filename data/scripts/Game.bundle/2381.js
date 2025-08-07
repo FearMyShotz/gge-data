@@ -2,100 +2,56 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function CastleForumTopicVO() {
-    this._topicId = -1;
-    this._authorRank = -1;
-    this._answerCount = -1;
-    this._wasRead = false;
+  function CastleForumPostVO() {
+    this._postId = -1;
+    this._content = "";
+    this._author = "";
+    this._allianceRank = -1;
   }
-  CastleForumTopicVO.prototype.parseGAT = function (e) {
-    this._topicId = s.int(e.TID);
-    this._topicName = a.TextValide.parseChatJSONMessage(e.N);
-    this._author = e.CN;
-    this._creationTimestamp = new Date(e.CT * 1000);
-    this._authorRank = s.int(e.CR);
-    this._visibleRankingGroups = e.RG;
-    this._answerCount = s.int(e.RC);
-    this._lastPosterName = e.LRN;
-    this._lastPostTimestamp = new Date(e.LRT * 1000);
-    this._wasRead = !!e.R;
+  CastleForumPostVO.prototype.parseGTRItem = function (e) {
+    this._postId = a.int(e.RID);
+    this._content = o.TextValide.parseChatJSONMessage(e.RT);
+    this._author = e.PN;
+    this._allianceRank = a.int(e.AR);
+    this._creationTimestamp = new Date(e.T * 1000);
   };
-  CastleForumTopicVO.prototype.hasRightsToDeleteTopicOrAnswer = function () {
-    return o.CastleAllianceForumData.hasTopicRightsToDeleteOrAnswerOrChangeVisibility(this.author, this.visibleRankingGroups);
-  };
-  Object.defineProperty(CastleForumTopicVO.prototype, "author", {
+  Object.defineProperty(CastleForumPostVO.prototype, "postId", {
+    get: function () {
+      return this._postId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumPostVO.prototype, "content", {
+    get: function () {
+      return this._content;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleForumPostVO.prototype, "author", {
     get: function () {
       return this._author;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleForumTopicVO.prototype, "topicName", {
+  Object.defineProperty(CastleForumPostVO.prototype, "allianceRank", {
     get: function () {
-      return this._topicName;
+      return this._allianceRank;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleForumTopicVO.prototype, "creationTimestamp", {
+  Object.defineProperty(CastleForumPostVO.prototype, "creationTimestamp", {
     get: function () {
       return this._creationTimestamp;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleForumTopicVO.prototype, "visibleRankingGroups", {
-    get: function () {
-      return this._visibleRankingGroups;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleForumTopicVO.prototype, "topicId", {
-    get: function () {
-      return this._topicId;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleForumTopicVO.prototype, "answerCount", {
-    get: function () {
-      return this._answerCount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleForumTopicVO.prototype, "lastPosterName", {
-    get: function () {
-      return this._lastPosterName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleForumTopicVO.prototype, "lastPostTimestamp", {
-    get: function () {
-      return this._lastPostTimestamp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleForumTopicVO.prototype, "wasRead", {
-    get: function () {
-      return this._wasRead;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleForumTopicVO.prototype, "authorRank", {
-    get: function () {
-      return this._authorRank;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleForumTopicVO;
+  return CastleForumPostVO;
 }();
-exports.CastleForumTopicVO = n;
-var o = require("./223.js");
-var a = require("./2.js");
-var s = require("./6.js");
+exports.CastleForumPostVO = n;
+var o = require("./2.js");
+var a = require("./6.js");

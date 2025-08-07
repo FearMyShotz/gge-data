@@ -5,18 +5,18 @@ var n = require("./0.js");
 var o = require("./5.js");
 var a = require("./7.js");
 var s = function (e) {
-  function GAXPCommand() {
+  function GDECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GAXPCommand, e);
-  Object.defineProperty(GAXPCommand.prototype, "cmdId", {
+  n.__extends(GDECommand, e);
+  Object.defineProperty(GDECommand.prototype, "cmdId", {
     get: function () {
-      return a.ClientConstSF.C2S_GENERAL_ADD_XP;
+      return a.ClientConstSF.S2C_GACHA_INFO;
     },
     enumerable: true,
     configurable: true
   });
-  GAXPCommand.prototype.executeCommand = function (e, t) {
+  GDECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case o.ERROR.ALL_OK:
         break;
@@ -25,6 +25,6 @@ var s = function (e) {
     }
     return false;
   };
-  return GAXPCommand;
+  return GDECommand;
 }(require("./10.js").CastleCommand);
-exports.GAXPCommand = s;
+exports.GDECommand = s;

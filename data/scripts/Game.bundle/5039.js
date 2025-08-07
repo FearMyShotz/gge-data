@@ -6,14 +6,15 @@ var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./10.js");
-var l = function (e) {
-  function BEPCommand() {
+var l = require("./4.js");
+var c = function (e) {
+  function BSSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BEPCommand, e);
-  Object.defineProperty(BEPCommand.prototype, "cmdId", {
+  n.__extends(BSSCommand, e);
+  Object.defineProperty(BSSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_BUY_SEASON_PASS_EVENT;
+      return s.ClientConstSF.S2C_BUY_SCEAT_SKILL;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -21,19 +22,17 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  BEPCommand.prototype.executeCommand = function (e, t) {
+  BSSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        c.CastleBasicController.getInstance().dispatchEvent(new u.SeasonLeagueEvent(u.SeasonLeagueEvent.ON_PASS_EVENT_BOUGHT));
-        return true;
+        break;
       default:
         this.showErrorDialog(e, t);
+        l.CastleModel.legendSkillData.stopWaitingForServer();
     }
     return false;
   };
-  return BEPCommand;
+  return BSSCommand;
 }(r.CastleCommand);
-exports.BEPCommand = l;
-var c = require("./15.js");
-var u = require("./174.js");
-o.classImplementsInterfaces(l, "IExecCommand");
+exports.BSSCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

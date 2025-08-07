@@ -2,125 +2,68 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./4.js");
-var c = require("./8.js");
-var u = function (e) {
-  function CastleKongregateRatingDialog() {
-    var t = this;
-    t.starsVoted = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this, CastleKongregateRatingDialog.NAME) || this;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./4.js");
+var r = require("./130.js");
+var l = require("./8.js");
+var c = require("./11.js");
+var u = require("./36.js");
+var d = function (e) {
+  function CastlePOFurysBladeMessageDialog() {
+    return e.call(this, CastlePOFurysBladeMessageDialog.NAME) || this;
   }
-  n.__extends(CastleKongregateRatingDialog, e);
-  CastleKongregateRatingDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close, this.dialogDisp.btn_cancel]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.LocalizedTextVO("dialog_rateEmpire_header")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new r.LocalizedTextVO("dialog_rateEmpire_copy"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_rating, new r.LocalizedTextVO(""));
-    this.highlightButtons(0);
-    this.dialogDisp.star_0.mouseChildren = false;
-    this.dialogDisp.star_1.mouseChildren = false;
-    this.dialogDisp.star_2.mouseChildren = false;
-    this.dialogDisp.star_3.mouseChildren = false;
-    this.dialogDisp.star_4.mouseChildren = false;
-    c.ButtonHelper.enableButton(this.dialogDisp.btn_ok, false);
+  n.__extends(CastlePOFurysBladeMessageDialog, e);
+  CastlePOFurysBladeMessageDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this);
+    l.ButtonHelper.initButton(this.dialogDisp.btn_close, -1, u.ClickFeedbackButton);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_furysBladeFlow_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_top1_title, new a.LocalizedTextVO("dialog_furysBladeFlow_top1_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_top1_desc, new a.LocalizedTextVO("dialog_furysBladeFlow_top1_desc")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_top2_title, new a.LocalizedTextVO("dialog_furysBladeFlow_top2_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_top2_desc, new a.LocalizedTextVO("dialog_furysBladeFlow_top2_desc")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_top3_title, new a.LocalizedTextVO("dialog_furysBladeFlow_top3_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_top3_desc, new a.LocalizedTextVO("dialog_furysBladeFlow_top3_desc")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage1_title, new a.LocalizedTextVO("dialog_furysBladeFlow_stage1_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage1_date, new a.LocalizedTextVO("dialog_furysBladeFlow_stage1_date"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage1_players, new a.LocalizedTextVO("dialog_furysBladeFlow_stage1_players")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage1_desc, new a.LocalizedTextVO("dialog_furysBladeFlow_stage1_desc"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage2_title, new a.LocalizedTextVO("dialog_furysBladeFlow_stage2_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage2_date, new a.LocalizedTextVO("dialog_furysBladeFlow_stage2_date"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage2_players, new a.LocalizedTextVO("dialog_furysBladeFlow_stage2_players")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage2_desc, new a.LocalizedTextVO("dialog_furysBladeFlow_stage2_desc"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage3_title, new a.LocalizedTextVO("dialog_furysBladeFlow_stage3_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage3_date, new a.LocalizedTextVO("dialog_furysBladeFlow_stage3_date"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage3_players, new a.LocalizedTextVO("dialog_furysBladeFlow_stage3_players")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_stage3_desc, new a.LocalizedTextVO("dialog_furysBladeFlow_stage3_desc"));
+    s.CastleModel.privateOfferData.addEventListener(r.PrivateOfferDataEvent.PRIVATE_OFFER_REMOVED, this.bindFunction(this.onOfferRemoved));
   };
-  CastleKongregateRatingDialog.prototype.highlightButtons = function (e) {
-    for (var t = 0; t < e; t++) {
-      this.dialogDisp["star_" + t].mc_highlight.visible = true;
-    }
-    for (var i = e; i < CastleKongregateRatingDialog.STARCOUNT; i++) {
-      this.dialogDisp["star_" + i].mc_highlight.visible = false;
-    }
+  CastlePOFurysBladeMessageDialog.prototype.hideLoaded = function (t = null) {
+    s.CastleModel.privateOfferData.removeEventListener(r.PrivateOfferDataEvent.PRIVATE_OFFER_REMOVED, this.bindFunction(this.onOfferRemoved));
+    e.prototype.hideLoaded.call(this, t);
   };
-  CastleKongregateRatingDialog.prototype.selectButtons = function (e) {
-    this.starsVoted = e;
-    if (e > 0) {
-      c.ButtonHelper.enableButton(this.dialogDisp.btn_ok, true);
-    }
-    for (var t = e; t < CastleKongregateRatingDialog.STARCOUNT; t++) {
-      this.dialogDisp["star_" + t].gotoAndStop(CastleKongregateRatingDialog.FRAME_UNSELECT);
-    }
-    for (var i = 0; i < e; i++) {
-      this.dialogDisp["star_" + i].gotoAndStop(CastleKongregateRatingDialog.FRAME_SELECT);
-    }
-  };
-  CastleKongregateRatingDialog.prototype.onMouseOver = function (e) {
-    switch (e.target) {
-      case this.dialogDisp.star_0:
-        this.highlightButtons(1);
-        break;
-      case this.dialogDisp.star_1:
-        this.highlightButtons(2);
-        break;
-      case this.dialogDisp.star_2:
-        this.highlightButtons(3);
-        break;
-      case this.dialogDisp.star_3:
-        this.highlightButtons(4);
-        break;
-      case this.dialogDisp.star_4:
-        this.highlightButtons(5);
-        break;
-      case this.dialogDisp.mc_hitArea:
-        this.highlightButtons(0);
+  CastlePOFurysBladeMessageDialog.prototype.onOfferRemoved = function (e) {
+    if (e.offerVO.id == this.dialogProperties.offerVO.id) {
+      this.hide();
     }
   };
-  CastleKongregateRatingDialog.prototype.onClick = function (e) {
-    switch (e.target) {
-      case this.dialogDisp.star_0:
-        this.selectButtons(1);
-        break;
-      case this.dialogDisp.star_1:
-        this.selectButtons(2);
-        break;
-      case this.dialogDisp.star_2:
-        this.selectButtons(3);
-        break;
-      case this.dialogDisp.star_3:
-        this.selectButtons(4);
-        break;
-      case this.dialogDisp.star_4:
-        this.selectButtons(5);
-        break;
-      case this.dialogDisp.btn_ok:
-        if (!this.dialogDisp.btn_ok.enabled) {
-          break;
-        }
-        if (this.starsVoted == 5) {
-          d.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleKongregateNotificationDialog);
-        } else {
-          d.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties("", s.Localize.text("dialog_rateEmpire_sucess_Failed")));
-        }
+  CastlePOFurysBladeMessageDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
       case this.dialogDisp.btn_close:
-      case this.dialogDisp.btn_cancel:
-        l.CastleModel.privateOfferData.sendOfferQuestAccept(this.dialogProperties.offerVO.id, this.starsVoted);
         this.hide();
     }
   };
-  Object.defineProperty(CastleKongregateRatingDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastlePOFurysBladeMessageDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleKongregateRatingDialog.__initialize_static_members = function () {
-    CastleKongregateRatingDialog.NAME = "CastleKongregateRating";
-    CastleKongregateRatingDialog.STARCOUNT = 5;
-    CastleKongregateRatingDialog.FRAME_UNSELECT = 1;
-    CastleKongregateRatingDialog.FRAME_SELECT = 2;
-  };
-  return CastleKongregateRatingDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleKongregateRatingDialog = u;
-var d = require("./9.js");
-var p = require("./38.js");
-var h = require("./1742.js");
-a.classImplementsInterfaces(u, "ICollectableRendererList");
-u.__initialize_static_members();
+  CastlePOFurysBladeMessageDialog.NAME = "CastlePOFurysBladeMessage";
+  CastlePOFurysBladeMessageDialog.OFFER_NAME = "CastlePOFurysBladeMessageDialog";
+  return CastlePOFurysBladeMessageDialog;
+}(c.CastleExternalDialog);
+exports.CastlePOFurysBladeMessageDialog = d;
+o.classImplementsInterfaces(d, "ICollectableRendererList");

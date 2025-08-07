@@ -3,12 +3,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CollectableItemCoalVO(t = 0) {
-    return e.call(this, t) || this;
+  function CastleBookmarkDataEvent(t, i = null, n = false, o = false) {
+    var a = this;
+    CONSTRUCTOR_HACK;
+    (a = e.call(this, t, n, o) || this).params = i;
+    return a;
   }
-  n.__extends(CollectableItemCoalVO, e);
-  CollectableItemCoalVO.SERVER_KEY = "C";
-  CollectableItemCoalVO.XML_KEY = "coal";
-  return CollectableItemCoalVO;
-}(require("./254.js").ACollectableItemResourceVO);
-exports.CollectableItemCoalVO = o;
+  n.__extends(CastleBookmarkDataEvent, e);
+  CastleBookmarkDataEvent.__initialize_static_members = function () {
+    CastleBookmarkDataEvent.ON_LIST_CHANGED = "onListChanged";
+  };
+  return CastleBookmarkDataEvent;
+}(createjs.Event);
+exports.CastleBookmarkDataEvent = o;
+o.__initialize_static_members();

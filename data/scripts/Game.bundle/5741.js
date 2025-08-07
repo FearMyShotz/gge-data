@@ -1,48 +1,43 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./3.js");
-var o = require("./6.js");
-var a = require("./28.js");
-var s = require("./45.js");
-var r = require("./30.js");
-var l = require("./27.js");
-var c = require("./1.js");
-var u = function () {
-  function LostAndFoundListItemVO() {
-    this.id = 0;
-    this.endTimeStamp = NaN;
-    this.receivedTimeStamp = NaN;
-    this.rank = 0;
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./127.js");
+var r = require("./730.js");
+var l = function (e) {
+  function RandomGemVO(t) {
+    var i = e.call(this) || this;
+    i._id = t.levelID;
+    i._upgradeId = -1;
+    i._levelInfos = t;
+    i._lordType = s.BasicEquippableVO.LORD_TYPE_ALL;
+    i._slotType = s.BasicEquippableVO.SLOT_TYPE_ALL;
+    return i;
   }
-  LostAndFoundListItemVO.prototype.parseData = function (e) {
-    var t = s.CollectableHelper.getTypeByServerKey(e.ROT, e.ROV);
-    this.collectableVO = s.CollectableHelper.createVO(t.type, -Number.MAX_VALUE, t.id);
-    this.collectableVO.parseServerObject(e.ROV);
-    this.id = o.int(e.LFID);
-    this.endTimeStamp = r.CachedTimer.getCachedTimer() + e.ET * a.ClientConstTime.SEC_2_MILLISEC;
-    this.receivedTimeStamp = e.CT;
-    var i = o.int(e.LFES);
-    if (c.instanceOfClass(this.collectableVO, "CollectableItemEquipmentUniqueVO") && this.collectableVO.equipmentVO.remainingDuration > 0) {
-      this.collectableVO.setRemainingTime(this.collectableVO.equipmentVO.totalDuration - i);
-    }
-  };
-  Object.defineProperty(LostAndFoundListItemVO.prototype, "remainingTimeInSeconds", {
+  n.__extends(RandomGemVO, e);
+  Object.defineProperty(RandomGemVO.prototype, "nameString", {
     get: function () {
-      return Math.max(0, (this.endTimeStamp - r.CachedTimer.getCachedTimer()) * a.ClientConstTime.MILLISEC_2_SEC);
+      return a.Localize.text("gem_effect_name_gemRandom", [this.level]);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGemVO.prototype, "nameString").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LostAndFoundListItemVO.prototype, "receivedTimeTextVO", {
+  Object.defineProperty(RandomGemVO.prototype, "bonusDescriptionText", {
     get: function () {
-      var e = new Date();
-      e.setTime(this.receivedTimeStamp * a.ClientConstTime.SEC_2_MILLISEC);
-      return new n.TextVO(l.CastleTimeStringHelper.getDateStringFromDate(e));
+      return a.Localize.text("gem_effect_description_gemRandom", [this.level]);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.CastleGemVO.prototype, "bonusDescriptionText").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return LostAndFoundListItemVO;
-}();
-exports.LostAndFoundListItemVO = u;
+  return RandomGemVO;
+}(r.CastleGemVO);
+exports.RandomGemVO = l;
+o.classImplementsInterfaces(l, "IEquippableVO");

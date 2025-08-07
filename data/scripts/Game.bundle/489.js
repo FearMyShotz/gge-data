@@ -3,161 +3,283 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./4.js");
-var r = require("./313.js");
-var l = createjs.MouseEvent;
-var c = function (e) {
-  function AInteractiveIsoObjectVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var a = require("./1.js");
+var s = require("./6.js");
+var r = require("./4.js");
+var l = require("./111.js");
+var c = require("./692.js");
+var u = require("./293.js");
+var d = require("./490.js");
+var p = createjs.Point;
+var h = function (e) {
+  function AIsoMovementVE() {
+    var t = this;
+    t._currentActionType = c.IsoMovementActionEnum.STAND;
+    t._currentRot = -1;
+    t._currentGridPos = new p();
+    t._clickAmount = 0;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
   }
-  n.__extends(AInteractiveIsoObjectVE, e);
-  AInteractiveIsoObjectVE.prototype.updateInteractionVisibility = function () {
-    var e = this.isoRenderer.mouse.hoveredTarget == this;
-    var t = this.isoRenderer.mouse.focusedTarget == this;
-    var i = this.isoRenderer.mouse.selectedTarget == this;
-    var n = this.isoRenderer.mouse.draggedTarget == this;
-    if (e || t || i || n) {
-      this.addGlow();
-    } else {
-      this.removeGlow();
-    }
+  n.__extends(AIsoMovementVE, e);
+  AIsoMovementVE.prototype.init = function (t) {
+    e.prototype.init.call(this, t);
+    this.dispComponent.cacheDisp = false;
   };
-  AInteractiveIsoObjectVE.prototype.addGlow = function () {
-    if (this.interactiveVO.isHoverGlowAvailable && this.disp && (!this.disp.filters || this.disp.filters.length == 0)) {
-      var e;
-      var t = p.Iso.data.areaData.areaInfo.kingdomID == a.WorldIce.KINGDOM_ID ? d.IsoConst.VE_GLOW_FILTER_BLUE : d.IsoConst.VE_GLOW_FILTER_STANDARD;
-      var i = this.disp.children;
-      e = i && i.length === 1;
-      var n = i[0];
-      if (e && !n.allowCaching && n._running && n.numFrames > 1) {
-        n.gotoAndStop(1);
-        n.currentDisplayObject.tickChildren = false;
-      }
-      var o = this.disp._cacheScale;
-      var s = this.disp.glowCache;
-      if (e && s && n.sourceClassName && n.sourceClassName === this._prevSourceName && o === this._prevGlowScale && this.disp.cacheCanvas) {
-        this.disp.cacheCanvas.width = s.width;
-        this.disp.cacheCanvas.height = s.height;
-        var r = this.disp.cacheCanvas.getContext("2d");
-        r.clearRect(0, 0, this.disp.cacheCanvas.width, this.disp.cacheCanvas.height);
-        r.drawImage(s, 0, 0);
-        this.disp.filters = t;
-        this.disp._filterOffsetX = this.glowOffsetX;
-        this.disp._filterOffsetY = this.glowOffsetY;
+  AIsoMovementVE.prototype.updateFrameAnimation = function () {
+    if (this._dispClip) {
+      this.adjustDispFps();
+      var e = this.getFrameRangeByState(this.movingVO.currentActionType);
+      if (e[0] != e[1]) {
+        this._dispClip.gotoAndPlay(e[0], e[1]);
       } else {
-        this.disp.useFilters(t, true);
-        this.glowOffsetX = this.disp._filterOffsetX = this.disp._filterOffsetX / o;
-        this.glowOffsetY = this.disp._filterOffsetY = this.disp._filterOffsetY / o;
-        if (this.disp.cacheCanvas && e) {
-          var l = document.createElement("canvas");
-          var c = l.getContext("2d");
-          l.width = this.disp.cacheCanvas.width;
-          l.height = this.disp.cacheCanvas.height;
-          try {
-            c.drawImage(this.disp.cacheCanvas, 0, 0);
-          } catch (e) {
-            throw new Error("drawImage function failed! more info: " + this.disp.cacheCanvas.width + " " + this.disp.cacheCanvas.height + " " + e);
-          }
-          this.invalidateGlowCache();
-          this.disp.glowCache = l;
-          this._prevSourceName = n.sourceClassName;
-          this._prevGlowScale = this.disp._cacheScale;
+        this._dispClip.gotoAndStop(e[0]);
+      }
+    }
+  };
+  AIsoMovementVE.prototype.updateAnimationPlayback = function (e) {
+    if (this._dispClip) {
+      if (e) {
+        this._dispClip.play();
+      } else {
+        this._dispClip.stop();
+      }
+    }
+  };
+  AIsoMovementVE.prototype.adjustDispFps = function () {
+    var e = 1;
+    switch (this.movingVO.currentAction.actionType) {
+      case c.IsoMovementActionEnum.WALK:
+        e = Math.floor(C.IsoConst.MOVEMENTS_FPS * this.movingVO.currentAction.currentWalkSpeed);
+        break;
+      case c.IsoMovementActionEnum.WORK:
+        e = 10;
+    }
+    this._dispClip.targetFps = e;
+  };
+  AIsoMovementVE.prototype.update = function (t) {
+    if (O.Iso.renderer.mouse.isWorldDragging) {
+      this.updateAnimationPlayback(false);
+    } else {
+      e.prototype.update.call(this, t);
+      this.updateAnimationPlayback(true);
+      if (this._dispClip) {
+        this._dispClip.alpha = this.movingVO.currentAction.currentTransparency;
+      }
+      if (this._currentActionType != this.movingVO.currentActionType || this._currentRot != this.movingVO.rotation) {
+        this.updateRotation();
+        this._currentActionType = this.movingVO.currentActionType;
+      }
+      this.updatePosition();
+      if (this._currentGridPos.x != this.vo.x || this._currentGridPos.y != this.vo.y) {
+        this._currentGridPos.x = this.vo.x;
+        this._currentGridPos.y = this.vo.y;
+        this.adjustDispFps();
+        O.Iso.controller.processor.executeCommand(new m.IsoCommandZSortObject(this));
+      }
+    }
+  };
+  AIsoMovementVE.prototype.updateDisp = function () {
+    e.prototype.updateDisp.call(this);
+    this.updateResourceIcon();
+  };
+  AIsoMovementVE.prototype.updateResourceIcon = function () {
+    var e = this.layers.getLayer(u.IsoObjectLayerEnum.RESOURCES);
+    e.removeChildren();
+    if (this.movingVO.hasResourceItem) {
+      e.addChild(this._resourceDisp = new Library.CastleInterfaceElements.MovingInfoIcon_Ressources());
+      this._resourceDisp.mc_Icon.gotoAndStop(this.getResourceIconFrame());
+      this._resourceDisp.x = AIsoMovementVE.RESOURCE_ICON_POS.x;
+      this._resourceDisp.y = AIsoMovementVE.RESOURCE_ICON_POS.y;
+    }
+  };
+  AIsoMovementVE.prototype.createDisp = function () {
+    this.dispComponent.addClip(this._dispClip = this.loadExternalClip(this.assetClipName, this.assetFileName, null, 12));
+  };
+  AIsoMovementVE.prototype.shakeItBaby = function () {
+    var e = this.getLocalDispPosCenter();
+    var t = f.IsoHelper.view.calcPosToCoordinateSystem(new p(e.x, e.y).add(new p(0, 30)), this.uiDisp, this.isoRenderer.layers.transformLayer);
+    var i = new E.IsoExplodeEffectVE(t);
+    i.init(null);
+    this.isoRenderer.camera.shakeCamera();
+    O.Iso.controller.processor.executeCommand(new _.IsoCommandSpawnEffect(i));
+    this.isoRenderer.isoData.updater.removeObjectByVO(this.vo);
+  };
+  AIsoMovementVE.prototype.updateRotation = function () {
+    if (this.disp) {
+      if (this._currentActionType != this.movingVO.currentActionType || this._currentRot != this.movingVO.rotation) {
+        this.updateFrameAnimation();
+        this.mirrorDisp(this.disp, this.getMirrorDirection(this.movingVO.rotation));
+        this.updateDispOffset();
+        this._currentActionType = this.movingVO.currentActionType;
+        this._currentRot = s.int(this.movingVO.rotation);
+      }
+    }
+  };
+  AIsoMovementVE.prototype.getScreenPos = function () {
+    return this.isoRenderer.camera.getScreenPosByGridPos(this.movingVO.precisePos);
+  };
+  Object.defineProperty(AIsoMovementVE.prototype, "assetClipName", {
+    get: function () {
+      var e = this.vo.name;
+      e += "_" + (this.movingVO.isMale ? "Male" : "Female");
+      return e += "_" + this.vo.getAreaKingdomName();
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.AInteractiveIsoObjectVE.prototype, "assetClipName").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AIsoMovementVE.prototype, "assetFileName", {
+    get: function () {
+      return this.assetClipName;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.AInteractiveIsoObjectVE.prototype, "assetFileName").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AIsoMovementVE.prototype.getResourceIconFrame = function () {
+    var e = r.CastleModel.resourcePoolData.resourceItem;
+    if (!e) {
+      return 0;
+    }
+    if (r.CastleModel.resourcePoolData.hasExtraGoods) {
+      return 11;
+    }
+    switch (e.itemType) {
+      case g.CollectableEnum.STONE:
+        return 1;
+      case g.CollectableEnum.WOOD:
+        return 2;
+      case g.CollectableEnum.C1:
+        return 3;
+      case g.CollectableEnum.C2:
+        return 4;
+      case g.CollectableEnum.FOOD:
+        return 5;
+      case g.CollectableEnum.COAL:
+        return 7;
+      case g.CollectableEnum.OIL:
+        return 8;
+      case g.CollectableEnum.GLASS:
+        return 9;
+      default:
+        return 10;
+    }
+  };
+  AIsoMovementVE.prototype.getVELayerType = function () {
+    return l.IsoLayerEnum.ISO_OBJECTS;
+  };
+  AIsoMovementVE.prototype.getFrameRangeByState = function (e) {
+    var t = this.vo.rotation == 0 || this.vo.rotation == 1;
+    switch (e) {
+      case c.IsoMovementActionEnum.STAND:
+        if (t) {
+          return this.standFrontFrameRange;
+        } else {
+          return this.standBackFrameRange;
         }
-      }
-    }
-  };
-  AInteractiveIsoObjectVE.prototype.removeGlow = function () {
-    if (this.disp && this.interactiveVO.isHoverGlowAvailable) {
-      try {
-        this.disp.useFilters([], true);
-      } catch (e) {
-        throw new Error("useFilters function failed! more info: " + this.disp.width + " " + this.disp.height + " " + e);
-      }
-      if (s.CastleModel.gfxData.animationActive) {
-        var e = this.disp.children[0];
-        if (e && !e.allowCaching && !e._running && e.numFrames > 1) {
-          e.currentDisplayObject.tickChildren = true;
-          e.gotoAndPlay(1);
+      case c.IsoMovementActionEnum.WALK:
+        if (t) {
+          return this.walkFrontFrameRange;
+        } else {
+          return this.walkBackFrameRange;
         }
+      case c.IsoMovementActionEnum.WORK:
+        return this.workFrameRange;
+    }
+    return null;
+  };
+  Object.defineProperty(AIsoMovementVE.prototype, "standFrontFrameRange", {
+    get: function () {
+      return [1, 1];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AIsoMovementVE.prototype, "standBackFrameRange", {
+    get: function () {
+      return [10, 10];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AIsoMovementVE.prototype, "walkFrontFrameRange", {
+    get: function () {
+      return [2, 9];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AIsoMovementVE.prototype, "walkBackFrameRange", {
+    get: function () {
+      return [11, 18];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AIsoMovementVE.prototype, "workFrameRange", {
+    get: function () {
+      return [19, 36];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  AIsoMovementVE.prototype.onMouseOver = function (t) {
+    e.prototype.onMouseOver.call(this, t);
+    if (!this.interactiveVO.isClickAvailable) {
+      if (a.instanceOfClass(this.movingVO.currentAction, "IsoMovementActionWalk")) {
+        this.movingVO.currentAction.giveSpeedBoost();
       }
+      this.adjustDispFps();
     }
   };
-  AInteractiveIsoObjectVE.prototype.invalidateGlowCache = function () {
-    if (this.disp.glowCache instanceof HTMLCanvasElement) {
-      this.disp.glowCache.width = 0;
-      this.disp.glowCache = null;
-    }
-  };
-  AInteractiveIsoObjectVE.prototype.destroyDisp = function () {
-    e.prototype.destroyDisp.call(this);
-    this.invalidateGlowCache();
-  };
-  AInteractiveIsoObjectVE.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    for (var t = 0, i = this.getInteractionDisps(); t < i.length; t++) {
-      var n = i[t];
-      n.addEventListener(l.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
-      n.addEventListener(l.MOUSE_UP, this.bindFunction(this.onMouseUp));
-      n.addEventListener(l.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-      n.addEventListener(l.MOUSE_OUT, this.bindFunction(this.onMouseOut));
-    }
-  };
-  AInteractiveIsoObjectVE.prototype.removeEventListener = function () {
-    e.prototype.removeEventListener.call(this);
-    if (n) {
-      for (var t = 0, i = this.getInteractionDisps(); t < i.length; t++) {
-        var n = i[t];
-        n.removeEventListener(l.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
-        n.removeEventListener(l.MOUSE_UP, this.bindFunction(this.onMouseUp));
-        n.removeEventListener(l.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-        n.removeEventListener(l.MOUSE_OUT, this.bindFunction(this.onMouseOut));
-      }
-    }
-  };
-  AInteractiveIsoObjectVE.prototype.onAllDispClipsLoaded = function () {
+  AIsoMovementVE.prototype.onAllDispClipsLoaded = function () {
     e.prototype.onAllDispClipsLoaded.call(this);
-    u.CastleLayoutManager.getInstance().updateGameStage();
+    this.updateFrameAnimation();
   };
-  AInteractiveIsoObjectVE.prototype.getInteractionDisps = function () {
-    return [this.elementContainer];
-  };
-  AInteractiveIsoObjectVE.prototype.onMouseClick = function () {};
-  AInteractiveIsoObjectVE.prototype.onMouseUp = function (e) {
-    this.objectInteractions.onMouseUpTarget(this);
-  };
-  AInteractiveIsoObjectVE.prototype.onMouseDown = function (e) {
-    this.objectInteractions.onMouseDownTarget(this);
-  };
-  AInteractiveIsoObjectVE.prototype.onMouseOver = function (e) {
-    this.objectInteractions.onMouseOverTarget(this);
-  };
-  AInteractiveIsoObjectVE.prototype.onMouseOut = function (e) {
-    this.objectInteractions.onMouseOutTarget(this);
-  };
-  AInteractiveIsoObjectVE.prototype.onHoverTarget = function () {};
-  AInteractiveIsoObjectVE.prototype.onUnHoverTarget = function () {};
-  AInteractiveIsoObjectVE.prototype.onCameraZoomChanged = function () {
-    e.prototype.onCameraZoomChanged.call(this);
-    if (this.disp.glowCache) {
-      this.disp.glowCache = null;
-      if (this.disp.filters && this.disp.filters.length > 0) {
-        this.removeGlow();
-        this.addGlow();
-      }
+  AIsoMovementVE.prototype.onMouseClick = function () {
+    if (this.movingVO.hasResourceItem) {
+      this.onResourceItemCollected();
+    }
+    this._clickAmount++;
+    if (this._clickAmount == 8) {
+      this.shakeItBaby();
     }
   };
-  Object.defineProperty(AInteractiveIsoObjectVE.prototype, "interactiveVO", {
+  AIsoMovementVE.prototype.onResourceItemCollected = function () {
+    O.Iso.controller.server.collectResourcePool();
+    var e = AIsoMovementVE.RESOURCE_ICON_POS;
+    var t = f.IsoHelper.view.calcPosToCoordinateSystem(new p(e.x, e.y).add(new p(40, 0)), this.uiDisp, this.isoRenderer.layers.transformLayer);
+    this.isoRenderer.isoData.updater.spawnCollectableFadeEffect(r.CastleModel.resourcePoolData.resourceItem, t);
+    r.CastleModel.resourcePoolData.registerNewMovementAsOwner(null);
+    this.updateResourceIcon();
+  };
+  Object.defineProperty(AIsoMovementVE.prototype, "movingVO", {
     get: function () {
       return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  return AInteractiveIsoObjectVE;
-}(r.AIsoObjectVE);
-exports.AInteractiveIsoObjectVE = c;
-var u = require("./17.js");
-var d = require("./144.js");
-o.classImplementsInterfaces(c, "ICollectableRendererList", "IIngameUICapable");
-var p = require("./33.js");
+  AIsoMovementVE.prototype.createCacheBahaviour = function () {
+    return null;
+  };
+  AIsoMovementVE.__initialize_static_members = function () {
+    AIsoMovementVE.RESOURCE_ICON_POS = new p(0, -120);
+  };
+  return AIsoMovementVE;
+}(d.AInteractiveIsoObjectVE);
+exports.AIsoMovementVE = h;
+var g = require("./12.js");
+var C = require("./144.js");
+var _ = require("./1190.js");
+var m = require("./487.js");
+var f = require("./46.js");
+var O = require("./34.js");
+var E = require("./1191.js");
+o.classImplementsInterfaces(h, "ICollectableRendererList", "IIngameUICapable");
+h.__initialize_static_members();

@@ -3,13 +3,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleMercenarySkipMissionDialogProperties(t, i) {
+  function CastleMercenaryRefreshMissionDialogProperties(t, i) {
     var n = e.call(this) || this;
     n.missionVO = t;
-    n.confirmStartCallback = i;
+    n.confirmRefreshCallback = i;
     return n;
   }
-  n.__extends(CastleMercenarySkipMissionDialogProperties, e);
-  return CastleMercenarySkipMissionDialogProperties;
+  n.__extends(CastleMercenaryRefreshMissionDialogProperties, e);
+  return CastleMercenaryRefreshMissionDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastleMercenarySkipMissionDialogProperties = o;
+exports.CastleMercenaryRefreshMissionDialogProperties = o;

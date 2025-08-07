@@ -2,40 +2,40 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function LVBCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./2.js");
+var a = require("./28.js");
+var s = require("./30.js");
+var r = function (e) {
+  function CastleTimerOKDialogProperties(t, i, n) {
+    var o = this;
+    CONSTRUCTOR_HACK;
+    (o = e.call(this) || this)._titleTextID = t;
+    o._descTextID = i;
+    o.endTimeStamp = s.CachedTimer.getCachedTimer() + n * a.ClientConstTime.SEC_2_MILLISEC;
+    return o;
   }
-  n.__extends(LVBCommand, e);
-  Object.defineProperty(LVBCommand.prototype, "cmdId", {
+  n.__extends(CastleTimerOKDialogProperties, e);
+  Object.defineProperty(CastleTimerOKDialogProperties.prototype, "titleTextID", {
     get: function () {
-      return s.ClientConstSF.S2C_EMAIL_VERIFIED_POPUP;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      return this._titleTextID;
     },
     enumerable: true,
     configurable: true
   });
-  LVBCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        r.CastleModel.userData.userValidatedEmail();
-        u.CastleDialogHandler.getInstance().registerDefaultDialogs(d.CastleMailGiftDialog);
-        break;
-      default:
-        this.showErrorDialog(e, t);
-    }
-    return false;
-  };
-  return LVBCommand;
-}(l.CastleCommand);
-exports.LVBCommand = c;
-var u = require("./9.js");
-var d = require("./1682.js");
-o.classImplementsInterfaces(c, "IExecCommand");
+  Object.defineProperty(CastleTimerOKDialogProperties.prototype, "descTextID", {
+    get: function () {
+      return this._descTextID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTimerOKDialogProperties.prototype, "remainingSeconds", {
+    get: function () {
+      return Math.max(0, this.endTimeStamp - s.CachedTimer.getCachedTimer()) * a.ClientConstTime.MILLISEC_2_SEC;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleTimerOKDialogProperties;
+}(o.BasicProperties);
+exports.CastleTimerOKDialogProperties = r;

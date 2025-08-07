@@ -1,32 +1,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = function () {
-  function ResearchTreeConnectionDot() {
-    this._connectingLines = [];
-    var e = new (n.getDefinitionByName("ResearchTree_ConnectorDot"))();
-    this._disp = e;
-    this._disp.visible = false;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SMinuteSkipResearchVO(t) {
+    var i = e.call(this) || this;
+    i.MST = t;
+    return i;
   }
-  ResearchTreeConnectionDot.prototype.addConnectingLine = function (e) {
-    this._connectingLines.push(e);
-    this.validateVisibility();
+  n.__extends(C2SMinuteSkipResearchVO, e);
+  C2SMinuteSkipResearchVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_MINUTE_SKIP_RESEARCH;
   };
-  ResearchTreeConnectionDot.prototype.validateVisibility = function () {
-    var e = this;
-    var t = !this._connectingLines.every(function (t) {
-      return t.orientation == e._connectingLines[0].orientation;
-    });
-    this._disp.visible = t;
-  };
-  Object.defineProperty(ResearchTreeConnectionDot.prototype, "disp", {
-    get: function () {
-      return this._disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return ResearchTreeConnectionDot;
-}();
-exports.ResearchTreeConnectionDot = o;
+  return C2SMinuteSkipResearchVO;
+}(o.BasicCommandVO);
+exports.C2SMinuteSkipResearchVO = s;

@@ -1,34 +1,42 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./6.js");
-var a = require("./60.js");
-var s = function () {
-  function OfferDescriptionAdditionalBuildingID() {
-    this._buildingID = 0;
-  }
-  Object.defineProperty(OfferDescriptionAdditionalBuildingID.prototype, "name", {
+var n = function () {
+  function PremiumSmsVO() {}
+  PremiumSmsVO.prototype.loadFromParamObject = function (e) {
+    this._callNumber = e.CN;
+    this._currency = e.CR;
+    this._premiumSmsCode = e.CD;
+    this._price = e.P;
+  };
+  Object.defineProperty(PremiumSmsVO.prototype, "callNumber", {
     get: function () {
-      return a.ClientConstOffer.OFFER_ADDITIONAL_BUILDING_ID;
+      return this._callNumber;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionAdditionalBuildingID.prototype.registerRewardParameter = function (e) {
-    e.addEntry(this.name, this);
-  };
-  OfferDescriptionAdditionalBuildingID.prototype.parseFromObjectParam = function (e) {
-    this._buildingID = o.int(e.wodID);
-  };
-  Object.defineProperty(OfferDescriptionAdditionalBuildingID.prototype, "ID", {
+  Object.defineProperty(PremiumSmsVO.prototype, "currency", {
     get: function () {
-      return this._buildingID;
+      return this._currency;
     },
     enumerable: true,
     configurable: true
   });
-  return OfferDescriptionAdditionalBuildingID;
+  Object.defineProperty(PremiumSmsVO.prototype, "premiumSmsCode", {
+    get: function () {
+      return this._premiumSmsCode;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(PremiumSmsVO.prototype, "price", {
+    get: function () {
+      return this._price;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return PremiumSmsVO;
 }();
-exports.OfferDescriptionAdditionalBuildingID = s;
-n.classImplementsInterfaces(s, "IOfferDescriptionAdditionalParameter");
+exports.PremiumSmsVO = n;

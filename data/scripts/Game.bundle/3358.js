@@ -2,126 +2,129 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./3.js");
-var r = require("./4.js");
-var l = require("./204.js");
-var c = function (e) {
-  function CastleHeroBoosterShopVO(t, i, n, o) {
-    var a = this;
-    a._level = 0;
-    CONSTRUCTOR_HACK;
-    (a = e.call(this, t, i, [u.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_HERO], n) || this)._heroName = o;
-    a._level = 0;
-    return a;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./51.js");
+var c = require("./416.js");
+var u = require("./106.js");
+var d = require("./56.js");
+var p = require("./240.js");
+var h = createjs.MovieClip;
+var g = createjs.Point;
+var C = function (e) {
+  function CastleOverseerBeefPremiumShopVO() {
+    var t = e.call(this, "dialog_resourcesBoost_hireOverseer", "overseer_beef_copy_short", s.BoosterConst.OVERSEER_BEEF_COST_C2, "overseer") || this;
+    t.shopTypes.push(O.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_EVENT, O.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_HERO);
+    return t;
   }
-  n.__extends(CastleHeroBoosterShopVO, e);
-  CastleHeroBoosterShopVO.prototype.reset = function () {
-    e.prototype.reset.call(this);
-    this._level = 0;
-  };
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "level", {
-    get: function () {
-      return this._level;
-    },
-    set: function (e) {
-      this._level = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "costString", {
+  n.__extends(CastleOverseerBeefPremiumShopVO, e);
+  Object.defineProperty(CastleOverseerBeefPremiumShopVO.prototype, "duration", {
     get: function () {
       if (this.isActive) {
-        return String(Math.ceil(this.finalCostsC2));
+        return o.TimeStringHelper.getCommaTimeStringFromSeconds(this.remainingTimeInSeconds, r.Localize.text);
       } else {
-        return Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "costString").get.call(this);
+        return o.TimeStringHelper.getCommaTimeStringFromSeconds(s.BoosterConst.OVERSEER_DURATION, r.Localize.text);
       }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "costString").set.call(this, e);
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "duration").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "finalCostsC2", {
+  Object.defineProperty(CastleOverseerBeefPremiumShopVO.prototype, "bonusValue", {
     get: function () {
-      return r.CastleModel.costsData.getFinalCostsC2(this.baseCosts, this.hasRebuyDiscount, r.CastleModel.boosterSaleData.getDiscount(this.id) * 0.01);
+      return s.BoosterConst.OVERSEER_BEEF_BOOST;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "finalCostsC2").set.call(this, e);
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "bonusValue").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "rebuyDiscount", {
+  Object.defineProperty(CastleOverseerBeefPremiumShopVO.prototype, "listSortPriority", {
     get: function () {
-      return a.BoosterConst.DISCOUNT_FACTOR * 100;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "rebuyDiscountString", {
-    get: function () {
-      return String(this.rebuyDiscount);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "hasVisualBonus", {
-    get: function () {
-      return true;
+      return 60;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "hasVisualBonus").set.call(this, e);
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "listSortPriority").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "hasVisualTimeWhenNotActive", {
+  CastleOverseerBeefPremiumShopVO.prototype.clickedBuyButton = function () {
+    _.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleBuyResourceBoostDialog, new c.CastleBuyResourceBoostDialogProperties(f.CastlePremiumBoostData.BOOST_BEEF));
+  };
+  Object.defineProperty(CastleOverseerBeefPremiumShopVO.prototype, "bonusIconFrame", {
     get: function () {
-      return true;
+      return 13;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenNotActive").set.call(this, e);
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "bonusIconFrame").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "cantBeBoughtButtonToolTip", {
+  CastleOverseerBeefPremiumShopVO.prototype.createVisualMovieClip = function () {
+    var e = new Library.CastleInterfaceElements.CharOverseer_WithBonus();
+    var t = u.CharacterHelper.createCharacterBig(l.ClientConstCharacter.CHAR_ID_OVERSEER, e.mc_charPlaceHolder, -1, -1, false, this.bindFunction(this.onLoadedIcon));
+    t.recycleAsset = false;
+    if (!t.isLoaded) {
+      e.visible = false;
+    }
+    e.mc_charPlaceHolder.addChild(t);
+    e.mc_icon.gotoAndStop(16);
+    return e;
+  };
+  CastleOverseerBeefPremiumShopVO.prototype.createVisualMovieClipForBuyDialog = function () {
+    var e = new h();
+    e.addChild(u.CharacterHelper.createCharacterBig(l.ClientConstCharacter.CHAR_ID_OVERSEER, e, E.CastlePremiumMarketShopVO.MAX_BUY_DIALOG_ICON_WIDTH, E.CastlePremiumMarketShopVO.MAX_BUY_DIALOG_ICON_HEIGHT, false));
+    return e;
+  };
+  Object.defineProperty(CastleOverseerBeefPremiumShopVO.prototype, "offsetIcon", {
     get: function () {
-      return "noAvailableOffer";
+      return new g(-5, -5);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastlePremiumMarketShopVO.prototype, "cantBeBoughtButtonToolTip").set.call(this, e);
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "offsetIcon").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "id", {
+  Object.defineProperty(CastleOverseerBeefPremiumShopVO.prototype, "id", {
     get: function () {
-      return -1;
+      return f.CastlePremiumBoostData.BOOST_BEEF;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "id").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "heroName", {
+  Object.defineProperty(CastleOverseerBeefPremiumShopVO.prototype, "isVisible", {
     get: function () {
-      return s.Localize.text(this._heroName);
+      for (var e = b.CastleModel.wodData.createVObyWOD(CastleOverseerBeefPremiumShopVO.CATTLE_FARM_WODID, d.CastleWodData.TYPE_BUILDING); e;) {
+        if (b.CastleModel.legendSkillData.getSceatSkillEffectValue(y.EffectTypeEnum.EFFECT_ENABLE_BUILDINGS).rawValues.indexOf(e.wodId) > -1) {
+          return true;
+        }
+        e = e.getUpgradeVO();
+      }
+      return false;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleHeroBoosterShopVO.prototype, "nonLocalizedHeroName", {
-    get: function () {
-      return this._heroName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleHeroBoosterShopVO;
-}(l.CastlePremiumMarketShopVO);
-exports.CastleHeroBoosterShopVO = c;
-var u = require("./170.js");
-o.classImplementsInterfaces(c, "IPremiumMarketShopVO");
+  CastleOverseerBeefPremiumShopVO.CATTLE_FARM_WODID = 3117;
+  return CastleOverseerBeefPremiumShopVO;
+}(p.CastleHeroDefaultBoosterShopVO);
+exports.CastleOverseerBeefPremiumShopVO = C;
+var _ = require("./9.js");
+var m = require("./417.js");
+var f = require("./402.js");
+var O = require("./170.js");
+var E = require("./204.js");
+var y = require("./33.js");
+var b = require("./4.js");
+a.classImplementsInterfaces(C, "IPremiumMarketShopVO", "IDefaultBoosterDataVO", "IBoosterDataVO");

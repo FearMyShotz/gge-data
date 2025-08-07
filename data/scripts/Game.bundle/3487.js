@@ -3,85 +3,130 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./174.js");
-var l = require("./8.js");
-var c = require("./34.js");
-var u = require("./3488.js");
-var d = function (e) {
-  function SeasonLeagueEndDialogRewards(t) {
-    var i = this;
-    i._hasBoughtSeasonPassInThisDialog = false;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).init();
+var a = require("./6.js");
+var s = require("./40.js");
+var r = require("./8.js");
+var l = function (e) {
+  function SeasonLeaguePromotionRewardsComponent(t) {
+    var i = e.call(this, t) || this;
+    i.init();
     return i;
   }
-  n.__extends(SeasonLeagueEndDialogRewards, e);
-  SeasonLeagueEndDialogRewards.prototype.init = function () {
-    this.textFieldManager.registerTextField(this.subLayerDisp.mc_noRewards.txt_text, new s.LocalizedTextVO("dialog_seasonLeague_seasonEnd_rewards_notQualified_text")).autoFitToBounds = true;
-    this._promotionRewards = new u.SeasonLeaguePromotionRewardsComponent(this.subLayerDisp);
+  n.__extends(SeasonLeaguePromotionRewardsComponent, e);
+  SeasonLeaguePromotionRewardsComponent.prototype.init = function () {
+    r.ButtonHelper.initButton(this.disp.btn_locked, -1, d.ClickFeedbackButton);
+    this.disp.btn_locked.toolTipText = "dialog_seasonLeague_seasonPass_lockedState_tooltip";
+    this._rewardsComponent = new u.SeasonLeagueSimpleRewardsComponent(this.disp, true, true, 4);
   };
-  SeasonLeagueEndDialogRewards.prototype.reset = function () {
-    this._hasBoughtSeasonPassInThisDialog = false;
+  SeasonLeaguePromotionRewardsComponent.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    this._rewardsComponent.onShow();
   };
-  SeasonLeagueEndDialogRewards.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this.controller.addEventListener(r.SeasonLeagueEvent.ON_PASS_PROMOTION_BOUGHT, this.bindFunction(this.onPassPurchased));
-    this.controller.addEventListener(r.SeasonLeagueEvent.ON_PASS_SEASON_BOUGHT, this.bindFunction(this.onPassPurchased));
-    this._promotionRewards.onShow();
-    l.ButtonHelper.enableButton(this.subLayerDisp.btn_locked, true);
-    this.subLayerDisp.btn_locked.toolTipText = "dialog_seasonLeague_seasonPass_lockedState_eventEnd_tooltip";
-    this._promotionRewards.updateWithNewData(this.dialogProperties.getPromotionRewardsVO(), this.dialogProperties.promotionVO.id, this.dialogProperties.seasonID);
-    this.updateInfo();
-    this.updateRewardPassButton();
+  SeasonLeaguePromotionRewardsComponent.prototype.onHide = function () {
+    this._rewardsComponent.onHide();
+    e.prototype.onHide.call(this);
   };
-  SeasonLeagueEndDialogRewards.prototype.hide = function () {
-    this.controller.removeEventListener(r.SeasonLeagueEvent.ON_PASS_PROMOTION_BOUGHT, this.bindFunction(this.onPassPurchased));
-    this.controller.removeEventListener(r.SeasonLeagueEvent.ON_PASS_SEASON_BOUGHT, this.bindFunction(this.onPassPurchased));
-    this._promotionRewards.onHide();
-    e.prototype.hide.call(this);
+  SeasonLeaguePromotionRewardsComponent.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    this._rewardsComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
   };
-  SeasonLeagueEndDialogRewards.prototype.updateInfo = function () {
-    var e = a.Localize.text(this.dialogProperties.isSeasonPassEnabled || this._hasBoughtSeasonPassInThisDialog ? "status_active" : "status_inactive");
-    var t = a.Localize.text(this.dialogProperties.isEventPassEnabled || this._hasBoughtSeasonPassInThisDialog ? "status_active" : "status_inactive");
-    var i = a.Localize.text(this.dialogProperties.isPromotionPassEnabled || this._hasBoughtSeasonPassInThisDialog ? "status_active" : "status_inactive");
-    var n = this.dialogProperties.isSeasonEventEndDialog ? "dialog_seasonLeague_promotionRanks_evenEndReward_tooltip" : "dialog_seasonLeague_seasonRanking_seasonRewards_tooltip";
-    var o = this.dialogProperties.isSeasonEventEndDialog ? [e, t] : [e, i];
-    this.subLayerDisp.mc_info.toolTipText = a.Localize.text(n, o);
-    this.subLayerDisp.mc_noRewards.visible = this._promotionRewards.vo.getNumberOfRewards() <= 0;
+  SeasonLeaguePromotionRewardsComponent.prototype.removeEventListener = function () {
+    this._rewardsComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
+    e.prototype.removeEventListener.call(this);
   };
-  SeasonLeagueEndDialogRewards.prototype.updateRewardPassButton = function () {
-    var e;
-    this.subLayerDisp.btn_locked.toolTipText = "dialog_seasonLeague_seasonPass_lockedState_eventEnd_tooltip";
-    this.subLayerDisp.btn_locked.visible = this.subLayerDisp.btn_locked.visible && !this._hasBoughtSeasonPassInThisDialog;
-    for (var t = 0; e = this.subLayerDisp.getChildByName("mc_item" + t); ++t) {
-      e.mc_overlay.toolTipText = this._hasBoughtSeasonPassInThisDialog ? "dialog_seasonLeague_seasonPass_inactiveState_eventEnd_tooltip" : "dialog_seasonLeague_seasonPass_lockedState_eventEnd_tooltip";
-      e.mc_overlay.mouseChildren = false;
+  SeasonLeaguePromotionRewardsComponent.prototype.updateWithNewData = function (e, t, i) {
+    this._vo = e;
+    this.promoID = t;
+    this.seasonID = i;
+    this._rewardsComponent.updateWithNewData(e.createCombinedRewardList());
+    _.MicroServiceRequestPreloader.hidePreloader();
+    this.update();
+  };
+  SeasonLeaguePromotionRewardsComponent.prototype.update = function () {
+    if (this.vo) {
+      var e = this._rewardsComponent.getCurrentItemScrollIndex();
+      var t = a.int(this.vo.isUnlocked ? 2 : 1);
+      for (var i = 0; i < this._rewardsComponent.numberOfItems; ++i) {
+        var n = this._rewardsComponent.collectableRenderList[i].itemVO;
+        var o = this.getItemMc(i);
+        var s = e + i;
+        var r = this.vo.isIndexPremiumReward(s);
+        o.mc_background.visible = n && r;
+        o.mc_left.visible = n && r && this.vo.isIndexPremiumReward(s - 1);
+        o.mc_right.visible = n && r && this.vo.isIndexPremiumReward(s + 1);
+        o.mc_overlay.visible = n && r && !this.vo.isUnlocked;
+        o.mc_background.gotoAndStop(t);
+        o.mc_left.gotoAndStop(t);
+        o.mc_right.gotoAndStop(t);
+        if (o.mc_check) {
+          o.mc_check.visible = n && this.vo.hasCollectedPremium && (!r || r && this.vo.isUnlocked);
+        }
+      }
+      this.disp.btn_locked.visible = !this.vo.isUnlocked;
+      if (!this.vo.isUnlocked) {
+        var l = this.getLowestShownPremiumRewardIndex();
+        var c = this.getHighestShownPremiumRewardIndex();
+        var u = l >= 0 && c >= 0;
+        this.disp.btn_locked.visible = u;
+        if (u) {
+          var d = this.getItemMc(l).x;
+          var p = this.getItemMc(c).x;
+          this.disp.btn_locked.x = p - (p - d) * 0.5;
+        }
+      }
     }
   };
-  SeasonLeagueEndDialogRewards.prototype.onPassPurchased = function (e) {
-    this._hasBoughtSeasonPassInThisDialog = true;
-    this.updateRewardPassButton();
+  SeasonLeaguePromotionRewardsComponent.prototype.getLowestShownPremiumRewardIndex = function () {
+    var e = -1;
+    var t = this._rewardsComponent.getCurrentItemScrollIndex();
+    for (var i = this._rewardsComponent.numberOfItems; i >= 0; --i) {
+      if (this.vo.isIndexPremiumReward(t + i)) {
+        e = i;
+      }
+    }
+    return e;
   };
-  Object.defineProperty(SeasonLeagueEndDialogRewards.prototype, "dialogProperties", {
+  SeasonLeaguePromotionRewardsComponent.prototype.getHighestShownPremiumRewardIndex = function () {
+    var e = -1;
+    var t = this._rewardsComponent.getCurrentItemScrollIndex();
+    for (var i = 0; i < this._rewardsComponent.numberOfItems; ++i) {
+      if (this.vo.isIndexPremiumReward(t + i)) {
+        e = i;
+      }
+    }
+    return e;
+  };
+  SeasonLeaguePromotionRewardsComponent.prototype.getItemMc = function (e) {
+    return this.disp.getChildByName("mc_item" + e);
+  };
+  SeasonLeaguePromotionRewardsComponent.prototype.onClick = function (t) {
+    if (r.ButtonHelper.isButtonEnabled(t.target)) {
+      e.prototype.onClick.call(this, t);
+      switch (t.target) {
+        case this.disp.btn_locked:
+          p.CastleDialogHandler.getInstance().registerDialogs(c.SeasonLeagueBuyPassConfirmDialog, new h.SeasonLeagueBuyPassConfirmDialogProperties(new g.CollectableItemSeasonLeaguePromotionPassVO(), C.CastleModel.seasonLeagueData.currentSetting.seasonPassPromotionPrice, 0, this.promoID, -1, -1, this.seasonID));
+      }
+    }
+  };
+  SeasonLeaguePromotionRewardsComponent.prototype.onScroll = function () {
+    this.update();
+  };
+  Object.defineProperty(SeasonLeaguePromotionRewardsComponent.prototype, "vo", {
     get: function () {
-      return this._params[0];
+      return this._vo;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SeasonLeagueEndDialogRewards.prototype, "hasBoughtSeasonPassInThisDialog", {
-    get: function () {
-      return this._hasBoughtSeasonPassInThisDialog;
-    },
-    set: function (e) {
-      this._hasBoughtSeasonPassInThisDialog = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return SeasonLeagueEndDialogRewards;
-}(c.CastleDialogSubLayer);
-exports.SeasonLeagueEndDialogRewards = d;
-o.classImplementsInterfaces(d, "ICollectableRendererList", "ISublayer");
+  return SeasonLeaguePromotionRewardsComponent;
+}(s.CastleItemRenderer);
+exports.SeasonLeaguePromotionRewardsComponent = l;
+var c = require("./548.js");
+var u = require("./301.js");
+var d = require("./36.js");
+var p = require("./9.js");
+var h = require("./403.js");
+var g = require("./543.js");
+var C = require("./4.js");
+var _ = require("./549.js");
+o.classImplementsInterfaces(l, "ICollectableRendererList");

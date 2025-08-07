@@ -2,20 +2,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function EventPackageAssetHelper() {}
-  EventPackageAssetHelper.getBanner = function (e) {
-    var t = EventPackageAssetHelper.BANNER_BASE_NAME + e;
-    return new a.CastleGoodgameExternalClip(t, EventPackageAssetHelper.assetFileURL(t), null, 0, false);
+  function ClientConstMerchantEvent() {}
+  ClientConstMerchantEvent.__initialize_static_members = function () {
+    ClientConstMerchantEvent.BANNER_FADING_TIME = 1;
+    ClientConstMerchantEvent.BANNER_SWITCH_INTERVAL = 5;
+    ClientConstMerchantEvent.BANNER_BUTTON_SPACING = 13;
   };
-  EventPackageAssetHelper.assetFileURL = function (e) {
-    return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(e);
-  };
-  EventPackageAssetHelper.__initialize_static_members = function () {
-    EventPackageAssetHelper.BANNER_BASE_NAME = "PackageBanner";
-  };
-  return EventPackageAssetHelper;
+  return ClientConstMerchantEvent;
 }();
-exports.EventPackageAssetHelper = n;
-var o = require("./2.js");
-var a = require("./24.js");
+exports.ClientConstMerchantEvent = n;
 n.__initialize_static_members();

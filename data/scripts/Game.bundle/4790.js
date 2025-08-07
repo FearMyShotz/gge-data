@@ -9,13 +9,13 @@ var r = require("./7.js");
 var l = require("./4.js");
 var c = require("./10.js");
 var u = function (e) {
-  function GRCCommand() {
+  function GPACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GRCCommand, e);
-  Object.defineProperty(GRCCommand.prototype, "cmdId", {
+  n.__extends(GPACommand, e);
+  Object.defineProperty(GPACommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_GET_CASTLE_RESOURCES;
+      return r.ClientConstSF.S2C_GET_CASTLE_PRODUCTION_DATA;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -23,24 +23,24 @@ var u = function (e) {
     enumerable: true,
     configurable: true
   });
-  GRCCommand.prototype.executeCommand = function (t, i) {
+  GPACommand.prototype.executeCommand = function (t, i) {
     return e.prototype.executeCommand.call(this, t, i);
   };
-  GRCCommand.prototype.exec = function (e) {
+  GPACommand.prototype.exec = function (e) {
     var t = s.int(e[0]);
     var i = e[1];
     switch (t) {
       case a.ERROR.ALL_OK:
         var n = JSON.parse(i[1]);
         if (l.CastleModel.areaData.activeArea) {
-          l.CastleModel.areaData.activeArea.updater.parseGRC(n);
+          l.CastleModel.areaData.activeArea.updater.parseGPA(n);
         }
         break;
       default:
         this.showErrorDialog(t, i);
     }
   };
-  return GRCCommand;
+  return GPACommand;
 }(c.CastleCommand);
-exports.GRCCommand = u;
+exports.GPACommand = u;
 o.classImplementsInterfaces(u, "IExecCommand");

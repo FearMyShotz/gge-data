@@ -1,40 +1,102 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CXFSourceTrackingConstants() {}
-  CXFSourceTrackingConstants.CXF_SOURCE_WEB_SHOP_BUTTON = "webShopButton";
-  CXFSourceTrackingConstants.CXF_SOURCE_ALLIANCE_SUBSCRIPTIONS_DIALOG = "allianceTreasurySubscriptionsDialog";
-  CXFSourceTrackingConstants.CXF_SOURCE_SUBSCRIPTION_EXPIRED_DIALOG = "subscriptionExpiredDialog";
-  CXFSourceTrackingConstants.CXF_SOURCE_TRAVEL_PLANNING_DIALOG_AUTOSKIP_PREVIEW = "travelPlanningDialogAutoskipPreview";
-  CXFSourceTrackingConstants.CXF_SOURCE_COOLDOWN_SKIP_DIALOG_AUTOSKIP_PREVIEW = "cooldownSkipDialogAutoskipPreview";
-  CXFSourceTrackingConstants.CXF_SOURCE_DISTRICT_GACHA = "districtGacha";
-  CXFSourceTrackingConstants.CXF_SOURCE_ADVISOR_ACTIVATION = "advisorActivation";
-  CXFSourceTrackingConstants.CXF_SHOP_TRACKING_CAP_TOOL_BUTTON = "CAPToolButton";
-  CXFSourceTrackingConstants.SOURCE_UNKNOWN = "sourceUnknown";
-  CXFSourceTrackingConstants.SOURCE_USER_STATE_PANEL = "userStatePanel";
-  CXFSourceTrackingConstants.SOURCE_NO_MONEY_C2 = "noMoneyC2";
-  CXFSourceTrackingConstants.SOURCE_FIGHTSCREEN = "fightScreen";
-  CXFSourceTrackingConstants.SOURCE_SPECIAL_OFFER = "specialOffer";
-  CXFSourceTrackingConstants.SOURCE_SPECIAL_OFFER_BETTER = "specialOfferBetter";
-  CXFSourceTrackingConstants.SOURCE_PREMIUM_MARKET_PLACE = "premiumMarketPlace";
-  CXFSourceTrackingConstants.SOURCE_PRIVATE_OFFER_DECORATION = "privateOfferDecoration";
-  CXFSourceTrackingConstants.SOURCE_PRIVATE_PRIME_TIME_OFFER = "privatePrimeTimeOffer";
-  CXFSourceTrackingConstants.SOURCE_ALLIANCE_PAYMENT_BONUS = "alliancePaymentBonus";
-  CXFSourceTrackingConstants.SOURCE_PRIVATE_OFFER_COINMINE = "privateOfferCoinMine";
-  CXFSourceTrackingConstants.SOURCE_PAYMENT_REWARD_SPECIAL_OFFER = "paymentRewardSpecialOffer";
-  CXFSourceTrackingConstants.SOURCE_NETWORK_PANEL = "networkPanel";
-  CXFSourceTrackingConstants.SOURCE_PRIME_TIME_WORLDCUP = "primeTimeWorldCup";
-  CXFSourceTrackingConstants.SOURCE_QUEST_BUY_RUBIES = "questBuyRubies";
-  CXFSourceTrackingConstants.SOURCE_TIMELESS_SPECIAL_OFFER = "timelessSpecialOffer";
-  CXFSourceTrackingConstants.SOURCE_PAYMENT_REWARD_CURRENCY_SPECIAL_OFFER = "paymentRewardCurrencySpecialOffer";
-  CXFSourceTrackingConstants.SOURCE_PRIVATE_PRIME_DAY_OFFER = "privatePrimeDayOffer";
-  CXFSourceTrackingConstants.SOURCE_QUEST_VISIT_SHOP = "questVisitShop";
-  CXFSourceTrackingConstants.SOURCE_RELIC_UPGRADE = "relicUpgrade";
-  CXFSourceTrackingConstants.SOURCE_GENERALS_HUB = "generalsHub";
-  CXFSourceTrackingConstants.SOURCE_SHOPPING_CART_PRIME_DAY_DIALOG = "shoppingCartPrimeDayDialog";
-  CXFSourceTrackingConstants.SOURCE_TIERED_PRIME_DAY_DIALOG = "tieredPrimeDayDialog";
-  CXFSourceTrackingConstants.SOURCE_MERCHANT_DIALOG = "merchantDialog";
-  return CXFSourceTrackingConstants;
-}();
-exports.CXFSourceTrackingConstants = n;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./41.js");
+var l = createjs.Event;
+var c = function (e) {
+  function CastleDisplayObjectClipContainer() {
+    var t = this;
+    t._allClipsLoaded = true;
+    t._centerClip = false;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this) || this;
+  }
+  n.__extends(CastleDisplayObjectClipContainer, e);
+  CastleDisplayObjectClipContainer.prototype.addItem = function (t, i) {
+    e.prototype.addItem.call(this, t, i);
+    if (t instanceof a.GoodgameDisplayObjectClipExternal) {
+      var n = t;
+      if (!n.isLoaded) {
+        n.clipLoaded.addOnce(this.bindFunction(this.onClipLoaded));
+        this._allClipsLoaded = false;
+        this.visible = false;
+      }
+    }
+  };
+  CastleDisplayObjectClipContainer.prototype.areAllClipsLoaded = function () {
+    for (var e = 0, t = this.children; e < t.length; e++) {
+      var i = t[e];
+      if (i !== undefined) {
+        if (i instanceof a.GoodgameDisplayObjectClipExternal) {
+          if (!i.isLoaded) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  };
+  Object.defineProperty(CastleDisplayObjectClipContainer.prototype, "allClipsLoaded", {
+    get: function () {
+      return this._allClipsLoaded;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleDisplayObjectClipContainer.prototype.onClipLoaded = function (e) {
+    this._allClipsLoaded = this.areAllClipsLoaded();
+    if (this._allClipsLoaded) {
+      this.visible = true;
+      this.applyClipSize();
+      this.dispatchEvent(new l(l.COMPLETE));
+    }
+  };
+  CastleDisplayObjectClipContainer.prototype.applyClipSize = function () {
+    if (this._allClipsLoaded) {
+      if (this.clipSizeComponent) {
+        this.clipSizeComponent.setImageSize(this, this.getBounds());
+        if (this.centerClip) {
+          this.x = this.clipSizeComponent.offsetX;
+          this.y = this.clipSizeComponent.offsetY;
+        }
+      } else if (this.centerClip) {
+        var e = this.getBounds(null);
+        this.x = -(e.width / 2 + e.left);
+        this.y = -(e.height / 2 + e.top);
+      }
+    }
+  };
+  Object.defineProperty(CastleDisplayObjectClipContainer.prototype, "clipSizeComponent", {
+    get: function () {
+      return Object.getOwnPropertyDescriptor(o.DisplayObjectClipContainer.prototype, "clipSizeComponent").get.call(this);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(o.DisplayObjectClipContainer.prototype, "clipSizeComponent").set.call(this, e);
+      this.applyClipSize();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleDisplayObjectClipContainer.prototype, "centerClip", {
+    get: function () {
+      return this._centerClip;
+    },
+    set: function (e) {
+      this._centerClip = e;
+      this.applyClipSize();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleDisplayObjectClipContainer.prototype.dispose = function () {
+    e.prototype.dispose.call(this);
+    r.CastleMovieClipHelper.uncacheSafe(this);
+  };
+  return CastleDisplayObjectClipContainer;
+}(o.DisplayObjectClipContainer);
+exports.CastleDisplayObjectClipContainer = c;
+s.classImplementsInterfaces(c, "Container", "IClipContainer");

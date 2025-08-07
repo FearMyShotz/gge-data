@@ -4,20 +4,16 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./1611.js");
-var s = require("./113.js");
+var s = require("./111.js");
 var r = function (e) {
-  function BeachTopSurroundingsVE() {
+  function BeachBottomSurroundingsVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BeachTopSurroundingsVE, e);
-  BeachTopSurroundingsVE.prototype.onAllDispClipsLoaded = function () {
-    this.disp.scaleY = -1;
-    e.prototype.onAllDispClipsLoaded.call(this);
-  };
-  BeachTopSurroundingsVE.prototype.getVELayerType = function () {
+  n.__extends(BeachBottomSurroundingsVE, e);
+  BeachBottomSurroundingsVE.prototype.getVELayerType = function () {
     return s.IsoLayerEnum.STATIC_SURROUNDINGS;
   };
-  return BeachTopSurroundingsVE;
+  return BeachBottomSurroundingsVE;
 }(a.ABeachSurroundingsVE);
-exports.BeachTopSurroundingsVE = r;
+exports.BeachBottomSurroundingsVE = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

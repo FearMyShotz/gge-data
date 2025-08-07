@@ -8,5 +8,5 @@ var o = function (e) {
   }
   n.__extends(DailyRewardButton, e);
   return DailyRewardButton;
-}(require("./672.js").DailyLoginBonusStateButton);
+}(require("./674.js").DailyLoginBonusStateButton);
 exports.DailyRewardButton = o;

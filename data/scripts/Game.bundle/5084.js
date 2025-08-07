@@ -2,25 +2,60 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = function (e) {
-  function CastleFactionChooseFactionRedDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleFactionChooseFactionRedDialog.NAME) || this;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./7.js");
+var u = require("./4.js");
+var d = require("./10.js");
+var p = function (e) {
+  function FJFCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleFactionChooseFactionRedDialog, e);
-  CastleFactionChooseFactionRedDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("dialog_joinFactionRed_header")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO("dialog_joinFactionRed_copy"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copyFat, new a.LocalizedTextVO("dialog_choose_faction_copy_red2"));
+  n.__extends(FJFCommand, e);
+  Object.defineProperty(FJFCommand.prototype, "cmdId", {
+    get: function () {
+      return c.ClientConstSF.S2C_JOIN_FACTION;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastleCommand.prototype, "cmdId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  FJFCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case r.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        u.CastleModel.kingdomData.willBecomeFaction = l.FactionConst.KINGDOM_ID;
+        u.CastleModel.kingdomData.parse_KPI(i.kpi);
+        u.CastleModel.specialEventData.parse_SEI(i.sei);
+        if (i.mir) {
+          u.CastleModel.userData.parse_MIR(i.mir);
+        }
+        var n = u.CastleModel.userData.castleList.getMainCastleByKingdomID(l.FactionConst.KINGDOM_ID);
+        u.CastleModel.worldmapCameraData.currentSelectedCastleInActionPanel = n;
+        var s;
+        var c = [n.kingdomID, n.absAreaPosX, n.absAreaPosY];
+        a.CommandController.instance.executeCommand(h.IngameClientCommands.SWITCH_KINGDOM_GOTO_WORLDMAP_AND_CENTER_POS_COMMAND, c);
+        if (i.mir) {
+          u.CastleModel.userData.parse_MIR_openDialog(i.mir);
+        }
+        s = i.FID == l.FactionConst.BLUE_FACTION ? C.CastleFactionChooseFactionBlueDialog : _.CastleFactionChooseFactionRedDialog;
+        g.CastleDialogHandler.getInstance().registerDefaultDialogs(s, null, false, o.BasicDialogHandler.PRIORITY_TOP);
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    return false;
   };
-  CastleFactionChooseFactionRedDialog.__initialize_static_members = function () {
-    CastleFactionChooseFactionRedDialog.NAME = "CastleFactionChooseFactionRed";
-  };
-  return CastleFactionChooseFactionRedDialog;
-}(require("./1938.js").ACastleFactionChooseFactionDialog);
-exports.CastleFactionChooseFactionRedDialog = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
-s.__initialize_static_members();
+  return FJFCommand;
+}(d.CastleCommand);
+exports.FJFCommand = p;
+var h = require("./29.js");
+var g = require("./9.js");
+var C = require("./5085.js");
+var _ = require("./5086.js");
+s.classImplementsInterfaces(p, "IExecCommand");

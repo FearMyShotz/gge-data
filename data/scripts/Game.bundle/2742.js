@@ -2,76 +2,116 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./6.js");
-var a = require("./451.js");
-var s = require("./631.js");
-var r = createjs.Point;
-var l = function (e) {
-  function IsoGeneratorDefenceWall() {
+var o = require("./451.js");
+var a = require("./632.js");
+var s = createjs.Point;
+var r = function (e) {
+  function IsoGeneratorDefenceTower() {
     var t = this;
     t._collisionList = [];
+    t._numberOfAddedTowers = 0;
     CONSTRUCTOR_HACK;
     return t = e.call(this) || this;
   }
-  n.__extends(IsoGeneratorDefenceWall, e);
-  IsoGeneratorDefenceWall.prototype.execute = function () {
-    this.initCollisionList();
-    for (var e = 0, t = this.parentGenerator.grounds; e < t.length; e++) {
-      var i = t[e];
-      if (i !== undefined) {
-        for (var n = o.int(i.x); n <= i.x2; ++n) {
-          this.addPossiblePositionToList(new r(n, i.y));
-          this.addPossiblePositionToList(new r(n, i.y2));
-        }
-        for (var a = o.int(i.y); a <= i.y2; ++a) {
-          this.addPossiblePositionToList(new r(i.x, a));
-          this.addPossiblePositionToList(new r(i.x2, a));
-        }
-      }
-    }
-  };
-  IsoGeneratorDefenceWall.prototype.cleanup = function () {
+  n.__extends(IsoGeneratorDefenceTower, e);
+  IsoGeneratorDefenceTower.prototype.execute = function () {
+    var e;
     this._collisionList.length = 0;
-  };
-  IsoGeneratorDefenceWall.prototype.initCollisionList = function () {
-    this._collisionList = this.parentGenerator.result.necessaryTowers.concat(this.parentGenerator.result.emptyTowers);
     this._collisionList.push(this.parentGenerator.result.gate);
-  };
-  IsoGeneratorDefenceWall.prototype.addPossiblePositionToList = function (e) {
-    var t = this.getWallPositions(e);
-    if (t && t != null) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          if (!this.isCollidingWithAnyOtherPosition(this._collisionList, o)) {
-            this._collisionList.push(o);
-            this.parentGenerator.result.walls.push(o);
-          }
-        }
+    this._numberOfAddedTowers = 0;
+    for (var t = 0, i = this.parentGenerator.result.outerCorners; t < i.length; t++) {
+      e = i[t];
+      if (this.numberOfAddedTowers < this.parentGenerator.numberOfOwningTowers) {
+        this.addTowerPosition(this.parentGenerator.result.necessaryTowers, this.bindFunction(this.getOuterTowerPosition), e);
+      } else {
+        this.addTowerPosition(this.parentGenerator.result.emptyTowers, this.bindFunction(this.getOuterTowerPosition), e);
       }
     }
+    for (var n = 0, o = this.parentGenerator.result.innerCorners; n < o.length; n++) {
+      e = o[n];
+      if (this.numberOfAddedTowers < this.parentGenerator.numberOfOwningTowers) {
+        this.addTowerPosition(this.parentGenerator.result.necessaryTowers, this.bindFunction(this.getInnerTowerPosition), e);
+      } else {
+        this.addTowerPosition(this.parentGenerator.result.emptyTowers, this.bindFunction(this.getInnerTowerPosition), e);
+      }
+    }
+    for (var a = 0, s = this.parentGenerator.result.groundCornerSides; a < s.length && (e = s[a], !(this.numberOfAddedTowers >= this.parentGenerator.numberOfOwningTowers)); a++) {
+      this.addTowerPosition(this.parentGenerator.result.necessaryTowers, this.bindFunction(this.getSideTowerPosition), e);
+    }
+    for (var r = 0, l = this.parentGenerator.result.sides; r < l.length && (e = l[r], !(this.numberOfAddedTowers >= this.parentGenerator.numberOfOwningTowers)); r++) {
+      this.addTowerPosition(this.parentGenerator.result.necessaryTowers, this.bindFunction(this.getSideTowerPosition), e);
+    }
   };
-  IsoGeneratorDefenceWall.prototype.getWallPositions = function (e) {
+  IsoGeneratorDefenceTower.prototype.cleanup = function () {
+    this._collisionList.length = 0;
+    this._numberOfAddedTowers = 0;
+  };
+  IsoGeneratorDefenceTower.prototype.addTowerPosition = function (e, t, i) {
+    var n = t(i);
+    return !this.isCollidingWithAnyOtherPosition(this._collisionList, n) && (this._collisionList.push(n), e.push(n), this._numberOfAddedTowers++, true);
+  };
+  IsoGeneratorDefenceTower.prototype.getOuterTowerPosition = function (e) {
     var t;
-    var i;
-    if (!!this.map[e.y][e.x].hasGround && !this.map[e.y][e.x - 1].hasGround && !this.map[e.y][e.x - 2].hasGround) {
-      i = new r(e.x - 1, e.y);
-      t = this.addPosToListOrCreateOne(t, new a.IsoDefencePosition(i, 3, new r(2, 1), new r(i.x - 2, i.y)));
+    switch (e.rot) {
+      case 0:
+        t = new s(e.pos.x + 1, e.pos.y + 1);
+        break;
+      case 1:
+        t = new s(e.pos.x - 2, e.pos.y + 1);
+        break;
+      case 2:
+        t = new s(e.pos.x + 1, e.pos.y - 2);
+        break;
+      case 3:
+        t = new s(e.pos.x - 2, e.pos.y - 2);
     }
-    if (!!this.map[e.y][e.x].hasGround && !this.map[e.y + 1][e.x].hasGround && !this.map[e.y + 2][e.x].hasGround) {
-      i = new r(e.x, e.y + 1);
-      t = this.addPosToListOrCreateOne(t, new a.IsoDefencePosition(i, 1, new r(1, 2)));
-    }
-    if (!!this.map[e.y][e.x].hasGround && !this.map[e.y - 1][e.x].hasGround && !this.map[e.y - 2][e.x].hasGround) {
-      i = new r(e.x, e.y - 1);
-      t = this.addPosToListOrCreateOne(t, new a.IsoDefencePosition(i, 2, new r(1, 3), new r(i.x, i.y - 1)));
-    }
-    if (!!this.map[e.y][e.x].hasGround && !this.map[e.y][e.x + 1].hasGround && !this.map[e.y][e.x + 2].hasGround) {
-      i = new r(e.x + 1, e.y);
-      t = this.addPosToListOrCreateOne(t, new a.IsoDefencePosition(i, 0, new r(3, 1)));
-    }
-    return t;
+    return new o.IsoDefencePosition(t, e.rot, IsoGeneratorDefenceTower.TOWER_DIMENSION);
   };
-  return IsoGeneratorDefenceWall;
-}(s.AIsoGeneratorDefenceComponent);
-exports.IsoGeneratorDefenceWall = l;
+  IsoGeneratorDefenceTower.prototype.getInnerTowerPosition = function (e) {
+    var t;
+    switch (e.rot) {
+      case 0:
+        t = new s(e.pos.x + 1, e.pos.y + 1);
+        break;
+      case 1:
+        t = new s(e.pos.x - 2, e.pos.y + 1);
+        break;
+      case 2:
+        t = new s(e.pos.x + 1, e.pos.y - 2);
+        break;
+      case 3:
+        t = new s(e.pos.x - 2, e.pos.y - 2);
+    }
+    return new o.IsoDefencePosition(t, e.rot, IsoGeneratorDefenceTower.TOWER_DIMENSION);
+  };
+  IsoGeneratorDefenceTower.prototype.getSideTowerPosition = function (e) {
+    var t;
+    switch (e.rot) {
+      case 0:
+        t = new s(e.pos.x + 1, e.pos.y);
+        break;
+      case 1:
+        t = new s(e.pos.x, e.pos.y + 1);
+        break;
+      case 2:
+        t = new s(e.pos.x - 2, e.pos.y);
+        break;
+      case 3:
+        t = new s(e.pos.x, e.pos.y - 2);
+    }
+    return new o.IsoDefencePosition(t, e.rot, IsoGeneratorDefenceTower.TOWER_DIMENSION);
+  };
+  Object.defineProperty(IsoGeneratorDefenceTower.prototype, "numberOfAddedTowers", {
+    get: function () {
+      return this._numberOfAddedTowers;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  IsoGeneratorDefenceTower.__initialize_static_members = function () {
+    IsoGeneratorDefenceTower.TOWER_DIMENSION = new s(2, 2);
+  };
+  return IsoGeneratorDefenceTower;
+}(a.AIsoGeneratorDefenceComponent);
+exports.IsoGeneratorDefenceTower = r;
+r.__initialize_static_members();

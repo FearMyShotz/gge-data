@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function UPANCommand() {
+  function SASCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(UPANCommand, e);
-  Object.defineProperty(UPANCommand.prototype, "cmdId", {
+  n.__extends(SASCommand, e);
+  Object.defineProperty(SASCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_UPDATE_PRESET_NAME;
+      return s.ClientConstSF.S2C_UPDATE_PREDEFINED_ATTACK_SETUP;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,7 +22,7 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  UPANCommand.prototype.executeCommand = function (e, t) {
+  SASCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         r.CastleModel.fightPresetData.handlePresetUpdated();
@@ -32,7 +32,7 @@ var c = function (e) {
     }
     return false;
   };
-  return UPANCommand;
+  return SASCommand;
 }(l.CastleCommand);
-exports.UPANCommand = c;
+exports.SASCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

@@ -5,35 +5,32 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function LRRCommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function JCACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(LRRCommand, e);
-  Object.defineProperty(LRRCommand.prototype, "cmdId", {
+  n.__extends(JCACommand, e);
+  Object.defineProperty(JCACommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_LABORATORIES_RESET_EVENT;
+      return s.ClientConstSF.S2C_JOIN_CASTLE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  LRRCommand.prototype.executeCommand = function (e, t) {
+  JCACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.laboratoryData.parseLRR(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return LRRCommand;
-}(l.CastleCommand);
-exports.LRRCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return JCACommand;
+}(r.CastleCommand);
+exports.JCACommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

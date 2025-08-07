@@ -3,63 +3,81 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./19.js");
-var s = require("./11.js");
-var r = createjs.Point;
-var l = function (e) {
-  function ARandomDungeonRewardDialog(t) {
-    var i = this;
-    i.emptyRewardPosX = 0;
-    i.rewardOffset = 0;
-    CONSTRUCTOR_HACK;
-    return i = e.call(this, t) || this;
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./67.js");
+var u = require("./19.js");
+var d = require("./4.js");
+var p = require("./11.js");
+var h = createjs.Point;
+var g = function (e) {
+  function CastleFactionEventWinBasicDialog(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(ARandomDungeonRewardDialog, e);
-  ARandomDungeonRewardDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(CastleFactionEventWinBasicDialog, e);
+  CastleFactionEventWinBasicDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    this.centeredRewardListComponent = new u.CastleCenteredRewardRendererListComponent(this.dialogDisp.mc_rewards, new r(34, 34), a.CollectableRenderOptions.SET_ADVANCED, this.bindFunction(this.preRenderFunc));
-    this.emptyRewardPosX = this.dialogDisp.mc_rewardsEmpty.x;
-    this.rewardOffset = (this.dialogDisp.mc_rewardsEmpty.emptyItem1.x - this.dialogDisp.mc_rewardsEmpty.emptyItem0.x) / 2;
+    this.initBasicButtons([this.dialogDisp.btn_ok]);
   };
-  ARandomDungeonRewardDialog.prototype.preRenderFunc = function (e) {
-    if (e.itemVO) {
-      var t = e.getRenderer(a.CollectableRenderOptions.ICON_TRANSFORM);
-      switch (e.itemVO.itemType) {
-        case c.CollectableEnum.EQUIPMENT_RARENESS:
-        case c.CollectableEnum.EQUIPMENT_UNIQUE:
-        case c.CollectableEnum.HERO_RANDOM:
-        case c.CollectableEnum.GEM:
-        case c.CollectableEnum.GEM_RANDOM:
-        case c.CollectableEnum.BOOSTER:
-        case c.CollectableEnum.BUILDING:
-        case c.CollectableEnum.EXTINGUISH_FIRE:
-        case c.CollectableEnum.ALLIANCE_GIFT:
-        case c.CollectableEnum.DUNGEON_PROTECTION:
-          t.transform.offset.y = 5;
-      }
-    }
-  };
-  ARandomDungeonRewardDialog.prototype.showLoaded = function (t = null) {
+  CastleFactionEventWinBasicDialog.prototype.showLoaded = function (t = null) {
     e.prototype.showLoaded.call(this, t);
-    this.centeredRewardListComponent.showRewards(this.rewards);
-    if (this.rewards.length % 2) {
-      this.dialogDisp.mc_rewardsEmpty.mc_lastEmptyItem.visible = false;
-      this.dialogDisp.mc_rewardsEmpty.x = this.emptyRewardPosX + this.rewardOffset;
-    } else {
-      this.dialogDisp.mc_rewardsEmpty.mc_lastEmptyItem.visible = true;
-      this.dialogDisp.mc_rewardsEmpty.x = this.emptyRewardPosX;
+    this.updateRankingLine();
+    this.updateTexts();
+    this.updateRewards();
+  };
+  CastleFactionEventWinBasicDialog.prototype.updateRankingLine = function () {
+    this.dialogDisp.mc_first.visible = this.dialogProperties.rank == 1;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_rank, this.dialogProperties.rank > 0 ? new a.LocalizedNumberVO(this.dialogProperties.rank) : new r.TextVO("-"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_points, new a.LocalizedNumberVO(this.dialogProperties.points));
+  };
+  CastleFactionEventWinBasicDialog.prototype.updateTexts = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_name, new r.TextVO(d.CastleModel.userData.userName));
+  };
+  CastleFactionEventWinBasicDialog.prototype.setTitleText = function (e) {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO(e));
+  };
+  CastleFactionEventWinBasicDialog.prototype.setCopyText = function (e) {
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO(e));
+  };
+  CastleFactionEventWinBasicDialog.prototype.updateRewards = function () {
+    this.showRightRewardContainer();
+    var e = l.int(this.dialogProperties.rewardList.length);
+    if (!(e <= 0) && !(e > 4)) {
+      C.CollectableRenderHelper.displayMultipleItemsComplete(this, new c.CollectableRenderClipsList(this.getRelevantRewardContainer(), "mc_reward"), this.dialogProperties.rewardList, new u.CollectableRenderOptions(u.CollectableRenderOptions.SET_ICON, new h(65, 120)));
     }
   };
-  Object.defineProperty(ARandomDungeonRewardDialog.prototype, "rewards", {
+  CastleFactionEventWinBasicDialog.prototype.showRightRewardContainer = function () {
+    for (var e = 0; e <= 3; ++e) {
+      this.dialogDisp["mc_rewardContainer" + e].visible = false;
+    }
+    this.dialogDisp.mc_noReward.visible = false;
+    this.getRelevantRewardContainer().visible = true;
+  };
+  CastleFactionEventWinBasicDialog.prototype.getRelevantRewardContainer = function () {
+    var e = l.int(this.dialogProperties.rewardList.length);
+    if (e <= 0 || e > 4) {
+      return this.dialogDisp.mc_noReward;
+    } else {
+      return this.dialogDisp["mc_rewardContainer" + (e - 1)];
+    }
+  };
+  CastleFactionEventWinBasicDialog.prototype.onClick = function (e) {
+    switch (e.target) {
+      case this.dialogDisp.btn_ok:
+        this.hide();
+    }
+  };
+  Object.defineProperty(CastleFactionEventWinBasicDialog.prototype, "dialogProperties", {
     get: function () {
-      return null;
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  return ARandomDungeonRewardDialog;
-}(s.CastleExternalDialog);
-exports.ARandomDungeonRewardDialog = l;
-var c = require("./12.js");
-var u = require("./400.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList");
+  return CastleFactionEventWinBasicDialog;
+}(p.CastleExternalDialog);
+exports.CastleFactionEventWinBasicDialog = g;
+var C = require("./25.js");
+o.classImplementsInterfaces(g, "ICollectableRendererList");

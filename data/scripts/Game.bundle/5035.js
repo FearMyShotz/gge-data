@@ -5,45 +5,35 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./37.js");
-var l = require("./475.js");
+var r = require("./4.js");
+var l = require("./10.js");
 var c = function (e) {
-  function RFICommand() {
+  function REICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RFICommand, e);
-  Object.defineProperty(RFICommand.prototype, "cmdId", {
+  n.__extends(REICommand, e);
+  Object.defineProperty(REICommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_RESEARCH_FINISH_INSTANT;
+      return s.ClientConstSF.S2C_RESEARCH_INFO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleDispatchingCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  RFICommand.prototype.executeCommand = function (e, t) {
+  REICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-      case a.ERROR.NOTHING_TO_SKIP:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.researchData.parse_REI(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
-    this.dispatchArrivedEvent(e, t);
     return false;
   };
-  Object.defineProperty(RFICommand.prototype, "eventType", {
-    get: function () {
-      return r.CastleServerMessageArrivedEvent.RFI_ARRIVED;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleDispatchingCommand.prototype, "eventType").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return RFICommand;
-}(l.CastleDispatchingCommand);
-exports.RFICommand = c;
+  return REICommand;
+}(l.CastleCommand);
+exports.REICommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

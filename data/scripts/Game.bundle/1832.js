@@ -2,16 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function LoginBonusDataUpdateEvent(t, i = false, n = false) {
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SRequestGoodgamesGift(t = 0) {
+    var i = this;
+    i.CR = 0;
     CONSTRUCTOR_HACK;
-    return e.call(this, t, i, n) || this;
+    (i = e.call(this) || this).CR = t;
+    return i;
   }
-  n.__extends(LoginBonusDataUpdateEvent, e);
-  LoginBonusDataUpdateEvent.__initialize_static_members = function () {
-    LoginBonusDataUpdateEvent.LOGIN_BONUS_UPDATED = "login_bonus_updated";
+  n.__extends(C2SRequestGoodgamesGift, e);
+  C2SRequestGoodgamesGift.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_REQUEST_GOODGAMES_GIFT;
   };
-  return LoginBonusDataUpdateEvent;
-}(createjs.Event);
-exports.LoginBonusDataUpdateEvent = o;
-o.__initialize_static_members();
+  return C2SRequestGoodgamesGift;
+}(o.BasicCommandVO);
+exports.C2SRequestGoodgamesGift = s;

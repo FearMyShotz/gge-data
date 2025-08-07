@@ -1,45 +1,65 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./32.js");
-var a = require("./4.js");
-var s = function (e) {
-  function CastleLaboratoryList() {
-    return e !== null && e.apply(this, arguments) || this;
+var n = function () {
+  function CastleKingstowerList() {
+    this._kingstowerList = [];
   }
-  n.__extends(CastleLaboratoryList, e);
-  CastleLaboratoryList.prototype.parseGLL = function (e) {
+  CastleKingstowerList.prototype.parseGKL = function (e) {
     if (e) {
-      this._list = [];
+      this._kingstowerList = [];
       for (var t = 0, i = e.AI; t < i.length; t++) {
         var n = i[t];
         if (n !== undefined) {
-          var s = new r.LaboratoryMapobjectVO();
-          s.parseGLL(n);
-          s.ownerInfo = a.CastleModel.otherPlayerData.getOwnInfoVO();
-          this._list.push(s);
+          var s = new o.KingstowerMapobjectVO();
+          s.parseGKL(n);
+          s.ownerInfo = r.CastleModel.otherPlayerData.getOwnInfoVO();
+          this._kingstowerList.push(s);
         }
       }
-      this.controller.dispatchEvent(new o.CastleUserDataEvent(o.CastleUserDataEvent.CHANGE_LABORATORYLIST));
+      this.controller.dispatchEvent(new a.CastleUserDataEvent(a.CastleUserDataEvent.CHANGE_KINGSTOWERLIST));
     }
   };
-  CastleLaboratoryList.prototype.kingdomList = function (e) {
-    return this.completeList.filter(this.getFilterByKingdomID(e));
-  };
-  CastleLaboratoryList.prototype.hasLaboratoryInKingdom = function (e) {
-    return this.kingdomList(e).length > 0;
-  };
-  CastleLaboratoryList.prototype.getFilterByKingdomID = function (e) {
-    return function (t) {
-      var i = [];
-      for (var n = 1; n < arguments.length; n++) {
-        i[n - 1] = arguments[n];
+  CastleKingstowerList.prototype.getVOByID = function (e) {
+    if (this._kingstowerList != null) {
+      for (var t = 0, i = this._kingstowerList; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined && n.objectId === e) {
+          return n;
+        }
       }
-      return t.kingdomID == e;
-    };
+    }
+    return null;
   };
-  return CastleLaboratoryList;
-}(require("./1301.js").UpgradableLandmarkList);
-exports.CastleLaboratoryList = s;
-var r = require("./703.js");
+  Object.defineProperty(CastleKingstowerList.prototype, "completeList", {
+    get: function () {
+      return this._kingstowerList;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleKingstowerList.prototype, "kingstowerAmount", {
+    get: function () {
+      if (this._kingstowerList) {
+        return this._kingstowerList.length;
+      } else {
+        return 0;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleKingstowerList.prototype, "controller", {
+    get: function () {
+      return s.CastleBasicController.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleKingstowerList;
+}();
+exports.CastleKingstowerList = n;
+var o = require("./509.js");
+var a = require("./32.js");
+var s = require("./15.js");
+var r = require("./4.js");

@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./6.js");
-var s = require("./674.js");
+var s = require("./676.js");
 var r = require("./4.js");
 var l = function (e) {
   function CastleTypedInboxOffer(t, i = null, n = 0) {

@@ -3,42 +3,40 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./1046.js");
+var a = require("./1049.js");
 var s = function (e) {
-  function CastleVolcanoSlumPackageDialog() {
+  function CastleIcecreamSlumPackageBuyDialog() {
+    CONSTRUCTOR_HACK;
     return e.call(this) || this;
   }
-  n.__extends(CastleVolcanoSlumPackageDialog, e);
-  Object.defineProperty(CastleVolcanoSlumPackageDialog.prototype, "merchantScrollItem", {
+  n.__extends(CastleIcecreamSlumPackageBuyDialog, e);
+  Object.defineProperty(CastleIcecreamSlumPackageBuyDialog.prototype, "titleTextColor", {
     get: function () {
-      return r.VolcanoSlumPackageScrollItem;
+      return CastleIcecreamSlumPackageBuyDialog.TITLE_TEXT_COLOR;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastleSlumPackageDialog.prototype, "merchantScrollItem").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleSlumPackageBuyDialog.prototype, "titleTextColor").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleVolcanoSlumPackageDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.setSlumText("dialog_village_copy_vulcan");
-  };
-  Object.defineProperty(CastleVolcanoSlumPackageDialog.prototype, "backgroundFrame", {
+  Object.defineProperty(CastleIcecreamSlumPackageBuyDialog.prototype, "titleBackgroundFrame", {
     get: function () {
-      return 3;
+      return CastleIcecreamSlumPackageBuyDialog.TITLE_BACKGROUND_FRAME;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.CastleSlumPackageDialog.prototype, "backgroundFrame").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.CastleSlumPackageBuyDialog.prototype, "titleBackgroundFrame").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleVolcanoSlumPackageDialog.__initialize_static_members = function () {
-    CastleVolcanoSlumPackageDialog.NAME = "CastleVolcanoSlumPackage";
+  CastleIcecreamSlumPackageBuyDialog.__initialize_static_members = function () {
+    CastleIcecreamSlumPackageBuyDialog.NAME = "CastleIcecreamSlumPackageBuy";
+    CastleIcecreamSlumPackageBuyDialog.TITLE_TEXT_COLOR = 4001052;
+    CastleIcecreamSlumPackageBuyDialog.TITLE_BACKGROUND_FRAME = 2;
   };
-  return CastleVolcanoSlumPackageDialog;
-}(a.CastleSlumPackageDialog);
-exports.CastleVolcanoSlumPackageDialog = s;
-var r = require("./3204.js");
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  return CastleIcecreamSlumPackageBuyDialog;
+}(a.CastleSlumPackageBuyDialog);
+exports.CastleIcecreamSlumPackageBuyDialog = s;
 s.__initialize_static_members();
+o.classImplementsInterfaces(s, "ICollectableRendererList");

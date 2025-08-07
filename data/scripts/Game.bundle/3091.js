@@ -3,23 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./262.js");
-var s = function (e) {
-  function RelicBeekeeperBuildingVE() {
+var a = require("./62.js");
+var s = require("./539.js");
+var r = function (e) {
+  function ReinforcedVaultBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RelicBeekeeperBuildingVE, e);
-  Object.defineProperty(RelicBeekeeperBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(ReinforcedVaultBuildingVE, e);
+  Object.defineProperty(ReinforcedVaultBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_Honey;
+      return Library.CastleInterfaceElements.Btn_ReinforcedVault;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(a.AResourceProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.AUnitProductionBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return RelicBeekeeperBuildingVE;
-}(a.AResourceProductionBuildingVE);
-exports.RelicBeekeeperBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  return ReinforcedVaultBuildingVE;
+}(a.ABasicBuildingVE);
+exports.ReinforcedVaultBuildingVE = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

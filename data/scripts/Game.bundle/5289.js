@@ -5,19 +5,17 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SOfferQuestAcceptVO(t, i) {
-    var n = this;
-    n.OID = 0;
-    n.C = 0;
+  function C2SOfferDurationCheckVO(t) {
+    var i = this;
+    i.OID = 0;
     CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).OID = t;
-    n.C = i;
-    return n;
+    (i = e.call(this) || this).OID = t;
+    return i;
   }
-  n.__extends(C2SOfferQuestAcceptVO, e);
-  C2SOfferQuestAcceptVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_OFFER_QUEST_ACCEPT;
+  n.__extends(C2SOfferDurationCheckVO, e);
+  C2SOfferDurationCheckVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_OFFER_DURATION_CHECK;
   };
-  return C2SOfferQuestAcceptVO;
+  return C2SOfferDurationCheckVO;
 }(o.BasicCommandVO);
-exports.C2SOfferQuestAcceptVO = s;
+exports.C2SOfferDurationCheckVO = s;

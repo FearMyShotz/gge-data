@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function DCLCommand() {
+  function ATLCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(DCLCommand, e);
-  Object.defineProperty(DCLCommand.prototype, "cmdId", {
+  n.__extends(ATLCommand, e);
+  Object.defineProperty(ATLCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_DETAILEDCASTLELIST;
+      return s.ClientConstSF.S2C_GET_AB_TEST_LIST;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  DCLCommand.prototype.executeCommand = function (e, t) {
+  ATLCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.userCastleListDetailed.parseData(i);
+        r.CastleModel.userData.splitRunData.parse_ATL(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return DCLCommand;
+  return ATLCommand;
 }(l.CastleCommand);
-exports.DCLCommand = c;
+exports.ATLCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

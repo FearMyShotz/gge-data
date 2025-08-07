@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./37.js");
 var l = require("./10.js");
 var c = function (e) {
-  function CPECommand() {
+  function AJPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CPECommand, e);
-  Object.defineProperty(CPECommand.prototype, "cmdId", {
+  n.__extends(AJPCommand, e);
+  Object.defineProperty(AJPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_ALLIANCE_CENTERS_OF_POWER;
+      return s.ClientConstSF.S2C_ABG_JOINED_PLAYER;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  CPECommand.prototype.executeCommand = function (e, t) {
+  AJPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        this.controller.dispatchEvent(new r.CastleServerMessageArrivedEvent(r.CastleServerMessageArrivedEvent.CPE_ARRIVED, [i]));
+        this.controller.dispatchEvent(new r.CastleServerMessageArrivedEvent(r.CastleServerMessageArrivedEvent.AJP_ARRIVED, [i]));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return CPECommand;
+  return AJPCommand;
 }(l.CastleCommand);
-exports.CPECommand = c;
+exports.AJPCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

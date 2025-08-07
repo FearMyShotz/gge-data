@@ -4,33 +4,31 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./5.js");
-var r = require("./7.js");
-var l = require("./723.js");
-var c = require("./4.js");
-var u = require("./10.js");
-var d = function (e) {
-  function KIKCommand() {
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function IRACommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(KIKCommand, e);
-  Object.defineProperty(KIKCommand.prototype, "cmdId", {
+  n.__extends(IRACommand, e);
+  Object.defineProperty(IRACommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_KIKERIKI;
+      return s.ClientConstSF.S2C_REPAIR_ALL;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  KIKCommand.prototype.executeCommand = function (e, t) {
+  IRACommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        if (c.CastleModel.userData.castleList && i.DOW == s.TimeConst.MONDAY) {
-          c.CastleModel.userData.castleList.resetOpenGateCounter();
-          this.controller.dispatchEvent(new l.OpenGateEvent(l.OpenGateEvent.CHANGE_OPEN_GATE_COUNTER));
+        r.CastleModel.currencyData.parseGCU(i.gcu);
+        if (r.CastleModel.areaData.activeArea) {
+          r.CastleModel.areaData.activeArea.updater.parseIRA(i);
         }
         break;
       default:
@@ -38,7 +36,7 @@ var d = function (e) {
     }
     return false;
   };
-  return KIKCommand;
-}(u.CastleCommand);
-exports.KIKCommand = d;
-o.classImplementsInterfaces(d, "IExecCommand");
+  return IRACommand;
+}(l.CastleCommand);
+exports.IRACommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

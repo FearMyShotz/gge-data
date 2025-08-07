@@ -2,24 +2,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1622.js");
-var s = function (e) {
-  function CollectableItemPermanentUnitSlotVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CollectableItemPermanentUnitSlotVO() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, 1) || this;
   }
-  n.__extends(CollectableItemPermanentUnitSlotVE, e);
-  Object.defineProperty(CollectableItemPermanentUnitSlotVE.prototype, "iconMcFrame", {
-    get: function () {
-      return 2;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ACollectableItemPermanentSlotVE.prototype, "iconMcFrame").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CollectableItemPermanentUnitSlotVE;
-}(a.ACollectableItemPermanentSlotVE);
-exports.CollectableItemPermanentUnitSlotVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  n.__extends(CollectableItemPermanentUnitSlotVO, e);
+  CollectableItemPermanentUnitSlotVO.prototype.getTooltipTextId = function () {
+    return "recruitmentSlot_name";
+  };
+  CollectableItemPermanentUnitSlotVO.prototype.getDescriptionTextId = function () {
+    return "recruitmentSlot_short_info";
+  };
+  CollectableItemPermanentUnitSlotVO.prototype.isCombineAbleWith = function (e) {
+    return false;
+  };
+  CollectableItemPermanentUnitSlotVO.__initialize_static_members = function () {
+    CollectableItemPermanentUnitSlotVO.SERVER_KEY = "PUS";
+    CollectableItemPermanentUnitSlotVO.XML_KEY = "unitSlot";
+  };
+  return CollectableItemPermanentUnitSlotVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemPermanentUnitSlotVO = o;
+o.__initialize_static_members();

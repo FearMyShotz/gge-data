@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function EUDCommand() {
+  function EMOCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(EUDCommand, e);
-  Object.defineProperty(EUDCommand.prototype, "cmdId", {
+  n.__extends(EMOCommand, e);
+  Object.defineProperty(EMOCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_UPGRADE_DEFENCE;
+      return s.ClientConstSF.S2C_EDITOR_MOVE_OBJECT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,19 +22,19 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  EUDCommand.prototype.executeCommand = function (e, t) {
+  EMOCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
+      case a.ERROR.MOVE_FAILED:
         var i = JSON.parse(t[1]);
-        r.CastleModel.areaData.activeArea.updater.parseEUD(i);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
+        r.CastleModel.areaData.activeArea.updater.parseEMO(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return EUDCommand;
+  return EMOCommand;
 }(l.CastleCommand);
-exports.EUDCommand = c;
+exports.EMOCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function ETCCommand() {
+  function EGOCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ETCCommand, e);
-  Object.defineProperty(ETCCommand.prototype, "cmdId", {
+  n.__extends(EGOCommand, e);
+  Object.defineProperty(EGOCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_EXTENSION_TREASURE_CHEST;
+      return s.ClientConstSF.S2C_GET_OBJECT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,23 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  ETCCommand.prototype.executeCommand = function (e, t) {
+  EGOCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.areaData.activeArea.updater.parseETC(i);
+        if (r.CastleModel.areaData.activeArea) {
+          r.CastleModel.areaData.activeArea.updater.parseEGO(i);
+        }
+        if (i.skl) {
+          r.CastleModel.legendSkillData.parse_SKL(i.skl);
+        }
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return ETCCommand;
+  return EGOCommand;
 }(l.CastleCommand);
-exports.ETCCommand = c;
+exports.EGOCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

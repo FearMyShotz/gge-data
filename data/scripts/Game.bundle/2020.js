@@ -1,59 +1,36 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./8.js");
-var r = require("./242.js");
-var l = createjs.MouseEvent;
-var c = function (e) {
-  function CollectableRendererInfoButton() {
-    return e !== null && e.apply(this, arguments) || this;
+var n = createjs.Point;
+var o = function () {
+  function CollectableTransformVO(e = null, t = 1) {
+    this._scale = 0;
+    this._offset = e || new n(0, 0);
+    this._scale = t;
   }
-  n.__extends(CollectableRendererInfoButton, e);
-  CollectableRendererInfoButton.prototype.reset = function () {
-    if (this.clips.infoBtn) {
-      this.clips.infoBtn.visible = false;
-    }
+  CollectableTransformVO.prototype.clone = function () {
+    return new CollectableTransformVO(new n(this._offset.x, this._offset.y), this._scale);
   };
-  CollectableRendererInfoButton.prototype.addListener = function () {
-    if (this.clips.infoBtn) {
-      this.clips.infoBtn.addEventListener(l.CLICK, this.bindFunction(this.onInfoButtonClick));
-    }
-  };
-  CollectableRendererInfoButton.prototype.removeListener = function () {
-    if (this.clips.infoBtn) {
-      this.clips.infoBtn.removeEventListener(l.CLICK, this.bindFunction(this.onInfoButtonClick));
-    }
-  };
-  CollectableRendererInfoButton.prototype.update = function () {
-    if (this.clips.infoBtn) {
-      s.ButtonHelper.initBasicButton(this.clips.infoBtn);
-      this.clips.infoBtn.visible = this.canShowButton();
-    }
-  };
-  CollectableRendererInfoButton.prototype.setVisibility = function (e) {
-    if (this.clips.infoBtn) {
-      this.clips.infoBtn.visible = e;
-    }
-  };
-  CollectableRendererInfoButton.prototype.canShowButton = function () {
-    if (!this.itemVO) {
-      return false;
-    }
-    if (a.instanceOfClass(this.itemVO, "CollectableItemBuildingVO")) {
-      var e = this.itemVO.buildingVO;
-      return !!e && !a.instanceOfClass(e, "CustomDecoBuildingVO");
-    }
-    return true;
-  };
-  CollectableRendererInfoButton.prototype.onInfoButtonClick = function (e) {
-    if (this.itemVE && this.clips.infoBtn && s.ButtonHelper.isButtonEnabled(e.target)) {
-      this.itemVE.onInfoButtonClicked();
-    }
-  };
-  return CollectableRendererInfoButton;
-}(r.ACollectableRenderComponent);
-exports.CollectableRendererInfoButton = c;
-o.classImplementsInterfaces(c, "ICollectableRendererList");
+  Object.defineProperty(CollectableTransformVO.prototype, "offset", {
+    get: function () {
+      return this._offset;
+    },
+    set: function (e) {
+      this._offset = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CollectableTransformVO.prototype, "scale", {
+    get: function () {
+      return this._scale;
+    },
+    set: function (e) {
+      this._scale = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CollectableTransformVO;
+}();
+exports.CollectableTransformVO = o;

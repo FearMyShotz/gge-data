@@ -448,7 +448,7 @@
   },
   {
     "effectTypeID": "88",
-    "sortCategory": "7",
+    "sortCategory": "3",
     "name": "battleXPBoost"
   },
   {
@@ -619,6 +619,7 @@
   },
   {
     "effectTypeID": "118",
+    "sortCategory": "4",
     "name": "strongerPeasant"
   },
   {
@@ -1197,5 +1198,23 @@
   {
     "effectTypeID": "196",
     "name": "simultaneousConstruction"
+  },
+  {
+    "effectTypeID": "58",
+    "sortCategory": "4",
+    "sortGroup": "4",
+    "name": "SurvivalBoost"
+  },
+  {
+    "effectTypeID": "59",
+    "sortCategory": "1",
+    "sortGroup": "8",
+    "name": "SightRadiusBonus"
+  },
+  {
+    "effectTypeID": "60",
+    "sortCategory": "1",
+    "sortGroup": "16",
+    "name": "xpBoost"
   }
 ]

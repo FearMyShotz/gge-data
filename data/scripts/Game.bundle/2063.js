@@ -4,24 +4,28 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./4.js");
-var l = function (e) {
-  function IsoStatusIconProgressBarRubyWishWell() {
+var s = function (e) {
+  function IsoStatusIconProgressBarMine() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IsoStatusIconProgressBarRubyWishWell, e);
-  IsoStatusIconProgressBarRubyWishWell.prototype.getBarText = function () {
-    var e = s.int(r.CastleModel.rubyWishingWellData.getRemainingSecondsCalculated());
-    if (e < 0) {
-      r.CastleModel.rubyWishingWellData.requestFreshWishingWellData();
-    }
-    return o.TimeStringHelper.getShortTimeStringBySeconds(e);
+  n.__extends(IsoStatusIconProgressBarMine, e);
+  IsoStatusIconProgressBarMine.prototype.getBarText = function () {
+    return o.TimeStringHelper.getShortTimeStringBySeconds(this.mineBuildingVE.mineBuildingVO.getTimeLeftForCollect());
   };
-  IsoStatusIconProgressBarRubyWishWell.prototype.getBarFillFactor = function () {
-    return r.CastleModel.rubyWishingWellData.getPercentageFinished();
+  IsoStatusIconProgressBarMine.prototype.getBarFillFactor = function () {
+    return this.mineBuildingVE.mineBuildingVO.getPercentRechargingCompletion();
   };
-  return IsoStatusIconProgressBarRubyWishWell;
-}(require("./694.js").AIsoStatusIconProgressBar);
-exports.IsoStatusIconProgressBarRubyWishWell = l;
-a.classImplementsInterfaces(l, "ICollectableRendererList");
+  IsoStatusIconProgressBarMine.prototype.getDispFrame = function () {
+    return 5;
+  };
+  Object.defineProperty(IsoStatusIconProgressBarMine.prototype, "mineBuildingVE", {
+    get: function () {
+      return this.ve;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return IsoStatusIconProgressBarMine;
+}(require("./696.js").AIsoStatusIconProgressBar);
+exports.IsoStatusIconProgressBarMine = s;
+a.classImplementsInterfaces(s, "ICollectableRendererList");

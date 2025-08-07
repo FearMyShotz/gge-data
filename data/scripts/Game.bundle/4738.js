@@ -6,39 +6,33 @@ var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./4.js");
-var l = require("./266.js");
-var c = require("./211.js");
-var u = require("./10.js");
-var d = function (e) {
-  function ABICommand() {
+var l = require("./10.js");
+var c = function (e) {
+  function UASCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ABICommand, e);
-  Object.defineProperty(ABICommand.prototype, "cmdId", {
+  n.__extends(UASCommand, e);
+  Object.defineProperty(UASCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ATTACK_INFO_BOSSDUNGEON;
+      return s.ClientConstSF.S2C_UNLOCK_PREDEFINED_ATTACK_SETUP;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  ABICommand.prototype.executeCommand = function (e, t) {
+  UASCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.otherPlayerData.parseOwnerInfoArray(i.gaa.OI);
-        var n = r.CastleModel.attackData.parse_ABI(i);
-        p.CastleDialogHandler.getInstance().registerDefaultDialogs(c.AttackDialog, new l.CastleAttackDialogProperties(n));
+        r.CastleModel.fightPresetData.handleSuccessfullyUnlocked();
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return ABICommand;
-}(u.CastleCommand);
-exports.ABICommand = d;
-var p = require("./9.js");
-o.classImplementsInterfaces(d, "IExecCommand");
+  return UASCommand;
+}(l.CastleCommand);
+exports.UASCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

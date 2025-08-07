@@ -167,7 +167,7 @@ var g = function () {
           var h = new I.CastleResourceWaitDialogProperties(t.getCmdId());
           h.parseCosts(r.collectables);
           h.parseSkipCommand(t);
-          var g = require("./872.js").CastleResourceWaitDialog;
+          var g = require("./873.js").CastleResourceWaitDialog;
           O.CastleDialogHandler.getInstance().registerDefaultDialogs(g, h);
         }
       } else {
@@ -208,10 +208,10 @@ var E = require("./352.js");
 var y = require("./351.js");
 var b = require("./138.js");
 var D = require("./135.js");
-var I = require("./981.js");
+var I = require("./982.js");
 var T = require("./38.js");
-var v = require("./215.js");
-var S = require("./983.js");
-var A = require("./985.js");
+var v = require("./216.js");
+var S = require("./984.js");
+var A = require("./986.js");
 var L = require("./25.js");
 var P = require("./367.js");

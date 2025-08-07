@@ -2,27 +2,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./299.js");
-var s = function (e) {
-  function CollectableItemKhanTabletBoosterVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CollectableItemKhanTabletBoosterVO() {
+    CONSTRUCTOR_HACK;
+    return e.call(this) || this;
   }
-  n.__extends(CollectableItemKhanTabletBoosterVE, e);
-  Object.defineProperty(CollectableItemKhanTabletBoosterVE.prototype, "percentageIconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_KhanTabletBooster;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ACollectableItemPercentageBoosterVE.prototype, "percentageIconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CollectableItemKhanTabletBoosterVE.prototype.getBoosterTooltipId = function () {
-    return "dialog_nomadBooster_boost_tt";
+  n.__extends(CollectableItemKhanTabletBoosterVO, e);
+  CollectableItemKhanTabletBoosterVO.prototype.getTooltipTextId = function () {
+    return "nomadeBooster_name";
   };
-  return CollectableItemKhanTabletBoosterVE;
-}(a.ACollectableItemPercentageBoosterVE);
-exports.CollectableItemKhanTabletBoosterVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  CollectableItemKhanTabletBoosterVO.prototype.getDescriptionTextId = function () {
+    return "nomadBooster_short_info";
+  };
+  CollectableItemKhanTabletBoosterVO.__initialize_static_members = function () {
+    CollectableItemKhanTabletBoosterVO.SERVER_KEY = "KTB";
+  };
+  return CollectableItemKhanTabletBoosterVO;
+}(require("./328.js").ACollectableItemPercentageBoosterVO);
+exports.CollectableItemKhanTabletBoosterVO = o;
+o.__initialize_static_members();

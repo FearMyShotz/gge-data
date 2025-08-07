@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function MFCCommand() {
+  function GAMCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MFCCommand, e);
-  Object.defineProperty(MFCCommand.prototype, "cmdId", {
+  n.__extends(GAMCommand, e);
+  Object.defineProperty(GAMCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_MOVEMENT_FORCECANCELABLE;
+      return s.ClientConstSF.S2C_GET_ALL_MOVEMENTS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,19 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  MFCCommand.prototype.executeCommand = function (e, t) {
+  GAMCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.armyData.parse_MFC(i);
+        r.CastleModel.otherPlayerData.parseOwnerInfoArray(i.O);
+        r.CastleModel.armyData.parse_GAM(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return MFCCommand;
+  return GAMCommand;
 }(l.CastleCommand);
-exports.MFCCommand = c;
+exports.GAMCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

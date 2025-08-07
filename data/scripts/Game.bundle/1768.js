@@ -2,192 +2,110 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./6.js");
-var l = require("./51.js");
-var c = require("./9.js");
-var u = require("./823.js");
-var d = require("./1096.js");
-var p = require("./1093.js");
-var h = require("./1087.js");
-var g = require("./460.js");
-var C = function (e) {
-  function SamuraiInvasionEventVO() {
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./3.js");
+var u = require("./3.js");
+var d = require("./3.js");
+var p = require("./6.js");
+var h = require("./3713.js");
+var g = require("./26.js");
+var C = require("./4.js");
+var _ = require("./42.js");
+var m = require("./8.js");
+var f = require("./11.js");
+var O = createjs.Point;
+var E = function (e) {
+  function CastleNomadInvasionTauntDialog() {
     var t = this;
-    t._daimyoInfoVO = new f.SamuraiInvasionDaimyoInfoVO();
+    t.khanLevel = 0;
     CONSTRUCTOR_HACK;
-    (t = e.call(this) || this).scoreEventVO = new _.ALeagueTypeScoreEventVO();
-    t.alliancescoreEventVO = new _.ALeagueTypeScoreEventVO();
-    t.buyPackagesEventVO = new m.BuyPackagesEventVO();
-    return t;
+    return t = e.call(this, CastleNomadInvasionTauntDialog.NAME) || this;
   }
-  n.__extends(SamuraiInvasionEventVO, e);
-  SamuraiInvasionEventVO.prototype.parseData = function (t, i, n) {
-    e.prototype.parseData.call(this, t, i, n);
-    this.scoreEventVO = new _.ALeagueTypeScoreEventVO();
-    this.scoreEventVO.eventId = s.EventConst.EVENTTYPE_SAMURAI_INVASION;
-    this.scoreEventVO.parseData(t, i, n.SP);
-    this.scoreEventVO.difficultyIDChoosen = this._difficultyIDChoosen;
-    this.scoreEventVO.difficultyScalingEnabled = this._difficultyScalingEnabled;
-    this.alliancescoreEventVO = new _.ALeagueTypeScoreEventVO(s.EventConst.LEAGUETYPE_EVENT_SUBTYPE_SAMURAI_INVASION);
-    this.alliancescoreEventVO.eventId = s.EventConst.EVENTTYPE_SAMURAI_INVASION;
-    this.alliancescoreEventVO.parseData(t, i, n.A);
-    this.alliancescoreEventVO.difficultyIDChoosen = this._difficultyIDChoosen;
-    this.alliancescoreEventVO.difficultyScalingEnabled = this._difficultyScalingEnabled;
-    this.alliancescoreEventVO.isAllianceRewardScore = true;
-    this.buyPackagesEventVO.parseData(t, i, n);
-    this._daimyoInfoVO.parseServerObject(n.DY);
+  n.__extends(CastleNomadInvasionTauntDialog, e);
+  CastleNomadInvasionTauntDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new u.LocalizedTextVO("dialog_nomadInvasion_khanContest_tauntDialog_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_showToAlliance, new u.LocalizedTextVO("dialog_nomadInvasion_khanContest_tauntDialog_showAttack_desc")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_taunt.txt_label, new u.LocalizedTextVO("dialog_nomadInvasion_khanContest_tauntDialog_taunt_button")).verticalAlign = _.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    this._itxt_rage = this.textFieldManager.registerTextField(this.dialogDisp.txt_rage, new u.LocalizedTextVO(o.GenericTextIds.VALUE_PROPORTIONAL_VALUE, [0, 0]));
+    this._itxt_rage.autoFitToBounds = true;
+    this.dialogDisp.btn_help.toolTipText = "generic_help";
+    this.dialogDisp.mc_rage.toolTipText = "rage";
+    m.ButtonHelper.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help, this.dialogDisp.btn_taunt]);
+    m.ButtonHelper.initCheckBox(this.dialogDisp.checkbox_showToAlliance);
+    this.showToAllianceCheckbox = m.ButtonHelper.getBasicButton(this.dialogDisp.checkbox_showToAlliance);
   };
-  SamuraiInvasionEventVO.prototype.parseParamObject = function (t) {
-    e.prototype.parseParamObject.call(this, t);
-    this.refreshWorldMap();
+  CastleNomadInvasionTauntDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.khanLevel = p.int(this.eventVO.khanCampLevel);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new u.LocalizedTextVO("dialog_nomadInvasion_khanContest_tauntDialog_desc", [this.khanLevel])).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_khanLevel, new u.LocalizedTextVO("kingdom_khanCamp_castleName_0"));
+    this._itxt_rage.textContentVO.textReplacements = [this.eventVO.playerRage, this.eventVO.neededPlayerRage];
+    this._itxt_rage.verticalAlign = _.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    this.showToAllianceCheckbox.deselected();
+    this.showTargetCastle();
+    C.CastleModel.specialEventData.addEventListener(g.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventEnd));
   };
-  Object.defineProperty(SamuraiInvasionEventVO.prototype, "eventPackagesVO", {
-    get: function () {
-      return this.buyPackagesEventVO;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "eventPackagesVO").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SamuraiInvasionEventVO.prototype, "scoreBarVO", {
-    get: function () {
-      return this.scoreEventVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SamuraiInvasionEventVO.prototype, "allianceBarVO", {
-    get: function () {
-      return this.alliancescoreEventVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SamuraiInvasionEventVO.prototype, "eventBuildingWOD", {
-    get: function () {
-      return SamuraiInvasionEventVO.EVENT_BUILDING_WOD;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "eventBuildingWOD").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SamuraiInvasionEventVO.prototype, "eventBuildingNameId", {
-    get: function () {
-      return "eventBuilding_samuraiInvasion";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "eventBuildingNameId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SamuraiInvasionEventVO.prototype, "eventFullsizeCharacterName", {
-    get: function () {
-      return l.ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SAMURAI_HUNTER;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "eventFullsizeCharacterName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SamuraiInvasionEventVO.prototype.openDialog = function (e = true) {
-    if (this.needToOpenDifficultyDialog()) {
-      if (!c.CastleDialogHandler.getInstance().isDialogRegistered(u.DifficultyScalingSelectDialog)) {
-        c.CastleDialogHandler.getInstance().registerDefaultDialogs(u.DifficultyScalingSelectDialog, new d.DifficultyScalingSelectDialogProperties(this.eventId));
+  CastleNomadInvasionTauntDialog.prototype.showTargetCastle = function () {
+    this.itxtNameSourceCastle = this.textFieldManager.registerTextField(this.dialogDisp.info_targetCastle.txt_castleName, new d.TextVO(""));
+    this.itxtNameSourceCastle.autoFitToBounds = true;
+    this.itxtNameSourceCastle.verticalAlign = _.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    var e = C.CastleModel.userData.castleList.getMainCastleByKingdomID(l.WorldClassic.KINGDOM_ID);
+    this.itxtNameSourceCastle.textContentVO.stringValue = e.areaNameString;
+    this.itxtNameSourceCastle.verticalAlign = _.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    a.MovieClipHelper.clearMovieClip(this.dialogDisp.info_targetCastle.icon_castle);
+    this.dialogDisp.info_targetCastle.icon_castle.addChild(b.WorldmapObjectIconHelper.drawMapObjectIcon(e, CastleNomadInvasionTauntDialog.CASTLE_SIZE, true, false, false, "", null));
+  };
+  CastleNomadInvasionTauntDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this, t);
+    C.CastleModel.specialEventData.removeEventListener(g.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventEnd));
+  };
+  CastleNomadInvasionTauntDialog.prototype.onEventEnd = function (e) {
+    if (e.specialEventVO.eventId == r.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE) {
+      this.hide();
+    }
+  };
+  CastleNomadInvasionTauntDialog.prototype.onClick = function (t) {
+    if (m.ButtonHelper.isButtonEnabled(t.target)) {
+      switch (t.target) {
+        case this.dialogDisp.checkbox_showToAlliance:
+          this.showToAllianceCheckbox.toggleSelected();
+          break;
+        case this.dialogDisp.btn_close:
+          this.hide();
+          break;
+        case this.dialogDisp.btn_help:
+          y.CastleDialogHandler.getInstance().showHelper("", c.Localize.text("help_nomadInvasion_khanContest_tauntDialog"));
+          break;
+        case this.dialogDisp.btn_taunt:
+          this.tauntKhan();
       }
-    } else if (this.pointThresholds) {
-      this.executeOpenDialog(e, p.CastleAllianceSamuraiInvasionDialog, new h.CastleAllianceSamuraiInvasionEventDialogProperties(this));
+      e.prototype.onClick.call(this, t);
     }
   };
-  SamuraiInvasionEventVO.prototype.baseCampLevel = function () {
-    return r.int(this.scoreEventVO.countVictories(this.scoreEventVO.leagueID)[0]);
+  CastleNomadInvasionTauntDialog.prototype.tauntKhan = function () {
+    C.CastleModel.smartfoxClient.sendCommandVO(new h.C2SLaunchTauntAttackVO(this.showToAllianceCheckbox.isSelected, this.eventVO.eventId));
+    this.hide();
   };
-  SamuraiInvasionEventVO.prototype.onDestroy = function () {
-    this.refreshWorldMap();
-  };
-  SamuraiInvasionEventVO.prototype.setRankAndPoints = function (e, t, i) {
-    this.scoreEventVO.setRankAndPoints([e[0]], [t[0]], null);
-    this.alliancescoreEventVO.setRankAndPoints([e[1]], [t[1]], null);
-  };
-  Object.defineProperty(SamuraiInvasionEventVO.prototype, "ownRank", {
+  Object.defineProperty(CastleNomadInvasionTauntDialog.prototype, "eventVO", {
     get: function () {
-      return this.scoreEventVO.ownRank;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "ownRank").set.call(this, e);
+      return C.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_NOMADINVASION_ALLIANCE);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SamuraiInvasionEventVO.prototype, "ownPoints", {
-    get: function () {
-      return this.scoreEventVO.ownPoints;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "ownPoints").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SamuraiInvasionEventVO.prototype.isOwnWmoVO = function (e) {
-    return a.instanceOfClass(e, "SamuraiCampMapObjectVO");
+  CastleNomadInvasionTauntDialog.__initialize_static_members = function () {
+    CastleNomadInvasionTauntDialog.NAME = "CastleNomadInvasionTaunt";
+    CastleNomadInvasionTauntDialog.CASTLE_SIZE = new O(70, 70);
   };
-  Object.defineProperty(SamuraiInvasionEventVO.prototype, "addToOverview", {
-    get: function () {
-      return true;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(g.AScoreEventVO.prototype, "addToOverview").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SamuraiInvasionEventVO.prototype.hasRewards = function () {
-    return true;
-  };
-  SamuraiInvasionEventVO.prototype.getRewards = function (e) {
-    if (e) {
-      return this.alliancescoreEventVO.rewardLists;
-    } else {
-      return this.scoreEventVO.rewardLists;
-    }
-  };
-  SamuraiInvasionEventVO.prototype.getRank = function (e) {
-    return r.int(e ? this.alliancescoreEventVO.ownRank : this.scoreEventVO.ownRank);
-  };
-  SamuraiInvasionEventVO.prototype.getScore = function (e) {
-    return r.int(e ? this.alliancescoreEventVO.ownPoints : this.scoreEventVO.ownPoints);
-  };
-  Object.defineProperty(SamuraiInvasionEventVO.prototype, "daimyoInfoVO", {
-    get: function () {
-      return this._daimyoInfoVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  SamuraiInvasionEventVO.prototype.isPlayerQualifiedForAllianceRewards = function () {
-    return this.scoreEventVO.isPlayerQualifiedForAllianceRewards;
-  };
-  SamuraiInvasionEventVO.prototype.allianceRewardThresholdPoints = function () {
-    return this.scoreEventVO.allianceRewardThresholdPoints;
-  };
-  SamuraiInvasionEventVO.__initialize_static_members = function () {
-    SamuraiInvasionEventVO.EVENT_BUILDING_WOD = 635;
-  };
-  SamuraiInvasionEventVO.EVENT_BUILDING_WOD = 635;
-  return SamuraiInvasionEventVO;
-}(g.AScoreEventVO);
-exports.SamuraiInvasionEventVO = C;
-var _ = require("./327.js");
-var m = require("./184.js");
-var f = require("./3735.js");
-o.classImplementsInterfaces(C, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable", "IAllianceRewardsQualifiable");
-C.__initialize_static_members();
+  return CastleNomadInvasionTauntDialog;
+}(f.CastleExternalDialog);
+exports.CastleNomadInvasionTauntDialog = E;
+var y = require("./9.js");
+var b = require("./70.js");
+s.classImplementsInterfaces(E, "ICollectableRendererList");
+E.__initialize_static_members();

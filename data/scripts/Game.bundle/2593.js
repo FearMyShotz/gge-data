@@ -3,169 +3,194 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
+var a = require("./1.js");
+var s = require("./5.js");
 var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./3.js");
-var u = require("./4.js");
-var d = require("./204.js");
-var p = createjs.Point;
-var h = function (e) {
-  function CastleRelocateShopVO() {
-    return e.call(this, "panel_relocate_title", "relocate_decription_short", [m.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_REST], 0) || this;
+var l = require("./3.js");
+var c = require("./58.js");
+var u = require("./975.js");
+var d = require("./4.js");
+var p = require("./27.js");
+var h = require("./204.js");
+var g = createjs.Point;
+var C = function (e) {
+  function CastlePeaceProtectionPremiumShopVO() {
+    return e.call(this, "dialog_startPeaceMode_title", "peaceProtection_copy_short", [f.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_REST], r.PlayerConst.PEACE_MODE_C2[0]) || this;
   }
-  n.__extends(CastleRelocateShopVO, e);
-  Object.defineProperty(CastleRelocateShopVO.prototype, "isActive", {
+  n.__extends(CastlePeaceProtectionPremiumShopVO, e);
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "isActive", {
     get: function () {
       return false;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "isActive").set.call(this, e);
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "isActive").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleRelocateShopVO.prototype, "baseCosts", {
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "canBeBought", {
     get: function () {
-      return r.RelocationConst.getRelocationCost(u.CastleModel.userData.relocationCount);
+      if (!d.CastleModel.userData.noobProtected) {
+        d.CastleModel.userData.userLevel;
+        c.ClientConstLevelRestrictions.MIN_LEVEL_MANAGEMENT;
+      }
+      return d.CastleModel.userData.peaceModeStatus == O.CastleUserData.PEACEMODE_STATUS_OFF && !d.CastleModel.userData.noobProtected;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "baseCosts").set.call(this, e);
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "canBeBought").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleRelocateShopVO.prototype, "listSortPriority", {
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "buttonBuyToolTipEnabled", {
     get: function () {
-      return 531;
+      return "dialog_management_openGateNotInNoobProtection";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "cantBeBoughtButtonToolTip", {
+    get: function () {
+      if (d.CastleModel.userData.noobProtected) {
+        return "dialog_management_openGateNotInNoobProtection";
+      }
+      switch (d.CastleModel.userData.peaceModeStatus) {
+        case O.CastleUserData.PEACEMODE_STATUS_PEACETIME:
+          return "premiumFlag_cantbuy";
+        case O.CastleUserData.PEACEMODE_STATUS_POSTTIME:
+          return {
+            t: "dialog_management_reStartableIn_tt",
+            p: [this.duration]
+          };
+        case O.CastleUserData.PEACEMODE_STATUS_PRETIME:
+          return {
+            t: "dialog_management_startIn_tt",
+            p: [this.duration]
+          };
+      }
+      return "runTime";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "listSortPriority").set.call(this, e);
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "cantBeBoughtButtonToolTip").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleRelocateShopVO.prototype.clickedBuyButton = function () {
-    o.CommandController.instance.executeCommand(C.IngameClientCommands.SWITCH_TO_RELOCATEWORLDMAP_COMMAND);
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "timeStringTooltip", {
+    get: function () {
+      switch (d.CastleModel.userData.peaceModeStatus) {
+        case O.CastleUserData.PEACEMODE_STATUS_PEACETIME:
+          return l.Localize.text("runTime");
+        case O.CastleUserData.PEACEMODE_STATUS_POSTTIME:
+          return l.Localize.text("dialog_management_reStartableIn");
+        case O.CastleUserData.PEACEMODE_STATUS_PRETIME:
+          return l.Localize.text("dialog_management_startIn");
+      }
+      return l.Localize.text("runTime");
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "timeStringTooltip").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "hasRebuyDiscount", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "hasRebuyDiscount").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "hasVisualBonus", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "hasVisualBonus").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "hasVisualTimeWhenNotActive", {
+    get: function () {
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenNotActive").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "hasVisualTimeWhenActive", {
+    get: function () {
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenActive").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "duration", {
+    get: function () {
+      if (d.CastleModel.userData.peaceModeStatus != O.CastleUserData.PEACEMODE_STATUS_OFF) {
+        return p.CastleTimeStringHelper.getCantAttackTimeString(d.CastleModel.userData.getRemainingPeaceStatusTime());
+      } else {
+        return l.Localize.text("variable");
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "duration").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "listSortPriority", {
+    get: function () {
+      return 10;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "listSortPriority").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastlePeaceProtectionPremiumShopVO.prototype.clickedBuyButton = function () {
+    if (d.CastleModel.userData.peaceModeStatus == O.CastleUserData.PEACEMODE_STATUS_OFF) {
+      _.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleStartPeaceModeDialog, new u.CastleStartPeaceModeDialogProperties());
+    }
   };
-  Object.defineProperty(CastleRelocateShopVO.prototype, "canBeBought", {
-    get: function () {
-      return u.CastleModel.userData.remainingRelocationCooldown <= 0 && u.CastleModel.userData.remainingRelocationDuration <= 0 && u.CastleModel.userData.userLevel >= r.RelocationConst.MIN_RELOCATION_LEVEL && u.CastleModel.kingdomData.activeKingdomID == l.WorldClassic.KINGDOM_ID;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "canBeBought").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleRelocateShopVO.prototype, "cantBeBoughtButtonToolTip", {
-    get: function () {
-      var e = "";
-      if (u.CastleModel.userData.userLevel < r.RelocationConst.MIN_RELOCATION_LEVEL) {
-        e = {
-          t: "expansion_higherLevelNeeded",
-          p: [r.RelocationConst.MIN_RELOCATION_LEVEL]
-        };
-      } else if (u.CastleModel.userData.remainingRelocationDuration > 0) {
-        e = {
-          t: "dialog_management_inprogress_tt",
-          p: [a.TimeStringHelper.getTimeToString(u.CastleModel.userData.remainingRelocationDuration, a.TimeStringHelper.TWO_TIME_FORMAT, c.Localize.text)]
-        };
-      } else if (u.CastleModel.userData.remainingRelocationCooldown > 0) {
-        e = {
-          t: "dialog_management_reStartableIn_tt",
-          p: [a.TimeStringHelper.getTimeToString(u.CastleModel.userData.remainingRelocationCooldown, a.TimeStringHelper.TWO_TIME_FORMAT, c.Localize.text)]
-        };
-      }
-      return e;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "cantBeBoughtButtonToolTip").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleRelocateShopVO.prototype.createVisualMovieClip = function () {
-    return new Library.CastleInterfaceElements_Icons.Icon_Relocate();
+  CastlePeaceProtectionPremiumShopVO.prototype.createVisualMovieClip = function () {
+    return new Library.CastleInterfaceElements_Icons.Icon_PeaceProtection();
   };
-  Object.defineProperty(CastleRelocateShopVO.prototype, "isVisible", {
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "isVisible", {
     get: function () {
-      if (u.CastleModel.kingdomData.activeKingdomID != l.WorldClassic.KINGDOM_ID) {
-        return false;
-      }
-      var e = true;
-      switch (_.CastleLayoutManager.getInstance().currentState) {
-        case _.CastleLayoutManager.STATE_KINGDOMMAP:
-        case _.CastleLayoutManager.STATE_SEASON_WORLDMAP:
-          e = false;
-      }
-      if (_.CastleLayoutManager.getInstance().currentState == _.CastleLayoutManager.STATE_ISO && g.Iso.renderer.isoData.areaData.isTreasureCamp) {
-        e = false;
-      }
-      return e;
+      return d.CastleModel.kingdomData.activeKingdomID != s.FactionConst.KINGDOM_ID && !o.EnvGlobalsHandler.globals.isOnSpecialServer;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "isVisible").set.call(this, e);
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "isVisible").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleRelocateShopVO.prototype, "hasVisualTimeWhenActive", {
+  Object.defineProperty(CastlePeaceProtectionPremiumShopVO.prototype, "offsetIcon", {
     get: function () {
-      return false;
+      return new g(5, -3);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenActive").set.call(this, e);
+      Object.getOwnPropertyDescriptor(h.CastlePremiumMarketShopVO.prototype, "offsetIcon").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleRelocateShopVO.prototype, "hasVisualTimeWhenNotActive", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenNotActive").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleRelocateShopVO.prototype, "payType", {
-    get: function () {
-      return d.CastlePremiumMarketShopVO.PAYTYPE_C2;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "payType").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleRelocateShopVO.prototype, "isExtendable", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "isExtendable").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleRelocateShopVO.prototype, "offsetIcon", {
-    get: function () {
-      return new p(3, 0);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "offsetIcon").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleRelocateShopVO;
-}(d.CastlePremiumMarketShopVO);
-exports.CastleRelocateShopVO = h;
-var g = require("./33.js");
-var C = require("./29.js");
-var _ = require("./17.js");
-var m = require("./170.js");
-s.classImplementsInterfaces(h, "IPremiumMarketShopVO");
+  return CastlePeaceProtectionPremiumShopVO;
+}(h.CastlePremiumMarketShopVO);
+exports.CastlePeaceProtectionPremiumShopVO = C;
+var _ = require("./9.js");
+var m = require("./976.js");
+var f = require("./170.js");
+var O = require("./283.js");
+a.classImplementsInterfaces(C, "IPremiumMarketShopVO");

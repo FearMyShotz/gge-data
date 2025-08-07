@@ -71,7 +71,7 @@ var c = function (e) {
     CastleStandardYesNoDialog.NAME = o.CommonDialogNames.StandardYesNoDialog_NAME;
   };
   return CastleStandardYesNoDialog;
-}(require("./229.js").CastleDialog);
+}(require("./230.js").CastleDialog);
 exports.CastleStandardYesNoDialog = c;
 s.classImplementsInterfaces(c, "ICollectableRendererList");
 c.__initialize_static_members();

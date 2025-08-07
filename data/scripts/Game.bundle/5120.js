@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function TEECommand() {
+  function SEECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(TEECommand, e);
-  Object.defineProperty(TEECommand.prototype, "cmdId", {
+  n.__extends(SEECommand, e);
+  Object.defineProperty(SEECommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_TRIGGER_EVENT_INFO;
+      return s.ClientConstSF.S2C_SPECIAL_EVENT_END;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  TEECommand.prototype.executeCommand = function (e, t) {
+  SEECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.specialEventData.parseTEE(i);
+        r.CastleModel.specialEventData.parse_SEE(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return true;
   };
-  return TEECommand;
+  return SEECommand;
 }(l.CastleCommand);
-exports.TEECommand = c;
+exports.SEECommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

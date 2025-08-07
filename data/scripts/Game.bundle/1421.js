@@ -7,15 +7,15 @@ var a = require("./3.js");
 var s = require("./6.js");
 var r = require("./258.js");
 var l = require("./16.js");
-var c = require("./2607.js");
+var c = require("./2608.js");
 var u = require("./1422.js");
 var d = require("./4.js");
 var p = require("./180.js");
 var h = require("./43.js");
 var g = require("./8.js");
 var C = require("./11.js");
-var _ = require("./980.js");
-var m = require("./979.js");
+var _ = require("./981.js");
+var m = require("./980.js");
 var f = function (e) {
   function InviteAFriendEmailDialog() {
     var t = this;
@@ -132,6 +132,6 @@ exports.InviteAFriendEmailDialog = f;
 var O = require("./9.js");
 var E = require("./182.js");
 var y = require("./1423.js");
-var b = require("./978.js");
+var b = require("./979.js");
 o.classImplementsInterfaces(f, "ICollectableRendererList");
 f.__initialize_static_members();

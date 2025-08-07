@@ -3,83 +3,139 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./3.js");
+var a = require("./2.js");
+var s = require("./2.js");
 var r = require("./3.js");
-var l = require("./742.js");
-var c = require("./4.js");
-var u = require("./8.js");
-var d = require("./11.js");
-var p = require("./136.js");
-var h = function (e) {
-  function CastleAllianceBuyStandardBoostDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleAllianceBuyStandardBoostDialog.NAME) || this;
+var l = require("./3.js");
+var c = require("./3.js");
+var u = require("./6.js");
+var d = require("./744.js");
+var p = require("./31.js");
+var h = require("./67.js");
+var g = require("./19.js");
+var C = require("./13.js");
+var _ = require("./4.js");
+var m = require("./33.js");
+var f = require("./95.js");
+var O = require("./47.js");
+var E = require("./189.js");
+var y = require("./8.js");
+var b = require("./11.js");
+var D = require("./136.js");
+var I = createjs.Point;
+var T = function (e) {
+  function CastleAllianceBuyCustomizableBoostDialog() {
+    return e.call(this, CastleAllianceBuyCustomizableBoostDialog.NAME) || this;
   }
-  n.__extends(CastleAllianceBuyStandardBoostDialog, e);
-  CastleAllianceBuyStandardBoostDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(CastleAllianceBuyCustomizableBoostDialog, e);
+  CastleAllianceBuyCustomizableBoostDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_cancle, this.dialogDisp.btn_close]);
+    this.itxt_level = this.textFieldManager.registerTextField(this.dialogDisp.txt_level, new l.LocalizedTextVO("levelX", [1]));
+    this.itxt_value = this.textFieldManager.registerTextField(this.dialogDisp.txt_value, new l.LocalizedTextVO(s.GenericTextIds.VALUE_PERCENTAGE_ADD, [0]));
+    this.itxt_duration = this.textFieldManager.registerTextField(this.dialogDisp.txt_duration, new r.TextVO(""));
+    y.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok, this.dialogDisp.btn_cancel, this.dialogDisp.btn_plus, this.dialogDisp.btn_minus], M.ClickFeedbackButton);
+    this.scrollComponent = new f.SimpleScrollComponent(new O.SimpleScrollVO().initByParent(this.dialogDisp), new E.SimpleScrollStrategyHorizontal(true));
   };
-  CastleAllianceBuyStandardBoostDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    this.itxt_title = this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.TextVO(""));
-    this.itxt_title.autoFitToBounds = true;
-    this.itxt_boostDesctiption = this.textFieldManager.registerTextField(this.dialogDisp.txt_boostDesctiption, new r.TextVO(""));
-    this.itxt_boostAmount = this.textFieldManager.registerTextField(this.dialogDisp.txt_boostAmount, new r.TextVO(""));
-    this.itxt_title.textContentVO.stringValue = this.dialogProperties.boostTitle;
-    this.itxt_boostDesctiption.textContentVO.stringValue = this.dialogProperties.boostDescription;
-    this.itxt_boostAmount.textContentVO.stringValue = this.dialogProperties.boostAmount;
-    this.costList = new C.CastleResourceListComponent(this.dialogDisp.mc_boostCost, Library.CastleInterfaceElements.ResourceListCompnent_Item, 4);
-    this.costList.displayAsCosts = true;
-    this.costList.otherResourceStorageForCosts = c.CastleModel.allianceData.myAllianceVO.storage;
-    this.costList.updateComponent(this.dialogProperties.boostCosts, s.Localize.text("costs"));
-    u.ButtonHelper.enableButton(this.dialogDisp.btn_ok, c.CastleModel.allianceData.hasRight(c.CastleModel.userData.allianceRank, a.AllianceConst.RIGHT_UPGRADE));
-    if (c.CastleModel.allianceData.hasRight(c.CastleModel.userData.allianceRank, a.AllianceConst.RIGHT_UPGRADE)) {
-      this.dialogDisp.btn_ok.toolTipText = null;
+  CastleAllianceBuyCustomizableBoostDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.TextVO(C.TextHelper.toUpperCaseLocaSafe(this.dialogProperties.titleText)));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new r.TextVO(this.dialogProperties.descriptionText));
+    this.dialogDisp.mc_level_tooltip.toolTipText = this.dialogProperties.isTemporaryBoosterActive ? "dialog_alliance_temporaryBoost_activeEffectLevel" : "dialog_alliance_temporaryBoost_selectedEffectLevel";
+    this.dialogDisp.mc_duration_tooltip.toolTipText = this.dialogProperties.isTemporaryBoosterActive ? "dialog_alliance_temporaryBoost_activeBoosterAddTime" : "effectDuration";
+    this.updateIcon();
+    var i = 1;
+    if (this.dialogProperties.isTemporaryBoosterActive) {
+      i = u.int(this.allianceInfoVO.getBoostLevel(this.dialogProperties.buffSeriesID));
+      this.scrollComponent.setVisibility(false);
     } else {
-      this.dialogDisp.btn_ok.toolTipText = "dialog_alliance_rankToLow";
+      this.scrollComponent.setVisibility(true);
+    }
+    this.scrollComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
+    this.scrollComponent.init(1, this.allianceInfoVO.getBoostMaxLevel(this.dialogProperties.buffSeriesID));
+    this.scrollComponent.scrollToValue(i);
+    this.scrollComponent.show();
+  };
+  CastleAllianceBuyCustomizableBoostDialog.prototype.onScroll = function () {
+    this.updateCosts();
+    this.updateBuff();
+  };
+  CastleAllianceBuyCustomizableBoostDialog.prototype.updateIcon = function () {
+    var e = _.CastleModel.allianceBuffData.getAllianceBuffVoBySeriesIDAndLevel(this.dialogProperties.buffSeriesID, this.allianceInfoVO.getBoostMaxLevel(this.dialogProperties.buffSeriesID)).getBonusVOByEffectType(m.EffectTypeEnum.EFFECT_TYPE_UNKNOWN);
+    if (e) {
+      A.CollectableRenderHelper.displaySingleItemComplete(this, new p.CollectableRenderClips(this.dialogDisp.mc_icon).addIconMc(this.dialogDisp.mc_icon), new v.CollectableItemEffectVO(e.effect.effectID, false), new g.CollectableRenderOptions(g.CollectableRenderOptions.ICON, CastleAllianceBuyCustomizableBoostDialog.ICON_SIZE));
     }
   };
-  CastleAllianceBuyStandardBoostDialog.prototype.onClick = function (t) {
-    if (u.ButtonHelper.isButtonEnabled(t.target)) {
+  CastleAllianceBuyCustomizableBoostDialog.prototype.updateBuff = function () {
+    var e = _.CastleModel.allianceBuffData.getAllianceBuffVoBySeriesIDAndLevel(this.dialogProperties.buffSeriesID, this.scrollComponent.currentValue);
+    this.itxt_level.textContentVO.textReplacements = [e.level];
+    this.itxt_value.textContentVO.textReplacements = [e.boni[0].strength];
+    this.itxt_duration.textContentVO.stringValue = a.TimeStringHelper.getTimeToString(this.allianceInfoVO.getBoostDuration(this.dialogProperties.buffSeriesID, this.scrollComponent.currentValue), a.TimeStringHelper.ONE_TIME_HOURS_FORMAT, c.Localize.text);
+  };
+  CastleAllianceBuyCustomizableBoostDialog.prototype.updateCosts = function () {
+    var e = _.CastleModel.allianceBuffData.getCosts(this.dialogProperties.buffSeriesID, this.scrollComponent.currentValue);
+    var t = new g.CollectableRenderOptions(g.CollectableRenderOptions.SET_COST_LIST, new I(30, 30));
+    t.tooltip.useAmount = false;
+    t.costTextfield.useOtherResourceStorage = this.allianceInfoVO.storage;
+    t.costTextfield.enableMarkOnNotEnough = true;
+    t.costTextfield.useKiloAbbreviationForAmount = false;
+    t.costTextfield.useMillionAbbreviationForAmount = false;
+    A.CollectableRenderHelper.displayMultipleItems(new h.CollectableRenderClipsList(this.dialogDisp, "item"), e, t, null, function afterRenderFunc(e) {
+      e.destroy();
+    });
+    L.CostHelper.initAsCostsFromOtherStorage(e, this.dialogDisp, true, this.allianceInfoVO.storage);
+  };
+  CastleAllianceBuyCustomizableBoostDialog.prototype.onClick = function (t) {
+    if (y.ButtonHelper.isButtonEnabled(t.target)) {
       e.prototype.onClick.call(this, t);
       switch (t.target) {
         case this.dialogDisp.btn_close:
-        case this.dialogDisp.btn_cancle:
+        case this.dialogDisp.btn_cancel:
           this.hide();
           break;
         case this.dialogDisp.btn_ok:
           this.onBuyBoost();
-          this.hide();
       }
     }
   };
-  CastleAllianceBuyStandardBoostDialog.prototype.hideLoaded = function (t = null) {
-    this.costList.destroy();
-    e.prototype.hideLoaded.call(this);
+  CastleAllianceBuyCustomizableBoostDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this, t);
     if (this.dialogProperties.targetAllianceSublayer) {
-      g.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleAllianceDialog, new p.CastleAllianceDialogProperties(this.dialogProperties.targetAllianceSublayer));
+      S.CastleDialogHandler.getInstance().registerDefaultDialogs(P.CastleAllianceDialog, new D.CastleAllianceDialogProperties(this.dialogProperties.targetAllianceSublayer));
       this.dialogProperties.targetAllianceSublayer = null;
     }
+    this.scrollComponent.hide();
+    this.scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
   };
-  CastleAllianceBuyStandardBoostDialog.prototype.onBuyBoost = function () {
-    c.CastleModel.smartfoxClient.sendCommandVO(new l.C2SAllianceUpgradeVO(this.dialogProperties.buffType));
+  CastleAllianceBuyCustomizableBoostDialog.prototype.onBuyBoost = function () {
+    _.CastleModel.smartfoxClient.sendCommandVO(new d.C2SAllianceUpgradeVO(this.dialogProperties.buffSeriesID, this.scrollComponent.currentValue));
+    this.hide();
   };
-  Object.defineProperty(CastleAllianceBuyStandardBoostDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastleAllianceBuyCustomizableBoostDialog.prototype, "allianceInfoVO", {
+    get: function () {
+      return _.CastleModel.allianceData.myAllianceVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleAllianceBuyCustomizableBoostDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastleAllianceBuyStandardBoostDialog.__initialize_static_members = function () {
-    CastleAllianceBuyStandardBoostDialog.NAME = "CastleAllianceBuyBoostEx";
+  CastleAllianceBuyCustomizableBoostDialog.__initialize_static_members = function () {
+    CastleAllianceBuyCustomizableBoostDialog.ICON_SIZE = new I(60, 60);
   };
-  return CastleAllianceBuyStandardBoostDialog;
-}(d.CastleExternalDialog);
-exports.CastleAllianceBuyStandardBoostDialog = h;
-var g = require("./9.js");
-var C = require("./320.js");
-var _ = require("./125.js");
-o.classImplementsInterfaces(h, "ICollectableRendererList");
-h.__initialize_static_members();
+  CastleAllianceBuyCustomizableBoostDialog.NAME = "CastleAllianceBuyCustomizableBoost";
+  return CastleAllianceBuyCustomizableBoostDialog;
+}(b.CastleExternalDialog);
+exports.CastleAllianceBuyCustomizableBoostDialog = T;
+var v = require("./612.js");
+var S = require("./9.js");
+var A = require("./25.js");
+var L = require("./66.js");
+var P = require("./125.js");
+var M = require("./36.js");
+o.classImplementsInterfaces(T, "ICollectableRendererList");
+T.__initialize_static_members();

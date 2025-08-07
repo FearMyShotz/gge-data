@@ -2,105 +2,77 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function ConstructionItemBlueprintVO(e) {
-    this._id = 0;
-    this._name = "";
-    this._id = e;
-    this._recipes = [];
+  function ConstructionItemBlueprintData(e) {
+    this._newBlueprints = [];
+    this.parseFromXml(e);
   }
-  ConstructionItemBlueprintVO.prototype.checkConstructionItem = function () {
-    if (!this._constructionItem) {
-      for (var e = 0; e < this._recipes.length; e++) {
-        var t = this._recipes[e];
-        if (t.constructionItem) {
-          this._constructionItem = t.constructionItem;
-          return;
-        }
-      }
-      a.debug("No construction item found for recipe " + this._id);
-    }
-  };
-  ConstructionItemBlueprintVO.prototype.addRecipe = function (e) {
-    this._recipes.push(e);
-    this._recipes.sort(function (e, t) {
-      return e.id - t.id;
-    });
-    var t = 1;
-    if (this._recipes != null) {
-      for (var i = 0, n = this._recipes; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          o.level = t++;
+  ConstructionItemBlueprintData.prototype.parseFromXml = function (e) {
+    this._recipes = new Map();
+    this._blueprints = new Map();
+    this._newBlueprints = [];
+    for (var t = 0, i = e.constructionItemRecipes; t < i.length; t++) {
+      var n = i[t];
+      if (n != null) {
+        try {
+          var s = new o.ConstructionItemRecipeVO(n);
+          this._recipes.set(s.id, s);
+          this.addOrUpdateBlueprint(s);
+          0;
+        } catch (e) {
+          a.debug(e.stack);
         }
       }
     }
   };
-  Object.defineProperty(ConstructionItemBlueprintVO.prototype, "id", {
+  ConstructionItemBlueprintData.prototype.addOrUpdateBlueprint = function (e) {
+    if (!this._blueprints.has(e.blueprintId)) {
+      this._blueprints.set(e.blueprintId, new s.ConstructionItemBlueprintVO(e.blueprintId));
+    }
+    this._blueprints.get(e.blueprintId).addRecipe(e);
+  };
+  Object.defineProperty(ConstructionItemBlueprintData.prototype, "blueprints", {
     get: function () {
-      return this._id;
+      return this._blueprints;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ConstructionItemBlueprintVO.prototype, "recipes", {
+  ConstructionItemBlueprintData.prototype.findRecipeFor = function (e, t = false) {
+    if (this._blueprints != null) {
+      for (var i = 0, n = Array.from(this._blueprints.values()); i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined && o.recipes[0].constructionItem.name == e.name) {
+          for (var a = 0, s = o.recipes; a < s.length; a++) {
+            var r = s[a];
+            if (r !== undefined && r.constructionItemId == e.id && (!t || r.constructionItemNeeded)) {
+              return r;
+            }
+          }
+        }
+      }
+    }
+    return null;
+  };
+  Object.defineProperty(ConstructionItemBlueprintData.prototype, "recipes", {
     get: function () {
       return this._recipes;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ConstructionItemBlueprintVO.prototype, "assetName", {
+  Object.defineProperty(ConstructionItemBlueprintData.prototype, "newBlueprints", {
     get: function () {
-      this.checkConstructionItem();
-      var e = "Primary";
-      if (this._constructionItem) {
-        if (this._constructionItem.slotType == s.ConstructionItemConst.SECONDARY_SLOT_TYPE) {
-          e = "Secondary";
-        } else if (this._constructionItem.slotType == s.ConstructionItemConst.APPEARANCE_SLOT_TYPE) {
-          e = "Appearance";
-        }
-      }
-      return "Blueprint_" + e;
+      return this._newBlueprints;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ConstructionItemBlueprintVO.prototype, "nameId", {
-    get: function () {
-      this.checkConstructionItem();
-      var e = "";
-      if (this._constructionItem && this._constructionItem.name) {
-        e = this._constructionItem.name;
-        if (this._constructionItem.isSecondaryItem) {
-          e += "_secondary";
-        }
-        if (this._constructionItem.isPremium) {
-          e += "_premium";
-        }
-      }
-      return "ci_blueprint_" + e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ConstructionItemBlueprintVO.prototype, "assetURL", {
-    get: function () {
-      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("ConstructionItemBlueprints");
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ConstructionItemBlueprintVO.prototype, "constructionItem", {
-    get: function () {
-      this.checkConstructionItem();
-      return this._constructionItem;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return ConstructionItemBlueprintVO;
+  ConstructionItemBlueprintData.prototype.addNewBlueprints = function (e) {
+    this._newBlueprints = this._newBlueprints.concat(e);
+  };
+  return ConstructionItemBlueprintData;
 }();
-exports.ConstructionItemBlueprintVO = n;
-var o = require("./2.js");
+exports.ConstructionItemBlueprintData = n;
+var o = require("./5611.js");
 var a = require("./2.js");
-var s = require("./5.js");
+var s = require("./5612.js");

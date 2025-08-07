@@ -1,90 +1,90 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = createjs.Point;
-var o = function () {
-  function MinWorldMapCastleInfoVO() {
-    this._kingdomId = -1;
-    this._objectId = -1;
-    this._absAreaPos = new n(-1, -1);
-    this._areaType = -1;
-    this._useSpecialConnectionLineColor = false;
-    this._specialConnectionLineColor = 0;
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./16.js");
+var s = require("./24.js");
+var r = require("./8.js");
+var l = function (e) {
+  function ModernComboboxComponentItem(t, i, n, o) {
+    var a = e.call(this) || this;
+    a._assetClipName = t;
+    a._assetFileName = i;
+    a._fillContentFunc = n;
+    a._data = o;
+    return a;
   }
-  MinWorldMapCastleInfoVO.prototype.fillFromParamObject = function (e) {
-    this._kingdomId = a.int(e[0]);
-    this._objectId = a.int(e[1]);
-    this._absAreaPos.x = e[2];
-    this._absAreaPos.y = e[3];
-    this._areaType = e[4];
+  n.__extends(ModernComboboxComponentItem, e);
+  ModernComboboxComponentItem.prototype.init = function () {
+    this._dispCreator.init(this.disp);
+    r.ButtonHelper.initBasicButton(this.disp, 1);
   };
-  MinWorldMapCastleInfoVO.prototype.copyFromWorldmapObjectVO = function (e) {
-    this._kingdomId = e.kingdomID;
-    this._objectId = e.objectId;
-    this._absAreaPos = e.absAreaPos;
-    this._areaType = e.areaType;
+  ModernComboboxComponentItem.prototype.createDisp = function () {
+    this._dispCreator.cacheDisp = false;
+    this._dispCreator.addClip(new s.CastleGoodgameExternalClip(this.assetClipName, c.IsoHelper.view.getAssetFileURL(this.assetFileName), null, 0, false));
   };
-  Object.defineProperty(MinWorldMapCastleInfoVO.prototype, "kingdomId", {
+  ModernComboboxComponentItem.prototype.setHovered = function (e) {
+    var t = this.getItemMc();
+    if (t.mc_background) {
+      t.mc_background.gotoAndStop(e ? 2 : 1);
+    }
+    if (t.mc_hover) {
+      t.mc_hover.visible = e;
+    }
+    var i = t.txt_text;
+    if (i) {
+      i.textColor = e ? a.ClientConstColor.MODERN_DEFAULT : a.ClientConstColor.MODERN_DEFAULT_BRIGHT;
+    }
+  };
+  ModernComboboxComponentItem.prototype.onAllClipsLoaded = function () {
+    this.setHovered(false);
+    if (this._fillContentFunc) {
+      this._fillContentFunc(this);
+    }
+    e.prototype.onAllClipsLoaded.call(this);
+  };
+  ModernComboboxComponentItem.prototype.onRollOver = function (t) {
+    e.prototype.onRollOver.call(this, t);
+    if (this.isEnabled) {
+      this.setHovered(true);
+    }
+  };
+  ModernComboboxComponentItem.prototype.onRollOut = function (t) {
+    this.setHovered(false);
+    e.prototype.onRollOut.call(this, t);
+  };
+  ModernComboboxComponentItem.prototype.getItemMc = function () {
+    var e = this._dispCreator.firstClip;
+    if (e) {
+      return e.currentshownDisplayObject;
+    } else {
+      return null;
+    }
+  };
+  Object.defineProperty(ModernComboboxComponentItem.prototype, "assetClipName", {
     get: function () {
-      return this._kingdomId;
-    },
-    set: function (e) {
-      this._kingdomId = e;
+      return this._assetClipName;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MinWorldMapCastleInfoVO.prototype, "objectId", {
+  Object.defineProperty(ModernComboboxComponentItem.prototype, "assetFileName", {
     get: function () {
-      return this._objectId;
-    },
-    set: function (e) {
-      this._objectId = e;
+      return this._assetFileName;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MinWorldMapCastleInfoVO.prototype, "areaType", {
+  Object.defineProperty(ModernComboboxComponentItem.prototype, "data", {
     get: function () {
-      return this._areaType;
-    },
-    set: function (e) {
-      this._areaType = e;
+      return this._data;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MinWorldMapCastleInfoVO.prototype, "absAreaPos", {
-    get: function () {
-      return this._absAreaPos;
-    },
-    set: function (e) {
-      this._absAreaPos = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MinWorldMapCastleInfoVO.prototype, "useSpecialConnectionLineColor", {
-    get: function () {
-      return this._useSpecialConnectionLineColor;
-    },
-    set: function (e) {
-      this._useSpecialConnectionLineColor = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MinWorldMapCastleInfoVO.prototype, "specialConnectionLineColor", {
-    get: function () {
-      return this._specialConnectionLineColor;
-    },
-    set: function (e) {
-      this._specialConnectionLineColor = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return MinWorldMapCastleInfoVO;
-}();
-exports.MinWorldMapCastleInfoVO = o;
-var a = require("./6.js");
+  return ModernComboboxComponentItem;
+}(require("./2117.js").ASimpleComboboxComponentItem);
+exports.ModernComboboxComponentItem = l;
+var c = require("./46.js");
+o.classImplementsInterfaces(l, "ICollectableRendererList");

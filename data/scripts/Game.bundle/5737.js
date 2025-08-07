@@ -6,21 +6,20 @@ var o = require("./2.js");
 var a = require("./6.js");
 var s = require("./7.js");
 var r = function (e) {
-  function C2SSellGemVO(t, i, n) {
+  function C2SCraftGemVO(t, i, n) {
     var o = this;
-    o.GID = NaN;
-    o.RGEM = 0;
-    o.LFID = 0;
+    o.MID = 0;
+    o.C2 = 0;
     CONSTRUCTOR_HACK;
-    (o = e.call(this) || this).GID = t;
-    o.RGEM = a.int(i ? 1 : 0);
-    o.LFID = n;
+    (o = e.call(this) || this).MID = t;
+    o.UG = i;
+    o.C2 = a.int(n ? 1 : 0);
     return o;
   }
-  n.__extends(C2SSellGemVO, e);
-  C2SSellGemVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_SELL_GEM;
+  n.__extends(C2SCraftGemVO, e);
+  C2SCraftGemVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_CRAFT_GEM;
   };
-  return C2SSellGemVO;
+  return C2SCraftGemVO;
 }(o.BasicCommandVO);
-exports.C2SSellGemVO = r;
+exports.C2SCraftGemVO = r;

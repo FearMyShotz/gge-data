@@ -2,93 +2,125 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./26.js");
-var c = require("./32.js");
-var u = require("./4.js");
-var d = require("./8.js");
-var p = require("./11.js");
-var h = require("./4473.js");
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./3.js");
+var r = require("./16.js");
+var l = require("./39.js");
+var c = require("./21.js");
+var u = require("./26.js");
+var d = require("./32.js");
+var p = require("./4.js");
+var h = require("./8.js");
 var g = function (e) {
-  function CastleLuckyWheelTicketBuyDialog() {
-    return e.call(this, CastleLuckyWheelTicketBuyDialog.NAME) || this;
+  function CastleLuckyWheelGuaranteedJackpotDialog() {
+    var t = this;
+    t.willShowDialogAgain = false;
+    CONSTRUCTOR_HACK;
+    return t = e.call(this, CastleLuckyWheelGuaranteedJackpotDialog.NAME) || this;
   }
-  n.__extends(CastleLuckyWheelTicketBuyDialog, e);
-  CastleLuckyWheelTicketBuyDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(CastleLuckyWheelGuaranteedJackpotDialog, e);
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.mc_packageList.item0.btn_buy, this.dialogDisp.mc_packageList.item1.btn_buy, this.dialogDisp.mc_packageList.item2.btn_buy]);
-    this.packageList = new o.ItemList(this.dialogDisp.mc_packageList);
-    this.packageList.scrollItemClass = C.CastleLuckyWheelScrollItem;
+    this.initBasicButtons([this.dialogDisp.closeBtn, this.dialogDisp.cancelBtn, this.dialogDisp.acceptBtn]);
+    this.checkmarkComponent = new _.CastleLuckyWheelCheckboxWrapper(this.dialogDisp.checkmarkComponent);
   };
-  CastleLuckyWheelTicketBuyDialog.prototype.applyPropertiesLoaded = function (t = null) {
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.applyPropertiesLoaded = function (t = null) {
     e.prototype.applyPropertiesLoaded.call(this, t);
+    this.willShowDialogAgain = p.CastleModel.luckyWheelData.showGuaranteedJackpotDialog;
+    this.checkmarkComponent.isEnabled = !this.willShowDialogAgain;
     this.setTexts();
-    this.updatePackageList();
   };
-  CastleLuckyWheelTicketBuyDialog.prototype.addEventListenerOnShow = function () {
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.addEventListenerOnShow = function () {
     e.prototype.addEventListenerOnShow.call(this);
-    u.CastleModel.specialEventData.addEventListener(l.CastleSpecialEventEvent.SERVER_DATA_PARSED, this.bindFunction(this.onRefreshSpecialEvent));
-    u.CastleModel.specialEventData.addEventListener(l.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveSpecialEvent));
-    u.CastleModel.specialEventData.addEventListener(c.CastleUserDataEvent.CHANGE_USER_LIFETIME_SPENT, this.bindFunction(this.onUserLifetimeSpentChanged));
+    p.CastleModel.timerData.addEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerTick));
+    p.CastleModel.specialEventData.addEventListener(u.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveSpecialEvent));
+    this.controller.addEventListener(d.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onTicketUpdate));
+    this.controller.addEventListener(d.CastleUserDataEvent.CHANGE_USER_CURRENCY, this.bindFunction(this.onUserCurrencyUpdate));
+    this.checkmarkComponent.addEventListenerOnShow();
   };
-  CastleLuckyWheelTicketBuyDialog.prototype.removeEventListenerOnHide = function () {
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.removeEventListenerOnHide = function () {
     e.prototype.removeEventListenerOnHide.call(this);
-    u.CastleModel.specialEventData.removeEventListener(l.CastleSpecialEventEvent.SERVER_DATA_PARSED, this.bindFunction(this.onRefreshSpecialEvent));
-    u.CastleModel.specialEventData.removeEventListener(l.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveSpecialEvent));
-    u.CastleModel.specialEventData.removeEventListener(c.CastleUserDataEvent.CHANGE_USER_LIFETIME_SPENT, this.bindFunction(this.onUserLifetimeSpentChanged));
+    p.CastleModel.timerData.removeEventListener(c.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerTick));
+    p.CastleModel.specialEventData.removeEventListener(u.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveSpecialEvent));
+    this.controller.removeEventListener(d.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onTicketUpdate));
+    this.controller.removeEventListener(d.CastleUserDataEvent.CHANGE_USER_CURRENCY, this.bindFunction(this.onUserCurrencyUpdate));
+    this.checkmarkComponent.removeEventListenersOnHide();
   };
-  CastleLuckyWheelTicketBuyDialog.prototype.setTexts = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.LocalizedTextVO("dialog_luckyWheel_buyTickets"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new r.LocalizedTextVO("dialog_luckyWheel_buyTickets_text"));
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.onUserCurrencyUpdate = function (e) {
+    this.colorizeTexts();
   };
-  CastleLuckyWheelTicketBuyDialog.prototype.updatePackageList = function () {
-    this.packageList.clear();
-    var e;
-    var t = u.CastleModel.specialEventData.getActiveEventByEventId(s.EventConst.EVENTTYPE_LUCKYWHEEL);
-    var i = t.eventPackagesVO.getVisiblePackages(u.CastleModel.userData.userLevel, u.CastleModel.userData.userLegendLevel, u.CastleModel.areaData.activeAreaInfo.areaType);
-    var n = 1;
-    if (i != null) {
-      for (var o = 0, a = i; o < a.length; o++) {
-        var r = a[o];
-        if (r !== undefined) {
-          (e = new h.CastleLuckyWheelScrollItemVO()).eventPackageVO = r;
-          e.specialEventVO = t;
-          e.ticketsToDisplay = n;
-          this.packageList.pushContent(e);
-          n++;
-        }
-      }
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.onTicketUpdate = function (e) {
+    this.colorizeTexts();
+  };
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.onRemoveSpecialEvent = function (e) {
+    if (e.specialEventVO.eventId == this.eventVO.eventId) {
+      this.hide();
     }
-    this.packageList.initList();
   };
-  CastleLuckyWheelTicketBuyDialog.prototype.onClick = function (t) {
-    if (d.ButtonHelper.isButtonEnabled(t.target)) {
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.onTimerTick = function (e) {
+    if (this.eventVO.remainingEventTimeInSeconds < C.LuckyWheelData.MINIMUM_TIME_TO_ENABLE_SPIN) {
+      h.ButtonHelper.enableButton(this.dialogDisp.acceptBtn, false);
+    }
+  };
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.setTexts = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.titleTxt, new s.LocalizedTextVO("dialog_luckyWheel_guaranteedJackpot_header"));
+    this.textFieldManager.registerTextField(this.dialogDisp.descTxt, new s.LocalizedTextVO("dialog_luckyWheel_guaranteedJackpot_copy", [p.CastleModel.luckyWheelData.jackpotC2Price, p.CastleModel.luckyWheelData.jackpotTicketPrice]));
+    this.textFieldManager.registerTextField(this.dialogDisp.notAgainTxt, new s.LocalizedTextVO("dialog_luckyWheel_guaranteedJackpot_dontShow"));
+    this._ticketPriceText = this.textFieldManager.registerTextField(this.dialogDisp.ticketsTxt, new a.LocalizedNumberVO(p.CastleModel.luckyWheelData.jackpotTicketPrice));
+    this._c2PriceText = this.textFieldManager.registerTextField(this.dialogDisp.rubbiesTxt, new a.LocalizedNumberVO(p.CastleModel.luckyWheelData.jackpotC2Price));
+    this.colorizeTexts();
+    this.dialogDisp.ticketPriceTooltipArea.toolTipText = "tooltip_tickets";
+  };
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.colorizeTexts = function () {
+    if (this.eventVO.hasEnoughRubiesToBuyJackpot) {
+      this._c2PriceText.color = r.ClientConstColor.FONT_DEFAULT_COLOR;
+    } else {
+      this._c2PriceText.color = r.ClientConstColor.FONT_INSUFFICIENT_COLOR;
+    }
+    this.dialogDisp.c2PriceTooltipArea.toolTipText = l.ClientConstTextIds.C2;
+    if (this.eventVO.hasEnoughTicketsToBuyJackpot) {
+      this._ticketPriceText.color = r.ClientConstColor.FONT_DEFAULT_COLOR;
+    } else {
+      this._ticketPriceText.color = r.ClientConstColor.FONT_INSUFFICIENT_COLOR;
+    }
+  };
+  CastleLuckyWheelGuaranteedJackpotDialog.prototype.onClick = function (t) {
+    if (h.ButtonHelper.isButtonEnabled(t.target)) {
       e.prototype.onClick.call(this, t);
       switch (t.target) {
-        case this.dialogDisp.btn_close:
+        case this.dialogDisp.closeBtn:
+        case this.dialogDisp.cancelBtn:
           this.hide();
+          break;
+        case this.dialogDisp.acceptBtn:
+          this.willShowDialogAgain = !this.checkmarkComponent.isEnabled;
+          this.eventVO.willShowDialogAgain = this.willShowDialogAgain;
+          this.dialogProperties.clickAcceptCallback();
       }
     }
   };
-  CastleLuckyWheelTicketBuyDialog.prototype.onUserLifetimeSpentChanged = function (e) {
-    this.updatePackageList();
+  Object.defineProperty(CastleLuckyWheelGuaranteedJackpotDialog.prototype, "dialogProperties", {
+    get: function () {
+      return this.properties;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleLuckyWheelGuaranteedJackpotDialog.prototype, "eventVO", {
+    get: function () {
+      return this.dialogProperties.eventVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleLuckyWheelGuaranteedJackpotDialog.__initialize_static_members = function () {
+    CastleLuckyWheelGuaranteedJackpotDialog.NAME = "CastleLuckyWheelGuaranteedJackpotDialog";
   };
-  CastleLuckyWheelTicketBuyDialog.prototype.onRemoveSpecialEvent = function (e) {
-    if (e.specialEventVO.eventId == s.EventConst.EVENTTYPE_LUCKYWHEEL) {
-      this.hide();
-    } else {
-      this.updatePackageList();
-    }
-  };
-  CastleLuckyWheelTicketBuyDialog.prototype.onRefreshSpecialEvent = function (e) {
-    this.updatePackageList();
-  };
-  CastleLuckyWheelTicketBuyDialog.NAME = "CastleLuckyWheelTicketBuy";
-  return CastleLuckyWheelTicketBuyDialog;
-}(p.CastleExternalDialog);
-exports.CastleLuckyWheelTicketBuyDialog = g;
-var C = require("./4474.js");
-a.classImplementsInterfaces(g, "ICollectableRendererList");
+  return CastleLuckyWheelGuaranteedJackpotDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastleLuckyWheelGuaranteedJackpotDialog = g;
+var C = require("./475.js");
+var _ = require("./1146.js");
+o.classImplementsInterfaces(g, "ICollectableRendererList");
+g.__initialize_static_members();

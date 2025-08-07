@@ -1,14 +1,26 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = function (e) {
-  function CastleStandardYesNoDialogProperties(t, i, n = null, o = null, a = null, s = "", r = "", l = null) {
-    var c = e.call(this, t, i, n, o, a, s, r) || this;
-    c.params = l;
-    return c;
-  }
-  n.__extends(CastleStandardYesNoDialogProperties, e);
-  return CastleStandardYesNoDialogProperties;
-}(require("./2.js").BasicStandardYesNoDialogProperties);
-exports.CastleStandardYesNoDialogProperties = o;
+var n = function () {
+  function ClientBetaHelper() {}
+  ClientBetaHelper.setSupportContextMenu = function () {
+    if (r.ClientConstInstanceIDs.isBetaInstance() || s.instanceOfClass(a.EnvironmentProvider.instance.globals, "CastleEnvironmentGlobals") && a.EnvironmentProvider.instance.globals.isClosedBeta) {
+      o.BasicContextMenuController.instance.disableContextMenuItem(o.BasicContextMenuController.SUPPORT_LABEL);
+    } else {
+      o.BasicContextMenuController.instance.enableContextMenuItem(o.BasicContextMenuController.SUPPORT_LABEL);
+    }
+  };
+  Object.defineProperty(ClientBetaHelper, "isOnOpenBeta", {
+    get: function () {
+      return o.BasicModel.instanceProxy.selectedInstanceVO.instanceLocaId.indexOf("openbeta") > -1;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return ClientBetaHelper;
+}();
+exports.ClientBetaHelper = n;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./342.js");

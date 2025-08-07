@@ -2,16 +2,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SGetWeeklyHonorRankVO() {
-    return e.call(this) || this;
+var o = function (e) {
+  function CastleAllianceMemberSettingsDialogProperties(t) {
+    var i = e.call(this) || this;
+    i.playerInfoVO = t;
+    return i;
   }
-  n.__extends(C2SGetWeeklyHonorRankVO, e);
-  C2SGetWeeklyHonorRankVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_WEEKLY_HONOR_SCORE;
-  };
-  return C2SGetWeeklyHonorRankVO;
-}(o.BasicCommandVO);
-exports.C2SGetWeeklyHonorRankVO = s;
+  n.__extends(CastleAllianceMemberSettingsDialogProperties, e);
+  return CastleAllianceMemberSettingsDialogProperties;
+}(require("./2.js").BasicProperties);
+exports.CastleAllianceMemberSettingsDialogProperties = o;

@@ -1,54 +1,25 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function HospitalReviveSlotLevelHandlerComponent() {
-    this.init();
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SMoveUnitPackageVO(t, i, n) {
+    var o = this;
+    o.LID = 0;
+    o.OS = 0;
+    o.NS = 0;
+    CONSTRUCTOR_HACK;
+    (o = e.call(this) || this).LID = t;
+    o.OS = i;
+    o.NS = n;
+    return o;
   }
-  HospitalReviveSlotLevelHandlerComponent.prototype.init = function () {
-    this._slots = [];
-    for (var e = 0, t = Array.from(r.CastleModel.wodData.voSubList(o.CastleWodData.TYPE_BUILDING).values()); e < t.length; e++) {
-      var i = t[e];
-      if (i !== undefined && a.instanceOfClass(i, "HospitalBuildingVO")) {
-        var n = s.int(this.getHospitalIndex(i));
-        if (n >= 0) {
-          if (this._slots[n].level > i.level) {
-            this._slots[n] = i;
-          }
-        } else {
-          this._slots.push(i);
-        }
-      }
-    }
-    this._slots = this._slots.sort(HospitalReviveSlotLevelHandlerComponent.sortBySlotPos);
+  n.__extends(C2SMoveUnitPackageVO, e);
+  C2SMoveUnitPackageVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_MOVE_UNIT_PACKAGE;
   };
-  HospitalReviveSlotLevelHandlerComponent.prototype.getHospitalIndex = function (e) {
-    for (var t = 0; t < this._slots.length; t++) {
-      if (this._slots[t].hospitalSlots == e.hospitalSlots) {
-        return t;
-      }
-    }
-    return -1;
-  };
-  HospitalReviveSlotLevelHandlerComponent.sortBySlotPos = function (e, t) {
-    if (e.hospitalSlots > t.hospitalSlots) {
-      return 1;
-    } else if (e.hospitalSlots < t.hospitalSlots) {
-      return -1;
-    } else {
-      return 0;
-    }
-  };
-  HospitalReviveSlotLevelHandlerComponent.prototype.getHospitalLevelForSlotIndex = function (e) {
-    if (e >= this._slots.length || e < 0) {
-      throw new Error("slotId out of bounds");
-    }
-    return s.int(this._slots[e].level);
-  };
-  return HospitalReviveSlotLevelHandlerComponent;
-}();
-exports.HospitalReviveSlotLevelHandlerComponent = n;
-var o = require("./56.js");
-var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./4.js");
+  return C2SMoveUnitPackageVO;
+}(o.BasicCommandVO);
+exports.C2SMoveUnitPackageVO = s;

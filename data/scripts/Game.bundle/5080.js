@@ -3,38 +3,42 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function FFPCommand() {
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./5.js");
+var l = require("./7.js");
+var c = require("./4.js");
+var u = require("./10.js");
+var d = function (e) {
+  function AFDCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FFPCommand, e);
-  Object.defineProperty(FFPCommand.prototype, "cmdId", {
+  n.__extends(AFDCommand, e);
+  Object.defineProperty(AFDCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_START_FACTIONPROTECTION;
+      return l.ClientConstSF.S2C_GET_ATTACKABLE_FACTION_DATA_EVENT;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  FFPCommand.prototype.executeCommand = function (e, t) {
+  AFDCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
-      case a.ERROR.ALL_OK:
+      case s.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        r.CastleModel.specialEventData.parse_FN(i.FN);
+        var n = o.castAs(c.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_FACTION), "FactionEventVO");
+        if (n) {
+          n.parse_AFD(i);
+        }
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return FFPCommand;
-}(l.CastleCommand);
-exports.FFPCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return AFDCommand;
+}(u.CastleCommand);
+exports.AFDCommand = d;
+a.classImplementsInterfaces(d, "IExecCommand");

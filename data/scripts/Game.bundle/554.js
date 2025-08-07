@@ -10,9 +10,9 @@ var l = require("./318.js");
 var c = require("./157.js");
 var u = require("./20.js");
 var d = require("./8.js");
-var p = require("./117.js");
+var p = require("./115.js");
 var h = require("./361.js");
-var g = require("./1795.js");
+var g = require("./1797.js");
 var C = function (e) {
   function AttackDialogWaveHandlerSupportToolWaveInfoItemFoldOut(t, i) {
     var n = e.call(this, new (r.getDefinitionByName("WaveListItem_SupportWave_Fold"))(), i) || this;

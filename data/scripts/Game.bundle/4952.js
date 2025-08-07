@@ -4,68 +4,80 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./1.js");
+var s = require("./5.js");
 var r = require("./5.js");
 var l = require("./3.js");
-var c = require("./3.js");
-var u = require("./3.js");
-var d = require("./3.js");
-var p = require("./6.js");
-var h = require("./39.js");
-var g = require("./4.js");
-var C = function (e) {
-  function CastleBuySlotAndUnitDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleBuySlotAndUnitDialog.NAME) || this;
+var c = require("./6.js");
+var u = require("./7.js");
+var d = require("./4.js");
+var p = require("./4953.js");
+var h = require("./135.js");
+var g = require("./983.js");
+var C = require("./622.js");
+var _ = require("./10.js");
+var m = function (e) {
+  function BUPCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleBuySlotAndUnitDialog, e);
-  CastleBuySlotAndUnitDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    this.initBasicButtons([this.dialogDisp.btn_cancle, this.dialogDisp.btn_close, this.dialogDisp.btn_ok]);
-    this.textFieldManager.registerTextField(this.dialogDisp.info_costs.txt_value, new c.LocalizedNumberVO(this.buySlotDialogProperties.cost));
-    this.textFieldManager.registerTextField(this.dialogDisp.info_costs.txt_title, new u.LocalizedTextVO("costs"));
-    var t = "dialog_buyslotTool_copy";
-    if (s.instanceOfClass(this.buySlotDialogProperties.buyItemVO, "SoldierUnitVO")) {
-      t = "dialog_buyslotUnit_copy";
-    }
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new u.LocalizedTextVO(t));
-    this.dialogDisp.info_bonus.visible = false;
-    var i = p.int(r.UnitProductionConst.UNLOCK_DURATION);
-    var n = o.TimeStringHelper.getTimeToString(i, o.TimeStringHelper.TWO_TIME_FORMAT, l.Localize.text);
-    this.textFieldManager.registerTextField(this.dialogDisp.info_time.txt_value, new d.TextVO(n));
-    this.dialogDisp.info_time.toolTipText = "rentduration";
-    this.dialogDisp.info_costs.toolTipText = h.ClientConstTextIds.C2;
-    this.dialogDisp.info_costs.mc_discount.visible = g.CastleModel.boosterSaleData.hideDiscount();
-  };
-  CastleBuySlotAndUnitDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_cancle:
-      case this.dialogDisp.btn_close:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_ok:
-        this.hide();
-        if (this.buySlotDialogProperties.functionOk != null) {
-          this.buySlotDialogProperties.functionOk(this.buySlotDialogProperties.buyItemVO, this.buySlotDialogProperties.listId, this.buySlotDialogProperties.amount);
-        }
-        break;
-      case this.dialogDisp.btn_help:
-        _.CastleDialogHandler.getInstance().showHelper("", l.Localize.text("help_recuit_slot"));
-    }
-  };
-  Object.defineProperty(CastleBuySlotAndUnitDialog.prototype, "buySlotDialogProperties", {
+  n.__extends(BUPCommand, e);
+  Object.defineProperty(BUPCommand.prototype, "cmdId", {
     get: function () {
-      return this.properties;
+      return u.ClientConstSF.S2C_BUY_UNIT_PACKAGE;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(_.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleBuySlotAndUnitDialog.__initialize_static_members = function () {
-    CastleBuySlotAndUnitDialog.NAME = "CastleCostInfoEx";
+  BUPCommand.prototype.executeCommand = function (e, t) {
+    var i;
+    switch (e) {
+      case s.ERROR.ALL_OK:
+        i = JSON.parse(t[1]);
+        d.CastleModel.militaryData.parse_SPL(i.spl);
+        d.CastleModel.areaData.activeArea.updater.parseGRC(i.grc);
+        d.CastleModel.currencyData.parseGCU(i.gcu);
+        d.CastleModel.militaryData.parse_GUI(i.gui);
+        if (i.O && i.O != 0) {
+          d.CastleModel.militaryData.unitInventory.addUnit(i.O.W, i.O.AMT);
+        }
+        break;
+      case s.ERROR.NO_FREE_CONSTRUCTION_SLOT:
+        i = JSON.parse(t[1]);
+        var n = d.CastleModel.wodData.createVObyWOD(i.WID, f.CastleWodData.TYPE_UNIT);
+        var a = c.int(i.LID);
+        var u = c.int(i.AMT);
+        if (d.CastleModel.militaryData.getPackageListById(a).allSlotsBought()) {
+          O.CastleDialogHandler.getInstance().registerDefaultDialogs(b.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(l.Localize.text("generic_alert_information"), l.Localize.text("alert_no_free_unitslot")));
+          return false;
+        }
+        if (D.CostHelper.canAfford(n)) {
+          O.CastleDialogHandler.getInstance().registerDefaultDialogs(E.CastleBuySlotAndUnitDialog, new p.CastleBuySlotAndUnitDialogProperties(n, a, u, d.CastleModel.costsData.getFinalCostsC2(r.UnitProductionConst.UNLOCK_C2), this.bindFunction(this.onBuyItem)));
+        } else {
+          O.CastleDialogHandler.getInstance().registerDefaultDialogs(b.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(l.Localize.text("generic_alert_information"), l.Localize.text("errorCode_55")));
+        }
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    return false;
   };
-  return CastleBuySlotAndUnitDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleBuySlotAndUnitDialog = C;
-var _ = require("./9.js");
-a.classImplementsInterfaces(C, "ICollectableRendererList");
-C.__initialize_static_members();
+  BUPCommand.prototype.onBuyItem = function (e, t, i) {
+    if (d.CastleModel.militaryData.getPackageListById(t).playerCanBuyNextSlot()) {
+      d.CastleModel.smartfoxClient.sendCommandVO(new C.C2SUnlockPackageSlotVO(t));
+      d.CastleModel.smartfoxClient.sendCommandVO(new g.C2SBuyUnitPackageVO(t, e.wodId, i, d.CastleModel.kingdomData.activeKingdomID, d.CastleModel.permanentCastleData.getCurrentCastle().areaId));
+    } else {
+      O.CastleDialogHandler.getInstance().registerDefaultDialogs(y.CastleNoMoneyC2Dialog, new h.CastleNoMoneyC2DialogProperties());
+    }
+  };
+  return BUPCommand;
+}(_.CastleCommand);
+exports.BUPCommand = m;
+var f = require("./56.js");
+var O = require("./9.js");
+var E = require("./4954.js");
+var y = require("./138.js");
+var b = require("./38.js");
+var D = require("./66.js");
+a.classImplementsInterfaces(m, "IExecCommand");

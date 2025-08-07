@@ -2,64 +2,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function CastleKingstowerList() {
-    this._kingstowerList = [];
+  function PrivateResourceVillageVO(e, t) {
+    this._uniqueID = 0;
+    this._uniqueID = e;
+    this._villageInfo = t;
   }
-  CastleKingstowerList.prototype.parseGKL = function (e) {
-    if (e) {
-      this._kingstowerList = [];
-      for (var t = 0, i = e.AI; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          var s = new o.KingstowerMapobjectVO();
-          s.parseGKL(n);
-          s.ownerInfo = r.CastleModel.otherPlayerData.getOwnInfoVO();
-          this._kingstowerList.push(s);
-        }
-      }
-      this.controller.dispatchEvent(new a.CastleUserDataEvent(a.CastleUserDataEvent.CHANGE_KINGSTOWERLIST));
-    }
-  };
-  CastleKingstowerList.prototype.getVOByID = function (e) {
-    if (this._kingstowerList != null) {
-      for (var t = 0, i = this._kingstowerList; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.objectId === e) {
-          return n;
-        }
-      }
-    }
-    return null;
-  };
-  Object.defineProperty(CastleKingstowerList.prototype, "completeList", {
+  Object.defineProperty(PrivateResourceVillageVO.prototype, "uniqueID", {
     get: function () {
-      return this._kingstowerList;
+      return this._uniqueID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleKingstowerList.prototype, "kingstowerAmount", {
+  Object.defineProperty(PrivateResourceVillageVO.prototype, "villageInfo", {
     get: function () {
-      if (this._kingstowerList) {
-        return this._kingstowerList.length;
-      } else {
-        return 0;
-      }
+      return this._villageInfo;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleKingstowerList.prototype, "controller", {
-    get: function () {
-      return s.CastleBasicController.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleKingstowerList;
+  return PrivateResourceVillageVO;
 }();
-exports.CastleKingstowerList = n;
-var o = require("./508.js");
-var a = require("./32.js");
-var s = require("./15.js");
-var r = require("./4.js");
+exports.PrivateResourceVillageVO = n;

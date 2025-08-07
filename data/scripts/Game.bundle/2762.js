@@ -2,35 +2,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function IsoMovementWaypointVO(e, t, i) {
-    this._spawnBuildings = [];
-    this._targetBuildings = [];
-    this._visitBuildings = [];
-    this._spawnBuildings = e;
-    this._targetBuildings = t;
-    this._visitBuildings = i;
+  function IsoMovementSpawnProbability(e, t) {
+    this._from = 0;
+    this._to = 1;
+    this._from = e;
+    this._to = t;
   }
-  Object.defineProperty(IsoMovementWaypointVO.prototype, "spawnBuildings", {
+  IsoMovementSpawnProbability.prototype.isInInterval = function (e) {
+    return e >= this.from && e <= this.to;
+  };
+  Object.defineProperty(IsoMovementSpawnProbability.prototype, "from", {
     get: function () {
-      return this._spawnBuildings;
+      return this._from;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoMovementWaypointVO.prototype, "targetBuildings", {
+  Object.defineProperty(IsoMovementSpawnProbability.prototype, "to", {
     get: function () {
-      return this._targetBuildings;
+      return this._to;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoMovementWaypointVO.prototype, "visitBuildings", {
-    get: function () {
-      return this._visitBuildings;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IsoMovementWaypointVO;
+  return IsoMovementSpawnProbability;
 }();
-exports.IsoMovementWaypointVO = n;
+exports.IsoMovementSpawnProbability = n;

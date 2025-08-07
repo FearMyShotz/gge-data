@@ -21,7 +21,7 @@ var O = require("./251.js");
 var E = require("./8.js");
 var y = require("./11.js");
 var b = require("./466.js");
-var D = require("./1897.js");
+var D = require("./1899.js");
 var I = function (e) {
   function CastleBeggingKnightsDialog() {
     return e.call(this, CastleBeggingKnightsDialog.NAME) || this;
@@ -124,7 +124,7 @@ var I = function (e) {
 }(y.CastleExternalDialog);
 exports.CastleBeggingKnightsDialog = I;
 var T = require("./331.js");
-var v = require("./545.js");
+var v = require("./546.js");
 var S = require("./4388.js");
 var A = require("./4389.js");
 o.classImplementsInterfaces(I, "ICollectableRendererList");

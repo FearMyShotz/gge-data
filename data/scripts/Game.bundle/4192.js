@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./18.js");
 var s = require("./27.js");
-var r = require("./1876.js");
+var r = require("./1878.js");
 var l = function (e) {
   function ButtonConquerAttackComponent(t) {
     return e.call(this, t) || this;

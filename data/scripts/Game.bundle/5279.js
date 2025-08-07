@@ -3,59 +3,82 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./1.js");
-var l = require("./3.js");
-var c = function (e) {
-  function CastleLostPasswordCommand(t = false) {
-    var i = e.call(this, t) || this;
-    i.ALL_OK1 = 0;
-    i.GENERAL_ERROR1 = 1;
-    i.PLAYER_NOT_FOUND1 = 2;
-    return i;
+var a = require("./1.js");
+var s = require("./3.js");
+var r = require("./116.js");
+var l = require("./803.js");
+var c = require("./7.js");
+var u = require("./4.js");
+var d = require("./193.js");
+var p = require("./9.js");
+var h = require("./38.js");
+var g = require("./5280.js");
+var C = r.getLogger("Connection.CastleLoginCommand");
+var _ = function (e) {
+  function CastleLoginCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleLostPasswordCommand, e);
-  CastleLostPasswordCommand.prototype.execute = function (e = null) {
-    this.errorCode1 = e;
-    switch (this.errorCode1) {
-      case this.ALL_OK1:
-        this.all_ok();
-        break;
-      case this.GENERAL_ERROR1:
-        this.general_error();
-        break;
-      case this.PLAYER_NOT_FOUND1:
-        this.player_not_found();
-        break;
-      default:
-        o.CommandController.instance.executeCommand(o.BasicController.COMMAND_HANDLE_SERVER_ERROR, new o.ServerErrorVO(this.errorCode1, [], "lpp"));
+  n.__extends(CastleLoginCommand, e);
+  CastleLoginCommand.prototype.execute = function (e = null) {
+    o.BasicController.getInstance().onLogIn();
+    o.BasicModel.sessionData.loggedIn = true;
+    if (!m() && !f(e) && !O()) {
+      E();
     }
   };
-  CastleLostPasswordCommand.prototype.all_ok = function () {
-    e.prototype.all_ok.call(this);
-    s.EnvGlobalsHandler.globals.isFirstVisit &&= false;
-    u.CastleDialogHandler.getInstance().registerDialogs(p.CastleStandardOkDialog, new a.BasicStandardOkDialogProperties("", l.Localize.text("generic_change_password_copy_send")));
-  };
-  CastleLostPasswordCommand.prototype.general_error = function () {
-    e.prototype.general_error.call(this);
-    u.CastleDialogHandler.getInstance().registerDialogs(p.CastleStandardOkDialog, new a.BasicStandardOkDialogProperties(l.Localize.text("generic_alert_information"), l.Localize.text("errorCode_1")));
-  };
-  CastleLostPasswordCommand.prototype.player_not_found = function () {
-    e.prototype.player_not_found.call(this);
-    u.CastleDialogHandler.getInstance().registerDialogs(p.CastleStandardOkDialog, new a.BasicStandardOkDialogProperties(l.Localize.text("generic_alert_information"), l.Localize.text("errorCode_21")));
-  };
-  Object.defineProperty(CastleLostPasswordCommand.prototype, "layoutManager", {
-    get: function () {
-      return d.CastleLayoutManager.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleLostPasswordCommand;
-}(o.BasicLostPasswordCommand);
-exports.CastleLostPasswordCommand = c;
-var u = require("./9.js");
-var d = require("./17.js");
-var p = require("./38.js");
-r.classImplementsInterfaces(c, "ISimpleCommand");
+  return CastleLoginCommand;
+}(o.SimpleCommand);
+exports.CastleLoginCommand = _;
+a.classImplementsInterfaces(_, "ISimpleCommand");
+function m() {
+  var e = o.EnvGlobalsHandler.globals;
+  return e.pln !== "" && e.sig !== "" && (u.CastleModel.smartfoxClient.sendMessage(c.ClientConstSF.C2S_LOGIN_SOCIAL, [e.pln, e.sig, u.CastleModel.smartfoxClient.connectionTime, u.CastleModel.smartfoxClient.roundTripTime, e.referrer, e.networkId, e.accountId, e.suk, Math.round(new Date().getTimezoneOffset() * -1 / 60) + 13]), true);
+}
+function f(e) {
+  return e !== null && !!b(e) && (u.CastleModel.localData.saveFacebookID(e.userID), y(e), true);
+}
+function O() {
+  var e = u.CastleModel.localData.getFacebookID();
+  return !!e && (d.CastleFacebookModule.hasAuthResponse ? d.CastleFacebookModule.userID != e ? (C.warn("Facebook UserID we found in Cookies does not match with user currently logged in Facebook"), u.CastleModel.localData.deleteLoginData(), o.BasicLayoutManager.getInstance().state = o.BasicLayoutManager.STATE_STARTSCREEN) : y(d.facebookAuthResponse()) : (C.debug("found fb cookie " + e + " but user is not logged in,  show login panel"), u.CastleModel.localData.deleteLoginData(), o.BasicLayoutManager.getInstance().state = o.BasicLayoutManager.STATE_STARTSCREEN), true);
+}
+function E() {
+  var e = o.EnvGlobalsHandler.globals;
+  var t = new g.C2SLoginVO(u.CastleModel.userData.userName, u.CastleModel.userData.loginPwd, u.CastleModel.userData.loginToken, o.GGSCountryController.instance.currentCountry.ggsLanguageCode, e.distributorId, u.CastleModel.smartfoxClient.connectionTime, u.CastleModel.smartfoxClient.roundTripTime, e.accountId, e.referrer, e.identityManagementId, u.CastleModel.userData.persistentLogin);
+  D(t);
+  return true;
+}
+function y(e) {
+  var t = o.EnvGlobalsHandler.globals;
+  var i = new g.C2SLoginVO(null, null, null, o.GGSCountryController.instance.currentCountry.ggsLanguageCode, t.distributorId, u.CastleModel.smartfoxClient.connectionTime, u.CastleModel.smartfoxClient.roundTripTime, t.accountId, t.referrer, t.identityManagementId, u.CastleModel.userData.persistentLogin);
+  i.FID = e ? e.userID : d.CastleFacebookModule.userID;
+  i.FTK = e ? e.accessToken : d.CastleFacebookModule.accessToken;
+  i.FAID = d.CastleFacebookModule.appID;
+  D(i);
+}
+function b(e) {
+  return e.userID !== undefined && e.accessToken !== undefined && e.expiresIn !== undefined && e.signedRequest !== undefined;
+}
+function D(e, t = 20) {
+  try {
+    window.grecaptcha.ready(function () {
+      var t = l.ClientConstReCaptcha.getSiteKey();
+      window.grecaptcha.execute(t, {
+        action: "login"
+      }).then(function (t) {
+        e.RCT = t;
+        o.BasicDialogHandler.getInstance().blockDialogs = true;
+        o.BasicController.getInstance().sendCommandVOAndWait(e);
+      }).catch(function (e) {
+        p.CastleDialogHandler.getInstance().registerDialogs(h.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("errorCode_1")));
+      });
+    });
+  } catch (i) {
+    if (t > 0) {
+      window.setTimeout(function () {
+        D(e, t - 1);
+      }, 250);
+    } else {
+      p.CastleDialogHandler.getInstance().registerDialogs(h.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("errorCode_1")));
+    }
+  }
+}

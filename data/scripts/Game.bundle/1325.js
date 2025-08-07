@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./1.js");
 var s = require("./6.js");
-var r = require("./518.js");
+var r = require("./519.js");
 var l = function (e) {
   function PlaguemonkMapmovementVO() {
     var t = this;

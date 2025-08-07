@@ -3,25 +3,31 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./6.js");
-var l = require("./384.js");
-var c = function (e) {
-  function RenderSiege() {
+var a = require("./2.js");
+var s = require("./2.js");
+var r = require("./2.js");
+var l = require("./3.js");
+var c = require("./24.js");
+var u = require("./384.js");
+var d = function (e) {
+  function RenderPlaguemonk() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(RenderSiege, e);
-  RenderSiege.prototype.renderData = function (e, t) {
+  n.__extends(RenderPlaguemonk, e);
+  RenderPlaguemonk.prototype.renderData = function (e, t) {
     var i = t;
-    l.AMovementRenderStrategy.setDecoFrame(e, l.AMovementRenderStrategy.FRAME_MY_ATTACK);
-    e.btn_armyInfo.visible = true;
-    var n = r.int(i.inventory.getSoldierCount());
-    var c = r.int(i.inventory.getToolCount());
-    e.fieldUnitCount = this.textFieldManager.registerTextField(e.btn_armyInfo.txt_units, new a.LocalizedNumberVO(n), new o.InternalGGSTextFieldConfigVO(true));
-    e.fieldToolCount = this.textFieldManager.registerTextField(e.btn_armyInfo.txt_tools, new a.LocalizedNumberVO(c), new o.InternalGGSTextFieldConfigVO(true));
-    e.fieldAction = this.textFieldManager.registerTextField(e.txt_action, new s.LocalizedTextVO("dialog_moveOverview_siege"), new o.InternalGGSTextFieldConfigVO(true));
+    u.AMovementRenderStrategy.setDecoFrame(e, u.AMovementRenderStrategy.FRAME_SPY);
+    e.btn_spyInfo.visible = true;
+    e.fieldSpyCount.text = String(i.plagueMonkCount);
+    this.textFieldManager.registerTextField(e.btn_spyInfo.txt_spyRisk, new l.LocalizedTextVO(a.GenericTextIds.VALUE_PERCENTAGE, [i.plagueMonkRisk]), new s.InternalGGSTextFieldConfigVO(true));
+    r.MovieClipHelper.clearMovieClip(e.btn_spyInfo.icon_holder);
+    var n = new c.CastleGoodgameExternalClip("Icon_PlaqueC2R", o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("Icon_PlaqueC2R"));
+    n.clipSizeComponent = new o.ClipSizeComponent(25, 25);
+    e.btn_spyInfo.icon_holder.addChild(n);
+    e.btn_spyInfo.mc_icon.gotoAndStop(2);
+    this.textFieldManager.registerTextField(e.btn_spyInfo.txt_spyEffect, new l.LocalizedTextVO(a.GenericTextIds.VALUE_PERCENTAGE, [i.plagueDamage]), new s.InternalGGSTextFieldConfigVO(true));
+    e.fieldAction = this.textFieldManager.registerTextField(e.txt_action, new l.LocalizedTextVO("plaguemonks"), new s.InternalGGSTextFieldConfigVO(true));
   };
-  return RenderSiege;
-}(l.AMovementRenderStrategy);
-exports.RenderSiege = c;
+  return RenderPlaguemonk;
+}(u.AMovementRenderStrategy);
+exports.RenderPlaguemonk = d;

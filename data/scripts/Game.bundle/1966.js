@@ -1,16 +1,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = function (e) {
-  function CastleTempServerEventEvent(t, i = null, n = false, o = false) {
-    var a = e.call(this, t, n, o) || this;
-    a.params = i;
-    return a;
-  }
-  n.__extends(CastleTempServerEventEvent, e);
-  CastleTempServerEventEvent.TEMPSERVER_CHARGE_EFFECT_ARRIVED = "TEMPSERVER_CHARGE_EFFECT_ARRIVED";
-  CastleTempServerEventEvent.UPV_SENT = "UPV_SENT";
-  return CastleTempServerEventEvent;
-}(createjs.Event);
-exports.CastleTempServerEventEvent = o;
+var n = function () {
+  function CastleSpecialEventFactory() {}
+  CastleSpecialEventFactory.createByEventType = function (e) {
+    try {
+      e = e.substr(0, 1).toUpperCase() + e.substr(1);
+      return new (o.getDefinitionByName(e + "EventVO"))();
+    } catch (e) {
+      return null;
+    }
+  };
+  CastleSpecialEventFactory.__initialize_static_members = function () {
+    CastleSpecialEventFactory.EVENT_VO_CLASSPATH = "com.goodgamestudios.castle.model.components.specialevents.";
+  };
+  return CastleSpecialEventFactory;
+}();
+exports.CastleSpecialEventFactory = n;
+var o = require("./1.js");
+n.__initialize_static_members();

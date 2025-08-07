@@ -2,140 +2,102 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
 var r = require("./3.js");
 var l = require("./3.js");
-var c = require("./90.js");
-var u = require("./64.js");
-var d = require("./124.js");
-var p = createjs.Container;
-var h = function (e) {
-  function FactionCampMapobject() {
+var c = require("./6.js");
+var u = require("./28.js");
+var d = require("./90.js");
+var p = require("./64.js");
+var h = require("./124.js");
+var g = createjs.Container;
+var C = function (e) {
+  function DungeonIsleMapobject() {
     return e.call(this) || this;
   }
-  n.__extends(FactionCampMapobject, e);
-  FactionCampMapobject.prototype.initVisualRep = function () {
+  n.__extends(DungeonIsleMapobject, e);
+  DungeonIsleMapobject.prototype.initVisualRep = function () {
     if (!this.disp) {
-      this.disp = new p();
-      this.mapobjectVO.addEventListener(u.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
+      this.disp = new g();
+      this.mapobjectVO.addEventListener(p.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
     }
+    this.drawDungeonIsle();
+  };
+  DungeonIsleMapobject.prototype.drawDungeonIsle = function () {
     this.clearObjectContainer();
-    if (this.mapobjectVO.isVisibleOnMap && this.worldmapObjectVO.ownerInfo) {
-      this.objectContainer = this.vo.getDisplayObjectClipContainer(false, null, false);
-      if (this.worldmapObjectVO.ownerInfo.isFactionProtected || this.worldmapObjectVO.ownerInfo.isNoobProtected) {
-        if (this.worldmapObjectVO.isOwnMapobject) {
-          this.objectContainer.addItem(this.getAsExternalClip("Faction_Protection_Own", this.assetFileURL(C.WorldmapObjectIconHelper.FILE_NAME_FACTION_EVENT)));
-        } else {
-          this.objectContainer.addItem(this.getAsExternalClip("Faction_Protection_Other", this.assetFileURL(C.WorldmapObjectIconHelper.FILE_NAME_FACTION_EVENT)));
-        }
-      }
-      this.addMouseListener();
-      this.addObjectContainer();
-      if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0 && a.instanceOfClass(this.worldmapObjectVO, "FactionInteractiveMapobjectVO") && !this.worldmapObjectVO.isMyFaction) {
+    if (this.mapobjectVO.isVisibleOnMap) {
+      this.objectContainer = this.dungeonMapObjectVO.getDisplayObjectClipContainer(false, null, false);
+      if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0) {
         this.showFlames();
       }
+      this.addObjectContainer();
+      this.addMouseListener();
     }
   };
-  FactionCampMapobject.prototype.getFlamesClip = function () {
-    return this.getAsExternalClip("FactionCamp_FlamesLayer", this.assetFileURL(C.WorldmapObjectIconHelper.FILE_NAME_FACTION_EVENT));
+  DungeonIsleMapobject.prototype.showRingMenu = function () {
+    this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.SHOW_MENU, [this, d.CastleWorldmapEvent.RINGMENU_DUNGEONINFO]));
   };
-  FactionCampMapobject.prototype.showRingMenu = function () {
-    if (!this.vo.isDestroyed) {
-      this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.SHOW_MENU, [this, c.CastleWorldmapEvent.RINGMENU_CASTLEINFO]));
-      this.showOwnerLines();
-    }
-  };
-  FactionCampMapobject.prototype.onRollOver = function (t) {
+  DungeonIsleMapobject.prototype.onRollOver = function (t) {
     if (!this.worldmapRenderer.camera.isWorldDragging) {
       if (!this.hasRingMenu) {
-        this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
+        this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
       }
       e.prototype.onRollOver.call(this, t);
     }
   };
-  FactionCampMapobject.prototype.onMouseUp = function (t) {
-    if (!this.vo.isDestroyed) {
-      e.prototype.onMouseUp.call(this, t);
-      this.showOwnerLines();
-    }
-  };
-  FactionCampMapobject.prototype.onRollOut = function (t) {
-    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.INFOTOOLTIP, [false]));
+  DungeonIsleMapobject.prototype.onRollOut = function (t) {
+    this.worldmapRenderer.dispatchEvent(new d.CastleWorldmapEvent(d.CastleWorldmapEvent.INFOTOOLTIP, [false]));
     e.prototype.onRollOut.call(this, t);
   };
-  FactionCampMapobject.prototype.onDoubleClick = function () {
-    this.worldmapRenderer.dispatchEvent(new c.CastleWorldmapEvent(c.CastleWorldmapEvent.DOUBLE_CLICK_CASTLE, [this.mapobjectVO]));
-  };
-  FactionCampMapobject.prototype.remove = function () {
-    this.mapobjectVO.removeEventListener(u.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
-    e.prototype.remove.call(this);
-  };
-  Object.defineProperty(FactionCampMapobject.prototype, "line1Content", {
+  Object.defineProperty(DungeonIsleMapobject.prototype, "dungeonMapObjectVO", {
     get: function () {
-      var e = this.vo;
-      var t = e.ownerInfo;
-      if (t && !e.isDestroyed) {
-        return new l.TextVO(g.CastleTitleSystemHelper.getPlayerNameWithTitleFromPlayerInfo(t));
-      } else {
-        return new r.LocalizedTextVO("faction_camp");
-      }
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(d.InteractiveMapobject.prototype, "line1Content").set.call(this, e);
+      return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FactionCampMapobject.prototype, "line2Content", {
+  Object.defineProperty(DungeonIsleMapobject.prototype, "line2Content", {
     get: function () {
-      var e = this.vo;
-      var t = e.ownerInfo;
-      if (t && !e.isDestroyed) {
-        if (t.isRuin) {
-          return new r.LocalizedTextVO("ruin");
-        } else {
-          return new l.TextVO(this.getLevelString());
-        }
-      } else if (e.isDestroyed && e.ownerInfo) {
-        if (t.factionID == s.FactionConst.BLUE_FACTION) {
-          return new r.LocalizedTextVO("blue_faction");
-        } else {
-          return new r.LocalizedTextVO("red_faction");
-        }
-      } else {
-        return null;
-      }
+      return new l.LocalizedTextVO(o.GenericTextIds.VALUE_ASSIGN_COLON, [r.Localize.text("level"), this.dungeonMapObjectVO.dungeonLevel]);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(h.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FactionCampMapobject.prototype, "line3Content", {
+  Object.defineProperty(DungeonIsleMapobject.prototype, "line3Content", {
     get: function () {
-      var e = this.vo;
-      if (e.ownerInfo && !e.isDestroyed) {
-        if (e.ownerInfo.factionID == s.FactionConst.BLUE_FACTION) {
-          return new r.LocalizedTextVO("blue_faction");
-        } else {
-          return new r.LocalizedTextVO("red_faction");
-        }
+      if (this.dungeonMapObjectVO.remainingCooldownTimeInSeconds > 0) {
+        var e = a.TimeStringHelper.getShortTimeString(this.dungeonMapObjectVO.remainingCooldownTimeInSeconds * u.ClientConstTime.SEC_2_MILLISEC, a.TimeStringHelper.ONE_TIME_FORMAT);
+        return new l.LocalizedTextVO("eiland_dungeon_cooldownLocal", [e]);
+      }
+      var t = c.int(this.dungeonMapObjectVO.remainingVictories);
+      if (t > 1) {
+        return new l.LocalizedTextVO("eiland_dungeon_cooldownCountdown", [t]);
       } else {
-        return new r.LocalizedTextVO("mapobject_destroyed");
+        return new l.LocalizedTextVO("eiland_dungeon_cooldownCountdown_singular", [t]);
       }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(d.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(h.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return FactionCampMapobject;
-}(d.InteractiveMapobject);
-exports.FactionCampMapobject = h;
-var g = require("./106.js");
-var C = require("./70.js");
-o.classImplementsInterfaces(h, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+  Object.defineProperty(DungeonIsleMapobject.prototype, "isTimerToolTip", {
+    get: function () {
+      return this.dungeonMapObjectVO.remainingCooldownTimeInSeconds > 0;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(h.InteractiveMapobject.prototype, "isTimerToolTip").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return DungeonIsleMapobject;
+}(h.InteractiveMapobject);
+exports.DungeonIsleMapobject = C;
+s.classImplementsInterfaces(C, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");

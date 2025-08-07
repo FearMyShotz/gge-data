@@ -1,330 +1,277 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./3.js");
-var a = require("./57.js");
-var s = require("./199.js");
-var r = require("./207.js");
-var l = require("./15.js");
-var c = require("./4.js");
-var u = require("./17.js");
-var d = require("./63.js");
-var p = require("./470.js");
-var h = require("./836.js");
-var g = require("./554.js");
-var C = function () {
-  function AttackDialogController() {
-    this.onResizeDialog = new a.Signal();
-    this.hideDialog = new a.Signal();
-    this.onLordChanged = new a.Signal();
-    this.onSelectedWaveInfoSlotContainerChanged = new a.Signal();
-    this.onAutoFillALLSelectionChanged = new a.Signal();
-    this.onOpenUnitPicker = new a.Signal();
-    this.updateAllWaveInfo = new a.Signal();
-    this.onMouseOverWave = new a.Signal();
-    this.onMouseOutWave = new a.Signal();
-    this.onShowSpyInfo = new a.Signal();
-    this.onHideSpyInfo = new a.Signal();
-    this.onShowAutoFillOptions = new a.Signal();
-    this.onHideAutoFillOptions = new a.Signal();
-    this.onAutoFillAllWaves = new a.Signal();
-    this.showPlayerInfos = new a.Signal();
-    this.hidePlayerInfos = new a.Signal();
-    this.showTargetInfos = new a.Signal();
-    this.hideTargetInfos = new a.Signal();
-    this.openGeneralSelection = new a.Signal();
-    this.closeGeneralSelection = new a.Signal();
-    this.updateAutoFillSelections = new a.Signal();
-    this.onStartDrag = new a.Signal();
-    this.onStopDrag = new a.Signal();
-    this.onDetailViewSelectionChanged = new a.Signal();
-    this._selectedWaveIndex = -1;
-    this._selectedWaveName = "";
-    this.detailViewCachedData = {};
-    this.controllerReady = false;
-    this._expandWaveTrackingTemp = [];
-  }
-  AttackDialogController.prototype.initAttackVO = function (e) {
-    this.controllerReady = false;
-    this.attackVO = e;
-    this._selectedLordID = 0;
-    this._selectedLord = null;
-    this._autoFillSelected = new Map();
-    this._selectedWaveIndex = -1;
-    this._isWaveDetailView = false;
-    this._selectedDetailView = 0;
-    this.setSelectedWaveInfoSlotMC(null, null, -1);
-    this._attackAdvisorType = r.AdvisorAttackHelper.getAdvisorTypeByAreaType(this.attackVO.targetArea.areaType);
+var n = function () {
+  function CastleTitleSystemHelper() {}
+  CastleTitleSystemHelper.setTitleSystemIcon = function (e, t, i) {
+    d.MovieClipHelper.clearMovieClip(e);
+    if (s.ClientConstTitle.VALID_TITLE_SYSTEMS.indexOf(t) != -1) {
+      var n = "TitleSystemIcon_" + t;
+      var o = new T.CastleGoodgameExternalClip(n, l.BasicModel.basicLoaderData.getVersionedItemAssetUrl(n), null, 0, false);
+      var a = new c.ClipSizeComponent(i.x, i.y);
+      a.clipSizeChanged.add(CastleTitleSystemHelper.onClipSizeChanged);
+      o.clipSizeComponent = a;
+      e.addChild(o.asDisplayObject());
+      e.toolTipText = CastleTitleSystemHelper.getTitleSystemTextID(t);
+      e.mouseChildren = false;
+    }
   };
-  AttackDialogController.prototype.changeSelectionForAutoFill = function (e, t) {
-    if (e == AttackDialogController.AUTOFILL_SELECTION_ALL) {
-      for (var i = Array.from(this._autoFillSelected.keys()), n = 0; n < i.length; n++) {
-        if (i[n] != AttackDialogController.AUTOFILL_SELECTION_POSITION_RIGHT && i[n] != AttackDialogController.AUTOFILL_SELECTION_POSITION_LEFT && i[n] != AttackDialogController.AUTOFILL_SELECTION_POSITION_MIDDLE) {
-          this._autoFillSelected.set(i[n], t);
+  CastleTitleSystemHelper.onClipSizeChanged = function (e) {
+    var t = e.asDisplayObject();
+    t.x = e.clipSizeComponent.offsetX;
+    t.y = e.clipSizeComponent.offsetY;
+  };
+  CastleTitleSystemHelper.getTitleSystemTextID = function (e, t = true) {
+    var i = t ? "_plural" : "_singular";
+    var n = "";
+    switch (e) {
+      case s.ClientConstTitle.GLORY_TITLE:
+        n = s.ClientConstTitle.SYSTEM_GLORY_TEXT;
+        break;
+      case s.ClientConstTitle.BRAVERY_TITLE:
+        n = s.ClientConstTitle.SYSTEM_FACTION_TEXT;
+        break;
+      case s.ClientConstTitle.ISLAND_TITLE:
+        n = s.ClientConstTitle.SYSTEM_ISLAND_TEXT;
+    }
+    return n + i;
+  };
+  CastleTitleSystemHelper.getTitleSystemPointsTextID = function (e) {
+    switch (e) {
+      case s.ClientConstTitle.GLORY_TITLE:
+        return "dialog_fame_fame";
+      case s.ClientConstTitle.BRAVERY_TITLE:
+        return "dialog_berimond_nobilityPoints";
+    }
+    return "";
+  };
+  CastleTitleSystemHelper.isIslandKing = function (e) {
+    return !!e.playerPrefix && !!e.playerPrefix.boni && e.playerPrefix.isKing || !!e.playerSuffix && !!e.playerSuffix.boni && e.playerSuffix.isKing;
+  };
+  CastleTitleSystemHelper.getAttackBoost = function (e, t, i) {
+    return E.int(CastleTitleSystemHelper.returnTitleEffectValue(D.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS, -1, t, i).strength);
+  };
+  CastleTitleSystemHelper.returnTitleEffectValues = function (e, t = -1, i = -1, n = -1) {
+    var o = new e[0].valueClass();
+    if (e != null) {
+      for (var a = 0, s = e; a < s.length; a++) {
+        var r = s[a];
+        if (r !== undefined) {
+          o.add(CastleTitleSystemHelper.returnTitleEffectValue(r, t, i, n), null);
         }
       }
+    }
+    return o;
+  };
+  CastleTitleSystemHelper.returnTitleEffectValue = function (e, t = -1, i = -1, n = -1) {
+    var o = new e.valueClass();
+    if (g.TreasureMapsConst.CRUSADE_MAP_IDS.indexOf(n) > -1) {
+      return o;
     } else {
-      this._autoFillSelected.set(e, t);
-    }
-    this.onAutoFillALLSelectionChanged.dispatch();
-    if (this.isAutoFillSaveSelected && !c.CastleModel.tutorialData.isTutorialActive) {
-      this.saveAttackFilterOptions(false);
+      return (o = I.CastleEffectsHelper.getTotalEffectValue(this.returnTitleEffectsByType(e, new b.CastleEffectConditionVO(i, n, t)), true)) || new e.valueClass();
     }
   };
-  AttackDialogController.prototype.getIsWaveSelectedForAutoFill = function (e) {
-    if (this.isWaveDetailView && e != AttackDialogController.AUTOFILL_SELECTION_POSITION_LEFT && e != AttackDialogController.AUTOFILL_SELECTION_POSITION_MIDDLE && e != AttackDialogController.AUTOFILL_SELECTION_POSITION_RIGHT) {
-      return this._selectedDetailView == e;
+  CastleTitleSystemHelper.returnTitleEffectsByType = function (e, t = null) {
+    t = t || new b.CastleEffectConditionVO();
+    if (g.TreasureMapsConst.CRUSADE_MAP_IDS.indexOf(t.spaceId) > -1) {
+      return [];
+    }
+    var i = [];
+    y.CastleModel.titleData.thisUsersTitles.forEach(function (n) {
+      if (n.hasEffects()) {
+        var o = n.getBonusVOByEffectType(e);
+        if (o && o.matchesConditions(e, t.areaType, t.spaceId, t.wodId, t.otherPlayer)) {
+          i.push(o);
+        }
+      }
+    });
+    return i;
+  };
+  CastleTitleSystemHelper.isWodIdUnlocked = function (e) {
+    for (var t = 0, i = y.CastleModel.titleData.thisUsersTitles; t < i.length; t++) {
+      var n = i[t];
+      if (n !== undefined) {
+        for (var o = 0, a = n.boni; o < a.length; o++) {
+          var s = a[o];
+          if (s !== undefined) {
+            if (p.instanceOfClass(s.effectValue, "EffectValueWodID")) {
+              if (s.effectValue.hasWodId(e)) {
+                return true;
+              }
+            } else if (s.strength == e) {
+              return true;
+            }
+          }
+        }
+      }
+    }
+    return false;
+  };
+  CastleTitleSystemHelper.getPlayerNameWithTitleFromPlayerInfo = function (e) {
+    if (e.playerPrefix && e.playerSuffix && e.playerPrefix != o.CastleTitleData.NULL_TITLE && e.playerSuffix != o.CastleTitleData.NULL_TITLE) {
+      var t = "";
+      if (CastleTitleSystemHelper.needsJapaneseSuffixSuffix) {
+        t = "_jap";
+        if (e.playerPrefix.isKing) {
+          t += "_stormlord";
+        }
+      }
+      return m.Localize.text("playerTitle_composition_prefix_suffix", [new f.LocalizedTextVO(e.playerPrefix.textID), new O.TextVO(e.playerName), new f.LocalizedTextVO(e.playerSuffix.textID + t)]);
+    }
+    if (e.playerPrefix && e.playerPrefix != o.CastleTitleData.NULL_TITLE) {
+      return m.Localize.text("playerTitle_composition_prefix", [new f.LocalizedTextVO(e.playerPrefix.textID), new O.TextVO(e.playerName)]);
     } else {
-      return !!this.isWaveActive(e) && (this._autoFillSelected.has(e) ? this._autoFillSelected.get(e) : (this._autoFillSelected.set(e, true), true));
+      return e.playerName;
     }
   };
-  AttackDialogController.prototype.isWaveActive = function (e) {
-    if (e == g.AttackDialogWaveHandlerSupportToolWaveInfoItemFoldOut.CONST_WAVE_NAME) {
-      return p.AttackDialogHelper.canUseSupportTools();
+  Object.defineProperty(CastleTitleSystemHelper, "needsJapaneseSuffixSuffix", {
+    get: function () {
+      return u.GGSCountryController.instance.currentCountry.ggsLanguageCode == r.BasicConstants.LANGUAGE_JAPANESE || u.GGSCountryController.instance.currentCountry.ggsLanguageCode == r.BasicConstants.LANGUAGE_CHINESE_SIMPLE || u.GGSCountryController.instance.currentCountry.ggsLanguageCode == r.BasicConstants.LANGUAGE_CHINESE_TRADITIONAL;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleTitleSystemHelper.getTitleRewardText = function (e) {
+    if (e.rewardID > -1) {
+      var t = "";
+      for (var i = 0, n = y.CastleModel.rewardData.getListById(e.rewardID).list; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          if (t != "") {
+            t += " ";
+          }
+          t += m.Localize.text("generic_amount_reward", [o.amount, o.getTooltipTextId()]);
+        }
+      }
+      return new f.LocalizedTextVO(t);
+    }
+    if (e.boni) {
+      var s;
+      var r = e.boni;
+      if (e.hasOneOrMoreEffectTypes([D.EffectTypeEnum.EFFECT_TYPE_RECRUITMENT_SPEED_BOOST])) {
+        s = e.getBoniVOByFirstFoundEffectType([D.EffectTypeEnum.EFFECT_TYPE_RECRUITMENT_SPEED_BOOST]);
+        var l = y.CastleModel.wodData.createVObyWOD(s.effectValue.firstWodID, a.CastleWodData.TYPE_UNIT);
+        return new f.LocalizedTextVO("dialog_nobility_rewardRecruitementSpeedBoost", [s.strength, l.getNameString()]);
+      }
+      if (e.hasOneOrMoreEffectTypes([D.EffectTypeEnum.EFFECT_TYPE_RECRUITMENT_COST_DECREASE])) {
+        s = e.getBoniVOByFirstFoundEffectType([D.EffectTypeEnum.EFFECT_TYPE_RECRUITMENT_COST_DECREASE]);
+        var c = y.CastleModel.wodData.createVObyWOD(s.effectValue.firstWodID, a.CastleWodData.TYPE_UNIT);
+        return new f.LocalizedTextVO("dialog_fame_rewardBoost", [s.strength, m.Localize.text(c.getNameString())]);
+      }
+      if (e.hasAllEffectTypes([D.EffectTypeEnum.EFFECT_TYPE_ENEMY_FAME_BOOST, D.EffectTypeEnum.EFFECT_TYPE_ENEMY_LOOT_BOOST])) {
+        return new f.LocalizedTextVO("dialog_eiland_fameLoot_malus", [e.getBoniVOByFirstFoundEffectType([D.EffectTypeEnum.EFFECT_TYPE_ENEMY_FAME_BOOST, D.EffectTypeEnum.EFFECT_TYPE_ENEMY_LOOT_BOOST]).strength]);
+      }
+      if (r != null) {
+        for (var u = 0, d = r; u < d.length; u++) {
+          var p = d[u];
+          if (p !== undefined) {
+            var g = p.effect;
+            switch (p.effect.effectTypeID) {
+              case D.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_YARD.id:
+                return new f.LocalizedTextVO("dialog_nobility_rewardAttackIncreaseYard", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_ATTACK_BOOST_YARD).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BOOST.id:
+                return new f.LocalizedTextVO("dialog_eiland_publicOrder_malus", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BOOST).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_SPY_COUNT_BOOST.id:
+                return new f.LocalizedTextVO("dialog_eiland_spy_bonus", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_SPY_COUNT_BOOST).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_TOOL_PRODUCTION_SPEED_BOOST.id:
+                return new f.LocalizedTextVO("dialog_nobility_rewardToolProductionSpeedBoost", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_TOOL_PRODUCTION_SPEED_BOOST).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_ENABLE_UNITS.id:
+                var O = y.CastleModel.wodData.createVObyWOD(p.strength, a.CastleWodData.TYPE_UNIT);
+                return new f.LocalizedTextVO("dialog_fame_rewardUnlockUnit", [O.getNameString()]);
+              case D.EffectTypeEnum.EFFECT_TYPE_ATTACK_UNIT_AMOUNT_FLANK.id:
+                return new f.LocalizedTextVO("dialog_nobility_rewardUnitAmountIncreaseFlank", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_ATTACK_UNIT_AMOUNT_FLANK).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_ATTACK_UNIT_AMOUNT_FRONT.id:
+                return new f.LocalizedTextVO("dialog_nobility_rewardUnitAmountIncreaseFront", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_ATTACK_UNIT_AMOUNT_FRONT).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_FACTION_POINT_GAIN_BOOST.id:
+                return new f.LocalizedTextVO("dialog_nobility_rewardNobilityBoost", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_FACTION_POINT_GAIN_BOOST).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_MORALE_BOOST.id:
+                return new f.LocalizedTextVO("dialog_nobility_rewardMoralBoost", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_MORALE_BOOST).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_LOOT_BONUS.id:
+                return new f.LocalizedTextVO("dialog_nobility_rewardLootBoost", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_LOOT_BONUS).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_COIN_LOOT_BOOST.id:
+                return new f.LocalizedTextVO("dialog_fame_reward_C1Bonus", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_COIN_LOOT_BOOST).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_FAME_OFFENSE_BONUS.id:
+                return new f.LocalizedTextVO("dialog_fame_rewardFameBoost", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_FAME_OFFENSE_BONUS).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_ALLIANCE_FAME_GAIN_BOOST.id:
+                return new f.LocalizedTextVO("dialog_fame_AllyFameBoost_desc", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_ALLIANCE_FAME_GAIN_BOOST).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_AUXILIARY_CAPACITY_BOOST.id:
+                return new f.LocalizedTextVO("dialog_nobility_rewardAuxiliaryCapacity", [e.getBonusVOByEffectType(D.EffectTypeEnum.EFFECT_TYPE_AUXILIARY_CAPACITY_BOOST).strength]);
+              case D.EffectTypeEnum.EFFECT_TYPE_SPEED_BONUS.id:
+                if (p.effect.spaceIDs.length > 0 && p.effect.spaceIDs[0] == h.FactionConst.KINGDOM_ID) {
+                  return new f.LocalizedTextVO("dialog_nobility_rewardMovementBoost", [p.strength]);
+                } else {
+                  return new f.LocalizedTextVO("dialog_fame_rewardMovementBoost", [p.strength]);
+                }
+              case D.EffectTypeEnum.EFFECT_TYPE_FOOD_PRODUCTION_BOOST.id:
+                if (g.areaTypes.length == 1 && g.areaTypes[0] == _.WorldConst.AREA_TYPE_KINGDOM_CASTLE) {
+                  return new f.LocalizedTextVO("dialog_nobility_rewardFoodBoostKingdoms", [p.strength]);
+                } else if (g.spaceIDs.length == 1 && g.spaceIDs[0] == C.WorldClassic.KINGDOM_ID) {
+                  return new f.LocalizedTextVO("dialog_nobility_rewardFoodBoostMainKingdom", [p.strength]);
+                } else {
+                  return new f.LocalizedTextVO("dialog_eiland_foodProduction_bonus", [p.strength]);
+                }
+              case D.EffectTypeEnum.EFFECT_TYPE_ATTACK_BONUS.id:
+                if (g.effectID == CastleTitleSystemHelper.EFFECT_ATTACK_BONUS) {
+                  return new f.LocalizedTextVO("dialog_fame_rewardAttackBoost", [p.strength]);
+                }
+                if (g.effectID == CastleTitleSystemHelper.EFFECT_ATTACK_BONUS_PVP) {
+                  return new f.LocalizedTextVO("dialog_fame_rewardAttackBoostPvp", [p.strength]);
+                }
+                break;
+              default:
+                return new f.LocalizedTextVO(p.effect.defaultTextID, [p.strength]);
+            }
+          }
+        }
+      }
+    }
+    return new f.LocalizedTextVO("-");
+  };
+  CastleTitleSystemHelper.getSingleMoreImportantTitle = function (e) {
+    if (e.playerSuffix != null && e.playerSuffix != o.CastleTitleData.NULL_TITLE) {
+      return m.Localize.text(e.playerSuffix.textID);
+    } else if (e.playerPrefix != null && e.playerPrefix != o.CastleTitleData.NULL_TITLE) {
+      return m.Localize.text(e.playerPrefix.textID);
     } else {
-      return e == h.AttackDialogWaveHandlerFinalYardWaveInfoItem.CONST_WAVE_NAME || e == AttackDialogController.AUTOFILL_SELECTION_POSITION_RIGHT || e == AttackDialogController.AUTOFILL_SELECTION_POSITION_LEFT || e == AttackDialogController.AUTOFILL_SELECTION_POSITION_MIDDLE || e < this.attackVO.army.getWaveCount();
+      return e.playerName;
     }
   };
-  AttackDialogController.prototype.getNumberOfNormalWavesSelected = function () {
-    var e = 0;
-    for (var t = 0; t < this.attackVO.army.waves.length; t++) {
-      if (this.getIsWaveSelectedForAutoFill(t)) {
-        e++;
+  CastleTitleSystemHelper.getSummedEffectValueFromTitles = function (e, t) {
+    var i = 0;
+    if (e != null) {
+      for (var n = 0, o = e; n < o.length; n++) {
+        var a = o[n];
+        if (a !== undefined) {
+          i += a.getEffectValueByType(t).strength;
+        }
       }
     }
-    return e;
+    return i;
   };
-  AttackDialogController.prototype.isAnyFlankSelected = function () {
-    return this.getIsWaveSelectedForAutoFill(AttackDialogController.AUTOFILL_SELECTION_POSITION_LEFT) || this.getIsWaveSelectedForAutoFill(AttackDialogController.AUTOFILL_SELECTION_POSITION_MIDDLE) || this.getIsWaveSelectedForAutoFill(AttackDialogController.AUTOFILL_SELECTION_POSITION_RIGHT);
-  };
-  Object.defineProperty(AttackDialogController.prototype, "selectedLord", {
-    get: function () {
-      if (this._selectedLordID >= 0) {
-        return c.CastleModel.lordData.getLordByID(this._selectedLordID);
-      } else {
-        return this._selectedLord;
-      }
-    },
-    set: function (e) {
-      if (e && e.id >= 0) {
-        this._selectedLordID = e.id;
-        this._selectedLord = null;
-      } else {
-        this._selectedLordID = -1;
-        this._selectedLord = e;
-      }
-      this.updateAreEffects();
-      this.onLordChanged.dispatch();
-      l.CastleBasicController.getInstance().dispatchEvent(new s.CastleDialogEvent(s.CastleDialogEvent.ATTACK_SCREEN_LORD_SELECTED));
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AttackDialogController.prototype.updateAreEffects = function () {
-    if (this.selectedLord) {
-      if (this.attackVO.additionalEffects) {
-        this.selectedLord.areaEffects = this.attackVO.additionalEffects.effects;
-      } else {
-        this.selectedLord.areaEffects = [];
-      }
-    }
-  };
-  Object.defineProperty(AttackDialogController.prototype, "selectedWaveInfo", {
-    get: function () {
-      return this._selectedWaveInfo;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AttackDialogController.prototype, "selectedWaveInfoSlotContainer", {
-    get: function () {
-      return this._selectedWaveInfoSlotContainer;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AttackDialogController.prototype, "selectedWaveIndex", {
-    get: function () {
-      return this._selectedWaveIndex;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AttackDialogController.prototype, "selectedWaveName", {
-    get: function () {
-      return this._selectedWaveName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AttackDialogController.prototype.setSelectedWaveInfoSlotMC = function (e, t, i, n = "") {
-    if (this._selectedWaveInfoSlotContainer == e && e != null) {
-      e = null;
-      t = null;
-      i = -1;
-      n = "";
-    }
-    this._selectedWaveInfoSlotContainer = e;
-    this._selectedWaveName = n;
-    this._selectedWaveInfo = t;
-    this._selectedWaveIndex = i;
-    this.onSelectedWaveInfoSlotContainerChanged.dispatch();
-  };
-  AttackDialogController.prototype.setSelectedWaveIndex = function (e) {
-    this._selectedWaveIndex = e;
-    this.onSelectedWaveInfoSlotContainerChanged.dispatch();
-  };
-  AttackDialogController.prototype.setPresetPicker = function (e) {
-    this.presetPicker = e;
-  };
-  AttackDialogController.prototype.setAutoFillOptions = function (e) {
-    this.autoFillOptions = e;
-  };
-  AttackDialogController.prototype.saveAttackFilterOptions = function (e) {
-    if (e) {
-      c.CastleModel.localData.saveAttackDialogSelections(null);
-    } else if (this.autoFillOptions && this._autoFillSelected && this.presetPicker.selectedPreset) {
-      var t = {
-        toolFilter: Array.from(this.autoFillOptions.toolFilter.entries()),
-        unitFilter: Array.from(this.autoFillOptions.unitFilter.entries()),
-        waveFilter: Array.from(this._autoFillSelected.entries()),
-        presetIndex: this.presetPicker.selectedPreset.index
-      };
-      c.CastleModel.localData.saveAttackDialogSelections(t);
-    }
-  };
-  Object.defineProperty(AttackDialogController.prototype, "isAutoFillSaveSelected", {
-    get: function () {
-      return !!c.CastleModel.localData.getAttackDialogSelections();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AttackDialogController.prototype.applySavedFilterOptions = function () {
-    var e = this;
-    var t = c.CastleModel.localData.getAttackDialogSelections();
-    this.controllerReady = true;
-    if (t) {
-      if (t.toolFilter) {
-        t.toolFilter.forEach(function (t) {
-          e.autoFillOptions.setToolFilter(t[0], t[1]);
-        });
-      }
-      if (t.unitFilter) {
-        t.unitFilter.forEach(function (t) {
-          e.autoFillOptions.setUnitFilter(t[0], t[1]);
-        });
-      }
-      if (t.waveFilter) {
-        t.waveFilter.forEach(function (t) {
-          e._autoFillSelected.set(t[0], t[1]);
-        });
-      }
-      this.autoFillOptions.fillLeftFlank = this.getIsWaveSelectedForAutoFill(AttackDialogController.AUTOFILL_SELECTION_POSITION_LEFT);
-      this.autoFillOptions.fillRightFlank = this.getIsWaveSelectedForAutoFill(AttackDialogController.AUTOFILL_SELECTION_POSITION_RIGHT);
-      this.autoFillOptions.fillMiddleFlank = this.getIsWaveSelectedForAutoFill(AttackDialogController.AUTOFILL_SELECTION_POSITION_MIDDLE);
-      if (this.presetPicker.isInit()) {
-        this.presetPicker.selectIndex(t.presetIndex);
-      } else {
-        this.presetPicker.onDataChangeHandled.add(this.bindFunction(this.onPresetsLoaded));
-      }
-      this.updateAutoFillSelections.dispatch();
-      this.updateAllWaveInfo.dispatch();
-    }
-  };
-  AttackDialogController.prototype.onPresetsLoaded = function () {
-    this.presetPicker.onDataChangeHandled.remove(this.bindFunction(this.onPresetsLoaded));
-    var e = c.CastleModel.localData.getAttackDialogSelections();
-    this.presetPicker.selectIndex(e.presetIndex);
-  };
-  Object.defineProperty(AttackDialogController.prototype, "draggedUnitVO", {
-    get: function () {
-      return this._draggedUnitVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AttackDialogController.prototype.startDrag = function (e) {
-    this.stopDrag();
-    this._draggedUnitVO = e;
-    this._draggedUnitMC = d.WodPicHelper.addPlayerUnitPic(this._draggedUnitVO, null, AttackDialogController.DRAG_UNIT_WIDTH, AttackDialogController.DRAG_UNIT_HEIGHT);
-    u.CastleLayoutManager.getInstance().nativeCursor.startDrag(this._draggedUnitMC);
-    this.onStartDrag.dispatch();
-  };
-  AttackDialogController.prototype.stopDrag = function () {
-    u.CastleLayoutManager.getInstance().nativeCursor.stopDrag(this._draggedUnitMC);
-    this._draggedUnitVO = null;
-    this._draggedUnitMC = null;
-    this.onStopDrag.dispatch();
-  };
-  Object.defineProperty(AttackDialogController.prototype, "isWaveDetailView", {
-    get: function () {
-      return this._isWaveDetailView;
-    },
-    set: function (e) {
-      this._isWaveDetailView = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AttackDialogController.prototype, "selectedDetailView", {
-    get: function () {
-      return this._selectedDetailView;
-    },
-    set: function (e) {
-      this._selectedDetailView = e;
-      this.onAutoFillALLSelectionChanged.dispatch();
-      this.onDetailViewSelectionChanged.dispatch();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AttackDialogController.prototype.addToExpandWaveTrackingTemp = function (e) {
-    this._expandWaveTrackingTemp.push(e);
-  };
-  AttackDialogController.prototype.trackExpandWaves = function (e) {
-    this._expandWaveTrackingTemp.toString();
-    this._expandWaveTrackingTemp = [];
-  };
-  AttackDialogController.prototype.openSpyInfoFlank = function (e) {
-    switch (e) {
-      case "left":
-        AttackDialogController.getInstance().onShowSpyInfo.dispatch(AttackDialogController.getInstance().attackVO.spyInfo.itemsLeft, o.Localize.text("dialog_spyLog_flankSpy"), true, false, false, true, "left");
-        break;
-      case "right":
-        AttackDialogController.getInstance().onShowSpyInfo.dispatch(AttackDialogController.getInstance().attackVO.spyInfo.itemsRight, o.Localize.text("dialog_spyLog_flankSpy"), true, false, false, true, "right");
-        break;
-      case "middle":
-        AttackDialogController.getInstance().onShowSpyInfo.dispatch(AttackDialogController.getInstance().attackVO.spyInfo.itemsMiddle, o.Localize.text("dialog_spyLog_frontSpy"), true, true, false, true, "middle");
-        break;
-      case "keep":
-        AttackDialogController.getInstance().onShowSpyInfo.dispatch(AttackDialogController.getInstance().attackVO.spyInfo.itemsKeep, o.Localize.text("dialog_spyLog_keepSpy"), false, false, false, true, "keep");
-    }
-  };
-  Object.defineProperty(AttackDialogController.prototype, "attackAdvisorType", {
-    get: function () {
-      return this._attackAdvisorType;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AttackDialogController.prototype.isAttackAdvisorAvailable = function () {
-    return this._attackAdvisorType > 0 && this._selectedLordID >= 0 && r.AdvisorAttackHelper.getAdvisorActivationInfo(this._attackAdvisorType).advisorActivationCurrencyId > 0;
-  };
-  AttackDialogController.getInstance = function () {
-    AttackDialogController.controller ||= new AttackDialogController();
-    return AttackDialogController.controller;
-  };
-  AttackDialogController.__initialize_static_members = function () {};
-  AttackDialogController.AUTOFILL_SELECTION_POSITION_RIGHT = "right";
-  AttackDialogController.AUTOFILL_SELECTION_POSITION_LEFT = "left";
-  AttackDialogController.AUTOFILL_SELECTION_POSITION_MIDDLE = "middle";
-  AttackDialogController.AUTOFILL_SELECTION_ALL = "all";
-  AttackDialogController.DRAG_UNIT_WIDTH = 50;
-  AttackDialogController.DRAG_UNIT_HEIGHT = 50;
-  return AttackDialogController;
+  CastleTitleSystemHelper.EFFECT_ATTACK_BONUS_PVP = 47;
+  CastleTitleSystemHelper.EFFECT_ATTACK_BONUS = 48;
+  return CastleTitleSystemHelper;
 }();
-exports.AttackDialogController = C;
-n.classImplementsInterfaces(C, "ICollectableRendererList");
-C.__initialize_static_members();
+exports.CastleTitleSystemHelper = n;
+var o = require("./566.js");
+var a = require("./56.js");
+var s = require("./188.js");
+var r = require("./2.js");
+var l = require("./2.js");
+var c = require("./2.js");
+var u = require("./2.js");
+var d = require("./2.js");
+var p = require("./1.js");
+var h = require("./5.js");
+var g = require("./5.js");
+var C = require("./5.js");
+var _ = require("./5.js");
+var m = require("./3.js");
+var f = require("./3.js");
+var O = require("./3.js");
+var E = require("./6.js");
+var y = require("./4.js");
+var b = require("./142.js");
+var D = require("./33.js");
+var I = require("./110.js");
+var T = require("./24.js");

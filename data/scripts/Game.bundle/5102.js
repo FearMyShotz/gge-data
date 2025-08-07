@@ -8,13 +8,27 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function LWSCommand() {
+  function LWJCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(LWSCommand, e);
-  Object.defineProperty(LWSCommand.prototype, "cmdId", {
+  n.__extends(LWJCommand, e);
+  LWJCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.luckyWheelData.parseLWJ(i);
+        r.CastleModel.luckyWheelData.onWinningCategoryReceived();
+        this.layoutManager.hideDialog(u.CastleLuckyWheelGuaranteedJackpotDialog);
+        break;
+      default:
+        r.CastleModel.luckyWheelData.showGuaranteedJackpotDialog = true;
+        this.showErrorDialog(e, t);
+    }
+    return false;
+  };
+  Object.defineProperty(LWJCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_LUCKY_WHEEL_SPIN;
+      return s.ClientConstSF.S2C_LUCKY_WHEEL_BUY_JACKPOT;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,24 +36,8 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  LWSCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        if (i.LWET && i.LWET == 1) {
-          r.CastleModel.saleDaysLuckyWheelData.parseLWS(i);
-          r.CastleModel.saleDaysLuckyWheelData.onWinningCategoryReceived();
-        } else {
-          r.CastleModel.luckyWheelData.parseLWS(i);
-          r.CastleModel.luckyWheelData.onWinningCategoryReceived();
-        }
-        break;
-      default:
-        this.showErrorDialog(e, t);
-    }
-    return false;
-  };
-  return LWSCommand;
+  return LWJCommand;
 }(l.CastleCommand);
-exports.LWSCommand = c;
+exports.LWJCommand = c;
+var u = require("./1916.js");
 o.classImplementsInterfaces(c, "IExecCommand");

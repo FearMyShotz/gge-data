@@ -104,6 +104,6 @@ var g = function (e) {
 }(p.CastleExternalDialog);
 exports.CastleVIPBuyPointsTimeDialog = g;
 var C = require("./12.js");
-var _ = require("./2617.js");
+var _ = require("./2618.js");
 a.classImplementsInterfaces(g, "ICollectableRendererList");
 g.__initialize_static_members();

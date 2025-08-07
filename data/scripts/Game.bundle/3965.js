@@ -9,7 +9,7 @@ var r = require("./5.js");
 var l = require("./3.js");
 var c = require("./26.js");
 var u = require("./4.js");
-var d = require("./670.js");
+var d = require("./672.js");
 var p = require("./141.js");
 var h = function (e) {
   function StatusIconFactionProtection() {
@@ -69,4 +69,4 @@ exports.StatusIconFactionProtection = h;
 var g = require("./202.js");
 var C = require("./9.js");
 var _ = require("./17.js");
-var m = require("./671.js");
+var m = require("./673.js");

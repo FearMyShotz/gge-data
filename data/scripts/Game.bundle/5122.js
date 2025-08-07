@@ -4,33 +4,36 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
-var s = require("./10.js");
-var r = require("./7.js");
-var l = function (e) {
-  function SEDECommand() {
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function TEECommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SEDECommand, e);
-  Object.defineProperty(SEDECommand.prototype, "cmdId", {
+  n.__extends(TEECommand, e);
+  Object.defineProperty(TEECommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_SELECT_EVENT_AUTO_SCALING_DIFFICULTY_EVENT;
+      return s.ClientConstSF.S2C_TRIGGER_EVENT_INFO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  SEDECommand.prototype.executeCommand = function (e, t) {
+  TEECommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.specialEventData.parseTEE(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return true;
   };
-  return SEDECommand;
-}(s.CastleCommand);
-exports.SEDECommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  return TEECommand;
+}(l.CastleCommand);
+exports.TEECommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

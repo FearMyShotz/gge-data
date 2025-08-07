@@ -2,46 +2,34 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./1.js");
-var o = require("./6.js");
-var a = require("./60.js");
-var s = function () {
-  function OfferDescriptionAdditionalIsTimeless() {
-    this._isTimeless = false;
-    this._totalSeconds = 0;
+var o = require("./60.js");
+var a = function () {
+  function OfferDescriptionAdditionalIsInviteeConversionOffer() {
+    this._isInvitation = false;
   }
-  Object.defineProperty(OfferDescriptionAdditionalIsTimeless.prototype, "name", {
+  Object.defineProperty(OfferDescriptionAdditionalIsInviteeConversionOffer.prototype, "name", {
     get: function () {
-      return a.ClientConstOffer.OFFER_ADDITIONAL_IS_TIMELESS;
+      return o.ClientConstOffer.OFFER_ADDITIONAL_IS_INVITATION;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionAdditionalIsTimeless.prototype.registerRewardParameter = function (e) {
+  OfferDescriptionAdditionalIsInviteeConversionOffer.prototype.registerRewardParameter = function (e) {
     e.addEntry(this.name, this);
   };
-  OfferDescriptionAdditionalIsTimeless.prototype.parseFromObjectParam = function (e) {
-    if (e.TML) {
-      this._isTimeless = !!e.TML;
-    }
-    if (e.TS) {
-      this._totalSeconds = o.int(e.TS);
+  OfferDescriptionAdditionalIsInviteeConversionOffer.prototype.parseFromObjectParam = function (e) {
+    if (e.ICO) {
+      this._isInvitation = !!e.ICO;
     }
   };
-  Object.defineProperty(OfferDescriptionAdditionalIsTimeless.prototype, "isTimeless", {
+  Object.defineProperty(OfferDescriptionAdditionalIsInviteeConversionOffer.prototype, "isInvitation", {
     get: function () {
-      return this._isTimeless;
+      return this._isInvitation;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(OfferDescriptionAdditionalIsTimeless.prototype, "totalSeconds", {
-    get: function () {
-      return this._totalSeconds;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return OfferDescriptionAdditionalIsTimeless;
+  return OfferDescriptionAdditionalIsInviteeConversionOffer;
 }();
-exports.OfferDescriptionAdditionalIsTimeless = s;
-n.classImplementsInterfaces(s, "IOfferDescriptionAdditionalParameter");
+exports.OfferDescriptionAdditionalIsInviteeConversionOffer = a;
+n.classImplementsInterfaces(a, "IOfferDescriptionAdditionalParameter");

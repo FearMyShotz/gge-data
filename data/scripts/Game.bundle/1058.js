@@ -5,13 +5,17 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SGetTaxInfoVO() {
-    return e.call(this) || this;
+  function C2SQuestStarterClickVO(t) {
+    var i = this;
+    i.QID = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).QID = t;
+    return i;
   }
-  n.__extends(C2SGetTaxInfoVO, e);
-  C2SGetTaxInfoVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_TAX_INFO;
+  n.__extends(C2SQuestStarterClickVO, e);
+  C2SQuestStarterClickVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_QUEST_STARTER_CLICK;
   };
-  return C2SGetTaxInfoVO;
+  return C2SQuestStarterClickVO;
 }(o.BasicCommandVO);
-exports.C2SGetTaxInfoVO = s;
+exports.C2SQuestStarterClickVO = s;

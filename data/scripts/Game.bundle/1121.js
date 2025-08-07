@@ -154,6 +154,6 @@ exports.ACastleWorldCupDialogState = C;
 var _ = require("./9.js");
 var m = require("./17.js");
 var f = require("./428.js");
-var O = require("./108.js");
+var O = require("./107.js");
 s.classImplementsInterfaces(C, "ICastleWorldCupDialogState");
 C.__initialize_static_members();

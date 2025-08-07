@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./530.js");
+var a = require("./531.js");
 var s = require("./4.js");
 var r = function (e) {
   function ResearchBuildingVE() {
@@ -35,6 +35,6 @@ var r = function (e) {
   return ResearchBuildingVE;
 }(require("./62.js").ABasicBuildingVE);
 exports.ResearchBuildingVE = r;
-var l = require("./3103.js");
+var l = require("./3104.js");
 var c = require("./177.js");
 o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

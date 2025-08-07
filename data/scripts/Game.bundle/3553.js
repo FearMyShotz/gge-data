@@ -1,220 +1,261 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = createjs.Point;
-var o = function () {
-  function PrebuiltCastleItem(e) {
-    this._selected = false;
-    this.backgroundFrame = 0;
-    this._collectableRenderList = [];
-    this._selected = false;
-    this._disp = e;
-    E.ButtonHelper.initBasicButton(e);
-    e.mouseChildren = false;
-    PrebuiltCastleItem.textFieldManager.registerTextField(this._disp.txt_costsFree, new h.LocalizedTextVO("free"));
-    PrebuiltCastleItem.textFieldManager.registerTextField(this._disp.mc_costs2.txt_costs, new h.LocalizedTextVO("cost"));
-    PrebuiltCastleItem.textFieldManager.registerTextField(this._disp.mc_costs4.txt_costs, new h.LocalizedTextVO("cost"));
-    this._txt_discount = PrebuiltCastleItem.textFieldManager.registerTextField(this._disp.mc_discount.txt_value, new h.LocalizedTextVO(l.GenericTextIds.VALUE_PERCENTAGE));
-    this._txt_ribbon = PrebuiltCastleItem.textFieldManager.registerTextField(this._disp.txt_ribbon, new h.LocalizedTextVO(""));
-    this._txt_title = PrebuiltCastleItem.textFieldManager.registerTextField(this._disp.txt_title, new h.LocalizedTextVO(""));
-    this._txt_info = PrebuiltCastleItem.textFieldManager.registerTextField(this._disp.txt_contentsBig, new h.LocalizedTextVO(""));
-    this._txt_lock = PrebuiltCastleItem.textFieldManager.registerTextField(this._disp.mc_lock.txt_value, new p.LocalizedNumberVO(0));
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./5.js");
+var l = require("./3.js");
+var c = require("./3.js");
+var u = require("./3.js");
+var d = require("./6.js");
+var p = require("./188.js");
+var h = require("./663.js");
+var g = require("./241.js");
+var C = require("./159.js");
+var _ = require("./21.js");
+var m = require("./192.js");
+var f = require("./210.js");
+var O = require("./26.js");
+var E = require("./410.js");
+var y = require("./67.js");
+var b = require("./19.js");
+var D = require("./4.js");
+var I = require("./8.js");
+var T = require("./35.js");
+var v = createjs.Point;
+var S = function (e) {
+  function FactionEventOverviewSublayer(t) {
+    var i = e.call(this, t) || this;
+    i.initBasicButtons([t.mc_bottomBar.mc_sendTroops.btn_sendTroops, t.mc_bottomBar.btn_enter, t.mc_bottomBar.mc_skipTroops.btn_fullSkip, t.mc_bottomBar.mc_skipTroops.btn_minuteSkip]);
+    i.attackTowersBox = new N.FactionAttackPveBox(t.mc_objective0);
+    i.attackCampsBox = new k.FactionAttackPvpBox(t.mc_objective1);
+    var n = D.CastleModel.kingdomData.getKingdomVOByID(s.FactionConst.KINGDOM_ID);
+    t.mc_bottomBar.mc_skipTroops.mc_icon.mouseChildren = false;
+    t.mc_bottomBar.mc_skipTroops.btn_minuteSkip.toolTipText = "timeSkipButton_tooltip";
+    t.mc_bottomBar.mc_skipTroops.btn_fullSkip.toolTipText = {
+      t: "dialog_season_skipTransfer",
+      p: [D.CastleModel.costsData.getFinalCostsStringC2(n.skipUnitTravelC2Cost)]
+    };
+    i.i_troops_txt_remainingTime = i.textFieldManager.registerTextField(t.mc_bottomBar.mc_skipTroops.txt_remainingTime, new u.TextVO(""));
+    i.textFieldManager.registerTextField(t.mc_bottomBar.mc_lmsWarning.txt_description, new c.LocalizedTextVO("dialog_factionOverview_lastManStanding_copy"));
+    i.textFieldManager.registerTextField(t.txt_header, new c.LocalizedTextVO("dialog_factionOverview_header"));
+    i.textFieldManager.registerTextField(t.mc_bottomBar.mc_sendTroops.txt_sendTroops, new c.LocalizedTextVO("dialog_season_sendTroops"));
+    i.textFieldManager.registerTextField(t.mc_bottomBar.txt_enter, new c.LocalizedTextVO("dialog_factionOverview_enter"));
+    i.subLayerDisp.mc_nextReward.mc_points.toolTipText = "factionHighscore_points";
+    i.subLayerDisp.mc_nextTitle.mc_points.toolTipText = "factionHighscore_points";
+    i.subLayerDisp.mc_nextTitle.mc_points.mouseChildren = false;
+    i._seasonLeague = new F.SeasonLeagueEventElementComponent(i.subLayerDisp.mc_seasonLeague, r.EventConst.EVENTTYPE_FACTION);
+    return i;
   }
-  Object.defineProperty(PrebuiltCastleItem, "textFieldManager", {
-    get: function () {
-      return c.GoodgameTextFieldManager.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(PrebuiltCastleItem.prototype, "castleItemVO", {
-    get: function () {
-      return this._castleItemVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  PrebuiltCastleItem.prototype.show = function (e) {
-    this._castleItemVO = e;
-    this.updatePicture();
-    this.updateBackground();
-    this.updateRibbon();
-    this.updateCampDescription();
-    this.updateCosts();
-    this.updateDiscount();
-    this.updateLock();
-    this.updateTooltip();
-    m.CastleBasicController.getInstance().addEventListener(s.CastleUserDataEvent.LEVEL_UP, this.bindFunction(this.onLevelUp));
+  n.__extends(FactionEventOverviewSublayer, e);
+  FactionEventOverviewSublayer.prototype.updateShowLMSWarning = function () {
+    var e = !D.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_FACTION).isActiveInEvent;
+    I.ButtonHelper.enableButton(this.subLayerDisp.mc_bottomBar.mc_sendTroops.btn_sendTroops, !e);
+    this.subLayerDisp.mc_bottomBar.mc_sendTroops.btn_sendTroops.toolTipText = e ? "dialog_factionOverview_sendTroops_lms_tooltip " : "dialog_factionOverview_sendTroops_tooltip";
+    this.subLayerDisp.mc_bottomBar.mc_lmsWarning.visible = e;
   };
-  PrebuiltCastleItem.prototype.hide = function () {
-    m.CastleBasicController.getInstance().removeEventListener(s.CastleUserDataEvent.LEVEL_UP, this.bindFunction(this.onLevelUp));
-    this.destroyCollectableRenderList();
-  };
-  PrebuiltCastleItem.prototype.onLevelUp = function (e) {
-    this.updateLock();
-    this.updateTooltip();
-  };
-  PrebuiltCastleItem.prototype.updateDiscount = function () {
-    this._disp.mc_discount.visible = this._castleItemVO.shownDiscount > 0 && this._castleItemVO.isPremium();
-    this._txt_discount.textContentVO.textReplacements = [this._castleItemVO.shownDiscount];
-  };
-  PrebuiltCastleItem.prototype.updateLock = function () {
-    y.CastleMovieClipHelper.uncacheSafe(this._disp);
-    E.ButtonHelper.enableButton(this._disp, !this.isLocked());
-    this._disp.mc_lock.visible = this.isLocked();
-    if (this._txt_lock.textContentVO) {
-      this._txt_lock.textContentVO.numberValue = this._castleItemVO.minLevel;
-    }
-    this._disp.doCache();
-  };
-  PrebuiltCastleItem.prototype.updateTooltip = function () {
-    if (this.isLocked()) {
-      this._disp.toolTipText = {
-        t: "dialog_kingdomteaser_copy4_v2",
-        p: [this._castleItemVO.minLevel]
-      };
-    } else if (this._selected) {
-      this._disp.toolTipText = "dialog_kingdomStart_prebuiltCastle_chooseCastle_selected_tooltip";
-    } else {
-      this._disp.toolTipText = "dialog_kingdomStart_prebuiltCastle_chooseCastle_unselected_tooltip";
-    }
-  };
-  PrebuiltCastleItem.prototype.isLocked = function () {
-    return f.CastleModel.userData.level < this._castleItemVO.minLevel;
-  };
-  PrebuiltCastleItem.prototype.updatePicture = function () {
-    u.MovieClipHelper.clearMovieClip(this._disp.mc_picture);
-    var e = "PrebuiltCastlePicture_" + this._castleItemVO.id;
-    var t = new O.CastleGoodgameExternalClip(e, r.BasicModel.basicLoaderData.getVersionedItemAssetUrl(e));
-    t.recycleAsset = false;
-    t.doWhenLoaded(this.bindFunction(this.onLoaded));
-    this._disp.mc_picture.addChild(t.asDisplayObject());
-  };
-  PrebuiltCastleItem.prototype.onLoaded = function (e = null) {
-    y.CastleMovieClipHelper.uncacheSafe(this._disp);
-    this._disp.doCache();
-  };
-  PrebuiltCastleItem.prototype.updateBackground = function () {
-    this.backgroundFrame = g.int(PrebuiltCastleItem.setBit(this.backgroundFrame, PrebuiltCastleItem.BACKGROUND_FRAME_GOLDEN_BIT, this._castleItemVO.isPremium()));
-    this._disp.mc_bg.gotoAndStop(this.backgroundFrame + 1);
-  };
-  PrebuiltCastleItem.prototype.updateRibbon = function () {
+  FactionEventOverviewSublayer.prototype.updateEnterButton = function () {
     var e;
-    if (this._castleItemVO.isFree()) {
-      e = "dialog_kingdomStart_prebuiltCastle_chooseCastle_forFree";
-      this._disp.mc_ribbon.gotoAndStop(PrebuiltCastleItem.RIBBON_FRAME_DEFAULT);
-    } else if (this._castleItemVO.isPremium()) {
-      e = "dialog_kingdomStart_prebuiltCastle_chooseCastle_premiumHeader";
-      this._disp.mc_ribbon.gotoAndStop(PrebuiltCastleItem.RIBBON_FRAME_GOLDEN);
-    } else {
-      e = "";
-      this._disp.mc_ribbon.gotoAndStop(PrebuiltCastleItem.RIBBON_FRAME_NONE);
-    }
-    if (this._txt_ribbon.textContentVO) {
-      this._txt_ribbon.textContentVO.textId = e;
+    var t = D.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_FACTION);
+    var i = M.CastleLayoutManager.getInstance().isInState(M.CastleLayoutManager.STATE_KINGDOMMAP);
+    var n = D.CastleModel.kingdomData.activeKingdomID != s.FactionConst.KINGDOM_ID || i;
+    var o = this.subLayerDisp.mc_bottomBar.btn_enter;
+    e = n ? t.isActiveInEvent ? "dialog_factionOverview_enter_tooltip" : "dialog_factionOverview_enter_lms_tooltip" : "dialog_factionOverview_alreadyEntered";
+    I.ButtonHelper.enableButton(o, n);
+    this.subLayerDisp.mc_bottomBar.btn_enter.toolTipText = e;
+  };
+  FactionEventOverviewSublayer.prototype.updateSendTroopsArea = function () {
+    var e = D.CastleModel.kingdomData.getIncomingUnitsTransferByKingdomID(s.FactionConst.KINGDOM_ID);
+    var t = e != null && e.remainingTimeInSeconds > 0;
+    var i = D.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_FACTION).isSpectator;
+    this.subLayerDisp.mc_bottomBar.mc_sendTroops.visible = !t && !i;
+    this.subLayerDisp.mc_bottomBar.mc_skipTroops.visible = t && !i;
+    if (t && !i) {
+      this.subLayerDisp.mc_bottomBar.mc_skipTroops.mc_bar.scaleX = e.progressPercent;
+      this.subLayerDisp.mc_bottomBar.mc_skipTroops.mc_icon.toolTipText = e.toolTipText;
+      this.i_troops_txt_remainingTime.textContentVO.stringValue = U.CastleTimeStringHelper.getEventTimeString(e.remainingTimeInSeconds);
     }
   };
-  PrebuiltCastleItem.prototype.updateCosts = function () {
-    var e = g.int(this._castleItemVO.primaryCosts.length);
-    if (e > 4) {
-      throw new Error("The asset can only display up to four resources. The PrebuiltCastle " + this._castleItemVO.id + " has more.");
+  FactionEventOverviewSublayer.prototype.show = function (t) {
+    e.prototype.show.call(this, t);
+    this.updateShowLMSWarning();
+    this.updateEnterButton();
+    this.updateSendTroopsArea();
+    this.attackTowersBox.show();
+    this.attackCampsBox.show();
+    this._seasonLeague.onShow();
+    this.setNextTitle();
+    D.CastleModel.specialEventData.addEventListener(O.CastleSpecialEventEvent.FACTION_EVENT_LAST_MAN_STANDING_UPDATE, this.bindFunction(this.onLMSUpdate));
+    D.CastleModel.kingdomData.addEventListener(m.CastleKingdomEvent.KINGDOMDATA_ARRIVED, this.bindFunction(this.onKingdomDataArrived));
+    D.CastleModel.specialEventData.addEventListener(O.CastleSpecialEventEvent.FACTION_EVENT_SPECTATOR_STATUS_CHANGE, this.bindFunction(this.onSpectatorStatusChanged));
+    D.CastleModel.timerData.addEventListener(_.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimer));
+    this.controller.addEventListener(f.CastleScoreEventEvent.UPDATE_POINTS, this.bindFunction(this.onGetPoints));
+    D.CastleModel.titleData.addEventListener(E.CastleTitleDataEvent.TITLE_DATA_UPDATED, this.bindFunction(this.onTitleDataUpdate));
+    D.CastleModel.smartfoxClient.sendCommandVO(new g.C2SPointEventGetPointsVO(r.EventConst.EVENTTYPE_FACTION));
+    this.updateSeasonLeagueElement();
+  };
+  FactionEventOverviewSublayer.prototype.hide = function () {
+    e.prototype.hide.call(this);
+    this.attackTowersBox.hide();
+    this.attackCampsBox.hide();
+    this._seasonLeague.onHide();
+    D.CastleModel.specialEventData.removeEventListener(O.CastleSpecialEventEvent.FACTION_EVENT_LAST_MAN_STANDING_UPDATE, this.bindFunction(this.onLMSUpdate));
+    D.CastleModel.timerData.removeEventListener(_.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimer));
+    D.CastleModel.specialEventData.removeEventListener(O.CastleSpecialEventEvent.FACTION_EVENT_SPECTATOR_STATUS_CHANGE, this.bindFunction(this.onSpectatorStatusChanged));
+    D.CastleModel.kingdomData.removeEventListener(m.CastleKingdomEvent.KINGDOMDATA_ARRIVED, this.bindFunction(this.onKingdomDataArrived));
+    this.controller.removeEventListener(f.CastleScoreEventEvent.UPDATE_POINTS, this.bindFunction(this.onGetPoints));
+    D.CastleModel.titleData.addEventListener(E.CastleTitleDataEvent.TITLE_DATA_UPDATED, this.bindFunction(this.onTitleDataUpdate));
+  };
+  FactionEventOverviewSublayer.prototype.updateSeasonLeagueElement = function () {
+    var e = D.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_FACTION);
+    this.subLayerDisp.mc_seasonLeagueInactive.visible = !e.seasonLeague.isModeEnabled;
+    this.textFieldManager.registerTextField(this.subLayerDisp.mc_seasonLeagueInactive.txt_title, new c.LocalizedTextVO("dialog_faction_seasonLeague_header")).autoFitToBounds = true;
+    this.textFieldManager.registerTextField(this.subLayerDisp.mc_seasonLeagueInactive.txt_desc, new c.LocalizedTextVO(D.CastleModel.seasonLeagueData.isSeasonLeagueActive() ? "dialog_faction_seasonLeague_factionNotContributing_copy" : "dialog_faction_seasonLeague_leagueInactive_copyn")).autoFitToBounds = true;
+  };
+  FactionEventOverviewSublayer.prototype.onKingdomDataArrived = function (e) {
+    this.updateSendTroopsArea();
+  };
+  FactionEventOverviewSublayer.prototype.onTimer = function (e) {
+    this.updateSendTroopsArea();
+  };
+  FactionEventOverviewSublayer.prototype.onSpectatorStatusChanged = function (e) {
+    this.updateSendTroopsArea();
+  };
+  FactionEventOverviewSublayer.prototype.onLMSUpdate = function (e) {
+    this.updateShowLMSWarning();
+    this.updateEnterButton();
+  };
+  FactionEventOverviewSublayer.prototype.onClick = function (e) {
+    if (I.ButtonHelper.isButtonEnabled(e.target)) {
+      switch (e.target) {
+        case this.subLayerDisp.mc_bottomBar.btn_enter:
+          this.onClickEnter();
+          break;
+        case this.subLayerDisp.mc_bottomBar.mc_sendTroops.btn_sendTroops:
+          this.onClickSendTroops();
+          break;
+        case this.subLayerDisp.mc_bottomBar.mc_skipTroops.btn_fullSkip:
+          this.onClickRubySkipTroops();
+          break;
+        case this.subLayerDisp.mc_bottomBar.mc_skipTroops.btn_minuteSkip:
+          this.onClickMinuteSkipTroops();
+      }
     }
-    this.destroyCollectableRenderList();
-    this._disp.txt_costsFree.visible = !e;
-    this._disp.mc_costs2.visible = e < 3;
-    this._disp.mc_costs4.visible = e > 2;
-    if (e) {
-      var t = e > 2;
-      this.backgroundFrame = g.int(PrebuiltCastleItem.setBit(this.backgroundFrame, PrebuiltCastleItem.BACKGROUND_FRAME_4PRICE_BIT, t));
-      this._disp.mc_bg.gotoAndStop(this.backgroundFrame + 1);
-      var i = t ? this._disp.mc_costs4 : this._disp.mc_costs2;
-      for (var n = g.int(t ? 4 : 2), o = 0; o < n; ++o) {
-        var a = i["mc_res" + o];
-        var s = this._castleItemVO.primaryCosts.getItemByIndexSave(o);
-        a.visible = s != null;
-        if (s) {
-          this.renderCost(s, a);
+  };
+  FactionEventOverviewSublayer.prototype.onClickMinuteSkipTroops = function () {
+    T.CastleDialogSubLayer.dialogHandler.registerDefaultDialogs(w.CastleMinuteSkipDialog, new B.KingdomUnitsTravelMinuteSkipProperties(s.FactionConst.KINGDOM_ID));
+  };
+  FactionEventOverviewSublayer.prototype.onClickRubySkipTroops = function () {
+    if (D.CastleModel.kingdomData.getIncomingUnitsTransferByKingdomID(s.FactionConst.KINGDOM_ID).remainingTimeInSeconds >= 1) {
+      D.CastleModel.smartfoxClient.sendCommandVO(new h.C2SKingdomSkipTransferVO(s.FactionConst.KINGDOM_ID, 1));
+    }
+  };
+  FactionEventOverviewSublayer.prototype.onClickSendTroops = function () {
+    var e = D.CastleModel.kingdomData.getKingdomVOByID(s.FactionConst.KINGDOM_ID);
+    T.CastleDialogSubLayer.dialogHandler.registerDefaultDialogs(V.CastleTransferTroopsDialog, new x.CastleTransferTroopsToKingdomProperties(e));
+  };
+  FactionEventOverviewSublayer.prototype.onClickEnter = function () {
+    if (!A.FlashBlockHelper.checkFlashBlock(s.FactionConst.KINGDOM_ID)) {
+      var e = D.CastleModel.userData.castleList.getMainFactionCastle();
+      if (D.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_FACTION).isSpectator) {
+        if (e) {
+          o.CommandController.instance.executeCommand(L.IngameClientCommands.SWITCH_KINGDOM_GOTO_WORLDMAP_AND_CENTER_POS_COMMAND, [s.FactionConst.KINGDOM_ID, e.absAreaPosX, e.absAreaPosY]);
+        } else {
+          o.CommandController.instance.executeCommand(L.IngameClientCommands.SWITCH_KINGDOM_GOTO_WORLDMAP_AND_CENTER_POS_COMMAND, [s.FactionConst.KINGDOM_ID, 1300, 60]);
+        }
+      } else if (e) {
+        o.CommandController.instance.executeCommand(L.IngameClientCommands.JOIN_AREA_AND_SAVE_POSITION_COMMAND, e);
+      } else {
+        if (D.CastleModel.worldmapData) {
+          D.CastleModel.worldmapData.allowGAARequests = false;
+        }
+        D.CastleModel.smartfoxClient.sendCommandVO(new C.C2SJoinCastleVO(0, s.FactionConst.KINGDOM_ID));
+      }
+    }
+  };
+  FactionEventOverviewSublayer.prototype.setNextReward = function () {
+    var e;
+    var t = false;
+    var i = 0;
+    this.subLayerDisp.mc_nextReward.mc_checkmark.visible = false;
+    i = 0;
+    for (; i < this.ownLeagueVO.pointThresholds.length; i++) {
+      if (this.ownLeagueVO.ownPoints < this.ownLeagueVO.pointThresholds[i]) {
+        e = this.ownLeagueVO.rewardLists[i];
+        break;
+      }
+    }
+    if (!e) {
+      t = true;
+      e = this.ownLeagueVO.rewardLists[this.ownLeagueVO.rewardLists.length - 1];
+      this.subLayerDisp.mc_nextReward.mc_checkmark.visible = this.ownLeagueVO.ownRank == 1;
+      for (var n = 0; n < this.ownLeagueVO.topX.length; n++) {
+        if (this.ownLeagueVO.ownRank > this.ownLeagueVO.topX[n]) {
+          e = this.ownLeagueVO.rewardLists[n + i];
+          this.subLayerDisp.mc_nextReward.mc_checkmark.visible = false;
+          break;
         }
       }
     }
-  };
-  PrebuiltCastleItem.setBit = function (e, t, i) {
-    return (e | 1 << t) ^ (i ? 0 : 1) << t;
-  };
-  PrebuiltCastleItem.prototype.renderCost = function (e, t) {
-    var i = new C.CollectableRenderClips();
-    i.addItemMc(t);
-    i.addIconMc(t.mc_icon);
-    i.addTextfield(t.txt_value);
-    var n = f.CastleModel.userCastleListDetailed.getMainCastleByKingdomID(d.WorldClassic.KINGDOM_ID);
-    var o = new _.CollectableRenderOptions(_.CollectableRenderOptions.SET_COST_LIST, PrebuiltCastleItem.RESOURCE_COST_SIZE);
-    o.costTextfield.useOtherResourceStorage = n.getResourcesAsCollectableList();
-    var s = new a.CollectableRenderer(i, o);
-    s.updateWithNewVO(e);
-    this._collectableRenderList.push(s);
-  };
-  PrebuiltCastleItem.prototype.updateCampDescription = function () {
-    var e = "dialog_prebuiltCastle" + this._castleItemVO.id + "_info";
-    var t = "dialog_prebuiltCastle" + this._castleItemVO.id + "_name";
-    if (this._txt_title.textContentVO) {
-      this._txt_title.textContentVO.textId = t;
+    this.subLayerDisp.mc_nextReward.rewards1.visible = e.length == 1;
+    this.subLayerDisp.mc_nextReward.rewards2.visible = e.length == 2;
+    R.CollectableRenderHelper.displayMultipleItemsComplete(this, new y.CollectableRenderClipsList(this.subLayerDisp.mc_nextReward["rewards" + e.length], "reward").addItemMcs("mc_item").addInfoBtns("parent.btn_info").addTextfields("txt_reward"), e, new b.CollectableRenderOptions(b.CollectableRenderOptions.SET_DEFAULT, new v(58, 58)));
+    if (this.ownLeagueVO.ownRank == 1 && t) {
+      this.textFieldManager.registerTextField(this.subLayerDisp.mc_nextReward.txt_header, new c.LocalizedTextVO("dialog_factionOverview_nextReward_headerFinal"));
+    } else {
+      this.textFieldManager.registerTextField(this.subLayerDisp.mc_nextReward.txt_header, new c.LocalizedTextVO("dialog_factionOverview_nextReward_header"));
     }
-    if (this._txt_info.textContentVO) {
-      this._txt_info.textContentVO.textId = e;
+    var o = t ? new l.LocalizedNumberVO(this.ownLeagueVO.ownPoints) : new c.LocalizedTextVO("dialog_factionOverview_nextReward_points", [this.ownLeagueVO.ownPoints, this.ownLeagueVO.pointThresholds[i]]);
+    this.textFieldManager.registerTextField(this.subLayerDisp.mc_nextReward.txt_points, o);
+  };
+  FactionEventOverviewSublayer.prototype.setNextTitle = function () {
+    var e;
+    var t = D.CastleModel.titleData.getHighestTitleCurrentlyHeldByThisUser(p.ClientConstTitle.BRAVERY_TITLE);
+    var i = d.int(D.CastleModel.titleData.getPointsInSystem(p.ClientConstTitle.BRAVERY_TITLE));
+    this.subLayerDisp.mc_nextTitle.mc_checkmark.visible = false;
+    if (t == P.CastleTitleData.NULL_TITLE || t.nextTitleID > -1) {
+      e = t == P.CastleTitleData.NULL_TITLE ? D.CastleModel.titleData.getTitlesFromSystem(p.ClientConstTitle.BRAVERY_TITLE)[0] : D.CastleModel.titleData.getTitleByTitleID(t.nextTitleID);
+      this.textFieldManager.registerTextField(this.subLayerDisp.mc_nextTitle.txt_header, new c.LocalizedTextVO("dialog_factionOverview_nextTitle_header"));
+      this.textFieldManager.registerTextField(this.subLayerDisp.mc_nextTitle.txt_title, new c.LocalizedTextVO(e.textID));
+      this.textFieldManager.registerTextField(this.subLayerDisp.mc_nextTitle.txt_points, new c.LocalizedTextVO("value_proportional_value", [i, e.threshold]));
+      this.subLayerDisp.mc_nextTitle.mc_toolTipArea.toolTipText = e.descriptionTextVO;
+    } else {
+      this.textFieldManager.registerTextField(this.subLayerDisp.mc_nextTitle.txt_header, new c.LocalizedTextVO("dialog_factionOverview_nextTitle_headerFinal"));
+      this.textFieldManager.registerTextField(this.subLayerDisp.mc_nextTitle.txt_title, new c.LocalizedTextVO(t.textID));
+      this.textFieldManager.registerTextField(this.subLayerDisp.mc_nextTitle.txt_points, new l.LocalizedNumberVO(i));
+      this.subLayerDisp.mc_nextTitle.mc_toolTipArea.toolTipText = t.descriptionTextVO;
+      this.subLayerDisp.mc_nextTitle.mc_checkmark.visible = true;
     }
   };
-  Object.defineProperty(PrebuiltCastleItem.prototype, "selected", {
+  Object.defineProperty(FactionEventOverviewSublayer.prototype, "ownLeagueVO", {
     get: function () {
-      return this._selected;
-    },
-    set: function (e) {
-      this._selected = e;
-      this._disp.mc_selectionMark.visible = this._selected;
-      if (this.castleItemVO) {
-        this.updateTooltip();
-      }
-      this.onLoaded();
+      return D.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_FACTION).getOwnLeagueEventVO();
     },
     enumerable: true,
     configurable: true
   });
-  PrebuiltCastleItem.prototype.destroyCollectableRenderList = function () {
-    if (this._collectableRenderList != null) {
-      for (var e = 0, t = this._collectableRenderList; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.destroy();
-        }
-      }
-    }
-    this._collectableRenderList = [];
+  FactionEventOverviewSublayer.prototype.onGetPoints = function (e) {
+    this.setNextReward();
   };
-  PrebuiltCastleItem.__initialize_static_members = function () {
-    PrebuiltCastleItem.RIBBON_FRAME_NONE = 1;
-    PrebuiltCastleItem.RIBBON_FRAME_DEFAULT = 2;
-    PrebuiltCastleItem.RIBBON_FRAME_GOLDEN = 3;
-    PrebuiltCastleItem.BACKGROUND_FRAME_GOLDEN_BIT = 0;
-    PrebuiltCastleItem.BACKGROUND_FRAME_4PRICE_BIT = 1;
-    PrebuiltCastleItem.RESOURCE_COST_SIZE = new n(18, 18);
+  FactionEventOverviewSublayer.prototype.onTitleDataUpdate = function (e) {
+    this.setNextTitle();
   };
-  return PrebuiltCastleItem;
-}();
-exports.PrebuiltCastleItem = o;
-var a = require("./186.js");
-var s = require("./32.js");
-var r = require("./2.js");
-var l = require("./2.js");
-var c = require("./2.js");
-var u = require("./2.js");
-var d = require("./5.js");
-var p = require("./3.js");
-var h = require("./3.js");
-var g = require("./6.js");
-var C = require("./31.js");
-var _ = require("./19.js");
-var m = require("./15.js");
-var f = require("./4.js");
-var O = require("./24.js");
-var E = require("./8.js");
-var y = require("./41.js");
-o.__initialize_static_members();
+  return FactionEventOverviewSublayer;
+}(T.CastleDialogSubLayer);
+exports.FactionEventOverviewSublayer = S;
+var A = require("./160.js");
+var L = require("./29.js");
+var P = require("./566.js");
+var M = require("./17.js");
+var R = require("./25.js");
+var V = require("./664.js");
+var x = require("./1072.js");
+var w = require("./208.js");
+var B = require("./1074.js");
+var F = require("./656.js");
+var N = require("./1717.js");
+var k = require("./1719.js");
+var U = require("./27.js");
+a.classImplementsInterfaces(S, "ICollectableRendererList", "ISublayer");

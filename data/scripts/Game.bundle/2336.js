@@ -1,116 +1,86 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
+var n = require("./2.js");
+var o = require("./1.js");
+var a = require("./5.js");
 var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./16.js");
-var c = require("./4.js");
-var u = require("./127.js");
-var d = require("./927.js");
-var p = require("./8.js");
-var h = require("./34.js");
-var g = require("./1315.js");
-var C = require("./1316.js");
-var _ = function (e) {
-  function CastleCraftingDialogEquipment(t) {
-    var i = this;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this).itxt_value = i.textFieldManager.registerTextField(i.subLayerDisp.mc_price.txt_value, new s.LocalizedNumberVO(0));
-    i.initBasicButtons([i.subLayerDisp.btn_craft]);
-    i.textFieldManager.registerTextField(i.subLayerDisp.txt_desc, new r.LocalizedTextVO("dialog_equipmentCrafting_desc"));
-    i.subLayerDisp.mc_price.mouseChildren = false;
-    for (var n = 0; n < 6; n++) {
-      i.subLayerDisp["slot" + n].mouseChildren = false;
+var r = require("./6.js");
+var l = require("./4.js");
+var c = require("./73.js");
+var u = function () {
+  function FillCraftingEquipmentStrategy() {}
+  FillCraftingEquipmentStrategy.prototype.fillCraftingSlots = function (e, t, i) {
+    var n = i.filteredInventory;
+    var o = [];
+    var s = 0;
+    var l = 0;
+    for (var c = 0; c < e.length; c++) {
+      var u = e[c].slotVO;
+      if (u.equipmentVO != null) {
+        s = r.int(u.equipmentVO.rareID);
+        l++;
+      } else if (s != a.EquipmentConst.RARENESS_LEGENDARY || o.length + l < a.EquipmentConst.NORMAL_CRAFT_COUNT) {
+        o.push(e[c]);
+      }
     }
-    i._craftingAnimation = new g.CastleCraftingAnimationEquipment(i.subLayerDisp.mc_animation, i);
-    i._newItemAnimation = new C.CastleCraftingNewItemAnimation();
-    return i;
-  }
-  n.__extends(CastleCraftingDialogEquipment, e);
-  CastleCraftingDialogEquipment.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this.resetVEs();
+    this.fillFreeSlots(o, n, s);
   };
-  CastleCraftingDialogEquipment.prototype.resetVEs = function () {
-    this.subLayerDisp.mc_price.toolTipText = "cash";
-    this.subLayerDisp.btn_craft.toolTipText = "dialog_equipmentCrafting_cantCraft";
-    p.ButtonHelper.enableButton(this.subLayerDisp.btn_craft, false);
-    if (this.itxt_value.textContentVO) {
-      this.itxt_value.textContentVO.numberValue = 0;
-    }
-    this.initSlots();
-  };
-  CastleCraftingDialogEquipment.prototype.initSlots = function () {
-    this._allSlotsOnScreen = [];
-    for (var e = 0; e < CastleCraftingDialogEquipment.SLOTS_ON_SCREEN; e++) {
-      var t = this.subLayerDisp["slot" + e];
-      t.actLikeButton = true;
-      o.MovieClipHelper.clearMovieClip(t.mc_itemHolder);
-      t.toolTipText = "dialog_equipment_craftEquipment_insertEquipment_tooltip";
-      t.mc_bg.gotoAndStop(1);
-      t.slotVO = new d.CastleEquipmentSlotVO(u.BasicEquippableVO.SLOT_TYPE_ALL);
-      t.mc_lock.visible = false;
-      t.mc_deco.gotoAndStop(e + 1);
-      this._allSlotsOnScreen.push(t);
-    }
-    this.resultSlot.mc_lock.visible = false;
-    this.resultSlot.toolTipText = "dialog_equipment_craftEquipment_middleSlotEmpty_tooltip";
-    this.resultSlot.mc_deco.gotoAndStop(7);
-    this.resultSlot.mc_bg.gotoAndStop(1);
-    o.MovieClipHelper.clearMovieClip(this.subLayerDisp.mc_animation);
-  };
-  CastleCraftingDialogEquipment.prototype.onMouseOver = function (t) {
-    e.prototype.onMouseOver.call(this, t);
-    if (this._clickHandler) {
-      this._clickHandler.handleDialogMouseOver(t);
+  FillCraftingEquipmentStrategy.prototype.fillFreeSlots = function (e, t, i, n = false) {
+    if (i == 0) {
+      this.fillFreeSlots(e, t, ++i, true);
+    } else if (!this.tryFillingWithRarity(e, t, i)) {
+      if (n && i < a.EquipmentConst.RARENESS_LEGENDARY) {
+        this.fillFreeSlots(e, t, ++i, true);
+      } else {
+        this.showError();
+      }
     }
   };
-  Object.defineProperty(CastleCraftingDialogEquipment.prototype, "clickHandler", {
-    set: function (e) {
-      this._clickHandler = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleCraftingDialogEquipment.prototype, "allSlotsOnScreen", {
-    get: function () {
-      return this._allSlotsOnScreen;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleCraftingDialogEquipment.prototype, "resultSlot", {
-    get: function () {
-      return this.subLayerDisp.slot6;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleCraftingDialogEquipment.prototype, "price", {
-    set: function (e) {
-      this.itxt_value.textContentVO.numberValue = e;
-      this.itxt_value.color = c.CastleModel.currencyData.c1Amount < e ? l.ClientConstColor.FONT_INSUFFICIENT_COLOR : l.ClientConstColor.FONT_DEFAULT_COLOR;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleCraftingDialogEquipment.prototype.startCraftAnimation = function (e, t, i) {
-    this._craftingAnimation.doEQAnimation(e, t, i);
+  FillCraftingEquipmentStrategy.prototype.tryFillingWithRarity = function (e, t, i) {
+    if (i == a.EquipmentConst.RARENESS_LEGENDARY && e.length > a.EquipmentConst.NORMAL_CRAFT_COUNT) {
+      e.splice(a.EquipmentConst.NORMAL_CRAFT_COUNT, e.length - a.EquipmentConst.NORMAL_CRAFT_COUNT);
+    }
+    var n = t.filter(this.getFilterByRareID(i));
+    if (n.length >= e.length) {
+      for (var o = 0; o < e.length; o++) {
+        this.fillSlot(e[o], n[n.length - (1 + o)]);
+      }
+      return true;
+    }
+    if (n.length >= e.length - a.EquipmentConst.NORMAL_CRAFT_COUNT && i != a.EquipmentConst.RARENESS_LEGENDARY) {
+      for (var s = 0; s < e.length - a.EquipmentConst.NORMAL_CRAFT_COUNT; s++) {
+        this.fillSlot(e[s], n[n.length - (1 + s)]);
+      }
+      return true;
+    }
+    return false;
   };
-  CastleCraftingDialogEquipment.prototype.clearCenterSlot = function () {
-    this._craftingAnimation.clearCenterSlot();
+  FillCraftingEquipmentStrategy.prototype.fillSlot = function (e, t) {
+    e.slotVO.equipmentVO = t;
+    e.mc_itemHolder.addChild(c.EquipmentIconHelper.addEquipmentIcon(t, null, FillCraftingEquipmentStrategy.MAX_WIDTH, FillCraftingEquipmentStrategy.MAX_HEIGHT, null, true, false, false, true, true));
+    l.CastleModel.equipData.moveItem(t, l.CastleModel.equipData.playerInventory, l.CastleModel.equipData.craftingInventory);
   };
-  CastleCraftingDialogEquipment.prototype.startNewItemAnimation = function (e, t) {
-    this._newItemAnimation.playAnimation(e, t);
+  FillCraftingEquipmentStrategy.prototype.getFilterByRareID = function (e) {
+    return function (t) {
+      var i = [];
+      for (var n = 1; n < arguments.length; n++) {
+        i[n - 1] = arguments[n];
+      }
+      return t.rareID == e && !t.isFavorite;
+    };
   };
-  CastleCraftingDialogEquipment.__initialize_static_members = function () {
-    CastleCraftingDialogEquipment.SLOTS_ON_SCREEN = 6;
+  FillCraftingEquipmentStrategy.prototype.showError = function () {
+    d.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleStandardOkDialog, new n.BasicStandardOkDialogProperties(s.Localize.text("generic_alert_information"), s.Localize.text("dialog_equipmentCrafting_autofillError")));
   };
-  return CastleCraftingDialogEquipment;
-}(h.CastleDialogSubLayer);
-exports.CastleCraftingDialogEquipment = _;
-a.classImplementsInterfaces(_, "ICollectableRendererList", "ISublayer");
-_.__initialize_static_members();
+  FillCraftingEquipmentStrategy.__initialize_static_members = function () {
+    FillCraftingEquipmentStrategy.MAX_WIDTH = 57;
+    FillCraftingEquipmentStrategy.MAX_HEIGHT = 57;
+  };
+  return FillCraftingEquipmentStrategy;
+}();
+exports.FillCraftingEquipmentStrategy = u;
+var d = require("./9.js");
+var p = require("./38.js");
+o.classImplementsInterfaces(u, "IFillCraftingStrategy");
+u.__initialize_static_members();

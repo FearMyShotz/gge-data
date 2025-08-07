@@ -1,56 +1,132 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function LaboratoryLevelInfoVO() {
-    this._level = 0;
-    this._ironAllianceBoost = 0;
-    this._charcoalAllianceBoost = 0;
-    this._oliveOilAllianceBoost = 0;
-    this._glassAllianceBoost = 0;
-    this._requiredPoints = 0;
-    this._kingdomID = 0;
+var n = require("./22.js");
+var o = function () {
+  function KingdomVillagesInfoVO() {
+    this._kID = 0;
+    this._wallWodId = 0;
+    this._gateWodId = 0;
+    this._keepWodId = 0;
+    this._moatWodId = 0;
+    this._unitWallCount = 0;
+    this._peasants = 0;
+    this._guards = 0;
+    this._productivityWoodBoost = 0;
+    this._productivityStoneBoost = 0;
+    this._productivityFoodBoost = 0;
+    this._productivityCoalBoost = 0;
+    this._productivityOilBoost = 0;
+    this._productivityGlassBoost = 0;
+    this._productivityIronBoost = 0;
   }
-  LaboratoryLevelInfoVO.prototype.parseXML = function (e) {
-    this._level = parseInt(e.level || "");
-    this._ironAllianceBoost = parseInt(a.CastleXMLUtils.getValueOrDefault("ironAllianceBoost", e, "0"));
-    this._charcoalAllianceBoost = parseInt(a.CastleXMLUtils.getValueOrDefault("charcoalAllianceBoost", e, "0"));
-    this._oliveOilAllianceBoost = parseInt(a.CastleXMLUtils.getValueOrDefault("oliveOilAllianceBoost", e, "0"));
-    this._glassAllianceBoost = parseInt(a.CastleXMLUtils.getValueOrDefault("glassAllianceBoost", e, "0"));
-    this._requiredPoints = parseInt(a.CastleXMLUtils.getValueOrDefault("requiredPoints", e, "0"));
-    this._kingdomID = parseInt(a.CastleXMLUtils.getValueOrDefault("kID", e, "0"));
+  KingdomVillagesInfoVO.prototype.fillFromParamXML = function (e) {
+    this._kID = parseInt(e.kID || "");
+    this._wallWodId = parseInt(e.wallWodId || "");
+    this._gateWodId = parseInt(e.gateWodId || "");
+    this._keepWodId = parseInt(e.keepWodId || "");
+    this._moatWodId = parseInt(e.moatWodId || "");
+    this._unitWallCount = parseInt(e.unitWallCount || "");
+    this._peasants = parseInt(e.peasants || "");
+    this._guards = parseInt(e.guards || "");
+    this._productivityWoodBoost = parseInt(e.productivityWoodBoost || "");
+    this._productivityStoneBoost = parseInt(e.productivityStoneBoost || "");
+    this._productivityFoodBoost = parseInt(e.productivityFoodBoost || "");
+    this._productivityCoalBoost = parseInt(n.CastleXMLUtils.getValueOrDefault("productivityCoalBoost", e, "0"));
+    this._productivityOilBoost = parseInt(n.CastleXMLUtils.getValueOrDefault("productivityOilBoost", e, "0"));
+    this._productivityGlassBoost = parseInt(n.CastleXMLUtils.getValueOrDefault("productivityGlassBoost", e, "0"));
+    this._productivityIronBoost = parseInt(n.CastleXMLUtils.getValueOrDefault("productivityIronBoost", e, "0"));
   };
-  Object.defineProperty(LaboratoryLevelInfoVO.prototype, "level", {
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "gateLevel", {
     get: function () {
-      return this._level;
+      return s.CastleModel.wodData.voSubList(a.CastleWodData.TYPE_BUILDING).get(this._gateWodId).level;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LaboratoryLevelInfoVO.prototype, "landmarkBonus", {
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "wallLevel", {
     get: function () {
-      return Math.max(this._ironAllianceBoost, this._charcoalAllianceBoost, this._oliveOilAllianceBoost, this._glassAllianceBoost);
+      return s.CastleModel.wodData.voSubList(a.CastleWodData.TYPE_BUILDING).get(this._wallWodId).level;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LaboratoryLevelInfoVO.prototype, "requiredPoints", {
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "keepLevel", {
     get: function () {
-      return this._requiredPoints;
+      return s.CastleModel.wodData.voSubList(a.CastleWodData.TYPE_BUILDING).get(this._keepWodId).level;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(LaboratoryLevelInfoVO.prototype, "kingdomID", {
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "moatLevel", {
     get: function () {
-      return this._kingdomID;
+      if (this._moatWodId < 0) {
+        return 0;
+      } else {
+        return s.CastleModel.wodData.voSubList(a.CastleWodData.TYPE_BUILDING).get(this._moatWodId).level;
+      }
     },
     enumerable: true,
     configurable: true
   });
-  return LaboratoryLevelInfoVO;
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "kID", {
+    get: function () {
+      return this._kID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "productivityWoodBoost", {
+    get: function () {
+      return this._productivityWoodBoost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "productivityStoneBoost", {
+    get: function () {
+      return this._productivityStoneBoost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "productivityFoodBoost", {
+    get: function () {
+      return this._productivityFoodBoost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "productivityCoalBoost", {
+    get: function () {
+      return this._productivityCoalBoost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "productivityOilBoost", {
+    get: function () {
+      return this._productivityOilBoost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "productivityGlassBoost", {
+    get: function () {
+      return this._productivityGlassBoost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(KingdomVillagesInfoVO.prototype, "productivityIronBoost", {
+    get: function () {
+      return this._productivityIronBoost;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return KingdomVillagesInfoVO;
 }();
-exports.LaboratoryLevelInfoVO = n;
-var o = require("./1.js");
-var a = require("./22.js");
-o.classImplementsInterfaces(n, "IUpgradableLandmarkLevelInfoVO");
+exports.KingdomVillagesInfoVO = o;
+var a = require("./56.js");
+var s = require("./4.js");

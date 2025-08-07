@@ -2,286 +2,162 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./5.js");
-var u = require("./5.js");
-var d = require("./6.js");
-var p = require("./18.js");
-var h = require("./44.js");
-var g = require("./4.js");
-var C = require("./147.js");
-var _ = require("./111.js");
-var m = require("./35.js");
-var f = require("./552.js");
-var O = require("./230.js");
-var E = require("./829.js");
-var y = require("./553.js");
-var b = require("./156.js");
-var D = require("./1776.js");
-var I = require("./827.js");
-var T = function (e) {
-  function CastleAttackInfoVO() {
-    var t = this;
-    t._morality = 0;
-    t._autoSkipCooldownType = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var o = require("./2.js");
+var a = require("./91.js");
+var s = require("./37.js");
+var r = require("./15.js");
+var l = require("./72.js");
+var c = require("./4.js");
+var u = require("./1101.js");
+var d = createjs.MouseEvent;
+var p = function (e) {
+  function CastleTutorialController(t) {
+    return e.call(this) || this;
   }
-  n.__extends(CastleAttackInfoVO, e);
-  CastleAttackInfoVO.prototype.fillFromParamObject = function (t) {
-    this._unitInventory = new b.UnitInventoryDictionary();
-    this._strongholdUnitInventory = new y.StrongholdUnitInventory();
-    this._army = new D.CastleAttackArmyVO();
-    if (t.MB) {
-      this._morality = t.MB;
+  n.__extends(CastleTutorialController, e);
+  Object.defineProperty(CastleTutorialController, "layoutManager", {
+    get: function () {
+      return h.CastleLayoutManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleTutorialController.prototype.removeListeners = function () {
+    c.CastleModel.tutorialData.removeAllListeners();
+  };
+  CastleTutorialController.prototype.startStep = function (e, t) {
+    c.CastleModel.tutorialData.removeAllListeners();
+    c.CastleModel.tutorialData.activateTutorial(true);
+    o.CommandController.instance.executeCommand(e.command, [e, t]);
+  };
+  CastleTutorialController.prototype.finishStep = function () {
+    c.CastleModel.tutorialData.removeAllListeners();
+    c.CastleModel.tutorialData.clearBlockers();
+    if (CastleTutorialController.layoutManager.tutorialPanel) {
+      CastleTutorialController.layoutManager.tutorialPanel.hide();
     }
-    switch (this.targetActionType) {
-      case p.ClientConstCastle.ACTION_TYPE_DUNGEONATTACK:
-        var i = t.gaa.AI;
-        this._targetArea = C.WorldmapObjectFactory.parseWorldMapArea(i);
-        this._targetOwner = this._targetArea.ownerInfo;
-        this._unitInventory.fillFromWodAmountArray(t.gui.I);
-        this._strongholdUnitInventory.fillFromWodAmountArray(t.gui.SHI);
-        break;
-      case p.ClientConstCastle.ACTION_TYPE_LANDMARK_ATTACK:
-      case p.ClientConstCastle.ACTION_TYPE_VILLAGE_ATTACK:
-      case p.ClientConstCastle.ACTION_TYPE_ISLAND_ATTACK:
-        this._targetArea = C.WorldmapObjectFactory.parseWorldMapArea(t.gaa.AI);
-        this._targetOwner = this._targetArea.ownerInfo;
-        this._unitInventory.fillFromWodAmountArray(t.gui.I);
-        this._strongholdUnitInventory.fillFromWodAmountArray(t.gui.SHI);
-        break;
-      case p.ClientConstCastle.ACTION_TYPE_BOSSDUNGEONATTACK:
-        var n = t.gaa.AI;
-        var o = C.WorldmapObjectFactory.generateBossDungeonByXY(n[0], n[1], g.CastleModel.kingdomData.activeKingdomID);
-        o.parseAreaInfo(n);
-        this._targetArea = o;
-        this._targetOwner = o.ownerInfo;
-        this._unitInventory.fillFromWodAmountArray(t.gui.I);
-        this._strongholdUnitInventory.fillFromWodAmountArray(t.gui.SHI);
-        break;
-      case p.ClientConstCastle.ACTION_TYPE_ATTACK:
-      case p.ClientConstCastle.ACTION_TYPE_COLLECTOR_ATTACK:
-        this._targetArea = C.WorldmapObjectFactory.parseWorldMapArea(t.gaa.AI);
-        this._targetOwner = this._targetArea.controllerWorldMapOwnerInfoVO;
-        this._unitInventory.fillFromWodAmountArray(t.gui.I);
-        this._strongholdUnitInventory.fillFromWodAmountArray(t.gui.SHI);
-        break;
-      default:
-        this._unitInventory.fillFromWodAmountArray(t.gui.I);
-        this._strongholdUnitInventory.fillFromWodAmountArray(t.gui.SHI);
-    }
-    if (this._targetArea) {
-      this._army.init(this.targetOwnerLevel, this.targetActionType == p.ClientConstCastle.ACTION_TYPE_CONQUER || this.targetActionType == p.ClientConstCastle.ACTION_TYPE_CONQUERATTACK, this.targetArea.areaType == r.WorldConst.AREA_TYPE_FACTION_TOWER || this.targetArea.areaType == r.WorldConst.AREA_TYPE_FACTION_CAPITAL, this._targetArea);
-    }
-    this._sourceArea = g.CastleModel.userData.getOwnCastle(t.SCID, t.KID);
-    this._sourceOwner = g.CastleModel.otherPlayerData.getOwnInfoVO();
-    this._kingstowerBonus = t.KTB ? t.KTB : 0;
-    if (g.CastleModel.userData.isInAlliance && g.CastleModel.allianceData.myAllianceVO) {
-      this._monumentBonus = g.CastleModel.allianceData.myAllianceVO.landmarksList.getMonumentBonus();
+    c.CastleModel.tutorialData.activateTutorial(false);
+    c.CastleModel.tutorialData.checkDelayedSteps();
+  };
+  CastleTutorialController.prototype.waitForDialogShow = function (e, t) {
+    if (CastleTutorialController.layoutManager.isDialogVisibleByName(e)) {
+      t();
     } else {
-      this._monumentBonus = g.CastleModel.userData.monumentList.getLandmarkBonus();
+      var i = new u.TutorialListenerObject(CastleTutorialController.controller, a.CastleLayoutManagerEvent.SHOW_DIALOG, this.waitForDialogListener(e, t, a.CastleLayoutManagerEvent.SHOW_DIALOG));
+      this.startListening(i);
     }
-    var a = t.abe || t.B;
-    this._spyInfo = new E.CastleSpyArmyInfoVO();
-    this._spyInfo.parseArmyInfo(t.S, t.AS, a, t.LS);
-    g.CastleModel.lordData.parse_GLI(t.gli);
-    this._homeWorkshopLevel = t.HAWL;
-    this._supportItemContainer = new f.CastleFightItemContainer(u.CombatConst.ITEMS_ASUPPORT_TOOLS, u.CombatConst.LEVELS_SUPPORT_TOOLS_HOME_AWORKSHOP, this.homeWorkshopLevel);
-    this._yardWaveItemContainer = new f.CastleFightItemContainer([0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], 0, 10000);
-    e.prototype.fillFromParamObject.call(this, t);
   };
-  CastleAttackInfoVO.prototype.addAdditionalWave = function () {
-    this._army.addAdditionalWave(this.targetOwnerLevel, this.targetActionType == p.ClientConstCastle.ACTION_TYPE_CONQUER || this.targetActionType == p.ClientConstCastle.ACTION_TYPE_CONQUERATTACK, this._targetArea);
-  };
-  CastleAttackInfoVO.prototype.deductLastWave = function () {
-    this.unitInventory.addAll(this._army.getUnitVectorFromCompleteWave(this.army.getWaveCount() - 1));
-    this._army.deductLastWave();
-  };
-  CastleAttackInfoVO.prototype.getLowestTravelSpeed = function (e = false, t = null) {
-    var i = d.int(this._army.getLowestTravelSpeed(e, t));
-    return i = d.int(Math.min(i, this._yardWaveItemContainer.getLowestTravelSpeed(e, t)));
-  };
-  CastleAttackInfoVO.prototype.getTravelTime = function (e, t) {
-    return d.int(this.calculateTravelTime(e.controllerWorldMapOwnerInfoVO, 0, t));
-  };
-  CastleAttackInfoVO.prototype.calculateTravelTime = function (e, t, i, n = false, o = false) {
-    if (this.getSumOfItems() == 0) {
-      return 0;
-    }
-    var a = 1;
-    var r = 0;
-    if (g.CastleModel.userData.userLevel <= c.TutorialConst.TUTORIAL_END_LEVEL && e.playerID < 0) {
-      a = s.TravelConst.TRAVEL_BOOST_TUTORIAL;
-    }
-    if (o) {
-      r = g.CastleModel.boostData.returnSpeedBoosterVO.returnSpeedForCurrentLevel / 100;
-    }
-    var u = this.getActionTravelTimeBonusForAreaType(i, e);
-    if (l.TreasureMapsConst.CRUSADE_MAP_IDS.indexOf(this._targetArea.mapID) < 0) {
-      u += g.CastleModel.vipData.currentActiveVIPLevel.attackSpeedBonus;
-    }
-    var p = this.calculateAllianceBoostFactor(e) * a + r;
-    var C = this.isTempServerRankSwapAttack ? 0 : s.TravelConst.calculateLowLevelBoost(g.CastleModel.userData.userLevel, h.SpecialServerHelper.isOnSpecialServer);
-    return d.int(s.TravelConst.getTravelTimeWithHorse(this.getLowestTravelSpeed(n, i), this.getCorrectedAttackDistance(), p + C, t, u, this.getCorrectedAttackDistance(), false));
-  };
-  CastleAttackInfoVO.prototype.getBoostedTravelTime = function (e, t, i) {
-    return d.int(this.calculateTravelTime(e.controllerWorldMapOwnerInfoVO, t, i, false));
-  };
-  CastleAttackInfoVO.prototype.getCorrectedAttackDistance = function () {
-    if (this.targetArea.areaType == r.WorldConst.AREA_TYPE_CAPITAL) {
-      return Math.min(Math.max(this.distance, s.TravelConst.CAPITAL_CONQUER_MIN_ATTACK_DISTANCE), s.TravelConst.CAPITAL_CONQUER_MAX_ATTACK_DISTANCE);
-    } else if (this.targetArea.areaType == r.WorldConst.AREA_TYPE_METROPOL) {
-      return Math.min(Math.max(this.distance, s.TravelConst.METROPOL_CONQUER_MIN_ATTACK_DISTANCE), s.TravelConst.METROPOL_CONQUER_MAX_ATTACK_DISTANCE);
+  CastleTutorialController.prototype.waitForExternalDialogShow = function (e, t) {
+    if (CastleTutorialController.layoutManager.isDialogVisibleByName(e)) {
+      t();
     } else {
-      return this.distance;
+      var i = new u.TutorialListenerObject(CastleTutorialController.controller, a.CastleLayoutManagerEvent.SHOW_EXTERNAL_DIALOG, this.waitForDialogListener(e, t, a.CastleLayoutManagerEvent.SHOW_EXTERNAL_DIALOG));
+      this.startListening(i);
     }
   };
-  CastleAttackInfoVO.prototype.calculateAllianceBoostFactor = function (e) {
-    var t = 1;
-    if (g.CastleModel.allianceData.myAllianceVO) {
-      t += g.CastleModel.allianceData.myAllianceVO.getTotalAllianceBuffEffectValue(m.EffectTypeEnum.EFFECT_TYPE_SPEED_BONUS_PVP, this.targetArea.areaType, this.targetArea.spaceID, -1, e).strength / 100;
-    }
-    return t;
+  CastleTutorialController.prototype.waitForSublayerPanelShow = function (e, t) {
+    var i = new u.TutorialListenerObject(CastleTutorialController.controller, a.CastleLayoutManagerEvent.SHOW_SUBLAYER_PANEL, this.waitForDialogListener(e.buttonClassName, t, a.CastleLayoutManagerEvent.SHOW_SUBLAYER_PANEL));
+    this.startListening(i);
   };
-  CastleAttackInfoVO.prototype.getTravelCost = function (e) {
-    return Math.ceil(g.CastleModel.costsData.getFinalCostsC1(s.TravelConst.getAttackTravelCostC1(this.distance, this.getSumOfItems(), e ? _.CastleEffectsHelper.getTravelCostBonusForAreaType(e, this.targetArea.areaType, this.targetActionType) : 0, g.CastleModel.legendSkillData.getTotalValueOfLegendSkillEffect(O.CastleLegendSkillEffectsEnum.TRAVEL_COST_REDUCTION), g.CastleModel.userData.attackCounter.attackCount, g.CastleModel.userData.attackCounter.attackCountThreshold, g.CastleModel.userData.attackCounter.attackCountGrowthRate)));
+  CastleTutorialController.prototype.waitForSublayerPanelHide = function (e, t) {
+    var i = new u.TutorialListenerObject(CastleTutorialController.controller, a.CastleLayoutManagerEvent.HIDE_SUBLAYER_PANEL, this.waitForDialogListener(e.buttonClassName, t, a.CastleLayoutManagerEvent.HIDE_SUBLAYER_PANEL));
+    this.startListening(i);
   };
-  Object.defineProperty(CastleAttackInfoVO.prototype, "isAlienAttack", {
-    get: function () {
-      return o.instanceOfClass(this._targetArea, "AAlienInvasionMapobjectVO");
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleAttackInfoVO.prototype.isAttackComplete = function () {
-    return this._army.isAnyWaveComplete();
+  CastleTutorialController.prototype.waitForDialogHide = function (e, t) {
+    var i = new u.TutorialListenerObject(CastleTutorialController.controller, a.CastleLayoutManagerEvent.HIDE_DIALOG, this.waitForDialogListener(e, t, a.CastleLayoutManagerEvent.HIDE_DIALOG));
+    this.startListening(i);
   };
-  CastleAttackInfoVO.prototype.getSumOfItems = function () {
-    return this._army.getSumOfItems() + (this._supportItemContainer ? this._supportItemContainer.sumOfItems : 0) + (this._yardWaveItemContainer ? this._yardWaveItemContainer.sumOfItems : 0);
+  CastleTutorialController.prototype.waitForExternalDialogHide = function (e, t) {
+    var i = new u.TutorialListenerObject(CastleTutorialController.controller, a.CastleLayoutManagerEvent.HIDE_EXTERNAL_DIALOG, this.waitForDialogListener(e, t, a.CastleLayoutManagerEvent.HIDE_EXTERNAL_DIALOG));
+    this.startListening(i);
   };
-  CastleAttackInfoVO.prototype.getSumOfTools = function () {
-    return this._army.getSumOfTools();
+  CastleTutorialController.prototype.waitForLayoutStateChange = function (e, t) {
+    var i = new u.TutorialListenerObject(CastleTutorialController.controller, a.CastleLayoutManagerEvent.CHANGE_LAYOUTSTATE, this.waitForLayoutStateListener(e, t, a.CastleLayoutManagerEvent.CHANGE_LAYOUTSTATE));
+    this.startListening(i);
   };
-  CastleAttackInfoVO.prototype.getSumOfUnits = function () {
-    return this._army.getSumOfUnits();
+  CastleTutorialController.prototype.waitForLayoutStateChangeFinished = function (e, t) {
+    var i = new u.TutorialListenerObject(CastleTutorialController.controller, a.CastleLayoutManagerEvent.CHANGE_LAYOUTSTATE_FINISHED, this.waitForLayoutStateListener(e, t, a.CastleLayoutManagerEvent.CHANGE_LAYOUTSTATE_FINISHED));
+    this.startListening(i);
   };
-  CastleAttackInfoVO.prototype.getLevelGate = function () {
-    return d.int(this._targetArea.gateLevel);
+  CastleTutorialController.prototype.waitForJoinCastle = function (e) {
+    var t = new u.TutorialListenerObject(CastleTutorialController.controller, s.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.genericEventListener(CastleTutorialController.controller, e, s.CastleServerMessageArrivedEvent.JAA_ARRIVED));
+    this.startListening(t);
   };
-  CastleAttackInfoVO.prototype.getLevelWall = function () {
-    return d.int(this._targetArea.wallLevel);
+  CastleTutorialController.prototype.registerComplexListener = function (e, t, i) {
+    c.CastleModel.tutorialData.registerListener(e, t, i);
   };
-  CastleAttackInfoVO.prototype.getLevelMoat = function () {
-    return d.int(this._targetArea.moatLevel);
+  CastleTutorialController.prototype.removeComplexListener = function (e, t, i) {
+    c.CastleModel.tutorialData.removeListener(e, t, i);
   };
-  CastleAttackInfoVO.prototype.getLevelWallGate = function () {
-    return d.int(this._targetArea.wallLevel + this._targetArea.gateLevel);
+  CastleTutorialController.prototype.removeListenerFrom = function (e) {
+    c.CastleModel.tutorialData.removeFromExisting(e);
   };
-  Object.defineProperty(CastleAttackInfoVO.prototype, "army", {
-    get: function () {
-      return this._army;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackInfoVO.prototype, "hasUnlockedTools", {
-    get: function () {
-      return true;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(I.CastleFightScreenVO.prototype, "hasUnlockedTools").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackInfoVO.prototype, "morality", {
-    get: function () {
-      return this._morality;
-    },
-    set: function (e) {
-      this._morality = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackInfoVO.prototype, "homeWorkshopLevel", {
-    get: function () {
-      return this._homeWorkshopLevel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackInfoVO.prototype, "yardWaveContainer", {
-    get: function () {
-      return this._yardWaveItemContainer;
-    },
-    set: function (e) {
-      this._yardWaveItemContainer = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackInfoVO.prototype, "supportItemContainer", {
-    get: function () {
-      return this._supportItemContainer;
-    },
-    set: function (e) {
-      this._supportItemContainer = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackInfoVO.prototype, "toolsSupportWodIds", {
-    get: function () {
-      var e = [];
-      if (this._supportItemContainer) {
-        this._supportItemContainer.items.forEach(function (t) {
-          if (t.unitVO) {
-            e.push(t.unitVO.wodId);
-          } else {
-            e.push(-1);
-          }
-        });
+  CastleTutorialController.prototype.waitForDialogListener = function (e, t, i) {
+    function n(o) {
+      if (o.type == i && o.params[0] && o.params[0] == e) {
+        CastleTutorialController.controller.removeEventListener(i, n);
+        c.CastleModel.tutorialData.removeFromExisting(n);
+        t();
       }
-      return e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackInfoVO.prototype, "autoSkipCooldownType", {
-    get: function () {
-      return this._autoSkipCooldownType;
-    },
-    set: function (e) {
-      this._autoSkipCooldownType = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackInfoVO.prototype, "advisorAttacks", {
-    get: function () {
-      return this._advisorAttacks;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAttackInfoVO.prototype, "advisorAttacksBattlelog", {
-    get: function () {
-      return this._advisorAttacksBattlelog;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleAttackInfoVO.prototype.setAdvisor = function (e = 0, t = false) {
-    this._advisorAttacks = e;
-    this._advisorAttacksBattlelog = t;
+    }
+    return n;
   };
-  return CastleAttackInfoVO;
-}(I.CastleFightScreenVO);
-exports.CastleAttackInfoVO = T;
-a.classImplementsInterfaces(T, "IFightScreenVO");
+  CastleTutorialController.prototype.waitForDialogListenerCallback = function (e, t, i, n) {
+    if (e.type == i && e.params[0] && e.params[0] == n) {
+      CastleTutorialController.controller.removeEventListener(i, this.bindFunction(this.waitForDialogListener));
+      c.CastleModel.tutorialData.removeFromExisting(this.bindFunction(this.waitForDialogListener));
+      t();
+    }
+  };
+  CastleTutorialController.prototype.genericEventListener = function (e, t, i) {
+    function n(o) {
+      if (o.type == i) {
+        e.removeEventListener(o.type, n);
+        c.CastleModel.tutorialData.removeFromExisting(n);
+        t();
+      }
+    }
+    return n;
+  };
+  CastleTutorialController.prototype.waitForLayoutStateListener = function (e, t, i) {
+    function n(o) {
+      if (o.type == i && o.params[0] && o.params[0] == e) {
+        CastleTutorialController.controller.removeEventListener(i, n);
+        c.CastleModel.tutorialData.removeFromExisting(n);
+        t();
+      }
+    }
+    return n;
+  };
+  CastleTutorialController.prototype.onClick = function (e, t) {
+    function i() {
+      e.removeEventListener(d.CLICK, i);
+      c.CastleModel.tutorialData.removeFromExisting(i);
+      t();
+    }
+    var n = new u.TutorialListenerObject(e, d.CLICK, i);
+    this.startListening(n);
+  };
+  CastleTutorialController.prototype.startListening = function (e) {
+    c.CastleModel.tutorialData.existingListeners.push(e);
+    e.target.addEventListener(e.type, e.listenerFunc);
+  };
+  CastleTutorialController.getInstance = function () {
+    CastleTutorialController.tutorialControllerInstance ||= new CastleTutorialController(new g());
+    return CastleTutorialController.tutorialControllerInstance;
+  };
+  Object.defineProperty(CastleTutorialController, "controller", {
+    get: function () {
+      return r.CastleBasicController.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleTutorialController;
+}(l.CastleEventDispatcher);
+exports.CastleTutorialController = p;
+var h = require("./17.js");
+var g = function () {
+  return function TutorialControllerSingletonBlocker() {};
+}();
+exports.TutorialControllerSingletonBlocker = g;

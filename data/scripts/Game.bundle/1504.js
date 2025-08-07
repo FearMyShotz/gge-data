@@ -23,6 +23,6 @@ var r = function (e) {
     return "";
   };
   return EilandSlumSurroundingVO;
-}(require("./1007.js").SlumSurroundingsVO);
+}(require("./1008.js").SlumSurroundingsVO);
 exports.EilandSlumSurroundingVO = r;
 o.classImplementsInterfaces(r, "IRelativeGridBuildingVO");

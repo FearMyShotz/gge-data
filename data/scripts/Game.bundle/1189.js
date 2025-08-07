@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./14.js");
 var s = require("./290.js");
-var r = require("./2060.js");
+var r = require("./2061.js");
 var l = require("./293.js");
 var c = function (e) {
   function AIsoStatusIcon() {

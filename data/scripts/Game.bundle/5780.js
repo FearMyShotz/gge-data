@@ -1,18 +1,27 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
-var o = ["ar", "bg", "el", "ja", "ko", "ru", "zh_CN", "zh_TW"];
-exports.fontConfigResolver = function () {
-  var e = n.GGSCountryController.instance.currentCountry.ggsLanguageCode;
-  if (!o.includes(e)) {
-    e = "en";
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = function (e) {
+  function CastleInitServerListCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  if (e.includes("_")) {
-    e = e.split("_")[0];
-  }
-  return {
-    urls: ["./css/fonts_" + e + ".css"],
-    families: ["_BodyFont", "_HeaderFont"]
+  n.__extends(CastleInitServerListCommand, e);
+  CastleInitServerListCommand.prototype.initAdditionalServer = function () {};
+  CastleInitServerListCommand.prototype.createInstanceVO_EM = function (e, t, i, n, o, s = 4) {
+    var r = new a.TestInstanceVO();
+    r.ip = e;
+    r.port = t;
+    r.zone = i;
+    r.zoneId = s;
+    r.instanceId = n;
+    r.instanceLocaId = o;
+    return r;
   };
-};
+  return CastleInitServerListCommand;
+}(o.BasicClientCommand);
+exports.CastleInitServerListCommand = r;
+s.classImplementsInterfaces(r, "ISimpleCommand");

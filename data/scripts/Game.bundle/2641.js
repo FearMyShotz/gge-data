@@ -5,45 +5,48 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./3.js");
-var r = require("./13.js");
-var l = function (e) {
-  function FusionForgeHubDialogMain(t, i) {
-    var n = e.call(this, t) || this;
-    n._forgeDialogOpenedFunc = i;
-    n.init();
-    return n;
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./13.js");
+var u = require("./4.js");
+var d = require("./52.js");
+var p = require("./217.js");
+var h = function (e) {
+  function DecorationForgeCatalystConversionDialogInfoBoxDisassemble(t) {
+    return e.call(this, t) || this;
   }
-  n.__extends(FusionForgeHubDialogMain, e);
-  FusionForgeHubDialogMain.prototype.init = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("dialog_fusionHub_fusionForges_title"))).autoFitToBounds = true;
-    this.dialogDisp.mc_list.mc_slider.visible = false;
-    this._decoItem = new u.FusionForgeHubDialogMainItem(this.decoItemMc, a.FusionConst.DECORATION_FORGE_ID, c.DecorationForgeMainDialog, this.bindFunction(this._forgeDialogOpenedFunc));
+  n.__extends(DecorationForgeCatalystConversionDialogInfoBoxDisassemble, e);
+  DecorationForgeCatalystConversionDialogInfoBoxDisassemble.prototype.init = function () {
+    e.prototype.init.call(this);
+    g.CastleComponent.textFieldManager.registerTextField(this.disp.txt_title, new r.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("fusionDisassemble"))).autoFitToBounds = true;
+    g.CastleComponent.textFieldManager.registerTextField(this.disp.mc_buttons.btn_execute.txt_text, new s.LocalizedTextVO("fusionDisassemble")).autoFitToBounds = true;
   };
-  FusionForgeHubDialogMain.prototype.show = function (t) {
-    e.prototype.show.call(this, t);
-    this._decoItem.onShow();
+  DecorationForgeCatalystConversionDialogInfoBoxDisassemble.prototype.updateValues = function () {
+    e.prototype.updateValues.call(this);
+    var t = l.int(this.catalystVO.amount);
+    var i = l.int(this.getSelectedAmount());
+    if (i <= 0) {
+      i = 1;
+    }
+    var n = l.int(u.CastleModel.fusionForgeData.getForge(a.FusionConst.DECORATION_FORGE_ID).currentEnergy);
+    var o = l.int(u.CastleModel.fusionForgeData.xml.getFusionSystem(a.FusionConst.DECORATION_FORGE_ID).disassembleCatalystEnergyCost) * i;
+    var s = l.int(u.CastleModel.currencyData.getAmountById(d.ClientConstCurrency.ID_DECO_DUST));
+    var r = l.int(u.CastleModel.fusionForgeData.xml.getCatalystInfo(a.FusionConst.DECORATION_FORGE_ID, this.catalystVO.id).addDecoDust) * i;
+    this.fillValue(this.getValueMc(0), 1, t - i, -i);
+    this.fillValue(this.getValueMc(1), 2, n - o, -o);
+    this.fillValue(this.getValueMc(2), 3, s + r, r);
   };
-  FusionForgeHubDialogMain.prototype.hide = function () {
-    this._decoItem.onHide();
-    e.prototype.hide.call(this);
+  DecorationForgeCatalystConversionDialogInfoBoxDisassemble.prototype.getMaxSelectableValue = function () {
+    return l.int(this.catalystVO.amount);
   };
-  Object.defineProperty(FusionForgeHubDialogMain.prototype, "decoItemMc", {
-    get: function () {
-      return this.dialogDisp.mc_list.mc_item0;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(FusionForgeHubDialogMain.prototype, "dialogDisp", {
-    get: function () {
-      return this.disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return FusionForgeHubDialogMain;
-}(require("./34.js").CastleDialogSubLayer);
-exports.FusionForgeHubDialogMain = l;
-var c = require("./987.js");
-var u = require("./2642.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList", "ISublayer");
+  DecorationForgeCatalystConversionDialogInfoBoxDisassemble.prototype.getAffordableEnergy = function () {
+    return l.int(u.CastleModel.fusionForgeData.xml.getFusionSystem(a.FusionConst.DECORATION_FORGE_ID).disassembleCatalystEnergyCost * this.getSelectedAmount());
+  };
+  DecorationForgeCatalystConversionDialogInfoBoxDisassemble.prototype.getConversionDirection = function () {
+    return l.int(p.ClientConstFusion.CATALYST_CONVERSION_DIRECTION_DISASSEMBLE);
+  };
+  return DecorationForgeCatalystConversionDialogInfoBoxDisassemble;
+}(require("./1447.js").ADecorationForgeCatalystConversionDialogInfoBox);
+exports.DecorationForgeCatalystConversionDialogInfoBoxDisassemble = h;
+var g = require("./14.js");
+o.classImplementsInterfaces(h, "ICollectableRendererList");

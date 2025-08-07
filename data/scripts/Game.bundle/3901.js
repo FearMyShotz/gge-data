@@ -2,21 +2,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./4.js");
-var a = require("./196.js");
-var s = function (e) {
-  function CheatBuildingInfoCommand() {
+var o = require("./2.js");
+var a = require("./9.js");
+var s = require("./11.js");
+var r = require("./216.js");
+var l = require("./196.js");
+var c = function (e) {
+  function CheatDialogNamesCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CheatBuildingInfoCommand, e);
-  CheatBuildingInfoCommand.prototype.execute = function (e = null) {
-    var t = prompt("Which WodID should be shown?", CheatBuildingInfoCommand.wodID);
-    if (parseInt(t) > 0 && o.CastleModel.wodData.getBuildingVOById(parseInt(t))) {
-      CheatBuildingInfoCommand.wodID = t;
-      a.ClientCheatsHelper.performCommand("buildingInfo " + CheatBuildingInfoCommand.wodID);
+  n.__extends(CheatDialogNamesCommand, e);
+  CheatDialogNamesCommand.prototype.execute = function (e = null) {
+    l.ClientCheatsHelper.performCommand("toggleShowDialogName");
+    if (s.CastleExternalDialog.showDialogName) {
+      a.CastleDialogHandler.getInstance().registerDefaultDialogs(r.DarkOkDialog, new o.BasicStandardOkDialogProperties("Dialog Names", "Dialog names are shown now above Dialogs"));
+    }
+    if (!s.CastleExternalDialog.showDialogName) {
+      a.CastleDialogHandler.getInstance().registerDefaultDialogs(r.DarkOkDialog, new o.BasicStandardOkDialogProperties("Dialog Names", "Dialog names are not shown anymore"));
     }
   };
-  CheatBuildingInfoCommand.wodID = "2871";
-  return CheatBuildingInfoCommand;
+  return CheatDialogNamesCommand;
 }(require("./212.js").ABotCommand);
-exports.CheatBuildingInfoCommand = s;
+exports.CheatDialogNamesCommand = c;

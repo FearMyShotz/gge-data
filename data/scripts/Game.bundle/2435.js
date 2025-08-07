@@ -5,19 +5,17 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SAllianceAcceptInviteVO(t, i) {
-    var n = this;
-    n.MID = 0;
-    n.D = 0;
+  function C2SSetAutoWar(t) {
+    var i = this;
+    i.AW = 0;
     CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).MID = t;
-    n.D = i;
-    return n;
+    (i = e.call(this) || this).AW = t;
+    return i;
   }
-  n.__extends(C2SAllianceAcceptInviteVO, e);
-  C2SAllianceAcceptInviteVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_ALLIANCE_ACCEPT_INVITE;
+  n.__extends(C2SSetAutoWar, e);
+  C2SSetAutoWar.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_ALLIANCE_SET_AUTO_WAR;
   };
-  return C2SAllianceAcceptInviteVO;
+  return C2SSetAutoWar;
 }(o.BasicCommandVO);
-exports.C2SAllianceAcceptInviteVO = s;
+exports.C2SSetAutoWar = s;

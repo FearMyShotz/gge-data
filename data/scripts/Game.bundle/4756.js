@@ -3,38 +3,34 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function BCSCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var a = function (e) {
+  function CastleAdvancedSupportDefenceDialogHelper(t) {
+    var i = e.call(this) || this;
+    i._fightDialog = t;
+    i._supportDefenceDialog = i._fightDialog.dialogDisp;
+    i._displayType = s.CastleAdvancedTroopSelectionComponent.TYPE_SUPPORT;
+    return i;
   }
-  n.__extends(BCSCommand, e);
-  Object.defineProperty(BCSCommand.prototype, "cmdId", {
-    get: function () {
-      return s.ClientConstSF.S2C_CARAVAN_OVERLOADER_START;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  BCSCommand.prototype.executeCommand = function (e, t) {
+  n.__extends(CastleAdvancedSupportDefenceDialogHelper, e);
+  CastleAdvancedSupportDefenceDialogHelper.prototype.handleTarget = function (e) {
+    var t = this._fightDialog;
     switch (e) {
-      case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.currencyData.parseGCU(i.gcu);
-        r.CastleModel.boostData.parse_BOI(i.boi);
+      case this._supportDefenceDialog.mc_supportItemHolder.unitContainer:
+      case this._supportDefenceDialog.mc_supportItemHolder.mc_supportItems:
+        this._advancedFightScreenConnector = new r.CastleAdvancedFightScreenConnectorHandler(t.supportDefenceVO.supportUnits, [this._supportDefenceDialog.unitConnector], r.CastleAdvancedFightScreenConnectorHandler.UNITFRONT, this._displayType);
+        this.display();
         break;
       default:
-        this.showErrorDialog(e, t);
+        this.handleDefault(e);
     }
-    return false;
   };
-  return BCSCommand;
-}(l.CastleCommand);
-exports.BCSCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  CastleAdvancedSupportDefenceDialogHelper.prototype.handleDialogSlotContainer = function (e) {
+    var t = e.itemVO;
+    this._advancedFightScreenConnector = new r.CastleAdvancedFightScreenConnectorHandler(e.itemContainer, [this._supportDefenceDialog.unitConnector], r.CastleAdvancedFightScreenConnectorHandler.UNITFRONT, this._displayType, t);
+  };
+  return CastleAdvancedSupportDefenceDialogHelper;
+}(require("./960.js").CastleBasicAdvancedFightScreenDialogHelper);
+exports.CastleAdvancedSupportDefenceDialogHelper = a;
+var s = require("./348.js");
+var r = require("./961.js");
+o.classImplementsInterfaces(a, "IAdvancedFightscreenHandler");

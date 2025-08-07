@@ -8,24 +8,25 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function LWMCommand() {
+  function LWCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(LWMCommand, e);
-  LWMCommand.prototype.executeCommand = function (e, t) {
+  n.__extends(LWCCommand, e);
+  LWCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.luckyWheelData.parseLWM(i);
+        r.CastleModel.luckyWheelData.parseLWC(i);
         break;
       default:
+        r.CastleModel.luckyWheelData.showIncreaseWinClassDialog = true;
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  Object.defineProperty(LWMCommand.prototype, "cmdId", {
+  Object.defineProperty(LWCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_LUCKY_WHEEL_CHANGE_MODE;
+      return s.ClientConstSF.S2C_LUCKY_WHEEL_INCREASE_PRIZE_CLASS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -33,7 +34,7 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  return LWMCommand;
+  return LWCCommand;
 }(l.CastleCommand);
-exports.LWMCommand = c;
+exports.LWCCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

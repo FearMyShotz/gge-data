@@ -1,102 +1,189 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./142.js");
-var r = require("./71.js");
-var l = function (e) {
-  function AreaDataConstructionItems() {
-    return e !== null && e.apply(this, arguments) || this;
+var n = function () {
+  function IsoDataObjectsProvider(e) {
+    this._objects = e;
   }
-  n.__extends(AreaDataConstructionItems, e);
-  AreaDataConstructionItems.prototype.updateConstructionItems = function (e) {
+  IsoDataObjectsProvider.prototype.getObjectsByListType = function (e = null) {
     if (e) {
-      this._constructionItemParams = e;
-      for (var t = 0, i = this.areaData.isoData.objects.innerBuildings.list; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          p.Iso.controller.processor.addCommandToQueue(new d.IsoCommandObjectUpdateConstructionItems(n.isoData, n));
+      var t = [];
+      var i = this.objects.getGroupByType(e);
+      if (i) {
+        if (s.instanceOfClass(i, "AIsoDataObjectGroupSimpleList")) {
+          t = i.list;
+        } else {
+          i.fillInCompleteList(t);
         }
+        return t;
+      } else {
+        return t;
       }
-      p.Iso.controller.processor.executeQueue();
-      c.CastleComponent.controller.dispatchEvent(new r.AreaDataEvent(r.AreaDataEvent.ON_CONSTRUCTION_ITEMS_UPDATED));
     }
+    return this.objects.getCompleteObjectsList();
   };
-  AreaDataConstructionItems.prototype.getConstructionItemEffectValue = function (e) {
-    var t = 0;
-    var i = this.areaData.isoData.objects.getCompleteObjectsList();
-    if (i != null) {
-      for (var n = 0, o = i; n < o.length; n++) {
-        var s = o[n];
-        if (s !== undefined) {
-          var r = s;
-          if (r && r.hasConstructionItemSlots) {
-            t += a.int(r.getConstructionItemEffectValue(e));
+  IsoDataObjectsProvider.prototype.getObjectsByListTypes = function (e = null) {
+    if (e) {
+      var t = [];
+      if (e != null) {
+        for (var i = 0, n = e; i < n.length; i++) {
+          var o = n[i];
+          if (o !== undefined) {
+            var a = this.objects.getGroupByType(o);
+            if (!a) {
+              return t;
+            }
+            a.fillInCompleteList(t);
           }
         }
       }
+      return t;
     }
-    return t;
+    return this.objects.getCompleteObjectsList();
   };
-  AreaDataConstructionItems.prototype.getEffectValue = function (e, t) {
-    t = t || s.CastleEffectConditionVO.NULL_CONDITION;
-    var i = u.CastleEffectsHelper.getTotalEffectValue(this.getBonusVOsByType(e, t));
-    return i || new e.valueClass();
+  IsoDataObjectsProvider.prototype.getObjectById = function (e) {
+    for (var t = 0, i = this.objects.getCompleteObjectsList(); t < i.length; t++) {
+      var n = i[t];
+      if (n.objectId == e) {
+        return n;
+      }
+    }
+    return null;
   };
-  AreaDataConstructionItems.prototype.getBonusVOsByType = function (e, t) {
-    t = t || s.CastleEffectConditionVO.NULL_CONDITION;
-    var i = [];
-    var n = this.areaData.isoData.objects.getCompleteObjectsList();
-    if (n != null) {
-      for (var o = 0, a = n; o < a.length; o++) {
-        var r = a[o];
-        if (r !== undefined) {
-          var l = r;
-          if (l && (l.hasConstructionItemSlots || l.hasModernEffects)) {
-            i = i.concat(l.getBonusVOsByTypeFromConstructionItemsOnly(e, t));
-          }
-        }
+  IsoDataObjectsProvider.prototype.getObjectAmountByType = function (e, t = null) {
+    var i = 0;
+    for (var n = 0, o = this.getObjectsByListType(t); n < o.length; n++) {
+      if (o[n].objectType == e) {
+        i++;
       }
     }
     return i;
   };
-  AreaDataConstructionItems.prototype.getConstructionItemGroupEffectAmount = function (e) {
+  IsoDataObjectsProvider.prototype.getObjectAmountByWodID = function (e) {
     var t = 0;
-    var i = this.areaData.isoData.objects.getCompleteObjectsList();
-    if (i != null) {
-      for (var n = 0, o = i; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined) {
-          var s = a;
-          if (s && s.hasConstructionItemSlots) {
-            t += s.getConstructionItemGroupEffectsAmount(e);
-          }
+    this._objects.getCompleteObjectsList().forEach(function (i) {
+      if (i.wodId == e) {
+        t++;
+      }
+    });
+    return t;
+  };
+  IsoDataObjectsProvider.prototype.getObjectByType = function (e, t = -1, i = null) {
+    for (var n = 0, a = this.getObjectsByListType(i); n < a.length; n++) {
+      var s = a[n];
+      if (s && s.objectType == e) {
+        if (!(t > 0)) {
+          return s;
+        }
+        var r = o.castAs(s, "AShopVO");
+        if (r && r.level == t) {
+          return s;
         }
       }
     }
-    return t;
+    return null;
   };
-  Object.defineProperty(AreaDataConstructionItems.prototype, "constructionItemParams", {
-    get: function () {
-      return this._constructionItemParams;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AreaDataConstructionItems.prototype, "ignoreCap", {
-    get: function () {
+  IsoDataObjectsProvider.prototype.getObjectsByType = function (e, t = -1, i = null) {
+    var n = [];
+    for (var a = 0, s = this.getObjectsByListType(i); a < s.length; a++) {
+      var r = s[a];
+      if (r && r.objectType == e) {
+        if (t > 0) {
+          var l = o.castAs(r, "AShopVO");
+          if (l && l.level == t) {
+            n.push(r);
+          }
+        } else {
+          n.push(r);
+        }
+      }
+    }
+    return n;
+  };
+  IsoDataObjectsProvider.prototype.getFunctionalBuildingByType = function (e) {
+    for (var t = 0, i = this.getObjectsByType(e); t < i.length; t++) {
+      var n = i[t];
+      if (n && n.buildingState.isFunctionally) {
+        return n;
+      }
+    }
+    return null;
+  };
+  IsoDataObjectsProvider.prototype.hasFunctionalBuildingByType = function (e) {
+    return this.getFunctionalBuildingByType(e) != null;
+  };
+  IsoDataObjectsProvider.prototype.getObjectByClass = function (e, t = null) {
+    for (var i = 0, n = this.getObjectsByListType(t); i < n.length; i++) {
+      var o = n[i];
+      if (s.instanceOfClass(o, a.getQualifiedClassName(e))) {
+        return o;
+      }
+    }
+    return null;
+  };
+  IsoDataObjectsProvider.prototype.getObjectByClasses = function (e, t = null) {
+    for (var i = 0, n = this.getObjectsByListType(t); i < n.length; i++) {
+      var o = n[i];
+      for (var a = 0; a < e.length; a++) {
+        if (s.instanceOfClass(o, "classList[j]")) {
+          return o;
+        }
+      }
+    }
+    return null;
+  };
+  IsoDataObjectsProvider.prototype.getObjectsByClass = function (e, t = null) {
+    var i = [];
+    for (var n = 0, o = this.getObjectsByListType(t); n < o.length; n++) {
+      var r = o[n];
+      if (s.instanceOfClass(r, a.getQualifiedClassName(e))) {
+        i.push(r);
+      }
+    }
+    return i;
+  };
+  IsoDataObjectsProvider.prototype.getObjectsByClasses = function (e, t = null) {
+    if (e.length <= 0) {
+      return [];
+    }
+    var i = [];
+    for (var n = 0, o = this.getObjectsByListType(t); n < o.length; n++) {
+      var a = o[n];
+      if (l.ClientConstUtils.isObjectClassOf(a, e)) {
+        i.push(a);
+      }
+    }
+    return i;
+  };
+  IsoDataObjectsProvider.prototype.hasMaxAmountOfObjectsByType = function (e) {
+    if (!s.instanceOfClass(e, "ABasicBuildingVO") || s.instanceOfClass(e, "CastlewallDefenceVO") || s.instanceOfClass(e, "BasicMoatVO")) {
       return false;
+    }
+    var t = r.int(e.maximumCount);
+    return (e instanceof c.DecoBuildingVO ? r.int(this.getObjectAmountByWodID(e.wodId)) : r.int(this.getObjectAmountByType(e.objectType))) >= t;
+  };
+  IsoDataObjectsProvider.prototype.hasUpgradeableBuilding = function () {
+    for (var e = 0, t = this.getObjectsByListType(); e < t.length; e++) {
+      var i = t[e];
+      if (i && i.upgradeAvailable) {
+        return true;
+      }
+    }
+    return false;
+  };
+  Object.defineProperty(IsoDataObjectsProvider.prototype, "objects", {
+    get: function () {
+      return this._objects;
     },
     enumerable: true,
     configurable: true
   });
-  return AreaDataConstructionItems;
-}(require("./561.js").AAreaDataComponent);
-exports.AreaDataConstructionItems = l;
-var c = require("./14.js");
-var u = require("./111.js");
-var d = require("./1947.js");
-var p = require("./33.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList", "IAreaDataComponent", "IEffectSource");
+  return IsoDataObjectsProvider;
+}();
+exports.IsoDataObjectsProvider = n;
+var o = require("./1.js");
+var a = require("./1.js");
+var s = require("./1.js");
+var r = require("./6.js");
+var l = require("./55.js");
+var c = require("./783.js");

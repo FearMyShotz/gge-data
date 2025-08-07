@@ -5,16 +5,16 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
+var r = require("./1071.js");
 var l = require("./10.js");
 var c = function (e) {
-  function SDECommand() {
+  function FUCCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SDECommand, e);
-  Object.defineProperty(SDECommand.prototype, "cmdId", {
+  n.__extends(FUCCommand, e);
+  Object.defineProperty(FUCCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SHUTTING_DOWN_EVENT;
+      return s.ClientConstSF.S2C_GET_CAMP_UNIT_CAPACITY;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  SDECommand.prototype.executeCommand = function (e, t) {
+  FUCCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.specialEventData.parse_SDE(i);
+        this.controller.dispatchEvent(new r.CastleUnitCapacityEvent(r.CastleUnitCapacityEvent.UNIT_CAPACITY_CHANGED, Math.max(i.FUC, 0)));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SDECommand;
+  return FUCCommand;
 }(l.CastleCommand);
-exports.SDECommand = c;
+exports.FUCCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

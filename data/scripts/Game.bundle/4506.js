@@ -3,59 +3,56 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./4.js");
-var r = require("./332.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./1891.js");
 var l = function (e) {
-  function CastleRedAllianceAlienInvasionRewardListDialog() {
+  function RedAllianceAlienInvasionEventVO(t = 0) {
+    var i = this;
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleRedAllianceAlienInvasionRewardListDialog.NAME) || this;
+    (i = e.call(this, t) || this)._eventId = s.EventConst.EVENTTYPE_RED_ALIEN_INVASION_ALLIANCE;
+    return i;
   }
-  n.__extends(CastleRedAllianceAlienInvasionRewardListDialog, e);
-  CastleRedAllianceAlienInvasionRewardListDialog.prototype.createProperties = function (t) {
-    if (t == r.AllianceAndPlayerPointEventRewardListDialog.TAB_ALLIANCE) {
-      return new u.GenericScoreBarRewardListSublayerProperties(this.allianceScorebarVO.rewardLists, this.allianceScorebarVO.pointThresholds, this.allianceScorebarVO.rewardsReceived, "", "", "", this.eventVO.isPlayerQualifiedForAllianceRewards());
-    } else {
-      return e.prototype.createProperties.call(this, t);
-    }
-  };
-  CastleRedAllianceAlienInvasionRewardListDialog.prototype.showHelp = function () {
-    c.CastleExternalDialog.dialogHandler.showHelper("", a.Localize.text("help_redAlienInvasion_rewardsList"));
-  };
-  Object.defineProperty(CastleRedAllianceAlienInvasionRewardListDialog.prototype, "eventVO", {
+  n.__extends(RedAllianceAlienInvasionEventVO, e);
+  Object.defineProperty(RedAllianceAlienInvasionEventVO.prototype, "eventBuildingNameId", {
     get: function () {
-      return s.CastleModel.specialEventData.getActiveEventByEventId(this.dialogProperties.eventID);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleRedAllianceAlienInvasionRewardListDialog.prototype, "singleplayerScorebarVO", {
-    get: function () {
-      return this.eventVO.singleEventVO;
+      return "eventBuilding_redAlienInvasion";
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.AllianceAndPlayerPointEventRewardListDialog.prototype, "singleplayerScorebarVO").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.AAlienInvasionEventVO.prototype, "eventBuildingNameId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleRedAllianceAlienInvasionRewardListDialog.prototype, "allianceScorebarVO", {
+  Object.defineProperty(RedAllianceAlienInvasionEventVO.prototype, "eventBuildingWOD", {
     get: function () {
-      return this.eventVO.allianceEventVO;
+      return RedAllianceAlienInvasionEventVO.EVENT_BUILDING_WOD;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.AllianceAndPlayerPointEventRewardListDialog.prototype, "allianceScorebarVO").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.AAlienInvasionEventVO.prototype, "eventBuildingWOD").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleRedAllianceAlienInvasionRewardListDialog.__initialize_static_members = function () {
-    CastleRedAllianceAlienInvasionRewardListDialog.NAME = "CastleRedAlienInvasionEventRewardList_V";
+  RedAllianceAlienInvasionEventVO.prototype.isOwnWmoVO = function (e) {
+    return a.instanceOfClass(e, "RedAlienInvasionMapobjectVO");
   };
-  return CastleRedAllianceAlienInvasionRewardListDialog;
-}(r.AllianceAndPlayerPointEventRewardListDialog);
-exports.CastleRedAllianceAlienInvasionRewardListDialog = l;
-var c = require("./11.js");
-var u = require("./546.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList");
+  Object.defineProperty(RedAllianceAlienInvasionEventVO.prototype, "eventDialogProperiesClass", {
+    get: function () {
+      return c.CastleRedAllianceAlienInvasionEventDialogProperties;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.AAlienInvasionEventVO.prototype, "eventDialogProperiesClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  RedAllianceAlienInvasionEventVO.__initialize_static_members = function () {
+    RedAllianceAlienInvasionEventVO.EVENT_BUILDING_WOD = 1506;
+  };
+  return RedAllianceAlienInvasionEventVO;
+}(r.AAlienInvasionEventVO);
+exports.RedAllianceAlienInvasionEventVO = l;
+var c = require("./4507.js");
+o.classImplementsInterfaces(l, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable");
 l.__initialize_static_members();

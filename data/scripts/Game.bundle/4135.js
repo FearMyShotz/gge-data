@@ -61,7 +61,7 @@ var u = function (e) {
   return CastleCraneTeaserDialog;
 }(require("./11.js").CastleExternalDialog);
 exports.CastleCraneTeaserDialog = u;
-var d = require("./33.js");
+var d = require("./34.js");
 var p = require("./260.js");
 a.classImplementsInterfaces(u, "ICollectableRendererList");
 u.__initialize_static_members();

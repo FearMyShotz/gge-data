@@ -9,7 +9,7 @@ var r = require("./103.js");
 var l = require("./30.js");
 var c = require("./4.js");
 var u = require("./64.js");
-var d = require("./498.js");
+var d = require("./499.js");
 var p = function (e) {
   function AAllianceInvasionCampMapObjectVO() {
     var t = this;

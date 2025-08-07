@@ -2,75 +2,40 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
+var o = require("./1.js");
+var a = require("./3.js");
 var s = require("./3.js");
-var r = require("./13.js");
-var l = require("./4.js");
-var c = require("./20.js");
-var u = require("./8.js");
-var d = function (e) {
-  function CastleShoppingCartPrimeDayConfirmDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleShoppingCartPrimeDayConfirmDialog.NAME) || this;
+var r = require("./4.js");
+var l = require("./14.js");
+var c = function (e) {
+  function CastleStonewallBackgroundComponent(t) {
+    var i = e.call(this) || this;
+    i.bgMc = t;
+    return i;
   }
-  n.__extends(CastleShoppingCartPrimeDayConfirmDialog, e);
-  CastleShoppingCartPrimeDayConfirmDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    u.ButtonHelper.initButton(this.dialogDisp.btn_yes, 1, c.ClickFeedbackButtonHover);
-    u.ButtonHelper.initButton(this.dialogDisp.btn_no, 1, c.ClickFeedbackButtonHover);
-    u.ButtonHelper.initCheckBox(this.dialogDisp.cbx_ok);
-    this.cbx_dontShowAgain = u.ButtonHelper.getBasicButton(this.dialogDisp.cbx_ok);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("eventBuilding_decoOffer")));
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_no.txt_copy, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("dialog_shoppingCartPrimeDay_GoToShopButton"))).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.btn_yes.txt_copy, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("dialog_shoppingCartPrimeDay_SeeOfferButton"))).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy1, new s.LocalizedTextVO("dialog_shoppingCartPrimeDay_selectRewards"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy2, new s.LocalizedTextVO("dialog_shoppingCartPrimeDay_DontShowNotification")).verticalAlign = o.GGSVerticalAlign.MIDDLE;
+  n.__extends(CastleStonewallBackgroundComponent, e);
+  CastleStonewallBackgroundComponent.prototype.update = function () {
+    this.bgMc.btn_help.toolTipText = "generic_help";
+    this.bgMc.crest1.mouseChildren = false;
+    this.bgMc.crest2.mouseChildren = false;
+    u.CrestHelper.setCrestGraphics(this.bgMc.crest1, r.CastleModel.userData.playerCrest, null, true);
+    u.CrestHelper.setCrestGraphics(this.bgMc.crest2, r.CastleModel.userData.playerCrest, null, true);
   };
-  CastleShoppingCartPrimeDayConfirmDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.cbx_dontShowAgain.deselected();
+  CastleStonewallBackgroundComponent.prototype.setCrestsVisibility = function (e) {
+    this.bgMc.crest1.visible = e;
+    this.bgMc.crest2.visible = e;
   };
-  CastleShoppingCartPrimeDayConfirmDialog.prototype.onClick = function (e) {
-    if (u.ButtonHelper.isButtonEnabled(e.target)) {
-      switch (e.target) {
-        case this.dialogDisp.btn_yes:
-          if (this.dialogProperties.functionYes != null) {
-            this.dialogProperties.functionYes(null);
-          }
-          this.hide();
-          break;
-        case this.dialogDisp.btn_no:
-          if (this.dialogProperties.functionNo != null) {
-            this.dialogProperties.functionNo(null);
-          }
-          this.hide();
-          break;
-        case this.dialogDisp.cbx_ok:
-          this.cbx_dontShowAgain.toggleSelected();
-          l.CastleModel.localData.saveShoppingCartWarning(!this.cbx_dontShowAgain.isSelected, this.endTimeStamp);
-      }
-    }
+  CastleStonewallBackgroundComponent.prototype.setHelpButtonVisibility = function (e) {
+    this.bgMc.btn_help.visible = e;
   };
-  Object.defineProperty(CastleShoppingCartPrimeDayConfirmDialog.prototype, "endTimeStamp", {
-    get: function () {
-      return this.dialogProperties.params[0];
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleShoppingCartPrimeDayConfirmDialog.prototype, "dialogProperties", {
-    get: function () {
-      return this.properties;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleShoppingCartPrimeDayConfirmDialog.__initialize_static_members = function () {
-    CastleShoppingCartPrimeDayConfirmDialog.NAME = "CastleShoppingCartPrimeDayConfirm2";
+  CastleStonewallBackgroundComponent.prototype.setTitleText = function (e) {
+    l.CastleComponent.textFieldManager.registerTextField(this.bgMc.txt_title, new s.TextVO(e)).autoFitToBounds = true;
   };
-  return CastleShoppingCartPrimeDayConfirmDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleShoppingCartPrimeDayConfirmDialog = d;
-a.classImplementsInterfaces(d, "ICollectableRendererList");
-d.__initialize_static_members();
+  CastleStonewallBackgroundComponent.prototype.setTitleByTextId = function (e) {
+    l.CastleComponent.textFieldManager.registerTextField(this.bgMc.txt_title, new a.LocalizedTextVO(e)).autoFitToBounds = true;
+  };
+  return CastleStonewallBackgroundComponent;
+}(l.CastleComponent);
+exports.CastleStonewallBackgroundComponent = c;
+var u = require("./61.js");
+o.classImplementsInterfaces(c, "ICollectableRendererList");

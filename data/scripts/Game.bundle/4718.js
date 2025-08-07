@@ -3,53 +3,41 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./67.js");
-var r = require("./19.js");
-var l = function (e) {
-  function CastleAllianceGiftCollectedDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleAllianceGiftCollectedDialog.NAME) || this;
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./4719.js");
+var c = require("./10.js");
+var u = function (e) {
+  function AGCCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleAllianceGiftCollectedDialog, e);
-  CastleAllianceGiftCollectedDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_ok]);
-  };
-  CastleAllianceGiftCollectedDialog.prototype.setToolTips = function () {
-    e.prototype.setToolTips.call(this);
-  };
-  CastleAllianceGiftCollectedDialog.prototype.setCopyTexts = function () {
-    e.prototype.setCopyTexts.call(this);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_header, new a.LocalizedTextVO("reward"));
-  };
-  CastleAllianceGiftCollectedDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.updateRewards();
-  };
-  CastleAllianceGiftCollectedDialog.prototype.updateRewards = function () {
-    c.CollectableRenderHelper.displayMultipleItemsComplete(this, new s.CollectableRenderClipsList(this.dialogDisp, "reward_").addItemMcs("mc_item").addInfoBtns("parent.btn_info"), this.dialogProperties.rewards, new r.CollectableRenderOptions(r.CollectableRenderOptions.SET_ADVANCED));
-  };
-  CastleAllianceGiftCollectedDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-        this.hide();
-    }
-  };
-  Object.defineProperty(CastleAllianceGiftCollectedDialog.prototype, "dialogProperties", {
+  n.__extends(AGCCommand, e);
+  Object.defineProperty(AGCCommand.prototype, "cmdId", {
     get: function () {
-      return this.properties;
+      return s.ClientConstSF.S2C_ALLIANCE_GIFT_COLLECT;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleAllianceGiftCollectedDialog.__initialize_static_members = function () {
-    CastleAllianceGiftCollectedDialog.NAME = "CastleAllianceGiftCollect";
+  AGCCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        var n = r.CastleModel.allianceGiftData.parse_AGC(i);
+        d.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleAllianceGiftCollectedDialog, new l.CastleAllianceGiftCollectedDialogProperties(n));
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    return false;
   };
-  return CastleAllianceGiftCollectedDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleAllianceGiftCollectedDialog = l;
-var c = require("./25.js");
-o.classImplementsInterfaces(l, "ICollectableRendererList");
-l.__initialize_static_members();
+  return AGCCommand;
+}(c.CastleCommand);
+exports.AGCCommand = u;
+var d = require("./9.js");
+var p = require("./4720.js");
+o.classImplementsInterfaces(u, "IExecCommand");

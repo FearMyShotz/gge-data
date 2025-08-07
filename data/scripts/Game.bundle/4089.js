@@ -8,7 +8,7 @@ var s = require("./58.js");
 var r = require("./39.js");
 var l = require("./53.js");
 var c = require("./4.js");
-var u = require("./744.js");
+var u = require("./746.js");
 var d = require("./89.js");
 var p = function (e) {
   function RankingPanelButton() {
@@ -49,5 +49,5 @@ var p = function (e) {
 }(d.APanelButton);
 exports.RankingPanelButton = p;
 var h = require("./14.js");
-var g = require("./745.js");
+var g = require("./747.js");
 o.classImplementsInterfaces(p, "ICollectableRendererList");

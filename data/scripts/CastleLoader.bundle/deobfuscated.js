@@ -71,12 +71,12 @@
     return Object.prototype.hasOwnProperty.call(e, r);
   };
   __webpack_require__.p = "";
-  __webpack_require__(__webpack_require__.s = 1975);
+  __webpack_require__(__webpack_require__.s = 1976);
 })({
   126: function (e, r) {
     e.exports = ggs_lib;
   },
-  1975: function (e, r, _) {
+  1976: function (e, r, _) {
     'use strict';
 
     Object.defineProperty(r, "__esModule", {
@@ -89,4 +89,4 @@
   2: function (e, r, _) {
     e.exports = _(126)(29);
   }
-}); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/CastleLoader.bundle.5b7ddd0ef2234b54ffa9.js.map
+}); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/CastleLoader.bundle.1f3ba2b89d9e01d64a52.js.map

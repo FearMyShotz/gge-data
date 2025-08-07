@@ -9,6 +9,6 @@ var a = function (e) {
   }
   n.__extends(CollectableItemEquipmentUniqueVE, e);
   return CollectableItemEquipmentUniqueVE;
-}(require("./1050.js").ACollectableItemEquipmentVE);
+}(require("./1051.js").ACollectableItemEquipmentVE);
 exports.CollectableItemEquipmentUniqueVE = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList");

@@ -2,36 +2,58 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
+var o = require("./1.js");
 var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./4.js");
-var l = require("./52.js");
+var s = require("./8.js");
+var r = require("./242.js");
+var l = createjs.MouseEvent;
 var c = function (e) {
-  function CollectableRendererMinuteSkipBackground() {
+  function CollectableRendererInfoButton() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableRendererMinuteSkipBackground, e);
-  CollectableRendererMinuteSkipBackground.prototype.reset = function () {
-    if (this.clips.minuteSkipBackgroundMc) {
-      o.MovieClipHelper.clearMovieClip(this.clips.minuteSkipBackgroundMc);
+  n.__extends(CollectableRendererInfoButton, e);
+  CollectableRendererInfoButton.prototype.reset = function () {
+    if (this.clips.infoBtn) {
+      this.clips.infoBtn.visible = false;
     }
   };
-  CollectableRendererMinuteSkipBackground.prototype.update = function () {
-    var e = this.itemVO;
-    if (this.clips.minuteSkipBackgroundMc && e && e.isInIdRange(r.CastleModel.currencyData.getCurrencyRangeByID(l.ClientConstCurrency.ID_RANGE_MINUTE_SKIP))) {
-      var t = new (s.int(e.xmlCurrencyVO.minutesSkipValue) >= 60 ? Library.CastleInterfaceElements_Icons.Icon_HourClock_background : Library.CastleInterfaceElements_Icons.Icon_MinuteClock_background)();
-      this.clips.minuteSkipBackgroundMc.addChild(t);
-      t.width = this.renderer.options.icon.dimension.x * 1.3;
-      t.height = this.renderer.options.icon.dimension.y * 1.3;
+  CollectableRendererInfoButton.prototype.addListener = function () {
+    if (this.clips.infoBtn) {
+      this.clips.infoBtn.addEventListener(l.CLICK, this.bindFunction(this.onInfoButtonClick));
     }
   };
-  CollectableRendererMinuteSkipBackground.prototype.setVisibility = function (e) {
-    if (this.clips.minuteSkipBackgroundMc) {
-      this.clips.minuteSkipBackgroundMc.visible = e;
+  CollectableRendererInfoButton.prototype.removeListener = function () {
+    if (this.clips.infoBtn) {
+      this.clips.infoBtn.removeEventListener(l.CLICK, this.bindFunction(this.onInfoButtonClick));
     }
   };
-  return CollectableRendererMinuteSkipBackground;
-}(require("./242.js").ACollectableRenderComponent);
-exports.CollectableRendererMinuteSkipBackground = c;
-a.classImplementsInterfaces(c, "ICollectableRendererList");
+  CollectableRendererInfoButton.prototype.update = function () {
+    if (this.clips.infoBtn) {
+      s.ButtonHelper.initBasicButton(this.clips.infoBtn);
+      this.clips.infoBtn.visible = this.canShowButton();
+    }
+  };
+  CollectableRendererInfoButton.prototype.setVisibility = function (e) {
+    if (this.clips.infoBtn) {
+      this.clips.infoBtn.visible = e;
+    }
+  };
+  CollectableRendererInfoButton.prototype.canShowButton = function () {
+    if (!this.itemVO) {
+      return false;
+    }
+    if (a.instanceOfClass(this.itemVO, "CollectableItemBuildingVO")) {
+      var e = this.itemVO.buildingVO;
+      return !!e && !a.instanceOfClass(e, "CustomDecoBuildingVO");
+    }
+    return true;
+  };
+  CollectableRendererInfoButton.prototype.onInfoButtonClick = function (e) {
+    if (this.itemVE && this.clips.infoBtn && s.ButtonHelper.isButtonEnabled(e.target)) {
+      this.itemVE.onInfoButtonClicked();
+    }
+  };
+  return CollectableRendererInfoButton;
+}(r.ACollectableRenderComponent);
+exports.CollectableRendererInfoButton = c;
+o.classImplementsInterfaces(c, "ICollectableRendererList");

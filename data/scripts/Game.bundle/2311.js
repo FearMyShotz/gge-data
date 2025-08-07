@@ -2,25 +2,35 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function PrivateResourceVillageVO(e, t) {
-    this._uniqueID = 0;
-    this._uniqueID = e;
-    this._villageInfo = t;
-  }
-  Object.defineProperty(PrivateResourceVillageVO.prototype, "uniqueID", {
+  function CastleKingdomVillageInfoVO() {}
+  CastleKingdomVillageInfoVO.prototype.parseParamObject = function (e) {
+    if (e[0][0] == r.WorldConst.AREA_TYPE_ISLE_RESOURCE) {
+      this._villageVO = new o.ResourceIsleMapobjectVO();
+    } else {
+      this._villageVO = new a.VillageMapobjectVO();
+    }
+    this._villageVO.parseAreaInfo(e[0]);
+    this._unitInventory = new s.UnitInventoryDictionary();
+    this._unitInventory.fillFromWodAmountArray(e[1]);
+  };
+  Object.defineProperty(CastleKingdomVillageInfoVO.prototype, "villageMapObjectVO", {
     get: function () {
-      return this._uniqueID;
+      return this._villageVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(PrivateResourceVillageVO.prototype, "villageInfo", {
+  Object.defineProperty(CastleKingdomVillageInfoVO.prototype, "unitInventory", {
     get: function () {
-      return this._villageInfo;
+      return this._unitInventory;
     },
     enumerable: true,
     configurable: true
   });
-  return PrivateResourceVillageVO;
+  return CastleKingdomVillageInfoVO;
 }();
-exports.PrivateResourceVillageVO = n;
+exports.CastleKingdomVillageInfoVO = n;
+var o = require("./913.js");
+var a = require("./598.js");
+var s = require("./156.js");
+var r = require("./5.js");

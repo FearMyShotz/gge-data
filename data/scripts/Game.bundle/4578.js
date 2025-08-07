@@ -2,35 +2,41 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./559.js");
-var r = function (e) {
-  function CastleVolcanoSectorGenerator() {
-    return e.call(this) || this;
+var o = function (e) {
+  function FactionVillageInfoVO(t, i) {
+    var n = this;
+    n._towerID = 0;
+    n._canBeAttacked = false;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this) || this)._towerID = t;
+    n.absAreaPos = i;
+    return n;
   }
-  n.__extends(CastleVolcanoSectorGenerator, e);
-  Object.defineProperty(CastleVolcanoSectorGenerator.prototype, "worldData", {
+  n.__extends(FactionVillageInfoVO, e);
+  Object.defineProperty(FactionVillageInfoVO.prototype, "canBeAttacked", {
     get: function () {
-      return new a.WorldVolcano();
+      return this._canBeAttacked;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(s.ABasicSectorGenerator.prototype, "worldData").set.call(this, e);
+      this._canBeAttacked = e;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleVolcanoSectorGenerator.prototype, "kingdomID", {
+  Object.defineProperty(FactionVillageInfoVO.prototype, "towerID", {
     get: function () {
-      return a.WorldVolcano.KINGDOM_ID;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.ABasicSectorGenerator.prototype, "kingdomID").set.call(this, e);
+      return this._towerID;
     },
     enumerable: true,
     configurable: true
   });
-  return CastleVolcanoSectorGenerator;
-}(s.ABasicSectorGenerator);
-exports.CastleVolcanoSectorGenerator = r;
-o.classImplementsInterfaces(r, "ICastleSectorGenerator");
+  Object.defineProperty(FactionVillageInfoVO.prototype, "realPosition", {
+    set: function (e) {
+      this._realPosition = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return FactionVillageInfoVO;
+}(require("./498.js").MinWorldMapCastleInfoVO);
+exports.FactionVillageInfoVO = o;

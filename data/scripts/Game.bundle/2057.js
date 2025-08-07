@@ -1,84 +1,61 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./84.js");
-var s = require("./14.js");
-var r = require("./293.js");
-var l = createjs.Container;
-var c = createjs.Event;
-var u = function (e) {
-  function IsoObjectLayerManager() {
-    var t = this;
-    t._layerDic = new Map();
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var n = createjs.Container;
+var o = createjs.Point;
+var a = function () {
+  function IsoAdditionalClipLayerVO(e, t) {
+    this._type = r.IsoAdditionalClipEnum.NONE;
+    this._sourceLayer = e;
+    this._type = t;
+    this._newLayer = this.createCopyFromSourceLayer();
   }
-  n.__extends(IsoObjectLayerManager, e);
-  IsoObjectLayerManager.prototype.init = function (e) {
-    this._ve = e;
-    this.createLayers();
+  IsoAdditionalClipLayerVO.prototype.updatePosition = function () {
+    var e = this.sourceLayer.localToGlobal(new o(0, 0));
+    var t = this.newLayer.parent.globalToLocal(e);
+    this.newLayer.x = t.x;
+    this.newLayer.y = t.y;
   };
-  IsoObjectLayerManager.prototype.destroy = function () {
-    e.prototype.destroy.call(this);
-    this.destroyLayers();
-  };
-  IsoObjectLayerManager.prototype.createLayers = function () {
-    for (var e = 0, t = a.CastleEnum.getEnumListByClass(r.IsoObjectLayerEnum); e < t.length; e++) {
-      var i = t[e];
-      var n = new l();
-      if (i == r.IsoObjectLayerEnum.DISP) {
-        this.ve.elementContainer.addChild(n);
-      } else {
-        n.addEventListener(c.ADDED, this.bindFunction(this.onAddedToLayer));
-      }
-      n.name = i.name + "Layer";
-      this.layerDic.set(i, n);
+  IsoAdditionalClipLayerVO.prototype.createCopyFromSourceLayer = function () {
+    var e = s.ClientConstUtils.getClassFromObject(this.sourceLayer);
+    if (e === undefined) {
+      return new n();
     }
+    var t = new e();
+    t.name = this.sourceLayer.name;
+    t.x = this.sourceLayer.x;
+    t.y = this.sourceLayer.y;
+    t.rotationX = this.sourceLayer.rotationX;
+    t.rotationY = this.sourceLayer.rotationY;
+    t.rotationZ = this.sourceLayer.rotationZ;
+    t.scaleX = this.sourceLayer.scaleX;
+    t.scaleY = this.sourceLayer.scaleY;
+    t.scaleZ = this.sourceLayer.scaleZ;
+    return t;
   };
-  IsoObjectLayerManager.prototype.onAddedToLayer = function (e) {
-    e.target.removeEventListener(c.ADDED, this.bindFunction(this.onAddedToLayer));
-    this.ve.elementContainer.addChild(e.currentTarget);
-    this.sortLayers();
-  };
-  IsoObjectLayerManager.prototype.sortLayers = function () {
-    var e = 0;
-    for (var t = 0, i = a.CastleEnum.getEnumListByClass(r.IsoObjectLayerEnum); t < i.length; t++) {
-      var n = i[t];
-      var o = this.layerDic.get(n);
-      if (o.parent) {
-        o.parent.setChildIndex(o, e++);
-      }
-    }
-  };
-  IsoObjectLayerManager.prototype.destroyLayers = function () {
-    for (var e = 0, t = a.CastleEnum.getEnumListByClass(r.IsoObjectLayerEnum); e < t.length; e++) {
-      var i = t[e];
-      var n = this.getLayer(i);
-      n.removeEventListener(c.ADDED, this.bindFunction(this.onAddedToLayer));
-      this.ve.elementContainer.removeChild(n);
-    }
-    this._layerDic = new Map();
-  };
-  IsoObjectLayerManager.prototype.getLayer = function (e) {
-    return this.layerDic.get(e);
-  };
-  Object.defineProperty(IsoObjectLayerManager.prototype, "ve", {
+  Object.defineProperty(IsoAdditionalClipLayerVO.prototype, "sourceLayer", {
     get: function () {
-      return this._ve;
+      return this._sourceLayer;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoObjectLayerManager.prototype, "layerDic", {
+  Object.defineProperty(IsoAdditionalClipLayerVO.prototype, "newLayer", {
     get: function () {
-      return this._layerDic;
+      return this._newLayer;
     },
     enumerable: true,
     configurable: true
   });
-  return IsoObjectLayerManager;
-}(s.CastleComponent);
-exports.IsoObjectLayerManager = u;
-o.classImplementsInterfaces(u, "ICollectableRendererList");
+  Object.defineProperty(IsoAdditionalClipLayerVO.prototype, "type", {
+    get: function () {
+      return this._type;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return IsoAdditionalClipLayerVO;
+}();
+exports.IsoAdditionalClipLayerVO = a;
+var s = require("./55.js");
+var r = require("./145.js");

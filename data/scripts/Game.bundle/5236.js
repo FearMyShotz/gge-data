@@ -2,21 +2,22 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function IsoCommandPackageObjectsTriggerUpdate(t, i) {
-    var n = e.call(this) || this;
-    n._isoData = t;
+var o = require("./1.js");
+var a = function (e) {
+  function IsoCommandObjectsInitModel(t, i) {
+    var n = e.call(this, t) || this;
     n._objectsType = i;
     return n;
   }
-  n.__extends(IsoCommandPackageObjectsTriggerUpdate, e);
-  IsoCommandPackageObjectsTriggerUpdate.prototype.createCommandList = function () {
-    var e = [];
-    e.push(new a.IsoCommandObjectsTriggerUpdateModel(this._isoData, this._objectsType), new s.IsoCommandObjectsTriggerUpdateView(this._objectsType));
-    return e;
+  n.__extends(IsoCommandObjectsInitModel, e);
+  IsoCommandObjectsInitModel.prototype.execute = function () {
+    var e = this.isoData.objects.getGroupByType(this._objectsType);
+    if (e) {
+      e.initObjects();
+      this.isoData.objects.invalidateCompleteObjectsList();
+    }
   };
-  return IsoCommandPackageObjectsTriggerUpdate;
-}(require("./485.js").AIsoCommandPackage);
-exports.IsoCommandPackageObjectsTriggerUpdate = o;
-var a = require("./5237.js");
-var s = require("./5238.js");
+  return IsoCommandObjectsInitModel;
+}(require("./310.js").AIsoCommandModel);
+exports.IsoCommandObjectsInitModel = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList");

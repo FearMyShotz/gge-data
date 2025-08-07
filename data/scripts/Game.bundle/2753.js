@@ -2,17 +2,19 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./5.js");
-var a = require("./6.js");
+var o = require("./6.js");
+var a = require("./18.js");
 var s = require("./4.js");
-var r = require("./87.js");
-var l = function (e) {
-  function IsoDataObjectGroupFixedPosition() {
+var r = require("./358.js");
+var l = createjs.Point;
+var c = function (e) {
+  function IsoDataObjectGroupExpansion() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IsoDataObjectGroupFixedPosition, e);
-  IsoDataObjectGroupFixedPosition.prototype.initObjects = function () {
-    this.checkAndCreateWishWell();
+  n.__extends(IsoDataObjectGroupExpansion, e);
+  IsoDataObjectGroupExpansion.prototype.initObjects = function () {
+    this.resetList();
+    this.createExpansionObjects();
     if (this.list != null) {
       for (var e = 0, t = this.list; e < t.length; e++) {
         var i = t[e];
@@ -22,59 +24,69 @@ var l = function (e) {
       }
     }
   };
-  IsoDataObjectGroupFixedPosition.prototype.updateObjectByServer = function (e, t) {
-    if (this.list != null) {
-      for (var i = 0, n = this.list; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && o.objectId == e) {
-          d.IsoHelper.data.updateIsoObjectByServer(o, t);
-          var a = o;
-          switch (a.buildingState) {
-            case r.IsoBuildingStateEnum.DISASSEMBLED_COMPLETED:
-            case r.IsoBuildingStateEnum.UPGRADE_COMPLETED:
-              this.isoData.updater.removeObjectByObjectId(a.objectId);
+  IsoDataObjectGroupExpansion.prototype.createExpansionObjects = function () {
+    if (this.isoData.areaData.isMyArea && !this.isoData.areaData.isUnderConquerProcess) {
+      var e = s.CastleModel.wodData.createVObyWOD(a.ClientConstCastle.EXTENSION_GROUND_WOD_ID, u.CastleWodData.TYPE_BUILDING);
+      var t = s.CastleModel.wodData.createVObyWOD(a.ClientConstCastle.START_GROUND_WOD_ID, u.CastleWodData.TYPE_BUILDING);
+      var i = this.isoData.objects.groundObjects.startPoint;
+      var n = o.int(s.CastleModel.areaData.activeIsoData.objects.groundObjects.expansionAmount + 1);
+      var r = o.int(i.x - a.ClientConstCastle.EXPANSIONS_TO_EACHSIDE * e.width);
+      var c = o.int(i.y - a.ClientConstCastle.EXPANSIONS_TO_EACHSIDE * e.width);
+      var d = o.int(i.x + t.width + a.ClientConstCastle.EXPANSIONS_TO_EACHSIDE * e.width) + (n >= 17 ? e.width : 0);
+      var h = o.int(i.x + t.width + a.ClientConstCastle.EXPANSIONS_TO_EACHSIDE * e.width);
+      p.getLogger("CastleGame").debug("startX: " + r + "|  startY: " + c + "  | endX: " + d + " | endY: " + h);
+      for (var g = r; g < d; g += o.int(e.height)) {
+        for (var C = c; C < h; C += o.int(e.width)) {
+          var _ = new l(g, C);
+          var m = new l(g, C - 1);
+          var f = new l(g + e.height - 1, C - 1);
+          var O = new l(g, C + e.width + 1);
+          var E = new l(g + e.height - 1, C + e.width + 1);
+          if (!this.isoData.grid.isPointOnBuildingGround(_)) {
+            if (this.isoData.grid.isPointOnBuildingGround(m) && this.isoData.grid.isPointOnBuildingGround(f) && !this.isoData.grid.isPointOnBuildingGround(O) && !this.isoData.grid.isPointOnBuildingGround(E)) {
+              this.addExpansionObject(g, C, 1, e);
+            } else if (!this.isoData.grid.isPointOnBuildingGround(m) && !this.isoData.grid.isPointOnBuildingGround(f) && this.isoData.grid.isPointOnBuildingGround(O) && this.isoData.grid.isPointOnBuildingGround(E)) {
+              this.addExpansionObject(g, C, 3, e);
+            } else if (this.isoData.grid.isPointOnBuildingGround(m) && this.isoData.grid.isPointOnBuildingGround(f) && this.isoData.grid.isPointOnBuildingGround(O) && this.isoData.grid.isPointOnBuildingGround(E)) {
+              this.addExpansionObject(g, C, 3, e);
+            }
           }
-          return o;
         }
       }
-    }
-    return null;
-  };
-  IsoDataObjectGroupFixedPosition.prototype.checkAndCreateWishWell = function () {
-    if (this.isoData && this.isoData.areaData && this.isoData.areaData.isMyHomeCastle) {
-      var e;
-      for (var t = a.int(this.list.length - 1); t >= 0; t--) {
-        var i = this.list[t];
-        if (h.instanceOfClass(i, "RubyWishingWellFixedPositionBuildingVO") && (e = i)) {
-          p.Iso.controller.processor.executePackage(new u.IsoCommandPackageObjectRemoveByVO(e));
-        }
-      }
-      if (this.canHaveWishWell()) {
-        var n = d.IsoHelper.data.createIsoObjectVOByXml(s.CastleModel.rubyWishingWellData.getCurrentWodId(), this.isoData, true);
-        p.Iso.controller.processor.executePackage(new c.IsoCommandPackageObjectAdd(n));
-      }
-    }
-  };
-  IsoDataObjectGroupFixedPosition.prototype.parseGCA = function (e) {
-    var t = e.FP;
-    if (t && (this.resetList(), t != null)) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          this.list.push(d.IsoHelper.data.createIsoObjectVOByServer(o, this.isoData));
+      for (C = c; C < h; C += o.int(e.height)) {
+        for (g = r; g < d; g += o.int(e.width)) {
+          _ = new l(g, C);
+          m = new l(g - 1, C);
+          f = new l(g - 1, C + e.height - 1);
+          E = new l(g + e.width + 1, C);
+          O = new l(g + e.width + 1, C + e.height - 1);
+          if (!this.isoData.grid.isPointOnBuildingGround(_)) {
+            if (this.isoData.grid.isPointOnBuildingGround(m) && this.isoData.grid.isPointOnBuildingGround(f) && !this.isoData.grid.isPointOnBuildingGround(O) && !this.isoData.grid.isPointOnBuildingGround(E)) {
+              this.addExpansionObject(g, C, 0, e);
+            } else if (!this.isoData.grid.isPointOnBuildingGround(m) && !this.isoData.grid.isPointOnBuildingGround(f) && this.isoData.grid.isPointOnBuildingGround(O) && this.isoData.grid.isPointOnBuildingGround(E)) {
+              this.addExpansionObject(g, C, 2, e);
+            } else if (this.isoData.grid.isPointOnBuildingGround(m) && this.isoData.grid.isPointOnBuildingGround(f) && this.isoData.grid.isPointOnBuildingGround(O) && this.isoData.grid.isPointOnBuildingGround(E)) {
+              this.addExpansionObject(g, C, 2, e);
+            }
+          }
         }
       }
     }
   };
-  IsoDataObjectGroupFixedPosition.prototype.canHaveWishWell = function () {
-    return this.isoData.areaData.isMyHomeCastle && s.CastleModel.userData.userLevel >= o.WishingWellConst.MIN_REQUIRED_PLAYER_LEVEL && !g.SpecialServerHelper.isOnSpecialServer;
+  IsoDataObjectGroupExpansion.prototype.addExpansionObject = function (e, t, i, n) {
+    var o = new d.CastleExpansionVO();
+    o.init(this.isoData);
+    o.width = n.width;
+    o.height = n.height;
+    o.x = e;
+    o.y = t;
+    p.getLogger("CastleGame").debug("Expansion:  x: " + e + "|  y: " + t + "  | width: " + n.width + " | height: " + n.height + " | rotation: " + i);
+    o.rotation = i;
+    this.list.push(o);
   };
-  return IsoDataObjectGroupFixedPosition;
-}(require("./358.js").AIsoDataObjectGroupSimpleList);
-exports.IsoDataObjectGroupFixedPosition = l;
-var c = require("./2754.js");
-var u = require("./1490.js");
-var d = require("./46.js");
-var p = require("./33.js");
-var h = require("./1.js");
-var g = require("./44.js");
+  return IsoDataObjectGroupExpansion;
+}(r.AIsoDataObjectGroupSimpleList);
+exports.IsoDataObjectGroupExpansion = c;
+var u = require("./56.js");
+var d = require("./1488.js");
+var p = require("./116.js");

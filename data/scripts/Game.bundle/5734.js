@@ -1,29 +1,68 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SBindGem(t, i, n, o, a) {
-    var s = this;
-    s.GID = NaN;
-    s.EID = NaN;
-    s.LID = 0;
-    s.M = 0;
-    s.RGEM = 0;
-    CONSTRUCTOR_HACK;
-    (s = e.call(this) || this).GID = t;
-    s.EID = i;
-    s.LID = n;
-    s.M = o ? 1 : 0;
-    s.RGEM = a ? 1 : 0;
-    return s;
+var n = require("./1.js");
+var o = require("./6.js");
+var a = require("./22.js");
+var s = function () {
+  function XmlWorldmapSkinVO() {
+    this._id = 0;
+    this._definesMoat = false;
+    this._definesAllCastleLevels = false;
+    this._definesResources = false;
+    this._increasedSize = false;
   }
-  n.__extends(C2SBindGem, e);
-  C2SBindGem.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_BIND_GEM;
+  XmlWorldmapSkinVO.prototype.parseXml = function (e) {
+    this._id = o.int(a.CastleXMLUtils.getIntAttribute("skinID", e, -1));
+    this._name = a.CastleXMLUtils.getStringAttribute("name", e);
+    this._definesMoat = a.CastleXMLUtils.getBooleanAttribute("definesMoat", e);
+    this._definesAllCastleLevels = a.CastleXMLUtils.getBooleanAttribute("definesAllCastleLevels", e);
+    this._definesResources = a.CastleXMLUtils.getBooleanAttribute("definesResources", e);
+    this._increasedSize = a.CastleXMLUtils.getBooleanAttribute("increasedSize", e);
   };
-  return C2SBindGem;
-}(o.BasicCommandVO);
-exports.C2SBindGem = s;
+  Object.defineProperty(XmlWorldmapSkinVO.prototype, "id", {
+    get: function () {
+      return this._id;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlWorldmapSkinVO.prototype, "name", {
+    get: function () {
+      return this._name;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlWorldmapSkinVO.prototype, "definesMoat", {
+    get: function () {
+      return this._definesMoat;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlWorldmapSkinVO.prototype, "definesAllCastleLevels", {
+    get: function () {
+      return this._definesAllCastleLevels;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlWorldmapSkinVO.prototype, "definesResources", {
+    get: function () {
+      return this._definesResources;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(XmlWorldmapSkinVO.prototype, "increasedSize", {
+    get: function () {
+      return this._increasedSize;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return XmlWorldmapSkinVO;
+}();
+exports.XmlWorldmapSkinVO = s;
+n.classImplementsInterfaces(s, "IXmlElementVO");

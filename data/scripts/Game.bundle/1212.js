@@ -6,8 +6,8 @@ var o = require("./2.js");
 var a = require("./1.js");
 var s = require("./3.js");
 var r = require("./39.js");
-var l = require("./2115.js");
-var c = require("./2117.js");
+var l = require("./2116.js");
+var c = require("./2118.js");
 var u = require("./4.js");
 var d = require("./204.js");
 var p = createjs.Point;
@@ -201,6 +201,6 @@ var h = function (e) {
 }(d.CastlePremiumMarketShopVO);
 exports.CastleFestivalPremiumShopVO = h;
 var g = require("./9.js");
-var C = require("./2118.js");
+var C = require("./2119.js");
 var _ = require("./170.js");
 a.classImplementsInterfaces(h, "IPremiumMarketShopVO");

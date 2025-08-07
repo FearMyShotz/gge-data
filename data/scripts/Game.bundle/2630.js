@@ -5,21 +5,17 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SellStoredDeco(t, i, n = -1) {
-    var o = this;
-    o.WID = 0;
-    o.AMT = 0;
-    o.UID = 0;
+  function C2SellBuildingDeco(t) {
+    var i = this;
+    i.OID = 0;
     CONSTRUCTOR_HACK;
-    (o = e.call(this) || this).WID = t;
-    o.AMT = i;
-    o.UID = n;
-    return o;
+    (i = e.call(this) || this).OID = t;
+    return i;
   }
-  n.__extends(C2SellStoredDeco, e);
-  C2SellStoredDeco.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_SELL_STORED_DECO;
+  n.__extends(C2SellBuildingDeco, e);
+  C2SellBuildingDeco.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_SELL_BUILDING_DECO;
   };
-  return C2SellStoredDeco;
+  return C2SellBuildingDeco;
 }(o.BasicCommandVO);
-exports.C2SellStoredDeco = s;
+exports.C2SellBuildingDeco = s;

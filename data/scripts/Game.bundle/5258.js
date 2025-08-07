@@ -1,38 +1,32 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./71.js");
-var s = function (e) {
-  function AreaDataSlum() {
-    var t = this;
-    t._slumLevel = -1;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var n = function () {
+  function QueuedBuildingConstructionCommandVO(e, t) {
+    this._wodID = 0;
+    this._command = e;
+    this._wodID = t;
   }
-  n.__extends(AreaDataSlum, e);
-  AreaDataSlum.prototype.parseCSL = function (e) {
-    this.setSlumLevel(e.SL);
-  };
-  AreaDataSlum.prototype.setSlumLevel = function (e) {
-    if (this._slumLevel != e) {
-      this._slumLevel = e;
-      if (this.areaData.isoData) {
-        this.areaData.isoData.updater.updateSlumBuildings();
-      }
-      r.CastleComponent.controller.dispatchEvent(new a.AreaDataEvent(a.AreaDataEvent.ON_SLUM_LEVEL_CHANGED));
-    }
-  };
-  Object.defineProperty(AreaDataSlum.prototype, "slumLevel", {
+  Object.defineProperty(QueuedBuildingConstructionCommandVO.prototype, "command", {
     get: function () {
-      return this._slumLevel;
+      return this._command;
+    },
+    set: function (e) {
+      this._command = e;
     },
     enumerable: true,
     configurable: true
   });
-  return AreaDataSlum;
-}(require("./561.js").AAreaDataComponent);
-exports.AreaDataSlum = s;
-var r = require("./14.js");
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IAreaDataComponent");
+  Object.defineProperty(QueuedBuildingConstructionCommandVO.prototype, "wodID", {
+    get: function () {
+      return this._wodID;
+    },
+    set: function (e) {
+      this._wodID = e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return QueuedBuildingConstructionCommandVO;
+}();
+exports.QueuedBuildingConstructionCommandVO = n;

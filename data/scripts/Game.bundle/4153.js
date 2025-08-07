@@ -13,7 +13,7 @@ var a = function (e) {
     CastleSeasonRepairBridgeDialog.NAME = "CastleSeasonRepair";
   };
   return CastleSeasonRepairBridgeDialog;
-}(require("./1078.js").CastleSeasonBaseRepairDialog);
+}(require("./1079.js").CastleSeasonBaseRepairDialog);
 exports.CastleSeasonRepairBridgeDialog = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList");
 a.__initialize_static_members();

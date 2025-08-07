@@ -3,12 +3,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleAwardDialogProperties(t) {
-    var i = e.call(this) || this;
-    i.messageVO = t;
+  function CastleVIPMessageDialogProperties(t) {
+    var i = this;
+    i.vipLevel = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).vipLevel = t;
     return i;
   }
-  n.__extends(CastleAwardDialogProperties, e);
-  return CastleAwardDialogProperties;
+  n.__extends(CastleVIPMessageDialogProperties, e);
+  return CastleVIPMessageDialogProperties;
 }(require("./2.js").BasicProperties);
-exports.CastleAwardDialogProperties = o;
+exports.CastleVIPMessageDialogProperties = o;

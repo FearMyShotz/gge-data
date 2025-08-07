@@ -1,48 +1,61 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./5.js");
-var a = function (e) {
-  function CastleShoppingCartPrimeDayChoosableGroup(t, i = null) {
-    var n = e.call(this, t, o.ShoppingCartConst.OPTIONS_PER_GROUP) || this;
-    for (var a = 0; a < i.length; a++) {
-      n.items[a].typeId = i[a];
+var n = function () {
+  function CastleShoppingCartPrimeDayCategory(e, t, i, n) {
+    this._groupId = 0;
+    this._categoryMc = e;
+    this._groupId = t + 1;
+    e.gotoAndStop(this._groupId);
+    this._choosableGroup = new o.CastleShoppingCartPrimeDayChoosableGroup(this, i);
+    this._selectedGroup = new a.CastleShoppingCartPrimeDaySelectedGroup(this, n);
+    if (this._selectedGroup.full()) {
+      this._choosableGroup.disable();
     }
-    if (!n.full()) {
-      throw new Error("Couldn't fill choosable group! " + o.ShoppingCartConst.OPTIONS_PER_GROUP + " valid items are needed! Category " + (t ? t.groupId : "none"));
-    }
-    return n;
   }
-  n.__extends(CastleShoppingCartPrimeDayChoosableGroup, e);
-  CastleShoppingCartPrimeDayChoosableGroup.prototype.createItem = function (e) {
-    return new s.CastleShoppingCartPrimeDayChoosableItem(this._category, e);
-  };
-  CastleShoppingCartPrimeDayChoosableGroup.prototype.reset = function () {
-    for (var e = 0; e < this.items.length; e++) {
-      this.items[e].reset();
+  CastleShoppingCartPrimeDayCategory.prototype.checkClick = function (e) {
+    var t = this._choosableGroup.checkClick(e) || this._selectedGroup.checkClick(e);
+    if (this._selectedGroup.full()) {
+      this._choosableGroup.disable();
+    } else {
+      this._choosableGroup.enable();
     }
+    return t;
   };
-  CastleShoppingCartPrimeDayChoosableGroup.prototype.enable = function () {
-    for (var e = 0; e < this._size; e++) {
-      this.items[e].enable();
-    }
+  CastleShoppingCartPrimeDayCategory.prototype.clear = function () {
+    this._choosableGroup.clear();
+    this._selectedGroup.clear();
   };
-  CastleShoppingCartPrimeDayChoosableGroup.prototype.disable = function () {
-    for (var e = 0; e < this._size; e++) {
-      this.items[e].disable();
-    }
-  };
-  CastleShoppingCartPrimeDayChoosableGroup.prototype.getItemByOptionId = function (e) {
-    for (var t = 0; t < this._size; t++) {
-      var i = this.items[t];
-      if (i.optionId == e) {
-        return i;
-      }
-    }
-    return null;
-  };
-  return CastleShoppingCartPrimeDayChoosableGroup;
-}(require("./1203.js").CastleShoppingCartPrimeDayAbstractGroup);
-exports.CastleShoppingCartPrimeDayChoosableGroup = a;
-var s = require("./2087.js");
+  Object.defineProperty(CastleShoppingCartPrimeDayCategory.prototype, "categoryMc", {
+    get: function () {
+      return this._categoryMc;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleShoppingCartPrimeDayCategory.prototype, "groupId", {
+    get: function () {
+      return this._groupId;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleShoppingCartPrimeDayCategory.prototype, "choosableGroup", {
+    get: function () {
+      return this._choosableGroup;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleShoppingCartPrimeDayCategory.prototype, "selectedGroup", {
+    get: function () {
+      return this._selectedGroup;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleShoppingCartPrimeDayCategory;
+}();
+exports.CastleShoppingCartPrimeDayCategory = n;
+var o = require("./2087.js");
+var a = require("./2089.js");

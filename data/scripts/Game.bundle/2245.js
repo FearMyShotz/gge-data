@@ -1,68 +1,75 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./233.js");
-var r = require("./4.js");
-var l = require("./52.js");
-var c = require("./8.js");
-var u = require("./907.js");
-var d = function (e) {
-  function CastleExtractSocketDialog() {
-    return e.call(this, CastleExtractSocketDialog.NAME) || this;
-  }
-  n.__extends(CastleExtractSocketDialog, e);
-  CastleExtractSocketDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.controller.addEventListener(s.CastleGemEvent.INVENTORY_SPACE_LEFT, this.bindFunction(this.onGemInventoryChanged));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new a.LocalizedTextVO("dialog_gemExtract_info", [this.dialogProperties.gemVO.nameString, this.dialogProperties.eqVO.nameString]));
-    this.updateOkButton();
+var n = function () {
+  function ClientConstGem() {}
+  ClientConstGem.createColorMapping = function () {
+    var e = {
+      [ClientConstGem.EFFECT_DEFENSE_UNIT_AMOUNT_WALL]: ClientConstGem.GEM_COLOR_GREEN,
+      [ClientConstGem.EFFECT_HIDEOUT_CAPACITY]: ClientConstGem.GEM_COLOR_YELLOW,
+      [ClientConstGem.EFFECT_ATTACK_UNIT_AMOUNT_FRONT]: ClientConstGem.GEM_COLOR_DARKGREEN,
+      [ClientConstGem.EFFECT_ATTACK_UNIT_AMOUNT_FLANK]: ClientConstGem.GEM_COLOR_LIGHTGREEN,
+      [ClientConstGem.EFFECT_LOOT_CAPACITY]: ClientConstGem.GEM_COLOR_DARKBLUE,
+      [ClientConstGem.EFFECT_RETURN_TRAVEL_BOOST]: ClientConstGem.GEM_COLOR_LIGHTBLUE,
+      [ClientConstGem.EFFECT_ATTACK_SUPPORT_UNITS_WEAK]: ClientConstGem.GEM_COLOR_PINK,
+      [ClientConstGem.EFFECT_ATTACK_SUPPORT_UNITS_STRONG]: ClientConstGem.GEM_COLOR_PURPLE,
+      [ClientConstGem.EFFECT_DEFENSE_SUPPORT_UNITS_WEAK]: ClientConstGem.GEM_COLOR_PINK,
+      [ClientConstGem.EFFECT_DEFENSE_SUPPORT_UNITS_STRONG]: ClientConstGem.GEM_COLOR_PURPLE,
+      [ClientConstGem.EFFECT_ATTACK_BOOST_FLANK]: ClientConstGem.GEM_COLOR_GREEN,
+      [ClientConstGem.EFFECT_DEFENSE_BOOST_FLANK]: ClientConstGem.GEM_COLOR_GREEN,
+      [ClientConstGem.EFFECT_ATTACK_BOOST_FRONT]: ClientConstGem.GEM_COLOR_DARKGREEN,
+      [ClientConstGem.EFFECT_DEFENSE_BOOST_FRONT]: ClientConstGem.GEM_COLOR_DARKGREEN,
+      [ClientConstGem.EFFECT_ATTACK_BOOST_YARD]: ClientConstGem.GEM_COLOR_PINK,
+      [ClientConstGem.EFFECT_DEFENSE_BOOST_YARD]: ClientConstGem.GEM_COLOR_LIGHTGREEN,
+      [ClientConstGem.EFFECT_FAME_OFFENSE_BONUS]: ClientConstGem.GEM_COLOR_DARKBLUE,
+      [ClientConstGem.EFFECT_FAME_DEFENSE_BONUS]: ClientConstGem.GEM_COLOR_DARKBLUE,
+      [ClientConstGem.EFFECT_LOOT_BONUS]: ClientConstGem.GEM_COLOR_YELLOW,
+      [ClientConstGem.EFFECT_LOOT_REDUCTION]: ClientConstGem.GEM_COLOR_YELLOW,
+      [ClientConstGem.EFFECT_FIRE_BOOST]: ClientConstGem.GEM_COLOR_RED,
+      [ClientConstGem.EFFECT_FIRE_BRIGADE_BOOST]: ClientConstGem.GEM_COLOR_RED,
+      [ClientConstGem.EFFECT_MAGIC_FIND_BONUS]: ClientConstGem.GEM_COLOR_ORANGE,
+      [ClientConstGem.EFFECT_COOLDOWN_REDUCTION]: ClientConstGem.GEM_COLOR_LIGHTBLUE
+    };
+    return e;
   };
-  CastleExtractSocketDialog.prototype.hide = function () {
-    this.controller.removeEventListener(s.CastleGemEvent.INVENTORY_SPACE_LEFT, this.bindFunction(this.onGemInventoryChanged));
-    e.prototype.hide.call(this);
+  ClientConstGem.__initialize_static_members = function () {
+    ClientConstGem.GEM_COLOR_LIGHTGREEN = 8446478;
+    ClientConstGem.GEM_COLOR_DARKGREEN = 295943;
+    ClientConstGem.GEM_COLOR_GREEN = 380018;
+    ClientConstGem.GEM_COLOR_LIGHTBLUE = 2730978;
+    ClientConstGem.GEM_COLOR_DARKBLUE = 861910;
+    ClientConstGem.GEM_COLOR_RED = 13836847;
+    ClientConstGem.GEM_COLOR_PINK = 16542658;
+    ClientConstGem.GEM_COLOR_PURPLE = 6423740;
+    ClientConstGem.GEM_COLOR_YELLOW = 14400545;
+    ClientConstGem.GEM_COLOR_ORANGE = 15817252;
+    ClientConstGem.EFFECT_ATTACK_SUPPORT_UNITS_WEAK = 511;
+    ClientConstGem.EFFECT_ATTACK_SUPPORT_UNITS_STRONG = 512;
+    ClientConstGem.EFFECT_ATTACK_BOOST_FRONT = 513;
+    ClientConstGem.EFFECT_ATTACK_BOOST_FLANK = 514;
+    ClientConstGem.EFFECT_ATTACK_BOOST_YARD = 504;
+    ClientConstGem.EFFECT_FAME_OFFENSE_BONUS = 51;
+    ClientConstGem.EFFECT_LOOT_BONUS = 54;
+    ClientConstGem.EFFECT_FIRE_BOOST = 56;
+    ClientConstGem.EFFECT_DEFENSE_BOOST_FRONT = 509;
+    ClientConstGem.EFFECT_DEFENSE_BOOST_FLANK = 510;
+    ClientConstGem.EFFECT_DEFENSE_BOOST_YARD = 501;
+    ClientConstGem.EFFECT_FAME_DEFENSE_BONUS = 1;
+    ClientConstGem.EFFECT_LOOT_REDUCTION = 3;
+    ClientConstGem.EFFECT_FIRE_BRIGADE_BOOST = 5;
+    ClientConstGem.EFFECT_DEFENSE_SUPPORT_UNITS_WEAK = 507;
+    ClientConstGem.EFFECT_DEFENSE_SUPPORT_UNITS_STRONG = 508;
+    ClientConstGem.EFFECT_MAGIC_FIND_BONUS = 60;
+    ClientConstGem.EFFECT_COOLDOWN_REDUCTION = 65;
+    ClientConstGem.EFFECT_DEFENSE_UNIT_AMOUNT_WALL = 13;
+    ClientConstGem.EFFECT_HIDEOUT_CAPACITY = 502;
+    ClientConstGem.EFFECT_ATTACK_UNIT_AMOUNT_FRONT = 503;
+    ClientConstGem.EFFECT_ATTACK_UNIT_AMOUNT_FLANK = 66;
+    ClientConstGem.EFFECT_LOOT_CAPACITY = 505;
+    ClientConstGem.EFFECT_RETURN_TRAVEL_BOOST = 506;
+    ClientConstGem.GEM_COLOR_MAPPING = ClientConstGem.createColorMapping();
   };
-  CastleExtractSocketDialog.prototype.updateCosts = function () {
-    e.prototype.updateCosts.call(this);
-    if (this.getCosts().amount <= 0) {
-      this.textFieldManager.registerTextField(this.dialogDisp.mc_cost.txt_text, new a.LocalizedTextVO("dialog_kingdomStart_prebuiltCastle_chooseCastle_forFree")).autoFitToBounds = true;
-    }
-  };
-  CastleExtractSocketDialog.prototype.updateOkButton = function () {
-    c.ButtonHelper.enableButton(this.dialogDisp.btn_ok, !r.CastleModel.gemData.isInventoryFull);
-    this.dialogDisp.btn_ok.toolTipText = r.CastleModel.gemData.isInventoryFull ? "allyforge_tooltip_inventoryFull_gems" : null;
-  };
-  Object.defineProperty(CastleExtractSocketDialog.prototype, "titleTextID", {
-    get: function () {
-      return "dialog_gemExtract_title";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.ACastleSocketDialog.prototype, "titleTextID").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleExtractSocketDialog.prototype.getCosts = function () {
-    if (g.instanceOfClass(this.dialogProperties.gemVO, "CastleGemVO")) {
-      return h.CollectableHelper.createVO(p.CollectableEnum.C2, this.dialogProperties.gemVO.levelInfos.removalCostC2);
-    } else {
-      return h.CollectableHelper.createVO(p.CollectableEnum.GENERIC_CURRENCY, C.RelicItemConst.EXTRACT_RELIC_GEM_RELIC_FRAGMENT_COST, l.ClientConstCurrency.ID_RELIC_FRAGMENTS);
-    }
-  };
-  CastleExtractSocketDialog.prototype.onGemInventoryChanged = function (e) {
-    this.updateOkButton();
-  };
-  CastleExtractSocketDialog.prototype.onValidConfirmClicked = function () {
-    r.CastleModel.gemData.extractGem(this.dialogProperties.eqVO, this.dialogProperties.lordID);
-  };
-  CastleExtractSocketDialog.NAME = "CastleExtractSocket";
-  return CastleExtractSocketDialog;
-}(u.ACastleSocketDialog);
-exports.CastleExtractSocketDialog = d;
-var p = require("./12.js");
-var h = require("./45.js");
-o.classImplementsInterfaces(d, "ICollectableRendererList");
-var g = require("./1.js");
-var C = require("./5.js");
+  return ClientConstGem;
+}();
+exports.ClientConstGem = n;
+n.__initialize_static_members();

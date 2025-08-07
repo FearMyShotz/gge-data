@@ -2,48 +2,64 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./7.js");
-var l = require("./4.js");
-var c = require("./10.js");
-var u = function (e) {
-  function VIPCommand() {
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./1.js");
+var l = require("./5.js");
+var c = require("./7.js");
+var u = require("./4.js");
+var d = require("./10.js");
+var p = require("./660.js");
+var h = require("./661.js");
+var g = function (e) {
+  function UPICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(VIPCommand, e);
-  VIPCommand.prototype.executeCommand = function (t, i) {
-    return e.prototype.executeCommand.call(this, t, i);
-  };
-  VIPCommand.prototype.exec = function (e) {
-    var t = s.int(e[0]);
-    var i = e[1];
-    switch (t) {
-      case a.ERROR.ALL_OK:
-        var n = JSON.parse(i[1]);
-        l.CastleModel.vipData.parse_VIP(n);
-        if (d.CastleLayoutManager.getInstance().worldmapScreen && d.CastleLayoutManager.getInstance().worldmapScreen.renderer) {
-          d.CastleLayoutManager.getInstance().worldmapScreen.renderer.invalidateMap();
-          d.CastleLayoutManager.getInstance().worldmapScreen.renderer.clearMapobjects(false);
-        }
-        break;
-      default:
-        this.showErrorDialog(t, i);
-    }
-  };
-  Object.defineProperty(VIPCommand.prototype, "cmdId", {
+  n.__extends(UPICommand, e);
+  Object.defineProperty(UPICommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_VIP_INFO_EVENT;
+      return c.ClientConstSF.S2C_GET_PAYMENT_INFO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return VIPCommand;
-}(c.CastleCommand);
-exports.VIPCommand = u;
-var d = require("./17.js");
-o.classImplementsInterfaces(u, "IExecCommand");
+  UPICommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case l.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        if (i.PU == 0) {
+          this.trackEvent("firstingamepurchase", i);
+        } else {
+          this.trackEvent("purchase", i);
+        }
+        u.CastleModel.userData.parse_UPI(i);
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    return false;
+  };
+  UPICommand.prototype.trackEvent = function (e, t) {
+    if (t.A && t.CC) {
+      var i = t.A / 100;
+      var n = {
+        userid: a.EnvGlobalsHandler.globals.gameId + "-" + a.EnvGlobalsHandler.globals.networkId + "-" + o.BasicModel.instanceProxy.selectedInstanceVO.instanceId + "-" + o.BasicModel.userData.playerID,
+        value: i,
+        currency: t.CC
+      };
+      if (s.ExternalInterface.available) {
+        s.ExternalInterface.call("ggsTrackEvent", e, n);
+        var r = new h.GameSightPayloadVO(p.GamesightEventConstants.PURCHASE);
+        r.additionalInfo = n;
+        o.CommandController.instance.executeCommand(o.BasicController.GAMESIGHT_CALL_GGS_TRACK_EVENT, r);
+      }
+    }
+  };
+  return UPICommand;
+}(d.CastleCommand);
+exports.UPICommand = g;
+r.classImplementsInterfaces(g, "IExecCommand");

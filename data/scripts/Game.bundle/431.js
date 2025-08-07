@@ -42,5 +42,5 @@ var r = function (e) {
 exports.AModernPackageShopBuyElement = r;
 var l = require("./46.js");
 var c = require("./206.js");
-var u = require("./591.js");
+var u = require("./592.js");
 o.classImplementsInterfaces(r, "ICollectableRendererList");

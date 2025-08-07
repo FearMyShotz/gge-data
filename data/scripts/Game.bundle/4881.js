@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GWHCommand() {
+  function HDCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GWHCommand, e);
-  Object.defineProperty(GWHCommand.prototype, "cmdId", {
+  n.__extends(HDCommand, e);
+  Object.defineProperty(HDCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_WEEKLY_HONOR_SCORE;
+      return s.ClientConstSF.S2C_HERO_DECISION_COMMAND;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GWHCommand.prototype.executeCommand = function (e, t) {
+  HDCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.highscoreData.parseGWH(i);
-        return true;
+        r.CastleModel.userData.parse_HDC(i);
+        break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GWHCommand;
+  return HDCommand;
 }(l.CastleCommand);
-exports.GWHCommand = c;
+exports.HDCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

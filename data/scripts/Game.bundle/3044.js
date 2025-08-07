@@ -3,12 +3,23 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function IcepalaceBuildingVE() {
+var a = require("./62.js");
+var s = function (e) {
+  function HuntertentBuildingVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IcepalaceBuildingVE, e);
-  return IcepalaceBuildingVE;
-}(require("./646.js").APalaceBuildingVE);
-exports.IcepalaceBuildingVE = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
+  n.__extends(HuntertentBuildingVE, e);
+  Object.defineProperty(HuntertentBuildingVE.prototype, "buildingGroundIconClass", {
+    get: function () {
+      return Library.CastleInterfaceElements_Icons.Icon_Food;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return HuntertentBuildingVE;
+}(a.ABasicBuildingVE);
+exports.HuntertentBuildingVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

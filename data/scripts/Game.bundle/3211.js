@@ -3,42 +3,47 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./145.js");
-var r = require("./639.js");
-var l = function (e) {
-  function FactionEmptyTowerVE() {
+var a = require("./6.js");
+var s = require("./640.js");
+var r = function (e) {
+  function EmptyTowerVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FactionEmptyTowerVE, e);
-  FactionEmptyTowerVE.prototype.createDisp = function () {
-    this.dispComponent.addClip(this._buildingClip = this.loadExternalClip(this.assetClipName));
+  n.__extends(EmptyTowerVE, e);
+  EmptyTowerVE.prototype.createDisp = function () {
+    this.dispComponent.addClip(this._buildingClip = this.loadExternalClip(this.assetClipName, this.baseClipAssetFileName));
   };
-  Object.defineProperty(FactionEmptyTowerVE.prototype, "assetClipName", {
+  EmptyTowerVE.prototype.createAdditionalClips = function () {};
+  Object.defineProperty(EmptyTowerVE.prototype, "assetClipName", {
     get: function () {
-      return "FactionLookout_TowerCorner_Level" + this.towerVO.isoData.objects.defences.currentWallLevel;
+      var e = a.int(this.towerVO.isoData.objects.defences.currentWallLevel);
+      if (this.isTransparent) {
+        return "Basic_Towerbase_Transparent" + this.getIsoEventSkinSkinSuffix(e);
+      } else {
+        return "Basic_Tower_CornerLevel" + e + "_" + this.getDirectionAssetIndex() + this.getIsoEventSkinSkinSuffix(e);
+      }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ATowerVE.prototype, "assetClipName").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.ATowerVE.prototype, "assetClipName").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(FactionEmptyTowerVE.prototype, "assetFileName", {
-    get: function () {
-      return "Event" + a.EventConst.EVENTTYPE_FACTION + "Lib";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ATowerVE.prototype, "assetFileName").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  FactionEmptyTowerVE.prototype.createAdditionalClips = function () {
-    e.prototype.createAdditionalClips.call(this);
-    this.additionalClips.addClips(s.IsoAdditionalClipEnum.CAMP_FIRE);
+  EmptyTowerVE.prototype.getDirectionAssetIndex = function () {
+    switch (this.towerVO.rotation) {
+      case 0:
+        return 0;
+      case 1:
+        return 3;
+      case 2:
+        return 1;
+      case 3:
+        return 2;
+      default:
+        return 0;
+    }
   };
-  return FactionEmptyTowerVE;
-}(r.ATowerVE);
-exports.FactionEmptyTowerVE = l;
-o.classImplementsInterfaces(l, "ICollectableRendererList", "IIngameUICapable");
+  return EmptyTowerVE;
+}(s.ATowerVE);
+exports.EmptyTowerVE = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

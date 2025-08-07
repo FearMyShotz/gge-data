@@ -1,19 +1,32 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./97.js");
-var r = function (e) {
-  function ConstructorBuildingVO() {
-    return e !== null && e.apply(this, arguments) || this;
+var n = function () {
+  function MineVO() {
+    this.mineTypeID = 0;
+    this.waitingTime = 0;
+    this.amountPerCollect = NaN;
+    this.totalAmount = NaN;
+    this.totalLootableAmount = 0;
+    this.amountInfluencePerMinute = 0;
+    this.maxInfluencePoints = 0;
+    this.reductionDisplay = 0;
   }
-  n.__extends(ConstructorBuildingVO, e);
-  ConstructorBuildingVO.prototype.createInfoPanelItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new a.LocalizedNumberVO(this.decoPoints), this.getInfoItemTextColor(s.CastleEffectEnum.DECOPOINTS), true);
+  MineVO.prototype.parseXML = function (e) {
+    this.mineTypeID = parseInt(a.CastleXMLUtils.getValueOrDefault("mineTypeID", e, "0"));
+    this.waitingTime = parseInt(a.CastleXMLUtils.getValueOrDefault("waitingTime", e, "0"));
+    var t = parseInt(a.CastleXMLUtils.getValueOrDefault("amountPerCollectC2", e, "0"));
+    var i = parseInt(a.CastleXMLUtils.getValueOrDefault("amountPerCollectC1", e, "0"));
+    this.amountPerCollect = i || t;
+    this.resType = t > 0 ? o.CollectableEnum.C2 : o.CollectableEnum.C1;
+    this.totalLootableAmount = parseInt(a.CastleXMLUtils.getValueOrDefault("amountLootable", e, "0"));
+    this.totalAmount = this.amountPerCollect * this.totalLootableAmount;
+    this.amountInfluencePerMinute = parseInt(a.CastleXMLUtils.getValueOrDefault("amountInfluencePerMinute", e, "0"));
+    this.maxInfluencePoints = parseInt(a.CastleXMLUtils.getValueOrDefault("maxInfluencePoints", e, "0"));
+    this.reductionDisplay = parseInt(a.CastleXMLUtils.getValueOrDefault("reductionDisplay", e, "0"));
   };
-  return ConstructorBuildingVO;
-}(require("./65.js").AEffectBuildingVO);
-exports.ConstructorBuildingVO = r;
-o.classImplementsInterfaces(r, "IShopVO", "ICostVO", "IInventoryVO");
+  return MineVO;
+}();
+exports.MineVO = n;
+var o = require("./12.js");
+var a = require("./22.js");

@@ -2,19 +2,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./1.js");
-var o = require("./35.js");
-var a = function () {
-  function LordEffectFilterStrategyStation() {}
-  LordEffectFilterStrategyStation.prototype.isGroupActive = function (e, t) {
-    return e == 5 && (t == 1 || t == 2);
+var o = function () {
+  function LordEffectFilterStrategyFullPassive() {}
+  LordEffectFilterStrategyFullPassive.prototype.isGroupActive = function (e, t) {
+    return false;
   };
-  LordEffectFilterStrategyStation.prototype.getExcludedEffectTypes = function () {
-    return [o.EffectTypeEnum.EFFECT_TYPE_SUPPORT_SPEED_BONUS, o.EffectTypeEnum.EFFECT_TYPE_SUPPORT_TRAVEL_COST_REDUCTION, o.EffectTypeEnum.EFFECT_TYPE_SPEED_BONUS_PVP, o.EffectTypeEnum.EFFECT_TYPE_TRAVEL_COST_REDUCTION_PVP];
+  LordEffectFilterStrategyFullPassive.prototype.getExcludedEffectTypes = function () {
+    return [];
   };
-  LordEffectFilterStrategyStation.prototype.isEffectTypeIncluded = function (e) {
-    return this.getExcludedEffectTypes().indexOf(e.type) === -1 && e.effectCategory != 7;
+  LordEffectFilterStrategyFullPassive.prototype.isEffectTypeIncluded = function (e) {
+    return this.getExcludedEffectTypes().indexOf(e.type) === -1;
   };
-  return LordEffectFilterStrategyStation;
+  return LordEffectFilterStrategyFullPassive;
 }();
-exports.LordEffectFilterStrategyStation = a;
-n.classImplementsInterfaces(a, "ILordEffectFilterStrategy");
+exports.LordEffectFilterStrategyFullPassive = o;
+n.classImplementsInterfaces(o, "ILordEffectFilterStrategy");

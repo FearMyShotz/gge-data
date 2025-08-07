@@ -8,11 +8,11 @@ var s = require("./5.js");
 var r = require("./3.js");
 var l = require("./3.js");
 var c = require("./6.js");
-var u = require("./607.js");
+var u = require("./608.js");
 var d = require("./140.js");
 var p = require("./4.js");
 var h = require("./11.js");
-var g = require("./1088.js");
+var g = require("./1089.js");
 var C = function (e) {
   function CastleEilandTitleMessageDialog() {
     CONSTRUCTOR_HACK;
@@ -78,6 +78,6 @@ var C = function (e) {
 }(h.CastleExternalDialog);
 exports.CastleEilandTitleMessageDialog = C;
 var _ = require("./9.js");
-var m = require("./1089.js");
+var m = require("./1090.js");
 a.classImplementsInterfaces(C, "ICollectableRendererList");
 C.__initialize_static_members();

@@ -37,7 +37,7 @@ var c = function (e) {
     configurable: true
   });
   return CollectEventDailogShop;
-}(require("./764.js").AModernPackageShopDialogSublayer);
+}(require("./766.js").AModernPackageShopDialogSublayer);
 exports.CollectEventDailogShop = c;
 var u = require("./12.js");
 var d = require("./74.js");

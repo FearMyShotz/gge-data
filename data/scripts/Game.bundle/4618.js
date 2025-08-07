@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SGetSubscriptionInfoEventVO() {
+  function C2SGetAutoSellConditionsEventVO() {
     return e.call(this) || this;
   }
-  n.__extends(C2SGetSubscriptionInfoEventVO, e);
-  C2SGetSubscriptionInfoEventVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_SUBSCRIPTION_PACKAGES;
+  n.__extends(C2SGetAutoSellConditionsEventVO, e);
+  C2SGetAutoSellConditionsEventVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_GET_AUTO_SELL_CONDITIONS;
   };
-  return C2SGetSubscriptionInfoEventVO;
+  return C2SGetAutoSellConditionsEventVO;
 }(o.BasicCommandVO);
-exports.C2SGetSubscriptionInfoEventVO = s;
+exports.C2SGetAutoSellConditionsEventVO = s;

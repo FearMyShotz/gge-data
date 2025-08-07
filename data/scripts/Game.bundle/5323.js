@@ -4,42 +4,67 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./1.js");
 var o = require("./60.js");
 var a = function () {
-  function OfferDescriptionAdditionalPrimeSaleUpgrade() {}
-  Object.defineProperty(OfferDescriptionAdditionalPrimeSaleUpgrade.prototype, "name", {
+  function OfferQuestConditionPayUser() {
+    this._isPayUserGoal = false;
+    this._isPayUserCurrent = false;
+  }
+  Object.defineProperty(OfferQuestConditionPayUser.prototype, "registerName", {
     get: function () {
-      return o.ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE_UPGRADE;
+      return o.ClientConstOffer.QUEST_CONDITION_IS_PAYUSER;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionAdditionalPrimeSaleUpgrade.prototype.registerRewardParameter = function (e) {
-    e.addEntry(this.name, this);
+  OfferQuestConditionPayUser.prototype.registerOfferCondition = function (e) {
+    e.addEntry(this.registerName, this);
   };
-  OfferDescriptionAdditionalPrimeSaleUpgrade.prototype.parseFromObjectParam = function (e) {
-    var t = [];
-    for (var i = 0, n = e.wodIDs; i < n.length; i++) {
-      var o = n[i];
-      if (o !== undefined) {
-        t.push(o);
+  OfferQuestConditionPayUser.prototype.parseFromObjectParam = function (e, t, i) {
+    this._isPayUserGoal = !!t.value;
+    this._publicID = i;
+  };
+  OfferQuestConditionPayUser.prototype.parseProgress = function (e) {
+    this._isPayUserCurrent = e == 1;
+  };
+  Object.defineProperty(OfferQuestConditionPayUser.prototype, "conditionPassed", {
+    get: function () {
+      return this._isPayUserCurrent == this._isPayUserGoal;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionPayUser.prototype, "conditionsProgressInPercent", {
+    get: function () {
+      if (this.conditionPassed) {
+        return 100;
+      } else {
+        return 0;
       }
-    }
-    if (t.length == 0 && typeof e.wodIDs == "number") {
-      t.push(e.wodIDs);
-    }
-    if (t.length == 0 && typeof e.wodID == "number") {
-      t.push(e.wodID);
-    }
-    this._primeSaleComponent = new s.PrimeSaleUpgradeComponent(t, e.discount);
-  };
-  Object.defineProperty(OfferDescriptionAdditionalPrimeSaleUpgrade.prototype, "primeSaleComponent", {
-    get: function () {
-      return this._primeSaleComponent;
     },
     enumerable: true,
     configurable: true
   });
-  return OfferDescriptionAdditionalPrimeSaleUpgrade;
+  Object.defineProperty(OfferQuestConditionPayUser.prototype, "conditionTextId", {
+    get: function () {
+      return "";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionPayUser.prototype, "conditionTextReplacements", {
+    get: function () {
+      return [this._isPayUserCurrent, this._isPayUserGoal];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionPayUser.prototype, "publicID", {
+    get: function () {
+      return this._publicID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return OfferQuestConditionPayUser;
 }();
-exports.OfferDescriptionAdditionalPrimeSaleUpgrade = a;
-var s = require("./5324.js");
-n.classImplementsInterfaces(a, "IOfferDescriptionAdditionalParameter");
+exports.OfferQuestConditionPayUser = a;
+n.classImplementsInterfaces(a, "IOfferQuestCondition");

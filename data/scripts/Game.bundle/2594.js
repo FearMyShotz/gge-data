@@ -3,116 +3,169 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./621.js");
-var u = require("./758.js");
-var d = require("./4.js");
-var p = require("./204.js");
-var h = createjs.Point;
-var g = function (e) {
-  function CastleToolSlotPremiumShopVO() {
-    return e.call(this, "toolslot_title", "toolslot_copy_short", [m.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_REST], s.UnitProductionConst.UNLOCK_C2) || this;
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./3.js");
+var u = require("./4.js");
+var d = require("./204.js");
+var p = createjs.Point;
+var h = function (e) {
+  function CastleRelocateShopVO() {
+    return e.call(this, "panel_relocate_title", "relocate_decription_short", [m.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_REST], 0) || this;
   }
-  n.__extends(CastleToolSlotPremiumShopVO, e);
-  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "title", {
-    get: function () {
-      var e = l.int(d.CastleModel.boostData.boughtToolSlots + 1 + d.CastleModel.boostData.permanentToolSlots);
-      return r.Localize.text(this._titleStringID, [e, s.UnitProductionConst.MAX_SLOTS]);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "title").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "listSortPriority", {
-    get: function () {
-      return 50;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "listSortPriority").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "isVisible", {
-    get: function () {
-      return d.CastleModel.boostData.boughtToolSlots + d.CastleModel.boostData.permanentToolSlots < s.UnitProductionConst.MAX_SLOTS;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "isVisible").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "isActive", {
+  n.__extends(CastleRelocateShopVO, e);
+  Object.defineProperty(CastleRelocateShopVO.prototype, "isActive", {
     get: function () {
       return false;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "isActive").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "isActive").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "duration", {
+  Object.defineProperty(CastleRelocateShopVO.prototype, "baseCosts", {
     get: function () {
-      return o.TimeStringHelper.getTimeToString(s.UnitProductionConst.UNLOCK_DURATION, o.TimeStringHelper.ONE_TIME_FORMAT, r.Localize.text);
+      return r.RelocationConst.getRelocationCost(u.CastleModel.userData.relocationCount);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "duration").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "baseCosts").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "hasVisualTimeWhenNotActive", {
+  Object.defineProperty(CastleRelocateShopVO.prototype, "listSortPriority", {
     get: function () {
-      return true;
+      return 531;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenNotActive").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "listSortPriority").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "hasVisualTimeWhenActive", {
+  CastleRelocateShopVO.prototype.clickedBuyButton = function () {
+    o.CommandController.instance.executeCommand(C.IngameClientCommands.SWITCH_TO_RELOCATEWORLDMAP_COMMAND);
+  };
+  Object.defineProperty(CastleRelocateShopVO.prototype, "canBeBought", {
+    get: function () {
+      return u.CastleModel.userData.remainingRelocationCooldown <= 0 && u.CastleModel.userData.remainingRelocationDuration <= 0 && u.CastleModel.userData.userLevel >= r.RelocationConst.MIN_RELOCATION_LEVEL && u.CastleModel.kingdomData.activeKingdomID == l.WorldClassic.KINGDOM_ID;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "canBeBought").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleRelocateShopVO.prototype, "cantBeBoughtButtonToolTip", {
+    get: function () {
+      var e = "";
+      if (u.CastleModel.userData.userLevel < r.RelocationConst.MIN_RELOCATION_LEVEL) {
+        e = {
+          t: "expansion_higherLevelNeeded",
+          p: [r.RelocationConst.MIN_RELOCATION_LEVEL]
+        };
+      } else if (u.CastleModel.userData.remainingRelocationDuration > 0) {
+        e = {
+          t: "dialog_management_inprogress_tt",
+          p: [a.TimeStringHelper.getTimeToString(u.CastleModel.userData.remainingRelocationDuration, a.TimeStringHelper.TWO_TIME_FORMAT, c.Localize.text)]
+        };
+      } else if (u.CastleModel.userData.remainingRelocationCooldown > 0) {
+        e = {
+          t: "dialog_management_reStartableIn_tt",
+          p: [a.TimeStringHelper.getTimeToString(u.CastleModel.userData.remainingRelocationCooldown, a.TimeStringHelper.TWO_TIME_FORMAT, c.Localize.text)]
+        };
+      }
+      return e;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "cantBeBoughtButtonToolTip").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleRelocateShopVO.prototype.createVisualMovieClip = function () {
+    return new Library.CastleInterfaceElements_Icons.Icon_Relocate();
+  };
+  Object.defineProperty(CastleRelocateShopVO.prototype, "isVisible", {
+    get: function () {
+      if (u.CastleModel.kingdomData.activeKingdomID != l.WorldClassic.KINGDOM_ID) {
+        return false;
+      }
+      var e = true;
+      switch (_.CastleLayoutManager.getInstance().currentState) {
+        case _.CastleLayoutManager.STATE_KINGDOMMAP:
+        case _.CastleLayoutManager.STATE_SEASON_WORLDMAP:
+          e = false;
+      }
+      if (_.CastleLayoutManager.getInstance().currentState == _.CastleLayoutManager.STATE_ISO && g.Iso.renderer.isoData.areaData.isTreasureCamp) {
+        e = false;
+      }
+      return e;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "isVisible").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleRelocateShopVO.prototype, "hasVisualTimeWhenActive", {
     get: function () {
       return false;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenActive").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenActive").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastleToolSlotPremiumShopVO.prototype.clickedBuyButton = function () {
-    var e = l.int(s.UnitProductionConst.UNLOCK_DURATION);
-    var t = o.TimeStringHelper.getTimeToString(e, o.TimeStringHelper.TWO_TIME_FORMAT, r.Localize.text);
-    C.CastleDialogHandler.getInstance().registerDefaultDialogs(_.CastleBuySlotDialog, new u.CastleCostInfoDialogProperties(d.CastleModel.costsData.getFinalCostsC2(s.UnitProductionConst.UNLOCK_C2), this.bindFunction(this.buySlot), r.Localize.text("dialog_buyslotTool_copy"), t, r.Localize.text("help_recuit_slot")));
-  };
-  CastleToolSlotPremiumShopVO.prototype.buySlot = function (e = null) {
-    d.CastleModel.smartfoxClient.sendCommandVO(new c.C2SUnlockPackageSlotVO(1));
-  };
-  CastleToolSlotPremiumShopVO.prototype.createVisualMovieClip = function () {
-    return new Library.CastleInterfaceElements_Icons.Icon_AddToolSlot();
-  };
-  Object.defineProperty(CastleToolSlotPremiumShopVO.prototype, "offsetIcon", {
+  Object.defineProperty(CastleRelocateShopVO.prototype, "hasVisualTimeWhenNotActive", {
     get: function () {
-      return new h(5, -3);
+      return false;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(p.CastlePremiumMarketShopVO.prototype, "offsetIcon").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "hasVisualTimeWhenNotActive").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return CastleToolSlotPremiumShopVO;
-}(p.CastlePremiumMarketShopVO);
-exports.CastleToolSlotPremiumShopVO = g;
-var C = require("./9.js");
-var _ = require("./976.js");
+  Object.defineProperty(CastleRelocateShopVO.prototype, "payType", {
+    get: function () {
+      return d.CastlePremiumMarketShopVO.PAYTYPE_C2;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "payType").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleRelocateShopVO.prototype, "isExtendable", {
+    get: function () {
+      return false;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "isExtendable").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleRelocateShopVO.prototype, "offsetIcon", {
+    get: function () {
+      return new p(3, 0);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastlePremiumMarketShopVO.prototype, "offsetIcon").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleRelocateShopVO;
+}(d.CastlePremiumMarketShopVO);
+exports.CastleRelocateShopVO = h;
+var g = require("./34.js");
+var C = require("./29.js");
+var _ = require("./17.js");
 var m = require("./170.js");
-a.classImplementsInterfaces(g, "IPremiumMarketShopVO");
+s.classImplementsInterfaces(h, "IPremiumMarketShopVO");

@@ -1,92 +1,81 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./4.js");
-var o = function () {
-  function CastleEilandRewardsVO(e) {
-    this.fillFromParamXML(e);
-  }
-  CastleEilandRewardsVO.prototype.fillFromParamXML = function (e) {
-    this._rewardList = [];
-    this._rewardPlayerList = [];
+var n = function () {
+  function CastleHardCurrencyHelper() {}
+  CastleHardCurrencyHelper.initCurrencyTextIDs = function () {
+    var e = new Map();
+    var t = new l.CastleCurrencyVO("currency_euro", 1);
+    e.set(a.ClientConstLanguage.COUNTRY_GERMANY, t);
+    e.set(a.ClientConstLanguage.COUNTRY_FRANCE, t);
+    e.set(a.ClientConstLanguage.COUNTRY_PORTUGAL, t);
+    e.set(a.ClientConstLanguage.COUNTRY_ITALY, t);
+    e.set(a.ClientConstLanguage.COUNTRY_GREECE, t);
+    e.set(a.ClientConstLanguage.COUNTRY_FINNLAND, t);
+    e.set(a.ClientConstLanguage.COUNTRY_NETHERLANDS, t);
+    e.set(a.ClientConstLanguage.COUNTRY_SLOVAKIA, t);
+    e.set(a.ClientConstLanguage.COUNTRY_ENGLAND, new l.CastleCurrencyVO("currency_britishPound", 1));
+    e.set(a.ClientConstLanguage.COUNTRY_USA, new l.CastleCurrencyVO("currency_dollar", 1));
+    e.set(a.ClientConstLanguage.COUNTRY_CZECHIA, new l.CastleCurrencyVO("currency_czechKoruna", 25));
+    e.set(a.ClientConstLanguage.COUNTRY_POLAND, new l.CastleCurrencyVO("currency_zloty", 4));
+    e.set(a.ClientConstLanguage.COUNTRY_BRASIL, new l.CastleCurrencyVO("currency_brazilianReal", 1));
+    e.set(a.ClientConstLanguage.COUNTRY_HUNGARY, new l.CastleCurrencyVO("currency_hungarianForint", 300));
+    e.set(a.ClientConstLanguage.COUNTRY_ROMANIA, new l.CastleCurrencyVO("currency_romanianLeu", 5));
+    e.set(a.ClientConstLanguage.COUNTRY_DENMARK, new l.CastleCurrencyVO("currency_danishKrone", 7.5));
+    e.set(a.ClientConstLanguage.COUNTRY_TURKEY, new l.CastleCurrencyVO("currency_turkishLira", 3));
+    e.set(a.ClientConstLanguage.COUNTRY_RUSSIA, new l.CastleCurrencyVO("currency_ruble", 50));
+    e.set(a.ClientConstLanguage.COUNTRY_JAPAN, new l.CastleCurrencyVO("currency_japaneseYen", 150));
+    e.set("default", new l.CastleCurrencyVO(r.ClientConstTextIds.C2, CastleHardCurrencyHelper.RUBIES2EUROS_FACTOR));
+    return e;
+  };
+  Object.defineProperty(CastleHardCurrencyHelper, "currencyFactor", {
+    get: function () {
+      var e = o.GGSCountryController.instance.currentCountry.ggsCountryCode.toLowerCase();
+      return CastleHardCurrencyHelper.getCurrencyVOOrDefault(e).currencyAmount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleHardCurrencyHelper, "currencyTextID", {
+    get: function () {
+      var e = o.GGSCountryController.instance.currentCountry.ggsCountryCode.toLowerCase();
+      return CastleHardCurrencyHelper.getCurrencyVOOrDefault(e).textID;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleHardCurrencyHelper.getCurrencyVOOrDefault = function (e) {
+    var t = CastleHardCurrencyHelper.CURRENCY_TEXT_IDS.get(e.toLowerCase());
+    if (t == null) {
+      t = CastleHardCurrencyHelper.CURRENCY_TEXT_IDS.get("default");
+    }
+    return t;
+  };
+  CastleHardCurrencyHelper.shownCurrencyValueForPO = function (e) {
     var t;
-    var i;
-    var n = e.islandrewardranks;
-    var o = 0;
-    var l = 0;
-    var c = 0;
-    var u = 0;
-    if (n != null) {
-      for (var d = 0, p = n; d < p.length; d++) {
-        if ((i = p[d]) !== undefined) {
-          l = parseInt(i.islandRewardRankID || "");
-          o = parseInt(i.cargoPointRequirement || "0");
-          c = parseInt(s.CastleXMLUtils.getValueOrDefault("topXValue", i, "-1"));
-          t = a.CollectableManager.parser.createListFromRewardIdsString(i.rewardIDs || "");
-          u = parseInt(s.CastleXMLUtils.getValueOrDefault("islandRewardSetID", i, "-1"));
-          this._rewardList.push(new r.CastleEilandRewardItemVO(l, o, t, c, u));
-        }
+    var i = e.getDescriptionByName(s.ClientConstOffer.VISUAL_COMPONENT_CONTAINER);
+    if (i) {
+      t = i.visuals.get(s.ClientConstOffer.OFFER_VISUAL_EURO_AMOUNT);
+    }
+    if (t) {
+      var n = t.euroAmount;
+      if (n) {
+        return n * CastleHardCurrencyHelper.currencyFactor;
       }
     }
-    if ((n = e.islandPlayerRewards) != null) {
-      for (var h = 0, g = n; h < g.length; h++) {
-        if ((i = g[h]) !== undefined) {
-          l = parseInt(i.islandPlayerRewardID || "");
-          o = parseInt(i.cargoPointRequirement || "0");
-          c = parseInt(s.CastleXMLUtils.getValueOrDefault("topXValue", i, "-1"));
-          t = a.CollectableManager.parser.createListFromRewardIdsString(i.rewardIDs || "");
-          u = parseInt(s.CastleXMLUtils.getValueOrDefault("islandRewardSetID", i, "-1"));
-          this._rewardPlayerList.push(new r.CastleEilandRewardItemVO(l, o, t, c, u));
-        }
-      }
-    }
+    return CastleHardCurrencyHelper.NO_CLUE_WHY_MAGIC_VALUE;
   };
-  CastleEilandRewardsVO.prototype.getActiveRewardItems = function () {
-    var e = n.CastleModel.kingdomData.getKingdomVOByID(l.WorldIsland.KINGDOM_ID).rewardSet;
-    return this._rewardList.filter(function (t) {
-      var i = [];
-      for (var n = 1; n < arguments.length; n++) {
-        i[n - 1] = arguments[n];
-      }
-      return t.rewardSetID == e;
-    });
+  CastleHardCurrencyHelper.__initialize_static_members = function () {
+    CastleHardCurrencyHelper.RUBIES2EUROS_FACTOR = 1500;
+    CastleHardCurrencyHelper.CURRENCY_TEXT_IDS = CastleHardCurrencyHelper.initCurrencyTextIDs();
+    CastleHardCurrencyHelper.NO_CLUE_WHY_MAGIC_VALUE = 13;
   };
-  CastleEilandRewardsVO.prototype.getActivePlayerRewardItems = function () {
-    var e = n.CastleModel.kingdomData.getKingdomVOByID(l.WorldIsland.KINGDOM_ID).rewardSet;
-    return this._rewardPlayerList.filter(function (t) {
-      var i = [];
-      for (var n = 1; n < arguments.length; n++) {
-        i[n - 1] = arguments[n];
-      }
-      return t.rewardSetID == e;
-    });
-  };
-  CastleEilandRewardsVO.prototype.getReward = function (e) {
-    if (this._rewardList != null) {
-      for (var t = 0, i = this._rewardList; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && n.id == e) {
-          return n;
-        }
-      }
-    }
-    return null;
-  };
-  CastleEilandRewardsVO.__initialize_static_members = function () {
-    CastleEilandRewardsVO.REWARD_BOOBY1 = 0;
-    CastleEilandRewardsVO.REWARD_BOOBY2 = 1;
-    CastleEilandRewardsVO.REWARD_BOOBY3 = 2;
-    CastleEilandRewardsVO.REWARD_BOOBY4 = 3;
-    CastleEilandRewardsVO.REWARD_BOOBY5 = 4;
-    CastleEilandRewardsVO.REWARD_BOOBY6 = 5;
-    CastleEilandRewardsVO.REWARD_TOPX = 6;
-    CastleEilandRewardsVO.TOPX_MIN_RANK = 5;
-  };
-  return CastleEilandRewardsVO;
+  return CastleHardCurrencyHelper;
 }();
-exports.CastleEilandRewardsVO = o;
-var a = require("./50.js");
-var s = require("./22.js");
-var r = require("./3694.js");
-var l = require("./5.js");
-o.__initialize_static_members();
+exports.CastleHardCurrencyHelper = n;
+var o = require("./2.js");
+var a = require("./1165.js");
+var s = require("./60.js");
+var r = require("./39.js");
+var l = require("./3604.js");
+n.__initialize_static_members();

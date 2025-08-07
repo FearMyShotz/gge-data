@@ -6,13 +6,18 @@ var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./407.js");
 var r = function (e) {
-  function SpyMapmovement() {
+  function PlaguemonkMapmovement() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SpyMapmovement, e);
-  Object.defineProperty(SpyMapmovement.prototype, "arrowColor", {
+  n.__extends(PlaguemonkMapmovement, e);
+  PlaguemonkMapmovement.prototype.initVisualRep = function () {
+    e.prototype.initVisualRep.call(this);
+    var t = this.mapMovementVO.sourceArea.getDisplayObjectClipContainer(false, null);
+    this.baseCampLayer.addChild(t.asDisplayObject());
+  };
+  Object.defineProperty(PlaguemonkMapmovement.prototype, "arrowColor", {
     get: function () {
-      switch (this.spyMapmovementVO.kingdomID) {
+      switch (this.plaguemonkMapmovementVO.kingdomID) {
         case a.WorldVolcano.KINGDOM_ID:
           return 12961221;
         default:
@@ -25,9 +30,9 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SpyMapmovement.prototype, "baseClipName", {
+  Object.defineProperty(PlaguemonkMapmovement.prototype, "baseClipName", {
     get: function () {
-      return "Spy_Mapmovement";
+      return "Plaguemonk_Mapmovement";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.ArmyMapmovement.prototype, "baseClipName").set.call(this, e);
@@ -35,14 +40,14 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SpyMapmovement.prototype, "spyMapmovementVO", {
+  Object.defineProperty(PlaguemonkMapmovement.prototype, "plaguemonkMapmovementVO", {
     get: function () {
       return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  return SpyMapmovement;
+  return PlaguemonkMapmovement;
 }(s.ArmyMapmovement);
-exports.SpyMapmovement = r;
+exports.PlaguemonkMapmovement = r;
 o.classImplementsInterfaces(r, "IIngameUICapable", "IWorldmapTooltipData");

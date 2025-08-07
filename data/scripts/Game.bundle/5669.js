@@ -4,49 +4,45 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./6.js");
 var o = require("./22.js");
 var a = function () {
-  function XmlSeasonPromotionVO() {
+  function XmlSeasonMedalVO() {
     this._id = 0;
-    this._minMedalPointsForUnlock = 0;
-    this._majorRank = 0;
-    this._minorRank = 0;
+    this._minHighscoreRank = 0;
+    this._medalPoints = 0;
   }
-  XmlSeasonPromotionVO.prototype.parseXml = function (e) {
-    this._id = n.int(o.CastleXMLUtils.getIntAttribute("rankID", e, -1));
-    this._minMedalPointsForUnlock = n.int(o.CastleXMLUtils.getIntAttribute("minMedalPointsForUnlock", e, -1));
-    this._majorRank = n.int(o.CastleXMLUtils.getIntAttribute("majorRank", e, -1));
-    this._minorRank = n.int(o.CastleXMLUtils.getIntAttribute("minorRank", e, -1));
+  XmlSeasonMedalVO.prototype.parseXml = function (e) {
+    this._id = n.int(o.CastleXMLUtils.getIntAttribute("medalID", e, -1));
+    this._type = o.CastleXMLUtils.getStringAttribute("type", e);
+    this._minHighscoreRank = n.int(o.CastleXMLUtils.getIntAttribute("minHighscoreRank", e));
+    this._medalPoints = n.int(o.CastleXMLUtils.getIntAttribute("medalPoints", e));
   };
-  XmlSeasonPromotionVO.prototype.getNameTextId = function () {
-    return "seasonLeague_rank_" + this.id;
-  };
-  Object.defineProperty(XmlSeasonPromotionVO.prototype, "id", {
+  Object.defineProperty(XmlSeasonMedalVO.prototype, "id", {
     get: function () {
       return this._id;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSeasonPromotionVO.prototype, "minMedalPointsForUnlock", {
+  Object.defineProperty(XmlSeasonMedalVO.prototype, "type", {
     get: function () {
-      return this._minMedalPointsForUnlock;
+      return this._type;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSeasonPromotionVO.prototype, "majorRank", {
+  Object.defineProperty(XmlSeasonMedalVO.prototype, "minHighscoreRank", {
     get: function () {
-      return this._majorRank;
+      return this._minHighscoreRank;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(XmlSeasonPromotionVO.prototype, "minorRank", {
+  Object.defineProperty(XmlSeasonMedalVO.prototype, "medalPoints", {
     get: function () {
-      return this._minorRank;
+      return this._medalPoints;
     },
     enumerable: true,
     configurable: true
   });
-  return XmlSeasonPromotionVO;
+  return XmlSeasonMedalVO;
 }();
-exports.XmlSeasonPromotionVO = a;
+exports.XmlSeasonMedalVO = a;

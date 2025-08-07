@@ -4,16 +4,16 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./227.js");
+var s = require("./228.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferRealCurrencyPrimeDaySuperDialog() {
+  function CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayUnderworldDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, "CastleSuperPrimeDay") || this;
+    return e.call(this, "CastlePaymentRewardSpecialOfferUnderworld") || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDaySuperDialog, e);
-  Object.defineProperty(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDaySuperDialog.prototype, "skinType", {
+  n.__extends(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayUnderworldDialog, e);
+  Object.defineProperty(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayUnderworldDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_SUPER;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_UNDERWORLD;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayDialog.prototype, "skinType").set.call(this, e);
@@ -21,11 +21,11 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferRealCurrencyPrimeDaySuperDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferRealCurrencyPrimeDaySuperDialog.NAME = "CastlePaymentRewardSpecialOfferRealCurrencyPrimeDaySuper";
+  CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayUnderworldDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayUnderworldDialog.NAME = "CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayUnderworld";
   };
-  return CastlePaymentRewardSpecialOfferRealCurrencyPrimeDaySuperDialog;
+  return CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayUnderworldDialog;
 }(s.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayDialog);
-exports.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDaySuperDialog = r;
+exports.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayUnderworldDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
 r.__initialize_static_members();

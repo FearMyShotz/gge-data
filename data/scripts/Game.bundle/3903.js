@@ -2,26 +2,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./9.js");
-var s = require("./215.js");
-var r = require("./196.js");
-var l = function (e) {
-  function CheatEndOfTextPipesCommand() {
+var o = require("./196.js");
+var a = function (e) {
+  function CheatLifetimeSpentC2Command() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CheatEndOfTextPipesCommand, e);
-  CheatEndOfTextPipesCommand.prototype.execute = function (e = null) {
-    var t = prompt("'on' or 'off' ", "on");
-    if (t == "on") {
-      r.ClientCheatsHelper.performCommand("pipesOn");
-      a.CastleDialogHandler.getInstance().registerDefaultDialogs(s.DarkOkDialog, new o.BasicStandardOkDialogProperties("pipes at end of texts", "ON"));
-    }
-    if (t == "off") {
-      r.ClientCheatsHelper.performCommand("pipesOff");
-      a.CastleDialogHandler.getInstance().registerDefaultDialogs(s.DarkOkDialog, new o.BasicStandardOkDialogProperties("pipes at end of texts", "OFF"));
-    }
+  n.__extends(CheatLifetimeSpentC2Command, e);
+  CheatLifetimeSpentC2Command.prototype.execute = function (e = null) {
+    o.ClientCheatsHelper.performCommand("lifetimeSpent");
   };
-  return CheatEndOfTextPipesCommand;
+  return CheatLifetimeSpentC2Command;
 }(require("./212.js").ABotCommand);
-exports.CheatEndOfTextPipesCommand = l;
+exports.CheatLifetimeSpentC2Command = a;

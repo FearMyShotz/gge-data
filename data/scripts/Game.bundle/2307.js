@@ -1,54 +1,22 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
-var o = require("./163.js");
-var a = function () {
-  function BetaTestNewsItemsProperties(e) {
-    this._id = 0;
-    this._id = e;
+var n = function () {
+  function CastleDelayCommandVO(e, t) {
+    this.isStackAble = false;
+    this.commandID = e;
+    this.isStackAble = t;
+    this.commandList = [];
+    this.paramList = [];
   }
-  Object.defineProperty(BetaTestNewsItemsProperties.prototype, "margin", {
-    get: function () {
-      return BetaTestNewsItemsProperties._margin;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BetaTestNewsItemsProperties.prototype, "id", {
-    get: function () {
-      return this._id;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BetaTestNewsItemsProperties.prototype, "isVertical", {
-    get: function () {
-      return true;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BetaTestNewsItemsProperties.prototype, "expandDuration", {
-    get: function () {
-      return BetaTestNewsItemsProperties.EXPAND_DURATION;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BetaTestNewsItemsProperties.prototype, "collapseDuration", {
-    get: function () {
-      return BetaTestNewsItemsProperties.EXPAND_DURATION;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  BetaTestNewsItemsProperties.__initialize_static_members = function () {
-    BetaTestNewsItemsProperties._margin = new o.LayoutMargin(0, 0, 0, 0);
-    BetaTestNewsItemsProperties.EXPAND_DURATION = 0.5;
+  CastleDelayCommandVO.prototype.addCommand = function (e, t) {
+    if (!this.isStackAble) {
+      this.commandList = [];
+      this.paramList = [];
+    }
+    this.commandList.unshift(e);
+    this.paramList.unshift(t);
   };
-  return BetaTestNewsItemsProperties;
+  return CastleDelayCommandVO;
 }();
-exports.BetaTestNewsItemsProperties = a;
-n.classImplementsInterfaces(a, "ICollapsibleItemProperties");
-a.__initialize_static_members();
+exports.CastleDelayCommandVO = n;

@@ -10,7 +10,7 @@ var l = require("./69.js");
 var c = require("./4.js");
 var u = require("./141.js");
 var d = require("./401.js");
-var p = require("./287.js");
+var p = require("./286.js");
 var h = function (e) {
   function AResourcePanelToolTipResource(t) {
     return e.call(this, t) || this;

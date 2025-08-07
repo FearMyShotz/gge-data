@@ -2,13 +2,25 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleQuestDialogProperties(t = null) {
-    var i = e.call(this) || this;
-    i.preselectQuest = t;
-    return i;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./544.js");
+var l = function (e) {
+  function AutoShowStartQuestDialogCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CastleQuestDialogProperties, e);
-  return CastleQuestDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleQuestDialogProperties = o;
+  n.__extends(AutoShowStartQuestDialogCommand, e);
+  AutoShowStartQuestDialogCommand.prototype.execute = function (e = null) {
+    var t = e;
+    if (!c.CastleDialogHandler.getInstance().isDialogRegistered(u.CastleStartQuestDialog) && !t.registered) {
+      c.CastleDialogHandler.getInstance().registerDefaultDialogs(u.CastleStartQuestDialog, new r.CastleStartQuestDialogProperties(t), false, o.BasicDialogHandler.PRIORITY_LOW);
+    }
+    t.registered = true;
+  };
+  return AutoShowStartQuestDialogCommand;
+}(a.SimpleCommand);
+exports.AutoShowStartQuestDialogCommand = l;
+var c = require("./9.js");
+var u = require("./461.js");
+s.classImplementsInterfaces(l, "ISimpleCommand");

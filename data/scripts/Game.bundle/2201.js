@@ -2,97 +2,90 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./57.js");
-var s = require("./68.js");
-var r = require("./349.js");
-var l = createjs.MouseEvent;
-var c = function (e) {
-  function AScrollableComboboxItem(t, i, n = null) {
-    var o = e.call(this, t, n) || this;
-    o._isEnabled = true;
-    o._isSelected = false;
-    o._onSelectSignal = new a.Signal();
-    o._data = i;
-    return o;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./100.js");
+var r = require("./1.js");
+var l = require("./1.js");
+var c = require("./3.js");
+var u = require("./16.js");
+var d = require("./4.js");
+var p = require("./237.js");
+var h = require("./2202.js");
+var g = require("./73.js");
+var C = createjs.MouseEvent;
+var _ = function (e) {
+  function ScrollableComboboxItemGeneralOverviewLord(t) {
+    var i = e.call(this, new (l.getDefinitionByName("GeneralOverviewLordComboboxItem"))(), t) || this;
+    i.disp.actLikeButton = true;
+    i.disp.mouseChildren = false;
+    i.disp.mc_selected.visible = i.isSelected;
+    i._itxt_name = o.GoodgameTextFieldManager.getInstance().registerTextField(i.disp.txt_lordName, new c.TextVO(""), new s.InternalGGSTextFieldConfigVO(true));
+    i._itxt_name.textContentVO.stringValue = i.label;
+    a.MovieClipHelper.clearMovieClip(i.disp.mc_featherHolder);
+    if (i.lordVO) {
+      g.EquipmentIconHelper.addLordFeather(t, i.disp.mc_featherHolder, i.lordVO.isBaron ? 0.5 : 1);
+      i.enableComponent(i.lordVO.isAvailableForGeneralAssignement);
+      i.disp.toolTipText = i.isEnabled ? null : "dialog_equipment_lordNotAvailable";
+    }
+    i._clickfeedBack = new p.ClickFeedbackHoverBehaviour(i.disp);
+    return i;
   }
-  n.__extends(AScrollableComboboxItem, e);
-  AScrollableComboboxItem.prototype.show = function () {
+  n.__extends(ScrollableComboboxItemGeneralOverviewLord, e);
+  Object.defineProperty(ScrollableComboboxItemGeneralOverviewLord.prototype, "lordVO", {
+    get: function () {
+      return this.data;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ScrollableComboboxItemGeneralOverviewLord.prototype.show = function () {
+    e.prototype.show.call(this);
+    if (this.lordVO) {
+      this.enableComponent(this.lordVO.isAvailableForGeneralAssignement);
+      this._itxt_name.textContentVO.stringValue = this.label;
+      this.disp.toolTipText = this.isEnabled ? null : "dialog_equipment_lordNotAvailable";
+    }
+    this._itxt_name.color = this.isSelected ? u.ClientConstColor.MODERN_DEFAULT : u.ClientConstColor.MODERN_DEFAULT_BRIGHT;
+    this._clickfeedBack.addEventListener();
+  };
+  ScrollableComboboxItemGeneralOverviewLord.prototype.hide = function () {
+    e.prototype.hide.call(this);
+    this._clickfeedBack.removeEventListener();
     if (this.disp) {
-      this.disp.addEventListener(l.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-      this.disp.addEventListener(l.MOUSE_OUT, this.bindFunction(this.onMouseOut));
-      this.disp.addEventListener(l.ROLL_OVER, this.bindFunction(this.onRollOver));
-      this.disp.addEventListener(l.ROLL_OUT, this.bindFunction(this.onRollOut));
-      this.disp.addEventListener(l.CLICK, this.bindFunction(this.onClick));
+      this.disp.removeEventListener(C.CLICK, this.bindFunction(this.onRollOver));
     }
   };
-  AScrollableComboboxItem.prototype.hide = function () {
-    if (this.disp) {
-      this.disp.removeEventListener(l.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-      this.disp.removeEventListener(l.MOUSE_OUT, this.bindFunction(this.onMouseOut));
-      this.disp.removeEventListener(l.ROLL_OVER, this.bindFunction(this.onRollOver));
-      this.disp.removeEventListener(l.ROLL_OUT, this.bindFunction(this.onRollOut));
-      this.disp.removeEventListener(l.CLICK, this.bindFunction(this.onClick));
-    }
+  ScrollableComboboxItemGeneralOverviewLord.prototype.onRollOver = function (e) {
+    this._itxt_name.color = u.ClientConstColor.MODERN_DEFAULT;
   };
-  AScrollableComboboxItem.prototype.setSelected = function (e) {
-    this._isSelected = e;
+  ScrollableComboboxItemGeneralOverviewLord.prototype.onRollOut = function (e) {
+    this._itxt_name.color = this.isSelected ? u.ClientConstColor.MODERN_DEFAULT : u.ClientConstColor.MODERN_DEFAULT_BRIGHT;
   };
-  AScrollableComboboxItem.prototype.enableComponent = function (e) {
-    this._isEnabled = e;
-    if (this.disp) {
-      if (this._isEnabled) {
-        this.disp.useFilters(s.BitmapFilterHelper.NO_FILTER);
-      } else {
-        this.disp.useFilters(s.BitmapFilterHelper.FILTER_COLOR_MATRIX);
+  ScrollableComboboxItemGeneralOverviewLord.prototype.setSelected = function (t) {
+    e.prototype.setSelected.call(this, t);
+    this.disp.mc_selected.visible = this.isSelected;
+    this._itxt_name.color = this.isSelected ? u.ClientConstColor.MODERN_DEFAULT : u.ClientConstColor.MODERN_DEFAULT_BRIGHT;
+  };
+  Object.defineProperty(ScrollableComboboxItemGeneralOverviewLord.prototype, "label", {
+    get: function () {
+      if (this.lordVO) {
+        if (this.lordVO.isBaron) {
+          var e = this.lordVO;
+          if (e.lockedInCastleID >= 0 && d.CastleModel.userData.castleList.getCastleVOByID(e.lockedInCastleID) != null) {
+            return d.CastleModel.userData.castleList.getCastleVOByID(e.lockedInCastleID).areaNameString;
+          } else {
+            return c.Localize.text("baron_toolTip_isFree");
+          }
+        }
+        return this.lordVO.label;
       }
-    }
-  };
-  AScrollableComboboxItem.prototype.onMouseOver = function (e) {};
-  AScrollableComboboxItem.prototype.onMouseOut = function (e) {};
-  AScrollableComboboxItem.prototype.onRollOver = function (e) {};
-  AScrollableComboboxItem.prototype.onRollOut = function (e) {};
-  AScrollableComboboxItem.prototype.onClick = function (e) {
-    if (this._isEnabled) {
-      this._onSelectSignal.dispatch(this);
-    }
-  };
-  Object.defineProperty(AScrollableComboboxItem.prototype, "onSelectSignal", {
-    get: function () {
-      return this._onSelectSignal;
+      return c.Localize.text("dialog_generals_overview_selectGeneral_assignNobody");
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AScrollableComboboxItem.prototype, "isEnabled", {
-    get: function () {
-      return this._isEnabled;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AScrollableComboboxItem.prototype, "isSelected", {
-    get: function () {
-      return this._isSelected;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AScrollableComboboxItem.prototype, "label", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AScrollableComboboxItem.prototype, "data", {
-    get: function () {
-      return this._data;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return AScrollableComboboxItem;
-}(r.MovieClipLayoutable);
-exports.AScrollableComboboxItem = c;
-o.classImplementsInterfaces(c, "ILayoutable");
+  return ScrollableComboboxItemGeneralOverviewLord;
+}(h.AScrollableComboboxItem);
+exports.ScrollableComboboxItemGeneralOverviewLord = _;
+r.classImplementsInterfaces(_, "ILayoutable");

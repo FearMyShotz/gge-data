@@ -2,147 +2,99 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./5.js");
-var r = require("./6.js");
-var l = require("./103.js");
-var c = require("./4502.js");
-var u = require("./64.js");
-var d = require("./4.js");
-var p = require("./79.js");
-var h = function (e) {
-  function RandomdungeonEventVO() {
-    var t = this;
-    t._hasWon = false;
-    t._dungeonProtectionTime = 0;
-    t._dungeonLootC2 = 0;
-    t._skinID = 0;
-    t._playerID = 0;
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./3.js");
+var l = require("./3.js");
+var c = require("./6.js");
+var u = require("./18.js");
+var d = require("./51.js");
+var p = require("./159.js");
+var h = require("./37.js");
+var g = require("./4.js");
+var C = require("./27.js");
+var _ = require("./263.js");
+var m = function (e) {
+  function CastlePrimeSaleReviveAllDialog() {
     CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+    return e.call(this) || this;
   }
-  n.__extends(RandomdungeonEventVO, e);
-  Object.defineProperty(RandomdungeonEventVO.prototype, "eventBuildingNameId", {
-    get: function () {
-      return "eventBuilding_RandomDungeon";
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(p.ASpecialEventVO.prototype, "eventBuildingNameId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  RandomdungeonEventVO.prototype.parseParamObject = function (e) {
-    this._skinID = r.int(e.SID);
-    this._playerID = r.int(s.DungeonConst.getEventDungeonOwnerIDBySkinID(this._skinID));
-    if (e.C2) {
-      this._dungeonLootC2 = r.int(e.C2);
-    }
-    if (e.DPT) {
-      this._dungeonProtectionTime = r.int(e.DPT);
-    }
-    if (e.RID) {
-      this._rewardList = d.CastleModel.rewardData.getListById(e.RID);
-    }
-    if (this._dungeonLootC2 > 0) {
-      this._rewardList.addItem(new g.CollectableItemC2VO(this.dungeonLootC2));
-    }
-    if (this._dungeonProtectionTime > 0) {
-      this._rewardList.addItem(new C.CollectableItemDungeonProtectionVO(this._dungeonProtectionTime));
-    }
-    this._targetAreaVO = new m.EventdungeonMapobjectVO();
-    this._targetAreaVO.parseAreaInfo(e.D);
-    this._targetAreaVO.ownerInfo = d.CastleModel.otherPlayerData.getOwnerInfoVO(this.playerID);
-    this._hasWon = this._targetAreaVO.isDefeated;
+  n.__extends(CastlePrimeSaleReviveAllDialog, e);
+  CastlePrimeSaleReviveAllDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.dialogDisp.mc_medikus.visible = true;
+    this.setButtonCentered(true);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new l.LocalizedTextVO("dialog_primeday_primesale_healAll_description"));
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_offer, new l.LocalizedTextVO("dialog_specialOfferDeco_title"));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_ok.txt_buy, new l.LocalizedTextVO("dialog_questInfo_showMe"));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_medikus.txt_name, new l.LocalizedTextVO("dialog_hospital_reviveAllButton"));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_limited_offer.txt_limited_offer, new l.LocalizedTextVO("dialog_primeday_primesale_saveCosts", [this.dialogProperties.eventVO.discount]));
+    this.textFieldManager.registerTextField(this.dialogDisp.mc_percentOff.txt_percentOff, new l.LocalizedTextVO(a.GenericTextIds.VALUE_PERCENTAGE_SUBTRACT, [this.dialogProperties.eventVO.discount]));
   };
-  Object.defineProperty(RandomdungeonEventVO.prototype, "eventBuildingWOD", {
-    get: function () {
-      return RandomdungeonEventVO.EVENT_BUILDING_WOD;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(p.ASpecialEventVO.prototype, "eventBuildingWOD").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(RandomdungeonEventVO.prototype, "hasUserSolvedEvent", {
-    get: function () {
-      return this._hasWon;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(p.ASpecialEventVO.prototype, "hasUserSolvedEvent").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(RandomdungeonEventVO.prototype, "dungeonProtectionTime", {
-    get: function () {
-      return this._dungeonProtectionTime;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(RandomdungeonEventVO.prototype, "dungeonLootC2", {
-    get: function () {
-      return this._dungeonLootC2;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(RandomdungeonEventVO.prototype, "targetAreaVO", {
-    get: function () {
-      return this._targetAreaVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(RandomdungeonEventVO.prototype, "rewardList", {
-    get: function () {
-      return this._rewardList;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  RandomdungeonEventVO.prototype.openDialog = function (e = true) {
-    this.executeOpenDialog(e, _.CastleRandomDungeonEventDialog, new c.CastleRandomDungeonEventDialogProperties(this));
+  CastlePrimeSaleReviveAllDialog.prototype.onOkButton = function () {
+    this.showHowTo();
+    this.hide();
   };
-  RandomdungeonEventVO.prototype.onDestroy = function () {
-    if (d.CastleModel.worldmapData && d.CastleModel.worldmapData.areaTiles && this._targetAreaVO) {
-      this._targetAreaVO.isVisibleOnMap = false;
-      var e = o.castAs(d.CastleModel.worldmapData.areaTiles.getVOForAreaByXY(this._targetAreaVO.absAreaPosX, this._targetAreaVO.absAreaPosY), "EventdungeonMapobjectVO");
-      if (e) {
-        e.isVisibleOnMap = false;
-        e.dispatchEvent(l.EventInstanceMapper.getEvent(u.VisualVOEvent, u.VisualVOEvent.VALUEOBJECT_CHANGE));
+  CastlePrimeSaleReviveAllDialog.prototype.isEvent = function () {
+    return true;
+  };
+  CastlePrimeSaleReviveAllDialog.prototype.showHowTo = function () {
+    if (this.layoutManager.isInMyProperCastle) {
+      this.showHospitalDialog();
+    } else {
+      var e = c.int(g.CastleModel.kingdomData.activeKingdomID);
+      var t = g.CastleModel.userData.castleList.getMainCastleByKingdomID(e);
+      t ||= g.CastleModel.userData.castleList.getHomeCastle();
+      if (g.CastleModel.worldmapData) {
+        g.CastleModel.worldmapData.allowGAARequests = false;
       }
+      this.controller.addEventListener(h.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.bindFunction(this.onJoinedCastle));
+      g.CastleModel.smartfoxClient.sendCommandVO(new p.C2SJoinCastleVO(t.objectId, t.kingdomID));
     }
   };
-  RandomdungeonEventVO.prototype.isOwnWmoVO = function (e) {
-    return e.areaType == this.targetAreaVO.areaType;
+  CastlePrimeSaleReviveAllDialog.prototype.onJoinedCastle = function (e = null) {
+    this.controller.removeEventListener(h.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.bindFunction(this.onJoinedCastle));
+    this.showHospitalDialog();
   };
-  Object.defineProperty(RandomdungeonEventVO.prototype, "skinID", {
+  CastlePrimeSaleReviveAllDialog.prototype.showHospitalDialog = function () {
+    if (O.Iso.data.objects.provider.hasFunctionalBuildingByType(f.IsoObjectEnum.HOSPITAL) || O.Iso.data.objects.provider.hasFunctionalBuildingByType(f.IsoObjectEnum.FACTION_HOSPITAL)) {
+      E.CastleExternalDialog.dialogHandler.registerDefaultDialogs(b.CastleRecruitDialog, new _.CastleRecruitDialogProperties(u.ClientConstCastle.CATEGORY_HOSPITAL));
+    } else {
+      E.CastleExternalDialog.dialogHandler.registerDefaultDialogs(y.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(r.Localize.text("generic_alert_information"), r.Localize.text("dialog_primeday_primesale_healAll_alert")));
+    }
+  };
+  CastlePrimeSaleReviveAllDialog.prototype.getRemainingTime = function () {
+    return c.int(this.dialogProperties.eventVO.remainingEventTimeInSeconds);
+  };
+  CastlePrimeSaleReviveAllDialog.prototype.timeToString = function (e) {
+    return new l.LocalizedTextVO("dialog_primeday_specialoffer_endTimer", [C.CastleTimeStringHelper.getEventTimeString(e)]);
+  };
+  CastlePrimeSaleReviveAllDialog.prototype.onRemoveSpecialEvent = function (e) {
+    if (this.dialogProperties && this.dialogProperties.eventVO && e.specialEventVO.eventId == this.dialogProperties.eventVO.eventId) {
+      this.hide();
+    }
+  };
+  CastlePrimeSaleReviveAllDialog.prototype.getCharacterName = function () {
+    return d.ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_MEDICUS;
+  };
+  Object.defineProperty(CastlePrimeSaleReviveAllDialog.prototype, "dialogProperties", {
     get: function () {
-      return this._skinID;
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(RandomdungeonEventVO.prototype, "playerID", {
-    get: function () {
-      return this._playerID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  RandomdungeonEventVO.__initialize_static_members = function () {
-    RandomdungeonEventVO.EVENT_BUILDING_WOD = 219;
+  CastlePrimeSaleReviveAllDialog.__initialize_static_members = function () {
+    CastlePrimeSaleReviveAllDialog.NAME = "CastlePrimeSalesReviveAll";
   };
-  return RandomdungeonEventVO;
-}(p.ASpecialEventVO);
-exports.RandomdungeonEventVO = h;
-var g = require("./128.js");
-var C = require("./1053.js");
-var _ = require("./4503.js");
-var m = require("./968.js");
-a.classImplementsInterfaces(h, "IEventOverviewable");
-h.__initialize_static_members();
+  return CastlePrimeSaleReviveAllDialog;
+}(require("./372.js").CastleAbstractPrimeSaleDialog);
+exports.CastlePrimeSaleReviveAllDialog = m;
+var f = require("./80.js");
+var O = require("./34.js");
+var E = require("./11.js");
+var y = require("./38.js");
+var b = require("./225.js");
+s.classImplementsInterfaces(m, "ICollectableRendererList");
+m.__initialize_static_members();

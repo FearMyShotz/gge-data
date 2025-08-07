@@ -2,45 +2,34 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./16.js");
-var u = require("./22.js");
-var d = function (e) {
-  function ArmoryBuildingVO() {
-    var t = this;
-    t._addEquipmentStorageCapacity = 0;
-    t._addGemStorageCapacity = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./16.js");
+var r = require("./65.js");
+var l = require("./22.js");
+var c = function (e) {
+  function AquamarineRelicBuildingVO() {
+    var t = e !== null && e.apply(this, arguments) || this;
+    t._aquamarineHideout = 0;
+    return t;
   }
-  n.__extends(ArmoryBuildingVO, e);
-  ArmoryBuildingVO.prototype.parseXmlNode = function (t) {
+  n.__extends(AquamarineRelicBuildingVO, e);
+  AquamarineRelicBuildingVO.prototype.parseXmlNode = function (t) {
     e.prototype.parseXmlNode.call(this, t);
-    this._addEquipmentStorageCapacity = l.int(u.CastleXMLUtils.getIntAttribute("addEquipmentStorageCapacity", t));
-    this._addGemStorageCapacity = l.int(u.CastleXMLUtils.getIntAttribute("addGemStorageCapacity", t));
+    this._aquamarineHideout = l.CastleXMLUtils.getIntAttribute("aquamarineHideout", t);
   };
-  ArmoryBuildingVO.prototype.createInfoPanelItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_LawAndOrder_neutral, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Equipment, "equipmentStorage_capacityBonus_tt", new r.LocalizedTextVO(o.GenericTextIds.VALUE_NOMINAL_ADD, [this._addEquipmentStorageCapacity]), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_GemStorage, "gemStorage_capacityBonus_tt", new r.LocalizedTextVO(o.GenericTextIds.VALUE_NOMINAL_ADD, [this._addGemStorageCapacity]), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
+  AquamarineRelicBuildingVO.prototype.createInfoPanelItems = function (e) {
+    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_AquamarineHideout, "saveStorage", new a.LocalizedNumberVO(this.aquamarineHideout), s.ClientConstColor.FONT_DEFAULT_COLOR, true);
+    e.addInfoItem(Library.CastleInterfaceElements.Icon_islandAlliancePoints, "aquamarin_points_alliance_tooltip", new a.LocalizedNumberVO(this.islandAlliancePoints), s.ClientConstColor.FONT_DEFAULT_COLOR, true);
   };
-  ArmoryBuildingVO.prototype.createInfoDialogItems = function (e) {
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_Equipment, "equipmentStorage_capacityBonus_tt", new r.LocalizedTextVO(o.GenericTextIds.VALUE_NOMINAL_ADD, [this._addEquipmentStorageCapacity]), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_GemStorage, "gemStorage_capacityBonus_tt", new r.LocalizedTextVO(o.GenericTextIds.VALUE_NOMINAL_ADD, [this._addGemStorageCapacity]), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-    e.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_LawAndOrder_neutral, "publicOrderNeutral", new s.LocalizedNumberVO(this.decoPoints), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
-  };
-  Object.defineProperty(ArmoryBuildingVO.prototype, "addEquipmentStorageCapacity", {
+  Object.defineProperty(AquamarineRelicBuildingVO.prototype, "aquamarineHideout", {
     get: function () {
-      return this._addEquipmentStorageCapacity;
+      return this._aquamarineHideout;
     },
     enumerable: true,
     configurable: true
   });
-  return ArmoryBuildingVO;
-}(require("./65.js").AEffectBuildingVO);
-exports.ArmoryBuildingVO = d;
-a.classImplementsInterfaces(d, "IShopVO", "ICostVO", "IInventoryVO");
+  return AquamarineRelicBuildingVO;
+}(r.AEffectBuildingVO);
+exports.AquamarineRelicBuildingVO = c;
+o.classImplementsInterfaces(c, "IShopVO", "ICostVO", "IInventoryVO");

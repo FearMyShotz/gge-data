@@ -842,8 +842,8 @@ export var TweenLite = function (e, t) {
   var F = [];
   var U = {};
   var G = /(?:(-|-=|\+=)?\d*\.?\d*(?:e[\-+]?\d+)?)[0-9]/gi;
-  var w = /[\+-]=-?[\.\d]/;
-  function k(e) {
+  var k = /[\+-]=-?[\.\d]/;
+  function w(e) {
     var t;
     for (var n = this._firstPT; n;) {
       t = n.blob ? e === 1 && this.end != null ? this.end : e ? this.join("") : this.start : n.c * e + n.s;
@@ -928,8 +928,8 @@ export var TweenLite = function (e, t) {
     if (m += t.substr(d)) {
       _.push(m);
     }
-    _.setRatio = k;
-    if (w.test(t)) {
+    _.setRatio = w;
+    if (k.test(t)) {
       _.end = null;
     }
     return _;
@@ -982,16 +982,16 @@ export var TweenLite = function (e, t) {
       return m;
     }
   }
-  var V = B._internals = {
+  var H = B._internals = {
     isArray: g,
     isSelector: M,
     lazyTweens: F,
     blobDif: x
   };
-  var H = B._plugins = {};
-  var j = V.tweenLookup = {};
+  var V = B._plugins = {};
+  var j = H.tweenLookup = {};
   var q = 0;
-  var K = V.reservedProps = {
+  var K = H.reservedProps = {
     ease: 1,
     delay: 1,
     overwrite: 1,
@@ -1042,7 +1042,7 @@ export var TweenLite = function (e, t) {
   var z = N._rootFramesTimeline = new P();
   var Z = N._rootTimeline = new P();
   var X = 30;
-  var Q = V.lazyRender = function () {
+  var Q = H.lazyRender = function () {
     var e;
     var t = F.length;
     for (U = {}; --t > -1;) {
@@ -1320,12 +1320,12 @@ export var TweenLite = function (e, t) {
       Q();
     }
     if (!this.vars.css) {
-      if (t.style && t !== e && t.nodeType && H.css && this.vars.autoCSS !== false) {
+      if (t.style && t !== e && t.nodeType && V.css && this.vars.autoCSS !== false) {
         (function (e, t) {
           var n;
           var i = {};
           for (n in e) {
-            if (!K[n] && (!(n in t) || n === "transform" || n === "x" || n === "y" || n === "width" || n === "height" || n === "className" || n === "border") && (!H[n] || !!H[n] && !!H[n]._autoCSS)) {
+            if (!K[n] && (!(n in t) || n === "transform" || n === "x" || n === "y" || n === "width" || n === "height" || n === "className" || n === "border") && (!V[n] || !!V[n] && !!V[n]._autoCSS)) {
               i[n] = e[n];
               delete e[n];
             }
@@ -1340,7 +1340,7 @@ export var TweenLite = function (e, t) {
         if (_ && (_ instanceof Array || _.push && g(_)) && _.join("").indexOf("{self}") !== -1) {
           this.vars[r] = _ = this._swapSelfInParams(_, this);
         }
-      } else if (H[r] && (u = new H[r]())._onInitTween(t, this.vars[r], this, s)) {
+      } else if (V[r] && (u = new V[r]())._onInitTween(t, this.vars[r], this, s)) {
         this._firstPT = c = {
           _next: this._firstPT,
           t: u,
@@ -1746,7 +1746,7 @@ export var TweenLite = function (e, t) {
   ne.API = 2;
   o._firstPT = null;
   o._addTween = W;
-  o.setRatio = k;
+  o.setRatio = w;
   o._kill = function (e) {
     var t;
     var n = this._overwriteProps;
@@ -1828,7 +1828,7 @@ export var TweenLite = function (e, t) {
   ne.activate = function (e) {
     for (var t = e.length; --t > -1;) {
       if (e[t].API === ne.API) {
-        H[new e[t]()._propName] = e[t];
+        V[new e[t]()._propName] = e[t];
       }
     }
     return true;

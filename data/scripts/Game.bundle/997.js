@@ -1,116 +1,117 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = createjs.MouseEvent;
-var o = function () {
-  function ConstructionItemSlot(e, t, i, n) {
-    this._disp = n;
-    this._slotVO = e;
-    this.interactionData = t;
-    this.clickCallback = i;
-    n.mc_item.mouseChildren = false;
-    n.mc_lock.mouseEnabled = false;
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./6.js");
+var c = require("./2695.js");
+var u = require("./763.js");
+var d = require("./37.js");
+var p = require("./15.js");
+var h = require("./4.js");
+var g = require("./20.js");
+var C = require("./8.js");
+var _ = require("./594.js");
+var m = require("./1465.js");
+var f = function (e) {
+  function CastleConstructionItemsDisassembleDialog() {
+    return e.call(this, CastleConstructionItemsDisassembleDialog.NAME) || this;
   }
-  ConstructionItemSlot.prototype.show = function () {
-    this._disp.addEventListener(n.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-    this._disp.addEventListener(n.MOUSE_OUT, this.bindFunction(this.onMouseOut));
-    this._disp.addEventListener(n.CLICK, this.bindFunction(this.onClick));
-    if (this.interactionData) {
-      this.interactionData.SGN_UPDATE.add(this.bindFunction(this.sgnUpdate));
+  n.__extends(CastleConstructionItemsDisassembleDialog, e);
+  Object.defineProperty(CastleConstructionItemsDisassembleDialog.prototype, "buttons", {
+    get: function () {
+      return [];
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(m.CastleConstructionItemsDisassembledDialog.prototype, "buttons").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleConstructionItemsDisassembleDialog.prototype.additionalInit = function () {
+    this.textFieldManager.registerTextField(this.dialogDisp.text_header, new r.LocalizedTextVO("dialog_ci_disassemble_header")).verticalAlign = o.GGSVerticalAlign.MIDDLE;
+    this.activateButtons(true);
+    C.ButtonHelper.initButtons([this.dialogDisp.btn_plus1, this.dialogDisp.btn_minus1, this.dialogDisp.btn_max1], g.ClickFeedbackButtonHover, 1);
+  };
+  CastleConstructionItemsDisassembleDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.renderConstructionItem(this.dialogProperties.constructionItemVO, this.dialogDisp.mc_item, false, this.dialogDisp.mc_timer);
+    this.inputTextField = new _.SelectInputFieldComponent(this.dialogDisp.mc_amount, this.bindFunction(this.onInput), "1");
+    this.inputTextField.searchField.restrict = "0-9";
+    this.setSelectedAmount(1);
+  };
+  CastleConstructionItemsDisassembleDialog.prototype.onInput = function () {
+    var e = o.MathBase.clamp(parseInt(this.dialogDisp.mc_amount.txt_value.text), 1, this.maxAmount);
+    this.setSelectedAmount(e);
+  };
+  CastleConstructionItemsDisassembleDialog.prototype.setSelectedAmount = function (e) {
+    this.inputTextField.updateText(o.MathBase.clamp(e, 1, this.maxAmount).toString());
+  };
+  Object.defineProperty(CastleConstructionItemsDisassembleDialog.prototype, "selectedAmount", {
+    get: function () {
+      return parseInt(this.dialogDisp.mc_amount.txt_value.text);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleConstructionItemsDisassembleDialog.prototype, "maxAmount", {
+    get: function () {
+      return h.CastleModel.constructionItemData.getConstructionItemVOById(this.dialogProperties.constructionItemVO.id).amount;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleConstructionItemsDisassembleDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_minus1:
+        this.setSelectedAmount(this.selectedAmount - 1);
+        break;
+      case this.dialogDisp.btn_plus1:
+        this.setSelectedAmount(this.selectedAmount + 1);
+        break;
+      case this.dialogDisp.btn_max1:
+        this.setSelectedAmount(this.maxAmount);
     }
   };
-  ConstructionItemSlot.prototype.hide = function () {
-    this._disp.removeEventListener(n.MOUSE_OVER, this.bindFunction(this.onMouseOver));
-    this._disp.removeEventListener(n.MOUSE_OUT, this.bindFunction(this.onMouseOut));
-    this._disp.removeEventListener(n.CLICK, this.bindFunction(this.onClick));
-    if (this.interactionData) {
-      this.interactionData.SGN_UPDATE.remove(this.bindFunction(this.sgnUpdate));
-    }
-  };
-  ConstructionItemSlot.prototype.sgnUpdate = function (e = null) {
-    this.update();
-  };
-  ConstructionItemSlot.prototype.update = function () {
-    this._disp.mc_lock.visible = this.isLocked();
-    var e = !!this.interactionData && this.interactionData.isSlotLockedForDrop(this.slotVO, this.itemVO);
-    l.ButtonHelper.enableButton(this._disp.mc_item, !e);
-    this.setTooltip();
-  };
-  ConstructionItemSlot.prototype.onMouseOver = function (e) {
-    if (e.target == this._disp.mc_item && this.itemVO && !this.isLocked()) {
-      a.ConstructionItemTooltipHelper.showConstructionItemToolTip(this._disp, this.itemVO);
-    }
-  };
-  ConstructionItemSlot.prototype.onMouseOut = function (e) {
-    if (this.itemVO) {
-      a.ConstructionItemTooltipHelper.hideToolTip();
-    }
-  };
-  ConstructionItemSlot.prototype.onClick = function (e) {
-    this.clickCallback(this);
-  };
-  ConstructionItemSlot.prototype.setTooltip = function () {
-    if (s.ConstructionItemsHelper.hasConstructorForSlot(this._slotVO)) {
-      if (this.interactionData && this.interactionData.draggedItem && this.interactionData.draggedItem.constructionItemVO.slotType != this._slotVO.slotType) {
-        this._disp.mc_item.toolTipText = "dialog_ci_assign_info_wrongSlot_tooltip";
-      } else if (this.interactionData && this.interactionData.isSlotLockedByAreaLimit(this._slotVO, this.itemVO)) {
-        this._disp.mc_item.toolTipText = "dialog_ci_assign_maxLimit_tooltip";
-      } else if (this.itemVO) {
-        this._disp.mc_item.toolTipText = null;
+  CastleConstructionItemsDisassembleDialog.prototype.getDescriptionTextID = function () {
+    if (this.dialogProperties.constructionItemVO.isTemporary) {
+      if (this.isBoosterDisassemble()) {
+        return "dialog_ci_disassemble_tempCI_booster_desc";
       } else {
-        this._disp.mc_item.toolTipText = s.ConstructionItemsHelper.getSlotNameTextId(this._slotVO.slotType);
+        return "dialog_ci_disassemble_tempCI_currency_desc";
       }
     } else {
-      var e = r.int(s.ConstructionItemsHelper.getMinimumConstructorLevelForSlot(this._slotVO));
-      this._disp.mc_item.toolTipText = {
-        t: "dialog_ci_assign_info_lockedSlot_tooltip",
-        p: [e]
-      };
+      return "dialog_ci_disassemble_multiple_desc";
     }
   };
-  Object.defineProperty(ConstructionItemSlot.prototype, "itemVO", {
-    get: function () {
-      if (this.buildingVO) {
-        return this.buildingVO.getConstructionItem(this._slotVO);
-      } else {
-        return null;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ConstructionItemSlot.prototype, "buildingVO", {
-    get: function () {
-      if (this.interactionData) {
-        return this.interactionData.selectedBuilding;
-      } else {
-        return null;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ConstructionItemSlot.prototype.isLocked = function () {
-    return !s.ConstructionItemsHelper.hasConstructorForSlot(this._slotVO) || !!this.interactionData && this.interactionData.isSlotLockedForDrop(this.slotVO, this.itemVO);
+  CastleConstructionItemsDisassembleDialog.prototype.onClickAccept = function () {
+    this.activateButtons(false);
+    p.CastleBasicController.getInstance().addEventListener(d.CastleServerMessageArrivedEvent.DCI_ARRIVED, this.bindFunction(this.onDCIArrived));
+    h.CastleModel.smartfoxClient.sendCommandVO(new c.C2SDisassembleConstructionItemVO(this.dialogProperties.constructionItemVO.id, this.dialogProperties.lostAndFoundID, this.selectedAmount));
+    h.CastleModel.smartfoxClient.sendCommandVO(new u.C2SGetContructionItemsInventoryVO());
   };
-  Object.defineProperty(ConstructionItemSlot.prototype, "slotVO", {
-    get: function () {
-      return this._slotVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ConstructionItemSlot.prototype, "disp", {
-    get: function () {
-      return this._disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return ConstructionItemSlot;
-}();
-exports.ConstructionItemSlot = o;
-var a = require("./356.js");
-var s = require("./239.js");
-var r = require("./6.js");
-var l = require("./8.js");
+  CastleConstructionItemsDisassembleDialog.prototype.activateButtons = function (e) {
+    C.ButtonHelper.enableButton(this.dialogDisp.btn_accept, e);
+    C.ButtonHelper.enableButton(this.dialogDisp.btn_cancel, e);
+    C.ButtonHelper.enableButton(this.dialogDisp.btn_close, e);
+  };
+  CastleConstructionItemsDisassembleDialog.prototype.onDCIArrived = function (e) {
+    p.CastleBasicController.getInstance().removeEventListener(d.CastleServerMessageArrivedEvent.DCI_ARRIVED, this.bindFunction(this.onDCIArrived));
+    var t = l.int(e.params[0]);
+    this.activateButtons(true);
+    this.hide();
+    if (t == s.ERROR.ALL_OK) {
+      this.dialogProperties.additionalParams = JSON.parse(e.params[1][1]);
+      O.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleConstructionItemsDisassembledDialog, this.dialogProperties);
+    }
+  };
+  CastleConstructionItemsDisassembleDialog.NAME = "CastleConstructionItemsDisassemble_Apr25";
+  return CastleConstructionItemsDisassembleDialog;
+}(m.CastleConstructionItemsDisassembledDialog);
+exports.CastleConstructionItemsDisassembleDialog = f;
+var O = require("./9.js");
+a.classImplementsInterfaces(f, "ICollectableRendererList");

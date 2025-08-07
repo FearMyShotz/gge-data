@@ -1,86 +1,89 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = createjs.Point;
-var o = function () {
-  function IsoHelperZSort() {}
-  IsoHelperZSort.prototype.sortObjects = function (e, t) {
-    if (e && t) {
-      var i;
-      for (var n = u.int(t.children.length), o = 0; o < n; ++o) {
-        if (t.children[o] instanceof p.VEContainer) {
-          i = t.children[o];
-          this.sortObject(i.veRef, e, t);
-        }
-      }
-      this.showChildIndices();
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./2.js");
+var s = require("./1.js");
+var r = require("./3.js");
+var l = require("./4.js");
+var c = require("./415.js");
+var u = createjs.Point;
+var d = function (e) {
+  function InfoTooltipBuilding() {
+    var t = this;
+    CONSTRUCTOR_HACK;
+    (t = e.call(this, new Library.CastleInterfaceElements.InfoTooltip_Building()) || this).dispMC.mouseChildren = false;
+    t.dispMC.mouseEnabled = false;
+    t.effectIcon = new Library.CastleInterfaceElements_Icons.Icon_BuildingWithEffect();
+    t.relicIcon = new Library.CastleInterfaceElements_Icons.Icon_BuildingRelic();
+    t._itxt_line1 = t.textFieldManager.registerTextField(t.infoToolTip.txt_line1, new r.TextVO(""));
+    t._itxt_line2 = t.textFieldManager.registerTextField(t.infoToolTip.txt_line2, new r.TextVO(""));
+    t._itxt_line3 = t.textFieldManager.registerTextField(t.infoToolTip.txt_line3, new r.TextVO(""));
+    t.infoToolTip.addChild(t.effectIcon);
+    t.infoToolTip.addChild(t.relicIcon);
+    return t;
+  }
+  n.__extends(InfoTooltipBuilding, e);
+  Object.defineProperty(InfoTooltipBuilding.prototype, "dispMC", {
+    get: function () {
+      return this.disp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  InfoTooltipBuilding.prototype.updateMenuPosition = function () {
+    var e = this.target;
+    if (e && e.elementContainer) {
+      var t = e.uiDisp.localToGlobal(e.getLocalDispPosTopCenter());
+      var i = new u(Math.max(this._itxt_line1.textWidth, this._itxt_line2.textWidth, this._itxt_line3.textWidth), this.infoToolTip.getBounds(null).height);
+      t.x = a.MathBase.clamp(t.x, i.x / 2 + 10, this.disp.stage.stageWidth - i.x / 2 - 10);
+      t.y = a.MathBase.max(t.y, i.y + 30);
+      this.disp.x = t.x;
+      this.disp.y = t.y;
+    } else {
+      this.hide();
     }
   };
-  IsoHelperZSort.prototype.sortObject = function (e, t, i) {
-    var n = e.elementContainer;
-    if (n && i.contains(n)) {
-      t.fixed = true;
-      var o = e.vo;
-      var a = i.getChildIndex(n);
-      var s = 0;
-      for (var r = i.children.length - 1; r > -1; r--) {
-        var l = i.children[r];
-        if (l instanceof p.VEContainer) {
-          var c = l.veRef;
-          var u = c.vo;
-          if ((o.x >= u.x && o.y >= u.y && o.x2 <= u.x2 && o.y2 <= u.y2 || u.x <= o.x2 && u.y <= o.y2 && (o.x > u.x2 || o.y > u.y2)) && e != c) {
-            s = r > a ? r : r + 1;
-            break;
-          }
-        }
-      }
-      s = Math.min(i.numChildren - 1, s);
-      i.setChildIndex(n, s);
-      t.fixed = false;
-    }
-    this.showChildIndices();
+  Object.defineProperty(InfoTooltipBuilding.prototype, "worldLayer", {
+    get: function () {
+      return p.Iso.renderer.layers.transformLayer;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(c.BasicIngameUIComponent.prototype, "worldLayer").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  InfoTooltipBuilding.prototype.initComponent = function () {
+    this._itxt_line1.clearText();
+    this._itxt_line2.clearText();
+    this._itxt_line3.clearText();
+    var e = this.target.vo;
+    this._itxt_line1.textContentVO.stringValue = e.getInfoTooltipLine1();
+    this._itxt_line2.textContentVO.stringValue = e.getInfoTooltipLine2();
+    this._itxt_line3.textContentVO.stringValue = l.CastleModel.areaData.activeArea && l.CastleModel.areaData.activeArea.isMyArea ? e.getInfoTooltipLine3() : "";
+    this.effectIcon.visible = s.instanceOfClass(e, "DecoBuildingVO") && e.allBuildingEffects.length > 0;
+    this.effectIcon.x = -this._itxt_line1.textWidth / 2 - 30;
+    this.effectIcon.y = this._itxt_line1.y + this._itxt_line1.height / 2;
+    o.MovieClipHelper.scaleToFit(this.effectIcon, 30, 30);
+    this.relicIcon.visible = s.instanceOfClass(e, "ABasicBuildingVO") && e.isRelicBuilding;
+    this.relicIcon.x = -this._itxt_line1.textWidth / 2 - 30;
+    this.relicIcon.y = this._itxt_line1.y + this._itxt_line1.height / 2;
+    o.MovieClipHelper.scaleToFit(this.relicIcon, 30, 30);
   };
-  IsoHelperZSort.prototype.randomizeObjects = function (e, t) {
-    var i;
-    for (var n = u.int(e.length), o = 0; o < n; ++o) {
-      i = e[o];
-      var a = u.int(r.ClientConstUtils.getRandomInt(0, n - 1));
-      t.setChildIndex(i.elementContainer, a);
-    }
-    this.showChildIndices();
+  Object.defineProperty(InfoTooltipBuilding.prototype, "infoToolTip", {
+    get: function () {
+      return this.disp;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  InfoTooltipBuilding.__initialize_static_members = function () {
+    InfoTooltipBuilding.NAME = "InfoTooltipBuilding";
   };
-  IsoHelperZSort.prototype.showChildIndices = function () {
-    if (a.Iso.renderer.settings.isZSortChildIndexVisible) {
-      var e = a.Iso.renderer.layers.getIsoLayer(d.IsoLayerEnum.DEBUG_Z_SORT);
-      var t = a.Iso.renderer.layers.getIsoLayer(d.IsoLayerEnum.ISO_OBJECTS);
-      var i = new n();
-      e.removeChildren();
-      for (var o = 0, r = a.Iso.renderer.objects.isoLayerObjects; o < r.length; o++) {
-        var p = r[o];
-        if (p !== undefined) {
-          var h = u.int(t.getChildIndex(p.elementContainer));
-          var g = s.IsoHelper.view.calcPosToCoordinateSystem(i, p.elementContainer, e);
-          var C = new l.TextField();
-          C.textColor = 16711935;
-          C.scaleX = C.scaleY = 4;
-          C.autoSize = c.TextFieldAutoSize.CENTER;
-          C.text = "" + h;
-          C.x = g.x;
-          C.y = g.y;
-          C.mouseEnabled = false;
-          e.addChild(C);
-        }
-      }
-    }
-  };
-  return IsoHelperZSort;
-}();
-exports.IsoHelperZSort = o;
-var a = require("./33.js");
-var s = require("./46.js");
-var r = require("./55.js");
-var l = require("./1.js");
-var c = require("./1.js");
-var u = require("./6.js");
-var d = require("./113.js");
-var p = require("./313.js");
+  return InfoTooltipBuilding;
+}(c.BasicIngameUIComponent);
+exports.InfoTooltipBuilding = d;
+var p = require("./34.js");
+d.__initialize_static_members();

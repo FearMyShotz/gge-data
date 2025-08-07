@@ -2,36 +2,43 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./5.js");
-var s = require("./55.js");
-var r = function (e) {
-  function AutoRecruitmentPriceEnum(t) {
-    CONSTRUCTOR_HACK;
-    return e.call(this, t, o.BasicEnum.instantiationKey) || this;
+var o = require("./1.js");
+var a = require("./129.js");
+var s = function (e) {
+  function AUnitProductionBuildingVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AutoRecruitmentPriceEnum, e);
-  AutoRecruitmentPriceEnum.getTypeByName = function (e) {
-    return this.getByProperty(AutoRecruitmentPriceEnum, "name", s.ClientConstUtils.lowercaseFirstLetter(e), AutoRecruitmentPriceEnum.SOLDIERS);
+  n.__extends(AUnitProductionBuildingVE, e);
+  AUnitProductionBuildingVE.prototype.addEventListener = function () {
+    r.CastleComponent.controller.addEventListener(a.CastleMilitaryDataEvent.PACKAGELIST_UPDATED, this.bindFunction(this.onPackageUpdate));
+    e.prototype.addEventListener.call(this);
   };
-  AutoRecruitmentPriceEnum.getTypeByListId = function (e) {
-    switch (e) {
-      case a.UnitProductionConst.UNIT_LIST:
-        return AutoRecruitmentPriceEnum.SOLDIERS;
-      case a.UnitProductionConst.TOOLS_LIST:
-        return AutoRecruitmentPriceEnum.TOOLS;
-      case a.UnitProductionConst.AUXILIARY_LIST:
-        return AutoRecruitmentPriceEnum.AUXILIARIES;
-      default:
-        return AutoRecruitmentPriceEnum.SOLDIERS;
-    }
+  AUnitProductionBuildingVE.prototype.removeEventListener = function () {
+    r.CastleComponent.controller.removeEventListener(a.CastleMilitaryDataEvent.PACKAGELIST_UPDATED, this.bindFunction(this.onPackageUpdate));
+    e.prototype.removeEventListener.call(this);
   };
-  AutoRecruitmentPriceEnum.__initialize_static_members = function () {
-    AutoRecruitmentPriceEnum.SOLDIERS = new AutoRecruitmentPriceEnum("soldiers");
-    AutoRecruitmentPriceEnum.TOOLS = new AutoRecruitmentPriceEnum("tools");
-    AutoRecruitmentPriceEnum.AUXILIARIES = new AutoRecruitmentPriceEnum("auxiliaries");
+  AUnitProductionBuildingVE.prototype.getRingMenuButtons = function () {
+    var t = e.prototype.getRingMenuButtons.call(this);
+    t.push(new u.RingMenuButtonRecruit());
+    t.push(new c.RingMenuButtonProduce());
+    t.push(new l.RingMenuButtonOverseer());
+    return t;
   };
-  return AutoRecruitmentPriceEnum;
-}(require("./84.js").CastleEnum);
-exports.AutoRecruitmentPriceEnum = r;
-r.__initialize_static_members();
+  AUnitProductionBuildingVE.prototype.onPackageUpdate = function (e) {
+    this.updateStatusIcon();
+  };
+  Object.defineProperty(AUnitProductionBuildingVE.prototype, "unitProductionBuildingVO", {
+    get: function () {
+      return this.vo;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AUnitProductionBuildingVE;
+}(require("./457.js").AProductionBuildingVE);
+exports.AUnitProductionBuildingVE = s;
+var r = require("./14.js");
+var l = require("./1559.js");
+var c = require("./2932.js");
+var u = require("./1583.js");
+o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

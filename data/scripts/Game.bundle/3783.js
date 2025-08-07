@@ -2,108 +2,64 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./3.js");
-var c = require("./6.js");
-var u = require("./53.js");
-var d = require("./13.js");
-var p = require("./4.js");
-var h = require("./52.js");
-var g = require("./830.js");
-var C = function (e) {
-  function AllianceBattleGroundTowerCollectorEventBoosterSelectDialog() {
-    return e.call(this, AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.NAME) || this;
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./6.js");
+var r = require("./4.js");
+var l = require("./833.js");
+var c = require("./3784.js");
+var u = require("./241.js");
+var d = function (e) {
+  function OpenLongTermPointEventDialogCommand() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AllianceBattleGroundTowerCollectorEventBoosterSelectDialog, e);
-  AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(d.TextHelper.toUpperCaseLocaSafeTextId("dialog_selectBooster_title"))).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_charmBoosterTitle, new r.LocalizedTextVO("statuetteBooster_colon")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new r.LocalizedTextVO("dialog_selectBooster_statuette_desc")).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_outcome, new s.TextVO(d.TextHelper.toUpperCaseLocaSafeTextId("lootedStatuette_colon")));
-    this.itxt_outcome_value = this.textFieldManager.registerTextField(this.dialogDisp.txt_outcome_value, new l.LocalizedNumberVO(0));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_enemy_currencys, new s.TextVO(d.TextHelper.toUpperCaseLocaSafeTextId("enemyStatuette_colon")));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_enemy_currencys_value, new l.LocalizedNumberVO(this.targetCurrencyAmount));
-    this.updateSelectedBoosterTexts();
+  n.__extends(OpenLongTermPointEventDialogCommand, e);
+  OpenLongTermPointEventDialogCommand.prototype.openDialog = function () {
+    new g.UpdateDynamicTopXDataService().updateDynamicTopXForVO(this._eventVO);
+    this._dialogProperties.updateEventVO(this._eventVO);
+    p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.LongTermPointEventDialog, this._dialogProperties);
   };
-  AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.prototype.updateSelectedBoosterTexts = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_amount, new r.LocalizedTextVO("value_proportional_value", [this.scrollComponentValue, u.ABGHelper.abgEvent.settingVO.boosterCurrencyLimit])).autoFitToBounds = true;
-    var e = u.ABGHelper.abgEvent.settingVO.boosterCurrencyValue;
-    var t = Math.ceil(this.targetCurrencyAmount * (1 + this.scrollComponentValue * e / 100));
-    if (this.itxt_outcome_value) {
-      this.itxt_outcome_value.textContentVO.numberValue = t;
+  OpenLongTermPointEventDialogCommand.prototype.addAssets = function (e) {
+    this._eventVO = r.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_LONGTERM_POINT_EVENT);
+    r.CastleModel.smartfoxClient.sendCommandVO(new u.C2SPointEventGetPointsVO(a.EventConst.EVENTTYPE_LONGTERM_POINT_EVENT));
+    this._dialogProperties = new c.LongTermPointEventProperties(this._eventVO);
+    this.loadSeasonAssets(this._dialogProperties);
+    this.loadPointEventAssets(this._dialogProperties, h.LongTermPointEventDialog.TAB_ICONS_IDS);
+  };
+  OpenLongTermPointEventDialogCommand.prototype.loadPointEventAssets = function (e, t) {
+    for (var i = s.int(t.length), n = 0, o = e.eventVO.skin, a = 0; a < i; a++) {
+      var r;
+      var c;
+      var u = "";
+      if (a == l.LongTermPointEventClientConst.GENERAL_TAB_ID) {
+        c = o.assetName;
+        r = l.LongTermPointEventClientConst.eventNamePrefix + o.textSuffix;
+        u = l.LongTermPointEventClientConst.eventDescriptionPrefix + o.textSuffix;
+      } else {
+        n = s.int(t[a]);
+        c = l.LongTermPointEventClientConst.pointEventAssetNames.get(n);
+        r = l.LongTermPointEventClientConst.tabToolTipPrefix + c.toLowerCase();
+      }
+      var d = l.LongTermPointEventClientConst.eventAssetFilePrefix + c;
+      var p = l.LongTermPointEventClientConst.tabPrefix + c.toLowerCase();
+      var h = l.LongTermPointEventClientConst.iconPrefix + c.toLowerCase();
+      var g = l.LongTermPointEventClientConst.teaserPrefix + c;
+      e.addEventAsset(n, c, h, p, g, r, u);
+      this.loadAsset(g, g);
+      this.loadAsset(p, d);
     }
-    this.textFieldManager.registerTextField(this.dialogDisp.txx_percent, new r.LocalizedTextVO("value_percentage_add", [this.scrollComponentValue * e + u.ABGHelper.abgEvent.settingVO.currencyLootFactorMin])).autoFitToBounds = true;
   };
-  Object.defineProperty(AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.prototype, "discount", {
-    get: function () {
-      return O.EventPackagePrimeSaleEventVO.getPackageDiscountC2(u.ABGHelper.abgEvent.eventPackages[0].packageID);
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(g.APostAttackSelectBoosterDialog.prototype, "discount").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.prototype.getCurrentTrueMaxSpendableBooster = function () {
-    return c.int(Math.min(this.eventCurrencyBoosterAmount, u.ABGHelper.abgEvent.settingVO.boosterCurrencyLimit));
+  OpenLongTermPointEventDialogCommand.prototype.loadSeasonAssets = function (e) {
+    var t = l.LongTermPointEventClientConst.SEASON_PREFIX + e.eventVO.skin.assetName + l.LongTermPointEventClientConst.SEASON_SUFFIX;
+    var i = t;
+    e.seasonAssetName = i;
+    e.seasonClassName = t;
+    this.loadAsset(t, i);
   };
-  Object.defineProperty(AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.prototype, "boosterKey", {
-    get: function () {
-      return u.ABGHelper.abgEvent.settingVO.boosterCurrencyID;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(g.APostAttackSelectBoosterDialog.prototype, "boosterKey").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.prototype, "boostedKey", {
-    get: function () {
-      return u.ABGHelper.abgEvent.settingVO.currencyID;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(g.APostAttackSelectBoosterDialog.prototype, "boostedKey").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.prototype, "targetCurrencyAmount", {
-    get: function () {
-      return this.fightScreenVO.targetArea.currentTowerPoints;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.prototype.onBuyButton = function () {
-    E.CastleExternalDialog.dialogHandler.registerDefaultDialogs(y.ModernPackageShopBuyDialog, u.ABGHelper.abgEvent.getMerchantProperties());
-  };
-  AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.prototype.onOkButton = function () {
-    var e = this.dialogProperties.attackInfoVO;
-    e.isCollectorAttack = false;
-    e.addCollectorBooster(this.boosterKey, this.scrollComponentValue);
-    e.openSelectBoosterDialog = false;
-    this.hide();
-    o.CommandController.instance.executeCommand(f.IngameClientCommands.OPEN_POSTATTACK_DIALOG_COMMAND, [this.dialogProperties.targetActionType, this.dialogProperties.hideFunction, this.dialogProperties.attackInfoVO, this.dialogProperties.selectedLord]);
-  };
-  Object.defineProperty(AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.prototype, "eventCurrencyBoosterAmount", {
-    get: function () {
-      return p.CastleModel.currencyData.getAmountByType(new m.CollectableTypeVO(_.CollectableEnum.GENERIC_CURRENCY, h.ClientConstCurrency.ID_ABG_TOWER_BOOSTER));
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AllianceBattleGroundTowerCollectorEventBoosterSelectDialog.NAME = "CollectorEventBoosterSelect";
-  return AllianceBattleGroundTowerCollectorEventBoosterSelectDialog;
-}(g.APostAttackSelectBoosterDialog);
-exports.AllianceBattleGroundTowerCollectorEventBoosterSelectDialog = C;
-var _ = require("./12.js");
-var m = require("./74.js");
-var f = require("./29.js");
-var O = require("./190.js");
-var E = require("./11.js");
-var y = require("./206.js");
-a.classImplementsInterfaces(C, "ICollectableRendererList");
+  return OpenLongTermPointEventDialogCommand;
+}(require("./1062.js").OpenDialogWithAdditionalExternalAssetsCommand);
+exports.OpenLongTermPointEventDialogCommand = d;
+var p = require("./9.js");
+var h = require("./3786.js");
+var g = require("./1788.js");
+o.classImplementsInterfaces(d, "ISimpleCommand");

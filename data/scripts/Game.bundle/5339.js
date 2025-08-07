@@ -4,49 +4,65 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./1.js");
 var o = require("./60.js");
 var a = function () {
-  function OfferDescriptionVisualSubOffer() {
-    this._discount = 0;
-    this._oldCost = 0;
-  }
-  Object.defineProperty(OfferDescriptionVisualSubOffer.prototype, "name", {
+  function OfferQuestConditionVoucherCode() {}
+  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "registerName", {
     get: function () {
-      return o.ClientConstOffer.OFFER_VISUAL_SUB_OFFER;
+      return o.ClientConstOffer.QUEST_CONDITION_VOUCHER;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionVisualSubOffer.prototype.registerVisualParameter = function (e) {
-    e.addEntry(this.name, this);
+  OfferQuestConditionVoucherCode.prototype.registerOfferCondition = function (e) {
+    e.addEntry(this.registerName, this);
   };
-  OfferDescriptionVisualSubOffer.prototype.parseFromObjectParam = function (e) {
-    if (e.DC) {
-      this._discount = e.DC;
-    }
-    if (e.OC) {
-      this._oldCost = e.OC;
-    }
+  OfferQuestConditionVoucherCode.prototype.parseFromObjectParam = function (e, t, i) {
+    this._voucherCodes = t.value;
+    this._publicID = i;
   };
-  OfferDescriptionVisualSubOffer.prototype.execute = function (e) {
-    return true;
-  };
-  OfferDescriptionVisualSubOffer.prototype.toExecuteInState = function (e) {
-    return false;
-  };
-  Object.defineProperty(OfferDescriptionVisualSubOffer.prototype, "oldCost", {
+  OfferQuestConditionVoucherCode.prototype.parseProgress = function (e) {};
+  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "conditionPassed", {
     get: function () {
-      return this._oldCost;
+      return false;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(OfferDescriptionVisualSubOffer.prototype, "discount", {
+  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "conditionsProgressInPercent", {
     get: function () {
-      return this._discount;
+      return 0;
     },
     enumerable: true,
     configurable: true
   });
-  return OfferDescriptionVisualSubOffer;
+  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "conditionTextId", {
+    get: function () {
+      return "";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "conditionTextReplacements", {
+    get: function () {
+      return null;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "publicID", {
+    get: function () {
+      return "";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(OfferQuestConditionVoucherCode.prototype, "voucherCodes", {
+    get: function () {
+      return this._voucherCodes;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return OfferQuestConditionVoucherCode;
 }();
-exports.OfferDescriptionVisualSubOffer = a;
-n.classImplementsInterfaces(a, "IOfferDescriptionVisualParameter");
+exports.OfferQuestConditionVoucherCode = a;
+n.classImplementsInterfaces(a, "IOfferQuestCondition");

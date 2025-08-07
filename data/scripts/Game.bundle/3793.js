@@ -3,24 +3,25 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./7.js");
-var s = function (e) {
-  function C2SListLeaderboardScoresPageVO(t, i, n, o = 1) {
-    var a = e.call(this) || this;
-    a.LT = 0;
-    a.LID = -1;
-    a.M = 0;
-    a.R = 1;
-    a.R = o;
-    a.LT = t;
-    a.LID = i;
-    a.M = n;
-    return a;
+var a = require("./2.js");
+var s = require("./7.js");
+var r = function (e) {
+  function C2SListLeaderboardScoresWindowVO(t, i, n, o = "") {
+    var s = e.call(this) || this;
+    s.LT = 0;
+    s.LID = -1;
+    s.M = 0;
+    s.SI = "";
+    s.SI = a.TextValide.getValideSmartFoxJSONTextMessage(o);
+    s.LT = t;
+    s.LID = i;
+    s.M = n;
+    return s;
   }
-  n.__extends(C2SListLeaderboardScoresPageVO, e);
-  C2SListLeaderboardScoresPageVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_LIST_LEADERBOARD_SCORE_PAGE;
+  n.__extends(C2SListLeaderboardScoresWindowVO, e);
+  C2SListLeaderboardScoresWindowVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_LIST_LEADERBOARD_SCORE_WINDOW;
   };
-  return C2SListLeaderboardScoresPageVO;
+  return C2SListLeaderboardScoresWindowVO;
 }(o.BasicCommandVO);
-exports.C2SListLeaderboardScoresPageVO = s;
+exports.C2SListLeaderboardScoresWindowVO = r;

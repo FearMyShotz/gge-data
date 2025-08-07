@@ -2,45 +2,23 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./3.js");
-var r = require("./6.js");
-var l = require("./4.js");
-var c = function (e) {
-  function AutoRecruitmentPurchaseUnitsDialog() {
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SUpdateRecruitmentLoopVO(t, i, n) {
+    var o = this;
+    o.LID = 0;
+    o.L = 0;
     CONSTRUCTOR_HACK;
-    return e.call(this, AutoRecruitmentPurchaseUnitsDialog.NAME) || this;
+    (o = e.call(this) || this).LID = t;
+    o.RS = i;
+    o.L = n;
+    return o;
   }
-  n.__extends(AutoRecruitmentPurchaseUnitsDialog, e);
-  AutoRecruitmentPurchaseUnitsDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_info.txt_value, new s.LocalizedTextVO("dialog_purchaseLoop_units_desc"));
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_costs.mc_resource0.txt_title, new s.LocalizedTextVO("costs")).autoFitToBounds = true;
-    this.dialogDisp.mc_foodTime.toolTipText = "dialog_copyQueue_foodProductionFinal";
-    this.dialogDisp.mc_time.toolTipText = "dialog_purchaseLoop_time_units";
-    this.dialogDisp.mc_foodTime.mc_icon.gotoAndStop(2);
+  n.__extends(C2SUpdateRecruitmentLoopVO, e);
+  C2SUpdateRecruitmentLoopVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_UPDATE_RECRUITMENT_LOOP;
   };
-  AutoRecruitmentPurchaseUnitsDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.updateFoodProductionAfterLoops();
-  };
-  AutoRecruitmentPurchaseUnitsDialog.prototype.updateFoodProductionAfterLoops = function () {
-    var e = this.dialogDisp.mc_foodTime.txt_value;
-    var t = r.int(l.CastleModel.areaData.activeCommonInfo.foodProduction - (this.dialogProperties.currentFoodConsumption + this.dialogProperties.foodProductionAfterLoops * this.selectedLoopCount));
-    this.textFieldManager.registerTextField(e, new a.LocalizedNumberVO(t));
-    u.CostHelper.setCostColor(e, t < 0);
-  };
-  AutoRecruitmentPurchaseUnitsDialog.prototype.onLoopSelected = function (t) {
-    e.prototype.onLoopSelected.call(this, t);
-    this.updateFoodProductionAfterLoops();
-  };
-  AutoRecruitmentPurchaseUnitsDialog.__initialize_static_members = function () {
-    AutoRecruitmentPurchaseUnitsDialog.NAME = "AutoRecruitmentPurchaseUnits";
-  };
-  return AutoRecruitmentPurchaseUnitsDialog;
-}(require("./1935.js").AAutoRecruitmentPurchaseDialog);
-exports.AutoRecruitmentPurchaseUnitsDialog = c;
-var u = require("./66.js");
-o.classImplementsInterfaces(c, "ICollectableRendererList");
-c.__initialize_static_members();
+  return C2SUpdateRecruitmentLoopVO;
+}(o.BasicCommandVO);
+exports.C2SUpdateRecruitmentLoopVO = s;

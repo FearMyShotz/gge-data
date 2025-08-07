@@ -3,98 +3,113 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./1.js");
+var a = require("./5.js");
 var s = require("./3.js");
-var r = require("./23.js");
-var l = require("./23.js");
-var c = require("./51.js");
-var u = require("./1086.js");
-var d = require("./4.js");
-var p = require("./24.js");
-var h = require("./107.js");
-var g = function (e) {
-  function CastleSabotageMessageDialog() {
-    var t = this;
-    t.CHAR_ICON_ASSET_NAME = "SabotageMessageIcon";
-    CONSTRUCTOR_HACK;
-    return t = e.call(this, CastleSabotageMessageDialog.NAME) || this;
+var r = require("./5524.js");
+var l = require("./1958.js");
+var c = require("./119.js");
+var u = require("./83.js");
+var d = require("./1157.js");
+var p = function (e) {
+  function MessageSpyPlayerVO() {
+    return e.call(this) || this;
   }
-  n.__extends(CastleSabotageMessageDialog, e);
-  CastleSabotageMessageDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.initBasicButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_repairAll]);
-  };
-  CastleSabotageMessageDialog.prototype.onClipLoaded = function (e) {
-    this.dialogDisp.mcBuilding.addChild(e.currentshownDisplayObject);
-  };
-  CastleSabotageMessageDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.LocalizedTextVO("dialog_spy_titleSabotage"));
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_premiumToolTip.txt_name, new s.LocalizedTextVO("repairAll"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new s.LocalizedTextVO("dialog_sabotageMessage_affected"));
-    this.repairAllButton = new _.ButtonRepairAllComponent(this.dialogDisp.btn_repairAll);
-    this.buildingIcon = new p.CastleGoodgameExternalClip(this.CHAR_ICON_ASSET_NAME, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(this.CHAR_ICON_ASSET_NAME), null, 0, false);
-    if (this.buildingIcon.isLoaded) {
-      this.onClipLoaded(this.buildingIcon);
+  n.__extends(MessageSpyPlayerVO, e);
+  MessageSpyPlayerVO.prototype.parseMessageHeader = function (e) {
+    var t = e.split(a.MessageConst.SUBTYPE_META_DATA_SPLITTER)[0].split("+");
+    var i = e.split(a.MessageConst.SUBTYPE_META_DATA_SPLITTER)[1].split("+");
+    this._subtypeSpy = parseInt(t[0]);
+    this._subtypeResult = parseInt(t[1]);
+    if (t.length > 2) {
+      this._areaType = parseInt(t[2]);
+    }
+    if (this._subtypeSpy != a.MessageConst.SUBTYPE_SPY_SABOTAGE && this._subtypeSpy != a.MessageConst.SUBTYPE_SPY_PLAQUE_MONK || this.subtypeResult != a.MessageConst.SUBTYPE_ATTACKER_SUCCESS && this.subtypeResult != a.MessageConst.SUBTYPE_DEFENDER_FAILED) {
+      this._kingdomID = parseInt(i[0]);
+      this._ownerID = parseInt(i[1]);
+      this._areaName = i[2];
     } else {
-      this.buildingIcon.clipLoaded.add(this.bindFunction(this.onClipLoaded));
-    }
-    h.CharacterHelper.createCharacterBig(c.ClientConstCharacter.CHAR_ID_SPY, this.dialogDisp.mc_char, 178, 154);
-    this.repairAllButton.initRepairAllButton(this.dialogProperties.castleID, this.dialogDisp.mc_premiumToolTip);
-    if (a.currentBrowserInfo.isMobile) {
-      this.dialogDisp.mc_premiumToolTip.visible = true;
+      this._areaName = i[0];
+      if (i.length > 1) {
+        this._areaID = parseInt(i[1]);
+      }
     }
   };
-  CastleSabotageMessageDialog.prototype.hideLoaded = function (t = null) {
-    if (this.buildingIcon.currentshownDisplayObject && this.buildingIcon.currentshownDisplayObject.parent == this.dialogDisp.mcBuilding) {
-      this.dialogDisp.mcBuilding.removeChild(this.buildingIcon.currentshownDisplayObject);
-    }
-    e.prototype.hideLoaded.call(this, t);
-  };
-  CastleSabotageMessageDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_repairAll:
-        d.CastleModel.smartfoxClient.sendCommandVO(new u.C2SIsoRepairAllVO());
-        this.hide();
+  MessageSpyPlayerVO.prototype.parseSubject = function () {
+    if (this.forwarded) {
+      return s.Localize.text("dialog_forwardlog_message", [s.Localize.text("dialog_spy_military")]);
+    } else if (this._subtypeResult != a.MessageConst.SUBTYPE_DEFENDER_FAILED) {
+      return s.Localize.text(o.GenericTextIds.VALUE_ASSIGN_COLON, [s.Localize.text(this.titleTextID), s.Localize.text(this.resultTextID)]);
+    } else if (this._subtypeSpy == a.MessageConst.SUBTYPE_SPY_SABOTAGE) {
+      return s.Localize.text("dialog_spy_affectedBySabotage");
+    } else if (this._subtypeSpy == a.MessageConst.SUBTYPE_SPY_PLAQUE_MONK) {
+      return s.Localize.text("dialog_spy_affectedByPlague");
+    } else {
+      return "";
     }
   };
-  CastleSabotageMessageDialog.prototype.onMouseOver = function (t) {
-    e.prototype.onMouseOver.call(this, t);
-    if (t.target == this.dialogDisp.btn_repairAll && this.layoutManager.currentState == C.CastleLayoutManager.STATE_ISO) {
-      this.dialogDisp.mc_premiumToolTip.visible = true;
-      l.TweenMax.fromTo(this.dialogDisp.mc_premiumToolTip, 0.2, {
-        alpha: 0
-      }, {
-        alpha: 1,
-        ease: r.Linear.easeIn
-      });
-    }
-  };
-  CastleSabotageMessageDialog.prototype.onMouseOut = function (t) {
-    e.prototype.onMouseOut.call(this, t);
-    this.dialogDisp.mc_premiumToolTip.visible = false;
-  };
-  CastleSabotageMessageDialog.prototype.destroy = function () {
-    e.prototype.destroy.call(this);
-  };
-  Object.defineProperty(CastleSabotageMessageDialog.prototype, "dialogProperties", {
+  Object.defineProperty(MessageSpyPlayerVO.prototype, "resultTextID", {
     get: function () {
-      return this.properties;
+      switch (this._subtypeResult) {
+        case a.MessageConst.SUBTYPE_ATTACKER_SUCCESS:
+          return "dialog_spyLog_success";
+        case a.MessageConst.SUBTYPE_ATTACKER_FAILED:
+          return "dialog_spyLog_failure";
+        case a.MessageConst.SUBTYPE_DEFENDER_SUCCESS:
+          return "dialog_spyLog_keptAway";
+      }
+      return "";
     },
     enumerable: true,
     configurable: true
   });
-  CastleSabotageMessageDialog.__initialize_static_members = function () {
-    CastleSabotageMessageDialog.NAME = "CastleSabotageMessageEx";
+  Object.defineProperty(MessageSpyPlayerVO.prototype, "titleTextID", {
+    get: function () {
+      switch (this._subtypeSpy) {
+        case a.MessageConst.SUBTYPE_SPY_SABOTAGE:
+          return "dialog_spy_titleSabotage";
+        case a.MessageConst.SUBTYPE_SPY_DEFENCE:
+        case a.MessageConst.SUBTYPE_SPY_ECO:
+          return "dialog_attack_spyInfo";
+        case a.MessageConst.SUBTYPE_SPY_PLAQUE_MONK:
+          return "plague";
+      }
+      return "";
+    },
+    enumerable: true,
+    configurable: true
+  });
+  MessageSpyPlayerVO.prototype.parseSender = function () {
+    if (this.forwarded) {
+      return this._senderName;
+    } else if (this.areaType && !this.areaName) {
+      return c.PlayerHelper.getNPCCastleName(this.kingdomID, this.ownerID, this.areaType);
+    } else {
+      return this.areaName;
+    }
   };
-  return CastleSabotageMessageDialog;
-}(require("./11.js").CastleExternalDialog);
-exports.CastleSabotageMessageDialog = g;
-var C = require("./17.js");
-var _ = require("./5524.js");
-a.classImplementsInterfaces(g, "ICollectableRendererList");
-g.__initialize_static_members();
+  Object.defineProperty(MessageSpyPlayerVO.prototype, "dialogInfo", {
+    get: function () {
+      if (this._subtypeSpy == a.MessageConst.SUBTYPE_SPY_SABOTAGE) {
+        if (this._subtypeResult == a.MessageConst.SUBTYPE_DEFENDER_FAILED) {
+          return new u.DialogInfoVO(h.CastleSabotageMessageDialog, new r.CastleSabotageMessageDialogProperties(this.messageType, this.areaID, this.messageID, !this.read));
+        }
+      } else if (this._subtypeSpy == a.MessageConst.SUBTYPE_SPY_PLAQUE_MONK && this._subtypeResult == a.MessageConst.SUBTYPE_DEFENDER_FAILED) {
+        return new u.DialogInfoVO(C.CastlePlagueMessageDialog, new r.CastleSabotageMessageDialogProperties(this.messageType, this.areaID, this.messageID, !this.read));
+      }
+      return new u.DialogInfoVO(g.CastleSpyLogDialog, new l.CastleSpyLogDialogProperties(this, true));
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.AMessageSpyVO.prototype, "dialogInfo").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  MessageSpyPlayerVO.prototype.hasDetailedSpyLog = function () {
+    return this.subtypeSpy == a.MessageConst.SUBTYPE_SPY_DEFENCE && this._subtypeResult == a.MessageConst.SUBTYPE_ATTACKER_SUCCESS || !!this.forwarded && this.subtypeSpy == a.MessageConst.SUBTYPE_SPY_ECO;
+  };
+  return MessageSpyPlayerVO;
+}(d.AMessageSpyVO);
+exports.MessageSpyPlayerVO = p;
+var h = require("./5525.js");
+var g = require("./1959.js");
+var C = require("./5527.js");

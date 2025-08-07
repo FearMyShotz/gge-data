@@ -3,49 +3,28 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./82.js");
-var s = require("./47.js");
-var r = require("./59.js");
-var l = function (e) {
-  function ModernPackageShopBuyElementRelicInfo() {
-    var t = this;
-    t._infoComponent = new c.RelicEquipmentInfoComponent();
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var a = require("./3.js");
+var s = require("./4.js");
+var r = function (e) {
+  function ModernPackageShopBuyElementInfo() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(ModernPackageShopBuyElementRelicInfo, e);
-  ModernPackageShopBuyElementRelicInfo.prototype.init = function (t) {
-    e.prototype.init.call(this, t);
-    this._scrollComponent = new a.ModernSliderScrollComponent(new s.SimpleScrollVO().initByParent(this.disp.mc_scroll).addMouseWheelElements([this.disp]).addVisualElements([this.disp.mc_scroll]), new r.DynamicSizeScrollStrategyVertical(true));
-    this._infoComponent = new c.RelicEquipmentInfoComponent();
-    this._infoComponent.init(this.disp.mc_content, true);
-  };
-  ModernPackageShopBuyElementRelicInfo.prototype.onShow = function () {
-    e.prototype.onShow.call(this);
-    this._scrollComponent.show();
-  };
-  ModernPackageShopBuyElementRelicInfo.prototype.onHide = function () {
-    this._scrollComponent.hide();
-    e.prototype.onHide.call(this);
-  };
-  ModernPackageShopBuyElementRelicInfo.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
-  };
-  ModernPackageShopBuyElementRelicInfo.prototype.removeEventListener = function () {
-    this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
-    e.prototype.removeEventListener.call(this);
-  };
-  ModernPackageShopBuyElementRelicInfo.prototype.update = function () {
+  n.__extends(ModernPackageShopBuyElementInfo, e);
+  ModernPackageShopBuyElementInfo.prototype.update = function () {
     e.prototype.update.call(this);
-    this._infoComponent.updateWithNewVO(this.relicVO);
-    this._infoComponent.disp.x = -this._infoComponent.disp.width * 0.5;
-    var t = Math.max(0, this.disp.mc_content.height - this.disp.mc_mask.height - 2);
-    this._scrollComponent.init(0, t, 15, 15);
-    this._scrollComponent.scrollToValue(0);
-    this._scrollComponent.setVisibility(t > 0);
+    if (this.parentDialog.dialogProperties.eventPackageVO.reward.itemType == l.CollectableEnum.RELIC_EQUIPMENT) {
+      this.setTextByRelic();
+    }
   };
-  Object.defineProperty(ModernPackageShopBuyElementRelicInfo.prototype, "relicVO", {
+  ModernPackageShopBuyElementInfo.prototype.setTextByRelic = function () {
+    var e = "";
+    e = u.instanceOfClass(this.relicVO, "RelicEquipmentVO") && s.CastleModel.equipData.isInventoryFull ? "generic_inventoryFull_item_tooltip" : u.instanceOfClass(this.relicVO, "RelicGemVO") && s.CastleModel.gemData.isInventoryFull ? "generic_inventoryFull_gem_tooltip" : this.parentDialog.dialogProperties.eventPackageVO.descriptionTextID;
+    c.CastleComponent.textFieldManager.registerTextField(this.disp.txt_text, new a.LocalizedTextVO(e, this.parentDialog.dialogProperties.eventPackageVO.descriptionParams));
+    this.disp.mc_warning.visible = false;
+    this.disp.mc_info.visible = true;
+    this.setVisibility(e != "");
+  };
+  Object.defineProperty(ModernPackageShopBuyElementInfo.prototype, "relicVO", {
     get: function () {
       if (u.instanceOfClass(this.parentDialog.dialogProperties.eventPackageVO.reward, "CollectableItemRelicVO")) {
         return this.parentDialog.dialogProperties.eventPackageVO.reward.vo;
@@ -56,15 +35,10 @@ var l = function (e) {
     enumerable: true,
     configurable: true
   });
-  ModernPackageShopBuyElementRelicInfo.prototype.getDispHeight = function () {
-    return 150;
-  };
-  ModernPackageShopBuyElementRelicInfo.prototype.onScroll = function () {
-    this._infoComponent.disp.y = -this._scrollComponent.currentValue;
-  };
-  return ModernPackageShopBuyElementRelicInfo;
+  return ModernPackageShopBuyElementInfo;
 }(require("./431.js").AModernPackageShopBuyElement);
-exports.ModernPackageShopBuyElementRelicInfo = l;
-o.classImplementsInterfaces(l, "ICollectableRendererList");
-var c = require("./592.js");
+exports.ModernPackageShopBuyElementInfo = r;
+var l = require("./12.js");
+var c = require("./14.js");
+o.classImplementsInterfaces(r, "ICollectableRendererList");
 var u = require("./1.js");

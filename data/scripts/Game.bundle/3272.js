@@ -3,38 +3,26 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./44.js");
-var s = require("./27.js");
-var r = require("./195.js");
-var l = function (e) {
-  function CollectableItemDungeonProtectionVE() {
+var a = require("./195.js");
+var s = function (e) {
+  function CollectableItemAlienProtectionVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemDungeonProtectionVE, e);
-  CollectableItemDungeonProtectionVE.prototype.tooltipCreate = function () {
-    return {
-      t: a.SpecialServerHelper.checkTextIDForSkinText("dungeonProtection"),
-      p: [s.CastleTimeStringHelper.getLongEventTimeString(this.itemDungeonProtectionVO.duration)]
-    };
+  n.__extends(CollectableItemAlienProtectionVE, e);
+  CollectableItemAlienProtectionVE.prototype.tooltipCreate = function () {
+    return "alienProtection";
   };
-  Object.defineProperty(CollectableItemDungeonProtectionVE.prototype, "iconClass", {
+  Object.defineProperty(CollectableItemAlienProtectionVE.prototype, "iconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_NoDungeonAttacks;
+      return Library.CastleInterfaceElements.AlienProtection;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
+      Object.getOwnPropertyDescriptor(a.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CollectableItemDungeonProtectionVE.prototype, "itemDungeonProtectionVO", {
-    get: function () {
-      return this.vo;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CollectableItemDungeonProtectionVE;
-}(r.ACollectableItemSimpleIconVE);
-exports.CollectableItemDungeonProtectionVE = l;
-o.classImplementsInterfaces(l, "ICollectableRendererList");
+  return CollectableItemAlienProtectionVE;
+}(a.ACollectableItemSimpleIconVE);
+exports.CollectableItemAlienProtectionVE = s;
+o.classImplementsInterfaces(s, "ICollectableRendererList");

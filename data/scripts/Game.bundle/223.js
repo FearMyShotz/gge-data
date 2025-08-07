@@ -1,131 +1,133 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
+var n = require("./2.js");
 var o = require("./2.js");
 var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./55.js");
-var l = require("./604.js");
-var c = require("./72.js");
-var u = require("./4.js");
-var d = function (e) {
-  function CastleAllianceForumData() {
-    var t = this;
-    t._topicCount = 0;
-    t._unreadTopicsCount = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
-  }
-  n.__extends(CastleAllianceForumData, e);
-  CastleAllianceForumData.prototype.parseGAT = function (e) {
-    this._topicCount = s.int(e.TC);
-    this._topics = [];
-    for (var t = 0; t < e.T.length; ++t) {
-      var i = new h.CastleForumTopicVO();
-      i.parseGAT(e.T[t]);
-      this._topics.push(i);
-    }
-    this._topics.sort(this.bindFunction(this.sortTopicList));
-    this.dispatchEvent(new l.CastleAllianceForumEvent(l.CastleAllianceForumEvent.UPDATE_TOPIC_OVERVIEW));
+var s = require("./5.js");
+var r = require("./5.js");
+var l = require("./5.js");
+var c = require("./6.js");
+var u = require("./18.js");
+var d = require("./137.js");
+var p = require("./4.js");
+var h = require("./386.js");
+var g = createjs.Point;
+var C = function () {
+  function MapHelper() {}
+  MapHelper.pixelPosToSectorGridPos = function (e) {
+    return new g(Math.floor(e.x / u.ClientConstCastle.SECTORPIXELSIZE_X), Math.floor(e.y / u.ClientConstCastle.SECTORPIXELSIZE_Y));
   };
-  CastleAllianceForumData.prototype.sortTopicList = function (e, t) {
-    if (e.lastPostTimestamp < t.lastPostTimestamp) {
-      return 1;
-    } else if (e.lastPostTimestamp > t.lastPostTimestamp) {
-      return -1;
-    } else {
+  MapHelper.pixelPosToAreaGridPos = function (e) {
+    return new g(Math.floor(e.x / u.ClientConstCastle.MAPTILESIZE_X), Math.floor(e.y / u.ClientConstCastle.MAPTILESIZE_Y));
+  };
+  MapHelper.pixelPosToAreaGridPosUnrounded = function (e) {
+    return new g(e.x / u.ClientConstCastle.MAPTILESIZE_X, e.y / u.ClientConstCastle.MAPTILESIZE_Y);
+  };
+  MapHelper.sectorGridPosToPixelpos = function (e) {
+    return new g(e.x * a.WorldConst.SECTOR_WIDTH * u.ClientConstCastle.MAPTILESIZE_X, e.y * a.WorldConst.SECTOR_HEIGHT * u.ClientConstCastle.MAPTILESIZE_Y);
+  };
+  MapHelper.getDistanceByMapobjects = function (e, t, i = true, o = -1) {
+    if (o == u.ClientConstCastle.ACTION_TYPE_COLLECTOR_ATTACK) {
+      return r.TravelConst.COLLECTOR_TRAVEL_DISTANCE;
+    }
+    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_ALIEN_CAMP) > -1 && i) {
+      return r.TravelConst.ALIEN_TRAVEL_DISTANCE;
+    }
+    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_RED_ALIEN_CAMP) > -1 && i) {
+      return r.TravelConst.ALIEN_TRAVEL_DISTANCE;
+    }
+    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_NOMAD_CAMP) > -1 && i) {
+      return r.TravelConst.NOMAD_TRAVEL_DISTANCE;
+    }
+    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_ALLIANCE_NOMAD_CAMP) > -1 && i) {
+      return r.TravelConst.ALLIANCE_INVASION_CAMP_TRAVEL_DISTANCE;
+    }
+    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_SAMURAI_CAMP) > -1 && i) {
+      return r.TravelConst.SAMURAI_TRAVEL_DISTANCE;
+    }
+    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_DAIMYO_CASTLE) > -1 && i) {
+      return r.TravelConst.DAIMYO_CASTLE_TRAVEL_DISTANCE;
+    }
+    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_DAIMYO_TOWNSHIP) > -1 && i) {
+      return r.TravelConst.DAIMYO_TOWNSHIP_TRAVEL_DISTANCE;
+    }
+    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_FACTION_INVASION_CAMP) > -1 && i) {
+      return r.TravelConst.FACTION_TRAVEL_DISTANCE;
+    }
+    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_ALLIANCE_BATTLE_GROUND_TOWER) > -1 && i) {
+      return r.TravelConst.ALLIANCE_BATTLE_GROUND_TOWER_DISTANCE;
+    }
+    if ([t.areaType, e.areaType].indexOf(a.WorldConst.AREA_TYPE_ALLIANCE_BATTLE_GROUND_RESOURCE_TOWER) > -1 && i) {
+      return r.TravelConst.ALLIANCE_BATTLE_GROUND_RESOURCE_TOWER_DISTANCE;
+    }
+    if (t.areaType == a.WorldConst.AREA_TYPE_FACTION_VILLAGE || t.areaType == a.WorldConst.AREA_TYPE_FACTION_TOWER || t.areaType == a.WorldConst.AREA_TYPE_FACTION_CAPITAL) {
+      if (MapHelper.factionEventVO) {
+        var s = c.int(t.specialCampID);
+        return MapHelper.factionEventVO.distanceMap.get(s);
+      }
+    } else if (MapHelper.isTempServerRankSwapAttack(t, o)) {
+      return r.TravelConst.TEMPSERVER_RANKSWAP_TRAVEL_DISTANCE;
+    }
+    return n.MathBase.round(MapHelper.getShortestDistance(e.absAreaPos, t.absAreaPos), 1);
+  };
+  MapHelper.getShortestDistance = function (e, t) {
+    if (!e || !t) {
       return 0;
     }
+    var i = c.int(e.y - t.y);
+    var n = Math.abs(e.x - t.x);
+    var o = u.ClientConstCastle.WORLD_WIDTH - n;
+    var a = c.int(Math.min(n, o));
+    var s = Math.sqrt(a * a + i * i);
+    return s = Math.round(s * 10) / 10;
   };
-  CastleAllianceForumData.prototype.parseGTR = function (e) {
-    this._topicDetail = new p.CastleForumTopicDetailVO();
-    this._topicDetail.parseGTR(e);
-    this.dispatchEvent(new l.CastleAllianceForumEvent(l.CastleAllianceForumEvent.UPDATE_TOPIC_DETAIL));
-  };
-  CastleAllianceForumData.prototype.onDetailTopicWasNotFound = function () {
-    this.dispatchEvent(new l.CastleAllianceForumEvent(l.CastleAllianceForumEvent.UPDATE_TOPIC_DETAIL, [true]));
-  };
-  CastleAllianceForumData.prototype.parseUTC = function (e) {
-    this._unreadTopicsCount = s.int(e.UTC);
-    this.dispatchEvent(new l.CastleAllianceForumEvent(l.CastleAllianceForumEvent.ON_UNREAD_TOPICS_COUNT_UPDATED));
-  };
-  Object.defineProperty(CastleAllianceForumData.prototype, "topicDetail", {
-    get: function () {
-      return this._topicDetail;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAllianceForumData.prototype, "topics", {
-    get: function () {
-      return this._topics;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAllianceForumData.prototype, "topicCount", {
-    get: function () {
-      return this._topicCount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleAllianceForumData.hasTopicRightsToDeleteOrAnswerOrChangeVisibility = function (e, t) {
-    if (!t || !e) {
-      return false;
-    }
-    if (u.CastleModel.userData.userName == e) {
-      return true;
-    }
-    for (var i = 0; i < t.length; ++i) {
-      if (a.AllianceConst.hasAdminRightsForTopicAndAnswers(u.CastleModel.userData.allianceRank, t[i])) {
-        return true;
+  MapHelper.getRotationToShortestDistance = function (e, t) {
+    var i = e.x - t.x;
+    var n = e.y - t.y;
+    if (Math.abs(i) > u.ClientConstCastle.WORLD_WIDTH / 2) {
+      if (i > 0) {
+        i -= u.ClientConstCastle.WORLD_WIDTH;
+      } else {
+        i += u.ClientConstCastle.WORLD_WIDTH;
       }
     }
-    return false;
+    return Math.atan2(n, i) * 180 / Math.PI - 90;
   };
-  CastleAllianceForumData.canDeletePost = function (e) {
-    return a.AllianceConst.hasAdminRightsForTopicAndAnswers(u.CastleModel.userData.allianceRank, e.allianceRank) || e.author == u.CastleModel.userData.userName;
+  MapHelper.areaToPixelTopLeft = function (e) {
+    var t = new g();
+    t.x = e.x * u.ClientConstCastle.MAPTILESIZE_X;
+    t.y = e.y * u.ClientConstCastle.MAPTILESIZE_Y;
+    return t;
   };
-  CastleAllianceForumData.getVisibilityToolTip = function (e) {
-    return "dialog_alliance_communication_selectRanks_rank" + e + "_tooltip";
+  MapHelper.areaToPixelCenter = function (e) {
+    var t = new g();
+    t.x = e.x * u.ClientConstCastle.MAPTILESIZE_X;
+    t.y = e.y * u.ClientConstCastle.MAPTILESIZE_Y;
+    t.x += u.ClientConstCastle.MAPTILESIZE_X / 2;
+    t.y += u.ClientConstCastle.MAPTILESIZE_Y / 2;
+    return t;
   };
-  CastleAllianceForumData.getPreselectedTopicVisibility = function () {
-    for (var e = s.int(a.AllianceConst.getRankingGroupFromRank(u.CastleModel.userData.allianceRank)), t = [], i = 0; i <= e; ++i) {
-      t.push(i);
+  MapHelper.getRealPos = function (e) {
+    var t = new g();
+    t.y = e.y;
+    if (e.x % u.ClientConstCastle.WORLD_WIDTH < 0) {
+      t.x = e.x % u.ClientConstCastle.WORLD_WIDTH + u.ClientConstCastle.WORLD_WIDTH;
+    } else {
+      t.x = e.x % u.ClientConstCastle.WORLD_WIDTH;
     }
     return t;
   };
-  CastleAllianceForumData.isTopicFull = function (e) {
-    return !!e && !!e.posts && e.posts.length >= a.AllianceConst.MAX_REPLIES_TO_TOPIC;
-  };
-  CastleAllianceForumData.getForumValidText = function (e) {
-    return o.TextValide.getValideSmartFoxJSONTextMessage(r.ClientConstUtils.getTrimmedText(e));
-  };
-  CastleAllianceForumData.hasValidPostText = function (e) {
-    var t = CastleAllianceForumData.getForumValidText(e);
-    return t.length >= a.AllianceConst.MIN_FORUM_TEXT_LENGTH && t.length <= a.AllianceConst.MAX_REPLY_TEXT;
-  };
-  CastleAllianceForumData.hasValidTopicName = function (e) {
-    var t = CastleAllianceForumData.getForumValidText(e);
-    return t.length >= a.AllianceConst.MIN_FORUM_TEXT_LENGTH && t.length <= a.AllianceConst.MAX_TOPIC_TEXT;
-  };
-  Object.defineProperty(CastleAllianceForumData.prototype, "unreadTopicsCount", {
+  Object.defineProperty(MapHelper, "factionEventVO", {
     get: function () {
-      return this._unreadTopicsCount;
+      return p.CastleModel.specialEventData.getActiveEventByEventId(l.EventConst.EVENTTYPE_FACTION);
     },
     enumerable: true,
     configurable: true
   });
-  CastleAllianceForumData.__initialize_static_members = function () {
-    CastleAllianceForumData.TEXTCOLOR_FULL = 13369344;
-    CastleAllianceForumData.TEXTCOLOR_NONFULL = 4601387;
+  MapHelper.isTempServerRankSwapAttack = function (e, t) {
+    return !!o.EnvGlobalsHandler.globals.isOnTemporaryServer && e.areaType == a.WorldConst.AREA_TYPE_CASTLE && e.kingdomID == s.WorldClassic.KINGDOM_ID && t == u.ClientConstCastle.ACTION_TYPE_ATTACK && !!d.TempServerHelper.tmpServerEvent && d.TempServerHelper.tmpServerEvent.settingVO.scoringSystem == h.TempServerConfigurationVO.SCORING_SYSTEM_RANK_SWAP;
   };
-  CastleAllianceForumData.LAST_SEARCHED_LANGUAGE = "";
-  return CastleAllianceForumData;
-}(c.CastleEventDispatcher);
-exports.CastleAllianceForumData = d;
-var p = require("./2379.js");
-var h = require("./2381.js");
-d.__initialize_static_members();
+  return MapHelper;
+}();
+exports.MapHelper = C;

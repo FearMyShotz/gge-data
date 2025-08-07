@@ -3,13 +3,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./778.js");
+var a = require("./780.js");
 var s = function (e) {
-  function PalisadegateGateVE() {
+  function FactionGateGateVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(PalisadegateGateVE, e);
-  Object.defineProperty(PalisadegateGateVE.prototype, "isTransparent", {
+  n.__extends(FactionGateGateVE, e);
+  Object.defineProperty(FactionGateGateVE.prototype, "isTransparent", {
     get: function () {
       return false;
     },
@@ -19,7 +19,7 @@ var s = function (e) {
     enumerable: true,
     configurable: true
   });
-  return PalisadegateGateVE;
+  return FactionGateGateVE;
 }(a.BasicGateVE);
-exports.PalisadegateGateVE = s;
+exports.FactionGateGateVE = s;
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

@@ -2,44 +2,36 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./5.js");
-var a = require("./3.js");
-var s = require("./5470.js");
-var r = require("./83.js");
-var l = require("./99.js");
-var c = function (e) {
-  function MessagePlayerGift() {
-    var t = this;
-    t.packID = 0;
-    t.sendersID = 0;
-    t.pAmount = 0;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var o = require("./3.js");
+var a = require("./83.js");
+var s = require("./99.js");
+var r = function (e) {
+  function MessagePaymentDopplerVO() {
+    return e.call(this) || this;
   }
-  n.__extends(MessagePlayerGift, e);
-  MessagePlayerGift.prototype.parseMessageHeader = function (e) {
-    this.sendersID = parseInt(e.split(o.MessageConst.SUBTYPE_META_DATA_SPLITTER)[0].split("+")[0]);
-    this.sendersName = String(e.split(o.MessageConst.SUBTYPE_META_DATA_SPLITTER)[1].split("+"));
-    this.packID = parseInt(e.split(o.MessageConst.SUBTYPE_META_DATA_SPLITTER)[2].split("+")[0]);
-    this.pAmount = parseInt(e.split(o.MessageConst.SUBTYPE_META_DATA_SPLITTER)[3].split("+")[0]);
+  n.__extends(MessagePaymentDopplerVO, e);
+  MessagePaymentDopplerVO.prototype.parseMessageHeader = function (e) {};
+  MessagePaymentDopplerVO.prototype.parseSubject = function () {
+    return o.Localize.text("dialog_paymentdoubler_title");
   };
-  MessagePlayerGift.prototype.parseSubject = function () {
-    return a.Localize.text("message_header_giftTrader_obtainedGift");
+  MessagePaymentDopplerVO.prototype.parseSender = function () {
+    if (this.senderName != "") {
+      return this.senderName;
+    } else {
+      return o.Localize.text("system");
+    }
   };
-  MessagePlayerGift.prototype.parseSender = function () {
-    return a.Localize.text("system");
-  };
-  Object.defineProperty(MessagePlayerGift.prototype, "dialogInfo", {
+  Object.defineProperty(MessagePaymentDopplerVO.prototype, "dialogInfo", {
     get: function () {
-      return new r.DialogInfoVO(u.CastlePlayerGiftMessageDialog, new s.CastlePlayerGiftMessageProperties(this));
+      return new a.DialogInfoVO(l.CastlePaymentDopplerMessageDialog);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.AMessageVO.prototype, "dialogInfo").set.call(this, e);
+      Object.getOwnPropertyDescriptor(s.AMessageVO.prototype, "dialogInfo").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return MessagePlayerGift;
-}(l.AMessageVO);
-exports.MessagePlayerGift = c;
-var u = require("./5471.js");
+  return MessagePaymentDopplerVO;
+}(s.AMessageVO);
+exports.MessagePaymentDopplerVO = r;
+var l = require("./5470.js");

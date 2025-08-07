@@ -4,22 +4,19 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./4.js");
-var l = require("./159.js");
-var c = function (e) {
-  function JoinMyMainCastleCommand() {
+var s = require("./1791.js");
+var r = require("./15.js");
+var l = function (e) {
+  function SwitchSeasonMapCenterAndHighlightDungeonsCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(JoinMyMainCastleCommand, e);
-  JoinMyMainCastleCommand.prototype.execute = function (e = null) {
-    var t = s.int(r.CastleModel.userData.castleList.getHomeCastle().objectId);
-    if (r.CastleModel.worldmapData) {
-      r.CastleModel.worldmapData.allowGAARequests = false;
+  n.__extends(SwitchSeasonMapCenterAndHighlightDungeonsCommand, e);
+  SwitchSeasonMapCenterAndHighlightDungeonsCommand.prototype.execute = function (e = null) {
+    if (e) {
+      r.CastleBasicController.getInstance().dispatchEvent(new s.CastleQuestConditionEvent(s.CastleQuestConditionEvent.HIGHLIGHT_ON_MAP, e));
     }
-    r.CastleModel.smartfoxClient.sendCommandVO(new l.C2SJoinCastleVO(t, 0));
   };
-  return JoinMyMainCastleCommand;
+  return SwitchSeasonMapCenterAndHighlightDungeonsCommand;
 }(o.SimpleCommand);
-exports.JoinMyMainCastleCommand = c;
-a.classImplementsInterfaces(c, "ISimpleCommand");
+exports.SwitchSeasonMapCenterAndHighlightDungeonsCommand = l;
+a.classImplementsInterfaces(l, "ISimpleCommand");

@@ -11,7 +11,7 @@ var c = require("./18.js");
 var u = require("./90.js");
 var d = require("./4.js");
 var p = require("./24.js");
-var h = require("./276.js");
+var h = require("./275.js");
 var g = function (e) {
   function ArmyMapmovement() {
     return e !== null && e.apply(this, arguments) || this;
@@ -106,6 +106,6 @@ var g = function (e) {
   ArmyMapmovement.CLIP_KINGDOM_AFFIX_SEPARATOR = "_";
   ArmyMapmovement.CLIP_AUTOSKIP_INDICATOR = "Mapmovement_Indicator_Autoskip";
   return ArmyMapmovement;
-}(require("./1922.js").InteractiveMapmovement);
+}(require("./1923.js").InteractiveMapmovement);
 exports.ArmyMapmovement = g;
 a.classImplementsInterfaces(g, "IIngameUICapable", "IWorldmapTooltipData");

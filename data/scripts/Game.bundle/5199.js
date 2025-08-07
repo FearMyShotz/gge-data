@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GXPCommand() {
+  function GPICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GXPCommand, e);
-  Object.defineProperty(GXPCommand.prototype, "cmdId", {
+  n.__extends(GPICommand, e);
+  Object.defineProperty(GPICommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_XP;
+      return s.ClientConstSF.S2C_GET_PLAYER_IDENTITY;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,18 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GXPCommand.prototype.executeCommand = function (e, t) {
+  GPICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        r.CastleModel.userData.parse_GXP(i);
+        r.CastleModel.userData.parse_GPI(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GXPCommand;
+  return GPICommand;
 }(l.CastleCommand);
-exports.GXPCommand = c;
+exports.GPICommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

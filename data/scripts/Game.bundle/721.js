@@ -1,474 +1,239 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./5.js");
-var o = require("./3.js");
-var a = require("./2204.js");
-var s = require("./2205.js");
-var r = require("./2206.js");
-var l = require("./179.js");
-var c = require("./4.js");
-var u = require("./903.js");
-var d = function () {
-  function GeneralVO(e) {
-    this._currentXP = 0;
-    this._currentStarLevel = 0;
-    this._isUnlocked = false;
-    this._hasLevelUp = false;
-    this._isNew = false;
-    this._kills = 0;
-    this._might = 0;
-    this._won = 0;
-    this._lost = 0;
-    this._unlockedSkillIDs = [];
-    this._selectedAbilities = [];
-    this._fixedLevel = -1;
-    this._oldXP = 0;
-    this._generalXmlVO = c.CastleModel.generalsData.generalXmlVOs.get(e);
-    if (!this.generalXmlVO) {
-      this._generalXmlVO = new u.GeneralXmlVO();
-      this._generalXmlVO.initAsPreview(e);
-    }
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./3.js");
+var s = require("./2204.js");
+var r = require("./13.js");
+var l = require("./4.js");
+var c = require("./20.js");
+var u = require("./8.js");
+var d = require("./11.js");
+var p = require("./164.js");
+var h = function (e) {
+  function GeneralsAbilityDialog() {
+    var t = e.call(this, GeneralsAbilityDialog.NAME) || this;
+    t.NUM_SLOTS = 5;
+    t.NUM_ITEMS_FOR_SLOT = 3;
+    return t;
   }
-  GeneralVO.prototype.parseData = function (e) {
-    this.currentXPAll = e.XP || 0;
-    this.currentStarLevel = e.ST || 0;
-    this.isNew = e.IN == 1 || false;
-    this.hasLevelUp = e.LU == 1 || false;
-    this._unlockedSkillIDs = e.SIDS || [];
-    this._selectedAbilities = e.GASAIDS || [];
-    this.fixedLevel = e[n.CommKeys.LEVEL] || -1;
-    if (!e.ST && this._fixedLevel > 0) {
-      this.currentStarLevel = Math.floor((this._fixedLevel % 10 == 0 ? this._fixedLevel - 1 : this.fixedLevel) / 10);
-    }
-    this._oldXP = e[n.CommKeys.OLD_XP] || 0;
-    this._won = e[n.CommKeys.WINS] || 0;
-    this._lost = e[n.CommKeys.DEFEATS] || 0;
-    this._isUnlocked = true;
+  n.__extends(GeneralsAbilityDialog, e);
+  GeneralsAbilityDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_reset.txt_copy, new a.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("reset")));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_save.txt_copy, new a.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("save")));
+    u.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help, this.dialogDisp.btn_reset, this.dialogDisp.btn_save, this.dialogDisp.mc_slot0, this.dialogDisp.mc_slot1, this.dialogDisp.mc_slot2, this.dialogDisp.mc_slot3, this.dialogDisp.mc_slot4, this.dialogDisp.mc_item0, this.dialogDisp.mc_item1, this.dialogDisp.mc_item2], c.ClickFeedbackButtonHover, 1);
+    this.dialogDisp.btn_help.toolTipText = "help";
+    this.dialogDisp.btn_close.toolTipText = "generic_btn_close";
   };
-  Object.defineProperty(GeneralVO.prototype, "nameText", {
-    get: function () {
-      return o.Localize.text("dialog_generals_generalName_placeholder", [this.nameTextShort]);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "nameTextShort", {
-    get: function () {
-      return o.Localize.text("generals_characters_" + this.generalID + "_name");
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "nameSubtitleText", {
-    get: function () {
-      return o.Localize.text("generals_characters_" + this.generalID + "_summary");
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "generalXmlVO", {
-    get: function () {
-      return this._generalXmlVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "hasLevelUp", {
-    get: function () {
-      return this._hasLevelUp;
-    },
-    set: function (e) {
-      this._hasLevelUp = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "isNew", {
-    get: function () {
-      return this._isNew;
-    },
-    set: function (e) {
-      this._isNew = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "currentStarLevel", {
-    get: function () {
-      return this._currentStarLevel;
-    },
-    set: function (e) {
-      this._currentStarLevel = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "isUnlocked", {
-    get: function () {
-      return this._isUnlocked && this.isImplemented;
-    },
-    set: function (e) {
-      this._isUnlocked = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "kills", {
-    get: function () {
-      return this._kills;
-    },
-    set: function (e) {
-      this._kills = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "might", {
-    get: function () {
-      return this._might;
-    },
-    set: function (e) {
-      this._might = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "generalID", {
-    get: function () {
-      return this._generalXmlVO.generalID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "attackSlots", {
-    get: function () {
-      return this._generalXmlVO.attackSlots;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "defenseSlots", {
-    get: function () {
-      return this._generalXmlVO.defenseSlots;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "maxLevel", {
-    get: function () {
-      return this._generalXmlVO.maxLevel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "maxStarLevel", {
-    get: function () {
-      return this._generalXmlVO.maxStarLevel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "upgradeCurrencyIDs", {
-    get: function () {
-      return this._generalXmlVO.upgradeCurrencyIDs;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "unlockCurrencyID", {
-    get: function () {
-      return this._generalXmlVO.unlockCurrencyID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "generalRarityID", {
-    get: function () {
-      return this._generalXmlVO.generalRarityID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "rarityTextID", {
-    get: function () {
-      return "generals_rarity_" + this._generalXmlVO.generalRarityID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "rarityTextColor", {
-    get: function () {
-      switch (this.generalRarityID) {
-        case 1:
-          return GeneralVO.GENERAL_COLOR_COMMON;
-        case 2:
-          return GeneralVO.GENERAL_COLOR_RARE;
-        case 3:
-          return GeneralVO.GENERAL_COLOR_EPIC;
-        case 4:
-          return GeneralVO.GENERAL_COLOR_LEGENDARY;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "lost", {
-    get: function () {
-      return this._lost;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "won", {
-    get: function () {
-      return this._won;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "storyTextID", {
-    get: function () {
-      return "generals_characters_" + this.generalID + "_narrative";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "nextLevelXP", {
-    get: function () {
-      return this.generalXmlVO.rarity.getCurrentMaxXPOfLevel(this._currentXP);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "nextXpNeededForCap", {
-    get: function () {
-      return this.generalXmlVO.rarity.nextXpNeededForCap(this._currentXP);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  GeneralVO.prototype.getXPProgressFactor = function () {
-    if (this.nextLevelXP <= 0) {
-      return 1;
+  GeneralsAbilityDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.selectedAbilities = new Map();
+    this.onReset();
+    for (var i = 0; i < this.dialogProperties.generalVO.selectedAbilities.length; i++) {
+      this.selectedAbilities.set(this.dialogProperties.generalVO.selectedAbilities[i][0], l.CastleModel.generalsData.getAbilityByID(this.dialogProperties.generalVO.selectedAbilities[i][1]).abilityGroupID);
+    }
+    this.updateSlots();
+    this.selectSlot(this.dialogDisp.mc_slot0);
+    if (this.dialogProperties.isAttack) {
+      this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("dialog_generals_overview_generalAbilities_attack_header")));
     } else {
-      return Math.min(1, this.currentLevelXP / this.nextLevelXP);
+      this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("dialog_generals_overview_generalAbilities_defense_header")));
+    }
+    u.ButtonHelper.enableButton(this.dialogDisp.btn_save, false);
+  };
+  GeneralsAbilityDialog.prototype.updateSlots = function () {
+    for (var e = 0; e < this.NUM_SLOTS; e++) {
+      var t = this.getGeneralSlot(e);
+      var i = t ? this.selectedAbilities.get(t.slotID) : -1;
+      var n = this.isSlotLocked(e);
+      this.fillSlot(this.dialogDisp["mc_slot" + e], t, e);
+      this.dialogDisp["mc_slot" + e].mc_locked.visible = n;
+      this.dialogDisp["mc_slot" + e].toolTipText = n ? "dialog_generals_abilityDialog_slotLocked" : i <= 0 ? "dialog_generals_abilityDialog_noAbilityselected" : p.GeneralsHelper.getLocalizedTitleForAbility(i) + "\n" + p.GeneralsHelper.getLocalizedCopyForAbility(this.getHighestAvailableAbilityForGroup(i).abilityID, this.dialogProperties.isAttack);
     }
   };
-  Object.defineProperty(GeneralVO.prototype, "currentXPAll", {
-    set: function (e) {
-      this._currentXP = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "currentLevelXP", {
-    get: function () {
-      return this.generalXmlVO.rarity.getCurrentXPOfLevel(this._currentXP);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "currentXP", {
-    get: function () {
-      return this._currentXP;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "currentLevel", {
-    get: function () {
-      if (this._fixedLevel > -1) {
-        return this._fixedLevel;
-      } else {
-        return this.generalXmlVO.rarity.getLevelForXP(this._currentXP);
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "fixedLevel", {
-    set: function (e) {
-      this._fixedLevel = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "xpGained", {
-    get: function () {
-      return this._currentXP - this._oldXP;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "levelsGained", {
-    get: function () {
-      return this.currentLevel - this.generalXmlVO.rarity.getLevelForXP(this._oldXP);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "troopCapacity", {
-    get: function () {
-      return 0;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "assignedLord", {
-    get: function () {
-      return this._assignedLord;
-    },
-    set: function (e) {
-      this._assignedLord = e;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "requiredShards", {
-    get: function () {
-      if (this.isUnlocked) {
-        return this._generalXmlVO.rarity.getRequiredShards(this._currentStarLevel);
-      } else {
-        return this._generalXmlVO.rarity.unlockCosts;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "availableShards", {
-    get: function () {
-      if (this._generalXmlVO.unlockCurrencyID > 0) {
-        return c.CastleModel.currencyData.getAmountById(this._generalXmlVO.unlockCurrencyID);
-      } else {
-        return 0;
-      }
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "canBeUnlocked", {
-    get: function () {
-      return !this.isUnlocked && c.CastleModel.currencyData.getAmountById(this.unlockCurrencyID) >= this.requiredShards && this.isImplemented;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "isImplemented", {
-    get: function () {
-      return this._generalXmlVO.isImplemented;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "isNPCGeneral", {
-    get: function () {
-      return this._generalXmlVO.isNPCGeneral;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "unlockedSkillIDs", {
-    get: function () {
-      return this._unlockedSkillIDs;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "selectedAbilities", {
-    get: function () {
-      return this._selectedAbilities;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  GeneralVO.prototype.getSkillPointsSpent = function () {
-    return c.CastleModel.generalsData.getSkillPointsSpent(this.generalID);
+  GeneralsAbilityDialog.prototype.fillSlot = function (e, t, i) {
+    if (t) {
+      e.visible = true;
+      e.slotVO = t;
+      e.slotIndex = i;
+      var n = this.getHighestAvailableAbilityForGroup(this.selectedAbilities.get(t.slotID));
+      this.fillItemInfo(e, n ? n.abilityGroupID : -1, n ? n.level : -1, !this.isSlotLocked(i));
+    } else {
+      e.visible = false;
+    }
   };
-  GeneralVO.prototype.getSkillPointsAvailable = function () {
-    return this.currentLevel - this.getSkillPointsSpent();
+  GeneralsAbilityDialog.prototype.fillItemInfo = function (e, t, i, n) {
+    e.mc_number.visible = t > 0 && this.getHighestAvailableAbilityForGroup(t) || !n;
+    e.mc_locked.visible = !n;
+    e.mc_number.mc_locked.visible = !n || !this.getHighestAvailableAbilityForGroup(t);
+    this.textFieldManager.registerTextField(e.mc_number.txt_copy, new a.LocalizedNumberVO(i)).visible = !e.mc_number.mc_locked.visible;
+    o.MovieClipHelper.clearMovieClip(e.mc_icon);
+    if (t > 0) {
+      var s = this.getHighestAvailableAbilityForGroup(t) ? this.getHighestAvailableAbilityForGroup(t).abilityID : -1;
+      e.mc_icon.addChild(p.GeneralsHelper.getGeneralAbilityClip(t, 64, s, this.dialogProperties.isAttack));
+    }
   };
-  GeneralVO.prototype.getActiveSkillInGroup = function (e) {
+  GeneralsAbilityDialog.prototype.fillAbilitiesForSlot = function (e, t) {
+    var i = this.isSlotLocked(t);
+    for (var n = 0; n < this.NUM_ITEMS_FOR_SLOT; n++) {
+      this.fillAbilityItem(this.dialogDisp["mc_item" + n], e.abilityGroupIDs[n], e.slotID, n, i);
+    }
+    this.dialogDisp.mc_locked_all.visible = i;
+    this.dialogDisp.mc_locked_all.mouseEnabled = false;
+  };
+  GeneralsAbilityDialog.prototype.fillAbilityItem = function (e, t, i, n, o) {
+    if (!t || t <= 0) {
+      e.visible = false;
+    } else {
+      e.visible = true;
+      e.mouseChildren = false;
+      e.groupID = t;
+      e.slotID = i;
+      var s = this.getHighestAvailableAbilityForGroup(t);
+      s ||= l.CastleModel.generalsData.getAbilityGroupByID(t)[0];
+      var r = !l.CastleModel.generalsData.isGeneralAbilityUnlocked(s.abilityID, this.dialogProperties.generalVO.generalID);
+      e.mc_locked.visible = r && !o;
+      e.lockedToolTip = r;
+      e.mc_selected.visible = this.selectedAbilities.get(i) == t;
+      this.updateAbilityItemToolTip(e);
+      var c = s ? s.level : 1;
+      this.textFieldManager.registerTextField(e.txt_title, new a.TextVO(a.Localize.text("dialog_generals_abilityDialog_AbilityName", [n + 1, p.GeneralsHelper.getLocalizedTitleForAbility(s.abilityGroupID)])));
+      this.textFieldManager.registerTextField(e.txt_copy, new a.TextVO(p.GeneralsHelper.getLocalizedCopyForAbility(s.abilityID, this.dialogProperties.isAttack))).autoFitToBounds = true;
+      this.fillItemInfo(e.mc_item, t, c, !e.mc_locked.visible && !o);
+      e.mc_item.mc_selected.visible = false;
+      e.mc_baron.visible = !this.dialogProperties.isAttack;
+      e.mc_commander.visible = this.dialogProperties.isAttack;
+      if (e.mc_locked.visible || o) {
+        e.basicButton.removeMouseEventListener();
+      } else {
+        e.basicButton.addMouseEventListener();
+      }
+    }
+  };
+  GeneralsAbilityDialog.prototype.updateAbilityItemToolTip = function (e) {
+    var t = "dialog_generals_overview_generalAbilities_selectAbility_tooltip";
+    if (e.lockedToolTip) {
+      t = "dialog_generals_overview_generalAbilities_lockedAbility_tooltip";
+    }
+    if (e.mc_selected.visible) {
+      t = "dialog_generals_overview_generalAbilities_selectedAbility_tooltip";
+    }
+    e.toolTipText = {
+      t: t,
+      ox: -198
+    };
+  };
+  GeneralsAbilityDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this, t);
+  };
+  GeneralsAbilityDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (u.ButtonHelper.isButtonEnabled(t.target)) {
+      switch (t.target) {
+        case this.dialogDisp.btn_close:
+          this.hide();
+          break;
+        case this.dialogDisp.btn_help:
+          d.CastleExternalDialog.dialogHandler.showHelper("", a.Localize.text("help_generals_abilityDialog"));
+          break;
+        case this.dialogDisp.btn_reset:
+          this.onReset();
+          break;
+        case this.dialogDisp.btn_save:
+          u.ButtonHelper.enableButton(this.dialogDisp.btn_save, false);
+          this.onSave();
+      }
+      if (t.target.slotVO) {
+        this.selectSlot(t.target);
+      }
+      if (t.target.groupID && t.target.groupID > 0) {
+        this.selectAbilityMC(t.target);
+      }
+    }
+  };
+  GeneralsAbilityDialog.prototype.selectSlot = function (e) {
+    this.selectedSlot = e;
+    for (var t = 0; t < this.NUM_SLOTS; t++) {
+      this.dialogDisp["mc_slot" + t].mc_selected.visible = this.dialogDisp["mc_slot" + t] == e;
+    }
+    this.fillAbilitiesForSlot(e.slotVO, e.slotIndex);
+  };
+  GeneralsAbilityDialog.prototype.selectAbilityMC = function (e) {
+    var t = e.groupID;
+    if (this.getHighestAvailableAbilityForGroup(t)) {
+      u.ButtonHelper.enableButton(this.dialogDisp.btn_save, true);
+      this.selectedAbilities.set(e.slotID, t);
+      for (var i = 0; i < this.NUM_ITEMS_FOR_SLOT; i++) {
+        this.dialogDisp["mc_item" + i].mc_selected.visible = this.dialogDisp["mc_item" + i].groupID == e.groupID;
+        this.updateAbilityItemToolTip(this.dialogDisp["mc_item" + i]);
+      }
+      this.updateSlots();
+    }
+  };
+  GeneralsAbilityDialog.prototype.onSave = function () {
+    var e = [];
+    for (var t = 0, i = Array.from(this.selectedAbilities.keys()); t < i.length; t++) {
+      var n = i[t];
+      e.push([n, this.selectedAbilities.get(n) > 0 ? this.getHighestAvailableAbilityForGroup(this.selectedAbilities.get(n)).abilityID : -1]);
+    }
+    o.BasicModel.smartfoxClient.sendCommandVO(new s.C2SGeneralSelectAbilities(e, this.dialogProperties.generalVO.generalID));
+  };
+  GeneralsAbilityDialog.prototype.onReset = function () {
+    for (var e = 0; e < this.NUM_SLOTS; e++) {
+      if (this.getGeneralSlot(e)) {
+        this.selectedAbilities.set(this.getGeneralSlot(e).slotID, -1);
+      }
+    }
+    this.updateSlots();
+    if (this.selectedSlot) {
+      this.fillAbilitiesForSlot(this.selectedSlot.slotVO, this.selectedSlot.slotIndex);
+    }
+    u.ButtonHelper.enableButton(this.dialogDisp.btn_save, true);
+  };
+  GeneralsAbilityDialog.prototype.getHighestAvailableAbilityForGroup = function (e) {
+    if (e <= 0) {
+      return null;
+    }
+    var t = l.CastleModel.generalsData.getAbilityGroupByID(e);
+    var i = null;
+    if (!t) {
+      return null;
+    }
+    for (var n = 0; n < t.length; n++) {
+      if (l.CastleModel.generalsData.isGeneralAbilityUnlocked(t[n].abilityID, this.dialogProperties.generalVO.generalID) && (!i || i && t[n].level > i.level)) {
+        i = t[n];
+      }
+    }
+    return i;
+  };
+  GeneralsAbilityDialog.prototype.getGeneralSlot = function (e) {
     var t;
-    for (var i = 0, n = e.childs; i < n.length; i++) {
-      var o = n[i].generalSkillVO;
-      if (this.isSkillActive(o.id)) {
-        t = o;
-      }
+    if (e >= (t = this.dialogProperties.isAttack ? this.dialogProperties.generalVO.generalXmlVO.attackSlotXMLVOs : this.dialogProperties.generalVO.generalXmlVO.defenceSlotXMLVOs).length) {
+      return null;
+    } else {
+      return t[e];
     }
-    return t;
   };
-  GeneralVO.prototype.isSkillActive = function (e) {
-    return this.unlockedSkillIDs.indexOf(e) > -1;
-  };
-  GeneralVO.prototype.getSelectedAbilities = function (e) {
-    var t = [];
-    for (var i = 0; i < this.selectedAbilities.length; i++) {
-      if (e && this.generalXmlVO.attackSlots.indexOf(this.selectedAbilities[i][0]) >= 0 && this.selectedAbilities[i][1] > 0) {
-        t.push(c.CastleModel.generalsData.getAbilityByID(this.selectedAbilities[i][1]));
-      }
-      if (!e && this.generalXmlVO.defenseSlots.indexOf(this.selectedAbilities[i][0]) >= 0 && this.selectedAbilities[i][1] > 0) {
-        t.push(c.CastleModel.generalsData.getAbilityByID(this.selectedAbilities[i][1]));
-      }
+  GeneralsAbilityDialog.prototype.isSlotLocked = function (e) {
+    var t = false;
+    for (var i = 0; i < this.NUM_ITEMS_FOR_SLOT; i++) {
+      var n = this.getGeneralSlot(e);
+      var o = n ? this.getGeneralSlot(e).abilityGroupIDs[i] : null;
+      var a = o && n ? this.getHighestAvailableAbilityForGroup(o) : null;
+      t = t || o > 0 && !!a;
     }
-    return t;
+    return !t;
   };
-  GeneralVO.prototype.unlockSkill = function (e) {
-    c.CastleModel.smartfoxClient.sendCommandVO(new r.C2SGeneralUnlockSkillVO(e.id));
-  };
-  GeneralVO.prototype.resetSkills = function () {
-    c.CastleModel.smartfoxClient.sendCommandVO(new s.C2SGeneralResetSkills(this.generalID));
-  };
-  Object.defineProperty(GeneralVO.prototype, "isXpUpgradeable", {
+  Object.defineProperty(GeneralsAbilityDialog.prototype, "dialogProperties", {
     get: function () {
-      return this.currentLevel < (this.currentStarLevel + 1) * 10 && this.currentLevel < this.maxLevel && this.isUnlocked;
+      return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(GeneralVO.prototype, "isStarLevelUpgradeable", {
-    get: function () {
-      return this.currentLevel % 10 == 0 && this.currentLevel > 0 && Math.floor(this.currentLevel / 10) > this._currentStarLevel && this.currentStarLevel < this.maxStarLevel || !this.isUnlocked;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GeneralVO.prototype, "hasEnoughShardsToUpgradeStarLevel", {
-    get: function () {
-      return this.isStarLevelUpgradeable && this.availableShards >= this.requiredShards;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  GeneralVO.prototype.getPassiveSkills = function () {
-    return this.unlockedSkillIDs.map(function (e) {
-      return c.CastleModel.generalsData.getSkillById(e);
-    }).filter(function (e) {
-      return !!e && !e.isAbilitySkill;
-    });
-  };
-  GeneralVO.prototype.getPassiveEffects = function () {
-    return this.getPassiveSkills().reduce(function (e, t) {
-      return e.concat(t.boni);
-    }, []);
-  };
-  GeneralVO.prototype.getPassiveEffectsText = function () {
-    return this.getPassiveSkills().sort(function (e, t) {
-      return t.skillGroupID - e.skillGroupID;
-    }).reduce(function (e, t) {
-      return (e ? e + "\n" : e) + t.getEffectText();
-    }, "");
-  };
-  GeneralVO.prototype.resetFlags = function () {
-    c.CastleModel.smartfoxClient.sendCommandVO(new a.C2SGeneralResetFlagsVO(this.generalID));
-    this.isNew = false;
-    this.hasLevelUp = false;
-    c.CastleModel.generalsData.dispatchEvent(new l.GeneralsEvent(l.GeneralsEvent.GENERALS_UPDATED));
-  };
-  GeneralVO.GENERAL_COLOR_COMMON = 13421772;
-  GeneralVO.GENERAL_COLOR_RARE = 10541384;
-  GeneralVO.GENERAL_COLOR_EPIC = 13141503;
-  GeneralVO.GENERAL_COLOR_LEGENDARY = 16362780;
-  return GeneralVO;
-}();
-exports.GeneralVO = d;
+  GeneralsAbilityDialog.NAME = "GeneralsAbilities2";
+  return GeneralsAbilityDialog;
+}(d.CastleExternalDialog);
+exports.GeneralsAbilityDialog = h;

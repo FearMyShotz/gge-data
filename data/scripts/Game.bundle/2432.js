@@ -4,16 +4,16 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./6.js");
 var a = require("./203.js");
-var s = require("./949.js");
+var s = require("./950.js");
 var r = function (e) {
-  function AllianceBookmarkFreeAttackRenderer() {
+  function AllianceBookmarkDefendRenderer() {
     CONSTRUCTOR_HACK;
     return e.call(this) || this;
   }
-  n.__extends(AllianceBookmarkFreeAttackRenderer, e);
-  Object.defineProperty(AllianceBookmarkFreeAttackRenderer.prototype, "bookmarkTypeTextID", {
+  n.__extends(AllianceBookmarkDefendRenderer, e);
+  Object.defineProperty(AllianceBookmarkDefendRenderer.prototype, "bookmarkTypeTextID", {
     get: function () {
-      return "Bookmarks_worldmap_alliance_freeTarget_tooltip";
+      return "Bookmarks_worldmap_alliance_supportTarget_tooltip";
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.AAllianceBookmarkRenderer.prototype, "bookmarkTypeTextID").set.call(this, e);
@@ -21,7 +21,7 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceBookmarkFreeAttackRenderer.prototype, "isAdditionalDetailsVisible", {
+  Object.defineProperty(AllianceBookmarkDefendRenderer.prototype, "isAdditionalDetailsVisible", {
     get: function () {
       return false;
     },
@@ -31,9 +31,9 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceBookmarkFreeAttackRenderer.prototype, "backgroundFrame", {
+  Object.defineProperty(AllianceBookmarkDefendRenderer.prototype, "backgroundFrame", {
     get: function () {
-      return 1;
+      return 2;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.AAllianceBookmarkRenderer.prototype, "backgroundFrame").set.call(this, e);
@@ -41,9 +41,9 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AllianceBookmarkFreeAttackRenderer.prototype, "bookmarkTypeIconFrame", {
+  Object.defineProperty(AllianceBookmarkDefendRenderer.prototype, "bookmarkTypeIconFrame", {
     get: function () {
-      return 1;
+      return 2;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.AAllianceBookmarkRenderer.prototype, "bookmarkTypeIconFrame").set.call(this, e);
@@ -51,17 +51,17 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  AllianceBookmarkFreeAttackRenderer.prototype.getSublayer = function (e) {
-    return e.sublayer_defaultInfo;
-  };
-  AllianceBookmarkFreeAttackRenderer.prototype.showSublayer = function (e) {
+  AllianceBookmarkDefendRenderer.prototype.showSublayer = function (e) {
     e.sublayer_attackOrderInfo.visible = false;
     e.sublayer_defaultInfo.visible = true;
   };
-  AllianceBookmarkFreeAttackRenderer.__initialize_static_members = function () {
-    AllianceBookmarkFreeAttackRenderer.ID = o.int(a.EWorldmapBookmarkType.ALLIANCE_FREE_ATTACK.typeIndex);
+  AllianceBookmarkDefendRenderer.prototype.getSublayer = function (e) {
+    return e.sublayer_defaultInfo;
   };
-  return AllianceBookmarkFreeAttackRenderer;
+  AllianceBookmarkDefendRenderer.__initialize_static_members = function () {
+    AllianceBookmarkDefendRenderer.ID = o.int(a.EWorldmapBookmarkType.ALLIANCE_DEFEND.typeIndex);
+  };
+  return AllianceBookmarkDefendRenderer;
 }(s.AAllianceBookmarkRenderer);
-exports.AllianceBookmarkFreeAttackRenderer = r;
+exports.AllianceBookmarkDefendRenderer = r;
 r.__initialize_static_members();

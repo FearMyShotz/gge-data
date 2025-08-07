@@ -2,89 +2,128 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./3.js");
-var u = require("./3.js");
-var d = require("./159.js");
-var p = require("./37.js");
-var h = require("./4.js");
-var g = require("./11.js");
-var C = require("./548.js");
-var _ = function (e) {
-  function LongTermPointEventHardModeDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, LongTermPointEventHardModeDialog.NAME) || this;
+var o = require("./1.js");
+var a = require("./1695.js");
+var s = function (e) {
+  function LongTermPointEventRewardDialog() {
+    var t = e.call(this) || this;
+    t.wonFrame = r.CastleGenericRewardDialog.FRAME_GOT_REWARD;
+    t.noRewardFrame = r.CastleGenericRewardDialog.FRAME_NOREWARD_BEGGING;
+    t.headerFrame = LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_DEFAULT;
+    return t;
   }
-  n.__extends(LongTermPointEventHardModeDialog, e);
-  LongTermPointEventHardModeDialog.prototype.showLoaded = function (t = null) {
+  n.__extends(LongTermPointEventRewardDialog, e);
+  LongTermPointEventRewardDialog.prototype.showLoaded = function (t = null) {
+    this.headerFrame = this.dialogProperties.skin.id;
     e.prototype.showLoaded.call(this, t);
-    this.dialogDisp.btn_showMe.mouseChildren = false;
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_showMe, this.dialogDisp.btn_yes]);
-    this.registerTextFields(this.dialogDisp.txt_title, "dialog_longPointsEvent_hardMode_header");
-    this.registerTextFields(this.dialogDisp.btn_showMe.txt_showMe, "dialog_questInfo_showMe");
-    this.setMessageId();
   };
-  LongTermPointEventHardModeDialog.prototype.setMessageId = function () {
-    var e = "dialog_longPointsEvent_hardMode_info";
-    var t = h.CastleModel.specialEventData.getActiveEventByEventId(r.EventConst.EVENTTYPE_LONGTERM_POINT_EVENT);
-    var i = C.LongTermPointEventSkin.getTypeById(t.skinId);
-    if (i != C.LongTermPointEventSkin.DEFAULT) {
-      e += "_" + i.name;
-    }
-    this.registerTextFields(this.dialogDisp.txt_message, e);
-  };
-  LongTermPointEventHardModeDialog.prototype.registerTextFields = function (e, t) {
-    this.textFieldManager.registerTextField(e, new u.LocalizedTextVO(t));
-  };
-  LongTermPointEventHardModeDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_showMe:
-        this.openLongTermPointEventDialogOnISOMap();
-        break;
-      case this.dialogDisp.btn_yes:
-      case this.dialogDisp.btn_close:
-        this.hide();
-    }
-  };
-  LongTermPointEventHardModeDialog.prototype.openLongTermPointEventDialogOnISOMap = function () {
-    if (h.CastleModel.specialEventData.isEventActive(r.EventConst.EVENTTYPE_LONGTERM_POINT_EVENT)) {
-      if (m.IsoHelper.view.isInIsoScreen && f.Iso.data.areaData.isMyHomeCastle) {
-        a.CommandController.instance.executeCommand(O.IngameClientCommands.OPEN_LONGTERM_POINT_EVENT_DIALOG);
+  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "assetClassName", {
+    get: function () {
+      return LongTermPointEventRewardDialog.ASSET_NAME;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "assetClassName").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "firstPlaceTitleTextId", {
+    get: function () {
+      return "dialog_longPointsEvent_gotRoyalReward_title" + this.dialogProperties.skin.textSuffix;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "firstPlaceTitleTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "firstPlaceCopyTextId", {
+    get: function () {
+      return "dialog_longPointsEvent_gotRoyalReward_copy" + this.dialogProperties.skin.textSuffix;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "firstPlaceCopyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "topXTitleTextId", {
+    get: function () {
+      return "dialog_longPointsEvent_gotTopxReward_title" + this.dialogProperties.skin.textSuffix;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "topXTitleTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "topXCopyTextId", {
+    get: function () {
+      return "dialog_longPointsEvent_gotTopxReward_copy" + this.dialogProperties.skin.textSuffix;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "topXCopyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "gotRewardCopyTextId", {
+    get: function () {
+      if (this.dialogProperties.skin.id == LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_NEW_KING) {
+        if (this.dialogProperties.points == 1) {
+          return "dialog_pointEvent_gotReward_kingEric_copy_singular";
+        } else {
+          return "dialog_pointEvent_gotReward_kingEric_copy";
+        }
+      } else if (this.dialogProperties.points == 1) {
+        return "dialog_longPointsEvent_gotReward_copy_singular";
       } else {
-        this.controller.addEventListener(p.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.bindFunction(this.onServerMessageArrived));
-        h.CastleModel.smartfoxClient.sendCommandVO(new d.C2SJoinCastleVO(d.C2SJoinCastleVO.MY_CASTLE, l.WorldClassic.KINGDOM_ID));
+        return "dialog_longPointsEvent_gotReward_copy";
       }
-    } else {
-      this.showNoLongTermPointEventRunningError();
-      this.hide();
-    }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "gotRewardCopyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "noRewardTitleTextId", {
+    get: function () {
+      return "dialog_longPointsEvent_eventEnd_title" + this.dialogProperties.skin.textSuffix;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "noRewardTitleTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(LongTermPointEventRewardDialog.prototype, "noRewardCopyTextId", {
+    get: function () {
+      if (this.dialogProperties.points == 1) {
+        return "dialog_longPointsEvent_eventEnd" + this.dialogProperties.skin.textSuffix + "_singular";
+      } else {
+        return "dialog_longPointsEvent_eventEnd" + this.dialogProperties.skin.textSuffix;
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.CastlePointEventRewardDialog.prototype, "noRewardCopyTextId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  LongTermPointEventRewardDialog.__initialize_static_members = function () {
+    LongTermPointEventRewardDialog.NAME = "LongTermPeRewardDialog";
+    LongTermPointEventRewardDialog.ASSET_NAME = "LongTermPointEventReward";
+    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_DEFAULT = 1;
+    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_HALLOWEEN = 2;
+    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_WINTER = 3;
+    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_SPRING = 4;
+    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_REUSABLE = 5;
+    LongTermPointEventRewardDialog.LTPE_FRAME_HEADER_NEW_KING = 6;
   };
-  LongTermPointEventHardModeDialog.prototype.onServerMessageArrived = function (e) {
-    this.controller.removeEventListener(p.CastleServerMessageArrivedEvent.JAA_ARRIVED, this.bindFunction(this.onServerMessageArrived));
-    if (h.CastleModel.specialEventData.isEventActive(r.EventConst.EVENTTYPE_LONGTERM_POINT_EVENT)) {
-      a.CommandController.instance.executeCommand(O.IngameClientCommands.OPEN_LONGTERM_POINT_EVENT_DIALOG);
-    } else {
-      this.showNoLongTermPointEventRunningError();
-    }
-    this.hide();
-  };
-  LongTermPointEventHardModeDialog.prototype.showNoLongTermPointEventRunningError = function () {
-    g.CastleExternalDialog.dialogHandler.registerDefaultDialogs(E.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(c.Localize.text("generic_alert_watchout"), c.Localize.text("alert_eventendet")));
-  };
-  LongTermPointEventHardModeDialog.__initialize_static_members = function () {
-    LongTermPointEventHardModeDialog.NAME = "LongTermPointEventHardModeDialog";
-  };
-  return LongTermPointEventHardModeDialog;
-}(g.CastleExternalDialog);
-exports.LongTermPointEventHardModeDialog = _;
-var m = require("./46.js");
-var f = require("./33.js");
-var O = require("./29.js");
-var E = require("./38.js");
-s.classImplementsInterfaces(_, "ICollectableRendererList");
-_.__initialize_static_members();
+  return LongTermPointEventRewardDialog;
+}(a.CastlePointEventRewardDialog);
+exports.LongTermPointEventRewardDialog = s;
+var r = require("./226.js");
+o.classImplementsInterfaces(s, "ICollectableRendererList");
+s.__initialize_static_members();

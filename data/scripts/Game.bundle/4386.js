@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./5.js");
-var r = require("./1897.js");
+var r = require("./1899.js");
 var l = require("./327.js");
 var c = function (e) {
   function BeggingKnightsEventVO() {

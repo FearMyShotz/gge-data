@@ -2,93 +2,68 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function CastleSagaMapNodeVO() {
-    this._active = 0;
-    this._sagaMapID = 0;
-    this._level = 0;
-    this._legendLevel = 0;
-    this._highlight = 0;
+  function CastleResourcePoolData() {
+    this._hasExtraGoods = false;
   }
-  CastleSagaMapNodeVO.prototype.parseXML = function (e) {
-    this._active = parseInt(s.CastleXMLUtils.getValueOrDefault("active", e, "0"));
-    this._sagaMapID = parseInt(e.sagamapID || "");
-    this._level = parseInt(s.CastleXMLUtils.getValueOrDefault("level", e, "0"));
-    this._legendLevel = parseInt(s.CastleXMLUtils.getValueOrDefault("legendlevel", e, "0"));
-    this._highlight = parseInt(s.CastleXMLUtils.getValueOrDefault("highlight", e, "0"));
-    this.parseElements(e.elements || "");
-    this._highlightType = s.CastleXMLUtils.getValueOrDefault("highlightType", e, "");
-  };
-  CastleSagaMapNodeVO.prototype.parseElements = function (e) {
-    this._unlocks = new o.CollectableList();
-    if (e != "") {
-      var t = e.split(",");
-      if (t != null) {
-        for (var i = 0, n = t; i < n.length; i++) {
-          var s = n[i];
-          if (s !== undefined) {
-            var r = new a.CollectableItemUnlockVO();
-            r.parseXmlObject(s);
-            this._unlocks.addItem(r);
-          }
-        }
-      }
+  CastleResourcePoolData.prototype.parseIRC = function (e) {
+    this.registerNewMovementAsOwner(null);
+    var t = o.CollectableManager.parser.s2cParamList.createList(e.G);
+    this._resourceItem = t.getItemByIndexSave(0);
+    this._hasExtraGoods = !!e.EG;
+    if (this.resourceItem && this.hasExtraGoods) {
+      this.resourceItem.amount = 1000;
     }
   };
-  Object.defineProperty(CastleSagaMapNodeVO.prototype, "active", {
-    get: function () {
-      return this._active;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleSagaMapNodeVO.prototype.getId = function () {
-    return this._sagaMapID;
+  CastleResourcePoolData.prototype.registerNewMovementAsOwner = function (e) {
+    this._ownerMovementVO = e;
+    if (!this.ownerMovementVO) {
+      this._resourceItem = null;
+    }
   };
-  Object.defineProperty(CastleSagaMapNodeVO.prototype, "level", {
-    get: function () {
-      return this._level;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSagaMapNodeVO.prototype, "legendLevel", {
-    get: function () {
-      return this._legendLevel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSagaMapNodeVO.prototype, "highlight", {
-    get: function () {
-      return this._highlight;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSagaMapNodeVO.prototype, "highlightType", {
-    get: function () {
-      return this._highlightType;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleSagaMapNodeVO.prototype, "unlocks", {
-    get: function () {
-      return this._unlocks;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleSagaMapNodeVO.__initialize_static_members = function () {
-    CastleSagaMapNodeVO.HIGHLIGHT_TYPE_NONE = "";
-    CastleSagaMapNodeVO.HIGHLIGHT_TYPE_UNLOCK = "unlock";
-    CastleSagaMapNodeVO.HIGHLIGHT_TYPE_REMINDER = "reminder";
+  CastleResourcePoolData.prototype.reset = function () {
+    this._resourceItem = null;
+    this._ownerMovementVO = null;
   };
-  return CastleSagaMapNodeVO;
+  CastleResourcePoolData.prototype.getRelevantMovementTypeByResourceType = function (e) {
+    switch (e) {
+      case a.CollectableEnum.WOOD:
+        return s.IsoObjectEnum.MOVEMENT_WOOD_CUTTER;
+      case a.CollectableEnum.STONE:
+        return s.IsoObjectEnum.MOVEMENT_STONE_CUTTER;
+      case a.CollectableEnum.FOOD:
+        return s.IsoObjectEnum.MOVEMENT_FARMER;
+      case a.CollectableEnum.C1:
+      default:
+        return s.IsoObjectEnum.MOVEMENT_CITIZEN;
+    }
+  };
+  CastleResourcePoolData.prototype.canMovementTypeCarryResourceType = function (e, t) {
+    return (t != a.CollectableEnum.WOOD || e == s.IsoObjectEnum.MOVEMENT_WOOD_CUTTER) && (t != a.CollectableEnum.STONE || e == s.IsoObjectEnum.MOVEMENT_STONE_CUTTER) && (t != a.CollectableEnum.FOOD || e == s.IsoObjectEnum.MOVEMENT_FARMER) && (t != a.CollectableEnum.C1 || e == s.IsoObjectEnum.MOVEMENT_CITIZEN);
+  };
+  Object.defineProperty(CastleResourcePoolData.prototype, "resourceItem", {
+    get: function () {
+      return this._resourceItem;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleResourcePoolData.prototype, "ownerMovementVO", {
+    get: function () {
+      return this._ownerMovementVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleResourcePoolData.prototype, "hasExtraGoods", {
+    get: function () {
+      return this._hasExtraGoods;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleResourcePoolData;
 }();
-exports.CastleSagaMapNodeVO = n;
-var o = require("./48.js");
-var a = require("./1624.js");
-var s = require("./22.js");
-require("./1.js").classImplementsInterfaces(n, "ICastleXmlNode");
-n.__initialize_static_members();
+exports.CastleResourcePoolData = n;
+var o = require("./50.js");
+var a = require("./12.js");
+var s = require("./80.js");

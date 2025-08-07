@@ -2,33 +2,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./195.js");
-var s = function (e) {
-  function CollectableItemWarEffortPointsVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function CollectableItemWarEffortPointsVO(t = 0) {
+    return e.call(this, t) || this;
   }
-  n.__extends(CollectableItemWarEffortPointsVE, e);
-  Object.defineProperty(CollectableItemWarEffortPointsVE.prototype, "iconClass", {
-    get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_WarEffortPoints;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ACollectableItemSimpleIconVE.prototype, "iconClass").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CollectableItemWarEffortPointsVE.prototype.textfieldUpdate = function () {
-    this.textfieldSetTextAsNumber(this.vo.amount);
+  n.__extends(CollectableItemWarEffortPointsVO, e);
+  CollectableItemWarEffortPointsVO.prototype.getTooltipTextId = function () {
+    return this.itemType.name;
   };
-  CollectableItemWarEffortPointsVE.prototype.textfieldBackgroundVisible = function () {
-    return true;
+  CollectableItemWarEffortPointsVO.prototype.getDescriptionTextId = function () {
+    return this.itemType.name + "_short_info";
   };
-  CollectableItemWarEffortPointsVE.prototype.tooltipCreate = function () {
-    return this.tooltipCreateByAmount(this.vo.getTooltipTextId());
-  };
-  return CollectableItemWarEffortPointsVE;
-}(a.ACollectableItemSimpleIconVE);
-exports.CollectableItemWarEffortPointsVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList");
+  return CollectableItemWarEffortPointsVO;
+}(require("./96.js").ACollectableItemVO);
+exports.CollectableItemWarEffortPointsVO = o;

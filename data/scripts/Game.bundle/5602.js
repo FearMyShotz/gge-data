@@ -2,193 +2,253 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./5.js");
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./1.js");
 var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./6.js");
-var u = require("./4.js");
-var d = require("./35.js");
-var p = require("./552.js");
-var h = require("./828.js");
-var g = function (e) {
-  function CastleTreasureHuntFightscreenVO() {
-    var t = this;
-    t._eventID = -1;
-    CONSTRUCTOR_HACK;
-    return t = e.call(this) || this;
+var l = require("./6.js");
+var c = require("./18.js");
+var u = require("./5603.js");
+var d = require("./1848.js");
+var p = require("./655.js");
+var h = require("./22.js");
+var g = require("./26.js");
+var C = require("./183.js");
+var _ = require("./54.js");
+var m = require("./4.js");
+var f = function (e) {
+  function CastleTreasureMapData(t) {
+    var i = e.call(this) || this;
+    i._configXML = t;
+    i.parseTreasureMapXML();
+    m.CastleModel.specialEventData.addEventListener(g.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, i.bindFunction(i.onSpecialEventRemoved));
+    return i;
   }
-  n.__extends(CastleTreasureHuntFightscreenVO, e);
-  CastleTreasureHuntFightscreenVO.prototype.fillFromParamObject = function (e) {
-    this._treasureMapVO = u.CastleModel.treasureMapData.getTreasureMapByID(e.MID);
-    this._tmapNode = this._treasureMapVO.getNodeById(e.NID);
-    this.initSeasonID();
-    this._sourceOwner = u.CastleModel.otherPlayerData.getOwnInfoVO();
-    this._targetOwner = u.CastleModel.otherPlayerData.getOwnerInfoVO(this._tmapNode.ownerID);
-    if (this._treasureMapVO.hasCamp) {
-      this._sourceArea = new C.EventCampMapobjectVO();
+  n.__extends(CastleTreasureMapData, e);
+  CastleTreasureMapData.prototype.executeUpdate = function (e) {
+    if (this._activeTreasureMaps) {
+      var t = false;
+      var i = false;
+      if (this._activeTreasureMaps != null) {
+        for (var n = 0, o = Array.from(this._activeTreasureMaps.values()); n < o.length; n++) {
+          var a = o[n];
+          if (a !== undefined) {
+            if (!a) {
+              return;
+            }
+            if (t && i) {
+              break;
+            }
+            if (a.isGoodsTransferActive || a.isTroopsTransferActive) {
+              t = true;
+            }
+            if (a.isGoodsTransferReady || a.isTroopTransferReady) {
+              i = true;
+            }
+          }
+        }
+      }
+      if (i) {
+        m.CastleModel.smartfoxClient.sendCommandVO(new p.C2STreasureMapsVO());
+      }
+    }
+  };
+  CastleTreasureMapData.prototype.onSpecialEventRemoved = function (e) {
+    var t = e.specialEventVO;
+    if (s.instanceOfClass(t, "ASeasonEventVO")) {
+      this.removeFromActiveTreasureMaps(t.mapID);
+    }
+  };
+  CastleTreasureMapData.prototype.removeFromActiveTreasureMaps = function (e) {
+    if (this._activeTreasureMaps && this._activeTreasureMaps.get(e)) {
+      this._activeTreasureMaps.delete(e);
+    }
+  };
+  CastleTreasureMapData.prototype.clearTreasureMap = function (e) {
+    if (this.currentLowLevelSeasonMap && this.currentLowLevelSeasonMap.mapID == e) {
+      m.CastleModel.specialEventData.removePrivateEventByType(y.PrivateEventEnum.getPrivateEventTypeFromName(CastleTreasureMapData.TREASUREMAP_NAME + this.currentLowLevelSeasonMap.mapID));
+      m.CastleModel.specialEventData.removePrivateEventByType(y.PrivateEventEnum.LOW_LEVEL_UNIT_DEALER);
+    }
+    this.removeFromActiveTreasureMaps(e);
+  };
+  CastleTreasureMapData.prototype.parseTreasureMapXML = function () {
+    this._tNodeXMLList = new Map();
+    var e = this._configXML.tmapnodes;
+    if (e != null) {
+      for (var t = 0, i = e; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          var o = parseInt(n.tmapnodeID || "");
+          this._tNodeXMLList.set(o, n);
+        }
+      }
+    }
+    this._tMapsXMLList = new Map();
+    var a = this._configXML.tmaps;
+    if (a != null) {
+      for (var s = 0, r = a; s < r.length; s++) {
+        var l = r[s];
+        if (l !== undefined) {
+          var c = parseInt(l.mapID || "");
+          this._tMapsXMLList.set(c, l);
+        }
+      }
+    }
+  };
+  CastleTreasureMapData.prototype.createTreasureMapById = function (e) {
+    var t = new b.TreasureMapVO();
+    t.fillFromParamXML(this._tMapsXMLList.get(e));
+    t.fillNodes(this._tNodeXMLList);
+    return t;
+  };
+  CastleTreasureMapData.prototype.createTreasureMapNode = function (e, t) {
+    var i = new b.TreasureMapVO();
+    i.fillFromParamXML(this._tMapsXMLList.get(e));
+    return i.createNode(this._tNodeXMLList, t);
+  };
+  CastleTreasureMapData.prototype.parse_TMP = function (e) {
+    if (e) {
+      var t = this._currentLowLevelSeasonMap;
+      if (!this._activeTreasureMaps || e.UA == 1) {
+        this._activeTreasureMaps = new Map();
+        this._currentLowLevelSeasonMap = null;
+      }
+      var i = this.activeTreasuremapID;
+      var n = [];
+      if (e.TM) {
+        for (var a = 0, s = e.TM; a < s.length; a++) {
+          var c = s[a];
+          if (c !== undefined) {
+            var u;
+            var p = l.int(c.MID);
+            if (this._activeTreasureMaps.get(p)) {
+              u = this._activeTreasureMaps.get(p);
+            } else {
+              u = this.createTreasureMapById(p);
+              this._activeTreasureMaps.set(p, u);
+            }
+            u.loadFromParamObject(c);
+            if (i == p) {
+              if (u.progressType == r.TreasureMapsConst.PROGRESS_DESTROYED_END_NODE) {
+                m.CastleModel.smartfoxClient.sendCommandVO(new d.C2STreasureFinishMap(u.mapID));
+                this._activeTreasureMaps.delete(p);
+              }
+            } else if (m.CastleModel.specialEventData.activeSeasonVO && m.CastleModel.specialEventData.activeSeasonVO.treasureMapVO && m.CastleModel.specialEventData.activeSeasonVO.treasureMapVO.mapID == p && m.CastleModel.specialEventData.activeSeasonVO.treasureMapVO.mapType == r.TreasureMapsConst.MAP_TYPE_CRUSADE) {
+              o.CommandController.instance.executeCommand(O.IngameClientCommands.OPEN_SEASON_INFODIALOG_COMMAND, [u, m.CastleModel.specialEventData.activeSeasonVO.eventId, m.CastleModel.specialEventData.activeSeasonVO.rewardList.getItemByIndexSave(0)]);
+            }
+            if ((i = this.activeTreasuremapID) == CastleTreasureMapData.NO_MORE_MAPS) {
+              this._currentNonSeasonTreasuremap = null;
+            } else {
+              this._currentNonSeasonTreasuremap = u;
+            }
+            if (u.mapType == r.TreasureMapsConst.MAP_TYPE_CRUSADE_TIMED) {
+              this.setCurrentLowLevelSeasonMap(u);
+            }
+            o.CommandController.instance.executeCommand(O.IngameClientCommands.OPEN_TREASUREHUNT_INFODIALOG_COMMAND, u);
+            n.push(u);
+          }
+        }
+      }
+      if (!this._currentLowLevelSeasonMap && t) {
+        m.CastleModel.specialEventData.removePrivateEventByType(y.PrivateEventEnum.getPrivateEventTypeFromName(CastleTreasureMapData.TREASUREMAP_NAME + t.mapID));
+        m.CastleModel.specialEventData.removePrivateEventByType(y.PrivateEventEnum.LOW_LEVEL_UNIT_DEALER);
+      }
+      if (n != null) {
+        for (var h = 0, g = n; h < g.length; h++) {
+          var _ = g[h];
+          if (_ !== undefined) {
+            this.dispatchEvent(new C.CastleTreasureMapEvent(C.CastleTreasureMapEvent.TREASUREMAP_DATA_UPDATED, _));
+          }
+        }
+      }
+    }
+  };
+  CastleTreasureMapData.prototype.getTreasureMapByID = function (e, t = true) {
+    if (t || this._activeTreasureMaps && this._activeTreasureMaps.get(e)) {
+      if (this._activeTreasureMaps) {
+        return this._activeTreasureMaps.get(e);
+      } else {
+        return null;
+      }
     } else {
-      this._sourceArea = u.CastleModel.userData.castleList.getMainCastleByKingdomID(r.WorldClassic.KINGDOM_ID);
-    }
-    var t = new _.TreasureDungeonMapObjectVO();
-    t.parseAreaInfo([l.WorldConst.AREA_TYPE_TREASURE_DUNGEON, -1, -1, 0, a.DungeonConst.getVictories(this._tmapNode.dungeonlevel, 0), 0, 0]);
-    t.tmapID = this._treasureMapVO.mapID;
-    t.tMapNode = this._tmapNode;
-    t.baseGateBonus = this._tmapNode.gateBonus;
-    t.baseWallBonus = this._tmapNode.wallBonus;
-    t.ownerInfo = this._targetOwner;
-    t.mapID = this._tmapNode.mapID;
-    this._targetArea = t;
-    this._spyInfo = new f.CastleSpyArmyInfoVO();
-    this._spyInfo.parseArmyInfo(e.S, e.AS, e.B, e.LS);
-    this._unitInventory = new E.UnitInventoryDictionary();
-    this._strongholdUnitInventory = new O.StrongholdUnitInventory();
-    this._unitInventory.fillFromWodAmountArray(e.gui.I);
-    this._strongholdUnitInventory.fillFromWodAmountArray(e.gui.SHI);
-    this._army = new y.CastleAttackArmyVO();
-    this._army.init(this._tmapNode.dungeonlevel, false, false, this._targetArea);
-    this._yardWaveItemContainer = new p.CastleFightItemContainer([0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], 0, 10000);
-    this._supportItemContainer = new p.CastleFightItemContainer(a.CombatConst.ITEMS_ASUPPORT_TOOLS, a.CombatConst.LEVELS_SUPPORT_TOOLS_HOME_AWORKSHOP, this.homeWorkshopLevel);
-  };
-  CastleTreasureHuntFightscreenVO.prototype.addAdditionalWave = function () {
-    this._army.addAdditionalWave(this._tmapNode.dungeonlevel, false, this._targetArea);
-  };
-  CastleTreasureHuntFightscreenVO.prototype.deductLastWave = function () {
-    this.unitInventory.addAll(this._army.getUnitVectorFromCompleteWave(this.army.getWaveCount() - 1));
-    this._army.deductLastWave();
-  };
-  CastleTreasureHuntFightscreenVO.prototype.initSeasonID = function () {
-    if (u.CastleModel.specialEventData.activeSeasonVO && u.CastleModel.specialEventData.activeSeasonVO.treasureMapVO && u.CastleModel.specialEventData.activeSeasonVO.treasureMapVO.mapID == this.treasureMapVO.mapID) {
-      this._eventID = c.int(u.CastleModel.specialEventData.activeSeasonVO.eventId);
+      return this.createTreasureMapById(e);
     }
   };
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "distance", {
-    get: function () {
-      return this._tmapNode.distance;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "distance").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleTreasureHuntFightscreenVO.prototype.getTravelTime = function (e, t) {
-    var i = t ? m.CastleEffectsHelper.getAccumulatedEquipmentBonusByEffectTypeForArea(t, d.EffectTypeEnum.EFFECT_TYPE_SPEED_BONUS, this.targetArea.areaType).strength : 0;
-    var n = 1 + u.CastleModel.globalEffectData.getBonusByEffectType(d.EffectTypeEnum.EFFECT_TYPE_SPEED_BONUS, this.targetArea.areaType) / 100;
-    return c.int(s.TravelConst.getTravelTime(this.getLowestTravelSpeed(false, t), this.distance, n, i, false));
+  CastleTreasureMapData.prototype.sendTreasureHuntAttack = function (e, t, i, n, o) {
+    if (e.isAttackComplete()) {
+      m.CastleModel.smartfoxClient.sendCommandVO(new u.C2SCreateTreasureHuntMovementVO(e.army.getArmyData(), t, i, e.treasureMapVO.mapID, e.tmapNode.nodeID, n ? n.id : 0, o));
+    }
   };
-  CastleTreasureHuntFightscreenVO.prototype.getBoostedTravelTime = function (e, t, i) {
-    return 0;
+  CastleTreasureMapData.prototype.parse_TAI = function (e) {
+    var t = new E.CastleTreasureHuntFightscreenVO();
+    t.targetActionType = c.ClientConstCastle.ACTION_TYPE_TREASUREATTACK;
+    t.fillFromParamObject(e);
+    return t;
   };
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "waitTime", {
+  Object.defineProperty(CastleTreasureMapData.prototype, "activeTreasuremapID", {
     get: function () {
-      return 0;
-    },
-    set: function (e) {},
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "isConquerAttack", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "isConquerAttack").set.call(this, e);
+      return m.CastleModel.treasureHuntData.currentMapID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "treasureMapVO", {
+  Object.defineProperty(CastleTreasureMapData.prototype, "hasMapAvailable", {
     get: function () {
-      return this._treasureMapVO;
+      return this.activeTreasuremapID != CastleTreasureMapData.NO_MORE_MAPS;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "tmapNode", {
+  Object.defineProperty(CastleTreasureMapData.prototype, "currentNonSeasonTreasuremap", {
     get: function () {
-      return this._tmapNode;
+      return this._currentNonSeasonTreasuremap;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "eventID", {
+  Object.defineProperty(CastleTreasureMapData.prototype, "hasTreasuremap", {
     get: function () {
-      return this._eventID;
+      return this._currentNonSeasonTreasuremap != null;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "detailViewObject", {
+  CastleTreasureMapData.prototype.reset = function () {
+    this._currentNonSeasonTreasuremap = null;
+    this._activeTreasureMaps = null;
+  };
+  CastleTreasureMapData.prototype.isIDEndNodeOfMap = function (e, t) {
+    return e == parseInt(h.CastleXMLUtils.getValueOrDefault("endNodeID", this._tMapsXMLList.get(t), "0"));
+  };
+  Object.defineProperty(CastleTreasureMapData.prototype, "currentLowLevelSeasonMap", {
     get: function () {
-      this._tmapNode.eventID = this._eventID;
-      return this._tmapNode;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "detailViewObject").set.call(this, e);
+      return this._currentLowLevelSeasonMap;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "targetOwnerLevel", {
-    get: function () {
-      return this._tmapNode.dungeonlevel;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "targetOwnerLevel").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "baseWallBonus", {
-    get: function () {
-      return this._tmapNode.wallBonus;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "baseWallBonus").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "baseGateBonus", {
-    get: function () {
-      return this._tmapNode.gateBonus;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "baseGateBonus").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "baseMoatBonus", {
-    get: function () {
-      return 0;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "baseMoatBonus").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleTreasureHuntFightscreenVO.prototype, "morality", {
-    get: function () {
-      return this._treasureMapVO.morality;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(h.CastleAttackInfoVO.prototype, "morality").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleTreasureHuntFightscreenVO;
-}(h.CastleAttackInfoVO);
-exports.CastleTreasureHuntFightscreenVO = g;
-var C = require("./732.js");
-var _ = require("./603.js");
-var m = require("./111.js");
-var f = require("./829.js");
-var O = require("./553.js");
-var E = require("./156.js");
-var y = require("./1776.js");
-o.classImplementsInterfaces(g, "IFightScreenVO");
+  CastleTreasureMapData.prototype.setCurrentLowLevelSeasonMap = function (e) {
+    m.CastleModel.specialEventData.addPrivateEventByType(y.PrivateEventEnum.getPrivateEventTypeFromName(CastleTreasureMapData.TREASUREMAP_NAME + e.mapID), e.mapID);
+    m.CastleModel.specialEventData.addPrivateEventByType(y.PrivateEventEnum.LOW_LEVEL_UNIT_DEALER, e.mapID);
+    this._currentLowLevelSeasonMap = e;
+  };
+  CastleTreasureMapData.prototype.setMapHighlights = function (e, t) {
+    var i = this.getTreasureMapByID(e);
+    if (i) {
+      i.setMapHighlights(t);
+      this.dispatchEvent(new C.CastleTreasureMapEvent(C.CastleTreasureMapEvent.TREASUREMAP_DATA_UPDATED, i));
+    }
+  };
+  CastleTreasureMapData.prototype.clearMapHighlights = function (e) {
+    this.setMapHighlights(e, []);
+  };
+  CastleTreasureMapData.NO_MORE_MAPS = -1;
+  CastleTreasureMapData.TREASUREMAP_NAME = "treasureMap";
+  return CastleTreasureMapData;
+}(_.CastleBasicData);
+exports.CastleTreasureMapData = f;
+var O = require("./29.js");
+var E = require("./5604.js");
+var y = require("./1754.js");
+var b = require("./5605.js");
+a.classImplementsInterfaces(f, "IUpdatable");

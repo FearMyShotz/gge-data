@@ -3,62 +3,30 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./1.js");
 var o = require("./60.js");
-var a = require("./341.js");
-var s = require("./4.js");
-var r = require("./226.js");
-var l = function () {
-  function OfferDescriptionVisualFinishDialog() {}
-  Object.defineProperty(OfferDescriptionVisualFinishDialog.prototype, "name", {
+var a = function () {
+  function OfferDescriptionRewardStandard() {}
+  Object.defineProperty(OfferDescriptionRewardStandard.prototype, "name", {
     get: function () {
-      return o.ClientConstOffer.OFFER_VISUAL_FINISH_DIALOG;
+      return o.ClientConstOffer.OFFER_REWARD_EMPIRE_STANDARD;
     },
     enumerable: true,
     configurable: true
   });
-  OfferDescriptionVisualFinishDialog.prototype.registerVisualParameter = function (e) {
+  OfferDescriptionRewardStandard.prototype.registerRewardParameter = function (e) {
     e.addEntry(this.name, this);
   };
-  OfferDescriptionVisualFinishDialog.prototype.parseFromObjectParam = function (e) {
-    this._dialogName = e.DN;
-    if (e.DC != null) {
-      this._dialogCustomization = e.DC;
-    }
+  OfferDescriptionRewardStandard.prototype.parseFromObjectParam = function (e) {
+    this._rewardList = s.CollectableManager.parser.s2cParamObject.createList(e);
+    this._overload = e.OL == 1;
   };
-  OfferDescriptionVisualFinishDialog.prototype.execute = function (e) {
-    var t = s.CastleModel.privateOfferData.offerMultiRewardChoice.get(e.id);
-    if (t) {
-      if (t != null) {
-        for (var i = 0, n = t; i < n.length; i++) {
-          var o = n[i];
-          if (o !== undefined) {
-            c.CastleDialogHandler.getInstance().registerDefaultDialogs(this._dialogName, new a.CastlePrivateOfferDialogProperties(e, o), true);
-          }
-        }
-      }
-    } else {
-      c.CastleDialogHandler.getInstance().registerDefaultDialogs(this._dialogName, new a.CastlePrivateOfferDialogProperties(e), true);
-    }
-    return true;
+  OfferDescriptionRewardStandard.prototype.getRewardsList = function () {
+    return this._rewardList;
   };
-  OfferDescriptionVisualFinishDialog.prototype.toExecuteInState = function (e) {
-    return e === r.PrivateOfferStateEnum.OFFER_SUCCEEDED || e === r.PrivateOfferStateEnum.ITERATION_SUCCEEDED;
+  OfferDescriptionRewardStandard.prototype.getOverload = function () {
+    return this._overload;
   };
-  Object.defineProperty(OfferDescriptionVisualFinishDialog.prototype, "dialogName", {
-    get: function () {
-      return this._dialogName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(OfferDescriptionVisualFinishDialog.prototype, "dialogCustomization", {
-    get: function () {
-      return this._dialogCustomization;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return OfferDescriptionVisualFinishDialog;
+  return OfferDescriptionRewardStandard;
 }();
-exports.OfferDescriptionVisualFinishDialog = l;
-var c = require("./9.js");
-n.classImplementsInterfaces(l, "IOfferDescriptionVisualParameter");
+exports.OfferDescriptionRewardStandard = a;
+var s = require("./50.js");
+n.classImplementsInterfaces(a, "IOfferDescriptionRewardParameter");

@@ -16,7 +16,7 @@ var g = require("./4.js");
 var C = require("./11.js");
 var _ = createjs.Event;
 var m = require("./27.js");
-var f = require("./108.js");
+var f = require("./107.js");
 var O = function (e) {
   function CastleAlliPaymentBonusDialog() {
     return e.call(this, CastleAlliPaymentBonusDialog.NAME) || this;

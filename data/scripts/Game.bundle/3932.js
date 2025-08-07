@@ -2,28 +2,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./31.js");
-var s = require("./19.js");
-var r = require("./81.js");
-var l = require("./25.js");
-var c = createjs.Point;
-var u = function (e) {
-  function GachaEventMainRewardItem() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = function (e) {
+  function TwoStateButtonHover(t = null, i = true) {
+    var n = e.call(this, t, i) || this;
+    n._disp.mouse_over.visible = false;
+    return n;
   }
-  n.__extends(GachaEventMainRewardItem, e);
-  GachaEventMainRewardItem.prototype.fill = function () {
-    var e = new s.CollectableRenderOptions(s.CollectableRenderOptions.SET_DEFAULT, new c(73, 71));
-    l.CollectableRenderHelper.displaySingleItemComplete(this, new a.CollectableRenderClips(this.getItemMc().mc_item).addInfoBtn(this.getItemMc().btn_info), this.getReward(), e);
+  n.__extends(TwoStateButtonHover, e);
+  TwoStateButtonHover.prototype.onRollOut = function (e) {
+    this._disp.mouse_over.visible = false;
   };
-  GachaEventMainRewardItem.prototype.getReward = function () {
-    return this.data;
+  TwoStateButtonHover.prototype.selected = function () {
+    e.prototype.selected.call(this);
   };
-  GachaEventMainRewardItem.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
+  TwoStateButtonHover.prototype.deselected = function () {
+    e.prototype.deselected.call(this);
+    this._disp.mouse_over.visible = false;
   };
-  return GachaEventMainRewardItem;
-}(r.AInfiniteScrollListItem);
-exports.GachaEventMainRewardItem = u;
-o.classImplementsInterfaces(u, "ICollectableRendererList");
+  TwoStateButtonHover.prototype.onRollOver = function (e) {
+    this._disp.mouse_over.visible = true;
+  };
+  return TwoStateButtonHover;
+}(require("./49.js").TwoStateButton);
+exports.TwoStateButtonHover = o;

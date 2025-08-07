@@ -4,112 +4,130 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./2.js");
-var c = require("./1.js");
-var u = require("./5.js");
-var d = require("./3.js");
-var p = require("./3.js");
-var h = require("./3.js");
-var g = require("./7.js");
-var C = require("./39.js");
-var _ = require("./4.js");
-var m = require("./270.js");
-var f = require("./11.js");
-var O = require("./135.js");
-var E = function (e) {
-  function CastleBribeDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastleBribeDialog.ASSETNAME) || this;
+var s = require("./1.js");
+var r = require("./5.js");
+var l = require("./3.js");
+var c = require("./51.js");
+var u = require("./106.js");
+var d = require("./4.js");
+var p = require("./240.js");
+var h = createjs.MovieClip;
+var g = createjs.Point;
+var C = function (e) {
+  function CastleTaxCollectorPremiumShopVO() {
+    var t = e.call(this, "bribe_taxcollector", "bribe_taxcollector_copy", r.BoosterConst.TAX_BRIBE_COSTS_C2, "taxcollector") || this;
+    t.shopTypes.push(f.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_EVENT, f.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_HERO);
+    return t;
   }
-  n.__extends(CastleBribeDialog, e);
-  CastleBribeDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.dialogDisp.info_bonus.gotoAndStop(_.CastleModel.boostData.taxBribeVO.bonusIconFrame);
-    this.textFieldManager.registerTextField(this.dialogDisp.info_costs.txt_title, new p.LocalizedTextVO("costs"));
-    this.dialogDisp.info_time.toolTipText = "runTime";
-    this.dialogDisp.info_bonus.mouseChildren = false;
-    this.i_iTime_txt_value = this.textFieldManager.registerTextField(this.dialogDisp.info_time.txt_value, new h.TextVO(""));
-    this.i_iCosts_txt_value = this.textFieldManager.registerTextField(this.dialogDisp.info_costs.txt_value, new h.TextVO(""));
-    this.i_iBonus_txt_bonus = this.textFieldManager.registerTextField(this.dialogDisp.info_bonus.txt_bonus, new h.TextVO(""), new s.InternalGGSTextFieldConfigVO(true));
-    this.i_reDisc_txt_value1 = this.textFieldManager.registerTextField(this.dialogDisp.mc_rebuyDiscount.txt_value1, new p.LocalizedTextVO(""));
-    this.i_reDisc_txt_value2 = this.textFieldManager.registerTextField(this.dialogDisp.mc_rebuyDiscount.txt_value2, new h.TextVO(""));
-    this.dialogDisp.info_costs.toolTipText = C.ClientConstTextIds.C2;
-    this.dialogDisp.info_costs.mouseChildren = false;
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok, this.dialogDisp.btn_cancle]);
+  n.__extends(CastleTaxCollectorPremiumShopVO, e);
+  Object.defineProperty(CastleTaxCollectorPremiumShopVO.prototype, "duration", {
+    get: function () {
+      if (this.isActive) {
+        return a.TimeStringHelper.getCommaTimeStringFromSeconds(this.remainingTimeInSeconds, l.Localize.text);
+      } else {
+        return a.TimeStringHelper.getCommaTimeStringFromSeconds(r.BoosterConst.TAX_BRIBE_DURATION, l.Localize.text);
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "duration").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTaxCollectorPremiumShopVO.prototype, "bonusValue", {
+    get: function () {
+      return Math.round(r.BoosterConst.TAX_BRIBE_BOOST * 100);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "bonusValue").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTaxCollectorPremiumShopVO.prototype, "bonusText", {
+    get: function () {
+      return [o.GenericTextIds.VALUE_PERCENTAGE, [this.bonusValue]];
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "bonusText").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTaxCollectorPremiumShopVO.prototype, "listSortPriority", {
+    get: function () {
+      return 200;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "listSortPriority").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleTaxCollectorPremiumShopVO.prototype.clickedBuyButton = function () {
+    _.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleBribeDialog);
   };
-  CastleBribeDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    if (_.CastleModel.boostData.taxBribeVO.isActive) {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new p.LocalizedTextVO("dialog_bribetaxcollector2_copy"));
-    } else {
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new p.LocalizedTextVO("dialog_bribetaxcollector_copy"));
+  Object.defineProperty(CastleTaxCollectorPremiumShopVO.prototype, "bonusIconFrame", {
+    get: function () {
+      return 6;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "bonusIconFrame").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleTaxCollectorPremiumShopVO.prototype.createVisualMovieClip = function () {
+    var e = new h();
+    var t = u.CharacterHelper.createCharacterBig(c.ClientConstCharacter.CHAR_ID_TAXCOLLECTOR, e, -1, -1, false, this.bindFunction(this.onLoadedIcon));
+    t.recycleAsset = false;
+    if (!t.isLoaded) {
+      e.visible = false;
     }
-    this.initDelayedButtons([this.dialogDisp.btn_ok]);
-    this.dialogDisp.info_bonus.toolTipText = {
-      t: "bribe_taxcollector_tooltipp",
-      p: [_.CastleModel.boostData.taxBribeVO.bonusText[1]]
-    };
-    this.i_iTime_txt_value.textContentVO.stringValue = l.TimeStringHelper.getTimeToString(u.BoosterConst.TAX_BRIBE_DURATION, l.TimeStringHelper.ONE_TIME_FORMAT, d.Localize.text);
-    this.i_iCosts_txt_value.textContentVO.stringValue = _.CastleModel.boostData.taxBribeVO.finalCostsC2.toString();
-    b.CostHelper.setCostC2TextFieldColor(this.i_iCosts_txt_value, _.CastleModel.boostData.taxBribeVO.finalCostsC2);
-    this.i_iBonus_txt_bonus = this.textFieldManager.registerTextField(this.dialogDisp.info_bonus.txt_bonus, new p.LocalizedTextVO(_.CastleModel.boostData.taxBribeVO.bonusText[0], [_.CastleModel.boostData.taxBribeVO.bonusText[1]]), new s.InternalGGSTextFieldConfigVO(true));
-    this.i_reDisc_txt_value1 = this.textFieldManager.registerTextField(this.dialogDisp.mc_rebuyDiscount.txt_value1, new p.LocalizedTextVO(a.GenericTextIds.VALUE_PERCENTAGE, [_.CastleModel.boostData.taxBribeVO.rebuyDiscountString]));
-    this.i_reDisc_txt_value2 = this.textFieldManager.registerTextField(this.dialogDisp.mc_rebuyDiscount.txt_value2, new p.LocalizedTextVO(a.GenericTextIds.VALUE_PERCENTAGE, [_.CastleModel.boostData.taxBribeVO.rebuyDiscountString]));
-    this.dialogDisp.mc_rebuyDiscount.toolTipText = "dialog_rebuyBoost_percentTooltip";
-    var i = _.CastleModel.boostData.taxBribeVO.hasRebuyDiscount && !_.CastleModel.boosterSaleData.isBoosterOnSale(u.BoosterConst.TAX);
-    this.dialogDisp.mc_rebuyDiscount.visible = i;
-    if (!this.dialogDisp.mc_rebuyDiscount.visible) {
-      this.dialogDisp.info_costs.x = this.dialogDisp.info_time.x;
-    }
-    _.CastleModel.boosterSaleData.handleMc(this.dialogDisp.info_costs.mc_discount, u.BoosterConst.TAX);
-    this.addCharacterPic();
+    e.addChild(t);
+    return e;
   };
-  CastleBribeDialog.prototype.addEventListenerOnShow = function () {
-    _.CastleModel.boosterSaleData.addEventListener(m.CastleBoosterSaleData.BOOSTER_SALE_UPDATE, this.bindFunction(this.onBoosterDataChanges));
+  CastleTaxCollectorPremiumShopVO.prototype.createVisualMovieClipForBuyDialog = function () {
+    var e = new h();
+    e.addChild(u.CharacterHelper.createCharacterBig(c.ClientConstCharacter.CHAR_ID_TAXCOLLECTOR, e, O.CastlePremiumMarketShopVO.MAX_BUY_DIALOG_ICON_WIDTH, O.CastlePremiumMarketShopVO.MAX_BUY_DIALOG_ICON_HEIGHT, false));
+    return e;
   };
-  CastleBribeDialog.prototype.removeEventListenerOnHide = function () {
-    _.CastleModel.boosterSaleData.removeEventListener(m.CastleBoosterSaleData.BOOSTER_SALE_UPDATE, this.bindFunction(this.onBoosterDataChanges));
-  };
-  CastleBribeDialog.prototype.onBoosterDataChanges = function (e) {
-    this.applyProperties();
-  };
-  CastleBribeDialog.prototype.onClick = function (e) {
-    switch (e.target) {
-      case this.dialogDisp.btn_ok:
-        if (_.CastleModel.currencyData.c2Amount < _.CastleModel.boostData.taxBribeVO.finalCostsC2) {
-          f.CastleExternalDialog.dialogHandler.registerDefaultDialogs(D.CastleNoMoneyC2Dialog, new O.CastleNoMoneyC2DialogProperties());
-        } else {
-          this.hide();
-          var t = JSON.stringify({
-            PO: _.CastleModel.boosterSaleData.getOfferId(u.BoosterConst.TAX)
-          });
-          o.BasicController.getInstance().sendServerMessageAndWait(g.ClientConstSF.C2S_BRIBE_TAX_COLLECTOR, [t], g.ClientConstSF.S2C_BRIBE_TAX_COLLECTOR);
-        }
-        break;
-      case this.dialogDisp.btn_cancle:
-      case this.dialogDisp.btn_close:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_help:
-        y.CastleDialogHandler.getInstance().showHelper("", d.Localize.text("help_tax_bribe"));
-    }
-  };
-  CastleBribeDialog.prototype.addCharacterPic = function () {
-    r.MovieClipHelper.clearMovieClip(this.dialogDisp.mc_CharHolder);
-    var e = _.CastleModel.boostData.taxBribeVO.createVisualMovieClipForBuyDialog();
-    this.dialogDisp.mc_CharHolder.addChild(e);
-  };
-  CastleBribeDialog.__initialize_static_members = function () {
-    CastleBribeDialog.NAME = "CastleBribeDialog";
-    CastleBribeDialog.ASSETNAME = "CastleBuyResourceBoostExt";
-  };
-  return CastleBribeDialog;
-}(f.CastleExternalDialog);
-exports.CastleBribeDialog = E;
-var y = require("./9.js");
-var b = require("./66.js");
-var D = require("./138.js");
-c.classImplementsInterfaces(E, "ICollectableRendererList");
-E.__initialize_static_members();
+  Object.defineProperty(CastleTaxCollectorPremiumShopVO.prototype, "offsetIcon", {
+    get: function () {
+      return new g(-5, -5);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "offsetIcon").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTaxCollectorPremiumShopVO.prototype, "finalCostsC2", {
+    get: function () {
+      var e = Math.max(d.CastleModel.boostData.premiumAccountVO.isActive ? d.CastleModel.boostData.premiumAccountVO.bribe_C2_Factor : 0, d.CastleModel.boosterSaleData.getDiscount(this.id) * 0.01);
+      return d.CastleModel.costsData.getFinalCostsC2(this.baseCosts, this.hasRebuyDiscount, e);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "finalCostsC2").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleTaxCollectorPremiumShopVO.prototype, "id", {
+    get: function () {
+      return r.BoosterConst.TAX;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(p.CastleHeroDefaultBoosterShopVO.prototype, "id").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleTaxCollectorPremiumShopVO;
+}(p.CastleHeroDefaultBoosterShopVO);
+exports.CastleTaxCollectorPremiumShopVO = C;
+var _ = require("./9.js");
+var m = require("./3375.js");
+var f = require("./170.js");
+var O = require("./204.js");
+s.classImplementsInterfaces(C, "IPremiumMarketShopVO", "IDefaultBoosterDataVO", "IBoosterDataVO");

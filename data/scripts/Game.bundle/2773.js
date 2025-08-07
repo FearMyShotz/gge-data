@@ -4,43 +4,29 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function SlumBuildingPartCharacterVO(t, i) {
-    var n = e.call(this, null) || this;
-    n._indoorPos = t;
-    n._outdoorPos = i;
-    n.updatePosOffset();
+  function SlumBuildingPartBuildingVO(t, i) {
+    var n = this;
+    n._necessarySlumLevel = 0;
+    CONSTRUCTOR_HACK;
+    (n = e.call(this, t) || this)._necessarySlumLevel = i;
     return n;
   }
-  n.__extends(SlumBuildingPartCharacterVO, e);
-  SlumBuildingPartCharacterVO.prototype.updateData = function () {
-    this.updatePosOffset();
-    e.prototype.updateData.call(this);
-  };
-  SlumBuildingPartCharacterVO.prototype.updatePosOffset = function () {
-    this.posOffset = this.isIndoor ? this.indoorPos : this.outdoorPos;
-  };
-  Object.defineProperty(SlumBuildingPartCharacterVO.prototype, "isIndoor", {
+  n.__extends(SlumBuildingPartBuildingVO, e);
+  Object.defineProperty(SlumBuildingPartBuildingVO.prototype, "isDamaged", {
     get: function () {
-      return this.slumLevel > 0;
+      return this.necessarySlumLevel > this.slumLevel;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SlumBuildingPartCharacterVO.prototype, "indoorPos", {
+  Object.defineProperty(SlumBuildingPartBuildingVO.prototype, "necessarySlumLevel", {
     get: function () {
-      return this._indoorPos;
+      return this._necessarySlumLevel;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SlumBuildingPartCharacterVO.prototype, "outdoorPos", {
-    get: function () {
-      return this._outdoorPos;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return SlumBuildingPartCharacterVO;
+  return SlumBuildingPartBuildingVO;
 }(require("./1514.js").ASlumBuildingPartVO);
-exports.SlumBuildingPartCharacterVO = a;
+exports.SlumBuildingPartBuildingVO = a;
 o.classImplementsInterfaces(a, "IRelativeGridBuildingVO");

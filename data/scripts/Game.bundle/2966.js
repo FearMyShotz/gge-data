@@ -5,21 +5,19 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SHospitalFlagsVO(t, i, n = -1) {
-    var o = this;
-    o.KID = 0;
-    o.AID = 0;
-    o.HRF = 0;
+  function C2SReviveUnitPackageVO(t, i) {
+    var n = this;
+    n.U = 0;
+    n.A = 0;
     CONSTRUCTOR_HACK;
-    (o = e.call(this) || this).KID = t;
-    o.AID = i;
-    o.HRF = n;
-    return o;
+    (n = e.call(this) || this).U = t;
+    n.A = i;
+    return n;
   }
-  n.__extends(C2SHospitalFlagsVO, e);
-  C2SHospitalFlagsVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_HOSPITAL_FLAGS;
+  n.__extends(C2SReviveUnitPackageVO, e);
+  C2SReviveUnitPackageVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_REVIVE_HOSPITAL_UNITS;
   };
-  return C2SHospitalFlagsVO;
+  return C2SReviveUnitPackageVO;
 }(o.BasicCommandVO);
-exports.C2SHospitalFlagsVO = s;
+exports.C2SReviveUnitPackageVO = s;

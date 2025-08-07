@@ -2,41 +2,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./67.js");
-var r = require("./19.js");
-var l = require("./4.js");
-var c = require("./174.js");
-var u = require("./40.js");
-var d = createjs.Point;
-var p = function (e) {
-  function SeasonLeagueMainDialogInfoPageMedals(t) {
-    var i = e.call(this, t) || this;
-    i.init();
-    return i;
+var o = function (e) {
+  function SeasonLeagueMainDialogInfoEnum(t, i = a.SeasonLeagueMainDialogInfo.PAGE_TEXT) {
+    return e.call(this, t, i) || this;
   }
-  n.__extends(SeasonLeagueMainDialogInfoPageMedals, e);
-  SeasonLeagueMainDialogInfoPageMedals.prototype.init = function () {
-    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_text, new a.LocalizedTextVO("dialog_seasonLeague_infoSection_medalOverview_text_1")).autoFitToBounds = true;
+  n.__extends(SeasonLeagueMainDialogInfoEnum, e);
+  SeasonLeagueMainDialogInfoEnum.__initialize_static_members = function () {
+    SeasonLeagueMainDialogInfoEnum.TOPIC_PASS_SEASON = new SeasonLeagueMainDialogInfoEnum("seasonPass", a.SeasonLeagueMainDialogInfo.PAGE_PASSES);
+    SeasonLeagueMainDialogInfoEnum.TOPIC_PASS_EVENT = new SeasonLeagueMainDialogInfoEnum("eventPass", a.SeasonLeagueMainDialogInfo.PAGE_PASSES);
+    SeasonLeagueMainDialogInfoEnum.TOPIC_PASS_PROMOTION = new SeasonLeagueMainDialogInfoEnum("promotionPass", a.SeasonLeagueMainDialogInfo.PAGE_PASSES);
+    SeasonLeagueMainDialogInfoEnum.TOPIC_MEDALS = new SeasonLeagueMainDialogInfoEnum("medalOverview", a.SeasonLeagueMainDialogInfo.PAGE_MEDALS);
+    SeasonLeagueMainDialogInfoEnum.TOPIC_INSTRUCTION = new SeasonLeagueMainDialogInfoEnum("introduction");
+    SeasonLeagueMainDialogInfoEnum.TOPIC_CONNECTED_EVENTS = new SeasonLeagueMainDialogInfoEnum("connectedEvents");
+    SeasonLeagueMainDialogInfoEnum.TOPIC_DIVISION_RANKING = new SeasonLeagueMainDialogInfoEnum("divisionRanking");
+    SeasonLeagueMainDialogInfoEnum.TOPIC_DIVISION_RANKING_ALLIANCE = new SeasonLeagueMainDialogInfoEnum("divisionRanking_alliance");
+    SeasonLeagueMainDialogInfoEnum.TOPIC_REPUTATION_PROMOTIONS = new SeasonLeagueMainDialogInfoEnum("reputationPromotions");
+    SeasonLeagueMainDialogInfoEnum.TOPIC_SEASON_RANKING = new SeasonLeagueMainDialogInfoEnum("seasonRanking");
+    SeasonLeagueMainDialogInfoEnum.TOPIC_SEASON_RANKING_ALLIANCE = new SeasonLeagueMainDialogInfoEnum("seasonRanking_alliance");
+    SeasonLeagueMainDialogInfoEnum.TOPIC_INVASION_LEAGUE_REWARDS = new SeasonLeagueMainDialogInfoEnum("invasionLeagueRewards");
+    SeasonLeagueMainDialogInfoEnum.TOPIC_LEAGUE_EVENT_END = new SeasonLeagueMainDialogInfoEnum("leagueEventEnd");
+    SeasonLeagueMainDialogInfoEnum.TOPIC_LEAGUE_SEASON_END = new SeasonLeagueMainDialogInfoEnum("leagueSeasonEnd");
   };
-  SeasonLeagueMainDialogInfoPageMedals.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    h.CastleComponent.controller.addEventListener(c.SeasonLeagueEvent.ON_INFO_UPDATED, this.bindFunction(this.onInfoUpdated));
-  };
-  SeasonLeagueMainDialogInfoPageMedals.prototype.removeEventListener = function () {
-    h.CastleComponent.controller.removeEventListener(c.SeasonLeagueEvent.ON_INFO_UPDATED, this.bindFunction(this.onInfoUpdated));
-    e.prototype.removeEventListener.call(this);
-  };
-  SeasonLeagueMainDialogInfoPageMedals.prototype.update = function () {
-    g.CollectableRenderHelper.displayMultipleItemsComplete(this, new s.CollectableRenderClipsList(this.disp, "mc_item"), l.CastleModel.seasonLeagueData.server.playerMedals, new r.CollectableRenderOptions(r.CollectableRenderOptions.SET_DEFAULT, new d(55, 55)));
-  };
-  SeasonLeagueMainDialogInfoPageMedals.prototype.onInfoUpdated = function (e) {
-    this.update();
-  };
-  return SeasonLeagueMainDialogInfoPageMedals;
-}(u.CastleItemRenderer);
-exports.SeasonLeagueMainDialogInfoPageMedals = p;
-var h = require("./14.js");
-var g = require("./25.js");
-o.classImplementsInterfaces(p, "ICollectableRendererList");
+  return SeasonLeagueMainDialogInfoEnum;
+}(require("./959.js").InfoCatalogTopicEnum);
+exports.SeasonLeagueMainDialogInfoEnum = o;
+var a = require("./1659.js");
+o.__initialize_static_members();

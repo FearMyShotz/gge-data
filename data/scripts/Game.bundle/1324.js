@@ -5,8 +5,8 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./6.js");
 var s = require("./4.js");
-var r = require("./35.js");
-var l = require("./518.js");
+var r = require("./33.js");
+var l = require("./519.js");
 var c = function (e) {
   function MarketMapmovementVO() {
     var t = this;

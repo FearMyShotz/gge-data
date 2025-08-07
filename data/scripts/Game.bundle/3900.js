@@ -1,29 +1,22 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function CheatUnitNameList() {}
-  CheatUnitNameList.getUnitNameList = function () {
-    var e = r.CastleModel.wodData.voSubList(o.CastleWodData.TYPE_UNIT);
-    var t = "";
-    if (e != null) {
-      for (var i = 0, n = Array.from(e.values()); i < n.length; i++) {
-        var d = n[i];
-        if (d !== undefined) {
-          t += u.Localize.text(d.getNameString()) + " (wodID: " + d.wodId + ")\n";
-        }
-      }
+var n = require("./0.js");
+var o = require("./4.js");
+var a = require("./196.js");
+var s = function (e) {
+  function CheatBuildingInfoCommand() {
+    return e !== null && e.apply(this, arguments) || this;
+  }
+  n.__extends(CheatBuildingInfoCommand, e);
+  CheatBuildingInfoCommand.prototype.execute = function (e = null) {
+    var t = prompt("Which WodID should be shown?", CheatBuildingInfoCommand.wodID);
+    if (parseInt(t) > 0 && o.CastleModel.wodData.getBuildingVOById(parseInt(t))) {
+      CheatBuildingInfoCommand.wodID = t;
+      a.ClientCheatsHelper.performCommand("buildingInfo " + CheatBuildingInfoCommand.wodID);
     }
-    c.System.setClipboard(t);
-    a.CastleDialogHandler.getInstance().registerDefaultDialogs(s.CastleStandardOkDialog, new l.BasicStandardOkDialogProperties("", "The result is copied into your clipboard. Have a nice Day\n=°.°="));
   };
-  return CheatUnitNameList;
-}();
-exports.CheatUnitNameList = n;
-var o = require("./56.js");
-var a = require("./9.js");
-var s = require("./38.js");
-var r = require("./4.js");
-var l = require("./2.js");
-var c = require("./1.js");
-var u = require("./3.js");
+  CheatBuildingInfoCommand.wodID = "2871";
+  return CheatBuildingInfoCommand;
+}(require("./212.js").ABotCommand);
+exports.CheatBuildingInfoCommand = s;

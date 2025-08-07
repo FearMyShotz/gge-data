@@ -5,19 +5,17 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SAllianceRerankMemberVO(t, i) {
-    var n = this;
-    n.PID = 0;
-    n.R = 0;
+  function C2SAllianceKickMemberVO(t) {
+    var i = this;
+    i.PID = 0;
     CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).PID = t;
-    n.R = i;
-    return n;
+    (i = e.call(this) || this).PID = t;
+    return i;
   }
-  n.__extends(C2SAllianceRerankMemberVO, e);
-  C2SAllianceRerankMemberVO.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_ALLIANCE_RERANK_MEMBER;
+  n.__extends(C2SAllianceKickMemberVO, e);
+  C2SAllianceKickMemberVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_ALLIANCE_KICK_MEMBER;
   };
-  return C2SAllianceRerankMemberVO;
+  return C2SAllianceKickMemberVO;
 }(o.BasicCommandVO);
-exports.C2SAllianceRerankMemberVO = s;
+exports.C2SAllianceKickMemberVO = s;

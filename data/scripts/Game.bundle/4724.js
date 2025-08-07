@@ -5,32 +5,35 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function AHRCommand() {
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function AHHCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AHRCommand, e);
-  Object.defineProperty(AHRCommand.prototype, "cmdId", {
+  n.__extends(AHHCommand, e);
+  Object.defineProperty(AHHCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_ALLIANCE_HELP_REQUEST;
+      return s.ClientConstSF.S2C_ALLIANCE_HELP_CHANGE_OR_ADD;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  AHRCommand.prototype.executeCommand = function (e, t) {
+  AHHCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.allianceHelpRequestData.parse_AHH(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return AHRCommand;
-}(r.CastleCommand);
-exports.AHRCommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  return AHHCommand;
+}(l.CastleCommand);
+exports.AHHCommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

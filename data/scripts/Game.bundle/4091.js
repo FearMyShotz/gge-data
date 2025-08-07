@@ -10,8 +10,8 @@ var l = require("./3.js");
 var c = require("./6.js");
 var u = require("./4.js");
 var d = require("./1409.js");
-var p = require("./112.js");
-var h = require("./1850.js");
+var p = require("./119.js");
+var h = require("./1852.js");
 var g = function () {
   function BaseWorldMapObjectInfoCreator() {}
   BaseWorldMapObjectInfoCreator.prototype.createWorldMapInfo = function (e) {

@@ -1116,6 +1116,12 @@
     "assetName": "GarrikToken"
   },
   {
+    "currencyID": "6012",
+    "Name": "KaelrithToken",
+    "JSONKey": "KLT",
+    "assetName": "KaelrithToken"
+  },
+  {
     "currencyID": "10000",
     "Name": "ShardUniversal",
     "JSONKey": "SUN",
@@ -1192,6 +1198,12 @@
     "Name": "ShardGarrik",
     "JSONKey": "SGA",
     "assetName": "ShardGarrik"
+  },
+  {
+    "currencyID": "10015",
+    "Name": "ShardKaelrith",
+    "JSONKey": "SKL",
+    "assetName": "ShardKaelrith"
   },
   {
     "currencyID": "9999",
@@ -1492,5 +1504,11 @@
     "Name": "Orange",
     "JSONKey": "ORG",
     "assetName": "Orange"
+  },
+  {
+    "currencyID": "84",
+    "Name": "LuckySlice",
+    "JSONKey": "LCS",
+    "assetName": "LuckySlice"
   }
 ]

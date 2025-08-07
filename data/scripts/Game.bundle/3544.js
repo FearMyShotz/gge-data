@@ -3,187 +3,132 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./57.js");
-var r = require("./4.js");
-var l = require("./174.js");
-var c = require("./40.js");
-var u = require("./47.js");
-var d = require("./625.js");
-var p = function (e) {
-  function SeasonLeagueMainDialogPromotionRanks(t) {
+var a = require("./3.js");
+var s = require("./6.js");
+var r = require("./57.js");
+var l = require("./16.js");
+var c = require("./13.js");
+var u = require("./4.js");
+var d = require("./40.js");
+var p = require("./8.js");
+var h = createjs.MouseEvent;
+var g = createjs.Point;
+var C = function (e) {
+  function SeasonLeagueMainDialogPromotionRanksItem(t) {
     var i = this;
-    i._items = [];
-    i._currentSelectedId = -1;
-    i._onSelectionChanged = new s.Signal();
+    i._isMouseOver = false;
+    i._onClickedSignal = new r.Signal(Number);
     CONSTRUCTOR_HACK;
     (i = e.call(this, t) || this).init();
     return i;
   }
-  n.__extends(SeasonLeagueMainDialogPromotionRanks, e);
-  SeasonLeagueMainDialogPromotionRanks.prototype.init = function () {
-    this._scrollComponent = new m(new u.SimpleScrollVO().initByParent(this.disp.mc_slider).addMouseWheelElements([this.disp]), new d.DynamicSizeScrollStrategyHorizontal(true));
-    this._scrollComponent.init(0, r.CastleModel.seasonLeagueData.xml.getNumberOfPromotions() - SeasonLeagueMainDialogPromotionRanks.NUMBER_OF_ITEMS);
-    for (var e = 0; e < SeasonLeagueMainDialogPromotionRanks.NUMBER_OF_ITEMS; ++e) {
-      this._items.push(new C.SeasonLeagueMainDialogPromotionRanksItem(this.disp.getChildByName("mc_item" + e)));
-    }
-    this._tooltip = new _.SeasonLeagueMainDialogPromotionTooltip(this.disp.mc_tooltip);
+  n.__extends(SeasonLeagueMainDialogPromotionRanksItem, e);
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.init = function () {
+    p.ButtonHelper.initBasicButton(this.disp, 1);
+    this._promotionIcon = new m.SeasonLeaguePromotionIconComponent(this.disp.mc_icon, m.SeasonLeaguePromotionIconComponent.TYPE_BIG, new g(130, 130));
   };
-  SeasonLeagueMainDialogPromotionRanks.prototype.onShow = function () {
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.onShow = function () {
     e.prototype.onShow.call(this);
-    this._scrollComponent.show();
-    this._tooltip.onShow();
-    if (this._items != null) {
-      for (var t = 0, i = this._items; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.onShow();
-        }
-      }
-    }
-    this._currentSelectedId = a.int(r.CastleModel.seasonLeagueData.getCurrentPlayerPromotion().id);
-    this._scrollComponent.scrollToPercent(0);
-    this._tooltip.setVisibility(false);
-    r.CastleModel.seasonLeagueData.server.requestKLH();
-    this.update();
+    this.setDownState(false);
+    this.setMouseOverState(false);
+    this.setSelection(false);
   };
-  SeasonLeagueMainDialogPromotionRanks.prototype.onHide = function () {
-    this._scrollComponent.hide();
-    this._tooltip.onHide();
-    if (this._items != null) {
-      for (var t = 0, i = this._items; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.onHide();
-        }
-      }
-    }
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.onHide = function () {
     e.prototype.onHide.call(this);
   };
-  SeasonLeagueMainDialogPromotionRanks.prototype.addEventListener = function () {
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.addEventListener = function () {
     e.prototype.addEventListener.call(this);
-    h.CastleComponent.controller.addEventListener(l.SeasonLeagueEvent.ON_OWN_RANKS_UPDATED, this.bindFunction(this.onPlayerRankUpdated));
-    this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
-    if (this._items != null) {
-      for (var t = 0, i = this._items; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.onClickedSignal.add(this.bindFunction(this.onItemClicked));
-        }
-      }
-    }
+    this.disp.addEventListener(h.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
+    this.disp.addEventListener(h.MOUSE_UP, this.bindFunction(this.onMouseUp));
   };
-  SeasonLeagueMainDialogPromotionRanks.prototype.removeEventListener = function () {
-    h.CastleComponent.controller.removeEventListener(l.SeasonLeagueEvent.ON_OWN_RANKS_UPDATED, this.bindFunction(this.onPlayerRankUpdated));
-    this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
-    if (this._items != null) {
-      for (var t = 0, i = this._items; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.onClickedSignal.remove(this.bindFunction(this.onItemClicked));
-        }
-      }
-    }
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.removeEventListener = function () {
+    this.disp.removeEventListener(h.MOUSE_DOWN, this.bindFunction(this.onMouseDown));
+    this.disp.removeEventListener(h.MOUSE_UP, this.bindFunction(this.onMouseUp));
     e.prototype.removeEventListener.call(this);
   };
-  SeasonLeagueMainDialogPromotionRanks.prototype.update = function () {
-    this.updateItems();
-    this._tooltip.update();
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.updateWithNewData = function (e) {
+    this._promotionVO = e;
+    this._promotionIcon.updateWithNewVO(e);
+    this.update();
   };
-  SeasonLeagueMainDialogPromotionRanks.prototype.updateItems = function () {
-    for (var e = 0; e < this._items.length; ++e) {
-      this._items[e].updateWithNewData(r.CastleModel.seasonLeagueData.xml.getPromotion(this._scrollComponent.currentValue + e + 1));
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.update = function () {
+    var e = u.CastleModel.seasonLeagueData.getCurrentPlayerPromotion().id;
+    var t = s.int(this.promotionVO.id);
+    this.disp.mc_prev.visible = t < e;
+    this.disp.mc_current.visible = t == e;
+    this.disp.mc_next.visible = t > e;
+    if (this._promotionIcon.vo.id != this.promotionVO.id) {
+      this._promotionIcon.updateWithNewVO(this.promotionVO);
     }
-    this.updateSelection();
-  };
-  SeasonLeagueMainDialogPromotionRanks.prototype.updateSelection = function (e = -1) {
-    if (e >= 0) {
-      this._currentSelectedId = e;
+    var i = _.CastleComponent.textFieldManager.registerTextField(this.disp.txt_name, new a.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId(this.promotionVO.getNameTextId())));
+    i.color = t <= e ? l.ClientConstColor.MODERN_DEFAULT : l.ClientConstColor.MODERN_DEFAULT_BRIGHT;
+    i.autoFitToBounds = true;
+    this.disp.mc_nextOverlay.visible = t > e;
+    var n = "";
+    if (t < e) {
+      n = "dialog_seasonLeague_promotionRanks_previousRank_text";
+    } else if (t == e) {
+      n = "dialog_seasonLeague_promotionRanks_currentRank_text";
+    } else if (t > e + 1) {
+      n = "dialog_seasonLeague_promotionRanks_futureRank_text";
     }
-    if (this._items != null) {
-      for (var t = 0, i = this._items; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.setSelection(this._currentSelectedId == n.promotionVO.id);
-        }
-      }
+    this.disp.toolTipText = n;
+  };
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.setSelection = function (e) {
+    this.disp.mc_selected.visible = e;
+  };
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.setDownState = function (e) {
+    this.disp.mc_downState.visible = e;
+  };
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.setMouseOverState = function (e) {
+    this.disp.mc_mouseOver.visible = e;
+  };
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.canShowTooltip = function () {
+    var e = u.CastleModel.seasonLeagueData.getCurrentPlayerPromotion();
+    return this.promotionVO.id == e.id + 1;
+  };
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.onMouseDown = function (e) {
+    this.setDownState(true);
+    this.setMouseOverState(false);
+  };
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.onMouseUp = function (e) {
+    this.setDownState(false);
+    if (this._isMouseOver) {
+      this.setMouseOverState(true);
     }
   };
-  SeasonLeagueMainDialogPromotionRanks.prototype.getTooltipAlignByItemIndex = function (e) {
-    if (e <= 0) {
-      return _.SeasonLeagueMainDialogPromotionTooltip.ALIGN_LEFT;
-    } else if (e >= SeasonLeagueMainDialogPromotionRanks.NUMBER_OF_ITEMS - 1) {
-      return _.SeasonLeagueMainDialogPromotionTooltip.ALIGN_RIGHT;
-    } else {
-      return _.SeasonLeagueMainDialogPromotionTooltip.ALIGN_CENTER;
-    }
-  };
-  SeasonLeagueMainDialogPromotionRanks.prototype.onScroll = function () {
-    this._scrollComponent.scrollToValue(this._scrollComponent.currentValue, false);
-    this.updateItems();
-  };
-  SeasonLeagueMainDialogPromotionRanks.prototype.onItemClicked = function (e) {
-    if (e != this._currentSelectedId) {
-      this.updateSelection(e);
-      this.onSelectionChanged.dispatch();
-    }
-  };
-  SeasonLeagueMainDialogPromotionRanks.prototype.onMouseOver = function (t) {
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.onMouseOver = function (t) {
     e.prototype.onMouseOver.call(this, t);
-    for (var i = 0; i < this._items.length; ++i) {
-      var n = this._items[i];
-      if (t.target == n.disp && n.canShowTooltip()) {
-        this._tooltip.setVisibility(true);
-        this._tooltip.setPosition(n.disp.x, this.getTooltipAlignByItemIndex(i));
-      }
-    }
+    this._isMouseOver = true;
+    this.setMouseOverState(true);
   };
-  SeasonLeagueMainDialogPromotionRanks.prototype.onMouseOut = function (t) {
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.onMouseOut = function (t) {
     e.prototype.onMouseOut.call(this, t);
-    if (this._items != null) {
-      for (var i = 0, n = this._items; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && t.target == o.disp) {
-          this._tooltip.setVisibility(false);
-        }
-      }
-    }
+    this._isMouseOver = false;
+    this.setMouseOverState(false);
+    this.setDownState(false);
   };
-  SeasonLeagueMainDialogPromotionRanks.prototype.onPlayerRankUpdated = function (e) {
-    this._tooltip.update();
+  SeasonLeagueMainDialogPromotionRanksItem.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    this.onClickedSignal.dispatch(this.promotionVO.id);
   };
-  Object.defineProperty(SeasonLeagueMainDialogPromotionRanks.prototype, "onSelectionChanged", {
+  Object.defineProperty(SeasonLeagueMainDialogPromotionRanksItem.prototype, "promotionVO", {
     get: function () {
-      return this._onSelectionChanged;
+      return this._promotionVO;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(SeasonLeagueMainDialogPromotionRanks.prototype, "currentSelectedId", {
+  Object.defineProperty(SeasonLeagueMainDialogPromotionRanksItem.prototype, "onClickedSignal", {
     get: function () {
-      return this._currentSelectedId;
+      return this._onClickedSignal;
     },
     enumerable: true,
     configurable: true
   });
-  SeasonLeagueMainDialogPromotionRanks.NUMBER_OF_ITEMS = 5;
-  return SeasonLeagueMainDialogPromotionRanks;
-}(c.CastleItemRenderer);
-exports.SeasonLeagueMainDialogPromotionRanks = p;
-var h = require("./14.js");
-var g = require("./82.js");
-var C = require("./3545.js");
-var _ = require("./3546.js");
-o.classImplementsInterfaces(p, "ICollectableRendererList");
-var m = function (e) {
-  function SeasonLeaguePromotionRanksSliderScrollComponent() {
-    return e !== null && e.apply(this, arguments) || this;
-  }
-  n.__extends(SeasonLeaguePromotionRanksSliderScrollComponent, e);
-  SeasonLeaguePromotionRanksSliderScrollComponent.prototype.onSliderLineClick = function (e) {
-    if (this.isEnabled) {
-      this.scrollToPercent(this.strategy.getPercentFactorOfMousePos(-this.scrollVO.sliderButton.width / 2));
-    }
-  };
-  return SeasonLeaguePromotionRanksSliderScrollComponent;
-}(g.ModernSliderScrollComponent);
+  return SeasonLeagueMainDialogPromotionRanksItem;
+}(d.CastleItemRenderer);
+exports.SeasonLeagueMainDialogPromotionRanksItem = C;
+var _ = require("./14.js");
+var m = require("./359.js");
+o.classImplementsInterfaces(C, "ICollectableRendererList");

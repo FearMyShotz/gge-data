@@ -55,7 +55,7 @@ var r = function (e) {
 }(s.AllianceAndPlayerPointEventRewardListDialog);
 exports.CastleAllianceAlienInvasionRewardListDialog = r;
 var l = require("./11.js");
-var c = require("./546.js");
+var c = require("./547.js");
 var u = require("./4.js");
 o.classImplementsInterfaces(r, "ICollectableRendererList");
 r.__initialize_static_members();

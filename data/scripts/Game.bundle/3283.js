@@ -2,26 +2,30 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CollectableItemPermanentUnitSlotVO() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, 1) || this;
+var o = require("./1.js");
+var a = require("./1.js");
+var s = require("./1621.js");
+var r = function (e) {
+  function CollectableItemAllianceGiftVE() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemPermanentUnitSlotVO, e);
-  CollectableItemPermanentUnitSlotVO.prototype.getTooltipTextId = function () {
-    return "recruitmentSlot_name";
+  n.__extends(CollectableItemAllianceGiftVE, e);
+  CollectableItemAllianceGiftVE.prototype.iconCreate = function () {
+    var e = s.AllianceGiftTypeEnum.getTypeById(this.itemAllianceGiftVO.giftType.id);
+    var t = new (a.getDefinitionByName(e.iconName))();
+    this.dispCreator.addDisp(t);
   };
-  CollectableItemPermanentUnitSlotVO.prototype.getDescriptionTextId = function () {
-    return "recruitmentSlot_short_info";
+  CollectableItemAllianceGiftVE.prototype.tooltipCreate = function () {
+    return s.AllianceGiftTypeEnum.getTypeById(this.itemAllianceGiftVO.giftType.id).tooltipTextId;
   };
-  CollectableItemPermanentUnitSlotVO.prototype.isCombineAbleWith = function (e) {
-    return false;
-  };
-  CollectableItemPermanentUnitSlotVO.__initialize_static_members = function () {
-    CollectableItemPermanentUnitSlotVO.SERVER_KEY = "PUS";
-    CollectableItemPermanentUnitSlotVO.XML_KEY = "unitSlot";
-  };
-  return CollectableItemPermanentUnitSlotVO;
-}(require("./96.js").ACollectableItemVO);
-exports.CollectableItemPermanentUnitSlotVO = o;
-o.__initialize_static_members();
+  Object.defineProperty(CollectableItemAllianceGiftVE.prototype, "itemAllianceGiftVO", {
+    get: function () {
+      return this.vo;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CollectableItemAllianceGiftVE;
+}(require("./158.js").ACollectableItemVE);
+exports.CollectableItemAllianceGiftVE = r;
+o.classImplementsInterfaces(r, "ICollectableRendererList");

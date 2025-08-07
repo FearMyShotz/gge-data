@@ -2,68 +2,33 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function CastleResourcePoolData() {
-    this._hasExtraGoods = false;
+  function ResearchPathfinderSearchableMap() {
+    this._width = 0;
+    this._height = 0;
+    this._walkableMap = new Map();
   }
-  CastleResourcePoolData.prototype.parseIRC = function (e) {
-    this.registerNewMovementAsOwner(null);
-    var t = o.CollectableManager.parser.s2cParamList.createList(e.G);
-    this._resourceItem = t.getItemByIndexSave(0);
-    this._hasExtraGoods = !!e.EG;
-    if (this.resourceItem && this.hasExtraGoods) {
-      this.resourceItem.amount = 1000;
+  ResearchPathfinderSearchableMap.prototype.getHeight = function () {
+    return this._height;
+  };
+  ResearchPathfinderSearchableMap.prototype.getWidth = function () {
+    return this._width;
+  };
+  ResearchPathfinderSearchableMap.prototype.isWalkable = function (e, t) {
+    if (e == 0 || t == 0) {
+      return false;
     }
+    var i = this.getPosStr(e, t);
+    return !this._walkableMap.has(i) || this._walkableMap.get(i);
   };
-  CastleResourcePoolData.prototype.registerNewMovementAsOwner = function (e) {
-    this._ownerMovementVO = e;
-    if (!this.ownerMovementVO) {
-      this._resourceItem = null;
-    }
+  ResearchPathfinderSearchableMap.prototype.setWalkable = function (e, t, i) {
+    var n = this.getPosStr(e, t);
+    this._walkableMap.set(n, i);
+    this._width = Math.max(this._width, e + 1);
+    this._height = Math.max(this._height, t + 1);
   };
-  CastleResourcePoolData.prototype.reset = function () {
-    this._resourceItem = null;
-    this._ownerMovementVO = null;
+  ResearchPathfinderSearchableMap.prototype.getPosStr = function (e, t) {
+    return e + "," + t;
   };
-  CastleResourcePoolData.prototype.getRelevantMovementTypeByResourceType = function (e) {
-    switch (e) {
-      case a.CollectableEnum.WOOD:
-        return s.IsoObjectEnum.MOVEMENT_WOOD_CUTTER;
-      case a.CollectableEnum.STONE:
-        return s.IsoObjectEnum.MOVEMENT_STONE_CUTTER;
-      case a.CollectableEnum.FOOD:
-        return s.IsoObjectEnum.MOVEMENT_FARMER;
-      case a.CollectableEnum.C1:
-      default:
-        return s.IsoObjectEnum.MOVEMENT_CITIZEN;
-    }
-  };
-  CastleResourcePoolData.prototype.canMovementTypeCarryResourceType = function (e, t) {
-    return (t != a.CollectableEnum.WOOD || e == s.IsoObjectEnum.MOVEMENT_WOOD_CUTTER) && (t != a.CollectableEnum.STONE || e == s.IsoObjectEnum.MOVEMENT_STONE_CUTTER) && (t != a.CollectableEnum.FOOD || e == s.IsoObjectEnum.MOVEMENT_FARMER) && (t != a.CollectableEnum.C1 || e == s.IsoObjectEnum.MOVEMENT_CITIZEN);
-  };
-  Object.defineProperty(CastleResourcePoolData.prototype, "resourceItem", {
-    get: function () {
-      return this._resourceItem;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleResourcePoolData.prototype, "ownerMovementVO", {
-    get: function () {
-      return this._ownerMovementVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleResourcePoolData.prototype, "hasExtraGoods", {
-    get: function () {
-      return this._hasExtraGoods;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastleResourcePoolData;
+  return ResearchPathfinderSearchableMap;
 }();
-exports.CastleResourcePoolData = n;
-var o = require("./50.js");
-var a = require("./12.js");
-var s = require("./80.js");
+exports.ResearchPathfinderSearchableMap = n;

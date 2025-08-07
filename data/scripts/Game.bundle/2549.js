@@ -6,7 +6,7 @@ var o = require("./2.js");
 var a = require("./6.js");
 var s = require("./7.js");
 var r = function (e) {
-  function C2SGetAttackCastleInfosVO(t, i, n) {
+  function C2SGetAttackABGTowerInfosVO(t, i, n) {
     var o = this;
     o.TX = 0;
     o.TY = 0;
@@ -21,10 +21,10 @@ var r = function (e) {
     o.KID = n;
     return o;
   }
-  n.__extends(C2SGetAttackCastleInfosVO, e);
-  C2SGetAttackCastleInfosVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_GET_ATTACK_CASTLE_INFOS;
+  n.__extends(C2SGetAttackABGTowerInfosVO, e);
+  C2SGetAttackABGTowerInfosVO.prototype.getCmdId = function () {
+    return s.ClientConstSF.C2S_GET_ATTACK_ABG_TOWER_INFOS;
   };
-  return C2SGetAttackCastleInfosVO;
+  return C2SGetAttackABGTowerInfosVO;
 }(o.BasicCommandVO);
-exports.C2SGetAttackCastleInfosVO = r;
+exports.C2SGetAttackABGTowerInfosVO = r;

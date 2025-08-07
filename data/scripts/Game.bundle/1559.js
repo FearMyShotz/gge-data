@@ -39,6 +39,6 @@ var u = function (e) {
 }(require("./98.js").ARingMenuButton);
 exports.RingMenuButtonOverseer = u;
 var d = require("./9.js");
-var p = require("./873.js");
+var p = require("./874.js");
 var h = require("./1560.js");
 o.classImplementsInterfaces(u, "IRingMenuButton");

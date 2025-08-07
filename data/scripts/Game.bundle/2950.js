@@ -3,26 +3,22 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./7.js");
-var r = function (e) {
-  function C2SSetRecruitmentModeVO(t, i, n, o) {
-    var s = this;
-    s.LID = 0;
-    s.SID = 0;
-    s.AID = 0;
-    s.RM = 0;
+var a = require("./7.js");
+var s = function (e) {
+  function C2SCancelUnitPackageVO(t, i, n) {
+    var o = this;
+    o.LID = 0;
+    o.S = 0;
     CONSTRUCTOR_HACK;
-    (s = e.call(this) || this).LID = t;
-    s.SID = i;
-    s.AID = n;
-    s.RM = a.int(o ? 1 : 0);
-    return s;
+    (o = e.call(this) || this).LID = t;
+    o.S = i;
+    o.ST = n;
+    return o;
   }
-  n.__extends(C2SSetRecruitmentModeVO, e);
-  C2SSetRecruitmentModeVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_SET_RECRUITMENT_MODE;
+  n.__extends(C2SCancelUnitPackageVO, e);
+  C2SCancelUnitPackageVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_CANCEL_UNIT_PACKAGE;
   };
-  return C2SSetRecruitmentModeVO;
+  return C2SCancelUnitPackageVO;
 }(o.BasicCommandVO);
-exports.C2SSetRecruitmentModeVO = r;
+exports.C2SCancelUnitPackageVO = s;

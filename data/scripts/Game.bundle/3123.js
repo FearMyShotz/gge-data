@@ -1,26 +1,21 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = function () {
-  function MonumentBonusComponent() {}
-  MonumentBonusComponent.prototype.init = function (e, t) {
-    this._disp = e;
-    for (var i = 0; i < this._disp.numChildren; i++) {
-      this._disp.getChildAt(i).visible = false;
-    }
-    this._disp.mc_honor.visible = true;
-    this._disp.mc_honor.mouseChildren = false;
-    this._disp.mc_honor.toolTipText = "dialog_monument_fameMonuments_tooltip";
-    this._landmarkVO = t;
-    this._itxt_bonus = n.GoodgameTextFieldManager.getInstance().registerTextField(this._disp.mc_honor.txt_honor, new a.LocalizedTextVO("value_percentage_add", []));
+var n = require("./0.js");
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SGetMonumentProgress(t) {
+    var i = this;
+    i.ID = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).ID = t;
+    return i;
+  }
+  n.__extends(C2SGetMonumentProgress, e);
+  C2SGetMonumentProgress.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_GET_MONUMENT_PROGRESS;
   };
-  MonumentBonusComponent.prototype.update = function () {
-    this._itxt_bonus.textContentVO.textReplacements = [this._landmarkVO.landmarkBonus];
-  };
-  return MonumentBonusComponent;
-}();
-exports.MonumentBonusComponent = s;
-o.classImplementsInterfaces(s, "IUpgradableLandmarkBonusComponent");
+  return C2SGetMonumentProgress;
+}(o.BasicCommandVO);
+exports.C2SGetMonumentProgress = s;

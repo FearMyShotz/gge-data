@@ -36,12 +36,12 @@ var M = require("./388.js");
 var F = require("./389.js");
 var U = require("./390.js");
 var G = require("./391.js");
-var w = require("./392.js");
-var k = require("./393.js");
+var k = require("./392.js");
+var w = require("./393.js");
 var x = require("./394.js");
 var W = require("./395.js");
-var V = require("./397.js");
-var H = require("./43.js");
+var H = require("./397.js");
+var V = require("./43.js");
 var j = require("./398.js");
 var q = require("./399.js");
 var K = require("./102.js");
@@ -95,7 +95,7 @@ var ye = function (e) {
   }
   i.__extends(BasicFrameOne, e);
   BasicFrameOne.prototype.initLocalizationModule = function () {
-    this.localizationModule = new te.LocalizationModule(new te.GlobalizeTextProcessor(H.PathProvider.instance.cldrConfigURL, false), true);
+    this.localizationModule = new te.LocalizationModule(new te.GlobalizeTextProcessor(V.PathProvider.instance.cldrConfigURL, false), true);
     this.localizationModule.initialize(new te.LanguageVO("DE", "de", this.env.neverUseAbbreviations, this.env.abbreviationThreshold, this.env.fractionalDigits, this.env.leadingZero, this.env.trailingZeros), {}, null, this.env.isTest || this.env.isLocal);
     this.localizationModule.localizationService.localizeReplacements = this.env.localizeReplacements;
     return this.localizationModule.setLanguageAsync(new te.LanguageVO(this.worldAssignemnt.facade.currentCountry.ggsCountryCode, this.worldAssignemnt.facade.currentCountry.ggsLanguageCode, this.env.neverUseAbbreviations, this.env.abbreviationThreshold, this.env.fractionalDigits, this.env.leadingZero, this.env.trailingZeros), {});
@@ -138,13 +138,13 @@ var ye = function (e) {
     h.CommandController.instance.registerCommand(C.BasicController.COMMAND_VALIDATE_AGE, P.BasicValidateAgeCommand);
     h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_REGISTRATION_DATA, b.BasicTrackRegistrationDataCommand);
     h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_PROFILING, x.BasicProfilingTrackingCommand);
-    h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_WORLD_ASSIGNMENT, V.BasicWorldAssignmentTrackingCommand, null, true);
+    h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_WORLD_ASSIGNMENT, H.BasicWorldAssignmentTrackingCommand, null, true);
     h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_CONNECTION_TRACKING_EVENT, M.BasicConnectionTrackingCommand);
-    h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_GAME_PAYMENT_SHOP_CLICK_EVENT, k.BasicPaymentShopClickTrackingCommand);
+    h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_GAME_PAYMENT_SHOP_CLICK_EVENT, w.BasicPaymentShopClickTrackingCommand);
     h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_DESKTOP_DEVICE_INFORMATION_EVENT, F.BasicDesktopDeviceInformationTrackingCommand);
     h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_BROWSER_STATE_EVENT, Ce.BrowserStateFullscreenTrackingCommand);
     h.CommandController.instance.registerCommand(C.BasicController.COMMAND_VERIFY_TRACKING, W.BasicVerifyTrackingCommand);
-    h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_INVITATION, w.BasicInvitationTrackingCommand);
+    h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_INVITATION, k.BasicInvitationTrackingCommand);
     h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_FACEBOOK_CONNECTION, U.BasicFacebookConnectionTrackingCommand);
     h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_FACEBOOK_USERDATA, G.BasicFacebookUserDataTrackingCommand);
     h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_FACEBOOK_EMAIL, fe.BasicFacebookUserEmailTrackingCommand);
@@ -166,7 +166,7 @@ var ye = function (e) {
     this.env.setVersionInformation(e);
   };
   BasicFrameOne.prototype.initTextRendering = function () {
-    Z.BasicModel.languageData = new X.BasicLanguageData(p.VersionInformation.versionInstance, H.PathProvider.instance, this.localizationModule);
+    Z.BasicModel.languageData = new X.BasicLanguageData(p.VersionInformation.versionInstance, V.PathProvider.instance, this.localizationModule);
     var e = o.GoodgameTextFieldManager.getInstance();
     e.languageData = Z.BasicModel.languageData;
     this.initTextFieldBehaviours();
@@ -184,7 +184,7 @@ var ye = function (e) {
   BasicFrameOne.prototype.isAddedToStageDone = function () {};
   BasicFrameOne.prototype.loadVersion = function () {
     this.env.fallBackCDN = true;
-    g.ConfigFilesVersionsModel.instance.loadVersionJson(H.PathProvider.instance.versionURL).then(this.bindFunction(this.onVersionsInitialized)).catch(function (e) {
+    g.ConfigFilesVersionsModel.instance.loadVersionJson(V.PathProvider.instance.versionURL).then(this.bindFunction(this.onVersionsInitialized)).catch(function (e) {
       return Se.warn("loadingVersionJSON failed " + e);
     });
   };
@@ -194,7 +194,7 @@ var ye = function (e) {
   };
   BasicFrameOne.prototype.loadItemVersionXML = function () {
     if (this.env.useItemXML) {
-      Z.BasicModel.basicLoaderData.appLoader.addXMLLoader(E.BasicConstants.ITEM_XML_VERSION, H.PathProvider.instance.itemsVersionURL, ne.URLLoaderDataFormat.TEXT, this.bindFunction(this.onVersionPropertiesLoaded));
+      Z.BasicModel.basicLoaderData.appLoader.addXMLLoader(E.BasicConstants.ITEM_XML_VERSION, V.PathProvider.instance.itemsVersionURL, ne.URLLoaderDataFormat.TEXT, this.bindFunction(this.onVersionPropertiesLoaded));
     } else {
       this.onVersionPropertiesLoaded();
     }
@@ -357,7 +357,7 @@ var ye = function (e) {
   };
   BasicFrameOne.prototype.loadXMLs = function () {
     oe.ClientFunnelTrackingController.getInstance().trackState(le.ClientFunnelGameStates.ITEM_XML_START);
-    Z.BasicModel.basicLoaderData.appLoader.addXMLLoader(E.BasicConstants.ITEM_XML_LOADER, H.PathProvider.instance.itemsXMLURL, ne.URLLoaderDataFormat.TEXT, this.bindFunction(this.itemXMLComplete));
+    Z.BasicModel.basicLoaderData.appLoader.addXMLLoader(E.BasicConstants.ITEM_XML_LOADER, V.PathProvider.instance.itemsXMLURL, ne.URLLoaderDataFormat.TEXT, this.bindFunction(this.itemXMLComplete));
   };
   BasicFrameOne.prototype.itemXMLComplete = function () {
     oe.ClientFunnelTrackingController.getInstance().trackState(le.ClientFunnelGameStates.ITEM_XML_END);
@@ -368,7 +368,7 @@ var ye = function (e) {
     oe.ClientFunnelTrackingController.getInstance().trackState(le.ClientFunnelGameStates.ASSETS_START);
     this.loadAdditionalAssets();
     for (var e = 1; e <= this.env.numOfItemLibs; e++) {
-      Z.BasicModel.basicLoaderData.assetLoader.add(H.PathProvider.instance.getItemSWFURL(e), {
+      Z.BasicModel.basicLoaderData.assetLoader.add(V.PathProvider.instance.getItemSWFURL(e), {
         id: "itemLib" + e
       });
     }

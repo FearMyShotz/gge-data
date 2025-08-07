@@ -6,7 +6,7 @@ var o = require("./1.js");
 var a = require("./39.js");
 var s = require("./4.js");
 var r = require("./1291.js");
-var l = require("./724.js");
+var l = require("./726.js");
 var c = require("./425.js");
 var u = require("./8.js");
 var d = function (e) {
@@ -67,7 +67,7 @@ var d = function (e) {
   return ButtonBookmarkComponent;
 }(require("./150.js").ButtonBasicComponent);
 exports.ButtonBookmarkComponent = d;
-var p = require("./945.js");
+var p = require("./946.js");
 var h = require("./9.js");
 var g = require("./441.js");
 o.classImplementsInterfaces(d, "IWorldMapObjectRingmenuButtonComponent");

@@ -1,7 +1,3 @@
-module.exports = function combineURLs(e, t) {
-  if (t) {
-    return e.replace(/\/+$/, "") + "/" + t.replace(/^\/+/, "");
-  } else {
-    return e;
-  }
+module.exports = function isAbsoluteURL(e) {
+  return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(e);
 };

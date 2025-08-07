@@ -1,120 +1,137 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./2.js");
-var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./3.js");
-var r = require("./6.js");
-var l = require("./18.js");
-var c = require("./51.js");
-var u = require("./58.js");
-var d = require("./207.js");
-var p = require("./29.js");
-var h = require("./4.js");
-var g = require("./9.js");
-var C = require("./238.js");
-var _ = require("./236.js");
-var m = require("./352.js");
-var f = require("./351.js");
-var O = require("./38.js");
-var E = require("./151.js");
-var y = require("./117.js");
-var b = function () {
-  function AttackDialogStartAttackCheck() {}
-  AttackDialogStartAttackCheck.onAttack = function () {
-    var e = this.attackInfoVO.advisorAttacks > 0 ? d.AdvisorAttackHelper.getCharacterByAdvisorType(y.AttackDialogController.getInstance().attackAdvisorType) : c.ClientConstCharacter.CHAR_ID_GENERAL;
-    if (this.attackInfoVO.getSumOfUnits() != 0) {
-      if (this.attackInfoVO.army.isAnyWaveSoldiersButNoTools()) {
-        g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleCharacterYesNoOKDialog, new _.CastleCharacterYesNoOKDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("dialog_attack_onlyToolsInWave"), e, null, null, false));
-      } else {
-        var t = this.getSelectedLordVO();
-        if (this.attackInfoVO.getTravelCost(t) > h.CastleModel.currencyData.c1Amount) {
-          g.CastleDialogHandler.getInstance().registerDefaultDialogs(m.CastleNoMoneyC1Dialog, new f.CastleNoMoneyC1DialogProperties());
-        } else {
-          var i = 0;
-          i = this.attackInfoVO.targetArea.areaType == a.WorldConst.AREA_TYPE_CAPITAL ? r.int(Math.max(h.CastleModel.landmark.capitalLandmark.minDefenseLevel, this.attackInfoVO.targetOwnerLevel)) : this.attackInfoVO.targetArea.areaType == a.WorldConst.AREA_TYPE_METROPOL ? r.int(Math.max(h.CastleModel.landmark.metroLandmark.minDefenseLevel, this.attackInfoVO.targetOwnerLevel)) : this.attackInfoVO.targetArea.areaType == a.WorldConst.AREA_TYPE_KINGS_TOWER ? r.int(a.OutpostConst.KINGS_TOWER_DEFAULT_LEVEL) : this.attackInfoVO.targetArea.areaType == a.WorldConst.AREA_TYPE_MONUMENT ? r.int(a.OutpostConst.MONUMENT_DEFAULT_LEVEL) : this.attackInfoVO.targetArea.areaType == a.WorldConst.AREA_TYPE_LABORATORY ? r.int(a.OutpostConst.LABORATORY_DEFAULT_LEVEL) : r.int(this.attackInfoVO.targetOwnerLevel);
-          var o = a.CombatConst.getMinSoldiers(i);
-          if (o > this.attackInfoVO.getSumOfUnits()) {
-            g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleCharacterYesNoOKDialog, new _.CastleCharacterYesNoOKDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("errorCode_100", [o]), e, null, null, false));
-          } else {
-            if (h.CastleModel.userData.userLevel <= u.ClientConstLevelRestrictions.MAX_LEVEL_ATTACK_WARNING_NOT_ENOUGH_ATTACKPOWER) {
-              if (!this.isAttackStrongEnoughOnAllFlanks()) {
-                g.CastleDialogHandler.getInstance().registerDefaultDialogs(E.CastleStandardYesNoDialog, new n.BasicStandardYesNoDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("alert_attackScreen_notEnoughTroops"), this.bindFunction(this.startAttack)));
-                return;
-              }
-            }
-            var l = this.attackInfoVO.army.waves.some(function (e) {
-              return e.exceedsUnitLimit();
-            });
-            if (l = l || this.attackInfoVO.yardWaveContainer.exceedsLimit()) {
-              g.CastleDialogHandler.getInstance().registerDefaultDialogs(O.CastleStandardOkDialog, new n.BasicStandardYesNoDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("errorCode_313")));
-            } else {
-              this.startAttack();
-            }
-          }
-        }
-      }
-    } else if (this.attackInfoVO.getSumOfTools() > 0) {
-      g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleCharacterYesNoOKDialog, new _.CastleCharacterYesNoOKDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("dialog_attack_onlyTools"), e, null, null, false));
+var n = require("./6.js");
+var o = require("./181.js");
+var a = require("./9.js");
+var s = require("./751.js");
+var r = require("./585.js");
+var l = require("./115.js");
+var c = require("./471.js");
+var u = createjs.Event;
+var d = createjs.MouseEvent;
+var p = function () {
+  function AttackDialogDragTarget(e) {
+    this._waveIndex = -1;
+    this._disp = e;
+    this._disp.mc_drag_default.visible = false;
+    this._disp.mc_drag_active.visible = false;
+    if (this._disp.stage) {
+      this.onAddedToStage(null);
     } else {
-      g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleCharacterYesNoOKDialog, new _.CastleCharacterYesNoOKDialogProperties(s.Localize.text("generic_alert_watchout"), s.Localize.text("dialog_attack_noUnits"), e, null, null, false));
+      this.onRemovedFromStage(null);
     }
+  }
+  AttackDialogDragTarget.prototype.init = function (e, t, i, n = false, o = -1) {
+    this._index = e;
+    this._containerVO = t;
+    this._isToolSlot = i;
+    this._isSupportToolSlot = n;
+    this._waveIndex = o;
   };
-  AttackDialogStartAttackCheck.isAttackStrongEnoughOnAllFlanks = function () {
-    if (!this.attackInfoVO.spyInfo || !this.attackInfoVO.spyInfo.itemsLeft || !this.attackInfoVO.spyInfo.itemsMiddle || !this.attackInfoVO.spyInfo.itemsRight) {
-      return true;
-    }
-    var e;
-    var t = r.int(this.getTotalAttackValue(this.attackInfoVO.spyInfo.itemsLeft.getSoldiers()));
-    var i = r.int(this.getTotalAttackValue(this.attackInfoVO.spyInfo.itemsMiddle.getSoldiers()));
-    var n = r.int(this.getTotalAttackValue(this.attackInfoVO.spyInfo.itemsRight.getSoldiers()));
-    var o = 0;
-    var a = 0;
-    var s = 0;
-    for (var l = 0; l < this.attackInfoVO.army.getWaveCount(); l++) {
-      e = this.attackInfoVO.army.getWaveByID(l);
-      var c = this.getSelectedLordVO();
-      o += r.int(e.itemsLeftWall_units.getAttackMeleeValue(c, this.attackInfoVO.targetArea) + e.itemsLeftWall_units.getAttackRangeValue(c, this.attackInfoVO.targetArea));
-      a += r.int(e.itemsMiddleWall_units.getAttackMeleeValue(c, this.attackInfoVO.targetArea) + e.itemsMiddleWall_units.getAttackRangeValue(c, this.attackInfoVO.targetArea));
-      s += r.int(e.itemsRightWall_units.getAttackMeleeValue(c, this.attackInfoVO.targetArea) + e.itemsRightWall_units.getAttackRangeValue(c, this.attackInfoVO.targetArea));
-    }
-    return o + a + s >= t + i + n;
+  AttackDialogDragTarget.prototype.onRemovedFromStage = function (e) {
+    this._disp.addEventListener(u.ADDED_TO_STAGE, this.bindFunction(this.onAddedToStage), false, 0, true);
+    this._disp.removeEventListener(u.REMOVED_FROM_STAGE, this.bindFunction(this.onRemovedFromStage));
+    this._disp.removeEventListener("rollover", this.bindFunction(this.onRollOver));
+    this._disp.removeEventListener("rollout", this.bindFunction(this.onRollOut));
+    this._disp.removeEventListener(d.MOUSE_UP, this.bindFunction(this.onMouseUp));
+    l.AttackDialogController.getInstance().onStartDrag.remove(this.bindFunction(this.onStartDrag));
+    l.AttackDialogController.getInstance().onStopDrag.remove(this.bindFunction(this.onStopDrag));
   };
-  AttackDialogStartAttackCheck.startAttack = function (e = null) {
-    var t = o.instanceOfClass(this.attackInfoVO.targetArea, "DaimyoCastleMapObjectVO");
-    t = (t = (t = (t = t || this.attackInfoVO.targetActionType == l.ClientConstCastle.ACTION_TYPE_COLLECTOR_ATTACK) || this.attackInfoVO.isTempServerCollectorAttack) || this.attackInfoVO.isAllianceBattleGroundPlayerPointsAttack) || this.attackInfoVO.isAllianceBattleGroundTowerAttack;
-    this.attackInfoVO.openSelectBoosterDialog = t;
-    n.CommandController.instance.executeCommand(p.IngameClientCommands.OPEN_POSTATTACK_DIALOG_COMMAND, [this.attackInfoVO.targetActionType, this.bindFunction(this.hideDialog), this.attackInfoVO, this.getSelectedLordVO()]);
+  AttackDialogDragTarget.prototype.onAddedToStage = function (e) {
+    this._disp.removeEventListener(u.ADDED_TO_STAGE, this.bindFunction(this.onAddedToStage));
+    this._disp.addEventListener(u.REMOVED_FROM_STAGE, this.bindFunction(this.onRemovedFromStage), false, 0, true);
+    this._disp.addEventListener("rollover", this.bindFunction(this.onRollOver));
+    this._disp.addEventListener("rollout", this.bindFunction(this.onRollOut));
+    this._disp.addEventListener(d.MOUSE_UP, this.bindFunction(this.onMouseUp));
+    l.AttackDialogController.getInstance().onStartDrag.add(this.bindFunction(this.onStartDrag));
+    l.AttackDialogController.getInstance().onStopDrag.add(this.bindFunction(this.onStopDrag));
   };
-  AttackDialogStartAttackCheck.getTotalAttackValue = function (e) {
-    var t = 0;
-    if (e != null) {
-      for (var i = 0, n = e; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          t += o.buffedMeleeAttack + o.buffedRangeAttack;
-        }
+  AttackDialogDragTarget.prototype.onMouseUp = function (e) {
+    if (this.draggedUnitVO && this.isFittingSlot()) {
+      if (this.draggedUnitVO instanceof o.ToolUnitVO && this.draggedUnitVO.hasLimitedAmountPerWave && !this.draggedUnitVO.isSupportTool && !this.fightItemVO.isSameType(this.draggedUnitVO) && this.isMaxAmountPerWaveReached(this.draggedUnitVO)) {
+        return;
       }
+      if (this._containerVO.exceedsSupportToolSlotLimit(this.fightItemVO, this.draggedUnitVO)) {
+        return;
+      }
+      if (this.fightItemVO.isFree() && this._containerVO.isFull) {
+        return;
+      }
+      this.editUnitSlot();
     }
-    return t;
+    l.AttackDialogController.getInstance().stopDrag();
   };
-  AttackDialogStartAttackCheck.getSelectedLordVO = function () {
-    return y.AttackDialogController.getInstance().selectedLord;
+  AttackDialogDragTarget.prototype.editUnitSlot = function () {
+    var e = this.draggedUnitVO instanceof o.ToolUnitVO && this.fightItemVO.isSameType(this.draggedUnitVO);
+    var t = Number.MAX_VALUE;
+    if (this.draggedUnitVO instanceof o.ToolUnitVO && this.draggedUnitVO.amountPerWave > -1 && this._waveIndex > -1) {
+      t = n.int(this.draggedUnitVO.amountPerWave - this.attackVO.army.getWaveByID(this._waveIndex).getSumOfToolsByTool(this.draggedUnitVO) + this.fightItemVO.getAmount());
+    }
+    if (this.draggedUnitVO instanceof o.ToolUnitVO && this.draggedUnitVO.isSupportTool) {
+      t = this.draggedUnitVO.amountPerWave;
+    }
+    var i = new r.CastleBasicAddUnitsDialogProperties(this.draggedUnitVO, this.bindFunction(this.changeItemAmount), this.fightItemVO, e, this._containerVO, t);
+    i.targetAreaType = this.attackVO.targetArea.areaType;
+    a.CastleDialogHandler.getInstance().registerDefaultDialogs(s.CastleAttackAddUnitsDialog, i);
   };
-  Object.defineProperty(AttackDialogStartAttackCheck, "attackInfoVO", {
+  AttackDialogDragTarget.prototype.changeItemAmount = function (e, t, i) {
+    c.AttackDialogHelper.changeUnitItemAmount(this.attackVO.unitInventory, e, t, i);
+  };
+  AttackDialogDragTarget.prototype.onRollOut = function (e) {
+    if (this.draggedUnitVO && this.isFittingSlot()) {
+      this._disp.mc_drag_default.visible = true;
+      this._disp.mc_drag_active.visible = false;
+    } else {
+      this._disp.mc_drag_default.visible = false;
+      this._disp.mc_drag_active.visible = false;
+    }
+  };
+  AttackDialogDragTarget.prototype.onRollOver = function (e) {
+    if (this.draggedUnitVO && this.isFittingSlot()) {
+      this._disp.mc_drag_default.visible = false;
+      this._disp.mc_drag_active.visible = true;
+    } else {
+      this._disp.mc_drag_default.visible = false;
+      this._disp.mc_drag_active.visible = false;
+    }
+  };
+  AttackDialogDragTarget.prototype.onStartDrag = function () {
+    if (this.isFittingSlot()) {
+      this._disp.mc_drag_default.visible = true;
+    }
+  };
+  AttackDialogDragTarget.prototype.onStopDrag = function () {
+    this._disp.mc_drag_default.visible = false;
+    this._disp.mc_drag_active.visible = false;
+  };
+  AttackDialogDragTarget.prototype.isMaxAmountPerWaveReached = function (e) {
+    return e.amountPerWave <= this.attackVO.army.getWaveByID(this._waveIndex).getSumOfToolsByTool(e) + (this.attackVO.supportItemContainer ? this.attackVO.supportItemContainer.getAmountOfToolInContainer(e) : 0);
+  };
+  AttackDialogDragTarget.prototype.isFittingSlot = function () {
+    return this.draggedUnitVO.isToolForSlotType(this.fightItemVO.slotType) && this.fightItemVO.isUnlocked();
+  };
+  Object.defineProperty(AttackDialogDragTarget.prototype, "draggedUnitVO", {
     get: function () {
-      return y.AttackDialogController.getInstance().attackVO;
+      return l.AttackDialogController.getInstance().draggedUnitVO;
     },
     enumerable: true,
     configurable: true
   });
-  AttackDialogStartAttackCheck.hideDialog = function () {
-    y.AttackDialogController.getInstance().hideDialog.dispatch();
-  };
-  AttackDialogStartAttackCheck.__initialize_static_members = function () {};
-  return AttackDialogStartAttackCheck;
+  Object.defineProperty(AttackDialogDragTarget.prototype, "attackVO", {
+    get: function () {
+      return l.AttackDialogController.getInstance().attackVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AttackDialogDragTarget.prototype, "fightItemVO", {
+    get: function () {
+      return this._containerVO.items[this._index];
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AttackDialogDragTarget;
 }();
-exports.AttackDialogStartAttackCheck = b;
-o.classImplementsInterfaces(b, "ICollectableRendererList");
-b.__initialize_static_members();
+exports.AttackDialogDragTarget = p;

@@ -2,65 +2,110 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./210.js");
-var c = require("./13.js");
-var u = require("./15.js");
-var d = require("./85.js");
-var p = require("./4.js");
-var h = function (e) {
-  function ScoreEventGlobalLeaderBoardDialog(t) {
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./26.js");
+var r = require("./4.js");
+var l = require("./9.js");
+var c = require("./20.js");
+var u = require("./1780.js");
+var d = require("./1781.js");
+var p = require("./3795.js");
+var h = require("./8.js");
+var g = require("./11.js");
+var C = require("./1782.js");
+var _ = require("./1783.js");
+var m = function (e) {
+  function AGlobalLeaderBoardDialog(t) {
     return e.call(this, t) || this;
   }
-  n.__extends(ScoreEventGlobalLeaderBoardDialog, e);
-  ScoreEventGlobalLeaderBoardDialog.prototype.initLoaded = function (t = null) {
+  n.__extends(AGlobalLeaderBoardDialog, e);
+  AGlobalLeaderBoardDialog.prototype.initLoaded = function (t = null) {
     e.prototype.initLoaded.call(this, t);
-    var i = this.textFieldManager.registerTextField(this.dialogDisp.txt_allianceName, new r.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_alliance_name_default")));
-    var n = this.textFieldManager.registerTextField(this.dialogDisp.txt_points, new r.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_highscore_totalPoints")));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_name, new r.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("dialog_highscore_name")));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_server, new r.TextVO(c.TextHelper.toUpperCaseLocaSafeTextId("ranking_server"))).verticalAlign = o.GGSVerticalAlign.BOTTOM;
-    this.textFieldManager.registerTextField(this.dialogDisp.mc_list.txt_empty, new s.LocalizedTextVO("dialog_highscore_noRankings"));
-    this.dialogDisp.icon_rank.toolTipText = "rankingGlobal";
-    this.dialogDisp.help_allianceName.toolTipText = "tooltip_rankingGlobal_alliance";
-    this.dialogDisp.help_points.visible = false;
-    this.dialogDisp.help_allianceName.x = i.x + i.textWidth + this.dialogDisp.help_allianceName.width;
-    this.dialogDisp.help_points.x = n.x + n.textWidth + this.dialogDisp.help_points.width;
+    h.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help, this.dialogDisp.btn_rewards], c.ClickFeedbackButtonHover);
+    this._globalLeaderBoardComponent = new d.GlobalLeaderBoardComponent(this.dialogDisp, this.getListItemClass(), this.getDefaultSearchString());
   };
-  ScoreEventGlobalLeaderBoardDialog.prototype.showLoaded = function (t = null) {
+  AGlobalLeaderBoardDialog.prototype.showLoaded = function (t = null) {
     e.prototype.showLoaded.call(this, t);
-    this.updatePoints();
-    u.CastleBasicController.getInstance().addEventListener(l.CastleScoreEventEvent.UPDATE_POINTS, this.bindFunction(this.updatePoints));
+    this._globalLeaderBoardComponent.init(this.listType, new p.GlobalLeaderBoardLeagueComponent(this.dialogDisp, this.eventID));
+    this._globalLeaderBoardComponent.onShow();
+    this._globalLeaderBoardComponent.openRewardDialogSignal.add(this.bindFunction(this.showRewards));
+    r.CastleModel.specialEventData.addEventListener(s.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveSpecialEvent));
   };
-  ScoreEventGlobalLeaderBoardDialog.prototype.hideLoaded = function (t = null) {
+  AGlobalLeaderBoardDialog.prototype.hideLoaded = function (t = null) {
     e.prototype.hideLoaded.call(this, t);
-    u.CastleBasicController.getInstance().removeEventListener(l.CastleScoreEventEvent.UPDATE_POINTS, this.bindFunction(this.updatePoints));
+    if (this._globalLeaderBoardComponent) {
+      this._globalLeaderBoardComponent.onHide();
+      this._globalLeaderBoardComponent.openRewardDialogSignal.removeAll();
+    }
+    r.CastleModel.specialEventData.removeEventListener(s.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRemoveSpecialEvent));
   };
-  ScoreEventGlobalLeaderBoardDialog.prototype.updatePoints = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_ownPoints, new d.CastleLocalizedNumberVO(this.eventVO.ownPoints, {
-      compactThreshold: 1000000
-    }));
+  AGlobalLeaderBoardDialog.prototype.onRemoveSpecialEvent = function (e) {
+    if (e.specialEventVO.eventId == this.eventID) {
+      this.hide();
+    }
   };
-  Object.defineProperty(ScoreEventGlobalLeaderBoardDialog.prototype, "leagueTypeID", {
+  AGlobalLeaderBoardDialog.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    switch (t.target) {
+      case this.dialogDisp.btn_close:
+        this.hide();
+        break;
+      case this.dialogDisp.btn_help:
+        this.showHelp();
+    }
+  };
+  AGlobalLeaderBoardDialog.prototype.showHelp = function () {
+    l.CastleDialogHandler.getInstance().showHelper("", a.Localize.text(this.helpTextId));
+  };
+  AGlobalLeaderBoardDialog.prototype.showRewards = function (e = -1) {
+    l.CastleDialogHandler.getInstance().registerDefaultDialogs(_.GlobalLeaderboardRankingRankingRewardsDialog, new C.DonationRankingRewardsDialogProperties(this.rewardDialogTextID, this.getGlobalLeaderBoardRewards(e)));
+  };
+  AGlobalLeaderBoardDialog.prototype.getListItemClass = function () {
+    return u.DefaultGlobalLeaderBoardItem;
+  };
+  AGlobalLeaderBoardDialog.prototype.getDefaultSearchString = function () {
+    return "dialog_highscore_name_alliance_search";
+  };
+  Object.defineProperty(AGlobalLeaderBoardDialog.prototype, "helpTextId", {
     get: function () {
-      return this.eventVO.leagueID;
+      return "help_highscore";
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(ScoreEventGlobalLeaderBoardDialog.prototype, "eventVO", {
+  Object.defineProperty(AGlobalLeaderBoardDialog.prototype, "rewardDialogTextID", {
     get: function () {
-      return p.CastleModel.specialEventData.getActiveEventByEventId(this.eventID);
+      return "";
     },
     enumerable: true,
     configurable: true
   });
-  ScoreEventGlobalLeaderBoardDialog.prototype.getGlobalLeaderBoardRewards = function (e = -1) {
-    return this.eventVO.getGlobalLeaderBoardRewards(e);
+  AGlobalLeaderBoardDialog.prototype.getGlobalLeaderBoardRewards = function (e = -1) {
+    return [];
   };
-  return ScoreEventGlobalLeaderBoardDialog;
-}(require("./3790.js").AGlobalLeaderBoardDialog);
-exports.ScoreEventGlobalLeaderBoardDialog = h;
-a.classImplementsInterfaces(h, "ICollectableRendererList");
+  Object.defineProperty(AGlobalLeaderBoardDialog.prototype, "eventID", {
+    get: function () {
+      return -1;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AGlobalLeaderBoardDialog.prototype, "listType", {
+    get: function () {
+      return -1;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AGlobalLeaderBoardDialog.prototype, "leagueTypeID", {
+    get: function () {
+      return -1;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AGlobalLeaderBoardDialog;
+}(g.CastleExternalDialog);
+exports.AGlobalLeaderBoardDialog = m;
+o.classImplementsInterfaces(m, "ICollectableRendererList");

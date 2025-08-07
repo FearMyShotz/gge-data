@@ -1,80 +1,33 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./5.js");
-var a = require("./6.js");
-var s = require("./4.js");
-var r = function (e) {
-  function ACollectableItemEquipmentVO(t = 0) {
-    var i = this;
-    i._id = -1;
-    CONSTRUCTOR_HACK;
-    return i = e.call(this, t) || this;
-  }
-  n.__extends(ACollectableItemEquipmentVO, e);
-  ACollectableItemEquipmentVO.prototype.updateEquipmentVO = function () {
-    this.equipmentVO = s.CastleModel.equipData.getEquipmentByUniqueID(this.id, true);
-  };
-  ACollectableItemEquipmentVO.prototype.equals = function (t) {
-    return e.prototype.equals.call(this, t) && this.id == t.id;
-  };
-  ACollectableItemEquipmentVO.prototype.clone = function () {
-    var t = e.prototype.clone.call(this);
-    t.equipmentVO = this.equipmentVO;
-    return t;
-  };
-  ACollectableItemEquipmentVO.prototype.getDescriptionTextId = function () {
-    if (this.equipmentVO && this.equipmentVO.visualRareID == o.EquipmentConst.RARENESS_UNIQUE) {
-      return this.equipmentVO.extraTextId;
-    }
-    return "randomEquipment_short_info";
-  };
-  ACollectableItemEquipmentVO.prototype.getNameTextId = function () {
-    if (this.equipmentVO) {
-      return this.equipmentVO.nameString;
+var n = function () {
+  function ClientConstLegendSkills() {}
+  ClientConstLegendSkills.getGenericTextReplacementIDForEffectType = function (e) {
+    if (ClientConstLegendSkills.GROUP_ABSOLUTE_SKILLS.indexOf(e) > -1) {
+      return "";
     } else {
-      return e.prototype.getNameTextId.call(this);
+      return o.GenericTextIds.VALUE_PERCENTAGE;
     }
   };
-  ACollectableItemEquipmentVO.prototype.isCombineAbleWith = function (e) {
-    return false;
+  ClientConstLegendSkills.getBBColorCode = function (e) {
+    return e.replace("0x", "#");
   };
-  Object.defineProperty(ACollectableItemEquipmentVO.prototype, "equipmentVO", {
-    get: function () {
-      return this._equipmentVO;
-    },
-    set: function (e) {
-      this._equipmentVO = e;
-      this._id = a.int(e ? e.uniqueID : -1);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(ACollectableItemEquipmentVO.prototype, "id", {
-    get: function () {
-      return this._id;
-    },
-    set: function (e) {
-      this._id = e;
-      this.updateEquipmentVO();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  ACollectableItemEquipmentVO.prototype.getSearchString = function () {
-    var e = "";
-    e += this.equipmentVO.nameString;
-    e += this.equipmentVO.typeDescriptionText;
-    e += this.equipmentVO.bonusDescriptionText;
-    if (this.equipmentVO.gemVO) {
-      e += this.equipmentVO.gemVO.bonusDescriptionText;
-    }
-    if (this.equipmentVO.setVO) {
-      e += this.equipmentVO.setVO.name;
-    }
-    return e;
+  ClientConstLegendSkills.getHexColorValue = function (e) {
+    return a.int(e);
   };
-  return ACollectableItemEquipmentVO;
-}(require("./96.js").ACollectableItemVO);
-exports.ACollectableItemEquipmentVO = r;
+  ClientConstLegendSkills.__initialize_static_members = function () {
+    ClientConstLegendSkills.GROUP_ABSOLUTE_SKILLS = [s.CastleLegendSkillEffectsEnum.ADDITIONAL_WAVE, s.CastleLegendSkillEffectsEnum.ADDITIONAL_ATTACK_TOOL_AMOUNT_FLANK, s.CastleLegendSkillEffectsEnum.LOOT_CAPACITY_BONUS, s.CastleLegendSkillEffectsEnum.SPY_AMOUNT_BONUS, s.CastleLegendSkillEffectsEnum.ADDITIONAL_DEFENSE_TOOL_SLOT_FLANK, s.CastleLegendSkillEffectsEnum.HIDEOUT_CAPACITY_BONUS];
+  };
+  ClientConstLegendSkills.COLORCODE_RED = "#F86D6D";
+  ClientConstLegendSkills.COLORCODE_LIGHTWHITE = "#F2F2F2";
+  ClientConstLegendSkills.COLORCODE_GREEN = "#A0CC3A";
+  ClientConstLegendSkills.COLORCODE_YELLOW = "#F9BB23";
+  ClientConstLegendSkills.COLORCODE_TEXT = "#CCCCCC";
+  return ClientConstLegendSkills;
+}();
+exports.ClientConstLegendSkills = n;
+var o = require("./2.js");
+var a = require("./6.js");
+var s = require("./214.js");
+n.__initialize_static_members();

@@ -1,164 +1,133 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./100.js");
-var o = require("./3.js");
-var a = require("./1.js");
-var s = createjs.MovieClip;
-var r = function () {
-  function CastleLegendSkillTierComponent(e, t) {
-    this._height = 0;
-    this._disp = new s();
-    this._tierNode = e;
-    this._treeID = t;
-    this.createTier();
-    this.updateTier();
+var n = require("./0.js");
+var o = require("./23.js");
+var a = require("./23.js");
+var s = require("./3.js");
+var r = require("./3.js");
+var l = require("./3.js");
+var c = require("./2.js");
+var u = require("./35.js");
+var d = require("./9.js");
+var p = require("./8.js");
+var h = require("./82.js");
+var g = require("./47.js");
+var C = require("./59.js");
+var _ = require("./1453.js");
+var m = require("./529.js");
+var f = require("./30.js");
+var O = require("./2675.js");
+var E = require("./2676.js");
+var y = require("./151.js");
+var b = require("./4.js");
+var D = require("./448.js");
+var I = require("./20.js");
+var T = require("./42.js");
+var v = require("./16.js");
+var S = require("./13.js");
+var A = function (e) {
+  function CastleLegendSkillClassicSublayer(t) {
+    var i = e.call(this, t) || this;
+    i._itxt_title = i.textFieldManager.registerTextField(i.subLayerDisp.txt_title, new r.TextVO(""));
+    i._itxt_pointsLeft = i.textFieldManager.registerTextField(i.subLayerDisp.mc_points2.txt_value, new s.LocalizedNumberVO(0));
+    i._itxt_pointsSpent = i.textFieldManager.registerTextField(i.subLayerDisp.mc_points1.txt_value, new s.LocalizedNumberVO(0));
+    i.subLayerDisp.mc_points1.mouseChildren = false;
+    i.subLayerDisp.mc_points2.mouseChildren = false;
+    i.textFieldManager.registerTextField(i.subLayerDisp.btn_reset.txt_label, new r.TextVO(S.TextHelper.toUpperCaseLocaSafeTextId("dialog_legendTemple_reset")));
+    p.ButtonHelper.initButtons([i.subLayerDisp.btn_reset], I.ClickFeedbackButtonHover);
+    var n = new g.SimpleScrollVO().initByParent(i.subLayerDisp.mc_slider).addMouseWheelElements([i.subLayerDisp]);
+    var o = new C.DynamicSizeScrollStrategyVertical(true, i.subLayerDisp.mc_ItemContainer.mask.height);
+    i.scrollComponent = new h.ModernSliderScrollComponent(n, o, true);
+    c.MovieClipHelper.clearMovieClip(i.subLayerDisp.mc_ItemContainer);
+    return i;
   }
-  CastleLegendSkillTierComponent.prototype.createTier = function () {
-    var e;
-    var t;
-    this._skillItems = new Map();
-    this._height = 0;
-    var i = 0;
-    var s = 0;
-    for (var r = 0, c = this._tierNode.childs; r < c.length; r++) {
-      var d = c[r];
-      if (d !== undefined) {
-        if ((e = this.legendSkillData.getCurrentSkillInGroup(this._treeID, this._tierNode.id, d.id)).isSpecialSkill()) {
-          if (i != 0) {
-            u.error("SPECIAL SKILL HAS TO BE ON TOP");
+  n.__extends(CastleLegendSkillClassicSublayer, e);
+  CastleLegendSkillClassicSublayer.prototype.show = function (t) {
+    e.prototype.show.call(this, t);
+    this.treeComponent = new _.CastleLegendSkillTreeComponent(t.sublayerID);
+    this.subLayerDisp.mc_ItemContainer.addChild(this.treeComponent.disp);
+    this.scrollComponent.init(0, this.treeComponent.height - this.subLayerDisp.mc_ItemContainer.mask.height, CastleLegendSkillClassicSublayer.SCROLL_STEP_PIXELS, CastleLegendSkillClassicSublayer.SCROLL_STEP_PIXELS);
+    this.scrollComponent.show();
+    this.scrollComponent.onScrollSignal.add(this.bindFunction(this.onScrollValueChange));
+    this.updateResetButton();
+    this.updateText();
+    this.controller.addEventListener(m.LegendSkillsDataEvent.LEGEND_SKILLS_UPDATED, this.bindFunction(this.onLegendSkillsUpdated));
+  };
+  CastleLegendSkillClassicSublayer.prototype.hide = function () {
+    e.prototype.hide.call(this);
+    if (this.treeComponent) {
+      this.treeComponent.hide();
+      c.MovieClipHelper.clearMovieClip(this.subLayerDisp.mc_ItemContainer);
+    }
+    if (this.scrollComponent) {
+      this.scrollComponent.hide();
+      this.scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScrollValueChange));
+    }
+    this.controller.removeEventListener(m.LegendSkillsDataEvent.LEGEND_SKILLS_UPDATED, this.bindFunction(this.onLegendSkillsUpdated));
+  };
+  CastleLegendSkillClassicSublayer.prototype.updateResetButton = function () {
+    p.ButtonHelper.enableButton(this.subLayerDisp.btn_reset, this.legendSkillData.userSkills.length > 0);
+  };
+  CastleLegendSkillClassicSublayer.prototype.updateText = function () {
+    var e = this.legendSkillData.getSpentPoints(this._params.sublayerID);
+    var t = this.legendSkillData.skillPointsLeft;
+    this._itxt_title.textContentVO.stringValue = this._params.sublayerID == D.CastleLegendSkillDialog.SUBLAYER_ATTACK ? S.TextHelper.toUpperCaseLocaSafeTextId("dialog_legendTemple_titleAttack") : S.TextHelper.toUpperCaseLocaSafeTextId("dialog_legendTemple_titleDefence");
+    this._itxt_title.verticalAlign = T.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    this._itxt_pointsLeft.textContentVO.numberValue = t;
+    this._itxt_pointsSpent.textContentVO.numberValue = e;
+    this._itxt_pointsLeft.color = this.legendSkillData.skillPointsLeft > 0 ? v.ClientConstColor.FONT_INSUFFICIENT_COLOR : v.ClientConstColor.FONT_DEFAULT_COLOR;
+    this.subLayerDisp.mc_points2.toolTipText = {
+      t: "dialog_legendTemple_counter",
+      p: [t]
+    };
+    var i = this._params.sublayerID == D.CastleLegendSkillDialog.SUBLAYER_ATTACK ? "dialog_legendTemple_attackCounter" : "dialog_legendTemple_defenseCounter";
+    this.subLayerDisp.mc_points1.toolTipText = {
+      t: i,
+      p: [e]
+    };
+  };
+  CastleLegendSkillClassicSublayer.prototype.onLegendSkillsUpdated = function (e) {
+    this.updateResetButton();
+    this.updateText();
+    if (this.treeComponent) {
+      this.treeComponent.updateTree();
+    }
+  };
+  CastleLegendSkillClassicSublayer.prototype.onScrollValueChange = function (e) {
+    a.TweenMax.killTweensOf(this.treeComponent.disp);
+    a.TweenMax.to(this.treeComponent.disp, 0.2, {
+      y: -this.scrollComponent.currentValue,
+      ease: o.Power1.easeOut
+    });
+  };
+  CastleLegendSkillClassicSublayer.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (p.ButtonHelper.isButtonEnabled(t.target)) {
+      switch (t.target) {
+        case this.subLayerDisp.btn_reset:
+          if (this.legendSkillData.newResetTimeStamp > f.CachedTimer.getCachedTimer()) {
+            d.CastleDialogHandler.getInstance().registerDefaultDialogs(O.CastleLegendSkillCooldownDialog, new E.CastleLegendSkillCooldownDialogProperties(this.bindFunction(this.onConfirmReset)));
+          } else {
+            d.CastleDialogHandler.getInstance().registerDefaultDialogs(y.CastleStandardYesNoDialog, new c.BasicStandardYesNoDialogProperties(l.Localize.text("legendCooldown_skip_copy_header"), l.Localize.text("legendCooldown_skip_copy"), this.bindFunction(this.onConfirmReset)));
           }
-          this._specialTierContainer = new (a.getDefinitionByName("LegendSkillTierContainer"))();
-          this._specialTierContainer.mc_tier.visible = false;
-          this._specialTierContainer.y = this._height;
-          this._disp.addChild(this._specialTierContainer);
-          (t = new l.CastleLegendSkillItem(e)).dispContainer.x = CastleLegendSkillTierComponent.FIRST_SKILL_X + CastleLegendSkillTierComponent.SKILL_SPACING_X * 2;
-          t.dispContainer.y = CastleLegendSkillTierComponent.FIRST_SKILL_Y;
-          this._skillItems.set(d.id, t);
-          this._specialTierContainer.addChild(t.dispContainer);
-          this._height = CastleLegendSkillTierComponent.SKILL_SPACING_Y + CastleLegendSkillTierComponent.TIER_SPACING_Y;
-        } else {
-          if (i == 0) {
-            this._tierContainer = new (a.getDefinitionByName("LegendSkillTierContainer"))();
-            this._tierContainer.y = this._height;
-            this._disp.addChild(this._tierContainer);
-            this.textFieldManager.registerTextField(this._tierContainer.mc_tier.txt_tier, new o.NumberVO(this._tierNode.id), new n.InternalGGSTextFieldConfigVO(true));
-            s = this._specialTierContainer ? this._tierNode.childs.length - 1 : this._tierNode.childs.length;
-          }
-          var p = Math.floor(i / CastleLegendSkillTierComponent.SKILLS_PER_ROW);
-          var h = Math.min(5, s - p * CastleLegendSkillTierComponent.SKILLS_PER_ROW);
-          var g = (CastleLegendSkillTierComponent.SKILLS_PER_ROW - h) * (CastleLegendSkillTierComponent.SKILL_SPACING_X * 0.5);
-          var C = e;
-          var _ = !!C && (C.hasBuildingEffect || C.hasUnitEffect);
-          (t = new l.CastleLegendSkillItem(e, false, _)).dispContainer.x = g + CastleLegendSkillTierComponent.FIRST_SKILL_X + i % CastleLegendSkillTierComponent.SKILLS_PER_ROW * CastleLegendSkillTierComponent.SKILL_SPACING_X;
-          t.dispContainer.y = CastleLegendSkillTierComponent.FIRST_SKILL_Y + Math.floor(i / CastleLegendSkillTierComponent.SKILLS_PER_ROW) * CastleLegendSkillTierComponent.SKILL_SPACING_Y;
-          this._skillItems.set(d.id, t);
-          this._tierContainer.addChild(t.dispContainer);
-          i++;
-        }
-      }
-    }
-    if (this._tierContainer) {
-      var m = (Math.floor((i - 1) / 5) + 1) * CastleLegendSkillTierComponent.SKILL_SPACING_Y;
-      this._tierContainer.mc_max.height = m;
-      this._tierContainer.bg.height = m;
-      this._tierContainer.mc_locked.height = m;
-      this._height += m;
-    }
-  };
-  CastleLegendSkillTierComponent.prototype.updateTier = function () {
-    var e;
-    var t = this.legendSkillData.isTierUnlockedBySkillsSelectable(this._treeID, this._tierNode.id);
-    var i = this.legendSkillData.isTierUnlocked(this._treeID, this._tierNode.id) && !this._tierNode.isPreview && t;
-    var n = this.legendSkillData.isTierUnlocked(this._treeID, this._tierNode.id + 1) && !this._tierNode.isPreview;
-    console.log("treeID: " + this._treeID + ", id: " + this.tierNode.id + ", isTierUnlocked: " + i + " , isTierStartable: " + t + ", isNextUnlocked: " + n);
-    if (this._specialTierContainer) {
-      this._specialTierContainer.mc_locked.visible = !i;
-      this._specialTierContainer.mc_max.visible = i;
-    }
-    if (this._tierContainer) {
-      this._tierContainer.mc_locked.visible = !i;
-      this._tierContainer.mc_tier.mc_lock.visible = !i;
-      this._tierContainer.mc_max.visible = i && n;
-      this._tierContainer.mc_tier.mc_active.visible = false;
-    }
-    for (var o = 0, a = this._tierNode.childs; o < a.length; o++) {
-      var s = a[o];
-      if (s !== undefined) {
-        e = this.legendSkillData.getCurrentSkillInGroup(this._treeID, this._tierNode.id, s.id);
-        this._skillItems.get(s.id).setSkillInfo(e);
-        this._skillItems.get(s.id).show();
-        this._skillItems.get(s.id).checkForTooltipUpdate();
-        if (!e.isSpecialSkill()) {
-          if (this._skillItems.get(s.id).isActive) {
-            this._tierContainer.mc_tier.mc_active.visible = true;
-          }
-        }
       }
     }
   };
-  CastleLegendSkillTierComponent.prototype.show = function () {
-    this._disp.visible = true;
-    for (var e = 0, t = Array.from(this._skillItems.values()); e < t.length; e++) {
-      var i = t[e];
-      if (i) {
-        i.show();
-      }
-    }
+  CastleLegendSkillClassicSublayer.prototype.onConfirmReset = function (e = null) {
+    this.legendSkillData.requestSkillReset();
   };
-  CastleLegendSkillTierComponent.prototype.hide = function () {
-    this._disp.visible = false;
-    for (var e = 0, t = Array.from(this._skillItems.values()); e < t.length; e++) {
-      var i = t[e];
-      if (i) {
-        i.hide();
-      }
-    }
+  CastleLegendSkillClassicSublayer.prototype.showHelp = function () {
+    d.CastleDialogHandler.getInstance().showHelper("", l.Localize.text("dialog_legendTemple_help"));
   };
-  Object.defineProperty(CastleLegendSkillTierComponent.prototype, "height", {
+  Object.defineProperty(CastleLegendSkillClassicSublayer.prototype, "legendSkillData", {
     get: function () {
-      return this._height;
+      return b.CastleModel.legendSkillData;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleLegendSkillTierComponent.prototype, "disp", {
-    get: function () {
-      return this._disp;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleLegendSkillTierComponent.prototype, "legendSkillData", {
-    get: function () {
-      return c.CastleModel.legendSkillData;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleLegendSkillTierComponent.prototype, "textFieldManager", {
-    get: function () {
-      return u.GoodgameTextFieldManager.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleLegendSkillTierComponent.prototype, "tierNode", {
-    get: function () {
-      return this._tierNode;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleLegendSkillTierComponent.FIRST_SKILL_X = 206;
-  CastleLegendSkillTierComponent.FIRST_SKILL_Y = 60;
-  CastleLegendSkillTierComponent.SKILL_SPACING_X = 114;
-  CastleLegendSkillTierComponent.SKILL_SPACING_Y = 120;
-  CastleLegendSkillTierComponent.TIER_SPACING_Y = 4;
-  CastleLegendSkillTierComponent.SKILLS_PER_ROW = 5;
-  return CastleLegendSkillTierComponent;
-}();
-exports.CastleLegendSkillTierComponent = r;
-var l = require("./993.js");
-var c = require("./4.js");
-var u = require("./2.js");
+  CastleLegendSkillClassicSublayer.SCROLL_STEP_PIXELS = 124;
+  return CastleLegendSkillClassicSublayer;
+}(u.CastleDialogSubLayer);
+exports.CastleLegendSkillClassicSublayer = A;

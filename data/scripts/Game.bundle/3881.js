@@ -1,16 +1,185 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function LoremIpsum() {}
-  LoremIpsum.__initialize_static_members = function () {
-    LoremIpsum.LATIN = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.At vero eos et accusam et justo duo dolores et ea rebum.";
-    LoremIpsum.CYRILLIC = "Эю жят маиорюм молэчтёэ конкыптам, жят ед хабэо путынт конвынёры. Чтэт конклььюжионэмквуэ эжт ад, зюаз хабымуч фачтидёе ан дуо. Йн шэа эним жэмпэр долорэж. Нэ жольюта минемум еюж.Жэмпэр омниюм емпыдит эи ючю. Но квюо льаорыыт докэндё льебэравичсы. Ед прё жанктюч пэржыкюти форынчйбюж. Вим ад шапэрэт аккузата. Эа вэртырэм трактатоз кюм.Вяш эррэм альбюкиюс ут, ыт еюж заэпы молыжтйаы. Йн апэриам хонэзтатёз квюо. Омнеж рэгяонэ дйжпютандо эю вэл. Пэр ку хомэро нюлльам кончэтытюр, ты пробо рэктэквуэ пэржыкюти эжт. Квюод тальэ хёз ад, граэкйж торквюатоз хаж но, нэ ыюм чтэт жолюм волуптюа. Жят жольюта витюпырата ку, ты рыпудяары вюльпутаты квюо, еракюндйа дежпютатионй ку квюо.Ты еюж квюаыквуэ ёнэрмйщ мэдиокретатым, алёа коммодо долорюм эи квуй, вяш хабымуч ножтрюм модыратиюз ку. Ан декам ажжынтиор зэнтынтиаэ мэя, мэль йн апэряря аккузата. Мыа долорэм фэюгаят ат, экз ыррор инимёкюж эож. Зыд ад дэлььынётё рыфэррэнтур зюжкепиантюр. Ридэнж рэгяонэ опортэат ат жят.Ад дёкант оффэндйт опортэры дуо, ут шэа квюаыквуэ дэльэнйт, вэл ырант пырфэкто зальутанде ут. Эффикеэнди дежпютатионй мэя ад, хёз вёжи коммюны эа. Вэрыар вэртырэм аккюжамюз ан вэл, ад пожжэ зальутанде инзтруктеор эож. Молэчтёэ факильизиж окюррырэт но дуо, векж тымпор путынт дэлььякатезшимя ад.Эи шэа жюмо диам шынчебюз, вёжи ипзум форынчйбюж ты вим. Корпора ёудёкабет ылоквюэнтиам ут хаж. Эож ат пюрто новум мэнандря. Прё квюач аликвюип янжольэнж эи.Ты эож ыпикурэи конкльюдатюрквюэ. Эю эжт аугюэ маиорюм, эи атоморюм еракюндйа хаж, жят эа мальорум дёжкэрэ импэрдеэт. Ыам дйкит аликвюип пэрчёус ыт. Нам дикунт квюаыквуэ ат.Зыд мовэт тымпор пэрчёус ан, мыа брутэ пльакырат интыллыгам ут. Вэл ыльит атквюе ёнанй экз, квуй йн кашы щольыат, эа лудуз мэльёуз фэугяат мэль. Но ючю диам чэнзэрет дигнижжим. Ыам дыкоры адмодум эа, ты льаорыыт глориатюр эффякиантур мэя. Вэл едквюэ прёнкипыз ед.Прё пробо продыжщэт льебэравичсы эю. Брутэ окюррырэт дежпютатионй нам эа, ан эним пэрпэтюа инзтруктеор вим, йн кибо мэльёуз хабымуч ючю. Ат векж трётанё жплэндидэ, нам унюм ёнанй но. Прё ёужто вэртырэм йн, ку хёз натюм рыквюы граэкйж. Ут тальэ мыдиокрым мэль, эа волютпат патриоквюы волуптариа кюм, эож ан фэугяат щуавятатэ. Векж эа витаэ граэко пэркйпет, ючю эи рыквюы рэктэквуэ.Эа лыгэндоч дыфяниэбаж пэр, ед путынт дэфянятйоныс квуй. Вим ан пырикюлёз инкедыринт тэмпорибуз, вим дэтракто конклььюжионэмквуэ ад, вэл эю лаборамюз конкльюдатюрквюэ. Брутэ ажжынтиор эож ад, ан дюиж ёнанй пауло прё. Квуй нэ алььтыра мэльиорэ консэквюат. Нэ квюоджё дэльэнйт фачтидёе вэл. Но пэр оратио ножтрюд пырфэкто, унюм харюм мэнандря эа вэл.";
-    LoremIpsum.GREEK = "Σαεπε λιβεραφισε σεα νε. Στετ μενανδρι ελωκυενθιαμ ατ φις. Μει φερεαρ προμπτα ιμπεδιτ ει. Πρι εξ λεγενδως αδιπισι, μεα ασυμ δεμωσριθυμ νεγλεγενθυρ ευ.Εσθ υνυμ ιδκυε δελενιτ συ. Κυι ατ μολλις νυσκυαμ. Σεθερος ελεστραμ νο φις, φιξ λαβωρε επισυρει αθωμωρυμ ιν. Ευμ ετ χινς αβχορρεανθ. Ενιμ λιβερ γραεσις ιδ σεδ, δομινγ φυισετ ηις συ, υτιναμ εξπεθενδις ιδ νες.Νε σωνφενιρε ερροριβυς μεα, φις φιρις δεφινιθιονεμ ατ, αδμοδυμ αππαρεατ συ πρω. Σιθ ιδ αυτεμ ορναθυς, αλικυαμ σαλυθανδι ελαβοραρετ εαμ ευ, συμ αδ δισιθ ηαβεμυς. Ευμ εξ ομνες κυαεστιο εξπετενδα, ιν σεδ φερρι λυσιλιυς περσεκυερις, ηας ει σολεατ μαλυισετ σωνσεκυαθ. Αλθερυμ φολυτπατ υθ εσθ, ετ σιβω εραντ οβλικυε φιμ. Δυο σολυμ ωπωρθεαθ ευριπιδις νο, συ υσυ νοσθρω απειριαν, εσθ νε φιθαε αυδιαμ σομπρεχενσαμ. Μει αλικυιδ φολυμυς σωνσθιτυθο αδ.Μει πωσε ινδοστυμ ρεπυδιανδαε ατ. Νε δυο φιδε ελιτρ μαλυισετ. Ινφενιρε λαβωραμυς ευ μει, ευ ασυσαθα ασεντιορ σεδ, κυο υθ ιυσθο πωσε φολυτπατ. Νεμωρε νονυμες οσυρρερεθ εα μελ. Κυι ευ πωσε νονυμυ αδφερσαριυμ, πρω λεγερε εξπεθενδις ιδ, υσυ ιδ ιριυρε φιφενδω σονσυλατυ. Σομμοδο δεφινιεβας φιμ νε.Δισθας αππαρεατ ινφιδυντ περ υθ, σινθ εξπλισαρι ιυς θε, κυαεκυε σεντεντιαε νο εαμ. Λαορεεθ αδμοδυμ σεα ευ. Αδμοδυμ αλβυσιυς ελαβοραρετ μελ ει. Ηας αδ φολυτπατ πχιλωσοπηια, εα κυο νυμκυαμ μεδιοσρεμ, εως φυγιθ ινφιδυντ ινσωρρυπτε ιδ. Ναμ αδ φισι γραεσε φολυμυς.Νε εσθ μινιμ φιερενθ. Κυαεκυε λαορεεθ σεα ετ, πρι αν μαγνα πρινσιπες δεφινιθιονεμ, ατ μελ λιβρις ωφφενδιθ. Ζριλ νωμιναφι περσεσυτι νε κυι, κυο διαμ πυθενθ πχαεδρυμ νο. Δισερετ μανδαμυς μεα εα, σιθ ταντας δεθραξιθ νο. Αυγυε ωφφενδιθ αν υσυ, αλια δισαμ νεγλεγενθυρ εως θε, τεμποριβυς δεφινιθιονεμ ιυς εξ.Δισαθ μνεσαρσχυμ εξ δυο, φερεαρ εξπλισαρι ιυς ατ. Μεα αν ασυμ φαλλι προδεσεθ. Ειυς σοντεντιωνες κυο ει. Ατ ευμ ιμπεδιτ προδεσεθ, εα υσυ δομινγ ασομμοδαρε. Ηις εξ κυωδ εραθ μελιυς, μαλις ομνεσκυε ρεπρεχενδυντ εαμ εα, μυνδι πριμις κυο ευ. Φερο φυγιθ ναμ ιν, δυο ινιμισυς περισυλα μεδιοσριθαθεμ εξ, δυο θε σωνσεκυαθ σονσεκυυντυρ. Σεα αδχυς κυανδο παρτεμ αν.Νε ηας ινανι σολετ. Σεδ δολωρυμ εφφισιανθυρ αδ, υθ ασυμ πωνδερυμ φολυπταθυμ συμ. Ιδκυε εραντ σεθερος υθ ιυς, ναμ ει φιφενδυμ σριπτορεμ. Ρεκυε μανδαμυς νο μεα. Κυο μυσιυς οπωρθερε μνεσαρσχυμ ευ, εαμ δισερε δισερετ λαορεεθ ετ.Πρωπριαε ωπωρθεαθ δισεντιας εσθ υθ, φελ παυλω σαλυθανδι αν, περ ετ δωσενδι περτιναξ. Μυνδι περσιπιθυρ εξ περ, υβικυε ελειφενδ ιν εως, σολυμ φυισετ περσεκυερις αν εως. Κυωτ σαλυταθυς ρεπρεχενδυντ συ μει. Ετ εσθ φασερ εκυιδεμ πραεσενθ. Ηας δελενιτ φιφενδυμ πχιλωσοπηια ευ.Ετ ιυδισο ιγνωθα φιθυπεραθα ναμ, υλλυμ ιντελλεγεβαθ εως εα. Σενσεριτ ελαβοραρετ ινστρυσθιορ υσυ αν, εα κυαεστιο τινσιδυνθ φιμ. Σεδ ιυδισαβιτ σριβενθυρ ιδ, μει σομμυνε φορενσιβυς ετ, εξ ηας σολετ ομνεσκυε σπλενδιδε. Ιν μυτατ φολυπθατιβυς σεδ. Εα ρεβυμ πορρω λυπταθυμ εσθ.";
-    LoremIpsum.JAPANESE = "供参ぽ寿材ぱ雪横ネニ広治サヨナフ金彩セワ実装サア成率ウクマ早8牧よぜ生急ゃそげ敗業勢くにト家夢き京雑ノ越78退画レ止条ユ集鳥テイロ稿考響彼ろぐがで。搭フもよれ対休購リアテツ去記わし期定ヱ応8表9厘アタ内胴ヤツ地連ケヨシタ定軽進党こ者嗅ろあっほ。意はずべ版景ょ前39多望ぎたンょ日副まげぶ妥桃写ぎちが題察シ型補ぱ国難カ健開しやん目提ぼスみ大匹恒桜ルお。級ちぴけろ無主手ずゆそ正譜いむ志1見じさが皇61愛カト入貿ねれきえ百証ヤ能時なうす情防公そな質亨拙淑きよ。住トエハ両哲ンリイ投伊ヱ野世おてイで儲51没ネムヱ一見統ツトヱ世銀ゃ要匠3行表ユラ初提セ活助特ルメラ親主開リ低政っクぶで解度ン料代トちな。転ケテ意象ヤ探必沢ケクシ真87出新ユテイ写提ワ読英う子者るわ月写フケ虎岡てま書毎んがでか浪彫ぶぎル。踏なばど南備サオテ今千最ゃ職棋しあル母飲にづラろ放料リゃよは盤97未国エム連導者般つは就組壁妻ほく。途ヤテス電95自体チヱネヨ酔騒クげと倒毎み旨米ソタ病済テラ決公メロコ院夏ぽり検6位がに定体とへ災問ナメ事止ろぐ補験の芸偶シハセニ掲山やにずむ。百みぐい結必ぽしぶイ新問囲ラノルト所面10芸レ側要ラチ興退条ヤ植提えぱがり担際ヒロウ下3底肉位誠むせレ。成アリモユ紙権転とあ統場タエヲハ確界ぽ個掛言よに座差わゆう起催ハ県業今ヒ手多リネツ映位み上38速くか心際医ヨネワ更込むわく灰知しフべち。知レたおい事創ルどず出週聞たざて応地ユウオ撃庫ヌサヒ冬46果メウハ論重ちげずー愛45性カ午周だ艦会ゅとさぼ激字部クルナ載今ヒ転味王をじクり世事と長6底肉追界ぼ。際こぐご含容ツシ実聞均ぶゃぱ券所されゃと較務菱ー援稿とめ無崎ろー席発ばよ引9稿べへク媛住薦ケノ実全っ投詳ぱ止段ク集北ソ西影べそね日乃隔おう。超て注策72犯続モトシカ我6査ミケテマ座高ル応注リ注87文問ノ天芸モマナ題9陽ぱむ河奥安門せ。主表テハチ株根生チナソ天価ルケ劇戦ス遺初ワ歳増媛トミ識要な区任ぐ費共ケロア務新イ安題要型にゃ。内ハ帯4運可モムミ写小ぴ息全唆んた後関コ質天券コモニ右喩モ頼二クフ刊合チホミ告安ワユニケ属能レり公田なは阻4題奮ねざぽゃ。止りラお屋紀こゆて芸情ヤ作徳ツソヨ払1区ソラチタ能企ぴラ断末英つみか貝文づえべへ関意無ぜ姿別ぴ夏操とだリ本負イあ未経福べ次4職キ国免印仕クぐぴ。多さ高謙スラ数第止リ変止すくる奏囲け交去出リモノナ性痛ネニ水社めこまが固仙ヨミムア落液へめそご求14谷連ぴ度7目モヒ演2先じむ示未つレむ浄室クま。受キク禁谷経テミ野阪ゆれこ設質クヤヲシ士表19旬4年ほる断和せクりん破図カタ車後ーょ上滋ハヲモ輸僧兜函クちてた。目よ更速ロ倒情だぱス兆買ヲネ都吹ハオニ変生ンせと十製変ト由東ンびつあ新毎試きがぼ幅稼均マウリ恒買非料謙ぶで。35川ヒリテ映雪だそ門点タメヌホ住寄ヲツホ正39妙ふ校森門ス稿順ほはえ域毎る断栄セヌルサ日2植率ソリモロ上当をだ重的げざ定時済かつし致且ぎ。称75乞伍7白換ム重後うびぞ質応くこンッ験的ざイト観権ラヘタ車首ょクリ際太アヌ盛旬ヲア労加ノアエヤ湯接メマセ自急ちあろむ視墜ゅべなむ位催実園ラよ。田阜や史置エ丸今村どトゆへ沿永見っえて作治だ盤言ノルモ気紹ぽぶむは架者ヤ名枕求開つぴみト。実ねたるへ材典くご当化どやう三勇ゅねぎク場意禁きぴ替稿フ校郷庭ムシセ調書リノオワ稲図社乳撮途遅る。働準げむざ能死ニヱヤエ掲織ホスセ監衛シ対掲づ石豪コキ天展うクぱラ約載ずえラス全佑ク収決端カサハ経暮ろだたさ世話ウ一難ち載31辺修級すみ。中え菊6動ッやンめ気動ー紀職が放田ばほし載袖海フ話8石メソヨヒ長8束7行ほゆのな市参ほいき禁最語坂居べおひぎ。放ぽ象条了ナム表苦ひ産供61昭ひせぐゆ器着会ノ疵囲ょスだ署集ル高選で三返セ沢旅太イーあ。伊ルラ少欠ぐっドで堀6数あぐちい本女フハホ写都ネワチテ属楽み投美ヲケヒソ周客ナトヘシ別情チエツ紙降チヱノネ診橋エイフ読式スル郊現ゅゆ登恋リで容潤似短致あ。今フネ権34辞士辺ムウ済探レしぼが裁績も室車えリとラ著上ふ乗回魅明のトるち中無ス町慶秒りすあー。";
-    LoremIpsum.ARABIC = "فهرست الأجل العدّ كل غزو, المضي اندلاع و على. اعتداء الأهداف مع على. جيما وبعد فقد أي. إذ هذه بالحرب الصفحات الأرضية, لمحاكم وحلفاؤها في كلا. أدنى أثره، العناد عل بحق, أن يبق هجوم الحرب.ودول انتصارهم وباستثناء أما ان, أي ربع تمهيد اليها الغالي. ان كانتا وعزّزت تكاليف مما. و مسارح أصقاع والجنود الا. ٣٠ يونيو وسمّيت عدم.نقطة الشمل إستعمل حرب أن. بل أما بالرغم والمانيا. دار فمرّ للجزر بالإنزال ثم. الجنرال العالمية و بحث. الألوف الصفحات الاندونيسية ٣٠ شبح, اتّجة العسكري بالسيطرة انه في.أي دنو جندي وايرلندا, المجتمع للأراضي ويكيبيديا عن كان. حين فمرّ تشيكوسلوفاكيا هو, جُل بالحرب ايطاليا، قد. عدم كل وبدون سبتمبر الثقيل. المبرمة انتصارهم قد لمّ. عرض أي اليها بقيادة, في وضم تغييرات موسوليني.٣٠ وبدأت اتفاقية حدى, عسكري اعتداء هو جوي, وتم ثم الخارجية المتّبعة. إعمار القوات قهر من, بل حين الشمل لألمانيا, عام فسقط الحلفاء الصفحات و. بسبب الوزراء قصف كل, يكن عل بقصف مشاركة التّحول. فعل ثم تصفح بمباركة اقتصادية. سقط مشروط باحتلال ما, على أن منشوريا الولايات.قد لها الحزب الحصار واندونيسيا،, بحشد الروسية بلا ان. بها اسبوعين بالإنزال تم, الطريق الثقيلة الأوضاع ٣٠ دون. جوي واحدة للجزر من. يتم و الآخر المحيط, تم تسبب إعلان الأرضية شبح, من خسائر المسرح والألمانية، ربع. ثم قدما هاربر وحرمان عرض, تم دنو ليبين مهاجمة.الفترة بالفشل نورماندي جهة ما. إذ هذه بالمثل، الأمامية, بال إذ الدّفاع للإتحاد. وضم في أوراقهم اليابان للألمان. أم الخاطفة لبولندا، يكن. إذ الشمال المقيتة الإمبراطورية تعد. لها القادة وبغطاء كل, تم يتسنّى التبرعات غير.عن عرض تكبّد بتحدّي, قام فهرست الحربي، ان. فعل لم شعار وتقهقر وقوعها،, تحرّك بالهجوم انتصارهم فقد مع, غير إذ اليابان، البريطاني. الى فمرّ أفريقيا ثم, لم جهة حلّت التحالف. قصف تم حلّت العناد, لم بخطوط وهولندا، شيء, ما وحتى رجوعهم بينيتو بها. عن التحالف استرجاع دون.دنو عن حكومة تحرّكت. مما حلّت صفحة الدمج عن, حرب حقول إختار والألمانية، بل. الروس التقليدية هو به،, كان شعار الخاسرة كل. ومضى مقاطعة إستسلاماً ما تلك, وقدّموا اقتصادية عل به،, بعد بينما العالم، البلطيق عن. هو حادثة بوزيرها باستسلام عام. عن نفس تعداد بالحرب, بـ بالمحور ناجازاكي حتى.أم أملاً الحصار عرض, عل هجوم وحتى يتسنّى دنو. وصل ان ستالينجراد، بريطانيا-فرنسا. الهادي الأولية حدى و, ٣٠ شبح دارت بالرغم. قبل وبدأت غرّة، عن, جوي بـ قائمة بالقنابل, مسرح العسكرية في فصل.";
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./3882.js");
+var r = require("./3900.js");
+var l = require("./3901.js");
+var c = require("./3902.js");
+var u = require("./3903.js");
+var d = require("./3904.js");
+var p = require("./3905.js");
+var h = require("./3906.js");
+var g = require("./3907.js");
+var C = require("./3908.js");
+var _ = require("./3909.js");
+var m = require("./3910.js");
+var f = require("./3911.js");
+var O = require("./3912.js");
+var E = require("./3913.js");
+var y = require("./3914.js");
+var b = require("./3915.js");
+var D = require("./20.js");
+var I = require("./76.js");
+var T = require("./78.js");
+var v = require("./77.js");
+var S = require("./8.js");
+var A = require("./11.js");
+var L = require("./3916.js");
+var P = function (e) {
+  function CheatBotCollectionDialog() {
+    var t = this;
+    t.currentTab = "";
+    CONSTRUCTOR_HACK;
+    return t = e.call(this, CheatBotCollectionDialog.NAME) || this;
+  }
+  n.__extends(CheatBotCollectionDialog, e);
+  CheatBotCollectionDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    var i = new v.InfiniteScrollListOptions(L.CheatBotCollectionDialogItem, "CheatBotCollection_Item", CheatBotCollectionDialog.NAME);
+    i.itemPaddingY = 6;
+    i.useSmoothScroll = true;
+    this._scrollList = new T.InfiniteScrollListComponent(new I.InfiniteScrollListClips(this.dialogDisp.mc_list).addMaskMc(this.dialogDisp.mc_list.mc_mask).addItemContainerMc(this.dialogDisp.mc_list.mc_items).addSliderMc(this.dialogDisp.mc_list.mc_slider).addMouseWheelAreaMc(this.dialogDisp), i);
+    S.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_bots, this.dialogDisp.btn_clientCheats], D.ClickFeedbackButtonHover, 1);
+    this.dialogDisp.btn_bots.visible = false;
   };
-  return LoremIpsum;
-}();
-exports.LoremIpsum = n;
-n.__initialize_static_members();
+  CheatBotCollectionDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.TextVO("           CHEATS"));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_bots.txt_label, new a.TextVO("Bots"));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_bots.mc_selected.txt_label, new a.TextVO("Bots"));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_clientCheats.txt_label, new a.TextVO("Client Cheats"));
+    this.textFieldManager.registerTextField(this.dialogDisp.btn_clientCheats.mc_selected.txt_label, new a.TextVO("Client Cheats"));
+    this._scrollList.onShow();
+    if (this.currentTab == "") {
+      this.updateItems(CheatBotCollectionDialog.TAB_CLIENT_CHEAT);
+    }
+  };
+  CheatBotCollectionDialog.prototype.hideLoaded = function (t = null) {
+    e.prototype.hideLoaded.call(this, t);
+    this._scrollList.onHide();
+  };
+  CheatBotCollectionDialog.prototype.updateItems = function (e) {
+    this.currentTab = e;
+    this.dialogDisp.btn_bots.mc_selected.visible = e == CheatBotCollectionDialog.TAB_BOT;
+    this.dialogDisp.btn_clientCheats.mc_selected.visible = e == CheatBotCollectionDialog.TAB_CLIENT_CHEAT;
+    var t = [];
+    CheatBotCollectionDialog.BOT_ITEMS.forEach(function (i) {
+      if (i.tab == e) {
+        t.push(i);
+      }
+    });
+    this._scrollList.updateWithNewData(t);
+  };
+  CheatBotCollectionDialog.prototype.onClick = function (e) {
+    if (S.ButtonHelper.isButtonEnabled(e.target)) {
+      switch (e.target) {
+        case this.dialogDisp.btn_close:
+          this.hide();
+          break;
+        case this.dialogDisp.btn_bots:
+          this.updateItems(CheatBotCollectionDialog.TAB_BOT);
+          break;
+        case this.dialogDisp.btn_clientCheats:
+          this.updateItems(CheatBotCollectionDialog.TAB_CLIENT_CHEAT);
+      }
+    }
+  };
+  CheatBotCollectionDialog.__initialize_static_members = function () {
+    CheatBotCollectionDialog.NAME = "CheatBotCollection";
+    CheatBotCollectionDialog.TAB_CLIENT_CHEAT = "cheat";
+    CheatBotCollectionDialog.TAB_BOT = "bot";
+    CheatBotCollectionDialog.BOT_ITEMS = [{
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "toggleShowCiIDs",
+      description: "Toggles the visibility of ConstructionItemIDs",
+      command: O.CheatToggleShowCIIDCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "toggleShowEffectTypeIDs",
+      description: "Toggles the visibility of EffectTypeIDs for effects",
+      command: E.CheatToggleShowEffectTypeIDCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "welcome {rewardID}",
+      description: "Opens the 'Welcome Back'-Dialog",
+      command: b.CheatWelcomeCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "mysteryBoxChance",
+      description: "Shows the dropchances in the mysteryboxes dialog",
+      command: p.CheatMysteryBoxChancesCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "textID {textID} {replacements}",
+      description: "Tests TextID IG",
+      command: f.CheatTextIDCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "pipesOn / pipesOff",
+      description: "Shows Pipes '|' at the end of texts (saved in local storage)",
+      command: c.CheatEndOfTextPipesCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "toggleOfferIDsInMessageSubject",
+      description: "Shows OfferIDs in the message headers",
+      command: h.CheatOfferIDsInHeaderCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "showQuestIDs on|off",
+      description: "Shows QuestIDs in the quest book",
+      command: g.CheatQuestIDsCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "lifetimeSpent",
+      description: "C2 Spent Lifetime for this account",
+      command: u.CheatLifetimeSpentC2Command
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "noConnection",
+      description: "Shows Maintenance (careful, its not closeable)",
+      command: d.CheatMaintenanceDialogCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "toggleShowDialogName",
+      description: "Toggles Dialogs Name above the Dialog",
+      command: l.CheatDialogNamesCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "showRelicIDS",
+      description: "Toggles Showing Relic Equipment IDs",
+      command: C.CheatRelicIDsCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "addNPCGeneral",
+      description: "Add a general as NPC",
+      command: s.CheatAddNPCGeneralCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "buildingInfo",
+      description: "Show a BuildingInfo dialog for buildingWOD",
+      command: r.CheatBuildingInfoCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "toggleUnitWodID",
+      description: "Shows WODID for units",
+      command: y.CheatUnitWODCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "showResearchIDs",
+      description: "Show or hide researchIDs",
+      command: m.CheatShowResearchIDsCommand
+    }, {
+      tab: CheatBotCollectionDialog.TAB_CLIENT_CHEAT,
+      name: "showResearchGrid",
+      description: "Show or hide research grid",
+      command: _.CheatShowResearchGridCommand
+    }];
+  };
+  return CheatBotCollectionDialog;
+}(A.CastleExternalDialog);
+exports.CheatBotCollectionDialog = P;
+o.classImplementsInterfaces(P, "ICollectableRendererList");
+P.__initialize_static_members();

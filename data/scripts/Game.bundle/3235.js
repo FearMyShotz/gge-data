@@ -4,11 +4,11 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = function (e) {
-  function CollectableItemEquipmentUniqueEnchantedVE() {
+  function CollectableItemEquipmentRarenessVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CollectableItemEquipmentUniqueEnchantedVE, e);
-  return CollectableItemEquipmentUniqueEnchantedVE;
-}(require("./1619.js").CollectableItemEquipmentUniqueVE);
-exports.CollectableItemEquipmentUniqueEnchantedVE = a;
+  n.__extends(CollectableItemEquipmentRarenessVE, e);
+  return CollectableItemEquipmentRarenessVE;
+}(require("./1051.js").ACollectableItemEquipmentVE);
+exports.CollectableItemEquipmentRarenessVE = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList");

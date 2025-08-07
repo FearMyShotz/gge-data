@@ -1,19 +1,36 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = function (e) {
-  function CastlePresetComboboxItemRendererEvent(t, i) {
-    var n = this;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this, t, true, true) || this).presetVO = i;
-    return n;
+var n = function () {
+  function CastleEquipmentSlotVO(e) {
+    this._isFree = true;
+    this._slotType = e;
   }
-  n.__extends(CastlePresetComboboxItemRendererEvent, e);
-  CastlePresetComboboxItemRendererEvent.__initialize_static_members = function () {
-    CastlePresetComboboxItemRendererEvent.OPTIONS = "presetComboboxItemOptions";
-  };
-  return CastlePresetComboboxItemRendererEvent;
-}(createjs.Event);
-exports.CastlePresetComboboxItemRendererEvent = o;
-o.__initialize_static_members();
+  Object.defineProperty(CastleEquipmentSlotVO.prototype, "equipmentVO", {
+    get: function () {
+      return this._equipmentVO;
+    },
+    set: function (e) {
+      this._equipmentVO = e;
+      this._isFree = !this._equipmentVO;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleEquipmentSlotVO.prototype, "isFree", {
+    get: function () {
+      return this._isFree;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleEquipmentSlotVO.prototype, "slotType", {
+    get: function () {
+      return this._slotType;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleEquipmentSlotVO;
+}();
+exports.CastleEquipmentSlotVO = n;

@@ -2,120 +2,106 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./3.js");
-var c = require("./6.js");
-var u = require("./28.js");
-var d = require("./576.js");
-var p = require("./53.js");
-var h = require("./44.js");
-var g = require("./4.js");
-var C = require("./27.js");
-var _ = require("./1150.js");
-var m = function (e) {
-  function MetropolMapobject() {
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./90.js");
+var r = require("./64.js");
+var l = require("./124.js");
+var c = createjs.Container;
+var u = function (e) {
+  function KingstowerMapobject() {
     return e.call(this) || this;
   }
-  n.__extends(MetropolMapobject, e);
-  MetropolMapobject.prototype.drawOutpost = function () {
+  n.__extends(KingstowerMapobject, e);
+  KingstowerMapobject.prototype.initVisualRep = function () {
+    if (!this.disp) {
+      this.disp = new c();
+      this.mapobjectVO.addEventListener(r.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
+    }
+    this.drawKingstower();
+  };
+  KingstowerMapobject.prototype.getFlamesClip = function () {
+    var t = this.getABGFlamesClip("Kingstower");
+    return t || e.prototype.getFlamesClip.call(this);
+  };
+  KingstowerMapobject.prototype.drawKingstower = function () {
     this.clearObjectContainer();
     if (this.mapobjectVO.isVisibleOnMap) {
-      if (!this.worldmapObjectVO.ownerInfo || this.worldmapObjectVO.ownerInfo && this.worldmapObjectVO.ownerInfo.isOutpostOwner) {
-        this.objectContainer = this.worldmapObjectVO.getDisplayObjectClipContainer(false, null, false);
-      } else {
-        this.objectContainer = this.metropolVO.getDisplayObjectClipContainer(true, null, false);
-        this.setOccupiedMarker();
-      }
+      this.objectContainer = this.kingsTowerMapObjectVO.getDisplayObjectClipContainer(true, null, false);
       if (this.worldmapObjectVO.remainingCooldownTimeInSeconds > 0) {
         this.showFlames();
       }
       this.addObjectContainer();
       this.addMouseListener();
-      this.disp.dispatchEvent(new d.VisualMapObjectEvent(d.VisualMapObjectEvent.VE_UPDATED, [this]));
-      if (this.occupiedMarker && this.disp.contains(this.occupiedMarker.disp)) {
-        this.disp.setChildIndex(this.occupiedMarker.disp, this.disp.numChildren - 1);
-      }
     }
   };
-  MetropolMapobject.prototype.getFlamesClip = function () {
-    var t = this.getABGFlamesClip("Metropol");
-    return t || e.prototype.getFlamesClip.call(this);
+  KingstowerMapobject.prototype.showRingMenu = function () {
+    this.worldmapRenderer.dispatchEvent(new s.CastleWorldmapEvent(s.CastleWorldmapEvent.SHOW_MENU, [this, s.CastleWorldmapEvent.RINGMENU_CASTLEINFO]));
+    this.showOwnerLines();
   };
-  Object.defineProperty(MetropolMapobject.prototype, "ignorePeaceProtection", {
+  KingstowerMapobject.prototype.onRollOver = function (t) {
+    if (!this.worldmapRenderer.camera.isWorldDragging) {
+      if (!this.hasRingMenu) {
+        this.worldmapRenderer.dispatchEvent(new s.CastleWorldmapEvent(s.CastleWorldmapEvent.INFOTOOLTIP, [true, this]));
+      }
+      e.prototype.onRollOver.call(this, t);
+    }
+  };
+  KingstowerMapobject.prototype.onRollOut = function (t) {
+    this.worldmapRenderer.dispatchEvent(new s.CastleWorldmapEvent(s.CastleWorldmapEvent.INFOTOOLTIP, [false]));
+    e.prototype.onRollOut.call(this, t);
+  };
+  KingstowerMapobject.prototype.onMouseUp = function (t) {
+    e.prototype.onMouseUp.call(this, t);
+    this.showOwnerLines();
+  };
+  Object.defineProperty(KingstowerMapobject.prototype, "kingsTowerMapObjectVO", {
     get: function () {
-      return true;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(_.OutpostMapobject.prototype, "ignorePeaceProtection").set.call(this, e);
+      return this.vo;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MetropolMapobject.prototype, "metropolVO", {
+  Object.defineProperty(KingstowerMapobject.prototype, "line1Content", {
     get: function () {
-      return this.mapobjectVO;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(MetropolMapobject.prototype, "line1Content", {
-    get: function () {
-      var e = this.metropolVO.ownerInfo;
-      if (e && !e.isOutpostOwner) {
-        return new s.TextVO(f.CastleTitleSystemHelper.getPlayerNameWithTitleFromPlayerInfo(this.metropolVO.ownerInfo));
+      if (this.kingsTowerMapObjectVO.isPlayerOwned) {
+        return new a.TextVO(d.CastleTitleSystemHelper.getPlayerNameWithTitleFromPlayerInfo(this.kingsTowerMapObjectVO.ownerInfo));
       } else {
-        return new s.TextVO(this.metropolVO.areaNameString);
+        return new a.TextVO(this.kingsTowerMapObjectVO.areaNameString);
       }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(_.OutpostMapobject.prototype, "line1Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.InteractiveMapobject.prototype, "line1Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MetropolMapobject.prototype, "line2Content", {
+  Object.defineProperty(KingstowerMapobject.prototype, "line2Content", {
     get: function () {
-      var e = this.metropolVO.ownerInfo;
-      if (e && e.isRuin) {
-        return new r.LocalizedTextVO("ruin");
-      } else {
-        return new r.LocalizedTextVO(h.SpecialServerHelper.checkTextIDForSkinText("metropol_worldmap_tooltip"), [this.metropolVO.abgMaxInfluencePoints]);
-      }
+      return new a.TextVO(this.kingsTowerMapObjectVO.worldmapToolTipDescription);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(_.OutpostMapobject.prototype, "line2Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.InteractiveMapobject.prototype, "line2Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(MetropolMapobject.prototype, "line3Content", {
+  Object.defineProperty(KingstowerMapobject.prototype, "line3Content", {
     get: function () {
-      var e = this.metropolVO.ownerInfo;
-      if (p.ABGHelper.isOnABGAndCollector) {
-        if (e && !e.isOutpostOwner) {
-          return new r.LocalizedTextVO("beyondTheHorizon_cityStates_countdown", [C.CastleTimeStringHelper.getFullTimeString(this.metropolVO.abgMineOutRemainingSeconds)]);
-        }
-        var t = g.CastleModel.mineData.getMineVOByObjectID(26);
-        var i = c.int(t.maxInfluencePoints / (t.amountInfluencePerMinute * (1 / u.ClientConstTime.MINUTES_2_SEC)));
-        return new r.LocalizedTextVO("beyondTheHorizon_cityStates_occupationTime", [o.TimeStringHelper.getTimeToString(i, o.TimeStringHelper.ONE_TIME_HOURS_FORMAT, l.Localize.text)]);
-      }
-      if (e && !e.isOutpostOwner) {
-        return new s.TextVO(this.getAllianceString());
+      if (this.kingsTowerMapObjectVO.isPlayerOwned) {
+        return new a.TextVO(this.getAllianceString());
       } else {
         return null;
       }
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(_.OutpostMapobject.prototype, "line3Content").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.InteractiveMapobject.prototype, "line3Content").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return MetropolMapobject;
-}(_.OutpostMapobject);
-exports.MetropolMapobject = m;
-a.classImplementsInterfaces(m, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
-var f = require("./106.js");
+  return KingstowerMapobject;
+}(l.InteractiveMapobject);
+exports.KingstowerMapobject = u;
+o.classImplementsInterfaces(u, "IIngameUICapable", "IWorldMapObject", "IWorldmapTooltipData");
+var d = require("./117.js");

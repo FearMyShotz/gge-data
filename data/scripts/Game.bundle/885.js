@@ -1,101 +1,102 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./18.js");
-var r = require("./41.js");
-var l = require("./64.js");
-var c = require("./276.js");
-var u = require("./1220.js");
-var d = createjs.Event;
-var p = require("./408.js");
-var h = require("./17.js");
-var g = function (e) {
-  function BasicMapobject() {
-    return e.call(this) || this;
-  }
-  n.__extends(BasicMapobject, e);
-  BasicMapobject.prototype.addObjectContainer = function () {
-    if (this.objectContainer) {
-      this.disp.addChild(this.objectContainer.asDisplayObject());
-      this.objectContainer.asDisplayObject().scaleX = this.objectContainer.asDisplayObject().scaleY /= c.CastleWorldmapConst.ZOOM_MAX;
-      var e = castAs(this.objectContainer, "CastleDisplayObjectClipContainer");
-      if (e) {
-        if (e.areAllClipsLoaded()) {
-          this.onAllClipsLoaded(null);
-        } else {
-          e.addEventListener(d.COMPLETE, this.bindFunction(this.onAllClipsLoaded));
-        }
-      }
+var n = createjs.Point;
+var o = function () {
+  function SectorHelper() {}
+  SectorHelper.getNextRandomInt = function (e) {
+    return r.int(SectorHelper.rand.nextInt(e));
+  };
+  SectorHelper.absolutPosToSectorPos = function (e) {
+    return new n(r.int(e.x / s.WorldConst.SECTOR_WIDTH), r.int(e.y / s.WorldConst.SECTOR_HEIGHT));
+  };
+  SectorHelper.getSectorX = function (e) {
+    return r.int(r.int(e / s.WorldConst.SECTOR_WIDTH));
+  };
+  SectorHelper.getSectorY = function (e) {
+    return r.int(r.int(e / s.WorldConst.SECTOR_HEIGHT));
+  };
+  SectorHelper.absolutPosToRelativePos = function (e) {
+    return new n(e.x % s.WorldConst.SECTOR_WIDTH, e.y % s.WorldConst.SECTOR_HEIGHT);
+  };
+  SectorHelper.getSectorTopLeft = function (e) {
+    var t = SectorHelper.getLoopedPosition(e);
+    return new n(t.x * s.WorldConst.SECTOR_WIDTH, t.y * s.WorldConst.SECTOR_HEIGHT);
+  };
+  SectorHelper.getSectorBottomRight = function (e) {
+    var t = SectorHelper.getLoopedPosition(e);
+    return new n(t.x * s.WorldConst.SECTOR_WIDTH + s.WorldConst.SECTOR_WIDTH - 1, t.y * s.WorldConst.SECTOR_HEIGHT + s.WorldConst.SECTOR_HEIGHT - 1);
+  };
+  SectorHelper.getLoopedPosition = function (e) {
+    var t = r.int(e.x);
+    var i = r.int(e.y);
+    t = e.x < 0 ? r.int((l.ClientConstCastle.WORLDMAPSIZE_X - Math.abs(e.x) % l.ClientConstCastle.WORLDMAPSIZE_X) % l.ClientConstCastle.WORLDMAPSIZE_X) : r.int(e.x % l.ClientConstCastle.WORLDMAPSIZE_X);
+    i = e.y < 0 ? r.int((l.ClientConstCastle.WORLDMAPSIZE_Y - Math.abs(e.y) % l.ClientConstCastle.WORLDMAPSIZE_Y) % l.ClientConstCastle.WORLDMAPSIZE_Y) : r.int(e.y % l.ClientConstCastle.WORLDMAPSIZE_Y);
+    return new n(t, i);
+  };
+  SectorHelper.getLoopedAreaPosition = function (e) {
+    var t = r.int(e.x);
+    var i = r.int(e.y);
+    t = e.x < 0 ? r.int((l.ClientConstCastle.WORLD_WIDTH - Math.abs(e.x) % l.ClientConstCastle.WORLD_WIDTH) % l.ClientConstCastle.WORLD_WIDTH) : r.int(e.x % l.ClientConstCastle.WORLD_WIDTH);
+    return new n(t, i);
+  };
+  SectorHelper.getLoopedAreaPositionX = function (e) {
+    if (e < 0) {
+      return r.int((l.ClientConstCastle.WORLD_WIDTH - Math.abs(e) % l.ClientConstCastle.WORLD_WIDTH) % l.ClientConstCastle.WORLD_WIDTH);
+    } else {
+      return r.int(e % l.ClientConstCastle.WORLD_WIDTH);
     }
   };
-  BasicMapobject.prototype.onAllClipsLoaded = function (e) {
-    var t = this;
-    if (this.objectContainer) {
-      r.CastleMovieClipHelper.uncacheSafe(this.objectContainer.asDisplayObject());
-      p.renderScheduler.addTask(function () {
-        return !t.objectContainer || !t.objectContainer.asDisplayObject().stage || (t.objectContainer.asDisplayObject().doCache(BasicMapobject.ADDITIONAL_CACHE_SIZE, 1), h.CastleLayoutManager.getInstance().renderStaticStage(), false);
-      });
-      this.objectContainer.removeEventListener(d.COMPLETE, this.bindFunction(this.onAllClipsLoaded));
+  SectorHelper.getLoopedPixelPosition = function (e) {
+    var t = r.int(e.x);
+    var i = r.int(e.y);
+    t = e.x < 0 ? r.int((l.ClientConstCastle.WORLDMAPPIXELSIZE_X - Math.abs(e.x) % l.ClientConstCastle.WORLDMAPPIXELSIZE_X) % l.ClientConstCastle.WORLDMAPPIXELSIZE_X) : r.int(e.x % l.ClientConstCastle.WORLDMAPPIXELSIZE_X);
+    i = e.y < 0 ? r.int((l.ClientConstCastle.WORLDMAPPIXELSIZE_Y - Math.abs(e.y) % l.ClientConstCastle.WORLDMAPPIXELSIZE_Y) % l.ClientConstCastle.WORLDMAPPIXELSIZE_Y) : r.int(e.y % l.ClientConstCastle.WORLDMAPPIXELSIZE_Y);
+    return new n(t, i);
+  };
+  SectorHelper.getScreenLoopedXPixelPosition = function (e) {
+    var t = r.int(e);
+    var i = r.int(l.ClientConstCastle.WORLDMAPPIXELSIZE_X);
+    if (e < -i / 2 || e > -i / 2 && e < i * -3 / 8) {
+      t += i;
+    }
+    if (e > i / 2 && e > i * 5 / 8) {
+      t -= i;
+    }
+    return t;
+  };
+  SectorHelper.getLoopedYPixelPosition = function (e) {
+    r.int(e);
+    if (e < 0) {
+      return r.int((l.ClientConstCastle.WORLDMAPPIXELSIZE_Y - Math.abs(e) % l.ClientConstCastle.WORLDMAPPIXELSIZE_Y) % l.ClientConstCastle.WORLDMAPPIXELSIZE_Y);
+    } else {
+      return r.int(e % l.ClientConstCastle.WORLDMAPPIXELSIZE_Y);
     }
   };
-  BasicMapobject.prototype.onVOChange = function (e) {
-    this.initVisualRep();
+  SectorHelper.getLoopedSectorPosition = function (e) {
+    var t = r.int(e.x);
+    var i = r.int(e.y);
+    var o = r.int(r.int(l.ClientConstCastle.WORLDMAPSIZE_X));
+    var a = r.int(r.int(l.ClientConstCastle.WORLDMAPSIZE_Y));
+    t = e.x < 0 ? r.int((o - Math.abs(e.x) % o) % o) : r.int(e.x % o);
+    i = e.y < 0 ? r.int((a - Math.abs(e.y) % a) % a) : r.int(e.y % a);
+    return new n(t, i);
   };
-  Object.defineProperty(BasicMapobject.prototype, "initialX", {
-    get: function () {
-      return this.vo.x * s.ClientConstCastle.MAPTILESIZE_X;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.VisualMapElement.prototype, "initialX").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BasicMapobject.prototype, "initialY", {
-    get: function () {
-      return this.vo.y * s.ClientConstCastle.MAPTILESIZE_Y;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(u.VisualMapElement.prototype, "initialY").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BasicMapobject.prototype, "mapobjectVO", {
-    get: function () {
-      return this.vo;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  BasicMapobject.prototype.remove = function () {
-    if (this.objectContainer) {
-      this.objectContainer.dispose();
-      this.objectContainer.removeEventListener(d.COMPLETE, this.bindFunction(this.onAllClipsLoaded));
-    }
-    this.mapobjectVO.removeEventListener(l.VisualVOEvent.VALUEOBJECT_CHANGE, this.bindFunction(this.onVOChange));
-    e.prototype.remove.call(this);
+  SectorHelper.pixelToAreaPosition = function (e) {
+    var t = r.int(e.x);
+    var i = r.int(e.y);
+    t = r.int(t / 64);
+    i = r.int(i / 64);
+    return new n(t, i);
   };
-  Object.defineProperty(BasicMapobject.prototype, "hasRingMenu", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {},
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(BasicMapobject.prototype, "textFieldManager", {
-    get: function () {
-      return o.GoodgameTextFieldManager.getInstance();
-    },
-    enumerable: true,
-    configurable: true
-  });
-  BasicMapobject.ADDITIONAL_CACHE_SIZE = 6;
-  return BasicMapobject;
-}(u.VisualMapElement);
-exports.BasicMapobject = g;
-a.classImplementsInterfaces(g, "IIngameUICapable");
+  SectorHelper.__initialize_static_members = function () {
+    SectorHelper.rand = new a.SimpleRandom(923);
+  };
+  return SectorHelper;
+}();
+exports.SectorHelper = o;
+var a = require("./2.js");
+var s = require("./5.js");
+var r = require("./6.js");
+var l = require("./18.js");
+o.__initialize_static_members();

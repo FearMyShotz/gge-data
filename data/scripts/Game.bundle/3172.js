@@ -3,17 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = function (e) {
-  function CastleAquamarineShopBuyDialog(t = CastleAquamarineShopBuyDialog.NAME) {
-    CONSTRUCTOR_HACK;
+var a = require("./173.js");
+var s = function (e) {
+  function AquamarineShopScrollItem(t) {
     return e.call(this, t) || this;
   }
-  n.__extends(CastleAquamarineShopBuyDialog, e);
-  CastleAquamarineShopBuyDialog.__initialize_static_members = function () {
-    CastleAquamarineShopBuyDialog.NAME = "CastleAquamarinShopBuyExternal";
-  };
-  return CastleAquamarineShopBuyDialog;
-}(require("./168.js").CastleGenericSliderBuyDialog);
-exports.CastleAquamarineShopBuyDialog = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList");
-a.__initialize_static_members();
+  n.__extends(AquamarineShopScrollItem, e);
+  Object.defineProperty(AquamarineShopScrollItem.prototype, "dialogKey", {
+    get: function () {
+      return r.CastleAquamarineShopBuyDialog;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.AMerchantScrollItem.prototype, "dialogKey").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AquamarineShopScrollItem;
+}(a.AMerchantScrollItem);
+exports.AquamarineShopScrollItem = s;
+var r = require("./3173.js");
+o.classImplementsInterfaces(s, "MovieClip");

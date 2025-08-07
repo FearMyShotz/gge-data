@@ -1,65 +1,60 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function AreaFactory() {}
-  AreaFactory.createArea = function (e) {
-    var t = new r.AreaData();
-    var i = d.int(e.areaType);
-    var n = [];
-    switch (i) {
-      case u.WorldConst.AREA_TYPE_CASTLE:
-      case u.WorldConst.AREA_TYPE_CAPITAL:
-      case u.WorldConst.AREA_TYPE_OUTPOST:
-      case u.WorldConst.AREA_TYPE_FACTION_CAMP:
-      case u.WorldConst.AREA_TYPE_KINGDOM_CASTLE:
-      case u.WorldConst.AREA_TYPE_TREASURE_CAMP:
-      case u.WorldConst.AREA_TYPE_METROPOL:
-        n = [s.AreaDataEnum.COMMON_INFO, s.AreaDataEnum.ISO_DATA, s.AreaDataEnum.CONSTRUCTION_LIST, s.AreaDataEnum.STORAGE, s.AreaDataEnum.CONSTRUCTION_ITEMS];
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./7.js");
+var l = require("./90.js");
+var c = require("./4.js");
+var u = require("./10.js");
+var d = function (e) {
+  function HACCommand() {
+    return e !== null && e.apply(this, arguments) || this;
+  }
+  n.__extends(HACCommand, e);
+  Object.defineProperty(HACCommand.prototype, "cmdId", {
+    get: function () {
+      return r.ClientConstSF.S2C_HIDE_ALIEN_CAMP;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  HACCommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case s.ERROR.ALL_OK:
+        if (c.CastleModel.worldmapData) {
+          var i = JSON.parse(t[1]).CP;
+          if (i != null) {
+            for (var n = 0, a = i; n < a.length; n++) {
+              var r = a[n];
+              if (r !== undefined) {
+                var u = o.castAs(c.CastleModel.worldmapData.areaTiles.getVOForAreaByXY(r[0], r[1]), "AAlienInvasionMapobjectVO");
+                if (u && u.isVisibleOnMap) {
+                  u.isVisibleOnMap = false;
+                }
+              }
+            }
+          }
+          this.controller.dispatchEvent(new l.CastleWorldmapEvent(l.CastleWorldmapEvent.REMOVED_ALIEN_CASTLE_FROM_MAP, i));
+          var d = p.CastleLayoutManager.getInstance();
+          if (d.worldmapScreen && d.worldmapScreen.renderer) {
+            d.worldmapScreen.renderer.invalidateMap();
+            d.worldmapScreen.renderer.invalideteMovements();
+          }
+        }
+        break;
+      default:
+        this.showErrorDialog(e, t);
     }
-    switch (i) {
-      case u.WorldConst.AREA_TYPE_FACTION_CAMP:
-      case u.WorldConst.AREA_TYPE_TREASURE_CAMP:
-        n.push(s.AreaDataEnum.MORALITY);
-    }
-    switch (i) {
-      case u.WorldConst.AREA_TYPE_KINGDOM_CASTLE:
-        n.push(s.AreaDataEnum.SLUM);
-    }
-    t.areaInfo = e;
-    t.initData(n);
-    return t;
+    return false;
   };
-  AreaFactory.parseAreaInfo = function (e, t) {
-    var i;
-    if (e == u.WorldConst.AREA_TYPE_TREASURE_CAMP) {
-      i = new a.EventCampMapobjectVO();
-      if (l.CastleModel.specialEventData.activeSeasonVO) {
-        i.mapID = d.int(l.CastleModel.specialEventData.activeSeasonVO.mapID);
-      }
-      i.ownerInfo = l.CastleModel.otherPlayerData.getOwnInfoVO();
-    } else {
-      i = o.WorldmapObjectFactory.parseWorldMapArea(t.A);
-      if (t.O) {
-        i.ownerInfo = l.CastleModel.otherPlayerData.parseOwnerInfo(t.O);
-      } else if (!c.instanceOfClass(i, "OutpostMapobjectVO")) {
-        i.ownerInfo = l.CastleModel.otherPlayerData.getOwnerInfoVO(i.ownerInfo.playerID);
-      }
-    }
-    return i;
-  };
-  AreaFactory.createAreaFromServer = function (e, t) {
-    var i = AreaFactory.parseAreaInfo(e, t);
-    return AreaFactory.createArea(i);
-  };
-  return AreaFactory;
-}();
-exports.AreaFactory = n;
-var o = require("./147.js");
-var a = require("./732.js");
-var s = require("./1158.js");
-var r = require("./5261.js");
-var l = require("./4.js");
-var c = require("./1.js");
-var u = require("./5.js");
-var d = require("./6.js");
+  return HACCommand;
+}(u.CastleCommand);
+exports.HACCommand = d;
+var p = require("./17.js");
+a.classImplementsInterfaces(d, "IExecCommand");

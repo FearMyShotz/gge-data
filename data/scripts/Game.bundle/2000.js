@@ -1,79 +1,53 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./1.js");
+var n = require("./2.js");
 var o = require("./1.js");
-var a = function () {
-  function EffectValueIdList() {
-    this.idList = [];
+var a = require("./3.js");
+var s = function () {
+  function EffectValueHiddenTreasures() {
+    this._value = 0;
   }
-  EffectValueIdList.prototype.parseFromValueString = function (e) {
-    this.idList = [];
-    var t = e.split("#");
-    if (t != null) {
-      for (var i = 0, n = t; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          this.idList.push(parseInt(o));
-        }
-      }
-    }
+  EffectValueHiddenTreasures.prototype.parseFromValueString = function (e) {
+    this._value = parseFloat(e);
     return this;
   };
-  EffectValueIdList.prototype.parseFromValueArray = function (e) {
-    this.idList = [];
-    if (e != null) {
-      for (var t = 0, i = e; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          this.idList.push(n);
-        }
-      }
-    }
+  EffectValueHiddenTreasures.prototype.parseFromValueArray = function (e) {
+    this._value = parseFloat(e[0]);
     return this;
   };
-  EffectValueIdList.prototype.add = function (e, t) {
-    if (o.instanceOfClass(e, "EffectValueIdList")) {
-      for (var i = 0, n = e.rawValues; i < n.length; i++) {
-        var a = n[i];
-        if (a !== undefined) {
-          this.idList.push(a);
-        }
-      }
-    }
+  EffectValueHiddenTreasures.prototype.add = function (e, t) {
+    this._value = t ? Math.min(t[0], this._value + e.rawValues[0]) : this._value + e.rawValues[0];
     return this;
   };
-  Object.defineProperty(EffectValueIdList.prototype, "textReplacements", {
+  Object.defineProperty(EffectValueHiddenTreasures.prototype, "textReplacements", {
     get: function () {
-      return this.idList;
+      return [new a.LocalizedNumberVO(n.MathBase.round(Math.abs(this._value), 1), true, 1), new a.LocalizedNumberVO(n.MathBase.round(Math.abs(this._value), 1), true, 1)];
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EffectValueIdList.prototype, "rawValues", {
+  Object.defineProperty(EffectValueHiddenTreasures.prototype, "rawValues", {
     get: function () {
-      return this.idList;
+      return [this._value];
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(EffectValueIdList.prototype, "strength", {
+  Object.defineProperty(EffectValueHiddenTreasures.prototype, "strength", {
     get: function () {
-      return this.idList[0];
+      return this._value;
     },
     enumerable: true,
     configurable: true
   });
-  EffectValueIdList.prototype.clone = function () {
-    return new EffectValueIdList().parseFromValueArray(this.rawValues);
+  EffectValueHiddenTreasures.prototype.clone = function () {
+    return new EffectValueHiddenTreasures().parseFromValueArray(this.rawValues);
   };
-  EffectValueIdList.prototype.hasID = function (e) {
-    return this.idList.indexOf(e) > -1;
-  };
-  EffectValueIdList.prototype.getContextTextReplacements = function (e) {
+  EffectValueHiddenTreasures.prototype.getContextTextReplacements = function (e) {
     return this.textReplacements;
   };
-  return EffectValueIdList;
+  return EffectValueHiddenTreasures;
 }();
-exports.EffectValueIdList = a;
-n.classImplementsInterfaces(a, "IEffectValue");
+exports.EffectValueHiddenTreasures = s;
+o.classImplementsInterfaces(s, "IEffectValue");

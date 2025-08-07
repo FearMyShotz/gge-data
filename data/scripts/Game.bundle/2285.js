@@ -2,47 +2,52 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./11.js");
-var r = require("./8.js");
-var l = require("./13.js");
-var c = require("./49.js");
-var u = function (e) {
-  function CastleDeleteAccountConfirmationDialog() {
-    return e.call(this, CastleDeleteAccountConfirmationDialog.NAME) || this;
+var o = require("./3.js");
+var a = require("./13.js");
+var s = require("./4.js");
+var r = require("./20.js");
+var l = require("./8.js");
+var c = require("./11.js");
+var u = require("./222.js");
+var d = function (e) {
+  function AccountDeletionActiveSubscribtionDialog() {
+    return e.call(this, AccountDeletionActiveSubscribtionDialog.NAME) || this;
   }
-  n.__extends(CastleDeleteAccountConfirmationDialog, e);
-  CastleDeleteAccountConfirmationDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this);
-    r.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok], c.ClickFeedbackButtonHover);
-    this.itxt_title = this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO(""));
-    this.itxt_title.autoFitToBounds = true;
-    this.itxt_copy = this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new a.LocalizedTextVO(""));
-    this.itxt_copy.autoFitToBounds = true;
-    this.itxt_title.textContentVO.textId = l.TextHelper.toUpperCaseLocaSafeTextId(this.standardDialogProperties.title);
-    this.itxt_copy.textContentVO.textId = this.standardDialogProperties.copy;
-    if (this.standardDialogProperties.copyTextReplacements) {
-      this.itxt_copy.textContentVO.textReplacements = this.standardDialogProperties.copyTextReplacements;
-    }
+  n.__extends(AccountDeletionActiveSubscribtionDialog, e);
+  AccountDeletionActiveSubscribtionDialog.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    l.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok], r.ClickFeedbackButtonHover);
   };
-  CastleDeleteAccountConfirmationDialog.prototype.onClick = function (t) {
+  AccountDeletionActiveSubscribtionDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new o.TextVO(a.TextHelper.toUpperCaseLocaSafeTextId("dialog_deleteAccount_initiated_popup_title")));
+    this.dialogDisp.btn_close.visible = false;
+    var i = o.Localize.text("dialog_options_deleteAccount_subscriptionActive_desc");
+    if (s.CastleModel.subscriptionData.isPackageActive(u.SubscriptionPackageEnum.PLAYER)) {
+      i += "\n" + o.Localize.text(u.SubscriptionPackageEnum.PLAYER.nameTextId);
+    }
+    if (s.CastleModel.subscriptionData.isPackageActive(u.SubscriptionPackageEnum.PREMIUM)) {
+      i += "\n" + o.Localize.text(u.SubscriptionPackageEnum.PREMIUM.nameTextId);
+    }
+    if (s.CastleModel.subscriptionData.isPackageActive(u.SubscriptionPackageEnum.ALLIANCE)) {
+      i += "\n" + o.Localize.text(u.SubscriptionPackageEnum.ALLIANCE.nameTextId);
+    }
+    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new o.TextVO(i));
+  };
+  AccountDeletionActiveSubscribtionDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-      case this.dialogDisp.btn_close:
-        this.hide();
+    if (l.ButtonHelper.isButtonEnabled(t.target)) {
+      switch (t.target) {
+        case this.dialogDisp.btn_close:
+        case this.dialogDisp.btn_ok:
+          this.hide();
+      }
     }
   };
-  Object.defineProperty(CastleDeleteAccountConfirmationDialog.prototype, "standardDialogProperties", {
-    get: function () {
-      return this.properties;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleDeleteAccountConfirmationDialog.NAME = "DarkOk_ABG2";
-  return CastleDeleteAccountConfirmationDialog;
-}(s.CastleExternalDialog);
-exports.CastleDeleteAccountConfirmationDialog = u;
-o.classImplementsInterfaces(u, "ICollectableRendererList");
+  AccountDeletionActiveSubscribtionDialog.__initialize_static_members = function () {
+    AccountDeletionActiveSubscribtionDialog.NAME = "AccountDeletionActiveSubscribtion";
+  };
+  return AccountDeletionActiveSubscribtionDialog;
+}(c.CastleExternalDialog);
+exports.AccountDeletionActiveSubscribtionDialog = d;
+d.__initialize_static_members();

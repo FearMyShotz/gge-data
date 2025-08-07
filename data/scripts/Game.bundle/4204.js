@@ -21,8 +21,8 @@ var o = function (e) {
   return CastleLayoutWorldmapRelocation;
 }(require("./555.js").ACastleLayoutStrategy);
 exports.CastleLayoutWorldmapRelocation = o;
-var a = require("./1872.js");
-var s = require("./514.js");
+var a = require("./1874.js");
+var s = require("./515.js");
 var r = require("./4205.js");
-var l = require("./842.js");
+var l = require("./843.js");
 var c = require("./1138.js");

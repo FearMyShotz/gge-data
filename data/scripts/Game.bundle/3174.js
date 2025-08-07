@@ -3,25 +3,33 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./113.js");
+var a = require("./111.js");
 var s = require("./194.js");
 var r = function (e) {
-  function FogSurroundingsVE() {
+  function FillerSurroundingsVE() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(FogSurroundingsVE, e);
-  FogSurroundingsVE.prototype.init = function (t) {
-    e.prototype.init.call(this, t);
+  n.__extends(FillerSurroundingsVE, e);
+  FillerSurroundingsVE.prototype.getVELayerType = function () {
+    var e = this.fillerSurroundingVO.getVisualClassName();
+    if (e.indexOf("Road_Surroundings") > -1) {
+      return a.IsoLayerEnum.GROUND;
+    } else if (this.fillerSurroundingVO.isPath) {
+      return a.IsoLayerEnum.GROUND_FILLER;
+    } else if (e.indexOf("Stones_Surroundings") > -1 || e.indexOf("Trees_Surroundings") > -1 || e.indexOf("Paving_Surroundings") > -1 || e.indexOf("Snowpile_Surroundings") > -1) {
+      return a.IsoLayerEnum.STATIC_SURROUNDINGS;
+    } else {
+      return a.IsoLayerEnum.ISO_OBJECTS;
+    }
   };
-  FogSurroundingsVE.prototype.onAllDispClipsLoaded = function () {
-    e.prototype.onAllDispClipsLoaded.call(this);
-    this.dispComponent.dispContainer.scaleX = l.Iso.renderer.camera.scrollBounds.width / 2 * 1.1;
-    this.elementContainer.mouseEnabled = false;
-  };
-  FogSurroundingsVE.prototype.getVELayerType = function () {
-    return a.IsoLayerEnum.FOG;
-  };
-  Object.defineProperty(FogSurroundingsVE.prototype, "hasBuildingPlaceHolder", {
+  Object.defineProperty(FillerSurroundingsVE.prototype, "fillerSurroundingVO", {
+    get: function () {
+      return this.vo;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(FillerSurroundingsVE.prototype, "hasBuildingPlaceHolder", {
     get: function () {
       return false;
     },
@@ -31,8 +39,19 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  return FogSurroundingsVE;
+  FillerSurroundingsVE.prototype.onMouseDown = function (t) {
+    if (l.FillerSurroundingEditor.IS_ACTIVE) {
+      l.FillerSurroundingEditor.getInstance().onSelect(this);
+    }
+    e.prototype.onMouseDown.call(this, t);
+  };
+  FillerSurroundingsVE.prototype.updateInteractionVisibility = function () {
+    if (!l.FillerSurroundingEditor.IS_ACTIVE) {
+      e.prototype.updateInteractionVisibility.call(this);
+    }
+  };
+  return FillerSurroundingsVE;
 }(s.ASurroundingBuildingVE);
-exports.FogSurroundingsVE = r;
-var l = require("./33.js");
+exports.FillerSurroundingsVE = r;
+var l = require("./1001.js");
 o.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");

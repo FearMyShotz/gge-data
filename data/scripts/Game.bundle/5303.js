@@ -2,35 +2,35 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = function () {
-  function OfferQuestConditionDictionary() {
+  function OfferDescriptionVisualDictionary() {
     this._dict = new Map();
   }
-  OfferQuestConditionDictionary.prototype.addEntry = function (e, t) {
+  OfferDescriptionVisualDictionary.prototype.addEntry = function (e, t) {
     if (this._dict.get(e) === undefined) {
       this._dict.set(e, t.constructor);
       return true;
     }
-    throw new Error("Offer Description already exists duplicates not allowed. Typename: " + e);
+    throw new Error("Offer Description Reward already exists duplicates not allowed. parameterName: " + e);
   };
-  OfferQuestConditionDictionary.prototype.removeEntry = function (e) {
+  OfferDescriptionVisualDictionary.prototype.removeEntry = function (e) {
     var t = this._dict.get(e);
     if (t) {
       this._dict.delete(e);
     }
     return t;
   };
-  OfferQuestConditionDictionary.prototype.clear = function () {
+  OfferDescriptionVisualDictionary.prototype.clear = function () {
     this._dict = new Map();
   };
-  OfferQuestConditionDictionary.prototype.getEntry = function (e) {
+  OfferDescriptionVisualDictionary.prototype.getEntry = function (e) {
     return this._dict.get(e);
   };
-  OfferQuestConditionDictionary.prototype.hasEntry = function (e) {
+  OfferDescriptionVisualDictionary.prototype.hasEntry = function (e) {
     return this._dict.get(e) !== undefined;
   };
-  OfferQuestConditionDictionary.prototype.traceAllEntries = function () {
+  OfferDescriptionVisualDictionary.prototype.traceAllEntries = function () {
     var e;
-    o.info("---- OfferQuestConditionDictonary ----");
+    o.info("---- OfferDescriptionVisualDictionary ----");
     if (this._dict != null) {
       for (var t = 0, i = Array.from(this._dict.keys()); t < i.length; t++) {
         if ((e = i[t]) !== undefined) {
@@ -39,7 +39,7 @@ var n = function () {
       }
     }
   };
-  return OfferQuestConditionDictionary;
+  return OfferDescriptionVisualDictionary;
 }();
-exports.OfferQuestConditionDictionary = n;
+exports.OfferDescriptionVisualDictionary = n;
 var o = require("./2.js");

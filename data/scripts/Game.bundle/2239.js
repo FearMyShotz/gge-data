@@ -1,78 +1,84 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./179.js");
-var o = require("./4.js");
-var a = require("./1268.js");
-var s = require("./1269.js");
-var r = require("./2240.js");
-var l = function () {
-  function GeneralsHubQuestsComponent(e) {
-    this._disp = e;
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./12.js");
+var r = require("./104.js");
+var l = createjs.Point;
+var c = require("./81.js");
+var u = require("./2.js");
+var d = require("./4.js");
+var p = require("./25.js");
+var h = require("./31.js");
+var g = require("./19.js");
+var C = require("./247.js");
+var _ = function (e) {
+  function GeneralsHubDialogIMultiRewardItem() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  GeneralsHubQuestsComponent.prototype.show = function () {
-    this._kingQuestComponent = new r.GeneralsHubQuestComponent(this.dispClip.king_bounds.mc_quest_king, a.GeneralsHubQuestVO.ID_FAT_KING);
-    this._knightQuestComponent = new r.GeneralsHubQuestComponent(this.dispClip.knight_bounds.mc_quest_knight, a.GeneralsHubQuestVO.ID_KNIGHT);
-    this._princessQuestComponent = new r.GeneralsHubQuestComponent(this.dispClip.princess_bounds.mc_quest_princess, a.GeneralsHubQuestVO.ID_PRINCESS);
-    this.hideQuestBoxes();
-    o.CastleModel.generalsData.addEventListener(n.GeneralsEvent.GENERALS_HUB_UPDATED, this.bindFunction(this.onQuestsUpdated));
-    o.CastleModel.generalsData.addEventListener(n.GeneralsEvent.GENERALS_HUB_REWARDS, this.bindFunction(this.onQuestsUpdated));
-    this.onQuestsUpdated();
+  n.__extends(GeneralsHubDialogIMultiRewardItem, e);
+  GeneralsHubDialogIMultiRewardItem.prototype.initLoaded = function () {
+    e.prototype.initLoaded.call(this);
+    this.clipLists = [new r.CollectableRendererList(), new r.CollectableRendererList(), new r.CollectableRendererList(), new r.CollectableRendererList()];
   };
-  GeneralsHubQuestsComponent.prototype.hideQuestBoxes = function () {
-    this._kingQuestComponent.hide();
-    this._knightQuestComponent.hide();
-    this._princessQuestComponent.hide();
-  };
-  GeneralsHubQuestsComponent.prototype.toggleShowHideElement = function (e, t) {
-    var i;
-    if (t) {
-      this.hideQuestBoxes();
-    }
-    switch (e) {
-      case s.CharactersAnimationsHandler.KING_ANIMATION:
-        i = this._kingQuestComponent;
-        break;
-      case s.CharactersAnimationsHandler.KNIGHT_ANIMATION:
-        i = this._knightQuestComponent;
-        break;
-      case s.CharactersAnimationsHandler.PRINCESS_ANIMATION:
-        i = this._princessQuestComponent;
-    }
-    if (i) {
+  GeneralsHubDialogIMultiRewardItem.prototype.fill = function () {
+    for (var e = 0; e < 4; e++) {
+      var t = this.rewards.length > e ? this.rewards[e] : null;
+      u.MovieClipHelper.clearMovieClip(this.itemMc["mc_icon" + e]);
+      this.itemMc["mc_item" + e].visible = false;
       if (t) {
-        i.show();
-      } else {
-        i.hide();
+        this.clipLists[e].destroyCollectableRenderList();
+        if (this.showCurrencyAsGeneral(t.RW)) {
+          var i = d.CastleModel.generalsData.getGeneralXMLVOByTokenID(t.RW.id);
+          var n = d.CastleModel.generalsData.playerGenerals.get(i.generalID);
+          new C.GeneralSelectionItem(n, this.itemMc["mc_icon" + e], false, false, false, true, null, true, false, false, true);
+          this.itemMc["mc_icon" + e].getChildAt(0).y = -50;
+          this.itemMc["mc_icon" + e].scaleX = this.itemMc["mc_icon" + e].scaleY = 1.9;
+          this.itemMc["mc_icon" + e].mouseChildren = false;
+          this.itemMc["mc_icon" + e].toolTipText = a.Localize.text("generic_amount_reward", [new a.LocalizedNumberVO(t.RW.amount), t.RW.getNameTextId()]);
+        } else {
+          this.itemMc["mc_item" + e].visible = true;
+          var o = new g.CollectableRenderOptions(g.CollectableRenderOptions.SET_ADVANCED, new l(173, 173));
+          o.icon.unitLevelDimension = new l(70, 70);
+          o.icon.unitLevelOffset = new l(-70, -70);
+          var s = new h.CollectableRenderClips(this.itemMc["mc_item" + e].mc_item).addIconMc(this.itemMc["mc_item" + e].mc_item.mc_icon).addBuildingLevelMc(this.itemMc["mc_item" + e].mc_item.mc_buildingLevel).addTextfieldBgMc(this.itemMc["mc_item" + e].mc_item.text_bg).addTextfield(this.itemMc["mc_item" + e].mc_item.txt_text).addInfoBtn(this.itemMc["mc_item" + e].btn_info);
+          p.CollectableRenderHelper.displaySingleItemComplete(this.clipLists[e], s, t.RW, o);
+        }
       }
     }
   };
-  GeneralsHubQuestsComponent.prototype.onQuestsUpdated = function (e = null) {
-    this.dispClip.mc_quests.info_king.visible = this._kingQuestComponent.questVO.availableQuests > 0;
-    this.dispClip.mc_quests.info_knight.visible = this._knightQuestComponent.questVO.availableQuests > 0;
-    this.dispClip.mc_quests.info_princess.visible = this._princessQuestComponent.questVO.availableQuests > 0;
-    this._kingQuestComponent.updateDisp();
-    this._knightQuestComponent.updateDisp();
-    this._princessQuestComponent.updateDisp();
+  GeneralsHubDialogIMultiRewardItem.prototype.showCurrencyAsGeneral = function (e) {
+    if (!e) {
+      return false;
+    }
+    if (e.itemType != s.CollectableEnum.GENERIC_CURRENCY) {
+      return false;
+    }
+    var t = d.CastleModel.generalsData.getGeneralXMLVOByTokenID(e.id);
+    if (!t) {
+      return false;
+    }
+    var i = d.CastleModel.generalsData.playerGenerals.get(t.generalID);
+    var n = d.CastleModel.currencyData.getAmountById(e.id);
+    return (!i || !i.isUnlocked) && n >= t.rarity.unlockCosts || !!i && !!i.isUnlocked && !!(i.requiredShards > 0) && !!(n >= i.requiredShards);
   };
-  GeneralsHubQuestsComponent.prototype.hide = function () {
-    this.hideQuestBoxes();
-    this.dispClip.mc_quests.info_king.visible = false;
-    this.dispClip.mc_quests.info_knight.visible = false;
-    this.dispClip.mc_quests.info_princess.visible = false;
-    o.CastleModel.generalsData.removeEventListener(n.GeneralsEvent.GENERALS_HUB_UPDATED, this.bindFunction(this.onQuestsUpdated));
-    o.CastleModel.generalsData.removeEventListener(n.GeneralsEvent.GENERALS_HUB_REWARDS, this.bindFunction(this.onQuestsUpdated));
-  };
-  Object.defineProperty(GeneralsHubQuestsComponent.prototype, "dispClip", {
+  Object.defineProperty(GeneralsHubDialogIMultiRewardItem.prototype, "itemMc", {
     get: function () {
-      return this._disp;
+      return this.getItemMc();
     },
     enumerable: true,
     configurable: true
   });
-  GeneralsHubQuestsComponent.prototype.performIntroductionDraw = function () {
-    this._kingQuestComponent.onFreeQuest();
-  };
-  return GeneralsHubQuestsComponent;
-}();
-exports.GeneralsHubQuestsComponent = l;
+  Object.defineProperty(GeneralsHubDialogIMultiRewardItem.prototype, "rewards", {
+    get: function () {
+      return this.data.rewards;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return GeneralsHubDialogIMultiRewardItem;
+}(c.AInfiniteScrollListItem);
+exports.GeneralsHubDialogIMultiRewardItem = _;
+o.classImplementsInterfaces(_, "ICollectableRendererList");

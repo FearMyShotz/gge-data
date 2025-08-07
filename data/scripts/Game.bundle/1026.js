@@ -1,110 +1,124 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./1.js");
-var r = require("./5.js");
-var l = require("./5.js");
-var c = require("./3.js");
-var u = require("./6.js");
-var d = require("./57.js");
-var p = require("./153.js");
-var h = require("./40.js");
-var g = require("./1027.js");
-var C = require("./8.js");
-var _ = function (e) {
-  function AAutoRecruitmentCopyListItemVE(t) {
-    var i = this;
-    i._onSelectionChanged = new d.Signal();
-    CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this)._checkButton = t.getChildByName("btn_select");
-    C.ButtonHelper.initBasicButton(i._checkButton);
-    i.changeSelection(false, false, false);
-    return i;
+var n = require("./2.js");
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./6.js");
+var r = require("./69.js");
+var l = require("./85.js");
+var c = require("./4.js");
+var u = createjs.Point;
+var d = createjs.MouseEvent;
+var p = function () {
+  function AInventoryListItem(e, t) {
+    this.disp = e;
+    this.disp.btn_dismiss.toolTipText = "dialog_dismissUnit_tooltip";
+    this.tooltip = t;
+    this.infoAmountText = AInventoryListItem.textFieldManager.registerTextField(this.disp.item.mc_contentHolder.infoAmount.txt_value, new a.LocalizedNumberVO(0));
+    this.show();
   }
-  n.__extends(AAutoRecruitmentCopyListItemVE, e);
-  AAutoRecruitmentCopyListItemVE.prototype.assignNewData = function (e) {
-    this._vo = e;
-    this.updateSelectButton();
-    this.updateGreyOut();
-    this.updateKingdomSymbol();
-    this.applyNewVO();
-  };
-  AAutoRecruitmentCopyListItemVE.prototype.updateSelectButton = function (e = false) {
-    this.changeSelection(!!this.vo && this.vo.isSelected, e, false);
-  };
-  AAutoRecruitmentCopyListItemVE.prototype.updateKingdomSymbol = function () {
-    var e = u.int(this.vo ? this.vo.kingdomId : l.WorldClassic.KINGDOM_ID);
-    var t = new a.ColorTransform();
-    t.color = p.KingdomEnum.getTypeById(e).symbolBgColor;
-    this.disp.mc_kingdom.mc_color.useFilters([new createjs.ColorFilter(t.redMultiplier, t.greenMultiplier, t.blueMultiplier, t.alphaMultiplier, t.redOffset, t.greenOffset, t.blueOffset, t.alphaOffset)]);
-  };
-  AAutoRecruitmentCopyListItemVE.prototype.updateGreyOut = function () {
-    var e = !this.vo || !this.vo.hasError;
-    var t = u.int(this.vo ? this.vo.errorId : r.ERROR.ALL_OK);
-    this.enableComponent(e);
-    C.ButtonHelper.enableButton(this.disp, !e);
-    this.disp.mouseChildren = e;
-    this.disp.toolTipText = this.getErrorToolTipTextId(t);
-  };
-  AAutoRecruitmentCopyListItemVE.prototype.applyNewVO = function () {};
-  AAutoRecruitmentCopyListItemVE.prototype.changeSelection = function (e, t = true, i = true) {
-    this._checkButton.gotoAndStop(Object(e ? 2 : 1));
-    this._checkButton.toolTipText = e ? "dialog_copyQueue_deselect" : "dialog_copyQueue_select";
-    if (this.vo) {
-      this.vo.isSelected = e;
-    }
-    if (t && e && g.AutoRecruitmentHelper.isEventKingdom(this.vo.kingdomId) && g.AutoRecruitmentHelper.getRemainingEventKingdomTime(this.vo.kingdomId) < this.vo.recruitmentTime) {
-      m.CastleDialogHandler.getInstance().registerDefaultDialogs(f.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(c.Localize.text("generic_alert_warning"), c.Localize.text(this.eventTimeWarningTextId)));
-    }
-    if (i) {
-      this.onSelectionChanged.dispatch();
-    }
-  };
-  Object.defineProperty(AAutoRecruitmentCopyListItemVE.prototype, "eventTimeWarningTextId", {
-    get: function () {
-      return "";
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AAutoRecruitmentCopyListItemVE.prototype.getErrorToolTipTextId = function (e) {
-    switch (e) {
-      case r.ERROR.TOO_MUCH_UNITS:
-        return "dialog_copyQueue_disabled_tooManyUnits";
-      case r.ERROR.NOT_ENOUGH_RESOURCES:
-        return "dialog_copyQueue_disabled_resources";
-      default:
-        return "";
-    }
-  };
-  AAutoRecruitmentCopyListItemVE.prototype.onClick = function (e) {
-    if (C.ButtonHelper.isButtonEnabled(e.target)) {
-      switch (e.target) {
-        case this.disp.btn_select:
-          this.changeSelection(!this.vo.isSelected);
+  AInventoryListItem.prototype.show = function () {
+    this.disp.addEventListener(d.CLICK, this.bindFunction(this.onClick));
+    this.disp.addEventListener(d.MOUSE_OUT, this.bindFunction(this.onMouseOut));
+    this.disp.addEventListener(d.MOUSE_OVER, this.bindFunction(this.onMouseOver));
+    if (o.currentBrowserInfo.isMobile) {
+      var e = this.disp.btn_dismiss;
+      if (e) {
+        e.scaleX = e.scaleY = 1.5;
       }
     }
   };
-  Object.defineProperty(AAutoRecruitmentCopyListItemVE.prototype, "onSelectionChanged", {
+  AInventoryListItem.prototype.destroy = function () {
+    this.disp.removeEventListener(d.CLICK, this.bindFunction(this.onClick));
+    this.disp.removeEventListener(d.MOUSE_OUT, this.bindFunction(this.onMouseOut));
+    this.disp.removeEventListener(d.MOUSE_OVER, this.bindFunction(this.onMouseOver));
+  };
+  Object.defineProperty(AInventoryListItem.prototype, "unitVO", {
     get: function () {
-      return this._onSelectionChanged;
+      return this._unitVO;
+    },
+    set: function (e) {
+      this._unitVO = e;
+      this.update();
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AAutoRecruitmentCopyListItemVE.prototype, "vo", {
+  AInventoryListItem.prototype.onClick = function (e) {
+    switch (e.target) {
+      case this.disp.item:
+        this.onClickUnit();
+        break;
+      case this.disp.btn_info:
+        this.onClickUnitInfo();
+        break;
+      case this.disp.btn_dismiss:
+        this.onClickDismissUnit();
+    }
+  };
+  AInventoryListItem.prototype.onMouseOver = function (e) {
+    if (this.unitVO) {
+      this.dismissButtonVisibility = true;
+      if (e.target == this.disp.item) {
+        this.tooltip.show(this.unitVO, this.disp);
+      }
+    }
+  };
+  AInventoryListItem.prototype.onMouseOut = function (e) {
+    this.tooltip.hide();
+    this.dismissButtonVisibility = false;
+  };
+  AInventoryListItem.prototype.onClickUnit = function () {
+    throw new r.AbstractMethodError();
+  };
+  AInventoryListItem.prototype.onClickUnitInfo = function () {
+    throw new r.AbstractMethodError();
+  };
+  AInventoryListItem.prototype.onClickDismissUnit = function () {
+    throw new r.AbstractMethodError();
+  };
+  Object.defineProperty(AInventoryListItem.prototype, "hasDismissButton", {
     get: function () {
-      return this._vo;
+      return true;
     },
     enumerable: true,
     configurable: true
   });
-  return AAutoRecruitmentCopyListItemVE;
-}(h.CastleItemRenderer);
-exports.AAutoRecruitmentCopyListItemVE = _;
-s.classImplementsInterfaces(_, "ICollectableRendererList");
-var m = require("./9.js");
-var f = require("./38.js");
+  AInventoryListItem.prototype.update = function () {
+    if (this.unitVO) {
+      h.WodPicHelper.setCorrectUnitBackgroundPic(this.unitVO, this.disp.item.mc_bg, Library.CastleInterfaceElements.castleRecruitUnitBackground, Library.CastleInterfaceElements.castleRecruitUnitBackground_Berimond);
+      this.disp.visible = true;
+      this.tooltip.hide();
+      h.WodPicHelper.addUnitPic(this.unitVO, this.disp.item.mc_contentHolder.mc_content, s.int(this.disp.item.width / this.disp.item.scaleX), s.int(this.disp.item.height / this.disp.item.scaleY), c.CastleModel.userData.playerCrest.colorsTwo[0], c.CastleModel.userData.playerCrest.colorsTwo[1], 26, new u(12, 14));
+      this.disp.item.mc_contentHolder.infoAmount.visible = this.unitVO.inventoryAmount > 0;
+      this.infoAmountText = AInventoryListItem.textFieldManager.registerTextField(this.disp.item.mc_contentHolder.infoAmount.txt_value, new l.CastleLocalizedNumberVO(this.unitVO.inventoryAmount, {
+        compactThreshold: 10000,
+        compactFractionalDigits: 0
+      }));
+      this.dismissButtonVisibility = false;
+    } else {
+      this.disp.visible = false;
+    }
+  };
+  Object.defineProperty(AInventoryListItem.prototype, "dismissButtonVisibility", {
+    set: function (e) {
+      if (this.disp.btn_dismiss && this.unitVO) {
+        this.disp.btn_dismiss.visible = this.unitVO.isDismissable && this.hasDismissButton && (e || o.currentBrowserInfo.isMobile);
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(AInventoryListItem, "textFieldManager", {
+    get: function () {
+      return n.GoodgameTextFieldManager.getInstance();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return AInventoryListItem;
+}();
+exports.AInventoryListItem = p;
+var h = require("./63.js");
+o.classImplementsInterfaces(p, "IInventoryListItem");

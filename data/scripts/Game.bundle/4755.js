@@ -3,34 +3,36 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./7.js");
-var r = require("./10.js");
-var l = function (e) {
-  function AGBCommand() {
+var a = require("./6.js");
+var s = function (e) {
+  function StrongestDefenceSupportFlankStrategy() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AGBCommand, e);
-  Object.defineProperty(AGBCommand.prototype, "cmdId", {
-    get: function () {
-      return s.ClientConstSF.S2C_ACTIVATE_GLOBAL_EFFECT_BOOSTER_EVENT;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  AGBCommand.prototype.executeCommand = function (e, t) {
-    switch (e) {
-      case a.ERROR.ALL_OK:
-        break;
-      default:
-        this.showErrorDialog(e, t);
+  n.__extends(StrongestDefenceSupportFlankStrategy, e);
+  StrongestDefenceSupportFlankStrategy.prototype.pickSoldierStack = function (e, t, i, n) {
+    var o = 0;
+    var s = 0;
+    var l = n.getSoldiers();
+    if (l != null) {
+      for (var c = 0, u = l; c < u.length; c++) {
+        var d = u[c];
+        if (d !== undefined && (d.fightType == r.BasicUnitVO.FIGHTTYPE_DEF || d.isHybrid)) {
+          var p = (d.meleeDefence + d.rangeDefence) * d.inventoryAmount;
+          if (p > o) {
+            o = p;
+            s = a.int(d.wodId);
+          }
+        }
+      }
     }
-    return false;
+    if (o == 0) {
+      return null;
+    } else {
+      return n.deductUnit(s, e.freeItems);
+    }
   };
-  return AGBCommand;
-}(r.CastleCommand);
-exports.AGBCommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  return StrongestDefenceSupportFlankStrategy;
+}(require("./1794.js").AFillFlankStrategy);
+exports.StrongestDefenceSupportFlankStrategy = s;
+var r = require("./511.js");
+o.classImplementsInterfaces(s, "IFillFlankStrategy");

@@ -5,43 +5,39 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./756.js");
-var l = require("./135.js");
-var c = require("./10.js");
-var u = function (e) {
-  function SDCCommand() {
+var r = require("./4.js");
+var l = require("./265.js");
+var c = require("./211.js");
+var u = require("./10.js");
+var d = function (e) {
+  function CTICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(SDCCommand, e);
-  Object.defineProperty(SDCCommand.prototype, "cmdId", {
+  n.__extends(CTICommand, e);
+  Object.defineProperty(CTICommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_SKIP_DUNGEON_COOLDOWN;
+      return s.ClientConstSF.S2C_GET_CONQUER_INFO_METROPOL;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(u.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  SDCCommand.prototype.executeCommand = function (e, t) {
+  CTICommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        var n = d.WorldmapObjectFactory.parseWorldMapArea(i.AI);
-        this.controller.dispatchEvent(new r.SkipCooldownEvent(r.SkipCooldownEvent.UPDATE, n));
-        break;
-      case a.ERROR.NOT_ENOUGH_CURRENCY2:
-        p.CastleDialogHandler.getInstance().registerDefaultDialogs(h.CastleNoMoneyC2Dialog, new l.CastleNoMoneyC2DialogProperties());
+        var n = r.CastleModel.attackData.parse_CTI(i);
+        p.CastleDialogHandler.getInstance().registerDefaultDialogs(c.AttackDialog, new l.CastleAttackDialogProperties(n));
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return SDCCommand;
-}(c.CastleCommand);
-exports.SDCCommand = u;
-var d = require("./147.js");
+  return CTICommand;
+}(u.CastleCommand);
+exports.CTICommand = d;
 var p = require("./9.js");
-var h = require("./138.js");
-o.classImplementsInterfaces(u, "IExecCommand");
+o.classImplementsInterfaces(d, "IExecCommand");

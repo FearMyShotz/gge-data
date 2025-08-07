@@ -752,26 +752,26 @@ module.exports = function () {
   var G = function fingerprint() {
     return U;
   };
-  var w = 0;
-  var k = 4;
+  var k = 0;
+  var w = 4;
   var x = 36;
-  var W = Math.pow(x, k);
+  var W = Math.pow(x, w);
   function randomBlock() {
-    return R((Math.random() * W << 0).toString(x), k);
+    return R((Math.random() * W << 0).toString(x), w);
   }
   function cuid() {
     var e = new Date().getTime().toString(x);
     var t = R(function safeCounter() {
-      w = w < W ? w : 0;
-      return ++w - 1;
-    }().toString(x), k);
+      k = k < W ? k : 0;
+      return ++k - 1;
+    }().toString(x), w);
     var n = G();
     var i = randomBlock() + randomBlock();
     return "c" + e + t + n + i;
   }
   cuid.fingerprint = G;
-  var V = cuid;
-  var H = a.isoDate;
+  var H = cuid;
+  var V = a.isoDate;
   var j = function () {
     function Session() {
       (function ___classCallCheck_10(e, t) {
@@ -779,8 +779,8 @@ module.exports = function () {
           throw new TypeError("Cannot call a class as a function");
         }
       })(this, Session);
-      this.id = V();
-      this.startedAt = H();
+      this.id = H();
+      this.startedAt = V();
       this._handled = 0;
       this._unhandled = 0;
     }
@@ -1473,15 +1473,15 @@ module.exports = function () {
   var Fe = "request";
   var Ue = "BS~~U";
   var Ge = "BS~~M";
-  var we = a.includes;
-  var ke = undefined;
+  var ke = a.includes;
+  var we = undefined;
   function xe() {
-    return [ke.config.endpoints.notify, ke.config.endpoints.sessions];
+    return [we.config.endpoints.notify, we.config.endpoints.sessions];
   }
   Me.init = function (e) {
-    ke = e;
+    we = e;
     We();
-    Ve();
+    He();
   };
   Me.configSchema = {
     networkBreadcrumbsEnabled: {
@@ -1510,26 +1510,26 @@ module.exports = function () {
     }
   }
   function handleXHRLoad() {
-    if (!we(xe(), this[Ue])) {
+    if (!ke(xe(), this[Ue])) {
       var e = {
         status: this.status,
         request: this[Ge] + " " + this[Ue]
       };
       if (this.status >= 400) {
-        ke.leaveBreadcrumb("XMLHttpRequest failed", e, Fe);
+        we.leaveBreadcrumb("XMLHttpRequest failed", e, Fe);
       } else {
-        ke.leaveBreadcrumb("XMLHttpRequest succeeded", e, Fe);
+        we.leaveBreadcrumb("XMLHttpRequest succeeded", e, Fe);
       }
     }
   }
   function handleXHRError() {
-    if (!we(xe(), this[Ue])) {
-      ke.leaveBreadcrumb("XMLHttpRequest error", {
+    if (!ke(xe(), this[Ue])) {
+      we.leaveBreadcrumb("XMLHttpRequest error", {
         request: this[Ge] + " " + this[Ue]
       }, Fe);
     }
   }
-  function Ve() {
+  function He() {
     if ("fetch" in window) {
       var e = window.fetch;
       window.fetch = function fetch() {
@@ -1544,7 +1544,7 @@ module.exports = function () {
         }
         return new Promise(function (t, i) {
           e.apply(undefined, n).then(function (e) {
-            He(e, r, a);
+            Ve(e, r, a);
             t(e);
           }).catch(function (e) {
             je(r, a);
@@ -1554,19 +1554,19 @@ module.exports = function () {
       };
     }
   }
-  function He(e, t, n) {
+  function Ve(e, t, n) {
     var i = {
       status: e.status,
       request: t + " " + n
     };
     if (e.status >= 400) {
-      ke.leaveBreadcrumb("fetch() failed", i, Fe);
+      we.leaveBreadcrumb("fetch() failed", i, Fe);
     } else {
-      ke.leaveBreadcrumb("fetch() succeeded", i, Fe);
+      we.leaveBreadcrumb("fetch() succeeded", i, Fe);
     }
   }
   function je(e, t) {
-    ke.leaveBreadcrumb("fetch() error", {
+    we.leaveBreadcrumb("fetch() error", {
       request: e + " " + t
     }, Fe);
   }

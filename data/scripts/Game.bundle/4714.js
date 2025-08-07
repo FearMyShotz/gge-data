@@ -5,39 +5,33 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
-var r = require("./4.js");
-var l = require("./10.js");
-var c = function (e) {
-  function GTRCommand() {
+var r = require("./10.js");
+var l = function (e) {
+  function ATDCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GTRCommand, e);
-  Object.defineProperty(GTRCommand.prototype, "cmdId", {
+  n.__extends(ATDCommand, e);
+  Object.defineProperty(ATDCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_ALLIANCE_TOPIC_REPLIES;
+      return s.ClientConstSF.S2C_ALLIANCE_TOPIC_DELETE;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(r.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  GTRCommand.prototype.executeCommand = function (e, t) {
+  ATDCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
-        var i = JSON.parse(t[1]);
-        r.CastleModel.castleForumData.parseGTR(i);
-        break;
-      case a.ERROR.TOPIC_NOT_FOUND:
-        this.showErrorDialog(e, t);
-        r.CastleModel.castleForumData.onDetailTopicWasNotFound();
+        JSON.parse(t[1]);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GTRCommand;
-}(l.CastleCommand);
-exports.GTRCommand = c;
-o.classImplementsInterfaces(c, "IExecCommand");
+  return ATDCommand;
+}(r.CastleCommand);
+exports.ATDCommand = l;
+o.classImplementsInterfaces(l, "IExecCommand");

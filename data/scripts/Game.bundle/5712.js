@@ -3,119 +3,61 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./5.js");
-var s = require("./6.js");
-var r = require("./30.js");
-var l = require("./54.js");
-var c = require("./4.js");
-var u = require("./111.js");
-var d = require("./142.js");
-var p = require("./5713.js");
-var h = require("./32.js");
-var g = require("./37.js");
-var C = function (e) {
-  function GlobalEffectData(t) {
+var a = require("./54.js");
+var s = require("./5713.js");
+var r = function (e) {
+  function CastlePrivateResourceVillageData(t) {
     var i = e.call(this) || this;
-    i._globalEffectVOs = new Map();
-    for (var n = 0, o = t.globalEffects; n < o.length; n++) {
-      var a = o[n];
-      if (a !== undefined) {
-        var s = new p.GlobalEffectVO();
-        s.parseXml(a);
-        if (i._globalEffectVOs.get(s.globalEffectID) == null) {
-          i._globalEffectVOs.set(s.globalEffectID, []);
-        }
-        i._globalEffectVOs.get(s.globalEffectID).push(s);
-      }
-    }
+    i.parse(t);
     return i;
   }
-  n.__extends(GlobalEffectData, e);
-  GlobalEffectData.prototype.isEffectBoosted = function (e) {
-    return this._boostedGlobalEffectIDs.indexOf(e) >= 0;
-  };
-  GlobalEffectData.prototype.getGlobalEffectVOsByGlobalEffectID = function (e) {
-    return this._globalEffectVOs.get(e);
-  };
-  GlobalEffectData.prototype.getGlobalEffectsByType = function (e, t = null) {
-    if (!this.eventVO) {
-      return [];
-    }
-    var i = [];
-    for (var n = 0, o = this.eventVO.globalEffectData; n < o.length; n++) {
-      var a = o[n];
-      if (a !== undefined && a.length != 0 && !(a[1] < r.CachedTimer.getCachedTimer())) {
-        var s = a[0];
-        if (s != null) {
-          for (var l = 0, c = s; l < c.length; l++) {
-            var u = c[l];
-            if (u !== undefined && u.canBeUsed && u.bonus.matchesConditions(e, t.areaType, t.spaceId, t.wodId, t.otherPlayer)) {
-              i.push(u.bonus);
-            }
-          }
+  n.__extends(CastlePrivateResourceVillageData, e);
+  CastlePrivateResourceVillageData.prototype.reset = function () {};
+  CastlePrivateResourceVillageData.prototype.parse = function (e) {
+    this.privateVillages = new Map();
+    var t = e.privateVillages;
+    if (t != null) {
+      for (var i = 0, n = t; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          var a = new s.PrivateResourceVillageInfoVO();
+          a.fillFromParamXML(o);
+          this.privateVillages.set(a.villageID, a);
         }
       }
     }
+  };
+  CastlePrivateResourceVillageData.prototype.getVillageByID = function (e) {
+    return this.privateVillages.get(e);
+  };
+  CastlePrivateResourceVillageData.prototype.getPrivateVillages = function (e, t) {
+    var i = [];
+    if (this.privateVillages != null) {
+      for (var n = 0, o = Array.from(this.privateVillages.values()); n < o.length; n++) {
+        var a = o[n];
+        if (a !== undefined && a.kingdomID == e && a.type == t) {
+          i.push(a);
+        }
+      }
+    }
+    i.sort(this.bindFunction(this.sortByVillageLevel));
     return i;
   };
-  GlobalEffectData.prototype.getGlobalEffectValue = function (e, t = -1, i = -1, n = -1) {
-    var o = u.CastleEffectsHelper.getTotalEffectValue(this.getGlobalEffectsByType(e, new d.CastleEffectConditionVO(i, n, t)), true);
-    return o || new e.valueClass();
+  CastlePrivateResourceVillageData.prototype.sortByVillageLevel = function (e, t) {
+    return e.villageLevel - t.villageLevel;
   };
-  GlobalEffectData.prototype.getBonusByEffectType = function (e, t = -1, i = -1, n = -1) {
-    if (!this.eventVO) {
-      return 0;
-    }
-    var o = 0;
-    var a = s.int(t < 0 ? c.CastleModel.areaData.activeArea.areaInfo.areaType : t);
-    var l = s.int(i < 0 ? c.CastleModel.areaData.activeArea.spaceId : i);
-    for (var u = 0, d = this.eventVO.globalEffectData; u < d.length; u++) {
-      var p = d[u];
-      if (p !== undefined && p.length != 0 && !(p[1] < r.CachedTimer.getCachedTimer())) {
-        var h = p[0];
-        if (h != null) {
-          for (var g = 0, C = h; g < C.length; g++) {
-            var _ = C[g];
-            if (_ !== undefined && _.canBeUsed && _.bonus.matchesConditions(e, a, l, n)) {
-              o += _.bonus.strength;
-            }
-          }
+  CastlePrivateResourceVillageData.prototype.getPrivateVillageInfo = function (e, t, i) {
+    if (this.privateVillages != null) {
+      for (var n = 0, o = Array.from(this.privateVillages.values()); n < o.length; n++) {
+        var a = o[n];
+        if (a !== undefined && a.kingdomID == e && a.type == t && a.villageLevel == i) {
+          return a;
         }
       }
     }
-    return o;
+    return null;
   };
-  Object.defineProperty(GlobalEffectData.prototype, "eventVO", {
-    get: function () {
-      return c.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_GLOBAL_EFFECTS);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GlobalEffectData.prototype, "eventBuffVO", {
-    get: function () {
-      return c.CastleModel.specialEventData.getActiveEventByEventId(a.EventConst.EVENTTYPE_GLOBAL_EFFECTS_BOOSTER);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  GlobalEffectData.prototype.parse_GIE = function (e) {
-    if (e && e.GE) {
-      this._boostedGlobalEffectIDs = e.GE;
-      for (var t = 0, i = this._boostedGlobalEffectIDs; t < i.length; t++) {
-        var n;
-        var o = i[t];
-        if (this.eventVO) {
-          n = this.eventVO.getGlobalEffectByID(o);
-        }
-        if (n) {
-          n.addBuffStrengthValue(this.eventBuffVO.getBoostValueForGlobalEffect(o));
-        }
-      }
-      this.dispatchEvent(new h.CastleUserDataEvent(g.CastleServerMessageArrivedEvent.GLOBAL_EFFECT_BUFFED));
-    }
-  };
-  return GlobalEffectData;
-}(l.CastleBasicData);
-exports.GlobalEffectData = C;
-o.classImplementsInterfaces(C, "IUpdatable", "ICastleBasicData");
+  return CastlePrivateResourceVillageData;
+}(a.CastleBasicData);
+exports.CastlePrivateResourceVillageData = r;
+o.classImplementsInterfaces(r, "IUpdatable", "ICastleBasicData");

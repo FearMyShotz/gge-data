@@ -2,116 +2,87 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
+var o = require("./1.js");
+var a = require("./3.js");
 var s = require("./3.js");
 var r = require("./3.js");
-var l = require("./3.js");
-var c = require("./6.js");
+var l = require("./6.js");
+var c = require("./26.js");
 var u = require("./13.js");
-var d = require("./47.js");
-var p = require("./59.js");
-var h = require("./8.js");
-var g = require("./11.js");
+var d = require("./4.js");
+var p = require("./174.js");
+var h = require("./40.js");
+var g = require("./8.js");
 var C = function (e) {
-  function SeasonLeagueRewardOverviewDialog() {
-    var t = this;
-    t._items = [];
+  function SeasonLeagueEventElementComponent(t, i) {
+    var n = this;
+    n._eventId = -1;
     CONSTRUCTOR_HACK;
-    return t = e.call(this, SeasonLeagueRewardOverviewDialog.NAME) || this;
+    (n = e.call(this, t) || this)._eventId = i;
+    n.init();
+    return n;
   }
-  n.__extends(SeasonLeagueRewardOverviewDialog, e);
-  SeasonLeagueRewardOverviewDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    h.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help], f.ClickFeedbackButton);
-    this._scrollComponent = new _.ModernSliderScrollComponent(new d.SimpleScrollVO().initByParent(this.dialogDisp.mc_slider).addMouseWheelElements([this.dialogDisp.mc_items]), new p.DynamicSizeScrollStrategyVertical(true));
+  n.__extends(SeasonLeagueEventElementComponent, e);
+  SeasonLeagueEventElementComponent.prototype.init = function () {
+    g.ButtonHelper.initButton(this.disp.btn_showMe, -1, f.ClickFeedbackButtonBackground);
+    _.CastleComponent.textFieldManager.registerTextField(this.disp.btn_showMe.txt_text, new a.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId("dialog_seasonLeague_eventInterface_showMe_text"))).autoFitToBounds = true;
+    this.disp.btn_showMe.toolTipText = "dialog_seasonLeague_eventInterface_showMe_text";
+    if (this.disp.txt_title) {
+      _.CastleComponent.textFieldManager.registerTextField(this.disp.txt_title, new s.LocalizedTextVO("dialog_faction_seasonLeague_header")).autoFitToBounds = true;
+    }
+    this.disp.mc_rank.mouseChildren = false;
   };
-  SeasonLeagueRewardOverviewDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
-    this._scrollComponent.show();
-    if (this._items != null) {
-      for (var i = 0, n = this._items; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          o.onShow();
-        }
+  SeasonLeagueEventElementComponent.prototype.onShow = function () {
+    e.prototype.onShow.call(this);
+    if (d.CastleModel.seasonLeagueData.isSeasonLeagueActive() && d.CastleModel.seasonLeagueData.isAnySeasonEventActive()) {
+      d.CastleModel.seasonLeagueData.server.requestKLH();
+    }
+    this.update();
+  };
+  SeasonLeagueEventElementComponent.prototype.addEventListener = function () {
+    e.prototype.addEventListener.call(this);
+    _.CastleComponent.controller.addEventListener(p.SeasonLeagueEvent.ON_OWN_RANKS_UPDATED, this.bindFunction(this.onPlayerRankUpdated));
+    d.CastleModel.specialEventData.addEventListener(c.CastleSpecialEventEvent.SERVER_DATA_PARSED, this.bindFunction(this.onRefreshSpecialEvent));
+  };
+  SeasonLeagueEventElementComponent.prototype.removeEventListener = function () {
+    e.prototype.removeEventListener.call(this);
+    _.CastleComponent.controller.removeEventListener(p.SeasonLeagueEvent.ON_OWN_RANKS_UPDATED, this.bindFunction(this.onPlayerRankUpdated));
+    d.CastleModel.specialEventData.removeEventListener(c.CastleSpecialEventEvent.SERVER_DATA_PARSED, this.bindFunction(this.onRefreshSpecialEvent));
+  };
+  SeasonLeagueEventElementComponent.prototype.update = function () {
+    var e = d.CastleModel.seasonLeagueData.getActiveSeasonEventVO();
+    this.disp.visible = e && e.eventId == this.eventId;
+    g.ButtonHelper.enableButton(this.disp.btn_showMe, d.CastleModel.seasonLeagueData.getActiveSeasonLeagueEventVO() != null);
+    var t = l.int(d.CastleModel.seasonLeagueData.server.playerSeasonEventRank);
+    _.CastleComponent.textFieldManager.registerTextField(this.disp.mc_rank.txt_text, t > 0 ? new r.LocalizedNumberVO(t) : new a.TextVO("-")).autoFitToBounds = true;
+    this.disp.mc_rank.toolTipText = t > 0 ? "dialog_seasonLeague_divisionRanking_tooltip" : "dialog_seasonLeague_divisionRankingNoMatch_tooltip";
+  };
+  SeasonLeagueEventElementComponent.prototype.onClick = function (t) {
+    if (g.ButtonHelper.isButtonEnabled(t.target)) {
+      e.prototype.onClick.call(this, t);
+      switch (t.target) {
+        case this.disp.btn_showMe:
+          _.CastleComponent.dialogHandler.registerDefaultDialogs(m.SeasonLeagueMainDialog);
       }
     }
-    this.updateText();
-    this.updateItems();
   };
-  SeasonLeagueRewardOverviewDialog.prototype.hide = function () {
-    this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
-    this._scrollComponent.hide();
-    if (this._items != null) {
-      for (var t = 0, i = this._items; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.onHide();
-        }
-      }
-    }
-    e.prototype.hide.call(this);
+  SeasonLeagueEventElementComponent.prototype.onPlayerRankUpdated = function (e) {
+    this.update();
   };
-  SeasonLeagueRewardOverviewDialog.prototype.updateText = function () {
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new l.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId(this.dialogProperties.titleTextId))).autoFitToBounds = true;
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_desc, new r.LocalizedTextVO(this.dialogProperties.descTextId)).autoFitToBounds = true;
+  SeasonLeagueEventElementComponent.prototype.onRefreshSpecialEvent = function (e) {
+    this.update();
   };
-  SeasonLeagueRewardOverviewDialog.prototype.updateItems = function () {
-    if (this._items != null) {
-      for (var e = 0, t = this._items; e < t.length; e++) {
-        var i = t[e];
-        if (i !== undefined) {
-          i.destroy();
-        }
-      }
-    }
-    this._items = [];
-    var n = this.getIemContainerMc();
-    o.MovieClipHelper.clearMovieClip(n);
-    var a = 0;
-    for (var s = 0; s < this.dialogProperties.itemVOs.length; ++s) {
-      var r = this.dialogProperties.itemVOs[s];
-      (i = new m.SeasonLeagueRewardOverviewDialogItem(n, r, s)).onShow();
-      i.disp.y = a;
-      a += i.disp.height;
-    }
-    var l = c.int(i ? i.disp.height : 1);
-    var u = c.int(Math.max(0, n.height - SeasonLeagueRewardOverviewDialog.ITEM_MASK_HEIGHT));
-    this._scrollComponent.init(0, u, l, l);
-    this._scrollComponent.scrollToValue(0);
-    this._scrollComponent.setVisibility(u > 0);
-  };
-  SeasonLeagueRewardOverviewDialog.prototype.getIemContainerMc = function () {
-    return this.dialogDisp.mc_items.mc_transform;
-  };
-  SeasonLeagueRewardOverviewDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_close:
-        this.hide();
-        break;
-      case this.dialogDisp.btn_help:
-        g.CastleExternalDialog.dialogHandler.showHelper("", s.Localize.text(this.dialogProperties.helpTextId));
-    }
-  };
-  SeasonLeagueRewardOverviewDialog.prototype.onScroll = function () {
-    this.getIemContainerMc().y = -this._scrollComponent.currentValue;
-  };
-  Object.defineProperty(SeasonLeagueRewardOverviewDialog.prototype, "dialogProperties", {
+  Object.defineProperty(SeasonLeagueEventElementComponent.prototype, "eventId", {
     get: function () {
-      return this.properties;
+      return this._eventId;
     },
     enumerable: true,
     configurable: true
   });
-  SeasonLeagueRewardOverviewDialog.NAME = "SeasonLeagueRewardOverview";
-  SeasonLeagueRewardOverviewDialog.ITEM_MASK_HEIGHT = 384;
-  return SeasonLeagueRewardOverviewDialog;
-}(g.CastleExternalDialog);
-exports.SeasonLeagueRewardOverviewDialog = C;
-var _ = require("./82.js");
-var m = require("./3419.js");
-var f = require("./36.js");
-a.classImplementsInterfaces(C, "ICollectableRendererList");
+  return SeasonLeagueEventElementComponent;
+}(h.CastleItemRenderer);
+exports.SeasonLeagueEventElementComponent = C;
+o.classImplementsInterfaces(C, "ICollectableRendererList");
+var _ = require("./14.js");
+var m = require("./808.js");
+var f = require("./121.js");

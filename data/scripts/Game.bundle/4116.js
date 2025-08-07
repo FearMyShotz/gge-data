@@ -38,5 +38,5 @@ var l = function (e) {
 }(r.APanelButton);
 exports.OverviewPanelButton = l;
 var c = require("./14.js");
-var u = require("./1039.js");
+var u = require("./1040.js");
 o.classImplementsInterfaces(l, "ICollectableRendererList");

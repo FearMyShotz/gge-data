@@ -4,15 +4,16 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./88.js");
-var s = require("./227.js");
+var s = require("./228.js");
 var r = function (e) {
-  function CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog() {
-    return e.call(this, "CastlePaymentRewardSpecialOfferAlien") || this;
+  function CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAttackDialog() {
+    CONSTRUCTOR_HACK;
+    return e.call(this, "CastlePaymentRewardSpecialOfferAttack") || this;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog, e);
-  Object.defineProperty(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog.prototype, "skinType", {
+  n.__extends(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAttackDialog, e);
+  Object.defineProperty(CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAttackDialog.prototype, "skinType", {
     get: function () {
-      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_ALIEN;
+      return a.CastlePaymentRewardSpecialOfferConstants.SKIN_ATTACK;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(s.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayDialog.prototype, "skinType").set.call(this, e);
@@ -20,11 +21,11 @@ var r = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog.__initialize_static_members = function () {
-    CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog.NAME = "CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlien";
+  CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAttackDialog.__initialize_static_members = function () {
+    CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAttackDialog.NAME = "CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAttack";
   };
-  return CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog;
+  return CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAttackDialog;
 }(s.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayDialog);
-exports.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAlienDialog = r;
+exports.CastlePaymentRewardSpecialOfferRealCurrencyPrimeDayAttackDialog = r;
 o.classImplementsInterfaces(r, "ICollectableRendererList");
 r.__initialize_static_members();

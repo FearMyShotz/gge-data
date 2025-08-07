@@ -2,14 +2,16 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleConstructionSellDialogProperties(t, i = null) {
-    var n = e.call(this) || this;
-    n.buildingVO = t;
-    n.basicBuilding = i;
-    return n;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SBoosterInfoVO() {
+    return e.call(this) || this;
   }
-  n.__extends(CastleConstructionSellDialogProperties, e);
-  return CastleConstructionSellDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleConstructionSellDialogProperties = o;
+  n.__extends(C2SBoosterInfoVO, e);
+  C2SBoosterInfoVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_BOOSTER_INFO;
+  };
+  return C2SBoosterInfoVO;
+}(o.BasicCommandVO);
+exports.C2SBoosterInfoVO = s;

@@ -3,27 +3,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastlePaymentRewardSpecialOfferFinishDialogProperties(t) {
-    var i = this;
-    i.rewardCount = 0;
-    i.rewardId = 0;
-    i.wonRubies = 0;
+  function CastleChangelistRewardsEvent(t, i, n = false, o = false) {
+    var a = this;
     CONSTRUCTOR_HACK;
-    (i = e.call(this) || this).rewardCount = t.RC;
-    i.rewardId = t.RID ? t.RID : -1;
-    i.definedRarenessEquipmentList = a.CollectableManager.parser.s2cParamList.createList(t.RW);
-    i.finalRewardList = a.CollectableManager.parser.s2cParamList.createList(t.RW);
-    i.wonRubies = t.WR;
-    if (t.R) {
-      i.parseReward(t.R);
-    }
-    return i;
+    (a = e.call(this, t, n, o) || this).rewards = i;
+    return a;
   }
-  n.__extends(CastlePaymentRewardSpecialOfferFinishDialogProperties, e);
-  CastlePaymentRewardSpecialOfferFinishDialogProperties.prototype.parseReward = function (e) {
-    this.randomEquipmentRewardList = a.CollectableManager.parser.s2cParamList.createList(e);
+  n.__extends(CastleChangelistRewardsEvent, e);
+  CastleChangelistRewardsEvent.__initialize_static_members = function () {
+    CastleChangelistRewardsEvent.DATA_UPDATED = "dataUpdated";
   };
-  return CastlePaymentRewardSpecialOfferFinishDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastlePaymentRewardSpecialOfferFinishDialogProperties = o;
-var a = require("./50.js");
+  return CastleChangelistRewardsEvent;
+}(createjs.Event);
+exports.CastleChangelistRewardsEvent = o;
+o.__initialize_static_members();

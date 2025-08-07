@@ -2,73 +2,47 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./11.js");
-var a = require("./3.js");
-var s = require("./2.js");
+var o = require("./1.js");
+var a = require("./5.js");
+var s = require("./3.js");
 var r = require("./6.js");
-var l = require("./8.js");
-var c = require("./82.js");
-var u = require("./47.js");
-var d = require("./59.js");
-var p = require("./55.js");
-var h = require("./13.js");
-var g = require("./4.js");
-var C = require("./20.js");
-var _ = function (e) {
-  function CastleStormIslandsTitleLostDialog() {
+var l = require("./4.js");
+var c = function (e) {
+  function CastleEilandTitleLostMessageDialog() {
+    var t = this;
+    t.type = -1;
     CONSTRUCTOR_HACK;
-    return e.call(this, CastleStormIslandsTitleLostDialog.NAME) || this;
+    return t = e.call(this) || this;
   }
-  n.__extends(CastleStormIslandsTitleLostDialog, e);
-  CastleStormIslandsTitleLostDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.TextVO(h.TextHelper.toUpperCaseLocaSafeTextId("dialog_island_stormTitle_titleLost_header"))).autoFitToBounds = true;
-    var i = g.CastleModel.titleData.getTitleByTitleID(this.dialogProperties.messageVO.titleID);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_storm_island_title, new a.TextVO(h.TextHelper.toUpperCaseLocaSafeTextId(i.textID))).autoFitToBounds = true;
-    l.ButtonHelper.initButtons([this.dialogDisp.btn_ok, this.dialogDisp.btn_close], C.ClickFeedbackButtonHover);
-    this.dialogDisp.btn_close.toolTipText = "generic_btn_close";
-    this._textScrollComponent = new c.ModernSliderScrollComponent(new u.SimpleScrollVO(this.dialogDisp.mc_list.mc_descSlider.btn_minus, this.dialogDisp.mc_list.mc_descSlider.btn_plus, null, null, this.dialogDisp.mc_list.mc_descSlider.mc_sliderLine, this.dialogDisp.mc_list.mc_descSlider.btn_slider, [this.dialogDisp.mc_slider], [this.dialogDisp.mc_list.txt_copy, this.dialogDisp.mouse_area]), new d.DynamicSizeScrollStrategyVertical(true, 0), true);
+  n.__extends(CastleEilandTitleLostMessageDialog, e);
+  CastleEilandTitleLostMessageDialog.prototype.parseParams = function (t) {
+    e.prototype.parseParams.call(this, t);
+    this.type = r.int(this.paramArray[2]);
   };
-  CastleStormIslandsTitleLostDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    var i = this.dialogProperties.messageVO.isWinningAlliance ? "dialog_island_stormTitle_titleLost_titleLossPlayer_desc" : "dialog_island_stormTitle_titleLost_desc";
-    this._txtDesc = this.textFieldManager.registerTextField(this.dialogDisp.mc_list.txt_copy, new a.LocalizedTextVO(i));
-    this._textScrollComponent.strategy.visibleValue = p.ClientConstUtils.isTlfMode ? this._txtDesc.height : this._txtDesc.numLines;
-    var n = r.int(p.ClientConstUtils.isTlfMode ? 20 : 1);
-    this._textScrollComponent.init(1, this._txtDesc.maxScrollV, n, n);
-    this._textScrollComponent.setVisibility(this._txtDesc.maxScrollV > 1);
-    this._textScrollComponent.show();
-    this._textScrollComponent.onScrollSignal.add(this.bindFunction(this.onDescriptionScroll));
-    this.dialogDisp.icon_title.visible = !this.dialogProperties.isStormLord;
-    this.dialogDisp.icon_storm_lord.visible = this.dialogProperties.isStormLord;
-  };
-  CastleStormIslandsTitleLostDialog.prototype.onDescriptionScroll = function () {
-    this._txtDesc.scrollV = s.MathBase.clamp(this._textScrollComponent.currentValue, 1, this._txtDesc.maxScrollV);
-  };
-  CastleStormIslandsTitleLostDialog.prototype.hideLoaded = function (t = null) {
-    e.prototype.hideLoaded.call(this, t);
-    this._textScrollComponent.onScrollSignal.remove(this.bindFunction(this.onDescriptionScroll));
-    this._textScrollComponent.hide();
-  };
-  CastleStormIslandsTitleLostDialog.prototype.onClick = function (t) {
-    e.prototype.onClick.call(this, t);
-    switch (t.target) {
-      case this.dialogDisp.btn_ok:
-      case this.dialogDisp.btn_close:
-        this.hide();
+  CastleEilandTitleLostMessageDialog.prototype.onGetTitleData = function (t) {
+    e.prototype.onGetTitleData.call(this, t);
+    this.dialogDisp.mc_titleBonus.visible = false;
+    var i = [this.kingName, l.CastleModel.languageData.getTextById(this.titleVO.textID)];
+    switch (this.type) {
+      case a.MessageConst.DATATYPE_TITLE_LOST_LEADER_LEFT:
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO("dialog_eiland_titleMessage_kingLeft_copy", i));
+        break;
+      case a.MessageConst.DATATYPE_TITLE_LOST_PLAYER_LEFT:
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO("dialog_eiland_titleMessage_playerLeft_copy", i));
+        break;
+      case a.MessageConst.DATATYPE_TITLE_LOST_RESET:
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO("dialog_eiland_titleMessage_resetTitle_copy", i));
+        break;
+      case a.MessageConst.DATATYPE_TITLE_LOST_TAKEN:
+        this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO("dialog_eiland_titleMessage_lostTitle_copy", i));
     }
+    this.adjustTextSize();
   };
-  Object.defineProperty(CastleStormIslandsTitleLostDialog.prototype, "dialogProperties", {
-    get: function () {
-      return this.properties;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleStormIslandsTitleLostDialog.__initialize_static_members = function () {
-    CastleStormIslandsTitleLostDialog.NAME = "CastleStormIslandsTitleLost";
+  CastleEilandTitleLostMessageDialog.__initialize_static_members = function () {
+    CastleEilandTitleLostMessageDialog.NAME = "CastleEilandTitleLostMessage";
   };
-  return CastleStormIslandsTitleLostDialog;
-}(o.CastleExternalDialog);
-exports.CastleStormIslandsTitleLostDialog = _;
-_.__initialize_static_members();
+  return CastleEilandTitleLostMessageDialog;
+}(require("./1162.js").CastleEilandTitleMessageDialog);
+exports.CastleEilandTitleLostMessageDialog = c;
+o.classImplementsInterfaces(c, "ICollectableRendererList");
+c.__initialize_static_members();

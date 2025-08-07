@@ -2,9 +2,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./676.js");
+var o = require("./678.js");
 var a = require("./4293.js");
-var s = require("./627.js");
+var s = require("./628.js");
 var r = function (e) {
   function CastleLegendSkillGroup(t) {
     return e.call(this, t) || this;

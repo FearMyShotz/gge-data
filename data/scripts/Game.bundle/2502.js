@@ -2,180 +2,161 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./1.js");
-var r = require("./3.js");
-var l = require("./6.js");
-var c = require("./57.js");
-var u = require("./290.js");
-var d = require("./40.js");
-var p = require("./47.js");
-var h = require("./59.js");
-var g = require("./42.js");
-var C = require("./8.js");
-var _ = function (e) {
-  function InfoCatalogTopicComponent(t) {
+var o = require("./1.js");
+var a = require("./3.js");
+var s = require("./6.js");
+var r = require("./4.js");
+var l = require("./383.js");
+var c = require("./47.js");
+var u = require("./59.js");
+var d = require("./8.js");
+var p = require("./955.js");
+var h = require("./222.js");
+var g = function (e) {
+  function CastleAllianceDialogTreasurySubscriptions(t) {
     var i = this;
-    i._topics = [];
-    i._maskHeight = 0;
-    i._dispCreator = new u.DispCreatorComponent();
-    i._currentSelectedIndex = 0;
-    i._onTopicChanged = new c.Signal();
+    i._items = [];
     CONSTRUCTOR_HACK;
-    (i = e.call(this, t) || this)._dispCreator.cacheDisp = false;
-    i._dispCreator.init(t.mc_items.mc_transform);
-    i._dispCreator.dispContainer.mouseChildren = true;
-    return i;
+    return i = e.call(this, t) || this;
   }
-  n.__extends(InfoCatalogTopicComponent, e);
-  InfoCatalogTopicComponent.prototype.init = function (e, t, i, n) {
-    this._topics = e;
-    this._topicAssetClipName = t;
-    this._topicAssetName = i;
-    this._maskHeight = n;
-    this._scrollComponent = new O.SimpleScrollComponent(new p.SimpleScrollVO().initByParent(this.disp.mc_slider).addMouseWheelElements([this.disp]).addVisualElements([this.disp.mc_slider]), new h.DynamicSizeScrollStrategyVertical(true));
-    this._dispCreator.reset();
-    this._dispCreator.onLoadedSignal.add(this.bindFunction(this.onTopicsLoaded));
-    this._dispCreator.switchCreationState(true);
-    for (var a = 0; a < this._topics.length; ++a) {
-      this._dispCreator.addClip(new o.GoodgameDisplayObjectClipExternal(t, m.IsoHelper.view.getAssetFileURL(i)));
-    }
-    this._dispCreator.switchCreationState(false);
-    this.updateScrollPosition();
+  n.__extends(CastleAllianceDialogTreasurySubscriptions, e);
+  CastleAllianceDialogTreasurySubscriptions.prototype.init = function () {
+    e.prototype.init.call(this);
+    d.ButtonHelper.initButtons([this.disp.btn_subscription, this.disp.btn_info], y.ClickFeedbackButton);
+    this.disp.btn_info.visible = false;
+    b.registerUIComponentToCXF(this.disp.btn_subscription, "btn_webshop", {
+      page: "subscriptions",
+      route: "/offer/2",
+      sourceId: D.CXFSourceTrackingConstants.CXF_SOURCE_ALLIANCE_SUBSCRIPTIONS_DIALOG
+    });
+    this.disp.btn_subscription.toolTipText = h.SubscriptionPackageEnum.ALLIANCE.nameTextId;
+    this.disp.btn_info.toolTipText = "dialog_alliance_treasury_subscription_subInfo_button_tooltip";
+    this._scrollComponent = new _.SimpleScrollComponent(new c.SimpleScrollVO().initByParent(this.disp.mc_slider).addMouseWheelElements([this.disp]).addVisualElements([this.disp.mc_slider]), new u.DynamicSizeScrollStrategyVertical(true));
   };
-  InfoCatalogTopicComponent.prototype.onShow = function () {
+  CastleAllianceDialogTreasurySubscriptions.prototype.onShow = function () {
     e.prototype.onShow.call(this);
+    if (this._items != null) {
+      for (var t = 0, i = this._items; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.onShow();
+        }
+      }
+    }
     this._scrollComponent.show();
-    this.selectIndex(this._currentSelectedIndex);
+    this._scrollComponent.scrollToPercent(0);
   };
-  InfoCatalogTopicComponent.prototype.onHide = function () {
+  CastleAllianceDialogTreasurySubscriptions.prototype.onHide = function () {
+    if (this._items != null) {
+      for (var t = 0, i = this._items; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.onHide();
+        }
+      }
+    }
     this._scrollComponent.hide();
     e.prototype.onHide.call(this);
   };
-  InfoCatalogTopicComponent.prototype.addEventListener = function () {
+  CastleAllianceDialogTreasurySubscriptions.prototype.addEventListener = function () {
     e.prototype.addEventListener.call(this);
+    C.CastleComponent.controller.addEventListener(l.SubscriptionEvent.ON_SUBSCRIPTION_CHANGED, this.bindFunction(this.onSubscriptionChanged));
     this._scrollComponent.onScrollSignal.add(this.bindFunction(this.onScroll));
   };
-  InfoCatalogTopicComponent.prototype.removeEventListener = function () {
+  CastleAllianceDialogTreasurySubscriptions.prototype.removeEventListener = function () {
+    C.CastleComponent.controller.removeEventListener(l.SubscriptionEvent.ON_SUBSCRIPTION_CHANGED, this.bindFunction(this.onSubscriptionChanged));
     this._scrollComponent.onScrollSignal.remove(this.bindFunction(this.onScroll));
     e.prototype.removeEventListener.call(this);
   };
-  InfoCatalogTopicComponent.prototype.selectIndex = function (e, t = true) {
-    this._currentSelectedIndex = l.int(a.MathBase.clamp(e, 0, this._topics.length - 1));
-    for (var i = 0; i < this._topics.length; ++i) {
-      var n = this._dispCreator.getClipMc(i);
-      n.mc_selected.visible = this._currentSelectedIndex == i;
-      n.mc_default.visible = this._currentSelectedIndex != i;
-    }
-    if (t) {
-      this.onTopicChanged.dispatch();
-    }
-  };
-  InfoCatalogTopicComponent.prototype.selectByType = function (e) {
-    var t = l.int(this.getIndexByType(e));
-    if (t >= 0) {
-      this.selectIndex(t);
-    }
-  };
-  InfoCatalogTopicComponent.prototype.updateScrollPosition = function () {
-    this.disp.mc_items.mc_transform.y = -this._scrollComponent.currentValue;
-  };
-  InfoCatalogTopicComponent.prototype.scrollToTopic = function (e) {
-    var t = l.int(this.getIndexByType(e));
-    if (t >= 0) {
-      this._scrollComponent.scrollToValue((this._dispCreator.getClipMc(0).height + InfoCatalogTopicComponent.ITEM_DISTANCE_Y) * t);
-    }
-  };
-  InfoCatalogTopicComponent.prototype.getSelectedTopic = function () {
-    return this._topics[this._currentSelectedIndex];
-  };
-  InfoCatalogTopicComponent.prototype.getIndexByType = function (e) {
-    for (var t = 0; t < this._topics.length; ++t) {
-      if (e == this._topics[t].topicType) {
-        return t;
+  CastleAllianceDialogTreasurySubscriptions.prototype.update = function () {
+    e.prototype.update.call(this);
+    if (this._items != null) {
+      for (var t = 0, i = this._items; t < i.length; t++) {
+        var n = i[t];
+        if (n !== undefined) {
+          n.destroy();
+        }
       }
     }
-    return -1;
-  };
-  InfoCatalogTopicComponent.prototype.onTopicsLoaded = function () {
-    this._dispCreator.onLoadedSignal.remove(this.bindFunction(this.onTopicsLoaded));
-    var e = 0;
-    var t = 0;
-    for (var i = 0; i < this.topics.length; ++i) {
-      var n = this._topics[i];
-      var o = this._dispCreator.getClipMc(i);
-      C.ButtonHelper.initBasicButton(o, 1);
-      o.mouseChildren = false;
-      f.CastleComponent.textFieldManager.registerTextField(o.mc_default.txt_text, new r.LocalizedTextVO(n.textId, n.textReplacements)).verticalAlign = g.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
-      f.CastleComponent.textFieldManager.registerTextField(o.mc_selected.txt_text, new r.LocalizedTextVO(n.textId, n.textReplacements)).verticalAlign = g.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
-      o.mc_selected.visible = false;
-      o.mc_default.visible = false;
-      o.y = e;
-      if (t <= 0) {
-        t = o.height + InfoCatalogTopicComponent.ITEM_DISTANCE_Y;
+    this._items = [];
+    var o = this.getItemMc();
+    o.removeChildren();
+    var a = r.CastleModel.subscriptionData.getPackageSeriesIds(h.SubscriptionPackageEnum.ALLIANCE);
+    if (a != null) {
+      for (var l = 0, c = a; l < c.length; l++) {
+        var u = c[l];
+        if (u !== undefined) {
+          n = new E.CastleAllianceDialogTreasurySubscriptionsItem(o, u);
+          if (this.isShown) {
+            n.onShow();
+          }
+          n.update();
+          this._items.push(n);
+        }
       }
-      e += t;
     }
-    this.selectIndex(0);
-    var a = l.int(Math.max(0, this._dispCreator.dispContainer.height - this._maskHeight));
-    this._scrollComponent.init(0, a, t, t);
-    this._scrollComponent.setVisibility(a > 0);
-    this.updateScrollPosition();
+    var d = 0;
+    for (var p = 0, g = this._items; p < g.length; p++) {
+      (n = g[p]).disp.y = d;
+      d += n.disp.height;
+    }
+    var C = s.int(Math.max(0, o.height - CastleAllianceDialogTreasurySubscriptions.ITEM_MASK_HEIGHT));
+    var _ = this._scrollComponent.currentValue;
+    this._scrollComponent.init(0, C, CastleAllianceDialogTreasurySubscriptions.ITEM_SCROLL_DELTA, CastleAllianceDialogTreasurySubscriptions.ITEM_SCROLL_DELTA);
+    this._scrollComponent.setVisibility(C > 0);
+    this._scrollComponent.scrollToValue(_);
+    this.updateSubscriberCount();
   };
-  InfoCatalogTopicComponent.prototype.onClick = function (t) {
-    if (C.ButtonHelper.isButtonEnabled(t.target)) {
-      e.prototype.onClick.call(this, t);
-      for (var i = 0; i < this._topics.length; ++i) {
-        if (this._dispCreator.getClipMc(i) == t.target) {
-          this.selectIndex(i);
+  CastleAllianceDialogTreasurySubscriptions.prototype.updateScrollPosition = function () {
+    this.getItemMc().y = -this._scrollComponent.currentValue;
+  };
+  CastleAllianceDialogTreasurySubscriptions.prototype.updateSubscriberCount = function () {
+    C.CastleComponent.textFieldManager.registerTextField(this.disp.txt_subscribers, new a.LocalizedTextVO("dialog_alliance_treasury_subscription_subCounter_copy", [r.CastleModel.subscriptionData.allianceSubscriberCount, r.CastleModel.allianceData.myAllianceVO.memberMax]));
+  };
+  CastleAllianceDialogTreasurySubscriptions.prototype.updateItems = function () {
+    if (this._items != null) {
+      for (var e = 0, t = this._items; e < t.length; e++) {
+        var i = t[e];
+        if (i !== undefined) {
+          i.update();
         }
       }
     }
   };
-  InfoCatalogTopicComponent.prototype.onScroll = function () {
+  CastleAllianceDialogTreasurySubscriptions.prototype.getItemMc = function () {
+    return this.disp.mc_items.mc_transform;
+  };
+  CastleAllianceDialogTreasurySubscriptions.prototype.onClick = function (t) {
+    if (d.ButtonHelper.isButtonEnabled(t.target)) {
+      e.prototype.onClick.call(this, t);
+      switch (t.target) {
+        case this.disp.btn_subscription:
+          break;
+        case this.disp.btn_info:
+          C.CastleComponent.layoutManager.hideDialog(O.CastleAllianceDialog);
+          C.CastleComponent.dialogHandler.registerDefaultDialogs(m.SubscriptionDialog, new p.SubscriptionDialogProperties(m.SubscriptionDialog.TAB_INFO, f.SubscriptionInfoTopicEnum.TOPIC_ALLIANCE_SUBSCRIPTION));
+      }
+    }
+  };
+  CastleAllianceDialogTreasurySubscriptions.prototype.onScroll = function () {
     this.updateScrollPosition();
   };
-  Object.defineProperty(InfoCatalogTopicComponent.prototype, "onTopicChanged", {
-    get: function () {
-      return this._onTopicChanged;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(InfoCatalogTopicComponent.prototype, "topicAssetClipName", {
-    get: function () {
-      return this._topicAssetClipName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(InfoCatalogTopicComponent.prototype, "topicAssetName", {
-    get: function () {
-      return this._topicAssetName;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(InfoCatalogTopicComponent.prototype, "topics", {
-    get: function () {
-      return this._topics;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(InfoCatalogTopicComponent.prototype, "currentSelectedIndex", {
-    get: function () {
-      return this._currentSelectedIndex;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  InfoCatalogTopicComponent.ITEM_DISTANCE_Y = 8;
-  return InfoCatalogTopicComponent;
-}(d.CastleItemRenderer);
-exports.InfoCatalogTopicComponent = _;
-var m = require("./46.js");
-var f = require("./14.js");
-var O = require("./95.js");
-s.classImplementsInterfaces(_, "ICollectableRendererList");
+  CastleAllianceDialogTreasurySubscriptions.prototype.onSubscriptionChanged = function (e) {
+    this.updateItems();
+    this.updateSubscriberCount();
+  };
+  CastleAllianceDialogTreasurySubscriptions.ITEM_MASK_HEIGHT = 299;
+  CastleAllianceDialogTreasurySubscriptions.ITEM_SCROLL_DELTA = 80;
+  return CastleAllianceDialogTreasurySubscriptions;
+}(require("./954.js").ACastleAllianceDialogTreasurySublayer);
+exports.CastleAllianceDialogTreasurySubscriptions = g;
+var C = require("./14.js");
+var _ = require("./95.js");
+var m = require("./523.js");
+var f = require("./958.js");
+var O = require("./125.js");
+var E = require("./2508.js");
+var y = require("./36.js");
+var b = require("./266.js");
+var D = require("./107.js");
+o.classImplementsInterfaces(g, "ICollectableRendererList");

@@ -86,7 +86,7 @@ var g = function (e) {
 exports.PlayerIgnoreList_Item = g;
 var C = require("./9.js");
 var _ = require("./14.js");
-var m = require("./283.js");
+var m = require("./282.js");
 var f = require("./94.js");
 var O = require("./20.js");
 o.classImplementsInterfaces(g, "ICollectableRendererList");

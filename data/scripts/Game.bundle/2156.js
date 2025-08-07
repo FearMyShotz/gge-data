@@ -2,50 +2,70 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
+var o = require("./2.js");
 var a = require("./1.js");
-var s = function (e) {
-  function CastleDetailView(t, i, n, o) {
+var s = require("./162.js");
+var r = createjs.Container;
+var l = function (e) {
+  function BossDungeonDetailView(t, i, n, o) {
     CONSTRUCTOR_HACK;
     return e.call(this, t, i, n, o) || this;
   }
-  n.__extends(CastleDetailView, e);
-  CastleDetailView.prototype.getBackgroundClassName = function () {
-    return "Castle_Landscape_" + this._kingdomVO.kingdomName;
-  };
-  CastleDetailView.prototype.drawCastleVO = function () {
-    this.initLayer();
-    this._castleLayer.x = -7;
-    if (a.instanceOfClass(this._detailDrawAble, "CapitalMapobjectVO")) {
-      this._layerKeep.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_KEEP_PALACE));
-    } else if (a.instanceOfClass(this._detailDrawAble, "MetropolMapobjectVO")) {
-      this._layerKeep.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_KEEP_EMPORIUM));
+  n.__extends(BossDungeonDetailView, e);
+  BossDungeonDetailView.prototype.getBackgroundClassName = function () {
+    if (this._kingdomVO.kID == 0) {
+      return "Castle_Landscape_" + this._kingdomVO.kingdomName + "_Dungeon";
     } else {
-      this._layerKeep.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_KEEP + this._detailDrawAble.keepLevel));
-    }
-    this._layerLeft.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_BACKWALL + "_Left_Level" + this._detailDrawAble.wallLevel));
-    this._layerMiddle.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_TOWER + "_Left_Level" + this._detailDrawAble.towerLevel));
-    this._layerMiddle.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_FRONTWALL + "_Left_Level" + this._detailDrawAble.wallLevel));
-    this._layerMiddle.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_TOWER + "_Right_Level" + this._detailDrawAble.towerLevel));
-    this._layerMiddle.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_FRONTWALL + "_Right_Level" + this._detailDrawAble.wallLevel));
-    this._layerMiddle.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_GATE + this._detailDrawAble.gateLevel));
-    this._layerRight.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_BACKWALL + "_Right_Level" + this._detailDrawAble.wallLevel));
-    if (this._detailDrawAble.moatLevel > 0) {
-      this._layerMoat.addChild(this.getMovieClipByName(CastleDetailView.CLASSNAME_MOAT + this._detailDrawAble.moatLevel));
+      return "Castle_Landscape_" + this._kingdomVO.kingdomName;
     }
   };
-  CastleDetailView.__initialize_static_members = function () {
-    CastleDetailView.CLASSNAME_MOAT = "CastlePart_Moat_Level";
-    CastleDetailView.CLASSNAME_KEEP = "CastlePart_Keep_Level";
-    CastleDetailView.CLASSNAME_BACKWALL = "CastleParts_BackWall";
-    CastleDetailView.CLASSNAME_FRONTWALL = "CastleParts_FrontWall";
-    CastleDetailView.CLASSNAME_TOWER = "CastleParts_Tower";
-    CastleDetailView.CLASSNAME_GATE = "CastlePart_Gate_Level";
-    CastleDetailView.CLASSNAME_KEEP_PALACE = "CastlePart_Keep_Palace";
-    CastleDetailView.CLASSNAME_KEEP_EMPORIUM = "CastlePart_Keep_Emporium";
+  Object.defineProperty(BossDungeonDetailView.prototype, "assetCastleFileURL", {
+    get: function () {
+      return o.BasicModel.basicLoaderData.getVersionedItemAssetUrl("DetailView_BossDungeon_" + this._kingdomVO.kingdomName);
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(s.FightDetailView.prototype, "assetCastleFileURL").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  BossDungeonDetailView.prototype.drawCastleVO = function () {
+    switch (this._kingdomVO.kID) {
+      case 3:
+        this.drawDragonBossDungeon();
+        break;
+      default:
+        this.drawDefault();
+    }
   };
-  return CastleDetailView;
-}(require("./162.js").FightDetailView);
-exports.CastleDetailView = s;
-o.classImplementsInterfaces(s, "IFightDetailView");
-s.__initialize_static_members();
+  BossDungeonDetailView.prototype.drawDragonBossDungeon = function () {
+    this.initLayer();
+    this._layerBackground.addChild(this.getMovieClipByName("BossDragonDungeon_BG_" + this._kingdomVO.kingdomName));
+    this._layerKeep.addChild(new r());
+    this._layerLeft.addChild(this.getMovieClipByName("BossDragonDungeon_Left_" + this._kingdomVO.kingdomName));
+    this._layerMiddle.addChild(this.getMovieClipByName("BossDragonDungeon_Middle_" + this._kingdomVO.kingdomName));
+    this._layerRight.addChild(this.getMovieClipByName("BossDragonDungeon_Right_" + this._kingdomVO.kingdomName));
+  };
+  BossDungeonDetailView.prototype.drawDefault = function () {
+    var e = "_" + this._kingdomVO.kingdomName;
+    this.initLayer();
+    this._castleLayer.y = 15;
+    this._castleLayer.x = -7;
+    this._layerKeep.addChild(this.getMovieClipByName(BossDungeonDetailView.CLASSNAME_KEEP + e));
+    this._layerLeft.addChild(this.getMovieClipByName(BossDungeonDetailView.CLASSNAME_BACKWALL + "_Left" + e));
+    this._layerMiddle.addChild(this.getMovieClipByName(BossDungeonDetailView.CLASSNAME_FRONTWALL + "_Left" + e));
+    this._layerMiddle.addChild(this.getMovieClipByName(BossDungeonDetailView.CLASSNAME_FRONTWALL + "_Right" + e));
+    this._layerMiddle.addChild(this.getMovieClipByName(BossDungeonDetailView.CLASSNAME_GATE + e));
+    this._layerRight.addChild(this.getMovieClipByName(BossDungeonDetailView.CLASSNAME_BACKWALL + "_Right" + e));
+  };
+  BossDungeonDetailView.__initialize_static_members = function () {
+    BossDungeonDetailView.CLASSNAME_KEEP = "BossDungeon_Keep";
+    BossDungeonDetailView.CLASSNAME_BACKWALL = "BossDungeon_BackWall";
+    BossDungeonDetailView.CLASSNAME_FRONTWALL = "BossDungeon_FrontWall";
+    BossDungeonDetailView.CLASSNAME_GATE = "BossDungeon_Gate";
+  };
+  return BossDungeonDetailView;
+}(s.FightDetailView);
+exports.BossDungeonDetailView = l;
+a.classImplementsInterfaces(l, "IFightDetailView");
+l.__initialize_static_members();

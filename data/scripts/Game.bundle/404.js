@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./3.js");
-var s = require("./810.js");
+var s = require("./812.js");
 var r = require("./4.js");
 var l = require("./20.js");
 var c = require("./8.js");
@@ -155,12 +155,12 @@ var u = function (e) {
   RewardHubMainDialog.TAB_EVENT_REWARDS = "tab_events";
   RewardHubMainDialog.TAB_MYSTERY_BOXES = "tab_mysteryBoxes";
   return RewardHubMainDialog;
-}(require("./114.js").CastleExternalSubLayerDialog);
+}(require("./112.js").CastleExternalSubLayerDialog);
 exports.RewardHubMainDialog = u;
 var d = require("./11.js");
-var p = require("./3430.js");
-var h = require("./3433.js");
-var g = require("./3540.js");
+var p = require("./3431.js");
+var h = require("./3434.js");
+var g = require("./3539.js");
 var C = require("./85.js");
 var _ = require("./13.js");
 var m = require("./360.js");

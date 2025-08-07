@@ -3,28 +3,28 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./7.js");
-var r = function (e) {
-  function C2SSelectKingdomCastleVO(t, i, n, o, s = false) {
-    var r = this;
-    r.ID = 0;
-    r.D = 0;
-    r.PWR = 0;
-    r.OC2 = 0;
-    r.SID = 0;
-    CONSTRUCTOR_HACK;
-    (r = e.call(this) || this).ID = t;
-    r.D = i;
-    r.OC2 = a.int(n ? 1 : 0);
-    r.PWR = a.int(s ? 1 : 0);
-    r.SID = o;
-    return r;
+var a = require("./710.js");
+var s = function (e) {
+  function SupportOverviewDialogProperties(t) {
+    var i = e.call(this) || this;
+    i.mapObjectVO = t;
+    return i;
   }
-  n.__extends(C2SSelectKingdomCastleVO, e);
-  C2SSelectKingdomCastleVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_SELECT_PREBUILT_CASTLE_ID;
-  };
-  return C2SSelectKingdomCastleVO;
-}(o.BasicCommandVO);
-exports.C2SSelectKingdomCastleVO = r;
+  n.__extends(SupportOverviewDialogProperties, e);
+  Object.defineProperty(SupportOverviewDialogProperties.prototype, "capacity", {
+    get: function () {
+      if (r.instanceOfClass(this.mapObjectVO, "ABGAllianceTowerMapobjectVO")) {
+        return -1;
+      } else if (a.instanceOf_ISupportCapacityVO(this.mapObjectVO)) {
+        return this.mapObjectVO.supportCapacity;
+      } else {
+        return -1;
+      }
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return SupportOverviewDialogProperties;
+}(o.BasicProperties);
+exports.SupportOverviewDialogProperties = s;
+var r = require("./1.js");

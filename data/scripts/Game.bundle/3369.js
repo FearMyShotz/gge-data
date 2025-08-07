@@ -2,85 +2,105 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./6.js");
-var s = require("./240.js");
-var r = function (e) {
-  function CastlePointBoosterShopVO(t) {
-    var i = this;
-    i._bonusPercentage = 0;
-    i._pointBoosterID = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this, "", "", 0, "") || this)._pointBoosterID = t;
-    return i;
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./5.js");
+var r = require("./3.js");
+var l = require("./51.js");
+var c = require("./416.js");
+var u = require("./106.js");
+var d = require("./240.js");
+var p = createjs.Point;
+var h = function (e) {
+  function CastleOverseerWoodPremiumShopVO() {
+    var t = e.call(this, "dialog_resourcesBoost_hireOverseer", "overseer_wood_copy_short", s.BoosterConst.OVERSEER_COST_C2, "overseer") || this;
+    t.shopTypes.push(m.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_EVENT, m.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_HERO);
+    return t;
   }
-  n.__extends(CastlePointBoosterShopVO, e);
-  CastlePointBoosterShopVO.prototype.reset = function () {
-    e.prototype.reset.call(this);
-    this._bonusPercentage = 0;
+  n.__extends(CastleOverseerWoodPremiumShopVO, e);
+  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "duration", {
+    get: function () {
+      if (this.isActive) {
+        return o.TimeStringHelper.getCommaTimeStringFromSeconds(this.remainingTimeInSeconds, r.Localize.text);
+      } else {
+        return o.TimeStringHelper.getCommaTimeStringFromSeconds(s.BoosterConst.OVERSEER_DURATION, r.Localize.text);
+      }
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastleHeroDefaultBoosterShopVO.prototype, "duration").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "bonusValue", {
+    get: function () {
+      return s.BoosterConst.OVERSEER_BOOST;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastleHeroDefaultBoosterShopVO.prototype, "bonusValue").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "listSortPriority", {
+    get: function () {
+      return 50;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastleHeroDefaultBoosterShopVO.prototype, "listSortPriority").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleOverseerWoodPremiumShopVO.prototype.clickedBuyButton = function () {
+    g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleBuyResourceBoostDialog, new c.CastleBuyResourceBoostDialogProperties(_.CastlePremiumBoostData.BOOST_WOOD));
   };
-  CastlePointBoosterShopVO.prototype.parseServerInfo = function (t) {
-    e.prototype.parseServerInfo.call(this, t);
-    this._bonusPercentage = a.int(t.B);
+  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "bonusIconFrame", {
+    get: function () {
+      return 1;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(d.CastleHeroDefaultBoosterShopVO.prototype, "bonusIconFrame").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleOverseerWoodPremiumShopVO.prototype.createVisualMovieClip = function () {
+    var e = new Library.CastleInterfaceElements.CharOverseer_WithBonus();
+    var t = u.CharacterHelper.createCharacterBig(l.ClientConstCharacter.CHAR_ID_OVERSEER, e.mc_charPlaceHolder, -1, -1, false, this.bindFunction(this.onLoadedIcon));
+    t.recycleAsset = false;
+    if (!t.isLoaded) {
+      e.visible = false;
+    }
+    e.mc_charPlaceHolder.addChild(t);
+    e.mc_icon.gotoAndStop(5);
+    return e;
   };
-  Object.defineProperty(CastlePointBoosterShopVO.prototype, "id", {
+  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "offsetIcon", {
     get: function () {
-      return this._pointBoosterID;
+      return new p(-5, -5);
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastleHeroDefaultBoosterShopVO.prototype, "id").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastleHeroDefaultBoosterShopVO.prototype, "offsetIcon").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastlePointBoosterShopVO.prototype, "isVisible", {
+  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "id", {
     get: function () {
-      return false;
+      return s.BoosterConst.OVERSEER_WOOD;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastleHeroDefaultBoosterShopVO.prototype, "isVisible").set.call(this, e);
+      Object.getOwnPropertyDescriptor(d.CastleHeroDefaultBoosterShopVO.prototype, "id").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastlePointBoosterShopVO.prototype, "canBeBought", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastleHeroDefaultBoosterShopVO.prototype, "canBeBought").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastlePointBoosterShopVO.prototype, "hasRebuyDiscount", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastleHeroDefaultBoosterShopVO.prototype, "hasRebuyDiscount").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastlePointBoosterShopVO.prototype, "isExtendable", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(s.CastleHeroDefaultBoosterShopVO.prototype, "isExtendable").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastlePointBoosterShopVO.prototype, "bonusPercentage", {
-    get: function () {
-      return this._bonusPercentage;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CastlePointBoosterShopVO;
-}(s.CastleHeroDefaultBoosterShopVO);
-exports.CastlePointBoosterShopVO = r;
-o.classImplementsInterfaces(r, "IPremiumMarketShopVO", "IDefaultBoosterDataVO", "IBoosterDataVO");
+  return CastleOverseerWoodPremiumShopVO;
+}(d.CastleHeroDefaultBoosterShopVO);
+exports.CastleOverseerWoodPremiumShopVO = h;
+var g = require("./9.js");
+var C = require("./417.js");
+var _ = require("./402.js");
+var m = require("./170.js");
+a.classImplementsInterfaces(h, "IPremiumMarketShopVO", "IDefaultBoosterDataVO", "IBoosterDataVO");

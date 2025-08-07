@@ -37,5 +37,5 @@ var d = function (e) {
   return MercenarySurroundingsVO;
 }(require("./209.js").ASurroundingBuildingVO);
 exports.MercenarySurroundingsVO = d;
-var p = require("./775.js");
+var p = require("./777.js");
 a.classImplementsInterfaces(d, "IRelativeGridBuildingVO");

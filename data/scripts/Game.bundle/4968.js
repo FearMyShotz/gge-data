@@ -6,16 +6,16 @@ var o = require("./1.js");
 var a = require("./5.js");
 var s = require("./7.js");
 var r = require("./397.js");
-var l = require("./4.js");
+var l = require("./758.js");
 var c = require("./10.js");
 var u = function (e) {
-  function MSMCommand() {
+  function MSDCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(MSMCommand, e);
-  Object.defineProperty(MSMCommand.prototype, "cmdId", {
+  n.__extends(MSDCommand, e);
+  Object.defineProperty(MSDCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_MINUTE_SKIP_MAP_TRANSFER;
+      return s.ClientConstSF.S2C_MINUTE_SKIP_DUNGEON;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(c.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -23,11 +23,12 @@ var u = function (e) {
     enumerable: true,
     configurable: true
   });
-  MSMCommand.prototype.executeCommand = function (e, t) {
+  MSDCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        l.CastleModel.treasureMapData.parse_TMP(i.tmp);
+        var n = d.WorldmapObjectFactory.parseWorldMapArea(i.AI);
+        this.controller.dispatchEvent(new l.SkipCooldownEvent(l.SkipCooldownEvent.UPDATE, n));
         this.controller.dispatchEvent(new r.CastleMinuteSkipEvent(r.CastleMinuteSkipEvent.MINUTESKIP_USE_SUCESS));
         break;
       default:
@@ -36,7 +37,8 @@ var u = function (e) {
     }
     return false;
   };
-  return MSMCommand;
+  return MSDCommand;
 }(c.CastleCommand);
-exports.MSMCommand = u;
+exports.MSDCommand = u;
+var d = require("./147.js");
 o.classImplementsInterfaces(u, "IExecCommand");

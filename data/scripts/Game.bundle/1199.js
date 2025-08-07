@@ -7,7 +7,7 @@ var a = require("./5.js");
 var s = require("./5.js");
 var r = require("./6.js");
 var l = require("./4.js");
-var c = require("./35.js");
+var c = require("./33.js");
 var u = function () {
   function BuildingCostHelper() {}
   BuildingCostHelper.getUpgradeCostList = function (e) {

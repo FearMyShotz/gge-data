@@ -9,6 +9,6 @@ var a = function (e) {
   }
   n.__extends(RelicFarmBuildingVE, e);
   return RelicFarmBuildingVE;
-}(require("./1033.js").FarmBuildingVE);
+}(require("./1034.js").FarmBuildingVE);
 exports.RelicFarmBuildingVE = a;
 o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

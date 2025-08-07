@@ -2,29 +2,26 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = function (e) {
-  function IsoStatusIconProgressBarTax() {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./6.js");
+var r = require("./4.js");
+var l = function (e) {
+  function IsoStatusIconProgressBarRubyWishWell() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IsoStatusIconProgressBarTax, e);
-  IsoStatusIconProgressBarTax.prototype.getDispFrame = function () {
-    return 5;
+  n.__extends(IsoStatusIconProgressBarRubyWishWell, e);
+  IsoStatusIconProgressBarRubyWishWell.prototype.getBarText = function () {
+    var e = s.int(r.CastleModel.rubyWishingWellData.getRemainingSecondsCalculated());
+    if (e < 0) {
+      r.CastleModel.rubyWishingWellData.requestFreshWishingWellData();
+    }
+    return o.TimeStringHelper.getShortTimeStringBySeconds(e);
   };
-  IsoStatusIconProgressBarTax.prototype.getBarText = function () {
-    return this.keepBuildingVE.keepBuildingVO.taxInfoVO.taxAmountString;
+  IsoStatusIconProgressBarRubyWishWell.prototype.getBarFillFactor = function () {
+    return r.CastleModel.rubyWishingWellData.getPercentageFinished();
   };
-  IsoStatusIconProgressBarTax.prototype.getBarFillFactor = function () {
-    return this.keepBuildingVE.keepBuildingVO.taxCollectProgressAsFactor;
-  };
-  Object.defineProperty(IsoStatusIconProgressBarTax.prototype, "keepBuildingVE", {
-    get: function () {
-      return this.ve;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return IsoStatusIconProgressBarTax;
-}(require("./694.js").AIsoStatusIconProgressBar);
-exports.IsoStatusIconProgressBarTax = a;
-o.classImplementsInterfaces(a, "ICollectableRendererList");
+  return IsoStatusIconProgressBarRubyWishWell;
+}(require("./696.js").AIsoStatusIconProgressBar);
+exports.IsoStatusIconProgressBarRubyWishWell = l;
+a.classImplementsInterfaces(l, "ICollectableRendererList");

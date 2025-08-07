@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function GCBCommand() {
+  function GAPCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(GCBCommand, e);
-  Object.defineProperty(GCBCommand.prototype, "cmdId", {
+  n.__extends(GAPCommand, e);
+  Object.defineProperty(GAPCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_GET_CHANGED_BUILDING_EFFICIENCY;
+      return s.ClientConstSF.S2C_GET_AQUAMARINE_POINTS;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,20 +22,18 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  GCBCommand.prototype.executeCommand = function (e, t) {
+  GAPCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
-        if (r.CastleModel.areaData.activeArea) {
-          r.CastleModel.areaData.activeArea.updater.parseGCB(i);
-        }
+        r.CastleModel.userData.parse_GAP(i);
         break;
       default:
         this.showErrorDialog(e, t);
     }
     return false;
   };
-  return GCBCommand;
+  return GAPCommand;
 }(l.CastleCommand);
-exports.GCBCommand = c;
+exports.GAPCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

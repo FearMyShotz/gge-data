@@ -7,7 +7,7 @@ var a = require("./1.js");
 var s = require("./54.js");
 var r = require("./4299.js");
 var l = require("./4300.js");
-var c = require("./1888.js");
+var c = require("./1890.js");
 var u = require("./4301.js");
 var d = function (e) {
   function CastleLootBoxDataXML(t) {

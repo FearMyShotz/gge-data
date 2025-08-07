@@ -36,5 +36,5 @@ var s = function (e) {
   return ASpotJudgementVE;
 }(require("./313.js").AIsoObjectVE);
 exports.ASpotJudgementVE = s;
-var r = require("./773.js");
+var r = require("./775.js");
 o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");

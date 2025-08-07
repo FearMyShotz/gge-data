@@ -6,56 +6,49 @@ var o = require("./1.js");
 var a = require("./3.js");
 var s = require("./67.js");
 var r = require("./19.js");
-var l = require("./11.js");
-var c = createjs.Point;
+var l = require("./4.js");
+var c = require("./42.js");
 var u = function (e) {
-  function CastlePrivateOfferTimeChallengeFinishDialog() {
+  function CastlePrivateOfferTutorialCompletedDialog() {
     CONSTRUCTOR_HACK;
-    return e.call(this, CastlePrivateOfferTimeChallengeFinishDialog.NAME) || this;
+    return e.call(this, CastlePrivateOfferTutorialCompletedDialog.NAME) || this;
   }
-  n.__extends(CastlePrivateOfferTimeChallengeFinishDialog, e);
-  CastlePrivateOfferTimeChallengeFinishDialog.prototype.initLoaded = function (t = null) {
-    e.prototype.initLoaded.call(this);
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new a.LocalizedTextVO("quest_finished"));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_itemTitle, new a.LocalizedTextVO("reward"));
+  n.__extends(CastlePrivateOfferTutorialCompletedDialog, e);
+  CastlePrivateOfferTutorialCompletedDialog.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this);
+    this.initBasicButtons([this.dialogDisp.btn_ok]);
+    this.textFieldManager.registerTextField(this.dialogDisp.tf_title, new a.LocalizedTextVO("dialog_tutorialend_teaser_titel")).verticalAlign = c.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    this.textFieldManager.registerTextField(this.dialogDisp.tf_anouncement_0, new a.LocalizedTextVO("dialog_tutorialend_teaser_copy1"));
+    this.textFieldManager.registerTextField(this.dialogDisp.tf_anouncement_1, new a.LocalizedTextVO("dialog_tutorialend_teaser_copy2"));
+    this.textFieldManager.registerTextField(this.dialogDisp.tf_anouncement_2, new a.LocalizedTextVO("dialog_tutorialend_teaser_copy3"));
+    this.textFieldManager.registerTextField(this.dialogDisp.tf_anouncement_3, new a.LocalizedTextVO("dialog_tutorialend_teaser_copy4"));
+    this.textFieldManager.registerTextField(this.dialogDisp.tf_reward_title, new a.LocalizedTextVO("dialog_registerreward_reward"));
+    this.initReward();
   };
-  CastlePrivateOfferTimeChallengeFinishDialog.prototype.showLoaded = function (t = null) {
-    e.prototype.showLoaded.call(this, t);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_description, new a.LocalizedTextVO("dialog_timeOffer_done"));
-    this.updateRewards();
+  CastlePrivateOfferTutorialCompletedDialog.prototype.initReward = function () {
+    d.CollectableRenderHelper.displayMultipleItemsComplete(this, new s.CollectableRenderClipsList(this.dialogDisp, "mc_reward_").addItemMcs("mc_item").addInfoBtns("parent.btn_info"), this.dialogProperties.offerVO.getTotalRewardListFromOfferVO(), new r.CollectableRenderOptions(r.CollectableRenderOptions.SET_ADVANCED));
   };
-  CastlePrivateOfferTimeChallengeFinishDialog.prototype.onClick = function (t) {
+  CastlePrivateOfferTutorialCompletedDialog.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
     switch (t.target) {
-      case this.dialogDisp.btn_close:
       case this.dialogDisp.btn_ok:
+        l.CastleModel.privateOfferData.sendOfferPay(this.dialogProperties.offerVO.id);
         this.hide();
     }
   };
-  CastlePrivateOfferTimeChallengeFinishDialog.prototype.updateRewards = function () {
-    p.CollectableRenderHelper.displayMultipleItemsComplete(this, new s.CollectableRenderClipsList(this.dialogDisp, "mc_item").addItemMcs("mc_item").addInfoBtns("parent.btn_info"), this.dialogProperties.offerVO.getTotalRewardListFromOfferVO(), new r.CollectableRenderOptions(r.CollectableRenderOptions.SET_TIME_CHALLENGE, new c(h.CastlePrivateOfferTimeChallengeDialog.ICON_WIDTH, h.CastlePrivateOfferTimeChallengeDialog.ICON_HEIGHT)), function preRenderFunc(e) {
-      if (e.itemVO && e.itemVO.itemType == d.CollectableEnum.VIP_TIME) {
-        e.getRenderer(r.CollectableRenderOptions.ICON_TRANSFORM).transform.offset.y = 7;
-      }
-    });
-  };
-  Object.defineProperty(CastlePrivateOfferTimeChallengeFinishDialog.prototype, "dialogProperties", {
+  Object.defineProperty(CastlePrivateOfferTutorialCompletedDialog.prototype, "dialogProperties", {
     get: function () {
       return this.properties;
     },
     enumerable: true,
     configurable: true
   });
-  CastlePrivateOfferTimeChallengeFinishDialog.__initialize_static_members = function () {
-    CastlePrivateOfferTimeChallengeFinishDialog.NAME = "CastlePrivateOfferTimeChallengeFinish";
-    CastlePrivateOfferTimeChallengeFinishDialog.SHOWN_REWARD_ITEM_COUNT = 13;
+  CastlePrivateOfferTutorialCompletedDialog.__initialize_static_members = function () {
+    CastlePrivateOfferTutorialCompletedDialog.NAME = "CastlePrivateOfferTutorialCompleted";
   };
-  return CastlePrivateOfferTimeChallengeFinishDialog;
-}(l.CastleExternalDialog);
-exports.CastlePrivateOfferTimeChallengeFinishDialog = u;
-var d = require("./12.js");
-var p = require("./25.js");
-var h = require("./1084.js");
+  return CastlePrivateOfferTutorialCompletedDialog;
+}(require("./11.js").CastleExternalDialog);
+exports.CastlePrivateOfferTutorialCompletedDialog = u;
+var d = require("./25.js");
 o.classImplementsInterfaces(u, "ICollectableRendererList");
 u.__initialize_static_members();

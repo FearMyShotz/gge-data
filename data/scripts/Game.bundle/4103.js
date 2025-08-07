@@ -5,8 +5,8 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./80.js");
 var s = require("./4.js");
-var r = require("./796.js");
-var l = require("./1030.js");
+var r = require("./798.js");
+var l = require("./1031.js");
 var c = require("./89.js");
 var u = function (e) {
   function CraftingPanelButton(t) {

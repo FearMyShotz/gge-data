@@ -8,13 +8,13 @@ var s = require("./6.js");
 var r = require("./7.js");
 var l = require("./10.js");
 var c = function (e) {
-  function UPVCommand() {
+  function BPVCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(UPVCommand, e);
-  Object.defineProperty(UPVCommand.prototype, "cmdId", {
+  n.__extends(BPVCommand, e);
+  Object.defineProperty(BPVCommand.prototype, "cmdId", {
     get: function () {
-      return r.ClientConstSF.S2C_UPGRADE_PRIVATE_RESOURCE_VILLAGE;
+      return r.ClientConstSF.S2C_BUY_PRIVATE_RESOURCE_VILLAGE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,10 +22,10 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  UPVCommand.prototype.executeCommand = function (t, i) {
+  BPVCommand.prototype.executeCommand = function (t, i) {
     return e.prototype.executeCommand.call(this, t, i);
   };
-  UPVCommand.prototype.exec = function (e) {
+  BPVCommand.prototype.exec = function (e) {
     var t = s.int(e[0]);
     var i = e[1];
     switch (t) {
@@ -35,7 +35,7 @@ var c = function (e) {
         this.showErrorDialog(t, i);
     }
   };
-  return UPVCommand;
+  return BPVCommand;
 }(l.CastleCommand);
-exports.UPVCommand = c;
+exports.BPVCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

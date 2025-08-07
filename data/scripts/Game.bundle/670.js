@@ -3,12 +3,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function CastleManagementDialogProperties(t) {
+  function SeasonGachaEventMainDialogProperties(t) {
     var i = e.call(this) || this;
-    i.worldmapVO = t;
+    i.eventVO = t;
     return i;
   }
-  n.__extends(CastleManagementDialogProperties, e);
-  return CastleManagementDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleManagementDialogProperties = o;
+  n.__extends(SeasonGachaEventMainDialogProperties, e);
+  return SeasonGachaEventMainDialogProperties;
+}(require("./220.js").BasicProperties);
+exports.SeasonGachaEventMainDialogProperties = o;

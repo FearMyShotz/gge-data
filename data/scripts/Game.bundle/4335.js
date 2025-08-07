@@ -5,8 +5,8 @@ var n = require("./0.js");
 var o = require("./22.js");
 var a = require("./164.js");
 var s = require("./4.js");
-var r = require("./35.js");
-var l = require("./686.js");
+var r = require("./33.js");
+var l = require("./688.js");
 var c = require("./4336.js");
 var u = function (e) {
   function GeneralSkillVO() {

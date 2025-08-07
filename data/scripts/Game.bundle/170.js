@@ -5,7 +5,7 @@ var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./54.js");
 var s = require("./4.js");
-var r = require("./2111.js");
+var r = require("./2112.js");
 var l = function (e) {
   function CastlePremiumMarketCollectionData() {
     return e !== null && e.apply(this, arguments) || this;
@@ -150,12 +150,12 @@ var l = function (e) {
   return CastlePremiumMarketCollectionData;
 }(a.CastleBasicData);
 exports.CastlePremiumMarketCollectionData = l;
-var c = require("./2112.js");
+var c = require("./2113.js");
 var u = require("./1212.js");
-var d = require("./2588.js");
-var p = require("./2591.js");
-var h = require("./2592.js");
-var g = require("./2593.js");
-var C = require("./2594.js");
-var _ = require("./2595.js");
+var d = require("./2589.js");
+var p = require("./2592.js");
+var h = require("./2593.js");
+var g = require("./2594.js");
+var C = require("./2595.js");
+var _ = require("./2596.js");
 o.classImplementsInterfaces(l, "IUpdatable", "ICastleBasicData");

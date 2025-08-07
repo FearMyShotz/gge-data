@@ -80,7 +80,7 @@ var g = function (e) {
 exports.ResearchPanelButton = g;
 var C = require("./1.js");
 o.classImplementsInterfaces(g, "ICollectableRendererList");
-var _ = require("./33.js");
+var _ = require("./34.js");
 var m = require("./80.js");
 var f = require("./56.js");
 var O = require("./14.js");

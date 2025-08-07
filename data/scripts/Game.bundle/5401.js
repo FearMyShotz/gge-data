@@ -2,51 +2,68 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./1.js");
-var s = require("./3.js");
-var r = require("./3.js");
-var l = require("./31.js");
-var c = require("./19.js");
-var u = require("./11.js");
-var d = createjs.Point;
-var p = function (e) {
-  function CastlePremiumAboReceivedDialog() {
-    CONSTRUCTOR_HACK;
-    return e.call(this, CastlePremiumAboReceivedDialog.NAME) || this;
+var o = require("./3.js");
+var a = require("./5402.js");
+var s = require("./83.js");
+var r = require("./99.js");
+var l = function (e) {
+  function MessageAboVO() {
+    return e.call(this) || this;
   }
-  n.__extends(CastlePremiumAboReceivedDialog, e);
-  CastlePremiumAboReceivedDialog.prototype.applyPropertiesLoaded = function (e = null) {
-    this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_ok]);
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new r.TextVO(this.dialogProperties.messageVO.subject));
-    this.textFieldManager.registerTextField(this.dialogDisp.txt_copy, new s.LocalizedTextVO("dialog_message_abo_copy")).verticalAlign = o.GGSVerticalAlign.MIDDLE;
-    this.updateResourceSection();
-  };
-  CastlePremiumAboReceivedDialog.prototype.updateResourceSection = function () {
-    var e = new c.CollectableRenderOptions(c.CollectableRenderOptions.SET_RESOURCE_LIST, new d(20, 20));
-    e.tooltip.useAmount = false;
-    h.CollectableRenderHelper.displaySingleItem(new l.CollectableRenderClips(this.dialogDisp.icon_ressource).addIconMc(this.dialogDisp.icon_ressource).addTextfield(this.dialogDisp.txt_value), this.dialogProperties.messageVO.goods.getItemByIndexSave(0), e).destroy();
-  };
-  CastlePremiumAboReceivedDialog.prototype.onClick = function (e) {
-    switch (e.target) {
-      case this.dialogDisp.btn_close:
-      case this.dialogDisp.btn_ok:
-        this.hide();
+  n.__extends(MessageAboVO, e);
+  MessageAboVO.prototype.parseMessageHeader = function (e) {
+    this._goods = new d.CollectableList();
+    for (var t = e.split("#"), i = 0; i < t.length; ++i) {
+      t[i] = parseInt(t[i]);
     }
+    this._goods = c.CollectableManager.parser.s2cParamList.createList(t);
   };
-  Object.defineProperty(CastlePremiumAboReceivedDialog.prototype, "dialogProperties", {
+  MessageAboVO.prototype.parseSubject = function () {
+    var e = this._goods.getItemByIndexSave(0);
+    var t = e ? e.itemType : u.CollectableEnum.UNKNOWN;
+    var i = this._subject;
+    switch (t) {
+      case u.CollectableEnum.WOOD:
+        i = o.Localize.text("dialog_messageHeader_abo_wood");
+        break;
+      case u.CollectableEnum.STONE:
+        i = o.Localize.text("dialog_messageHeader_abo_stone");
+        break;
+      case u.CollectableEnum.FOOD:
+        i = o.Localize.text("dialog_messageHeader_abo_food");
+        break;
+      case u.CollectableEnum.C1:
+        i = o.Localize.text("dialog_messageHeader_abo_c1");
+        break;
+      case u.CollectableEnum.C2:
+        i = o.Localize.text("dialog_messageHeader_abo_c2");
+    }
+    return i;
+  };
+  MessageAboVO.prototype.parseSender = function () {
+    return o.Localize.text("system");
+  };
+  Object.defineProperty(MessageAboVO.prototype, "dialogInfo", {
     get: function () {
-      return this.properties;
+      return new s.DialogInfoVO(p.CastlePremiumAboReceivedDialog, new a.CastlePremiumAboReceivedDialogProperties(this));
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(r.AMessageVO.prototype, "dialogInfo").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  CastlePremiumAboReceivedDialog.__initialize_static_members = function () {
-    CastlePremiumAboReceivedDialog.NAME = "CastlePremiumAccountMessagePopupEx";
-  };
-  return CastlePremiumAboReceivedDialog;
-}(u.CastleExternalDialog);
-exports.CastlePremiumAboReceivedDialog = p;
-var h = require("./25.js");
-a.classImplementsInterfaces(p, "ICollectableRendererList");
-p.__initialize_static_members();
+  Object.defineProperty(MessageAboVO.prototype, "goods", {
+    get: function () {
+      return this._goods;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return MessageAboVO;
+}(r.AMessageVO);
+exports.MessageAboVO = l;
+var c = require("./50.js");
+var u = require("./12.js");
+var d = require("./48.js");
+var p = require("./5403.js");

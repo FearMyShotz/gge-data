@@ -2,28 +2,43 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function AdvisorAttackSummaryDialogProperties(t, i) {
-    var n = e.call(this) || this;
-    n._messageID = t;
-    n._advisorType = i;
-    return n;
+var o = require("./3.js");
+var a = require("./207.js");
+var s = require("./5408.js");
+var r = require("./5409.js");
+var l = require("./83.js");
+var c = function (e) {
+  function MessageAdvisorSummaryVO() {
+    return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(AdvisorAttackSummaryDialogProperties, e);
-  Object.defineProperty(AdvisorAttackSummaryDialogProperties.prototype, "messageID", {
+  n.__extends(MessageAdvisorSummaryVO, e);
+  MessageAdvisorSummaryVO.prototype.parseMessageHeader = function (e) {
+    this.advisorType = parseInt(e);
+  };
+  MessageAdvisorSummaryVO.prototype.parseSubject = function () {
+    return o.Localize.text("title_advisor_AttackSummary");
+  };
+  MessageAdvisorSummaryVO.prototype.parseSender = function () {
+    return o.Localize.text("title_advisor_" + a.AdvisorAttackHelper.getTextIDSuffix(this.advisorType));
+  };
+  Object.defineProperty(MessageAdvisorSummaryVO.prototype, "additionalIconName", {
     get: function () {
-      return this._messageID;
+      switch (this.advisorType) {
+        case 0:
+        default:
+          return o.Localize.text("CastleMessageIconsNomadAdvisor");
+      }
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(AdvisorAttackSummaryDialogProperties.prototype, "advisorType", {
+  Object.defineProperty(MessageAdvisorSummaryVO.prototype, "dialogInfo", {
     get: function () {
-      return this._advisorType;
+      return new l.DialogInfoVO(s.AdvisorAttackSummaryDialog, new r.AdvisorAttackSummaryDialogProperties(this.messageID, this.advisorType));
     },
     enumerable: true,
     configurable: true
   });
-  return AdvisorAttackSummaryDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.AdvisorAttackSummaryDialogProperties = o;
+  return MessageAdvisorSummaryVO;
+}(require("./99.js").AMessageVO);
+exports.MessageAdvisorSummaryVO = c;

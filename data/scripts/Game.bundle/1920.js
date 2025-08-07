@@ -1,71 +1,106 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = createjs.Point;
-var o = function () {
-  function AreaTypeSectorMap(e) {
-    this.markCounter = 0;
-    this.map = e;
+var n = require("./0.js");
+var o = require("./1.js");
+var a = require("./69.js");
+var s = require("./4.js");
+var r = require("./4545.js");
+var l = require("./8.js");
+var c = require("./1046.js");
+var u = function (e) {
+  function CastleSpecialCurrencyMerchantDialogTypeHardMode(t) {
+    return e.call(this, t) || this;
   }
-  AreaTypeSectorMap.prototype.put = function (e, t, i, n, o) {
-    this.fillWith(AreaTypeSectorMap.BLOCKED_BY_DECO, t, i, n, o);
-    this.map[i][t] = e;
+  n.__extends(CastleSpecialCurrencyMerchantDialogTypeHardMode, e);
+  CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype.initLoaded = function (t = null) {
+    e.prototype.initLoaded.call(this, t);
+    this.dialogDisp.mcSpecialCurrency.mc_coin.gotoAndStop(1);
+    this.dialogDisp.mcSpecialCurrency2.mc_coin.gotoAndStop(2);
   };
-  AreaTypeSectorMap.prototype.getFreePositionsForElements = function (e, t) {
-    this.markCounter++;
-    var i = [];
-    for (var o = 0; o < a.WorldConst.SECTOR_HEIGHT; o++) {
-      for (var s = 0; s < a.WorldConst.SECTOR_WIDTH; s++) {
-        if (this.isFreeForElementAt(s, o, e, t)) {
-          i.push(new n(s, o));
-          this.fillWith(this.currentBlockedMarker, s, o, e, t);
-        }
-      }
-    }
-    return i;
+  CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype.showLoaded = function (t = null) {
+    e.prototype.showLoaded.call(this, t);
+    this.dialogDisp.btn_travel.toolTipText = this.travelTooltipText;
+    l.ButtonHelper.enableButton(this.dialogDisp.btn_travel, s.CastleModel.specialEventData.isSeasonEventActive);
   };
-  AreaTypeSectorMap.prototype.getAsMap = function () {
-    return this.map;
-  };
-  AreaTypeSectorMap.prototype.fillWith = function (e, t, i, n, o) {
-    for (var s = 0; s < o; s++) {
-      for (var r = 0; r < n; r++) {
-        if (!(i + s > a.WorldConst.SECTOR_HEIGHT) && !(t + r > a.WorldConst.SECTOR_WIDTH)) {
-          this.map[i + s][t + r] = e;
-        }
-      }
-    }
-  };
-  AreaTypeSectorMap.prototype.isFreeForElementAt = function (e, t, i, n) {
-    if (e < 0 || t < 0 || e + i > a.WorldConst.SECTOR_WIDTH || t + n > a.WorldConst.SECTOR_HEIGHT) {
-      return false;
-    }
-    for (var o = 0; o < n; o++) {
-      for (var r = 0; r < i; r++) {
-        var l = s.int(this.map[t + o][e + r]);
-        if (!this.isInterpretedAsFree(l)) {
-          return false;
-        }
-      }
-    }
-    return true;
-  };
-  AreaTypeSectorMap.prototype.isInterpretedAsFree = function (e) {
-    return e == a.WorldConst.AREA_TYPE_EMPTY || e > AreaTypeSectorMap.BLOCKED_BY_DECO && e < this.currentBlockedMarker;
-  };
-  Object.defineProperty(AreaTypeSectorMap.prototype, "currentBlockedMarker", {
+  Object.defineProperty(CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "travelTooltipText", {
     get: function () {
-      return AreaTypeSectorMap.BLOCKED_BY_DECO + this.markCounter;
+      return "event_title_" + s.CastleModel.specialEventData.activeSeasonVO.eventId;
     },
     enumerable: true,
     configurable: true
   });
-  AreaTypeSectorMap.__initialize_static_members = function () {
-    AreaTypeSectorMap.BLOCKED_BY_DECO = 65536;
+  CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype.initBasicButtons = function (t) {
+    t = t.concat([this.dialogDisp.btn_travel]);
+    e.prototype.initBasicButtons.call(this, t);
   };
-  return AreaTypeSectorMap;
-}();
-exports.AreaTypeSectorMap = o;
-var a = require("./5.js");
-var s = require("./6.js");
-o.__initialize_static_members();
+  Object.defineProperty(CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "isEvent", {
+    get: function () {
+      return true;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(c.CastleSpecialCurrencyMerchantDialog.prototype, "isEvent").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype.getItemListVOs = function () {
+    var e = this.packageContainer.getVisiblePackages(s.CastleModel.userData.userLevel, s.CastleModel.userData.userLegendLevel, s.CastleModel.areaData.activeAreaInfo.areaType);
+    var t = [];
+    if (e != null) {
+      for (var i = 0, n = e; i < n.length; i++) {
+        var o = n[i];
+        if (o !== undefined) {
+          if (o.sortOrder % 2 != (t.length + 1) % 2) {
+            t.push(new r.EmptyScrollItemVO());
+          }
+          var a = this.createScrollItem(o);
+          t.push(a);
+        }
+      }
+    }
+    return t;
+  };
+  Object.defineProperty(CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "userSpecialCurrencies", {
+    get: function () {
+      var e = [];
+      e.push(this.userCurrency1);
+      e.push(this.userCurrency2);
+      return e;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "userCurrency1", {
+    get: function () {
+      throw new a.AbstractMethodError();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype, "userCurrency2", {
+    get: function () {
+      throw new a.AbstractMethodError();
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleSpecialCurrencyMerchantDialogTypeHardMode.prototype.onClick = function (t) {
+    e.prototype.onClick.call(this, t);
+    if (l.ButtonHelper.isButtonEnabled(t.target)) {
+      switch (t.target) {
+        case this.dialogDisp.btn_travel:
+          this.hide();
+          s.CastleModel.kingdomData.tempTargetSpaceID = s.CastleModel.specialEventData.activeSeasonVO.mapID;
+          d.CastleDialogHandler.getInstance().registerDefaultDialogs(p.CastleHandleSeasonDialog, new h.CastleHandleSeasonDialogProperties(s.CastleModel.specialEventData.activeSeasonVO));
+      }
+    }
+  };
+  CastleSpecialCurrencyMerchantDialogTypeHardMode.NAME = "CastleThornkingEvent";
+  return CastleSpecialCurrencyMerchantDialogTypeHardMode;
+}(c.CastleSpecialCurrencyMerchantDialog);
+exports.CastleSpecialCurrencyMerchantDialogTypeHardMode = u;
+var d = require("./9.js");
+var p = require("./1098.js");
+var h = require("./1100.js");
+o.classImplementsInterfaces(u, "ICollectableRendererList");

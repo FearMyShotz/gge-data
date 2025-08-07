@@ -5,13 +5,13 @@ var n = require("./0.js");
 var o = require("./2.js");
 var a = require("./7.js");
 var s = function (e) {
-  function C2SGetFactionBalance() {
+  function C2SShowInventoryVO() {
     return e.call(this) || this;
   }
-  n.__extends(C2SGetFactionBalance, e);
-  C2SGetFactionBalance.prototype.getCmdId = function () {
-    return a.ClientConstSF.C2S_GET_FACTION_BALANCE;
+  n.__extends(C2SShowInventoryVO, e);
+  C2SShowInventoryVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_SHOW_INVENTORY;
   };
-  return C2SGetFactionBalance;
+  return C2SShowInventoryVO;
 }(o.BasicCommandVO);
-exports.C2SGetFactionBalance = s;
+exports.C2SShowInventoryVO = s;

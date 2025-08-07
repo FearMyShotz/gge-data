@@ -1,56 +1,19 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = function () {
-  function AdvancedTroopsSelectionStrategyBasics() {}
-  AdvancedTroopsSelectionStrategyBasics.prototype.getExchangeableSlots = function (e, t) {
-    var i = [];
-    if (t != null) {
-      for (var n = 0, o = t; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined && a.unitVO && a.getWodId() != e.wodId) {
-          i.push(a);
-        }
-      }
-    }
-    return i;
+var n = require("./0.js");
+var o = function (e) {
+  function CastleAdvancedTroopSelectionEvent(t, i, n = true, o = false) {
+    var a = this;
+    CONSTRUCTOR_HACK;
+    (a = e.call(this, i, n, o) || this).scrollItem = t;
+    return a;
+  }
+  n.__extends(CastleAdvancedTroopSelectionEvent, e);
+  CastleAdvancedTroopSelectionEvent.__initialize_static_members = function () {
+    CastleAdvancedTroopSelectionEvent.UNIT_SELECTION_CHANGED = "unit_selection_changed";
   };
-  AdvancedTroopsSelectionStrategyBasics.prototype.getFreeAndSameSlots = function (e, t) {
-    var i = [];
-    if (t != null) {
-      for (var n = 0, o = t; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined && (a.isFree() || a.unitVO && a.getWodId() == e.wodId)) {
-          i.push(a);
-        }
-      }
-    }
-    return i;
-  };
-  AdvancedTroopsSelectionStrategyBasics.prototype.getSameSlots = function (e, t) {
-    var i = [];
-    if (t != null) {
-      for (var n = 0, o = t; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined && a.unitVO && a.getWodId() == e.wodId) {
-          i.push(a);
-        }
-      }
-    }
-    return i;
-  };
-  AdvancedTroopsSelectionStrategyBasics.prototype.getFreeSlots = function (e, t) {
-    var i = [];
-    if (t != null) {
-      for (var n = 0, o = t; n < o.length; n++) {
-        var a = o[n];
-        if (a !== undefined && a.isFree()) {
-          i.push(a);
-        }
-      }
-    }
-    return i;
-  };
-  return AdvancedTroopsSelectionStrategyBasics;
-}();
-exports.AdvancedTroopsSelectionStrategyBasics = n;
+  return CastleAdvancedTroopSelectionEvent;
+}(createjs.Event);
+exports.CastleAdvancedTroopSelectionEvent = o;
+o.__initialize_static_members();

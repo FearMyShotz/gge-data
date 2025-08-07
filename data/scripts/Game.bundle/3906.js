@@ -3,21 +3,24 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./432.js");
+var a = require("./99.js");
 var s = require("./9.js");
-var r = require("./215.js");
+var r = require("./216.js");
 var l = require("./196.js");
 var c = function (e) {
-  function CheatMysteryBoxChancesCommand() {
+  function CheatOfferIDsInHeaderCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CheatMysteryBoxChancesCommand, e);
-  CheatMysteryBoxChancesCommand.prototype.execute = function (e = null) {
-    l.ClientCheatsHelper.performCommand("mysteryBoxChance ");
-    var t = "";
-    t = a.CastleCheatData.cheatShowMysteryBoxChances ? "show lootbox chances: on" : "show lootbox chances: off";
-    s.CastleDialogHandler.getInstance().registerDefaultDialogs(r.DarkOkDialog, new o.BasicStandardOkDialogProperties("mysteryBoxChance", t));
+  n.__extends(CheatOfferIDsInHeaderCommand, e);
+  CheatOfferIDsInHeaderCommand.prototype.execute = function (e = null) {
+    l.ClientCheatsHelper.performCommand("toggleOfferIDsInMessageSubject");
+    if (a.AMessageVO.showOfferIDsInSubject) {
+      s.CastleDialogHandler.getInstance().registerDefaultDialogs(r.DarkOkDialog, new o.BasicStandardOkDialogProperties("OfferIDs", "OfferIDs are shown now in the MessageHeader"));
+    }
+    if (!a.AMessageVO.showOfferIDsInSubject) {
+      s.CastleDialogHandler.getInstance().registerDefaultDialogs(r.DarkOkDialog, new o.BasicStandardOkDialogProperties("OfferIDs", "OfferIDs are invisible"));
+    }
   };
-  return CheatMysteryBoxChancesCommand;
+  return CheatOfferIDsInHeaderCommand;
 }(require("./212.js").ABotCommand);
-exports.CheatMysteryBoxChancesCommand = c;
+exports.CheatOfferIDsInHeaderCommand = c;

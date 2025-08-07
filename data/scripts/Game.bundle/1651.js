@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", {
 var n = require("./0.js");
 var o = require("./1.js");
 var a = require("./1.js");
-var s = require("./3404.js");
+var s = require("./3405.js");
 var r = function (e) {
   function OpenFactionInvasionEventMainDialogCommand() {
     return e !== null && e.apply(this, arguments) || this;
@@ -26,8 +26,8 @@ var r = function (e) {
     return new (a.getDefinitionByName("GallantryTitlesSublayer"))();
   };
   return OpenFactionInvasionEventMainDialogCommand;
-}(require("./1061.js").OpenDialogWithAdditionalExternalAssetsCommand);
+}(require("./1062.js").OpenDialogWithAdditionalExternalAssetsCommand);
 exports.OpenFactionInvasionEventMainDialogCommand = r;
 var l = require("./9.js");
-var c = require("./3405.js");
+var c = require("./3406.js");
 o.classImplementsInterfaces(r, "ISimpleCommand");

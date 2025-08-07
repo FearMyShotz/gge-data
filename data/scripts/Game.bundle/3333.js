@@ -2,73 +2,83 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./2.js");
-var a = require("./2.js");
-var s = require("./2.js");
-var r = require("./2.js");
-var l = require("./2.js");
-var c = require("./2.js");
-var u = require("./2.js");
-var d = require("./2.js");
-var p = require("./1.js");
-var h = require("./3.js");
-var g = require("./6.js");
-var C = require("./801.js");
-var _ = require("./4.js");
-var m = require("./9.js");
-var f = require("./38.js");
-var O = require("./1634.js");
-var E = function (e) {
-  function CastleRegisterUserWithFacebookCommand() {
-    return e !== null && e.apply(this, arguments) || this;
+var o = require("./1.js");
+var a = require("./329.js");
+var s = function (e) {
+  function ResourcePanelToolTipResourceHoney() {
+    return e.call(this, l.ResourcePanelToolTipManager.TOOL_TIP_TYPE_INFO_RESOURCE_HONEY) || this;
   }
-  n.__extends(CastleRegisterUserWithFacebookCommand, e);
-  CastleRegisterUserWithFacebookCommand.prototype.execute = function (e = null) {
-    d.debug("-------------------- gonna register in with " + JSON.stringify(e));
-    var t = new O.C2SRegisterWithNameVO();
-    t.username = e.pn;
-    t.accountId = this.env.accountId;
-    t.ggsLanguageCode = l.GGSCountryController.instance.currentCountry.ggsLanguageCode;
-    t.referrer = this.env.referrer;
-    t.distributorId = g.int(this.env.distributorId);
-    t.connectionTime = a.BasicModel.smartfoxClient.connectionTime;
-    t.roundTripTime = a.BasicModel.smartfoxClient.roundTripTime;
-    t.campaignVars = s.BasicTrackingStringComposer.composeVarDataForRegistration("", this.env.referrer);
-    t.campaignVars_adid = this.env.campainVars.aid;
-    t.campaignVars_lp = this.env.campainVars.lp;
-    t.campaignVars_creative = this.env.campainVars.creative;
-    t.campaignVars_partnerId = this.env.campainVars.partnerId;
-    t.campaignVars_websiteId = this.env.urlVariables.websiteId;
-    t.timezone = u.TimezoneUtil.getTrackingTimezone();
-    t.FID = e.fid;
-    t.FTK = e.ftk;
-    t.FAID = y.CastleFacebookModule.appID;
-    t.initialize();
-    try {
-      window.grecaptcha.ready(function () {
-        var e = C.ClientConstReCaptcha.getSiteKey();
-        window.grecaptcha.execute(e, {
-          action: "submit"
-        }).then(function (e) {
-          t.RCT = e;
-          _.CastleModel.smartfoxClient.sendCommandVO(t);
-        }).catch(function (e) {
-          m.CastleDialogHandler.getInstance().registerDialogs(f.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(h.Localize.text("generic_alert_watchout"), h.Localize.text("errorCode_1")));
-        });
-      });
-    } catch (e) {
-      m.CastleDialogHandler.getInstance().registerDialogs(f.CastleStandardOkDialog, new o.BasicStandardOkDialogProperties(h.Localize.text("generic_alert_watchout"), h.Localize.text("errorCode_1")));
-    }
-  };
-  Object.defineProperty(CastleRegisterUserWithFacebookCommand.prototype, "env", {
+  n.__extends(ResourcePanelToolTipResourceHoney, e);
+  Object.defineProperty(ResourcePanelToolTipResourceHoney.prototype, "resource", {
     get: function () {
-      return r.EnvGlobalsHandler.globals;
+      return r.CollectableEnum.HONEY;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.AResourcePanelToolTipResource.prototype, "resource").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  return CastleRegisterUserWithFacebookCommand;
-}(c.SimpleCommand);
-exports.CastleRegisterUserWithFacebookCommand = E;
-var y = require("./193.js");
-p.classImplementsInterfaces(E, "ISimpleCommand");
+  Object.defineProperty(ResourcePanelToolTipResourceHoney.prototype, "laboratoryResourceBonus", {
+    get: function () {
+      return 0;
+    },
+    set: function (e) {
+      Object.getOwnPropertyDescriptor(a.AResourcePanelToolTipResource.prototype, "laboratoryResourceBonus").set.call(this, e);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  ResourcePanelToolTipResourceHoney.prototype.createItems = function () {
+    this._title = new c.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextBold());
+    this._production = new c.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._baseProduction = new c.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._max = new c.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._meadProduction = new c.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._honeyIsEmpty = new c.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextRegular());
+    this._divider = new Library.CastleInterfaceElements.divider();
+  };
+  ResourcePanelToolTipResourceHoney.prototype.updateContent = function () {
+    this._items.length = 0;
+    var e;
+    var t = u.CastleModel.areaData.getActiveStorageItem(this.resource).productionPerSec;
+    e = t == 0 ? "noProduction" : "xPerHour";
+    var i = new this.resource.dataClass();
+    p.CastleTextFieldHelper.safeSetText(this._title.tf, i.getTooltipTextId());
+    p.CastleTextFieldHelper.safeSetText(this._production.tf, e, [t]);
+    this._production.tf.color = t < 0 ? C.ClientConstColor.GENERIC_BRIGHT_RED : C.ClientConstColor.FONT_DEFAULT_COLOR;
+    this._items.push(this._title);
+    if (u.CastleModel.breweryData.isMeadProductionActive) {
+      var n = u.CastleModel.breweryData.breweryBuildingVO.meadProduction * (u.CastleModel.breweryData.percentForMead / 100) * u.CastleModel.breweryData.breweryBuildingVO.honeyRatio;
+      p.CastleTextFieldHelper.safeSetText(this._meadProduction.tf, "honeywastage_brewery_value", [n]);
+      this._meadProduction.tf.color = C.ClientConstColor.GENERIC_BRIGHT_RED;
+      var o = t + n;
+      p.CastleTextFieldHelper.safeSetText(this._baseProduction.tf, "honeyProduction_perHour_value", [o]);
+      this._items.push(this._baseProduction);
+      this._items.push(this._meadProduction);
+      this._items.push(this._divider);
+    }
+    p.CastleTextFieldHelper.safeSetText(this._production.tf, e, [t]);
+    var a = d.int(u.CastleModel.areaData.getActiveStorageItem(this.resource).maxAmount);
+    p.CastleTextFieldHelper.safeSetText(this._max.tf, "storage_capacity_colon", [a]);
+    this._items.push(this._production);
+    if (u.CastleModel.areaData.activeCommonInfo.honeyProduction < 0) {
+      p.CastleTextFieldHelper.safeSetText(this._honeyIsEmpty.tf, "emptyIn", [g.TimeStringHelper.getTimeToString(u.CastleModel.areaData.activeCommonInfo.honeyIsEmptyTimeInSeconds, g.TimeStringHelper.ONE_TIME_FORMAT, h.Localize.text)]);
+      this._honeyIsEmpty.tf.color = C.ClientConstColor.GENERIC_BRIGHT_RED;
+      this._items.push(this._honeyIsEmpty);
+    }
+    this._items.push(this._max);
+  };
+  return ResourcePanelToolTipResourceHoney;
+}(a.AResourcePanelToolTipResource);
+exports.ResourcePanelToolTipResourceHoney = s;
+var r = require("./12.js");
+var l = require("./152.js");
+var c = require("./286.js");
+var u = require("./4.js");
+var d = require("./6.js");
+var p = require("./141.js");
+var h = require("./3.js");
+var g = require("./2.js");
+var C = require("./16.js");
+o.classImplementsInterfaces(s, "Container");

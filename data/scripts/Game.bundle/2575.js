@@ -2,13 +2,20 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CastleApplyForMembershipDialogProperties(t) {
-    var i = e.call(this) || this;
-    i.allianceVO = t;
+var o = require("./2.js");
+var a = require("./7.js");
+var s = function (e) {
+  function C2SJoinOpenAllianceVO(t) {
+    var i = this;
+    i.AID = 0;
+    CONSTRUCTOR_HACK;
+    (i = e.call(this) || this).AID = t;
     return i;
   }
-  n.__extends(CastleApplyForMembershipDialogProperties, e);
-  return CastleApplyForMembershipDialogProperties;
-}(require("./2.js").BasicProperties);
-exports.CastleApplyForMembershipDialogProperties = o;
+  n.__extends(C2SJoinOpenAllianceVO, e);
+  C2SJoinOpenAllianceVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_JOIN_OPEN_ALLIANCE;
+  };
+  return C2SJoinOpenAllianceVO;
+}(o.BasicCommandVO);
+exports.C2SJoinOpenAllianceVO = s;

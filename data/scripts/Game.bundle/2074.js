@@ -1,152 +1,91 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./1.js");
-var s = require("./6.js");
-var r = require("./84.js");
-var l = require("./14.js");
-var c = require("./92.js");
-var u = function (e) {
-  function IsoViewRenderer() {
-    var t;
-    var i;
-    var n = this;
-    n._components = new Map();
-    n._isReady = false;
-    CONSTRUCTOR_HACK;
-    n = e.call(this) || this;
-    for (var o = 0, s = IsoViewRenderer.componentTypeList; o < s.length; o++) {
-      t = s[o];
-      if (a.instanceOfClass(t, "IsoRenderComponentEnum")) {
-        i = t;
-        n._components.set(i, new i.componentClass());
-      }
-    }
-    for (var r = 0, l = IsoViewRenderer.componentTypeList; r < l.length; r++) {
-      t = l[r];
-      if (a.instanceOfClass(t, "IsoRenderComponentEnum")) {
-        i = t;
-        n.getComponentByType(i).init(n);
-      }
-    }
-    return n;
+var n = function () {
+  function CastleRubyWishingWellVO() {
+    this._id = 0;
+    this._wodId = 0;
+    this._entryCosts = 0;
+    this._costStone = 0;
+    this._costWood = 0;
+    this._neededWishingWellCoins = 0;
+    this._waitingTime = 0;
+    this._upgradeWodID = 0;
+    this._downgradeWodID = 0;
   }
-  n.__extends(IsoViewRenderer, e);
-  IsoViewRenderer.prototype.build = function (e, t) {
-    var i;
-    var n;
-    this._isReady = false;
-    this._isoData = e;
-    this.objects.init(this);
-    for (var o = 0, s = IsoViewRenderer.componentTypeList; o < s.length; o++) {
-      i = s[o];
-      if (a.instanceOfClass(i, "IsoRenderComponentEnum")) {
-        n = i;
-        this.getComponentByType(n).reset();
-      }
-    }
-    this.layers.setNewRenderTarget(t);
-    if (!h.Iso.controller.viewUpdater) {
-      h.Iso.controller.registerViewUpdater();
-    }
-    for (var r = 0, u = IsoViewRenderer.componentTypeList; r < u.length; r++) {
-      i = u[r];
-      if (a.instanceOfClass(i, "IsoRenderComponentEnum")) {
-        n = i;
-        this.getComponentByType(n).setup();
-      }
-    }
-    this.objects.render();
-    h.Iso.controller.processor.executeCommand(new d.IsoCommandZSortAll());
-    h.Iso.controller.processor.executeCommand(new d.IsoCommandZSortAll());
-    this._isReady = true;
-    l.CastleComponent.controller.dispatchEvent(new c.IsoEvent(c.IsoEvent.ON_RENDERER_READY));
+  CastleRubyWishingWellVO.prototype.parseXML = function (e) {
+    this._id = parseInt(e.level || "");
+    this._wodId = parseInt(e.wodID || "");
+    this._entryCosts = parseInt(e.entryCosts || "");
+    this._costStone = parseInt(e.costStone || "");
+    this._costWood = parseInt(e.costWood || "");
+    this._neededWishingWellCoins = parseInt(e.costWishingWellCoin || "");
+    this._waitingTime = parseInt(e.waitingTime || "");
+    this._upgradeWodID = parseInt(a.CastleXMLUtils.getValueOrDefault("upgradeWodID", e, "-1"));
+    this._downgradeWodID = parseInt(a.CastleXMLUtils.getValueOrDefault("downgradeWodID", e, "-1"));
   };
-  IsoViewRenderer.prototype.destroy = function () {
-    e.prototype.destroy.call(this);
-    this._isReady = false;
-    h.Iso.controller.unregisterViewUpdater();
-    for (var t = s.int(IsoViewRenderer.componentTypeList.length - 1); t >= 0; --t) {
-      var i = IsoViewRenderer.componentTypeList[t];
-      this.getComponentByType(i).destroy();
-    }
+  CastleRubyWishingWellVO.prototype.getId = function () {
+    return this._id;
   };
-  IsoViewRenderer.prototype.getComponentByType = function (e) {
-    return this.components.get(e);
-  };
-  Object.defineProperty(IsoViewRenderer.prototype, "layers", {
+  Object.defineProperty(CastleRubyWishingWellVO.prototype, "wodId", {
     get: function () {
-      return this.getComponentByType(p.IsoRenderComponentEnum.LAYERS);
+      return this._wodId;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewRenderer.prototype, "settings", {
+  Object.defineProperty(CastleRubyWishingWellVO.prototype, "entryCosts", {
     get: function () {
-      return this.getComponentByType(p.IsoRenderComponentEnum.SETTINGS);
+      return this._entryCosts;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewRenderer.prototype, "objects", {
+  Object.defineProperty(CastleRubyWishingWellVO.prototype, "costStone", {
     get: function () {
-      return this.getComponentByType(p.IsoRenderComponentEnum.OBJECTS);
+      return this._costStone;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewRenderer.prototype, "camera", {
+  Object.defineProperty(CastleRubyWishingWellVO.prototype, "costWood", {
     get: function () {
-      return this.getComponentByType(p.IsoRenderComponentEnum.CAMERA);
+      return this._costWood;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewRenderer.prototype, "mouse", {
+  Object.defineProperty(CastleRubyWishingWellVO.prototype, "neededWishingWellCoins", {
     get: function () {
-      return this.getComponentByType(p.IsoRenderComponentEnum.MOUSE);
+      return this._neededWishingWellCoins;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewRenderer.prototype, "strategies", {
+  Object.defineProperty(CastleRubyWishingWellVO.prototype, "waitingTime", {
     get: function () {
-      return this.getComponentByType(p.IsoRenderComponentEnum.STRATEGY);
+      return this._waitingTime;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewRenderer.prototype, "isoData", {
+  Object.defineProperty(CastleRubyWishingWellVO.prototype, "upgradeWodID", {
     get: function () {
-      return this._isoData;
+      return this._upgradeWodID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewRenderer.prototype, "components", {
+  Object.defineProperty(CastleRubyWishingWellVO.prototype, "downgradeWodID", {
     get: function () {
-      return this._components;
+      return this._downgradeWodID;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(IsoViewRenderer.prototype, "isReady", {
-    get: function () {
-      return this._isReady;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  IsoViewRenderer.__initialize_static_members = function () {
-    IsoViewRenderer.componentTypeList = r.CastleEnum.getEnumListByClass(p.IsoRenderComponentEnum);
-  };
-  return IsoViewRenderer;
-}(l.CastleComponent);
-exports.IsoViewRenderer = u;
-var d = require("./689.js");
-var p = require("./2075.js");
-var h = require("./33.js");
-o.classImplementsInterfaces(u, "ICollectableRendererList");
-u.__initialize_static_members();
+  return CastleRubyWishingWellVO;
+}();
+exports.CastleRubyWishingWellVO = n;
+var o = require("./1.js");
+var a = require("./22.js");
+o.classImplementsInterfaces(n, "ICastleXmlNode");

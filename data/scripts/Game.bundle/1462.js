@@ -207,5 +207,5 @@ var c = function (e) {
   return ConstructionItemsInteractionData;
 }(r.AModel);
 exports.ConstructionItemsInteractionData = c;
-var u = require("./623.js");
+var u = require("./624.js");
 o.classImplementsInterfaces(c, "IModel");

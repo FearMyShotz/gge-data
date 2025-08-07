@@ -3,22 +3,15 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./6.js");
-var s = require("./7.js");
-var r = function (e) {
-  function C2SAllianceSetSearchMemberVO(t, i) {
-    var n = this;
-    n.IS = 0;
-    n.IA = 0;
-    CONSTRUCTOR_HACK;
-    (n = e.call(this) || this).IS = a.int(t ? 1 : 0);
-    n.IA = a.int(i ? 1 : 0);
-    return n;
+var a = require("./7.js");
+var s = function (e) {
+  function C2SAllianceSearchMemberListVO() {
+    return e.call(this) || this;
   }
-  n.__extends(C2SAllianceSetSearchMemberVO, e);
-  C2SAllianceSetSearchMemberVO.prototype.getCmdId = function () {
-    return s.ClientConstSF.C2S_ALLIANCE_SET_SEARCH_MEMBER;
+  n.__extends(C2SAllianceSearchMemberListVO, e);
+  C2SAllianceSearchMemberListVO.prototype.getCmdId = function () {
+    return a.ClientConstSF.C2S_ALLIANCE_SEARCH_MEMBER_LIST;
   };
-  return C2SAllianceSetSearchMemberVO;
+  return C2SAllianceSearchMemberListVO;
 }(o.BasicCommandVO);
-exports.C2SAllianceSetSearchMemberVO = r;
+exports.C2SAllianceSearchMemberListVO = s;

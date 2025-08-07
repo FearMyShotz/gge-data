@@ -68,6 +68,6 @@ var l = function (e) {
   });
   RewardsDialogScoreBarProperties.MAX_TOP_X = 3;
   return RewardsDialogScoreBarProperties;
-}(require("./545.js").CastleScoreEventScoreBarProperties);
+}(require("./546.js").CastleScoreEventScoreBarProperties);
 exports.RewardsDialogScoreBarProperties = l;
 o.classImplementsInterfaces(l, "IScorebarProperties");

@@ -3,180 +3,91 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./2.js");
-var a = require("./3.js");
-var s = require("./267.js");
-var r = require("./7.js");
-var l = require("./3931.js");
-var c = require("./515.js");
-var u = require("./108.js");
-var d = require("./265.js");
-var p = require("./32.js");
-var h = require("./74.js");
-var g = require("./31.js");
-var C = require("./19.js");
-var _ = require("./13.js");
-var m = require("./4.js");
-var f = require("./14.js");
-var O = require("./20.js");
-var E = require("./8.js");
-var y = require("./25.js");
-var b = require("./367.js");
-var D = require("./66.js");
-var I = require("./593.js");
-var T = require("./362.js");
-var v = createjs.Point;
-var S = function (e) {
-  function GachaComponentPull(t, i = null) {
-    var n = e.call(this, t) || this;
-    n._locked = true;
-    n._animationInProgress = false;
-    E.ButtonHelper.initButtons([n.disp.btn_pull, n.disp.btn_shop, n.disp.btn_minus, n.disp.btn_plus, n.disp.btn_max], O.ClickFeedbackButtonHover);
-    n.itxt_label = f.CastleComponent.textFieldManager.registerTextField(n.disp.btn_pull.txt_label, new a.TextVO(""));
-    var o = {
-      sourceId: u.CXFSourceTrackingConstants.CXF_SOURCE_WEB_SHOP_BUTTON
-    };
-    if (i) {
-      o.page = i;
-    }
-    m.CastleModel.userData.splitRunData.handleHCShopABTestPayload(o);
-    s.registerUIComponentToCXF(n.disp.btn_shop, "btn_webshop", o);
-    n.disp.btn_shop.toolTipText = "goToTheShop";
-    n._locked = true;
-    n.inputTextField = new I.SelectInputFieldComponent(n.disp.mc_pickerTxt, n.bindFunction(n.onPercentValueInput), "1");
-    n.inputTextField.searchField.restrict = "0-9";
-    f.CastleComponent.controller.addEventListener(d.GachaEvent.SHINE_ANIMATION_LOADED, n.bindFunction(n.onShineAnimationLoaded));
-    return n;
+var a = require("./2.js");
+var s = require("./26.js");
+var r = require("./4.js");
+var l = require("./184.js");
+var c = require("./24.js");
+var u = require("./20.js");
+var d = require("./8.js");
+var p = require("./362.js");
+var h = require("./556.js");
+var g = function (e) {
+  function GachaComponentMerchantButton(t) {
+    var i = e.call(this, t) || this;
+    d.ButtonHelper.initButtons([i.disp], u.ClickFeedbackButtonHover);
+    return i;
   }
-  n.__extends(GachaComponentPull, e);
-  GachaComponentPull.prototype.onShow = function () {
+  n.__extends(GachaComponentMerchantButton, e);
+  GachaComponentMerchantButton.prototype.onShow = function () {
     e.prototype.onShow.call(this);
-    this.updateText();
-    this.updateCurrency();
-    this.inputTextField.searchField.text = this.currencyAmountPerPull.toString();
-    E.ButtonHelper.enableButton(this.disp.btn_pull, this.isPullPossible());
+    this.updateIcon();
   };
-  GachaComponentPull.prototype.onHide = function () {
+  GachaComponentMerchantButton.prototype.onHide = function () {
     e.prototype.onHide.call(this);
-    this.destroyCollectableRenderList();
-    c.CommandDelayController.getInstance().finishDelayOfAllCommands();
   };
-  GachaComponentPull.prototype.addEventListener = function () {
+  GachaComponentMerchantButton.prototype.addEventListener = function () {
     e.prototype.addEventListener.call(this);
-    f.CastleComponent.controller.addEventListener(d.GachaEvent.UPDATED, this.bindFunction(this.onGachaUpdate));
-    f.CastleComponent.controller.addEventListener(d.GachaEvent.SPIN, this.bindFunction(this.onSpin));
-    f.CastleComponent.controller.addEventListener(d.GachaEvent.SPIN_ANIMATION_COMPLETE, this.bindFunction(this.onSpinComplete));
-    f.CastleComponent.controller.addEventListener(p.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onCurrencyUpdate));
+    r.CastleModel.specialEventData.addEventListener(s.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onEventUpdate));
+    r.CastleModel.specialEventData.addEventListener(s.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventUpdate));
   };
-  GachaComponentPull.prototype.removeEventListener = function () {
+  GachaComponentMerchantButton.prototype.removeEventListener = function () {
     e.prototype.removeEventListener.call(this);
-    f.CastleComponent.controller.removeEventListener(d.GachaEvent.UPDATED, this.bindFunction(this.onGachaUpdate));
-    f.CastleComponent.controller.removeEventListener(d.GachaEvent.SPIN, this.bindFunction(this.onSpin));
-    f.CastleComponent.controller.removeEventListener(d.GachaEvent.SPIN_ANIMATION_COMPLETE, this.bindFunction(this.onSpinComplete));
-    f.CastleComponent.controller.removeEventListener(p.CastleUserDataEvent.ON_SPECIAL_CURRENCIES_UPDATED, this.bindFunction(this.onCurrencyUpdate));
+    r.CastleModel.specialEventData.removeEventListener(s.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onEventUpdate));
+    r.CastleModel.specialEventData.removeEventListener(s.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onEventUpdate));
   };
-  GachaComponentPull.prototype.onGachaUpdate = function (e) {
-    if (e.eventVO.eventId == this.getEventVO().eventId) {
-      this.updateCurrency();
+  GachaComponentMerchantButton.prototype.onEventUpdate = function (e) {
+    if (e.specialEventVO.eventId == this.getEventVO().currencyMerchantEventID) {
+      this.checkButtonEnabled();
     }
   };
-  GachaComponentPull.prototype.onSpin = function (e) {
-    this._animationInProgress = true;
-    E.ButtonHelper.enableButton(this.disp.btn_pull, this.isPullPossible());
-    this.setSelectedAmount(this.selectedAmount);
-    f.CastleComponent.controller.dispatchEvent(new d.GachaEvent(d.GachaEvent.LOCK_DIALOG, this.getEventVO()));
-  };
-  GachaComponentPull.prototype.onSpinComplete = function (e) {
-    this._animationInProgress = false;
-    E.ButtonHelper.enableButton(this.disp.btn_pull, this.isPullPossible());
-    f.CastleComponent.controller.dispatchEvent(new d.GachaEvent(d.GachaEvent.UNLOCK_DIALOG, this.getEventVO()));
-    c.CommandDelayController.getInstance().finishDelayOfAllCommands();
-  };
-  GachaComponentPull.prototype.onShineAnimationLoaded = function (e) {
-    f.CastleComponent.controller.removeEventListener(d.GachaEvent.SHINE_ANIMATION_LOADED, this.bindFunction(this.onShineAnimationLoaded));
-    this._locked = false;
-    E.ButtonHelper.enableButton(this.disp.btn_pull, this.isPullPossible());
-  };
-  GachaComponentPull.prototype.onCurrencyUpdate = function (e) {
-    this.updateCurrency();
-    E.ButtonHelper.enableButton(this.disp.btn_pull, this.isPullPossible());
-  };
-  GachaComponentPull.prototype.onClick = function (t) {
+  GachaComponentMerchantButton.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    if (E.ButtonHelper.isButtonEnabled(t.target)) {
-      switch (t.target) {
-        case this.disp.btn_pull:
-          c.CommandDelayController.getInstance().addDelayCommandID(r.ClientConstSF.S2C_SHOW_POPUP, true);
-          m.CastleModel.smartfoxClient.sendCommandVO(new l.C2SGachaSpinVO(this.getEventVO().eventId, this.selectedAmount / this.currencyAmountPerPull));
-          this._animationInProgress = true;
-          E.ButtonHelper.enableButton(this.disp.btn_pull, this.isPullPossible());
-          f.CastleComponent.controller.dispatchEvent(new d.GachaEvent(d.GachaEvent.LOCK_DIALOG, this.getEventVO()));
-          break;
-        case this.disp.btn_minus:
-          this.setSelectedAmount(this.selectedAmount > this.currencyAmountPerPull ? this.selectedAmount - this.currencyAmountPerPull : this.currencyAmountPerPull);
-          break;
-        case this.disp.btn_plus:
-          this.setSelectedAmount(this.selectedAmount < this.maxOfferings ? this.selectedAmount + this.currencyAmountPerPull : this.maxOfferings);
-          break;
-        case this.disp.btn_max:
-          this.setSelectedAmount(this.maxOfferings);
+    if (d.ButtonHelper.isButtonEnabled(this.disp)) {
+      var i = this.getCurrencyMerchantEventVO();
+      if (i) {
+        var n = this.getCurrencyPackageID();
+        i.openMerchantDialog(true, n);
       }
     }
   };
-  GachaComponentPull.prototype.updateCurrency = function () {
-    var e = this.getEventVO().getCurrentGachaVO().costs.list[0];
-    var t = new g.CollectableRenderClips(this.disp.mc_icon).addIconMc(this.disp.mc_icon).addTextfield(this.disp.txt_text);
-    var i = new C.CollectableRenderOptions(C.CollectableRenderOptions.SET_COST_LIST, new v(30, 30));
-    i.costTextfield.defaultColor = 15921906;
-    y.CollectableRenderHelper.displaySingleItemComplete(this, t, e, i);
+  GachaComponentMerchantButton.prototype.updateIcon = function () {
+    var e = h.GachaEventMainDialog.NAME + "_Elements_" + this.getEventVO().assetName();
+    var t = h.GachaEventMainDialog.NAME + "_MerchantIcon_" + this.getEventVO().assetName();
+    var i = new c.CastleGoodgameExternalClip(t, a.BasicModel.basicLoaderData.getVersionedItemAssetUrl(e), null, 0, false);
+    o.MovieClipHelper.clearMovieClip(this.disp.mc_icon);
+    this.disp.mc_icon.addChild(i);
+    this.checkButtonEnabled();
   };
-  GachaComponentPull.prototype.updateText = function () {
-    this.itxt_label.textContentVO.stringValue = _.TextHelper.toUpperCaseLocaSafeTextId("gachaPull_button_" + this.getEventVO().assetName());
+  GachaComponentMerchantButton.prototype.checkButtonEnabled = function () {
+    var e = r.CastleModel.specialEventData.getActiveEventByEventId(this.getEventVO().currencyMerchantEventID);
+    d.ButtonHelper.enableButton(this.disp, !!e);
+    this.disp.toolTipText = e ? e.eventBuildingNameId : "alert_not_available";
   };
-  GachaComponentPull.prototype.isPullPossible = function () {
-    var e = D.CostHelper.canAfford(new b.CollectablesCosts(this.getEventVO().getCurrentGachaVO().costs));
-    return !this._locked && !this._animationInProgress && e;
-  };
-  GachaComponentPull.prototype.onPercentValueInput = function () {
-    var e = o.MathBase.clamp(this.selectedAmount, 1, this.maxOfferings);
-    this.setSelectedAmount(e);
-  };
-  GachaComponentPull.prototype.setSelectedAmount = function (e) {
-    e = Math.floor(e / this.currencyAmountPerPull) * this.currencyAmountPerPull;
-    e = o.MathBase.clamp(e, this.currencyAmountPerPull, this.maxOfferings);
-    this.inputTextField.updateText(e.toString());
-    this.getEventVO().currentMultiPull = this.selectedAmount / this.currencyAmountPerPull;
-  };
-  Object.defineProperty(GachaComponentPull.prototype, "selectedAmount", {
-    get: function () {
-      return parseInt(this.inputTextField.text);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GachaComponentPull.prototype, "maxOfferings", {
-    get: function () {
-      var e = this.getEventVO().getCurrentGachaVO().multiPullMax;
-      var t = new h.CollectableTypeVO().initByCollectable(this.getEventVO().getCurrentGachaVO().costs.getItemByIndex(0));
-      var i = Math.floor(D.CostHelper.getAvailableGoods(t) / this.currencyAmountPerPull) * this.currencyAmountPerPull;
-      var n = (this.getEventVO().getCurrentGachaVO().maxPulls + 1 - this.getEventVO().ownPoints) * this.currencyAmountPerPull;
-      if (n <= 0) {
-        n = Number.MAX_VALUE;
+  GachaComponentMerchantButton.prototype.getCurrencyPackageID = function () {
+    var e = this;
+    var t = this.getCurrencyMerchantEventVO();
+    if (t) {
+      var i = t.getVisiblePackages(r.CastleModel.userData.userLevel, r.CastleModel.userData.userLegendLevel, r.CastleModel.areaData.activeAreaInfo.areaType);
+      if ((i = i.filter(function (t) {
+        return t.firstReward.isCombineAbleWith(e.getEventVO().getCurrentGachaVO().costs.list[0]);
+      })).length > 0) {
+        return i[0].packageID;
       }
-      return Math.min(e * this.currencyAmountPerPull, i, n);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(GachaComponentPull.prototype, "currencyAmountPerPull", {
-    get: function () {
-      return this.getEventVO().getCurrentGachaVO().costs.getItemByIndex(0).amount;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  GachaComponentPull.prototype.getEventVO = function () {
+    }
+    return -1;
+  };
+  GachaComponentMerchantButton.prototype.getCurrencyMerchantEventVO = function () {
+    var e = r.CastleModel.specialEventData.getActiveEventByEventId(this.getEventVO().currencyMerchantEventID);
+    if (e && e.isActive && e instanceof l.BuyPackagesEventVO) {
+      return e;
+    } else {
+      return null;
+    }
+  };
+  GachaComponentMerchantButton.prototype.getEventVO = function () {
     return this._params[0];
   };
-  return GachaComponentPull;
-}(T.AGachaComponent);
-exports.GachaComponentPull = S;
+  return GachaComponentMerchantButton;
+}(p.AGachaComponent);
+exports.GachaComponentMerchantButton = g;

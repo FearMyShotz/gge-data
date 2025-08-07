@@ -2,184 +2,181 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./3.js");
+var o = require("./5.js");
 var a = require("./3.js");
-var s = require("./23.js");
-var r = require("./23.js");
-var l = require("./8.js");
-var c = require("./20.js");
-var u = require("./40.js");
-var d = require("./4.js");
-var p = require("./21.js");
-var h = require("./14.js");
-var g = require("./27.js");
-var C = require("./627.js");
+var s = require("./3.js");
+var r = require("./16.js");
+var l = require("./12.js");
+var c = require("./74.js");
+var u = require("./20.js");
+var d = require("./42.js");
+var p = require("./8.js");
+var h = require("./35.js");
+var g = require("./9.js");
+var C = require("./4.js");
 var _ = require("./2.js");
-var m = require("./993.js");
-var f = require("./2.js");
-var O = require("./478.js");
-var E = require("./2678.js");
-var y = function (e) {
-  function CastleLegendSkillSceatBottomMenu(t) {
+var m = require("./448.js");
+var f = require("./52.js");
+var O = require("./529.js");
+var E = require("./281.js");
+var y = require("./279.js");
+var b = require("./59.js");
+var D = require("./1.js");
+var I = require("./2678.js");
+var T = require("./2680.js");
+var v = require("./1453.js");
+var S = require("./280.js");
+var A = require("./163.js");
+var L = require("./13.js");
+var P = function (e) {
+  function CastleLegendSkillSceatSublayer(t) {
     var i = e.call(this, t) || this;
-    i._isExpanded = true;
-    l.ButtonHelper.initButtons([t.btn_dropdown, t.btn_rubyskip, t.btn_minuteskip], c.ClickFeedbackButtonHover);
-    i._expandY = t.y;
-    i._collapseY = i._expandY + (t.height - t.btn_dropdown.height);
-    i._itxtTime = h.CastleComponent.textFieldManager.registerTextField(i.disp.mc_timer.txt_time, new a.TextVO(""));
-    i.collapse();
-    i.disp.btn_minuteskip.visible = false;
+    p.ButtonHelper.initButtons([i.subLayerDisp.btn_shop], u.ClickFeedbackButtonHover, 1);
+    i._itxt_title = i.textFieldManager.registerTextField(i.subLayerDisp.txt_title, new s.LocalizedTextVO(""));
+    i._itxt_title.verticalAlign = d.CastleGGSVerticalAlign.verticalAlignMiddleByLines();
+    i._itxt_pointsLeft = i.textFieldManager.registerTextField(i.subLayerDisp.mc_points.txt_value, new s.LocalizedTextVO("numbersXY", [0, 0]));
+    i._itxt_pointsLeft2 = i.textFieldManager.registerTextField(i.subLayerDisp.mc_points2.txt_value, new s.LocalizedTextVO("numbersXY", [0, 0]));
+    i.subLayerDisp.mc_points.mouseChildren = false;
+    i.subLayerDisp.mc_points2.mouseChildren = false;
+    var n = new y.AccordionComponentProperties();
+    n.scrollStepPixels = 124;
+    n.scrollStrategy = b.DynamicSizeScrollStrategyVertical;
+    n.disableButtons = true;
+    n.onlyOneActiveItem = false;
+    i._accordionComponent = new E.DynamicSliderAccordionComponent(i.subLayerDisp, n, null, false);
+    i._bottomMenu = new I.CastleLegendSkillSceatBottomMenu(i.subLayerDisp.mc_bottomMenu);
+    i.subLayerDisp.mc_shop_tooltip.x = i.subLayerDisp.btn_shop.x;
+    i.subLayerDisp.mc_shop_tooltip.visible = false;
+    _.MovieClipHelper.clearMovieClip(i.subLayerDisp.mc_ItemContainer);
     return i;
   }
-  n.__extends(CastleLegendSkillSceatBottomMenu, e);
-  CastleLegendSkillSceatBottomMenu.prototype.onShow = function () {
-    e.prototype.onShow.call(this);
-    if (this._isExpanded) {
-      l.ButtonHelper.delayEnableButton(this.disp.btn_rubyskip, true, 2000);
-    }
+  n.__extends(CastleLegendSkillSceatSublayer, e);
+  CastleLegendSkillSceatSublayer.prototype.show = function (t) {
+    e.prototype.show.call(this, t);
+    p.ButtonHelper.enableButton(this.subLayerDisp.btn_shop, this.availableSceatShop);
+    this.createSkillTrees();
+    this.updateText();
+    this._accordionComponent.show();
+    this._accordionComponent.scrollToTop();
+    this._bottomMenu.onShow();
+    this._bottomMenu.update(this._params.sublayerID);
+    this.controller.addEventListener(O.LegendSkillsDataEvent.LEGEND_SKILLS_UPDATED, this.bindFunction(this.onLegendSkillsUpdated));
   };
-  CastleLegendSkillSceatBottomMenu.prototype.addEventListener = function () {
-    e.prototype.addEventListener.call(this);
-    d.CastleModel.timerData.addEventListener(p.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimer));
-    if (this._skillInProgressItem) {
-      this._skillInProgressItem.show();
-    }
+  CastleLegendSkillSceatSublayer.prototype.hide = function () {
+    e.prototype.hide.call(this);
+    this._accordionComponent.hide();
+    this._bottomMenu.onHide();
+    this.controller.removeEventListener(O.LegendSkillsDataEvent.LEGEND_SKILLS_UPDATED, this.bindFunction(this.onLegendSkillsUpdated));
   };
-  CastleLegendSkillSceatBottomMenu.prototype.removeEventListener = function () {
-    e.prototype.removeEventListener.call(this);
-    d.CastleModel.timerData.removeEventListener(p.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimer));
-    if (this._skillInProgressItem) {
-      this.removeSkillItem();
-      this._skillInProgress = null;
-    }
-  };
-  CastleLegendSkillSceatBottomMenu.prototype.update = function (e) {
-    this._sublayerID = e;
-    var t = d.CastleModel.legendSkillData.sceatTreeTabMap.get(e);
-    var i = false;
-    for (var n = 0, o = d.CastleModel.legendSkillData.sceatSkillsInProgress; n < o.length; n++) {
-      var a = o[n];
-      if (t.indexOf(a.skillTreeID) > -1 && a instanceof C.CastleSceatSkillVO) {
-        i = true;
-        if (!this._skillInProgress && !this._isExpanded) {
-          this.expand();
-        }
-        this._skillInProgress = a;
-        l.ButtonHelper.enableButton(this.disp.btn_dropdown, true);
-        this.disp.btn_dropdown.toolTipText = null;
-        this.fillSkillInfo();
-        break;
-      }
-    }
-    if (!i) {
-      if (this._isExpanded) {
-        this.collapse();
-      }
-      this._skillInProgress = null;
-      l.ButtonHelper.enableButton(this.disp.btn_dropdown, false);
-      this.disp.btn_dropdown.toolTipText = "noSkillactivationOngoing";
-    }
-  };
-  CastleLegendSkillSceatBottomMenu.prototype.fillSkillInfo = function () {
-    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_skillName, new o.LocalizedTextVO(this._skillInProgress.nameTextID));
-    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_oldLevel, new o.LocalizedTextVO("ci_level", [this._skillInProgress.level - 1]));
-    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_newLevel, new o.LocalizedTextVO("ci_level", [this._skillInProgress.level]));
-    var e = this._skillInProgress.isActive && this._skillInProgress.level == d.CastleModel.legendSkillData.getMaxSkillLevelInGroup(this._skillInProgress.skillTreeID, this._skillInProgress.tier, this._skillInProgress.skillGroupID) ? O.ClientConstLegendSkills.COLORCODE_YELLOW : O.ClientConstLegendSkills.COLORCODE_LIGHTWHITE;
-    var t = this._skillInProgress.composeSkillTextVO(e, this._skillInProgress.getUnlockLevel());
-    h.CastleComponent.textFieldManager.registerTextField(this.disp.txt_desc, t);
-    this.removeSkillItem();
-    this._skillInProgressItem = new m.CastleLegendSkillItem(this._skillInProgress, false, true);
-    this._skillInProgressItem.show();
-    this.disp.component_container_hol_basic.addChild(this._skillInProgressItem.dispContainer);
-    this.onTimer(null);
-  };
-  CastleLegendSkillSceatBottomMenu.prototype.removeSkillItem = function () {
-    if (this._skillInProgressItem) {
-      f.MovieClipHelper.clearMovieClip(this.disp.component_container_hol_basic);
-      this._skillInProgressItem.hide();
-      this._skillInProgressItem = null;
-    }
-  };
-  CastleLegendSkillSceatBottomMenu.prototype.onTimer = function (e) {
-    if (this._skillInProgress) {
-      this._itxtTime.textContentVO.stringValue = g.CastleTimeStringHelper.getEventTimeString(this._skillInProgress.getRemainingActivationTime());
-      this.disp.mc_timer.progress.scaleX = 1 - _.MathBase.clamp(this._skillInProgress.getRemainingActivationTime() / this._skillInProgress.activationTime, 0, 1);
-      var t = this._skillInProgress.getSkipCosts();
-      switch (t) {
-        case 0:
-          this.disp.btn_rubyskip.toolTipText = {
-            t: "freeSkipButton_tooltip",
-            p: [t]
-          };
-          break;
-        case 1:
-          this.disp.btn_rubyskip.toolTipText = {
-            t: "fullSkipButtonCooldown_tooltip_singular",
-            p: [t]
-          };
-          break;
-        default:
-          this.disp.btn_rubyskip.toolTipText = {
-            t: "fullSkipButtonCooldown_tooltip",
-            p: [t]
-          };
-      }
-      if (this._skillInProgress.getRemainingActivationTime() < 0) {
-        this._skillInProgress = null;
-        this.removeSkillItem();
-        if (this._isExpanded) {
-          this.collapse();
-        }
-        l.ButtonHelper.enableButton(this.disp.btn_dropdown, false);
-      }
-    }
-  };
-  CastleLegendSkillSceatBottomMenu.prototype.onClick = function (t) {
+  CastleLegendSkillSceatSublayer.prototype.onClick = function (t) {
     e.prototype.onClick.call(this, t);
-    if (l.ButtonHelper.isButtonEnabled(t.target)) {
+    if (p.ButtonHelper.isButtonEnabled(t.target)) {
       switch (t.target) {
-        case this.disp.btn_rubyskip:
-          d.CastleModel.smartfoxClient.sendCommandVO(new E.C2SSkipSceatSkillActivationVO(this._sublayerID));
-          break;
-        case this.disp.btn_dropdown:
-          this.toggleExpansion();
+        case this.subLayerDisp.btn_shop:
+          this.shopEvent.openMerchantDialog(true, this.shopEvent.getEventPackagesByCurrencyType(new c.CollectableTypeVO(l.CollectableEnum.GENERIC_CURRENCY, f.ClientConstCurrency.ID_SCEAT_TOKEN))[0].packageID);
       }
     }
   };
-  CastleLegendSkillSceatBottomMenu.prototype.toggleExpansion = function () {
-    if (this._isExpanded) {
-      this.collapse();
+  CastleLegendSkillSceatSublayer.prototype.createSkillTrees = function () {
+    var e = this.legendSkillData.sceatTreeTabMap.get(this._params.sublayerID);
+    this._listItems = [];
+    for (var t = 0, i = e; t < i.length; t++) {
+      var n = i[t];
+      var o = new (D.getDefinitionByName("LegendSkillTreeItem"))();
+      var a = new v.CastleLegendSkillTreeComponent(n);
+      _.MovieClipHelper.clearMovieClip(o.contentMC);
+      o.contentMC.addChild(a.disp);
+      var s = a.treeNode.isUnlocked() && !this.legendSkillData.isTreeMaxedOut(n);
+      var r = new S.GenericCollapsibleItemProperties(new A.LayoutMargin(0, 4, 0, 0), true, 0.2, 0.2, s);
+      var l = new T.CastleLegendSkillSceatListItem(o, a, r);
+      this._listItems.push(l);
+      this._accordionComponent.addItem(l);
+    }
+    this._listItems[this._listItems.length - 1].markAsNew = true;
+    this._listItems[this._listItems.length - 1].update();
+  };
+  CastleLegendSkillSceatSublayer.prototype.jumpToSkillTier = function (e) {
+    var t = this.legendSkillData.getSceatSkillByID(e);
+    var i = this._listItems.find(function (e) {
+      return e.treeComponent.treeNode.id == t.skillTreeID;
+    });
+    if (i) {
+      var n = i.treeComponent.tierComponents.find(function (e) {
+        return e.tierNode.id == t.tier;
+      }).disp.y + i.disp.y;
+      this._accordionComponent.scrollToValue(n);
+    }
+  };
+  CastleLegendSkillSceatSublayer.prototype.updateText = function () {
+    this._itxt_title.textContentVO.textId = this._params.sublayerID == m.CastleLegendSkillDialog.SUBLAYER_BUILDINGS ? L.TextHelper.toUpperCaseLocaSafeTextId("dialog_legendTemple_title_building") : L.TextHelper.toUpperCaseLocaSafeTextId("dialog_legendTemple_title_units");
+    var e = C.CastleModel.currencyData.getCurrencyById(f.ClientConstCurrency.ID_SCEAT_TOKEN);
+    var t = C.CastleModel.currencyData.getCurrencyById(f.ClientConstCurrency.ID_IMPERIAL_DUCAT);
+    var i = C.CastleModel.currencyData.getXmlCurrencyById(f.ClientConstCurrency.ID_SCEAT_TOKEN);
+    var n = C.CastleModel.currencyData.getXmlCurrencyById(f.ClientConstCurrency.ID_IMPERIAL_DUCAT);
+    var o = e ? e.amount : 0;
+    var a = t ? t.amount : 0;
+    this._itxt_pointsLeft.textContentVO.textReplacements = [o, i.softCap];
+    this._itxt_pointsLeft.color = o < i.softCap ? r.ClientConstColor.MODERN_DEFAULT : r.ClientConstColor.GENERIC_RED;
+    this._itxt_pointsLeft2.textContentVO.textReplacements = [a, n.softCap];
+    this._itxt_pointsLeft2.color = a < n.softCap ? r.ClientConstColor.MODERN_DEFAULT : r.ClientConstColor.GENERIC_RED;
+    if (o < i.softCap) {
+      this.subLayerDisp.mc_points.toolTipText = "currency_name_sceatToken";
     } else {
-      this.expand();
+      this.subLayerDisp.mc_points.toolTipText = "dialog_legendTemple_sceats_sceatStockLimit_tooltip";
+    }
+    if (a < n.softCap) {
+      this.subLayerDisp.mc_points2.toolTipText = "currency_name_ImperialDucat";
+    } else {
+      this.subLayerDisp.mc_points2.toolTipText = {
+        t: "dialog_legendTemple_imperialDucat_ImperialDucatLimit_tooltip",
+        p: [n.softCap]
+      };
+    }
+    if (p.ButtonHelper.isButtonEnabled(this.subLayerDisp.btn_shop)) {
+      this.subLayerDisp.btn_shop.toolTipText = "dialog_longPointsEvent_eventcamp_desc_shopbutton";
+    } else {
+      this.subLayerDisp.btn_shop.toolTipText = "dialog_legendTemple_sceats_sceatStore_unavailable_tooltip";
     }
   };
-  CastleLegendSkillSceatBottomMenu.prototype.expand = function () {
-    if (!this._isExpanded) {
-      this._isExpanded = true;
-      r.TweenMax.killTweensOf(this.disp);
-      r.TweenMax.to(this.disp, 0.2, {
-        y: this._expandY,
-        ease: s.Linear.easeOut,
-        onComplete: this.bindFunction(this.onExpandComplete)
-      });
-      l.ButtonHelper.delayEnableButton(this.disp.btn_rubyskip, true, 2000);
+  CastleLegendSkillSceatSublayer.prototype.updateTrees = function () {
+    for (var e = 0; e < this._listItems.length; e++) {
+      this._listItems[e].update();
     }
+    this._bottomMenu.update(this._params.sublayerID);
   };
-  CastleLegendSkillSceatBottomMenu.prototype.collapse = function () {
-    if (this._isExpanded) {
-      this._isExpanded = false;
-      r.TweenMax.killTweensOf(this.disp);
-      r.TweenMax.to(this.disp, 0.2, {
-        y: this._collapseY,
-        ease: s.Linear.easeOut,
-        onComplete: this.bindFunction(this.onExpandComplete)
-      });
-    }
+  CastleLegendSkillSceatSublayer.prototype.onLegendSkillsUpdated = function (e) {
+    this.updateText();
+    this.updateTrees();
   };
-  CastleLegendSkillSceatBottomMenu.prototype.onExpandComplete = function () {
-    this.disp.btn_dropdown.arrow_down.visible = this._isExpanded;
-    this.disp.btn_dropdown.arrow_up.visible = !this._isExpanded;
+  Object.defineProperty(CastleLegendSkillSceatSublayer.prototype, "availableSceatShop", {
+    get: function () {
+      if (!this.shopEvent) {
+        return false;
+      }
+      var e = this.shopEvent.getEventPackagesByCurrencyType(new c.CollectableTypeVO(l.CollectableEnum.GENERIC_CURRENCY, f.ClientConstCurrency.ID_SCEAT_TOKEN)).length > 0;
+      var t = this.shopEvent.getEventPackagesByCurrencyType(new c.CollectableTypeVO(l.CollectableEnum.GENERIC_CURRENCY, f.ClientConstCurrency.ID_IMPERIAL_DUCAT)).length > 0;
+      return e || t;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  Object.defineProperty(CastleLegendSkillSceatSublayer.prototype, "shopEvent", {
+    get: function () {
+      return C.CastleModel.specialEventData.getActiveEventByEventId(o.EventConst.EVENTTYPE_APPRENTICE_TOKEN_VENDOR);
+    },
+    enumerable: true,
+    configurable: true
+  });
+  CastleLegendSkillSceatSublayer.prototype.showHelp = function () {
+    g.CastleDialogHandler.getInstance().showHelper("", a.Localize.text("dialog_legendTemple_sceat_help"));
   };
-  return CastleLegendSkillSceatBottomMenu;
-}(u.CastleItemRenderer);
-exports.CastleLegendSkillSceatBottomMenu = y;
+  Object.defineProperty(CastleLegendSkillSceatSublayer.prototype, "legendSkillData", {
+    get: function () {
+      return C.CastleModel.legendSkillData;
+    },
+    enumerable: true,
+    configurable: true
+  });
+  return CastleLegendSkillSceatSublayer;
+}(h.CastleDialogSubLayer);
+exports.CastleLegendSkillSceatSublayer = P;

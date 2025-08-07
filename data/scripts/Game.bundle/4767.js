@@ -3,35 +3,37 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./7.js");
-var s = require("./37.js");
-var r = require("./475.js");
-var l = function (e) {
-  function CICCommand() {
+var a = require("./5.js");
+var s = require("./7.js");
+var r = require("./4.js");
+var l = require("./10.js");
+var c = function (e) {
+  function ABPICommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(CICCommand, e);
-  Object.defineProperty(CICCommand.prototype, "cmdId", {
+  n.__extends(ABPICommand, e);
+  Object.defineProperty(ABPICommand.prototype, "cmdId", {
     get: function () {
-      return a.ClientConstSF.S2C_CRAFT_CONSTRUCTION_ITEM;
+      return s.ClientConstSF.S2C_AREA_BUILDING_PRODUCTION_INFO;
     },
     set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleDispatchingCommand.prototype, "cmdId").set.call(this, e);
+      Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CICCommand.prototype, "eventType", {
-    get: function () {
-      return s.CastleServerMessageArrivedEvent.CIC_ARRIVED;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(r.CastleDispatchingCommand.prototype, "eventType").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return CICCommand;
-}(r.CastleDispatchingCommand);
-exports.CICCommand = l;
-o.classImplementsInterfaces(l, "IExecCommand");
+  ABPICommand.prototype.executeCommand = function (e, t) {
+    switch (e) {
+      case a.ERROR.ALL_OK:
+        var i = JSON.parse(t[1]);
+        r.CastleModel.breweryData.parse_ABPI(i);
+        break;
+      default:
+        this.showErrorDialog(e, t);
+    }
+    return false;
+  };
+  return ABPICommand;
+}(l.CastleCommand);
+exports.ABPICommand = c;
+o.classImplementsInterfaces(c, "IExecCommand");

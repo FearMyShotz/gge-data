@@ -8,13 +8,13 @@ var s = require("./7.js");
 var r = require("./4.js");
 var l = require("./10.js");
 var c = function (e) {
-  function BRSCommand() {
+  function BMSCommand() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(BRSCommand, e);
-  Object.defineProperty(BRSCommand.prototype, "cmdId", {
+  n.__extends(BMSCommand, e);
+  Object.defineProperty(BMSCommand.prototype, "cmdId", {
     get: function () {
-      return s.ClientConstSF.S2C_BOOST_RETURNSPEED_START;
+      return s.ClientConstSF.S2C_MARAUDER_START;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(l.CastleCommand.prototype, "cmdId").set.call(this, e);
@@ -22,7 +22,7 @@ var c = function (e) {
     enumerable: true,
     configurable: true
   });
-  BRSCommand.prototype.executeCommand = function (e, t) {
+  BMSCommand.prototype.executeCommand = function (e, t) {
     switch (e) {
       case a.ERROR.ALL_OK:
         var i = JSON.parse(t[1]);
@@ -34,7 +34,7 @@ var c = function (e) {
     }
     return false;
   };
-  return BRSCommand;
+  return BMSCommand;
 }(l.CastleCommand);
-exports.BRSCommand = c;
+exports.BMSCommand = c;
 o.classImplementsInterfaces(c, "IExecCommand");

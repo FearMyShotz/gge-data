@@ -8,17 +8,15 @@ var s = require("./5.js");
 var r = require("./3.js");
 var l = require("./51.js");
 var c = require("./416.js");
-var u = require("./107.js");
+var u = require("./106.js");
 var d = require("./240.js");
 var p = createjs.Point;
 var h = function (e) {
-  function CastleOverseerWoodPremiumShopVO() {
-    var t = e.call(this, "dialog_resourcesBoost_hireOverseer", "overseer_wood_copy_short", s.BoosterConst.OVERSEER_COST_C2, "overseer") || this;
-    t.shopTypes.push(m.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_EVENT, m.CastlePremiumMarketCollectionData.PREMIUMMARKET_TYPE_HERO);
-    return t;
+  function CastleOverseerStonePremiumShopVO() {
+    return e.call(this, "dialog_resourcesBoost_hireOverseer", "overseer_stone_copy_short", s.BoosterConst.OVERSEER_COST_C2, "overseer") || this;
   }
-  n.__extends(CastleOverseerWoodPremiumShopVO, e);
-  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "duration", {
+  n.__extends(CastleOverseerStonePremiumShopVO, e);
+  Object.defineProperty(CastleOverseerStonePremiumShopVO.prototype, "duration", {
     get: function () {
       if (this.isActive) {
         return o.TimeStringHelper.getCommaTimeStringFromSeconds(this.remainingTimeInSeconds, r.Localize.text);
@@ -32,7 +30,7 @@ var h = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "bonusValue", {
+  Object.defineProperty(CastleOverseerStonePremiumShopVO.prototype, "bonusValue", {
     get: function () {
       return s.BoosterConst.OVERSEER_BOOST;
     },
@@ -42,9 +40,9 @@ var h = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "listSortPriority", {
+  Object.defineProperty(CastleOverseerStonePremiumShopVO.prototype, "listSortPriority", {
     get: function () {
-      return 50;
+      return 40;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(d.CastleHeroDefaultBoosterShopVO.prototype, "listSortPriority").set.call(this, e);
@@ -52,12 +50,12 @@ var h = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastleOverseerWoodPremiumShopVO.prototype.clickedBuyButton = function () {
-    g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleBuyResourceBoostDialog, new c.CastleBuyResourceBoostDialogProperties(_.CastlePremiumBoostData.BOOST_WOOD));
+  CastleOverseerStonePremiumShopVO.prototype.clickedBuyButton = function () {
+    g.CastleDialogHandler.getInstance().registerDefaultDialogs(C.CastleBuyResourceBoostDialog, new c.CastleBuyResourceBoostDialogProperties(_.CastlePremiumBoostData.BOOST_STONE));
   };
-  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "bonusIconFrame", {
+  Object.defineProperty(CastleOverseerStonePremiumShopVO.prototype, "bonusIconFrame", {
     get: function () {
-      return 1;
+      return 2;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(d.CastleHeroDefaultBoosterShopVO.prototype, "bonusIconFrame").set.call(this, e);
@@ -65,7 +63,7 @@ var h = function (e) {
     enumerable: true,
     configurable: true
   });
-  CastleOverseerWoodPremiumShopVO.prototype.createVisualMovieClip = function () {
+  CastleOverseerStonePremiumShopVO.prototype.createVisualMovieClip = function () {
     var e = new Library.CastleInterfaceElements.CharOverseer_WithBonus();
     var t = u.CharacterHelper.createCharacterBig(l.ClientConstCharacter.CHAR_ID_OVERSEER, e.mc_charPlaceHolder, -1, -1, false, this.bindFunction(this.onLoadedIcon));
     t.recycleAsset = false;
@@ -73,10 +71,10 @@ var h = function (e) {
       e.visible = false;
     }
     e.mc_charPlaceHolder.addChild(t);
-    e.mc_icon.gotoAndStop(5);
+    e.mc_icon.gotoAndStop(4);
     return e;
   };
-  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "offsetIcon", {
+  Object.defineProperty(CastleOverseerStonePremiumShopVO.prototype, "offsetIcon", {
     get: function () {
       return new p(-5, -5);
     },
@@ -86,9 +84,9 @@ var h = function (e) {
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleOverseerWoodPremiumShopVO.prototype, "id", {
+  Object.defineProperty(CastleOverseerStonePremiumShopVO.prototype, "id", {
     get: function () {
-      return s.BoosterConst.OVERSEER_WOOD;
+      return s.BoosterConst.OVERSEER_STONE;
     },
     set: function (e) {
       Object.getOwnPropertyDescriptor(d.CastleHeroDefaultBoosterShopVO.prototype, "id").set.call(this, e);
@@ -96,11 +94,10 @@ var h = function (e) {
     enumerable: true,
     configurable: true
   });
-  return CastleOverseerWoodPremiumShopVO;
+  return CastleOverseerStonePremiumShopVO;
 }(d.CastleHeroDefaultBoosterShopVO);
-exports.CastleOverseerWoodPremiumShopVO = h;
+exports.CastleOverseerStonePremiumShopVO = h;
 var g = require("./9.js");
 var C = require("./417.js");
 var _ = require("./402.js");
-var m = require("./170.js");
 a.classImplementsInterfaces(h, "IPremiumMarketShopVO", "IDefaultBoosterDataVO", "IBoosterDataVO");

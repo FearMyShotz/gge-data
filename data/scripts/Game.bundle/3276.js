@@ -2,21 +2,32 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = function (e) {
-  function CollectableItemAchievementPointVO(t = 0) {
+var o = require("./2.js");
+var a = require("./1.js");
+var s = require("./24.js");
+var r = function (e) {
+  function CollectableItemResourcePointVE() {
     CONSTRUCTOR_HACK;
-    return e.call(this, t) || this;
+    return e.call(this) || this;
   }
-  n.__extends(CollectableItemAchievementPointVO, e);
-  CollectableItemAchievementPointVO.prototype.parseServerObject = function (t) {
-    e.prototype.parseServerObject.call(this, t);
-    this.amount = t;
+  n.__extends(CollectableItemResourcePointVE, e);
+  CollectableItemResourcePointVE.prototype.iconCreate = function () {
+    this.dispCreator.addClip(new s.CastleGoodgameExternalClip(CollectableItemResourcePointVE.RESOURCE_POINTS_ICON_ASSET_NAME, o.BasicModel.basicLoaderData.getVersionedItemAssetUrl(CollectableItemResourcePointVE.RESOURCE_POINTS_ICON_ASSET_NAME), null, 0, false));
   };
-  CollectableItemAchievementPointVO.__initialize_static_members = function () {
-    CollectableItemAchievementPointVO.SERVER_KEY = "AP";
-    CollectableItemAchievementPointVO.XML_KEY = "achievementPoints";
+  CollectableItemResourcePointVE.prototype.textfieldUpdate = function () {
+    this.textfieldSetTextAsNumber(this.vo.amount);
   };
-  return CollectableItemAchievementPointVO;
-}(require("./96.js").ACollectableItemVO);
-exports.CollectableItemAchievementPointVO = o;
-o.__initialize_static_members();
+  CollectableItemResourcePointVE.prototype.textfieldBackgroundVisible = function () {
+    return true;
+  };
+  CollectableItemResourcePointVE.prototype.tooltipCreate = function () {
+    return this.tooltipCreateByAmount(this.vo.getTooltipTextId());
+  };
+  CollectableItemResourcePointVE.__initialize_static_members = function () {
+    CollectableItemResourcePointVE.RESOURCE_POINTS_ICON_ASSET_NAME = "ResourcePointsIcon";
+  };
+  return CollectableItemResourcePointVE;
+}(require("./195.js").ACollectableItemSimpleIconVE);
+exports.CollectableItemResourcePointVE = r;
+a.classImplementsInterfaces(r, "ICollectableRendererList");
+r.__initialize_static_members();

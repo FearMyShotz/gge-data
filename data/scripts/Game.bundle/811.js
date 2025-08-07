@@ -2,173 +2,83 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var n = require("./0.js");
-var o = require("./1.js");
-var a = require("./2.js");
-var s = require("./6.js");
-var r = require("./1677.js");
-var l = require("./4.js");
-var c = require("./3462.js");
-var u = function (e) {
-  function CastleAchievementData(t) {
-    var i = this;
-    i._achievementPoints = 0;
-    i._totalPossibleAchievementPoints = 0;
-    CONSTRUCTOR_HACK;
-    (i = e.call(this) || this)._achievementSeries = new Map();
-    i._achievements = new Map();
-    i._totalPossibleAchievementPoints = 0;
-    i._lastThreeAchievementIDs = [0, 0, 0];
-    i._achievementPoints = 0;
-    var n = t.achievements;
-    if (n != null) {
-      for (var o = 0, s = n; o < s.length; o++) {
-        var r = s[o];
-        if (r !== undefined) {
-          var l;
-          var u = parseInt(r.achievementSeriesID || "");
-          if (a.DictionaryUtil.containsKey(i._achievementSeries, u)) {
-            l = i._achievementSeries.get(u);
-          } else {
-            (l = new c.AchievementSerieVO()).fillFromParamXML(r);
-            i._achievementSeries.set(u, l);
-          }
-          var p = new d.AchievementVO(l);
-          p.fillFromParamXML(r);
-          l.addAchievementVO(p);
-          i._achievements.set(p.achievementID, p);
-          i._totalPossibleAchievementPoints += p.achievementPoints;
-        }
-      }
-    }
-    return i;
-  }
-  n.__extends(CastleAchievementData, e);
-  CastleAchievementData.prototype.reset = function () {
-    e.prototype.reset.call(this);
-    if (this._achievementSeries != null) {
-      for (var t = 0, i = Array.from(this._achievementSeries.values()); t < i.length; t++) {
-        i[t].reset();
-      }
-    }
-    if (this._achievements != null) {
-      for (var n = 0, o = Array.from(this._achievements.values()); n < o.length; n++) {
-        o[n].reset();
-      }
-    }
-    this._lastThreeAchievementIDs = [0, 0, 0];
-    this._achievementPoints = 0;
-  };
-  CastleAchievementData.prototype.parse_vli = function (e) {
-    this._achievementPoints = s.int(e.AVP);
-    this.parse_FA(e.FA);
-    this.parse_RA(e.RA);
-    this.dispatchEvent(new r.CastleAchievementDataEvent(r.CastleAchievementDataEvent.ACHIEVEMENT_REFRESHED));
-  };
-  CastleAchievementData.prototype.parse_RA = function (e) {
-    if (e != null) {
-      for (var t = 0, i = e; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined && this._achievements.get(n.AID)) {
-          this._achievements.get(n.AID).setProgress(n.P);
-        }
-      }
-    }
-  };
-  CastleAchievementData.prototype.parse_FA = function (e) {
-    if (e) {
-      var t = 0;
-      for (t = 0; t < e.length; ++t) {
-        this._achievements.get(e[t]).setFinished();
-      }
-      var i = 0;
-      for (t = s.int(e.length - 1); t >= 0 && i < 3; --t) {
-        if (this._achievements.get(e[t]).achievementSerieVO.achievementSeriesID != CastleAchievementData.MAIN_ACHIEVMENT_SERIESID) {
-          this._lastThreeAchievementIDs[i] = e[t];
-          ++i;
-        }
-      }
-    }
-  };
-  Object.defineProperty(CastleAchievementData.prototype, "lastThreeAchievementIDs", {
-    get: function () {
-      return this._lastThreeAchievementIDs;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleAchievementData.prototype.getAchievementSeriesByCategory = function (e) {
-    var t = [];
-    if (this._achievementSeries != null) {
-      for (var i = 0, n = Array.from(this._achievementSeries.values()); i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined && o.category == e && (!o.isHidden || o.isHidden && o.isSerieFinished)) {
-          t.push(o);
-        }
-      }
-    }
-    t.sort(this.bindFunction(this.sortBySeriesID));
+var o = require("./54.js");
+var a = require("./1663.js");
+var s = require("./404.js");
+var r = require("./550.js");
+var l = require("./9.js");
+var c = require("./4.js");
+var u = require("./1707.js");
+var d = function (e) {
+  function RewardHubData() {
+    var t = e.call(this) || this;
+    t._amountPendingRewards = 0;
+    t._rewardHubVOs = [];
+    t.pendingSentCount = 0;
     return t;
+  }
+  n.__extends(RewardHubData, e);
+  RewardHubData.prototype.reset = function () {
+    this.resetVOs();
+    this.pendingSentCount = 0;
+    this._amountPendingRewards = 0;
   };
-  CastleAchievementData.prototype.sortBySeriesID = function (e, t) {
-    return e.achievementSeriesID - t.achievementSeriesID;
+  RewardHubData.prototype.resetVOs = function () {
+    this._rewardHubVOs = [];
   };
-  CastleAchievementData.prototype.getAchievementByID = function (e) {
-    return this._achievements.get(e);
-  };
-  CastleAchievementData.prototype.isDifficultyUnlocked = function (e) {
-    for (var t = 0, i = Array.from(this._achievements.values()); t < i.length; t++) {
-      var n = i[t];
-      if (n.unlocksDifficulty == e) {
-        return n.achievementFinished;
-      }
+  RewardHubData.prototype.countPendingSent = function () {
+    if (c.CastleModel.localData.readOpenRewardHubAtStart() && this.pendingSentCount == 0 && (this.getAmountOfPendingRewards() > 0 || c.CastleModel.lootBoxData.allLootBoxAmount() > 0)) {
+      l.CastleDialogHandler.getInstance().registerDefaultDialogs(s.RewardHubMainDialog, new r.RewardHubDialogProperties(true));
     }
-    return true;
+    this.pendingSentCount++;
   };
-  CastleAchievementData.prototype.getAchievementForUnlockDifficulty = function (e) {
-    for (var t = 0, i = Array.from(this._achievements.values()); t < i.length; t++) {
-      var n = i[t];
-      if (n.unlocksDifficulty == e) {
-        return n;
-      }
+  RewardHubData.prototype.setAmountOfPendingRewards = function (e, t) {
+    this._amountPendingRewards = e;
+    if (t) {
+      this.dispatchEvent(new u.RewardHubPanelNotificationEvent(u.RewardHubPanelNotificationEvent.NEW_REWARDS_ARRIVED));
+    } else {
+      this.dispatchEvent(new a.RewardHubEvent(a.RewardHubEvent.PENDING_REWARDS_AMOUNT_UPDATED));
     }
-    return null;
   };
-  CastleAchievementData.prototype.getAchievementSeriesByID = function (e) {
-    return this._achievementSeries.get(e);
+  RewardHubData.prototype.getAmountOfPendingRewards = function () {
+    return this._amountPendingRewards;
   };
-  Object.defineProperty(CastleAchievementData.prototype, "totalPossibleAchievementPoints", {
+  Object.defineProperty(RewardHubData.prototype, "rewardHubVOs", {
     get: function () {
-      return this._totalPossibleAchievementPoints;
+      return this._rewardHubVOs;
     },
     enumerable: true,
     configurable: true
   });
-  Object.defineProperty(CastleAchievementData.prototype, "userProgressInPercent", {
-    get: function () {
-      return Math.round(this.achievementPoints / this._totalPossibleAchievementPoints * 100);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(CastleAchievementData.prototype, "achievementPoints", {
-    get: function () {
-      return this._achievementPoints;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  CastleAchievementData.prototype.calculateMainAchievementByAP = function () {
-    for (var e = this.getAchievementSeriesByID(CastleAchievementData.MAIN_ACHIEVMENT_SERIESID), t = s.int(l.CastleModel.castleAchievementData.achievementPoints), i = 1; i <= e.numberOfAchievementsInSeries;) {
-      if (e.achievements[i].conditions[0].amount > t) {
-        return e.achievements[i];
+  RewardHubData.prototype.getRewardHubVOById = function (e) {
+    if (this._rewardHubVOs) {
+      for (var t = 0; t < this._rewardHubVOs.length; t++) {
+        if (this._rewardHubVOs[t].hubRewardID == e) {
+          return this._rewardHubVOs[t];
+        }
       }
-      i++;
     }
-    return e.achievements[e.numberOfAchievementsInSeries];
   };
-  CastleAchievementData.MAIN_ACHIEVMENT_SERIESID = 0;
-  return CastleAchievementData;
-}(require("./54.js").CastleBasicData);
-exports.CastleAchievementData = u;
-var d = require("./3463.js");
-o.classImplementsInterfaces(u, "IUpdatable", "ICastleBasicData");
+  RewardHubData.prototype.getCurrentRewardHubIds = function () {
+    if (this._rewardHubVOs) {
+      var e = [];
+      for (var t = 0; t < this._rewardHubVOs.length; t++) {
+        e.push(this._rewardHubVOs[t].hubRewardID);
+      }
+      return e;
+    }
+  };
+  RewardHubData.prototype.updateCurrentRewardHubIds = function (e) {
+    for (var t = 0; t < e.length; t++) {
+      for (var i = this._rewardHubVOs.length - 1; i >= 0; i--) {
+        if (e[t] == this._rewardHubVOs[i].hubRewardID) {
+          this._rewardHubVOs.splice(this._rewardHubVOs.indexOf(this._rewardHubVOs[i]), 1);
+        }
+      }
+    }
+  };
+  RewardHubData.REWARD_TYPE_GUARANTEED = "REWARD_TYPE_GUARANTEED";
+  RewardHubData.REWARD_TYPE_EXTRA = "REWARD_TYPE_EXTRA";
+  return RewardHubData;
+}(o.CastleBasicData);
+exports.RewardHubData = d;

@@ -3,23 +3,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./62.js");
-var s = function (e) {
-  function ForgeBuildingVE() {
-    return e !== null && e.apply(this, arguments) || this;
+var a = function (e) {
+  function FoodDistrictBuildingVE() {
+    return e.call(this) || this;
   }
-  n.__extends(ForgeBuildingVE, e);
-  Object.defineProperty(ForgeBuildingVE.prototype, "buildingGroundIconClass", {
+  n.__extends(FoodDistrictBuildingVE, e);
+  Object.defineProperty(FoodDistrictBuildingVE.prototype, "buildingGroundIconClass", {
     get: function () {
-      return Library.CastleInterfaceElements_Icons.Icon_ToolProductionBoost;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(a.ABasicBuildingVE.prototype, "buildingGroundIconClass").set.call(this, e);
+      return Library.CastleInterfaceElements_Icons.Icon_FoodDistrict;
     },
     enumerable: true,
     configurable: true
   });
-  return ForgeBuildingVE;
-}(a.ABasicBuildingVE);
-exports.ForgeBuildingVE = s;
-o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
+  return FoodDistrictBuildingVE;
+}(require("./541.js").ADistrictBuildingVE);
+exports.FoodDistrictBuildingVE = a;
+o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");

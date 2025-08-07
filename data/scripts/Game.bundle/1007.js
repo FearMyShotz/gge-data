@@ -3,108 +3,63 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = require("./1.js");
-var a = require("./3.js");
-var s = require("./4.js");
-var r = require("./105.js");
-var l = require("./209.js");
+var a = require("./55.js");
+var s = require("./105.js");
+var r = require("./1499.js");
+var l = createjs.Point;
 var c = function (e) {
-  function SlumSurroundingsVO(t, i) {
-    var n = this;
-    n._slumParts = [];
-    CONSTRUCTOR_HACK;
-    (n = e.call(this) || this)._name = "Slum";
-    n._slumParts = i;
-    if (i != null) {
-      for (var o = 0, a = i; o < a.length; o++) {
-        var s = a[o];
-        if (s !== undefined) {
-          s.parentVO = n;
-        }
-      }
-    }
-    n._posOrigin = r.IsoGridOriginEnum.TOP_CORNER;
-    n._posOffset = t;
-    return n;
+  function WoodResourceFieldVO() {
+    var t = e.call(this) || this;
+    t._resourceType = u.CollectableEnum.WOOD;
+    t._name = a.ClientConstUtils.capitalizeFirstLetter(t._resourceType.name);
+    t._posOrigin = s.IsoGridOriginEnum.TOP_CORNER;
+    t._width = 40;
+    t._height = 40;
+    return t;
   }
-  n.__extends(SlumSurroundingsVO, e);
-  SlumSurroundingsVO.prototype.init = function (t = null) {
-    e.prototype.init.call(this, t);
-    if (this.slumParts != null) {
-      for (var i = 0, n = this.slumParts; i < n.length; i++) {
-        var o = n[i];
-        if (o !== undefined) {
-          o.init(t);
+  n.__extends(WoodResourceFieldVO, e);
+  WoodResourceFieldVO.prototype.updatePosition = function () {
+    if (this.isoData.areaData.isMyHomeCastle) {
+      this._posOffset = new l(-20, -20);
+    } else {
+      this._posOffset = new l(-12, -12);
+    }
+    if (this.isoData.areaData.isMyHomeCastle) {
+      this._width = 40;
+      this._height = 40;
+    } else {
+      this._width = 1;
+      this._height = 1;
+    }
+    e.prototype.updatePosition.call(this);
+  };
+  WoodResourceFieldVO.prototype.updateSpawnPoints = function () {
+    this._spawnPoints = [new l(0, -2), new l(-1, 46), new l(16, -2), new l(-9, 14)];
+  };
+  WoodResourceFieldVO.prototype.updateWalkmap = function () {
+    this._walkmapOffset.x = -20;
+    this._walkmapOffset.y = -20;
+    if (this.isoData.areaData.isMyHomeCastle) {
+      this._walkmap = new Array(this.rotatedHeight);
+      for (var e = 0; e < this._walkmap.length; ++e) {
+        this._walkmap[e] = Array(this.rotatedHeight).fill(0);
+        for (var t = 0; t < this._walkmap[e].length; ++t) {
+          this._walkmap[e][t] = true;
         }
       }
-    }
-  };
-  SlumSurroundingsVO.prototype.updateData = function () {
-    if (this.slumParts != null) {
-      for (var t = 0, i = this.slumParts; t < i.length; t++) {
-        var n = i[t];
-        if (n !== undefined) {
-          n.updateData();
+      var i = new l(this.width + this._walkmapOffset.x, this.height + this._walkmapOffset.y);
+      if (this._walkmap.length > 0) {
+        for (e = 0; e < 19; ++e) {
+          this._walkmap[i.y - e][i.x + 5] = false;
         }
       }
-    }
-    e.prototype.updateData.call(this);
-  };
-  SlumSurroundingsVO.prototype.getInfoTooltipLine1 = function () {
-    return a.Localize.text("dialog_village_iso");
-  };
-  SlumSurroundingsVO.prototype.getInfoTooltipLine2 = function () {
-    if (this.isClickAvailable) {
-      return a.Localize.text(this.slumLevel > 0 && this.slumLevel < 4 ? "clickToUpgrade" : "clickToOpen");
     } else {
-      return a.Localize.text("building_level", [s.CastleModel.areaData.activeArea.slum.slumLevel]);
+      this._walkmap = d.IsoHelper.walkmap.createWalkmapFullBlocked(new l(1, 1));
     }
   };
-  SlumSurroundingsVO.prototype.getInfoTooltipLine3 = function () {
-    if (this.isClickAvailable) {
-      return a.Localize.text("building_level", [s.CastleModel.areaData.activeArea.slum.slumLevel]);
-    } else {
-      return "";
-    }
-  };
-  Object.defineProperty(SlumSurroundingsVO.prototype, "isRingmenuAvailable", {
-    get: function () {
-      return false;
-    },
-    set: function (e) {
-      Object.getOwnPropertyDescriptor(l.ASurroundingBuildingVO.prototype, "isRingmenuAvailable").set.call(this, e);
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SlumSurroundingsVO.prototype, "slumLevel", {
-    get: function () {
-      return this.slumData.slumLevel;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SlumSurroundingsVO.prototype, "kingdomId", {
-    get: function () {
-      return this.isoData.areaData.areaInfo.kingdomID;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SlumSurroundingsVO.prototype, "slumParts", {
-    get: function () {
-      return this._slumParts;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  Object.defineProperty(SlumSurroundingsVO.prototype, "slumData", {
-    get: function () {
-      return this.isoData.areaData.slum;
-    },
-    enumerable: true,
-    configurable: true
-  });
-  return SlumSurroundingsVO;
-}(l.ASurroundingBuildingVO);
-exports.SlumSurroundingsVO = c;
+  return WoodResourceFieldVO;
+}(r.AResourceFieldVO);
+exports.WoodResourceFieldVO = c;
+var u = require("./12.js");
+var d = require("./46.js");
 o.classImplementsInterfaces(c, "IRelativeGridBuildingVO");

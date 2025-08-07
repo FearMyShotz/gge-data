@@ -3,14 +3,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 var n = require("./0.js");
 var o = function (e) {
-  function IsoViewObjectGroupExpansion() {
+  function IsoViewObjectGroupEvent() {
     return e !== null && e.apply(this, arguments) || this;
   }
-  n.__extends(IsoViewObjectGroupExpansion, e);
-  IsoViewObjectGroupExpansion.prototype.initObjects = function () {
+  n.__extends(IsoViewObjectGroupEvent, e);
+  IsoViewObjectGroupEvent.prototype.initObjects = function () {
     this.resetList();
-    this.createObjectsAndAddToLayerAndList(this.isoData.objects.expansions.list, this.list);
+    this.createObjectsAndAddToLayerAndList(this.isoData.objects.eventBuildings.list, this.list);
   };
-  return IsoViewObjectGroupExpansion;
+  return IsoViewObjectGroupEvent;
 }(require("./302.js").AIsoViewObjectGroupSimpleList);
-exports.IsoViewObjectGroupExpansion = o;
+exports.IsoViewObjectGroupEvent = o;
