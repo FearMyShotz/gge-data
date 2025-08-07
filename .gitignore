@@ -1,0 +1,9 @@
+node_modules/
+diffs/
+*.zip
+*.md
+*.ts
+*.mjs
+game-engine-analyzer.js
+run-analysis.js
+data/scripts/typescript/

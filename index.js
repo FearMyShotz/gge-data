@@ -2,12 +2,29 @@ import axios from 'axios'
 import { promises as fs } from 'fs'
 import path from 'path'
 import { XMLParser } from 'fast-xml-parser'
+import { JSDOM } from 'jsdom'
+import prettier from 'prettier'
 
 const defaultDomain = 'empire-html5.goodgamestudios.com'
 const networks = [1, 5, 11, 26, 34, 39, 64, 65, 68]
 const languageAPI = 'https://translations-api-test.public.ggs-ep.com/12/en/'
 
 const mkdir = d => fs.mkdir(d, { recursive: true })
+
+async function formatJavaScript(code) {
+  try {
+    return await prettier.format(code, {
+      parser: 'babel',
+      semi: true,
+      singleQuote: true,
+      tabWidth: 2,
+      printWidth: 100
+    })
+  } catch (err) {
+    console.warn(`⚠️  Fehler beim Formatieren von JavaScript:`, err.message)
+    return code // Gib unformatierten Code zurück, falls Formatierung fehlschlägt
+  }
+}
 
 async function fetchNetworks() {
   const parser = new XMLParser({ ignoreAttributes: false, ignoreDeclaration: true })
@@ -127,10 +144,146 @@ async function fetchLanguages() {
   return langVersions
 }
 
-async function saveVersions(itemsVersion, languageVersions) {
+async function fetchGameClientScripts() {
+  const url = `https://sheltered-everglades-24913.fly.dev/https://${defaultDomain}/default/index.html?inGameShop=1&allowFullScreen=true`
+  
+  let html
+  try {
+    html = (await axios.get(url)).data
+  } catch (err) {
+    console.error(`❌ Fehler beim Abrufen der HTML-Seite:`, err.message)
+    return null
+  }
+
+  const dom = new JSDOM(html)
+  const document = dom.window.document
+  
+  // Finde alle preload links im head
+  const preloadLinks = document.head.querySelectorAll('link[rel="preload"][as="script"]')
+  
+  const scripts = {}
+  const timestamp = new Date().toISOString()
+  
+  const scriptsDir = path.join('data', 'scripts')
+  await mkdir(scriptsDir)
+  
+  for (const link of preloadLinks) {
+    const id = link.id
+    const href = link.getAttribute('href')
+    
+    if (!id || !href) continue
+    
+    // Extrahiere UUID aus dem href (Teil zwischen . und .js)
+    const match = href.match(/\.([a-f0-9]+)\.js$/)
+    if (!match) continue
+    
+    const uuid = match[1]
+    
+    // Lade das Script herunter
+    const scriptUrl = href.startsWith('http') ? href : `https://${defaultDomain}/default/${href}`
+    
+    try {
+      const scriptContent = (await axios.get(scriptUrl)).data
+      
+      // Formatiere den JavaScript-Code
+      const formattedContent = await formatJavaScript(scriptContent)
+      
+      const originalFilename = href.split('/').pop()
+      const cleanFilename = originalFilename.replace(/\.[a-f0-9]+\.js$/, '.js')
+      
+      await fs.writeFile(
+        path.join(scriptsDir, cleanFilename),
+        formattedContent
+      )
+      
+      const versionDir = path.join(scriptsDir, 'versions', id)
+      await mkdir(versionDir)
+      
+      const versionFilename = originalFilename
+      await fs.writeFile(
+        path.join(versionDir, versionFilename),
+        formattedContent
+      )
+      
+      scripts[id] = {
+        uuid: uuid,
+        timestamp: timestamp,
+        filename: cleanFilename,
+        versionFilename: versionFilename,
+        originalHref: href
+      }
+      
+      console.log(`✅ Script gespeichert: ${cleanFilename} und Version: ${versionFilename} (UUID: ${uuid})`)
+    } catch (err) {
+      console.error(`❌ Fehler beim Herunterladen von ${scriptUrl}:`, err.message)
+    }
+  }
+  
+  return scripts
+}
+
+async function loadVersionHistory() {
+  const historyPath = path.join('data', 'versionHistory.json')
+  try {
+    const content = await fs.readFile(historyPath, 'utf8')
+    return JSON.parse(content)
+  } catch (err) {
+    // Datei existiert noch nicht, erstelle leere Struktur
+    return {
+      gameBundle: [],
+      vendor: [],
+      dll: [],
+      Loader: [],
+      CacheBreaker: []
+    }
+  }
+}
+
+async function saveVersionHistory(history) {
+  const historyPath = path.join('data', 'versionHistory.json')
+  await fs.writeFile(historyPath, JSON.stringify(history, null, 2))
+  console.log(`✅ Versionsverlauf gespeichert: ${historyPath}`)
+}
+
+async function updateVersionHistory(scripts) {
+  if (!scripts || Object.keys(scripts).length === 0) {
+    console.warn('⚠️  Keine Scripts gefunden, Versionsverlauf wird nicht aktualisiert')
+    return
+  }
+  
+  const history = await loadVersionHistory()
+  
+  for (const [scriptId, info] of Object.entries(scripts)) {
+    const key = scriptId === 'Game' ? 'gameBundle' : scriptId
+    
+    if (!history[key]) {
+      history[key] = []
+    }
+    
+    // Prüfe ob diese UUID bereits existiert
+    const existingEntry = history[key].find(entry => entry.uuid === info.uuid)
+    if (!existingEntry) {
+      history[key].push({
+        uuid: info.uuid,
+        timestamp: info.timestamp,
+        filename: info.filename,
+        versionFilename: info.versionFilename,
+        originalHref: info.originalHref
+      })
+      console.log(`✅ Neue Version für ${key} hinzugefügt: ${info.uuid}`)
+    } else {
+      console.log(`ℹ️  Version ${info.uuid} für ${key} bereits vorhanden`)
+    }
+  }
+  
+  await saveVersionHistory(history)
+}
+
+async function saveVersions(itemsVersion, languageVersions, scriptsVersion) {
   const out = {
     items: itemsVersion,
-    languages: languageVersions
+    languages: languageVersions,
+    scripts: scriptsVersion
   }
 
   await fs.writeFile(
@@ -142,10 +295,17 @@ async function saveVersions(itemsVersion, languageVersions) {
 
 async function main() {
   await fetchNetworks()
+
+  const scripts = await fetchGameClientScripts()
+  await updateVersionHistory(scripts)
+  
+  const scriptsVersion = scripts ? new Date().toISOString() : null
+  
   const itemsVersion = await fetchItems()
   const languageVersions = await fetchLanguages()
+
   if (itemsVersion && languageVersions) {
-    await saveVersions(itemsVersion, languageVersions)
+    await saveVersions(itemsVersion, languageVersions, scriptsVersion)
   }
 }
 
