@@ -1,0 +1,17 @@
+createjs.Event.ADDED_TO_STAGE = "addedToStage";
+createjs.Event.ADDED = "added";
+createjs.Event.REMOVED_FROM_STAGE = "removedFromStage";
+createjs.Event.RESIZE = "resize";
+createjs.Event.ENTER_FRAME = "tick";
+createjs.Event.COMPLETE = "complete";
+createjs.Event.CHANGE = "change";
+createjs.Event.SOUND_COMPLETE = "soundComplete";
+createjs.Event.RENDER = "render";
+createjs.Event.FRAME_CONSTRUCTED = "frameConstructed";
+createjs.Event.REMOVED = "removed";
+createjs.Event.MOUSE_LEAVE = "mouseLeave";
+createjs.Event.INIT = "init";
+createjs.Event.PASTE = "paste";
+createjs.Event.ACTIVATE = "activate";
+createjs.Event.DEACTIVATE = "deactivate";
+createjs.Event.ERROR = "error";

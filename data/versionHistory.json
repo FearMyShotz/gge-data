@@ -1,0 +1,47 @@
+{
+  "gameBundle": [
+    {
+      "uuid": "e95e2fe93a68dbe4ebbe",
+      "timestamp": "2025-08-05T15:02:22.478Z",
+      "filename": "Game.bundle.js",
+      "versionFilename": "Game.bundle.e95e2fe93a68dbe4ebbe.js",
+      "originalHref": "Game.bundle.e95e2fe93a68dbe4ebbe.js"
+    }
+  ],
+  "vendor": [
+    {
+      "uuid": "f8b9303b",
+      "timestamp": "2025-08-05T15:02:22.478Z",
+      "filename": "vendor.bundle.js",
+      "versionFilename": "vendor.bundle.f8b9303b.js",
+      "originalHref": "vendor.bundle.f8b9303b.js"
+    }
+  ],
+  "dll": [
+    {
+      "uuid": "ed361628b4b9df5c1c93",
+      "timestamp": "2025-08-05T15:02:22.478Z",
+      "filename": "ggs.dll.js",
+      "versionFilename": "ggs.dll.ed361628b4b9df5c1c93.js",
+      "originalHref": "dll/ggs.dll.ed361628b4b9df5c1c93.js"
+    }
+  ],
+  "Loader": [
+    {
+      "uuid": "5b7ddd0ef2234b54ffa9",
+      "timestamp": "2025-08-05T15:02:22.478Z",
+      "filename": "CastleLoader.bundle.js",
+      "versionFilename": "CastleLoader.bundle.5b7ddd0ef2234b54ffa9.js",
+      "originalHref": "CastleLoader.bundle.5b7ddd0ef2234b54ffa9.js"
+    }
+  ],
+  "CacheBreaker": [
+    {
+      "uuid": "901db5cd3eec521dd8df",
+      "timestamp": "2025-08-05T15:02:22.478Z",
+      "filename": "CacheBreaker.bundle.js",
+      "versionFilename": "CacheBreaker.bundle.901db5cd3eec521dd8df.js",
+      "originalHref": "CacheBreaker.bundle.901db5cd3eec521dd8df.js"
+    }
+  ]
+}

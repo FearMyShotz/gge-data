@@ -1,0 +1,52 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var i = require("./11.js");
+var a = function () {
+  function ExternalLoggingConstants() {}
+  ExternalLoggingConstants.LOG_LOADER_NAME = "logLoader";
+  ExternalLoggingConstants.LOG_API_URL = i.BasicConstants.DOMAIN_PROTOCOL + "://logging.goodgamestudios.com";
+  ExternalLoggingConstants.LOGGING_TYPE_ERROR = 3;
+  ExternalLoggingConstants.LOGGING_TYPE_LOG = 7;
+  ExternalLoggingConstants.PARAM_LOG_TYPE = "type";
+  ExternalLoggingConstants.PARAM_LOG_EVENT_ID = "eventId";
+  ExternalLoggingConstants.PARAM_SUB_ERROR_ID = "subErrorId";
+  ExternalLoggingConstants.PARAM_SESSION_ID = "sessionId";
+  ExternalLoggingConstants.PARAM_GAME_ID = "gameId";
+  ExternalLoggingConstants.PARAM_NETWORK_ID = "networkId";
+  ExternalLoggingConstants.PARAM_ZONE = "zone";
+  ExternalLoggingConstants.PARAM_INSTANCE = "instance";
+  ExternalLoggingConstants.PARAM_COUNTRY_CODE = "countryCode";
+  ExternalLoggingConstants.PARAM_LANGUAGE_CODE = "selectedLanguage";
+  ExternalLoggingConstants.PARAM_ACCOUNT_ID = "accountId";
+  ExternalLoggingConstants.PARAM_PLAYER_ID = "playerId";
+  ExternalLoggingConstants.PARAM_IS_FIRST_VISIT_OF_GGS = "isFirstVisitOfGGS";
+  ExternalLoggingConstants.PARAM_URL = "url";
+  ExternalLoggingConstants.PARAM_UTC_TIME_STAMP = "utcTimeStamp";
+  ExternalLoggingConstants.PARAM_SESSION_LENGTH = "sessionLength";
+  ExternalLoggingConstants.PARAM_ERROR_EVENT_OPERATION_TEXT = "errorEventOperationText";
+  ExternalLoggingConstants.PARAM_CDN = "cdn";
+  ExternalLoggingConstants.PARAM_NULL_PARAMETER_NAME = "nullParameterName";
+  ExternalLoggingConstants.PARAM_AFFECTED_FUNCTION_NAME = "affectedFunctionName";
+  ExternalLoggingConstants.PARAM_AVAILABLE_SPACE_ON_DEVICE = "availableSpaceOnDevice";
+  ExternalLoggingConstants.PARAM_AVAILABLE_CACHE_ON_DEVICE = "availableCacheOnDevice";
+  ExternalLoggingConstants.PARAM_AVAILABLE_APPLICATION_STORAGE_SPACE = "availableApplicationStorageSpace";
+  ExternalLoggingConstants.PARAM_CLIENT_TYPE = "clientType";
+  ExternalLoggingConstants.PARAM_PERFORMANCE_CATEGORY = "performanceCategory";
+  ExternalLoggingConstants.PARAM_HTTP_USER_AGENT = "httpUserAgent";
+  ExternalLoggingConstants.PARAM_HTTP_PLATFORM = "httpPlatform";
+  ExternalLoggingConstants.PARAM_HTTP_VENDOR = "httpVendor";
+  ExternalLoggingConstants.PARAM_SOURCESTORE = "sourceStore";
+  ExternalLoggingConstants.PARAM_DEVICETYPE = "deviceType";
+  ExternalLoggingConstants.PARAM_DEVICECATEGORY = "deviceCategory";
+  ExternalLoggingConstants.PARAM_OS = "os";
+  ExternalLoggingConstants.PARAM_CLIENT_VERSION = "clientVersion";
+  ExternalLoggingConstants.PARAM_ITEM_XML_VERSION = "itemXMLVersion";
+  ExternalLoggingConstants.PARAM_IS_IN_BACKGROUND = "isInBackground";
+  ExternalLoggingConstants.PARAM_CONNECTION_TYPE = "connectionType";
+  ExternalLoggingConstants.PARAM_IS_FIRST_APP_START_AFTER_UPDATE = "isFirstAppStartAfterUpdate";
+  ExternalLoggingConstants.PARAM_HTTP_REFERER = "httpReferer";
+  ExternalLoggingConstants.PARAM_HTML5_TAG = "tag";
+  return ExternalLoggingConstants;
+}();
+exports.ExternalLoggingConstants = a;

@@ -1,0 +1,52 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var n = function () {
+  function ClientConstOffer() {}
+  ClientConstOffer.ADDITIONAL_COMPONENT_CONTAINER = "additionalComponents";
+  ClientConstOffer.VISUAL_COMPONENT_CONTAINER = "visualComponents";
+  ClientConstOffer.REWARD_COMPONENT_CONTAINER = "rewardComponents";
+  ClientConstOffer.OFFER_COST_C1 = "costCurrencyNormal";
+  ClientConstOffer.OFFER_COST_C2 = "costCurrencyPremium";
+  ClientConstOffer.OFFER_COST_EMPIRE_RESOURCES = "costEmpireResources";
+  ClientConstOffer.OFFER_AUTO_ACCEPT = "autoAccept";
+  ClientConstOffer.OFFER_EURO_AMOUNT = "euroAmount";
+  ClientConstOffer.QUEST_CONDITION_CONTAINER = "conditions";
+  ClientConstOffer.QUEST_CONDITION_INTEGER_PLAYER_LEVEL = "playerLevel";
+  ClientConstOffer.QUEST_CONDITION_PAYMENT_MIN_WITH_UPDATE = "paymentMinWithUpdate";
+  ClientConstOffer.QUEST_CONDITION_IS_PAYUSER = "isPayUser";
+  ClientConstOffer.QUEST_CONDITION_INTEGER = "OfferQuestConditionInteger";
+  ClientConstOffer.QUEST_CONDITION_VOUCHER = "voucher";
+  ClientConstOffer.QUEST_CONDITION_INTEGER_BOUGHT_OFFER_REWARD = "boughtOfferRewardMinWithUpdate";
+  ClientConstOffer.TYPE_BETWEEN = "Between";
+  ClientConstOffer.TYPE_MAX = "Max";
+  ClientConstOffer.TYPE_MIN = "Min";
+  ClientConstOffer.TYPE_EQUALS = "Equals";
+  ClientConstOffer.OFFER_REWARD_EMPIRE_STANDARD = "standardReward";
+  ClientConstOffer.OFFER_VISUAL_FAILED_DIALOG = "failedDialog";
+  ClientConstOffer.OFFER_VISUAL_FINISH_DIALOG = "finishDialog";
+  ClientConstOffer.OFFER_VISUAL_QUEST_DIALOG = "questDialog";
+  ClientConstOffer.OFFER_VISUAL_QUEST_ACCEPT_DIALOG = "questAcceptDialog";
+  ClientConstOffer.OFFER_VISUAL_OFFER_DIALOG = "offerDialog";
+  ClientConstOffer.OFFER_VISUAL_EURO_AMOUNT = "euroAmount";
+  ClientConstOffer.OFFER_VISUAL_SUB_OFFER = "subOffer";
+  ClientConstOffer.OFFER_VISUAL_ISO_OBJECT = "isoObject";
+  ClientConstOffer.OFFER_VISUAL_TREASURE_CHEST = "treasureChestObject";
+  ClientConstOffer.OFFER_VISUAL_INTERFACE_BUTTON = "interfaceButton";
+  ClientConstOffer.OFFER_VISUAL_HIDE_EVENT = "hideEvents";
+  ClientConstOffer.OFFER_ADDITIONAL_PACKAGE_IDS = "packageIDs";
+  ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE = "primeSale";
+  ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE_UPGRADE = "primeSaleUpgrades";
+  ClientConstOffer.OFFER_ADDITIONAL_BUILDING_ID = "buildingWodID";
+  ClientConstOffer.OFFER_ADDITIONAL_PRIME_SALE_SKIP = "primeSaleSkipBuilding";
+  ClientConstOffer.OFFER_ADDITIONAL_IS_TIMELESS = "isTimeless";
+  ClientConstOffer.OFFER_ADDITIONAL_IS_INVITATION = "isInviteeConversion";
+  ClientConstOffer.OFFER_ADDITIONAL_IS_ONE_TIME_OFFER = "isOneTimeOffer";
+  ClientConstOffer.OFFER_ADDITIONAL_CLIENT_TRACKING = "clientTrackingRequest";
+  ClientConstOffer.OFFER_ADDITIONAL_BOOSTER_SALE = "boosterSale";
+  ClientConstOffer.OFFER_ADDITIONAL_AB_TEST = "aBTest";
+  ClientConstOffer.OFFER_ADDITIONAL_COSTS = "cost";
+  ClientConstOffer.OFFER_ID_KONGREGATE = 900;
+  return ClientConstOffer;
+}();
+exports.ClientConstOffer = n;

@@ -1,0 +1,147 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var n = require("./2.js");
+var o = require("./5.js");
+var a = require("./4.js");
+var s = function () {
+  function ClientConstCharacter() {}
+  ClientConstCharacter.getCharacterBigAssetName = function (e) {
+    var t = ClientConstCharacter.CHARACTER_BIG_ASSET_NAME_EXCEPTIONS.get(e);
+    return t ?? "QuestGiverBig_" + e;
+  };
+  ClientConstCharacter.getFullSizeAssetName = function (e) {
+    if (n.DictionaryUtil.containsKey(ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_NAMES, e)) {
+      return ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_NAMES.get(e);
+    } else {
+      return "noFullSizeAssetExistsForThisCharacter";
+    }
+  };
+  ClientConstCharacter.updateHeroQuestCharacter = function () {
+    ClientConstCharacter.CHARACTER_BIG_ASSET_NAME_EXCEPTIONS.set(ClientConstCharacter.CHAR_ID_SELECTED_HERO, "QuestGiverBig_Hero_" + (a.CastleModel.userData.selectedHeroID > -1 ? a.CastleModel.userData.selectedHeroID : "801"));
+  };
+  ClientConstCharacter.getCharacterSmallAssetName = function (e) {
+    return "QuestGiverSmall_" + e;
+  };
+  ClientConstCharacter.getCharacterBigExceptionDictionary = function () {
+    var e = new Map();
+    e.set(ClientConstCharacter.CHAR_ID_MARAUDER, "CharLootMaster");
+    e.set(ClientConstCharacter.CHAR_ID_ARCHITECT, "CharArchitect");
+    e.set(ClientConstCharacter.CHAR_ID_HUNTER, "CharHunter");
+    e.set(ClientConstCharacter.CHAR_ID_INSTRUCTOR, "CharInstructor");
+    e.set(ClientConstCharacter.CHAR_ID_MEDICUS, "CharMedicus");
+    e.set(ClientConstCharacter.CHAR_ID_MERCHANT, "CharMerchant");
+    e.set(ClientConstCharacter.CHAR_ID_VETERAN_OVERSEER, "CharVeteranOverseer");
+    e.set(ClientConstCharacter.CHAR_ID_PLAGUE_MONK, "CharPlagueMonk");
+    e.set(ClientConstCharacter.CHAR_ID_SELECTED_HERO, "QuestGiverBig_Hero_" + (a.CastleModel.userData.selectedHeroID > -1 ? a.CastleModel.userData.selectedHeroID : o.TutorialConst.TUTORIAL_HERO_0_ID));
+    return e;
+  };
+  ClientConstCharacter.__initialize_static_members = function () {
+    var e;
+    ClientConstCharacter.CHARACTER_BIG_ASSET_NAME_EXCEPTIONS = ClientConstCharacter.getCharacterBigExceptionDictionary();
+    (e = new Map()).set(ClientConstCharacter.CHAR_ID_ARMORER, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_ARMORER);
+    e.set(ClientConstCharacter.CHAR_ID_EQUIPMENT_MERCHANT, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_EQUIPMENT_MERCHANT);
+    e.set(ClientConstCharacter.CHAR_ID_BANISHEDKING, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_FRIGHTENED_KING);
+    e.set(ClientConstCharacter.CHAR_ID_GIFT_TRADER, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_GIFT_TRADER);
+    e.set(ClientConstCharacter.CHAR_ID_HERALD, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_HERALD);
+    e.set(ClientConstCharacter.CHAR_ID_LUCKY_WHEEL_GIRL, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_LUCKY_WHEEL_CARNY);
+    e.set(ClientConstCharacter.CHAR_ID_MARAUDER, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_MARAUDER);
+    e.set(ClientConstCharacter.CHAR_ID_MERCHANT, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_MERCHANT);
+    e.set(ClientConstCharacter.CHAR_ID_PLAGUE_MONK, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_PLAGUE_MONK);
+    e.set(ClientConstCharacter.CHAR_ID_SEAQUEEN, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SEA_QUEEN);
+    e.set(ClientConstCharacter.CHAR_ID_SHADY_LADY, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SHADY_LADY);
+    e.set(ClientConstCharacter.CHAR_ID_SPY, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SPY);
+    e.set(ClientConstCharacter.CHAR_ID_FAIRYTALEPRINCESS, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SWEET_PRINCESS);
+    e.set(ClientConstCharacter.CHAR_ID_UNDERWORLD_EXPLORER, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_UNDERWORLD_EXPLORER);
+    e.set(ClientConstCharacter.CHAR_ID_GENERAL, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_GENERAL);
+    e.set(ClientConstCharacter.CHAR_ID_ARCHITECT, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_ARCHITECT);
+    e.set(ClientConstCharacter.CHAR_ID_SAMURAI_HUNTER, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SAMURAI_HUNTER);
+    e.set(ClientConstCharacter.CHAR_ID_GAMBLING_GRANNY, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_GAMBLING_GRANNY);
+    e.set(ClientConstCharacter.CHAR_ID_TECHNICUS, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_EQUIPMENT_ENHANCER_PRIME_SALE);
+    e.set(ClientConstCharacter.CHAR_ID_KING_RICHARD, ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_KING_RICHARD);
+    e.set(ClientConstCharacter.CHAR_ID_FEMALE_TUTORIAL_CHARACTER, ClientConstCharacter.CHARACTER_FULL_SIZE_FEMALE_TUTORIAL_CHARACTER);
+    ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_NAMES = e;
+  };
+  ClientConstCharacter.CHAR_ID_ADVISOR = 0;
+  ClientConstCharacter.CHAR_ID_OVERSEER = 1;
+  ClientConstCharacter.CHAR_ID_TAXCOLLECTOR = 2;
+  ClientConstCharacter.CHAR_ID_PRINCE = 3;
+  ClientConstCharacter.CHAR_ID_GENERAL = 4;
+  ClientConstCharacter.CHAR_ID_UNKNOWN = 5;
+  ClientConstCharacter.CHAR_ID_FAIRYTALEPRINCESS = 6;
+  ClientConstCharacter.CHAR_ID_EVILSTEPMOTHER = 7;
+  ClientConstCharacter.CHAR_ID_FATPRINCESS = 8;
+  ClientConstCharacter.CHAR_ID_SNIFFYPRINCESS = 9;
+  ClientConstCharacter.CHAR_ID_SPY = 10;
+  ClientConstCharacter.CHAR_ID_BANISHEDKING = 11;
+  ClientConstCharacter.CHAR_ID_VIKING = 12;
+  ClientConstCharacter.CHAR_ID_HERALD = 13;
+  ClientConstCharacter.CHAR_ID_SULTAN = 14;
+  ClientConstCharacter.CHAR_ID_WITCHLADY = 15;
+  ClientConstCharacter.CHAR_ID_NEKRODOC = 16;
+  ClientConstCharacter.CHAR_ID_PRINCE_SUBSTITUE = 17;
+  ClientConstCharacter.CHAR_ID_REDFACTION = 18;
+  ClientConstCharacter.CHAR_ID_BLUEFACTION = 19;
+  ClientConstCharacter.CHAR_ID_SEAQUEEN = 20;
+  ClientConstCharacter.CHAR_ID_PIRATE = 21;
+  ClientConstCharacter.CHAR_ID_SURVIVOR_ICE = 22;
+  ClientConstCharacter.CHAR_ID_SURVIVOR_DESSERT = 23;
+  ClientConstCharacter.CHAR_ID_SURVIVOR_VOLCANO = 24;
+  ClientConstCharacter.CHAR_ID_LITTLEGIRL_2 = 25;
+  ClientConstCharacter.CHAR_ID_SURVIVOR = 26;
+  ClientConstCharacter.CHAR_ID_EILAND = 27;
+  ClientConstCharacter.CHAR_ID_UNDERWORLD_EXPLORER = 28;
+  ClientConstCharacter.CHAR_ID_SELECTED_HERO = 30;
+  ClientConstCharacter.CHAR_ID_GAMBLING_GRANNY = 33;
+  ClientConstCharacter.CHAR_ID_KING_RICHARD = 35;
+  ClientConstCharacter.CHAR_ID_FEMALE_TUTORIAL_CHARACTER = 37;
+  ClientConstCharacter.CHAR_ID_HORATIO = 38;
+  ClientConstCharacter.CHAR_ID_NOMADADVISOR = 39;
+  ClientConstCharacter.CHAR_ID_THEWOLF = 100;
+  ClientConstCharacter.CHAR_ID_LITTLEGIRL = 101;
+  ClientConstCharacter.CHAR_ID_THEWOLF_AND_LITTLEGIRL = 102;
+  ClientConstCharacter.CHAR_ID_THERAT = 103;
+  ClientConstCharacter.CHAR_ID_VILLEAN = 104;
+  ClientConstCharacter.CHAR_ID_MARAUDER = 200;
+  ClientConstCharacter.CHAR_ID_ARCHITECT = 201;
+  ClientConstCharacter.CHAR_ID_HUNTER = 202;
+  ClientConstCharacter.CHAR_ID_INSTRUCTOR = 203;
+  ClientConstCharacter.CHAR_ID_MEDICUS = 204;
+  ClientConstCharacter.CHAR_ID_MERCHANT = 205;
+  ClientConstCharacter.CHAR_ID_VETERAN_OVERSEER = 206;
+  ClientConstCharacter.CHAR_ID_PLAGUE_MONK = 207;
+  ClientConstCharacter.CHAR_ID_ARMORER = 208;
+  ClientConstCharacter.CHAR_ID_EQUIPMENT_MERCHANT = 209;
+  ClientConstCharacter.CHAR_ID_GIFT_TRADER = 210;
+  ClientConstCharacter.CHAR_ID_LUCKY_WHEEL_GIRL = 211;
+  ClientConstCharacter.CHAR_ID_SHADY_LADY = 214;
+  ClientConstCharacter.CHAR_ID_SAMURAI_HUNTER = 215;
+  ClientConstCharacter.CHAR_ID_TECHNICUS = 216;
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_ARMORER = "FullsizeArmorer";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_EQUIPMENT_MERCHANT = "FullsizeEquipmentMerchant";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_FRIGHTENED_KING = "FullsizeFrightenedKing";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_GIFT_TRADER = "FullsizeGiftTrader";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_HERALD = "FullsizeHerald";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_LUCKY_WHEEL_CARNY = "FullsizeLuckyWheelCarny";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_MARAUDER = "FullsizeMarauder";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_MERCHANT = "FullsizeMerchant";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_PLAGUE_MONK = "FullsizePlagueMonk";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SEA_QUEEN = "FullsizeSeaQueen";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SHADY_LADY = "FullsizeShadyLady";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SPY = "FullsizeSpy";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SWEET_PRINCESS = "FullsizeSweetPrincess";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_UNDERWORLD_EXPLORER = "FullsizeUnderworldExplorer";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_GENERAL = "FullsizeGeneral";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_ARCHITECT = "FullsizeArchitect";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_MEDICUS = "FullsizeMedikus";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_SAMURAI_HUNTER = "FullsizeSamuraiHunter";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_GAMBLING_GRANNY = "FullsizeGamblingGranny";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_EQUIPMENT_ENHANCER_PRIME_SALE = "FullsizeEquipmentEnhancerPrimeSale";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_ROYAL_CAPITAL_SHOP = "FullsizeRoyalCapitalShop";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_KING_RICHARD = "FullsizeKingRichard";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_ASSET_RELIC_ENCHANTER_PRIME_SALE = "FullsizeRelicEnchanterPrimeSale";
+  ClientConstCharacter.CHARACTER_FULL_SIZE_FEMALE_TUTORIAL_CHARACTER = "FullSizeFemaleTutorialCharacter";
+  return ClientConstCharacter;
+}();
+exports.ClientConstCharacter = s;
+s.__initialize_static_members();

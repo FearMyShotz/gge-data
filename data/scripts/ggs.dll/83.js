@@ -1,0 +1,53 @@
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var i = function () {
+  function IdentityManagementConstants() {}
+  IdentityManagementConstants.ERROR_SERVER_AGE_CHECK_FAILED = 10000;
+  IdentityManagementConstants.ERROR_SERVER_AGE_CHECK_FAILED_STRING = "AGE_CHECK_FAILED";
+  IdentityManagementConstants.ERROR_PARSE = "PARSE_ERROR";
+  IdentityManagementConstants.ERROR_MISSING_PARAM = "MISSING_REQUIRED_PARAMETER";
+  IdentityManagementConstants.ERROR_INVALID_PARAM_VAL = "INVALID_PARAMETER_VALUE";
+  IdentityManagementConstants.ERROR_INVALID_PARAM_LENGTH = "INVALID_PARAMETER_LENGTH";
+  IdentityManagementConstants.ERROR_GENERAL = "GENERAL_ERROR";
+  IdentityManagementConstants.ERROR_VERIFICATION_FAILED = 24001;
+  IdentityManagementConstants.ERROR_SERVER_KOREA_ID_ALREADY_REGISTERED = 10001;
+  IdentityManagementConstants.ERROR_SERVER_MISSING_KOREA_USER_DATA = 10002;
+  IdentityManagementConstants.ERROR_SERVER_NO_KOREA_USER_DATA_AVAILABLE = 10003;
+  IdentityManagementConstants.ERROR_SERVER_AGE_CHECK_FAILED_GAME_NOT_ALLOWED_FOR_AGE = 10004;
+  IdentityManagementConstants.ERROR_CLIENT_REGISTER_MISSING_KOREA_ID_CHECK = 904;
+  IdentityManagementConstants.ERROR_CLIENT_REGISTER_AGE_CHECK_FAILED = 950;
+  IdentityManagementConstants.ERROR_CLIENT_REGISTER_NOT_ALLOWED_FOR_AGE = 952;
+  IdentityManagementConstants.ERROR_CLIENT_LOGIN_AGE_CHECK_FAILED = 951;
+  IdentityManagementConstants.TEXT_ID_ERROR_KOREA_ID_ALREADY_REGISTERED = "generic_alert_korea01";
+  IdentityManagementConstants.TEXT_ID_ERROR_KOREA_ID_CHECK_FAILED = "generic_alert_korea02";
+  IdentityManagementConstants.TEXT_ID_ERROR_REGISTER_AGE_CHECK_FAILED = "generic_alert_korea03";
+  IdentityManagementConstants.TEXT_ID_ERROR_LOGIN_AGE_CHECK_FAILED = "generic_alert_korea04";
+  IdentityManagementConstants.TEXT_ID_SERVER_MISSING_KOREA_ID_CHECK_DATA = "generic_alert_korea05";
+  IdentityManagementConstants.TEXT_ID_ERROR_CLIENT_REGISTER_MISSING_KOREA_ID_CHECK = "generic_alert_korea06";
+  IdentityManagementConstants.TEXT_ID_ERROR_UNDER_TWELVE_CHECK = "generic_alert_korea07";
+  IdentityManagementConstants.LICENSE_GAME_NAME = "제명";
+  IdentityManagementConstants.LICENCE_COMPANY_NAME = "상호";
+  IdentityManagementConstants.LICENSE_RATING = "이용등급";
+  IdentityManagementConstants.LICENSE_RATING_NUMBER = "등급분류번호";
+  IdentityManagementConstants.LICENSE_DATE_OF_RATING_DELIVERY = "등급분류일자";
+  IdentityManagementConstants.LICENSE_PUBLISHER_NUMBER = "배급업신고번호";
+  IdentityManagementConstants.LICENSE_KOREAN_COMPANY_NAME = "굿게임스튜디오스코리아 유한회사";
+  IdentityManagementConstants.LICENSE_AGE_RATING_SUFFIX = "세이용가";
+  IdentityManagementConstants.LICENSE_NUMBER = "제2013-000003호";
+  IdentityManagementConstants.TEXT_ID_INITIAL_AGE_RATING_INFO = "generic_childProtectionInfo_korea";
+  IdentityManagementConstants.LICENSE_REFRESHER_INITIAL_SHOW_DELAY_SECONDS = 4;
+  IdentityManagementConstants.LICENSE_SHOW_SCHEDULE_MINUTES = 60;
+  IdentityManagementConstants.LICENSE_DISPLAY_DURATION_SECONDS = 4;
+  IdentityManagementConstants.ERROR_SHUT_DOWN_ALERT = 0;
+  IdentityManagementConstants.ERROR_UNDERAGE_LOGOUT = 1;
+  IdentityManagementConstants.SHUTDOWN_CONTROL_TIMER = 300;
+  IdentityManagementConstants.TRACKING_SIREN24_SUCCESSFUL_ID_CHECK = 1;
+  IdentityManagementConstants.TRACKING_SIREN24_MISSING_ID_CHECK_DATA = 2;
+  IdentityManagementConstants.TRACKINg_SIREN24_ID_ALREADY_REGISTERED = 3;
+  IdentityManagementConstants.TRACKING_SIREN24_AGE_CHECK_FAILED_DURING_REGISTRATION = 4;
+  IdentityManagementConstants.TRACKING_SIREN24_REGISTER_NOT_ALLOWED_FOR_AGE = 5;
+  IdentityManagementConstants.TRACKING_SIREN24_GENERAL_VERIFICATION_ERROR = 6;
+  return IdentityManagementConstants;
+}();
+exports.IdentityManagementConstants = i;
