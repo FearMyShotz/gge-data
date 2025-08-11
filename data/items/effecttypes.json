@@ -509,8 +509,8 @@
   },
   {
     "effectTypeID": "99",
-    "sortCategory": "9",
-    "sortGroup": "20",
+    "sortCategory": "4",
+    "sortGroup": "5",
     "name": "amountPeasantBoost"
   },
   {
@@ -824,6 +824,8 @@
   },
   {
     "effectTypeID": "154",
+    "sortCategory": "6",
+    "sortGroup": "9",
     "name": "fameBoostUnit"
   },
   {

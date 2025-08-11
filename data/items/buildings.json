@@ -58337,7 +58337,7 @@
     "height": "5",
     "shopCategory": "CIVIL",
     "buildingGroundType": "CIVIL",
-    "constructionItemGroupIDs": "14,15,19,20,2008,2031,2047,3008,3020,3104,229,230,243,61",
+    "constructionItemGroupIDs": "700",
     "name": "LegendQuarry",
     "level": "1",
     "requiredLegendLevel": "1",
@@ -106740,7 +106740,7 @@
     "isFusionSource": "0",
     "isFusionTarget": "0",
     "sellC1": "1600000",
-    "areaSpecificEffects": "13&75,370&60,371&75000",
+    "areaSpecificEffects": "387&75,370&60,371&75000",
     "tempServerDestructable": "1"
   },
   {
@@ -106818,7 +106818,7 @@
     "isFusionSource": "0",
     "isFusionTarget": "0",
     "sellC1": "1200000",
-    "areaSpecificEffects": "13&35,370&30,371&37500",
+    "areaSpecificEffects": "387&35,370&30,371&37500",
     "tempServerDestructable": "1"
   },
   {
