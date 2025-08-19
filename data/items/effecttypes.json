@@ -1209,8 +1209,8 @@
   },
   {
     "effectTypeID": "59",
-    "sortCategory": "1",
-    "sortGroup": "8",
+    "sortCategory": "5",
+    "sortGroup": "11",
     "name": "SightRadiusBonus"
   },
   {
