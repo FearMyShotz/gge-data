@@ -7,3 +7,5 @@ diffs/
 game-engine-analyzer.js
 run-analysis.js
 data/scripts/typescript/
+data/scripts/*/*.js
+!data/scripts/*/deobfuscated.js
