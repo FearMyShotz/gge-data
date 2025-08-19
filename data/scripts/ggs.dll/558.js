@@ -1,1 +1,0 @@
-module.exports = require("./559.js").locale2();

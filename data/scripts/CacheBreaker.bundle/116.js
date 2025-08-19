@@ -1,1 +1,0 @@
-module.exports = require("./126.js")(2);
