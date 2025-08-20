@@ -49675,15 +49675,20 @@ var ggs_lib = function (e) {
     };
     ItemVersions.prototype.fill = function () {
       this.assets.Deco_Building_springBonfire = "itemassets/Building/Deco/Deco_Building_springBonfire/Deco_Building_springBonfire--1616681902168";
+      this.assets.CastleMessageIconsThornking = "itemassets/Dialogs/Messages/MessageIcons/CastleMessageIconsThornking/CastleMessageIconsThornking--1755678399200";
+      this.assets.ModernGenericEventRewardExt = "itemassets/Dialogs/Events/AllianceMobilizationEvent/ModernGenericEventRewardExt/ModernGenericEventRewardExt--1755678399200";
+      this.assets.Collectable_Currency_ShardEdric = "itemassets/Collectables/Generals/Collectable_Currency_ShardEdric/Collectable_Currency_ShardEdric--1755248871632";
+      this.assets.Collectable_Currency_EdricToken = "itemassets/Collectables/Generals/Collectable_Currency_EdricToken/Collectable_Currency_EdricToken--1755248871632";
+      this.assets.Collectable_Currency_EdricToken_DropShadow = "itemassets/Collectables/Generals/Collectable_Currency_EdricToken_DropShadow/Collectable_Currency_EdricToken_DropShadow--1755248871632";
       this.assets.Event_Building_AllianceMobilizationEvent = "itemassets/Building/Event/Event_Building_AllianceMobilizationEvent/Event_Building_AllianceMobilizationEvent--1755080652292";
       this.assets.Collectable_Currency_BarinToken = "itemassets/Collectables/Generals/Collectable_Currency_BarinToken/Collectable_Currency_BarinToken--1754383423540";
       this.assets.Collectable_Currency_BarinToken_DropShadow = "itemassets/Collectables/Generals/Collectable_Currency_BarinToken_DropShadow/Collectable_Currency_BarinToken_DropShadow--1754383423540";
-      this.assets.GeneralPortrait_126 = "itemassets/General/Portrait/GeneralPortrait_126/GeneralPortrait_126--1754297612644";
-      this.assets.General_126_Animated = "itemassets/General/Generals_Animated/General_126_Animated/General_126_Animated--1754297612644";
-      this.assets.GeneralsBackground_126 = "itemassets/General/Background/GeneralsBackground_126/GeneralsBackground_126--1754297612644";
-      this.assets.GeneralsBackground_126_BW = "itemassets/General/Background_BW/GeneralsBackground_126_BW/GeneralsBackground_126_BW--1754297612644";
-      this.assets.GeneralIcon_126 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_126/GeneralIcon_126--1754297612644";
-      this.assets.GeneralIcon_126_Preview = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_126_Preview/GeneralIcon_126_Preview--1754297612644";
+      this.assets.GeneralPortrait_126 = "itemassets/General/Portrait/GeneralPortrait_126/GeneralPortrait_126--1755248871632";
+      this.assets.General_126_Animated = "itemassets/General/Generals_Animated/General_126_Animated/General_126_Animated--1755250179189";
+      this.assets.GeneralsBackground_126 = "itemassets/General/Background/GeneralsBackground_126/GeneralsBackground_126--1755248871632";
+      this.assets.GeneralsBackground_126_BW = "itemassets/General/Background_BW/GeneralsBackground_126_BW/GeneralsBackground_126_BW--1755248871632";
+      this.assets.GeneralIcon_126 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_126/GeneralIcon_126--1755248871632";
+      this.assets.GeneralIcon_126_Preview = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_126_Preview/GeneralIcon_126_Preview--1755248871632";
       this.assets.EventStarterAnnouncementTeaser_131 = "itemassets/Dialogs/EventAnnouncement/TeaserImages/EventStarterAnnouncementTeaser_131/EventStarterAnnouncementTeaser_131--1754297612644";
       this.assets.EventEndTeaser_131 = "itemassets/Dialogs/DistrictGatcha/EventEndTeaser/EventEndTeaser_131/EventEndTeaser_131--1754297612644";
       this.assets.General_127_Animated = "itemassets/General/Generals_Animated/General_127_Animated/General_127_Animated--1754052872498";
@@ -50472,7 +50477,7 @@ var ggs_lib = function (e) {
       this.assets.GeneralsBackground_112_BW = "itemassets/General/Background_BW/GeneralsBackground_112_BW/GeneralsBackground_112_BW--1697553710033";
       this.assets.GeneralIcon_112 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_112/GeneralIcon_112--1697553710033";
       this.assets.GeneralIcon_112_Preview = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_112_Preview/GeneralIcon_112_Preview--1697553710033";
-      this.assets.GeneralsHub_6 = "itemassets/Dialogs/Generals/GeneralsHub/GeneralsHub_6/GeneralsHub_6--1748941582918";
+      this.assets.GeneralsHub_6 = "itemassets/Dialogs/Generals/GeneralsHub/GeneralsHub_6/GeneralsHub_6--1755510072339";
       this.assets.ConstructionItem_SamuraiTavern = "itemassets/ConstructionItems/ConstructionItem_SamuraiTavern/ConstructionItem_SamuraiTavern--1697442793585";
       this.assets.ConstructionItem_SamuraiGuardhouse = "itemassets/ConstructionItems/ConstructionItem_SamuraiGuardhouse/ConstructionItem_SamuraiGuardhouse--1697442793585";
       this.assets.Tavern_Building_samuraiTavern = "itemassets/Building/Tavern/Tavern_Building_samuraiTavern/Tavern_Building_samuraiTavern--1697442793585";
@@ -131092,4 +131097,4 @@ var ggs_lib = function (e) {
     return common[e] || null;
   };
 }]);
-//# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/dll/ggs.dll.74f6542c54b67de5f201.js.map
+//# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/dll/ggs.dll.3044ae367aaffed108a2.js.map

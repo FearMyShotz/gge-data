@@ -11433,170 +11433,6 @@ this.createjs = this.createjs || {};
   createjs.ColorTransform = n;
 })(window);
 /*
-GlowFilter for EaselJS
-GitHub : https://github.com/u-kudox/Filters_for_EaselJS
-Contact and Bug reports : http://kudox.jp/contact or http://twitter.com/u_kudox
-License : public domain
-*/
-this.createjs = this.createjs || {};
-(function (t) {
-  'use strict';
-
-  function GlowFilter(t, e, i, s, r, n, a, o) {
-    if (typeof t == "string") {
-      t = parseInt(t.substr(1), 16);
-    }
-    if (isNaN(t)) {
-      this._red = 255;
-      this._green = this._blue = 0;
-    } else {
-      this.color = t;
-    }
-    this._blurFilter = new createjs.BlurFilter(i, s, n);
-    this.alpha = e !== undefined ? e : 1;
-    this.strength = r !== undefined ? r : 1;
-    this.inner = !!a;
-    this.knockout = !!o;
-  }
-  var e = createjs.extend(GlowFilter, createjs.Filter);
-  Object.defineProperties(e, {
-    color: {
-      get: function () {
-        return this._red << 16 | this._green << 8 | this._blue;
-      },
-      set: function (t) {
-        this._red = t >> 16 & 255;
-        this._green = t >> 8 & 255;
-        this._blue = t & 255;
-        return this.color;
-      },
-      enumerable: true
-    },
-    blurX: {
-      get: function () {
-        return this._blurFilter.blurX;
-      },
-      set: function (t) {
-        this._blurFilter.blurX = t;
-        return t;
-      },
-      enumerable: true
-    },
-    blurY: {
-      get: function () {
-        return this._blurFilter.blurY;
-      },
-      set: function (t) {
-        this._blurFilter.blurY = t;
-        return t;
-      },
-      enumerable: true
-    },
-    quality: {
-      get: function () {
-        return this._blurFilter.quality;
-      },
-      set: function (t) {
-        this._blurFilter.quality = t;
-        return t;
-      },
-      enumerable: true
-    }
-  });
-  e.getBounds = function (t) {
-    if (this.inner) {
-      return t;
-    } else {
-      return this._blurFilter.getBounds(t);
-    }
-  };
-  e.applyFilter = function (e, i, s, r, n, a, o, h) {
-    if ((this.alpha <= 0 || this.strength <= 0) && !this.knockout) {
-      return true;
-    }
-    a = a || e;
-    if (o === undefined) {
-      o = i;
-    }
-    if (h === undefined) {
-      h = s;
-    }
-    if (e._doFastGlow) {
-      a.save();
-      a.shadowBlur = 20;
-      a.shadowColor = t.rgbToHex(this._red, this._green, this._blue, true);
-      var c = e._filterOffsetX / Math.min(e._cacheScale, 1);
-      var u = e._filterOffsetY / Math.min(e._cacheScale, 1);
-      a.drawImage(e.canvas, i, s, r, n, o + e._cacheOffsetX + c, h + e._cacheOffsetY + u, r / e._cacheScale, n / e._cacheScale);
-      a.restore();
-      return true;
-    }
-    var l = a.getImageData(o, h, r, n).data;
-    var d = t.__filterCanvas ||= document.createElement("canvas");
-    d.width = r;
-    d.height = n;
-    var p = t.__filterContext ||= d.getContext("2d");
-    var _ = p.getImageData(0, 0, r, n);
-    var f = _.data;
-    var g = this.inner;
-    var m = this._red / 255;
-    var v = this._green / 255;
-    var y = this._blue / 255;
-    for (var T = 0, b = f.length; T < b; T += 4) {
-      var S = T + 3;
-      var E = l[S];
-      if (g) {
-        if (E !== 255) {
-          f[T] = m * E;
-          f[T + 1] = v * E;
-          f[T + 2] = y * E;
-          f[S] = 255 - E;
-        }
-      } else if (E !== 0) {
-        f[T] = m * E;
-        f[T + 1] = v * E;
-        f[T + 2] = y * E;
-        f[S] = E;
-      }
-    }
-    p.putImageData(_, 0, 0);
-    var w = this.strength;
-    if (w > 0) {
-      this._blurFilter.applyFilter(p, 0, 0, r, n);
-      if (w > 5) {
-        w = 5;
-      }
-      for (var x = 1; x < w; x++) {
-        p.drawImage(d, 0, 0);
-      }
-    }
-    var P;
-    var j = this.alpha;
-    if (j < 0) {
-      j = 0;
-    } else if (j > 1) {
-      j = 1;
-    }
-    P = this.knockout ? g ? "source-in" : "source-out" : g ? "source-atop" : "destination-over";
-    a.save();
-    a.setTransform(1, 0, 0, 1, 0, 0);
-    a.globalAlpha = j;
-    a.globalCompositeOperation = P;
-    a.drawImage(d, o, h);
-    a.restore();
-    d.width = d.height = 0;
-    return true;
-  };
-  e.clone = function () {
-    var t = this._blurFilter;
-    return new createjs.GlowFilter(this.color, this.alpha, t.blurX, t.blurY, this.strength, t.quality, this.inner, this.knockout);
-  };
-  e.toString = function () {
-    return "[GlowFilter]";
-  };
-  createjs.GlowFilter = createjs.promote(GlowFilter, "Filter");
-})(window);
-/*
 DropShadowFilter for EaselJS
 GitHub : https://github.com/u-kudox/Filters_for_EaselJS
 Contact and Bug reports : http://kudox.jp/contact or http://twitter.com/u_kudox
@@ -11799,6 +11635,170 @@ this.createjs = this.createjs || {};
   createjs.DropShadowFilter = createjs.promote(DropShadowFilter, "Filter");
 })(window);
 /*
+GlowFilter for EaselJS
+GitHub : https://github.com/u-kudox/Filters_for_EaselJS
+Contact and Bug reports : http://kudox.jp/contact or http://twitter.com/u_kudox
+License : public domain
+*/
+this.createjs = this.createjs || {};
+(function (t) {
+  'use strict';
+
+  function GlowFilter(t, e, i, s, r, n, a, o) {
+    if (typeof t == "string") {
+      t = parseInt(t.substr(1), 16);
+    }
+    if (isNaN(t)) {
+      this._red = 255;
+      this._green = this._blue = 0;
+    } else {
+      this.color = t;
+    }
+    this._blurFilter = new createjs.BlurFilter(i, s, n);
+    this.alpha = e !== undefined ? e : 1;
+    this.strength = r !== undefined ? r : 1;
+    this.inner = !!a;
+    this.knockout = !!o;
+  }
+  var e = createjs.extend(GlowFilter, createjs.Filter);
+  Object.defineProperties(e, {
+    color: {
+      get: function () {
+        return this._red << 16 | this._green << 8 | this._blue;
+      },
+      set: function (t) {
+        this._red = t >> 16 & 255;
+        this._green = t >> 8 & 255;
+        this._blue = t & 255;
+        return this.color;
+      },
+      enumerable: true
+    },
+    blurX: {
+      get: function () {
+        return this._blurFilter.blurX;
+      },
+      set: function (t) {
+        this._blurFilter.blurX = t;
+        return t;
+      },
+      enumerable: true
+    },
+    blurY: {
+      get: function () {
+        return this._blurFilter.blurY;
+      },
+      set: function (t) {
+        this._blurFilter.blurY = t;
+        return t;
+      },
+      enumerable: true
+    },
+    quality: {
+      get: function () {
+        return this._blurFilter.quality;
+      },
+      set: function (t) {
+        this._blurFilter.quality = t;
+        return t;
+      },
+      enumerable: true
+    }
+  });
+  e.getBounds = function (t) {
+    if (this.inner) {
+      return t;
+    } else {
+      return this._blurFilter.getBounds(t);
+    }
+  };
+  e.applyFilter = function (e, i, s, r, n, a, o, h) {
+    if ((this.alpha <= 0 || this.strength <= 0) && !this.knockout) {
+      return true;
+    }
+    a = a || e;
+    if (o === undefined) {
+      o = i;
+    }
+    if (h === undefined) {
+      h = s;
+    }
+    if (e._doFastGlow) {
+      a.save();
+      a.shadowBlur = 20;
+      a.shadowColor = t.rgbToHex(this._red, this._green, this._blue, true);
+      var c = e._filterOffsetX / Math.min(e._cacheScale, 1);
+      var u = e._filterOffsetY / Math.min(e._cacheScale, 1);
+      a.drawImage(e.canvas, i, s, r, n, o + e._cacheOffsetX + c, h + e._cacheOffsetY + u, r / e._cacheScale, n / e._cacheScale);
+      a.restore();
+      return true;
+    }
+    var l = a.getImageData(o, h, r, n).data;
+    var d = t.__filterCanvas ||= document.createElement("canvas");
+    d.width = r;
+    d.height = n;
+    var p = t.__filterContext ||= d.getContext("2d");
+    var _ = p.getImageData(0, 0, r, n);
+    var f = _.data;
+    var g = this.inner;
+    var m = this._red / 255;
+    var v = this._green / 255;
+    var y = this._blue / 255;
+    for (var T = 0, b = f.length; T < b; T += 4) {
+      var S = T + 3;
+      var E = l[S];
+      if (g) {
+        if (E !== 255) {
+          f[T] = m * E;
+          f[T + 1] = v * E;
+          f[T + 2] = y * E;
+          f[S] = 255 - E;
+        }
+      } else if (E !== 0) {
+        f[T] = m * E;
+        f[T + 1] = v * E;
+        f[T + 2] = y * E;
+        f[S] = E;
+      }
+    }
+    p.putImageData(_, 0, 0);
+    var w = this.strength;
+    if (w > 0) {
+      this._blurFilter.applyFilter(p, 0, 0, r, n);
+      if (w > 5) {
+        w = 5;
+      }
+      for (var x = 1; x < w; x++) {
+        p.drawImage(d, 0, 0);
+      }
+    }
+    var P;
+    var j = this.alpha;
+    if (j < 0) {
+      j = 0;
+    } else if (j > 1) {
+      j = 1;
+    }
+    P = this.knockout ? g ? "source-in" : "source-out" : g ? "source-atop" : "destination-over";
+    a.save();
+    a.setTransform(1, 0, 0, 1, 0, 0);
+    a.globalAlpha = j;
+    a.globalCompositeOperation = P;
+    a.drawImage(d, o, h);
+    a.restore();
+    d.width = d.height = 0;
+    return true;
+  };
+  e.clone = function () {
+    var t = this._blurFilter;
+    return new createjs.GlowFilter(this.color, this.alpha, t.blurX, t.blurY, this.strength, t.quality, this.inner, this.knockout);
+  };
+  e.toString = function () {
+    return "[GlowFilter]";
+  };
+  createjs.GlowFilter = createjs.promote(GlowFilter, "Filter");
+})(window);
+/*
  * ScaleBitmap
  * Visit http://createjs.com/ for documentation, updates and examples.
  *
@@ -11993,4 +11993,4 @@ this.createjs = this.createjs || {};
     return "[ScaleBitmap (name=" + this.name + ")]";
   };
   createjs.ScaleBitmap = createjs.promote(ScaleBitmap, "DisplayObject");
-})(); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/vendor.bundle.f56add8f.js.map
+})(); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/vendor.bundle.f8b9303b.js.map

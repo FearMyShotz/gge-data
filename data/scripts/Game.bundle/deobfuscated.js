@@ -112860,7 +112860,7 @@
 }, function (e) {
   e.exports = {
     name: "@goodgamestudios/empire-createjs-assets",
-    version: "1.2.1082",
+    version: "1.2.1087",
     main: "generated/index.js",
     types: "generated/index.d.ts",
     description: "CreateJS Assets for Empire HTML5",
@@ -112967,7 +112967,7 @@
 }, function (e) {
   e.exports = {
     name: "TranspilationEmpire",
-    version: "1.139.20",
+    version: "1.139.21",
     description: "Transpiled version of the Flash game",
     main: "index.js",
     repository: "git@source.services.ggs-net.com:Foundation-HTML5/TranspilationEmpire.git",
@@ -492164,4 +492164,4 @@
     return ModernStartscreenComponent;
   }(l.CastleStartscreenComponent);
   t.ModernStartscreenComponent = d;
-}]); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/Game.bundle.7698c79c5e393703e79e.js.map
+}]); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/Game.bundle.ad616aceb3c1799d82d3.js.map
