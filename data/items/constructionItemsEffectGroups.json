@@ -198,5 +198,9 @@
   {
     "constructionItemEffectGroupID": "58",
     "areaLimit": "1"
+  },
+  {
+    "constructionItemEffectGroupID": "59",
+    "areaLimit": "1"
   }
 ]

@@ -15128,6 +15128,8 @@
   },
   {
     "equipmentID": "1312",
+    "comment1": "Anniversary 2025 ",
+    "comment2": "Festive Chest",
     "wearerID": "2",
     "slotID": "5",
     "effects": "21&8,334&25,66&10",
@@ -15138,6 +15140,8 @@
   },
   {
     "equipmentID": "1313",
+    "comment1": "Anniversary 2025 ",
+    "comment2": "Festive Cake",
     "wearerID": "1",
     "slotID": "5",
     "effects": "335&45,37&25000",
@@ -15148,6 +15152,8 @@
   },
   {
     "equipmentID": "1314",
+    "comment1": "Anniversary 2025 ",
+    "comment2": "Revelry rocket",
     "wearerID": "2",
     "slotID": "5",
     "reuseAssetOfEquipmentID": "1196",
@@ -15159,6 +15165,8 @@
   },
   {
     "equipmentID": "1315",
+    "comment1": "Anniversary 2025 ",
+    "comment2": "Revelry rocket",
     "wearerID": "2",
     "slotID": "5",
     "reuseAssetOfEquipmentID": "1196",
@@ -15170,6 +15178,8 @@
   },
   {
     "equipmentID": "1316",
+    "comment1": "Anniversary 2025 ",
+    "comment2": "Revelry rocket",
     "wearerID": "2",
     "slotID": "5",
     "reuseAssetOfEquipmentID": "1196",
@@ -15181,6 +15191,8 @@
   },
   {
     "equipmentID": "1317",
+    "comment1": "Anniversary 2025 ",
+    "comment2": "Anniversary Party Cannon",
     "wearerID": "1",
     "slotID": "5",
     "reuseAssetOfEquipmentID": "926",
@@ -15192,6 +15204,8 @@
   },
   {
     "equipmentID": "1318",
+    "comment1": "Anniversary 2025 ",
+    "comment2": "Anniversary Cake",
     "wearerID": "2",
     "slotID": "5",
     "reuseAssetOfEquipmentID": "923",

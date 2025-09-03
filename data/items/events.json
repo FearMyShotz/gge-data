@@ -71,7 +71,7 @@
     "comment2": "Herald of the AllianceNomadInvasion",
     "kIDs": "0",
     "eventType": "AllianceNomadInvasion",
-    "eventExtensionUnlock": "70",
+    "eventExtensionUnlock": "10",
     "minLevel": 10,
     "maxLevel": "99",
     "sortOrder": "400"
@@ -284,7 +284,7 @@
     "comment2": "Nomad Invasion Vendor",
     "kIDs": "0",
     "eventType": "NomadInvasionVendor",
-    "eventExtensionUnlock": "70",
+    "eventExtensionUnlock": "10",
     "minLevel": 10,
     "maxLevel": "99",
     "sortOrder": "400"
@@ -295,7 +295,7 @@
     "comment2": "Daimyo Shop",
     "kIDs": "0",
     "eventType": "DaimyoShop",
-    "minLevel": 70,
+    "minLevel": 10,
     "maxLevel": "99",
     "sortOrder": "400"
   },

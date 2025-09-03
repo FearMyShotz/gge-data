@@ -11,3 +11,7 @@ data/scripts/**/*.js
 !data/scripts/**/deobfuscated.js
 data/scripts/game-engine-analysis.json
 data/scripts/**/bundle.json
+*.cjs
+tsconfig.json
+data/scripts/typescript*
+typescript-reconstruction-tool.js
