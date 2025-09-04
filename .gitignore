@@ -15,3 +15,4 @@ data/scripts/**/bundle.json
 tsconfig.json
 data/scripts/typescript*
 typescript-reconstruction-tool.js
+run-clean.ps1
