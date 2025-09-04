@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Медлен-\nнее",
   "dialog_options_questnoteText": "Уведомление об \"открытых целях\"",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Маленький эмблема боевого топора",
   "webshop_piratesWoodcutterTCI_desc": "Временный строительный элемент для лесоруба. Предоставляет бонус к производству еды на 4 дня.",
   "event_title_129": "Великий Турнир",
+  "popup_ame_quest_claim_notification": "Предыдущий квест должен быть сначала заявлен.",
+  "dialog_alliance_treasury_version2": "Фонды альянса:",
   "loading_text_9": "Всякая всячина",
   "loading_text_7": "Обсчитываю сложные алгоритмы",
   "generic_beta": "Beta",

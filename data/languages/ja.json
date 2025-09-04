@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "遅くする",
   "dialog_options_questnoteText": "「未完了クエスト」通知",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "バトルアックスの小さなエンブレム",
   "webshop_piratesWoodcutterTCI_desc": "木こりのための一時的な建設アイテム。4日間の食料生産ボーナスを付与します。",
   "event_title_129": "グランドトーナメント",
+  "popup_ame_quest_claim_notification": "前のクエストを先に要求する必要があります。",
+  "dialog_alliance_treasury_version2": "アライアンス基金：",
   "loading_text_9": "キャラクターを作る",
   "loading_text_7": "複雑なアルゴリズムを計算する",
   "generic_beta": "Beta",

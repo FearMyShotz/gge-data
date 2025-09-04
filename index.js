@@ -332,14 +332,14 @@ async function saveVersions(itemsVersion, languageVersions, scriptsVersion) {
 async function main() {
   await fetchNetworks()
 
+  const itemsVersion = await fetchItems()
+  const languageVersions = await fetchLanguages()
+
   const scripts = await fetchGameClientScripts()
   await decompileScripts(scripts)
   await updateVersionHistory(scripts)
   
   const scriptsVersion = scripts ? new Date().toISOString() : null
-  
-  const itemsVersion = await fetchItems()
-  const languageVersions = await fetchLanguages()
 
   if (itemsVersion && languageVersions) {
     await saveVersions(itemsVersion, languageVersions, scriptsVersion)

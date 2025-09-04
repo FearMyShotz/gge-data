@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "減慢",
   "dialog_options_questnoteText": "「開放目標」通知",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "小型戰斧徽章",
   "webshop_piratesWoodcutterTCI_desc": "木工的臨時建設物品。提供4天的食物生產獎勵。",
   "event_title_129": "盛大錦標賽",
+  "popup_ame_quest_claim_notification": "必須先領取之前的任務。",
+  "dialog_alliance_treasury_version2": "聯盟資金：",
   "loading_text_9": "手工藝品",
   "loading_text_7": "正在計算並執行程式語言",
   "generic_beta": "Beta",

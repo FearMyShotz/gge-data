@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Yavaş- ladı",
   "dialog_options_questnoteText": "\"Açık hedefler\" bildirimi",
@@ -27286,6 +27286,8 @@
   "webshop_barinbase_small_name": "Küçük Savaş Balta Amblemi",
   "webshop_piratesWoodcutterTCI_desc": "Oduncu için geçici inşaat öğesi. 4 gün boyunca gıda üretimi için bonus verir.",
   "event_title_129": "Büyük Turnuva",
+  "popup_ame_quest_claim_notification": "Önceki görev önce talep edilmelidir.",
+  "dialog_alliance_treasury_version2": "İttifak fonları:",
   "loading_text_9": "Tamirci öğeleri",
   "loading_text_7": "Karmaşık algoritmaları hesapla",
   "generic_beta": "Beta",

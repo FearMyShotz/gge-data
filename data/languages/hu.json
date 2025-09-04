@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Lassabb",
   "dialog_options_questnoteText": "„Elérendő célok” értesítés",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Kis embl?ma a csatab?rdra",
   "webshop_piratesWoodcutterTCI_desc": "Ideiglenes építési elem a fakitermelőnek. 4 napig bónuszt ad az élelmiszertermeléshez.",
   "event_title_129": "Nagy Torná",
+  "popup_ame_quest_claim_notification": "Először a korábbi küldetést kell igényelni.",
+  "dialog_alliance_treasury_version2": "Szövetségi alapok:",
   "loading_text_9": "Kézműves tárgyak",
   "loading_text_7": "Komplikált algoritmus kiszámolása",
   "generic_beta": "Beta",

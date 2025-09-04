@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Langsommere",
   "dialog_options_questnoteText": "\"Åbne mål\"-besked",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Lille emblem af kamp?ksen",
   "webshop_piratesWoodcutterTCI_desc": "Et midlertidigt byggeelement til tr?sk?reren. Giver bonus til madproduktion i 4 dage.",
   "event_title_129": "Store turnering",
+  "popup_ame_quest_claim_notification": "Den tidligere quest skal først kræves.",
+  "dialog_alliance_treasury_version2": "Alliancemidler:",
   "loading_text_9": "Byggegenstande",
   "loading_text_7": "Beregn kompliceret algoritme",
   "generic_beta": "Beta",

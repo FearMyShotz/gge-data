@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Más lento",
   "dialog_options_questnoteText": "Notificación de \"Objetivos abiertos\"",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Peque?o emblema del hacha de batalla",
   "webshop_piratesWoodcutterTCI_desc": "Un elemento de construcci?n temporal para el le?ador. Otorga un bono de producci?n de comida durante 4 d?as.",
   "event_title_129": "Gran Torneo",
+  "popup_ame_quest_claim_notification": "Primero hay que reclamar la misión anterior.",
+  "dialog_alliance_treasury_version2": "Fondos de la alianza:",
   "loading_text_9": "Hacer ajustes a los elementos",
   "loading_text_7": "Calcular algoritmos complicados",
   "generic_beta": "Beta",

@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Mais lento",
   "dialog_options_questnoteText": "Notificação de \"objetivos em aberto\"",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Pequeno emblema do machado de batalha",
   "webshop_piratesWoodcutterTCI_desc": "Um item de constru??o tempor?rio para o lenhador. Concede b?nus de produ??o de alimentos por 4 dias.",
   "event_title_129": "Grande Torneio",
+  "popup_ame_quest_claim_notification": "A missão anterior deve ser reivindicada primeiro.",
+  "dialog_alliance_treasury_version2": "Fundos da aliança:",
   "loading_text_9": "Construir objetos",
   "loading_text_7": "Calcule algorítimos complicados",
   "generic_beta": "Beta",

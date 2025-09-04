@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "أبطء",
   "dialog_options_questnoteText": "إشعار \"فتح الأهداف\"",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "شعار صغير لفأس المعركة",
   "webshop_piratesWoodcutterTCI_desc": "عنصر بناء مؤقت للنجار. يمنح زيادة في إنتاج الطعام لمدة 4 أيام.",
   "event_title_129": "البطولة الكبرى",
+  "popup_ame_quest_claim_notification": "يجب المطالبة بالمهمة السابقة أولاً.",
+  "dialog_alliance_treasury_version2": "صندوق التحالف:",
   "loading_text_9": "Tinker items",
   "loading_text_7": "Calculate complicated algorithms",
   "generic_beta": "Beta",

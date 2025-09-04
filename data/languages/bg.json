@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Забавено",
   "dialog_options_questnoteText": "Съобщение „Неизпълнени цели“",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Малък емблема на бойна секира",
   "webshop_piratesWoodcutterTCI_desc": "Временен строителен елемент за дърводелеца. Осигурява бонус за производство на храна за 4 дни.",
   "event_title_129": "Голям турнир",
+  "popup_ame_quest_claim_notification": "Предишното търсене трябва да бъде поискано първо.",
+  "dialog_alliance_treasury_version2": "Фондове на съюза:",
   "loading_text_9": "Tinker items",
   "loading_text_7": "Calculate complicated algorithms",
   "generic_beta": "Beta",

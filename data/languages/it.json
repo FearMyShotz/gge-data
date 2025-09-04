@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Più lento",
   "dialog_options_questnoteText": "Avviso \"Obiettivi aperti\"",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Piccolo emblema dell'ascia da battaglia",
   "webshop_piratesWoodcutterTCI_desc": "Un elemento di costruzione temporaneo per il boscaiolo. Fornisce un bonus alla produzione di cibo per 4 giorni.",
   "event_title_129": "Grande Torneo",
+  "popup_ame_quest_claim_notification": "La missione precedente deve essere prima reclamata.",
+  "dialog_alliance_treasury_version2": "Fondi dell'alleanza:",
   "loading_text_9": "Crea oggetti",
   "loading_text_7": "Calcola complicato algoritmo",
   "generic_beta": "Beta",

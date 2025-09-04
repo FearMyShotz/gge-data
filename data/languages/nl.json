@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Lang-\nzamer",
   "dialog_options_questnoteText": "Open doelen'-bericht",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Klein embleem van de strijdbijl",
   "webshop_piratesWoodcutterTCI_desc": "Een tijdelijk bouwitem voor de houtkapper. Geeft een bonus op voedselproductie voor 4 dagen.",
   "event_title_129": "Groot Toernooi",
+  "popup_ame_quest_claim_notification": "De vorige quest moet eerst worden opgeëist.",
+  "dialog_alliance_treasury_version2": "Bondgenootschapsfondsen:",
   "loading_text_9": "Prutserige items",
   "loading_text_7": "Calculeer gecompliceerde algoritmes",
   "generic_beta": "Beta",

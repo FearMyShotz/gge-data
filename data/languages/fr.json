@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Plus lent",
   "dialog_options_questnoteText": "Notifications « Objectifs en cours »",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Petit embl?me de la hache de bataille",
   "webshop_piratesWoodcutterTCI_desc": "Un ?l?ment de construction temporaire pour le b?cheron. Accorde un bonus ? la production de nourriture pendant 4 jours.",
   "event_title_129": "Grand Tournoi",
+  "popup_ame_quest_claim_notification": "La quête précédente doit être d'abord revendiquée.",
+  "dialog_alliance_treasury_version2": "Fonds d'alliance :",
   "loading_text_9": "Bricoler des objets",
   "loading_text_7": "Calcul d'algorithmes compliqués",
   "generic_beta": "Beta",

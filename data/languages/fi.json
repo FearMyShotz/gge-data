@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Hitaampi",
   "dialog_options_questnoteText": "Ilmoitus \"avoimista tavoitteista\"",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Pieni taistelukirveen emblem",
   "webshop_piratesWoodcutterTCI_desc": "V?liaikainen rakennusosa puunkaatajalle. Antaa bonusta ruoan tuotannossa 4 p?iv?n ajan.",
   "event_title_129": "Suuri turnaus",
+  "popup_ame_quest_claim_notification": "Aiempi tehtävä on ensin vaadittava.",
+  "dialog_alliance_treasury_version2": "Liittouman varat:",
   "loading_text_9": "Korjaa kohteita",
   "loading_text_7": "Ratkaise monimutkaisia yhtälöitä",
   "generic_beta": "Beta",

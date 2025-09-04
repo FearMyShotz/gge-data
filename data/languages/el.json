@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Πιο αργά",
   "dialog_options_questnoteText": "Ειδοποίηση \"Ανοιχτοί στόχοι\"",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Μικρό έμβλημα πολεμικού τσεκουριού",
   "webshop_piratesWoodcutterTCI_desc": "Μια προσωρινή κατασκευαστική μονάδα για τον ξυλοκόπο. Παρέχει μπόνους παραγωγής τροφίμων για 4 ημέρες.",
   "event_title_129": "Μεγάλο Τουρνουά",
+  "popup_ame_quest_claim_notification": "Η προηγούμενη αποστολή πρέπει πρώτα να διεκδικηθεί.",
+  "dialog_alliance_treasury_version2": "Ταμεία συμμαχίας:",
   "loading_text_9": "Φτιάχνω αντικείμενα",
   "loading_text_7": "Υπολογίζω πολύπλοκο αλγόριθμο",
   "generic_beta": "Beta",

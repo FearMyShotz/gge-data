@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Saktere",
   "dialog_options_questnoteText": "«Åpne mål»-varsel",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Liten emblem av strids?ksa",
   "webshop_piratesWoodcutterTCI_desc": "Et midlertidig byggeelement for skogsarbeideren. Gir bonus for matproduksjon i 4 dager.",
   "event_title_129": "Stort mesterskap",
+  "popup_ame_quest_claim_notification": "Forrige oppdrag må kreves først.",
+  "dialog_alliance_treasury_version2": "Alliansemidler:",
   "loading_text_9": "Lure-gjenstander",
   "loading_text_7": "Kalkuler kompliserte algoritmer",
   "generic_beta": "Beta",

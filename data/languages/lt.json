@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Sulėtintas",
   "dialog_options_questnoteText": "Pranešimas „Nauji tikslai“",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Mažas mūšio kirvio emblema",
   "webshop_piratesWoodcutterTCI_desc": "Laikinas statybos elementas medkirčiui. Suteikia maisto gamybos bonusą 4 dienoms.",
   "event_title_129": "Didysis turnyras",
+  "popup_ame_quest_claim_notification": "Ankstesnė užduotis turi būti pirmiausia reikalaujama.",
+  "dialog_alliance_treasury_version2": "Aljanso fondai:",
   "loading_text_9": "Tinker items",
   "loading_text_7": "Calculate complicated algorithms",
   "generic_beta": "Beta",

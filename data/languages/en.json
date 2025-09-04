@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Slower",
   "dialog_options_questnoteText": "\"Open objectives\" notification",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Small Emblem of the Battleaxe",
   "webshop_piratesWoodcutterTCI_desc": "A Temporary Construction Item for the Woodcutter. Grants bonus food production for 4 days.",
   "event_title_129": "Grand Tournament",
+  "popup_ame_quest_claim_notification": "Previous quest has to be claimed first.",
+  "dialog_alliance_treasury_version2": "Alliance funds:",
   "loading_text_9": "Tinker items",
   "loading_text_7": "Calculate complicated algorithms",
   "generic_beta": "Beta",

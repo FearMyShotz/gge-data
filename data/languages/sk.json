@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Pomalšie",
   "dialog_options_questnoteText": "Notifikácia „Otvorené ciele“",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Mal? emblema bojovej sekery",
   "webshop_piratesWoodcutterTCI_desc": "Dočasný stavebný prvok pre drevorubača. Poskytuje bonus k produkcii jedla na 4 dni.",
   "event_title_129": "Veľký turnaj",
+  "popup_ame_quest_claim_notification": "Predchádzajúcu úlohu je potrebné najprv nárokovať.",
+  "dialog_alliance_treasury_version2": "Fondy aliancie:",
   "loading_text_9": "Tinker items",
   "loading_text_7": "Calculate complicated algorithms",
   "generic_beta": "Beta",

@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Mai lent",
   "dialog_options_questnoteText": "Notificare „Obiective deschise”",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Emblemă mică a securei de luptă",
   "webshop_piratesWoodcutterTCI_desc": "Un element de construcție temporar pentru tăietorul de lemne. Oferă un bonus la producția de alimente timp de 4 zile.",
   "event_title_129": "Grand Turneu",
+  "popup_ame_quest_claim_notification": "Questul anterior trebuie revendicat mai întâi.",
+  "dialog_alliance_treasury_version2": "Fondurile alianței:",
   "loading_text_9": "Tinker items",
   "loading_text_7": "Calculate complicated algorithms",
   "generic_beta": "Beta",

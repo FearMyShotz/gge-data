@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Verlang-\nsamt",
   "dialog_options_questnoteText": "„Offene Ziele“-Meldung",
@@ -27288,6 +27288,8 @@
   "webshop_barinbase_small_name": "Kleines Emblem der Schlachtachse",
   "webshop_piratesWoodcutterTCI_desc": "Ein tempor?res Bauobjekt f?r den Holzf?ller. Gew?hrt einen Bonus auf die Nahrungsmittelproduktion f?r 4 Tage.",
   "event_title_129": "Großes Turnier",
+  "popup_ame_quest_claim_notification": "Die vorherige Quest muss zuerst beansprucht werden.",
+  "dialog_alliance_treasury_version2": "Allianzmittel:",
   "loading_text_9": "Bastle Gegenstände",
   "loading_text_7": "Berechne komplizierten Algorithmus",
   "generic_beta": "Beta",

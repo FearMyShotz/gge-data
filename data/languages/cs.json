@@ -1,11 +1,11 @@
 {
   "@metadata": {
-    "versionNo": "3964",
-    "deployTime": "1756480237",
+    "versionNo": "3966",
+    "deployTime": "1756732237",
     "branch": "test"
   },
-  "versionNo": "3964",
-  "deployTime": "1756480237",
+  "versionNo": "3966",
+  "deployTime": "1756732237",
   "branch": "test",
   "dialog_recruit_peaceModeBlock": "Pomaleji",
   "dialog_options_questnoteText": "Hlášení „Otevřené cíle“",
@@ -27284,6 +27284,8 @@
   "webshop_barinbase_small_name": "Mal? embl?m bojov? sekery",
   "webshop_piratesWoodcutterTCI_desc": "Dočasná stavební položka pro dřevorubce. Poskytuje bonus k výrobě jídla na 4 dny.",
   "event_title_129": "Velký turnaj",
+  "popup_ame_quest_claim_notification": "Předchozí úkol musí být nejprve nárokován.",
+  "dialog_alliance_treasury_version2": "Fonds aliance:",
   "loading_text_9": "Vyrob předměty",
   "loading_text_7": "Vypočítej komplikované algoritmy",
   "generic_beta": "Beta",
