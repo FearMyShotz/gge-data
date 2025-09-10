@@ -58,9 +58,13 @@
 | 54 | Hasan Offering | Give 5 Hasan Offerings to Ludwig | Special Sacrifice |
 | 55 | Tizi Distributor | Give 5 Tizi gifts to Sir Ulrich | Special Sacrifice |
 | 56 | Soldier Cookie Collector | Get 1,000 soldier cookies | Collect |
-| 57 | Ruby Collector + | Get 15,000 rubies | Premium+ |
+| 57 | Ruby Collector + | Receive 15,000 rubies | Premium+ |
 | 58 | Alliance Coin Buyer | Buy 1 Alliance Coin | Alliance Shop |
-| 59 | Ruby Collector ++ | Get 75,000 Rubies | Premium++ |
-| 60 | Alliance Coin Shopper + | Buy
-
-Translated with DeepL.com (free version)
+| 59 | Ruby Collector ++ | Receive 75,000 rubies | Premium++ |
+| 60 | Alliance Coin Shopper + | Purchase 3 Alliance Coins | Alliance Shop+ |
+| 61 | Ruby Collector +++ | Receive 35,000 Rubies | Premium+++ |
+| 62 | Defined Area Buyer | Purchase 25,000 units with at least 310 ranged defense | Shop Units |
+| 63 | Melee Buyer | Purchase 25,000 units with at least 320 melee defense | Shop Units |
+| 64 | Non-Offer Buyer | Purchase 25,000 units with at least 310 ranged attack | Shop Units |
+| 65 | Melee Shop | Buy 25,000 units with min. 325 melee attack | Shop Units |
+| 66 | Alliance Coin Buyer ++ | Buy 7 Alliance Coins | Alliance Shop++ |
