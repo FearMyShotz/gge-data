@@ -4879,7 +4879,7 @@
   {
     "effectID": "431",
     "name": "lootBonus",
-    "effectTypeID": "1",
+    "effectTypeID": "16",
     "capID": "16",
     "areaTypeID": "2,11,13,17,14,27,29,30,35,37",
     "spaceIDs": "0"
