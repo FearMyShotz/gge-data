@@ -7,8 +7,13 @@ diffs/
 game-engine-analyzer.js
 run-analysis.js
 data/scripts/typescript/
+# Ignore TypeScript migration files completely
+data/scripts/typescript-migrated/
+
+# Ignore all other JS files in scripts EXCEPT deobfuscated.js files  
 data/scripts/**/*.js
-!data/scripts/**/deobfuscated.js
+!data/scripts/*/deobfuscated.js
+!data/scripts/*/*/deobfuscated.js
 data/scripts/game-engine-analysis.json
 data/scripts/**/bundle.json
 *.cjs
