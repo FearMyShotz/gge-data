@@ -102,5 +102,12 @@
     "currencyID": "44",
     "directlyByPlayer": "0",
     "sortOrder": "14"
+  },
+  {
+    "allianceFundsDonatableID": "15",
+    "comment2": "AME COIN",
+    "currencyID": "83",
+    "directlyByPlayer": "1",
+    "sortOrder": "15"
   }
 ]

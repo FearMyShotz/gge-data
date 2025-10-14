@@ -1512,15 +1512,33 @@
     "assetName": "HollowMoonEgg"
   },
   {
+    "currencyID": "81",
+    "Name": "QuestTicket",
+    "JSONKey": "QT",
+    "assetName": "QuestTicket"
+  },
+  {
     "currencyID": "82",
     "Name": "Orange",
     "JSONKey": "ORG",
     "assetName": "Orange"
   },
   {
+    "currencyID": "83",
+    "Name": "AllianceCoin",
+    "JSONKey": "AC",
+    "assetName": "AllianceCoin"
+  },
+  {
     "currencyID": "84",
     "Name": "LuckySlice",
     "JSONKey": "LCS",
     "assetName": "LuckySlice"
+  },
+  {
+    "currencyID": "9",
+    "Name": "SweetTreat",
+    "JSONKey": "SWT",
+    "assetName": "SweetTreat"
   }
 ]
