@@ -21,3 +21,7 @@ tsconfig.json
 data/scripts/typescript*
 typescript-reconstruction-tool.js
 run-clean.ps1
+
+*.py*
+*.patch
+chrome-extension/

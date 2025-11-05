@@ -4506,6 +4506,36 @@
     "addKaelrithToken": "1"
   },
   {
+    "rewardID": "70249",
+    "comment1": "Barin 75",
+    "comment2": "Legendary",
+    "addShardBarin": "75"
+  },
+  {
+    "rewardID": "70250",
+    "comment1": "Barin 40",
+    "comment2": "Epic",
+    "addShardBarin": "40"
+  },
+  {
+    "rewardID": "70251",
+    "comment1": "Barin 25",
+    "comment2": "Rare",
+    "addShardBarin": "25"
+  },
+  {
+    "rewardID": "70252",
+    "comment1": "Barin 15",
+    "comment2": "Rare",
+    "addShardBarin": "15"
+  },
+  {
+    "rewardID": "70253",
+    "comment1": "Barin Token",
+    "comment2": "Common",
+    "addBarinToken": "1"
+  },
+  {
     "rewardID": "70254",
     "comment1": "Edric 75",
     "comment2": "Legendary",
@@ -30742,7 +30772,7 @@
   {
     "rewardID": "9232",
     "comment1": "Exalted Spooky Crypt (Hybrid)",
-    "decoWodID": "4333",
+    "decoWodID": "4332",
     "toDecoGlobalStorage": "1"
   },
   {
@@ -30848,7 +30878,7 @@
   {
     "rewardID": "9253",
     "comment1": "Exalted Spooky Crypt (Economy 1)",
-    "decoWodID": "4334",
+    "decoWodID": "4333",
     "toDecoGlobalStorage": "1"
   },
   {
@@ -30894,7 +30924,7 @@
   {
     "rewardID": "9262",
     "comment1": "Exalted Spooky Crypt (Red)",
-    "decoWodID": "4332",
+    "decoWodID": "4331",
     "toDecoGlobalStorage": "1"
   },
   {
@@ -30925,17 +30955,19 @@
   {
     "rewardID": "9268",
     "comment1": "Exalted Spooky Crypt (Economy 2)",
-    "constructionItemIDs": "1030"
+    "decoWodID": "4334",
+    "toDecoGlobalStorage": "1"
   },
   {
     "rewardID": "9269",
     "comment1": "Exalted Spooky Crypt (Economy 3)",
-    "constructionItemIDs": "1031"
+    "decoWodID": "4335",
+    "toDecoGlobalStorage": "1"
   },
   {
     "rewardID": "9270",
     "comment1": "Exalted Spooky Crypt (Green Special)",
-    "decoWodID": "4331",
+    "decoWodID": "4336",
     "toDecoGlobalStorage": "1"
   },
   {
@@ -30946,7 +30978,7 @@
   {
     "rewardID": "9272",
     "comment1": "Gen XP15000",
-    "addGenXP15000": "1"
+    "addGenXP15000": "10"
   },
   {
     "rewardID": "9273",
@@ -31001,7 +31033,7 @@
   {
     "rewardID": "9286",
     "comment1": "Premium Halloween Keep",
-    "constructionItemIDs": "1020#1021",
+    "constructionItemIDs": "1020+7#1021",
     "equipmentIDs": "1357"
   },
   {

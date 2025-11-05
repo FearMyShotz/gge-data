@@ -30084,9 +30084,8 @@
     "slotTypeID": "0",
     "duration": "2419200",
     "constructionItemEffectGroupID": "28",
-    "unboostedFoodProduction": "10000",
     "disassemblingTombolaID": "4",
-    "effects": "298&7500,296&25000"
+    "effects": "298&7500,296&25000,67&5"
   },
   {
     "constructionItemID": "1021",
@@ -30155,9 +30154,8 @@
     "slotTypeID": "0",
     "duration": "2419200",
     "constructionItemEffectGroupID": "28",
-    "unboostedFoodProduction": "10000",
     "disassemblingTombolaID": "4",
-    "effects": "298&7500,296&25000"
+    "effects": "298&7500,296&25000,67&5"
   },
   {
     "constructionItemID": "1026",
@@ -30170,9 +30168,8 @@
     "slotTypeID": "0",
     "duration": "2419200",
     "constructionItemEffectGroupID": "28",
-    "decoPoints": "4000",
     "disassemblingTombolaID": "4",
-    "effects": "80&50,114&50"
+    "effects": "80&50,114&50,193&4000"
   },
   {
     "constructionItemID": "1027",

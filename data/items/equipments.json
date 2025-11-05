@@ -15706,5 +15706,83 @@
     "mightValue": "0",
     "canSlotGem": "0",
     "skinID": "53"
+  },
+  {
+    "equipmentID": "1359",
+    "comment1": "Halloween LTO 2025",
+    "comment2": "Tainted brain",
+    "wearerID": "2",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "1078",
+    "effects": "21&6,334&25",
+    "duration": "120",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "97"
+  },
+  {
+    "equipmentID": "1360",
+    "comment1": "Halloween LTO 2025",
+    "comment2": "Tainted brain",
+    "wearerID": "2",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "1078",
+    "effects": "21&6,334&25",
+    "duration": "72",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "97"
+  },
+  {
+    "equipmentID": "1361",
+    "comment1": "Halloween LTO 2025",
+    "comment2": "Tainted brain",
+    "wearerID": "2",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "1078",
+    "effects": "21&6,334&25",
+    "duration": "24",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "97"
+  },
+  {
+    "equipmentID": "1362",
+    "comment1": "Halloween LTO 2025",
+    "comment2": "Dead or alive poster",
+    "wearerID": "2",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "699",
+    "effects": "21&4,66&5,20&15",
+    "duration": "120",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "18"
+  },
+  {
+    "equipmentID": "1363",
+    "comment1": "Halloween LTO 2025",
+    "comment2": "Dead or alive poster",
+    "wearerID": "2",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "699",
+    "effects": "21&4,66&5,20&15",
+    "duration": "72",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "18"
+  },
+  {
+    "equipmentID": "1364",
+    "comment1": "Halloween LTO 2025",
+    "comment2": "Dead or alive poster",
+    "wearerID": "2",
+    "slotID": "5",
+    "reuseAssetOfEquipmentID": "699",
+    "effects": "21&4,66&5,20&15",
+    "duration": "24",
+    "mightValue": "0",
+    "canSlotGem": "0",
+    "skinID": "18"
   }
 ]

@@ -16,13 +16,13 @@
     "characterID": "2",
     "name": "drunkKnight",
     "spinRarities": "1,1,1,2",
-    "tombolas": "6002+10002#6005+10005#6008+10011",
+    "tombolas": "6002+10002#6005+10005#6008+10011#6013+10017",
     "coolDownInSeconds": "604800",
     "maxFreeOpenings": "1",
     "freeOpeningTombolaID": "10002",
     "unluckyTotalPoints": "15",
     "badLuckProtectionDrawAmount": "15",
-    "packageIDs": "10516",
+    "packageIDs": "10515",
     "badLuckSpinRarities": "1,1,2,3"
   },
   {

@@ -1122,6 +1122,12 @@
     "assetName": "KaelrithToken"
   },
   {
+    "currencyID": "6013",
+    "Name": "BarinToken",
+    "JSONKey": "BRN",
+    "assetName": "BarinToken"
+  },
+  {
     "currencyID": "6014",
     "Name": "EdricToken",
     "JSONKey": "EDR",
@@ -1210,6 +1216,12 @@
     "Name": "ShardKaelrith",
     "JSONKey": "SKL",
     "assetName": "ShardKaelrith"
+  },
+  {
+    "currencyID": "10017",
+    "Name": "ShardBarin",
+    "JSONKey": "SBR",
+    "assetName": "ShardBarin"
   },
   {
     "currencyID": "10016",

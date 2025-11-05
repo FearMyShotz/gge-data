@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "gge-data"
+version = "0.1.0"
+description = "Typed access layer for Goodgame Empire JSON datasets"
+readme = "README.md"
+authors = [
+  { name = "Goodgame Data Enthusiasts" }
+]
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+  "pydantic>=2.8",
+  "typer>=0.12"
+]
+keywords = ["goodgame", "empire", "data", "pydantic"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12"
+]
+
+[project.urls]
+Homepage = "https://example.com/gge-data"
+Repository = "https://example.com/gge-data.git"
+
+[project.scripts]
+"gge-data" = "gge_data.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/gge_data"]
+
+[tool.hatch.build.targets.wheel.force-include]
+"data" = "gge_data/data"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/gge_data",
+  "data",
+  "README.md",
+  "CHANGELOG.md",
+  "LICENSE"
+]
