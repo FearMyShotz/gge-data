@@ -11,6 +11,56 @@ const networks = [1, 5, 11, 26, 34, 39, 64, 65, 68]
 const languageAPI = 'https://translations-api-test.public.ggs-ep.com/12/en/'
 
 const mkdir = d => fs.mkdir(d, { recursive: true })
+const isWindows = process.platform === 'win32'
+
+async function runShellCommand(command) {
+  await new Promise((resolve, reject) => {
+    exec(command, (err, stdout, stderr) => {
+      if (err) {
+        const error = new Error(stderr || err.message)
+        error.cause = err
+        return reject(error)
+      }
+      resolve()
+    })
+  })
+}
+
+async function ensureDirectoryRemoved(dir) {
+  const stats = await fs.stat(dir).catch(() => null)
+  if (!stats || !stats.isDirectory()) return
+
+  try {
+    await fs.rm(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 })
+  } catch (err) {
+    console.warn(`⚠️  Primäres Löschen von ${dir} fehlgeschlagen (${err.code || err.message}). Versuche Fallback...`)
+    try {
+      if (isWindows) {
+        const escaped = dir.replace(/'/g, "''")
+        const psCommand = `powershell -NoLogo -NoProfile -Command "Remove-Item -LiteralPath '${escaped}' -Recurse -Force -ErrorAction Stop"`
+        await runShellCommand(psCommand)
+      } else {
+        const shCommand = `rm -rf "${dir.replace(/"/g, '\\"')}"`
+        await runShellCommand(shCommand)
+      }
+    } catch (fallbackErr) {
+      throw new Error(
+        `Kann Ordner ${dir} nicht löschen. ${fallbackErr.message}\nBitte Skript mit ausreichenden Berechtigungen ausführen oder Ordner manuell entfernen.`
+      )
+    }
+  }
+
+  const stillExists = await fs
+    .stat(dir)
+    .then(() => true)
+    .catch(() => false)
+
+  if (stillExists) {
+    throw new Error(
+      `Ordner ${dir} existiert weiterhin nach Löschversuch. Bitte mit Administratorrechten ausführen oder manuell löschen.`
+    )
+  }
+}
 
 async function formatJavaScript(code) {
   try {
@@ -232,13 +282,17 @@ async function decompileScripts(scripts) {
     const outputDir = path.join('data', 'scripts', baseName)
 
     try {
-      const stats = await fs.stat(outputDir).catch(() => null)
-      if (stats && stats.isDirectory()) {
-        await fs.rm(outputDir, { recursive: true, force: true })
-        console.log(`🗑️  Ordner gelöscht: ${outputDir}`)
+      await ensureDirectoryRemoved(outputDir)
+      const existsAfterRemoval = await fs
+        .stat(outputDir)
+        .then(() => true)
+        .catch(() => false)
+      if (existsAfterRemoval) {
+        throw new Error(`Ordner ${outputDir} existiert weiterhin und kann nicht entfernt werden.`)
       }
     } catch (err) {
-      console.warn(`⚠️  Fehler beim Löschen von ${outputDir}:`, err.message)
+      console.warn(`⚠️  Kann Ausgabeverzeichnis ${outputDir} nicht vorbereiten: ${err.message}`)
+      throw err
     }
 
     await new Promise((resolve, reject) => {
@@ -256,6 +310,187 @@ async function decompileScripts(scripts) {
       })
     })
   }
+}
+
+async function downloadItemAssets() {
+  const candidateSources = [
+    path.join('data', 'scripts', 'ggs.dll', 'deobfuscated.js'),
+    path.join('data', 'scripts', 'ggs.dll.js'),
+    path.join('data', 'scripts', 'ggs.dll', 'index.js')
+  ]
+
+  let sourcePath = null
+  let source = null
+
+  for (const candidate of candidateSources) {
+    const exists = await fs
+      .stat(candidate)
+      .then(stat => stat.isFile())
+      .catch(() => false)
+    if (exists) {
+      sourcePath = candidate
+      break
+    }
+  }
+
+  if (!sourcePath) {
+    console.warn('⚠️  Keine ItemVersions-Quelle gefunden. Überspringe Asset-Download.')
+    return null
+  }
+
+  try {
+    source = await fs.readFile(sourcePath, 'utf8')
+  } catch (err) {
+    console.warn(`⚠️  ItemVersions-Datei nicht lesbar (${sourcePath}):`, err.message)
+    return null
+  }
+
+  console.log(`ℹ️  Verwende ItemVersions-Quelle: ${sourcePath}`)
+  const dotNotationRegex = /this\.assets\.([A-Za-z0-9_]+)\s*=\s*['"]([^'"]+)['"]/g
+  const bracketNotationRegex = /this\.assets\[['"]([^'"]+)['"]\]\s*=\s*['"]([^'"]+)['"]/g
+
+  const assets = new Map()
+
+  const parseContent = content => {
+    dotNotationRegex.lastIndex = 0
+    bracketNotationRegex.lastIndex = 0
+    let localMatch
+    while ((localMatch = dotNotationRegex.exec(content)) !== null) {
+      assets.set(localMatch[1], localMatch[2])
+    }
+    while ((localMatch = bracketNotationRegex.exec(content)) !== null) {
+      assets.set(localMatch[1], localMatch[2])
+    }
+  }
+  parseContent(source)
+
+  if (assets.size === 0) {
+    const fallbackRoot = path.join('data', 'scripts', 'ggs.dll')
+    const pending = [fallbackRoot]
+    const seen = new Set()
+
+    while (pending.length > 0) {
+      const current = pending.pop()
+      if (!current || seen.has(current)) continue
+      seen.add(current)
+
+      const stat = await fs
+        .stat(current)
+        .catch(() => null)
+      if (!stat) continue
+
+      if (stat.isDirectory()) {
+        const entries = await fs.readdir(current).catch(() => [])
+        for (const entry of entries) {
+          pending.push(path.join(current, entry))
+        }
+      } else if (stat.isFile() && current.endsWith('.js')) {
+        try {
+          const content = await fs.readFile(current, 'utf8')
+          if (content.includes('ItemVersions.prototype.fill')) {
+            parseContent(content)
+            if (assets.size > 0) {
+              console.log(`ℹ️  ItemVersions-Daten in ${current} gefunden`)
+              break
+            }
+          }
+        } catch (err) {
+          console.warn(`⚠️  Konnte ${current} nicht lesen: ${err.message}`)
+        }
+      }
+    }
+  }
+
+  if (assets.size === 0) {
+    console.warn('⚠️  Keine Item-Assets in ItemVersions gefunden')
+    return { total: 0, downloaded: 0, skipped: 0, failed: 0 }
+  }
+
+  console.log(`ℹ️  ${assets.size} Item-Asset-Einträge gefunden`)
+
+  const imagesRoot = path.join('data', 'images')
+  await mkdir(imagesRoot)
+
+  const entries = Array.from(assets.entries())
+  const total = entries.length
+  const chunkSize = 10
+  let processed = 0
+  let downloaded = 0
+  let skipped = 0
+  let failed = 0
+
+  const downloadAsset = async (key, assetPath) => {
+    if (!assetPath || assetPath.includes('..')) {
+      console.warn(`⚠️  Überspringe verdächtigen Asset-Pfad für ${key}: ${assetPath}`)
+      skipped += 1
+      processed += 1
+      return
+    }
+
+    const remoteFile = `${assetPath}.png`
+    const segments = assetPath.split('/').filter(Boolean)
+    const fileSegment = segments.pop()
+
+    if (!fileSegment) {
+      console.warn(`⚠️  Überspringe Asset ohne Dateisegment ${key}: ${assetPath}`)
+      skipped += 1
+      processed += 1
+      return
+    }
+
+    // Drop the last folder (which typically repeats the filename) to keep shared category folders
+    if (segments.length > 0) {
+      segments.pop()
+    }
+
+    const relativeDir = segments.length > 0 ? path.join(...segments) : ''
+    const targetDir = relativeDir ? path.join(imagesRoot, relativeDir) : imagesRoot
+    const targetPath = path.join(targetDir, `${fileSegment}.png`)
+
+    const exists = await fs
+      .stat(targetPath)
+      .then(() => true)
+      .catch(() => false)
+
+    if (exists) {
+      skipped += 1
+      processed += 1
+      return
+    }
+
+    await mkdir(targetDir)
+
+  const url = `https://${defaultDomain}/default/assets/${remoteFile}`
+
+    try {
+      const response = await axios.get(url, {
+        responseType: 'arraybuffer',
+        timeout: 20000
+      })
+      await fs.writeFile(targetPath, response.data)
+      downloaded += 1
+    } catch (err) {
+      failed += 1
+      const status = err.response?.status
+        ? `Status ${err.response.status}`
+        : err.code || err.message
+      console.error(`❌ Asset ${key} konnte nicht geladen werden (${url}) - ${status}`)
+    } finally {
+      processed += 1
+    }
+  }
+
+  for (let i = 0; i < total; i += chunkSize) {
+    const chunk = entries.slice(i, i + chunkSize)
+    await Promise.all(chunk.map(([key, assetPath]) => downloadAsset(key, assetPath)))
+    console.log(`🔄 Assets ${Math.min(processed, total)}/${total} verarbeitet`)
+  }
+
+  console.log(
+    `✅ Asset-Download abgeschlossen: ${downloaded} neu, ${skipped} übersprungen, ${failed} fehlgeschlagen`
+  )
+
+  return { total, downloaded, skipped, failed }
 }
 
 async function loadVersionHistory() {
@@ -338,6 +573,7 @@ async function main() {
   const scripts = await fetchGameClientScripts()
   await decompileScripts(scripts)
   await updateVersionHistory(scripts)
+  await downloadItemAssets()
   
   const scriptsVersion = scripts ? new Date().toISOString() : null
 
