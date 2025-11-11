@@ -582,5 +582,117 @@
     "donationTypeID": "2",
     "currencyID": "1",
     "ratio": "5400"
+  },
+  {
+    "donationItemID": "76",
+    "donationItemSetID": "6",
+    "donationTypeID": "1",
+    "currencyID": "28",
+    "ratio": "10",
+    "maxPointLimit": "620"
+  },
+  {
+    "donationItemID": "77",
+    "donationItemSetID": "6",
+    "donationTypeID": "1",
+    "currencyID": "15",
+    "ratio": "7",
+    "maxPointLimit": "600"
+  },
+  {
+    "donationItemID": "78",
+    "donationItemSetID": "6",
+    "donationTypeID": "1",
+    "currencyID": "29",
+    "ratio": "55",
+    "maxPointLimit": "565"
+  },
+  {
+    "donationItemID": "79",
+    "donationItemSetID": "6",
+    "donationTypeID": "1",
+    "currencyID": "13",
+    "ratio": "130",
+    "maxPointLimit": "580"
+  },
+  {
+    "donationItemID": "80",
+    "donationItemSetID": "6",
+    "donationTypeID": "1",
+    "currencyID": "7",
+    "ratio": "525",
+    "maxPointLimit": "570"
+  },
+  {
+    "donationItemID": "81",
+    "donationItemSetID": "6",
+    "donationTypeID": "1",
+    "currencyID": "10",
+    "ratio": "490",
+    "maxPointLimit": "575"
+  },
+  {
+    "donationItemID": "82",
+    "donationItemSetID": "6",
+    "donationTypeID": "1",
+    "currencyID": "1",
+    "ratio": "750",
+    "maxPointLimit": "575"
+  },
+  {
+    "donationItemID": "83",
+    "donationItemSetID": "6",
+    "donationTypeID": "2",
+    "currencyID": "8000",
+    "ratio": "1"
+  },
+  {
+    "donationItemID": "84",
+    "donationItemSetID": "6",
+    "donationTypeID": "2",
+    "currencyID": "28",
+    "ratio": "4"
+  },
+  {
+    "donationItemID": "85",
+    "donationItemSetID": "6",
+    "donationTypeID": "2",
+    "currencyID": "15",
+    "ratio": "6"
+  },
+  {
+    "donationItemID": "86",
+    "donationItemSetID": "6",
+    "donationTypeID": "2",
+    "currencyID": "29",
+    "ratio": "10"
+  },
+  {
+    "donationItemID": "87",
+    "donationItemSetID": "6",
+    "donationTypeID": "2",
+    "currencyID": "13",
+    "ratio": "80"
+  },
+  {
+    "donationItemID": "88",
+    "donationItemSetID": "6",
+    "donationTypeID": "2",
+    "currencyID": "7",
+    "ratio": "2350"
+  },
+  {
+    "donationItemID": "89",
+    "donationItemSetID": "6",
+    "donationTypeID": "2",
+    "currencyID": "10",
+    "ratio": "8500"
+  },
+  {
+    "donationItemID": "90",
+    "donationItemSetID": "6",
+    "donationTypeID": "2",
+    "currencyID": "1",
+    "ratio": "4080"
   }
 ]

@@ -1626,15 +1626,15 @@
     return CastleDialogHandler;
   }(o.BasicDialogHandler);
   t.CastleDialogHandler = p;
-  var h = i(4231);
-  var g = i(4232);
-  var C = i(4233);
-  var _ = i(4234);
-  var m = i(4235);
-  var f = i(4236);
-  var O = i(4237);
-  var E = i(4238);
-  var y = i(4239);
+  var h = i(4232);
+  var g = i(4233);
+  var C = i(4234);
+  var _ = i(4235);
+  var m = i(4236);
+  var f = i(4237);
+  var O = i(4238);
+  var E = i(4239);
+  var y = i(4240);
 }, function (e, t, i) {
   'use strict';
 
@@ -1651,7 +1651,7 @@
   var u = i(5);
   var d = i(15);
   var p = i(4);
-  var h = i(514);
+  var h = i(516);
   var g = function (e) {
     function CastleCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -2475,31 +2475,31 @@
       var a = i(291).CollectableItemStoneVO;
       var s = i(3232).CollectableItemStoneVE;
       CollectableEnum.STONE = new CollectableEnum("stone", a, s);
-      var r = i(455).CollectableItemFoodVO;
+      var r = i(456).CollectableItemFoodVO;
       var l = i(3233).CollectableItemFoodVE;
       CollectableEnum.FOOD = new CollectableEnum("food", r, l);
-      var c = i(637).CollectableItemCoalVO;
+      var c = i(638).CollectableItemCoalVO;
       var u = i(3234).CollectableItemCoalVE;
       CollectableEnum.COAL = new CollectableEnum("coal", c, u);
-      var d = i(640).CollectableItemOilVO;
+      var d = i(641).CollectableItemOilVO;
       var p = i(3235).CollectableItemOilVE;
       CollectableEnum.OIL = new CollectableEnum("oil", d, p);
-      var h = i(638).CollectableItemGlassVO;
+      var h = i(639).CollectableItemGlassVO;
       var g = i(3236).CollectableItemGlassVE;
       CollectableEnum.GLASS = new CollectableEnum("glass", h, g);
-      var C = i(639).CollectableItemIronVO;
+      var C = i(640).CollectableItemIronVO;
       var _ = i(3237).CollectableItemIronVE;
       CollectableEnum.IRON = new CollectableEnum("iron", C, _);
       var m = i(1018).CollectableItemAquamarineVO;
       var f = i(3238).CollectableItemAquamarineVE;
       CollectableEnum.AQUAMARINE = new CollectableEnum("aquamarin", m, f);
-      var O = i(531).CollectableItemMeadVO;
+      var O = i(533).CollectableItemMeadVO;
       var E = i(3239).CollectableItemMeadVE;
       CollectableEnum.MEAD = new CollectableEnum("mead", O, E);
-      var y = i(484).CollectableItemBeefVO;
+      var y = i(486).CollectableItemBeefVO;
       var b = i(3240).CollectableItemBeefVE;
       CollectableEnum.BEEF = new CollectableEnum("beef", y, b);
-      var D = i(641).CollectableItemHoneyVO;
+      var D = i(642).CollectableItemHoneyVO;
       var I = i(3241).CollectableItemHoneyVE;
       CollectableEnum.HONEY = new CollectableEnum("honey", D, I);
       var v = i(249).CollectableItemC1VO;
@@ -2511,10 +2511,10 @@
       var L = i(157).CollectableItemGenericCurrencyVO;
       var P = i(3244).CollectableItemGenericCurrencyVE;
       CollectableEnum.GENERIC_CURRENCY = new CollectableEnum("genericCurrency", L, P);
-      var M = i(612).CollectableItemEffectVO;
+      var M = i(613).CollectableItemEffectVO;
       var R = i(3245).CollectableItemEffectVE;
       CollectableEnum.EFFECTS = new CollectableEnum("effects", M, R);
-      var V = i(414).CollectableItemUnitVO;
+      var V = i(415).CollectableItemUnitVO;
       var x = i(3246).CollectableItemUnitVE;
       CollectableEnum.UNITS = new CollectableEnum("units", V, x);
       var w = i(865).CollectableItemPlagueDoctorVO;
@@ -2643,16 +2643,16 @@
       var ct = i(1633).CollectableItemSeasonLeagueMedalVO;
       var ut = i(3316).CollectableItemSeasonLeagueMedalVE;
       CollectableEnum.SEASON_LEAGUE_MEDALS = new CollectableEnum("seasonLeagueMedals", ct, ut);
-      var dt = i(654).CollectableItemSeasonLeagueSeasonPassVO;
+      var dt = i(655).CollectableItemSeasonLeagueSeasonPassVO;
       var pt = i(3317).CollectableItemSeasonLeagueSeasonPassVE;
       CollectableEnum.SEASON_LEAGUE_SEASON_PASS = new CollectableEnum("seasonLeaguePass", dt, pt);
-      var ht = i(655).CollectableItemSeasonLeagueEventPassVO;
+      var ht = i(656).CollectableItemSeasonLeagueEventPassVO;
       var gt = i(3318).CollectableItemSeasonLeagueEventPassVE;
       CollectableEnum.SEASON_LEAGUE_EVENT_PASS = new CollectableEnum("seasonLeaguePassEvent", ht, gt);
-      var Ct = i(541).CollectableItemSeasonLeaguePromotionPassVO;
+      var Ct = i(543).CollectableItemSeasonLeaguePromotionPassVO;
       var _t = i(3319).CollectableItemSeasonLeaguePromotionPassVE;
       CollectableEnum.SEASON_LEAGUE_PROMOTION_PASS = new CollectableEnum("seasonLeaguePassPromotion", Ct, _t);
-      var mt = i(656).CollectableItemUnlockAllPassVO;
+      var mt = i(657).CollectableItemUnlockAllPassVO;
       var ft = i(3320).CollectableItemUnlockAllPassVE;
       CollectableEnum.SEASON_UNLOCK_ALL_PASS = new CollectableEnum("todo", mt, ft);
       var Ot = i(1634).ACollectableItemLootBoxVO;
@@ -2883,7 +2883,7 @@
   var w = i(15);
   var B = i(2004);
   var F = i(4);
-  var N = i(411);
+  var N = i(412);
   var k = i(202);
   var U = i(857);
   var G = i(684);
@@ -4180,7 +4180,7 @@
   var $ = i(366);
   var ee = i(3891);
   var te = i(302);
-  var ie = i(435);
+  var ie = i(436);
   var ne = i(330);
   var oe = i(35);
   var ae = i(9);
@@ -4189,21 +4189,21 @@
   var le = i(3934);
   var ce = i(132);
   var ue = i(205);
-  var de = i(473);
+  var de = i(474);
   var pe = i(357);
   var he = i(1060);
   var ge = i(3935);
   var Ce = i(3941);
-  var _e = i(4155);
-  var me = i(4159);
-  var fe = i(4176);
-  var Oe = i(4187);
-  var Ee = i(4220);
+  var _e = i(4156);
+  var me = i(4160);
+  var fe = i(4177);
+  var Oe = i(4188);
+  var Ee = i(4221);
   var ye = i(1116);
   var be = i(679);
-  var De = i(4222);
+  var De = i(4223);
   var Ie = i(1887);
-  var ve = i(4224);
+  var ve = i(4225);
   var Te = i(1873);
   var Se = i(1145);
   var Ae = i(107);
@@ -5946,7 +5946,7 @@
   var h = i(2013);
   var g = i(2014);
   var C = i(2015);
-  var _ = i(412);
+  var _ = i(413);
   var m = i(2016);
   var f = i(2017);
   var O = i(860);
@@ -8713,7 +8713,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(1);
-  var s = i(416);
+  var s = i(417);
   var r = i(1207);
   var l = i(8);
   var c = function (e) {
@@ -9075,7 +9075,7 @@
   var g = i(112);
   var C = i(294);
   var _ = i(122);
-  var m = i(492);
+  var m = i(494);
   var f = createjs.Point;
   var O = function (e) {
     function ABasicBuildingVE() {
@@ -9755,7 +9755,7 @@
   var u = i(4);
   var d = i(98);
   var p = i(2043);
-  var h = i(484);
+  var h = i(486);
   var g = i(87);
   var C = function (e) {
     function AEffectBuildingVO() {
@@ -10041,21 +10041,21 @@
       configurable: true
     });
     return AEffectBuildingVO;
-  }(i(485).ABasicBuildingVO);
+  }(i(487).ABasicBuildingVO);
   t.AEffectBuildingVO = C;
   var _ = i(83);
   var m = i(52);
   var f = i(13);
   var O = i(47);
-  var E = i(637);
-  var y = i(455);
-  var b = i(638);
-  var D = i(639);
-  var I = i(640);
+  var E = i(638);
+  var y = i(456);
+  var b = i(639);
+  var D = i(640);
+  var I = i(641);
   var v = i(291);
   var T = i(292);
-  var S = i(531);
-  var A = i(641);
+  var S = i(533);
+  var A = i(642);
   var L = i(1018);
   o.classImplementsInterfaces(C, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -10371,7 +10371,7 @@
   var O = i(9);
   var E = i(353);
   var y = i(352);
-  var b = i(138);
+  var b = i(139);
   var D = i(135);
   var I = i(987);
   var v = i(38);
@@ -11058,7 +11058,7 @@
   var r = i(5);
   var l = i(6);
   var c = i(4);
-  var u = i(497);
+  var u = i(499);
   var d = i(208);
   var p = function () {
     function ClientConstSort() {}
@@ -13009,7 +13009,7 @@
   var X = i(2867);
   var Q = i(2868);
   var J = i(2869);
-  var Z = i(635);
+  var Z = i(636);
   var $ = i(2870);
   var ee = i(2871);
   var te = i(2872);
@@ -13036,7 +13036,7 @@
   var be = i(2887);
   var De = i(1553);
   var Ie = i(793);
-  var ve = i(535);
+  var ve = i(537);
   var Te = i(2888);
   var Se = i(2889);
   var Ae = i(2890);
@@ -13055,8 +13055,8 @@
   var Ge = i(794);
   var He = i(1024);
   var je = i(2898);
-  var We = i(647);
-  var Ye = i(642);
+  var We = i(648);
+  var Ye = i(643);
   var Ke = i(2899);
   var ze = i(2900);
   var qe = i(2901);
@@ -13073,18 +13073,18 @@
   var at = i(2909);
   var st = i(792);
   var rt = i(1559);
-  var lt = i(645);
+  var lt = i(646);
   var ct = i(795);
   var ut = i(771);
-  var dt = i(457);
+  var dt = i(458);
   var pt = i(2910);
   var ht = i(2911);
   var gt = i(2912);
   var Ct = i(2913);
-  var _t = i(456);
+  var _t = i(457);
   var mt = i(1191);
   var ft = i(1549);
-  var Ot = i(532);
+  var Ot = i(534);
   var Et = i(1025);
   var yt = i(774);
   var bt = i(1486);
@@ -14288,13 +14288,13 @@
   var m = i(894);
   var f = i(944);
   var O = i(2399);
-  var E = i(440);
+  var E = i(441);
   var y = i(376);
   var b = i(739);
   var D = i(391);
   var I = i(102);
-  var v = i(506);
-  var T = i(140);
+  var v = i(508);
+  var T = i(141);
   var S = i(392);
   var A = i(53);
   var L = i(4);
@@ -14308,7 +14308,7 @@
   var F = i(11);
   var N = i(393);
   var k = i(206);
-  var U = i(441);
+  var U = i(442);
   var G = i(2400);
   var H = function (e) {
     function CastlePlayerInfoDialog() {
@@ -14716,7 +14716,7 @@
   var Q = i(153);
   var J = i(394);
   var Z = i(156);
-  var $ = i(442);
+  var $ = i(443);
   var ee = i(2409);
 }, function (e, t, i) {
   'use strict';
@@ -17426,7 +17426,7 @@
   var S = i(66);
   var A = i(20);
   var L = i(30);
-  var P = i(670);
+  var P = i(671);
   var M = i(4);
   var R = i(129);
   var V = i(27);
@@ -18338,7 +18338,7 @@
   t.CastlePaymentRewardSpecialOfferDialog = Y;
   var K = i(820);
   var z = i(17);
-  var q = i(430);
+  var q = i(431);
   var X = i(25);
   var Q = i(1087);
   var J = i(156);
@@ -18361,9 +18361,9 @@
   var c = i(4);
   var u = i(17);
   var d = i(63);
-  var p = i(472);
+  var p = i(473);
   var h = i(840);
-  var g = i(553);
+  var g = i(555);
   var C = function () {
     function AttackDialogController() {
       this.onResizeDialog = new a.Signal();
@@ -18939,7 +18939,7 @@
     return CastleTitleSystemHelper;
   }();
   t.CastleTitleSystemHelper = n;
-  var o = i(566);
+  var o = i(567);
   var a = i(57);
   var s = i(192);
   var r = i(2);
@@ -18957,7 +18957,7 @@
   var O = i(3);
   var E = i(6);
   var y = i(4);
-  var b = i(142);
+  var b = i(138);
   var D = i(34);
   var I = i(111);
   var v = i(23);
@@ -19345,8 +19345,8 @@
   var h = i(3);
   var g = i(6);
   var C = i(18);
-  var _ = i(423);
-  var m = i(577);
+  var _ = i(424);
+  var m = i(578);
   var f = i(53);
   var O = i(4);
   var E = i(68);
@@ -20508,7 +20508,7 @@
   });
   var n = i(1);
   var o = i(6);
-  var a = i(412);
+  var a = i(413);
   var s = i(1259);
   var r = i(119);
   var l = i(2193);
@@ -20892,11 +20892,34 @@
   Object.defineProperty(t, "__esModule", {
     value: true
   });
+  var n = function () {
+    function CastleEffectConditionVO(e = -1, t = -1, i = -1, n = null) {
+      this.areaType = 0;
+      this.spaceId = 0;
+      this.wodId = 0;
+      this.areaType = e;
+      this.spaceId = t;
+      this.wodId = i;
+      this.otherPlayer = n;
+    }
+    CastleEffectConditionVO.__initialize_static_members = function () {
+      CastleEffectConditionVO.NULL_CONDITION = new CastleEffectConditionVO();
+    };
+    return CastleEffectConditionVO;
+  }();
+  t.CastleEffectConditionVO = n;
+  n.__initialize_static_members();
+}, function (e, t, i) {
+  'use strict';
+
+  Object.defineProperty(t, "__esModule", {
+    value: true
+  });
   var n = i(0);
   var o = i(1);
   var a = i(3);
   var s = i(274);
-  var r = i(420);
+  var r = i(421);
   var l = i(146);
   var c = i(44);
   var u = i(4);
@@ -21052,29 +21075,6 @@
   var o = i(1);
   var a = i(3);
   var s = i(3);
-}, function (e, t, i) {
-  'use strict';
-
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var n = function () {
-    function CastleEffectConditionVO(e = -1, t = -1, i = -1, n = null) {
-      this.areaType = 0;
-      this.spaceId = 0;
-      this.wodId = 0;
-      this.areaType = e;
-      this.spaceId = t;
-      this.wodId = i;
-      this.otherPlayer = n;
-    }
-    CastleEffectConditionVO.__initialize_static_members = function () {
-      CastleEffectConditionVO.NULL_CONDITION = new CastleEffectConditionVO();
-    };
-    return CastleEffectConditionVO;
-  }();
-  t.CastleEffectConditionVO = n;
-  n.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
 
@@ -21346,13 +21346,13 @@
   var a = i(5);
   var s = i(3);
   var r = i(116);
-  var l = i(494);
+  var l = i(496);
   var c = i(4);
   var u = i(9);
-  var d = i(495);
+  var d = i(497);
   var p = i(218);
   var h = i(880);
-  var g = i(496);
+  var g = i(498);
   var C = i(2103);
   var _ = i(107);
   var m = r.getLogger("CastleOpenShopExecutor");
@@ -21547,33 +21547,33 @@
   t.WorldmapObjectFactory = o;
   var a = i(2132);
   var s = i(888);
-  var r = i(502);
-  var l = i(504);
+  var r = i(504);
+  var l = i(506);
   var c = i(2141);
-  var u = i(575);
+  var u = i(576);
   var d = i(736);
   var p = i(974);
-  var h = i(597);
-  var g = i(620);
+  var h = i(598);
+  var g = i(621);
   var C = i(2595);
-  var _ = i(621);
+  var _ = i(622);
   var m = i(761);
   var f = i(916);
-  var O = i(507);
+  var O = i(509);
   var E = i(707);
-  var y = i(578);
-  var b = i(579);
+  var y = i(579);
+  var b = i(580);
   var D = i(2596);
   var I = i(2597);
-  var v = i(503);
+  var v = i(505);
   var T = i(2598);
   var S = i(1413);
   var A = i(2599);
   var L = i(917);
   var P = i(2600);
   var M = i(2601);
-  var R = i(604);
-  var V = i(598);
+  var R = i(605);
+  var V = i(599);
   var x = i(148);
   var w = i(2);
   var B = i(5);
@@ -21583,8 +21583,8 @@
   var U = i(1331);
   var G = i(973);
   var H = i(4);
-  var j = i(525);
-  var W = i(582);
+  var j = i(527);
+  var W = i(583);
   var Y = i(1423);
   o.__initialize_static_members();
 }, function (e, t, i) {
@@ -23583,11 +23583,11 @@
   var a = i(1);
   var s = i(5);
   var r = i(6);
-  var l = i(4384);
-  var c = i(4385);
-  var u = i(4386);
-  var d = i(4387);
-  var p = i(4388);
+  var l = i(4385);
+  var c = i(4386);
+  var u = i(4387);
+  var d = i(4388);
+  var p = i(4389);
   var h = i(850);
   var g = i(15);
   var C = i(9);
@@ -24093,7 +24093,7 @@
   }();
   t.CastleAllianceCrestHelper = o;
   var a = i(2040);
-  var s = i(565);
+  var s = i(566);
   var r = i(2);
   var l = i(2);
   var c = i(1);
@@ -24134,7 +24134,7 @@
   var s = i(123);
   var r = i(28);
   var l = i(1217);
-  var c = i(498);
+  var c = i(500);
   var u = i(172);
   var d = i(234);
   var p = i(118);
@@ -26193,11 +26193,11 @@
   var p = i(22);
   var h = i(4);
   var g = i(168);
-  var C = i(142);
+  var C = i(138);
   var _ = i(98);
   var m = i(34);
-  var f = i(509);
-  var O = i(589);
+  var f = i(511);
+  var O = i(590);
   var E = i(322);
   var y = function (e) {
     function ToolUnitVO() {
@@ -27807,7 +27807,7 @@
   t.ModernPackageShopBuyDialog = h;
   o.classImplementsInterfaces(h, "ICollectableRendererList");
   var g = i(13);
-  var C = i(592);
+  var C = i(593);
   var _ = i(1);
   var m = i(19);
 }, function (e, t, i) {
@@ -27823,7 +27823,7 @@
   var r = i(2);
   var l = i(2);
   var c = i(116);
-  var u = i(600);
+  var u = i(601);
   var d = i(44);
   var p = i(15);
   var h = c.getLogger("CastleFacebookModule");
@@ -27838,7 +27838,7 @@
     return FacebookLoginStatus;
   }();
   t.FacebookLoginStatus = _;
-  var m = i(436);
+  var m = i(437);
   var f = false;
   var O = function () {
     function FacebookModule() {
@@ -28171,7 +28171,7 @@
       configurable: true
     });
     return ASurroundingBuildingVE;
-  }(i(492).AInteractiveIsoObjectVE);
+  }(i(494).AInteractiveIsoObjectVE);
   t.ASurroundingBuildingVE = r;
   var l = i(48);
   a.classImplementsInterfaces(r, "ICollectableRendererList", "IIngameUICapable");
@@ -28425,7 +28425,7 @@
   var d = i(30);
   var p = i(4);
   var h = i(127);
-  var g = i(563);
+  var g = i(564);
   var C = function (e) {
     function BasicEquipmentVO() {
       var t = e.call(this) || this;
@@ -30724,7 +30724,7 @@
   var r = i(18);
   var l = i(4);
   var c = i(105);
-  var u = i(567);
+  var u = i(568);
   var d = createjs.Point;
   var p = function (e) {
     function ASurroundingBuildingVO() {
@@ -31699,7 +31699,7 @@
   var a = i(5);
   var s = i(6);
   var r = i(56);
-  var l = i(605);
+  var l = i(606);
   var c = i(72);
   var u = i(4);
   var d = function (e) {
@@ -32300,7 +32300,7 @@
   var w = i(2947);
   var B = i(2981);
   var F = i(2986);
-  var N = i(648);
+  var N = i(649);
   u.classImplementsInterfaces(v, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -33384,7 +33384,7 @@
   var h = i(82);
   var g = i(35);
   var C = i(4);
-  var _ = i(624);
+  var _ = i(625);
   var m = i(49);
   var f = i(34);
   var O = i(17);
@@ -33601,7 +33601,7 @@
   });
   var n = i(0);
   var o = i(6);
-  var a = i(483);
+  var a = i(485);
   var s = createjs.Point;
   var r = function (e) {
     function BasicMapobjectVO() {
@@ -34838,7 +34838,7 @@
   var h = i(56);
   var g = i(4);
   var C = i(973);
-  var _ = i(523);
+  var _ = i(525);
   var m = i(758);
   var f = i(236);
   var O = function () {
@@ -34934,8 +34934,8 @@
   t.AttackHelper = O;
   var E = i(283);
   var y = i(888);
-  var b = i(525);
-  var D = i(575);
+  var b = i(527);
+  var D = i(576);
   var I = i(974);
   var v = i(9);
   var T = i(397);
@@ -35118,12 +35118,12 @@
   }(a.SimpleCommand);
   t.TutorialBasicActionCommand = C;
   var _ = i(17);
-  var m = i(473);
+  var m = i(474);
   var f = i(302);
-  var O = i(435);
+  var O = i(436);
   var E = i(830);
   var y = i(330);
-  var b = i(559);
+  var b = i(560);
   l.classImplementsInterfaces(C, "ISimpleCommand");
   C.__initialize_static_members();
 }, function (e, t, i) {
@@ -35145,7 +35145,7 @@
     return TutorialBasicQuestStarterActionCommand;
   }(i(1986).TutorialBasicQuestActionCommand);
   t.TutorialBasicQuestStarterActionCommand = a;
-  var s = i(462);
+  var s = i(463);
   o.classImplementsInterfaces(a, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -35440,7 +35440,7 @@
   var s = i(6);
   var r = i(1267);
   var l = i(8);
-  var c = i(416);
+  var c = i(417);
   var u = i(36);
   var d = function (e) {
     function DynamicSliderAccordionComponent(t, i = null, n = null, o = true) {
@@ -35749,7 +35749,7 @@
   var o = i(1);
   var a = i(28);
   var s = i(21);
-  var r = i(444);
+  var r = i(445);
   var l = i(30);
   var c = i(72);
   var u = i(4);
@@ -35856,7 +35856,7 @@
   var M = i(129);
   var R = i(41);
   var V = i(310);
-  var x = i(446);
+  var x = i(447);
   var w = i(766);
   var B = i(8);
   var F = i(42);
@@ -36635,17 +36635,17 @@
   var W = i(57);
   var Y = i(9);
   var K = i(1447);
-  var z = i(447);
+  var z = i(448);
   var q = i(767);
   var X = i(1448);
   var Q = i(61);
-  var J = i(627);
+  var J = i(628);
   var Z = i(1459);
   var $ = i(1460);
   var ee = i(289);
   var te = i(48);
   var ie = i(121);
-  var ne = i(450);
+  var ne = i(451);
   var oe = i(1466);
   H.__initialize_static_members();
 }, function (e, t, i) {
@@ -36706,7 +36706,7 @@
       return t;
     };
     return AResourceProductionBuildingVE;
-  }(i(459).AProductionBuildingVE);
+  }(i(460).AProductionBuildingVE);
   t.AResourceProductionBuildingVE = a;
   var s = i(1567);
   var r = i(181);
@@ -37854,7 +37854,7 @@
   var K = i(4);
   var z = i(111);
   var q = i(2281);
-  var X = i(142);
+  var X = i(138);
   var Q = i(2283);
   var J = i(312);
   var Z = i(728);
@@ -39189,8 +39189,8 @@
   var r = i(22);
   var l = i(4);
   var c = i(98);
-  var u = i(636);
-  var d = i(484);
+  var u = i(637);
+  var d = i(486);
   var p = function (e) {
     function AResourceProductionBuildingVO() {
       var t = this;
@@ -39310,20 +39310,20 @@
       configurable: true
     });
     return AResourceProductionBuildingVO;
-  }(i(454).AProductionBuildingVO);
+  }(i(455).AProductionBuildingVO);
   t.AResourceProductionBuildingVO = p;
   var h = i(52);
   var g = i(13);
   var C = i(47);
-  var _ = i(637);
-  var m = i(455);
-  var f = i(638);
-  var O = i(639);
-  var E = i(640);
+  var _ = i(638);
+  var m = i(456);
+  var f = i(639);
+  var O = i(640);
+  var E = i(641);
   var y = i(291);
   var b = i(292);
-  var D = i(531);
-  var I = i(641);
+  var D = i(533);
+  var I = i(642);
   var v = i(34);
   o.classImplementsInterfaces(p, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -39713,7 +39713,7 @@
   }(i(96).ACollectableItemVO);
   t.CollectableItemRelicVO = c;
   var u = i(688);
-  var d = i(611);
+  var d = i(612);
   var p = i(1);
 }, function (e, t, i) {
   'use strict';
@@ -41188,7 +41188,7 @@
   t.SeasonLeagueSimpleRewardsComponent = h;
   o.classImplementsInterfaces(h, "ICollectableRendererList");
   var g = i(47);
-  var C = i(522);
+  var C = i(524);
   var _ = i(79);
   var m = i(25);
 }, function (e, t, i) {
@@ -41610,7 +41610,7 @@
   }(c.ACastleStatusIcon);
   t.ACastleLabeledStatusIcon = u;
   var d = i(17);
-  var p = i(474);
+  var p = i(475);
   var h = i(1);
 }, function (e, t, i) {
   'use strict';
@@ -42295,7 +42295,7 @@
   var s = i(2);
   var r = i(1);
   var l = i(6);
-  var c = i(142);
+  var c = i(138);
 }, function (e, t, i) {
   'use strict';
 
@@ -42308,7 +42308,7 @@
   var s = i(56);
   var r = i(22);
   var l = i(338);
-  var c = i(483);
+  var c = i(485);
   var u = createjs.Point;
   var d = function (e) {
     function AIsoObjectVO() {
@@ -43509,7 +43509,7 @@
   var h = i(311);
   var g = i(1225);
   var C = i(312);
-  var _ = i(500);
+  var _ = i(502);
   var m = function () {
     function WorldMapOwnerInfoVO() {
       this._playerID = 0;
@@ -45871,7 +45871,7 @@
   var r = i(6);
   var l = i(69);
   var c = i(4);
-  var u = i(141);
+  var u = i(142);
   var d = i(404);
   var p = i(285);
   var h = function (e) {
@@ -46222,7 +46222,7 @@
   var s = i(188);
   var r = i(15);
   var l = i(1662);
-  var c = i(546);
+  var c = i(548);
   var u = function (e) {
     function AllianceAndPlayerPointEventRewardListDialog(t) {
       CONSTRUCTOR_HACK;
@@ -47088,7 +47088,7 @@
   var c = i(22);
   var u = i(4);
   var d = i(34);
-  var p = i(509);
+  var p = i(511);
   var h = function (e) {
     function SoldierUnitVO() {
       var t = this;
@@ -47835,12 +47835,12 @@
     value: true
   });
   var n = i(0);
-  var o = i(596);
+  var o = i(597);
   var a = i(4);
   var s = i(55);
   var r = i(2);
   var l = i(1);
-  var c = i(512);
+  var c = i(514);
   var u = i(283);
   var d = i(729);
   var p = function (e) {
@@ -48578,11 +48578,11 @@
   });
   var n = i(0);
   var o = i(729);
-  var a = i(596);
+  var a = i(597);
   var s = i(4);
   var r = i(55);
   var l = i(3441);
-  var c = i(512);
+  var c = i(514);
   var u = i(2);
   var d = i(283);
   var p = i(3);
@@ -49100,7 +49100,7 @@
   var o = i(134);
   var a = i(8);
   var s = i(4);
-  var r = i(464);
+  var r = i(465);
   var l = i(21);
   var c = i(30);
   var u = i(28);
@@ -49287,76 +49287,76 @@
   var R = i(1);
   var V = i(1173);
   var x = i(272);
-  var w = i(4240);
-  var B = i(4241);
-  var F = i(4242);
-  var N = i(4243);
-  var k = i(4244);
-  var U = i(4245);
-  var G = i(4246);
-  var H = i(4249);
-  var j = i(4250);
-  var W = i(4251);
-  var Y = i(4252);
-  var K = i(4253);
-  var z = i(4254);
-  var q = i(4255);
-  var X = i(4256);
-  var Q = i(4257);
-  var J = i(4259);
+  var w = i(4241);
+  var B = i(4242);
+  var F = i(4243);
+  var N = i(4244);
+  var k = i(4245);
+  var U = i(4246);
+  var G = i(4247);
+  var H = i(4250);
+  var j = i(4251);
+  var W = i(4252);
+  var Y = i(4253);
+  var K = i(4254);
+  var z = i(4255);
+  var q = i(4256);
+  var X = i(4257);
+  var Q = i(4258);
+  var J = i(4260);
   var Z = i(91);
   var $ = i(30);
   var ee = i(15);
-  var te = i(434);
+  var te = i(435);
   var ie = i(4);
-  var ne = i(4261);
-  var oe = i(4263);
-  var ae = i(4266);
+  var ne = i(4262);
+  var oe = i(4264);
+  var ae = i(4267);
   var se = i(226);
-  var re = i(4268);
+  var re = i(4269);
   var le = i(273);
-  var ce = i(4270);
-  var ue = i(4272);
-  var de = i(4274);
-  var pe = i(4276);
-  var he = i(4277);
-  var ge = i(4285);
+  var ce = i(4271);
+  var ue = i(4273);
+  var de = i(4275);
+  var pe = i(4277);
+  var he = i(4278);
+  var ge = i(4286);
   var Ce = i(1895);
-  var _e = i(4292);
-  var me = i(4294);
-  var fe = i(4297);
-  var Oe = i(4299);
-  var Ee = i(4302);
-  var ye = i(4304);
-  var be = i(4314);
-  var De = i(4320);
-  var Ie = i(4321);
-  var ve = i(570);
-  var Te = i(4324);
-  var Se = i(4325);
-  var Ae = i(4326);
-  var Le = i(4328);
-  var Pe = i(4329);
-  var Me = i(4330);
-  var Re = i(4331);
-  var Ve = i(4332);
-  var xe = i(4333);
-  var we = i(4334);
-  var Be = i(4335);
-  var Fe = i(4337);
+  var _e = i(4293);
+  var me = i(4295);
+  var fe = i(4298);
+  var Oe = i(4300);
+  var Ee = i(4303);
+  var ye = i(4305);
+  var be = i(4315);
+  var De = i(4321);
+  var Ie = i(4322);
+  var ve = i(571);
+  var Te = i(4325);
+  var Se = i(4326);
+  var Ae = i(4327);
+  var Le = i(4329);
+  var Pe = i(4330);
+  var Me = i(4331);
+  var Re = i(4332);
+  var Ve = i(4333);
+  var xe = i(4334);
+  var we = i(4335);
+  var Be = i(4336);
+  var Fe = i(4338);
   var Ne = i(1658);
-  var ke = i(4339);
-  var Ue = i(4341);
-  var Ge = i(4343);
-  var He = i(4358);
-  var je = i(4359);
-  var We = i(4361);
-  var Ye = i(4363);
-  var Ke = i(4364);
-  var ze = i(4365);
-  var qe = i(4367);
-  var Xe = i(4369);
-  var Qe = i(4371);
+  var ke = i(4340);
+  var Ue = i(4342);
+  var Ge = i(4344);
+  var He = i(4359);
+  var je = i(4360);
+  var We = i(4362);
+  var Ye = i(4364);
+  var Ke = i(4365);
+  var ze = i(4366);
+  var qe = i(4368);
+  var Xe = i(4370);
+  var Qe = i(4372);
   var Je = createjs.Ticker;
   var Ze = createjs.Event;
   var $e = createjs.DisplayObject;
@@ -49776,114 +49776,114 @@
     return CastleGame;
   }(u.BasicGame);
   t.CastleGame = et;
-  var tt = i(4373);
-  var it = i(4654);
-  var nt = i(4669);
-  var ot = i(4670);
-  var at = i(4671);
-  var st = i(4673);
-  var rt = i(4674);
-  var lt = i(5324);
-  var ct = i(5326);
-  var ut = i(5327);
-  var dt = i(5328);
-  var pt = i(5329);
+  var tt = i(4374);
+  var it = i(4656);
+  var nt = i(4671);
+  var ot = i(4672);
+  var at = i(4673);
+  var st = i(4675);
+  var rt = i(4676);
+  var lt = i(5326);
+  var ct = i(5328);
+  var ut = i(5329);
+  var dt = i(5330);
+  var pt = i(5331);
   var ht = i(29);
-  var gt = i(5330);
-  var Ct = i(436);
-  var _t = i(5332);
+  var gt = i(5332);
+  var Ct = i(437);
+  var _t = i(5334);
   var mt = i(751);
-  var ft = i(5388);
+  var ft = i(5390);
   var Ot = i(815);
-  var Et = i(5393);
+  var Et = i(5395);
   var yt = i(321);
-  var bt = i(5395);
-  var Dt = i(5397);
-  var It = i(5400);
+  var bt = i(5397);
+  var Dt = i(5399);
+  var It = i(5402);
   var vt = i(951);
-  var Tt = i(5407);
-  var St = i(5414);
-  var At = i(5417);
-  var Lt = i(5418);
-  var Pt = i(5419);
-  var Mt = i(590);
-  var Rt = i(5421);
-  var Vt = i(5425);
-  var xt = i(5431);
+  var Tt = i(5409);
+  var St = i(5416);
+  var At = i(5419);
+  var Lt = i(5420);
+  var Pt = i(5421);
+  var Mt = i(591);
+  var Rt = i(5423);
+  var Vt = i(5427);
+  var xt = i(5433);
   var wt = i(1114);
   var Bt = i(779);
-  var Ft = i(5433);
-  var Nt = i(5608);
+  var Ft = i(5435);
+  var Nt = i(5610);
   var kt = i(1235);
-  var Ut = i(5611);
-  var Gt = i(5613);
+  var Ut = i(5613);
+  var Gt = i(5615);
   var Ht = i(405);
   var jt = i(173);
-  var Wt = i(544);
-  var Yt = i(5617);
-  var Kt = i(5624);
-  var zt = i(5625);
-  var qt = i(5627);
-  var Xt = i(5629);
-  var Qt = i(5631);
-  var Jt = i(5634);
-  var Zt = i(5636);
-  var $t = i(566);
-  var ei = i(5644);
-  var ti = i(5647);
-  var ii = i(5651);
-  var ni = i(5653);
+  var Wt = i(546);
+  var Yt = i(5619);
+  var Kt = i(5626);
+  var zt = i(5627);
+  var qt = i(5629);
+  var Xt = i(5631);
+  var Qt = i(5633);
+  var Jt = i(5636);
+  var Zt = i(5638);
+  var $t = i(567);
+  var ei = i(5646);
+  var ti = i(5649);
+  var ii = i(5653);
+  var ni = i(5655);
   var oi = i(283);
   var ai = i(57);
-  var si = i(5655);
-  var ri = i(624);
-  var li = i(5658);
-  var ci = i(5659);
-  var ui = i(5663);
-  var di = i(5664);
-  var pi = i(5665);
-  var hi = i(5672);
-  var gi = i(5674);
-  var Ci = i(5680);
+  var si = i(5657);
+  var ri = i(625);
+  var li = i(5660);
+  var ci = i(5661);
+  var ui = i(5665);
+  var di = i(5666);
+  var pi = i(5667);
+  var hi = i(5674);
+  var gi = i(5676);
+  var Ci = i(5682);
   var _i = i(692);
   var mi = i(1129);
   var fi = i(1542);
-  var Oi = i(5688);
-  var Ei = i(5690);
-  var yi = i(5693);
+  var Oi = i(5690);
+  var Ei = i(5692);
+  var yi = i(5695);
   var bi = i(778);
-  var Di = i(5695);
-  var Ii = i(5698);
-  var vi = i(5705);
-  var Ti = i(477);
+  var Di = i(5697);
+  var Ii = i(5700);
+  var vi = i(5707);
+  var Ti = i(479);
   var Si = i(1434);
   var Ai = i(198);
-  var Li = i(5718);
+  var Li = i(5720);
   var Pi = i(9);
   var Mi = i(17);
-  var Ri = i(661);
-  var Vi = i(5757);
-  var xi = i(5759);
-  var wi = i(5761);
-  var Bi = i(5780);
-  var Fi = i(5787);
-  var Ni = i(653);
-  var ki = i(5789);
-  var Ui = i(5793);
-  var Gi = i(5803);
-  var Hi = i(5805);
-  var ji = i(5806);
-  var Wi = i(5807);
-  var Yi = i(5809);
-  var Ki = i(5810);
+  var Ri = i(662);
+  var Vi = i(5759);
+  var xi = i(5761);
+  var wi = i(5763);
+  var Bi = i(5782);
+  var Fi = i(5789);
+  var Ni = i(654);
+  var ki = i(5791);
+  var Ui = i(5795);
+  var Gi = i(5805);
+  var Hi = i(5807);
+  var ji = i(5808);
+  var Wi = i(5809);
+  var Yi = i(5811);
+  var Ki = i(5812);
   var zi = i(1030);
-  var qi = i(5811);
+  var qi = i(5813);
   var Xi = i(813);
-  var Qi = i(5813);
-  var Ji = i(5815);
-  var Zi = i(5820);
-  var $i = i(5822);
-  var en = i(5823);
+  var Qi = i(5815);
+  var Ji = i(5817);
+  var Zi = i(5822);
+  var $i = i(5824);
+  var en = i(5825);
   var tn = i(1307);
   R.classImplementsInterfaces(et, "Container");
 }, function (e, t, i) {
@@ -51312,10 +51312,10 @@
   var v = i(39);
   var T = i(56);
   var S = i(146);
-  var A = i(586);
+  var A = i(587);
   var L = i(91);
   var P = i(172);
-  var M = i(429);
+  var M = i(430);
   var R = i(204);
   var V = i(713);
   var x = i(196);
@@ -51328,7 +51328,7 @@
   var G = i(34);
   var H = i(348);
   var j = i(217);
-  var W = i(587);
+  var W = i(588);
   var Y = i(322);
   var K = i(68);
   var z = i(715);
@@ -51340,7 +51340,7 @@
   var $ = i(119);
   var ee = i(379);
   var te = i(1246);
-  var ie = i(588);
+  var ie = i(589);
   var ne = i(11);
   var oe = i(1247);
   var ae = i(120);
@@ -52671,11 +52671,11 @@
   }(ne.CastleExternalDialog);
   t.CastleFightDialog = ce;
   var ue = i(57);
-  var de = i(508);
+  var de = i(510);
   var pe = i(111);
   var he = i(900);
   var ge = i(9);
-  var Ce = i(430);
+  var Ce = i(431);
   var _e = i(380);
   var me = i(716);
   var fe = i(1249);
@@ -52688,7 +52688,7 @@
   var ve = i(934);
   var Te = i(390);
   var Se = i(753);
-  var Ae = i(613);
+  var Ae = i(614);
   var Le = i(1399);
   var Pe = i(113);
   var Me = i(1255);
@@ -52787,7 +52787,7 @@
   var p = i(3);
   var h = i(3);
   var g = i(6);
-  var C = i(429);
+  var C = i(430);
   var _ = i(86);
   var m = i(4);
   var f = i(216);
@@ -53359,7 +53359,7 @@
   var r = i(3);
   var l = i(3);
   var c = i(166);
-  var u = i(516);
+  var u = i(518);
   var d = createjs.Point;
   var p = function () {
     function AMovementRenderStrategy() {}
@@ -53521,7 +53521,7 @@
   var h = i(148);
   var g = i(4);
   var C = i(119);
-  var _ = i(517);
+  var _ = i(519);
   var m = function (e) {
     function ArmyAttackMapmovementVO() {
       var t = this;
@@ -54620,7 +54620,7 @@
   var p = i(3);
   var h = i(6);
   var g = i(1351);
-  var C = i(140);
+  var C = i(141);
   var _ = i(44);
   var m = i(4);
   var f = i(184);
@@ -54850,7 +54850,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(522);
+  var a = i(524);
   var s = i(79);
   var r = i(46);
   var l = i(58);
@@ -54908,10 +54908,10 @@
   var L = i(2567);
   var P = i(2568);
   var M = i(2569);
-  var R = i(618);
+  var R = i(619);
   var V = i(2570);
   var x = i(2571);
-  var w = i(139);
+  var w = i(140);
   var B = i(1411);
   var F = i(26);
   var N = i(32);
@@ -54931,7 +54931,7 @@
   var Z = i(106);
   var $ = i(189);
   var ee = i(11);
-  var te = i(524);
+  var te = i(526);
   var ie = createjs.Point;
   var ne = function (e) {
     function CastleStartAttackDialog() {
@@ -55517,12 +55517,12 @@
   var re = i(207);
   var le = i(9);
   var ce = i(708);
-  var ue = i(426);
+  var ue = i(427);
   var de = i(182);
   var pe = i(25);
   var he = i(61);
   var ge = i(70);
-  var Ce = i(445);
+  var Ce = i(446);
   r.classImplementsInterfaces(ne, "ICollectableRendererList");
   var _e = i(1);
   var me = i(119);
@@ -56211,7 +56211,7 @@
     return AScoreEventVO;
   }(i(80).ASpecialEventVO);
   t.AScoreEventVO = d;
-  var p = i(571);
+  var p = i(572);
   var h = i(5);
   o.classImplementsInterfaces(d, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable");
 }, function (e, t, i) {
@@ -57035,7 +57035,7 @@
   var J = i(3471);
   var Z = i(3472);
   var $ = i(1685);
-  var ee = i(565);
+  var ee = i(566);
   var te = i(3473);
   var ie = i(3474);
   var ne = i(1408);
@@ -57823,7 +57823,7 @@
   var pe = i(1688);
   var he = i(1689);
   var ge = i(3480);
-  var Ce = i(574);
+  var Ce = i(575);
   var _e = i(1690);
   var me = i(1691);
   var fe = i(1692);
@@ -57881,7 +57881,7 @@
   var _t = i(3531);
   var mt = i(802);
   var ft = i(1704);
-  var Ot = i(661);
+  var Ot = i(662);
   var Et = i(1705);
   var yt = i(3534);
   var bt = i(3535);
@@ -57902,9 +57902,144 @@
   var Ft = i(1711);
   var Nt = i(3544);
   var kt = i(3546);
-  var Ut = i(663);
-  var Gt = i(664);
-  var Ht = i(495);
+  var Ut = i(664);
+  var Gt = i(665);
+  var Ht = i(497);
+}, function (e, t, i) {
+  'use strict';
+
+  Object.defineProperty(t, "__esModule", {
+    value: true
+  });
+  var n = i(0);
+  var o = i(1);
+  var a = i(6);
+  var s = i(28);
+  var r = i(287);
+  var l = i(30);
+  var c = i(15);
+  var u = i(4);
+  var d = i(306);
+  var p = createjs.Point;
+  var h = function (e) {
+    function AGachaEventVO() {
+      var t = e !== null && e.apply(this, arguments) || this;
+      t._freeChestResetTime = 0;
+      t._currentMultiPull = 1;
+      return t;
+    }
+    n.__extends(AGachaEventVO, e);
+    AGachaEventVO.prototype.parseEventXmlNode = function (t) {
+      e.prototype.parseEventXmlNode.call(this, t);
+    };
+    AGachaEventVO.prototype.parseParamObject = function (t) {
+      e.prototype.parseParamObject.call(this, t);
+      this.parseGachaEvent(t);
+    };
+    AGachaEventVO.prototype.parseGachaEvent = function (e) {
+      if (e.FCRT) {
+        this._freeChestResetTime = l.CachedTimer.getCachedTimer() + e.FCRT * s.ClientConstTime.SEC_2_MILLISEC;
+      }
+      if (e.OP) {
+        this._ownPoints = a.int(e.OP);
+      }
+      if (e.OR) {
+        this._ownRank = a.int(e.OR);
+      }
+      c.CastleBasicController.getInstance().dispatchEvent(new r.GachaEvent(r.GachaEvent.UPDATED, this));
+    };
+    AGachaEventVO.prototype.setRankAndPoints = function (t, i, n) {
+      e.prototype.setRankAndPoints.call(this, t, i, n);
+      c.CastleBasicController.getInstance().dispatchEvent(new r.GachaEvent(r.GachaEvent.UPDATED, this));
+    };
+    AGachaEventVO.prototype.getGachaVOs = function () {
+      return u.CastleModel.gachaData.getGachaVOs(this.eventId, this.rewardSetId, this.leagueID);
+    };
+    AGachaEventVO.prototype.getGachaVOByLevel = function (e) {
+      return u.CastleModel.gachaData.getGachaVOByLevel(this.eventId, this.rewardSetId, this.leagueID, e);
+    };
+    AGachaEventVO.prototype.getCurrentGachaVO = function () {
+      return u.CastleModel.gachaData.getCurrentGachaVO(this.eventId, this.rewardSetId, this.leagueID, this.ownPoints);
+    };
+    AGachaEventVO.prototype.getCurrentLevel = function () {
+      return this.getCurrentGachaVO().gachaLevel;
+    };
+    AGachaEventVO.prototype.getCurrentLevelProgress = function (e = 0) {
+      return this._ownPoints + e - this.getCurrentGachaVO().minPulls;
+    };
+    AGachaEventVO.prototype.getCurrentLevelMaxPulls = function () {
+      return this.getCurrentGachaVO().maxPulls - this.getCurrentGachaVO().minPulls + 1;
+    };
+    AGachaEventVO.prototype.getIsMaxLevel = function () {
+      return this.getCurrentGachaVO().isMaxLevel;
+    };
+    Object.defineProperty(AGachaEventVO.prototype, "freeChestResetTime", {
+      get: function () {
+        return this._freeChestResetTime;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    AGachaEventVO.prototype.assetName = function () {
+      return this.eventType;
+    };
+    Object.defineProperty(AGachaEventVO.prototype, "eventName", {
+      get: function () {
+        return this.assetName();
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(AGachaEventVO.prototype, "animationPos", {
+      get: function () {
+        return new p(275, 43);
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(AGachaEventVO.prototype, "animationScale", {
+      get: function () {
+        return 0.25;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(AGachaEventVO.prototype, "animationFPS", {
+      get: function () {
+        return 30;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(AGachaEventVO.prototype, "currencyMerchantEventID", {
+      get: function () {
+        return 0;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(AGachaEventVO.prototype, "eventBuildingNameId", {
+      get: function () {
+        return "tooltip_gachaName_" + this.assetName();
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(AGachaEventVO.prototype, "currentMultiPull", {
+      get: function () {
+        return this._currentMultiPull;
+      },
+      set: function (e) {
+        this._currentMultiPull = e;
+        c.CastleBasicController.getInstance().dispatchEvent(new r.GachaEvent(r.GachaEvent.MULTIPULL_CHANGED, this));
+      },
+      enumerable: true,
+      configurable: true
+    });
+    return AGachaEventVO;
+  }(d.ALeagueTypeScoreEventVO);
+  t.AGachaEventVO = h;
+  o.classImplementsInterfaces(h, "IEventOverviewable");
 }, function (e, t, i) {
   'use strict';
 
@@ -58704,7 +58839,7 @@
   t.CastleBuyResourceBoostDialog = D;
   var I = i(9);
   var v = i(67);
-  var T = i(138);
+  var T = i(139);
   var S = i(42);
   c.classImplementsInterfaces(D, "ICollectableRendererList");
   D.__initialize_static_members();
@@ -59359,7 +59494,7 @@
   var U = i(204);
   var G = i(118);
   var H = i(183);
-  var j = i(139);
+  var j = i(140);
   var W = i(711);
   var Y = i(44);
   var K = i(12);
@@ -59368,8 +59503,8 @@
   var X = i(27);
   var Q = i(64);
   var J = i(322);
-  var Z = i(582);
-  var $ = i(583);
+  var Z = i(583);
+  var $ = i(584);
   var ee = i(712);
   var te = i(68);
   var ie = i(23);
@@ -59377,7 +59512,7 @@
   var oe = i(899);
   var ae = i(41);
   var se = i(8);
-  var re = i(585);
+  var re = i(586);
   var le = i(378);
   var ce = i(351);
   var ue = i(723);
@@ -59386,10 +59521,10 @@
   var he = i(248);
   var ge = i(721);
   var Ce = i(165);
-  var _e = i(432);
+  var _e = i(433);
   var me = i(2523);
   var fe = i(2524);
-  var Oe = i(614);
+  var Oe = i(615);
   var Ee = i(2525);
   var ye = createjs.Container;
   var be = createjs.Point;
@@ -60789,14 +60924,14 @@
   var Ie = i(75);
   var ve = i(57);
   var Te = i(2526);
-  var Se = i(508);
+  var Se = i(510);
   var Ae = i(207);
   var Le = i(158);
   var Pe = i(111);
   var Me = i(185);
   var Re = i(9);
   var Ve = i(708);
-  var xe = i(426);
+  var xe = i(427);
   var we = i(132);
   var Be = i(2527);
   var Fe = i(61);
@@ -60810,7 +60945,7 @@
   var Ye = i(2528);
   var Ke = i(2530);
   var ze = i(1409);
-  var qe = i(617);
+  var qe = i(618);
   var Xe = i(2557);
   var Qe = i(19);
   De.__initialize_static_members();
@@ -60851,7 +60986,7 @@
   var s = i(146);
   var r = i(32);
   var l = i(163);
-  var c = i(494);
+  var c = i(496);
   var u = i(4);
   var d = i(202);
   var p = i(8);
@@ -60898,7 +61033,7 @@
     return ButtonAddGoldComponent;
   }(i(150).ButtonBasicComponent);
   t.ButtonAddGoldComponent = h;
-  var g = i(590);
+  var g = i(591);
   var C = i(1);
   var _ = i(107);
 }, function (e, t, i) {
@@ -61460,7 +61595,7 @@
   t.AModernPackageShopBuyElement = r;
   var l = i(48);
   var c = i(197);
-  var u = i(592);
+  var u = i(593);
   o.classImplementsInterfaces(r, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -61635,7 +61770,7 @@
   t.CastleTutorialClickBlocker = o;
   var a = i(35);
   var s = i(17);
-  var r = i(513);
+  var r = i(515);
   var l = function () {
     return function SingletonBlocker() {};
   }();
@@ -62069,13 +62204,13 @@
   var A = i(243);
   var L = i(21);
   var P = i(391);
-  var M = i(425);
+  var M = i(426);
   var R = i(223);
-  var V = i(580);
+  var V = i(581);
   var x = i(15);
   var w = i(4);
   var B = i(273);
-  var F = i(142);
+  var F = i(138);
   var N = i(34);
   var k = i(1353);
   var U = i(225);
@@ -62632,7 +62767,7 @@
   var g = i(278);
   var C = i(2414);
   var _ = i(2415);
-  var m = i(506);
+  var m = i(508);
   var f = i(26);
   var O = i(90);
   var E = i(4);
@@ -62943,7 +63078,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(618);
+  var a = i(619);
   var s = i(398);
   var r = i(4);
   var l = i(43);
@@ -63734,7 +63869,7 @@
   var _ = i(19);
   var m = i(79);
   var f = i(46);
-  var O = i(626);
+  var O = i(627);
   var E = i(8);
   var y = i(11);
   var b = createjs.MouseEvent;
@@ -65019,7 +65154,7 @@
   }(C.CastleExternalDialog);
   t.CastleStartQuestDialog = m;
   r.classImplementsInterfaces(m, "ICollectableRendererList");
-  var f = i(463);
+  var f = i(464);
   var O = i(1);
 }, function (e, t, i) {
   'use strict';
@@ -65044,14 +65179,14 @@
   var m = i(51);
   var f = i(59);
   var O = i(274);
-  var E = i(420);
+  var E = i(421);
   var y = i(91);
   var b = i(204);
   var D = i(267);
-  var I = i(464);
+  var I = i(465);
   var v = i(4);
   var T = i(23);
-  var S = i(543);
+  var S = i(545);
   var A = i(42);
   var L = i(130);
   var P = i(3355);
@@ -65397,8 +65532,8 @@
   var R = i(29);
   var V = i(9);
   var x = i(17);
-  var w = i(657);
-  var B = i(462);
+  var w = i(658);
+  var B = i(463);
   M.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -65497,7 +65632,7 @@
     });
     RewardsDialogScoreBarProperties.MAX_TOP_X = 3;
     return RewardsDialogScoreBarProperties;
-  }(i(545).CastleScoreEventScoreBarProperties);
+  }(i(547).CastleScoreEventScoreBarProperties);
   t.RewardsDialogScoreBarProperties = l;
   o.classImplementsInterfaces(l, "IScorebarProperties");
 }, function (e, t, i) {
@@ -65801,8 +65936,8 @@
   var h = i(3);
   var g = i(6);
   var C = i(4);
-  var _ = i(602);
-  var m = i(603);
+  var _ = i(603);
+  var m = i(604);
   var f = i(937);
   var O = i(8);
   var E = i(189);
@@ -65996,7 +66131,7 @@
   var y = i(378);
   var b = i(115);
   var D = i(840);
-  var I = i(553);
+  var I = i(555);
   var v = function () {
     function AttackDialogHelper() {}
     AttackDialogHelper.canUseSupportTools = function () {
@@ -66563,88 +66698,90 @@
   var p = i(3948);
   var h = i(3949);
   var g = i(3950);
-  var C = i(1126);
-  var _ = createjs.MovieClip;
-  var m = createjs.Container;
-  var f = function (e) {
+  var C = i(3951);
+  var _ = i(1126);
+  var m = createjs.MovieClip;
+  var f = createjs.Container;
+  var O = function (e) {
     function CastleStatusPanel(t = null) {
-      var i = e.call(this, t || new m()) || this;
+      var i = e.call(this, t || new f()) || this;
       i._panel = i.disp;
       return i;
     }
     n.__extends(CastleStatusPanel, e);
     CastleStatusPanel.prototype.initComponents = function () {
-      this._bars[CastleStatusPanel.BAR_RIGHT].addIcon(new le.StatusIconLastManStanding(o.FactionConst.BLUE_FACTION));
-      this._bars[CastleStatusPanel.BAR_RIGHT].addIcon(new le.StatusIconLastManStanding(o.FactionConst.RED_FACTION));
-      this._bars[CastleStatusPanel.BAR_RIGHT].addIcon(new me.StatusIconRepairAll());
-      this._bars[CastleStatusPanel.BAR_RIGHT].addIcon(new Y.StatusIconActivityBonusComponent());
-      this._bars[CastleStatusPanel.BAR_RIGHT].addIcon(new ae.StatusIconGlobalEffectEvent());
-      this._bars[CastleStatusPanel.BAR_RIGHT_2].addIcon(new K.StatusIconStartupLoginBonusComponent());
-      this._bars[CastleStatusPanel.BAR_LEFT].addIcon(new P.StatusIconAttackWarnings());
-      this._bars[CastleStatusPanel.BAR_LEFT].addIcon(new z.StatusIconAdvisorAttack_Nomad());
-      this._bars[CastleStatusPanel.BAR_LEFT].addIcon(new q.StatusIconAdvisorAttack_Samurai());
-      this._bars[CastleStatusPanel.BAR_LEFT_2].addIcon(new j.StatusIconOpenGate());
-      this._bars[CastleStatusPanel.BAR_LEFT_2].addIcon(new H.StatusIconNoobProtection());
-      this._bars[CastleStatusPanel.BAR_LEFT_2].addIcon(new W.StatusIconPeaceProtection());
-      this._bars[CastleStatusPanel.BAR_LEFT_2].addIcon(new G.StatusIconFactionProtection());
-      this._bars[CastleStatusPanel.BAR_LEFT_3].addIcon(new $.StatusIconCapEyecatcher());
-      this._bars[CastleStatusPanel.BAR_LEFT_3].addIcon(new De.StatusIconWebshop());
-      this._bars[CastleStatusPanel.BAR_LEFT_3].addIcon(new Z.StatusIconAllianceTeaserComponent());
-      this._bars[CastleStatusPanel.BAR_LEFT_3].addIcon(new X.StatusIconAllianceAction());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new de.StatusIconOfferHub());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new V.StatusIconDynamicOffer());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new w.StatusIconPrimeAlliBonus());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new R.StatusIconAlliPaymentBonus());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new F.StatusIconSpecialIngameOffer());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new N.StatusIconSpecialOffer());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new k.StatusIconTimelessSpecialOffer());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new pe.StatusIconPaymentReward());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new be.StatusIconTieredPaymentReward());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new _e.StatusIconReactivationPaymentRewardEvent());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new B.StatusIconPrimeTimeOffer());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new S.StatusIconPrimeSaleEvent());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new L.StatusIconUnitPrimeSaleEvent());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new v.StatusIconEquipmentEnhancerPrimeSaleEvent());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new T.StatusIconEventPackagePrimeSaleEvent());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new ge.StatusIconPrimeSaleReviveAllEvent());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new U.StatusIconWorldCup());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new x.StatusIconGoodgamesGift());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new he.StatusIconPersonalFameBooster());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new ne.StatusIconFameBooster());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new re.StatusIconKhanTabletBooster());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new Ce.StatusIconRageBooster());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new se.StatusIconKhanMedalBooster());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new fe.StatusIconSamuraiBooster());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new J.StatusIconAllianceCoinBooster());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new E.StatusIconBoosterSale());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new b.StatusIconSeasonPassSale());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new y.StatusIconBoosterSaleLabeled());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new Ie.StatusIconXPBooster());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new oe.StatusIconGallantryBooster());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new ve.StatusIconFactionInvasionBooster());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new D.StatusIconShoppingCart());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new A.StatusIconRelicEnchanterPrimeSaleEvent());
-      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new ue.StatusIconMailGiftComponent());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new de.StatusIconOfferHub());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new te.StatusIconEilandRanking());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new ye.StatusIconTemporaryServerEvent());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new Q.StatusIconAllianceBattleGroundEvent());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new Ee.StatusIconSeasonLeagueEvent());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new ee.StatusIconCollectorEvent());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new ie.StatusIconFactionEvent());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new Oe.StatusIconSeasonEvent());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new ce.StatusIconLeaveEvent());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new d.StatusIconSeasonGacha_Christmas());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new p.StatusIconSeasonGacha_Easter());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new g.StatusIconSeasonGacha_Summer());
-      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new h.StatusIconSeasonGacha_Halloween());
+      this._bars[CastleStatusPanel.BAR_RIGHT].addIcon(new ce.StatusIconLastManStanding(o.FactionConst.BLUE_FACTION));
+      this._bars[CastleStatusPanel.BAR_RIGHT].addIcon(new ce.StatusIconLastManStanding(o.FactionConst.RED_FACTION));
+      this._bars[CastleStatusPanel.BAR_RIGHT].addIcon(new fe.StatusIconRepairAll());
+      this._bars[CastleStatusPanel.BAR_RIGHT].addIcon(new K.StatusIconActivityBonusComponent());
+      this._bars[CastleStatusPanel.BAR_RIGHT].addIcon(new se.StatusIconGlobalEffectEvent());
+      this._bars[CastleStatusPanel.BAR_RIGHT_2].addIcon(new z.StatusIconStartupLoginBonusComponent());
+      this._bars[CastleStatusPanel.BAR_LEFT].addIcon(new M.StatusIconAttackWarnings());
+      this._bars[CastleStatusPanel.BAR_LEFT].addIcon(new q.StatusIconAdvisorAttack_Nomad());
+      this._bars[CastleStatusPanel.BAR_LEFT].addIcon(new X.StatusIconAdvisorAttack_Samurai());
+      this._bars[CastleStatusPanel.BAR_LEFT_2].addIcon(new W.StatusIconOpenGate());
+      this._bars[CastleStatusPanel.BAR_LEFT_2].addIcon(new j.StatusIconNoobProtection());
+      this._bars[CastleStatusPanel.BAR_LEFT_2].addIcon(new Y.StatusIconPeaceProtection());
+      this._bars[CastleStatusPanel.BAR_LEFT_2].addIcon(new H.StatusIconFactionProtection());
+      this._bars[CastleStatusPanel.BAR_LEFT_3].addIcon(new ee.StatusIconCapEyecatcher());
+      this._bars[CastleStatusPanel.BAR_LEFT_3].addIcon(new Ie.StatusIconWebshop());
+      this._bars[CastleStatusPanel.BAR_LEFT_3].addIcon(new $.StatusIconAllianceTeaserComponent());
+      this._bars[CastleStatusPanel.BAR_LEFT_3].addIcon(new Q.StatusIconAllianceAction());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new pe.StatusIconOfferHub());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new x.StatusIconDynamicOffer());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new B.StatusIconPrimeAlliBonus());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new V.StatusIconAlliPaymentBonus());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new N.StatusIconSpecialIngameOffer());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new k.StatusIconSpecialOffer());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new U.StatusIconTimelessSpecialOffer());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new he.StatusIconPaymentReward());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new De.StatusIconTieredPaymentReward());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new me.StatusIconReactivationPaymentRewardEvent());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new F.StatusIconPrimeTimeOffer());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new A.StatusIconPrimeSaleEvent());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new P.StatusIconUnitPrimeSaleEvent());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new T.StatusIconEquipmentEnhancerPrimeSaleEvent());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new S.StatusIconEventPackagePrimeSaleEvent());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new Ce.StatusIconPrimeSaleReviveAllEvent());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new G.StatusIconWorldCup());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new w.StatusIconGoodgamesGift());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new ge.StatusIconPersonalFameBooster());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new oe.StatusIconFameBooster());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new le.StatusIconKhanTabletBooster());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new _e.StatusIconRageBooster());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new re.StatusIconKhanMedalBooster());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new Oe.StatusIconSamuraiBooster());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new Z.StatusIconAllianceCoinBooster());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new y.StatusIconBoosterSale());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new D.StatusIconSeasonPassSale());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new b.StatusIconBoosterSaleLabeled());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new ve.StatusIconXPBooster());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new ae.StatusIconGallantryBooster());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new Te.StatusIconFactionInvasionBooster());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new I.StatusIconShoppingCart());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new L.StatusIconRelicEnchanterPrimeSaleEvent());
+      this._bars[CastleStatusPanel.BAR_ACTION_PANEL_LEFT].addIcon(new de.StatusIconMailGiftComponent());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new pe.StatusIconOfferHub());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new ie.StatusIconEilandRanking());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new be.StatusIconTemporaryServerEvent());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new J.StatusIconAllianceBattleGroundEvent());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new ye.StatusIconSeasonLeagueEvent());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new te.StatusIconCollectorEvent());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new ne.StatusIconFactionEvent());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new Ee.StatusIconSeasonEvent());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new ue.StatusIconLeaveEvent());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new p.StatusIconSeasonGacha_Christmas());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new h.StatusIconSeasonGacha_Easter());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new C.StatusIconSeasonGacha_Summer());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new g.StatusIconSeasonGacha_Halloween());
       this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new u.StatusIconSeasonGacha_Anniversary());
-      this._bars[CastleStatusPanel.BAR_QUESTPANEL_TOP].addIcon(new I.StatusIconDailyQuest());
+      this._bars[CastleStatusPanel.BAR_MULTIINFO_PANEL_RIGHT].addIcon(new d.StatusIconSeasonGacha_BlackFriday());
+      this._bars[CastleStatusPanel.BAR_QUESTPANEL_TOP].addIcon(new v.StatusIconDailyQuest());
     };
     CastleStatusPanel.prototype.init = function () {
       e.prototype.init.call(this);
       this.dispToCache.tickEnabled = true;
-      this._bars = [new c.CastleStatusBar(C.StatusBarExpansionDirectionEnum.EXPAND_LEFT, true), new c.CastleStatusBar(C.StatusBarExpansionDirectionEnum.EXPAND_DOWN), new c.CastleStatusBar(C.StatusBarExpansionDirectionEnum.EXPAND_RIGHT), new c.CastleStatusBar(C.StatusBarExpansionDirectionEnum.EXPAND_DOWN), new c.CastleStatusBar(C.StatusBarExpansionDirectionEnum.EXPAND_RIGHT), new M.CastleOfferHubStatusBar("events"), new M.CastleOfferHubStatusBar("offersOverview"), new c.CastleStatusBar(C.StatusBarExpansionDirectionEnum.EXPAND_LEFT)];
+      this._bars = [new c.CastleStatusBar(_.StatusBarExpansionDirectionEnum.EXPAND_LEFT, true), new c.CastleStatusBar(_.StatusBarExpansionDirectionEnum.EXPAND_DOWN), new c.CastleStatusBar(_.StatusBarExpansionDirectionEnum.EXPAND_RIGHT), new c.CastleStatusBar(_.StatusBarExpansionDirectionEnum.EXPAND_DOWN), new c.CastleStatusBar(_.StatusBarExpansionDirectionEnum.EXPAND_RIGHT), new R.CastleOfferHubStatusBar("events"), new R.CastleOfferHubStatusBar("offersOverview"), new c.CastleStatusBar(_.StatusBarExpansionDirectionEnum.EXPAND_LEFT)];
       if (this._bars != null) {
         for (var t = 0, i = this._bars; t < i.length; t++) {
           var n = i[t];
@@ -66701,7 +66838,7 @@
         this._bars[CastleStatusPanel.BAR_LEFT].disp.y = CastleStatusPanel.TOP_SPACE_LEFT_BAR;
         this._bars[CastleStatusPanel.BAR_LEFT_2].disp.x = CastleStatusPanel.LEFT_SPACE;
         this._bars[CastleStatusPanel.BAR_LEFT_2].disp.y = this._bars[CastleStatusPanel.BAR_LEFT].disp.y + CastleStatusPanel.BAR_SPACING;
-        this._bars[CastleStatusPanel.BAR_LEFT_3].expandTo = C.StatusBarExpansionDirectionEnum.EXPAND_DOWN;
+        this._bars[CastleStatusPanel.BAR_LEFT_3].expandTo = _.StatusBarExpansionDirectionEnum.EXPAND_DOWN;
         this._bars[CastleStatusPanel.BAR_LEFT_3].disp.x = CastleStatusPanel.LEFT_SPACE_BAR_LEFT_3_DOWN;
         this._bars[CastleStatusPanel.BAR_LEFT_3].disp.y = CastleStatusPanel.TOP_SPACE_BAR_LEFT_3;
         if (this.disp.stage.stageHeight < CastleStatusPanel.MOVE_DAILY_QUEST_AT_HEIGHT) {
@@ -66738,13 +66875,13 @@
           this._bars[CastleStatusPanel.BAR_QUESTPANEL_TOP].disp.x = this.disp.stage.stageWidth - CastleStatusPanel.RIGHT_SPACE_QUEST;
           this._bars[CastleStatusPanel.BAR_QUESTPANEL_TOP].disp.y = this.disp.stage.stageHeight - CastleStatusPanel.BOTTOM_SPACE_QUEST;
         }
-        if (O.CastleQuestStartPanel.movePanelUp()) {
+        if (E.CastleQuestStartPanel.movePanelUp()) {
           this._bars[CastleStatusPanel.BAR_QUESTPANEL_TOP].disp.y += s.ClientConstCastle.SEASON_PANEL_OFFSET;
         }
       }
     };
     CastleStatusPanel.prototype.onClick = function (e) {
-      if (e.target instanceof _ && e.target.statusIcon) {
+      if (e.target instanceof m && e.target.statusIcon) {
         e.target.statusIcon.onClick(e);
       }
     };
@@ -66800,69 +66937,69 @@
     CastleStatusPanel.MOVE_DAILY_QUEST_AT_HEIGHT = 680;
     return CastleStatusPanel;
   }(l.CastlePanel);
-  t.CastleStatusPanel = f;
-  var O = i(463);
-  var E = i(3951);
+  t.CastleStatusPanel = O;
+  var E = i(464);
   var y = i(3952);
   var b = i(3953);
-  var D = i(3955);
+  var D = i(3954);
   var I = i(3956);
-  var v = i(3958);
+  var v = i(3957);
   var T = i(3959);
   var S = i(3960);
   var A = i(3961);
   var L = i(3962);
-  var P = i(934);
-  var M = i(3963);
+  var P = i(3963);
+  var M = i(934);
   var R = i(3964);
   var V = i(3965);
-  var x = i(3967);
+  var x = i(3966);
   var w = i(3968);
   var B = i(3969);
   var F = i(3970);
   var N = i(3971);
   var k = i(3972);
   var U = i(3973);
-  var G = i(3980);
-  var H = i(3989);
+  var G = i(3974);
+  var H = i(3981);
   var j = i(3990);
   var W = i(3991);
   var Y = i(3992);
-  var K = i(3995);
-  var z = i(3997);
-  var q = i(4003);
+  var K = i(3993);
+  var z = i(3996);
+  var q = i(3998);
   var X = i(4004);
-  var Q = i(4016);
+  var Q = i(4005);
   var J = i(4017);
-  var Z = i(4019);
+  var Z = i(4018);
   var $ = i(4020);
   var ee = i(4021);
   var te = i(4022);
-  var ie = i(4036);
+  var ie = i(4023);
   var ne = i(4037);
   var oe = i(4038);
-  var ae = i(4040);
+  var ae = i(4039);
   var se = i(4041);
-  var re = i(4043);
-  var le = i(4045);
+  var re = i(4042);
+  var le = i(4044);
   var ce = i(4046);
-  var ue = i(4048);
+  var ue = i(4047);
   var de = i(4049);
   var pe = i(4050);
   var he = i(4051);
-  var ge = i(4053);
+  var ge = i(4052);
   var Ce = i(4054);
-  var _e = i(4056);
+  var _e = i(4055);
   var me = i(4057);
   var fe = i(4058);
-  var Oe = i(4060);
+  var Oe = i(4059);
   var Ee = i(4061);
   var ye = i(4062);
   var be = i(4063);
   var De = i(4064);
   var Ie = i(4065);
-  var ve = i(4068);
-  f.__initialize_static_members();
+  var ve = i(4066);
+  var Te = i(4069);
+  O.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
 
@@ -66870,134 +67007,165 @@
     value: true
   });
   var n = i(0);
-  var o = i(1);
-  var a = i(6);
-  var s = i(28);
-  var r = i(287);
-  var l = i(30);
-  var c = i(15);
-  var u = i(4);
-  var d = i(306);
-  var p = createjs.Point;
-  var h = function (e) {
-    function AGachaEventVO() {
-      var t = e !== null && e.apply(this, arguments) || this;
-      t._freeChestResetTime = 0;
-      t._currentMultiPull = 1;
-      return t;
+  var o = i(2);
+  var a = i(1);
+  var s = i(3);
+  var r = i(21);
+  var l = i(287);
+  var c = i(26);
+  var u = i(12);
+  var d = i(15);
+  var p = i(4);
+  var h = i(27);
+  var g = i(19);
+  var C = i(8);
+  var _ = i(11);
+  var m = i(1829);
+  var f = i(1831);
+  var O = i(1832);
+  var E = i(1833);
+  var y = i(1834);
+  var b = i(1835);
+  var D = i(1836);
+  var I = i(1837);
+  var v = i(1838);
+  var T = function (e) {
+    function SeasonGachaEventMainDialog() {
+      var t = this;
+      t._gachaComponents = [];
+      CONSTRUCTOR_HACK;
+      return t = e.call(this, SeasonGachaEventMainDialog.NAME) || this;
     }
-    n.__extends(AGachaEventVO, e);
-    AGachaEventVO.prototype.parseEventXmlNode = function (t) {
-      e.prototype.parseEventXmlNode.call(this, t);
+    n.__extends(SeasonGachaEventMainDialog, e);
+    SeasonGachaEventMainDialog.prototype.initLoaded = function (t = null) {
+      e.prototype.initLoaded.call(this, t);
+      C.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help], g.ClickFeedbackButtonHover);
+      this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.mc_timer.txt_time, new s.TextVO(""));
+      this.dialogDisp.btn_help.toolTipText = "generic_help";
+      this.dialogDisp.mc_timer.toolTipText = "dialog_tenthAnniversary_timer";
+      this.addGachaComponent(f.GachaComponentBackground, this.dialogDisp.mc_bg);
+      this.addGachaComponent(O.GachaComponentCurrency, this.dialogDisp.mc_currency);
+      this.addGachaComponent(y.GachaComponentMerchantButton, this.dialogDisp.btn_merchant);
+      this.addGachaComponent(I.GachaComponentRanking, this.dialogDisp.mc_ranking);
+      this.addGachaComponent(E.GachaComponentLevelRewards, this.dialogDisp.mc_levelRewards);
+      this.addGachaComponent(D.GachaComponentPull, this.dialogDisp.mc_pull, "supersale");
+      this.addGachaComponent(b.GachaComponentMilestones, this.dialogDisp.mc_milestones);
+      this.addGachaComponent(v.GachaComponentRewards, this.dialogDisp.mc_rewards);
+      this.addGachaComponent(m.GachaComponentAnimation, this.dialogDisp.mc_animation);
     };
-    AGachaEventVO.prototype.parseParamObject = function (t) {
-      e.prototype.parseParamObject.call(this, t);
-      this.parseGachaEvent(t);
-    };
-    AGachaEventVO.prototype.parseGachaEvent = function (e) {
-      if (e.FCRT) {
-        this._freeChestResetTime = l.CachedTimer.getCachedTimer() + e.FCRT * s.ClientConstTime.SEC_2_MILLISEC;
+    SeasonGachaEventMainDialog.prototype.showLoaded = function (t) {
+      var i = this;
+      if (t === undefined) {
+        t = null;
       }
-      if (e.OP) {
-        this._ownPoints = a.int(e.OP);
+      e.prototype.showLoaded.call(this, t);
+      this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId("event_title_" + this.eventVO.eventId)));
+      o.loadAsset("Rewards_Animation").then(function (e) {
+        d.CastleBasicController.getInstance().dispatchEvent(new l.GachaEvent(l.GachaEvent.SHINE_ANIMATION_LOADED, null, null));
+      });
+      this._gachaComponents.forEach(function (e) {
+        e.show([i.eventVO, 1]);
+      });
+      p.CastleModel.timerData.addEventListener(r.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
+      p.CastleModel.specialEventData.addEventListener(c.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
+    };
+    SeasonGachaEventMainDialog.prototype.addGachaComponent = function (e, t, i = null) {
+      if (t) {
+        if (i) {
+          this._gachaComponents.push(new e(t, i));
+        } else {
+          this._gachaComponents.push(new e(t));
+        }
       }
-      if (e.OR) {
-        this._ownRank = a.int(e.OR);
+    };
+    SeasonGachaEventMainDialog.prototype.hideLoaded = function (t = null) {
+      e.prototype.hideLoaded.call(this, t);
+      this._gachaComponents.forEach(function (e) {
+        e.onHide();
+      });
+      p.CastleModel.timerData.removeEventListener(r.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
+      p.CastleModel.specialEventData.removeEventListener(c.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
+    };
+    SeasonGachaEventMainDialog.prototype.onSpecialEventRemoved = function (e) {
+      if (!this.isEventActive) {
+        this.hide();
       }
-      c.CastleBasicController.getInstance().dispatchEvent(new r.GachaEvent(r.GachaEvent.UPDATED, this));
     };
-    AGachaEventVO.prototype.setRankAndPoints = function (t, i, n) {
-      e.prototype.setRankAndPoints.call(this, t, i, n);
-      c.CastleBasicController.getInstance().dispatchEvent(new r.GachaEvent(r.GachaEvent.UPDATED, this));
+    SeasonGachaEventMainDialog.prototype.onLockDialog = function (e) {
+      this.lockDialog();
     };
-    AGachaEventVO.prototype.getGachaVOs = function () {
-      return u.CastleModel.gachaData.getGachaVOs(this.eventId, this.rewardSetId, this.leagueID);
+    SeasonGachaEventMainDialog.prototype.onUnlockDialog = function (e) {
+      this.unLockDialog();
     };
-    AGachaEventVO.prototype.getGachaVOByLevel = function (e) {
-      return u.CastleModel.gachaData.getGachaVOByLevel(this.eventId, this.rewardSetId, this.leagueID, e);
+    SeasonGachaEventMainDialog.prototype.onTimerUpdate = function (e) {
+      this.updateTimer();
     };
-    AGachaEventVO.prototype.getCurrentGachaVO = function () {
-      return u.CastleModel.gachaData.getCurrentGachaVO(this.eventId, this.rewardSetId, this.leagueID, this.ownPoints);
+    SeasonGachaEventMainDialog.prototype.onClick = function (t) {
+      e.prototype.onClick.call(this, t);
+      if (!this.isLocked && C.ButtonHelper.isButtonEnabled(t.target)) {
+        switch (t.target) {
+          case this.dialogDisp.btn_close:
+            this.hide();
+            break;
+          case this.dialogDisp.btn_help:
+            _.CastleExternalDialog.dialogHandler.showHelper("", "helpPopup_" + this.eventVO.assetName());
+        }
+      }
     };
-    AGachaEventVO.prototype.getCurrentLevel = function () {
-      return this.getCurrentGachaVO().gachaLevel;
+    SeasonGachaEventMainDialog.prototype.updateActiveEvent = function () {
+      this.updateTimer();
     };
-    AGachaEventVO.prototype.getCurrentLevelProgress = function (e = 0) {
-      return this._ownPoints + e - this.getCurrentGachaVO().minPulls;
+    SeasonGachaEventMainDialog.prototype.updateTimer = function () {
+      if (this.isEventActive) {
+        var e = this.eventVO.remainingEventTimeInSeconds;
+        this.itxt_time.textContentVO.stringValue = h.CastleTimeStringHelper.getEventTimeString(e);
+      } else {
+        this.hide();
+      }
     };
-    AGachaEventVO.prototype.getCurrentLevelMaxPulls = function () {
-      return this.getCurrentGachaVO().maxPulls - this.getCurrentGachaVO().minPulls + 1;
-    };
-    AGachaEventVO.prototype.getIsMaxLevel = function () {
-      return this.getCurrentGachaVO().isMaxLevel;
-    };
-    Object.defineProperty(AGachaEventVO.prototype, "freeChestResetTime", {
+    Object.defineProperty(SeasonGachaEventMainDialog.prototype, "eventVO", {
       get: function () {
-        return this._freeChestResetTime;
+        return this.dialogProperties.eventVO;
       },
       enumerable: true,
       configurable: true
     });
-    AGachaEventVO.prototype.assetName = function () {
-      return this.eventType;
-    };
-    Object.defineProperty(AGachaEventVO.prototype, "eventName", {
+    Object.defineProperty(SeasonGachaEventMainDialog.prototype, "isEventActive", {
       get: function () {
-        return this.assetName();
+        return !!p.CastleModel.specialEventData.getActiveEventByEventId(this.eventVO.eventId);
       },
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(AGachaEventVO.prototype, "animationPos", {
+    Object.defineProperty(SeasonGachaEventMainDialog.prototype, "dialogProperties", {
       get: function () {
-        return new p(275, 43);
+        return this.properties;
       },
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(AGachaEventVO.prototype, "animationScale", {
-      get: function () {
-        return 0.25;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Object.defineProperty(AGachaEventVO.prototype, "animationFPS", {
-      get: function () {
-        return 30;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Object.defineProperty(AGachaEventVO.prototype, "currencyMerchantEventID", {
-      get: function () {
-        return 0;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Object.defineProperty(AGachaEventVO.prototype, "eventBuildingNameId", {
-      get: function () {
-        return "tooltip_gachaName_" + this.assetName();
-      },
-      enumerable: true,
-      configurable: true
-    });
-    Object.defineProperty(AGachaEventVO.prototype, "currentMultiPull", {
-      get: function () {
-        return this._currentMultiPull;
-      },
-      set: function (e) {
-        this._currentMultiPull = e;
-        c.CastleBasicController.getInstance().dispatchEvent(new r.GachaEvent(r.GachaEvent.MULTIPULL_CHANGED, this));
-      },
-      enumerable: true,
-      configurable: true
-    });
-    return AGachaEventVO;
-  }(d.ALeagueTypeScoreEventVO);
-  t.AGachaEventVO = h;
-  o.classImplementsInterfaces(h, "IEventOverviewable");
+    SeasonGachaEventMainDialog.NAME = "SeasonGachaMain";
+    return SeasonGachaEventMainDialog;
+  }(_.CastleExternalDialog);
+  t.SeasonGachaEventMainDialog = T;
+  a.classImplementsInterfaces(T, "ICollectableRendererList");
+}, function (e, t, i) {
+  'use strict';
+
+  Object.defineProperty(t, "__esModule", {
+    value: true
+  });
+  var n = i(0);
+  var o = function (e) {
+    function SeasonGachaEventMainDialogProperties(t) {
+      var i = e.call(this) || this;
+      i.eventVO = t;
+      return i;
+    }
+    n.__extends(SeasonGachaEventMainDialogProperties, e);
+    return SeasonGachaEventMainDialogProperties;
+  }(i(222).BasicProperties);
+  t.SeasonGachaEventMainDialogProperties = o;
 }, function (e, t, i) {
   'use strict';
 
@@ -67016,12 +67184,12 @@
   var p = i(5);
   var h = i(27);
   var g = i(1850);
-  var C = i(4028);
-  var _ = i(4030);
+  var C = i(4029);
+  var _ = i(4031);
   var m = i(11);
-  var f = i(4031);
-  var O = i(4033);
-  var E = i(4035);
+  var f = i(4032);
+  var O = i(4034);
+  var E = i(4036);
   var y = function (e) {
     function CastleStormIslandsMainDialog() {
       var t = this;
@@ -67959,14 +68127,14 @@
   var O = i(4);
   var E = i(862);
   var y = i(168);
-  var b = i(142);
+  var b = i(138);
   var D = i(34);
   var I = i(111);
   var v = i(180);
   var T = i(87);
   var S = i(92);
   var A = i(863);
-  var L = i(483);
+  var L = i(485);
   var P = createjs.Point;
   var M = function (e) {
     function ABasicBuildingVO() {
@@ -68968,7 +69136,7 @@
   o.classImplementsInterfaces(r, "ICollectableRendererList");
   var l = i(14);
   var c = i(143);
-  var u = i(415);
+  var u = i(416);
   var d = i(868);
   var p = i(1191);
   var h = i(1192);
@@ -69072,7 +69240,7 @@
   var l = i(112);
   var c = i(694);
   var u = i(294);
-  var d = i(492);
+  var d = i(494);
   var p = createjs.Point;
   var h = function (e) {
     function AIsoMovementVE() {
@@ -69340,7 +69508,7 @@
   var g = i(13);
   var C = i(144);
   var _ = i(1199);
-  var m = i(489);
+  var m = i(491);
   var f = i(48);
   var O = i(35);
   var E = i(1200);
@@ -70241,7 +70409,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(6);
-  var c = i(423);
+  var c = i(424);
   var u = i(28);
   var d = i(103);
   var p = i(53);
@@ -70250,9 +70418,9 @@
   var C = i(4);
   var _ = i(109);
   var m = i(119);
-  var f = i(424);
+  var f = i(425);
   var O = i(64);
-  var E = i(503);
+  var E = i(505);
   var y = function (e) {
     function CapitalMapobjectVO() {
       var t = e.call(this) || this;
@@ -70445,7 +70613,7 @@
   var h = i(44);
   var g = i(4);
   var C = i(109);
-  var _ = i(424);
+  var _ = i(425);
   var m = i(279);
   var f = i(210);
   var O = function (e) {
@@ -70831,10 +70999,10 @@
   var h = i(53);
   var g = i(44);
   var C = i(4);
-  var _ = i(505);
+  var _ = i(507);
   var m = i(703);
   var f = i(169);
-  var O = i(424);
+  var O = i(425);
   var E = i(64);
   var y = i(245);
   var b = i(210);
@@ -71135,7 +71303,7 @@
   var v = i(117);
   var T = i(70);
   var S = i(109);
-  var A = i(411);
+  var A = i(412);
   var L = i(279);
   var P = i(137);
 }, function (e, t, i) {
@@ -71152,7 +71320,7 @@
   var l = i(2133);
   var c = i(2134);
   var u = i(704);
-  var d = i(506);
+  var d = i(508);
   var p = i(54);
   var h = i(101);
   var g = i(4);
@@ -71894,7 +72062,7 @@
   var l = i(18);
   var c = i(1);
   var u = i(8);
-  var d = i(589);
+  var d = i(590);
   var p = i(4);
   var h = i(34);
   var g = i(217);
@@ -71922,13 +72090,13 @@
   var g = i(6);
   var C = i(39);
   var _ = i(22);
-  var m = i(483);
+  var m = i(485);
   var f = i(4);
-  var O = i(142);
+  var O = i(138);
   var E = i(98);
   var y = i(34);
   var b = i(111);
-  var D = i(589);
+  var D = i(590);
   var I = i(2159);
   var v = function (e) {
     function BasicUnitVO() {
@@ -72745,11 +72913,11 @@
   var d = i(3);
   var p = i(344);
   var h = i(871);
-  var g = i(599);
+  var g = i(600);
   var C = i(15);
   var _ = i(918);
   var m = i(355);
-  var f = i(437);
+  var f = i(438);
   var O = i(8);
   var E = i(926);
   var y = i(42);
@@ -73127,7 +73295,7 @@
   var r = i(5);
   var l = i(6);
   var c = i(28);
-  var u = i(483);
+  var u = i(485);
   var d = i(30);
   var p = i(4);
   var h = i(207);
@@ -74185,7 +74353,7 @@
   var p = i(30);
   var h = i(4);
   var g = i(64);
-  var C = i(501);
+  var C = i(503);
   var _ = i(245);
   var m = function (e) {
     function DaimyoCastleMapObjectVO() {
@@ -74652,7 +74820,7 @@
   var s = i(2);
   var r = i(5);
   var l = i(3);
-  var c = i(438);
+  var c = i(439);
   var u = i(23);
   var d = function () {
     function CastlePrivateResourceVillageRenderHelper() {}
@@ -74876,8 +75044,8 @@
   var s = i(56);
   var r = i(4);
   var l = i(338);
-  var c = i(458);
-  var u = i(567);
+  var c = i(459);
+  var u = i(568);
   var d = createjs.Point;
   var p = function (e) {
     function AIsoMovementVO() {
@@ -75116,7 +75284,7 @@
       configurable: true
     });
     return AUnitProductionBuildingVE;
-  }(i(459).AProductionBuildingVE);
+  }(i(460).AProductionBuildingVE);
   t.AUnitProductionBuildingVE = s;
   var r = i(14);
   var l = i(1567);
@@ -76079,24 +76247,24 @@
   var g = i(9);
   var C = i(8);
   var _ = i(11);
-  var m = i(138);
+  var m = i(139);
   var f = i(135);
   var O = i(1);
   var E = i(133);
-  var y = i(654);
+  var y = i(655);
   var b = i(25);
   var D = i(36);
-  var I = i(655);
-  var v = i(541);
+  var I = i(656);
+  var v = i(543);
   var T = i(1668);
   var S = i(1669);
   var A = i(406);
   var L = i(1670);
   var P = i(3439);
   var M = i(3440);
-  var R = i(656);
+  var R = i(657);
   var V = i(361);
-  var x = i(548);
+  var x = i(550);
   var w = i(206);
   var B = createjs.Point;
   var F = i(15);
@@ -77129,148 +77297,78 @@
     value: true
   });
   var n = i(0);
-  var o = i(2);
-  var a = i(1);
-  var s = i(3);
-  var r = i(21);
-  var l = i(287);
-  var c = i(26);
-  var u = i(12);
-  var d = i(15);
-  var p = i(4);
-  var h = i(27);
-  var g = i(19);
-  var C = i(8);
-  var _ = i(11);
-  var m = i(1829);
-  var f = i(1831);
-  var O = i(1832);
-  var E = i(1833);
-  var y = i(1834);
-  var b = i(1835);
-  var D = i(1836);
-  var I = i(1837);
-  var v = i(1838);
-  var T = function (e) {
-    function SeasonGachaEventMainDialog() {
-      var t = this;
-      t._gachaComponents = [];
-      CONSTRUCTOR_HACK;
-      return t = e.call(this, SeasonGachaEventMainDialog.NAME) || this;
+  var o = i(3);
+  var a = i(26);
+  var s = i(163);
+  var r = i(4);
+  var l = i(9);
+  var c = i(476);
+  var u = i(477);
+  var d = function (e) {
+    function AStatusIconSeasonGacha(t) {
+      return e.call(this, t, new o.TextVO("")) || this;
     }
-    n.__extends(SeasonGachaEventMainDialog, e);
-    SeasonGachaEventMainDialog.prototype.initLoaded = function (t = null) {
-      e.prototype.initLoaded.call(this, t);
-      C.ButtonHelper.initButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_help], g.ClickFeedbackButtonHover);
-      this.itxt_time = this.textFieldManager.registerTextField(this.dialogDisp.mc_timer.txt_time, new s.TextVO(""));
-      this.dialogDisp.btn_help.toolTipText = "generic_help";
-      this.dialogDisp.mc_timer.toolTipText = "dialog_tenthAnniversary_timer";
-      this.addGachaComponent(f.GachaComponentBackground, this.dialogDisp.mc_bg);
-      this.addGachaComponent(O.GachaComponentCurrency, this.dialogDisp.mc_currency);
-      this.addGachaComponent(y.GachaComponentMerchantButton, this.dialogDisp.btn_merchant);
-      this.addGachaComponent(I.GachaComponentRanking, this.dialogDisp.mc_ranking);
-      this.addGachaComponent(E.GachaComponentLevelRewards, this.dialogDisp.mc_levelRewards);
-      this.addGachaComponent(D.GachaComponentPull, this.dialogDisp.mc_pull, "supersale");
-      this.addGachaComponent(b.GachaComponentMilestones, this.dialogDisp.mc_milestones);
-      this.addGachaComponent(v.GachaComponentRewards, this.dialogDisp.mc_rewards);
-      this.addGachaComponent(m.GachaComponentAnimation, this.dialogDisp.mc_animation);
+    n.__extends(AStatusIconSeasonGacha, e);
+    AStatusIconSeasonGacha.prototype.addEventListenerForVisibility = function () {
+      this.controller.addEventListener(s.CastleXPChangedEvent.CHANGE_USER_XP, this.bindFunction(this.onRefreshItem));
+      r.CastleModel.specialEventData.addEventListener(a.CastleSpecialEventEvent.SERVER_DATA_PARSED, this.bindFunction(this.onRefreshItem));
+      r.CastleModel.specialEventData.addEventListener(a.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRefreshItem));
+      r.CastleModel.specialEventData.addEventListener(a.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onRefreshItem));
     };
-    SeasonGachaEventMainDialog.prototype.showLoaded = function (t) {
-      var i = this;
-      if (t === undefined) {
-        t = null;
-      }
-      e.prototype.showLoaded.call(this, t);
-      this.textFieldManager.registerTextField(this.dialogDisp.txt_title, new s.TextVO(u.TextHelper.toUpperCaseLocaSafeTextId("event_title_" + this.eventVO.eventId)));
-      o.loadAsset("Rewards_Animation").then(function (e) {
-        d.CastleBasicController.getInstance().dispatchEvent(new l.GachaEvent(l.GachaEvent.SHINE_ANIMATION_LOADED, null, null));
-      });
-      this._gachaComponents.forEach(function (e) {
-        e.show([i.eventVO, 1]);
-      });
-      p.CastleModel.timerData.addEventListener(r.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
-      p.CastleModel.specialEventData.addEventListener(c.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
+    AStatusIconSeasonGacha.prototype.initLoaded = function (t = null) {
+      e.prototype.initLoaded.call(this);
     };
-    SeasonGachaEventMainDialog.prototype.addGachaComponent = function (e, t, i = null) {
-      if (t) {
-        if (i) {
-          this._gachaComponents.push(new e(t, i));
-        } else {
-          this._gachaComponents.push(new e(t));
-        }
-      }
+    AStatusIconSeasonGacha.prototype.removeEventListenerForVisibility = function () {
+      this.controller.removeEventListener(s.CastleXPChangedEvent.CHANGE_USER_XP, this.bindFunction(this.onRefreshItem));
+      r.CastleModel.specialEventData.removeEventListener(a.CastleSpecialEventEvent.SERVER_DATA_PARSED, this.bindFunction(this.onRefreshItem));
+      r.CastleModel.specialEventData.removeEventListener(a.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRefreshItem));
+      r.CastleModel.specialEventData.removeEventListener(a.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onRefreshItem));
     };
-    SeasonGachaEventMainDialog.prototype.hideLoaded = function (t = null) {
-      e.prototype.hideLoaded.call(this, t);
-      this._gachaComponents.forEach(function (e) {
-        e.onHide();
-      });
-      p.CastleModel.timerData.removeEventListener(r.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.onTimerUpdate));
-      p.CastleModel.specialEventData.removeEventListener(c.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onSpecialEventRemoved));
+    AStatusIconSeasonGacha.prototype.onRefreshItem = function (e = null) {
+      this.update();
     };
-    SeasonGachaEventMainDialog.prototype.onSpecialEventRemoved = function (e) {
-      if (!this.isEventActive) {
-        this.hide();
-      }
+    AStatusIconSeasonGacha.prototype.updateLoaded = function () {
+      this.setVisibilityLoaded();
     };
-    SeasonGachaEventMainDialog.prototype.onLockDialog = function (e) {
-      this.lockDialog();
-    };
-    SeasonGachaEventMainDialog.prototype.onUnlockDialog = function (e) {
-      this.unLockDialog();
-    };
-    SeasonGachaEventMainDialog.prototype.onTimerUpdate = function (e) {
-      this.updateTimer();
-    };
-    SeasonGachaEventMainDialog.prototype.onClick = function (t) {
-      e.prototype.onClick.call(this, t);
-      if (!this.isLocked && C.ButtonHelper.isButtonEnabled(t.target)) {
-        switch (t.target) {
-          case this.dialogDisp.btn_close:
-            this.hide();
-            break;
-          case this.dialogDisp.btn_help:
-            _.CastleExternalDialog.dialogHandler.showHelper("", "helpPopup_" + this.eventVO.assetName());
-        }
-      }
-    };
-    SeasonGachaEventMainDialog.prototype.updateActiveEvent = function () {
-      this.updateTimer();
-    };
-    SeasonGachaEventMainDialog.prototype.updateTimer = function () {
-      if (this.isEventActive) {
-        var e = this.eventVO.remainingEventTimeInSeconds;
-        this.itxt_time.textContentVO.stringValue = h.CastleTimeStringHelper.getEventTimeString(e);
+    AStatusIconSeasonGacha.prototype.setVisibilityLoaded = function () {
+      if (this.eventVO && this.eventVO.minLevel <= r.CastleModel.userData.level) {
+        this.show();
       } else {
         this.hide();
       }
     };
-    Object.defineProperty(SeasonGachaEventMainDialog.prototype, "eventVO", {
+    AStatusIconSeasonGacha.prototype.onClick = function () {
+      l.CastleDialogHandler.getInstance().registerDefaultDialogs(c.SeasonGachaEventMainDialog, new u.SeasonGachaEventMainDialogProperties(this.eventVO));
+    };
+    Object.defineProperty(AStatusIconSeasonGacha.prototype, "eventVO", {
       get: function () {
-        return this.dialogProperties.eventVO;
+        return r.CastleModel.specialEventData.getActiveEventByEventId(this.eventID);
       },
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(SeasonGachaEventMainDialog.prototype, "isEventActive", {
+    AStatusIconSeasonGacha.prototype.showLoaded = function (t = null) {
+      e.prototype.showLoaded.call(this, t);
+      if (this.eventVO) {
+        this.setTooltip("event_title_" + this.eventVO.eventId);
+      }
+    };
+    AStatusIconSeasonGacha.prototype.addEventListenerForShowTime = function () {
+      e.prototype.addEventListenerForShowTime.call(this);
+    };
+    AStatusIconSeasonGacha.prototype.removeEventListenerForShowTime = function () {
+      e.prototype.removeEventListenerForShowTime.call(this);
+    };
+    Object.defineProperty(AStatusIconSeasonGacha.prototype, "eventID", {
       get: function () {
-        return !!p.CastleModel.specialEventData.getActiveEventByEventId(this.eventVO.eventId);
+        return 0;
       },
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(SeasonGachaEventMainDialog.prototype, "dialogProperties", {
-      get: function () {
-        return this.properties;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    SeasonGachaEventMainDialog.NAME = "SeasonGachaMain";
-    return SeasonGachaEventMainDialog;
-  }(_.CastleExternalDialog);
-  t.SeasonGachaEventMainDialog = T;
-  a.classImplementsInterfaces(T, "ICollectableRendererList");
+    return AStatusIconSeasonGacha;
+  }(i(364).AEventHubItemStatusIcon);
+  t.AStatusIconSeasonGacha = d;
 }, function (e, t, i) {
   'use strict';
 
@@ -77439,23 +77537,6 @@
   }(O.CastleExternalSubLayerDialog);
   t.GachaEventMainDialog = y;
   s.classImplementsInterfaces(y, "ICollectableRendererList");
-}, function (e, t, i) {
-  'use strict';
-
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var n = i(0);
-  var o = function (e) {
-    function SeasonGachaEventMainDialogProperties(t) {
-      var i = e.call(this) || this;
-      i.eventVO = t;
-      return i;
-    }
-    n.__extends(SeasonGachaEventMainDialogProperties, e);
-    return SeasonGachaEventMainDialogProperties;
-  }(i(222).BasicProperties);
-  t.SeasonGachaEventMainDialogProperties = o;
 }, function (e, t, i) {
   'use strict';
 
@@ -77691,41 +77772,41 @@
   }(_.CastlePanel);
   t.CastleActionPanel = O;
   var E = i(17);
-  var y = i(4113);
-  var b = i(4115);
-  var D = i(4117);
+  var y = i(4114);
+  var b = i(4116);
+  var D = i(4118);
   var I = i(1139);
   var v = i(1864);
   var T = i(1865);
-  var S = i(4118);
-  var A = i(4119);
+  var S = i(4119);
+  var A = i(4120);
   var L = i(1866);
-  var P = i(4120);
-  var M = i(4121);
-  var R = i(4122);
-  var V = i(4124);
-  var x = i(4125);
-  var w = i(4126);
-  var B = i(4127);
-  var F = i(4128);
-  var N = i(4129);
+  var P = i(4121);
+  var M = i(4122);
+  var R = i(4123);
+  var V = i(4125);
+  var x = i(4126);
+  var w = i(4127);
+  var B = i(4128);
+  var F = i(4129);
+  var N = i(4130);
   var k = i(1867);
-  var U = i(4130);
-  var G = i(4131);
-  var H = i(4132);
+  var U = i(4131);
+  var G = i(4132);
+  var H = i(4133);
   var j = i(1868);
   var W = i(847);
-  var Y = i(4133);
-  var K = i(4134);
-  var z = i(4135);
-  var q = i(4137);
-  var X = i(4138);
-  var Q = i(4139);
+  var Y = i(4134);
+  var K = i(4135);
+  var z = i(4136);
+  var q = i(4138);
+  var X = i(4139);
+  var Q = i(4140);
   var J = i(1869);
   var Z = i(1137);
   var $ = i(700);
-  var ee = i(4141);
-  var te = i(4142);
+  var ee = i(4142);
+  var te = i(4143);
 }, function (e, t, i) {
   'use strict';
 
@@ -78060,7 +78141,7 @@
   var l = i(192);
   var c = i(689);
   var u = i(243);
-  var d = i(413);
+  var d = i(414);
   var p = i(53);
   var h = i(30);
   var g = i(15);
@@ -78770,7 +78851,7 @@
   var a = i(5);
   var s = i(6);
   var r = i(28);
-  var l = i(569);
+  var l = i(570);
   var c = i(30);
   var u = i(4);
   var d = i(2086);
@@ -79344,7 +79425,7 @@
   o.classImplementsInterfaces(y, "IDetailViewAble", "IWorldmapObjectVO", "IDungeonMapobjectVO");
   var b = i(101);
   var D = i(34);
-  var I = i(576);
+  var I = i(577);
 }, function (e, t, i) {
   'use strict';
 
@@ -79444,9 +79525,9 @@
   var C = i(4);
   var _ = i(109);
   var m = i(119);
-  var f = i(424);
+  var f = i(425);
   var O = i(64);
-  var E = i(503);
+  var E = i(505);
   var y = function (e) {
     function MetropolMapobjectVO() {
       var t = this;
@@ -79645,11 +79726,11 @@
   var d = i(18);
   var p = i(28);
   var h = i(103);
-  var g = i(580);
+  var g = i(581);
   var C = i(30);
   var _ = i(4);
   var m = i(109);
-  var f = i(576);
+  var f = i(577);
   var O = i(64);
   var E = i(1234);
   var y = function (e) {
@@ -79823,7 +79904,7 @@
   var l = i(3);
   var c = i(4);
   var u = i(895);
-  var d = i(427);
+  var d = i(428);
   var p = i(8);
   var h = function (e) {
     function ABGTowerInfoComponent(t, i) {
@@ -79934,11 +80015,11 @@
   t.ABGTowerInfoComponent = h;
   var g = i(1242);
   var C = i(1415);
-  var _ = i(443);
+  var _ = i(444);
   var m = i(70);
   var f = i(14);
   var O = i(708);
-  var E = i(426);
+  var E = i(427);
   var y = i(19);
   o.classImplementsInterfaces(h, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -79959,7 +80040,7 @@
   var p = i(103);
   var h = i(30);
   var g = i(4);
-  var C = i(424);
+  var C = i(425);
   var _ = i(64);
   var m = i(347);
   var f = i(245);
@@ -80939,7 +81020,7 @@
   var h = i(4);
   var g = i(49);
   var C = i(127);
-  var _ = i(497);
+  var _ = i(499);
   var m = i(14);
   var f = i(41);
   var O = i(1273);
@@ -81632,7 +81713,7 @@
   var c = i(4);
   var u = i(109);
   var d = i(347);
-  var p = i(583);
+  var p = i(584);
   var h = function (e) {
     function FactionCampMapobjectVO() {
       var t = e.call(this) || this;
@@ -81834,8 +81915,8 @@
   var h = i(30);
   var g = i(4);
   var C = i(109);
-  var _ = i(424);
-  var m = i(576);
+  var _ = i(425);
+  var m = i(577);
   var f = i(64);
   var O = i(279);
   var E = i(347);
@@ -82405,7 +82486,7 @@
   var d = i(4);
   var p = i(109);
   var h = i(23);
-  var g = i(575);
+  var g = i(576);
   var C = function (e) {
     function TreasureDungeonMapObjectVO() {
       var t = this;
@@ -83858,7 +83939,7 @@
   var C = i(4);
   var _ = i(109);
   var m = i(64);
-  var f = i(583);
+  var f = i(584);
   var O = function (e) {
     function FactionCapitalMapobjectVO() {
       var t = this;
@@ -84023,7 +84104,7 @@
   var _ = i(4);
   var m = i(109);
   var f = i(64);
-  var O = i(583);
+  var O = i(584);
   var E = function (e) {
     function FactionTowerMapobjectVO() {
       var t = this;
@@ -84238,7 +84319,7 @@
   var l = i(3);
   var c = i(6);
   var u = i(18);
-  var d = i(498);
+  var d = i(500);
   var p = i(54);
   var h = i(4);
   var g = createjs.TimerEvent;
@@ -84642,7 +84723,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(1);
-  var s = i(416);
+  var s = i(417);
   var r = i(1207);
   var l = i(8);
   var c = i(193);
@@ -85127,7 +85208,7 @@
   }();
   t.RecruitmentHelper = n;
   var o = i(9);
-  var a = i(451);
+  var a = i(452);
   var s = i(769);
   var r = i(18);
   var l = i(5);
@@ -85398,7 +85479,7 @@
       configurable: true
     });
     return AIsoCommandPackageObject;
-  }(i(488).AIsoCommandPackage);
+  }(i(490).AIsoCommandPackage);
   t.AIsoCommandPackageObject = o;
 }, function (e, t, i) {
   'use strict';
@@ -85965,7 +86046,7 @@
     }
     n.__extends(PUnittentBuildingVO, e);
     return PUnittentBuildingVO;
-  }(i(456).UnittentBuildingVO);
+  }(i(457).UnittentBuildingVO);
   t.PUnittentBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -85999,7 +86080,7 @@
   var v = i(6);
   var T = i(24);
   var S = i(24);
-  var A = i(512);
+  var A = i(514);
   var L = i(18);
   var P = i(16);
   var M = i(59);
@@ -86007,7 +86088,7 @@
   var V = i(764);
   var x = i(2963);
   var w = i(710);
-  var B = i(623);
+  var B = i(624);
   var F = i(2964);
   var N = i(243);
   var k = i(21);
@@ -87442,7 +87523,7 @@
   var me = i(173);
   var fe = i(1221);
   var Oe = i(9);
-  var Ee = i(460);
+  var Ee = i(461);
   var ye = i(117);
   var be = i(67);
   var De = i(63);
@@ -87455,7 +87536,7 @@
   var Pe = i(2978);
   var Me = i(1578);
   var Re = i(1586);
-  var Ve = i(629);
+  var Ve = i(630);
   p.classImplementsInterfaces(ue, "ICollectableRendererList", "ISublayer");
   ue.__initialize_static_members();
 }, function (e, t, i) {
@@ -87555,7 +87636,7 @@
   var s = i(133);
   var r = i(291);
   var l = i(292);
-  var c = i(538);
+  var c = i(540);
 }, function (e, t, i) {
   'use strict';
 
@@ -87592,7 +87673,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(540);
+  var a = i(542);
   var s = i(4);
   var r = i(3014);
   var l = i(181);
@@ -87807,7 +87888,7 @@
   var C = i(3);
   var _ = i(3);
   var m = i(6);
-  var f = i(658);
+  var f = i(659);
   var O = i(220);
   var E = i(243);
   var y = i(221);
@@ -87828,7 +87909,7 @@
   var B = i(299);
   var F = i(58);
   var N = i(8);
-  var k = i(516);
+  var k = i(518);
   var U = i(11);
   var G = createjs.Point;
   var H = createjs.Rectangle;
@@ -88274,7 +88355,7 @@
       this.clearSelected = true;
       P.CastleModel.questData.validateEpicQuests();
       var e = P.CastleModel.questData.getQuestListByCategory(K.CastleQuestData.CATEGORY_EPIC);
-      if (e != null) {
+      if ((e = e.reverse()) != null) {
         for (var t = 0, i = e; t < i.length; t++) {
           var n = i[t];
           if (n !== undefined && !n.isCompleted) {
@@ -88398,7 +88479,7 @@
   t.CastleQuestDialog = j;
   var W = i(83);
   var Y = i(13);
-  var K = i(544);
+  var K = i(546);
   var z = i(3357);
   var q = i(261);
   var X = i(3360);
@@ -89017,7 +89098,7 @@
   var v = i(220);
   var T = i(243);
   var S = i(1077);
-  var A = i(429);
+  var A = i(430);
   var L = i(221);
   var P = i(128);
   var M = i(26);
@@ -89682,7 +89763,7 @@
     return CastlePrivateOfferDialogCreator;
   }();
   t.CastlePrivateOfferDialogCreator = a;
-  var s = i(564);
+  var s = i(565);
   var r = i(701);
   var l = i(1086);
   var c = i(1088);
@@ -89898,85 +89979,6 @@
     value: true
   });
   var n = i(0);
-  var o = i(3);
-  var a = i(26);
-  var s = i(163);
-  var r = i(4);
-  var l = i(9);
-  var c = i(555);
-  var u = i(557);
-  var d = function (e) {
-    function AStatusIconSeasonGacha(t) {
-      return e.call(this, t, new o.TextVO("")) || this;
-    }
-    n.__extends(AStatusIconSeasonGacha, e);
-    AStatusIconSeasonGacha.prototype.addEventListenerForVisibility = function () {
-      this.controller.addEventListener(s.CastleXPChangedEvent.CHANGE_USER_XP, this.bindFunction(this.onRefreshItem));
-      r.CastleModel.specialEventData.addEventListener(a.CastleSpecialEventEvent.SERVER_DATA_PARSED, this.bindFunction(this.onRefreshItem));
-      r.CastleModel.specialEventData.addEventListener(a.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRefreshItem));
-      r.CastleModel.specialEventData.addEventListener(a.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onRefreshItem));
-    };
-    AStatusIconSeasonGacha.prototype.initLoaded = function (t = null) {
-      e.prototype.initLoaded.call(this);
-    };
-    AStatusIconSeasonGacha.prototype.removeEventListenerForVisibility = function () {
-      this.controller.removeEventListener(s.CastleXPChangedEvent.CHANGE_USER_XP, this.bindFunction(this.onRefreshItem));
-      r.CastleModel.specialEventData.removeEventListener(a.CastleSpecialEventEvent.SERVER_DATA_PARSED, this.bindFunction(this.onRefreshItem));
-      r.CastleModel.specialEventData.removeEventListener(a.CastleSpecialEventEvent.REMOVE_SPECIALEVENT, this.bindFunction(this.onRefreshItem));
-      r.CastleModel.specialEventData.removeEventListener(a.CastleSpecialEventEvent.ADD_SPECIALEVENT, this.bindFunction(this.onRefreshItem));
-    };
-    AStatusIconSeasonGacha.prototype.onRefreshItem = function (e = null) {
-      this.update();
-    };
-    AStatusIconSeasonGacha.prototype.updateLoaded = function () {
-      this.setVisibilityLoaded();
-    };
-    AStatusIconSeasonGacha.prototype.setVisibilityLoaded = function () {
-      if (this.eventVO && this.eventVO.minLevel <= r.CastleModel.userData.level) {
-        this.show();
-      } else {
-        this.hide();
-      }
-    };
-    AStatusIconSeasonGacha.prototype.onClick = function () {
-      l.CastleDialogHandler.getInstance().registerDefaultDialogs(c.SeasonGachaEventMainDialog, new u.SeasonGachaEventMainDialogProperties(this.eventVO));
-    };
-    Object.defineProperty(AStatusIconSeasonGacha.prototype, "eventVO", {
-      get: function () {
-        return r.CastleModel.specialEventData.getActiveEventByEventId(this.eventID);
-      },
-      enumerable: true,
-      configurable: true
-    });
-    AStatusIconSeasonGacha.prototype.showLoaded = function (t = null) {
-      e.prototype.showLoaded.call(this, t);
-      if (this.eventVO) {
-        this.setTooltip("event_title_" + this.eventVO.eventId);
-      }
-    };
-    AStatusIconSeasonGacha.prototype.addEventListenerForShowTime = function () {
-      e.prototype.addEventListenerForShowTime.call(this);
-    };
-    AStatusIconSeasonGacha.prototype.removeEventListenerForShowTime = function () {
-      e.prototype.removeEventListenerForShowTime.call(this);
-    };
-    Object.defineProperty(AStatusIconSeasonGacha.prototype, "eventID", {
-      get: function () {
-        return 0;
-      },
-      enumerable: true,
-      configurable: true
-    });
-    return AStatusIconSeasonGacha;
-  }(i(364).AEventHubItemStatusIcon);
-  t.AStatusIconSeasonGacha = d;
-}, function (e, t, i) {
-  'use strict';
-
-  Object.defineProperty(t, "__esModule", {
-    value: true
-  });
-  var n = i(0);
   var o = i(1);
   var a = i(6);
   var s = i(26);
@@ -90118,8 +90120,8 @@
   var E = i(3);
   var y = i(6);
   var b = i(59);
-  var D = i(3981);
-  var I = i(3982);
+  var D = i(3982);
+  var I = i(3983);
   var v = i(1424);
   var T = i(1425);
   var S = i(21);
@@ -90131,7 +90133,7 @@
   var V = i(202);
   var x = i(8);
   var w = i(11);
-  var B = i(630);
+  var B = i(631);
   var F = i(770);
   var N = i(1840);
   var k = i(978);
@@ -90541,7 +90543,7 @@
   var W = i(1129);
   var Y = i(9);
   var K = i(70);
-  var z = i(451);
+  var z = i(452);
   var q = i(38);
   var X = i(153);
   var Q = i(769);
@@ -90684,14 +90686,14 @@
   var d = i(233);
   var p = i(18);
   var h = i(59);
-  var g = i(586);
+  var g = i(587);
   var C = i(91);
   var _ = i(102);
-  var m = i(140);
+  var m = i(141);
   var f = i(32);
-  var O = i(526);
+  var O = i(528);
   var E = i(163);
-  var y = i(464);
+  var y = i(465);
   var b = i(90);
   var D = i(71);
   var I = i(92);
@@ -91173,21 +91175,21 @@
   var V = i(125);
   var x = i(1135);
   var w = i(1137);
-  var B = i(4092);
-  var F = i(4093);
-  var N = i(4098);
-  var k = i(4099);
-  var U = i(4100);
+  var B = i(4093);
+  var F = i(4094);
+  var N = i(4099);
+  var k = i(4100);
+  var U = i(4101);
   var G = i(1859);
-  var H = i(4105);
-  var j = i(4106);
+  var H = i(4106);
+  var j = i(4107);
   var W = i(1);
   var Y = i(1);
   var K = i(309);
-  var z = i(4109);
-  var q = i(4111);
+  var z = i(4110);
+  var q = i(4112);
   var X = i(407);
-  var Q = i(549);
+  var Q = i(551);
   var J = i(1714);
   var Z = i(53);
 }, function (e, t, i) {
@@ -92193,7 +92195,7 @@
   t.RelicEquipmentVO = h;
   o.classImplementsInterfaces(h, "IEquippableVO", "IRelicInfoVO");
   var g = i(861);
-  var C = i(611);
+  var C = i(612);
   var _ = i(911);
 }, function (e, t, i) {
   'use strict';
@@ -92340,7 +92342,7 @@
   }();
   t.EffectsHandlerVO = n;
   var o = i(111);
-  var a = i(142);
+  var a = i(138);
   var s = i(34);
 }, function (e, t, i) {
   'use strict';
@@ -92351,7 +92353,7 @@
   var n = i(0);
   var o = i(6);
   var a = i(4);
-  var s = i(486);
+  var s = i(488);
   var r = function (e) {
     function CollectableItemEquipmentRarenessVO(t = -1, i = 1) {
       var n = this;
@@ -92385,7 +92387,7 @@
       CollectableItemEquipmentRarenessVO.XML_KEY = "equipmentRarenessID";
     };
     return CollectableItemEquipmentRarenessVO;
-  }(i(482).ACollectableItemEquipmentVO);
+  }(i(484).ACollectableItemEquipmentVO);
   t.CollectableItemEquipmentRarenessVO = r;
   r.__initialize_static_members();
 }, function (e, t, i) {
@@ -92788,7 +92790,7 @@
   var O = i(71);
   var E = i(12);
   var y = i(4);
-  var b = i(493);
+  var b = i(495);
   var D = i(23);
   var I = i(79);
   var v = i(46);
@@ -93470,7 +93472,7 @@
       configurable: true
     });
     return ABGTowerConnectionVO;
-  }(i(500).MinWorldMapCastleInfoVO);
+  }(i(502).MinWorldMapCastleInfoVO);
   t.ABGTowerConnectionVO = l;
 }, function (e, t, i) {
   'use strict';
@@ -93560,7 +93562,7 @@
   var O = i(111);
   var E = i(2142);
   var y = i(49);
-  var b = i(142);
+  var b = i(138);
   var D = i(34);
   var I = i(2143);
   var v = i(311);
@@ -94365,7 +94367,7 @@
   var u = i(18);
   var d = i(28);
   var p = i(103);
-  var h = i(425);
+  var h = i(426);
   var g = i(30);
   var C = i(4);
   var _ = i(109);
@@ -94516,7 +94518,7 @@
     return ABGTowerConnectionsComponent;
   }();
   t.ABGTowerConnectionsComponent = o;
-  var a = i(426);
+  var a = i(427);
 }, function (e, t, i) {
   'use strict';
 
@@ -94543,7 +94545,7 @@
     return CastleDefenceDialogProperties;
   }(o.BasicProperties);
   t.CastleDefenceDialogProperties = r;
-  var l = i(428);
+  var l = i(429);
   var c = i(1);
 }, function (e, t, i) {
   'use strict';
@@ -94920,7 +94922,7 @@
   var g = i(3);
   var C = i(6);
   var _ = i(2167);
-  var m = i(586);
+  var m = i(587);
   var f = i(4);
   var O = i(8);
   var E = i(381);
@@ -95141,7 +95143,7 @@
   var p = i(720);
   var h = i(248);
   var g = i(721);
-  var C = i(432);
+  var C = i(433);
   var _ = i(1280);
   var m = i(1282);
   var f = i(127);
@@ -95153,7 +95155,7 @@
   var I = i(2330);
   var v = i(1312);
   var T = i(1316);
-  var S = i(139);
+  var S = i(140);
   var A = i(118);
   var L = i(32);
   var P = i(235);
@@ -95162,8 +95164,8 @@
   var V = i(6);
   var x = i(55);
   var w = i(1);
-  var B = i(601);
-  var F = i(515);
+  var B = i(602);
+  var F = i(517);
   var N = i(898);
   var k = i(5);
   var U = i(2333);
@@ -97348,7 +97350,7 @@
   Object.defineProperty(t, "__esModule", {
     value: true
   });
-  var n = i(596);
+  var n = i(597);
   var o = i(2);
   var a = i(9);
   var s = i(38);
@@ -98535,7 +98537,7 @@
   var p = i(3);
   var h = i(6);
   var g = i(4);
-  var C = i(486);
+  var C = i(488);
   var _ = i(2366);
   var m = i(2367);
   var f = i(127);
@@ -98553,7 +98555,7 @@
   var s = i(18);
   var r = i(4);
   var l = i(34);
-  var c = i(517);
+  var c = i(519);
   var u = function (e) {
     function ArmyTravelMapMovementVO() {
       var t = e.call(this) || this;
@@ -99868,7 +99870,7 @@
   var H = i(9);
   var j = i(2408);
   var W = i(353);
-  var Y = i(138);
+  var Y = i(139);
   var K = i(38);
   var z = i(153);
   d.classImplementsInterfaces(G, "ICollectableRendererList");
@@ -101921,7 +101923,7 @@
   var V = i(1);
   var x = i(5);
   var w = i(36);
-  var B = i(615);
+  var B = i(616);
   var F = i(137);
   var N = i(197);
   var k = i(160);
@@ -102821,7 +102823,7 @@
   var g = i(4);
   var C = i(109);
   var _ = i(64);
-  var m = i(583);
+  var m = i(584);
   var f = function (e) {
     function FactionVillageMapobjectVO() {
       var t = this;
@@ -103284,8 +103286,8 @@
   var _ = i(193);
   var m = i(310);
   var f = i(8);
-  var O = i(447);
-  var E = i(446);
+  var O = i(448);
+  var E = i(447);
   var y = i(11);
   var b = createjs.Point;
   var D = function (e) {
@@ -103569,7 +103571,7 @@
   var a = i(1);
   var s = i(3);
   var r = i(3);
-  var l = i(444);
+  var l = i(445);
   var c = i(265);
   var u = function (e) {
     function CastleTimedYesNoDialog() {
@@ -103609,7 +103611,7 @@
       CastleTimedYesNoDialog.NAME = "CastleTimedYesNoEx";
     };
     return CastleTimedYesNoDialog;
-  }(i(451).CastleLargeYesNoDialog);
+  }(i(452).CastleLargeYesNoDialog);
   t.CastleTimedYesNoDialog = u;
   a.classImplementsInterfaces(u, "ICollectableRendererList");
   u.__initialize_static_members();
@@ -103631,7 +103633,7 @@
     }
     n.__extends(CastleTimedYesNoDialogProperties, e);
     return CastleTimedYesNoDialogProperties;
-  }(i(630).CastleLargeYesNoDialogProperties);
+  }(i(631).CastleLargeYesNoDialogProperties);
   t.CastleTimedYesNoDialogProperties = o;
 }, function (e, t, i) {
   'use strict';
@@ -103843,7 +103845,7 @@
   var l = i(16);
   var c = i(4);
   var u = i(338);
-  var d = i(633);
+  var d = i(634);
   var p = i(863);
   var h = function (e) {
     function CastlewallDefenceVO() {
@@ -103943,7 +103945,7 @@
       return this.name.toLowerCase() + "_" + this.group.toLowerCase() + "_upgrade_info";
     };
     return ATowerVO;
-  }(i(633).ADefenceBuildingVO);
+  }(i(634).ADefenceBuildingVO);
   t.ATowerVO = s;
   o.classImplementsInterfaces(s, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -104935,7 +104937,7 @@
     return BarracksBuildingVO;
   }(C.AUnitProductionBuildingVO);
   t.BarracksBuildingVO = _;
-  var m = i(629);
+  var m = i(630);
   a.classImplementsInterfaces(_, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
   'use strict';
@@ -105204,7 +105206,7 @@
     }
     n.__extends(PalaceBuildingVO, e);
     return PalaceBuildingVO;
-  }(i(646).APalaceBuildingVO);
+  }(i(647).APalaceBuildingVO);
   t.PalaceBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -105391,7 +105393,7 @@
     value: true
   });
   var n = i(4);
-  var o = i(461);
+  var o = i(462);
   var a = function () {
     function CraftingQueueVO(e, t, i, a, s, r) {
       this._buildingState = null;
@@ -105625,10 +105627,10 @@
   var u = i(24);
   var d = i(24);
   var p = i(24);
-  var h = i(530);
+  var h = i(532);
   var g = i(220);
   var C = i(21);
-  var _ = i(540);
+  var _ = i(542);
   var m = i(221);
   var f = i(32);
   var O = i(71);
@@ -105639,21 +105641,21 @@
   var I = i(157);
   var v = i(31);
   var T = i(20);
-  var S = i(565);
+  var S = i(566);
   var A = i(12);
   var L = i(29);
   var P = i(4);
   var M = i(799);
-  var R = i(461);
+  var R = i(462);
   var V = i(49);
   var x = i(27);
   var w = i(9);
   var B = i(36);
   var F = i(19);
   var N = i(882);
-  var k = i(499);
-  var U = i(421);
-  var G = i(422);
+  var k = i(501);
+  var U = i(422);
+  var G = i(423);
   var H = i(95);
   var j = i(46);
   var W = i(370);
@@ -106348,7 +106350,7 @@
   var T = i(47);
   var S = i(74);
   var A = i(288);
-  var L = i(430);
+  var L = i(431);
   var P = i(295);
   var M = i(1601);
   var R = i(25);
@@ -107449,12 +107451,12 @@
   var A = i(104);
   var L = i(47);
   var P = i(9);
-  var M = i(547);
+  var M = i(549);
   var R = i(406);
-  var V = i(654);
-  var x = i(655);
-  var w = i(541);
-  var B = i(548);
+  var V = i(655);
+  var x = i(656);
+  var w = i(543);
+  var B = i(550);
   var F = i(1718);
   o.classImplementsInterfaces(O, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -107467,7 +107469,7 @@
   var o = i(54);
   var a = i(1671);
   var s = i(407);
-  var r = i(549);
+  var r = i(551);
   var l = i(9);
   var c = i(4);
   var u = i(1714);
@@ -107931,7 +107933,7 @@
   var T = i(25);
   var S = i(61);
   var A = i(63);
-  var L = i(627);
+  var L = i(628);
   o.classImplementsInterfaces(b, "ICollectableRendererList");
   b.__initialize_static_members();
 }, function (e, t, i) {
@@ -110166,10 +110168,10 @@
   var g = i(4);
   var C = i(147);
   var _ = i(111);
-  var m = i(551);
+  var m = i(553);
   var f = i(217);
   var O = i(833);
-  var E = i(552);
+  var E = i(554);
   var y = i(158);
   var b = i(1785);
   var D = i(831);
@@ -110582,7 +110584,7 @@
   }();
   t.CastleSpyArmyInfoVO = n;
   var o = i(733);
-  var a = i(587);
+  var a = i(588);
   var s = i(18);
   var r = i(5);
   var l = i(6);
@@ -111727,22 +111729,22 @@
   var O = i(146);
   var E = i(32);
   var y = i(163);
-  var b = i(527);
+  var b = i(529);
   var D = i(86);
   var I = i(4);
   var v = i(385);
-  var T = i(4070);
+  var T = i(4071);
   var S = i(373);
   var A = i(1729);
-  var L = i(4071);
+  var L = i(4072);
   var P = i(960);
-  var M = i(609);
+  var M = i(610);
   var R = i(8);
   var V = i(42);
   var x = i(130);
-  var w = i(4072);
-  var B = i(4074);
-  var F = i(4075);
+  var w = i(4073);
+  var B = i(4075);
+  var F = i(4076);
   var N = createjs.Container;
   var k = function (e) {
     function CastleUserStatePanel() {
@@ -112082,14 +112084,14 @@
   }(x.CastlePanel);
   t.CastleUserStatePanel = k;
   var U = i(9);
-  var G = i(430);
-  var H = i(4077);
+  var G = i(431);
+  var H = i(4078);
   var j = i(1082);
-  var W = i(450);
+  var W = i(451);
   var Y = i(319);
-  var K = i(521);
-  var z = i(4080);
-  var q = i(610);
+  var K = i(523);
+  var z = i(4081);
+  var q = i(611);
   var X = i(61);
   var Q = i(36);
   var J = i(107);
@@ -112108,7 +112110,7 @@
   var c = i(3);
   var u = i(6);
   var d = i(69);
-  var p = i(140);
+  var p = i(141);
   var h = i(4);
   var g = i(8);
   var C = i(33);
@@ -112328,7 +112330,7 @@
   }(C.CastleDialogSubLayer);
   t.ACastleBaseInboxMessageList = f;
   var O = i(9);
-  var E = i(4084);
+  var E = i(4085);
   var y = i(394);
   a.classImplementsInterfaces(f, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
@@ -112811,7 +112813,7 @@
   var I = i(309);
   var v = i(23);
   var T = i(687);
-  var S = i(4179);
+  var S = i(4180);
   var A = i(42);
   var L = i(383);
   var P = createjs.Container;
@@ -113339,7 +113341,7 @@
   t.ASeasonEventVO = c;
   o.classImplementsInterfaces(c, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
   var u = i(162);
-  var d = i(4564);
+  var d = i(4566);
 }, function (e, t, i) {
   'use strict';
 
@@ -113363,7 +113365,7 @@
 }, function (e) {
   e.exports = {
     name: "@goodgamestudios/empire-createjs-assets",
-    version: "1.2.1147",
+    version: "1.2.1194",
     main: "generated/index.js",
     types: "generated/index.d.ts",
     description: "CreateJS Assets for Empire HTML5",
@@ -113470,7 +113472,7 @@
 }, function (e) {
   e.exports = {
     name: "TranspilationEmpire",
-    version: "1.144.30",
+    version: "1.146.18",
     description: "Transpiled version of the Flash game",
     main: "index.js",
     repository: "git@source.services.ggs-net.com:Foundation-HTML5/TranspilationEmpire.git",
@@ -113592,7 +113594,7 @@
     dependencies: {
       "@goodgamestudios/core": "^6.12.6",
       "@goodgamestudios/empire-createjs-assets": "^1.2.298",
-      "@goodgamestudios/empire-shared-constants": "6.0.1411",
+      "@goodgamestudios/empire-shared-constants": "6.0.1471",
       "@goodgamestudios/message-handler": "1.3.1",
       axios: "^0.21.1",
       "bugsnag-js": "^4.7.2",
@@ -113857,7 +113859,7 @@
   var o = i(1);
   var a = i(6);
   var s = i(56);
-  var r = i(412);
+  var r = i(413);
   var l = function () {
     function EffectValueWodID() {
       this._firstWodID = -1;
@@ -114121,7 +114123,7 @@
   var c = i(22);
   var u = i(53);
   var d = i(4);
-  var p = i(142);
+  var p = i(138);
   var h = i(98);
   var g = i(34);
   var C = i(217);
@@ -114590,7 +114592,7 @@
       configurable: true
     });
     return AShopVO;
-  }(i(567).AInteractiveIsoObjectVO);
+  }(i(568).AInteractiveIsoObjectVO);
   t.AShopVO = m;
   o.classImplementsInterfaces(m, "IShopVO", "ICostVO", "IInventoryVO");
   var f = i(83);
@@ -114634,7 +114636,7 @@
       CollectableItemGemRandomVO.XML_KEY = "gemLevelIDs";
     };
     return CollectableItemGemRandomVO;
-  }(i(568).ACollectableItemGemVO);
+  }(i(569).ACollectableItemGemVO);
   t.CollectableItemGemRandomVO = s;
   s.__initialize_static_members();
 }, function (e, t, i) {
@@ -115404,7 +115406,7 @@
   var C = i(8);
   var _ = i(106);
   var m = i(11);
-  var f = i(418);
+  var f = i(419);
   var O = function (e) {
     function CastleResourceBoostDialog() {
       CONSTRUCTOR_HACK;
@@ -115528,7 +115530,7 @@
   t.CastleResourceBoostDialog = O;
   var E = i(9);
   var y = i(879);
-  var b = i(419);
+  var b = i(420);
   var D = i(19);
   var I = i(95);
   var v = i(46);
@@ -116684,7 +116686,7 @@
   var c = i(279);
   var u = i(1229);
   var d = createjs.Event;
-  var p = i(411);
+  var p = i(412);
   var h = i(17);
   var g = function (e) {
     function BasicMapobject() {
@@ -117277,7 +117279,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(1);
-  var s = i(509);
+  var s = i(511);
   var r = function (e) {
     function EffectIconUnitVO(t, i) {
       var n = this;
@@ -117451,7 +117453,7 @@
     return CastleAdvancedToolsSelectionScrollItem;
   }(i(1254).ACastleAdvancedTroopSelectionScrollItem);
   t.CastleAdvancedToolsSelectionScrollItem = a;
-  var s = i(508);
+  var s = i(510);
   var r = i(1256);
   o.classImplementsInterfaces(a, "MovieClip");
 }, function (e, t, i) {
@@ -117755,7 +117757,7 @@
   var y = i(19);
   var b = i(3);
   var D = i(2211);
-  var I = i(432);
+  var I = i(433);
   var v = i(2246);
   var T = i(2249);
   var S = i(2251);
@@ -118803,7 +118805,7 @@
   var l = i(31);
   var c = i(20);
   var u = i(23);
-  var d = i(433);
+  var d = i(434);
   var p = createjs.Point;
   var h = function (e) {
     function ModernPackageShopBuyElementCommonInfo() {
@@ -118895,7 +118897,7 @@
   var r = i(4);
   var l = i(49);
   var c = i(1274);
-  var u = i(497);
+  var u = i(499);
   var d = function () {
     function RelicItemInfoVO() {
       this.relicTypeId = 0;
@@ -119180,7 +119182,7 @@
   var v = i(67);
   var T = i(73);
   var S = i(353);
-  var A = i(138);
+  var A = i(139);
   var L = i(250);
   O.__initialize_static_members();
   var P = i(1);
@@ -119342,7 +119344,7 @@
   var f = i(9);
   var O = i(67);
   var E = i(73);
-  var y = i(138);
+  var y = i(139);
   var b = i(247);
   var D = i(250);
   var I = i(1);
@@ -119396,13 +119398,13 @@
   var O = i(1302);
   var E = i(243);
   var y = i(37);
-  var b = i(425);
+  var b = i(426);
   var D = i(26);
-  var I = i(580);
+  var I = i(581);
   var v = i(44);
   var T = i(4);
   var S = i(8);
-  var A = i(511);
+  var A = i(513);
   var L = i(2285);
   var P = createjs.Point;
   var M = function (e) {
@@ -119615,17 +119617,17 @@
   }(A.BasicRenameDialog);
   t.CastleNameCastleDialog = M;
   var R = i(207);
-  var V = i(502);
-  var x = i(504);
-  var w = i(597);
+  var V = i(504);
+  var x = i(506);
+  var w = i(598);
   var B = i(916);
-  var F = i(507);
+  var F = i(509);
   var N = i(707);
-  var k = i(578);
-  var U = i(579);
-  var G = i(503);
+  var k = i(579);
+  var U = i(580);
+  var G = i(505);
   var H = i(917);
-  var j = i(598);
+  var j = i(599);
   var W = i(61);
   var Y = i(70);
   var K = i(38);
@@ -119651,7 +119653,7 @@
     }
     n.__extends(KingdomCastleMapobjectVO, e);
     return KingdomCastleMapobjectVO;
-  }(i(504).CastleMapobjectVO);
+  }(i(506).CastleMapobjectVO);
   t.KingdomCastleMapobjectVO = s;
   o.classImplementsInterfaces(s, "IDetailViewAble", "IWorldmapObjectVO");
 }, function (e, t, i) {
@@ -119672,9 +119674,9 @@
   var p = i(30);
   var h = i(4);
   var g = i(109);
-  var C = i(424);
+  var C = i(425);
   var _ = i(64);
-  var m = i(598);
+  var m = i(599);
   var f = function (e) {
     function ResourceIsleMapobjectVO() {
       var t = this;
@@ -120154,11 +120156,11 @@
     value: true
   });
   var n = i(0);
-  var o = i(596);
+  var o = i(597);
   var a = i(4);
   var s = i(55);
   var r = i(2);
-  var l = i(512);
+  var l = i(514);
   var c = i(283);
   var u = i(729);
   var d = i(9);
@@ -120377,7 +120379,7 @@
   var r = i(1);
   var l = i(3);
   var c = i(731);
-  var u = i(514);
+  var u = i(516);
   var d = i(15);
   var p = i(4);
   var h = i(8);
@@ -120812,7 +120814,7 @@
       CollectableItemGemVO.XML_KEY = "gemIDs";
     };
     return CollectableItemGemVO;
-  }(i(568).ACollectableItemGemVO);
+  }(i(569).ACollectableItemGemVO);
   t.CollectableItemGemVO = a;
   a.__initialize_static_members();
 }, function (e, t, i) {
@@ -120890,7 +120892,7 @@
   var l = i(3);
   var c = i(6);
   var u = i(21);
-  var d = i(139);
+  var d = i(140);
   var p = i(4);
   var h = i(2355);
   var g = i(23);
@@ -121319,7 +121321,7 @@
   var o = i(1);
   var a = i(6);
   var s = i(18);
-  var r = i(517);
+  var r = i(519);
   var l = function (e) {
     function SiegeMapmovementVO() {
       var t = this;
@@ -121489,7 +121491,7 @@
   var s = i(1);
   var r = i(3);
   var l = i(935);
-  var c = i(139);
+  var c = i(140);
   var u = i(4);
   var d = function (e) {
     function CastleAskRetreatDialog() {
@@ -122178,7 +122180,7 @@
   var u = i(51);
   var d = i(2407);
   var p = i(4);
-  var h = i(142);
+  var h = i(138);
   var g = i(34);
   var C = i(106);
   var _ = i(740);
@@ -122336,7 +122338,7 @@
   var d = i(278);
   var p = i(2410);
   var h = i(2411);
-  var g = i(506);
+  var g = i(508);
   var C = i(26);
   var _ = i(54);
   var m = i(4);
@@ -122978,7 +122980,7 @@
   var u = i(6);
   var d = i(2427);
   var p = i(2428);
-  var h = i(605);
+  var h = i(606);
   var g = i(4);
   var C = i(226);
   var _ = i(41);
@@ -123191,7 +123193,7 @@
   var I = i(2430);
   var v = i(2431);
   var T = i(1366);
-  var S = i(606);
+  var S = i(607);
   a.classImplementsInterfaces(y, "ICollectableRendererList", "ISublayer");
   y.__initialize_static_members();
 }, function (e, t, i) {
@@ -125933,8 +125935,8 @@
   var l = i(6);
   var c = i(24);
   var u = i(24);
-  var d = i(431);
-  var p = i(510);
+  var d = i(432);
+  var p = i(512);
   var h = i(31);
   var g = i(104);
   var C = i(20);
@@ -126114,7 +126116,7 @@
   }(O.CastleExternalDialog);
   t.InviteAFriendInstructionsDialog = y;
   var b = i(75);
-  var D = i(436);
+  var D = i(437);
   var I = i(25);
   var v = i(1428);
   var T = i(1429);
@@ -126224,7 +126226,7 @@
   var l = i(7);
   var c = i(1346);
   var u = i(886);
-  var d = i(569);
+  var d = i(570);
   var p = i(872);
   var h = i(874);
   var g = i(1204);
@@ -126824,7 +126826,7 @@
   var b = i(4);
   var D = i(49);
   var I = i(219);
-  var v = i(449);
+  var v = i(450);
   var T = i(275);
   var S = i(326);
   var A = i(41);
@@ -127143,7 +127145,7 @@
   var U = i(295);
   var G = i(25);
   var H = i(67);
-  var j = i(138);
+  var j = i(139);
   var W = i(877);
   var Y = i(987);
   var K = i(995);
@@ -127343,7 +127345,7 @@
   var m = i(4);
   var f = i(49);
   var O = i(219);
-  var E = i(449);
+  var E = i(450);
   var y = i(275);
   var b = i(326);
   var D = i(41);
@@ -127557,7 +127559,7 @@
   var g = i(12);
   var C = i(4);
   var _ = i(219);
-  var m = i(449);
+  var m = i(450);
   var f = i(275);
   var O = i(326);
   var E = i(8);
@@ -127675,7 +127677,7 @@
   var T = i(295);
   var S = i(368);
   var A = i(67);
-  var L = i(138);
+  var L = i(139);
   var P = i(36);
   var M = i(121);
   a.classImplementsInterfaces(D, "ICollectableRendererList");
@@ -127921,7 +127923,7 @@
   }();
   t.CastleLegendSkillItem = l;
   var c = i(17);
-  var u = i(481);
+  var u = i(483);
   var d = i(2);
   var p = i(2);
   var h = i(2);
@@ -127930,15 +127932,15 @@
   var _ = i(4);
   var m = i(857);
   var f = i(1000);
-  var O = i(628);
+  var O = i(629);
   var E = i(9);
   var y = i(2686);
   var b = i(2687);
   var D = i(1465);
   var I = i(113);
   var v = i(120);
-  var T = i(447);
-  var S = i(446);
+  var T = i(448);
+  var S = i(447);
   var A = i(8);
 }, function (e, t, i) {
   'use strict';
@@ -128055,7 +128057,7 @@
   var h = i(4);
   var g = i(19);
   var C = i(8);
-  var _ = i(594);
+  var _ = i(595);
   var m = i(1473);
   var f = function (e) {
     function CastleConstructionItemsDisassembleDialog() {
@@ -128343,7 +128345,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(87);
-  var s = i(485);
+  var s = i(487);
   var r = function (e) {
     function AEventBuildingVO() {
       return e !== null && e.apply(this, arguments) || this;
@@ -129443,7 +129445,7 @@
   }();
   t.AIsoViewObjectGroup = n;
   var o = i(35);
-  var a = i(489);
+  var a = i(491);
   var s = i(48);
   var r = i(56);
   var l = i(1);
@@ -129552,7 +129554,7 @@
   o.classImplementsInterfaces(u, "ICollectableRendererList");
   var d = i(74);
   var p = i(157);
-  var h = i(533);
+  var h = i(535);
   var g = i(67);
   var C = i(2808);
 }, function (e, t, i) {
@@ -129611,7 +129613,7 @@
   var s = i(3);
   var r = i(3);
   var l = i(98);
-  var c = i(454);
+  var c = i(455);
   var u = function (e) {
     function BakeryBuildingVO() {
       return e !== null && e.apply(this, arguments) || this;
@@ -129709,7 +129711,7 @@
       configurable: true
     });
     return AUnitProductionBuildingVO;
-  }(i(454).AProductionBuildingVO);
+  }(i(455).AProductionBuildingVO);
   t.AUnitProductionBuildingVO = r;
   o.classImplementsInterfaces(r, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -129786,7 +129788,7 @@
     return DworkshopBuildingVO;
   }(h.AUnitProductionBuildingVO);
   t.DworkshopBuildingVO = g;
-  var C = i(629);
+  var C = i(630);
   a.classImplementsInterfaces(g, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
   'use strict';
@@ -129960,7 +129962,7 @@
     return WorkshopBuildingVO;
   }(h.AUnitProductionBuildingVO);
   t.WorkshopBuildingVO = g;
-  var C = i(629);
+  var C = i(630);
   a.classImplementsInterfaces(g, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
   'use strict';
@@ -129977,7 +129979,7 @@
   var c = i(16);
   var u = i(22);
   var d = i(4);
-  var p = i(633);
+  var p = i(634);
   var h = createjs.Point;
   var g = function (e) {
     function BasicGateVO() {
@@ -130067,7 +130069,7 @@
   var c = i(4);
   var u = i(87);
   var d = i(338);
-  var p = i(633);
+  var p = i(634);
   var h = function (e) {
     function BasicMoatVO() {
       var t = e.call(this) || this;
@@ -130170,7 +130172,7 @@
   var d = i(4);
   var p = i(86);
   var h = i(2);
-  var g = i(594);
+  var g = i(595);
   var C = i(2938);
   var _ = i(19);
   var m = i(20);
@@ -130183,7 +130185,7 @@
   var I = i(12);
   var v = i(79);
   var T = i(46);
-  var S = i(626);
+  var S = i(627);
   var A = i(2941);
   var L = i(2943);
   var P = i(1569);
@@ -131084,7 +131086,7 @@
       return a.IsoLayerEnum.ISO_OBJECTS;
     };
     return AEventBuildingVE;
-  }(i(492).AInteractiveIsoObjectVE);
+  }(i(494).AInteractiveIsoObjectVE);
   t.AEventBuildingVE = s;
   o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -131289,7 +131291,7 @@
   var r = i(55);
   var l = i(12);
   var c = i(4);
-  var u = i(611);
+  var u = i(612);
   var d = i(40);
   var p = i(41);
   var h = i(8);
@@ -131451,10 +131453,10 @@
   var C = i(288);
   var _ = i(14);
   var m = i(9);
-  var f = i(595);
+  var f = i(596);
   var O = i(726);
-  var E = i(601);
-  var y = i(515);
+  var E = i(602);
+  var y = i(517);
   var b = i(203);
   var D = i(913);
 }, function (e, t, i) {
@@ -131469,7 +131471,7 @@
   var s = i(3);
   var r = i(1605);
   var l = i(220);
-  var c = i(139);
+  var c = i(140);
   var u = i(221);
   var d = i(32);
   var p = i(71);
@@ -131670,7 +131672,7 @@
   var u = i(3);
   var d = i(3);
   var p = i(4);
-  var h = i(516);
+  var h = i(518);
   var g = i(1606);
   var C = i(1607);
   var _ = createjs.Point;
@@ -131913,7 +131915,7 @@
     }
     n.__extends(ASoldierMovementVE, e);
     return ASoldierMovementVE;
-  }(i(491).AIsoMovementVE);
+  }(i(493).AIsoMovementVE);
   t.ASoldierMovementVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -132451,7 +132453,7 @@
     return CollectableItemEquipmentUniqueEnchantedVO;
   }(i(1626).CollectableItemEquipmentUniqueVO);
   t.CollectableItemEquipmentUniqueEnchantedVO = s;
-  var r = i(482);
+  var r = i(484);
 }, function (e, t, i) {
   'use strict';
 
@@ -132916,8 +132918,8 @@
   var o = i(2);
   var a = i(1);
   var s = i(6);
-  var r = i(431);
-  var l = i(510);
+  var r = i(432);
+  var l = i(512);
   var c = i(31);
   var u = i(20);
   var d = i(8);
@@ -133117,7 +133119,7 @@
   var o = i(1);
   var a = i(3);
   var s = i(1662);
-  var r = i(546);
+  var r = i(548);
   var l = function (e) {
     function CastleFactionInvasionEventRewardListDialog() {
       CONSTRUCTOR_HACK;
@@ -133203,7 +133205,7 @@
   var s = i(3);
   var r = i(361);
   var l = i(12);
-  var c = i(522);
+  var c = i(524);
   var u = i(8);
   var d = i(11);
   var p = i(303);
@@ -133270,7 +133272,7 @@
   var a = i(13);
   var s = i(20);
   var r = i(4);
-  var l = i(544);
+  var l = i(546);
   var c = i(49);
   var u = i(334);
   var d = createjs.Point;
@@ -133421,7 +133423,7 @@
   var c = i(193);
   var u = i(41);
   var d = i(8);
-  var p = i(516);
+  var p = i(518);
   var h = i(11);
   var g = createjs.Point;
   var C = function (e) {
@@ -133491,7 +133493,7 @@
   }(h.CastleExternalDialog);
   t.CastleQuestCompletedDialog = C;
   var _ = i(83);
-  var m = i(542);
+  var m = i(544);
   var f = i(36);
   o.classImplementsInterfaces(C, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -133580,7 +133582,7 @@
   var s = i(20);
   var r = i(66);
   var l = i(25);
-  var c = i(522);
+  var c = i(524);
   var u = i(58);
   var d = i(46);
   var p = i(40);
@@ -133969,7 +133971,7 @@
   var p = i(3);
   var h = i(3);
   var g = i(6);
-  var C = i(666);
+  var C = i(667);
   var _ = i(1723);
   var m = i(4);
   var f = function (e) {
@@ -134322,7 +134324,7 @@
   var u = i(3);
   var d = i(6);
   var p = i(39);
-  var h = i(519);
+  var h = i(521);
   var g = i(187);
   var C = i(4);
   var _ = i(23);
@@ -134763,7 +134765,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(670);
+  var a = i(671);
   var s = i(4);
   var r = i(129);
   var l = i(114);
@@ -135828,7 +135830,7 @@
   var c = i(3);
   var u = i(3);
   var d = i(3);
-  var p = i(530);
+  var p = i(532);
   var h = i(220);
   var g = i(243);
   var C = i(221);
@@ -136224,7 +136226,7 @@
   var s = i(3);
   var r = i(4);
   var l = i(335);
-  var c = i(546);
+  var c = i(548);
   var u = function (e) {
     function CastleAllianceNomadInvasionRewardListDialog() {
       CONSTRUCTOR_HACK;
@@ -136773,7 +136775,7 @@
   var L = i(282);
   var P = i(19);
   var M = i(3738);
-  var R = i(138);
+  var R = i(139);
   var V = i(135);
   o.classImplementsInterfaces(I, "ICollectableRendererList", "ICollapsibleItem", "ILayoutable");
 }, function (e, t, i) {
@@ -136846,7 +136848,7 @@
   var o = i(1);
   var a = i(1);
   var s = i(3);
-  var r = i(658);
+  var r = i(659);
   var l = i(26);
   var c = i(31);
   var u = i(20);
@@ -137422,7 +137424,7 @@
   var W = i(9);
   var Y = i(182);
   var K = i(11);
-  var z = i(138);
+  var z = i(139);
   var q = i(3785);
   var X = i(3786);
 }, function (e, t, i) {
@@ -137462,7 +137464,7 @@
   var o = i(4);
   var a = i(111);
   var s = i(939);
-  var r = i(142);
+  var r = i(138);
   var l = function () {
     function SimpleEffectSource() {
       this._ignoreCap = false;
@@ -137677,7 +137679,7 @@
   var d = i(12);
   var p = i(3805);
   var h = i(8);
-  var g = i(141);
+  var g = i(142);
   var C = i(14);
   var _ = i(40);
   var m = i(19);
@@ -139471,7 +139473,7 @@
   var a = i(1);
   var s = i(233);
   var r = i(32);
-  var l = i(464);
+  var l = i(465);
   var c = i(4);
   var u = i(714);
   var d = i(136);
@@ -139906,7 +139908,7 @@
   t.ACastleWorldCupDialogState = C;
   var _ = i(9);
   var m = i(17);
-  var f = i(430);
+  var f = i(431);
   var O = i(107);
   s.classImplementsInterfaces(C, "ICastleWorldCupDialogState");
   C.__initialize_static_members();
@@ -139926,7 +139928,7 @@
   var u = i(15);
   var d = i(54);
   var p = i(4);
-  var h = i(3983);
+  var h = i(3984);
   var g = function (e) {
     function CastleLoginBonusData() {
       var t = e.call(this) || this;
@@ -140077,10 +140079,10 @@
   var r = i(3);
   var l = i(3);
   var c = i(6);
-  var u = i(3984);
+  var u = i(3985);
   var d = i(1841);
   var p = i(32);
-  var h = i(526);
+  var h = i(528);
   var g = i(15);
   var C = i(4);
   var _ = function (e) {
@@ -140358,11 +140360,11 @@
   var m = i(13);
   var f = i(45);
   var O = i(9);
-  var E = i(3985);
+  var E = i(3986);
   var y = i(676);
-  var b = i(3986);
-  var D = i(3987);
-  var I = i(3988);
+  var b = i(3987);
+  var D = i(3988);
+  var I = i(3989);
   a.classImplementsInterfaces(_, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -140418,7 +140420,7 @@
   var a = i(3);
   var s = i(3);
   var r = i(69);
-  var l = i(444);
+  var l = i(445);
   var c = i(223);
   var u = i(4);
   var d = i(27);
@@ -140530,12 +140532,12 @@
   var r = i(3);
   var l = i(3);
   var c = i(18);
-  var u = i(4081);
-  var d = i(140);
+  var u = i(4082);
+  var d = i(141);
   var p = i(163);
   var h = i(4);
   var g = i(19);
-  var C = i(4082);
+  var C = i(4083);
   var _ = i(41);
   var m = i(8);
   var f = function (e) {
@@ -140805,14 +140807,14 @@
   }(i(108).CastleExternalSubLayerDialog);
   t.CastleMessageInboxDialog = f;
   var O = i(9);
-  var E = i(4083);
-  var y = i(4085);
-  var b = i(4086);
-  var D = i(4087);
+  var E = i(4084);
+  var y = i(4086);
+  var b = i(4087);
+  var D = i(4088);
   var I = i(1136);
-  var v = i(4088);
-  var T = i(4089);
-  var S = i(4091);
+  var v = i(4089);
+  var T = i(4090);
+  var S = i(4092);
   a.classImplementsInterfaces(f, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -141213,7 +141215,7 @@
   var p = i(276);
   var h = i(15);
   var g = i(4);
-  var C = i(518);
+  var C = i(520);
   var _ = i(293);
   var m = function (e) {
     function DungeonSeasonMapScreenItem(t, i) {
@@ -141342,7 +141344,7 @@
   var u = i(21);
   var d = i(276);
   var p = i(4);
-  var h = i(518);
+  var h = i(520);
   var g = i(293);
   var C = function (e) {
     function VillageSeasonMapScreenItem(t, i) {
@@ -141556,8 +141558,8 @@
   var R = i(24);
   var V = i(344);
   var x = i(365);
-  var w = i(600);
-  var B = i(494);
+  var w = i(601);
+  var B = i(496);
   var F = i(44);
   var N = i(4);
   var k = i(309);
@@ -142699,20 +142701,20 @@
   var s = i(2);
   var r = i(6);
   var l = i(16);
-  var c = i(423);
-  var u = i(4188);
+  var c = i(424);
+  var u = i(4189);
   var d = i(91);
   var p = i(37);
   var h = i(204);
   var g = i(871);
-  var C = i(139);
+  var C = i(140);
   var _ = i(26);
   var m = i(340);
   var f = i(1883);
   var O = i(90);
   var E = i(155);
   var y = i(4);
-  var b = i(4189);
+  var b = i(4190);
   var D = i(848);
   var I = createjs.Container;
   var v = function (e) {
@@ -142917,13 +142919,13 @@
   }(D.CastleScreen);
   t.CastleWorldMapScreen = v;
   var T = i(29);
-  var S = i(4190);
+  var S = i(4191);
   var A = i(9);
   var L = i(17);
-  var P = i(4192);
+  var P = i(4193);
   var M = i(1341);
   var R = i(1146);
-  var V = i(4218);
+  var V = i(4219);
   var x = i(1);
 }, function (e, t, i) {
   'use strict';
@@ -143074,28 +143076,28 @@
     return WorldMapCastleInfoMenu;
   }(i(1885).WorldMapRingMenu);
   t.WorldMapCastleInfoMenu = l;
-  var c = i(4194);
-  var u = i(4202);
-  var d = i(619);
-  var p = i(4203);
-  var h = i(4204);
-  var g = i(4205);
-  var C = i(4206);
-  var _ = i(4207);
+  var c = i(4195);
+  var u = i(4203);
+  var d = i(620);
+  var p = i(4204);
+  var h = i(4205);
+  var g = i(4206);
+  var C = i(4207);
+  var _ = i(4208);
   var m = i(1362);
-  var f = i(4208);
+  var f = i(4209);
   var O = i(1886);
   var E = i(1244);
   var y = i(1348);
   var b = i(1412);
-  var D = i(4209);
-  var I = i(4210);
+  var D = i(4210);
+  var I = i(4211);
   var v = i(1872);
   var T = i(1410);
-  var S = i(4211);
-  var A = i(4215);
-  var L = i(4216);
-  var P = i(4217);
+  var S = i(4212);
+  var A = i(4216);
+  var L = i(4217);
+  var P = i(4218);
 }, function (e, t, i) {
   'use strict';
 
@@ -143206,9 +143208,9 @@
   var y = i(169);
   var b = i(8);
   var D = i(108);
-  var I = i(4389);
-  var v = i(4394);
-  var T = i(4400);
+  var I = i(4390);
+  var v = i(4395);
+  var T = i(4401);
   var S = i(1904);
   var A = i(24);
   var L = i(24);
@@ -143691,8 +143693,8 @@
   var v = i(45);
   var T = i(25);
   var S = i(11);
-  var A = i(4436);
-  var L = i(4437);
+  var A = i(4437);
+  var L = i(4438);
   var P = i(36);
   r.classImplementsInterfaces(D, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -143707,7 +143709,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(1892);
-  var c = i(4456);
+  var c = i(4457);
   var u = i(21);
   var d = i(26);
   var p = i(13);
@@ -143724,10 +143726,10 @@
   var D = i(8);
   var I = i(11);
   var v = i(108);
-  var T = i(495);
+  var T = i(497);
   var S = i(1916);
-  var A = i(4457);
-  var L = i(4461);
+  var A = i(4458);
+  var L = i(4462);
   var P = function (e) {
     function DonationEventDialog() {
       return e.call(this, DonationEventDialog.NAME) || this;
@@ -143986,7 +143988,7 @@
   });
   var n = i(2);
   var o = i(7);
-  var a = i(514);
+  var a = i(516);
   var s = function () {
     function CastleLuckyWheelDelayCommandHelper() {}
     CastleLuckyWheelDelayCommandHelper.startCommandDelay = function () {
@@ -144434,10 +144436,10 @@
   }(i(108).CastleExternalSubLayerDialog);
   t.CastleTemporaryServerEventDialog = f;
   var O = i(11);
-  var E = i(4573);
-  var y = i(4575);
-  var b = i(4579);
-  var D = i(4580);
+  var E = i(4575);
+  var y = i(4577);
+  var b = i(4581);
+  var D = i(4582);
   var I = i(36);
   o.classImplementsInterfaces(f, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -144453,11 +144455,11 @@
   var r = i(1);
   var l = i(6);
   var c = i(18);
-  var u = i(464);
+  var u = i(465);
   var d = i(4);
   var p = i(42);
   var h = i(1229);
-  var g = i(4621);
+  var g = i(4623);
   var C = createjs.Shape;
   var _ = createjs.Container;
   var m = createjs.MouseEvent;
@@ -144802,7 +144804,7 @@
   var l = i(90);
   var c = i(15);
   var u = i(4);
-  var d = i(411);
+  var d = i(412);
   var p = i(64);
   var h = i(124);
   var g = createjs.Container;
@@ -145095,8 +145097,8 @@
   var D = i(8);
   var I = i(73);
   var v = i(11);
-  var T = i(4871);
-  var S = i(4872);
+  var T = i(4873);
+  var S = i(4874);
   var A = createjs.TimerEvent;
   var L = function (e) {
     function CastleEquipmentMerchantEventIncomingDialog() {
@@ -145578,13 +145580,13 @@
     return AreaDataEnum;
   }(i(85).CastleEnum);
   t.AreaDataEnum = a;
-  var s = i(5275);
-  var r = i(5299);
-  var l = i(5300);
-  var c = i(5301);
-  var u = i(5304);
-  var d = i(5305);
-  var p = i(5306);
+  var s = i(5277);
+  var r = i(5301);
+  var l = i(5302);
+  var c = i(5303);
+  var u = i(5306);
+  var d = i(5307);
+  var p = i(5308);
   a.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -145881,8 +145883,8 @@
   var r = i(3);
   var l = i(3);
   var c = i(6);
-  var u = i(608);
-  var d = i(140);
+  var u = i(609);
+  var d = i(141);
   var p = i(4);
   var h = i(11);
   var g = i(1095);
@@ -145964,9 +145966,9 @@
   var o = i(3);
   var a = i(84);
   var s = i(100);
-  var r = i(5596);
-  var l = i(5597);
-  var c = i(5598);
+  var r = i(5598);
+  var l = i(5599);
+  var c = i(5600);
   var u = function (e) {
     function MessageDowntimeStatusVO() {
       var t = this;
@@ -146138,7 +146140,7 @@
   var p = i(6);
   var h = i(39);
   var g = i(56);
-  var C = i(482);
+  var C = i(484);
   var _ = i(31);
   var m = i(20);
   var f = i(4);
@@ -146304,7 +146306,7 @@
   var D = i(13);
   var I = i(25);
   var v = i(63);
-  var T = i(568);
+  var T = i(569);
   var S = i(288);
   r.classImplementsInterfaces(b, "ICollectableRendererList");
   b.__initialize_static_members();
@@ -146689,11 +146691,12 @@
         for (var n = 0; n < i.length; ++n) {
           var a = i[n][0];
           var s = i[n][1];
-          var r = o.CollectableHelper.getTypeByServerKey(a, s);
-          var l = o.CollectableHelper.createVO(r.type, -Number.MAX_VALUE, r.id);
-          if (l) {
-            l.parseServerObject(s);
-            e.addItem(l);
+          var r = i[n][2] ? i[n][2] : -Number.MAX_VALUE;
+          var l = o.CollectableHelper.getTypeByServerKey(a, s);
+          var c = o.CollectableHelper.createVO(l.type, r, l.id);
+          if (c) {
+            c.parseServerObject(s);
+            e.addItem(c);
           }
         }
       }
@@ -147382,7 +147385,7 @@
   var l = i(56);
   var c = i(105);
   var u = i(92);
-  var d = i(490);
+  var d = i(492);
   var p = i(2067);
   var h = createjs.Point;
   var g = createjs.Rectangle;
@@ -149325,7 +149328,7 @@
   var o = i(1);
   var a = i(3);
   var s = i(8);
-  var r = i(574);
+  var r = i(575);
   var l = i(19);
   var c = function (e) {
     function CastleDarkOkLabeledDialog() {
@@ -149700,7 +149703,7 @@
   var u = i(30);
   var d = i(4);
   var p = i(64);
-  var h = i(501);
+  var h = i(503);
   var g = i(245);
   var C = function (e) {
     function AAlienInvasionMapobjectVO() {
@@ -149968,7 +149971,7 @@
   var o = i(2);
   var a = i(1);
   var s = i(55);
-  var r = i(423);
+  var r = i(424);
   var l = i(4);
   var c = i(23);
   var u = i(890);
@@ -150794,12 +150797,12 @@
     return AllianceLandmarksList;
   }();
   t.AllianceLandmarksList = n;
-  var o = i(502);
-  var a = i(507);
+  var o = i(504);
+  var a = i(509);
   var s = i(707);
-  var r = i(578);
-  var l = i(579);
-  var c = i(425);
+  var r = i(579);
+  var l = i(580);
+  var c = i(426);
   var u = i(1);
   var d = i(5);
   var p = i(5);
@@ -151173,7 +151176,7 @@
   var a = i(5);
   var s = i(6);
   var r = i(28);
-  var l = i(580);
+  var l = i(581);
   var c = i(30);
   var u = i(15);
   var d = i(4);
@@ -151480,7 +151483,7 @@
   var f = i(703);
   var O = i(8);
   var E = i(11);
-  var y = i(427);
+  var y = i(428);
   var b = createjs.Point;
   var D = function (e) {
     function CastleABGTowerDetailAllianceDialog() {
@@ -151625,12 +151628,12 @@
   }(E.CastleExternalDialog);
   t.CastleABGTowerDetailAllianceDialog = D;
   var I = i(29);
-  var v = i(426);
-  var T = i(581);
+  var v = i(427);
+  var T = i(582);
   var S = i(1244);
   var A = i(1410);
   var L = i(70);
-  var P = i(443);
+  var P = i(444);
   var M = i(19);
   o.classImplementsInterfaces(D, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -151714,7 +151717,7 @@
   t.ButtonDefenceComponent = d;
   var p = i(9);
   var h = i(238);
-  var g = i(428);
+  var g = i(429);
   o.classImplementsInterfaces(d, "IWorldMapObjectRingmenuButtonComponent");
 }, function (e, t, i) {
   'use strict';
@@ -152133,9 +152136,9 @@
   }(h.CastleEventDispatcher);
   t.CastleWorldmapCamera = y;
   var b = i(366);
-  var D = i(505);
+  var D = i(507);
   var I = i(17);
-  var v = i(411);
+  var v = i(412);
   var T = i(1202);
   y.__initialize_static_members();
 }, function (e, t, i) {
@@ -153550,7 +153553,7 @@
   var l = i(69);
   var c = i(2204);
   var u = i(2205);
-  var d = i(591);
+  var d = i(592);
   var p = i(299);
   n.__initialize_static_members();
 }, function (e, t, i) {
@@ -154468,13 +154471,13 @@
   var n = i(0);
   var o = i(909);
   var a = i(60);
-  var s = i(414);
+  var s = i(415);
   var r = i(185);
   var l = i(123);
   var c = i(290);
   var u = i(256);
-  var d = i(568);
-  var p = i(482);
+  var d = i(569);
+  var p = i(484);
   var h = i(865);
   var g = i(1271);
   var C = i(1272);
@@ -156374,7 +156377,7 @@
   var E = i(9);
   var y = i(17);
   var b = i(73);
-  var D = i(595);
+  var D = i(596);
   var I = i(2259);
   var v = i(2260);
   var T = i(913);
@@ -156876,7 +156879,7 @@
   t.AEquipableClickHandler = n;
   var o = i(17);
   var a = i(156);
-  var s = i(595);
+  var s = i(596);
   var r = i(1287);
   var l = i(1288);
   var c = i(913);
@@ -158037,10 +158040,10 @@
   var o = i(4);
   var a = i(55);
   var s = i(2);
-  var r = i(512);
+  var r = i(514);
   var l = i(283);
   var c = i(729);
-  var u = i(596);
+  var u = i(597);
   var d = function (e) {
     function CastleWebShopAccountIDMicroservice() {
       return e !== null && e.apply(this, arguments) || this;
@@ -159953,7 +159956,7 @@
   var r = i(3);
   var l = i(3);
   var c = i(21);
-  var u = i(139);
+  var u = i(140);
   var d = i(26);
   var p = i(4);
   var h = i(8);
@@ -160741,7 +160744,7 @@
   var a = i(6);
   var s = i(4);
   var r = i(34);
-  var l = i(517);
+  var l = i(519);
   var c = function (e) {
     function MarketMapmovementVO() {
       var t = this;
@@ -160813,7 +160816,7 @@
   var o = i(1);
   var a = i(1);
   var s = i(6);
-  var r = i(517);
+  var r = i(519);
   var l = function (e) {
     function PlaguemonkMapmovementVO() {
       var t = this;
@@ -160890,7 +160893,7 @@
   var o = i(1);
   var a = i(6);
   var s = i(18);
-  var r = i(517);
+  var r = i(519);
   var l = function (e) {
     function SpyMapmovementVO() {
       var t = this;
@@ -161202,7 +161205,7 @@
   t.TreasureHuntMovementVO = h;
   var g = i(389);
   var C = i(736);
-  var _ = i(604);
+  var _ = i(605);
   o.classImplementsInterfaces(h, "IMapMovementVO", "IArmyMapmovementVO");
   h.__initialize_static_members();
 }, function (e, t, i) {
@@ -161504,7 +161507,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(69);
-  var s = i(139);
+  var s = i(140);
   var r = i(187);
   var l = i(15);
   var c = i(72);
@@ -161775,7 +161778,7 @@
   var c = i(4);
   var u = i(216);
   var d = i(2377);
-  var p = i(417);
+  var p = i(418);
   var h = i(1342);
   var g = function (e) {
     function WorldmapInfoTooltip() {
@@ -163514,7 +163517,7 @@
   var s = i(4);
   var r = i(1300);
   var l = i(728);
-  var c = i(427);
+  var c = i(428);
   var u = i(8);
   var d = function (e) {
     function ButtonBookmarkComponent(t) {
@@ -163576,7 +163579,7 @@
   t.ButtonBookmarkComponent = d;
   var p = i(951);
   var h = i(9);
-  var g = i(443);
+  var g = i(444);
   o.classImplementsInterfaces(d, "IWorldMapObjectRingmenuButtonComponent");
 }, function (e, t, i) {
   'use strict';
@@ -163805,7 +163808,7 @@
   var m = i(9);
   var f = i(186);
   var O = i(1366);
-  var E = i(606);
+  var E = i(607);
   o.classImplementsInterfaces(_, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
   'use strict';
@@ -164400,7 +164403,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(607);
+  var s = i(608);
   var r = i(1374);
   var l = i(297);
   var c = i(102);
@@ -164509,7 +164512,7 @@
   var u = i(3);
   var d = i(2449);
   var p = i(2450);
-  var h = i(608);
+  var h = i(609);
   var g = i(102);
   var C = i(4);
   var _ = i(43);
@@ -164686,7 +164689,7 @@
   var l = i(3);
   var c = i(3);
   var u = i(6);
-  var d = i(607);
+  var d = i(608);
   var p = i(1374);
   var h = i(21);
   var g = i(4);
@@ -164887,7 +164890,7 @@
   var d = i(3);
   var p = i(6);
   var h = i(192);
-  var g = i(413);
+  var g = i(414);
   var C = i(4);
   var _ = i(34);
   var m = i(27);
@@ -164898,7 +164901,7 @@
   var b = i(277);
   var D = i(41);
   var I = i(8);
-  var v = i(141);
+  var v = i(142);
   var T = i(33);
   var S = i(93);
   var A = i(2453);
@@ -165242,7 +165245,7 @@
     return CastleTitleSublayer;
   }(T.CastleDialogSubLayer);
   t.CastleTitleSublayer = M;
-  var R = i(566);
+  var R = i(567);
   var V = i(9);
   var x = i(318);
   var w = i(117);
@@ -165306,7 +165309,7 @@
   var l = i(3);
   var c = i(192);
   var u = i(1382);
-  var d = i(413);
+  var d = i(414);
   var p = i(4);
   var h = i(8);
   var g = i(11);
@@ -165488,7 +165491,7 @@
     return CastleTitleSelectDialog;
   }(g.CastleExternalDialog);
   t.CastleTitleSelectDialog = _;
-  var m = i(566);
+  var m = i(567);
   var f = i(9);
   var O = i(318);
   var E = i(2456);
@@ -166242,7 +166245,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(1);
-  var s = i(584);
+  var s = i(585);
   var r = i(23);
   var l = createjs.MouseEvent;
   var c = function (e) {
@@ -166869,8 +166872,9 @@
   var E = i(83);
   var y = i(45);
   var b = i(4);
-  var D = i(34);
-  var I = function (e) {
+  var D = i(49);
+  var I = i(34);
+  var v = function (e) {
     function CastleAllianceDonateDialog() {
       var t = this;
       t._currentPage = 0;
@@ -166882,7 +166886,7 @@
     CastleAllianceDonateDialog.prototype.initLoaded = function (t = null) {
       e.prototype.initLoaded.call(this, t);
       this.initBasicButtons([this.dialogDisp.btn_close, this.dialogDisp.btn_cancle, this.dialogDisp.btn_ok, this.dialogDisp.btn_left, this.dialogDisp.btn_Right]);
-      this._castleSelector = new A.CastleSelectorComponent(this.dialogDisp.castleSelector);
+      this._castleSelector = new L.CastleSelectorComponent(this.dialogDisp.castleSelector);
     };
     CastleAllianceDonateDialog.prototype.showLoaded = function (t) {
       var i = this;
@@ -166903,7 +166907,7 @@
       this._itxt_valueRes = [];
       this._mcDonateBonus = [];
       for (var n = 0; n < 4; n++) {
-        this._DonatorResComponents.push(new S.CastleResourceCollectorComponent(this.dialogDisp.getChildByName("mc_donate" + n)));
+        this._DonatorResComponents.push(new A.CastleResourceCollectorComponent(this.dialogDisp.getChildByName("mc_donate" + n)));
         this._itxt_valueRes.push(this.textFieldManager.registerTextField(this.dialogDisp.getChildByName("mc_donateBonus_" + n).txt_value, new h.LocalizedTextVO(a.GenericTextIds.VALUE_PERCENTAGE_ADD)));
         this._mcDonateBonus.push(this.dialogDisp.getChildByName("mc_donateBonus_" + n));
         this._mcDonateBonus[n].toolTipText = "dialog_alliance_depositBonus";
@@ -166941,7 +166945,7 @@
         if (E.ClientConstCollectable.GROUP_LIST_RESOURCES.indexOf(e.itemType) > -1) {
           return g.int(this._castleRessourcesVO.resources.getAmountOrDefaultByType(e.itemType));
         } else {
-          return g.int(b.CastleModel.currencyData.getAmountByType(new T.CollectableTypeVO().initByCollectable(e)));
+          return g.int(b.CastleModel.currencyData.getAmountByType(new S.CollectableTypeVO().initByCollectable(e)));
         }
       } else {
         return 0;
@@ -166949,7 +166953,7 @@
     };
     CastleAllianceDonateDialog.prototype.getCurrentAllianceSpace = function (e) {
       var t;
-      t = g.int(b.CastleModel.allianceData.myAllianceVO.storage.getAmountOrDefaultByTypeVO(new T.CollectableTypeVO().initByCollectable(e)));
+      t = g.int(b.CastleModel.allianceData.myAllianceVO.storage.getAmountOrDefaultByTypeVO(new S.CollectableTypeVO().initByCollectable(e)));
       return g.int(Math.max(C.ClientConstUtils.MAX_INT - t, 0));
     };
     CastleAllianceDonateDialog.prototype.storeOldValues = function () {
@@ -166985,7 +166989,7 @@
               r.disp.visible = true;
               n = g.int(this.getCurrentAllianceSpace(this._resourceComponents[t]));
               i = g.int(Math.min(this.getCurrentValue(this._resourceComponents[t]), n));
-              if (this._resourceComponents[t].itemType == v.CollectableEnum.C2) {
+              if (this._resourceComponents[t].itemType == T.CollectableEnum.C2) {
                 r.resetWithValues(i, this._resourceComponents[t], 51 + e, p.Localize.text("dialog_alliance_noPayUser", [c.AllianceConst.MIN_LEVEL_FOR_DONATE_C2]));
                 r.enableComponent(b.CastleModel.allianceData.userCanDonateToAlliance);
               } else {
@@ -167012,15 +167016,19 @@
           if (o[n] !== undefined) {
             if ((t = this._currentPage * this._amountOfResComponents + e) >= i) {
               this._mcDonateBonus[e].visible = false;
-            } else if (this._resourceComponents[t].itemType != v.CollectableEnum.C1 && this._resourceComponents[t].itemType != v.CollectableEnum.C2) {
+            } else if (this._resourceComponents[t].itemType != T.CollectableEnum.C1 && this._resourceComponents[t].itemType != T.CollectableEnum.C2) {
               if (b.CastleModel.allianceData.myAllianceVO.getBoostLevel(c.AllianceConst.TYPE_DEPOSIT_BONUS) > 0) {
                 this._mcDonateBonus[e].gotoAndStop(1);
-                this._itxt_valueRes[e].textContentVO.textReplacements = [String(b.CastleModel.allianceData.myAllianceVO.getCurrentBoostValue(c.AllianceConst.TYPE_DEPOSIT_BONUS, D.EffectTypeEnum.EFFECT_TYPE_RESOURCE_DEPOSIT_BOOST))];
-                this._mcDonateBonus[e].visible = true;
+                this._itxt_valueRes[e].textContentVO.textReplacements = [String(b.CastleModel.allianceData.myAllianceVO.getCurrentBoostValue(c.AllianceConst.TYPE_DEPOSIT_BONUS, I.EffectTypeEnum.EFFECT_TYPE_RESOURCE_DEPOSIT_BOOST))];
+                if (this._resourceComponents[t].itemType == T.CollectableEnum.GENERIC_CURRENCY && this._resourceComponents[t].id == D.ClientConstCurrency.ID_ALLIANCE_COIN) {
+                  this._mcDonateBonus[e].visible = false;
+                } else {
+                  this._mcDonateBonus[e].visible = true;
+                }
               } else {
                 this._mcDonateBonus[e].visible = false;
               }
-            } else if (this._resourceComponents[t].itemType == v.CollectableEnum.C2) {
+            } else if (this._resourceComponents[t].itemType == T.CollectableEnum.C2) {
               var a = s.castAs(b.CastleModel.specialEventData.getActiveEventByEventId(u.EventConst.EVENTTYPE_ALLIPRIME), "PrimeAlliBonusEventVO");
               if (a) {
                 this._mcDonateBonus[e].gotoAndStop(2);
@@ -167143,12 +167151,12 @@
     CastleAllianceDonateDialog.NAME = "CastleAllianceDonateEx";
     return CastleAllianceDonateDialog;
   }(i(11).CastleExternalDialog);
-  t.CastleAllianceDonateDialog = I;
-  var v = i(13);
-  var T = i(74);
-  var S = i(323);
-  var A = i(325);
-  r.classImplementsInterfaces(I, "ICollectableRendererList");
+  t.CastleAllianceDonateDialog = v;
+  var T = i(13);
+  var S = i(74);
+  var A = i(323);
+  var L = i(325);
+  r.classImplementsInterfaces(v, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
 
@@ -167247,7 +167255,7 @@
   }(d.AModernInfoCatalogDialogSublayer);
   t.SubscriptionDialogInfo = g;
   var C = i(752);
-  var _ = i(521);
+  var _ = i(523);
   var m = i(2517);
   var f = i(2518);
   var O = i(2519);
@@ -167323,10 +167331,10 @@
   }(c.CastleComponent);
   t.SubscriptionDialogOfferItem = h;
   o.classImplementsInterfaces(h, "ICollectableRendererList");
-  var g = i(612);
+  var g = i(613);
   var C = i(48);
   var _ = i(25);
-  var m = i(521);
+  var m = i(523);
   var f = i(1);
 }, function (e, t, i) {
   'use strict';
@@ -167338,7 +167346,7 @@
   var o = i(2);
   var a = i(1);
   var s = i(4);
-  var r = i(511);
+  var r = i(513);
   var l = function (e) {
     function RenameFightPresetDialog() {
       var t = this;
@@ -167486,7 +167494,7 @@
   var C = i(321);
   var _ = i(754);
   var m = i(36);
-  var f = i(615);
+  var f = i(616);
   o.classImplementsInterfaces(g, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -168278,7 +168286,7 @@
   var c = i(51);
   var u = i(53);
   var d = i(4);
-  var p = i(523);
+  var p = i(525);
   var h = i(236);
   var g = function (e) {
     function ButtonSupportDefenceComponent(t) {
@@ -168339,7 +168347,7 @@
   var m = i(238);
   o.classImplementsInterfaces(g, "IWorldMapObjectRingmenuButtonComponent");
   var f = i(1);
-  var O = i(582);
+  var O = i(583);
 }, function (e, t, i) {
   'use strict';
 
@@ -168374,11 +168382,11 @@
   var r = i(5);
   var l = i(5);
   var c = i(59);
-  var u = i(618);
+  var u = i(619);
   var d = i(4);
   var p = i(27);
   var h = i(202);
-  var g = i(524);
+  var g = i(526);
   var C = function (e) {
     function ButtonPlagueMonkComponent(t, i = false) {
       var n = e.call(this, t) || this;
@@ -168471,7 +168479,7 @@
   }(i(150).ButtonBasicComponent);
   t.ButtonPlagueMonkComponent = C;
   var _ = i(9);
-  var m = i(445);
+  var m = i(446);
   var f = i(23);
   a.classImplementsInterfaces(C, "IWorldMapObjectRingmenuButtonComponent");
 }, function (e, t, i) {
@@ -168626,7 +168634,7 @@
   var p = i(703);
   var h = i(8);
   var g = i(11);
-  var C = i(427);
+  var C = i(428);
   var _ = createjs.Point;
   var m = function (e) {
     function CastleABGTowerDetailDialog() {
@@ -168743,11 +168751,11 @@
   }(g.CastleExternalDialog);
   t.CastleABGTowerDetailDialog = m;
   var f = i(29);
-  var O = i(426);
-  var E = i(581);
-  var y = i(619);
+  var O = i(427);
+  var E = i(582);
+  var y = i(620);
   var b = i(70);
-  var D = i(443);
+  var D = i(444);
   var I = i(19);
   o.classImplementsInterfaces(m, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -169017,7 +169025,7 @@
   var l = i(30);
   var c = i(4);
   var u = i(64);
-  var d = i(501);
+  var d = i(503);
   var p = function (e) {
     function AAllianceInvasionCampMapObjectVO() {
       var t = this;
@@ -169568,14 +169576,14 @@
   o.classImplementsInterfaces(I, "ICollectableRendererList", "ISublayer");
   var v = i(75);
   var T = i(29);
-  var S = i(436);
+  var S = i(437);
   var A = i(9);
   var L = i(400);
   var P = i(763);
   var M = i(984);
   var R = i(2623);
   var V = i(355);
-  var x = i(437);
+  var x = i(438);
   var w = i(1429);
   var B = i(1432);
 }, function (e, t, i) {
@@ -169992,7 +170000,7 @@
     return InviteAFriendLinkDialog;
   }(O.CastleExternalDialog);
   t.InviteAFriendLinkDialog = y;
-  var b = i(436);
+  var b = i(437);
   var D = i(9);
   var I = i(984);
   d.classImplementsInterfaces(y, "ICollectableRendererList");
@@ -170027,9 +170035,9 @@
   var r = i(28);
   var l = i(764);
   var c = i(689);
-  var u = i(623);
+  var u = i(624);
   var d = i(2627);
-  var p = i(526);
+  var p = i(528);
   var h = i(13);
   var g = i(30);
   var C = i(54);
@@ -170700,7 +170708,7 @@
   var d = i(48);
   var p = i(30);
   var h = i(239);
-  var g = i(629);
+  var g = i(630);
   var C = i(180);
   var _ = i(4);
   var m = i(168);
@@ -171737,7 +171745,7 @@
   var d = i(6);
   var p = i(16);
   var h = i(92);
-  var g = i(448);
+  var g = i(449);
   var C = i(44);
   var _ = i(12);
   var m = i(4);
@@ -171745,7 +171753,7 @@
   var O = i(19);
   var E = i(76);
   var y = i(77);
-  var b = i(422);
+  var b = i(423);
   var D = i(41);
   var I = i(8);
   var v = i(11);
@@ -172211,8 +172219,8 @@
   var L = i(329);
   var P = i(29);
   var M = i(78);
-  var R = i(499);
-  var V = i(421);
+  var R = i(501);
+  var V = i(422);
   var x = i(992);
   var w = i(2645);
   var B = i(2677);
@@ -172691,7 +172699,7 @@
   var h = i(219);
   var g = i(40);
   var C = i(46);
-  var _ = i(626);
+  var _ = i(627);
   var m = i(8);
   var f = i(1450);
   var O = function (e) {
@@ -173040,13 +173048,13 @@
   var _ = i(4);
   var m = i(328);
   var f = i(2673);
-  var O = i(422);
+  var O = i(423);
   var E = i(46);
   var y = i(58);
   var b = i(41);
   var D = i(8);
   var I = i(11);
-  var v = i(625);
+  var v = i(626);
   var T = i(2674);
   var S = i(2675);
   var A = createjs.Event;
@@ -173510,8 +173518,8 @@
   var M = i(143);
   var R = i(48);
   var V = i(329);
-  var x = i(499);
-  var w = i(421);
+  var x = i(501);
+  var w = i(422);
   var B = i(79);
   var F = i(992);
   var N = i(2676);
@@ -174036,7 +174044,7 @@
   var s = i(3);
   var r = i(3);
   var l = i(3);
-  var c = i(481);
+  var c = i(483);
   var u = i(2682);
   var d = i(22);
   var p = i(23);
@@ -174693,7 +174701,7 @@
     return ConstructionItemsInteractionData;
   }(r.AModel);
   t.ConstructionItemsInteractionData = c;
-  var u = i(624);
+  var u = i(625);
   o.classImplementsInterfaces(c, "IModel");
 }, function (e, t, i) {
   'use strict';
@@ -175246,7 +175254,7 @@
   var n = i(2);
   var o = i(1);
   var a = i(3);
-  var s = i(529);
+  var s = i(531);
   var r = i(71);
   var l = i(15);
   var c = i(4);
@@ -175785,7 +175793,7 @@
   var s = i(237);
   var r = i(34);
   var l = i(357);
-  var c = i(631);
+  var c = i(632);
   var u = i(2);
   var d = i(2);
   var p = i(2);
@@ -175985,7 +175993,7 @@
     return IsoDefencePositions;
   }();
   t.IsoDefencePositions = n;
-  var o = i(453);
+  var o = i(454);
   var a = i(2750);
 }, function (e, t, i) {
   'use strict';
@@ -176570,7 +176578,7 @@
   var r = i(34);
   var l = i(368);
   var c = i(1497);
-  var u = i(567);
+  var u = i(568);
   var d = function (e) {
     function CastleExpansionVO() {
       var t = e.call(this) || this;
@@ -176764,11 +176772,11 @@
       return e;
     };
     return IsoCommandPackageObjectRemoveByVO;
-  }(i(634).AIsoCommandPackageObject);
+  }(i(635).AIsoCommandPackageObject);
   t.IsoCommandPackageObjectRemoveByVO = o;
   var a = i(1499);
   var s = i(1500);
-  var r = i(487);
+  var r = i(489);
 }, function (e, t, i) {
   'use strict';
 
@@ -176896,7 +176904,7 @@
   var a = i(4);
   var s = i(1501);
   var r = i(338);
-  var l = i(567);
+  var l = i(568);
   var c = function (e) {
     function EventJudgementVO(t, i) {
       var n = this;
@@ -178104,7 +178112,7 @@
   var r = i(59);
   var l = i(39);
   var c = i(4);
-  var u = i(432);
+  var u = i(433);
   var d = i(8);
   var p = function (e) {
     function RingMenuButtonGeneralsOverview() {
@@ -178249,7 +178257,7 @@
   var o = i(1);
   var a = i(1);
   var s = i(3);
-  var r = i(446);
+  var r = i(447);
   var l = function (e) {
     function RingMenuButtonInfo() {
       return e !== null && e.apply(this, arguments) || this;
@@ -178270,7 +178278,7 @@
   }(i(99).ARingMenuButton);
   t.RingMenuButtonInfo = l;
   var c = i(9);
-  var u = i(447);
+  var u = i(448);
   o.classImplementsInterfaces(l, "IRingMenuButton");
 }, function (e, t, i) {
   'use strict';
@@ -178381,7 +178389,7 @@
   t.BuildingMinuteSkipProperties = p;
   var h = i(35);
   var g = i(63);
-  var C = i(643);
+  var C = i(644);
   var _ = i(212);
   a.classImplementsInterfaces(p, "IMinuteSkipProperties");
 }, function (e, t, i) {
@@ -178720,7 +178728,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(438);
+  var s = i(439);
   var r = i(4);
   var l = i(277);
   var c = i(1216);
@@ -178829,7 +178837,7 @@
   var _ = i(3);
   var m = i(6);
   var f = i(55);
-  var O = i(438);
+  var O = i(439);
   var E = i(37);
   var y = i(196);
   var b = i(32);
@@ -179068,7 +179076,7 @@
   var M = i(29);
   var R = i(14);
   var V = i(325);
-  var x = i(533);
+  var x = i(535);
   var w = i(67);
 }, function (e, t, i) {
   'use strict';
@@ -179708,7 +179716,7 @@
     }
     n.__extends(FactionMarketBuildingVO, e);
     return FactionMarketBuildingVO;
-  }(i(535).MarketBuildingVO);
+  }(i(537).MarketBuildingVO);
   t.FactionMarketBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -179864,7 +179872,7 @@
   var a = i(1);
   var s = i(3);
   var r = i(16);
-  var l = i(454);
+  var l = i(455);
   var c = function (e) {
     function LumbermillBuildingVO() {
       return e !== null && e.apply(this, arguments) || this;
@@ -179899,7 +179907,7 @@
   var a = i(1);
   var s = i(3);
   var r = i(16);
-  var l = i(454);
+  var l = i(455);
   var c = function (e) {
     function MillBuildingVO() {
       return e !== null && e.apply(this, arguments) || this;
@@ -180115,7 +180123,7 @@
       }
     };
     return RelicFarmBuildingVO;
-  }(i(635).FarmBuildingVO);
+  }(i(636).FarmBuildingVO);
   t.RelicFarmBuildingVO = g;
   s.classImplementsInterfaces(g, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -180131,7 +180139,7 @@
   var r = i(3);
   var l = i(16);
   var c = i(98);
-  var u = i(454);
+  var u = i(455);
   var d = function (e) {
     function StonemasonBuildingVO() {
       return e !== null && e.apply(this, arguments) || this;
@@ -180287,7 +180295,7 @@
     }
     n.__extends(ASoldierMovementVO, e);
     return ASoldierMovementVO;
-  }(i(536).AIsoMovementVO);
+  }(i(538).AIsoMovementVO);
   t.ASoldierMovementVO = o;
 }, function (e, t, i) {
   'use strict';
@@ -180422,7 +180430,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(459);
+  var a = i(460);
   var s = function (e) {
     function BakeryBuildingVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -180593,7 +180601,7 @@
   var n = i(4);
   var o = i(82);
   var a = i(34);
-  var s = i(142);
+  var s = i(138);
   var r = i(5);
   var l = i(111);
   var c = function () {
@@ -181040,10 +181048,10 @@
   var c = i(59);
   var u = i(39);
   var d = i(2959);
-  var p = i(622);
+  var p = i(623);
   var h = i(4);
   var g = i(202);
-  var C = i(460);
+  var C = i(461);
   var _ = i(762);
   var m = function (e) {
     function UnitBuildListComponent(t, i) {
@@ -181937,7 +181945,7 @@
   var D = i(74);
   var I = i(57);
   var v = i(67);
-  var T = i(648);
+  var T = i(649);
   var S = i(1);
   var A = i(249);
   var L = i(133);
@@ -182132,7 +182140,7 @@
   var p = i(2968);
   var h = i(281);
   var g = i(69);
-  var C = i(649);
+  var C = i(650);
   var _ = i(1584);
   var m = i(128);
   var f = i(4);
@@ -182380,7 +182388,7 @@
   var a = i(31);
   var s = i(66);
   var r = i(20);
-  var l = i(538);
+  var l = i(540);
   var c = i(40);
   var u = createjs.Point;
   var d = function (e) {
@@ -182434,7 +182442,7 @@
   }(c.CastleItemRenderer);
   t.AutoRecruitmentCostComponent = d;
   var p = i(25);
-  var h = i(650);
+  var h = i(651);
   o.classImplementsInterfaces(d, "ICollectableRendererList");
   d.__initialize_static_members();
 }, function (e, t, i) {
@@ -182578,7 +182586,7 @@
     return UnitProductionListComponent;
   }(r.UnitBuildListComponent);
   t.UnitProductionListComponent = c;
-  var u = i(460);
+  var u = i(461);
 }, function (e, t, i) {
   'use strict';
 
@@ -182713,7 +182721,7 @@
     }
     n.__extends(CastleRecruitStrongholdAddUnitsDialogProperties, e);
     return CastleRecruitStrongholdAddUnitsDialogProperties;
-  }(i(585).CastleBasicAddUnitsDialogProperties);
+  }(i(586).CastleBasicAddUnitsDialogProperties);
   t.CastleRecruitStrongholdAddUnitsDialogProperties = o;
 }, function (e, t, i) {
   'use strict';
@@ -182985,7 +182993,7 @@
   var o = i(3);
   var a = i(3);
   var s = i(39);
-  var r = i(540);
+  var r = i(542);
   var l = i(15);
   var c = i(11);
   var u = i(8);
@@ -183417,9 +183425,9 @@
   var c = i(24);
   var u = i(4);
   var d = i(34);
-  var p = i(412);
-  var h = i(497);
-  var g = i(593);
+  var p = i(413);
+  var h = i(499);
+  var g = i(594);
   var C = i(1273);
   var _ = i(1602);
   var m = createjs.Shape;
@@ -183676,7 +183684,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(529);
+  var a = i(531);
   var s = i(4);
   var r = function (e) {
     function ResearchBuildingVE() {
@@ -183743,7 +183751,7 @@
   var s = i(3);
   var r = i(3133);
   var l = i(3134);
-  var c = i(425);
+  var c = i(426);
   var u = i(3135);
   var d = function (e) {
     function CastleUpgradeLaboratoryDialogProperties(t) {
@@ -183894,7 +183902,7 @@
   var s = i(3);
   var r = i(3136);
   var l = i(1048);
-  var c = i(580);
+  var c = i(581);
   var u = i(3137);
   var d = function (e) {
     function CastleUpgradeLandmarkDialogProperties(t) {
@@ -184049,7 +184057,7 @@
   var u = i(6);
   var d = i(24);
   var p = i(24);
-  var h = i(440);
+  var h = i(441);
   var g = i(21);
   var C = i(392);
   var _ = i(4);
@@ -184057,7 +184065,7 @@
   var f = i(68);
   var O = i(8);
   var E = i(11);
-  var y = i(441);
+  var y = i(442);
   var b = createjs.Point;
   var D = function (e) {
     function CastleUpgradeLandmarkDialog() {
@@ -184223,7 +184231,7 @@
   var I = i(9);
   var v = i(61);
   var T = i(70);
-  var S = i(442);
+  var S = i(443);
   a.classImplementsInterfaces(D, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -184574,11 +184582,11 @@
   var p = i(6);
   var h = i(16);
   var g = i(39);
-  var C = i(569);
+  var C = i(570);
   var _ = i(21);
   var m = i(32);
   var f = i(4);
-  var O = i(570);
+  var O = i(571);
   var E = i(49);
   var y = i(8);
   var b = i(11);
@@ -185391,7 +185399,7 @@
       configurable: true
     });
     return GuardTowerVE;
-  }(i(644).ATowerVE);
+  }(i(645).ATowerVE);
   t.GuardTowerVE = s;
   o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -185460,7 +185468,7 @@
       CollectableItemEquipmentUniqueVO.XML_KEY = "equipmentIDs";
     };
     return CollectableItemEquipmentUniqueVO;
-  }(i(482).ACollectableItemEquipmentVO);
+  }(i(484).ACollectableItemEquipmentVO);
   t.CollectableItemEquipmentUniqueVO = a;
   a.__initialize_static_members();
 }, function (e, t, i) {
@@ -186029,7 +186037,7 @@
   var s = i(20);
   var r = i(23);
   var l = i(14);
-  var c = i(542);
+  var c = i(544);
   var u = i(46);
   var d = i(193);
   var p = i(1636);
@@ -187283,7 +187291,7 @@
   n.classImplementsInterfaces(_, "IShowMeQuestVO");
   var m = i(52);
   var f = i(13);
-  var O = i(544);
+  var O = i(546);
   var E = i(1647);
   var y = i(1);
 }, function (e, t, i) {
@@ -188491,7 +188499,7 @@
   var r = i(5);
   var l = i(3);
   var c = i(3);
-  var u = i(140);
+  var u = i(141);
   var d = i(4);
   var p = i(43);
   var h = i(8);
@@ -188768,7 +188776,7 @@
   var o = i(1);
   var a = i(192);
   var s = i(8);
-  var r = i(609);
+  var r = i(610);
   var l = i(1379);
   var c = function (e) {
     function FactionEventTitlesSublayer(t) {
@@ -188806,7 +188814,7 @@
   }(l.CastleTitleSublayer);
   t.FactionEventTitlesSublayer = c;
   var u = i(33);
-  var d = i(610);
+  var d = i(611);
   o.classImplementsInterfaces(c, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
   'use strict';
@@ -188822,7 +188830,7 @@
   var l = i(4);
   var c = i(8);
   var u = i(11);
-  var d = i(467);
+  var d = i(468);
   var p = function (e) {
     function CastleFactionInvasionEventHighscoreDialog() {
       CONSTRUCTOR_HACK;
@@ -189207,7 +189215,7 @@
   var r = i(26);
   var l = i(12);
   var c = i(4);
-  var u = i(468);
+  var u = i(469);
   var d = function (e) {
     function SeasonLeagueMainDialogRanks(t, i, n, o) {
       var a = this;
@@ -191558,7 +191566,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(6);
-  var s = i(469);
+  var s = i(470);
   var r = function (e) {
     function CastleGenericRewardDialogProperties(t, i, n = false) {
       var o = e.call(this) || this;
@@ -191795,7 +191803,7 @@
   var s = i(3);
   var r = i(12);
   var l = i(4);
-  var c = i(468);
+  var c = i(469);
   var u = i(8);
   var d = i(108);
   var p = createjs.Point;
@@ -191986,7 +191994,7 @@
   var o = i(2);
   var a = i(6);
   var s = i(4);
-  var r = i(468);
+  var r = i(469);
   var l = function (e) {
     function SeasonLeagueEndDialogProperties(t) {
       var i = e.call(this) || this;
@@ -192339,13 +192347,13 @@
   var f = i(9);
   var O = i(4);
   var E = i(178);
-  var y = i(547);
+  var y = i(549);
   var b = i(406);
-  var D = i(541);
+  var D = i(543);
   var I = i(19);
-  var v = i(656);
+  var v = i(657);
   var T = i(361);
-  var S = i(548);
+  var S = i(550);
   o.classImplementsInterfaces(p, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -193197,10 +193205,10 @@
   var _ = i(9);
   var m = i(3549);
   var f = i(3550);
-  var O = i(547);
+  var O = i(549);
   var E = i(406);
   var y = i(4);
-  var b = i(656);
+  var b = i(657);
   var D = i(813);
   var I = i(361);
   var v = i(156);
@@ -193502,10 +193510,10 @@
   var a = i(4);
   var s = i(8);
   var r = i(1);
-  var l = i(654);
+  var l = i(655);
   var c = i(36);
   var u = i(406);
-  var d = i(547);
+  var d = i(549);
   var p = i(9);
   var h = i(2);
   var g = i(1069);
@@ -193956,11 +193964,11 @@
   t.FactionAttackPveBox = h;
   var g = i(29);
   var C = i(162);
-  var _ = i(620);
-  var m = i(621);
+  var _ = i(621);
+  var m = i(622);
   var f = i(17);
   var O = i(70);
-  var E = i(665);
+  var E = i(666);
 }, function (e, t, i) {
   'use strict';
 
@@ -194085,10 +194093,10 @@
   t.FactionAttackPvpBox = g;
   var C = i(29);
   var _ = i(162);
-  var m = i(597);
+  var m = i(598);
   var f = i(17);
   var O = i(70);
-  var E = i(665);
+  var E = i(666);
 }, function (e, t, i) {
   'use strict';
 
@@ -194162,7 +194170,7 @@
       CastlePaginatedScoreEventScoreBarProperties.NUMBER_OF_RANK_REWARDS_0 = 3;
     };
     return CastlePaginatedScoreEventScoreBarProperties;
-  }(i(545).CastleScoreEventScoreBarProperties);
+  }(i(547).CastleScoreEventScoreBarProperties);
   t.CastlePaginatedScoreEventScoreBarProperties = l;
   o.classImplementsInterfaces(l, "IScorebarProperties");
   l.__initialize_static_members();
@@ -194501,7 +194509,7 @@
     return InviteAFriendPaymentRewardReceivedDialog;
   }(i(1731).InviteAFriendRewardReceivedDialog);
   t.InviteAFriendPaymentRewardReceivedDialog = c;
-  var u = i(436);
+  var u = i(437);
   var d = i(400);
   a.classImplementsInterfaces(c, "ICollectableRendererList");
   c.__initialize_static_members();
@@ -194519,7 +194527,7 @@
   var l = i(6);
   var c = i(16);
   var u = i(704);
-  var d = i(506);
+  var d = i(508);
   var p = i(4);
   var h = i(208);
   var g = i(8);
@@ -195347,7 +195355,7 @@
     return CastleTimelessSpecialOfferDialog;
   }(i(11).CastleExternalDialog);
   t.CastleTimelessSpecialOfferDialog = C;
-  var _ = i(590);
+  var _ = i(591);
   var m = i(107);
   s.classImplementsInterfaces(C, "ICollectableRendererList");
   C.__initialize_static_members();
@@ -195516,7 +195524,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(670);
+  var a = i(671);
   var s = i(88);
   var r = i(114);
   var l = function (e) {
@@ -196073,7 +196081,7 @@
   var y = i(275);
   var b = i(8);
   var D = i(11);
-  var I = i(550);
+  var I = i(552);
   var v = i(3675);
   var T = i(3676);
   var S = i(1756);
@@ -196572,7 +196580,7 @@
   o.classImplementsInterfaces(P, "ICollectableRendererList");
   var M = i(13);
   var R = i(47);
-  var V = i(430);
+  var V = i(431);
   var x = i(295);
   var w = i(25);
   var B = i(3677);
@@ -196608,7 +196616,7 @@
       return "PivatePrimeDayDynamicDialog_TopEyeCatcher_" + e + "_" + t;
     };
     return TopEyeCatcherPPDDExternal;
-  }(i(550).PPDDExternalPart);
+  }(i(552).PPDDExternalPart);
   t.TopEyeCatcherPPDDExternal = s;
 }, function (e, t, i) {
   'use strict';
@@ -196625,7 +196633,7 @@
   var c = i(4);
   var u = i(21);
   var d = i(27);
-  var p = i(550);
+  var p = i(552);
   var h = i(1756);
   var g = i(3679);
   var C = i(2);
@@ -197108,7 +197116,7 @@
   var s = i(5);
   var r = i(5);
   var l = i(18);
-  var c = i(658);
+  var c = i(659);
   var u = i(3698);
   var d = i(4);
   var p = function (e) {
@@ -197490,7 +197498,7 @@
   var u = i(822);
   var d = i(4);
   var p = i(8);
-  var h = i(588);
+  var h = i(589);
   var g = i(33);
   var C = i(3703);
   var _ = function (e) {
@@ -197594,7 +197602,7 @@
   var O = i(9);
   var E = i(368);
   var y = i(67);
-  var b = i(613);
+  var b = i(614);
   var D = i(3704);
   o.classImplementsInterfaces(_, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
@@ -197897,7 +197905,7 @@
   var r = i(3);
   var l = i(3);
   var c = i(6);
-  var u = i(666);
+  var u = i(667);
   var d = i(1723);
   var p = i(4);
   var h = function (e) {
@@ -198903,7 +198911,7 @@
   }(r.AllianceAndPlayerPointEventRewardListDialog);
   t.CastleAllianceSamuraiInvasionRewardListDialog = l;
   var c = i(9);
-  var u = i(546);
+  var u = i(548);
   o.classImplementsInterfaces(l, "ICollectableRendererList");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -199511,7 +199519,7 @@
   var h = i(8);
   var g = i(11);
   var C = i(1791);
-  var _ = i(549);
+  var _ = i(551);
   var m = i(407);
   var f = function (e) {
     function GlobalLeaderboardRankingRankingRewardsDialog() {
@@ -199786,8 +199794,8 @@
   var b = i(906);
   var D = i(19);
   var I = i(299);
-  var v = i(421);
-  var T = i(422);
+  var v = i(422);
+  var T = i(423);
   var S = i(79);
   var A = i(46);
   var L = i(58);
@@ -200601,9 +200609,9 @@
   var o = i(185);
   var a = i(9);
   var s = i(753);
-  var r = i(585);
+  var r = i(586);
   var l = i(115);
-  var c = i(472);
+  var c = i(473);
   var u = createjs.Event;
   var d = createjs.MouseEvent;
   var p = function () {
@@ -201020,8 +201028,8 @@
   var _ = i(298);
   var m = i(8);
   var f = i(63);
-  var O = i(617);
-  var E = i(614);
+  var O = i(618);
+  var E = i(615);
   var y = i(113);
   var b = i(120);
   var D = i(115);
@@ -201301,7 +201309,7 @@
   var g = i(274);
   var C = i(3900);
   var _ = i(3901);
-  var m = i(420);
+  var m = i(421);
   var f = i(37);
   var O = i(26);
   var E = i(15);
@@ -202149,12 +202157,12 @@
   var g = i(263);
   var C = i(16);
   var _ = i(1122);
-  var m = i(435);
+  var m = i(436);
   var f = i(37);
   var O = i(15);
   var E = i(4);
   var y = i(1121);
-  var b = i(473);
+  var b = i(474);
   var D = i(8);
   var I = function (e) {
     function CastleChangePasswordForSocialMigrationDialog() {
@@ -202262,10 +202270,10 @@
   var T = i(5);
   var S = i(9);
   var A = i(1120);
-  var L = i(594);
+  var L = i(595);
   var P = i(12);
   var M = i(19);
-  var R = i(574);
+  var R = i(575);
   l.classImplementsInterfaces(I, "ICollectableRendererList");
   I.__initialize_static_members();
 }, function (e, t, i) {
@@ -202730,12 +202738,12 @@
       a.CastleBasicController.getInstance().removeEventListener(o.CastleUserDataEvent.LEVEL_UP, this.bindFunction(this.onLevelUp));
     };
     return CastleBasicLayout;
-  }(i(554).ACastleLayoutStrategy);
+  }(i(556).ACastleLayoutStrategy);
   t.CastleBasicLayout = l;
   var c = i(1125);
-  var u = i(513);
-  var d = i(463);
-  var p = i(474);
+  var u = i(515);
+  var d = i(464);
+  var p = i(475);
   var h = i(844);
   var g = i(677);
 }, function (e, t, i) {
@@ -202976,7 +202984,7 @@
   var c = i(14);
   var u = i(42);
   var d = i(363);
-  var p = i(556);
+  var p = i(558);
   var h = function (e) {
     function GachaComponentAnimation(t) {
       return e.call(this, t) || this;
@@ -203064,7 +203072,7 @@
   var s = i(9);
   var r = i(699);
   var l = i(876);
-  var c = i(556);
+  var c = i(558);
   var u = function (e) {
     function ADistrictGachaEventVO() {
       return e !== null && e.apply(this, arguments) || this;
@@ -203096,7 +203104,7 @@
       configurable: true
     });
     return ADistrictGachaEventVO;
-  }(i(475).AGachaEventVO);
+  }(i(409).AGachaEventVO);
   t.ADistrictGachaEventVO = u;
 }, function (e, t, i) {
   'use strict';
@@ -203111,7 +203119,7 @@
   var r = i(23);
   var l = i(14);
   var c = i(363);
-  var u = i(556);
+  var u = i(558);
   var d = function (e) {
     function GachaComponentBackground(t) {
       return e.call(this, t) || this;
@@ -203373,7 +203381,7 @@
   var u = i(19);
   var d = i(8);
   var p = i(363);
-  var h = i(556);
+  var h = i(558);
   var g = function (e) {
     function GachaComponentMerchantButton(t) {
       var i = e.call(this, t) || this;
@@ -203579,7 +203587,7 @@
   var s = i(272);
   var r = i(7);
   var l = i(3944);
-  var c = i(514);
+  var c = i(516);
   var u = i(107);
   var d = i(287);
   var p = i(32);
@@ -203594,7 +203602,7 @@
   var y = i(25);
   var b = i(368);
   var D = i(67);
-  var I = i(594);
+  var I = i(595);
   var v = i(363);
   var T = createjs.Point;
   var S = function (e) {
@@ -203863,7 +203871,7 @@
   var _ = i(77);
   var m = i(8);
   var f = i(363);
-  var O = i(556);
+  var O = i(558);
   var E = i(3945);
   var y = createjs.Point;
   var b = function (e) {
@@ -204096,7 +204104,7 @@
   var d = i(39);
   var p = i(1302);
   var h = i(4);
-  var g = i(511);
+  var g = i(513);
   var C = function (e) {
     function CastleRenameCastleDialog() {
       CONSTRUCTOR_HACK;
@@ -204184,8 +204192,8 @@
   var o = i(2);
   var a = i(1);
   var s = i(3);
-  var r = i(3996);
-  var l = i(558);
+  var r = i(3997);
+  var l = i(559);
   var c = i(66);
   var u = i(20);
   var d = i(4);
@@ -204305,14 +204313,14 @@
   var o = i(3);
   var a = i(839);
   var s = i(21);
-  var r = i(139);
+  var r = i(140);
   var l = i(26);
   var c = i(166);
   var u = i(4);
   var d = i(27);
   var p = i(9);
-  var h = i(3998);
-  var g = i(4002);
+  var h = i(3999);
+  var g = i(4003);
   var C = i(1845);
   var _ = i(1848);
   var m = i(308);
@@ -204450,11 +204458,11 @@
   var c = i(3);
   var u = i(3);
   var d = i(3);
-  var p = i(3999);
+  var p = i(4000);
   var h = i(270);
   var g = i(1846);
   var C = i(37);
-  var _ = i(139);
+  var _ = i(140);
   var m = i(166);
   var f = i(12);
   var O = i(29);
@@ -204466,11 +204474,11 @@
   var v = i(77);
   var T = i(8);
   var S = i(11);
-  var A = i(602);
-  var L = i(603);
+  var A = i(603);
+  var L = i(604);
   var P = i(1847);
-  var M = i(4000);
-  var R = i(4001);
+  var M = i(4001);
+  var R = i(4002);
   var V = function (e) {
     function AdvisorAttackOverviewDialog() {
       return e.call(this, AdvisorAttackOverviewDialog.NAME) || this;
@@ -204771,17 +204779,17 @@
   var d = i(19);
   var p = i(46);
   var h = i(77);
-  var g = i(476);
-  var C = i(4023);
+  var g = i(478);
+  var C = i(4024);
   var _ = i(76);
   var m = i(12);
   var f = i(4);
   var O = i(5);
-  var E = i(4024);
+  var E = i(4025);
   var y = i(754);
-  var b = i(615);
+  var b = i(616);
   var D = i(9);
-  var I = i(4027);
+  var I = i(4028);
   var v = i(2);
   var T = i(29);
   var S = i(161);
@@ -205231,7 +205239,7 @@
   var s = i(6);
   var r = i(59);
   var l = i(39);
-  var c = i(140);
+  var c = i(141);
   var u = i(4);
   var d = i(1858);
   var p = i(89);
@@ -205785,7 +205793,7 @@
   t.DefencePanelButton = p;
   var h = i(14);
   var g = i(238);
-  var C = i(428);
+  var C = i(429);
   o.classImplementsInterfaces(p, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -205838,7 +205846,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(59);
-  var s = i(526);
+  var s = i(528);
   var r = i(4);
   var l = i(89);
   var c = createjs.Point;
@@ -206070,10 +206078,10 @@
   var d = i(1139);
   var p = i(1867);
   var h = i(1868);
-  var g = i(4143);
-  var C = i(4144);
-  var _ = i(4145);
-  var m = i(4147);
+  var g = i(4144);
+  var C = i(4145);
+  var _ = i(4146);
+  var m = i(4148);
   var f = i(1137);
 }, function (e, t, i) {
   'use strict';
@@ -206305,9 +206313,9 @@
   }(E.CastlePanel);
   t.CastleBuildingListPanel = D;
   var I = i(35);
-  var v = i(460);
+  var v = i(461);
   var T = i(227);
-  var S = i(4148);
+  var S = i(4149);
   D.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -206319,10 +206327,10 @@
   var o = i(1);
   var a = i(1);
   var s = i(59);
-  var r = i(139);
+  var r = i(140);
   var l = i(4);
   var c = i(1113);
-  var u = i(524);
+  var u = i(526);
   var d = function (e) {
     function ButtonSpyComponent(t) {
       var i = this;
@@ -206391,7 +206399,7 @@
   }(i(150).ButtonBasicComponent);
   t.ButtonSpyComponent = d;
   var p = i(9);
-  var h = i(445);
+  var h = i(446);
   o.classImplementsInterfaces(d, "IWorldMapObjectRingmenuButtonComponent");
 }, function (e, t, i) {
   'use strict';
@@ -206501,7 +206509,7 @@
   var o = i(1);
   var a = i(3);
   var s = i(1084);
-  var r = i(518);
+  var r = i(520);
   var l = function (e) {
     function ObstacleSeasonMapScreenItem(t, i) {
       return e.call(this, t, i) || this;
@@ -206563,7 +206571,7 @@
   }(r.BasicSimpleWorldMapItem);
   t.ObstacleSeasonMapScreenItem = l;
   var c = i(9);
-  var u = i(4169);
+  var u = i(4170);
   o.classImplementsInterfaces(l, "ITreasureMapItem", "IIngameUICapable", "IWorldmapTooltipData");
 }, function (e, t, i) {
   'use strict';
@@ -206574,11 +206582,11 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(573);
+  var s = i(574);
   var r = i(32);
   var l = i(15);
   var c = i(4);
-  var u = i(518);
+  var u = i(520);
   var d = i(293);
   var p = function (e) {
     function StartCampSeasonMapScreenItem(t, i) {
@@ -206669,12 +206677,12 @@
   var B = i(24);
   var F = i(16);
   var N = i(344);
-  var k = i(4177);
-  var U = i(4178);
+  var k = i(4178);
+  var U = i(4179);
   var G = i(1143);
   var H = i(365);
-  var j = i(600);
-  var W = i(494);
+  var j = i(601);
+  var W = i(496);
   var Y = i(44);
   var K = i(12);
   var z = i(15);
@@ -206686,11 +206694,11 @@
   var $ = i(8);
   var ee = i(42);
   var te = i(130);
-  var ie = i(4180);
+  var ie = i(4181);
   var ne = i(1879);
   var oe = i(383);
-  var ae = i(4181);
-  var se = i(4182);
+  var ae = i(4182);
+  var se = i(4183);
   var re = i(1880);
   var le = createjs.Point;
   var ce = createjs.TimerEvent;
@@ -207888,7 +207896,7 @@
   var Ce = i(9);
   var _e = i(1881);
   var me = i(921);
-  var fe = i(4183);
+  var fe = i(4184);
   var Oe = i(337);
 }, function (e, t, i) {
   'use strict';
@@ -208530,7 +208538,7 @@
   var s = i(24);
   var r = i(91);
   var l = i(8);
-  var c = i(417);
+  var c = i(418);
   var u = function (e) {
     function WorldMapRingMenu(t) {
       var i = this;
@@ -208797,7 +208805,7 @@
   var m = i(4);
   var f = i(130);
   var O = i(337);
-  var E = i(4223);
+  var E = i(4224);
   var y = createjs.Container;
   var b = i(15);
   var D = function (e) {
@@ -209195,7 +209203,7 @@
   var d = i(4);
   var p = i(27);
   var h = i(11);
-  var g = i(4229);
+  var g = i(4230);
   var C = function (e) {
     function CastleTieredPrimeDayDialog() {
       var t = this;
@@ -209414,7 +209422,7 @@
   }(h.CastleExternalDialog);
   t.CastleTieredPrimeDayDialog = C;
   var _ = i(820);
-  var m = i(4230);
+  var m = i(4231);
   var f = i(107);
   o.classImplementsInterfaces(C, "ICollectableRendererList");
   C.__initialize_static_members();
@@ -209489,8 +209497,8 @@
   var m = i(15);
   var f = i(4);
   var O = i(180);
-  var E = i(4247);
-  var y = i(4248);
+  var E = i(4248);
+  var y = i(4249);
   var b = i(9);
   var D = i(17);
   var I = i(1220);
@@ -209638,10 +209646,10 @@
   var n = i(0);
   var o = i(1896);
   var a = i(72);
-  var s = i(4288);
-  var r = i(4289);
-  var l = i(4290);
-  var c = i(4291);
+  var s = i(4289);
+  var r = i(4290);
+  var l = i(4291);
+  var c = i(4292);
   var u = function (e) {
     function CastleDonationEventData(t) {
       var i = this;
@@ -210042,7 +210050,7 @@
     return AAlienInvasionEventVO;
   }(c.AScoreEventVO);
   t.AAlienInvasionEventVO = u;
-  var d = i(4376);
+  var d = i(4377);
   var p = i(306);
   var h = i(9);
   var g = i(827);
@@ -210182,8 +210190,8 @@
     return CastleAllianceAlienInvasionEventDialogSublayer;
   }(i(33).CastleDialogSubLayer);
   t.CastleAllianceAlienInvasionEventDialogSublayer = p;
-  var h = i(465);
-  var g = i(466);
+  var h = i(466);
+  var g = i(467);
   o.classImplementsInterfaces(p, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
   'use strict';
@@ -210344,7 +210352,7 @@
   var d = i(851);
   var p = i(8);
   var h = i(108);
-  var g = i(4402);
+  var g = i(4403);
   var C = function (e) {
     function AllianceMobilizationRewardDialog() {
       return e.call(this, AllianceMobilizationRewardDialog.NAME) || this;
@@ -211146,7 +211154,7 @@
   }(r.ASpecialEventVO);
   t.ArtifactEventVO = l;
   var c = i(52);
-  var u = i(4419);
+  var u = i(4420);
   o.classImplementsInterfaces(l, "IEventOverviewable");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -211211,7 +211219,7 @@
   var p = i(3);
   var h = i(6);
   var g = i(278);
-  var C = i(4447);
+  var C = i(4448);
   var _ = i(738);
   var m = i(26);
   var f = i(4);
@@ -211399,8 +211407,8 @@
   var h = i(3);
   var g = i(6);
   var C = i(278);
-  var _ = i(530);
-  var m = i(4448);
+  var _ = i(532);
+  var m = i(4449);
   var f = i(738);
   var O = i(26);
   var E = i(71);
@@ -211657,11 +211665,11 @@
   var _ = i(24);
   var m = i(24);
   var f = i(16);
-  var O = i(4463);
-  var E = i(515);
+  var O = i(4464);
+  var E = i(517);
   var y = i(898);
   var b = i(118);
-  var D = i(139);
+  var D = i(140);
   var I = i(26);
   var v = i(44);
   var T = i(4);
@@ -211672,7 +211680,7 @@
   var M = i(8);
   var R = i(42);
   var V = i(73);
-  var x = i(4464);
+  var x = i(4465);
   var w = i(928);
   var B = createjs.Event;
   var F = createjs.MouseEvent;
@@ -212634,7 +212642,7 @@
   var c = i(3);
   var u = i(3);
   var d = i(6);
-  var p = i(4482);
+  var p = i(4483);
   var h = i(37);
   var g = i(21);
   var C = i(26);
@@ -212644,8 +212652,8 @@
   var O = i(9);
   var E = i(8);
   var y = i(11);
-  var b = i(4483);
-  var D = i(4484);
+  var b = i(4484);
+  var D = i(4485);
   var I = createjs.TimerEvent;
   var v = function (e) {
     function FortuneTellerEventDialog() {
@@ -212778,7 +212786,7 @@
     return FortuneTellerEventDialog;
   }(y.CastleExternalDialog);
   t.FortuneTellerEventDialog = v;
-  var T = i(4485);
+  var T = i(4486);
   o.classImplementsInterfaces(v, "ICollectableRendererList");
   var S = i(1);
   var A = i(19);
@@ -213182,10 +213190,10 @@
     return LuckyWheelEventVO;
   }(u.BuyPackagesEventVO);
   t.LuckyWheelEventVO = d;
-  var p = i(571);
-  var h = i(4497);
+  var p = i(572);
+  var h = i(4499);
   var g = i(1930);
-  var C = i(4517);
+  var C = i(4519);
   var _ = i(5);
   o.classImplementsInterfaces(d, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO", "IScoreUpdatable");
 }, function (e, t, i) {
@@ -213264,22 +213272,22 @@
   var E = i(26);
   var y = i(32);
   var b = i(4);
-  var D = i(477);
+  var D = i(479);
   var I = i(27);
   var v = i(253);
-  var T = i(545);
+  var T = i(547);
   var S = i(8);
   var A = i(11);
   var L = i(1154);
-  var P = i(4500);
+  var P = i(4502);
   var M = i(1927);
-  var R = i(4506);
-  var V = i(4507);
+  var R = i(4508);
+  var V = i(4509);
   var x = i(1928);
-  var w = i(4508);
-  var B = i(4509);
-  var F = i(4510);
-  var N = i(4511);
+  var w = i(4510);
+  var B = i(4511);
+  var F = i(4512);
+  var N = i(4513);
   var k = function (e) {
     function CastleBasicLuckyWheelDialog(t) {
       var i = this;
@@ -213786,10 +213794,10 @@
   var h = i(17);
   var g = i(25);
   var C = i(38);
-  var _ = i(4502);
+  var _ = i(4504);
   var m = i(1154);
-  var f = i(4503);
-  var O = i(4505);
+  var f = i(4505);
+  var O = i(4507);
   var E = createjs.TimerEvent;
   var y = createjs.Point;
   var b = function () {
@@ -214215,7 +214223,7 @@
     return CastleLuckyWheelGuaranteedJackpotDialog;
   }(i(11).CastleExternalDialog);
   t.CastleLuckyWheelGuaranteedJackpotDialog = g;
-  var C = i(477);
+  var C = i(479);
   var _ = i(1155);
   o.classImplementsInterfaces(g, "ICollectableRendererList");
   g.__initialize_static_members();
@@ -214235,7 +214243,7 @@
   var u = i(4);
   var d = i(8);
   var p = i(11);
-  var h = i(4514);
+  var h = i(4516);
   var g = function (e) {
     function CastleLuckyWheelTicketBuyDialog() {
       return e.call(this, CastleLuckyWheelTicketBuyDialog.NAME) || this;
@@ -214314,7 +214322,7 @@
     return CastleLuckyWheelTicketBuyDialog;
   }(p.CastleExternalDialog);
   t.CastleLuckyWheelTicketBuyDialog = g;
-  var C = i(4515);
+  var C = i(4517);
   a.classImplementsInterfaces(g, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -214484,7 +214492,7 @@
   var o = i(1);
   var a = i(69);
   var s = i(4);
-  var r = i(4584);
+  var r = i(4586);
   var l = i(8);
   var c = i(1051);
   var u = function (e) {
@@ -214667,7 +214675,7 @@
   var o = i(1);
   var a = i(1);
   var s = i(4);
-  var r = i(410);
+  var r = i(411);
   var l = i(1158);
   var c = function (e) {
     function ArmyattackMapmovement() {
@@ -214950,7 +214958,7 @@
   var c = i(3);
   var u = i(32);
   var d = i(90);
-  var p = i(577);
+  var p = i(578);
   var h = i(15);
   var g = i(4);
   var C = i(64);
@@ -215469,11 +215477,11 @@
   var a = i(3);
   var s = i(192);
   var r = i(1382);
-  var l = i(413);
+  var l = i(414);
   var c = i(4);
   var u = i(8);
   var d = i(11);
-  var p = i(609);
+  var p = i(610);
   var h = createjs.Event;
   var g = createjs.Point;
   var C = function (e) {
@@ -215598,8 +215606,8 @@
   t.CastleTitleAchievedDialog = C;
   var _ = i(117);
   var m = i(61);
-  var f = i(610);
-  var O = i(4711);
+  var f = i(611);
+  var O = i(4713);
   o.classImplementsInterfaces(C, "ICollectableRendererList");
   C.__initialize_static_members();
 }, function (e, t, i) {
@@ -215825,8 +215833,8 @@
   var s = i(3);
   var r = i(3);
   var l = i(3);
-  var c = i(622);
-  var u = i(649);
+  var c = i(623);
+  var u = i(650);
   var d = i(4);
   var p = i(8);
   var h = function (e) {
@@ -215905,13 +215913,13 @@
   var p = i(3);
   var h = i(3);
   var g = i(6);
-  var C = i(5065);
-  var _ = i(649);
+  var C = i(5067);
+  var _ = i(650);
   var m = i(4);
-  var f = i(538);
+  var f = i(540);
   var O = i(184);
   var E = i(27);
-  var y = i(5066);
+  var y = i(5068);
   var b = i(174);
   var D = i(1033);
   var I = i(8);
@@ -216077,7 +216085,7 @@
   var P = i(186);
   var M = i(153);
   var R = i(1585);
-  var V = i(650);
+  var V = i(651);
   r.classImplementsInterfaces(v, "ICollectableRendererList");
   v.__initialize_static_members();
 }, function (e, t, i) {
@@ -216118,7 +216126,7 @@
   var r = i(3);
   var l = i(3);
   var c = i(3);
-  var u = i(5073);
+  var u = i(5075);
   var d = i(4);
   var p = function (e) {
     function CastleRelocateRuinDialog() {
@@ -216225,7 +216233,7 @@
   }(i(11).CastleExternalDialog);
   t.ACastleFactionChooseFactionDialog = c;
   var u = i(29);
-  var d = i(665);
+  var d = i(666);
   a.classImplementsInterfaces(c, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -216499,7 +216507,7 @@
   var C = i(26);
   var _ = i(4);
   var m = i(27);
-  var f = i(587);
+  var f = i(588);
   var O = i(202);
   var E = i(76);
   var y = i(78);
@@ -216879,16 +216887,16 @@
   var u = i(3);
   var d = i(3);
   var p = i(297);
-  var h = i(5180);
-  var g = i(5181);
+  var h = i(5182);
+  var g = i(5183);
   var C = i(102);
   var _ = i(4);
   var m = i(43);
   var f = i(8);
   var O = i(11);
   var E = i(93);
-  var y = i(5182);
-  var b = i(5183);
+  var y = i(5184);
+  var b = i(5185);
   var D = function (e) {
     function CastleForwardMessageDialog() {
       var t = this;
@@ -217129,10 +217137,10 @@
       return e;
     };
     return IsoCommandPackageObjectsInit;
-  }(i(488).AIsoCommandPackage);
+  }(i(490).AIsoCommandPackage);
   t.IsoCommandPackageObjectsInit = o;
-  var a = i(5281);
-  var s = i(5282);
+  var a = i(5283);
+  var s = i(5284);
   var r = i(869);
 }, function (e, t, i) {
   'use strict';
@@ -217143,7 +217151,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(493);
+  var s = i(495);
   var r = function (e) {
     function IsoCommandObjectUpdateConstructionItems(t, i) {
       var n = e.call(this, t) || this;
@@ -217400,7 +217408,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(5462);
+  var o = i(5464);
   var a = i(119);
   var s = i(84);
   var r = i(100);
@@ -217521,7 +217529,7 @@
     return MessageCancelledVO;
   }(r.AMessageVO);
   t.MessageCancelledVO = l;
-  var c = i(5463);
+  var c = i(5465);
 }, function (e, t, i) {
   'use strict';
 
@@ -217564,7 +217572,7 @@
   var B = i(161);
   var F = i(37);
   var N = i(21);
-  var k = i(561);
+  var k = i(562);
   var U = i(223);
   var G = i(31);
   var H = i(20);
@@ -217574,7 +217582,7 @@
   var K = i(49);
   var z = i(34);
   var q = i(27);
-  var X = i(5467);
+  var X = i(5469);
   var Q = i(43);
   var J = i(23);
   var Z = i(19);
@@ -217591,7 +217599,7 @@
   var ce = i(248);
   var ue = i(93);
   var de = i(269);
-  var pe = i(5468);
+  var pe = i(5470);
   var he = createjs.Point;
   var ge = function (e) {
     function CastleBattleLogMessageAdvanced() {
@@ -218847,8 +218855,8 @@
   var Se = i(94);
   var Ae = i(227);
   var Le = i(1968);
-  var Pe = i(5469);
-  var Me = i(5475);
+  var Pe = i(5471);
+  var Me = i(5477);
   var Re = function () {
     return function SpecialCurrencyInfoVO(e, t, i) {
       this.amount = 0;
@@ -219154,7 +219162,7 @@
   var D = i(6);
   var I = i(18);
   var v = i(28);
-  var T = i(618);
+  var T = i(619);
   var S = i(26);
   var A = i(398);
   var L = i(4);
@@ -219165,10 +219173,10 @@
   var x = i(8);
   var w = i(73);
   var B = i(119);
-  var F = i(574);
+  var F = i(575);
   var N = i(11);
   var k = i(93);
-  var U = i(524);
+  var U = i(526);
   var G = i(1954);
   var H = function (e) {
     function CastleSpyLogDialog() {
@@ -219653,9 +219661,9 @@
   }(N.CastleExternalDialog);
   t.CastleSpyLogDialog = H;
   var j = i(29);
-  var W = i(597);
-  var Y = i(620);
-  var K = i(621);
+  var W = i(598);
+  var Y = i(621);
+  var K = i(622);
   var z = i(761);
   var q = i(9);
   var X = i(324);
@@ -219665,7 +219673,7 @@
   var $ = i(61);
   var ee = i(38);
   var te = i(94);
-  var ie = i(445);
+  var ie = i(446);
   var ne = i(1956);
   u.classImplementsInterfaces(H, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -219676,7 +219684,7 @@
   });
   var n = i(0);
   var o = i(5);
-  var a = i(5588);
+  var a = i(5590);
   var s = i(84);
   var r = i(100);
   var l = function (e) {
@@ -219738,7 +219746,7 @@
     return MessageUserVO;
   }(r.AMessageVO);
   t.MessageUserVO = l;
-  var c = i(5589);
+  var c = i(5591);
 }, function (e, t, i) {
   'use strict';
 
@@ -220902,7 +220910,7 @@
   }(i(1985).TutorialAbstractMilitaryCommand);
   t.TutorialBuildToolsCommand = c;
   var u = i(227);
-  var d = i(648);
+  var d = i(649);
   var p = i(254);
   var h = i(1864);
   o.classImplementsInterfaces(c, "ISimpleCommand");
@@ -221195,8 +221203,8 @@
     return TutorialStartFromQuestBookActionCommand;
   }(s.TutorialBasicActionCommand);
   t.TutorialStartFromQuestBookActionCommand = l;
-  var c = i(657);
-  var u = i(463);
+  var c = i(658);
+  var u = i(464);
   var d = i(679);
   o.classImplementsInterfaces(l, "ISimpleCommand");
 }, function (e, t, i) {
@@ -221297,15 +221305,15 @@
   var I = i(116);
   var v = i(366);
   var T = i(805);
-  var S = i(5824);
-  var A = i(5825);
-  var L = i(5826);
-  var P = i(599);
-  var M = i(5827);
+  var S = i(5826);
+  var A = i(5827);
+  var L = i(5828);
+  var P = i(600);
+  var M = i(5829);
   var R = i(849);
-  var V = i(5828);
-  var x = i(5832);
-  var w = i(576);
+  var V = i(5830);
+  var x = i(5834);
+  var w = i(577);
   var B = i(337);
   window.ggs.fontConfigResolver = M.fontConfigResolver;
   window.AssetURL = new L.AssetUrlConvertor();
@@ -221573,9 +221581,9 @@
   var a = i(1);
   var s = i(4);
   var r = i(9);
-  var l = i(495);
+  var l = i(497);
   var c = i(880);
-  var u = i(496);
+  var u = i(498);
   var d = createjs.MouseEvent;
   var p = o.getLogger("CXFDecorator");
   var h = function () {
@@ -221672,10 +221680,10 @@
   var h = i(378);
   var g = i(114);
   var C = i(1891);
-  var _ = i(496);
+  var _ = i(498);
   var m = i(374);
   var f = i(1111);
-  var O = i(445);
+  var O = i(446);
   var E = function () {
     function DialogBlocker() {}
     DialogBlocker.isAllowedToShowDialog = function (e, t) {
@@ -222263,7 +222271,7 @@
   t.OpenGenericOfferCommand = u;
   var d = i(29);
   var p = i(9);
-  var h = i(564);
+  var h = i(565);
   l.classImplementsInterfaces(u, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -222482,7 +222490,7 @@
   var s = i(3);
   var r = i(3);
   var l = i(231);
-  var c = i(481);
+  var c = i(483);
   var u = i(4);
   var d = i(34);
   var p = i(165);
@@ -222927,7 +222935,7 @@
     value: true
   });
   var n = i(1);
-  var o = i(412);
+  var o = i(413);
   var a = function () {
     function EffectValueTools() {}
     EffectValueTools.prototype.parseFromValueString = function (e) {
@@ -224715,7 +224723,7 @@
   var h = i(1188);
   var g = i(1189);
   var C = i(865);
-  var _ = i(414);
+  var _ = i(415);
   var m = i(52);
   var f = i(22);
   var O = i(6);
@@ -225478,7 +225486,7 @@
     return IsoCommandProcessor;
   }();
   t.IsoCommandProcessor = s;
-  var r = i(487);
+  var r = i(489);
   var l = i(869);
   var c = i(693);
 }, function (e, t, i) {
@@ -226113,11 +226121,11 @@
       configurable: true
     });
     return IsoCommandPackageMovementSpawn;
-  }(i(488).AIsoCommandPackage);
+  }(i(490).AIsoCommandPackage);
   t.IsoCommandPackageMovementSpawn = o;
   var a = i(695);
   var s = i(696);
-  var r = i(489);
+  var r = i(491);
 }, function (e, t, i) {
   'use strict';
 
@@ -226477,7 +226485,7 @@
   }();
   t.IsoViewScaleScheduler = n;
   var o = i(1196);
-  var a = i(491);
+  var a = i(493);
 }, function (e, t, i) {
   'use strict';
 
@@ -227289,7 +227297,7 @@
   }();
   t.IsoServerCommands = n;
   var o = i(5);
-  var a = i(569);
+  var a = i(570);
   var s = i(2080);
   var r = i(872);
   var l = i(1203);
@@ -227304,7 +227312,7 @@
   var m = i(1205);
   var f = i(2085);
   var O = i(4);
-  var E = i(570);
+  var E = i(571);
 }, function (e, t, i) {
   'use strict';
 
@@ -227769,7 +227777,7 @@
   var o = i(1);
   var a = i(85);
   var s = i(112);
-  var r = i(490);
+  var r = i(492);
   var l = createjs.Container;
   var c = function (e) {
     function IsoViewLayers() {
@@ -227937,7 +227945,7 @@
   var h = i(112);
   var g = i(122);
   var C = i(92);
-  var _ = i(490);
+  var _ = i(492);
   var m = createjs.Point;
   l.getLogger("IsoViewMouse");
   var f = function (e) {
@@ -228566,7 +228574,7 @@
   var y = i(14);
   var b = i(699);
   var D = i(144);
-  var I = i(489);
+  var I = i(491);
   var v = i(48);
   var T = i(35);
   var S = i(1);
@@ -228633,7 +228641,7 @@
   var s = i(24);
   var r = i(92);
   var l = i(64);
-  var c = i(417);
+  var c = i(418);
   var u = function (e) {
     function IsoWorldRingMenu(t) {
       var i = e.call(this, t) || this;
@@ -229979,7 +229987,7 @@
   }();
   t.EventOverviewEventConfig = n;
   var o = i(13);
-  var a = i(571);
+  var a = i(572);
 }, function (e, t, i) {
   'use strict';
 
@@ -230007,7 +230015,7 @@
       }
     };
     return EventOverviewDetailsFactionInvasion;
-  }(i(572).EventOverviewDetailedEventView);
+  }(i(573).EventOverviewDetailedEventView);
   t.EventOverviewDetailsFactionInvasion = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -230027,7 +230035,7 @@
     }
     n.__extends(EventOverviewDetailsNone, e);
     return EventOverviewDetailsNone;
-  }(i(572).EventOverviewDetailedEventView);
+  }(i(573).EventOverviewDetailedEventView);
   t.EventOverviewDetailsNone = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -230047,7 +230055,7 @@
     }
     n.__extends(EventOverviewDetailsPointEventDefault, e);
     return EventOverviewDetailsPointEventDefault;
-  }(i(572).EventOverviewDetailedEventView);
+  }(i(573).EventOverviewDetailedEventView);
   t.EventOverviewDetailsPointEventDefault = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -230075,7 +230083,7 @@
       }
     };
     return EventOverviewDetailsPointEventNextRewardList;
-  }(i(572).EventOverviewDetailedEventView);
+  }(i(573).EventOverviewDetailedEventView);
   t.EventOverviewDetailsPointEventNextRewardList = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -230095,7 +230103,7 @@
     }
     n.__extends(EventOverviewDetailsTreasureMap, e);
     return EventOverviewDetailsTreasureMap;
-  }(i(572).EventOverviewDetailedEventView);
+  }(i(573).EventOverviewDetailedEventView);
   t.EventOverviewDetailsTreasureMap = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -230119,7 +230127,7 @@
   var C = i(18);
   var _ = i(51);
   var m = i(123);
-  var f = i(573);
+  var f = i(574);
   var O = i(161);
   var E = i(37);
   var y = i(31);
@@ -230728,7 +230736,7 @@
   }(createjs.EventDispatcher);
   t.SimpleScrollItemList = o;
   var a = i(95);
-  var s = i(416);
+  var s = i(417);
   var r = i(2);
   var l = i(2);
   var c = i(6);
@@ -231138,9 +231146,9 @@
   var O = i(12);
   var E = i(4);
   var y = i(19);
-  var b = i(499);
-  var D = i(421);
-  var I = i(422);
+  var b = i(501);
+  var D = i(422);
+  var I = i(423);
   var v = i(8);
   var T = function (e) {
     function CastleExtendFestivalDialog() {
@@ -232023,7 +232031,7 @@
     return CastleWorldMapAreaTilesDirectory;
   }();
   t.CastleWorldMapAreaTilesDirectory = a;
-  var s = i(505);
+  var s = i(507);
   var r = i(147);
   var l = i(18);
   var c = i(2);
@@ -232034,14 +232042,14 @@
   var g = i(5);
   var C = i(6);
   var _ = i(55);
-  var m = i(423);
+  var m = i(424);
   var f = i(1227);
   var O = i(2137);
   var E = i(30);
   var y = i(4);
   var b = i(889);
   var D = i(1228);
-  var I = i(504);
+  var I = i(506);
   var v = i(101);
   var T = i(2138);
   a.__initialize_static_members();
@@ -232431,7 +232439,7 @@
   var _ = i(5);
   var m = i(6);
   var f = i(16);
-  var O = i(423);
+  var O = i(424);
   var E = i(4);
   var y = i(1179);
 }, function (e, t, i) {
@@ -232451,7 +232459,7 @@
   var d = i(30);
   var p = i(4);
   var h = i(64);
-  var g = i(575);
+  var g = i(576);
   var C = function (e) {
     function DungeonIsleMapobjectVO() {
       var t = this;
@@ -233422,7 +233430,7 @@
   var V = i(321);
   var x = i(9);
   var w = i(708);
-  var B = i(426);
+  var B = i(427);
   var F = i(131);
   var N = i(125);
   var k = i(153);
@@ -233651,7 +233659,7 @@
     return CastleAllianceInfoDialogABGTowerItem;
   }(a.AInfiniteScrollListItem);
   t.CastleAllianceInfoDialogABGTowerItem = r;
-  var l = i(581);
+  var l = i(582);
   o.classImplementsInterfaces(r, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -233862,7 +233870,7 @@
       this.x = e;
     };
     return MultiSliderButton;
-  }(i(584).CastleMovieClip);
+  }(i(585).CastleMovieClip);
   t.MultiSliderButton = s;
   o.classImplementsInterfaces(s, "MovieClip");
 }, function (e, t, i) {
@@ -236324,7 +236332,7 @@
   var p = i(906);
   var h = i(246);
   var g = i(14);
-  var C = i(591);
+  var C = i(592);
   var _ = i(299);
   var m = createjs.Point;
   var f = createjs.Rectangle;
@@ -236575,7 +236583,7 @@
   var o = i(3);
   var a = i(151);
   var s = i(1260);
-  var r = i(591);
+  var r = i(592);
   var l = function (e) {
     function TooltipLordEffectItemCreator() {
       CONSTRUCTOR_HACK;
@@ -236632,7 +236640,7 @@
   var n = i(0);
   var o = i(16);
   var a = i(246);
-  var s = i(591);
+  var s = i(592);
   var r = createjs.Rectangle;
   var l = function (e) {
     function LordEffectCapGroupItem(t, i = null, n = o.ClientConstColor.FONT_DEFAULT_COLOR, s = o.ClientConstColor.FONT_DEFAULT_COLOR) {
@@ -236839,15 +236847,15 @@
   var c = i(24);
   var u = i(24);
   var d = i(16);
-  var p = i(431);
-  var h = i(510);
+  var p = i(432);
+  var h = i(512);
   var g = i(1262);
   var C = i(42);
   var _ = i(246);
   var m = i(14);
   var f = i(46);
   var O = i(370);
-  var E = i(591);
+  var E = i(592);
   var y = createjs.Rectangle;
   var b = createjs.ColorFilter;
   var D = function (e) {
@@ -238661,10 +238669,10 @@
       this.parentDialog.onSelectedAmountChanged();
     };
     return ModernPackageShopBuyElementAmount;
-  }(i(433).AModernPackageShopBuyElement);
+  }(i(434).AModernPackageShopBuyElement);
   t.ModernPackageShopBuyElementAmount = u;
   var d = i(14);
-  var p = i(592);
+  var p = i(593);
   var h = i(123);
   o.classImplementsInterfaces(u, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -238926,13 +238934,13 @@
       configurable: true
     });
     return ModernPackageShopBuyElementBottomMenu;
-  }(i(433).AModernPackageShopBuyElement);
+  }(i(434).AModernPackageShopBuyElement);
   t.ModernPackageShopBuyElementBottomMenu = g;
   var C = i(83);
   var _ = i(13);
   var m = i(14);
   var f = i(38);
-  var O = i(592);
+  var O = i(593);
   a.classImplementsInterfaces(g, "ICollectableRendererList");
   var E = i(1);
   var y = i(1269);
@@ -238941,7 +238949,7 @@
   var I = i(135);
   var v = i(352);
   var T = i(353);
-  var S = i(138);
+  var S = i(139);
   var A = i(43);
   var L = i(19);
   var P = i(2230);
@@ -238982,7 +238990,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(511);
+  var a = i(513);
   var s = i(11);
   var r = i(12);
   var l = i(3);
@@ -238991,8 +238999,8 @@
   var d = i(19);
   var p = i(4);
   var h = i(123);
-  var g = i(482);
-  var C = i(568);
+  var g = i(484);
+  var C = i(569);
   var _ = i(9);
   var m = i(247);
   var f = function (e) {
@@ -239143,7 +239151,7 @@
   var g = i(46);
   var C = i(58);
   var _ = i(41);
-  var m = i(433);
+  var m = i(434);
   var f = createjs.Point;
   var O = function (e) {
     function ModernPackageShopBuyElementBundleRewards() {
@@ -239328,7 +239336,7 @@
   var d = i(20);
   var p = i(4);
   var h = i(127);
-  var g = i(433);
+  var g = i(434);
   var C = createjs.Point;
   var _ = function (e) {
     function ModernPackageShopBuyElementCosts() {
@@ -239473,7 +239481,7 @@
   var E = i(14);
   var y = i(25);
   var b = i(67);
-  var D = i(592);
+  var D = i(593);
   _.__initialize_static_members();
   var I = i(1);
 }, function (e, t, i) {
@@ -239517,7 +239525,7 @@
       configurable: true
     });
     return ModernPackageShopBuyElementInfo;
-  }(i(433).AModernPackageShopBuyElement);
+  }(i(434).AModernPackageShopBuyElement);
   t.ModernPackageShopBuyElementInfo = r;
   var l = i(13);
   var c = i(14);
@@ -239591,10 +239599,10 @@
       this._infoComponent.disp.y = -this._scrollComponent.currentValue;
     };
     return ModernPackageShopBuyElementRelicInfo;
-  }(i(433).AModernPackageShopBuyElement);
+  }(i(434).AModernPackageShopBuyElement);
   t.ModernPackageShopBuyElementRelicInfo = l;
   o.classImplementsInterfaces(l, "ICollectableRendererList");
-  var c = i(593);
+  var c = i(594);
   var u = i(1);
 }, function (e, t, i) {
   'use strict';
@@ -239648,7 +239656,7 @@
   }();
   t.RelicEquipmentInfoElement = a;
   var s = i(48);
-  var r = i(593);
+  var r = i(594);
 }, function (e, t, i) {
   'use strict';
 
@@ -240660,7 +240668,7 @@
   var a = i(3);
   var s = i(31);
   var r = i(20);
-  var l = i(434);
+  var l = i(435);
   var c = i(14);
   var u = i(81);
   var d = i(25);
@@ -240759,13 +240767,13 @@
   var T = i(77);
   var S = i(8);
   var A = i(25);
-  var L = i(417);
+  var L = i(418);
   var P = createjs.Point;
   var M = createjs.MouseEvent;
   var R = i(24);
   var V = i(24);
   var x = i(160);
-  var w = i(594);
+  var w = i(595);
   var B = i(197);
   var F = i(165);
   var N = i(907);
@@ -241441,7 +241449,7 @@
   var m = i(19);
   var f = i(8);
   var O = i(25);
-  var E = i(417);
+  var E = i(418);
   var y = i(160);
   var b = i(197);
   var D = createjs.MouseEvent;
@@ -242367,7 +242375,7 @@
   var s = i(5);
   var r = i(2261);
   var l = i(4);
-  var c = i(511);
+  var c = i(513);
   var u = function (e) {
     function CastleRenameLordDialog() {
       CONSTRUCTOR_HACK;
@@ -243151,7 +243159,7 @@
     return CastleAcceptGDPRDialog;
   }(p.CastleExternalDialog);
   t.CastleAcceptGDPRDialog = g;
-  var C = i(435);
+  var C = i(436);
   var _ = i(36);
   o.classImplementsInterfaces(g, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -243456,7 +243464,7 @@
   var s = i(3);
   var r = i(3);
   var l = i(2293);
-  var c = i(599);
+  var c = i(600);
   var u = i(12);
   var d = i(4);
   var p = i(8);
@@ -244725,7 +244733,7 @@
   var N = i(8);
   var k = i(25);
   var U = i(383);
-  var G = i(574);
+  var G = i(575);
   var H = i(384);
   var j = i(919);
   var W = createjs.Point;
@@ -244992,7 +245000,7 @@
   var g = i(41);
   var C = i(24);
   var _ = i(37);
-  var m = i(138);
+  var m = i(139);
   var f = i(135);
   var O = i(2309);
   var E = i(295);
@@ -245258,7 +245266,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(599);
+  var o = i(600);
   var a = i(11);
   var s = i(3);
   var r = i(2);
@@ -245476,7 +245484,7 @@
   var s = i(3);
   var r = i(274);
   var l = i(2315);
-  var c = i(420);
+  var c = i(421);
   var u = i(4);
   var d = i(260);
   var p = i(151);
@@ -245942,7 +245950,7 @@
   Object.defineProperty(t, "__esModule", {
     value: true
   });
-  var n = i(438);
+  var n = i(439);
   var o = function () {
     function CastleDetailedVillageList() {
       this._villageList = [];
@@ -246189,7 +246197,7 @@
   }();
   t.CastleKingdomVillageInfoVO = n;
   var o = i(917);
-  var a = i(598);
+  var a = i(599);
   var s = i(158);
   var r = i(5);
 }, function (e, t, i) {
@@ -246285,7 +246293,7 @@
     return CastleKingstowerList;
   }();
   t.CastleKingstowerList = n;
-  var o = i(507);
+  var o = i(509);
   var a = i(32);
   var s = i(15);
   var r = i(4);
@@ -246369,7 +246377,7 @@
     return CastleMonumentList;
   }(i(1310).UpgradableLandmarkList);
   t.CastleMonumentList = s;
-  var r = i(579);
+  var r = i(580);
 }, function (e, t, i) {
   'use strict';
 
@@ -248204,7 +248212,7 @@
   var a = i(5);
   var s = i(6);
   var r = i(16);
-  var l = i(601);
+  var l = i(602);
   var c = i(118);
   var u = i(4);
   var d = i(34);
@@ -249678,7 +249686,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(439);
+  var o = i(440);
   var a = function (e) {
     function FilterAll() {
       CONSTRUCTOR_HACK;
@@ -249745,8 +249753,8 @@
   var u = i(5);
   var d = i(15);
   var p = i(4);
-  var h = i(602);
-  var g = i(603);
+  var h = i(603);
+  var g = i(604);
   var C = i(937);
   var _ = i(2360);
   var m = i(2361);
@@ -250090,7 +250098,7 @@
   var o = i(1);
   var a = i(4);
   var s = i(203);
-  var r = i(563);
+  var r = i(564);
   var l = function (e) {
     function AlienLordEquipmentVO() {
       return e.call(this) || this;
@@ -250142,7 +250150,7 @@
   var s = i(5);
   var r = i(4);
   var l = i(1186);
-  var c = i(563);
+  var c = i(564);
   var u = createjs.Point;
   var d = function (e) {
     function AlienLordHeroVO() {
@@ -250771,7 +250779,7 @@
       return "";
     };
     return CastleTreasureMapItemDungeon;
-  }(i(518).BasicSimpleWorldMapItem);
+  }(i(520).BasicSimpleWorldMapItem);
   t.CastleTreasureMapItemDungeon = c;
   var u = i(302);
   o.classImplementsInterfaces(c, "ITreasureMapItem", "IIngameUICapable", "IWorldmapTooltipData");
@@ -250865,7 +250873,7 @@
       configurable: true
     });
     return CastleTreasureMapItemObstacle;
-  }(i(518).BasicSimpleWorldMapItem);
+  }(i(520).BasicSimpleWorldMapItem);
   t.CastleTreasureMapItemObstacle = d;
   var p = i(9);
   var h = i(2380);
@@ -250904,7 +250912,7 @@
   var d = i(6);
   var p = i(39);
   var h = i(56);
-  var g = i(519);
+  var g = i(521);
   var C = i(187);
   var _ = i(4);
   var m = i(8);
@@ -251091,7 +251099,7 @@
   var a = i(5);
   var s = i(3);
   var r = i(6);
-  var l = i(519);
+  var l = i(521);
   var c = i(220);
   var u = i(221);
   var d = i(4);
@@ -251549,7 +251557,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(4);
-  var s = i(439);
+  var s = i(440);
   var r = function (e) {
     function FilterAllianceIncoming() {
       CONSTRUCTOR_HACK;
@@ -251585,7 +251593,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(4);
-  var s = i(439);
+  var s = i(440);
   var r = function (e) {
     function FilterAllianceOutgoing() {
       CONSTRUCTOR_HACK;
@@ -251621,7 +251629,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(4);
-  var s = i(439);
+  var s = i(440);
   var r = function (e) {
     function FilterAttack() {
       CONSTRUCTOR_HACK;
@@ -251657,7 +251665,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(439);
+  var a = i(440);
   var s = function (e) {
     function FilterOwn() {
       CONSTRUCTOR_HACK;
@@ -251692,7 +251700,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(439);
+  var a = i(440);
   var s = function (e) {
     function FilterSpy() {
       CONSTRUCTOR_HACK;
@@ -251727,7 +251735,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(439);
+  var a = i(440);
   var s = function (e) {
     function FilterTrade() {
       CONSTRUCTOR_HACK;
@@ -251991,7 +251999,7 @@
   var r = i(3);
   var l = i(6);
   var c = i(2397);
-  var u = i(605);
+  var u = i(606);
   var d = i(44);
   var p = i(4);
   var h = i(8);
@@ -252101,7 +252109,7 @@
   t.CastleAllianceDialogCommunication = g;
   var C = i(9);
   var _ = i(2398);
-  var m = i(606);
+  var m = i(607);
   o.classImplementsInterfaces(g, "ICollectableRendererList", "ISublayer");
   g.__initialize_static_members();
 }, function (e, t, i) {
@@ -252138,7 +252146,7 @@
   var l = i(1);
   var c = i(3);
   var u = i(3);
-  var d = i(586);
+  var d = i(587);
   var p = i(102);
   var h = i(4);
   var g = i(714);
@@ -252791,7 +252799,7 @@
   var E = i(4);
   var y = i(225);
   var b = i(8);
-  var D = i(516);
+  var D = i(518);
   var I = createjs.MovieClip;
   var v = createjs.Point;
   var T = function (e) {
@@ -253395,7 +253403,7 @@
   var _ = i(4);
   var m = i(8);
   var f = i(1358);
-  var O = i(520);
+  var O = i(522);
   var E = createjs.MouseEvent;
   var y = function (e) {
     function TeamAttackConfiguration(t, i) {
@@ -254107,7 +254115,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(2425);
-  var c = i(605);
+  var c = i(606);
   var u = i(4);
   var d = i(226);
   var p = i(8);
@@ -254231,7 +254239,7 @@
   }(i(33).CastleDialogSubLayer);
   t.CastleForumOverview = h;
   var g = i(2426);
-  var C = i(606);
+  var C = i(607);
   a.classImplementsInterfaces(h, "ICollectableRendererList", "ISublayer");
   h.__initialize_static_members();
 }, function (e, t, i) {
@@ -254416,7 +254424,7 @@
   t.CastleForumTopicItemRenderer = m;
   var f = i(9);
   var O = i(14);
-  var E = i(606);
+  var E = i(607);
   var y = i(954);
   var b = i(1368);
   s.classImplementsInterfaces(m, "ICollectableRendererList");
@@ -255014,9 +255022,9 @@
     return CastleAllianceDialogABG;
   }(g.CastleDialogSubLayer);
   t.CastleAllianceDialogABG = _;
-  var m = i(502);
-  var f = i(507);
-  var O = i(578);
+  var m = i(504);
+  var f = i(509);
+  var O = i(579);
   var E = i(9);
   var y = i(70);
   var b = i(2436);
@@ -255270,7 +255278,7 @@
   var l = i(3);
   var c = i(6);
   var u = i(16);
-  var d = i(506);
+  var d = i(508);
   var p = i(4);
   var h = i(208);
   var g = i(8);
@@ -255435,7 +255443,7 @@
   var o = i(2);
   var a = i(1);
   var s = i(8);
-  var r = i(520);
+  var r = i(522);
   var l = function (e) {
     function CastleAllianceBookmarkScrollItem(t) {
       CONSTRUCTOR_HACK;
@@ -255545,7 +255553,7 @@
   var s = i(4);
   var r = i(5);
   var l = i(6);
-  var c = i(520);
+  var c = i(522);
   var u = i(8);
 }, function (e, t, i) {
   'use strict';
@@ -255888,7 +255896,7 @@
   var g = i(6);
   var C = i(16);
   var _ = i(2448);
-  var m = i(607);
+  var m = i(608);
   var f = i(297);
   var O = i(102);
   var E = i(44);
@@ -256304,7 +256312,7 @@
   var E = i(86);
   var y = i(4);
   var b = i(33);
-  var D = i(609);
+  var D = i(610);
   var I = function (e) {
     function CastleAllianceDialogFame(t) {
       var i = e.call(this, t) || this;
@@ -256437,7 +256445,7 @@
   t.CastleAllianceDialogFame = I;
   var v = i(9);
   var T = i(67);
-  var S = i(610);
+  var S = i(611);
   o.classImplementsInterfaces(I, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
   'use strict';
@@ -256515,7 +256523,7 @@
   var l = i(3);
   var c = i(6);
   var u = i(4);
-  var d = i(141);
+  var d = i(142);
   var p = function (e) {
     function CastleTitleScrollItem(t) {
       var i = this;
@@ -257101,9 +257109,9 @@
   var v = i(9);
   var T = i(25);
   var S = i(5);
-  var A = i(595);
+  var A = i(596);
   var L = i(726);
-  var P = i(611);
+  var P = i(612);
   var M = i(15);
   var R = i(32);
 }, function (e, t, i) {
@@ -257122,7 +257130,7 @@
   var u = i(3);
   var d = i(3);
   var p = i(2460);
-  var h = i(140);
+  var h = i(141);
   var g = i(53);
   var C = i(4);
   var _ = i(8);
@@ -257395,7 +257403,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(584);
+  var a = i(585);
   var s = i(8);
   var r = createjs.MouseEvent;
   var l = createjs.ColorFilter;
@@ -257541,7 +257549,7 @@
   var u = i(3);
   var d = i(3);
   var p = i(2467);
-  var h = i(140);
+  var h = i(141);
   var g = i(4);
   var C = i(184);
   var _ = i(381);
@@ -257833,7 +257841,7 @@
   var l = i(2470);
   var c = i(102);
   var u = i(4);
-  var d = i(511);
+  var d = i(513);
   var p = i(12);
   var h = i(264);
   var g = i(8);
@@ -258848,7 +258856,7 @@
   var _ = i(43);
   var m = i(40);
   var f = i(8);
-  var O = i(516);
+  var O = i(518);
   var E = i(93);
   var y = createjs.Point;
   var b = function (e) {
@@ -260810,7 +260818,7 @@
     return ACastleAllianceDialogTreasuryBoosterItem;
   }(u.CastleItemRenderer);
   t.ACastleAllianceDialogTreasuryBoosterItem = h;
-  var g = i(612);
+  var g = i(613);
   var C = i(48);
   var _ = i(706);
   var m = i(25);
@@ -261188,7 +261196,7 @@
   t.CastleAllianceDialogTreasurySubscriptions = g;
   var C = i(14);
   var _ = i(95);
-  var m = i(521);
+  var m = i(523);
   var f = i(963);
   var O = i(125);
   var E = i(2521);
@@ -261814,7 +261822,7 @@
   }(f.CastleDialogSubLayer);
   t.SubscriptionDialogOffer = E;
   var y = i(95);
-  var b = i(521);
+  var b = i(523);
   var D = i(1398);
   var I = i(963);
   var v = i(121);
@@ -261929,7 +261937,7 @@
     return CastleAllianceDialogTreasurySubscriptionsItem;
   }(d.CastleItemRenderer);
   t.CastleAllianceDialogTreasurySubscriptionsItem = _;
-  var m = i(612);
+  var m = i(613);
   var f = i(48);
   var O = i(14);
   var E = i(25);
@@ -262613,7 +262621,7 @@
   var D = i(9);
   var I = i(300);
   var v = i(70);
-  var T = i(138);
+  var T = i(139);
   var S = i(19);
   o.classImplementsInterfaces(y, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -262768,7 +262776,7 @@
   var b = i(9);
   var D = i(78);
   var I = i(67);
-  var v = i(138);
+  var v = i(139);
   var T = i(2532);
   var S = i(251);
   var A = i(19);
@@ -263593,7 +263601,7 @@
   var u = i(48);
   var d = i(14);
   var p = i(754);
-  var h = i(615);
+  var h = i(616);
 }, function (e, t, i) {
   'use strict';
 
@@ -264303,7 +264311,7 @@
     return CastleAllianceBattlegroundEventDialogPerformanceTowerItem;
   }(s.AInfiniteScrollListItem);
   t.CastleAllianceBattlegroundEventDialogPerformanceTowerItem = l;
-  var c = i(581);
+  var c = i(582);
   o.classImplementsInterfaces(l, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -264392,7 +264400,7 @@
   var g = i(211);
   var C = i(169);
   var _ = i(149);
-  var m = i(616);
+  var m = i(617);
   var f = createjs.MouseEvent;
   var O = function (e) {
     function CastleAllianceBattlegroundEventDialogRankingAllianceListItem(t, i) {
@@ -264603,7 +264611,7 @@
   var l = i(6);
   var c = i(4);
   var u = i(43);
-  var d = i(616);
+  var d = i(617);
   var p = i(93);
   var h = createjs.MouseEvent;
   var g = function (e) {
@@ -266423,7 +266431,7 @@
   var l = i(3);
   var c = i(6);
   var u = i(39);
-  var d = i(607);
+  var d = i(608);
   var p = i(44);
   var h = i(4);
   var g = i(8);
@@ -266749,7 +266757,7 @@
   var c = i(3);
   var u = i(6);
   var d = i(16);
-  var p = i(607);
+  var p = i(608);
   var h = i(4);
   var g = i(27);
   var C = i(11);
@@ -267493,7 +267501,7 @@
   var g = i(4);
   var C = i(109);
   var _ = i(64);
-  var m = i(501);
+  var m = i(503);
   var f = i(245);
   var O = function (e) {
     function FactionInvasionCampMapObjectVO() {
@@ -267724,7 +267732,7 @@
   var h = i(34);
   var g = i(109);
   var C = i(64);
-  var _ = i(501);
+  var _ = i(503);
   var m = i(245);
   var f = function (e) {
     function NomadCampMapObjectVO() {
@@ -268100,7 +268108,7 @@
   var h = i(34);
   var g = i(109);
   var C = i(64);
-  var _ = i(501);
+  var _ = i(503);
   var m = i(245);
   var f = function (e) {
     function SamuraiCampMapObjectVO() {
@@ -268550,7 +268558,7 @@
   }(h.CastleExternalDialog);
   t.CastleBuyPremiumFlagDialog = _;
   var m = i(320);
-  var f = i(504);
+  var f = i(506);
   var O = i(67);
   var E = i(70);
   a.classImplementsInterfaces(_, "ICollectableRendererList");
@@ -269128,7 +269136,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(6);
-  var c = i(622);
+  var c = i(623);
   var u = i(762);
   var d = i(4);
   var p = i(209);
@@ -269249,7 +269257,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(6);
-  var c = i(622);
+  var c = i(623);
   var u = i(762);
   var d = i(4);
   var p = i(209);
@@ -269698,7 +269706,7 @@
   }(v.CastleDialogSubLayer);
   t.CastlePremiumMarketPlaceDialogBooster = S;
   var A = i(209);
-  var L = i(430);
+  var L = i(431);
   var P = i(107);
   r.classImplementsInterfaces(S, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
@@ -270878,7 +270886,7 @@
   var m = i(123);
   var f = i(21);
   var O = i(26);
-  var E = i(526);
+  var E = i(528);
   var y = i(4);
   var b = i(184);
   var D = i(27);
@@ -271382,7 +271390,7 @@
   var d = i(6);
   var p = i(39);
   var h = i(26);
-  var g = i(526);
+  var g = i(528);
   var C = i(44);
   var _ = i(4);
   var m = i(8);
@@ -271706,8 +271714,8 @@
   var I = i(24);
   var v = i(16);
   var T = i(765);
-  var S = i(623);
-  var A = i(498);
+  var S = i(624);
+  var A = i(500);
   var L = i(37);
   var P = i(128);
   var M = i(71);
@@ -271716,7 +271724,7 @@
   var x = i(20);
   var w = i(92);
   var B = i(4);
-  var F = i(493);
+  var F = i(495);
   var N = i(1443);
   var k = i(2698);
   var U = i(2699);
@@ -272651,7 +272659,7 @@
   var se = i(35);
   var re = i(162);
   var le = i(29);
-  var ce = i(624);
+  var ce = i(625);
   var ue = i(9);
   var de = i(1472);
   var pe = i(325);
@@ -273273,7 +273281,7 @@
   var T = i(14);
   var S = i(25);
   var A = i(767);
-  var L = i(625);
+  var L = i(626);
   var P = i(993);
   o.classImplementsInterfaces(D, "ICollectableRendererList");
   var M = i(1);
@@ -273416,7 +273424,7 @@
   var d = i(4);
   var p = i(40);
   var h = i(46);
-  var g = i(626);
+  var g = i(627);
   var C = function (e) {
     function FusionForgeHubDialogCatalystsList(t, i) {
       var n = this;
@@ -273914,7 +273922,7 @@
   var c = i(16);
   var u = i(4);
   var d = i(219);
-  var p = i(449);
+  var p = i(450);
   var h = i(40);
   var g = i(8);
   var C = createjs.MouseEvent;
@@ -274561,7 +274569,7 @@
   var C = i(12);
   var _ = i(4);
   var m = i(219);
-  var f = i(449);
+  var f = i(450);
   var O = i(275);
   var E = i(8);
   var y = i(11);
@@ -275158,7 +275166,7 @@
   var y = i(310);
   var b = i(8);
   var D = i(11);
-  var I = i(625);
+  var I = i(626);
   var v = i(1451);
   var T = createjs.Point;
   var S = function (e) {
@@ -275967,13 +275975,13 @@
   var g = i(46);
   var C = i(58);
   var _ = i(1461);
-  var m = i(527);
+  var m = i(529);
   var f = i(30);
   var O = i(2688);
   var E = i(2689);
   var y = i(153);
   var b = i(4);
-  var D = i(450);
+  var D = i(451);
   var I = i(19);
   var v = i(41);
   var T = i(16);
@@ -276413,7 +276421,7 @@
   var s = i(3);
   var r = i(3);
   var l = i(231);
-  var c = i(481);
+  var c = i(483);
   var u = i(4);
   var d = i(1);
 }, function (e, t, i) {
@@ -276645,7 +276653,7 @@
   var u = i(19);
   var d = i(999);
   var p = i(4);
-  var h = i(481);
+  var h = i(483);
   var g = i(2);
   var C = i(27);
   var _ = i(12);
@@ -276876,9 +276884,9 @@
   var g = i(9);
   var C = i(4);
   var _ = i(2);
-  var m = i(450);
+  var m = i(451);
   var f = i(49);
-  var O = i(527);
+  var O = i(529);
   var E = i(261);
   var y = i(259);
   var b = i(58);
@@ -277059,11 +277067,11 @@
   var p = i(21);
   var h = i(14);
   var g = i(27);
-  var C = i(628);
+  var C = i(629);
   var _ = i(2);
   var m = i(999);
   var f = i(2);
-  var O = i(481);
+  var O = i(483);
   var E = i(2692);
   var y = function (e) {
     function CastleLegendSkillSceatBottomMenu(t) {
@@ -278396,7 +278404,7 @@
     return ConstructionItemSlotBig;
   }(i(1003).ConstructionItemSlot);
   t.ConstructionItemSlotBig = l;
-  var c = i(528);
+  var c = i(530);
   var u = i(5);
   var d = i(49);
   var p = i(4);
@@ -278589,9 +278597,9 @@
   t.ConstructionItemExpiredCastleSelector = c;
   var u = i(237);
   var d = i(1444);
-  var p = i(431);
+  var p = i(432);
   var h = i(1262);
-  var g = i(510);
+  var g = i(512);
   var C = i(70);
   var _ = i(2);
   var m = i(4);
@@ -278700,7 +278708,7 @@
   var c = i(237);
   var u = i(5);
   var d = i(1477);
-  var p = i(493);
+  var p = i(495);
   var h = i(48);
   var g = function (e) {
     function CIBuildingListItem() {
@@ -278865,14 +278873,14 @@
   var h = i(6);
   var g = i(1478);
   var C = i(765);
-  var _ = i(498);
+  var _ = i(500);
   var m = i(1479);
   var f = i(399);
   var O = i(37);
   var E = i(32);
   var y = i(15);
   var b = i(4);
-  var D = i(493);
+  var D = i(495);
   var I = i(2724);
   var v = i(2725);
   var T = i(174);
@@ -279097,7 +279105,7 @@
     return CastleConstructionItemsCraftingSublayer;
   }(L.CastleConstructionItemsFilterSublayer);
   t.CastleConstructionItemsCraftingSublayer = M;
-  var R = i(624);
+  var R = i(625);
   var V = i(9);
   var x = i(357);
   var w = i(2727);
@@ -279209,7 +279217,7 @@
   var u = i(18);
   var d = i(16);
   var p = i(37);
-  var h = i(529);
+  var h = i(531);
   var g = i(31);
   var C = i(20);
   var _ = i(15);
@@ -279424,7 +279432,7 @@
   var A = i(17);
   var L = i(67);
   var P = i(266);
-  var M = i(452);
+  var M = i(453);
   var R = i(239);
   var V = i(1);
   b.__initialize_static_members();
@@ -279462,9 +279470,9 @@
   var l = i(3);
   var c = i(6);
   var u = i(28);
-  var d = i(530);
+  var d = i(532);
   var p = i(1441);
-  var h = i(529);
+  var h = i(531);
   var g = i(26);
   var C = i(71);
   var _ = i(12);
@@ -279697,7 +279705,7 @@
   var R = i(57);
   var V = i(9);
   var x = i(67);
-  var w = i(631);
+  var w = i(632);
   var B = i(113);
   var F = i(2730);
   var N = i(2731);
@@ -279837,7 +279845,7 @@
   var l = i(1480);
   var c = i(37);
   var u = i(21);
-  var d = i(529);
+  var d = i(531);
   var p = i(15);
   var h = i(4);
   var g = i(34);
@@ -279918,7 +279926,7 @@
   }();
   t.ResearchProgressInfo = y;
   var b = i(9);
-  var D = i(631);
+  var D = i(632);
   var I = i(212);
   var v = i(2733);
 }, function (e, t, i) {
@@ -280000,7 +280008,7 @@
     return ResearchMinuteSkipProperties;
   }(o.BasicProperties);
   t.ResearchMinuteSkipProperties = p;
-  var h = i(631);
+  var h = i(632);
   var g = i(212);
   a.classImplementsInterfaces(p, "IMinuteSkipProperties");
 }, function (e, t, i) {
@@ -280424,7 +280432,7 @@
     return ConstructionItemCraftingMinuteSkipProperties;
   }(o.BasicProperties);
   t.ConstructionItemCraftingMinuteSkipProperties = d;
-  var p = i(528);
+  var p = i(530);
   var h = i(212);
   a.classImplementsInterfaces(d, "IMinuteSkipProperties");
 }, function (e, t, i) {
@@ -280540,7 +280548,7 @@
     return ConstructionItemSlotBuildingDistrict;
   }(i(1003).ConstructionItemSlot);
   t.ConstructionItemSlotBuildingDistrict = s;
-  var r = i(528);
+  var r = i(530);
 }, function (e, t, i) {
   'use strict';
 
@@ -280678,7 +280686,7 @@
   var a = i(5);
   var s = i(5);
   var r = i(4);
-  var l = i(490);
+  var l = i(492);
   var c = createjs.Rectangle;
   var u = function (e) {
     function IsoViewSettings() {
@@ -280778,7 +280786,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(490);
+  var a = i(492);
   var s = i(2746);
   var r = function (e) {
     function IsoViewObjects() {
@@ -281053,7 +281061,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(92);
-  var s = i(490);
+  var s = i(492);
   var r = i(2748);
   var l = function (e) {
     function IsoViewStrategyManager() {
@@ -281571,7 +281579,7 @@
     return IsoDefencePositionsMoat;
   }();
   t.IsoDefencePositionsMoat = n;
-  var o = i(453);
+  var o = i(454);
 }, function (e, t, i) {
   'use strict';
 
@@ -281735,8 +281743,8 @@
     value: true
   });
   var n = i(0);
-  var o = i(453);
-  var a = i(632);
+  var o = i(454);
+  var a = i(633);
   var s = createjs.Point;
   var r = function (e) {
     function IsoGeneratorDefenceGate() {
@@ -281775,8 +281783,8 @@
   });
   var n = i(0);
   var o = i(6);
-  var a = i(453);
-  var s = i(632);
+  var a = i(454);
+  var s = i(633);
   var r = createjs.Point;
   var l = function (e) {
     function IsoGeneratorDefenceMoat() {
@@ -281910,8 +281918,8 @@
     value: true
   });
   var n = i(0);
-  var o = i(453);
-  var a = i(632);
+  var o = i(454);
+  var a = i(633);
   var s = createjs.Point;
   var r = function (e) {
     function IsoGeneratorDefenceTower() {
@@ -282031,8 +282039,8 @@
   });
   var n = i(0);
   var o = i(6);
-  var a = i(453);
-  var s = i(632);
+  var a = i(454);
+  var s = i(633);
   var r = createjs.Point;
   var l = function (e) {
     function IsoGeneratorDefenceWall() {
@@ -282111,8 +282119,8 @@
   });
   var n = i(0);
   var o = i(56);
-  var a = i(453);
-  var s = i(632);
+  var a = i(454);
+  var s = i(633);
   var r = createjs.Point;
   var l = function (e) {
     function IsoGeneratorDefenceCommon() {
@@ -282826,11 +282834,11 @@
       return e;
     };
     return IsoCommandPackageObjectAdd;
-  }(i(634).AIsoCommandPackageObject);
+  }(i(635).AIsoCommandPackageObject);
   t.IsoCommandPackageObjectAdd = o;
   var a = i(695);
   var s = i(696);
-  var r = i(487);
+  var r = i(489);
   var l = i(693);
 }, function (e, t, i) {
   'use strict';
@@ -282975,9 +282983,9 @@
   var d = i(29);
   var p = i(13);
   var h = i(48);
-  var g = i(635);
-  var C = i(642);
-  var _ = i(532);
+  var g = i(636);
+  var C = i(643);
+  var _ = i(534);
 }, function (e, t, i) {
   'use strict';
 
@@ -284159,7 +284167,7 @@
   var n = i(0);
   var o = i(782);
   var a = i(784);
-  var s = i(644);
+  var s = i(645);
   var r = function (e) {
     function IsoViewObjectGroupDefence() {
       var t = this;
@@ -284378,7 +284386,7 @@
         n = l.int(s.DefenseConst.TOOL_TYPE_KEEP);
       }
       this.parent.hide();
-      var o = i(428).CastleDefenceDialog;
+      var o = i(429).CastleDefenceDialog;
       C.CastleDialogHandler.getInstance().registerDefaultDialogs(o, new h.CastleDefenceDialogProperties(p.CastleModel.areaData.activeAreaInfo, n));
     };
     RingMenuButtonDefence.prototype.getInfoText = function () {
@@ -285022,13 +285030,13 @@
   var u = i(3);
   var d = i(6);
   var p = i(18);
-  var h = i(438);
+  var h = i(439);
   var g = i(37);
-  var C = i(429);
+  var C = i(430);
   var _ = i(15);
   var m = i(4);
   var f = i(8);
-  var O = i(523);
+  var O = i(525);
   var E = i(120);
   var y = i(1533);
   var b = createjs.Point;
@@ -285170,7 +285178,7 @@
   var I = i(29);
   var v = i(9);
   var T = i(380);
-  var S = i(533);
+  var S = i(535);
   var A = i(70);
   var L = i(397);
   var P = i(113);
@@ -285308,7 +285316,7 @@
     return PrivateResourceVillageUpgradeDialog;
   }(i(1016).APrivateResourceVillageActionDialog);
   t.PrivateResourceVillageUpgradeDialog = u;
-  var d = i(533);
+  var d = i(535);
   o.classImplementsInterfaces(u, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -285456,7 +285464,7 @@
   var s = i(2);
   var r = i(3);
   var l = i(3);
-  var c = i(438);
+  var c = i(439);
   var u = i(8);
   var d = i(1533);
   var p = function (e) {
@@ -285517,7 +285525,7 @@
   }(s.ScrollItem);
   t.PrivateResourceVillageShopItem = p;
   var h = i(9);
-  var g = i(533);
+  var g = i(535);
   var C = i(2814);
   o.classImplementsInterfaces(p, "MovieClip");
 }, function (e, t, i) {
@@ -285552,7 +285560,7 @@
     return PrivateResourceVillageBuyDialog;
   }(i(1016).APrivateResourceVillageActionDialog);
   t.PrivateResourceVillageBuyDialog = c;
-  var u = i(533);
+  var u = i(535);
   o.classImplementsInterfaces(c, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -285652,7 +285660,7 @@
   var u = i(14);
   var d = i(294);
   var p = i(122);
-  var h = i(485);
+  var h = i(487);
   var g = createjs.Shape;
   var C = createjs.Container;
   var _ = createjs.Point;
@@ -286690,7 +286698,7 @@
   var c = i(1);
   var u = i(1);
   var d = i(5);
-  var p = i(423);
+  var p = i(424);
   var h = i(56);
   var g = i(53);
   var C = i(4);
@@ -286881,7 +286889,7 @@
   var s = i(1);
   var r = i(3);
   var l = i(4);
-  var c = i(417);
+  var c = i(418);
   var u = createjs.Point;
   var d = function (e) {
     function InfoTooltipBuilding() {
@@ -287227,7 +287235,7 @@
     }
     n.__extends(BGStorehouseBuildingVO, e);
     return BGStorehouseBuildingVO;
-  }(i(645).StorageBuildingVO);
+  }(i(646).StorageBuildingVO);
   t.BGStorehouseBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -287457,7 +287465,7 @@
       e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new r.LocalizedNumberVO(this.decoPoints), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
     };
     return CoinmineBuildingVO;
-  }(i(534).AMineBuildingVO);
+  }(i(536).AMineBuildingVO);
   t.CoinmineBuildingVO = p;
   a.classImplementsInterfaces(p, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -287766,7 +287774,7 @@
       configurable: true
     });
     return DecoDistrict2x2BuildingVO;
-  }(i(448).ADistrictBuildingVO);
+  }(i(449).ADistrictBuildingVO);
   t.DecoDistrict2x2BuildingVO = u;
   o.classImplementsInterfaces(u, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -287786,7 +287794,7 @@
       return "Palace_Building_Level1";
     };
     return DesertpalaceBuildingVO;
-  }(i(646).APalaceBuildingVO);
+  }(i(647).APalaceBuildingVO);
   t.DesertpalaceBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288100,7 +288108,7 @@
       t.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_AllianceDefenseUnitAmountYardBonus, "allianceDefenseUnitAmount", new a.LocalizedNumberVO(this.getEffectValue(r.EffectTypeEnum.EFFECT_TYPE_ALLIANCE_DEFENSE_UNIT_AMOUNT_YARD_BONUS).strength), s.ClientConstColor.FONT_DEFAULT_COLOR, true);
     };
     return FactionPUnittentBuildingVO;
-  }(i(647).PUnittentBuildingVO);
+  }(i(648).PUnittentBuildingVO);
   t.FactionPUnittentBuildingVO = l;
   o.classImplementsInterfaces(l, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288134,7 +288142,7 @@
     }
     n.__extends(FactionStorageBuildingVO, e);
     return FactionStorageBuildingVO;
-  }(i(645).StorageBuildingVO);
+  }(i(646).StorageBuildingVO);
   t.FactionStorageBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288185,7 +288193,7 @@
       configurable: true
     });
     return FactionUnitCampBuildingVO;
-  }(i(456).UnittentBuildingVO);
+  }(i(457).UnittentBuildingVO);
   t.FactionUnitCampBuildingVO = c;
   o.classImplementsInterfaces(c, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288210,7 +288218,7 @@
       t.addInfoItem(Library.CastleInterfaceElements_Icons.Icon_AllianceDefenseUnitAmountYardBonus, "allianceDefenseUnitAmount", new a.LocalizedNumberVO(this.getEffectValue(r.EffectTypeEnum.EFFECT_TYPE_ALLIANCE_DEFENSE_UNIT_AMOUNT_YARD_BONUS).strength), s.ClientConstColor.FONT_DEFAULT_COLOR, true);
     };
     return FactionUnittentBuildingVO;
-  }(i(456).UnittentBuildingVO);
+  }(i(457).UnittentBuildingVO);
   t.FactionUnittentBuildingVO = l;
   o.classImplementsInterfaces(l, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288247,7 +288255,7 @@
       return "Palace_Building_Level1";
     };
     return FirepalaceBuildingVO;
-  }(i(646).APalaceBuildingVO);
+  }(i(647).APalaceBuildingVO);
   t.FirepalaceBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288264,7 +288272,7 @@
     }
     n.__extends(FoodDistrictBuildingVO, e);
     return FoodDistrictBuildingVO;
-  }(i(448).ADistrictBuildingVO);
+  }(i(449).ADistrictBuildingVO);
   t.FoodDistrictBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288422,7 +288430,7 @@
     }
     n.__extends(HunterBuildingVO, e);
     return HunterBuildingVO;
-  }(i(415).AHunterBuildingVO);
+  }(i(416).AHunterBuildingVO);
   t.HunterBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288465,7 +288473,7 @@
       return "Palace_Building_Level1";
     };
     return IcepalaceBuildingVO;
-  }(i(646).APalaceBuildingVO);
+  }(i(647).APalaceBuildingVO);
   t.IcepalaceBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288530,7 +288538,7 @@
     }
     n.__extends(InnerDistrictBuildingVO, e);
     return InnerDistrictBuildingVO;
-  }(i(448).ADistrictBuildingVO);
+  }(i(449).ADistrictBuildingVO);
   t.InnerDistrictBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288605,7 +288613,7 @@
     }
     n.__extends(KingdomhunterBuildingVO, e);
     return KingdomhunterBuildingVO;
-  }(i(415).AHunterBuildingVO);
+  }(i(416).AHunterBuildingVO);
   t.KingdomhunterBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288622,7 +288630,7 @@
     }
     n.__extends(KingsstorageBuildingVO, e);
     return KingsstorageBuildingVO;
-  }(i(645).StorageBuildingVO);
+  }(i(646).StorageBuildingVO);
   t.KingsstorageBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288639,7 +288647,7 @@
     }
     n.__extends(LegendFarmBuildingVO, e);
     return LegendFarmBuildingVO;
-  }(i(635).FarmBuildingVO);
+  }(i(636).FarmBuildingVO);
   t.LegendFarmBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288656,7 +288664,7 @@
     }
     n.__extends(LegendQuarryBuildingVO, e);
     return LegendQuarryBuildingVO;
-  }(i(642).QuarryBuildingVO);
+  }(i(643).QuarryBuildingVO);
   t.LegendQuarryBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288700,7 +288708,7 @@
     }
     n.__extends(LegendWoodcutterBuildingVO, e);
     return LegendWoodcutterBuildingVO;
-  }(i(532).WoodcutterBuildingVO);
+  }(i(534).WoodcutterBuildingVO);
   t.LegendWoodcutterBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288759,7 +288767,7 @@
     }
     n.__extends(MayaPalaceBuildingVO, e);
     return MayaPalaceBuildingVO;
-  }(i(646).APalaceBuildingVO);
+  }(i(647).APalaceBuildingVO);
   t.MayaPalaceBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288815,7 +288823,7 @@
     }
     n.__extends(MeadDistrictBuildingVO, e);
     return MeadDistrictBuildingVO;
-  }(i(448).ADistrictBuildingVO);
+  }(i(449).ADistrictBuildingVO);
   t.MeadDistrictBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288916,7 +288924,7 @@
       configurable: true
     });
     return AABGBoosterBuildingVO;
-  }(i(534).AMineBuildingVO);
+  }(i(536).AMineBuildingVO);
   t.AABGBoosterBuildingVO = h;
   o.classImplementsInterfaces(h, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288933,7 +288941,7 @@
     }
     n.__extends(MetropolstorageBuildingVO, e);
     return MetropolstorageBuildingVO;
-  }(i(645).StorageBuildingVO);
+  }(i(646).StorageBuildingVO);
   t.MetropolstorageBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288950,7 +288958,7 @@
     }
     n.__extends(MilitaryDistrictBuildingVO, e);
     return MilitaryDistrictBuildingVO;
-  }(i(448).ADistrictBuildingVO);
+  }(i(449).ADistrictBuildingVO);
   t.MilitaryDistrictBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -288980,7 +288988,7 @@
       }
     };
     return OfficersSchoolBuildingVO;
-  }(i(454).AProductionBuildingVO);
+  }(i(455).AProductionBuildingVO);
   t.OfficersSchoolBuildingVO = l;
   o.classImplementsInterfaces(l, "IShopVO", "ICos#tVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -289209,7 +289217,7 @@
       }
     };
     return RelicQuarryBuildingVO;
-  }(i(642).QuarryBuildingVO);
+  }(i(643).QuarryBuildingVO);
   t.RelicQuarryBuildingVO = g;
   s.classImplementsInterfaces(g, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -289267,7 +289275,7 @@
       }
     };
     return RelicWoodcutterBuildingVO;
-  }(i(532).WoodcutterBuildingVO);
+  }(i(534).WoodcutterBuildingVO);
   t.RelicWoodcutterBuildingVO = g;
   s.classImplementsInterfaces(g, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -289363,7 +289371,7 @@
       e.addInfoItem(Library.CastleInterfaceElements.Icon_LawAndOrder_neutral_Big, "publicOrderNeutral", new r.LocalizedNumberVO(this.decoPoints), c.ClientConstColor.FONT_DEFAULT_COLOR, true);
     };
     return RubymineBuildingVO;
-  }(i(534).AMineBuildingVO);
+  }(i(536).AMineBuildingVO);
   t.RubymineBuildingVO = p;
   a.classImplementsInterfaces(p, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -289448,7 +289456,7 @@
     }
     n.__extends(TradeDistrictBuildingVO, e);
     return TradeDistrictBuildingVO;
-  }(i(448).ADistrictBuildingVO);
+  }(i(449).ADistrictBuildingVO);
   t.TradeDistrictBuildingVO = a;
   o.classImplementsInterfaces(a, "IShopVO", "ICostVO", "IInventoryVO");
 }, function (e, t, i) {
@@ -289459,7 +289467,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(485);
+  var a = i(487);
   var s = function (e) {
     function TreasureChestBuildingVO() {
       return e !== null && e.apply(this, arguments) || this;
@@ -289581,7 +289589,7 @@
   var l = i(3);
   var c = i(16);
   var u = i(4);
-  var d = i(570);
+  var d = i(571);
   var p = i(87);
   var h = i(105);
   var g = i(1560);
@@ -289782,7 +289790,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(458);
+  var o = i(459);
   var a = function (e) {
     function CitizenMovementVO() {
       var t = e.call(this) || this;
@@ -289794,11 +289802,11 @@
       return new o.IsoMovementWaypointClassesVO([b.KeepBuildingVO, S.PalaceBuildingVO, h.EmporiumBuildingVO, p.DwellingBuildingVO, A.PdwellingBuildingVO, M.TavernBuildingVO, I.MarketBuildingVO, E.GuardpostBuildingVO, g.EstateBuildingVO, R.UnittentBuildingVO, L.PUnittentBuildingVO, D.MaintentBuildingVO, P.StableBuildingVO, C.FactionHuntertentBuildingVO, _.FactionMaintentBuildingVO, m.FactionMarketBuildingVO, y.HouseoffireBuildingVO, d.CoalmineBuildingVO, T.OlivepressBuildingVO, O.GlazieryBuildingVO, u.CoalboostBuildingVO, v.OilboostBuildingVO, f.GlassboostBuildingVO, c.BuilderBuildingVO, r.AHunterBuildingVO, l.AMineBuildingVO], null, [s.ADecoBuildingVO]);
     };
     return CitizenMovementVO;
-  }(i(536).AIsoMovementVO);
+  }(i(538).AIsoMovementVO);
   t.CitizenMovementVO = a;
   var s = i(329);
-  var r = i(415);
-  var l = i(534);
+  var r = i(416);
+  var l = i(536);
   var c = i(1539);
   var u = i(1540);
   var d = i(1541);
@@ -289814,15 +289822,15 @@
   var y = i(1552);
   var b = i(401);
   var D = i(793);
-  var I = i(535);
+  var I = i(537);
   var v = i(1556);
   var T = i(1557);
   var S = i(794);
   var A = i(1024);
-  var L = i(647);
+  var L = i(648);
   var P = i(792);
-  var M = i(457);
-  var R = i(456);
+  var M = i(458);
+  var R = i(457);
 }, function (e, t, i) {
   'use strict';
 
@@ -289838,7 +289846,7 @@
     }
     n.__extends(FarhatMovementVO, e);
     return FarhatMovementVO;
-  }(i(536).AIsoMovementVO);
+  }(i(538).AIsoMovementVO);
   t.FarhatMovementVO = o;
 }, function (e, t, i) {
   'use strict';
@@ -289847,7 +289855,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(458);
+  var o = i(459);
   var a = function (e) {
     function FarmerMovementVO() {
       var t = e.call(this) || this;
@@ -289859,17 +289867,17 @@
       return new o.IsoMovementWaypointClassesVO([l.FarmBuildingVO, c.KeepBuildingVO, r.BakeryBuildingVO, d.MillBuildingVO, g.TavernBuildingVO, u.MarketBuildingVO, h.StorehouseBuildingVO, p.StableBuildingVO, s.AHunterBuildingVO]);
     };
     return FarmerMovementVO;
-  }(i(536).AIsoMovementVO);
+  }(i(538).AIsoMovementVO);
   t.FarmerMovementVO = a;
-  var s = i(415);
+  var s = i(416);
   var r = i(1019);
-  var l = i(635);
+  var l = i(636);
   var c = i(401);
-  var u = i(535);
+  var u = i(537);
   var d = i(1554);
   var p = i(792);
   var h = i(795);
-  var g = i(457);
+  var g = i(458);
 }, function (e, t, i) {
   'use strict';
 
@@ -289877,7 +289885,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(458);
+  var o = i(459);
   var a = function (e) {
     function SoldierMeleeMovementVO() {
       var t = e.call(this) || this;
@@ -289891,7 +289899,7 @@
     return SoldierMeleeMovementVO;
   }(i(1562).ASoldierMovementVO);
   t.SoldierMeleeMovementVO = a;
-  var s = i(534);
+  var s = i(536);
   var r = i(786);
   var l = i(1021);
   var c = i(789);
@@ -289901,10 +289909,10 @@
   var h = i(793);
   var g = i(1023);
   var C = i(794);
-  var _ = i(647);
+  var _ = i(648);
   var m = i(771);
-  var f = i(457);
-  var O = i(456);
+  var f = i(458);
+  var O = i(457);
   var E = i(1025);
 }, function (e, t, i) {
   'use strict';
@@ -289913,7 +289921,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(458);
+  var o = i(459);
   var a = function (e) {
     function SoldierRangedMovementVO() {
       var t = e.call(this) || this;
@@ -289927,7 +289935,7 @@
     return SoldierRangedMovementVO;
   }(i(1562).ASoldierMovementVO);
   t.SoldierRangedMovementVO = a;
-  var s = i(534);
+  var s = i(536);
   var r = i(786);
   var l = i(1021);
   var c = i(789);
@@ -289937,10 +289945,10 @@
   var h = i(793);
   var g = i(1023);
   var C = i(794);
-  var _ = i(647);
+  var _ = i(648);
   var m = i(771);
-  var f = i(457);
-  var O = i(456);
+  var f = i(458);
+  var O = i(457);
   var E = i(1025);
 }, function (e, t, i) {
   'use strict';
@@ -289949,7 +289957,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(458);
+  var o = i(459);
   var a = function (e) {
     function StonecutterMovementVO() {
       var t = e.call(this) || this;
@@ -289961,15 +289969,15 @@
       return new o.IsoMovementWaypointClassesVO([c.QuarryBuildingVO, r.KeepBuildingVO, u.StonemasonBuildingVO, p.TavernBuildingVO, l.MarketBuildingVO, d.StorehouseBuildingVO, s.AHunterBuildingVO]);
     };
     return StonecutterMovementVO;
-  }(i(536).AIsoMovementVO);
+  }(i(538).AIsoMovementVO);
   t.StonecutterMovementVO = a;
-  var s = i(415);
+  var s = i(416);
   var r = i(401);
-  var l = i(535);
-  var c = i(642);
+  var l = i(537);
+  var c = i(643);
   var u = i(1559);
   var d = i(795);
-  var p = i(457);
+  var p = i(458);
 }, function (e, t, i) {
   'use strict';
 
@@ -289977,7 +289985,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(458);
+  var o = i(459);
   var a = function (e) {
     function WoodcutterMovementVO() {
       var t = e.call(this) || this;
@@ -289989,15 +289997,15 @@
       return new o.IsoMovementWaypointClassesVO([p.WoodcutterBuildingVO, r.KeepBuildingVO, l.LumbermillBuildingVO, d.TavernBuildingVO, c.MarketBuildingVO, u.StorehouseBuildingVO, s.AHunterBuildingVO]);
     };
     return WoodcutterMovementVO;
-  }(i(536).AIsoMovementVO);
+  }(i(538).AIsoMovementVO);
   t.WoodcutterMovementVO = a;
-  var s = i(415);
+  var s = i(416);
   var r = i(401);
   var l = i(1553);
-  var c = i(535);
+  var c = i(537);
   var u = i(795);
-  var d = i(457);
-  var p = i(532);
+  var d = i(458);
+  var p = i(534);
 }, function (e, t, i) {
   'use strict';
 
@@ -290243,7 +290251,7 @@
   var r = i(3);
   var l = i(59);
   var c = i(4);
-  var u = i(625);
+  var u = i(626);
   var d = i(1449);
   var p = i(8);
   var h = function (e) {
@@ -290346,7 +290354,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(145);
-  var s = i(537);
+  var s = i(539);
   var r = function (e) {
     function BarracksBuildingVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -290894,7 +290902,7 @@
   var O = i(18);
   var E = i(2948);
   var y = i(2949);
-  var b = i(623);
+  var b = i(624);
   var D = i(316);
   var I = i(21);
   var v = i(796);
@@ -291453,8 +291461,8 @@
   var H = i(82);
   var j = i(35);
   var W = i(9);
-  var Y = i(460);
-  var K = i(451);
+  var Y = i(461);
+  var K = i(452);
   var z = i(2951);
   var q = i(2953);
   var X = i(2958);
@@ -292423,7 +292431,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(538);
+  var a = i(540);
   var s = function (e) {
     function AutoRecruitmentCopyCostSublayer(t) {
       var i = e.call(this, t) || this;
@@ -292467,7 +292475,7 @@
   }(i(33).CastleDialogSubLayer);
   t.AutoRecruitmentCopyCostSublayer = s;
   var r = i(1585);
-  var l = i(650);
+  var l = i(651);
   o.classImplementsInterfaces(s, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
   'use strict';
@@ -292528,7 +292536,7 @@
     return AutoRecruitmentCopyQueueInfoSublayer;
   }(i(33).CastleDialogSubLayer);
   t.AutoRecruitmentCopyQueueInfoSublayer = r;
-  var l = i(460);
+  var l = i(461);
   var c = i(1586);
   o.classImplementsInterfaces(r, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
@@ -292845,7 +292853,7 @@
     return AutoRecruitmentCopyListItemVO;
   }();
   t.AutoRecruitmentCopyListItemVO = n;
-  var o = i(650);
+  var o = i(651);
   var a = i(5);
   var s = i(6);
 }, function (e, t, i) {
@@ -293593,7 +293601,7 @@
   var y = i(82);
   var b = i(35);
   var D = i(9);
-  var I = i(648);
+  var I = i(649);
   var v = i(2982);
   var T = i(32);
   l.classImplementsInterfaces(O, "ICollectableRendererList", "ISublayer");
@@ -294609,7 +294617,7 @@
   var r = i(3006);
   var l = i(145);
   var c = i(4);
-  var u = i(498);
+  var u = i(500);
   o.classImplementsInterfaces(s, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
   'use strict';
@@ -294759,7 +294767,7 @@
       configurable: true
     });
     return DecoDistrict2x2BuildingVE;
-  }(i(539).ADistrictBuildingVE);
+  }(i(541).ADistrictBuildingVE);
   t.DecoDistrict2x2BuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -294812,7 +294820,7 @@
     }
     n.__extends(DesertpalaceBuildingVE, e);
     return DesertpalaceBuildingVE;
-  }(i(651).APalaceBuildingVE);
+  }(i(652).APalaceBuildingVE);
   t.DesertpalaceBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -294823,8 +294831,8 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(652);
-  var s = i(537);
+  var a = i(653);
+  var s = i(539);
   var r = function (e) {
     function DragonBreathForgeBuildingVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -294852,7 +294860,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(652);
+  var a = i(653);
   var s = i(799);
   var r = i(800);
   var l = i(1036);
@@ -294981,7 +294989,7 @@
   var l = i(31);
   var c = i(20);
   var u = i(4);
-  var d = i(461);
+  var d = i(462);
   var p = i(27);
   var h = i(40);
   var g = i(19);
@@ -295140,7 +295148,7 @@
   var c = i(16);
   var u = i(161);
   var d = i(37);
-  var p = i(540);
+  var p = i(542);
   var h = i(47);
   var g = i(249);
   var C = i(31);
@@ -295151,7 +295159,7 @@
   var E = i(12);
   var y = i(15);
   var b = i(4);
-  var D = i(142);
+  var D = i(138);
   var I = i(34);
   var v = i(27);
   var T = i(43);
@@ -295165,7 +295173,7 @@
   var x = i(38);
   var w = i(1593);
   var B = i(1594);
-  var F = i(452);
+  var F = i(453);
   var N = i(773);
   var k = i(800);
   var U = createjs.Point;
@@ -295357,7 +295365,7 @@
   var o = i(2);
   var a = i(2);
   var s = i(4);
-  var r = i(142);
+  var r = i(138);
   var l = i(34);
   var c = i(111);
   var u = function (e) {
@@ -295407,7 +295415,7 @@
   });
   var n = i(0);
   var o = i(3);
-  var a = i(540);
+  var a = i(542);
   var s = i(133);
   var r = i(31);
   var l = i(20);
@@ -295505,8 +295513,8 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(652);
-  var s = i(537);
+  var a = i(653);
+  var s = i(539);
   var r = function (e) {
     function DragonHoardBuildingVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -295590,7 +295598,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(537);
+  var a = i(539);
   var s = function (e) {
     function DworkshopBuildingVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -296169,7 +296177,7 @@
     }
     n.__extends(FirepalaceBuildingVE, e);
     return FirepalaceBuildingVE;
-  }(i(651).APalaceBuildingVE);
+  }(i(652).APalaceBuildingVE);
   t.FirepalaceBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -296193,7 +296201,7 @@
       configurable: true
     });
     return FoodDistrictBuildingVE;
-  }(i(539).ADistrictBuildingVE);
+  }(i(541).ADistrictBuildingVE);
   t.FoodDistrictBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -296558,7 +296566,7 @@
     }
     n.__extends(IcepalaceBuildingVE, e);
     return IcepalaceBuildingVE;
-  }(i(651).APalaceBuildingVE);
+  }(i(652).APalaceBuildingVE);
   t.IcepalaceBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -296610,7 +296618,7 @@
       configurable: true
     });
     return InnerDistrictBuildingVE;
-  }(i(539).ADistrictBuildingVE);
+  }(i(541).ADistrictBuildingVE);
   t.InnerDistrictBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -296971,7 +296979,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(527);
+  var a = i(529);
   var s = i(4);
   var r = i(62);
   var l = function (e) {
@@ -297070,7 +297078,7 @@
   }(i(99).ARingMenuButton);
   t.RingMenuButtonLegendTemple = s;
   var r = i(9);
-  var l = i(450);
+  var l = i(451);
   o.classImplementsInterfaces(s, "IRingMenuButton");
 }, function (e, t, i) {
   'use strict';
@@ -297108,7 +297116,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(459);
+  var a = i(460);
   var s = function (e) {
     function LumbermillBuildingVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -297243,7 +297251,7 @@
     }
     n.__extends(MayaPalaceBuildingVE, e);
     return MayaPalaceBuildingVE;
-  }(i(651).APalaceBuildingVE);
+  }(i(652).APalaceBuildingVE);
   t.MayaPalaceBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -297295,7 +297303,7 @@
       configurable: true
     });
     return MeadDistrictBuildingVE;
-  }(i(539).ADistrictBuildingVE);
+  }(i(541).ADistrictBuildingVE);
   t.MeadDistrictBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -297398,7 +297406,7 @@
       configurable: true
     });
     return MilitaryDistrictBuildingVE;
-  }(i(539).ADistrictBuildingVE);
+  }(i(541).ADistrictBuildingVE);
   t.MilitaryDistrictBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -297411,7 +297419,7 @@
   var o = i(1);
   var a = i(294);
   var s = i(122);
-  var r = i(459);
+  var r = i(460);
   var l = createjs.Rectangle;
   var c = function (e) {
     function MillBuildingVE() {
@@ -297570,7 +297578,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(459);
+  var a = i(460);
   var s = function (e) {
     function OfficersSchoolBuildingVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -297896,8 +297904,8 @@
   var M = i(13);
   var R = i(45);
   var V = i(133);
-  var x = i(414);
-  var w = i(653);
+  var x = i(415);
+  var w = i(654);
   var B = i(9);
   var F = i(78);
   var N = i(25);
@@ -298098,7 +298106,7 @@
     return OfficersSchoolEffectItem;
   }(m.AInfiniteScrollListItem);
   t.OfficersSchoolEffectItem = b;
-  var D = i(414);
+  var D = i(415);
   var I = i(9);
   var v = i(14);
   var T = i(25);
@@ -298279,7 +298287,7 @@
   }(c.AInfiniteScrollListItem);
   t.OfficersSchoolUnlockedItems = p;
   o.classImplementsInterfaces(p, "ICollectableRendererList");
-  var h = i(414);
+  var h = i(415);
   var g = i(82);
   var C = i(9);
   var _ = i(14);
@@ -298357,7 +298365,7 @@
     }
     n.__extends(PalaceBuildingVE, e);
     return PalaceBuildingVE;
-  }(i(651).APalaceBuildingVE);
+  }(i(652).APalaceBuildingVE);
   t.PalaceBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -298450,7 +298458,7 @@
       configurable: true
     });
     return RefineryBuildingVE;
-  }(i(652).ACraftingBuildingVE);
+  }(i(653).ACraftingBuildingVE);
   t.RefineryBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -298462,7 +298470,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(62);
-  var s = i(537);
+  var s = i(539);
   var r = function (e) {
     function ReinforcedVaultBuildingVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -298616,7 +298624,7 @@
   var o = i(1);
   var a = i(3);
   var s = i(4);
-  var r = i(497);
+  var r = i(499);
   var l = i(40);
   var c = i(79);
   var u = i(46);
@@ -298698,7 +298706,7 @@
   }(l.CastleItemRenderer);
   t.RelicUpgradeDialogEffects = g;
   var C = i(14);
-  var _ = i(593);
+  var _ = i(594);
   var m = i(1601);
   var f = i(1044);
   o.classImplementsInterfaces(g, "ICollectableRendererList");
@@ -298912,8 +298920,8 @@
   var s = i(3);
   var r = i(6);
   var l = i(55);
-  var c = i(515);
-  var u = i(601);
+  var c = i(517);
+  var u = i(602);
   var d = i(118);
   var p = i(235);
   var h = i(4);
@@ -299325,7 +299333,7 @@
   o.classImplementsInterfaces(y, "ICollectableRendererList");
   var b = i(288);
   var D = i(14);
-  var I = i(141);
+  var I = i(142);
   var v = i(73);
   var T = i(992);
   var S = i(3112);
@@ -299600,7 +299608,7 @@
   }(i(99).ARingMenuButton);
   t.RingMenuButtonResearch = r;
   var l = i(9);
-  var c = i(452);
+  var c = i(453);
   o.classImplementsInterfaces(r, "IRingMenuButton");
 }, function (e, t, i) {
   'use strict';
@@ -299783,7 +299791,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(459);
+  var a = i(460);
   var s = function (e) {
     function StonemasonBuildingVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -300218,14 +300226,14 @@
   var h = i(3);
   var g = i(3);
   var C = i(6);
-  var _ = i(440);
+  var _ = i(441);
   var m = i(392);
   var f = i(86);
   var O = i(4);
   var E = i(34);
   var y = i(8);
-  var b = i(141);
-  var D = i(441);
+  var b = i(142);
+  var D = i(442);
   var I = function (e) {
     function CastleListDetailOverviewItemEconomy(t) {
       var i = e.call(this, t) || this;
@@ -300390,7 +300398,7 @@
   var v = i(13);
   var T = i(9);
   var S = i(117);
-  var A = i(442);
+  var A = i(443);
   var L = i(16);
   a.classImplementsInterfaces(I, "MovieClip");
 }, function (e, t, i) {
@@ -300568,12 +300576,12 @@
   var l = i(6);
   var c = i(18);
   var u = i(16);
-  var d = i(429);
+  var d = i(430);
   var p = i(86);
   var h = i(4);
   var g = i(8);
-  var C = i(141);
-  var _ = i(523);
+  var C = i(142);
+  var _ = i(525);
   var m = i(120);
   var f = function (e) {
     function CastleListDetailOverviewItemMilitary(t) {
@@ -300702,7 +300710,7 @@
   }(i(1047).CastleListDetailOverviewItem);
   t.CastleListDetailOverviewItemMilitary = f;
   var O = i(13);
-  var E = i(587);
+  var E = i(588);
   var y = i(9);
   var b = i(380);
   var D = i(397);
@@ -300757,7 +300765,7 @@
   var r = i(16);
   var l = i(4);
   var c = i(8);
-  var u = i(141);
+  var u = i(142);
   var d = function (e) {
     function CastleListDetailOverviewItemMisc(t) {
       var i = e.call(this, t) || this;
@@ -300945,7 +300953,7 @@
       configurable: true
     });
     return ToolsmithBuildingVE;
-  }(i(652).ACraftingBuildingVE);
+  }(i(653).ACraftingBuildingVE);
   t.ToolsmithBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -300969,7 +300977,7 @@
       configurable: true
     });
     return TradeDistrictBuildingVE;
-  }(i(539).ADistrictBuildingVE);
+  }(i(541).ADistrictBuildingVE);
   t.TradeDistrictBuildingVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -301222,7 +301230,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(537);
+  var a = i(539);
   var s = function (e) {
     function WorkshopBuildingVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -301348,7 +301356,7 @@
   var c = i(5);
   var u = i(59);
   var d = i(32);
-  var p = i(527);
+  var p = i(529);
   var h = i(4);
   var g = i(9);
   var C = i(23);
@@ -301358,7 +301366,7 @@
   var O = i(112);
   var E = i(122);
   var y = i(92);
-  var b = i(492);
+  var b = i(494);
   var D = createjs.Container;
   var I = createjs.MovieClip;
   var v = createjs.Point;
@@ -301601,7 +301609,7 @@
   t.CastleExpansionVE = T;
   var S = i(14);
   var A = i(1613);
-  var L = i(138);
+  var L = i(139);
   var P = i(3159);
   var M = i(35);
   var R = i(3160);
@@ -301640,7 +301648,7 @@
   var l = i(24);
   var c = i(24);
   var u = i(4);
-  var d = i(417);
+  var d = i(418);
   var p = createjs.Point;
   var h = function (e) {
     function InfoTooltipExpansion() {
@@ -301764,7 +301772,7 @@
   var O = i(38);
   var E = i(1466);
   var y = i(9);
-  var b = i(450);
+  var b = i(451);
   var D = function (e) {
     function CastleMissingSceatSkillExpansionDialog() {
       return e.call(this, CastleMissingSceatSkillExpansionDialog.NAME) || this;
@@ -301871,9 +301879,9 @@
   var o = i(1);
   var a = i(5);
   var s = i(6);
-  var r = i(569);
+  var r = i(570);
   var l = i(4);
-  var c = i(570);
+  var c = i(571);
   var u = i(49);
   var d = i(1523);
   var p = i(1524);
@@ -302055,7 +302063,7 @@
   var s = i(145);
   var r = i(112);
   var l = i(122);
-  var c = i(492);
+  var c = i(494);
   var u = createjs.Point;
   var d = function (e) {
     function EventJudgementVE() {
@@ -302143,7 +302151,7 @@
     }
     n.__extends(CitizenMovementVE, e);
     return CitizenMovementVE;
-  }(i(491).AIsoMovementVE);
+  }(i(493).AIsoMovementVE);
   t.CitizenMovementVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -302202,7 +302210,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(491);
+  var a = i(493);
   var s = function (e) {
     function FarmerMovementVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -302286,7 +302294,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(491);
+  var a = i(493);
   var s = function (e) {
     function StonecutterMovementVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -302320,7 +302328,7 @@
     }
     n.__extends(WoodcutterMovementVE, e);
     return WoodcutterMovementVE;
-  }(i(491).AIsoMovementVE);
+  }(i(493).AIsoMovementVE);
   t.WoodcutterMovementVE = a;
   o.classImplementsInterfaces(a, "ICollectableRendererList", "IIngameUICapable");
 }, function (e, t, i) {
@@ -303492,7 +303500,7 @@
   var p = i(39);
   var h = i(780);
   var g = i(21);
-  var C = i(444);
+  var C = i(445);
   var _ = i(4);
   var m = i(265);
   var f = i(8);
@@ -304078,7 +304086,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(519);
+  var s = i(521);
   var r = i(4);
   var l = function (e) {
     function CastleSlumDonateDialog() {
@@ -304231,7 +304239,7 @@
   var a = i(1);
   var s = i(3);
   var r = i(6);
-  var l = i(519);
+  var l = i(521);
   var c = i(4);
   var u = function (e) {
     function CastleSlumDonateUpdateDialog() {
@@ -304790,7 +304798,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(6);
-  var s = i(644);
+  var s = i(645);
   var r = function (e) {
     function EmptyTowerVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -304843,7 +304851,7 @@
   var o = i(1);
   var a = i(5);
   var s = i(145);
-  var r = i(644);
+  var r = i(645);
   var l = function (e) {
     function FactionEmptyTowerVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -304888,7 +304896,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(644);
+  var a = i(645);
   var s = function (e) {
     function FactionLookoutTowerVE() {
       return e !== null && e.apply(this, arguments) || this;
@@ -305051,7 +305059,7 @@
       FactionCapitalInfoVO.BLUE_LANE = [FactionCapitalInfoVO.BLUE_TOP, FactionCapitalInfoVO.BLUE_MIDDLE, FactionCapitalInfoVO.BLUE_BOTTOM, FactionCapitalInfoVO.BLUE_CAPITAL];
     };
     return FactionCapitalInfoVO;
-  }(i(500).MinWorldMapCastleInfoVO);
+  }(i(502).MinWorldMapCastleInfoVO);
   t.FactionCapitalInfoVO = o;
   o.__initialize_static_members();
 }, function (e, t, i) {
@@ -305122,7 +305130,7 @@
       this._villagePositions.push(e);
     };
     return FactionTowerInfoVO;
-  }(i(500).MinWorldMapCastleInfoVO);
+  }(i(502).MinWorldMapCastleInfoVO);
   t.FactionTowerInfoVO = o;
 }, function (e, t, i) {
   'use strict';
@@ -307151,8 +307159,8 @@
   var s = i(202);
   var r = i(14);
   var l = i(310);
-  var c = i(447);
-  var u = i(446);
+  var c = i(448);
+  var u = i(447);
   var d = i(63);
   var p = function (e) {
     function CollectableItemBuildingVE() {
@@ -307426,7 +307434,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(528);
+  var a = i(530);
   var s = i(357);
   var r = function (e) {
     function CollectableItemConstructionItemVE() {
@@ -307687,7 +307695,7 @@
   var a = i(4);
   var s = i(68);
   var r = i(23);
-  var l = i(528);
+  var l = i(530);
   var c = i(239);
   var u = i(357);
   var d = function (e) {
@@ -308992,7 +309000,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(434);
+  var a = i(435);
   var s = i(14);
   var r = i(81);
   var l = i(396);
@@ -309446,7 +309454,7 @@
   }(g.CastleComponent);
   t.QuestMapTooltip = E;
   var y = i(83);
-  var b = i(542);
+  var b = i(544);
   var D = i(205);
   var I = i(1062);
   s.classImplementsInterfaces(E, "ICollectableRendererList");
@@ -309463,7 +309471,7 @@
   var r = i(6);
   var l = i(18);
   var c = i(4);
-  var u = i(141);
+  var u = i(142);
   var d = i(404);
   var p = i(285);
   var h = function (e) {
@@ -309609,7 +309617,7 @@
   var d = i(44);
   var p = i(4);
   var h = i(34);
-  var g = i(141);
+  var g = i(142);
   var C = i(189);
   var _ = i(404);
   var m = i(285);
@@ -309728,7 +309736,7 @@
   var r = i(3);
   var l = i(4);
   var c = i(34);
-  var u = i(141);
+  var u = i(142);
   var d = i(404);
   var p = i(285);
   var h = i(1641);
@@ -309740,6 +309748,7 @@
     ResourcePanelToolTipLawAndOrder.prototype.createItems = function () {
       this._title = new p.ResourcePanelToolTipSingleLineText(new Library.CastleInterfaceElements.McToolTipSingleTextBold());
       this._deco = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
+      this._ci = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
       this._protection = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
       this._population = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
       this._riot = new h.ResourcePanelToolTipTwoTextFields(new Library.CastleInterfaceElements.McToolTipNameValuePair());
@@ -309753,6 +309762,7 @@
       this._items.push(this._riot);
       this._items.push(this._subscription);
       this._items.push(this._baron);
+      this._items.push(this._ci);
       this._items.push(new Library.CastleInterfaceElements.divider());
       this._items.push(this._productivity);
     };
@@ -309760,6 +309770,7 @@
       u.CastleTextFieldHelper.safeSetText(this._title.tf, "publicOrder");
       if (o.GGSCountryController.instance.currentCountry.isLanguageWrittenRightToLeft) {
         this.updateDeco(this._deco.tf2, this._deco.tf1);
+        this.updateCI(this._ci.tf2, this._ci.tf1);
         this.updateProtection(this._protection.tf2, this._protection.tf1);
         this.updatePopulation(this._population.tf2, this._population.tf1);
         this.updateRiot(this._riot.tf2, this._riot.tf1);
@@ -309768,6 +309779,7 @@
         this.updateProductivity(this._productivity.tf2, this._productivity.tf1);
       } else {
         this.updateDeco(this._deco.tf1, this._deco.tf2);
+        this.updateCI(this._ci.tf1, this._ci.tf2);
         this.updateProtection(this._protection.tf1, this._protection.tf2);
         this.updatePopulation(this._population.tf1, this._population.tf2);
         this.updateRiot(this._riot.tf1, this._riot.tf2);
@@ -309780,6 +309792,12 @@
       u.CastleTextFieldHelper.safeSetText(e, a.GenericTextIds.VALUE_COLON, [r.Localize.text("decoration")]);
       if (l.CastleModel.areaData.activeCommonInfo) {
         u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo.getDecoPoints() - l.CastleModel.areaData.activeCommonInfo.populationPenalty);
+      }
+    };
+    ResourcePanelToolTipLawAndOrder.prototype.updateCI = function (e, t) {
+      u.CastleTextFieldHelper.safeSetText(e, "dialog_bonus_02");
+      if (l.CastleModel.areaData.activeCommonInfo) {
+        u.CastleTextFieldHelper.safeSetNumber(t, l.CastleModel.areaData.activeCommonInfo.getCIBonusToDecoPoints());
       }
     };
     ResourcePanelToolTipLawAndOrder.prototype.updateProtection = function (e, t) {
@@ -309833,7 +309851,7 @@
   var l = i(3);
   var c = i(6);
   var u = i(4);
-  var d = i(141);
+  var d = i(142);
   var p = i(404);
   var h = i(285);
   var g = i(1641);
@@ -309907,7 +309925,7 @@
   var r = i(6);
   var l = i(4);
   var c = i(34);
-  var u = i(141);
+  var u = i(142);
   var d = i(404);
   var p = i(285);
   var h = function (e) {
@@ -309980,7 +309998,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(636);
+  var s = i(637);
   var r = i(332);
   var l = function (e) {
     function ResourcePanelToolTipResourceCoal() {
@@ -310022,7 +310040,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(636);
+  var s = i(637);
   var r = i(332);
   var l = function (e) {
     function ResourcePanelToolTipResourceGlass() {
@@ -310064,7 +310082,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(636);
+  var s = i(637);
   var r = i(332);
   var l = function (e) {
     function ResourcePanelToolTipResourceIron() {
@@ -310106,7 +310124,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(636);
+  var s = i(637);
   var r = i(332);
   var l = function (e) {
     function ResourcePanelToolTipResourceOil() {
@@ -310236,7 +310254,7 @@
   var c = i(6);
   var u = i(18);
   var d = i(4);
-  var p = i(141);
+  var p = i(142);
   var h = i(404);
   var g = i(804);
   var C = i(285);
@@ -310373,7 +310391,7 @@
   var a = i(3);
   var s = i(3);
   var r = i(4);
-  var l = i(141);
+  var l = i(142);
   var c = i(404);
   var u = i(285);
   var d = function (e) {
@@ -310521,7 +310539,7 @@
   var r = i(13);
   var l = i(154);
   var c = i(285);
-  var u = i(141);
+  var u = i(142);
   var d = i(4);
   var p = i(2);
   var h = i(3);
@@ -310620,7 +310638,7 @@
   var r = i(13);
   var l = i(154);
   var c = i(285);
-  var u = i(141);
+  var u = i(142);
   var d = i(4);
   var p = i(2);
   var h = i(3);
@@ -310709,7 +310727,7 @@
   var c = i(285);
   var u = i(4);
   var d = i(6);
-  var p = i(141);
+  var p = i(142);
   var h = i(3);
   var g = i(2);
   var C = i(16);
@@ -310867,7 +310885,7 @@
   var a = i(2);
   var s = i(2);
   var r = i(1);
-  var l = i(600);
+  var l = i(601);
   var c = i(15);
   var u = i(4);
   var d = function (e) {
@@ -310906,7 +310924,7 @@
   var r = i(2);
   var l = i(806);
   var c = i(730);
-  var u = i(600);
+  var u = i(601);
   var d = i(15);
   var p = i(4);
   var h = i(1643);
@@ -311085,7 +311103,7 @@
   }(a.SimpleCommand);
   t.CastleFacebookSendReferralLinkCommand = p;
   var h = i(29);
-  var g = i(436);
+  var g = i(437);
   var C = i(198);
   s.classImplementsInterfaces(p, "ISimpleCommand");
 }, function (e, t, i) {
@@ -311098,7 +311116,7 @@
   var o = i(2);
   var a = i(2);
   var s = i(1);
-  var r = i(543);
+  var r = i(545);
   var l = function (e) {
     function AutoShowStartQuestDialogCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -311115,7 +311133,7 @@
   }(a.SimpleCommand);
   t.AutoShowStartQuestDialogCommand = l;
   var c = i(9);
-  var u = i(462);
+  var u = i(463);
   s.classImplementsInterfaces(l, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -311295,7 +311313,7 @@
   var I = i(83);
   var v = i(13);
   var T = i(14);
-  var S = i(542);
+  var S = i(544);
   var A = i(1650);
   var L = i(36);
   o.classImplementsInterfaces(D, "ICollectableRendererList");
@@ -311494,7 +311512,7 @@
   }(C.CastleComponent);
   t.QuestInfoComponent = D;
   var I = i(83);
-  var v = i(542);
+  var v = i(544);
   var T = i(1650);
   var S = i(3361);
   var A = i(36);
@@ -311988,7 +312006,7 @@
   var _ = i(41);
   var m = i(8);
   var f = i(42);
-  var O = i(416);
+  var O = i(417);
   var E = createjs.Rectangle;
   var y = function (e) {
     function QuestMapComponent(t) {
@@ -312303,7 +312321,7 @@
   t.BuyBoosterCommand = _;
   var m = i(405);
   var f = i(9);
-  var O = i(138);
+  var O = i(139);
   s.classImplementsInterfaces(_, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -312474,7 +312492,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(51);
-  var c = i(418);
+  var c = i(419);
   var u = i(106);
   var d = i(57);
   var p = i(240);
@@ -312588,7 +312606,7 @@
   }(p.CastleHeroDefaultBoosterShopVO);
   t.CastleOverseerBeefPremiumShopVO = C;
   var _ = i(9);
-  var m = i(419);
+  var m = i(420);
   var f = i(405);
   var O = i(173);
   var E = i(209);
@@ -313589,7 +313607,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(51);
-  var c = i(418);
+  var c = i(419);
   var u = i(106);
   var d = i(240);
   var p = createjs.MovieClip;
@@ -313688,7 +313706,7 @@
   }(d.CastleHeroDefaultBoosterShopVO);
   t.CastleOverseerFoodPremiumShopVO = g;
   var C = i(9);
-  var _ = i(419);
+  var _ = i(420);
   var m = i(405);
   var f = i(173);
   var O = i(209);
@@ -313705,7 +313723,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(51);
-  var c = i(418);
+  var c = i(419);
   var u = i(106);
   var d = i(240);
   var p = createjs.Point;
@@ -313796,7 +313814,7 @@
   }(d.CastleHeroDefaultBoosterShopVO);
   t.CastleOverseerStonePremiumShopVO = h;
   var g = i(9);
-  var C = i(419);
+  var C = i(420);
   var _ = i(405);
   a.classImplementsInterfaces(h, "IPremiumMarketShopVO", "IDefaultBoosterDataVO", "IBoosterDataVO");
 }, function (e, t, i) {
@@ -313811,7 +313829,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(51);
-  var c = i(418);
+  var c = i(419);
   var u = i(106);
   var d = i(240);
   var p = createjs.Point;
@@ -313904,7 +313922,7 @@
   }(d.CastleHeroDefaultBoosterShopVO);
   t.CastleOverseerWoodPremiumShopVO = h;
   var g = i(9);
-  var C = i(419);
+  var C = i(420);
   var _ = i(405);
   var m = i(173);
   a.classImplementsInterfaces(h, "IPremiumMarketShopVO", "IDefaultBoosterDataVO", "IBoosterDataVO");
@@ -314596,7 +314614,7 @@
   t.CastleBribeDialog = E;
   var y = i(9);
   var b = i(67);
-  var D = i(138);
+  var D = i(139);
   c.classImplementsInterfaces(E, "ICollectableRendererList");
   E.__initialize_static_members();
 }, function (e, t, i) {
@@ -314699,7 +314717,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(51);
-  var c = i(418);
+  var c = i(419);
   var u = i(106);
   var d = i(240);
   var p = createjs.MovieClip;
@@ -314806,7 +314824,7 @@
   }(d.CastleHeroDefaultBoosterShopVO);
   t.CastleOverseerMeadPremiumShopVO = g;
   var C = i(9);
-  var _ = i(419);
+  var _ = i(420);
   var m = i(405);
   var f = i(173);
   var O = i(209);
@@ -314825,7 +314843,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(51);
-  var c = i(418);
+  var c = i(419);
   var u = i(106);
   var d = i(240);
   var p = createjs.MovieClip;
@@ -314932,7 +314950,7 @@
   }(d.CastleHeroDefaultBoosterShopVO);
   t.CastleOverseerHoneyPremiumShopVO = g;
   var C = i(9);
-  var _ = i(419);
+  var _ = i(420);
   var m = i(405);
   var f = i(173);
   var O = i(209);
@@ -314949,7 +314967,7 @@
   var o = i(2);
   var a = i(2);
   var s = i(1);
-  var r = i(140);
+  var r = i(141);
   var l = i(15);
   var c = i(4);
   var u = i(3393);
@@ -315394,7 +315412,7 @@
   t.CastleCollectTaxElement = y;
   var b = i(9);
   var D = i(17);
-  var I = i(138);
+  var I = i(139);
   var v = i(38);
   c.classImplementsInterfaces(y, "MovieClip");
 }, function (e, t, i) {
@@ -315729,7 +315747,7 @@
     return CastleAllianceBuyCustomizableBoostDialog;
   }(b.CastleExternalDialog);
   t.CastleAllianceBuyCustomizableBoostDialog = v;
-  var T = i(612);
+  var T = i(613);
   var S = i(9);
   var A = i(25);
   var L = i(67);
@@ -315964,12 +315982,12 @@
   var n = i(0);
   var o = i(2);
   var a = i(1);
-  var s = i(140);
+  var s = i(141);
   var r = i(15);
   var l = i(4);
   var c = i(43);
   var u = i(206);
-  var d = i(520);
+  var d = i(522);
   var p = function (e) {
     function OpenAttackOrderCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -316014,7 +316032,7 @@
   var s = i(3);
   var r = i(3);
   var l = i(3);
-  var c = i(520);
+  var c = i(522);
   var u = i(1657);
   var d = createjs.Point;
   var p = function (e) {
@@ -316129,7 +316147,7 @@
   var d = i(29);
   var p = i(9);
   var h = i(17);
-  var g = i(564);
+  var g = i(565);
   l.classImplementsInterfaces(u, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -316362,7 +316380,7 @@
   var p = i(28);
   var h = i(274);
   var g = i(3413);
-  var C = i(420);
+  var C = i(421);
   var _ = i(21);
   var m = i(4);
   var f = i(1658);
@@ -316657,7 +316675,7 @@
   }(i(1659).OpenFactionInvasionEventMainDialogCommand);
   t.OpenFactionEventMainDialogCommand = r;
   var l = i(9);
-  var c = i(665);
+  var c = i(666);
   o.classImplementsInterfaces(r, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -317018,8 +317036,8 @@
     return CastleFactionInvasionEventDialogAllianceSublayer;
   }(O.CastleDialogSubLayer);
   t.CastleFactionInvasionEventDialogAllianceSublayer = y;
-  var b = i(465);
-  var D = i(466);
+  var b = i(466);
+  var D = i(467);
   var I = i(1661);
   var v = i(1068);
   o.classImplementsInterfaces(y, "ICollectableRendererList", "ISublayer");
@@ -317793,7 +317811,7 @@
     return CastleFactionInvasionEventDialogInstructionSublayer;
   }(i(33).CastleDialogSubLayer);
   t.CastleFactionInvasionEventDialogInstructionSublayer = g;
-  var C = i(659);
+  var C = i(660);
   var _ = i(1719);
   var m = i(1720);
   var f = i(19);
@@ -317818,7 +317836,7 @@
   var g = i(20);
   var C = i(12);
   var _ = i(4);
-  var m = i(468);
+  var m = i(469);
   var f = i(178);
   var O = i(27);
   var E = i(41);
@@ -318065,7 +318083,7 @@
   var L = i(390);
   var P = i(360);
   var M = i(1664);
-  var R = i(660);
+  var R = i(661);
   var V = i(1665);
   var x = i(1666);
   var w = i(121);
@@ -318147,9 +318165,9 @@
   t.SeasonLeagueRewardOverviewDialogItem = d;
   var p = i(48);
   var h = i(14);
-  var g = i(522);
+  var g = i(524);
   var C = i(303);
-  var _ = i(660);
+  var _ = i(661);
   var m = i(41);
   a.classImplementsInterfaces(d, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -318166,7 +318184,7 @@
   var l = i(6);
   var c = i(4);
   var u = i(43);
-  var d = i(616);
+  var d = i(617);
   var p = i(93);
   var h = createjs.MouseEvent;
   var g = createjs.Point;
@@ -319577,7 +319595,7 @@
   var l = i(20);
   var c = i(12);
   var u = i(19);
-  var d = i(542);
+  var d = i(544);
   var p = i(46);
   var h = i(370);
   var g = i(8);
@@ -321302,7 +321320,7 @@
     return CastleIngameMessagePopup;
   }(o.BasicDialog);
   t.CastleIngameMessagePopup = p;
-  var h = i(661);
+  var h = i(662);
   p.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -321403,7 +321421,7 @@
   var s = i(20);
   var r = i(66);
   var l = i(25);
-  var c = i(522);
+  var c = i(524);
   var u = i(58);
   var d = i(46);
   var p = i(40);
@@ -322237,7 +322255,7 @@
   var s = i(5);
   var r = i(6);
   var l = i(4);
-  var c = i(469);
+  var c = i(470);
   var u = function (e) {
     function MultiEventRewardsProperties(t) {
       var i = e.call(this) || this;
@@ -322610,7 +322628,7 @@
     return CastleCampaignRewardDialogProperties;
   }(r.BasicQuestRewardDialogProperties);
   t.CastleCampaignRewardDialogProperties = l;
-  var c = i(544);
+  var c = i(546);
 }, function (e, t, i) {
   'use strict';
 
@@ -322920,8 +322938,8 @@
   }(c.CastleExternalDialog);
   t.CastleResearchCompleteDialog = d;
   var p = i(9);
-  var h = i(631);
-  var g = i(452);
+  var h = i(632);
+  var g = i(453);
   var C = i(82);
   var _ = i(35);
   var m = i(37);
@@ -323336,14 +323354,14 @@
     return SeasonLeaguePromotionRewardsComponent;
   }(s.CastleItemRenderer);
   t.SeasonLeaguePromotionRewardsComponent = l;
-  var c = i(547);
+  var c = i(549);
   var u = i(303);
   var d = i(36);
   var p = i(9);
   var h = i(406);
-  var g = i(541);
+  var g = i(543);
   var C = i(4);
-  var _ = i(548);
+  var _ = i(550);
   o.classImplementsInterfaces(l, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -323366,12 +323384,12 @@
   var C = i(104);
   var _ = i(19);
   var m = i(12);
-  var f = i(547);
+  var f = i(549);
   var O = i(406);
-  var E = i(655);
-  var y = i(656);
+  var E = i(656);
+  var y = i(657);
   var b = i(361);
-  var D = i(548);
+  var D = i(550);
   var I = function (e) {
     function SeasonLeagueEndDialogRewardsEvent(t) {
       var i = e.call(this, t) || this;
@@ -324826,7 +324844,7 @@
   var p = i(37);
   var h = i(4);
   var g = i(11);
-  var C = i(469);
+  var C = i(470);
   var _ = function (e) {
     function LongTermPointEventHardModeDialog() {
       CONSTRUCTOR_HACK;
@@ -326304,7 +326322,7 @@
   var s = i(3);
   var r = i(12);
   var l = i(4);
-  var c = i(662);
+  var c = i(663);
   var u = i(76);
   var d = i(78);
   var p = i(77);
@@ -326588,7 +326606,7 @@
   var r = i(3);
   var l = i(12);
   var c = i(29);
-  var u = i(581);
+  var u = i(582);
   var d = i(8);
   var p = i(11);
   var h = createjs.Point;
@@ -327877,10 +327895,10 @@
   var y = i(8);
   var b = i(19);
   var D = i(406);
-  var I = i(541);
-  var v = i(655);
+  var I = i(543);
+  var v = i(656);
   var T = i(26);
-  var S = i(548);
+  var S = i(550);
   var A = i(1718);
   o.classImplementsInterfaces(h, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
@@ -327897,7 +327915,7 @@
   var l = i(178);
   var c = i(40);
   var u = i(46);
-  var d = i(626);
+  var d = i(627);
   var p = function (e) {
     function SeasonLeagueMainDialogPromotionRanks(t) {
       var i = this;
@@ -328407,12 +328425,12 @@
   var E = i(25);
   var y = i(390);
   var b = i(303);
-  var D = i(660);
+  var D = i(661);
   var I = i(1665);
   var v = i(1666);
   var T = i(121);
   var S = i(36);
-  var A = i(468);
+  var A = i(469);
   o.classImplementsInterfaces(O, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
   'use strict';
@@ -328423,7 +328441,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(6);
-  var s = i(545);
+  var s = i(547);
   var r = createjs.Point;
   var l = function (e) {
     function CastleFactionInvasionEventTopXScoreBarProperties(t, i, n, o = null, r = null, l = a.int(s.CastleScoreEventScoreBarProperties.NUMBER_OF_THRESHOLD_REWARDS), c = a.int(s.CastleScoreEventScoreBarProperties.NUMBER_OF_RANK_REWARDS)) {
@@ -328760,7 +328778,7 @@
   var s = i(2);
   var r = i(1);
   var l = i(3);
-  var c = i(431);
+  var c = i(432);
   var u = i(23);
   var d = i(8);
   var p = function (e) {
@@ -328858,7 +328876,7 @@
   var d = i(26);
   var p = i(4);
   var h = i(8);
-  var g = i(588);
+  var g = i(589);
   var C = i(33);
   var _ = function (e) {
     function FactionEventJoinSublayer(t, i) {
@@ -328951,9 +328969,9 @@
   var m = i(74);
   var f = i(162);
   var O = i(67);
-  var E = i(613);
+  var E = i(614);
   var y = i(1721);
-  var b = i(665);
+  var b = i(666);
   o.classImplementsInterfaces(_, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
   'use strict';
@@ -329194,14 +329212,14 @@
   var u = i(3);
   var d = i(6);
   var p = i(192);
-  var h = i(666);
+  var h = i(667);
   var g = i(241);
   var C = i(161);
   var _ = i(21);
   var m = i(196);
   var f = i(188);
   var O = i(26);
-  var E = i(413);
+  var E = i(414);
   var y = i(66);
   var b = i(20);
   var D = i(4);
@@ -329430,14 +329448,14 @@
   t.FactionEventOverviewSublayer = S;
   var A = i(162);
   var L = i(29);
-  var P = i(566);
+  var P = i(567);
   var M = i(17);
   var R = i(25);
-  var V = i(667);
+  var V = i(668);
   var x = i(1078);
   var w = i(212);
   var B = i(1080);
-  var F = i(659);
+  var F = i(660);
   var N = i(1724);
   var k = i(1726);
   var U = i(27);
@@ -329549,8 +329567,8 @@
   var c = i(3);
   var u = i(6);
   var d = i(241);
-  var p = i(431);
-  var h = i(510);
+  var p = i(432);
+  var h = i(512);
   var g = i(1727);
   var C = i(188);
   var _ = i(4);
@@ -329818,7 +329836,7 @@
   var c = i(1727);
   var u = i(4);
   var d = i(809);
-  var p = i(467);
+  var p = i(468);
   var h = function (e) {
     function FactionRankingComponent(t) {
       var i = this;
@@ -330171,7 +330189,7 @@
   var u = i(3);
   var d = i(3);
   var p = i(39);
-  var h = i(440);
+  var h = i(441);
   var g = i(392);
   var C = i(4);
   var _ = i(43);
@@ -330180,7 +330198,7 @@
   var O = i(393);
   var E = i(93);
   var y = i(945);
-  var b = i(441);
+  var b = i(442);
   var D = function (e) {
     function InviteAFriendLevelRewardReceivedWithPlayerInfoDialog(t = "") {
       CONSTRUCTOR_HACK;
@@ -330312,7 +330330,7 @@
   var A = i(394);
   var L = i(94);
   var P = i(946);
-  var M = i(442);
+  var M = i(443);
   r.classImplementsInterfaces(D, "ICollectableRendererList");
   D.__initialize_static_members();
 }, function (e, t, i) {
@@ -330417,7 +330435,7 @@
   var c = i(3);
   var u = i(3);
   var d = i(39);
-  var p = i(440);
+  var p = i(441);
   var h = i(392);
   var g = i(4);
   var C = i(43);
@@ -330427,7 +330445,7 @@
   var O = i(393);
   var E = i(93);
   var y = i(945);
-  var b = i(441);
+  var b = i(442);
   var D = function (e) {
     function InviteAFriendPaymentRewardReceivedWithPlayerInfoDialog(t = "") {
       CONSTRUCTOR_HACK;
@@ -330560,7 +330578,7 @@
   var A = i(394);
   var L = i(94);
   var P = i(946);
-  var M = i(442);
+  var M = i(443);
   s.classImplementsInterfaces(D, "ICollectableRendererList");
   D.__initialize_static_members();
 }, function (e, t, i) {
@@ -330830,7 +330848,7 @@
   var c = i(4);
   var u = i(208);
   var d = i(8);
-  var p = i(427);
+  var p = i(428);
   var h = createjs.MouseEvent;
   var g = createjs.Point;
   var C = function () {
@@ -330937,7 +330955,7 @@
   var m = i(9);
   var f = i(17);
   var O = i(70);
-  var E = i(443);
+  var E = i(444);
   C.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -330958,7 +330976,7 @@
   var h = i(3);
   var g = i(39);
   var C = i(894);
-  var _ = i(440);
+  var _ = i(441);
   var m = i(392);
   var f = i(4);
   var O = i(43);
@@ -330968,8 +330986,8 @@
   var D = i(11);
   var I = i(393);
   var v = i(93);
-  var T = i(441);
-  var S = i(427);
+  var T = i(442);
+  var S = i(428);
   var A = createjs.Point;
   var L = function (e) {
     function InviteAFriendInviterMessageDialog() {
@@ -331154,8 +331172,8 @@
   var w = i(153);
   var B = i(394);
   var F = i(94);
-  var N = i(442);
-  var k = i(443);
+  var N = i(443);
+  var k = i(444);
   l.classImplementsInterfaces(L, "ICollectableRendererList");
   L.__initialize_static_members();
 }, function (e, t, i) {
@@ -331596,7 +331614,7 @@
   var g = i(3);
   var C = i(6);
   var _ = i(21);
-  var m = i(139);
+  var m = i(140);
   var f = i(15);
   var O = i(4);
   var E = i(8);
@@ -331786,7 +331804,7 @@
   t.CastleArmyListDialog = T;
   var S = i(75);
   var A = i(9);
-  var L = i(470);
+  var L = i(471);
   var P = i(132);
   var M = i(63);
   var R = i(113);
@@ -331811,7 +331829,7 @@
   var h = i(3);
   var g = i(6);
   var C = i(21);
-  var _ = i(139);
+  var _ = i(140);
   var m = i(15);
   var f = i(4);
   var O = i(8);
@@ -332017,7 +332035,7 @@
   t.CastleArmyListWithLootDialog = S;
   var A = i(75);
   var L = i(9);
-  var P = i(470);
+  var P = i(471);
   var M = i(324);
   var R = i(132);
   var V = i(63);
@@ -332041,9 +332059,9 @@
   var d = i(3);
   var p = i(3);
   var h = i(6);
-  var g = i(573);
+  var g = i(574);
   var C = i(21);
-  var _ = i(139);
+  var _ = i(140);
   var m = i(166);
   var f = i(15);
   var O = i(4);
@@ -332352,7 +332370,7 @@
   var w = i(75);
   var B = i(162);
   var F = i(9);
-  var N = i(470);
+  var N = i(471);
   var k = i(132);
   var U = i(61);
   var G = i(1739);
@@ -332370,7 +332388,7 @@
   var s = i(3);
   var r = i(3);
   var l = i(21);
-  var c = i(139);
+  var c = i(140);
   var u = i(15);
   var d = i(4);
   var p = i(8);
@@ -332456,7 +332474,7 @@
   }(i(11).CastleExternalDialog);
   t.CastleMarketMovmentDialog = h;
   var g = i(9);
-  var C = i(470);
+  var C = i(471);
   var _ = i(324);
   a.classImplementsInterfaces(h, "ICollectableRendererList");
   h.__initialize_static_members();
@@ -332476,7 +332494,7 @@
   var u = i(3);
   var d = i(51);
   var p = i(21);
-  var h = i(139);
+  var h = i(140);
   var g = i(15);
   var C = i(4);
   var _ = i(23);
@@ -332577,7 +332595,7 @@
   }(f.CastleExternalDialog);
   t.CastlePlaguemonkInfoDialog = E;
   var y = i(9);
-  var b = i(470);
+  var b = i(471);
   r.classImplementsInterfaces(E, "ICollectableRendererList");
   E.__initialize_static_members();
 }, function (e, t, i) {
@@ -332595,7 +332613,7 @@
   var c = i(3);
   var u = i(3);
   var d = i(21);
-  var p = i(139);
+  var p = i(140);
   var h = i(4);
   var g = i(8);
   var C = function (e) {
@@ -332693,7 +332711,7 @@
   }(i(11).CastleExternalDialog);
   t.CastleShortArmyDialog = C;
   var _ = i(9);
-  var m = i(470);
+  var m = i(471);
   s.classImplementsInterfaces(C, "ICollectableRendererList");
   C.__initialize_static_members();
 }, function (e, t, i) {
@@ -332712,7 +332730,7 @@
   var u = i(18);
   var d = i(51);
   var p = i(21);
-  var h = i(139);
+  var h = i(140);
   var g = i(15);
   var C = i(4);
   var _ = i(8);
@@ -332814,7 +332832,7 @@
   }(i(11).CastleExternalDialog);
   t.CastleSpyInfoDialog = f;
   var O = i(9);
-  var E = i(470);
+  var E = i(471);
   s.classImplementsInterfaces(f, "ICollectableRendererList");
   f.__initialize_static_members();
 }, function (e, t, i) {
@@ -332835,7 +332853,7 @@
   var p = i(296);
   var h = i(43);
   var g = i(17);
-  var C = i(668);
+  var C = i(669);
   var _ = function (e) {
     function OpenOfferDialogCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -332871,7 +332889,7 @@
     return OpenOfferDialogCommand;
   }(s.SimpleCommand);
   t.OpenOfferDialogCommand = _;
-  var m = i(590);
+  var m = i(591);
   var f = i(9);
   var O = i(818);
   var E = i(1741);
@@ -333248,7 +333266,7 @@
   var a = i(5);
   var s = i(3);
   var r = i(6);
-  var l = i(519);
+  var l = i(521);
   var c = i(276);
   var u = i(4);
   var d = function (e) {
@@ -333333,7 +333351,7 @@
   t.OpenPrivateOfferDialogCommand = l;
   a.classImplementsInterfaces(l, "ISimpleCommand");
   var c = i(9);
-  var u = i(669);
+  var u = i(670);
   var d = i(1);
 }, function (e, t, i) {
   'use strict';
@@ -333862,7 +333880,7 @@
     return PaymentrewardRewardVO;
   }();
   t.PaymentrewardRewardVO = n;
-  var o = i(670);
+  var o = i(671);
   n.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -336609,7 +336627,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(8);
-  var s = i(550);
+  var s = i(552);
   var r = createjs.MouseEvent;
   var l = function (e) {
     function SkinBotPPDDExternal(t, i, n = null, o = null) {
@@ -336700,7 +336718,7 @@
       c.CastleModel.timerData.removeEventListener(l.CastleTimerEvent.TIMER_INTERVAL_SECOND, this.bindFunction(this.updateTimer));
     };
     return SkinTopPPDDExternal;
-  }(i(550).PPDDExternalPart);
+  }(i(552).PPDDExternalPart);
   t.SkinTopPPDDExternal = d;
 }, function (e, t, i) {
   'use strict';
@@ -336712,7 +336730,7 @@
   var o = i(2);
   var a = i(31);
   var s = i(20);
-  var r = i(550);
+  var r = i(552);
   var l = createjs.Point;
   var c = function (e) {
     function LeftRightEyeCatcherPPDDExternal(t, i, n = null, o = null) {
@@ -337465,7 +337483,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(471);
+  var s = i(472);
   var r = function (e) {
     function CastleBarrackUnitTipDialog() {
       return e.call(this, CastleBarrackUnitTipDialog.NAME) || this;
@@ -337511,7 +337529,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(471);
+  var s = i(472);
   var r = function (e) {
     function CastleBuildListTipDialog() {
       return e.call(this, CastleBuildListTipDialog.NAME) || this;
@@ -337557,7 +337575,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(471);
+  var s = i(472);
   var r = function (e) {
     function CastleEfficiencyTipDialog() {
       return e.call(this, CastleEfficiencyTipDialog.NAME) || this;
@@ -337603,7 +337621,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(471);
+  var s = i(472);
   var r = function (e) {
     function CastleInstantBuildTipDialog() {
       CONSTRUCTOR_HACK;
@@ -337650,7 +337668,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(471);
+  var s = i(472);
   var r = function (e) {
     function CastleOverseerTipDialog() {
       CONSTRUCTOR_HACK;
@@ -337697,7 +337715,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(471);
+  var s = i(472);
   var r = function (e) {
     function CastleProductivityTipDialog() {
       return e.call(this, CastleProductivityTipDialog.NAME) || this;
@@ -337765,7 +337783,7 @@
   var v = i(8);
   var T = i(978);
   var S = i(980);
-  var A = i(471);
+  var A = i(472);
   var L = function (e) {
     function CastleRepairTipDialog() {
       return e.call(this, CastleRepairTipDialog.NAME) || this;
@@ -338049,7 +338067,7 @@
   t.OpenWhaleChestOfferCommand = u;
   var d = i(29);
   var p = i(9);
-  var h = i(564);
+  var h = i(565);
   l.classImplementsInterfaces(u, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -338085,23 +338103,23 @@
   var A = i(4);
   var L = i(136);
   var P = i(373);
-  var M = i(428);
+  var M = i(429);
   var R = i(709);
   var V = i(165);
-  var x = i(432);
+  var x = i(433);
   var w = i(355);
-  var B = i(437);
+  var B = i(438);
   var F = i(269);
   var N = i(773);
   var k = i(821);
   var U = i(1094);
   var G = i(1643);
-  var H = i(515);
-  var j = i(601);
+  var H = i(517);
+  var j = i(602);
   var W = i(1081);
   var Y = i(1760);
   var K = i(270);
-  var z = i(573);
+  var z = i(574);
   var q = i(161);
   var X = i(146);
   var Q = createjs.Point;
@@ -339056,7 +339074,7 @@
   var de = i(38);
   var pe = i(327);
   var he = i(358);
-  var ge = i(667);
+  var ge = i(668);
   var Ce = i(1762);
   var _e = i(1763);
   var me = i(1773);
@@ -339064,13 +339082,13 @@
   var Oe = i(1620);
   var Ee = i(319);
   var ye = i(227);
-  var be = i(452);
+  var be = i(453);
   var De = i(824);
   var Ie = i(1100);
   var ve = i(1104);
   var Te = i(1106);
   var Se = i(266);
-  var Ae = i(627);
+  var Ae = i(628);
   var Le = i(830);
   var Pe = i(53);
   var Me = i(247);
@@ -339818,7 +339836,7 @@
   o.classImplementsInterfaces(m, "ICollectableRendererList", "ISublayer");
   var f = i(13);
   var O = i(190);
-  var E = i(671);
+  var E = i(672);
   var y = i(3709);
   m.__initialize_static_members();
 }, function (e, t, i) {
@@ -339895,7 +339913,7 @@
   var s = i(6);
   var r = i(243);
   var l = i(4);
-  var c = i(467);
+  var c = i(468);
   var u = function (e) {
     function CastleEilandAllianceRankingComponent(t) {
       var i = this;
@@ -340055,7 +340073,7 @@
   }();
   t.CastleEilandAllianceRankingItem = g;
   var C = i(366);
-  var _ = i(671);
+  var _ = i(672);
   var m = i(9);
   var f = i(17);
   var O = i(131);
@@ -340585,7 +340603,7 @@
   var r = i(3);
   var l = i(3);
   var c = i(1770);
-  var u = i(413);
+  var u = i(414);
   var d = i(4);
   var p = i(43);
   var h = i(33);
@@ -341020,7 +341038,7 @@
   var r = i(5);
   var l = i(3);
   var c = i(3);
-  var u = i(666);
+  var u = i(667);
   var d = i(161);
   var p = i(21);
   var h = i(196);
@@ -341184,7 +341202,7 @@
   var D = i(1772);
   var I = i(1080);
   var v = i(1097);
-  var T = i(667);
+  var T = i(668);
   var S = i(1078);
   s.classImplementsInterfaces(f, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
@@ -341810,10 +341828,10 @@
   t.CastleAllianceNomadInvasionPointsEventSublayer = S;
   var A = i(29);
   var L = i(9);
-  var P = i(465);
+  var P = i(466);
   var M = i(1774);
   var R = i(335);
-  var V = i(466);
+  var V = i(467);
   var x = i(1099);
   o.classImplementsInterfaces(S, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
@@ -342068,10 +342086,10 @@
   t.CastleNomadInvasionPointsEventSublayer = S;
   var A = i(29);
   var L = i(9);
-  var P = i(465);
+  var P = i(466);
   var M = i(335);
-  var R = i(659);
-  var V = i(466);
+  var R = i(660);
+  var V = i(467);
   var x = i(1099);
   a.classImplementsInterfaces(S, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
@@ -343297,10 +343315,10 @@
   t.CastleAllianceSamuraiInvasionDialogAllianceSublayer = v;
   o.classImplementsInterfaces(v, "ICollectableRendererList", "ISublayer");
   var T = i(9);
-  var S = i(465);
+  var S = i(466);
   var A = i(3752);
   var L = i(335);
-  var P = i(466);
+  var P = i(467);
   var M = i(1782);
   var R = i(1);
 }, function (e, t, i) {
@@ -343391,7 +343409,7 @@
   var l = i(3);
   var c = i(12);
   var u = i(4);
-  var d = i(662);
+  var d = i(663);
   var p = i(8);
   var h = i(33);
   var g = i(3754);
@@ -343699,7 +343717,7 @@
   }(h.CastleItemRenderer);
   t.CastleAllianceSamuraiInvasionDaimyoCastle = m;
   var f = i(29);
-  var O = i(525);
+  var O = i(527);
   var E = i(14);
   o.classImplementsInterfaces(m, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -343815,7 +343833,7 @@
   var l = i(3);
   var c = i(12);
   var u = i(4);
-  var d = i(662);
+  var d = i(663);
   var p = i(40);
   var h = i(8);
   var g = i(811);
@@ -343870,7 +343888,7 @@
   }(p.CastleItemRenderer);
   t.SamuraiDaimyoEventDialogBottomMenu = C;
   var _ = i(14);
-  var m = i(660);
+  var m = i(661);
   var f = i(121);
   o.classImplementsInterfaces(C, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -343889,7 +343907,7 @@
   var u = i(12);
   var d = i(4);
   var p = i(377);
-  var h = i(662);
+  var h = i(663);
   var g = i(259);
   var C = i(260);
   var _ = i(151);
@@ -343998,7 +344016,7 @@
   var b = i(45);
   var D = i(47);
   var I = i(29);
-  var v = i(525);
+  var v = i(527);
   var T = i(303);
   var S = i(3759);
   var A = i(3761);
@@ -344446,7 +344464,7 @@
   var g = i(211);
   var C = i(169);
   var _ = i(149);
-  var m = i(616);
+  var m = i(617);
   var f = createjs.MouseEvent;
   var O = function (e) {
     function SamuraiDaimyoEventDialogRankingItem(t, i) {
@@ -344712,10 +344730,10 @@
   }(b.CastleDialogSubLayer);
   t.CastleAllianceSamuraiInvasionDialogPlayerSublayer = I;
   var v = i(9);
-  var T = i(465);
+  var T = i(466);
   var S = i(335);
-  var A = i(659);
-  var L = i(466);
+  var A = i(660);
+  var L = i(467);
   var P = i(1782);
   o.classImplementsInterfaces(I, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
@@ -345113,7 +345131,7 @@
   var f = i(29);
   var O = i(9);
   var E = i(17);
-  var y = i(667);
+  var y = i(668);
   var b = i(1762);
   var D = i(212);
   var I = i(3774);
@@ -345862,8 +345880,8 @@
   t.CastleTroopSupportVO = u;
   var d = i(147);
   var p = i(111);
-  var h = i(551);
-  var g = i(552);
+  var h = i(553);
+  var g = i(554);
   var C = i(158);
   var _ = i(44);
   o.classImplementsInterfaces(u, "IFightScreenVO");
@@ -346666,7 +346684,7 @@
     return CastleAttackWaveVO;
   }();
   t.CastleAttackWaveVO = n;
-  var o = i(551);
+  var o = i(553);
   var a = i(119);
   var s = i(5);
   var r = i(5);
@@ -346860,7 +346878,7 @@
   t.CastlePostAttackTreasureDialog = M;
   var R = i(1109);
   var V = i(9);
-  var x = i(138);
+  var x = i(139);
   r.classImplementsInterfaces(M, "ICollectableRendererList");
   M.__initialize_static_members();
 }, function (e, t, i) {
@@ -347878,7 +347896,7 @@
   var S = i(835);
   var A = i(3816);
   var L = i(3817);
-  var P = i(469);
+  var P = i(470);
   var M = function (e) {
     function LongTermPointEventDialog() {
       var t = this;
@@ -348145,9 +348163,9 @@
   }(D.CastleExternalDialog);
   t.LongTermPointEventDialog = M;
   var R = i(9);
-  var V = i(465);
+  var V = i(466);
   var x = i(3818);
-  var w = i(466);
+  var w = i(467);
   var B = i(1794);
   a.classImplementsInterfaces(M, "ICollectableRendererList");
   M.__initialize_static_members();
@@ -349784,7 +349802,7 @@
   var f = i(9);
   var O = i(1663);
   var E = i(3820);
-  var y = i(469);
+  var y = i(470);
   a.classImplementsInterfaces(m, "ICollectableRendererList");
   m.__initialize_static_members();
 }, function (e, t, i) {
@@ -349929,7 +349947,7 @@
   var o = i(5);
   var a = i(5);
   var s = i(4);
-  var r = i(467);
+  var r = i(468);
   var l = function (e) {
     function LongTermPointEventHighScoreDialogProperties(t = -1, i = -1, n = -1) {
       return e.call(this, a.HighscoreConst.LONG_TERM_POINT_EVENT, t, i, n) || this;
@@ -350328,7 +350346,7 @@
   }(a.SimpleCommand);
   t.SwitchToRelocateWorldmapCommand = l;
   var c = i(29);
-  var u = i(505);
+  var u = i(507);
   var d = i(17);
   s.classImplementsInterfaces(l, "ISimpleCommand");
 }, function (e, t, i) {
@@ -350406,7 +350424,7 @@
   s.classImplementsInterfaces(u, "ISimpleCommand");
   var d = i(162);
   var p = i(29);
-  var h = i(505);
+  var h = i(507);
   var g = i(17);
   var C = i(1);
 }, function (e, t, i) {
@@ -350426,7 +350444,7 @@
   var d = i(1);
   var p = i(6);
   var h = i(15);
-  var g = i(434);
+  var g = i(435);
   var C = i(4);
   var _ = function (e) {
     function CastleChooseLoginMethodCommand() {
@@ -351036,7 +351054,7 @@
   t.GotoMainCastleUniqueBuildingCommand = d;
   s.classImplementsInterfaces(d, "ISimpleCommand");
   var p = i(35);
-  var h = i(485);
+  var h = i(487);
   var g = i(29);
   var C = i(57);
   var _ = i(17);
@@ -351075,7 +351093,7 @@
   t.OpenVoucherOfferCommand = u;
   var d = i(29);
   var p = i(9);
-  var h = i(564);
+  var h = i(565);
   l.classImplementsInterfaces(u, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -351136,7 +351154,7 @@
   var o = i(51);
   var a = i(204);
   var s = i(4);
-  var r = i(428);
+  var r = i(429);
   var l = i(1800);
   var c = createjs.Point;
   var u = function (e) {
@@ -351372,7 +351390,7 @@
   var l = i(166);
   var c = i(12);
   var u = i(3849);
-  var d = i(508);
+  var d = i(510);
   var p = i(717);
   var h = i(9);
   var g = i(19);
@@ -351382,13 +351400,13 @@
   var f = i(3856);
   var O = i(115);
   var E = i(3861);
-  var y = i(472);
+  var y = i(473);
   var b = i(3864);
   var D = i(346);
   var I = i(362);
   var v = i(840);
   var T = i(841);
-  var S = i(553);
+  var S = i(555);
   var A = createjs.MouseEvent;
   var L = function () {
     function AttackDialogAutoFill() {
@@ -352462,9 +352480,9 @@
   var _ = i(342);
   var m = i(115);
   var f = i(3863);
-  var O = i(472);
+  var O = i(473);
   var E = i(841);
-  var y = i(553);
+  var y = i(555);
   var b = createjs.MouseEvent;
   var D = createjs.Rectangle;
   var I = function () {
@@ -352685,7 +352703,7 @@
   var c = i(713);
   var u = i(15);
   var d = i(4);
-  var p = i(508);
+  var p = i(510);
   var h = i(185);
   var g = i(9);
   var C = i(151);
@@ -352693,8 +352711,8 @@
   var m = i(299);
   var f = i(8);
   var O = i(63);
-  var E = i(617);
-  var y = i(614);
+  var E = i(618);
+  var y = i(615);
   var b = i(115);
   var D = createjs.MouseEvent;
   var I = createjs.Point;
@@ -352825,8 +352843,8 @@
   var d = i(19);
   var p = i(252);
   var h = i(8);
-  var g = i(613);
-  var C = i(588);
+  var g = i(614);
+  var C = i(589);
   var _ = i(218);
   var m = i(1399);
   var f = i(1247);
@@ -352834,7 +352852,7 @@
   var E = i(362);
   var y = i(3865);
   var b = i(841);
-  var D = i(553);
+  var D = i(555);
   var I = createjs.MouseEvent;
   var v = function () {
     function AttackDialogPresets() {}
@@ -353529,7 +353547,7 @@
   var p = i(8);
   var h = i(720);
   var g = i(721);
-  var C = i(432);
+  var C = i(433);
   var _ = i(115);
   var m = createjs.MouseEvent;
   var f = function () {
@@ -354249,7 +354267,7 @@
   var o = i(3);
   var a = i(22);
   var s = i(4);
-  var r = i(563);
+  var r = i(564);
   var l = i(734);
   var c = function (e) {
     function DefaultLordVO() {
@@ -354764,7 +354782,7 @@
   var a = i(3);
   var s = i(86);
   var r = i(4);
-  var l = i(587);
+  var l = i(588);
   var c = i(185);
   var u = i(9);
   var d = i(19);
@@ -354774,7 +354792,7 @@
   var C = i(113);
   var _ = i(120);
   var m = i(115);
-  var f = i(472);
+  var f = i(473);
   var O = i(362);
   var E = createjs.MouseEvent;
   var y = function () {
@@ -355075,10 +355093,10 @@
   var g = i(9);
   var C = i(350);
   var _ = i(378);
-  var m = i(617);
-  var f = i(614);
+  var m = i(618);
+  var f = i(615);
   var O = i(115);
-  var E = i(472);
+  var E = i(473);
   var y = i(346);
   var b = i(3876);
   var D = i(3880);
@@ -355732,7 +355750,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(508);
+  var a = i(510);
   var s = i(1256);
   var r = function (e) {
     function AttackDialogWaveHandlerToolPickInfiniteItem() {
@@ -355977,13 +355995,13 @@
   var A = i(342);
   var L = i(261);
   var P = i(115);
-  var M = i(472);
+  var M = i(473);
   var R = i(3883);
   var V = i(3884);
   var x = i(3885);
   var w = i(3886);
   var B = i(841);
-  var F = i(553);
+  var F = i(555);
   var N = i(3887);
   var k = createjs.MouseEvent;
   var U = createjs.Rectangle;
@@ -356189,7 +356207,7 @@
       if (this.defaultWaveCount == 0) {
         this.defaultWaveCount = this.attackInfoVO.army.getWaveCount();
       }
-      var e = C.CastleEffectsHelper.getTotalEffectValue(this.selectedLord.getUniqueBoni(false, g.EffectTypeEnum.EFFECT_TYPE_ADDITIONAL_WAVE, this.attackInfoVO.targetArea.areaType));
+      var e = C.CastleEffectsHelper.getTotalEffectValue(this.selectedLord.getUniqueBoni(false, g.EffectTypeEnum.EFFECT_TYPE_ADDITIONAL_WAVE, this.attackInfoVO.targetArea.areaType, null, true));
       var t = l.int(e ? e.strength : 0);
       t += this.attackInfoVO.supportItemContainer ? this.attackInfoVO.supportItemContainer.getTotalBonusByToolEffect(_.ToolEffectType.ADDITIONAL_WAVE) : 0;
       if (this.additionalLordWaveCount < t) {
@@ -357075,7 +357093,7 @@
     return RelicEquipmentToolTip;
   }();
   t.RelicEquipmentToolTip = o;
-  var a = i(593);
+  var a = i(594);
 }, function (e, t, i) {
   'use strict';
 
@@ -357085,7 +357103,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(1);
-  var s = i(584);
+  var s = i(585);
   var r = i(23);
   var l = i(8);
   var c = function (e) {
@@ -357195,7 +357213,7 @@
   var d = i(15);
   var p = i(72);
   var h = i(4);
-  var g = i(420);
+  var g = i(421);
   var C = i(3892);
   var _ = function (e) {
     function CastleTimeSpendTrackingController() {
@@ -357791,7 +357809,7 @@
   var O = i(137);
   var E = i(15);
   var y = i(29);
-  var b = i(434);
+  var b = i(435);
   var D = i(4);
   var I = i(49);
   var v = i(725);
@@ -357800,21 +357818,21 @@
   var A = i(1118);
   var L = i(3907);
   var P = i(309);
-  var M = i(509);
+  var M = i(511);
   var R = i(43);
   var V = i(9);
   var x = i(17);
   var w = i(927);
   var B = i(918);
-  var F = i(447);
-  var N = i(446);
+  var F = i(448);
+  var N = i(447);
   var k = i(11);
   var U = i(1431);
   var G = i(986);
   var H = i(1812);
   var j = i(1008);
   var W = i(38);
-  var Y = i(495);
+  var Y = i(497);
   var K = i(1001);
   var z = i(1473);
   var q = i(1002);
@@ -357850,14 +357868,14 @@
   var Ie = i(1698);
   var ve = i(1699);
   var Te = i(1700);
-  var Se = i(549);
+  var Se = i(551);
   var Ae = i(1716);
   var Le = i(1717);
   var Pe = i(1715);
   var Me = i(407);
   var Re = i(114);
   var Ve = i(880);
-  var xe = i(496);
+  var xe = i(498);
   var we = i(1810);
   var Be = i(1707);
   var Fe = i(1710);
@@ -359313,7 +359331,7 @@
   });
   var n = i(0);
   var o = i(2);
-  var a = i(434);
+  var a = i(435);
   var s = i(9);
   var r = i(218);
   var l = i(201);
@@ -359736,7 +359754,7 @@
   var s = i(38);
   var r = i(153);
   var l = i(1820);
-  var c = i(669);
+  var c = i(670);
   o.classImplementsInterfaces(a, "IUIComponentCreator");
 }, function (e, t, i) {
   'use strict';
@@ -359773,7 +359791,7 @@
   var n = i(16);
   var o = i(91);
   var a = i(697);
-  var s = i(139);
+  var s = i(140);
   var r = i(15);
   var l = i(4);
   var c = createjs.MovieClip;
@@ -359880,7 +359898,7 @@
       }
     };
     return CastleLayoutConnectingServer;
-  }(i(554).ACastleLayoutStrategy);
+  }(i(556).ACastleLayoutStrategy);
   t.CastleLayoutConnectingServer = a;
 }, function (e, t, i) {
   'use strict';
@@ -360126,7 +360144,7 @@
   var c = i(24);
   var u = i(18);
   var d = i(59);
-  var p = i(425);
+  var p = i(426);
   var h = i(128);
   var g = i(223);
   var C = i(32);
@@ -360982,17 +361000,17 @@
   }(i(1826).CastleBasicLayout);
   t.CastleLayoutIso = u;
   var d = i(35);
-  var p = i(4112);
+  var p = i(4113);
   var h = i(1861);
   var g = i(1862);
   var C = i(1863);
-  var _ = i(559);
+  var _ = i(560);
   var m = i(1870);
   var f = i(1871);
   var O = i(266);
-  var E = i(513);
-  var y = i(4153);
-  var b = i(4154);
+  var E = i(515);
+  var y = i(4154);
+  var b = i(4155);
   var D = i(1825);
   var I = i(1873);
 }, function (e, t, i) {
@@ -361016,7 +361034,7 @@
       configurable: true
     });
     return StatusIconSeasonGacha_Anniversary;
-  }(i(672).AStatusIconSeasonGacha);
+  }(i(557).AStatusIconSeasonGacha);
   t.StatusIconSeasonGacha_Anniversary = a;
 }, function (e, t, i) {
   'use strict';
@@ -361196,6 +361214,29 @@
   var n = i(0);
   var o = i(5);
   var a = function (e) {
+    function StatusIconSeasonGacha_BlackFriday() {
+      return e.call(this, "Btn_BlackFridayGacha") || this;
+    }
+    n.__extends(StatusIconSeasonGacha_BlackFriday, e);
+    Object.defineProperty(StatusIconSeasonGacha_BlackFriday.prototype, "eventID", {
+      get: function () {
+        return o.EventConst.EVENTTYPE_BLACK_FRIDAY_GACHA;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    return StatusIconSeasonGacha_BlackFriday;
+  }(i(557).AStatusIconSeasonGacha);
+  t.StatusIconSeasonGacha_BlackFriday = a;
+}, function (e, t, i) {
+  'use strict';
+
+  Object.defineProperty(t, "__esModule", {
+    value: true
+  });
+  var n = i(0);
+  var o = i(5);
+  var a = function (e) {
     function StatusIconSeasonGacha_Christmas() {
       return e.call(this, "Btn_ChristmasGacha") || this;
     }
@@ -361208,7 +361249,7 @@
       configurable: true
     });
     return StatusIconSeasonGacha_Christmas;
-  }(i(672).AStatusIconSeasonGacha);
+  }(i(557).AStatusIconSeasonGacha);
   t.StatusIconSeasonGacha_Christmas = a;
 }, function (e, t, i) {
   'use strict';
@@ -361231,7 +361272,7 @@
       configurable: true
     });
     return StatusIconSeasonGacha_Easter;
-  }(i(672).AStatusIconSeasonGacha);
+  }(i(557).AStatusIconSeasonGacha);
   t.StatusIconSeasonGacha_Easter = a;
 }, function (e, t, i) {
   'use strict';
@@ -361254,7 +361295,7 @@
       configurable: true
     });
     return StatusIconSeasonGacha_Halloween;
-  }(i(672).AStatusIconSeasonGacha);
+  }(i(557).AStatusIconSeasonGacha);
   t.StatusIconSeasonGacha_Halloween = a;
 }, function (e, t, i) {
   'use strict';
@@ -361277,7 +361318,7 @@
       configurable: true
     });
     return StatusIconSeasonGacha_Summer;
-  }(i(672).AStatusIconSeasonGacha);
+  }(i(557).AStatusIconSeasonGacha);
   t.StatusIconSeasonGacha_Summer = a;
 }, function (e, t, i) {
   'use strict';
@@ -361438,7 +361479,7 @@
   }(i(134).AOfferHubItemStatusIcon);
   t.StatusIconSeasonPassSale = l;
   var c = i(9);
-  var u = i(3954);
+  var u = i(3955);
   var d = i(179);
   var p = i(27);
 }, function (e, t, i) {
@@ -361538,7 +361579,7 @@
     return CastlePrimeSaleSeasonPassDialog;
   }(_.CastleAbstractPrimeSaleDialog);
   t.CastlePrimeSaleSeasonPassDialog = f;
-  var O = i(654);
+  var O = i(655);
   var E = i(25);
   var y = i(11);
   var b = i(812);
@@ -361612,7 +361653,7 @@
   }(i(134).AOfferHubItemStatusIcon);
   t.StatusIconShoppingCart = d;
   var p = i(9);
-  var h = i(496);
+  var h = i(498);
   var g = i(179);
 }, function (e, t, i) {
   'use strict';
@@ -361765,7 +361806,7 @@
   }(C.ACastleLabeledStatusIcon);
   t.StatusIconDailyQuest = m;
   var f = i(9);
-  var O = i(3957);
+  var O = i(3958);
   m.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -361947,7 +361988,7 @@
   }(y.CastleExternalDialog);
   t.CastleDailyQuestDialog = I;
   var v = i(29);
-  var T = i(544);
+  var T = i(546);
   var S = i(9);
   var A = i(334);
   var L = i(1071);
@@ -362444,9 +362485,9 @@
     return CastleOfferHubStatusBar;
   }(r.CastleStatusBar);
   t.CastleOfferHubStatusBar = p;
-  var h = i(474);
+  var h = i(475);
   var g = i(1);
-  var C = i(464);
+  var C = i(465);
   var _ = i(15);
 }, function (e, t, i) {
   'use strict';
@@ -362547,7 +362588,7 @@
   var s = i(257);
   var r = i(30);
   var l = i(4);
-  var c = i(668);
+  var c = i(669);
   var u = function (e) {
     function StatusIconDynamicOffer() {
       var t = e.call(this, "Btn_DynamicOffer", new o.TextVO(""), h.ACastleStatusIcon.PRIORITY_MIDDLE) || this;
@@ -362599,7 +362640,7 @@
   }(i(134).AOfferHubItemStatusIcon);
   t.StatusIconDynamicOffer = u;
   var d = i(9);
-  var p = i(3966);
+  var p = i(3967);
   var h = i(110);
   var g = i(27);
 }, function (e, t, i) {
@@ -362865,7 +362906,7 @@
   var s = i(257);
   var r = i(30);
   var l = i(4);
-  var c = i(668);
+  var c = i(669);
   var u = function (e) {
     function StatusIconPrimeTimeOffer() {
       var t = e.call(this, "Btn_PrivatePrimeTimeOffer", new o.TextVO(""), h.AOfferHubBaseStatusIcon.PRIORITY_PRIVATE_PRIME_TIME) || this;
@@ -362938,7 +362979,7 @@
   var s = i(257);
   var r = i(30);
   var l = i(4);
-  var c = i(668);
+  var c = i(669);
   var u = function (e) {
     function StatusIconSpecialIngameOffer() {
       return e.call(this, "Btn_SpecialIngameOffer", new o.TextVO(""), g.ACastleStatusIcon.PRIORITY_MIDDLE) || this;
@@ -362999,7 +363040,7 @@
     return StatusIconSpecialIngameOffer;
   }(i(134).AOfferHubItemStatusIcon);
   t.StatusIconSpecialIngameOffer = u;
-  var d = i(590);
+  var d = i(591);
   var p = i(9);
   var h = i(1741);
   var g = i(110);
@@ -363103,7 +363144,7 @@
   var a = i(257);
   var s = i(163);
   var r = i(4);
-  var l = i(668);
+  var l = i(669);
   var c = function (e) {
     function StatusIconTimelessSpecialOffer() {
       var t = e.call(this, "Btn_TimelessSpecialOffer", null, p.AOfferHubBaseStatusIcon.PRIORITY_GLOBAL_PRIME_TIME) || this;
@@ -363166,7 +363207,7 @@
   var r = i(26);
   var l = i(4);
   var c = i(27);
-  var u = i(3974);
+  var u = i(3975);
   var d = function (e) {
     function StatusIconWorldCup() {
       var t = e.call(this, "Btn_WorldCup", new a.TextVO(""), g.ACastleStatusIcon.PRIORITY_MIDDLE) || this;
@@ -363220,7 +363261,7 @@
   }(i(134).AOfferHubItemStatusIcon);
   t.StatusIconWorldCup = d;
   var p = i(9);
-  var h = i(3975);
+  var h = i(3976);
   var g = i(110);
 }, function (e, t, i) {
   'use strict';
@@ -363333,9 +363374,9 @@
   }(i(11).CastleExternalDialog);
   t.CastleWorldCupDialog = l;
   var c = i(673);
-  var u = i(3976);
-  var d = i(3977);
-  var p = i(3978);
+  var u = i(3977);
+  var d = i(3978);
+  var p = i(3979);
   o.classImplementsInterfaces(l, "ICollectableRendererList");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -363455,7 +363496,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(3979);
+  var s = i(3980);
   var r = i(4);
   var l = i(8);
   var c = i(770);
@@ -363587,7 +363628,7 @@
   var c = i(26);
   var u = i(4);
   var d = i(674);
-  var p = i(141);
+  var p = i(142);
   var h = function (e) {
     function StatusIconFactionProtection() {
       var t = e.call(this, "Btn_FactionProtection", "txt_label", new l.TextVO("")) || this;
@@ -364015,7 +364056,7 @@
   var u = i(68);
   var d = i(674);
   var p = i(8);
-  var h = i(141);
+  var h = i(142);
   var g = function (e) {
     function StatusIconNoobProtection() {
       var t = e.call(this, "Btn_NoobProtection", "txt_label", new a.TextVO("")) || this;
@@ -364101,7 +364142,7 @@
   var l = i(727);
   var c = i(4);
   var u = i(674);
-  var d = i(141);
+  var d = i(142);
   var p = function (e) {
     function StatusIconOpenGate() {
       var t = e.call(this, "Btn_OpengateIcon", "txt_label", new s.TextVO(""), _.ACastleStatusIcon.PRIORITY_MIDDLE) || this;
@@ -364201,7 +364242,7 @@
   var p = i(68);
   var h = i(674);
   var g = i(8);
-  var C = i(141);
+  var C = i(142);
   var _ = function (e) {
     function StatusIconPeaceProtection() {
       var t = e.call(this, "Btn_NoobProtection", "txt_label", new s.TextVO("")) || this;
@@ -364278,7 +364319,7 @@
   var a = i(2);
   var s = i(3);
   var r = i(6);
-  var l = i(558);
+  var l = i(559);
   var c = i(21);
   var u = i(4);
   var d = i(308);
@@ -364360,7 +364401,7 @@
   t.StatusIconActivityBonusComponent = p;
   var h = i(9);
   var g = i(17);
-  var C = i(3993);
+  var C = i(3994);
 }, function (e, t, i) {
   'use strict';
 
@@ -364373,8 +364414,8 @@
   var s = i(1);
   var r = i(3);
   var l = i(6);
-  var c = i(3994);
-  var u = i(558);
+  var c = i(3995);
+  var u = i(559);
   var d = i(66);
   var p = i(20);
   var h = i(4);
@@ -364477,7 +364518,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(558);
+  var o = i(559);
   var a = i(4);
   var s = i(110);
   var r = function (e) {
@@ -364708,8 +364749,8 @@
   var f = i(300);
   var O = i(8);
   var E = i(73);
-  var y = i(602);
-  var b = i(603);
+  var y = i(603);
+  var b = i(604);
   var D = function (e) {
     function AdvisorAttackOverviewScrollItem() {
       return e !== null && e.apply(this, arguments) || this;
@@ -364872,7 +364913,7 @@
   var r = i(316);
   var l = i(32);
   var c = i(4);
-  var u = i(4005);
+  var u = i(4006);
   var d = function (e) {
     function StatusIconAllianceAction(t = a.int(g.ACastleStatusIcon.PRIORITY_LOW)) {
       var i = e.call(this, "Icon_AllianceHelpRequest", "mc_count.txt_label", new o.LocalizedNumberVO(0), t) || this;
@@ -364929,7 +364970,7 @@
   }(i(308).ACastleLabeledStatusIcon);
   t.StatusIconAllianceAction = d;
   var p = i(9);
-  var h = i(4006);
+  var h = i(4007);
   var g = i(110);
 }, function (e, t, i) {
   'use strict';
@@ -365079,8 +365120,8 @@
   }(i(108).CastleExternalSubLayerDialog);
   t.CastleAllianceActionOverviewDialog = p;
   var h = i(9);
-  var g = i(4007);
-  var C = i(4011);
+  var g = i(4008);
+  var C = i(4012);
   o.classImplementsInterfaces(p, "ICollectableRendererList");
   p.__initialize_static_members();
 }, function (e, t, i) {
@@ -365097,7 +365138,7 @@
   var l = i(843);
   var c = i(4);
   var u = i(33);
-  var d = i(4008);
+  var d = i(4009);
   var p = function (e) {
     function CastleAllianceActionOverviewDialogGift(t) {
       return e.call(this, t) || this;
@@ -365142,7 +365183,7 @@
     return CastleAllianceActionOverviewDialogGift;
   }(u.CastleDialogSubLayer);
   t.CastleAllianceActionOverviewDialogGift = p;
-  var h = i(4009);
+  var h = i(4010);
   a.classImplementsInterfaces(p, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
   'use strict';
@@ -365174,7 +365215,7 @@
   var r = i(1);
   var l = i(3);
   var c = i(3);
-  var u = i(4010);
+  var u = i(4011);
   var d = i(21);
   var p = i(31);
   var h = i(20);
@@ -365290,13 +365331,13 @@
   var a = i(1);
   var s = i(3);
   var r = i(6);
-  var l = i(4012);
+  var l = i(4013);
   var c = i(316);
   var u = i(4);
   var d = i(8);
   var p = i(33);
-  var h = i(4013);
-  var g = i(4015);
+  var h = i(4014);
+  var g = i(4016);
   var C = function (e) {
     function CastleAllianceActionOverviewDialogHelpRequest(t) {
       return e.call(this, t) || this;
@@ -365409,7 +365450,7 @@
   var l = i(5);
   var c = i(3);
   var u = i(3);
-  var d = i(4014);
+  var d = i(4015);
   var p = i(4);
   var h = i(8);
   var g = createjs.MouseEvent;
@@ -365545,8 +365586,8 @@
   var l = i(53);
   var c = i(4);
   var u = i(9);
-  var d = i(462);
-  var p = i(543);
+  var d = i(463);
+  var p = i(545);
   var h = i(364);
   var g = i(5);
   var C = function (e) {
@@ -365675,7 +365716,7 @@
   }(r.ACastleBoosterStatusIcon);
   t.StatusIconAllianceCoinBooster = l;
   var c = i(9);
-  var u = i(4018);
+  var u = i(4019);
   var d = i(110);
 }, function (e, t, i) {
   'use strict';
@@ -365690,7 +365731,7 @@
   var r = i(5);
   var l = i(3);
   var c = i(3);
-  var u = i(444);
+  var u = i(445);
   var d = i(223);
   var p = i(4);
   var h = i(27);
@@ -366118,7 +366159,7 @@
   var c = i(9);
   var u = i(17);
   var d = i(1132);
-  var p = i(476);
+  var p = i(478);
 }, function (e, t, i) {
   'use strict';
 
@@ -366177,8 +366218,8 @@
   var s = i(78);
   var r = i(76);
   var l = i(77);
-  var c = i(4025);
-  var u = i(4026);
+  var c = i(4026);
+  var u = i(4027);
   var d = i(8);
   var p = i(19);
   var h = i(12);
@@ -366331,7 +366372,7 @@
   var a = i(1);
   var s = i(3);
   var r = i(3);
-  var l = i(666);
+  var l = i(667);
   var c = i(21);
   var u = i(196);
   var d = i(4);
@@ -366457,7 +366498,7 @@
   var O = i(1080);
   var E = i(1097);
   var y = i(19);
-  var b = i(667);
+  var b = i(668);
   var D = i(1078);
   a.classImplementsInterfaces(C, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -366478,7 +366519,7 @@
   var p = i(12);
   var h = i(8);
   var g = i(19);
-  var C = i(4029);
+  var C = i(4030);
   var _ = i(5);
   var m = function (e) {
     function CastleStormIslandsMainDialogRanking(t) {
@@ -366556,7 +366597,7 @@
   var a = i(6);
   var s = i(3);
   var r = i(3);
-  var l = i(616);
+  var l = i(617);
   var c = createjs.MouseEvent;
   var u = function (e) {
     function CastleStormIslandsMainDialogRankingItem(t, i) {
@@ -366814,7 +366855,7 @@
     return CastleStormIslandsMainDialogPerformancePlayer;
   }(i(33).CastleDialogSubLayer);
   t.CastleStormIslandsMainDialogPerformancePlayer = l;
-  var c = i(476);
+  var c = i(478);
   var u = i(61);
   var d = i(12);
   var p = i(4);
@@ -366836,12 +366877,12 @@
   var s = i(3);
   var r = i(3);
   var l = i(33);
-  var c = i(476);
+  var c = i(478);
   var u = i(12);
   var d = i(261);
   var p = i(259);
   var h = i(152);
-  var g = i(4032);
+  var g = i(4033);
   var C = i(260);
   var _ = i(151);
   var m = i(4);
@@ -367055,11 +367096,11 @@
   var s = i(3);
   var r = i(3);
   var l = i(33);
-  var c = i(476);
+  var c = i(478);
   var u = i(78);
   var d = i(76);
   var p = i(77);
-  var h = i(4034);
+  var h = i(4035);
   var g = i(12);
   var C = i(1769);
   var _ = i(4);
@@ -367279,8 +367320,8 @@
   var r = i(32);
   var l = i(4);
   var c = i(9);
-  var u = i(462);
-  var d = i(543);
+  var u = i(463);
+  var d = i(545);
   var p = i(364);
   var h = function (e) {
     function StatusIconFactionEvent() {
@@ -367435,7 +367476,7 @@
   }(l.ACastleBoosterStatusIcon);
   t.StatusIconGallantryBooster = c;
   var u = i(9);
-  var d = i(4039);
+  var d = i(4040);
   var p = i(110);
 }, function (e, t, i) {
   'use strict';
@@ -367627,7 +367668,7 @@
   }(l.ACastleBoosterStatusIcon);
   t.StatusIconKhanMedalBooster = c;
   var u = i(9);
-  var d = i(4042);
+  var d = i(4043);
   var p = i(110);
 }, function (e, t, i) {
   'use strict';
@@ -367720,7 +367761,7 @@
   }(l.ACastleBoosterStatusIcon);
   t.StatusIconKhanTabletBooster = c;
   var u = i(9);
-  var d = i(4044);
+  var d = i(4045);
   var p = i(110);
 }, function (e, t, i) {
   'use strict';
@@ -367873,7 +367914,7 @@
   var c = i(91);
   var u = i(187);
   var d = i(4);
-  var p = i(630);
+  var p = i(631);
   var h = i(364);
   var g = function (e) {
     function StatusIconLeaveEvent() {
@@ -367983,8 +368024,8 @@
   var C = i(29);
   var _ = i(9);
   var m = i(17);
-  var f = i(451);
-  var O = i(4047);
+  var f = i(452);
+  var O = i(4048);
 }, function (e, t, i) {
   'use strict';
 
@@ -368064,7 +368105,7 @@
   var r = i(163);
   var l = i(4);
   var c = i(355);
-  var u = i(437);
+  var u = i(438);
   var d = function (e) {
     function StatusIconMailGiftComponent() {
       return e.call(this, "Btn_email_Hub", null, h.AOfferHubBaseStatusIcon.PRIORITY_MAIL_GIFT) || this;
@@ -368431,7 +368472,7 @@
   }(c.ACastleBoosterStatusIcon);
   t.StatusIconPersonalFameBooster = u;
   var d = i(9);
-  var p = i(4052);
+  var p = i(4053);
   var h = i(110);
 }, function (e, t, i) {
   'use strict';
@@ -368445,7 +368486,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(3);
-  var c = i(444);
+  var c = i(445);
   var u = i(4);
   var d = i(27);
   var p = i(265);
@@ -368638,7 +368679,7 @@
   }(l.ACastleBoosterStatusIcon);
   t.StatusIconRageBooster = c;
   var u = i(9);
-  var d = i(4055);
+  var d = i(4056);
   var p = i(110);
 }, function (e, t, i) {
   'use strict';
@@ -368877,7 +368918,7 @@
   }(r.ACastleBoosterStatusIcon);
   t.StatusIconSamuraiBooster = l;
   var c = i(9);
-  var u = i(4059);
+  var u = i(4060);
   var d = i(110);
 }, function (e, t, i) {
   'use strict';
@@ -368892,7 +368933,7 @@
   var r = i(5);
   var l = i(3);
   var c = i(3);
-  var u = i(444);
+  var u = i(445);
   var d = i(223);
   var p = i(4);
   var h = i(27);
@@ -368994,8 +369035,8 @@
   var s = i(26);
   var r = i(32);
   var l = i(4);
-  var c = i(462);
-  var u = i(543);
+  var c = i(463);
+  var u = i(545);
   var d = i(364);
   var p = function (e) {
     function StatusIconSeasonEvent() {
@@ -369219,8 +369260,8 @@
   var c = i(137);
   var u = i(4);
   var d = i(9);
-  var p = i(462);
-  var h = i(543);
+  var p = i(463);
+  var h = i(545);
   var g = i(364);
   var C = function (e) {
     function StatusIconTemporaryServerEvent() {
@@ -369509,7 +369550,7 @@
   var o = i(5);
   var a = i(3);
   var s = i(4);
-  var r = i(4066);
+  var r = i(4067);
   var l = i(336);
   var c = function (e) {
     function StatusIconXPBooster() {
@@ -369542,7 +369583,7 @@
   }(l.ACastleBoosterStatusIcon);
   t.StatusIconXPBooster = c;
   var u = i(9);
-  var d = i(4067);
+  var d = i(4068);
   var p = i(110);
 }, function (e, t, i) {
   'use strict';
@@ -369712,7 +369753,7 @@
   t.StatusIconFactionInvasionBooster = c;
   var u = i(9);
   var d = i(110);
-  var p = i(4069);
+  var p = i(4070);
 }, function (e, t, i) {
   'use strict';
 
@@ -369957,8 +369998,8 @@
   var n = i(0);
   var o = i(1);
   var a = i(192);
-  var s = i(4073);
-  var r = i(413);
+  var s = i(4074);
+  var r = i(414);
   var l = i(4);
   var c = function (e) {
     function GloryHUDAnimationController() {
@@ -370172,9 +370213,9 @@
   var r = i(1);
   var l = i(1);
   var c = i(3);
-  var u = i(4076);
+  var u = i(4077);
   var d = i(42);
-  var p = i(141);
+  var p = i(142);
   var h = createjs.Event;
   var g = createjs.TimerEvent;
   var C = function (e) {
@@ -370367,10 +370408,10 @@
   var a = i(5);
   var s = i(3);
   var r = i(6);
-  var l = i(4078);
+  var l = i(4079);
   var c = i(163);
   var u = i(4);
-  var d = i(588);
+  var d = i(589);
   var p = i(8);
   var h = function (e) {
     function ButtonBuyLevelComponent(t) {
@@ -370411,7 +370452,7 @@
   var g = i(47);
   var C = i(133);
   var _ = i(9);
-  var m = i(4079);
+  var m = i(4080);
 }, function (e, t, i) {
   'use strict';
 
@@ -370474,7 +370515,7 @@
       CastleBuyLevelDialog.NAME = "CastleStandardYesNoWithCostsEx";
     };
     return CastleBuyLevelDialog;
-  }(i(613).CastleConfirmCostsDialog);
+  }(i(614).CastleConfirmCostsDialog);
   t.CastleBuyLevelDialog = c;
   var u = i(13);
   o.classImplementsInterfaces(c, "ICollectableRendererList");
@@ -370572,7 +370613,7 @@
     return SubscriptionTeaserDialog;
   }(p.CastleExternalDialog);
   t.SubscriptionTeaserDialog = C;
-  var _ = i(521);
+  var _ = i(523);
   var m = i(36);
   var f = i(121);
   o.classImplementsInterfaces(C, "ICollectableRendererList");
@@ -371146,7 +371187,7 @@
   var o = i(1);
   var a = i(3);
   var s = i(3);
-  var r = i(140);
+  var r = i(141);
   var l = i(12);
   var c = i(4);
   var u = i(76);
@@ -371206,7 +371247,7 @@
   }(i(11).CastleExternalDialog);
   t.PlayerIgnoreListDialog = h;
   var g = i(78);
-  var C = i(4090);
+  var C = i(4091);
   var _ = i(19);
   o.classImplementsInterfaces(h, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -371373,7 +371414,7 @@
   var c = i(18);
   var u = i(329);
   var d = i(4);
-  var p = i(493);
+  var p = i(495);
   var h = function (e) {
     function CastleMultiInfoBuildingLayer(t) {
       var i = e.call(this, t) || this;
@@ -371553,7 +371594,7 @@
   }(u.APanelButton);
   t.AchievementPanelButton = d;
   var p = i(14);
-  var h = i(4094);
+  var h = i(4095);
   o.classImplementsInterfaces(d, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -371564,7 +371605,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(4095);
+  var s = i(4096);
   var r = i(1687);
   var l = i(4);
   var c = i(8);
@@ -371667,8 +371708,8 @@
     return CastleAchievementDialog;
   }(i(108).CastleExternalSubLayerDialog);
   t.CastleAchievementDialog = u;
-  var d = i(4096);
-  var p = i(4097);
+  var d = i(4097);
+  var p = i(4098);
   o.classImplementsInterfaces(u, "ICollectableRendererList");
   u.__initialize_static_members();
 }, function (e, t, i) {
@@ -372035,7 +372076,7 @@
   var s = i(59);
   var r = i(39);
   var l = i(4);
-  var c = i(609);
+  var c = i(610);
   var u = i(89);
   var d = function (e) {
     function FamePanelButton() {
@@ -372073,7 +372114,7 @@
   }(u.APanelButton);
   t.FamePanelButton = d;
   var p = i(14);
-  var h = i(610);
+  var h = i(611);
   o.classImplementsInterfaces(d, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -372139,7 +372180,7 @@
   }(d.APanelButton);
   t.LostAndFoundPanelButton = p;
   var h = i(14);
-  var g = i(4101);
+  var g = i(4102);
   o.classImplementsInterfaces(p, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -372156,8 +372197,8 @@
   var c = i(3);
   var u = i(6);
   var d = i(1217);
-  var p = i(4102);
-  var h = i(498);
+  var p = i(4103);
+  var h = i(500);
   var g = i(21);
   var C = i(118);
   var _ = i(235);
@@ -372308,7 +372349,7 @@
   t.LostAndFoundDialog = T;
   o.classImplementsInterfaces(T, "ICollectableRendererList");
   var S = i(78);
-  var A = i(4103);
+  var A = i(4104);
   var L = i(36);
 }, function (e, t, i) {
   'use strict';
@@ -372341,7 +372382,7 @@
   var a = i(2);
   var s = i(3);
   var r = i(3);
-  var l = i(4104);
+  var l = i(4105);
   var c = i(31);
   var u = i(20);
   var d = i(4);
@@ -372583,7 +372624,7 @@
   var P = i(767);
   var M = i(1448);
   var R = i(247);
-  var V = i(595);
+  var V = i(596);
   o.classImplementsInterfaces(E, "ICollectableRendererList");
   var x = i(1);
   var w = i(36);
@@ -372972,10 +373013,10 @@
   var k = i(125);
   var U = i(94);
   var G = i(61);
-  var H = i(4107);
-  var j = i(4108);
+  var H = i(4108);
+  var j = i(4109);
   var W = i(1);
-  var Y = i(141);
+  var Y = i(142);
 }, function (e, t, i) {
   'use strict';
 
@@ -373148,7 +373189,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(53);
-  var s = i(4110);
+  var s = i(4111);
   var r = i(89);
   var l = function (e) {
     function ABGRankingPanelButton() {
@@ -373286,7 +373327,7 @@
   t.RewardHubPanelButton = d;
   var p = i(14);
   var h = i(407);
-  var g = i(549);
+  var g = i(551);
   var C = i(1671);
   o.classImplementsInterfaces(d, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -373603,7 +373644,7 @@
   var f = i(92);
   var O = i(15);
   var E = i(4);
-  var y = i(4114);
+  var y = i(4115);
   var b = i(174);
 }, function (e, t, i) {
   'use strict';
@@ -373675,7 +373716,7 @@
   var d = i(4);
   var p = i(808);
   var h = i(949);
-  var g = i(4116);
+  var g = i(4117);
   var C = createjs.Event;
   var _ = function (e) {
     function CastleTaxComponent(t) {
@@ -374220,7 +374261,7 @@
   var s = i(26);
   var r = i(4);
   var l = i(9);
-  var c = i(556);
+  var c = i(558);
   var u = i(89);
   var d = function (e) {
     function DistrictGachaEventPanelButton() {
@@ -374411,7 +374452,7 @@
   t.FactionCampsPanelButton = l;
   var c = i(17);
   var u = i(14);
-  var d = i(4123);
+  var d = i(4124);
   o.classImplementsInterfaces(l, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -374429,7 +374470,7 @@
   var u = i(3);
   var d = i(6);
   var p = i(220);
-  var h = i(429);
+  var h = i(430);
   var g = i(221);
   var C = i(4);
   var _ = i(202);
@@ -374602,7 +374643,7 @@
   var a = i(59);
   var s = i(53);
   var r = i(4);
-  var l = i(449);
+  var l = i(450);
   var c = i(994);
   var u = i(89);
   var d = function (e) {
@@ -374777,7 +374818,7 @@
   var l = i(267);
   var c = i(4);
   var u = i(9);
-  var d = i(432);
+  var d = i(433);
   var p = i(89);
   var h = createjs.Point;
   var g = function (e) {
@@ -374926,7 +374967,7 @@
   var h = i(14);
   var g = i(1598);
   var C = i(266);
-  var _ = i(627);
+  var _ = i(628);
   o.classImplementsInterfaces(u, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -375089,7 +375130,7 @@
   var c = i(35);
   var u = i(9);
   var d = i(14);
-  var p = i(450);
+  var p = i(451);
   o.classImplementsInterfaces(r, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -375340,7 +375381,7 @@
   var f = i(57);
   var O = i(14);
   var E = i(38);
-  var y = i(452);
+  var y = i(453);
   var b = i(266);
 }, function (e, t, i) {
   'use strict';
@@ -375385,7 +375426,7 @@
   t.ResourceIslandsPanelButton = l;
   var c = i(17);
   var u = i(14);
-  var d = i(4136);
+  var d = i(4137);
   o.classImplementsInterfaces(l, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -375408,7 +375449,7 @@
   var C = i(6);
   var _ = i(1532);
   var m = i(220);
-  var f = i(139);
+  var f = i(140);
   var O = i(221);
   var E = i(196);
   var y = i(4);
@@ -375894,7 +375935,7 @@
   var p = i(17);
   var h = i(14);
   var g = i(1337);
-  var C = i(4140);
+  var C = i(4141);
   o.classImplementsInterfaces(d, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -376033,7 +376074,7 @@
   }(a.APanelButton);
   t.ActionPlaceHolderButton = r;
   var l = i(17);
-  var c = i(559);
+  var c = i(560);
   o.classImplementsInterfaces(r, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -376043,7 +376084,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(573);
+  var a = i(574);
   var s = i(4);
   var r = i(89);
   var l = function (e) {
@@ -376146,7 +376187,7 @@
   }(a.APanelButton);
   t.SeasonOverviewPanelButton = s;
   var r = i(14);
-  var l = i(4146);
+  var l = i(4147);
   o.classImplementsInterfaces(s, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -376163,9 +376204,9 @@
   var c = i(3);
   var u = i(3);
   var d = i(6);
-  var p = i(658);
+  var p = i(659);
   var h = i(21);
-  var g = i(429);
+  var g = i(430);
   var C = i(128);
   var _ = i(187);
   var m = i(71);
@@ -376333,14 +376374,14 @@
   var r = i(5);
   var l = i(6);
   var c = i(18);
-  var u = i(4149);
+  var u = i(4150);
   var d = i(71);
   var p = i(92);
   var h = i(15);
   var g = i(4);
-  var C = i(460);
+  var C = i(461);
   var _ = i(19);
-  var m = i(4150);
+  var m = i(4151);
   var f = createjs.MouseEvent;
   var O = function (e) {
     function CastleBuildingListComponent(t, i) {
@@ -376445,11 +376486,11 @@
   t.CastleBuildingListComponent = O;
   var E = i(35);
   var y = i(9);
-  var b = i(4151);
+  var b = i(4152);
   var D = i(8);
   var I = i(266);
-  var v = i(627);
-  var T = i(4152);
+  var v = i(628);
+  var T = i(4153);
 }, function (e, t, i) {
   'use strict';
 
@@ -376846,17 +376887,17 @@
   var r = i(3);
   var l = i(18);
   var c = i(39);
-  var u = i(618);
-  var d = i(140);
+  var u = i(619);
+  var d = i(141);
   var p = i(32);
   var h = i(71);
   var g = i(4);
   var C = i(43);
-  var _ = i(523);
+  var _ = i(525);
   var m = i(236);
   var f = i(393);
   var O = i(93);
-  var E = i(524);
+  var E = i(526);
   var y = i(8);
   var b = function (e) {
     function CastleOtherPlayerInfoPanel() {
@@ -376980,13 +377021,13 @@
   }(i(130).CastlePanel);
   t.CastleOtherPlayerInfoPanel = b;
   var D = i(9);
-  var I = i(619);
+  var I = i(620);
   var v = i(1872);
   var T = i(397);
   var S = i(238);
   var A = i(394);
   var L = i(94);
-  var P = i(445);
+  var P = i(446);
   b.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -377007,7 +377048,7 @@
   var h = i(4);
   var g = i(129);
   var C = i(229);
-  var _ = i(446);
+  var _ = i(447);
   var m = i(8);
   var f = i(293);
   var O = i(130);
@@ -377302,7 +377343,7 @@
   var v = i(17);
   var T = i(1447);
   var S = i(310);
-  var A = i(447);
+  var A = i(448);
   var L = i(61);
   var P = i(1459);
   var M = i(1460);
@@ -377334,16 +377375,16 @@
       e.showPanelRedirecter(p.CastleMultiInfoPanel, null, true);
     };
     return CastleLayoutKingdomMap;
-  }(i(554).ACastleLayoutStrategy);
+  }(i(556).ACastleLayoutStrategy);
   t.CastleLayoutKingdomMap = a;
-  var s = i(559);
+  var s = i(560);
   var r = i(1125);
-  var l = i(513);
-  var c = i(463);
-  var u = i(474);
+  var l = i(515);
+  var c = i(464);
+  var u = i(475);
   var d = i(844);
   var p = i(677);
-  var h = i(4156);
+  var h = i(4157);
 }, function (e, t, i) {
   'use strict';
 
@@ -377368,7 +377409,7 @@
   var f = i(3);
   var O = i(3);
   var E = i(39);
-  var y = i(4157);
+  var y = i(4158);
   var b = i(21);
   var D = i(196);
   var I = i(26);
@@ -377376,7 +377417,7 @@
   var T = i(4);
   var S = i(68);
   var A = i(23);
-  var L = i(4158);
+  var L = i(4159);
   var P = i(848);
   var M = createjs.MovieClip;
   var R = createjs.Container;
@@ -377693,7 +377734,7 @@
   var N = i(9);
   var k = i(1763);
   var U = i(1773);
-  var G = i(476);
+  var G = i(478);
   var H = i(1132);
 }, function (e, t, i) {
   'use strict';
@@ -377765,16 +377806,16 @@
       configurable: true
     });
     return CastleLayoutSeasonWorldmap;
-  }(i(554).ACastleLayoutStrategy);
+  }(i(556).ACastleLayoutStrategy);
   t.CastleLayoutSeasonWorldmap = o;
   var a = i(1870);
   var s = i(1125);
-  var r = i(513);
-  var l = i(463);
-  var c = i(474);
+  var r = i(515);
+  var l = i(464);
+  var c = i(475);
   var u = i(844);
   var d = i(677);
-  var p = i(4160);
+  var p = i(4161);
 }, function (e, t, i) {
   'use strict';
 
@@ -377791,7 +377832,7 @@
   var u = i(1);
   var d = i(6);
   var p = i(280);
-  var h = i(4161);
+  var h = i(4162);
   var g = i(91);
   var C = i(204);
   var _ = i(1798);
@@ -378111,7 +378152,7 @@
   t.CastleSeasonMapScreen = T;
   var S = i(29);
   var A = i(737);
-  var L = i(4162);
+  var L = i(4163);
   var P = i(5);
 }, function (e, t, i) {
   'use strict';
@@ -378147,8 +378188,8 @@
   var o = i(5);
   var a = i(4);
   var s = i(1339);
-  var r = i(4163);
-  var l = i(4167);
+  var r = i(4164);
+  var l = i(4168);
   var c = function (e) {
     function CastleSeasonMapRenderer() {
       return e !== null && e.apply(this, arguments) || this;
@@ -378233,10 +378274,10 @@
     return CastleSeasonMapRenderer;
   }(s.CastleBaseTreasureMapRenderer);
   t.CastleSeasonMapRenderer = c;
-  var u = i(4168);
+  var u = i(4169);
   var d = i(1140);
-  var p = i(4172);
-  var h = i(4173);
+  var p = i(4173);
+  var h = i(4174);
 }, function (e, t, i) {
   'use strict';
 
@@ -378245,10 +378286,10 @@
   });
   var n = i(1);
   var o = i(6);
-  var a = i(565);
-  var s = i(4164);
-  var r = i(4165);
-  var l = i(4166);
+  var a = i(566);
+  var s = i(4165);
+  var r = i(4166);
+  var l = i(4167);
   var c = function () {
     function CastleSeasonAppearanceItemComponent() {}
     CastleSeasonAppearanceItemComponent.prototype.initComponent = function (e, t, i) {
@@ -378459,8 +378500,8 @@
     return CastleSeaQueenSeasonMapItemCreator;
   }(i(1140).CastleSeasonMapItemCreator);
   t.CastleSeaQueenSeasonMapItemCreator = a;
-  var s = i(4170);
-  var r = i(4171);
+  var s = i(4171);
+  var r = i(4172);
   o.classImplementsInterfaces(a, "ITreasureMapItemCreator");
 }, function (e, t, i) {
   'use strict';
@@ -378582,7 +378623,7 @@
   var p = i(389);
   var h = i(9);
   var g = i(759);
-  var C = i(604);
+  var C = i(605);
   a.classImplementsInterfaces(d, "ITreasureMapItem", "IIngameUICapable", "IWorldmapTooltipData");
 }, function (e, t, i) {
   'use strict';
@@ -378627,7 +378668,7 @@
   var c = i(389);
   var u = i(9);
   var d = i(759);
-  var p = i(604);
+  var p = i(605);
   o.classImplementsInterfaces(l, "ITreasureMapItem", "IIngameUICapable", "IWorldmapTooltipData");
 }, function (e, t, i) {
   'use strict';
@@ -378727,7 +378768,7 @@
   }(i(1140).CastleSeasonMapItemCreator);
   t.CastleUnderworldSeasonMapItemCreator = r;
   var l = i(1141);
-  var c = i(4174);
+  var c = i(4175);
   var u = i(1876);
   var d = i(1142);
   o.classImplementsInterfaces(r, "ITreasureMapItemCreator");
@@ -378754,7 +378795,7 @@
   }(i(1875).ObstacleSeasonMapScreenItem);
   t.ObstacleUnderworldSeasonMapScreenItem = r;
   var l = i(9);
-  var c = i(4175);
+  var c = i(4176);
   o.classImplementsInterfaces(r, "ITreasureMapItem", "IIngameUICapable", "IWorldmapTooltipData");
 }, function (e, t, i) {
   'use strict';
@@ -378832,10 +378873,10 @@
       }
     };
     return CastleLayoutStartScreen;
-  }(i(554).ACastleLayoutStrategy);
+  }(i(556).ACastleLayoutStrategy);
   t.CastleLayoutStartScreen = c;
-  var u = i(4184);
-  var d = i(4186);
+  var u = i(4185);
+  var d = i(4187);
   var p = i(1144);
 }, function (e, t, i) {
   'use strict';
@@ -378932,7 +378973,7 @@
       TooltipDisplayLite.MIN_WIDTH = 90;
     };
     return TooltipDisplayLite;
-  }(i(584).CastleMovieClip);
+  }(i(585).CastleMovieClip);
   t.TooltipDisplayLite = c;
   r.classImplementsInterfaces(c, "MovieClip");
   c.__initialize_static_members();
@@ -378991,7 +379032,7 @@
   var g = i(46);
   var C = i(58);
   var _ = i(264);
-  var m = i(416);
+  var m = i(417);
   var f = i(8);
   var O = function (e) {
     function ModernStartscreenDropdownComponent(t, i = false) {
@@ -379483,7 +379524,7 @@
   }(i(11).CastleExternalDialog);
   t.CastleAgeGateCheckDialog = _;
   var m = i(9);
-  var f = i(4185);
+  var f = i(4186);
   var O = i(29);
   u.classImplementsInterfaces(_, "ICollectableRendererList");
   _.__initialize_static_members();
@@ -379589,7 +379630,7 @@
   var S = i(24);
   var A = i(24);
   var L = i(365);
-  var P = i(494);
+  var P = i(496);
   var M = i(15);
   var R = i(4);
   var V = i(68);
@@ -380010,7 +380051,7 @@
   var s = i(1861);
   var r = i(1862);
   var l = i(1863);
-  var c = i(559);
+  var c = i(560);
   var u = i(1882);
   var d = i(1145);
 }, function (e, t, i) {
@@ -380088,15 +380129,15 @@
   var b = i(16);
   var D = i(196);
   var I = i(90);
-  var v = i(577);
+  var v = i(578);
   var T = i(30);
   var S = i(15);
   var A = i(72);
   var L = i(4);
-  var P = i(411);
+  var P = i(412);
   var M = i(42);
-  var R = i(576);
-  var V = i(4191);
+  var R = i(577);
+  var V = i(4192);
   var x = i(279);
   var w = i(225);
   var B = i(889);
@@ -380935,7 +380976,7 @@
   var c = i(3);
   var u = i(6);
   var d = i(39);
-  var p = i(4193);
+  var p = i(4194);
   var h = i(4);
   var g = i(11);
   var C = createjs.Point;
@@ -381032,7 +381073,7 @@
   var s = i(1);
   var r = i(1);
   var l = i(4);
-  var c = i(4195);
+  var c = i(4196);
   var u = function (e) {
     function ButtonAlienRerollComponent(t) {
       return e.call(this, t) || this;
@@ -381096,7 +381137,7 @@
   }(i(150).ButtonBasicComponent);
   t.ButtonAlienRerollComponent = u;
   var d = i(9);
-  var p = i(4196);
+  var p = i(4197);
   s.classImplementsInterfaces(u, "IWorldMapObjectRingmenuButtonComponent");
 }, function (e, t, i) {
   'use strict';
@@ -381146,7 +381187,7 @@
   var l = i(3);
   var c = i(3);
   var u = i(6);
-  var d = i(4197);
+  var d = i(4198);
   var p = i(31);
   var h = i(20);
   var g = i(12);
@@ -381352,8 +381393,8 @@
   var y = i(45);
   var b = i(9);
   var D = i(25);
-  var I = i(4198);
-  var v = i(4201);
+  var I = i(4199);
+  var v = i(4202);
   var T = i(36);
   a.classImplementsInterfaces(O, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -381432,7 +381473,7 @@
     return CastleRerollAlienChancesDialog;
   }(i(11).CastleExternalDialog);
   t.CastleRerollAlienChancesDialog = r;
-  var l = i(4199);
+  var l = i(4200);
   var c = i(36);
   o.classImplementsInterfaces(r, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -381552,7 +381593,7 @@
   }(l.CastleItemRenderer);
   t.CastleRerollAlienChanceDialogList = d;
   var p = i(79);
-  var h = i(4200);
+  var h = i(4201);
   o.classImplementsInterfaces(d, "ICollectableRendererList");
   d.__initialize_static_members();
 }, function (e, t, i) {
@@ -381687,7 +381728,7 @@
   var c = i(18);
   var u = i(4);
   var d = i(23);
-  var p = i(619);
+  var p = i(620);
   var h = function (e) {
     function ButtonAttackCollectorComponent(t) {
       return e.call(this, t.basicButton) || this;
@@ -381841,7 +381882,7 @@
   var u = i(6);
   var d = i(28);
   var p = i(4);
-  var h = i(619);
+  var h = i(620);
   var g = function (e) {
     function ButtonAttackLandmarkComponent(t) {
       return e.call(this, t) || this;
@@ -382228,7 +382269,7 @@
   var o = i(1);
   var a = i(18);
   var s = i(4);
-  var r = i(523);
+  var r = i(525);
   var l = function (e) {
     function ButtonSendTroopsComponent(t) {
       return e.call(this, t) || this;
@@ -382276,10 +382317,10 @@
   var a = i(5);
   var s = i(5);
   var r = i(6);
-  var l = i(4212);
+  var l = i(4213);
   var c = i(4);
   var u = i(758);
-  var d = i(4213);
+  var d = i(4214);
   var p = function (e) {
     function ButtonTauntComponent(t) {
       return e.call(this, t) || this;
@@ -382376,7 +382417,7 @@
   var h = i(9);
   var g = i(759);
   var C = i(1775);
-  var _ = i(4214);
+  var _ = i(4215);
   o.classImplementsInterfaces(p, "IWorldMapObjectRingmenuButtonComponent");
 }, function (e, t, i) {
   'use strict';
@@ -382528,7 +382569,7 @@
     return SamuraiDaimyoTauntDialog;
   }(_.CastleExternalDialog);
   t.SamuraiDaimyoTauntDialog = f;
-  var O = i(525);
+  var O = i(527);
   var E = i(9);
   var y = i(61);
   var b = i(70);
@@ -382547,10 +382588,10 @@
   var a = i(1);
   var s = i(59);
   var r = i(39);
-  var l = i(440);
+  var l = i(441);
   var c = i(392);
   var u = i(4);
-  var d = i(441);
+  var d = i(442);
   var p = function (e) {
     function ButtonTradeComponent(t) {
       return e.call(this, t) || this;
@@ -382602,7 +382643,7 @@
   }(i(150).ButtonBasicComponent);
   t.ButtonTradeComponent = p;
   var h = i(9);
-  var g = i(442);
+  var g = i(443);
   o.classImplementsInterfaces(p, "IWorldMapObjectRingmenuButtonComponent");
 }, function (e, t, i) {
   'use strict';
@@ -382716,8 +382757,8 @@
   var n = i(0);
   var o = i(2);
   var a = i(3);
-  var s = i(602);
-  var r = i(603);
+  var s = i(603);
+  var r = i(604);
   var l = i(937);
   var c = i(8);
   var u = function (e) {
@@ -382811,7 +382852,7 @@
       WorldMapArmyAttackMenu.NAME = "WorldMapArmyAttackMenu";
     };
     return WorldMapArmyAttackMenu;
-  }(i(4219).WorldMapMovementRingMenu);
+  }(i(4220).WorldMapMovementRingMenu);
   t.WorldMapArmyAttackMenu = u;
   var d = i(29);
   var p = i(9);
@@ -382883,11 +382924,11 @@
       e.showPanelRedirecter(r.CastleRelocatePanel, null, false);
     };
     return CastleLayoutWorldmapRelocation;
-  }(i(554).ACastleLayoutStrategy);
+  }(i(556).ACastleLayoutStrategy);
   t.CastleLayoutWorldmapRelocation = o;
   var a = i(1882);
-  var s = i(513);
-  var r = i(4221);
+  var s = i(515);
+  var r = i(4222);
   var l = i(844);
   var c = i(1145);
 }, function (e, t, i) {
@@ -382959,7 +383000,7 @@
     return CastleRelocatePanel;
   }(i(130).CastlePanel);
   t.CastleRelocatePanel = c;
-  var u = i(505);
+  var u = i(507);
   var d = i(17);
 }, function (e, t, i) {
   'use strict';
@@ -383201,7 +383242,7 @@
     return PopoverPanel;
   }(r.CastlePanel);
   t.PopoverPanel = c;
-  var u = i(4225);
+  var u = i(4226);
   var d = i(295);
 }, function (e, t, i) {
   'use strict';
@@ -383248,9 +383289,9 @@
     return PopoverEnum;
   }(i(85).CastleEnum);
   t.PopoverEnum = s;
-  var r = i(4226);
-  var l = i(4227);
-  var c = i(4228);
+  var r = i(4227);
+  var l = i(4228);
+  var c = i(4229);
   s.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -383527,7 +383568,7 @@
   var a = i(3);
   var s = i(66);
   var r = i(20);
-  var l = i(670);
+  var l = i(671);
   var c = createjs.Point;
   var u = function () {
     function CastleTieredPrimeDayRewardBoxVE(e, t, i) {
@@ -383726,7 +383767,7 @@
       return !!o.CastleModel.settingsData.isLoginReady && !!e.prototype.checkDisplayBehavior.call(this, t, i, n, a, r) && (!!o.CastleModel.tutorialData.isTutorialActive && !!s.CastleTutorialDialogFilter.instance.isInAllowedDialogs(t.key) || !r);
     };
     return CastleDefaultDialogBehavior;
-  }(i(409).CastleBasicDialogBehavior);
+  }(i(410).CastleBasicDialogBehavior);
   t.CastleDefaultDialogBehavior = a;
   var s = i(330);
 }, function (e, t, i) {
@@ -383754,7 +383795,7 @@
       return true;
     };
     return CastleLoginDialogBehavior;
-  }(i(409).CastleBasicDialogBehavior);
+  }(i(410).CastleBasicDialogBehavior);
   t.CastleLoginDialogBehavior = a;
 }, function (e, t, i) {
   'use strict';
@@ -383772,7 +383813,7 @@
       return false;
     };
     return CastleModalDialogBehavior;
-  }(i(409).CastleBasicDialogBehavior);
+  }(i(410).CastleBasicDialogBehavior);
   t.CastleModalDialogBehavior = o;
 }, function (e, t, i) {
   'use strict';
@@ -383800,7 +383841,7 @@
       return false;
     };
     return CastleModalSingleDialogBehavior;
-  }(i(409).CastleBasicDialogBehavior);
+  }(i(410).CastleBasicDialogBehavior);
   t.CastleModalSingleDialogBehavior = a;
   var s = i(330);
 }, function (e, t, i) {
@@ -383850,7 +383891,7 @@
       return a.CastleModel.settingsData.isLoginReady;
     };
     return CastlePaymentDialogBehavior;
-  }(i(409).CastleBasicDialogBehavior);
+  }(i(410).CastleBasicDialogBehavior);
   t.CastlePaymentDialogBehavior = r;
 }, function (e, t, i) {
   'use strict';
@@ -383901,7 +383942,7 @@
       return false;
     };
     return CastlePreloaderDialogBehavior;
-  }(i(409).CastleBasicDialogBehavior);
+  }(i(410).CastleBasicDialogBehavior);
   t.CastlePreloaderDialogBehavior = s;
 }, function (e, t, i) {
   'use strict';
@@ -383926,7 +383967,7 @@
       return true;
     };
     return CastleSingleDialogBehavior;
-  }(i(409).CastleBasicDialogBehavior);
+  }(i(410).CastleBasicDialogBehavior);
   t.CastleSingleDialogBehavior = a;
   var s = i(330);
 }, function (e, t, i) {
@@ -383965,7 +384006,7 @@
       return false;
     };
     return SingleInstanceDialogBehavior;
-  }(i(409).CastleBasicDialogBehavior);
+  }(i(410).CastleBasicDialogBehavior);
   t.SingleInstanceDialogBehavior = o;
 }, function (e, t, i) {
   'use strict';
@@ -383986,7 +384027,7 @@
   var h = i(41);
   var g = i(8);
   var C = i(11);
-  var _ = i(416);
+  var _ = i(417);
   var m = function (e) {
     function CastleHelperDialog() {
       var t = this;
@@ -384742,7 +384783,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(274);
-  var s = i(4258);
+  var s = i(4259);
   var r = function (e) {
     function AttackScreenGeneralsTrackingCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -384834,7 +384875,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(274);
-  var s = i(4260);
+  var s = i(4261);
   var r = function (e) {
     function AttackScreenWaveTrackingCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -384923,11 +384964,11 @@
   var o = i(1);
   var a = i(6);
   var s = i(28);
-  var r = i(558);
+  var r = i(559);
   var l = i(30);
   var c = i(54);
   var u = i(4);
-  var d = i(4262);
+  var d = i(4263);
   var p = function (e) {
     function CastleActivityBonusData(t) {
       var i = this;
@@ -385056,8 +385097,8 @@
   var o = i(2);
   var a = i(72);
   var s = i(4);
-  var r = i(4264);
-  var l = i(4265);
+  var r = i(4265);
+  var l = i(4266);
   var c = i(311);
   var u = function (e) {
     function CastleAllianceCrestData(t) {
@@ -385284,7 +385325,7 @@
   Object.defineProperty(t, "__esModule", {
     value: true
   });
-  var n = i(4267);
+  var n = i(4268);
   var o = function () {
     function AllianceQuestData(e) {
       var t = this;
@@ -385393,7 +385434,7 @@
   var o = i(1);
   var a = i(4);
   var s = i(341);
-  var r = i(4269);
+  var r = i(4270);
   var l = function (e) {
     function CastleAllianceInvasionCampData(t) {
       var i = e.call(this) || this;
@@ -385683,7 +385724,7 @@
   t.CastleBuddyListData = n;
   var o = i(1821);
   var a = i(15);
-  var s = i(4271);
+  var s = i(4272);
   n.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -385727,7 +385768,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(54);
-  var s = i(4273);
+  var s = i(4274);
   var r = function (e) {
     function CastleBuyLevelData(t) {
       var i = e.call(this) || this;
@@ -385815,10 +385856,10 @@
   var o = i(1);
   i(5);
   i(6);
-  var a = i(586);
+  var a = i(587);
   var s = i(54);
   var r = i(4);
-  var l = i(4275);
+  var l = i(4276);
   var c = function (e) {
     function CastleChatData() {
       var t = this;
@@ -385975,22 +386016,22 @@
   var n = i(0);
   var o = i(5);
   var a = i(1438);
-  var s = i(4278);
-  var r = i(4279);
-  var l = i(4280);
-  var c = i(4281);
-  var u = i(4282);
-  var d = i(540);
+  var s = i(4279);
+  var r = i(4280);
+  var l = i(4281);
+  var c = i(4282);
+  var u = i(4283);
+  var d = i(542);
   var p = i(87);
   var h = i(72);
   var g = i(67);
   var C = i(4);
   var _ = i(111);
   var m = i(799);
-  var f = i(4283);
-  var O = i(4284);
-  var E = i(461);
-  var y = i(142);
+  var f = i(4284);
+  var O = i(4285);
+  var E = i(462);
+  var y = i(138);
   var b = i(34);
   var D = i(1110);
   var I = function (e) {
@@ -386190,7 +386231,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(7);
-  var s = i(461);
+  var s = i(462);
   var r = function (e) {
     function C2SCraftingSkipVO(t, i, n, o, a, r) {
       var l = e.call(this) || this;
@@ -386224,7 +386265,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(7);
-  var s = i(461);
+  var s = i(462);
   var r = function (e) {
     function C2SCraftingUnlockVO(t, i, n, o, a) {
       var r = e.call(this) || this;
@@ -386256,7 +386297,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(7);
-  var s = i(461);
+  var s = i(462);
   var r = function (e) {
     function C2SCraftingCancelVO(t, i, n, o, a) {
       var r = e.call(this) || this;
@@ -386608,11 +386649,11 @@
   var a = i(6);
   var s = i(369);
   var r = i(1427);
-  var l = i(565);
+  var l = i(566);
   var c = i(72);
   var u = i(4);
-  var d = i(4286);
-  var p = i(4287);
+  var d = i(4287);
+  var p = i(4288);
   var h = function (e) {
     function CastleCrestSymbolData(t) {
       var i = e.call(this) || this;
@@ -386825,7 +386866,7 @@
   var l = i(22);
   var c = i(4);
   var u = i(168);
-  var d = i(142);
+  var d = i(138);
   var p = function (e) {
     function PremiumCrestSymbolVO(t) {
       var i = this;
@@ -387268,7 +387309,7 @@
   var o = i(2);
   var a = i(5);
   var s = i(6);
-  var r = i(4293);
+  var r = i(4294);
 }, function (e, t, i) {
   'use strict';
 
@@ -387386,9 +387427,9 @@
     return CastleEffectsData;
   }();
   t.CastleEffectsData = o;
-  var a = i(4295);
+  var a = i(4296);
   var s = i(1259);
-  var r = i(4296);
+  var r = i(4297);
 }, function (e, t, i) {
   'use strict';
 
@@ -387516,7 +387557,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(4298);
+  var s = i(4299);
   var r = function (e) {
     function CastleFactionInvasionCampData(t) {
       var i = this;
@@ -387610,7 +387651,7 @@
   var l = i(30);
   var c = i(72);
   var u = i(4);
-  var d = i(4300);
+  var d = i(4301);
   var p = function (e) {
     function CastleHighscoreData(t) {
       var i = e.call(this) || this;
@@ -387800,7 +387841,7 @@
     return HighscoreBonusVO;
   }();
   t.HighscoreBonusVO = n;
-  var o = i(4301);
+  var o = i(4302);
 }, function (e, t, i) {
   'use strict';
 
@@ -387841,7 +387882,7 @@
   var o = i(1);
   var a = i(54);
   var s = i(4);
-  var r = i(4303);
+  var r = i(4304);
   var l = function (e) {
     function CastleLeaderBoardRewardsData(t) {
       var i = this;
@@ -388472,20 +388513,20 @@
   var o = i(5);
   var a = i(6);
   var s = i(28);
-  var r = i(4305);
-  var l = i(4306);
-  var c = i(527);
+  var r = i(4306);
+  var l = i(4307);
+  var c = i(529);
   var u = i(30);
   var d = i(15);
   var p = i(4);
   var h = i(111);
-  var g = i(142);
-  var C = i(4307);
+  var g = i(138);
+  var C = i(4308);
   var _ = i(1462);
   var m = i(22);
-  var f = i(4313);
+  var f = i(4314);
   var O = i(1464);
-  var E = i(628);
+  var E = i(629);
   var y = i(1897);
 }, function (e, t, i) {
   'use strict';
@@ -388535,7 +388576,7 @@
   });
   var n = i(0);
   var o = i(680);
-  var a = i(4308);
+  var a = i(4309);
   var s = function (e) {
     function CastleLegendSkillTreeRoot(t) {
       return e.call(this, t) || this;
@@ -388565,7 +388606,7 @@
   });
   var n = i(0);
   var o = i(680);
-  var a = i(4309);
+  var a = i(4310);
   var s = function (e) {
     function CastleLegendSkillTree(t) {
       return e.call(this, t) || this;
@@ -388595,10 +388636,10 @@
   });
   var n = i(0);
   var o = i(680);
-  var a = i(4310);
-  var s = i(628);
+  var a = i(4311);
+  var s = i(629);
   var r = i(1897);
-  var l = i(4312);
+  var l = i(4313);
   var c = function (e) {
     function CastleLegendSkillTier(t) {
       var i = e.call(this, t) || this;
@@ -388650,8 +388691,8 @@
   });
   var n = i(0);
   var o = i(680);
-  var a = i(4311);
-  var s = i(628);
+  var a = i(4312);
+  var s = i(629);
   var r = function (e) {
     function CastleLegendSkillGroup(t) {
       return e.call(this, t) || this;
@@ -388804,11 +388845,11 @@
   var n = i(0);
   var o = i(2);
   var a = i(1);
-  var s = i(4315);
+  var s = i(4316);
   var r = i(814);
   var l = i(1634);
   var c = i(54);
-  var u = i(4316);
+  var u = i(4317);
   var d = i(1898);
   var p = function (e) {
     function CastleLootboxData(t) {
@@ -388928,10 +388969,10 @@
   var o = i(2);
   var a = i(1);
   var s = i(54);
-  var r = i(4317);
-  var l = i(4318);
+  var r = i(4318);
+  var l = i(4319);
   var c = i(1898);
-  var u = i(4319);
+  var u = i(4320);
   var d = function (e) {
     function CastleLootBoxDataXML(t) {
       var i = e.call(this) || this;
@@ -389353,8 +389394,8 @@
     return CastlePrimeDayData;
   }();
   t.CastlePrimeDayData = n;
-  var o = i(4322);
-  var a = i(4323);
+  var o = i(4323);
+  var a = i(4324);
 }, function (e, t, i) {
   'use strict';
 
@@ -389798,7 +389839,7 @@
   var s = i(5);
   var r = i(6);
   var l = i(4);
-  var c = i(4327);
+  var c = i(4328);
 }, function (e, t, i) {
   'use strict';
 
@@ -390507,7 +390548,7 @@
   var l = i(13);
   var c = i(47);
   var u = i(4);
-  var d = i(4336);
+  var d = i(4337);
 }, function (e, t, i) {
   'use strict';
 
@@ -390535,7 +390576,7 @@
   Object.defineProperty(t, "__esModule", {
     value: true
   });
-  var n = i(4338);
+  var n = i(4339);
   var o = function () {
     function DivisionData(e) {
       var t = this;
@@ -390666,7 +390707,7 @@
   var a = i(5);
   var s = i(739);
   var r = i(54);
-  var l = i(4340);
+  var l = i(4341);
   var c = function (e) {
     function CastleFriendListData() {
       var t = this;
@@ -390872,7 +390913,7 @@
   var C = i(29);
   var _ = i(9);
   var m = i(17);
-  var f = i(4342);
+  var f = i(4343);
   var O = i(4);
   var E = i(1275);
   var y = i(1107);
@@ -391073,23 +391114,23 @@
   });
   var n = i(0);
   var o = i(2);
-  var a = i(4344);
+  var a = i(4345);
   var s = i(22);
   var r = i(183);
   var l = i(72);
   var c = i(4);
   var u = i(34);
-  var d = i(4345);
-  var p = i(4346);
-  var h = i(4347);
-  var g = i(4348);
+  var d = i(4346);
+  var p = i(4347);
+  var h = i(4348);
+  var g = i(4349);
   var C = i(1277);
-  var _ = i(4349);
+  var _ = i(4350);
   var m = i(725);
   var f = i(908);
-  var O = i(4350);
-  var E = i(4355);
-  var y = i(4357);
+  var O = i(4351);
+  var E = i(4356);
+  var y = i(4358);
   var b = function (e) {
     function GeneralsData() {
       var t = e.call(this) || this;
@@ -391848,7 +391889,7 @@
   });
   var n = i(0);
   var o = i(681);
-  var a = i(4351);
+  var a = i(4352);
   var s = function (e) {
     function GeneralSkillTreeRoot(t) {
       return e.call(this, t) || this;
@@ -391878,7 +391919,7 @@
   });
   var n = i(0);
   var o = i(681);
-  var a = i(4352);
+  var a = i(4353);
   var s = function (e) {
     function GeneralSkillTree(t) {
       var i = e.call(this, t) || this;
@@ -391930,7 +391971,7 @@
   });
   var n = i(0);
   var o = i(681);
-  var a = i(4353);
+  var a = i(4354);
   var s = function (e) {
     function GeneralSkillTier(t) {
       var i = e.call(this, t) || this;
@@ -391972,7 +392013,7 @@
   });
   var n = i(0);
   var o = i(681);
-  var a = i(4354);
+  var a = i(4355);
   var s = function (e) {
     function GeneralSkillGroup(t) {
       return e.call(this, t) || this;
@@ -392034,7 +392075,7 @@
   var s = i(4);
   var r = i(34);
   var l = i(690);
-  var c = i(4356);
+  var c = i(4357);
   var u = function (e) {
     function GeneralSkillVO() {
       return e !== null && e.apply(this, arguments) || this;
@@ -392364,7 +392405,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(54);
-  var s = i(4360);
+  var s = i(4361);
   var r = function (e) {
     function LevelUpData(t) {
       var i = this;
@@ -392458,7 +392499,7 @@
   var a = i(32);
   var s = i(15);
   var r = i(341);
-  var l = i(4362);
+  var l = i(4363);
   var c = function (e) {
     function MightData(t) {
       var i = this;
@@ -392797,7 +392838,7 @@
   var a = i(15);
   var s = i(54);
   var r = i(1888);
-  var l = i(4366);
+  var l = i(4367);
   var c = function (e) {
     function PopoverData() {
       var t = e !== null && e.apply(this, arguments) || this;
@@ -392914,7 +392955,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(72);
-  var s = i(4368);
+  var s = i(4369);
   var r = function (e) {
     function GachaData() {
       return e !== null && e.apply(this, arguments) || this;
@@ -393104,9 +393145,9 @@
   });
   var n = i(0);
   var o = i(6);
-  var a = i(558);
+  var a = i(559);
   var s = i(4);
-  var r = i(4370);
+  var r = i(4371);
   var l = function (e) {
     function CastleStartUpBonusData(t) {
       var i = this;
@@ -393225,7 +393266,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(54);
-  var s = i(4372);
+  var s = i(4373);
   var r = function (e) {
     function CastleXmlPropertyData(t) {
       var i = e.call(this) || this;
@@ -393319,173 +393360,174 @@
   });
   var n = i(231);
   var o = i(13);
-  var a = i(4374);
-  var s = i(4375);
-  var r = i(4383);
+  var a = i(4375);
+  var s = i(4376);
+  var r = i(4384);
   var l = i(167);
-  var c = i(4403);
-  var u = i(4404);
-  var d = i(4406);
-  var p = i(4410);
-  var h = i(4414);
-  var g = i(4415);
+  var c = i(4404);
+  var u = i(4405);
+  var d = i(4407);
+  var p = i(4411);
+  var h = i(4415);
+  var g = i(4416);
   var C = i(1911);
-  var _ = i(4423);
-  var m = i(4425);
-  var f = i(4430);
-  var O = i(4435);
-  var E = i(4439);
-  var y = i(4440);
-  var b = i(4450);
-  var D = i(4454);
-  var I = i(4455);
-  var v = i(4462);
-  var T = i(4465);
-  var S = i(4468);
-  var A = i(4472);
+  var _ = i(4424);
+  var m = i(4426);
+  var f = i(4431);
+  var O = i(4436);
+  var E = i(4440);
+  var y = i(4441);
+  var b = i(4451);
+  var D = i(4455);
+  var I = i(4456);
+  var v = i(4463);
+  var T = i(4466);
+  var S = i(4469);
+  var A = i(4473);
   var L = i(1009);
-  var P = i(4473);
+  var P = i(4474);
   var M = i(207);
-  var R = i(4474);
-  var V = i(4478);
-  var x = i(4479);
-  var w = i(4481);
-  var B = i(4487);
-  var F = i(4488);
-  var N = i(4489);
-  var k = i(4490);
-  var U = i(4491);
-  var G = i(4492);
-  var H = i(4493);
-  var j = i(4494);
-  var W = i(4495);
-  var Y = i(4496);
-  var K = i(1923);
-  var z = i(4518);
-  var q = i(4519);
-  var X = i(4523);
-  var Q = i(4524);
-  var J = i(820);
-  var Z = i(4525);
-  var $ = i(4528);
-  var ee = i(4531);
-  var te = i(4534);
+  var R = i(4475);
+  var V = i(4479);
+  var x = i(4480);
+  var w = i(4482);
+  var B = i(4488);
+  var F = i(4489);
+  var N = i(4490);
+  var k = i(4491);
+  var U = i(4492);
+  var G = i(4493);
+  var H = i(4494);
+  var j = i(4495);
+  var W = i(4496);
+  var Y = i(4497);
+  var K = i(4498);
+  var z = i(1923);
+  var q = i(4520);
+  var X = i(4521);
+  var Q = i(4525);
+  var J = i(4526);
+  var Z = i(820);
+  var $ = i(4527);
+  var ee = i(4530);
+  var te = i(4533);
   var ie = i(4536);
   var ne = i(4538);
-  var oe = i(4541);
-  var ae = i(4542);
-  var se = i(4545);
-  var re = i(4548);
-  var le = i(4551);
-  var ce = i(4552);
-  var ue = i(4555);
-  var de = i(4559);
-  var pe = i(1777);
-  var he = i(4563);
-  var ge = i(4568);
-  var Ce = i(4569);
-  var _e = i(4570);
-  var me = i(4571);
-  var fe = i(4572);
-  var Oe = i(4581);
-  var Ee = i(4582);
-  var ye = i(4587);
-  var be = i(4588);
-  var De = i(4589);
-  var Ie = i(4590);
-  var ve = i(4593);
-  var Te = i(776);
-  var Se = i(4596);
-  var Ae = i(4597);
-  var Le = i(673);
-  var Pe = i(1436);
-  var Me = i(4601);
-  var Re = i(4602);
-  var Ve = i(4603);
-  var xe = i(4604);
-  var we = i(4605);
-  var Be = i(4606);
-  var Fe = i(4607);
-  var Ne = i(4608);
-  var ke = i(4609);
-  var Ue = i(4610);
-  var Ge = i(4611);
-  var He = i(4612);
-  var je = i(4613);
-  var We = i(4614);
-  var Ye = i(4615);
-  var Ke = i(4616);
+  var oe = i(4540);
+  var ae = i(4543);
+  var se = i(4544);
+  var re = i(4547);
+  var le = i(4550);
+  var ce = i(4553);
+  var ue = i(4554);
+  var de = i(4557);
+  var pe = i(4561);
+  var he = i(1777);
+  var ge = i(4565);
+  var Ce = i(4570);
+  var _e = i(4571);
+  var me = i(4572);
+  var fe = i(4573);
+  var Oe = i(4574);
+  var Ee = i(4583);
+  var ye = i(4584);
+  var be = i(4589);
+  var De = i(4590);
+  var Ie = i(4591);
+  var ve = i(4592);
+  var Te = i(4595);
+  var Se = i(776);
+  var Ae = i(4598);
+  var Le = i(4599);
+  var Pe = i(673);
+  var Me = i(1436);
+  var Re = i(4603);
+  var Ve = i(4604);
+  var xe = i(4605);
+  var we = i(4606);
+  var Be = i(4607);
+  var Fe = i(4608);
+  var Ne = i(4609);
+  var ke = i(4610);
+  var Ue = i(4611);
+  var Ge = i(4612);
+  var He = i(4613);
+  var je = i(4614);
+  var We = i(4615);
+  var Ye = i(4616);
+  var Ke = i(4617);
   var ze = i(4618);
-  var qe = i(4619);
-  var Xe = i(4620);
-  var Qe = i(1935);
-  var Je = i(410);
-  var Ze = i(4622);
-  var $e = i(1158);
-  var et = i(1936);
-  var tt = i(4623);
-  var it = i(4624);
-  var nt = i(4625);
-  var ot = i(4626);
-  var at = i(4627);
-  var st = i(4628);
-  var rt = i(4629);
-  var lt = i(4630);
-  var ct = i(890);
-  var ut = i(4631);
-  var dt = i(4632);
-  var pt = i(4633);
-  var ht = i(1937);
-  var gt = i(1884);
-  var Ct = i(4634);
-  var _t = i(4635);
-  var mt = i(4636);
-  var ft = i(891);
-  var Ot = i(1228);
-  var Et = i(4637);
-  var yt = i(4638);
-  var bt = i(4639);
-  var Dt = i(4640);
-  var It = i(4641);
-  var vt = i(4642);
-  var Tt = i(124);
-  var St = i(4643);
-  var At = i(4644);
-  var Lt = i(4645);
-  var Pt = i(4646);
-  var Mt = i(1420);
-  var Rt = i(4647);
-  var Vt = i(4648);
-  var xt = i(1159);
-  var wt = i(4649);
-  var Bt = i(4650);
-  var Ft = i(4651);
-  var Nt = i(4652);
-  var kt = i(938);
-  var Ut = i(387);
-  var Gt = i(735);
-  var Ht = i(940);
-  var jt = i(887);
-  var Wt = i(1423);
-  var Yt = i(4653);
-  var Kt = i(888);
-  var zt = i(502);
+  var qe = i(4620);
+  var Xe = i(4621);
+  var Qe = i(4622);
+  var Je = i(1935);
+  var Ze = i(411);
+  var $e = i(4624);
+  var et = i(1158);
+  var tt = i(1936);
+  var it = i(4625);
+  var nt = i(4626);
+  var ot = i(4627);
+  var at = i(4628);
+  var st = i(4629);
+  var rt = i(4630);
+  var lt = i(4631);
+  var ct = i(4632);
+  var ut = i(890);
+  var dt = i(4633);
+  var pt = i(4634);
+  var ht = i(4635);
+  var gt = i(1937);
+  var Ct = i(1884);
+  var _t = i(4636);
+  var mt = i(4637);
+  var ft = i(4638);
+  var Ot = i(891);
+  var Et = i(1228);
+  var yt = i(4639);
+  var bt = i(4640);
+  var Dt = i(4641);
+  var It = i(4642);
+  var vt = i(4643);
+  var Tt = i(4644);
+  var St = i(124);
+  var At = i(4645);
+  var Lt = i(4646);
+  var Pt = i(4647);
+  var Mt = i(4648);
+  var Rt = i(1420);
+  var Vt = i(4649);
+  var xt = i(4650);
+  var wt = i(1159);
+  var Bt = i(4651);
+  var Ft = i(4652);
+  var Nt = i(4653);
+  var kt = i(4654);
+  var Ut = i(938);
+  var Gt = i(387);
+  var Ht = i(735);
+  var jt = i(940);
+  var Wt = i(887);
+  var Yt = i(1423);
+  var Kt = i(4655);
+  var zt = i(888);
   var qt = i(504);
-  var Xt = i(525);
-  var Qt = i(582);
-  var Jt = i(575);
-  var Zt = i(705);
-  var $t = i(597);
-  var ei = i(620);
+  var Xt = i(506);
+  var Qt = i(527);
+  var Jt = i(583);
+  var Zt = i(576);
+  var $t = i(705);
+  var ei = i(598);
   var ti = i(621);
-  var ii = i(761);
-  var ni = i(916);
-  var oi = i(507);
-  var ai = i(579);
-  var si = i(503);
-  var ri = i(598);
-  var li = i(973);
-  var ci = function () {
+  var ii = i(622);
+  var ni = i(761);
+  var oi = i(916);
+  var ai = i(509);
+  var si = i(580);
+  var ri = i(505);
+  var li = i(599);
+  var ci = i(973);
+  var ui = function () {
     function ClientConstImport() {}
     Object.defineProperty(ClientConstImport, "FORCE_EMBED_ICONS", {
       get: function () {
@@ -393499,21 +393541,21 @@
     });
     ClientConstImport.__initialize_static_members = function () {
       ClientConstImport.FORCE_EMBED_COLLECTABLES = [o.CollectableEnum];
-      ClientConstImport.FORCE_EMBED_WORLDMAP_VE_CLASSES = [lt.AlienInvasionMapobject, ct.BasicMapobject, ut.BoosterMapobject, dt.BossdungeonMapobject, pt.CapitalMapobject, ht.CastleMapobject, gt.ConnectionMapObject, mt.DungeonIsleMapobject, ft.DungeonMapobject, Ot.EmptyMapobject, Et.EventdungeonMapobject, yt.FactionCampMapobject, bt.FactionCapitalMapobject, It.FactionTowerMapobject, vt.FactionVillageMapobject, Tt.InteractiveMapobject, St.KingdomCastleMapobject, At.KingstowerMapobject, Pt.MetropolMapobject, Mt.MonumentMapobject, Rt.NomadCampMapobject, Vt.NomadKhanCampMapobject, Lt.LaboratoryMapobject, xt.OutpostMapobject, wt.ResourceIsleMapobject, Ft.VillageMapobject, Bt.SamuraiCampMapobject, Dt.FactionInvasionCampMapObject, Ct.DaimyoCastleMapobject, _t.DaimyoTownshipMapobject, st.ABGAllianceTowerMapobject, rt.ABGResourceTowerMapobject, Nt.WolfkingCastleMapobject];
-      ClientConstImport.FORCE_EMBED_WORLDMAP_MOVEMENTS_VE_CLASSES = [Xe.AlienAttackMapmovement, Qe.ArmyattackMapmovement, Je.ArmyMapmovement, Ze.ArmytravelMapmovement, $e.BasicMapmovement, et.InteractiveMapmovement, tt.MarketMapmovement, it.PlaguemonkMapmovement, nt.SiegeMapmovement, ot.SpyMapmovement, at.SupportDefenceMapmovement];
-      ClientConstImport.FORCE_EMBED_MAPOBJECT_VO_CLASSES = [qt.CastleMapobjectVO, zt.CapitalMapobjectVO, Zt.EmptyMapobjectVO, Jt.DungeonMapobjectVO, si.OutpostMapobjectVO, Yt.BoosterMapobjectVO, ni.KingdomCastleMapobjectVO, Kt.BossdungeonMapobjectVO, ri.VillageMapobjectVO, $t.FactionCampMapobjectVO, ei.FactionCapitalMapobjectVO, ti.FactionTowerMapobjectVO, ii.FactionVillageMapobjectVO, ri.VillageMapobjectVO, Kt.BossdungeonMapobjectVO, ni.KingdomCastleMapobjectVO, oi.KingstowerMapobjectVO, ai.MonumentMapobjectVO, Xt.DaimyoCastleMapObjectVO, Qt.DaimyoTownshipMapObjectVO, jt.ABGAllianceTowerMapobjectVO, Wt.ABGResourceTowerMapobjectVO, li.WolfkingCastleMapObjectVO];
-      ClientConstImport.FORCE_EMBED_UNIT_VO_CLASSES = [Re.BarracksUnitVO, He.WorkshopUnitVO, Fe.KeepUnitVO, Ve.DworkshopUnitVO, Ge.UnknownUnitVO, Be.EventunitUnitVO, Ue.SceatToolsUnitVO, xe.ElitetoolUnitVO, we.EventtoolUnitVO, Ne.KingdomunitUnitVO, ke.QuickAttackUnitVO];
-      ClientConstImport.FORCE_EMBED_WORLDMAP_MOVEMENT_VO_CLASSES = [Ut.ArmyAttackMapmovementVO, Gt.ArmyTravelMapMovementVO, Ht.SiegeMapmovementVO, kt.AlienAttackMovementVO];
-      ClientConstImport.FORCE_EMBED_EVENT_VO_CLASSES = [Q.OverseerEventVO, z.MerchantEventVO, f.BountyhunterEventVO, A.EventBoosterPrimeSaleEventVO, ne.PrimeSaleReviveAllEventVO, _.AwardrewardEventVO, J.PaymentrewardEventVO, q.NomadHunterEventVO, M.FactionEventVO, b.ConstructionExpertEventVO, S.EquipmentMerchantEventVO, te.PrimeAlliBonusEventVO, me.SkipForFreeEventVO, Le.WorldCupEventVO, x.FameboosterEventVO, a.AdjustSkipBuildingEventVO, L.EventSkinEventVO, c.AllianceNomadInvasionEventVO, Y.LongTermPointEventEventVO, de.SamuraiHunterEventVO, pe.SamuraiInvasionEventVO, V.FactionInvasionEventVO, s.AllianceAlienInvasionEventVO, se.RedAllianceAlienInvasionEventVO, m.BeggingKnightsEventVO, d.AlliTournamentEventVO, ee.PointEventEventVO, ce.ResearchExpertEventVO, R.FactionHunterEventVO, p.ApprenticeSmithEventVO, Ae.WishingWellCoinVendorEventVO, H.GGSGiftEventVO, ge.SeasonLeagueEventVO, Ce.SeasonPassPrimeSaleEventVO, W.GlobalEffectEventVO, j.GlobalEffectBuffEventVO];
-      ClientConstImport.FORCE_EMBED_HORSE_VO_CLASSES = [Me.HorseTravelboosterVO];
-      ClientConstImport.FORCE_EMBED_GENERATORS = [je.CastleClassicSectorGenerator, ze.CastleIcecreamSectorGenerator, We.CastleDessertSectorGenerator, qe.CastleVolcanoSectorGenerator, Ke.CastleFactionSectorGenerator, Ye.CastleEilandSectorGenerator];
-      ClientConstImport.FORCE_EMBED_EVENTS = [Ee.ThornkingEventVO, he.SeaqueenEventVO, ve.UnderworldEventVO, g.ArmorerEventVO, I.DonationEventEventVO, y.ColossusEventVO, Z.PlagueEventVO, Te.UnitDealerEventVO, $.PlayerGiftMerchantEventVO, ye.TieredPaymentrewardEventVO, v.EquipmentEnhancerEventVO, ae.RandomdungeonEventVO, Ie.TournamentEventVO, C.ArtifactEventVO, K.LuckyWheelEventVO, _e.ShoppingCartPrimeSaleEventVO, X.NomadInvasionVendorEventVO, le.RenegadeEventVO, T.EquipmentEnhancerPrimeSaleEventVO, be.TimeLimitedCampaignEventEventVO, De.TimeLimitedCampaignQuestEventEventVO, fe.TempServerEventVO, ie.PrimeSaleEventVO, u.AlliPaymentBonusEventVO, O.CollectorEventEventVO, E.CollectorShopEventVO, P.FactionArmorerEventVO, Oe.TempServerMultiplierEventVO, D.DaimyoShopEventVO, re.RelicEnchanterPrimeSaleEventVO, Se.WebShopEventVO, h.ApprenticeTokenVendorEventVO, r.AllianceBattleGroundEventVO, ue.SaleDaysLuckyWheelEventVO, w.FortuneTellerEventVO, oe.PrimeTimeSkinEventEventVO, k.GachaDeco2x2EventVO, F.ChristmasGachaEventVO, N.EasterGachaEventVO, G.SummerGachaEventVO, B.AnniversaryGachaEventVO, U.HalloweenGachaEventVO, l.AllianceMobilizationEventEventVO];
-      ClientConstImport.FORCE_EMBED_DIALOGS = [Pe.CastleVIPBuyDialog];
+      ClientConstImport.FORCE_EMBED_WORLDMAP_VE_CLASSES = [ct.AlienInvasionMapobject, ut.BasicMapobject, dt.BoosterMapobject, pt.BossdungeonMapobject, ht.CapitalMapobject, gt.CastleMapobject, Ct.ConnectionMapObject, ft.DungeonIsleMapobject, Ot.DungeonMapobject, Et.EmptyMapobject, yt.EventdungeonMapobject, bt.FactionCampMapobject, Dt.FactionCapitalMapobject, vt.FactionTowerMapobject, Tt.FactionVillageMapobject, St.InteractiveMapobject, At.KingdomCastleMapobject, Lt.KingstowerMapobject, Mt.MetropolMapobject, Rt.MonumentMapobject, Vt.NomadCampMapobject, xt.NomadKhanCampMapobject, Pt.LaboratoryMapobject, wt.OutpostMapobject, Bt.ResourceIsleMapobject, Nt.VillageMapobject, Ft.SamuraiCampMapobject, It.FactionInvasionCampMapObject, _t.DaimyoCastleMapobject, mt.DaimyoTownshipMapobject, rt.ABGAllianceTowerMapobject, lt.ABGResourceTowerMapobject, kt.WolfkingCastleMapobject];
+      ClientConstImport.FORCE_EMBED_WORLDMAP_MOVEMENTS_VE_CLASSES = [Qe.AlienAttackMapmovement, Je.ArmyattackMapmovement, Ze.ArmyMapmovement, $e.ArmytravelMapmovement, et.BasicMapmovement, tt.InteractiveMapmovement, it.MarketMapmovement, nt.PlaguemonkMapmovement, ot.SiegeMapmovement, at.SpyMapmovement, st.SupportDefenceMapmovement];
+      ClientConstImport.FORCE_EMBED_MAPOBJECT_VO_CLASSES = [Xt.CastleMapobjectVO, qt.CapitalMapobjectVO, $t.EmptyMapobjectVO, Zt.DungeonMapobjectVO, ri.OutpostMapobjectVO, Kt.BoosterMapobjectVO, oi.KingdomCastleMapobjectVO, zt.BossdungeonMapobjectVO, li.VillageMapobjectVO, ei.FactionCampMapobjectVO, ti.FactionCapitalMapobjectVO, ii.FactionTowerMapobjectVO, ni.FactionVillageMapobjectVO, li.VillageMapobjectVO, zt.BossdungeonMapobjectVO, oi.KingdomCastleMapobjectVO, ai.KingstowerMapobjectVO, si.MonumentMapobjectVO, Qt.DaimyoCastleMapObjectVO, Jt.DaimyoTownshipMapObjectVO, Wt.ABGAllianceTowerMapobjectVO, Yt.ABGResourceTowerMapobjectVO, ci.WolfkingCastleMapObjectVO];
+      ClientConstImport.FORCE_EMBED_UNIT_VO_CLASSES = [Ve.BarracksUnitVO, je.WorkshopUnitVO, Ne.KeepUnitVO, xe.DworkshopUnitVO, He.UnknownUnitVO, Fe.EventunitUnitVO, Ge.SceatToolsUnitVO, we.ElitetoolUnitVO, Be.EventtoolUnitVO, ke.KingdomunitUnitVO, Ue.QuickAttackUnitVO];
+      ClientConstImport.FORCE_EMBED_WORLDMAP_MOVEMENT_VO_CLASSES = [Gt.ArmyAttackMapmovementVO, Ht.ArmyTravelMapMovementVO, jt.SiegeMapmovementVO, Ut.AlienAttackMovementVO];
+      ClientConstImport.FORCE_EMBED_EVENT_VO_CLASSES = [J.OverseerEventVO, q.MerchantEventVO, f.BountyhunterEventVO, A.EventBoosterPrimeSaleEventVO, oe.PrimeSaleReviveAllEventVO, _.AwardrewardEventVO, Z.PaymentrewardEventVO, X.NomadHunterEventVO, M.FactionEventVO, b.ConstructionExpertEventVO, S.EquipmentMerchantEventVO, ie.PrimeAlliBonusEventVO, fe.SkipForFreeEventVO, Pe.WorldCupEventVO, x.FameboosterEventVO, a.AdjustSkipBuildingEventVO, L.EventSkinEventVO, c.AllianceNomadInvasionEventVO, K.LongTermPointEventEventVO, pe.SamuraiHunterEventVO, he.SamuraiInvasionEventVO, V.FactionInvasionEventVO, s.AllianceAlienInvasionEventVO, re.RedAllianceAlienInvasionEventVO, m.BeggingKnightsEventVO, d.AlliTournamentEventVO, te.PointEventEventVO, ue.ResearchExpertEventVO, R.FactionHunterEventVO, p.ApprenticeSmithEventVO, Le.WishingWellCoinVendorEventVO, j.GGSGiftEventVO, Ce.SeasonLeagueEventVO, _e.SeasonPassPrimeSaleEventVO, Y.GlobalEffectEventVO, W.GlobalEffectBuffEventVO];
+      ClientConstImport.FORCE_EMBED_HORSE_VO_CLASSES = [Re.HorseTravelboosterVO];
+      ClientConstImport.FORCE_EMBED_GENERATORS = [We.CastleClassicSectorGenerator, qe.CastleIcecreamSectorGenerator, Ye.CastleDessertSectorGenerator, Xe.CastleVolcanoSectorGenerator, ze.CastleFactionSectorGenerator, Ke.CastleEilandSectorGenerator];
+      ClientConstImport.FORCE_EMBED_EVENTS = [ye.ThornkingEventVO, ge.SeaqueenEventVO, Te.UnderworldEventVO, g.ArmorerEventVO, I.DonationEventEventVO, y.ColossusEventVO, $.PlagueEventVO, Se.UnitDealerEventVO, ee.PlayerGiftMerchantEventVO, be.TieredPaymentrewardEventVO, v.EquipmentEnhancerEventVO, se.RandomdungeonEventVO, ve.TournamentEventVO, C.ArtifactEventVO, z.LuckyWheelEventVO, me.ShoppingCartPrimeSaleEventVO, Q.NomadInvasionVendorEventVO, ce.RenegadeEventVO, T.EquipmentEnhancerPrimeSaleEventVO, De.TimeLimitedCampaignEventEventVO, Ie.TimeLimitedCampaignQuestEventEventVO, Oe.TempServerEventVO, ne.PrimeSaleEventVO, u.AlliPaymentBonusEventVO, O.CollectorEventEventVO, E.CollectorShopEventVO, P.FactionArmorerEventVO, Ee.TempServerMultiplierEventVO, D.DaimyoShopEventVO, le.RelicEnchanterPrimeSaleEventVO, Ae.WebShopEventVO, h.ApprenticeTokenVendorEventVO, r.AllianceBattleGroundEventVO, de.SaleDaysLuckyWheelEventVO, w.FortuneTellerEventVO, ae.PrimeTimeSkinEventEventVO, U.GachaDeco2x2EventVO, N.ChristmasGachaEventVO, k.EasterGachaEventVO, H.SummerGachaEventVO, B.AnniversaryGachaEventVO, G.HalloweenGachaEventVO, l.AllianceMobilizationEventEventVO, F.BlackFridayGachaEventVO];
+      ClientConstImport.FORCE_EMBED_DIALOGS = [Me.CastleVIPBuyDialog];
     };
     return ClientConstImport;
   }();
-  t.ClientConstImport = ci;
-  ci.__initialize_static_members();
+  t.ClientConstImport = ui;
+  ui.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
 
@@ -393604,7 +393646,7 @@
     return AllianceAlienInvasionEventVO;
   }(r.AAlienInvasionEventVO);
   t.AllianceAlienInvasionEventVO = l;
-  var c = i(4381);
+  var c = i(4382);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -393759,8 +393801,8 @@
     return CastleAllianceAlienInvasionEventDialog;
   }(i(108).CastleExternalSubLayerDialog);
   t.CastleAllianceAlienInvasionEventDialog = h;
-  var g = i(4377);
-  var C = i(4379);
+  var g = i(4378);
+  var C = i(4380);
   var _ = i(286);
   o.classImplementsInterfaces(h, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -393874,7 +393916,7 @@
   }(u.CastleAllianceAlienInvasionEventDialogSublayer);
   t.CastleAllianceAlienInvasionEventDialogAlliance = d;
   var p = i(33);
-  var h = i(4378);
+  var h = i(4379);
   var g = i(335);
   o.classImplementsInterfaces(d, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
@@ -393957,7 +393999,7 @@
   var o = i(1);
   var a = i(3);
   var s = i(8);
-  var r = i(467);
+  var r = i(468);
   var l = i(333);
   var c = i(1900);
   var u = function (e) {
@@ -394048,9 +394090,9 @@
   }(c.CastleAllianceAlienInvasionEventDialogSublayer);
   t.CastleAllianceAlienInvasionEventDialogPlayer = u;
   var d = i(33);
-  var p = i(4380);
+  var p = i(4381);
   var h = i(335);
-  var g = i(659);
+  var g = i(660);
   o.classImplementsInterfaces(u, "ICollectableRendererList", "ISublayer");
 }, function (e, t, i) {
   'use strict';
@@ -394203,7 +394245,7 @@
     return CastleAllianceAlienInvasionEventDialogProperties;
   }(o.BasicProperties);
   t.CastleAllianceAlienInvasionEventDialogProperties = d;
-  var p = i(4382);
+  var p = i(4383);
   a.classImplementsInterfaces(d, "IAlienInvasionEventDialogProperties");
 }, function (e, t, i) {
   'use strict';
@@ -394265,7 +394307,7 @@
   }(s.AllianceAndPlayerPointEventRewardListDialog);
   t.CastleAllianceAlienInvasionRewardListDialog = r;
   var l = i(11);
-  var c = i(546);
+  var c = i(548);
   var u = i(4);
   o.classImplementsInterfaces(r, "ICollectableRendererList");
   r.__initialize_static_members();
@@ -394570,7 +394612,7 @@
   var p = i(77);
   var h = i(33);
   var g = i(1148);
-  var C = i(4390);
+  var C = i(4391);
   var _ = i(1902);
   var m = function (e) {
     function AllianceMobilizationEventDialogQuests(t) {
@@ -394664,8 +394706,8 @@
   var h = i(19);
   var g = i(81);
   var C = i(8);
-  var _ = i(4391);
-  var m = i(4393);
+  var _ = i(4392);
+  var m = i(4394);
   var f = function (e) {
     function AllianceMobilizationEventDialogQuestItem() {
       return e !== null && e.apply(this, arguments) || this;
@@ -394804,7 +394846,7 @@
   var y = i(19);
   var b = i(8);
   var D = i(11);
-  var I = i(4392);
+  var I = i(4393);
   var v = i(1902);
   var T = function (e) {
     function AllianceMobilizationEventQuestInfoDialog() {
@@ -395090,8 +395132,8 @@
   var l = i(851);
   var c = i(8);
   var u = i(33);
-  var d = i(4395);
-  var p = i(4398);
+  var d = i(4396);
+  var p = i(4399);
   var h = function (e) {
     function AllianceMobilizationEventDialogRanking(t) {
       var i = e.call(this, t) || this;
@@ -395197,7 +395239,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(3);
-  var s = i(4396);
+  var s = i(4397);
   var r = i(1903);
   var l = i(12);
   var c = i(15);
@@ -395210,7 +395252,7 @@
   var _ = i(264);
   var m = i(8);
   var f = i(33);
-  var O = i(4397);
+  var O = i(4398);
   var E = function (e) {
     function AllianceMobilizationEventDialogContributions(t) {
       var i = e.call(this, t) || this;
@@ -395393,7 +395435,7 @@
   var l = i(167);
   var c = i(1112);
   var u = i(33);
-  var d = i(4399);
+  var d = i(4400);
   var p = function (e) {
     function AllianceMobilizationEventDialogLeaderboard(t) {
       var i = e.call(this, t) || this;
@@ -395408,7 +395450,7 @@
       this.textFieldManager.registerTextField(this.subLayerDisp.mc_top.txt_allianceName, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("allianceName")));
       this.textFieldManager.registerTextField(this.subLayerDisp.mc_top.txt_server, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("ranking_server")));
       this.textFieldManager.registerTextField(this.subLayerDisp.mc_top.txt_total, new s.TextVO(r.TextHelper.toUpperCaseLocaSafeTextId("dialog_highscore_totalPoints")));
-      this._leaderBoardComponent = new c.GlobalLeaderBoardComponent(this.subLayerDisp, d.AllianceMobilizationEventDialogLeaderboardItem, "dialog_highscore_name_alliance_search");
+      this._leaderBoardComponent = new c.GlobalLeaderBoardComponent(this.subLayerDisp, d.AllianceMobilizationEventDialogLeaderboardItem, "dialog_highscore_alliance_search");
     };
     AllianceMobilizationEventDialogLeaderboard.prototype.show = function (t) {
       e.prototype.show.call(this, t);
@@ -395570,7 +395612,7 @@
   var c = i(58);
   var u = i(33);
   var d = i(261);
-  var p = i(4401);
+  var p = i(4402);
   var h = function (e) {
     function AllianceMobilizationEventDialogRules(t) {
       var i = e.call(this, t) || this;
@@ -395899,7 +395941,7 @@
   var d = i(9);
   var p = i(17);
   var h = i(936);
-  var g = i(571);
+  var g = i(572);
   var C = i(827);
   var _ = i(1103);
   var m = i(824);
@@ -396202,7 +396244,7 @@
   t.AlliPaymentBonusEventVO = u;
   a.classImplementsInterfaces(u, "IEventOverviewable");
   var d = i(9);
-  var p = i(4405);
+  var p = i(4406);
 }, function (e, t, i) {
   'use strict';
 
@@ -396309,7 +396351,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(4407);
+  var s = i(4408);
   var r = i(4);
   var l = i(403);
   var c = function (e) {
@@ -396374,7 +396416,7 @@
     return AlliTournamentEventVO;
   }(l.AScoreEventVO);
   t.AlliTournamentEventVO = c;
-  var u = i(4408);
+  var u = i(4409);
   var d = i(306);
   o.classImplementsInterfaces(c, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable");
   c.__initialize_static_members();
@@ -396409,8 +396451,8 @@
   var u = i(18);
   var d = i(395);
   var p = i(241);
-  var h = i(431);
-  var g = i(510);
+  var h = i(432);
+  var g = i(512);
   var C = i(188);
   var _ = i(15);
   var m = i(4);
@@ -396591,7 +396633,7 @@
   var D = i(1728);
   var I = i(334);
   var v = i(1909);
-  var T = i(4409);
+  var T = i(4410);
   o.classImplementsInterfaces(y, "ICollectableRendererList", "IPaginationContainer", "IPaginationArrowsContainer");
   y.__initialize_static_members();
 }, function (e, t, i) {
@@ -396699,7 +396741,7 @@
   var o = i(1);
   var a = i(51);
   var s = i(170);
-  var r = i(4411);
+  var r = i(4412);
   var l = i(177);
   var c = function (e) {
     function ApprenticeSmithEventVO() {
@@ -396762,7 +396804,7 @@
   var p = i(49);
   var h = i(41);
   var g = i(258);
-  var C = i(4412);
+  var C = i(4413);
   var _ = function (e) {
     function CastleApprenticeSmithEventDialog() {
       return e.call(this, CastleApprenticeSmithEventDialog.NAME) || this;
@@ -396810,7 +396852,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(176);
-  var s = i(4413);
+  var s = i(4414);
   var r = function (e) {
     function ApprenticeSmithScrollItem(t) {
       return e.call(this, t) || this;
@@ -396981,7 +397023,7 @@
     return ArmorerEventVO;
   }(r.BuyPackagesEventVO);
   t.ArmorerEventVO = l;
-  var c = i(4416);
+  var c = i(4417);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -397057,7 +397099,7 @@
     return CastleArmorerEventDialog;
   }(c.CastleGenericMerchantDialog);
   t.CastleArmorerEventDialog = d;
-  var p = i(4417);
+  var p = i(4418);
   o.classImplementsInterfaces(d, "ICollectableRendererList");
   d.__initialize_static_members();
 }, function (e, t, i) {
@@ -397087,7 +397129,7 @@
     return ArmorerMerchantScrollItem;
   }(a.AMerchantScrollItem);
   t.ArmorerMerchantScrollItem = s;
-  var r = i(4418);
+  var r = i(4419);
   o.classImplementsInterfaces(s, "MovieClip");
 }, function (e, t, i) {
   'use strict';
@@ -397134,7 +397176,7 @@
   var u = i(4);
   var d = i(27);
   var p = i(819);
-  var h = i(4420);
+  var h = i(4421);
   var g = createjs.Point;
   var C = function (e) {
     function CastleArtifactEventDialog() {
@@ -397243,7 +397285,7 @@
   var _ = i(402);
   var m = i(11);
   var f = i(1758);
-  var O = i(4421);
+  var O = i(4422);
   a.classImplementsInterfaces(C, "ICollectableRendererList");
   C.__initialize_static_members();
 }, function (e, t, i) {
@@ -397280,7 +397322,7 @@
   var d = i(6);
   var p = i(16);
   var h = i(39);
-  var g = i(4422);
+  var g = i(4423);
   var C = i(172);
   var _ = i(26);
   var m = i(4);
@@ -397468,7 +397510,7 @@
     return AwardrewardEventVO;
   }(s.ASpecialEventVO);
   t.AwardrewardEventVO = r;
-  var l = i(4424);
+  var l = i(4425);
   a.classImplementsInterfaces(r, "IEventOverviewable");
   r.__initialize_static_members();
 }, function (e, t, i) {
@@ -397615,7 +397657,7 @@
   }(l.ALeagueTypeScoreEventVO);
   t.BeggingKnightsEventVO = c;
   var u = i(13);
-  var d = i(4426);
+  var d = i(4427);
   o.classImplementsInterfaces(c, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable");
   c.__initialize_static_members();
 }, function (e, t, i) {
@@ -397643,7 +397685,7 @@
   var O = i(253);
   var E = i(8);
   var y = i(11);
-  var b = i(467);
+  var b = i(468);
   var D = i(1912);
   var I = function (e) {
     function CastleBeggingKnightsDialog() {
@@ -397747,9 +397789,9 @@
   }(y.CastleExternalDialog);
   t.CastleBeggingKnightsDialog = I;
   var v = i(334);
-  var T = i(545);
-  var S = i(4427);
-  var A = i(4428);
+  var T = i(547);
+  var S = i(4428);
+  var A = i(4429);
   o.classImplementsInterfaces(I, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -397833,8 +397875,8 @@
   var u = i(3);
   var d = i(3);
   var p = i(6);
-  var h = i(4429);
-  var g = i(530);
+  var h = i(4430);
+  var g = i(532);
   var C = i(738);
   var _ = i(26);
   var m = i(71);
@@ -397992,7 +398034,7 @@
   var a = i(1);
   var s = i(5);
   var r = i(3);
-  var l = i(4431);
+  var l = i(4432);
   var c = i(4);
   var u = i(80);
   var d = function (e) {
@@ -398096,7 +398138,7 @@
   var h = i(13);
   var g = i(9);
   var C = i(38);
-  var _ = i(4432);
+  var _ = i(4433);
   var m = i(147);
   a.classImplementsInterfaces(d, "IEventOverviewable");
   d.__initialize_static_members();
@@ -398135,7 +398177,7 @@
   var p = i(24);
   var h = i(24);
   var g = i(39);
-  var C = i(4433);
+  var C = i(4434);
   var _ = i(21);
   var m = i(26);
   var f = i(4);
@@ -398321,7 +398363,7 @@
   }(i(11).CastleExternalDialog);
   t.CastleBountyhunterEventDialog = b;
   var D = i(29);
-  var I = i(4434);
+  var I = i(4435);
   l.classImplementsInterfaces(b, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -398482,7 +398524,7 @@
   var b = i(77);
   var D = i(25);
   var I = i(33);
-  var v = i(4438);
+  var v = i(4439);
   var T = createjs.Point;
   var S = function (e) {
     function CollectEventDialogMain(t) {
@@ -398725,9 +398767,9 @@
   var r = i(5);
   var l = i(6);
   var c = i(30);
-  var u = i(4441);
+  var u = i(4442);
   var d = i(80);
-  var p = i(4442);
+  var p = i(4443);
   var h = function (e) {
     function ColossusEventVO() {
       var t = this;
@@ -398910,7 +398952,7 @@
     return ColossusEventVO;
   }(d.ASpecialEventVO);
   t.ColossusEventVO = h;
-  var g = i(4443);
+  var g = i(4444);
   a.classImplementsInterfaces(h, "IEventOverviewable");
   h.__initialize_static_members();
 }, function (e, t, i) {
@@ -399007,9 +399049,9 @@
   var y = i(8);
   var b = i(11);
   var D = i(93);
-  var I = i(4444);
-  var v = i(4445);
-  var T = i(4446);
+  var I = i(4445);
+  var v = i(4446);
+  var T = i(4447);
   var S = createjs.MovieClip;
   var A = function (e) {
     function CastleColossusEventDialog() {
@@ -399191,7 +399233,7 @@
   var L = i(94);
   var P = i(1914);
   var M = i(1915);
-  var R = i(4449);
+  var R = i(4450);
   var V = i(42);
   l.classImplementsInterfaces(A, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -399610,7 +399652,7 @@
   var o = i(1);
   var a = i(1);
   var s = i(18);
-  var r = i(4451);
+  var r = i(4452);
   var l = i(4);
   var c = i(80);
   var u = function (e) {
@@ -399667,7 +399709,7 @@
     return ConstructionExpertEventVO;
   }(c.ASpecialEventVO);
   t.ConstructionExpertEventVO = u;
-  var d = i(4452);
+  var d = i(4453);
   var p = i(57);
   o.classImplementsInterfaces(u, "IEventOverviewable");
   u.__initialize_static_members();
@@ -399771,7 +399813,7 @@
     return CastleConstructionExpertEventDialog;
   }(i(11).CastleExternalDialog);
   t.CastleConstructionExpertEventDialog = d;
-  var p = i(4453);
+  var p = i(4454);
   a.classImplementsInterfaces(d, "ICollectableRendererList");
   d.__initialize_static_members();
 }, function (e, t, i) {
@@ -400159,7 +400201,7 @@
   var c = i(3);
   var u = i(24);
   var d = i(55);
-  var p = i(4458);
+  var p = i(4459);
   var h = i(1896);
   var g = i(47);
   var C = i(31);
@@ -400177,10 +400219,10 @@
   var S = i(25);
   var A = i(1463);
   var L = i(33);
-  var P = i(495);
+  var P = i(497);
   var M = i(1916);
-  var R = i(4459);
-  var V = i(4460);
+  var R = i(4460);
+  var V = i(4461);
   var x = createjs.Point;
   var w = function (e) {
     function DonationEventDialogDonate(t) {
@@ -401282,7 +401324,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(43);
-  var s = i(4466);
+  var s = i(4467);
   var r = i(4);
   var l = i(296);
   var c = function (e) {
@@ -401313,7 +401355,7 @@
   }(i(80).ASpecialEventVO);
   t.EquipmentEnhancerPrimeSaleEventVO = c;
   var u = i(9);
-  var d = i(4467);
+  var d = i(4468);
   o.classImplementsInterfaces(c, "IEventOverviewable");
 }, function (e, t, i) {
   'use strict';
@@ -401480,7 +401522,7 @@
     return EquipmentMerchantEventVO;
   }(r.BuyPackagesEventVO);
   t.EquipmentMerchantEventVO = l;
-  var c = i(4469);
+  var c = i(4470);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -401554,7 +401596,7 @@
     return CastleEquipmentMerchantEventDialog;
   }(p.CastleGenericMerchantDialog);
   t.CastleEquipmentMerchantEventDialog = h;
-  var g = i(4470);
+  var g = i(4471);
   a.classImplementsInterfaces(h, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -401586,7 +401628,7 @@
     return EquipmentMerchantScrollItem;
   }(a.AMerchantScrollItem);
   t.EquipmentMerchantScrollItem = s;
-  var r = i(4471);
+  var r = i(4472);
   o.classImplementsInterfaces(s, "MovieClip");
 }, function (e, t, i) {
   'use strict';
@@ -401812,7 +401854,7 @@
     return FactionHunterEventVO;
   }(s.UnitDealerEventVO);
   t.FactionHunterEventVO = r;
-  var l = i(4475);
+  var l = i(4476);
   o.classImplementsInterfaces(r, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
   r.__initialize_static_members();
 }, function (e, t, i) {
@@ -401878,7 +401920,7 @@
     return FactionHunterEventDialog;
   }(r.CastleFactionArmorerEventDialog);
   t.FactionHunterEventDialog = l;
-  var c = i(4476);
+  var c = i(4477);
   o.classImplementsInterfaces(l, "ICollectableRendererList");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -401908,7 +401950,7 @@
     return FactionHunterMerchantScrollItem;
   }(a.FactionArmorerMerchantScrollItem);
   t.FactionHunterMerchantScrollItem = s;
-  var r = i(4477);
+  var r = i(4478);
   o.classImplementsInterfaces(s, "MovieClip");
 }, function (e, t, i) {
   'use strict';
@@ -402159,7 +402201,7 @@
   }(u.AScoreEventVO);
   t.FactionInvasionEventVO = d;
   var p = i(29);
-  var h = i(571);
+  var h = i(572);
   var g = i(306);
   a.classImplementsInterfaces(d, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable");
   d.__initialize_static_members();
@@ -402172,7 +402214,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(6);
-  var s = i(4480);
+  var s = i(4481);
   var r = i(80);
   var l = function (e) {
     function FameboosterEventVO() {
@@ -402565,7 +402607,7 @@
   var p = i(77);
   var h = i(8);
   var g = i(11);
-  var C = i(4486);
+  var C = i(4487);
   var _ = function (e) {
     function FortuneTellerEventRewardInfoDialog() {
       return e.call(this, FortuneTellerEventRewardInfoDialog.NAME) || this;
@@ -402681,9 +402723,9 @@
   var n = i(0);
   var o = i(5);
   var a = i(9);
-  var s = i(555);
-  var r = i(557);
-  var l = i(475);
+  var s = i(476);
+  var r = i(477);
+  var l = i(409);
   var c = createjs.Point;
   var u = function (e) {
     function AnniversaryGachaEventVO() {
@@ -402726,9 +402768,54 @@
   var n = i(0);
   var o = i(5);
   var a = i(9);
-  var s = i(555);
-  var r = i(557);
-  var l = i(475);
+  var s = i(476);
+  var r = i(477);
+  var l = i(409);
+  var c = createjs.Point;
+  var u = function (e) {
+    function BlackFridayGachaEventVO() {
+      return e !== null && e.apply(this, arguments) || this;
+    }
+    n.__extends(BlackFridayGachaEventVO, e);
+    BlackFridayGachaEventVO.prototype.openDialog = function (e = true) {
+      a.CastleDialogHandler.getInstance().registerDialogs(s.SeasonGachaEventMainDialog, new r.SeasonGachaEventMainDialogProperties(this));
+    };
+    Object.defineProperty(BlackFridayGachaEventVO.prototype, "animationPos", {
+      get: function () {
+        return new c(371, 396);
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(BlackFridayGachaEventVO.prototype, "currencyMerchantEventID", {
+      get: function () {
+        return o.EventConst.EVENTTYPE_APPRENTICE_TOKEN_VENDOR;
+      },
+      enumerable: true,
+      configurable: true
+    });
+    Object.defineProperty(BlackFridayGachaEventVO.prototype, "eventName", {
+      get: function () {
+        return "BlackFridayGacha";
+      },
+      enumerable: true,
+      configurable: true
+    });
+    return BlackFridayGachaEventVO;
+  }(l.AGachaEventVO);
+  t.BlackFridayGachaEventVO = u;
+}, function (e, t, i) {
+  'use strict';
+
+  Object.defineProperty(t, "__esModule", {
+    value: true
+  });
+  var n = i(0);
+  var o = i(5);
+  var a = i(9);
+  var s = i(476);
+  var r = i(477);
+  var l = i(409);
   var c = createjs.Point;
   var u = function (e) {
     function ChristmasGachaEventVO() {
@@ -402778,9 +402865,9 @@
   var n = i(0);
   var o = i(5);
   var a = i(9);
-  var s = i(555);
-  var r = i(557);
-  var l = i(475);
+  var s = i(476);
+  var r = i(477);
+  var l = i(409);
   var c = createjs.Point;
   var u = function (e) {
     function EasterGachaEventVO() {
@@ -402825,7 +402912,7 @@
   var a = i(5);
   var s = i(82);
   var r = i(1830);
-  var l = i(475);
+  var l = i(409);
   var c = function (e) {
     function GachaDeco2x2EventVO() {
       return e !== null && e.apply(this, arguments) || this;
@@ -402868,9 +402955,9 @@
   var n = i(0);
   var o = i(5);
   var a = i(9);
-  var s = i(555);
-  var r = i(557);
-  var l = i(475);
+  var s = i(476);
+  var r = i(477);
+  var l = i(409);
   var c = createjs.Point;
   var u = function (e) {
     function HalloweenGachaEventVO() {
@@ -402913,9 +403000,9 @@
   var n = i(0);
   var o = i(5);
   var a = i(9);
-  var s = i(555);
-  var r = i(557);
-  var l = i(475);
+  var s = i(476);
+  var r = i(477);
+  var l = i(409);
   var c = createjs.Point;
   var u = function (e) {
     function SummerGachaEventVO() {
@@ -403182,7 +403269,7 @@
   var a = i(1);
   var s = i(6);
   var r = i(22);
-  var l = i(469);
+  var l = i(470);
   var c = i(306);
   var u = i(1922);
   var d = function (e) {
@@ -403314,26 +403401,26 @@
   var l = i(3);
   var c = i(3);
   var u = i(6);
-  var d = i(4498);
-  var p = i(4499);
+  var d = i(4500);
+  var p = i(4501);
   var h = i(1924);
   var g = i(1925);
   var C = i(26);
   var _ = i(32);
   var m = i(4);
   var f = i(194);
-  var O = i(477);
+  var O = i(479);
   var E = i(9);
   var y = i(8);
   var b = i(11);
-  var D = i(138);
+  var D = i(139);
   var I = i(135);
   var v = i(1926);
   var T = i(1154);
   var S = i(1153);
-  var A = i(4512);
+  var A = i(4514);
   var L = i(1929);
-  var P = i(4513);
+  var P = i(4515);
   var M = i(1930);
   var R = i(24);
   var V = function (e) {
@@ -403600,7 +403687,7 @@
   var c = i(3);
   var u = i(6);
   var d = i(8);
-  var p = i(4501);
+  var p = i(4503);
   var h = createjs.Event;
   var g = createjs.MouseEvent;
   var C = createjs.TimerEvent;
@@ -404222,7 +404309,7 @@
   }(i(11).CastleExternalDialog);
   t.CastleLuckyWheelJackpotDialog = p;
   var h = i(13);
-  var g = i(4504);
+  var g = i(4506);
   a.classImplementsInterfaces(p, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -404981,7 +405068,7 @@
     return CastleLuckyWheelFeatureButton;
   }(o.BasicButton);
   t.CastleLuckyWheelFeatureButton = u;
-  var d = i(477);
+  var d = i(479);
   s.classImplementsInterfaces(u, "MovieClip");
   u.__initialize_static_members();
 }, function (e, t, i) {
@@ -405150,9 +405237,9 @@
     return CastleLuckyWheelIncreaseWinClassDialog;
   }(C.CastleExternalDialog);
   t.CastleLuckyWheelIncreaseWinClassDialog = m;
-  var f = i(477);
+  var f = i(479);
   var O = i(1066);
-  var E = i(138);
+  var E = i(139);
   var y = i(1155);
   o.classImplementsInterfaces(m, "ICollectableRendererList");
   m.__initialize_static_members();
@@ -405273,7 +405360,7 @@
   t.CastleLuckyWheelScrollItem = g;
   var C = i(194);
   var _ = i(9);
-  var m = i(4516);
+  var m = i(4518);
   r.classImplementsInterfaces(g, "MovieClip");
 }, function (e, t, i) {
   'use strict';
@@ -405454,7 +405541,7 @@
     return NomadHunterEventVO;
   }(r.BuyPackagesEventVO);
   t.NomadHunterEventVO = l;
-  var c = i(4520);
+  var c = i(4522);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -405494,7 +405581,7 @@
     return CastleNomadHunterEventDialog;
   }(s.CastleGenericMerchantDialog);
   t.CastleNomadHunterEventDialog = r;
-  var l = i(4521);
+  var l = i(4523);
   o.classImplementsInterfaces(r, "ICollectableRendererList");
   r.__initialize_static_members();
 }, function (e, t, i) {
@@ -405524,7 +405611,7 @@
     return CastleNomadHunterEventScrollItem;
   }(a.AMerchantScrollItem);
   t.CastleNomadHunterEventScrollItem = s;
-  var r = i(4522);
+  var r = i(4524);
   o.classImplementsInterfaces(s, "MovieClip");
 }, function (e, t, i) {
   'use strict';
@@ -405652,7 +405739,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(51);
-  var s = i(4526);
+  var s = i(4528);
   var r = i(177);
   var l = function (e) {
     function PlagueEventVO() {
@@ -405719,7 +405806,7 @@
     return PlagueEventVO;
   }(r.BuyPackagesEventVO);
   t.PlagueEventVO = l;
-  var c = i(4527);
+  var c = i(4529);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -405940,7 +406027,7 @@
     return PlayerGiftMerchantEventVO;
   }(r.BuyPackagesEventVO);
   t.PlayerGiftMerchantEventVO = l;
-  var c = i(4529);
+  var c = i(4531);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -406042,7 +406129,7 @@
   t.PlayerGiftMerchantDialog = p;
   var h = i(13);
   var g = i(9);
-  var C = i(4530);
+  var C = i(4532);
   o.classImplementsInterfaces(p, "ICollectableRendererList");
   p.__initialize_static_members();
 }, function (e, t, i) {
@@ -406145,7 +406232,7 @@
     return PointEventEventVO;
   }(s.APointEventTypeScoreEventVO);
   t.PointEventEventVO = r;
-  var l = i(4532);
+  var l = i(4534);
   o.classImplementsInterfaces(r, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable");
   r.__initialize_static_members();
 }, function (e, t, i) {
@@ -406176,7 +406263,7 @@
   var b = i(41);
   var D = i(8);
   var I = i(11);
-  var v = i(467);
+  var v = i(468);
   var T = function (e) {
     function CastlePointEventDialog() {
       CONSTRUCTOR_HACK;
@@ -406327,8 +406414,8 @@
   t.CastlePointEventDialog = T;
   var S = i(9);
   var A = i(334);
-  var L = i(545);
-  var P = i(4533);
+  var L = i(547);
+  var P = i(4535);
   r.classImplementsInterfaces(T, "ICollectableRendererList");
   T.__initialize_static_members();
 }, function (e, t, i) {
@@ -406430,7 +406517,7 @@
     return PrimeAlliBonusEventVO;
   }(i(80).ASpecialEventVO);
   t.PrimeAlliBonusEventVO = s;
-  var r = i(4535);
+  var r = i(4537);
   o.classImplementsInterfaces(s, "IEventOverviewable");
 }, function (e, t, i) {
   'use strict';
@@ -406531,7 +406618,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(43);
-  var s = i(4537);
+  var s = i(4539);
   var r = i(4);
   var l = i(296);
   var c = function (e) {
@@ -406605,7 +406692,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(43);
-  var s = i(4539);
+  var s = i(4541);
   var r = i(4);
   var l = i(296);
   var c = function (e) {
@@ -406636,7 +406723,7 @@
   }(i(80).ASpecialEventVO);
   t.PrimeSaleReviveAllEventVO = c;
   var u = i(9);
-  var d = i(4540);
+  var d = i(4542);
   o.classImplementsInterfaces(c, "IEventOverviewable");
 }, function (e, t, i) {
   'use strict';
@@ -406801,7 +406888,7 @@
   var s = i(5);
   var r = i(6);
   var l = i(103);
-  var c = i(4543);
+  var c = i(4545);
   var u = i(64);
   var d = i(4);
   var p = i(80);
@@ -406936,7 +407023,7 @@
   t.RandomdungeonEventVO = h;
   var g = i(133);
   var C = i(1059);
-  var _ = i(4544);
+  var _ = i(4546);
   var m = i(974);
   a.classImplementsInterfaces(h, "IEventOverviewable");
   h.__initialize_static_members();
@@ -407173,7 +407260,7 @@
     return RedAllianceAlienInvasionEventVO;
   }(r.AAlienInvasionEventVO);
   t.RedAllianceAlienInvasionEventVO = l;
-  var c = i(4546);
+  var c = i(4548);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IScoreBarVO", "IScoreUpdatable");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -407254,7 +407341,7 @@
     return CastleRedAllianceAlienInvasionEventDialogProperties;
   }(o.BasicProperties);
   t.CastleRedAllianceAlienInvasionEventDialogProperties = d;
-  var p = i(4547);
+  var p = i(4549);
   a.classImplementsInterfaces(d, "IAlienInvasionEventDialogProperties");
 }, function (e, t, i) {
   'use strict';
@@ -407317,7 +407404,7 @@
   }(r.AllianceAndPlayerPointEventRewardListDialog);
   t.CastleRedAllianceAlienInvasionRewardListDialog = l;
   var c = i(11);
-  var u = i(546);
+  var u = i(548);
   o.classImplementsInterfaces(l, "ICollectableRendererList");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -407331,8 +407418,8 @@
   var a = i(6);
   var s = i(43);
   var r = i(9);
-  var l = i(4549);
-  var c = i(4550);
+  var l = i(4551);
+  var c = i(4552);
   var u = i(4);
   var d = i(296);
   var p = function (e) {
@@ -407496,7 +407583,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(4553);
+  var a = i(4555);
   var s = i(80);
   var r = function (e) {
     function ResearchExpertEventVO() {
@@ -407533,7 +407620,7 @@
     return ResearchExpertEventVO;
   }(s.ASpecialEventVO);
   t.ResearchExpertEventVO = r;
-  var l = i(4554);
+  var l = i(4556);
   o.classImplementsInterfaces(r, "IEventOverviewable");
   r.__initialize_static_members();
 }, function (e, t, i) {
@@ -407645,7 +407732,7 @@
     return CastleResearchExpertEventDialog;
   }(d.CastleExternalDialog);
   t.CastleResearchExpertEventDialog = h;
-  var g = i(452);
+  var g = i(453);
   s.classImplementsInterfaces(h, "ICollectableRendererList");
   h.__initialize_static_members();
 }, function (e, t, i) {
@@ -407657,7 +407744,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(4556);
+  var s = i(4558);
   var r = i(1153);
   var l = i(4);
   var c = i(49);
@@ -407756,8 +407843,8 @@
   var C = i(1177);
   var _ = i(1176);
   var m = i(1926);
-  var f = i(4557);
-  var O = i(4558);
+  var f = i(4559);
+  var O = i(4560);
   var E = function (e) {
     function CastleLuckWheelSalesDaysDialog() {
       return e.call(this, CastleLuckWheelSalesDaysDialog.NAME) || this;
@@ -407976,7 +408063,7 @@
     return SamuraiHunterEventVO;
   }(r.BuyPackagesEventVO);
   t.SamuraiHunterEventVO = l;
-  var c = i(4560);
+  var c = i(4562);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -408042,7 +408129,7 @@
     return CastleSamuraiHunterEventDialog;
   }(u.CastleGenericMerchantDialog);
   t.CastleSamuraiHunterEventDialog = d;
-  var p = i(4561);
+  var p = i(4563);
   o.classImplementsInterfaces(d, "ICollectableRendererList");
   d.__initialize_static_members();
 }, function (e, t, i) {
@@ -408072,7 +408159,7 @@
     return CastleSamuraiHunterEventScrollItem;
   }(a.AMerchantScrollItem);
   t.CastleSamuraiHunterEventScrollItem = s;
-  var r = i(4562);
+  var r = i(4564);
   o.classImplementsInterfaces(s, "MovieClip");
 }, function (e, t, i) {
   'use strict';
@@ -408148,7 +408235,7 @@
     return SeaqueenEventVO;
   }(r.ASeasonEventVO);
   t.SeaqueenEventVO = l;
-  var c = i(4565);
+  var c = i(4567);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
 }, function (e, t, i) {
   'use strict';
@@ -408300,7 +408387,7 @@
   t.CastleSeaQueenEventDialog = r;
   var l = i(13);
   var c = i(74);
-  var u = i(4566);
+  var u = i(4568);
   o.classImplementsInterfaces(r, "ICollectableRendererList");
   r.__initialize_static_members();
 }, function (e, t, i) {
@@ -408330,7 +408417,7 @@
     return CastleSeaQueenMerchantScrollItem;
   }(a.AMerchantScrollItem);
   t.CastleSeaQueenMerchantScrollItem = s;
-  var r = i(4567);
+  var r = i(4569);
   o.classImplementsInterfaces(s, "MovieClip");
 }, function (e, t, i) {
   'use strict';
@@ -408676,7 +408763,7 @@
     return ShoppingCartPrimeSaleEventVO;
   }(i(80).ASpecialEventVO);
   t.ShoppingCartPrimeSaleEventVO = h;
-  var g = i(496);
+  var g = i(498);
   a.classImplementsInterfaces(h, "IEventOverviewable");
 }, function (e, t, i) {
   'use strict';
@@ -408911,7 +408998,7 @@
   var v = i(58);
   var T = i(8);
   var S = i(33);
-  var A = i(4574);
+  var A = i(4576);
   var L = function (e) {
     function CastleTemporaryServerEventDialogOverview(t) {
       var i = this;
@@ -409031,7 +409118,7 @@
   o.classImplementsInterfaces(L, "ICollectableRendererList", "ISublayer");
   var P = i(1157);
   var M = i(754);
-  var R = i(615);
+  var R = i(616);
   var V = i(19);
   var x = i(1705);
   var w = i(9);
@@ -409115,9 +409202,9 @@
   var y = i(58);
   var b = i(8);
   var D = i(33);
-  var I = i(4576);
-  var v = i(4577);
-  var T = i(4578);
+  var I = i(4578);
+  var v = i(4579);
+  var T = i(4580);
   var S = createjs.TimerEvent;
   var A = i(36);
   var L = i(121);
@@ -409890,7 +409977,7 @@
   var g = i(49);
   var C = i(8);
   var _ = i(33);
-  var m = i(660);
+  var m = i(661);
   var f = i(811);
   var O = i(396);
   var E = i(36);
@@ -410077,7 +410164,7 @@
     return ThornkingEventVO;
   }(l.ASeasonEventVO);
   t.ThornkingEventVO = c;
-  var u = i(4583);
+  var u = i(4585);
   o.classImplementsInterfaces(c, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
 }, function (e, t, i) {
   'use strict';
@@ -410153,7 +410240,7 @@
   t.CastleThornkingEventDialog = r;
   var l = i(13);
   var c = i(74);
-  var u = i(4585);
+  var u = i(4587);
   o.classImplementsInterfaces(r, "ICollectableRendererList");
   r.__initialize_static_members();
 }, function (e, t, i) {
@@ -410198,7 +410285,7 @@
     return CastleThornkingMerchantScrollItem;
   }(a.AMerchantScrollItem);
   t.CastleThornkingMerchantScrollItem = s;
-  var r = i(4586);
+  var r = i(4588);
   o.classImplementsInterfaces(s, "MovieClip");
 }, function (e, t, i) {
   'use strict';
@@ -410522,7 +410609,7 @@
     return TournamentEventVO;
   }(l.ASpecialEventVO);
   t.TournamentEventVO = c;
-  var u = i(4591);
+  var u = i(4593);
   o.classImplementsInterfaces(c, "IEventOverviewable");
   c.__initialize_static_members();
 }, function (e, t, i) {
@@ -410631,7 +410718,7 @@
   var C = i(13);
   var _ = i(25);
   var m = i(1909);
-  var f = i(4592);
+  var f = i(4594);
   o.classImplementsInterfaces(h, "ICollectableRendererList");
   h.__initialize_static_members();
 }, function (e, t, i) {
@@ -410762,7 +410849,7 @@
     return UnderworldEventVO;
   }(r.ASeasonEventVO);
   t.UnderworldEventVO = l;
-  var c = i(4594);
+  var c = i(4596);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
 }, function (e, t, i) {
   'use strict';
@@ -410853,7 +410940,7 @@
   t.CastleUnderworldEventDialog = l;
   var c = i(13);
   var u = i(74);
-  var d = i(4595);
+  var d = i(4597);
   o.classImplementsInterfaces(l, "ICollectableRendererList");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -410965,7 +411052,7 @@
     return WishingWellCoinVendorEventVO;
   }(r.BuyPackagesEventVO);
   t.WishingWellCoinVendorEventVO = l;
-  var c = i(4598);
+  var c = i(4600);
   o.classImplementsInterfaces(l, "IEventOverviewable", "IDiscountableEventPackagesVO", "IEventPackagesVO");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -411026,7 +411113,7 @@
   t.CastleWishingWellCoinVendorEventDialog = h;
   var g = i(13);
   var C = i(45);
-  var _ = i(4599);
+  var _ = i(4601);
   o.classImplementsInterfaces(h, "ICollectableRendererList");
   h.__initialize_static_members();
 }, function (e, t, i) {
@@ -411067,7 +411154,7 @@
     return CastleWishingWellCoinVendorScrollItem;
   }(a.AMerchantScrollItem);
   t.CastleWishingWellCoinVendorScrollItem = r;
-  var l = i(4600);
+  var l = i(4602);
   o.classImplementsInterfaces(r, "MovieClip");
 }, function (e, t, i) {
   'use strict';
@@ -411211,7 +411298,7 @@
       configurable: true
     });
     return HorseTravelboosterVO;
-  }(i(483).AVisualVO);
+  }(i(485).AVisualVO);
   t.HorseTravelboosterVO = a;
 }, function (e, t, i) {
   'use strict';
@@ -411290,7 +411377,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(18);
-  var s = i(589);
+  var s = i(590);
   var r = i(185);
   var l = function (e) {
     function ElitetoolUnitVO() {
@@ -411341,7 +411428,7 @@
   var o = i(1);
   var a = i(18);
   var s = i(22);
-  var r = i(589);
+  var r = i(590);
   var l = i(185);
   var c = function (e) {
     function EventtoolUnitVO() {
@@ -411539,7 +411626,7 @@
       return "Unknown_name";
     };
     return UnknownUnitVO;
-  }(i(509).BasicUnitVO);
+  }(i(511).BasicUnitVO);
   t.UnknownUnitVO = a;
   o.classImplementsInterfaces(a, "IInventoryVO", "IShopVO", "ICostVO");
 }, function (e, t, i) {
@@ -411600,7 +411687,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(560);
+  var s = i(561);
   var r = function (e) {
     function CastleClassicSectorGenerator() {
       return e.call(this) || this;
@@ -411639,7 +411726,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(560);
+  var s = i(561);
   var r = function (e) {
     function CastleDessertSectorGenerator() {
       return e.call(this) || this;
@@ -411678,7 +411765,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(560);
+  var s = i(561);
   var r = function (e) {
     function CastleEilandSectorGenerator() {
       CONSTRUCTOR_HACK;
@@ -411737,8 +411824,8 @@
   var l = i(5);
   var c = i(6);
   var u = i(4);
-  var d = i(4617);
-  var p = i(560);
+  var d = i(4619);
+  var p = i(561);
   var h = i(1934);
   var g = createjs.Point;
   var C = function (e) {
@@ -411989,7 +412076,7 @@
       configurable: true
     });
     return FactionVillageInfoVO;
-  }(i(500).MinWorldMapCastleInfoVO);
+  }(i(502).MinWorldMapCastleInfoVO);
   t.FactionVillageInfoVO = o;
 }, function (e, t, i) {
   'use strict';
@@ -412000,7 +412087,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(560);
+  var s = i(561);
   var r = function (e) {
     function CastleIcecreamSectorGenerator() {
       return e.call(this) || this;
@@ -412039,7 +412126,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(560);
+  var s = i(561);
   var r = function (e) {
     function CastleVolcanoSectorGenerator() {
       return e.call(this) || this;
@@ -412210,7 +412297,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(410);
+  var a = i(411);
   var s = function (e) {
     function ArmytravelMapmovement() {
       return e.call(this) || this;
@@ -412238,7 +412325,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(410);
+  var a = i(411);
   var s = function (e) {
     function MarketMapmovement() {
       return e !== null && e.apply(this, arguments) || this;
@@ -412277,7 +412364,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(410);
+  var s = i(411);
   var r = function (e) {
     function PlaguemonkMapmovement() {
       return e !== null && e.apply(this, arguments) || this;
@@ -412343,7 +412430,7 @@
   var h = i(90);
   var g = i(4);
   var C = i(23);
-  var _ = i(410);
+  var _ = i(411);
   var m = createjs.Container;
   var f = createjs.Point;
   var O = function (e) {
@@ -412527,7 +412614,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(5);
-  var s = i(410);
+  var s = i(411);
   var r = function (e) {
     function SpyMapmovement() {
       return e !== null && e.apply(this, arguments) || this;
@@ -412584,7 +412671,7 @@
   var c = i(90);
   var u = i(23);
   var d = i(225);
-  var p = i(410);
+  var p = i(411);
   var h = createjs.Container;
   var g = createjs.Point;
   var C = function (e) {
@@ -413159,7 +413246,7 @@
   var o = i(1);
   var a = i(3);
   var s = i(3);
-  var r = i(577);
+  var r = i(578);
   var l = i(44);
   var c = i(117);
   var u = i(1159);
@@ -414574,7 +414661,7 @@
   var l = i(3);
   var c = i(6);
   var u = i(28);
-  var d = i(577);
+  var d = i(578);
   var p = i(53);
   var h = i(44);
   var g = i(4);
@@ -415277,12 +415364,12 @@
   var l = i(1);
   var c = i(6);
   var u = i(16);
-  var d = i(4655);
-  var p = i(4656);
-  var h = i(4657);
-  var g = i(4658);
-  var C = i(4659);
-  var _ = i(4660);
+  var d = i(4657);
+  var p = i(4658);
+  var h = i(4659);
+  var g = i(4660);
+  var C = i(4661);
+  var _ = i(4662);
   var m = i(22);
   var f = i(682);
   var O = i(47);
@@ -415292,15 +415379,15 @@
   var D = i(224);
   var I = i(4);
   var v = i(111);
-  var T = i(142);
+  var T = i(138);
   var S = i(34);
-  var A = i(4661);
-  var L = i(4664);
-  var P = i(4665);
+  var A = i(4663);
+  var L = i(4666);
+  var P = i(4667);
   var M = i(385);
-  var R = i(4666);
-  var V = i(4667);
-  var x = i(4668);
+  var R = i(4668);
+  var V = i(4669);
+  var x = i(4670);
   var w = function (e) {
     function SubscriptionData(t) {
       var i = this;
@@ -415932,7 +416019,7 @@
   var n = i(15);
   var o = i(385);
   var a = i(1318);
-  var s = i(4662);
+  var s = i(4664);
   var r = function () {
     function AutoSellVO() {
       this._equipments = new a.AutoSellEquipmentsVO();
@@ -415984,7 +416071,7 @@
     value: true
   });
   var n = i(0);
-  var o = i(4663);
+  var o = i(4665);
   var a = i(4);
   var s = function (e) {
     function AutoSellGemsVO() {
@@ -416507,7 +416594,7 @@
   t.CastleDestroyGameCommand = u;
   var d = i(132);
   var p = i(180);
-  var h = i(661);
+  var h = i(662);
   var g = i(1759);
   a.classImplementsInterfaces(u, "ISimpleCommand");
 }, function (e, t, i) {
@@ -416657,9 +416744,9 @@
   }(a.BasicHandleServerErrorCommand);
   t.CastleHandleServerErrorCommand = I;
   var v = i(9);
-  var T = i(4672);
+  var T = i(4674);
   var S = i(353);
-  var A = i(138);
+  var A = i(139);
   var L = i(877);
   var P = i(987);
   var M = i(38);
@@ -416766,563 +416853,563 @@
   var o = i(2);
   var a = i(1);
   var s = i(7);
-  var r = i(4675);
-  var l = i(4676);
-  var c = i(4678);
-  var u = i(4679);
-  var d = i(4680);
-  var p = i(4681);
-  var h = i(4682);
-  var g = i(4683);
-  var C = i(4684);
-  var _ = i(4685);
-  var m = i(4686);
-  var f = i(4687);
-  var O = i(4688);
-  var E = i(4691);
-  var y = i(4694);
-  var b = i(4695);
-  var D = i(4696);
-  var I = i(4697);
-  var v = i(4698);
-  var T = i(4699);
-  var S = i(4700);
-  var A = i(4701);
-  var L = i(4702);
-  var P = i(4703);
-  var M = i(4704);
-  var R = i(4705);
-  var V = i(4706);
-  var x = i(4707);
-  var w = i(4708);
-  var B = i(4709);
-  var F = i(4710);
-  var N = i(4712);
-  var k = i(4714);
-  var U = i(4715);
-  var G = i(4716);
-  var H = i(4717);
-  var j = i(4718);
-  var W = i(4719);
-  var Y = i(4720);
-  var K = i(4721);
-  var z = i(4722);
-  var q = i(4723);
-  var X = i(4725);
-  var Q = i(4726);
-  var J = i(4727);
-  var Z = i(4728);
-  var $ = i(4729);
-  var ee = i(4730);
-  var te = i(4731);
-  var ie = i(4732);
-  var ne = i(4733);
-  var oe = i(4734);
-  var ae = i(4735);
-  var se = i(4736);
-  var re = i(4737);
-  var le = i(4738);
-  var ce = i(4739);
-  var ue = i(4740);
-  var de = i(4741);
-  var pe = i(4742);
-  var he = i(4743);
-  var ge = i(4744);
-  var Ce = i(4745);
-  var _e = i(4746);
-  var me = i(4747);
-  var fe = i(4748);
-  var Oe = i(4749);
-  var Ee = i(4750);
-  var ye = i(4751);
-  var be = i(4752);
-  var De = i(4753);
-  var Ie = i(4754);
-  var ve = i(4755);
-  var Te = i(4756);
-  var Se = i(4757);
-  var Ae = i(4760);
-  var Le = i(4761);
-  var Pe = i(4762);
-  var Me = i(4763);
-  var Re = i(4764);
-  var Ve = i(4765);
-  var xe = i(4766);
-  var we = i(4767);
-  var Be = i(4768);
-  var Fe = i(4769);
-  var Ne = i(4770);
-  var ke = i(4771);
-  var Ue = i(4772);
-  var Ge = i(4773);
-  var He = i(4774);
-  var je = i(4775);
-  var We = i(4776);
-  var Ye = i(4777);
-  var Ke = i(4778);
-  var ze = i(4779);
-  var qe = i(4780);
-  var Xe = i(4781);
-  var Qe = i(4782);
-  var Je = i(4783);
-  var Ze = i(4784);
-  var $e = i(4785);
-  var et = i(4786);
-  var tt = i(4787);
-  var it = i(4788);
-  var nt = i(4789);
-  var ot = i(4790);
-  var at = i(4791);
-  var st = i(4796);
-  var rt = i(4797);
-  var lt = i(4798);
-  var ct = i(4799);
-  var ut = i(4800);
-  var dt = i(4801);
-  var pt = i(4802);
-  var ht = i(4803);
-  var gt = i(4804);
-  var Ct = i(4805);
-  var _t = i(4806);
-  var mt = i(4807);
-  var ft = i(4808);
-  var Ot = i(4809);
-  var Et = i(4810);
-  var yt = i(4811);
-  var bt = i(4812);
-  var Dt = i(4813);
-  var It = i(4814);
-  var vt = i(4815);
-  var Tt = i(4816);
-  var St = i(4817);
-  var At = i(4818);
-  var Lt = i(4819);
-  var Pt = i(4820);
-  var Mt = i(4821);
-  var Rt = i(4822);
-  var Vt = i(4823);
-  var xt = i(4824);
-  var wt = i(4825);
-  var Bt = i(4826);
-  var Ft = i(4827);
-  var Nt = i(4828);
-  var kt = i(4829);
-  var Ut = i(4830);
-  var Gt = i(4831);
-  var Ht = i(4832);
-  var jt = i(4833);
-  var Wt = i(4834);
-  var Yt = i(4835);
-  var Kt = i(4836);
-  var zt = i(4837);
-  var qt = i(4838);
-  var Xt = i(4839);
-  var Qt = i(4840);
-  var Jt = i(4841);
-  var Zt = i(4842);
-  var $t = i(4843);
-  var ei = i(4844);
-  var ti = i(4845);
-  var ii = i(4846);
-  var ni = i(4847);
-  var oi = i(4848);
-  var ai = i(4849);
-  var si = i(4850);
-  var ri = i(4851);
-  var li = i(4852);
-  var ci = i(4853);
-  var ui = i(4854);
-  var di = i(4855);
-  var pi = i(4856);
-  var hi = i(4857);
-  var gi = i(4858);
-  var Ci = i(4859);
-  var _i = i(4860);
-  var mi = i(4861);
-  var fi = i(4862);
-  var Oi = i(4863);
-  var Ei = i(4864);
-  var yi = i(4865);
-  var bi = i(4868);
-  var Di = i(4869);
-  var Ii = i(4870);
-  var vi = i(4873);
-  var Ti = i(4874);
-  var Si = i(4875);
-  var Ai = i(4876);
-  var Li = i(4877);
-  var Pi = i(4878);
-  var Mi = i(4879);
-  var Ri = i(4880);
-  var Vi = i(4881);
-  var xi = i(4882);
-  var wi = i(4883);
-  var Bi = i(4884);
-  var Fi = i(4885);
-  var Ni = i(4886);
-  var ki = i(4887);
-  var Ui = i(4888);
-  var Gi = i(4889);
-  var Hi = i(4890);
-  var ji = i(4891);
-  var Wi = i(4892);
-  var Yi = i(4893);
-  var Ki = i(4894);
-  var zi = i(4895);
-  var qi = i(4896);
-  var Xi = i(4897);
-  var Qi = i(4898);
-  var Ji = i(4899);
-  var Zi = i(4900);
-  var $i = i(4901);
-  var en = i(4902);
-  var tn = i(4903);
-  var nn = i(4904);
-  var on = i(4905);
-  var an = i(4906);
-  var sn = i(4907);
-  var rn = i(4908);
-  var ln = i(4909);
-  var cn = i(4910);
-  var un = i(4911);
-  var dn = i(4912);
-  var pn = i(4913);
-  var hn = i(4914);
-  var gn = i(4915);
-  var Cn = i(4916);
-  var _n = i(4917);
-  var mn = i(4918);
-  var fn = i(4919);
-  var On = i(4920);
-  var En = i(4921);
-  var yn = i(4922);
-  var bn = i(4923);
-  var Dn = i(4924);
-  var In = i(4925);
-  var vn = i(4926);
-  var Tn = i(4927);
-  var Sn = i(4928);
-  var An = i(4929);
-  var Ln = i(4930);
-  var Pn = i(4932);
-  var Mn = i(4933);
+  var r = i(4677);
+  var l = i(4678);
+  var c = i(4680);
+  var u = i(4681);
+  var d = i(4682);
+  var p = i(4683);
+  var h = i(4684);
+  var g = i(4685);
+  var C = i(4686);
+  var _ = i(4687);
+  var m = i(4688);
+  var f = i(4689);
+  var O = i(4690);
+  var E = i(4693);
+  var y = i(4696);
+  var b = i(4697);
+  var D = i(4698);
+  var I = i(4699);
+  var v = i(4700);
+  var T = i(4701);
+  var S = i(4702);
+  var A = i(4703);
+  var L = i(4704);
+  var P = i(4705);
+  var M = i(4706);
+  var R = i(4707);
+  var V = i(4708);
+  var x = i(4709);
+  var w = i(4710);
+  var B = i(4711);
+  var F = i(4712);
+  var N = i(4714);
+  var k = i(4716);
+  var U = i(4717);
+  var G = i(4718);
+  var H = i(4719);
+  var j = i(4720);
+  var W = i(4721);
+  var Y = i(4722);
+  var K = i(4723);
+  var z = i(4724);
+  var q = i(4725);
+  var X = i(4727);
+  var Q = i(4728);
+  var J = i(4729);
+  var Z = i(4730);
+  var $ = i(4731);
+  var ee = i(4732);
+  var te = i(4733);
+  var ie = i(4734);
+  var ne = i(4735);
+  var oe = i(4736);
+  var ae = i(4737);
+  var se = i(4738);
+  var re = i(4739);
+  var le = i(4740);
+  var ce = i(4741);
+  var ue = i(4742);
+  var de = i(4743);
+  var pe = i(4744);
+  var he = i(4745);
+  var ge = i(4746);
+  var Ce = i(4747);
+  var _e = i(4748);
+  var me = i(4749);
+  var fe = i(4750);
+  var Oe = i(4751);
+  var Ee = i(4752);
+  var ye = i(4753);
+  var be = i(4754);
+  var De = i(4755);
+  var Ie = i(4756);
+  var ve = i(4757);
+  var Te = i(4758);
+  var Se = i(4759);
+  var Ae = i(4762);
+  var Le = i(4763);
+  var Pe = i(4764);
+  var Me = i(4765);
+  var Re = i(4766);
+  var Ve = i(4767);
+  var xe = i(4768);
+  var we = i(4769);
+  var Be = i(4770);
+  var Fe = i(4771);
+  var Ne = i(4772);
+  var ke = i(4773);
+  var Ue = i(4774);
+  var Ge = i(4775);
+  var He = i(4776);
+  var je = i(4777);
+  var We = i(4778);
+  var Ye = i(4779);
+  var Ke = i(4780);
+  var ze = i(4781);
+  var qe = i(4782);
+  var Xe = i(4783);
+  var Qe = i(4784);
+  var Je = i(4785);
+  var Ze = i(4786);
+  var $e = i(4787);
+  var et = i(4788);
+  var tt = i(4789);
+  var it = i(4790);
+  var nt = i(4791);
+  var ot = i(4792);
+  var at = i(4793);
+  var st = i(4798);
+  var rt = i(4799);
+  var lt = i(4800);
+  var ct = i(4801);
+  var ut = i(4802);
+  var dt = i(4803);
+  var pt = i(4804);
+  var ht = i(4805);
+  var gt = i(4806);
+  var Ct = i(4807);
+  var _t = i(4808);
+  var mt = i(4809);
+  var ft = i(4810);
+  var Ot = i(4811);
+  var Et = i(4812);
+  var yt = i(4813);
+  var bt = i(4814);
+  var Dt = i(4815);
+  var It = i(4816);
+  var vt = i(4817);
+  var Tt = i(4818);
+  var St = i(4819);
+  var At = i(4820);
+  var Lt = i(4821);
+  var Pt = i(4822);
+  var Mt = i(4823);
+  var Rt = i(4824);
+  var Vt = i(4825);
+  var xt = i(4826);
+  var wt = i(4827);
+  var Bt = i(4828);
+  var Ft = i(4829);
+  var Nt = i(4830);
+  var kt = i(4831);
+  var Ut = i(4832);
+  var Gt = i(4833);
+  var Ht = i(4834);
+  var jt = i(4835);
+  var Wt = i(4836);
+  var Yt = i(4837);
+  var Kt = i(4838);
+  var zt = i(4839);
+  var qt = i(4840);
+  var Xt = i(4841);
+  var Qt = i(4842);
+  var Jt = i(4843);
+  var Zt = i(4844);
+  var $t = i(4845);
+  var ei = i(4846);
+  var ti = i(4847);
+  var ii = i(4848);
+  var ni = i(4849);
+  var oi = i(4850);
+  var ai = i(4851);
+  var si = i(4852);
+  var ri = i(4853);
+  var li = i(4854);
+  var ci = i(4855);
+  var ui = i(4856);
+  var di = i(4857);
+  var pi = i(4858);
+  var hi = i(4859);
+  var gi = i(4860);
+  var Ci = i(4861);
+  var _i = i(4862);
+  var mi = i(4863);
+  var fi = i(4864);
+  var Oi = i(4865);
+  var Ei = i(4866);
+  var yi = i(4867);
+  var bi = i(4870);
+  var Di = i(4871);
+  var Ii = i(4872);
+  var vi = i(4875);
+  var Ti = i(4876);
+  var Si = i(4877);
+  var Ai = i(4878);
+  var Li = i(4879);
+  var Pi = i(4880);
+  var Mi = i(4881);
+  var Ri = i(4882);
+  var Vi = i(4883);
+  var xi = i(4884);
+  var wi = i(4885);
+  var Bi = i(4886);
+  var Fi = i(4887);
+  var Ni = i(4888);
+  var ki = i(4889);
+  var Ui = i(4890);
+  var Gi = i(4891);
+  var Hi = i(4892);
+  var ji = i(4893);
+  var Wi = i(4894);
+  var Yi = i(4895);
+  var Ki = i(4896);
+  var zi = i(4897);
+  var qi = i(4898);
+  var Xi = i(4899);
+  var Qi = i(4900);
+  var Ji = i(4901);
+  var Zi = i(4902);
+  var $i = i(4903);
+  var en = i(4904);
+  var tn = i(4905);
+  var nn = i(4906);
+  var on = i(4907);
+  var an = i(4908);
+  var sn = i(4909);
+  var rn = i(4910);
+  var ln = i(4911);
+  var cn = i(4912);
+  var un = i(4913);
+  var dn = i(4914);
+  var pn = i(4915);
+  var hn = i(4916);
+  var gn = i(4917);
+  var Cn = i(4918);
+  var _n = i(4919);
+  var mn = i(4920);
+  var fn = i(4921);
+  var On = i(4922);
+  var En = i(4923);
+  var yn = i(4924);
+  var bn = i(4925);
+  var Dn = i(4926);
+  var In = i(4927);
+  var vn = i(4928);
+  var Tn = i(4929);
+  var Sn = i(4930);
+  var An = i(4931);
+  var Ln = i(4932);
+  var Pn = i(4934);
+  var Mn = i(4935);
   var Rn = i(1572);
-  var Vn = i(4934);
-  var xn = i(4935);
-  var wn = i(4936);
-  var Bn = i(4937);
-  var Fn = i(4938);
-  var Nn = i(4939);
-  var kn = i(4940);
-  var Un = i(4941);
-  var Gn = i(4942);
-  var Hn = i(4943);
-  var jn = i(4944);
-  var Wn = i(4945);
-  var Yn = i(4946);
-  var Kn = i(4947);
-  var zn = i(4949);
-  var qn = i(4950);
-  var Xn = i(4951);
-  var Qn = i(4952);
-  var Jn = i(4956);
-  var Zn = i(4957);
-  var $n = i(4958);
-  var eo = i(4959);
-  var to = i(4960);
-  var io = i(4961);
-  var no = i(4962);
-  var oo = i(4963);
-  var ao = i(4964);
-  var so = i(4965);
-  var ro = i(4966);
-  var lo = i(4967);
-  var co = i(4968);
-  var uo = i(4969);
-  var po = i(4970);
-  var ho = i(4971);
-  var go = i(4972);
-  var Co = i(4973);
-  var _o = i(4974);
-  var mo = i(4975);
-  var fo = i(4976);
-  var Oo = i(4977);
-  var Eo = i(4978);
-  var yo = i(4979);
-  var bo = i(4980);
-  var Do = i(4981);
-  var Io = i(4982);
-  var vo = i(4983);
-  var To = i(4984);
-  var So = i(4985);
-  var Ao = i(4986);
-  var Lo = i(4987);
-  var Po = i(4988);
-  var Mo = i(4989);
-  var Ro = i(4990);
-  var Vo = i(4991);
-  var xo = i(4994);
-  var wo = i(4995);
-  var Bo = i(4996);
-  var Fo = i(4997);
-  var No = i(4998);
-  var ko = i(4999);
-  var Uo = i(5000);
-  var Go = i(5001);
-  var Ho = i(5002);
-  var jo = i(5003);
-  var Wo = i(5004);
-  var Yo = i(5005);
-  var Ko = i(5006);
-  var zo = i(5007);
-  var qo = i(5008);
-  var Xo = i(5009);
-  var Qo = i(5010);
-  var Jo = i(5011);
-  var Zo = i(5012);
-  var $o = i(5013);
-  var ea = i(5014);
-  var ta = i(5015);
-  var ia = i(5016);
-  var na = i(5017);
-  var oa = i(5018);
-  var aa = i(5019);
-  var sa = i(5020);
-  var ra = i(5021);
-  var la = i(5022);
-  var ca = i(5023);
-  var ua = i(5024);
-  var da = i(5025);
-  var pa = i(5026);
-  var ha = i(5027);
-  var ga = i(5028);
-  var Ca = i(5029);
-  var _a = i(5030);
-  var ma = i(5031);
-  var fa = i(5032);
-  var Oa = i(5033);
-  var Ea = i(5036);
-  var ya = i(5038);
-  var ba = i(5039);
-  var Da = i(5040);
-  var Ia = i(5041);
-  var va = i(5042);
-  var Ta = i(5043);
-  var Sa = i(5044);
-  var Aa = i(5046);
-  var La = i(5047);
-  var Pa = i(5048);
-  var Ma = i(5049);
-  var Ra = i(5050);
-  var Va = i(5051);
-  var xa = i(5052);
-  var wa = i(5053);
-  var Ba = i(5054);
-  var Fa = i(5055);
-  var Na = i(5056);
-  var ka = i(5057);
-  var Ua = i(5058);
-  var Ga = i(5059);
-  var Ha = i(5060);
-  var ja = i(5061);
-  var Wa = i(5062);
-  var Ya = i(5063);
-  var Ka = i(5069);
-  var za = i(5070);
-  var qa = i(5071);
-  var Xa = i(5072);
-  var Qa = i(5074);
-  var Ja = i(5075);
-  var Za = i(5076);
-  var $a = i(5077);
-  var es = i(5078);
-  var ts = i(5079);
-  var is = i(5080);
-  var ns = i(5081);
-  var os = i(5082);
-  var as = i(5083);
-  var ss = i(5084);
-  var rs = i(5085);
-  var ls = i(5086);
-  var cs = i(5087);
-  var us = i(5088);
-  var ds = i(5090);
-  var ps = i(5091);
-  var hs = i(5092);
-  var gs = i(5093);
-  var Cs = i(5094);
-  var _s = i(5095);
-  var ms = i(5096);
-  var fs = i(5097);
-  var Os = i(5098);
-  var Es = i(5099);
-  var ys = i(5100);
-  var bs = i(5101);
-  var Ds = i(5102);
-  var Is = i(5103);
-  var vs = i(5104);
-  var Ts = i(5105);
-  var Ss = i(5106);
-  var As = i(5107);
-  var Ls = i(5108);
-  var Ps = i(5109);
-  var Ms = i(5110);
-  var Rs = i(5111);
-  var Vs = i(5112);
-  var xs = i(5113);
-  var ws = i(5114);
-  var Bs = i(5115);
-  var Fs = i(5116);
-  var Ns = i(5117);
-  var ks = i(5118);
-  var Us = i(5119);
-  var Gs = i(5120);
-  var Hs = i(5121);
-  var js = i(5122);
-  var Ws = i(5123);
-  var Ys = i(5124);
-  var Ks = i(5125);
-  var zs = i(5126);
-  var qs = i(5127);
-  var Xs = i(5128);
-  var Qs = i(5129);
-  var Js = i(5132);
-  var Zs = i(5133);
-  var $s = i(5134);
-  var er = i(5135);
-  var tr = i(5136);
-  var ir = i(5137);
-  var nr = i(5138);
-  var or = i(5139);
-  var ar = i(5142);
-  var sr = i(5143);
-  var rr = i(5146);
-  var lr = i(5147);
-  var cr = i(5148);
-  var ur = i(5149);
-  var dr = i(5150);
-  var pr = i(5151);
-  var hr = i(5152);
-  var gr = i(5153);
-  var Cr = i(5154);
-  var _r = i(5155);
-  var mr = i(5156);
-  var fr = i(5157);
-  var Or = i(5158);
-  var Er = i(5159);
-  var yr = i(5160);
-  var br = i(5161);
-  var Dr = i(5162);
-  var Ir = i(5163);
-  var vr = i(5164);
-  var Tr = i(5165);
-  var Sr = i(5166);
-  var Ar = i(5167);
-  var Lr = i(5168);
-  var Pr = i(5169);
-  var Mr = i(5170);
-  var Rr = i(5171);
-  var Vr = i(5172);
-  var xr = i(5173);
-  var wr = i(5174);
-  var Br = i(5175);
-  var Fr = i(5176);
-  var Nr = i(5177);
-  var kr = i(5178);
-  var Ur = i(5179);
-  var Gr = i(5184);
-  var Hr = i(5185);
-  var jr = i(5186);
-  var Wr = i(5187);
-  var Yr = i(5188);
-  var Kr = i(5189);
-  var zr = i(5190);
-  var qr = i(5191);
-  var Xr = i(5192);
-  var Qr = i(5193);
-  var Jr = i(5194);
-  var Zr = i(5197);
-  var $r = i(5198);
-  var el = i(5199);
-  var tl = i(5200);
-  var il = i(5201);
-  var nl = i(5203);
-  var ol = i(5204);
-  var al = i(5205);
-  var sl = i(5206);
-  var rl = i(5207);
-  var ll = i(5208);
-  var cl = i(5209);
-  var ul = i(5210);
-  var dl = i(5211);
-  var pl = i(5212);
-  var hl = i(5213);
-  var gl = i(5214);
-  var Cl = i(5215);
-  var _l = i(5216);
-  var ml = i(5217);
-  var fl = i(5221);
-  var Ol = i(5222);
-  var El = i(5223);
-  var yl = i(5224);
-  var bl = i(5225);
-  var Dl = i(5226);
-  var Il = i(5227);
-  var vl = i(5228);
-  var Tl = i(5229);
-  var Sl = i(5231);
-  var Al = i(5232);
-  var Ll = i(5233);
-  var Pl = i(5234);
-  var Ml = i(5235);
-  var Rl = i(5236);
-  var Vl = i(5237);
-  var xl = i(5238);
-  var wl = i(5239);
-  var Bl = i(5240);
-  var Fl = i(5241);
-  var Nl = i(5242);
-  var kl = i(5243);
-  var Ul = i(5244);
-  var Gl = i(5245);
-  var Hl = i(5246);
-  var jl = i(5247);
-  var Wl = i(5248);
-  var Yl = i(5250);
-  var Kl = i(5251);
-  var zl = i(5252);
-  var ql = i(5253);
-  var Xl = i(5254);
-  var Ql = i(5255);
-  var Jl = i(5256);
-  var Zl = i(5257);
-  var $l = i(5258);
-  var ec = i(5259);
-  var tc = i(5260);
-  var ic = i(5261);
-  var nc = i(5262);
-  var oc = i(5263);
-  var ac = i(5264);
-  var sc = i(5268);
+  var Vn = i(4936);
+  var xn = i(4937);
+  var wn = i(4938);
+  var Bn = i(4939);
+  var Fn = i(4940);
+  var Nn = i(4941);
+  var kn = i(4942);
+  var Un = i(4943);
+  var Gn = i(4944);
+  var Hn = i(4945);
+  var jn = i(4946);
+  var Wn = i(4947);
+  var Yn = i(4948);
+  var Kn = i(4949);
+  var zn = i(4951);
+  var qn = i(4952);
+  var Xn = i(4953);
+  var Qn = i(4954);
+  var Jn = i(4958);
+  var Zn = i(4959);
+  var $n = i(4960);
+  var eo = i(4961);
+  var to = i(4962);
+  var io = i(4963);
+  var no = i(4964);
+  var oo = i(4965);
+  var ao = i(4966);
+  var so = i(4967);
+  var ro = i(4968);
+  var lo = i(4969);
+  var co = i(4970);
+  var uo = i(4971);
+  var po = i(4972);
+  var ho = i(4973);
+  var go = i(4974);
+  var Co = i(4975);
+  var _o = i(4976);
+  var mo = i(4977);
+  var fo = i(4978);
+  var Oo = i(4979);
+  var Eo = i(4980);
+  var yo = i(4981);
+  var bo = i(4982);
+  var Do = i(4983);
+  var Io = i(4984);
+  var vo = i(4985);
+  var To = i(4986);
+  var So = i(4987);
+  var Ao = i(4988);
+  var Lo = i(4989);
+  var Po = i(4990);
+  var Mo = i(4991);
+  var Ro = i(4992);
+  var Vo = i(4993);
+  var xo = i(4996);
+  var wo = i(4997);
+  var Bo = i(4998);
+  var Fo = i(4999);
+  var No = i(5000);
+  var ko = i(5001);
+  var Uo = i(5002);
+  var Go = i(5003);
+  var Ho = i(5004);
+  var jo = i(5005);
+  var Wo = i(5006);
+  var Yo = i(5007);
+  var Ko = i(5008);
+  var zo = i(5009);
+  var qo = i(5010);
+  var Xo = i(5011);
+  var Qo = i(5012);
+  var Jo = i(5013);
+  var Zo = i(5014);
+  var $o = i(5015);
+  var ea = i(5016);
+  var ta = i(5017);
+  var ia = i(5018);
+  var na = i(5019);
+  var oa = i(5020);
+  var aa = i(5021);
+  var sa = i(5022);
+  var ra = i(5023);
+  var la = i(5024);
+  var ca = i(5025);
+  var ua = i(5026);
+  var da = i(5027);
+  var pa = i(5028);
+  var ha = i(5029);
+  var ga = i(5030);
+  var Ca = i(5031);
+  var _a = i(5032);
+  var ma = i(5033);
+  var fa = i(5034);
+  var Oa = i(5035);
+  var Ea = i(5038);
+  var ya = i(5040);
+  var ba = i(5041);
+  var Da = i(5042);
+  var Ia = i(5043);
+  var va = i(5044);
+  var Ta = i(5045);
+  var Sa = i(5046);
+  var Aa = i(5048);
+  var La = i(5049);
+  var Pa = i(5050);
+  var Ma = i(5051);
+  var Ra = i(5052);
+  var Va = i(5053);
+  var xa = i(5054);
+  var wa = i(5055);
+  var Ba = i(5056);
+  var Fa = i(5057);
+  var Na = i(5058);
+  var ka = i(5059);
+  var Ua = i(5060);
+  var Ga = i(5061);
+  var Ha = i(5062);
+  var ja = i(5063);
+  var Wa = i(5064);
+  var Ya = i(5065);
+  var Ka = i(5071);
+  var za = i(5072);
+  var qa = i(5073);
+  var Xa = i(5074);
+  var Qa = i(5076);
+  var Ja = i(5077);
+  var Za = i(5078);
+  var $a = i(5079);
+  var es = i(5080);
+  var ts = i(5081);
+  var is = i(5082);
+  var ns = i(5083);
+  var os = i(5084);
+  var as = i(5085);
+  var ss = i(5086);
+  var rs = i(5087);
+  var ls = i(5088);
+  var cs = i(5089);
+  var us = i(5090);
+  var ds = i(5092);
+  var ps = i(5093);
+  var hs = i(5094);
+  var gs = i(5095);
+  var Cs = i(5096);
+  var _s = i(5097);
+  var ms = i(5098);
+  var fs = i(5099);
+  var Os = i(5100);
+  var Es = i(5101);
+  var ys = i(5102);
+  var bs = i(5103);
+  var Ds = i(5104);
+  var Is = i(5105);
+  var vs = i(5106);
+  var Ts = i(5107);
+  var Ss = i(5108);
+  var As = i(5109);
+  var Ls = i(5110);
+  var Ps = i(5111);
+  var Ms = i(5112);
+  var Rs = i(5113);
+  var Vs = i(5114);
+  var xs = i(5115);
+  var ws = i(5116);
+  var Bs = i(5117);
+  var Fs = i(5118);
+  var Ns = i(5119);
+  var ks = i(5120);
+  var Us = i(5121);
+  var Gs = i(5122);
+  var Hs = i(5123);
+  var js = i(5124);
+  var Ws = i(5125);
+  var Ys = i(5126);
+  var Ks = i(5127);
+  var zs = i(5128);
+  var qs = i(5129);
+  var Xs = i(5130);
+  var Qs = i(5131);
+  var Js = i(5134);
+  var Zs = i(5135);
+  var $s = i(5136);
+  var er = i(5137);
+  var tr = i(5138);
+  var ir = i(5139);
+  var nr = i(5140);
+  var or = i(5141);
+  var ar = i(5144);
+  var sr = i(5145);
+  var rr = i(5148);
+  var lr = i(5149);
+  var cr = i(5150);
+  var ur = i(5151);
+  var dr = i(5152);
+  var pr = i(5153);
+  var hr = i(5154);
+  var gr = i(5155);
+  var Cr = i(5156);
+  var _r = i(5157);
+  var mr = i(5158);
+  var fr = i(5159);
+  var Or = i(5160);
+  var Er = i(5161);
+  var yr = i(5162);
+  var br = i(5163);
+  var Dr = i(5164);
+  var Ir = i(5165);
+  var vr = i(5166);
+  var Tr = i(5167);
+  var Sr = i(5168);
+  var Ar = i(5169);
+  var Lr = i(5170);
+  var Pr = i(5171);
+  var Mr = i(5172);
+  var Rr = i(5173);
+  var Vr = i(5174);
+  var xr = i(5175);
+  var wr = i(5176);
+  var Br = i(5177);
+  var Fr = i(5178);
+  var Nr = i(5179);
+  var kr = i(5180);
+  var Ur = i(5181);
+  var Gr = i(5186);
+  var Hr = i(5187);
+  var jr = i(5188);
+  var Wr = i(5189);
+  var Yr = i(5190);
+  var Kr = i(5191);
+  var zr = i(5192);
+  var qr = i(5193);
+  var Xr = i(5194);
+  var Qr = i(5195);
+  var Jr = i(5196);
+  var Zr = i(5199);
+  var $r = i(5200);
+  var el = i(5201);
+  var tl = i(5202);
+  var il = i(5203);
+  var nl = i(5205);
+  var ol = i(5206);
+  var al = i(5207);
+  var sl = i(5208);
+  var rl = i(5209);
+  var ll = i(5210);
+  var cl = i(5211);
+  var ul = i(5212);
+  var dl = i(5213);
+  var pl = i(5214);
+  var hl = i(5215);
+  var gl = i(5216);
+  var Cl = i(5217);
+  var _l = i(5218);
+  var ml = i(5219);
+  var fl = i(5223);
+  var Ol = i(5224);
+  var El = i(5225);
+  var yl = i(5226);
+  var bl = i(5227);
+  var Dl = i(5228);
+  var Il = i(5229);
+  var vl = i(5230);
+  var Tl = i(5231);
+  var Sl = i(5233);
+  var Al = i(5234);
+  var Ll = i(5235);
+  var Pl = i(5236);
+  var Ml = i(5237);
+  var Rl = i(5238);
+  var Vl = i(5239);
+  var xl = i(5240);
+  var wl = i(5241);
+  var Bl = i(5242);
+  var Fl = i(5243);
+  var Nl = i(5244);
+  var kl = i(5245);
+  var Ul = i(5246);
+  var Gl = i(5247);
+  var Hl = i(5248);
+  var jl = i(5249);
+  var Wl = i(5250);
+  var Yl = i(5252);
+  var Kl = i(5253);
+  var zl = i(5254);
+  var ql = i(5255);
+  var Xl = i(5256);
+  var Ql = i(5257);
+  var Jl = i(5258);
+  var Zl = i(5259);
+  var $l = i(5260);
+  var ec = i(5261);
+  var tc = i(5262);
+  var ic = i(5263);
+  var nc = i(5264);
+  var oc = i(5265);
+  var ac = i(5266);
+  var sc = i(5270);
   var rc = i(1165);
-  var lc = i(5269);
-  var cc = i(5270);
-  var uc = i(5271);
-  var dc = i(5272);
-  var pc = i(5273);
-  var hc = i(5311);
-  var gc = i(5312);
-  var Cc = i(5313);
-  var _c = i(5314);
-  var mc = i(5315);
-  var fc = i(5316);
-  var Oc = i(5317);
-  var Ec = i(5318);
-  var yc = i(5319);
-  var bc = i(5320);
-  var Dc = i(5321);
-  var Ic = i(5322);
-  var vc = i(5323);
+  var lc = i(5271);
+  var cc = i(5272);
+  var uc = i(5273);
+  var dc = i(5274);
+  var pc = i(5275);
+  var hc = i(5313);
+  var gc = i(5314);
+  var Cc = i(5315);
+  var _c = i(5316);
+  var mc = i(5317);
+  var fc = i(5318);
+  var Oc = i(5319);
+  var Ec = i(5320);
+  var yc = i(5321);
+  var bc = i(5322);
+  var Dc = i(5323);
+  var Ic = i(5324);
+  var vc = i(5325);
   var Tc = function (e) {
     function CastleInitServerCommands() {
       return e !== null && e.apply(this, arguments) || this;
@@ -418045,7 +418132,7 @@
   t.CastleSPLCommand = b;
   var D = i(9);
   var I = i(17);
-  var v = i(4677);
+  var v = i(4679);
   var T = i(1941);
   b.__initialize_static_members();
 }, function (e, t, i) {
@@ -418651,7 +418738,7 @@
   var a = i(5);
   var s = i(6);
   var r = i(7);
-  var l = i(4689);
+  var l = i(4691);
   var c = i(10);
   var u = function (e) {
     function LCBCommand() {
@@ -418683,7 +418770,7 @@
   }(c.CastleCommand);
   t.LCBCommand = u;
   var d = i(9);
-  var p = i(4690);
+  var p = i(4692);
   o.classImplementsInterfaces(u, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -418782,11 +418869,11 @@
   var O = i(3);
   var E = i(7);
   var y = i(28);
-  var b = i(434);
+  var b = i(435);
   var D = i(4);
   var I = i(1940);
-  var v = i(4692);
-  var T = i(4693);
+  var v = i(4694);
+  var T = i(4695);
   var S = i(1941);
   var A = i(10);
   var L = function (e) {
@@ -419189,8 +419276,8 @@
   t.LRECommand = O;
   var E = i(29);
   var y = i(198);
-  var b = i(663);
-  var D = i(664);
+  var b = i(664);
+  var D = i(665);
   h.classImplementsInterfaces(O, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -419612,7 +419699,7 @@
   var r = i(44);
   var l = i(1121);
   var c = i(10);
-  var u = i(473);
+  var u = i(474);
   var d = i(2);
   var p = i(1819);
   var h = i(4);
@@ -420034,7 +420121,7 @@
     return CastleTitleRewardComponent;
   }(p.CastleComponent);
   t.CastleTitleRewardComponent = g;
-  var C = i(414);
+  var C = i(415);
   var _ = i(402);
   var m = i(25);
   o.classImplementsInterfaces(g, "ICollectableRendererList");
@@ -420056,7 +420143,7 @@
   var d = i(5);
   var p = i(3);
   var h = i(7);
-  var g = i(4713);
+  var g = i(4715);
   var C = i(4);
   var _ = i(10);
   var m = function (e) {
@@ -420289,7 +420376,7 @@
   var C = i(9);
   var _ = i(1688);
   var m = i(1689);
-  var f = i(661);
+  var f = i(662);
   a.classImplementsInterfaces(h, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -420563,9 +420650,9 @@
   var r = i(7);
   var l = i(4);
   var c = i(1239);
-  var u = i(4724);
+  var u = i(4726);
   var d = i(136);
-  var p = i(630);
+  var p = i(631);
   var h = function (e) {
     function AASCommand() {
       return e.call(this) || this;
@@ -420633,7 +420720,7 @@
   var g = i(9);
   var C = i(976);
   var _ = i(125);
-  var m = i(451);
+  var m = i(452);
   var f = i(282);
   var O = i(2);
   var E = i(1345);
@@ -421312,7 +421399,7 @@
   var l = i(7);
   var c = i(4);
   var u = i(136);
-  var d = i(630);
+  var d = i(631);
   var p = function (e) {
     function AJACommand() {
       return e.call(this) || this;
@@ -421355,7 +421442,7 @@
   t.AJACommand = p;
   var h = i(9);
   var g = i(125);
-  var C = i(451);
+  var C = i(452);
 }, function (e, t, i) {
   'use strict';
 
@@ -421450,7 +421537,7 @@
   var o = i(1);
   var a = i(5);
   var s = i(7);
-  var r = i(140);
+  var r = i(141);
   var l = i(10);
   var c = function (e) {
     function ANLCommand() {
@@ -421851,7 +421938,7 @@
   var o = i(1);
   var a = i(5);
   var s = i(7);
-  var r = i(605);
+  var r = i(606);
   var l = i(4);
   var c = i(10);
   var u = function (e) {
@@ -422188,7 +422275,7 @@
   var a = i(5);
   var s = i(7);
   var r = i(4);
-  var l = i(4758);
+  var l = i(4760);
   var c = i(10);
   var u = function (e) {
     function AGCCommand() {
@@ -422221,7 +422308,7 @@
   }(c.CastleCommand);
   t.AGCCommand = u;
   var d = i(9);
-  var p = i(4759);
+  var p = i(4761);
   o.classImplementsInterfaces(u, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -423712,7 +423799,7 @@
   t.SDCCommand = u;
   var d = i(147);
   var p = i(9);
-  var h = i(138);
+  var h = i(139);
   o.classImplementsInterfaces(u, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -423725,7 +423812,7 @@
   var a = i(5);
   var s = i(7);
   var r = i(4);
-  var l = i(4792);
+  var l = i(4794);
   var c = i(10);
   var u = function (e) {
     function SDICommand() {
@@ -423759,7 +423846,7 @@
   }(c.CastleCommand);
   t.SDICommand = u;
   var d = i(9);
-  var p = i(4793);
+  var p = i(4795);
   o.classImplementsInterfaces(u, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -423815,19 +423902,19 @@
   var I = i(21);
   var v = i(172);
   var T = i(118);
-  var S = i(139);
+  var S = i(140);
   var A = i(44);
   var L = i(4);
   var P = i(717);
-  var M = i(582);
-  var R = i(620);
-  var V = i(621);
+  var M = i(583);
+  var R = i(621);
+  var V = i(622);
   var x = i(761);
   var w = i(712);
   var B = i(68);
   var F = i(41);
   var N = i(8);
-  var k = i(585);
+  var k = i(586);
   var U = i(236);
   var G = i(378);
   var H = i(352);
@@ -424299,12 +424386,12 @@
   var W = i(75);
   var Y = i(29);
   var K = i(57);
-  var z = i(4794);
+  var z = i(4796);
   var q = i(185);
   var X = i(9);
   var Q = i(132);
   var J = i(1261);
-  var Z = i(4795);
+  var Z = i(4797);
   var $ = i(61);
   var ee = i(63);
   var te = i(753);
@@ -424353,7 +424440,7 @@
     return StrongestDefenceSupportFlankStrategy;
   }(i(1801).AFillFlankStrategy);
   t.StrongestDefenceSupportFlankStrategy = s;
-  var r = i(509);
+  var r = i(511);
   o.classImplementsInterfaces(s, "IFillFlankStrategy");
 }, function (e, t, i) {
   'use strict';
@@ -424910,7 +424997,7 @@
   var o = i(1);
   var a = i(7);
   var s = i(37);
-  var r = i(478);
+  var r = i(480);
   var l = function (e) {
     function CICCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -424992,7 +425079,7 @@
   var o = i(1);
   var a = i(7);
   var s = i(37);
-  var r = i(478);
+  var r = i(480);
   var l = function (e) {
     function DCICommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -425124,7 +425211,7 @@
   }(d.CastleCommand);
   t.EBUCommand = p;
   var h = i(9);
-  var g = i(643);
+  var g = i(644);
   o.classImplementsInterfaces(p, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -425175,7 +425262,7 @@
   }(u.CastleCommand);
   t.EDOCommand = d;
   var p = i(9);
-  var h = i(643);
+  var h = i(644);
   o.classImplementsInterfaces(d, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -425402,7 +425489,7 @@
   }(u.CastleCommand);
   t.EUPCommand = d;
   var p = i(9);
-  var h = i(643);
+  var h = i(644);
   o.classImplementsInterfaces(d, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -425458,7 +425545,7 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(478);
+  var a = i(480);
   var s = i(37);
   var r = i(7);
   var l = function (e) {
@@ -425718,7 +425805,7 @@
   var r = i(1479);
   var l = i(37);
   var c = i(4);
-  var u = i(478);
+  var u = i(480);
   var d = function (e) {
     function GCCCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -426276,7 +426363,7 @@
   }(u.CastleCommand);
   t.RBUCommand = d;
   var p = i(9);
-  var h = i(643);
+  var h = i(644);
   o.classImplementsInterfaces(d, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -426713,7 +426800,7 @@
   var a = i(5);
   var s = i(7);
   var r = i(10);
-  var l = i(478);
+  var l = i(480);
   var c = i(37);
   var u = i(4);
   var d = function (e) {
@@ -427064,7 +427151,7 @@
   var a = i(5);
   var s = i(7);
   var r = i(4);
-  var l = i(530);
+  var l = i(532);
   var c = i(10);
   var u = function (e) {
     function CRSTCommand() {
@@ -427450,7 +427537,7 @@
   var a = i(5);
   var s = i(7);
   var r = i(4);
-  var l = i(4866);
+  var l = i(4868);
   var c = i(1770);
   var u = i(10);
   var d = function (e) {
@@ -427506,7 +427593,7 @@
   }(u.CastleCommand);
   t.APTCommand = d;
   var p = i(9);
-  var h = i(4867);
+  var h = i(4869);
   o.classImplementsInterfaces(d, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -427696,7 +427783,7 @@
   var o = i(1);
   var a = i(5);
   var s = i(7);
-  var r = i(486);
+  var r = i(488);
   var l = i(1161);
   var c = i(10);
   var u = function (e) {
@@ -428181,7 +428268,7 @@
   var a = i(5);
   var s = i(7);
   var r = i(4);
-  var l = i(515);
+  var l = i(517);
   var c = i(10);
   var u = function (e) {
     function EGECommand() {
@@ -428224,7 +428311,7 @@
   var a = i(5);
   var s = i(7);
   var r = i(118);
-  var l = i(486);
+  var l = i(488);
   var c = i(10);
   var u = function (e) {
     function EQECommand() {
@@ -430244,7 +430331,7 @@
   var s = i(7);
   var r = i(10);
   var l = i(1588);
-  var c = i(4931);
+  var c = i(4933);
   var u = function (e) {
     function HFLCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -431008,7 +431095,7 @@
   }(s.CPSCommand);
   t.CastleCPSCommand = d;
   var p = i(9);
-  var h = i(4948);
+  var h = i(4950);
 }, function (e, t, i) {
   'use strict';
 
@@ -431200,8 +431287,8 @@
   var u = i(47);
   var d = i(4);
   var p = i(10);
-  var h = i(4953);
-  var g = i(4955);
+  var h = i(4955);
+  var g = i(4957);
   var C = i(9);
   var _ = i(37);
   var m = function (e) {
@@ -431270,12 +431357,12 @@
   var l = i(8);
   var c = i(11);
   var u = i(6);
-  var d = i(549);
+  var d = i(551);
   var p = i(407);
   var h = i(1672);
   var g = i(3);
   var C = i(12);
-  var _ = i(4954);
+  var _ = i(4956);
   var m = i(4);
   var f = i(2);
   var O = i(20);
@@ -432322,7 +432409,7 @@
   var a = i(5);
   var s = i(6);
   var r = i(7);
-  var l = i(561);
+  var l = i(562);
   var c = i(4);
   var u = i(10);
   var d = function (e) {
@@ -432371,7 +432458,7 @@
   var a = i(5);
   var s = i(6);
   var r = i(7);
-  var l = i(561);
+  var l = i(562);
   var c = i(4);
   var u = i(10);
   var d = function (e) {
@@ -432420,7 +432507,7 @@
   var a = i(5);
   var s = i(6);
   var r = i(7);
-  var l = i(561);
+  var l = i(562);
   var c = i(4);
   var u = i(10);
   var d = function (e) {
@@ -433086,7 +433173,7 @@
   var o = i(1);
   var a = i(5);
   var s = i(7);
-  var r = i(140);
+  var r = i(141);
   var l = i(4);
   var c = i(10);
   var u = function (e) {
@@ -433176,7 +433263,7 @@
   var o = i(1);
   var a = i(5);
   var s = i(7);
-  var r = i(140);
+  var r = i(141);
   var l = i(10);
   var c = function (e) {
     function RMSCommand() {
@@ -433223,7 +433310,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(7);
-  var c = i(140);
+  var c = i(141);
   var u = i(10);
   var d = function (e) {
     function SMSCommand() {
@@ -433392,10 +433479,10 @@
   var c = i(6);
   var u = i(7);
   var d = i(4);
-  var p = i(4992);
+  var p = i(4994);
   var h = i(135);
   var g = i(988);
-  var C = i(622);
+  var C = i(623);
   var _ = i(10);
   var m = function (e) {
     function BUPCommand() {
@@ -433458,8 +433545,8 @@
   t.BUPCommand = m;
   var f = i(57);
   var O = i(9);
-  var E = i(4993);
-  var y = i(138);
+  var E = i(4995);
+  var y = i(139);
   var b = i(38);
   var D = i(67);
   a.classImplementsInterfaces(m, "IExecCommand");
@@ -435335,7 +435422,7 @@
   var l = i(5);
   var c = i(7);
   var u = i(4);
-  var d = i(5034);
+  var d = i(5036);
   var p = i(10);
   var h = function (e) {
     function PARCommand() {
@@ -435388,7 +435475,7 @@
   var C = i(9);
   var _ = i(1086);
   var m = i(1946);
-  var f = i(5035);
+  var f = i(5037);
   s.classImplementsInterfaces(h, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -435578,7 +435665,7 @@
   var C = i(47);
   var _ = i(9);
   var m = i(1086);
-  var f = i(5037);
+  var f = i(5039);
   s.classImplementsInterfaces(g, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -435849,7 +435936,7 @@
   var r = i(7);
   var l = i(4);
   var c = i(180);
-  var u = i(514);
+  var u = i(516);
   var d = i(10);
   var p = function (e) {
     function POLCommand() {
@@ -435899,7 +435986,7 @@
   var o = i(1);
   var a = i(5);
   var s = i(7);
-  var r = i(5045);
+  var r = i(5047);
   var l = i(4);
   var c = i(10);
   var u = function (e) {
@@ -436677,7 +436764,7 @@
   var s = i(5);
   var r = i(3);
   var l = i(7);
-  var c = i(649);
+  var c = i(650);
   var u = i(1947);
   var d = i(10);
   var p = function (e) {
@@ -436770,9 +436857,9 @@
   }(l.CastleCommand);
   t.LRICommand = c;
   var u = i(9);
-  var d = i(5064);
-  var p = i(5067);
-  var h = i(5068);
+  var d = i(5066);
+  var p = i(5069);
+  var h = i(5070);
   o.classImplementsInterfaces(c, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -437030,7 +437117,7 @@
   t.AutoRecruitmentPurchaseDialogProperties = g;
   var C = i(57);
   var _ = i(117);
-  var m = i(650);
+  var m = i(651);
 }, function (e, t, i) {
   'use strict';
 
@@ -437073,7 +437160,7 @@
   var o = i(1);
   var a = i(5);
   var s = i(7);
-  var r = i(649);
+  var r = i(650);
   var l = i(1947);
   var c = i(10);
   var u = function (e) {
@@ -437338,7 +437425,7 @@
   var a = i(5);
   var s = i(7);
   var r = i(37);
-  var l = i(478);
+  var l = i(480);
   var c = function (e) {
     function RFICommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -437879,7 +437966,7 @@
   }(r.CastleCommand);
   t.RAECommand = l;
   var c = i(9);
-  var u = i(5089);
+  var u = i(5091);
   o.classImplementsInterfaces(l, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -437897,8 +437984,8 @@
   var u = i(1113);
   var d = i(8);
   var p = i(11);
-  var h = i(524);
-  var g = i(427);
+  var h = i(526);
+  var g = i(428);
   var C = function (e) {
     function CastleRerollAlienSuccessDialog() {
       return e.call(this, CastleRerollAlienSuccessDialog.NAME) || this;
@@ -437978,8 +438065,8 @@
   t.CastleRerollAlienSuccessDialog = C;
   var _ = i(29);
   var m = i(9);
-  var f = i(445);
-  var O = i(443);
+  var f = i(446);
+  var O = i(444);
   var E = i(36);
   a.classImplementsInterfaces(C, "ICollectableRendererList");
 }, function (e, t, i) {
@@ -439790,8 +439877,8 @@
   t.FJFCommand = p;
   var h = i(29);
   var g = i(9);
-  var C = i(5130);
-  var _ = i(5131);
+  var C = i(5132);
+  var _ = i(5133);
   s.classImplementsInterfaces(p, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -440168,7 +440255,7 @@
   var l = i(3);
   var c = i(7);
   var u = i(4);
-  var d = i(5140);
+  var d = i(5142);
   var p = i(10);
   var h = function (e) {
     function GPGCommand() {
@@ -440203,7 +440290,7 @@
   t.GPGCommand = h;
   var g = i(9);
   var C = i(38);
-  var _ = i(5141);
+  var _ = i(5143);
   a.classImplementsInterfaces(h, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -440333,7 +440420,7 @@
   var r = i(6);
   var l = i(7);
   var c = i(4);
-  var u = i(5144);
+  var u = i(5146);
   var d = i(10);
   var p = function (e) {
     function RGGCommand() {
@@ -440369,7 +440456,7 @@
   t.RGGCommand = p;
   var h = i(52);
   var g = i(9);
-  var C = i(5145);
+  var C = i(5147);
   o.classImplementsInterfaces(p, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -442539,7 +442626,7 @@
   var o = i(1);
   var a = i(7);
   var s = i(37);
-  var r = i(478);
+  var r = i(480);
   var l = function (e) {
     function SURCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -442676,7 +442763,7 @@
   var s = i(6);
   var r = i(7);
   var l = i(4);
-  var c = i(5195);
+  var c = i(5197);
   var u = i(10);
   var d = function (e) {
     function TXCCommand() {
@@ -442711,7 +442798,7 @@
   }(u.CastleCommand);
   t.TXCCommand = d;
   var p = i(9);
-  var h = i(5196);
+  var h = i(5198);
   o.classImplementsInterfaces(d, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -443024,7 +443111,7 @@
     return GPRCommand;
   }(r.CastleCommand);
   t.GPRCommand = l;
-  var c = i(5202);
+  var c = i(5204);
   var u = i(15);
   var d = i(1393);
   o.classImplementsInterfaces(l, "IExecCommand");
@@ -443691,7 +443778,7 @@
   var l = i(7);
   var c = i(39);
   var u = i(4);
-  var d = i(5218);
+  var d = i(5220);
   var p = i(10);
   var h = function (e) {
     function STICommand() {
@@ -443730,7 +443817,7 @@
   var g = i(1109);
   var C = i(9);
   var _ = i(38);
-  var m = i(5219);
+  var m = i(5221);
   a.classImplementsInterfaces(h, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -443794,11 +443881,11 @@
   var L = i(34);
   var P = i(68);
   var M = i(41);
-  var R = i(585);
+  var R = i(586);
   var V = i(236);
   var x = i(378);
   var w = i(352);
-  var B = i(614);
+  var B = i(615);
   var F = function (e) {
     function CastleTroopSupportDialog() {
       var t = this;
@@ -444216,13 +444303,13 @@
   var G = i(185);
   var H = i(9);
   var j = i(132);
-  var W = i(5220);
+  var W = i(5222);
   var Y = i(61);
   var K = i(63);
   var z = i(753);
   var q = i(238);
   var X = i(353);
-  var Q = i(617);
+  var Q = i(618);
   a.classImplementsInterfaces(F, "ICollectableRendererList");
   var J = i(1);
 }, function (e, t, i) {
@@ -444640,14 +444727,14 @@
   var E = i(682);
   var y = i(105);
   var b = i(92);
-  var D = i(494);
-  var I = i(599);
+  var D = i(496);
+  var I = i(600);
   var v = i(44);
   var T = i(4);
   var S = i(198);
   var A = i(918);
   var L = i(180);
-  var P = i(5230);
+  var P = i(5232);
   var M = i(1939);
   var R = i(1130);
   var V = i(1709);
@@ -444655,7 +444742,7 @@
   var w = i(1809);
   var B = i(161);
   var F = i(704);
-  var N = i(514);
+  var N = i(516);
   var k = i(10);
   var U = createjs.Event;
   var G = function (e) {
@@ -445404,9 +445491,9 @@
   t.GLUCommand = _;
   var m = i(9);
   var f = i(816);
-  var O = i(663);
+  var O = i(664);
   var E = i(18);
-  var y = i(664);
+  var y = i(665);
   r.classImplementsInterfaces(_, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -445738,7 +445825,7 @@
   var r = i(10);
   var l = i(4);
   var c = i(2);
-  var u = i(5249);
+  var u = i(5251);
   var d = function (e) {
     function MVFCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -446274,8 +446361,8 @@
   var c = i(7);
   var u = i(4);
   var d = i(10);
-  var p = i(663);
-  var h = i(664);
+  var p = i(664);
+  var h = i(665);
   var g = function (e) {
     function UPICommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -446341,8 +446428,8 @@
   var l = i(5);
   var c = i(7);
   var u = i(10);
-  var d = i(664);
-  var p = i(663);
+  var d = i(665);
+  var p = i(664);
   var h = function (e) {
     function UPTCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -446463,8 +446550,8 @@
   var c = i(7);
   var u = i(682);
   var d = i(4);
-  var p = i(5265);
-  var h = i(5266);
+  var p = i(5267);
+  var h = i(5268);
   var g = i(10);
   var C = function (e) {
     function FWDCommand() {
@@ -446517,7 +446604,7 @@
   }(g.CastleCommand);
   t.FWDCommand = C;
   var _ = i(9);
-  var m = i(5267);
+  var m = i(5269);
   a.classImplementsInterfaces(C, "IExecCommand");
 }, function (e, t, i) {
   'use strict';
@@ -447327,12 +447414,12 @@
     return JAACommand;
   }(O.CastleCommand);
   t.JAACommand = E;
-  var y = i(5274);
+  var y = i(5276);
   var b = i(144);
   var D = i(35);
   var I = i(29);
   var v = i(17);
-  var T = i(411);
+  var T = i(412);
   var S = i(220);
   var A = i(9);
   var L = i(1938);
@@ -447400,7 +447487,7 @@
   var o = i(147);
   var a = i(736);
   var s = i(1167);
-  var r = i(5308);
+  var r = i(5310);
   var l = i(4);
   var c = i(1);
   var u = i(5);
@@ -447413,8 +447500,8 @@
   });
   var n = i(0);
   var o = i(1);
-  var a = i(562);
-  var s = i(5276);
+  var a = i(563);
+  var s = i(5278);
   var r = function (e) {
     function IsoData() {
       return e !== null && e.apply(this, arguments) || this;
@@ -447456,8 +447543,8 @@
     return IsoData;
   }(a.AAreaDataComponent);
   t.IsoData = r;
-  var l = i(5294);
-  var c = i(5297);
+  var l = i(5296);
+  var c = i(5299);
   o.classImplementsInterfaces(r, "ICollectableRendererList", "IAreaDataComponent");
 }, function (e, t, i) {
   'use strict';
@@ -447727,14 +447814,14 @@
   var v = i(1612);
   var T = i(869);
   var S = i(1199);
-  var A = i(5277);
-  var L = i(5280);
+  var A = i(5279);
+  var L = i(5282);
   var P = i(1498);
   var M = i(1960);
-  var R = i(5283);
-  var V = i(5286);
-  var x = i(5289);
-  var w = i(5292);
+  var R = i(5285);
+  var V = i(5288);
+  var x = i(5291);
+  var w = i(5294);
   var B = i(1);
   var F = i(1);
 }, function (e, t, i) {
@@ -447764,11 +447851,11 @@
       configurable: true
     });
     return IsoCommandPackageObjectChangePos;
-  }(i(634).AIsoCommandPackageObject);
+  }(i(635).AIsoCommandPackageObject);
   t.IsoCommandPackageObjectChangePos = o;
-  var a = i(5278);
-  var s = i(5279);
-  var r = i(489);
+  var a = i(5280);
+  var s = i(5281);
+  var r = i(491);
 }, function (e, t, i) {
   'use strict';
 
@@ -447870,11 +447957,11 @@
       configurable: true
     });
     return IsoCommandPackageObjectRemoveById;
-  }(i(634).AIsoCommandPackageObject);
+  }(i(635).AIsoCommandPackageObject);
   t.IsoCommandPackageObjectRemoveById = o;
   var a = i(1499);
   var s = i(1500);
-  var r = i(487);
+  var r = i(489);
 }, function (e, t, i) {
   'use strict';
 
@@ -447964,10 +448051,10 @@
       return e;
     };
     return IsoCommandPackageObjectsTriggerUpdate;
-  }(i(488).AIsoCommandPackage);
+  }(i(490).AIsoCommandPackage);
   t.IsoCommandPackageObjectsTriggerUpdate = o;
-  var a = i(5284);
-  var s = i(5285);
+  var a = i(5286);
+  var s = i(5287);
 }, function (e, t, i) {
   'use strict';
 
@@ -448104,15 +448191,15 @@
       configurable: true
     });
     return IsoCommandPackageObjectUpdateInfo;
-  }(i(634).AIsoCommandPackageObject);
+  }(i(635).AIsoCommandPackageObject);
   t.IsoCommandPackageObjectUpdateInfo = a;
   var s = i(48);
   var r = i(695);
   var l = i(696);
-  var c = i(5287);
+  var c = i(5289);
   var u = i(1961);
-  var d = i(5288);
-  var p = i(487);
+  var d = i(5290);
+  var p = i(489);
   var h = i(693);
 }, function (e, t, i) {
   'use strict';
@@ -448298,10 +448385,10 @@
       configurable: true
     });
     return IsoCommandPackageUpdateSlums;
-  }(i(488).AIsoCommandPackage);
+  }(i(490).AIsoCommandPackage);
   t.IsoCommandPackageUpdateSlums = a;
-  var s = i(5290);
-  var r = i(5291);
+  var s = i(5292);
+  var r = i(5293);
 }, function (e, t, i) {
   'use strict';
 
@@ -448466,7 +448553,7 @@
   var c = i(143);
   var u = i(48);
   var d = i(35);
-  var p = i(5293);
+  var p = i(5295);
   o.classImplementsInterfaces(r, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -448543,14 +448630,14 @@
       configurable: true
     });
     return IsoCommandPackageMovementSpawnDefault;
-  }(i(488).AIsoCommandPackage);
+  }(i(490).AIsoCommandPackage);
   t.IsoCommandPackageMovementSpawnDefault = s;
   var r = i(144);
   var l = i(82);
   var c = i(1194);
   var u = i(695);
   var d = i(696);
-  var p = i(489);
+  var p = i(491);
 }, function (e, t, i) {
   'use strict';
 
@@ -448562,8 +448649,8 @@
   var a = i(116);
   var s = i(6);
   var r = i(105);
-  var l = i(5295);
-  var c = i(5296);
+  var l = i(5297);
+  var c = i(5298);
   var u = createjs.Point;
   var d = createjs.Rectangle;
   var p = a.getLogger("createjs.ts Extensions");
@@ -449269,7 +449356,7 @@
   t.IsoDataObjects = n;
   var o = i(143);
   var a = i(48);
-  var s = i(5298);
+  var s = i(5300);
 }, function (e, t, i) {
   'use strict';
 
@@ -449477,11 +449564,12 @@
   var c = i(6);
   var u = i(56);
   var d = i(4);
-  var p = i(34);
-  var h = i(87);
-  var g = i(65);
-  var C = i(71);
-  var _ = function (e) {
+  var p = i(138);
+  var h = i(34);
+  var g = i(87);
+  var C = i(65);
+  var _ = i(71);
+  var m = function (e) {
     function AreaDataCommonInfo() {
       var t = e !== null && e.apply(this, arguments) || this;
       t._metropolBoost = 0;
@@ -449502,7 +449590,6 @@
       t._guardAmount = 0;
       t._builderDiscount = 0;
       t._isCastleBurning = false;
-      t._royalCapitalBuffActive = false;
       t._maxUnitStorage = -1;
       t._maxAuxiliariesStorage = -1;
       return t;
@@ -449512,24 +449599,23 @@
       this._builderDiscount = e.B;
     };
     AreaDataCommonInfo.prototype.parseGPA = function (e) {
-      this._resourceDeltaFoodConsumption = e.DFC / 10;
+      this._resourceDeltaFoodConsumption = e[r.CommKeys.FOOD_CONSUMPTION_DELTA] / 10;
       this._resourceDeltaMeadConsumption = e.DMEADC / 10;
       this._resourceDeltaBeefConsumption = e.DBEEFC / 10;
-      this._foodConsumptionReduction = c.int(e.FCR);
+      this._foodConsumptionReduction = c.int(e[r.CommKeys.FOOD_CONSUMPTION_REDUCTION]);
       this._meadConsumptionReduction = c.int(e.MEADCR);
       this._beefConsumptionReduction = c.int(e.BEEFCR);
-      this._population = c.int(e.P);
-      this._decoPoints = c.int(e.NDP);
-      this._sickness = c.int(e.S);
-      this._riot = c.int(e.R);
-      this._metropolBoost = e.MP ? e.MP : 0;
-      this._buildSpeedBoost = c.int(e.BDB);
-      this._guardAmount = c.int(e.GRD);
-      this._royalCapitalBuffActive = !!e.RCP && e.RCP != 0;
-      this._maxUnitStorage = c.int(e.US);
-      this._maxAuxiliariesStorage = c.int(e.AUS);
+      this._population = c.int(e[r.CommKeys.POPULATION]);
+      this._decoPoints = c.int(e[r.CommKeys.NEUTRAL_DECO_POINTS]);
+      this._sickness = c.int(e[r.CommKeys.SICKNESS]);
+      this._riot = c.int(e[r.CommKeys.RIOT]);
+      this._metropolBoost = e[r.CommKeys.RESOURCE_METROPOLIS_FOOD_PRODUCTION_BONUS] ? e[r.CommKeys.RESOURCE_METROPOLIS_FOOD_PRODUCTION_BONUS] : 0;
+      this._buildSpeedBoost = c.int(e[r.CommKeys.BUILD_SPEED]);
+      this._guardAmount = c.int(e[r.CommKeys.GUARD_COUNT_2]);
+      this._maxUnitStorage = c.int(e[r.CommKeys.UNIT_SLOTS_2]);
+      this._maxAuxiliariesStorage = c.int(e[r.CommKeys.AUXILIARY_CAPACITY]);
       this.updateInfos();
-      f.CastleComponent.controller.dispatchEvent(new C.AreaDataEvent(C.AreaDataEvent.ON_INFO_VALUES_CHANGED));
+      O.CastleComponent.controller.dispatchEvent(new _.AreaDataEvent(_.AreaDataEvent.ON_INFO_VALUES_CHANGED));
     };
     AreaDataCommonInfo.prototype.updateInfos = function () {
       this._maxPopulation = 0;
@@ -449542,28 +449628,28 @@
           var i = t[e];
           var n = o.castAs(i, "AEffectBuildingVO");
           if (n && n.areValuesActive) {
-            if (u.ClientConstUtils.isObjectClassOf(n, [b.DwellingBuildingVO, I.PdwellingBuildingVO])) {
+            if (u.ClientConstUtils.isObjectClassOf(n, [D.DwellingBuildingVO, v.PdwellingBuildingVO])) {
               this._populationPenalty += n.decoPoints;
             }
-            if (u.ClientConstUtils.isObjectClassOf(n, [y.ADefenceBuildingVO, D.KeepBuildingVO])) {
+            if (u.ClientConstUtils.isObjectClassOf(n, [b.ADefenceBuildingVO, I.KeepBuildingVO])) {
               this._protection += n.decoPoints;
             }
             this._maxPopulation += n.population;
           }
           var a = o.castAs(i, "ABasicBuildingVO");
-          var r = a && a.hitPoints < 100 && a.buildingState == h.IsoBuildingStateEnum.BUILD_COMPLETED && a.level > 0;
+          var r = a && a.hitPoints < 100 && a.buildingState == g.IsoBuildingStateEnum.BUILD_COMPLETED && a.level > 0;
           if (!this._isCastleBurning && a && r) {
             this._isCastleBurning = true;
           }
           if (a && a.isInBuildingDistrict || s.instanceOfClass(a, "ADistrictBuildingVO")) {
             if (!this._buildingDistrictInfo.get(a.districtTypeID)) {
-              this._buildingDistrictInfo.set(a.districtTypeID, new m());
+              this._buildingDistrictInfo.set(a.districtTypeID, new f());
             }
             var l = this._buildingDistrictInfo.get(a.districtTypeID);
             if (a.isInBuildingDistrict) {
               l.buildingsInDistrict++;
               l.districtMightPoints += a.mightValue;
-              if (a instanceof g.AEffectBuildingVO) {
+              if (a instanceof C.AEffectBuildingVO) {
                 l.districtDecoPoints += a.decoPoints;
               }
               if (r) {
@@ -449575,24 +449661,29 @@
             }
           }
         }
-        f.CastleComponent.controller.dispatchEvent(new C.AreaDataEvent(C.AreaDataEvent.ON_BURNING_CASTLE_UPDATED));
+        O.CastleComponent.controller.dispatchEvent(new _.AreaDataEvent(_.AreaDataEvent.ON_BURNING_CASTLE_UPDATED));
       }
     };
     AreaDataCommonInfo.prototype.getDecoPointsWithBoni = function () {
-      var e = d.CastleModel.researchData.getResearchEffectValue(p.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BONUS, this.areaData.areaInfo.areaType, this.areaData.spaceId).strength;
+      var e = d.CastleModel.researchData.getResearchEffectValue(h.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BONUS, this.areaData.areaInfo.areaType, this.areaData.spaceId).strength;
       var t = this.getPublicOrderSubscriptionBonus();
       var i = this.getPublicOrderBaronBonus();
-      return c.int(this.decoPoints + e + t + i);
+      var n = this.getCIBonusToDecoPoints();
+      return c.int(this.decoPoints + e + t + i + n);
+    };
+    AreaDataCommonInfo.prototype.getCIBonusToDecoPoints = function () {
+      var e = d.CastleModel.areaData.activeConstructionItems.getEffectValue(h.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BONUS, new p.CastleEffectConditionVO()).strength;
+      return c.int(e);
     };
     AreaDataCommonInfo.prototype.getLawAndOrderFactor = function () {
       if (this.areaData.isSeasonCamp) {
         return 1;
       }
-      var e = O.CastleTitleSystemHelper.getSummedEffectValueFromTitles(d.CastleModel.titleData.getAllAssignedUserTitles(), p.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BOOST);
+      var e = E.CastleTitleSystemHelper.getSummedEffectValueFromTitles(d.CastleModel.titleData.getAllAssignedUserTitles(), h.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BOOST);
       return l.LawAndOrderConst.calculateLawAndOrderFactorWithEffect(this.getDecoPointsWithBoni(), this.sickness, this.riot, r.EffectConst.boostToModifier(e));
     };
     AreaDataCommonInfo.prototype.getLawAndOrderValue = function () {
-      var e = O.CastleTitleSystemHelper.getSummedEffectValueFromTitles(d.CastleModel.titleData.getAllAssignedUserTitles(), p.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BOOST);
+      var e = E.CastleTitleSystemHelper.getSummedEffectValueFromTitles(d.CastleModel.titleData.getAllAssignedUserTitles(), h.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BOOST);
       return c.int(l.LawAndOrderConst.calculateLawAndOrderWithTitle(this.getDecoPointsWithBoni(), this.sickness, this.riot, e));
     };
     AreaDataCommonInfo.prototype.getDecoPoints = function () {
@@ -449603,7 +449694,7 @@
         if (this.foodProduction >= 0) {
           return -1;
         } else {
-          return -this.areaData.storage.getItem(E.CollectableEnum.FOOD).amount / this.foodProduction * 60 * 60;
+          return -this.areaData.storage.getItem(y.CollectableEnum.FOOD).amount / this.foodProduction * 60 * 60;
         }
       },
       enumerable: true,
@@ -449614,7 +449705,7 @@
         if (this.honeyProduction >= 0) {
           return -1;
         } else {
-          return -this.areaData.storage.getItem(E.CollectableEnum.HONEY).amount / this.honeyProduction * 60 * 60;
+          return -this.areaData.storage.getItem(y.CollectableEnum.HONEY).amount / this.honeyProduction * 60 * 60;
         }
       },
       enumerable: true,
@@ -449625,7 +449716,7 @@
         if (this.meadProduction >= 0) {
           return -1;
         } else {
-          return -this.areaData.storage.getItem(E.CollectableEnum.MEAD).amount / this.meadProduction * 60 * 60;
+          return -this.areaData.storage.getItem(y.CollectableEnum.MEAD).amount / this.meadProduction * 60 * 60;
         }
       },
       enumerable: true,
@@ -449636,68 +449727,68 @@
         if (this.beefProduction >= 0) {
           return -1;
         } else {
-          return -this.areaData.storage.getItem(E.CollectableEnum.BEEF).amount / this.beefProduction * 60 * 60;
+          return -this.areaData.storage.getItem(y.CollectableEnum.BEEF).amount / this.beefProduction * 60 * 60;
         }
       },
       enumerable: true,
       configurable: true
     });
     AreaDataCommonInfo.prototype.getPublicOrderSubscriptionBonus = function () {
-      return d.CastleModel.subscriptionData.getEffectValue(p.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BONUS);
+      return d.CastleModel.subscriptionData.getEffectValue(h.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BONUS);
     };
     AreaDataCommonInfo.prototype.getPublicOrderBaronBonus = function () {
       var e = d.CastleModel.lordData.getBaronByCastleMapObjectVO(this.areaData.areaInfo);
       if (e) {
-        return e.getEffectValue(p.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BONUS, this.areaData.areaInfo.areaType, this.areaData.spaceId);
+        return e.getEffectValue(h.EffectTypeEnum.EFFECT_TYPE_PUBLIC_ORDER_BONUS, this.areaData.areaInfo.areaType, this.areaData.spaceId);
       } else {
         return 0;
       }
     };
     Object.defineProperty(AreaDataCommonInfo.prototype, "foodProduction", {
       get: function () {
-        return this.areaData.storage.getItem(E.CollectableEnum.FOOD).productionPerSec - this.foodConsumption;
+        return this.areaData.storage.getItem(y.CollectableEnum.FOOD).productionPerSec - this.foodConsumption;
       },
       enumerable: true,
       configurable: true
     });
     Object.defineProperty(AreaDataCommonInfo.prototype, "meadProduction", {
       get: function () {
-        return this.areaData.storage.getItem(E.CollectableEnum.MEAD).productionPerSec - this.meadConsumption;
+        return this.areaData.storage.getItem(y.CollectableEnum.MEAD).productionPerSec - this.meadConsumption;
       },
       enumerable: true,
       configurable: true
     });
     Object.defineProperty(AreaDataCommonInfo.prototype, "beefProduction", {
       get: function () {
-        return this.areaData.storage.getItem(E.CollectableEnum.BEEF).productionPerSec - this.beefConsumption;
+        return this.areaData.storage.getItem(y.CollectableEnum.BEEF).productionPerSec - this.beefConsumption;
       },
       enumerable: true,
       configurable: true
     });
     Object.defineProperty(AreaDataCommonInfo.prototype, "honeyProduction", {
       get: function () {
-        return this.areaData.storage.getItem(E.CollectableEnum.HONEY).productionPerSec;
+        return this.areaData.storage.getItem(y.CollectableEnum.HONEY).productionPerSec;
       },
       enumerable: true,
       configurable: true
     });
     Object.defineProperty(AreaDataCommonInfo.prototype, "foodBaseProduction", {
       get: function () {
-        return this.areaData.storage.getItem(E.CollectableEnum.FOOD).productionPerSec - this._metropolBoost;
+        return this.areaData.storage.getItem(y.CollectableEnum.FOOD).productionPerSec - this._metropolBoost;
       },
       enumerable: true,
       configurable: true
     });
     Object.defineProperty(AreaDataCommonInfo.prototype, "meadBaseProduction", {
       get: function () {
-        return this.areaData.storage.getItem(E.CollectableEnum.MEAD).productionPerSec;
+        return this.areaData.storage.getItem(y.CollectableEnum.MEAD).productionPerSec;
       },
       enumerable: true,
       configurable: true
     });
     Object.defineProperty(AreaDataCommonInfo.prototype, "beefBaseProduction", {
       get: function () {
-        return this.areaData.storage.getItem(E.CollectableEnum.BEEF).productionPerSec;
+        return this.areaData.storage.getItem(y.CollectableEnum.BEEF).productionPerSec;
       },
       enumerable: true,
       configurable: true
@@ -449849,13 +449940,6 @@
       enumerable: true,
       configurable: true
     });
-    Object.defineProperty(AreaDataCommonInfo.prototype, "royalCapitalBuffActive", {
-      get: function () {
-        return this._royalCapitalBuffActive;
-      },
-      enumerable: true,
-      configurable: true
-    });
     Object.defineProperty(AreaDataCommonInfo.prototype, "maxAuxiliariesStorage", {
       get: function () {
         return this._maxAuxiliariesStorage;
@@ -449899,10 +449983,10 @@
       }
     };
     return AreaDataCommonInfo;
-  }(i(562).AAreaDataComponent);
-  t.AreaDataCommonInfo = _;
-  a.classImplementsInterfaces(_, "ICollectableRendererList", "IAreaDataComponent");
-  var m = function () {
+  }(i(563).AAreaDataComponent);
+  t.AreaDataCommonInfo = m;
+  a.classImplementsInterfaces(m, "ICollectableRendererList", "IAreaDataComponent");
+  var f = function () {
     return function BuildingDistrictInfoVO() {
       this.buildingsInDistrict = 0;
       this.districtSize = 0;
@@ -449912,14 +449996,14 @@
       this.districtDecoPoints = 0;
     };
   }();
-  var f = i(14);
-  var O = i(117);
-  var E = i(13);
-  var y = i(633);
-  var b = i(788);
-  var D = i(401);
-  var I = i(1024);
-  a.classImplementsInterfaces(_, "ICollectableRendererList", "IAreaDataComponent");
+  var O = i(14);
+  var E = i(117);
+  var y = i(13);
+  var b = i(634);
+  var D = i(788);
+  var I = i(401);
+  var v = i(1024);
+  a.classImplementsInterfaces(m, "ICollectableRendererList", "IAreaDataComponent");
 }, function (e, t, i) {
   'use strict';
 
@@ -449929,7 +450013,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(6);
-  var s = i(142);
+  var s = i(138);
   var r = i(71);
   var l = function (e) {
     function AreaDataConstructionItems() {
@@ -450018,7 +450102,7 @@
       configurable: true
     });
     return AreaDataConstructionItems;
-  }(i(562).AAreaDataComponent);
+  }(i(563).AAreaDataComponent);
   t.AreaDataConstructionItems = l;
   var c = i(14);
   var u = i(111);
@@ -450039,9 +450123,9 @@
   var l = i(15);
   var c = i(4);
   var u = i(1962);
-  var d = i(5302);
-  var p = i(142);
-  var h = i(5303);
+  var d = i(5304);
+  var p = i(138);
+  var h = i(5305);
   var g = i(111);
   var C = i(71);
   var _ = function (e) {
@@ -450474,7 +450558,7 @@
       configurable: true
     });
     return AreaDataMorality;
-  }(i(562).AAreaDataComponent);
+  }(i(563).AAreaDataComponent);
   t.AreaDataMorality = d;
   var p = i(14);
   var h = i(13);
@@ -450516,7 +450600,7 @@
       configurable: true
     });
     return AreaDataSlum;
-  }(i(562).AAreaDataComponent);
+  }(i(563).AAreaDataComponent);
   t.AreaDataSlum = s;
   var r = i(14);
   o.classImplementsInterfaces(s, "ICollectableRendererList", "IAreaDataComponent");
@@ -450664,11 +450748,11 @@
       return t;
     };
     return AreaDataStorage;
-  }(i(562).AAreaDataComponent);
+  }(i(563).AAreaDataComponent);
   t.AreaDataStorage = p;
   var h = i(83);
   var g = i(13);
-  var C = i(5307);
+  var C = i(5309);
   var _ = i(18);
   var m = i(2);
   o.classImplementsInterfaces(p, "ICollectableRendererList", "IAreaDataComponent");
@@ -451023,7 +451107,7 @@
   }();
   t.AreaData = n;
   var o = i(1004);
-  var a = i(5309);
+  var a = i(5311);
   var s = i(1167);
   var r = i(4);
   var l = i(1);
@@ -451288,8 +451372,8 @@
     return AreaDataUpdater;
   }(u.CastleComponent);
   t.AreaDataUpdater = p;
-  var h = i(5310);
-  var g = i(487);
+  var h = i(5312);
+  var g = i(489);
   var C = i(143);
   var _ = i(35);
   o.classImplementsInterfaces(p, "ICollectableRendererList");
@@ -451299,8 +451383,8 @@
   Object.defineProperty(t, "__esModule", {
     value: true
   });
-  var n = i(484);
-  var o = i(531);
+  var n = i(486);
+  var o = i(533);
   var a = function () {
     function CastleResourcesVO() {
       this._castleID = 0;
@@ -451359,15 +451443,15 @@
   var s = i(52);
   var r = i(47);
   var l = i(1018);
-  var c = i(637);
-  var u = i(455);
-  var d = i(638);
-  var p = i(639);
-  var h = i(640);
+  var c = i(638);
+  var u = i(456);
+  var d = i(639);
+  var p = i(640);
+  var h = i(641);
   var g = i(291);
   var C = i(292);
   var _ = i(6);
-  var m = i(641);
+  var m = i(642);
 }, function (e, t, i) {
   'use strict';
 
@@ -451956,7 +452040,7 @@
   var d = i(198);
   var p = i(9);
   var h = i(38);
-  var g = i(5325);
+  var g = i(5327);
   var C = r.getLogger("Connection.CastleLoginCommand");
   var _ = function (e) {
     function CastleLoginCommand() {
@@ -452185,7 +452269,7 @@
   t.CastleOpenForumCommand = h;
   var g = i(9);
   var C = i(355);
-  var _ = i(437);
+  var _ = i(438);
   c.classImplementsInterfaces(h, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -452473,7 +452557,7 @@
   t.CastleAllianceGiftData = l;
   var c = i(75);
   var u = i(52);
-  var d = i(5331);
+  var d = i(5333);
   o.classImplementsInterfaces(l, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -452552,20 +452636,20 @@
   var s = i(6);
   var r = i(60);
   var l = i(4);
-  var c = i(5333);
-  var u = i(5354);
-  var d = i(5355);
-  var p = i(5356);
-  var h = i(5357);
-  var g = i(5358);
-  var C = i(5359);
-  var _ = i(5360);
-  var m = i(5361);
-  var f = i(5363);
-  var O = i(5364);
-  var E = i(5365);
-  var y = i(5367);
-  var b = i(5368);
+  var c = i(5335);
+  var u = i(5356);
+  var d = i(5357);
+  var p = i(5358);
+  var h = i(5359);
+  var g = i(5360);
+  var C = i(5361);
+  var _ = i(5362);
+  var m = i(5363);
+  var f = i(5365);
+  var O = i(5366);
+  var E = i(5367);
+  var y = i(5369);
+  var b = i(5370);
   var D = function (e) {
     function CastlePrivateOfferData() {
       return e !== null && e.apply(this, arguments) || this;
@@ -452634,22 +452718,22 @@
   }(c.BasicPrivateOfferData);
   t.CastlePrivateOfferData = D;
   var I = i(701);
-  var v = i(5369);
-  var T = i(5370);
-  var S = i(5372);
-  var A = i(5373);
-  var L = i(5374);
-  var P = i(5375);
-  var M = i(5376);
-  var R = i(5378);
-  var V = i(5380);
-  var x = i(5381);
-  var w = i(5382);
-  var B = i(5383);
-  var F = i(5384);
-  var N = i(5385);
-  var k = i(5386);
-  var U = i(5387);
+  var v = i(5371);
+  var T = i(5372);
+  var S = i(5374);
+  var A = i(5375);
+  var L = i(5376);
+  var P = i(5377);
+  var M = i(5378);
+  var R = i(5380);
+  var V = i(5382);
+  var x = i(5383);
+  var w = i(5384);
+  var B = i(5385);
+  var F = i(5386);
+  var N = i(5387);
+  var k = i(5388);
+  var U = i(5389);
   o.classImplementsInterfaces(D, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -452664,29 +452748,29 @@
   var r = i(1);
   var l = i(6);
   var c = i(60);
-  var u = i(5334);
-  var d = i(5335);
-  var p = i(5336);
-  var h = i(5337);
+  var u = i(5336);
+  var d = i(5337);
+  var p = i(5338);
+  var h = i(5339);
   var g = i(1299);
   var C = i(26);
   var _ = i(15);
   var m = i(54);
   var f = i(4);
-  var O = i(5338);
-  var E = i(5339);
-  var y = i(5340);
-  var b = i(5341);
-  var D = i(5342);
-  var I = i(5343);
-  var v = i(5344);
-  var T = i(5345);
-  var S = i(5346);
-  var A = i(5347);
-  var L = i(5348);
-  var P = i(5349);
-  var M = i(5350);
-  var R = i(5351);
+  var O = i(5340);
+  var E = i(5341);
+  var y = i(5342);
+  var b = i(5343);
+  var D = i(5344);
+  var I = i(5345);
+  var v = i(5346);
+  var T = i(5347);
+  var S = i(5348);
+  var A = i(5349);
+  var L = i(5350);
+  var P = i(5351);
+  var M = i(5352);
+  var R = i(5353);
   var V = i(129);
   var x = i(229);
   var w = function (e) {
@@ -453042,7 +453126,7 @@
   }(m.CastleBasicData);
   t.BasicPrivateOfferData = w;
   var B = i(29);
-  var F = i(5352);
+  var F = i(5354);
   s.classImplementsInterfaces(w, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -454309,7 +454393,7 @@
   var _ = i(43);
   var m = i(4);
   var f = i(1963);
-  var O = i(5353);
+  var O = i(5355);
   var E = i(229);
   n.__initialize_static_members();
 }, function (e, t, i) {
@@ -454668,7 +454752,7 @@
   });
   var n = i(1);
   var o = i(60);
-  var a = i(5362);
+  var a = i(5364);
   var s = function () {
     function OfferDescriptionAdditionalPrimeSaleSkipBuilding() {}
     Object.defineProperty(OfferDescriptionAdditionalPrimeSaleSkipBuilding.prototype, "name", {
@@ -454849,7 +454933,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(60);
-  var s = i(5366);
+  var s = i(5368);
   var r = function (e) {
     function OfferQuestConditionIntegerPlayerLevel() {
       return e.call(this) || this;
@@ -455280,7 +455364,7 @@
     return OfferDescriptionAdditionalPrimeSaleUpgrade;
   }();
   t.OfferDescriptionAdditionalPrimeSaleUpgrade = a;
-  var s = i(5371);
+  var s = i(5373);
   n.classImplementsInterfaces(a, "IOfferDescriptionAdditionalParameter");
 }, function (e, t, i) {
   'use strict';
@@ -455727,8 +455811,8 @@
   }();
   t.OfferDescriptionVisualInterfaceButton = c;
   var u = i(17);
-  var d = i(474);
-  var p = i(5377);
+  var d = i(475);
+  var p = i(5379);
   o.classImplementsInterfaces(c, "IOfferDescriptionVisualParameter");
   c.__initialize_static_members();
 }, function (e, t, i) {
@@ -455743,7 +455827,7 @@
   var s = i(3);
   var r = i(6);
   var l = i(60);
-  var c = i(420);
+  var c = i(421);
   var u = i(21);
   var d = i(26);
   var p = i(29);
@@ -455751,14 +455835,14 @@
   var g = i(129);
   var C = i(1090);
   var _ = i(1752);
-  var m = i(669);
+  var m = i(670);
   var f = i(1091);
   var O = i(1755);
   var E = i(818);
   var y = i(1088);
   var b = i(1748);
   var D = i(1089);
-  var I = i(474);
+  var I = i(475);
   var v = i(110);
   var T = i(179);
   var S = i(134);
@@ -455945,7 +456029,7 @@
   var n = i(1);
   var o = i(60);
   var a = i(229);
-  var s = i(5379);
+  var s = i(5381);
   var r = function () {
     function OfferDescriptionVisualIsoObject() {
       this._isVisible = false;
@@ -456152,7 +456236,7 @@
   }();
   t.OfferDescriptionVisualOfferDialog = u;
   var d = i(9);
-  var p = i(669);
+  var p = i(670);
   o.classImplementsInterfaces(u, "IOfferDescriptionVisualParameter");
 }, function (e, t, i) {
   'use strict';
@@ -456288,7 +456372,7 @@
   }();
   t.OfferDescriptionVisualQuestDialog = l;
   var c = i(9);
-  var u = i(669);
+  var u = i(670);
   n.classImplementsInterfaces(l, "IOfferDescriptionVisualParameter");
 }, function (e, t, i) {
   'use strict';
@@ -456648,10 +456732,10 @@
   var d = i(316);
   var p = i(30);
   var h = i(54);
-  var g = i(5389);
+  var g = i(5391);
   var C = i(4);
-  var _ = i(5390);
-  var m = i(5391);
+  var _ = i(5392);
+  var m = i(5393);
   var f = function (e) {
     function AllianceHelpRequestData(t) {
       var i = this;
@@ -456889,7 +456973,7 @@
   }(h.CastleBasicData);
   t.AllianceHelpRequestData = f;
   var O = i(17);
-  var E = i(5392);
+  var E = i(5394);
   o.classImplementsInterfaces(f, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -457173,8 +457257,8 @@
   var r = i(74);
   var l = i(54);
   var c = i(4);
-  var u = i(653);
-  var d = i(5394);
+  var u = i(654);
+  var d = i(5396);
   var p = function (e) {
     function CastleAlienRerollData(t) {
       var i = this;
@@ -457399,7 +457483,7 @@
     return CastleAllianceFameData;
   }();
   t.CastleAllianceFameData = n;
-  var o = i(5396);
+  var o = i(5398);
 }, function (e, t, i) {
   'use strict';
 
@@ -457455,13 +457539,13 @@
   var o = i(1);
   var a = i(5);
   var s = i(6);
-  var r = i(139);
+  var r = i(140);
   var l = i(53);
   var c = i(30);
   var u = i(15);
   var d = i(54);
   var p = i(17);
-  var h = i(5398);
+  var h = i(5400);
   var g = i(4);
   var C = function (e) {
     function CastleArmyData() {
@@ -457917,7 +458001,7 @@
   t.CastleArmyData = C;
   o.classImplementsInterfaces(C, "IUpdatable", "ICastleBasicData");
   var _ = i(1);
-  var m = i(5399);
+  var m = i(5401);
   var f = i(158);
 }, function (e, t, i) {
   'use strict';
@@ -458013,11 +458097,11 @@
   var n = i(5);
   var o = i(6);
   var a = i(18);
-  var s = i(5401);
-  var r = i(5402);
-  var l = i(5403);
+  var s = i(5403);
+  var r = i(5404);
+  var l = i(5405);
   var c = i(1964);
-  var u = i(5404);
+  var u = i(5406);
   var d = i(53);
   var p = i(15);
   var h = i(346);
@@ -458159,9 +458243,9 @@
   }();
   t.CastleAttackData = _;
   var m = i(832);
-  var f = i(5405);
+  var f = i(5407);
   var O = i(1);
-  var E = i(5406);
+  var E = i(5408);
 }, function (e, t, i) {
   'use strict';
 
@@ -458410,9 +458494,9 @@
     return CastleConquerInfoVO;
   }(i(832).CastleAttackInfoVO);
   t.CastleConquerInfoVO = l;
-  var c = i(502);
-  var u = i(578);
-  var d = i(503);
+  var c = i(504);
+  var u = i(579);
+  var d = i(505);
   var p = i(147);
   o.classImplementsInterfaces(l, "IFightScreenVO");
 }, function (e, t, i) {
@@ -458466,12 +458550,12 @@
   var n = i(0);
   var o = i(2);
   var a = i(6);
-  var s = i(5408);
-  var r = i(5409);
-  var l = i(5410);
-  var c = i(5411);
+  var s = i(5410);
+  var r = i(5411);
+  var l = i(5412);
+  var c = i(5413);
   var u = i(1411);
-  var d = i(5412);
+  var d = i(5414);
   var p = function (e) {
     function CastleCollectorEventData(t) {
       var i = e.call(this) || this;
@@ -458545,7 +458629,7 @@
     return CastleCollectorEventData;
   }(createjs.EventDispatcher);
   t.CastleCollectorEventData = p;
-  var h = i(5413);
+  var h = i(5415);
 }, function (e, t, i) {
   'use strict';
 
@@ -458980,7 +459064,7 @@
   t.CastleDailyQuestData = r;
   var l = i(75);
   var c = i(52);
-  var u = i(5415);
+  var u = i(5417);
   o.classImplementsInterfaces(r, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -458996,7 +459080,7 @@
   var l = i(22);
   var c = i(23);
   var u = i(4);
-  var d = i(5416);
+  var d = i(5418);
   var p = function () {
     function DailyQuestVO() {
       this._questID = 0;
@@ -459733,7 +459817,7 @@
   var a = i(5);
   var s = i(44);
   var r = i(147);
-  var l = i(551);
+  var l = i(553);
   var c = i(158);
   var u = i(711);
   var d = i(5);
@@ -459753,7 +459837,7 @@
   var s = i(372);
   var r = i(15);
   var l = i(72);
-  var c = i(5420);
+  var c = i(5422);
   var u = function (e) {
     function CastleEventPackageData() {
       var t = this;
@@ -459914,7 +459998,7 @@
   var a = i(1735);
   var s = i(44);
   var r = i(54);
-  var l = i(5422);
+  var l = i(5424);
   var c = function (e) {
     function CastleJudgementData(t) {
       var i = e.call(this) || this;
@@ -459995,9 +460079,9 @@
   var u = i(143);
   var d = i(35);
   var p = i(9);
-  var h = i(5423);
+  var h = i(5425);
   var g = i(1083);
-  var C = i(5424);
+  var C = i(5426);
   o.classImplementsInterfaces(c, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -460478,12 +460562,12 @@
     return CastleKingdomData;
   }(u.CastleEventDispatcher);
   t.CastleKingdomData = p;
-  var h = i(671);
-  var g = i(5426);
-  var C = i(5427);
-  var _ = i(5428);
-  var m = i(5429);
-  var f = i(5430);
+  var h = i(672);
+  var g = i(5428);
+  var C = i(5429);
+  var _ = i(5430);
+  var m = i(5431);
+  var f = i(5432);
   var O = i(1169);
 }, function (e, t, i) {
   'use strict';
@@ -460970,7 +461054,7 @@
   t.CastleKingdomVO = a;
   var s = i(52);
   var r = i(249);
-  var l = i(455);
+  var l = i(456);
   var c = i(291);
   var u = i(292);
   var d = i(28);
@@ -461194,12 +461278,12 @@
   var o = i(1);
   var a = i(6);
   var s = i(28);
-  var r = i(425);
+  var r = i(426);
   var l = i(30);
   var c = i(15);
   var u = i(4);
   var d = i(1236);
-  var p = i(5432);
+  var p = i(5434);
   var h = function (e) {
     function CastleLaboratoryData(t) {
       var i = e.call(this) || this;
@@ -461341,21 +461425,21 @@
   var o = i(1);
   var a = i(5);
   var s = i(6);
-  var r = i(5434);
-  var l = i(5435);
-  var c = i(5436);
-  var u = i(5437);
-  var d = i(5438);
-  var p = i(5439);
+  var r = i(5436);
+  var l = i(5437);
+  var c = i(5438);
+  var u = i(5439);
+  var d = i(5440);
+  var p = i(5441);
   var h = i(1965);
-  var g = i(608);
-  var C = i(5440);
-  var _ = i(140);
+  var g = i(609);
+  var C = i(5442);
+  var _ = i(141);
   var m = i(30);
   var f = i(15);
   var O = i(54);
   var E = i(4);
-  var y = i(5441);
+  var y = i(5443);
   var b = function (e) {
     function CastleMessageData(t) {
       var i = e.call(this) || this;
@@ -461719,9 +461803,9 @@
     return CastleMessageData;
   }(O.CastleBasicData);
   t.CastleMessageData = b;
-  var D = i(5442);
-  var I = i(5599);
-  var v = i(5607);
+  var D = i(5444);
+  var I = i(5601);
+  var v = i(5609);
   var T = i(100);
   o.classImplementsInterfaces(b, "IUpdatable");
 }, function (e, t, i) {
@@ -462059,48 +462143,48 @@
     return CastleMessageFactory;
   }();
   t.CastleMessageFactory = o;
-  var a = i(5443);
-  var s = i(5446);
-  var r = i(5449);
-  var l = i(5452);
-  var c = i(5455);
-  var u = i(5456);
-  var d = i(5458);
-  var p = i(5461);
-  var h = i(5464);
-  var g = i(5465);
-  var C = i(5476);
-  var _ = i(5481);
-  var m = i(5484);
-  var f = i(5489);
-  var O = i(5496);
-  var E = i(5497);
-  var y = i(5498);
-  var b = i(5499);
-  var D = i(5500);
-  var I = i(5501);
-  var v = i(5502);
-  var T = i(5503);
-  var S = i(5508);
-  var A = i(5510);
-  var L = i(5514);
-  var P = i(5516);
-  var M = i(5519);
-  var R = i(5522);
-  var V = i(5525);
-  var x = i(5526);
-  var w = i(5566);
-  var B = i(5567);
-  var F = i(5568);
-  var N = i(5575);
-  var k = i(5578);
-  var U = i(5582);
-  var G = i(5585);
+  var a = i(5445);
+  var s = i(5448);
+  var r = i(5451);
+  var l = i(5454);
+  var c = i(5457);
+  var u = i(5458);
+  var d = i(5460);
+  var p = i(5463);
+  var h = i(5466);
+  var g = i(5467);
+  var C = i(5478);
+  var _ = i(5483);
+  var m = i(5486);
+  var f = i(5491);
+  var O = i(5498);
+  var E = i(5499);
+  var y = i(5500);
+  var b = i(5501);
+  var D = i(5502);
+  var I = i(5503);
+  var v = i(5504);
+  var T = i(5505);
+  var S = i(5510);
+  var A = i(5512);
+  var L = i(5516);
+  var P = i(5518);
+  var M = i(5521);
+  var R = i(5524);
+  var V = i(5527);
+  var x = i(5528);
+  var w = i(5568);
+  var B = i(5569);
+  var F = i(5570);
+  var N = i(5577);
+  var k = i(5580);
+  var U = i(5584);
+  var G = i(5587);
   var H = i(1118);
   var j = i(1973);
-  var W = i(5590);
-  var Y = i(5591);
-  var K = i(5595);
+  var W = i(5592);
+  var Y = i(5593);
+  var K = i(5597);
   var z = i(1172);
 }, function (e, t, i) {
   'use strict';
@@ -462110,7 +462194,7 @@
   });
   var n = i(0);
   var o = i(3);
-  var a = i(5444);
+  var a = i(5446);
   var s = i(84);
   var r = i(100);
   var l = function (e) {
@@ -462140,7 +462224,7 @@
     return CastleMessageInfoVO;
   }(r.AMessageVO);
   t.CastleMessageInfoVO = l;
-  var c = i(5445);
+  var c = i(5447);
 }, function (e, t, i) {
   'use strict';
 
@@ -462228,7 +462312,7 @@
   });
   var n = i(0);
   var o = i(3);
-  var a = i(5447);
+  var a = i(5449);
   var s = i(84);
   var r = i(100);
   var l = function (e) {
@@ -462291,7 +462375,7 @@
   var c = i(52);
   var u = i(13);
   var d = i(47);
-  var p = i(5448);
+  var p = i(5450);
 }, function (e, t, i) {
   'use strict';
 
@@ -462374,8 +462458,8 @@
   var o = i(5);
   var a = i(3);
   var s = i(166);
-  var r = i(5450);
-  var l = i(5451);
+  var r = i(5452);
+  var l = i(5453);
   var c = i(84);
   var u = function (e) {
     function MessageAdvisorFailureVO() {
@@ -462540,8 +462624,8 @@
   var o = i(5);
   var a = i(3);
   var s = i(166);
-  var r = i(5453);
-  var l = i(5454);
+  var r = i(5455);
+  var l = i(5456);
   var c = i(84);
   var u = function (e) {
     function MessageAdvisorSummaryVO() {
@@ -462594,8 +462678,8 @@
   var r = i(1);
   var l = i(3);
   var c = i(3);
-  var u = i(608);
-  var d = i(140);
+  var u = i(609);
+  var d = i(141);
   var p = i(166);
   var h = i(12);
   var g = i(15);
@@ -462703,7 +462787,7 @@
   var o = i(5);
   var a = i(3);
   var s = i(15);
-  var r = i(520);
+  var r = i(522);
   var l = i(84);
   var c = i(100);
   var u = function (e) {
@@ -462776,7 +462860,7 @@
   });
   var n = i(0);
   var o = i(3);
-  var a = i(5457);
+  var a = i(5459);
   var s = i(84);
   var r = i(100);
   var l = function (e) {
@@ -462838,7 +462922,7 @@
   var n = i(0);
   var o = i(5);
   var a = i(3);
-  var s = i(5459);
+  var s = i(5461);
   var r = i(84);
   var l = i(100);
   var c = function (e) {
@@ -462938,7 +463022,7 @@
     return MessageAllianceWarVO;
   }(l.AMessageVO);
   t.MessageAllianceWarVO = c;
-  var u = i(5460);
+  var u = i(5462);
 }, function (e, t, i) {
   'use strict';
 
@@ -463268,7 +463352,7 @@
   var a = i(5);
   var s = i(3);
   var r = i(44);
-  var l = i(5466);
+  var l = i(5468);
   var c = i(119);
   var u = i(84);
   var d = i(100);
@@ -463576,16 +463660,16 @@
   var C = i(6);
   var _ = i(18);
   var m = i(16);
-  var f = i(561);
+  var f = i(562);
   var O = i(44);
   var E = i(4);
   var y = i(27);
   var b = i(202);
   var D = i(36);
   var I = i(19);
-  var v = i(499);
-  var T = i(421);
-  var S = i(422);
+  var v = i(501);
+  var T = i(422);
+  var S = i(423);
   var A = i(715);
   var L = i(8);
   var P = i(1737);
@@ -463593,7 +463677,7 @@
   var R = i(248);
   var V = i(165);
   var x = i(1957);
-  var w = i(5470);
+  var w = i(5472);
   var B = createjs.Point;
   var F = function (e) {
     function CastleBattleLogDetailAdvancedDialog() {
@@ -464246,12 +464330,12 @@
   var N = i(9);
   var k = i(132);
   var U = i(300);
-  var G = i(5471);
+  var G = i(5473);
   var H = i(61);
   var j = i(73);
   var W = i(1958);
   var Y = i(1968);
-  var K = i(5472);
+  var K = i(5474);
 }, function (e, t, i) {
   'use strict';
 
@@ -464401,15 +464485,15 @@
   var u = i(3);
   var d = i(3);
   var p = i(16);
-  var h = i(561);
+  var h = i(562);
   var g = i(12);
   var C = i(4);
-  var _ = i(412);
+  var _ = i(413);
   var m = i(36);
   var f = i(19);
-  var O = i(499);
-  var E = i(421);
-  var y = i(422);
+  var O = i(501);
+  var E = i(422);
+  var y = i(423);
   var b = i(95);
   var D = i(46);
   var I = i(58);
@@ -464418,7 +464502,7 @@
   var S = i(248);
   var A = i(165);
   var L = i(342);
-  var P = i(5473);
+  var P = i(5475);
   var M = createjs.MovieClip;
   var R = function (e) {
     function CastleBattleLogPopUpDialog() {
@@ -465055,7 +465139,7 @@
   t.CastleBattleLogPopUpDialog = R;
   var V = i(57);
   var x = i(61);
-  var w = i(5474);
+  var w = i(5476);
   l.classImplementsInterfaces(R, "ICollectableRendererList");
 }, function (e, t, i) {
   'use strict';
@@ -465334,8 +465418,8 @@
     return MessageChangelistVO;
   }(s.AMessageVO);
   t.MessageChangelistVO = r;
-  var l = i(5477);
-  var c = i(5480);
+  var l = i(5479);
+  var c = i(5482);
   r.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -465354,10 +465438,10 @@
   var d = i(3);
   var p = i(3);
   var h = i(6);
-  var g = i(5478);
-  var C = i(5479);
+  var g = i(5480);
+  var C = i(5481);
   var _ = i(1945);
-  var m = i(140);
+  var m = i(141);
   var f = i(66);
   var O = i(20);
   var E = i(30);
@@ -465617,8 +465701,8 @@
   var a = i(5);
   var s = i(3);
   var r = i(44);
-  var l = i(5482);
-  var c = i(5483);
+  var l = i(5484);
+  var c = i(5485);
   var u = i(119);
   var d = i(84);
   var p = i(100);
@@ -465926,8 +466010,8 @@
   var n = i(0);
   var o = i(5);
   var a = i(3);
-  var s = i(5485);
-  var r = i(5486);
+  var s = i(5487);
+  var r = i(5488);
   var l = i(84);
   var c = i(100);
   var u = function (e) {
@@ -465989,9 +466073,9 @@
     return MessageEilandRewardVO;
   }(c.AMessageVO);
   t.MessageEilandRewardVO = u;
-  var d = i(5487);
-  var p = i(5488);
-  var h = i(671);
+  var d = i(5489);
+  var p = i(5490);
+  var h = i(672);
 }, function (e, t, i) {
   'use strict';
 
@@ -466042,8 +466126,8 @@
   var s = i(3);
   var r = i(6);
   var l = i(39);
-  var c = i(608);
-  var u = i(140);
+  var c = i(609);
+  var u = i(141);
   var d = i(31);
   var p = i(20);
   var h = i(4);
@@ -466163,7 +466247,7 @@
   t.CastleEilandRewardDialog = m;
   var f = i(13);
   var O = i(190);
-  var E = i(671);
+  var E = i(672);
   o.classImplementsInterfaces(m, "ICollectableRendererList");
   m.__initialize_static_members();
 }, function (e, t, i) {
@@ -466260,14 +466344,14 @@
   var n = i(0);
   var o = i(5);
   var a = i(3);
-  var s = i(5490);
+  var s = i(5492);
   var r = i(84);
   var l = i(100);
-  var c = i(5491);
-  var u = i(5492);
-  var d = i(5493);
-  var p = i(5494);
-  var h = i(5495);
+  var c = i(5493);
+  var u = i(5494);
+  var d = i(5495);
+  var p = i(5496);
+  var h = i(5497);
   var g = function (e) {
     function MessageEilandTitleVO() {
       var t = this;
@@ -466697,7 +466781,7 @@
   var o = i(5);
   var a = i(3);
   var s = i(84);
-  var r = i(479);
+  var r = i(481);
   var l = function (e) {
     function MessageFindAFriendVO() {
       var t = this;
@@ -466741,7 +466825,7 @@
   var o = i(5);
   var a = i(3);
   var s = i(84);
-  var r = i(479);
+  var r = i(481);
   var l = function (e) {
     function MessageFriendInviteMultiplePaymentVO() {
       var t = this;
@@ -466785,7 +466869,7 @@
   var a = i(3);
   var s = i(6);
   var r = i(84);
-  var l = i(479);
+  var l = i(481);
   var c = function (e) {
     function MessageFriendInviteSinglePaymentVO() {
       var t = this;
@@ -466832,7 +466916,7 @@
   var a = i(3);
   var s = i(1818);
   var r = i(84);
-  var l = i(479);
+  var l = i(481);
   var c = function (e) {
     function MessageFriendInviteTeaserVO(t = false) {
       var i = this;
@@ -466877,7 +466961,7 @@
   var o = i(5);
   var a = i(3);
   var s = i(84);
-  var r = i(479);
+  var r = i(481);
   var l = function (e) {
     function MessageFriendJoinTheGameVO() {
       var t = this;
@@ -466921,7 +467005,7 @@
   var o = i(5);
   var a = i(3);
   var s = i(84);
-  var r = i(479);
+  var r = i(481);
   var l = function (e) {
     function MessageFriendReachedALevelVO() {
       var t = this;
@@ -466968,9 +467052,9 @@
   var n = i(0);
   var o = i(5);
   var a = i(3);
-  var s = i(5504);
+  var s = i(5506);
   var r = i(84);
-  var l = i(479);
+  var l = i(481);
   var c = function (e) {
     function MessageFriendRequestVO() {
       var t = this;
@@ -467030,7 +467114,7 @@
     return MessageFriendRequestVO;
   }(l.AMessageFriendInviteVO);
   t.MessageFriendRequestVO = c;
-  var u = i(5505);
+  var u = i(5507);
 }, function (e, t, i) {
   'use strict';
 
@@ -467062,8 +467146,8 @@
   var l = i(3);
   var c = i(3);
   var u = i(3);
-  var d = i(5506);
-  var p = i(5507);
+  var d = i(5508);
+  var p = i(5509);
   var h = i(944);
   var g = i(376);
   var C = i(739);
@@ -467275,7 +467359,7 @@
     return MessageHighscoreBonusVO;
   }(s.AMessageVO);
   t.MessageHighscoreBonusVO = r;
-  var l = i(5509);
+  var l = i(5511);
 }, function (e, t, i) {
   'use strict';
 
@@ -467327,7 +467411,7 @@
   });
   var n = i(0);
   var o = i(3);
-  var a = i(5511);
+  var a = i(5513);
   var s = i(84);
   var r = i(100);
   var l = function (e) {
@@ -467364,7 +467448,7 @@
     return MessageMarketCarriageArrivedVO;
   }(r.AMessageVO);
   t.MessageMarketCarriageArrivedVO = l;
-  var c = i(5512);
+  var c = i(5514);
 }, function (e, t, i) {
   'use strict';
 
@@ -467395,8 +467479,8 @@
   var r = i(3);
   var l = i(3);
   var c = i(3);
-  var u = i(5513);
-  var d = i(140);
+  var u = i(5515);
+  var d = i(141);
   var p = i(4);
   var h = i(11);
   var g = createjs.Point;
@@ -467562,7 +467646,7 @@
     return MessagePaymentDopplerVO;
   }(s.AMessageVO);
   t.MessagePaymentDopplerVO = r;
-  var l = i(5515);
+  var l = i(5517);
 }, function (e, t, i) {
   'use strict';
 
@@ -467609,7 +467693,7 @@
   var n = i(0);
   var o = i(5);
   var a = i(3);
-  var s = i(5517);
+  var s = i(5519);
   var r = i(84);
   var l = i(100);
   var c = function (e) {
@@ -467647,7 +467731,7 @@
     return MessagePlayerGift;
   }(l.AMessageVO);
   t.MessagePlayerGift = c;
-  var u = i(5518);
+  var u = i(5520);
 }, function (e, t, i) {
   'use strict';
 
@@ -467779,7 +467863,7 @@
   var a = i(5);
   var s = i(3);
   var r = i(44);
-  var l = i(5520);
+  var l = i(5522);
   var c = i(1969);
   var u = i(4);
   var d = i(84);
@@ -467936,7 +468020,7 @@
   }(p.AMessageVO);
   t.MessagePrivateOfferVO = h;
   var g = i(29);
-  var C = i(5521);
+  var C = i(5523);
   var _ = i(1170);
 }, function (e, t, i) {
   'use strict';
@@ -467979,7 +468063,7 @@
   var d = i(9);
   var p = i(11);
   var h = i(355);
-  var g = i(437);
+  var g = i(438);
   var C = function (e) {
     function CastleForumAdvertisementDialog() {
       return e.call(this, CastleForumAdvertisementDialog.NAME) || this;
@@ -468032,7 +468116,7 @@
   });
   var n = i(0);
   var o = i(3);
-  var a = i(5523);
+  var a = i(5525);
   var s = i(4);
   var r = i(84);
   var l = i(100);
@@ -468082,7 +468166,7 @@
     return MessageRebuyVO;
   }(l.AMessageVO);
   t.MessageRebuyVO = c;
-  var u = i(5524);
+  var u = i(5526);
 }, function (e, t, i) {
   'use strict';
 
@@ -468313,22 +468397,22 @@
   var p = i(44);
   var h = i(137);
   var g = i(29);
-  var C = i(5527);
-  var _ = i(5528);
-  var m = i(5529);
-  var f = i(5530);
-  var O = i(5531);
-  var E = i(5532);
+  var C = i(5529);
+  var _ = i(5530);
+  var m = i(5531);
+  var f = i(5532);
+  var O = i(5533);
+  var E = i(5534);
   var y = i(1969);
   var b = i(1906);
   var D = i(1683);
   var I = i(1684);
-  var v = i(5534);
+  var v = i(5536);
   var T = i(1854);
-  var S = i(469);
-  var A = i(5535);
-  var L = i(5536);
-  var P = i(5537);
+  var S = i(470);
+  var A = i(5537);
+  var L = i(5538);
+  var P = i(5539);
   var M = i(4);
   var R = i(84);
   var V = i(100);
@@ -468713,37 +468797,37 @@
   }(V.AMessageVO);
   t.MessageSpecialEventVO = x;
   var w = i(38);
-  var B = i(5538);
-  var F = i(5539);
-  var N = i(5540);
-  var k = i(5541);
-  var U = i(5542);
-  var G = i(5543);
-  var H = i(5544);
-  var j = i(5545);
-  var W = i(5546);
-  var Y = i(5547);
-  var K = i(5548);
+  var B = i(5540);
+  var F = i(5541);
+  var N = i(5542);
+  var k = i(5543);
+  var U = i(5544);
+  var G = i(5545);
+  var H = i(5546);
+  var j = i(5547);
+  var W = i(5548);
+  var Y = i(5549);
+  var K = i(5550);
   var z = i(1170);
   var q = i(1970);
-  var X = i(5549);
-  var Q = i(5550);
+  var X = i(5551);
+  var Q = i(5552);
   var J = i(1855);
-  var Z = i(5551);
-  var $ = i(5552);
-  var ee = i(5553);
-  var te = i(5554);
-  var ie = i(5555);
-  var ne = i(5556);
-  var oe = i(5557);
-  var ae = i(5558);
-  var se = i(5559);
-  var re = i(5560);
-  var le = i(5561);
-  var ce = i(5562);
-  var ue = i(5563);
-  var de = i(5564);
-  var pe = i(512);
+  var Z = i(5553);
+  var $ = i(5554);
+  var ee = i(5555);
+  var te = i(5556);
+  var ie = i(5557);
+  var ne = i(5558);
+  var oe = i(5559);
+  var ae = i(5560);
+  var se = i(5561);
+  var re = i(5562);
+  var le = i(5563);
+  var ce = i(5564);
+  var ue = i(5565);
+  var de = i(5566);
+  var pe = i(514);
 }, function (e, t, i) {
   'use strict';
 
@@ -468926,7 +469010,7 @@
   var n = i(0);
   var o = i(2);
   var a = i(55);
-  var s = i(5533);
+  var s = i(5535);
   var r = i(1953);
   var l = i(15);
   var c = i(4);
@@ -470738,7 +470822,7 @@
   var n = i(0);
   var o = i(11);
   var a = i(3);
-  var s = i(5565);
+  var s = i(5567);
   var r = i(9);
   var l = i(2);
   var c = i(21);
@@ -470746,7 +470830,7 @@
   var d = i(4);
   var p = i(5);
   var h = i(8);
-  var g = i(476);
+  var g = i(478);
   var C = i(1132);
   var _ = i(1850);
   var m = i(12);
@@ -470970,7 +471054,7 @@
   var o = i(2);
   var a = i(5);
   var s = i(3);
-  var r = i(5569);
+  var r = i(5571);
   var l = i(1971);
   var c = i(119);
   var u = i(84);
@@ -471075,9 +471159,9 @@
     return MessageSpyPlayerVO;
   }(d.AMessageSpyVO);
   t.MessageSpyPlayerVO = p;
-  var h = i(5570);
+  var h = i(5572);
   var g = i(1972);
-  var C = i(5572);
+  var C = i(5574);
 }, function (e, t, i) {
   'use strict';
 
@@ -471203,7 +471287,7 @@
   }(i(11).CastleExternalDialog);
   t.CastleSabotageMessageDialog = g;
   var C = i(17);
-  var _ = i(5571);
+  var _ = i(5573);
   a.classImplementsInterfaces(g, "ICollectableRendererList");
   g.__initialize_static_members();
 }, function (e, t, i) {
@@ -471315,7 +471399,7 @@
     return CastlePlagueMessageDialog;
   }(i(11).CastleExternalDialog);
   t.CastlePlagueMessageDialog = l;
-  var c = i(5573);
+  var c = i(5575);
   o.classImplementsInterfaces(l, "ICollectableRendererList");
   l.__initialize_static_members();
 }, function (e, t, i) {
@@ -471329,7 +471413,7 @@
   var a = i(3);
   var s = i(6);
   var r = i(4);
-  var l = i(5574);
+  var l = i(5576);
   var c = createjs.Event;
   var u = createjs.MouseEvent;
   var d = function (e) {
@@ -471433,8 +471517,8 @@
   var s = i(5);
   var r = i(3);
   var l = i(6);
-  var c = i(484);
-  var u = i(5576);
+  var c = i(486);
+  var u = i(5578);
   var d = i(84);
   var p = i(100);
   var h = function (e) {
@@ -471569,8 +471653,8 @@
     return MessageStarveInfoVO;
   }(p.AMessageVO);
   t.MessageStarveInfoVO = h;
-  var g = i(5577);
-  var C = i(531);
+  var g = i(5579);
+  var C = i(533);
 }, function (e, t, i) {
   'use strict';
 
@@ -471792,9 +471876,9 @@
   var s = i(6);
   var r = i(1070);
   var l = i(1711);
-  var c = i(5579);
-  var u = i(5580);
-  var d = i(5581);
+  var c = i(5581);
+  var u = i(5582);
+  var d = i(5583);
   var p = i(224);
   var h = i(4);
   var g = i(84);
@@ -472071,7 +472155,7 @@
   var n = i(0);
   var o = i(5);
   var a = i(3);
-  var s = i(5583);
+  var s = i(5585);
   var r = i(84);
   var l = i(100);
   var c = function (e) {
@@ -472127,7 +472211,7 @@
     return MessageThankYouPackageVO;
   }(l.AMessageVO);
   t.MessageThankYouPackageVO = c;
-  var u = i(5584);
+  var u = i(5586);
 }, function (e, t, i) {
   'use strict';
 
@@ -472244,7 +472328,7 @@
   var o = i(5);
   var a = i(3);
   var s = i(6);
-  var r = i(5586);
+  var r = i(5588);
   var l = i(84);
   var c = i(100);
   var u = function (e) {
@@ -472311,7 +472395,7 @@
     return MessageTournamentOverVO;
   }(c.AMessageVO);
   t.MessageTournamentOverVO = u;
-  var d = i(5587);
+  var d = i(5589);
 }, function (e, t, i) {
   'use strict';
 
@@ -472570,7 +472654,7 @@
   var p = i(6);
   var h = i(39);
   var g = i(1965);
-  var C = i(140);
+  var C = i(141);
   var _ = i(4);
   var m = i(184);
   var f = i(43);
@@ -472787,10 +472871,10 @@
   var o = i(3);
   var a = i(84);
   var s = i(100);
-  var r = i(5592);
+  var r = i(5594);
   var l = i(4);
   var c = i(1);
-  var u = i(5594);
+  var u = i(5596);
   var d = function (e) {
     function MessageBuildingDisabledInfoVO() {
       var t = this;
@@ -472865,7 +472949,7 @@
   var h = i(4);
   var g = i(220);
   var C = i(1030);
-  var _ = i(5593);
+  var _ = i(5595);
   var m = i(1029);
   var f = i(13);
   var O = i(19);
@@ -473035,7 +473119,7 @@
   var o = i(5);
   var a = i(3);
   var s = i(355);
-  var r = i(437);
+  var r = i(438);
   var l = i(84);
   var c = i(100);
   var u = i(1131);
@@ -473306,17 +473390,17 @@
   var O = i(276);
   var E = i(119);
   var y = i(4);
-  var b = i(486);
+  var b = i(488);
   var D = i(389);
   var I = i(733);
   var v = i(147);
   var T = i(49);
-  var S = i(5600);
-  var A = i(5601);
+  var S = i(5602);
+  var A = i(5603);
   var L = i(1974);
   var P = i(1975);
-  var M = i(5604);
-  var R = i(5606);
+  var M = i(5606);
+  var R = i(5608);
   var V = function () {
     function BattleLogVO() {
       this._currentMessageID = 0;
@@ -474473,7 +474557,7 @@
     return DetailedBattleWaveVO;
   }();
   t.DetailedBattleWaveVO = n;
-  var o = i(5602);
+  var o = i(5604);
   n.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -474585,7 +474669,7 @@
     return DetailedPlayerBattleWaveVO;
   }();
   t.DetailedPlayerBattleWaveVO = n;
-  var o = i(5603);
+  var o = i(5605);
   var a = i(18);
   n.__initialize_static_members();
 }, function (e, t, i) {
@@ -474829,7 +474913,7 @@
     return MediumBattleWaveVO;
   }();
   t.MediumBattleWaveVO = n;
-  var o = i(5605);
+  var o = i(5607);
   n.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -475319,8 +475403,8 @@
   t.CastleMilitaryData = m;
   var f = i(82);
   var O = i(35);
-  var E = i(5609);
-  var y = i(552);
+  var E = i(5611);
+  var y = i(554);
   var b = i(158);
   s.classImplementsInterfaces(m, "IUpdatable");
 }, function (e, t, i) {
@@ -475333,7 +475417,7 @@
   var o = i(1);
   var a = i(5);
   var s = i(764);
-  var r = i(623);
+  var r = i(624);
   var l = i(1038);
   var c = i(30);
   var u = i(15);
@@ -475542,7 +475626,7 @@
     return UnitPackageList;
   }(i(1962).BasicBuildList);
   t.UnitPackageList = p;
-  var h = i(5610);
+  var h = i(5612);
   var g = i(1976);
   o.classImplementsInterfaces(p, "IUpdatable", "IBuildList");
 }, function (e, t, i) {
@@ -475740,7 +475824,7 @@
   }(u.CastleBasicData);
   t.CastleOtherPlayerData = h;
   var g = i(389);
-  var C = i(5612);
+  var C = i(5614);
   var _ = i(320);
   s.classImplementsInterfaces(h, "IUpdatable");
 }, function (e, t, i) {
@@ -475754,7 +475838,7 @@
   var a = i(5);
   var s = i(192);
   var r = i(4);
-  var l = i(500);
+  var l = i(502);
   var c = function () {
     function OwnWorldMapOwnerInfoVO() {}
     Object.defineProperty(OwnWorldMapOwnerInfoVO.prototype, "hasPremiumFlag", {
@@ -476181,7 +476265,7 @@
     return CastlePermanentCastleData;
   }(s.CastleBasicData);
   t.CastlePermanentCastleData = c;
-  var u = i(5614);
+  var u = i(5616);
   o.classImplementsInterfaces(c, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -476248,8 +476332,8 @@
     return CastlePermanentCastleVO;
   }();
   t.CastlePermanentCastleVO = s;
-  var r = i(5615);
-  var l = i(5616);
+  var r = i(5617);
+  var l = i(5618);
 }, function (e, t, i) {
   'use strict';
 
@@ -476600,16 +476684,16 @@
   var l = i(18);
   var c = i(28);
   var u = i(22);
-  var d = i(529);
+  var d = i(531);
   var p = i(30);
   var h = i(72);
   var g = i(4);
   var C = i(111);
-  var _ = i(142);
+  var _ = i(138);
   var m = i(34);
-  var f = i(5618);
-  var O = i(5619);
-  var E = i(5620);
+  var f = i(5620);
+  var O = i(5621);
+  var E = i(5622);
   var y = function (e) {
     function CastleResearchData(t) {
       var i = e.call(this) || this;
@@ -476863,7 +476947,7 @@
   t.CastleResearchData = y;
   o.classImplementsInterfaces(y, "ICastleBasicData");
   var b = i(82);
-  var D = i(5623);
+  var D = i(5625);
   var I = i(1977);
 }, function (e, t, i) {
   'use strict';
@@ -477224,7 +477308,7 @@
   var s = i(22);
   var r = i(4);
   var l = i(34);
-  var c = i(412);
+  var c = i(413);
   n.__initialize_static_members();
 }, function (e, t, i) {
   'use strict';
@@ -477235,8 +477319,8 @@
   var n = i(6);
   var o = i(22);
   var a = i(4);
-  var s = i(5621);
-  var r = i(5622);
+  var s = i(5623);
+  var r = i(5624);
   var l = function () {
     function ResearchTabVO() {
       this._tabId = 0;
@@ -477561,7 +477645,7 @@
     return BlueprintResearchVO;
   }(u.AResearchVO);
   t.BlueprintResearchVO = d;
-  var p = i(528);
+  var p = i(530);
   var h = i(357);
 }, function (e, t, i) {
   'use strict';
@@ -477659,7 +477743,7 @@
     return CastleSagaMapData;
   }(i(341).CastleXmlData);
   t.CastleSagaMapData = a;
-  var s = i(5626);
+  var s = i(5628);
   o.classImplementsInterfaces(a, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -477767,8 +477851,8 @@
   var n = i(0);
   var o = i(5);
   var a = i(6);
-  var s = i(5628);
-  var r = i(464);
+  var s = i(5630);
+  var r = i(465);
   var l = i(72);
   var c = i(4);
   var u = function (e) {
@@ -478491,7 +478575,7 @@
   var I = i(35);
   var v = i(29);
   var T = i(852);
-  var S = i(5630);
+  var S = i(5632);
   l.classImplementsInterfaces(y, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -478616,7 +478700,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(6);
-  var s = i(5632);
+  var s = i(5634);
   var r = i(398);
   var l = i(15);
   var c = i(72);
@@ -478727,7 +478811,7 @@
   t.CastleSpyData = g;
   var C = i(117);
   var _ = i(1955);
-  var m = i(5633);
+  var m = i(5635);
 }, function (e, t, i) {
   'use strict';
 
@@ -478954,7 +479038,7 @@
     return CastleSupportDefenceData;
   }(i(72).CastleEventDispatcher);
   t.CastleSupportDefenceData = a;
-  var s = i(5635);
+  var s = i(5637);
 }, function (e, t, i) {
   'use strict';
 
@@ -479155,9 +479239,9 @@
   t.CastleSupportDefenceVO = h;
   var g = i(147);
   var C = i(111);
-  var _ = i(551);
+  var _ = i(553);
   var m = i(833);
-  var f = i(552);
+  var f = i(554);
   var O = i(158);
   o.classImplementsInterfaces(h, "IFightScreenVO");
 }, function (e, t, i) {
@@ -479176,13 +479260,13 @@
   var u = i(54);
   var d = i(9);
   var p = i(892);
-  var h = i(5637);
-  var g = i(5641);
+  var h = i(5639);
+  var g = i(5643);
   var C = i(4);
   var _ = i(168);
   var m = i(388);
-  var f = i(5642);
-  var O = i(5643);
+  var f = i(5644);
+  var O = i(5645);
   var E = i(1901);
   var y = i(1169);
   var b = function (e) {
@@ -479421,9 +479505,9 @@
   var s = i(3);
   var r = i(3);
   var l = i(3);
-  var c = i(5638);
-  var u = i(5639);
-  var d = i(5640);
+  var c = i(5640);
+  var u = i(5641);
+  var d = i(5642);
   var p = i(1980);
   var h = i(12);
   var g = i(4);
@@ -479525,7 +479609,7 @@
   }(i(11).CastleExternalDialog);
   t.CastleTempServerEffectRerollDialog = _;
   o.classImplementsInterfaces(_, "ICollectableRendererList");
-  var m = i(653);
+  var m = i(654);
   var f = i(19);
 }, function (e, t, i) {
   'use strict';
@@ -479712,7 +479796,7 @@
     return CastleTradeData;
   }(i(72).CastleEventDispatcher);
   t.CastleTradeData = a;
-  var s = i(5645);
+  var s = i(5647);
 }, function (e, t, i) {
   'use strict';
 
@@ -479747,7 +479831,7 @@
     return CastleTradeInfoVO;
   }();
   t.CastleTradeInfoVO = n;
-  var o = i(5646);
+  var o = i(5648);
 }, function (e, t, i) {
   'use strict';
 
@@ -479755,7 +479839,7 @@
     value: true
   });
   var n = i(6);
-  var o = i(484);
+  var o = i(486);
   var a = i(4);
   var s = i(34);
   var r = i(1110);
@@ -479854,15 +479938,15 @@
   }();
   t.CastleTradeVO = l;
   var c = i(47);
-  var u = i(637);
-  var d = i(455);
-  var p = i(638);
-  var h = i(639);
-  var g = i(640);
+  var u = i(638);
+  var d = i(456);
+  var p = i(639);
+  var h = i(640);
+  var g = i(641);
   var C = i(291);
   var _ = i(292);
-  var m = i(531);
-  var f = i(641);
+  var m = i(533);
+  var f = i(642);
 }, function (e, t, i) {
   'use strict';
 
@@ -479876,9 +479960,9 @@
   var r = i(5);
   var l = i(6);
   var c = i(18);
-  var u = i(5648);
+  var u = i(5650);
   var d = i(1856);
-  var p = i(658);
+  var p = i(659);
   var h = i(22);
   var g = i(26);
   var C = i(187);
@@ -480116,9 +480200,9 @@
   }(_.CastleBasicData);
   t.CastleTreasureMapData = f;
   var O = i(29);
-  var E = i(5649);
+  var E = i(5651);
   var y = i(1761);
-  var b = i(5650);
+  var b = i(5652);
   a.classImplementsInterfaces(f, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -480171,7 +480255,7 @@
   var c = i(6);
   var u = i(4);
   var d = i(34);
-  var p = i(551);
+  var p = i(553);
   var h = i(832);
   var g = function (e) {
     function CastleTreasureHuntFightscreenVO() {
@@ -480346,10 +480430,10 @@
   }(h.CastleAttackInfoVO);
   t.CastleTreasureHuntFightscreenVO = g;
   var C = i(736);
-  var _ = i(604);
+  var _ = i(605);
   var m = i(111);
   var f = i(833);
-  var O = i(552);
+  var O = i(554);
   var E = i(158);
   var y = i(1785);
   o.classImplementsInterfaces(g, "IFightScreenVO");
@@ -481232,7 +481316,7 @@
   var a = i(52);
   var s = i(13);
   var r = i(47);
-  var l = i(455);
+  var l = i(456);
   var c = i(291);
   var u = i(292);
   var d = i(158);
@@ -481267,7 +481351,7 @@
   var C = i(15);
   var _ = i(54);
   var m = i(4);
-  var f = i(5652);
+  var f = i(5654);
   var O = i(1107);
   var E = function (e) {
     function CastleTutorialData(t) {
@@ -481498,11 +481582,11 @@
   }(_.CastleBasicData);
   t.CastleTutorialData = E;
   var y = i(302);
-  var b = i(435);
+  var b = i(436);
   var D = i(830);
   var I = i(330);
   var v = i(17);
-  var T = i(473);
+  var T = i(474);
   r.classImplementsInterfaces(E, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -481703,7 +481787,7 @@
   t.CastleUserCastleListDetailed = n;
   var o = i(75);
   var a = i(83);
-  var s = i(5654);
+  var s = i(5656);
   var r = i(221);
   var l = i(6);
   var c = i(15);
@@ -481899,7 +481983,7 @@
   var a = i(13);
   var s = i(45);
   var r = i(47);
-  var l = i(552);
+  var l = i(554);
   var c = i(158);
   var u = i(4);
   var d = i(5);
@@ -481983,9 +482067,9 @@
     return ConstructionItemBlueprintData;
   }();
   t.ConstructionItemBlueprintData = n;
-  var o = i(5656);
+  var o = i(5658);
   var a = i(2);
-  var s = i(5657);
+  var s = i(5659);
 }, function (e, t, i) {
   'use strict';
 
@@ -482264,9 +482348,9 @@
   var g = i(15);
   var C = i(54);
   var _ = i(49);
-  var m = i(5660);
-  var f = i(5661);
-  var O = i(5662);
+  var m = i(5662);
+  var f = i(5663);
+  var O = i(5664);
   var E = function (e) {
     function CurrencyData(t) {
       var i = e.call(this) || this;
@@ -482873,7 +482957,7 @@
   var r = i(5);
   var l = i(5);
   var c = i(6);
-  var u = i(5666);
+  var u = i(5668);
   var d = i(1224);
   var p = i(15);
   var h = i(54);
@@ -482997,8 +483081,8 @@
     return DecoStorageData;
   }(h.CastleBasicData);
   t.DecoStorageData = _;
-  var m = i(5667);
-  var f = i(5668);
+  var m = i(5669);
+  var f = i(5670);
   a.classImplementsInterfaces(_, "IUpdatable");
   _.__initialize_static_members();
 }, function (e, t, i) {
@@ -483095,10 +483179,10 @@
   var l = i(329);
   var c = i(15);
   var u = i(4);
-  var d = i(5669);
+  var d = i(5671);
   var p = i(328);
-  var h = i(5670);
-  var g = i(5671);
+  var h = i(5672);
+  var g = i(5673);
   var C = function () {
     function DecoStorageVO(e) {
       this._storageIDs = [];
@@ -483656,7 +483740,7 @@
     return CastleEilandData;
   }(s.CastleEventDispatcher);
   t.CastleEilandData = l;
-  var c = i(5673);
+  var c = i(5675);
 }, function (e, t, i) {
   'use strict';
 
@@ -483881,7 +483965,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(6);
-  var s = i(5675);
+  var s = i(5677);
   var r = function (e) {
     function FightPresetData(t) {
       var i = this;
@@ -484009,13 +484093,13 @@
   var l = i(83);
   var c = i(45);
   var u = i(47);
-  var d = i(5676);
+  var d = i(5678);
   var p = i(55);
-  var h = i(5677);
-  var g = i(5678);
+  var h = i(5679);
+  var g = i(5680);
   var C = i(22);
   var _ = i(4);
-  var m = i(5679);
+  var m = i(5681);
   o.classImplementsInterfaces(r, "IUpdatable", "ICastleBasicData");
 }, function (e, t, i) {
   'use strict';
@@ -484244,11 +484328,11 @@
   var r = i(682);
   var l = i(15);
   var c = i(54);
-  var u = i(625);
+  var u = i(626);
   var d = i(4);
   var p = i(219);
-  var h = i(449);
-  var g = i(5681);
+  var h = i(450);
+  var g = i(5683);
   var C = function (e) {
     function FusionForgeData(t) {
       var i = this;
@@ -484355,7 +484439,7 @@
   t.FusionForgeData = C;
   var _ = i(290);
   var m = i(57);
-  var f = i(5687);
+  var f = i(5689);
   o.classImplementsInterfaces(C, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -484527,11 +484611,11 @@
   var a = i(22);
   var s = i(4);
   var r = i(219);
-  var l = i(5682);
-  var c = i(5683);
-  var u = i(5684);
-  var d = i(5685);
-  var p = i(5686);
+  var l = i(5684);
+  var c = i(5685);
+  var u = i(5686);
+  var d = i(5687);
+  var p = i(5688);
 }, function (e, t, i) {
   'use strict';
 
@@ -485034,7 +485118,7 @@
     return CastlePartpaypriceData;
   }();
   t.CastlePartpaypriceData = n;
-  var o = i(5689);
+  var o = i(5691);
 }, function (e, t, i) {
   'use strict';
 
@@ -485078,10 +485162,10 @@
   var a = i(1);
   var s = i(6);
   var r = i(18);
-  var l = i(485);
+  var l = i(487);
   var c = i(54);
   var u = i(4);
-  var d = i(5691);
+  var d = i(5693);
   var p = function (e) {
     function PrebuiltCastleData(t) {
       var i = e.call(this) || this;
@@ -485217,7 +485301,7 @@
     return PrebuiltCastleData;
   }(c.CastleBasicData);
   t.PrebuiltCastleData = p;
-  var h = i(5692);
+  var h = i(5694);
   var g = i(1402);
   var C = i(15);
   o.classImplementsInterfaces(p, "IUpdatable");
@@ -485395,7 +485479,7 @@
   var s = i(6);
   var r = i(85);
   var l = i(54);
-  var c = i(538);
+  var c = i(540);
   var u = function (e) {
     function AutoRecruitmentPriceData(t) {
       var i = e.call(this) || this;
@@ -485457,7 +485541,7 @@
   }(l.CastleBasicData);
   t.AutoRecruitmentPriceData = u;
   var d = i(133);
-  var p = i(5694);
+  var p = i(5696);
   a.classImplementsInterfaces(u, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -485509,7 +485593,7 @@
   t.AutoRecruitmentPriceVO = n;
   var o = i(133);
   var a = i(22);
-  var s = i(538);
+  var s = i(540);
 }, function (e, t, i) {
   'use strict';
 
@@ -485611,8 +485695,8 @@
   }();
   t.CastleRewardData = o;
   var a = i(47);
-  var s = i(5696);
-  var r = i(5697);
+  var s = i(5698);
+  var r = i(5699);
 }, function (e, t, i) {
   'use strict';
 
@@ -485698,7 +485782,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(54);
-  var s = i(5699);
+  var s = i(5701);
   var r = i(377);
   var l = function (e) {
     function SamuraiDaimyoData(t) {
@@ -485734,16 +485818,16 @@
     value: true
   });
   var n = i(6);
-  var o = i(5700);
-  var a = i(5701);
-  var s = i(5702);
+  var o = i(5702);
+  var a = i(5703);
+  var s = i(5704);
   var r = i(15);
   var l = i(1706);
   var c = i(4);
-  var u = i(5703);
-  var d = i(5704);
+  var u = i(5705);
+  var d = i(5706);
   var p = i(377);
-  var h = i(662);
+  var h = i(663);
   var g = function () {
     function SamuraiDaimyoDataServer() {
       this._ownHighscoreRank = 0;
@@ -486315,10 +486399,10 @@
   var f = i(9);
   var O = i(38);
   var E = i(810);
-  var y = i(5706);
+  var y = i(5708);
   var b = i(1970);
-  var D = i(5707);
-  var I = i(5711);
+  var D = i(5709);
+  var I = i(5713);
   s.classImplementsInterfaces(C, "IUpdatable");
 }, function (e, t, i) {
   'use strict';
@@ -486410,13 +486494,13 @@
   var s = i(6);
   var r = i(28);
   var l = i(1670);
-  var c = i(5708);
-  var u = i(5709);
-  var d = i(5710);
+  var c = i(5710);
+  var u = i(5711);
+  var d = i(5712);
   var p = i(30);
   var h = i(15);
   var g = i(4);
-  var C = i(468);
+  var C = i(469);
   var _ = i(178);
   var m = function () {
     function SeasonLeagueServer() {
@@ -486772,12 +486856,12 @@
   var s = i(22);
   var r = i(892);
   var l = i(4);
-  var c = i(468);
-  var u = i(5712);
-  var d = i(5713);
-  var p = i(5714);
-  var h = i(5715);
-  var g = i(5716);
+  var c = i(469);
+  var u = i(5714);
+  var d = i(5715);
+  var p = i(5716);
+  var h = i(5717);
+  var g = i(5718);
   var C = function () {
     function SeasonLeagueXml() {
       this._seasonMedals = new Map();
@@ -486979,7 +487063,7 @@
   var _ = i(13);
   var m = i(45);
   var f = i(47);
-  var O = i(5717);
+  var O = i(5719);
 }, function (e, t, i) {
   'use strict';
 
@@ -487414,41 +487498,41 @@
     return TutorialClientCommands;
   }();
   t.TutorialClientCommands = o;
-  var a = i(5719);
-  var s = i(5722);
-  var r = i(5724);
-  var l = i(5725);
-  var c = i(5726);
-  var u = i(5727);
-  var d = i(5728);
-  var p = i(5729);
-  var h = i(5730);
-  var g = i(5731);
-  var C = i(5732);
-  var _ = i(5733);
-  var m = i(5734);
-  var f = i(5735);
-  var O = i(5736);
-  var E = i(5737);
-  var y = i(5738);
-  var b = i(5739);
-  var D = i(5740);
-  var I = i(5741);
-  var v = i(5742);
-  var T = i(5743);
-  var S = i(5744);
-  var A = i(5745);
-  var L = i(5746);
-  var P = i(5747);
-  var M = i(5748);
-  var R = i(5749);
-  var V = i(5750);
-  var x = i(5751);
-  var w = i(5752);
-  var B = i(5753);
-  var F = i(5754);
-  var N = i(5755);
-  var k = i(5756);
+  var a = i(5721);
+  var s = i(5724);
+  var r = i(5726);
+  var l = i(5727);
+  var c = i(5728);
+  var u = i(5729);
+  var d = i(5730);
+  var p = i(5731);
+  var h = i(5732);
+  var g = i(5733);
+  var C = i(5734);
+  var _ = i(5735);
+  var m = i(5736);
+  var f = i(5737);
+  var O = i(5738);
+  var E = i(5739);
+  var y = i(5740);
+  var b = i(5741);
+  var D = i(5742);
+  var I = i(5743);
+  var v = i(5744);
+  var T = i(5745);
+  var S = i(5746);
+  var A = i(5747);
+  var L = i(5748);
+  var P = i(5749);
+  var M = i(5750);
+  var R = i(5751);
+  var V = i(5752);
+  var x = i(5753);
+  var w = i(5754);
+  var B = i(5755);
+  var F = i(5756);
+  var N = i(5757);
+  var k = i(5758);
 }, function (e, t, i) {
   'use strict';
 
@@ -487460,8 +487544,8 @@
   var a = i(1);
   var s = i(4);
   var r = i(17);
-  var l = i(5720);
-  var c = i(5721);
+  var l = i(5722);
+  var c = i(5723);
   var u = function (e) {
     function TutorialAskToSkipTutorialCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -487752,12 +487836,12 @@
   var b = i(35);
   var D = i(9);
   var I = i(17);
-  var v = i(473);
+  var v = i(474);
   var T = i(1108);
   var S = i(397);
-  var A = i(5723);
+  var A = i(5725);
   var L = i(302);
-  var P = i(435);
+  var P = i(436);
   var M = i(330);
   var R = i(1869);
   s.classImplementsInterfaces(y, "ISimpleCommand");
@@ -488123,7 +488207,7 @@
   var g = i(143);
   var C = i(48);
   var _ = i(35);
-  var m = i(532);
+  var m = i(534);
   var f = i(17);
   var O = i(266);
   var E = i(1139);
@@ -488336,7 +488420,7 @@
   var C = i(1065);
   var _ = i(1654);
   var m = i(679);
-  var f = i(559);
+  var f = i(560);
   a.classImplementsInterfaces(p, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -488815,7 +488899,7 @@
   var O = i(35);
   var E = i(17);
   var y = i(1409);
-  var b = i(428);
+  var b = i(429);
   var D = i(847);
   var I = i(1866);
   o.classImplementsInterfaces(f, "ISimpleCommand");
@@ -488930,7 +489014,7 @@
   t.TutorialExpandCastleActionCommand = c;
   var u = i(35);
   var d = i(1613);
-  var p = i(657);
+  var p = i(658);
   o.classImplementsInterfaces(c, "ISimpleCommand");
 }, function (e, t, i) {
   'use strict';
@@ -488967,7 +489051,7 @@
       return "s_080_140_quest_finished_confirmed";
     };
     return TutorialFinishedAttackRobberBaronCommand;
-  }(i(480).TutorialBasicQuestFinisherActionCommand);
+  }(i(482).TutorialBasicQuestFinisherActionCommand);
   t.TutorialFinishedAttackRobberBaronCommand = s;
   var r = i(17);
   var l = i(816);
@@ -488989,7 +489073,7 @@
       return "s_060_010_quest_finished_confirmed";
     };
     return TutorialFinishedBuildBarracksCommands;
-  }(i(480).TutorialBasicQuestFinisherActionCommand);
+  }(i(482).TutorialBasicQuestFinisherActionCommand);
   t.TutorialFinishedBuildBarracksCommands = a;
   o.classImplementsInterfaces(a, "ISimpleCommand");
 }, function (e, t, i) {
@@ -489009,7 +489093,7 @@
       return "s_090_010_quest_finished_confirmed";
     };
     return TutorialFinishedBuildDefenseWorkshopCommand;
-  }(i(480).TutorialBasicQuestFinisherActionCommand);
+  }(i(482).TutorialBasicQuestFinisherActionCommand);
   t.TutorialFinishedBuildDefenseWorkshopCommand = a;
   o.classImplementsInterfaces(a, "ISimpleCommand");
 }, function (e, t, i) {
@@ -489029,7 +489113,7 @@
       return "s_080_010_quest_finished_confirmed";
     };
     return TutorialFinishedBuildWorkshopCommand;
-  }(i(480).TutorialBasicQuestFinisherActionCommand);
+  }(i(482).TutorialBasicQuestFinisherActionCommand);
   t.TutorialFinishedBuildWorkshopCommand = a;
   o.classImplementsInterfaces(a, "ISimpleCommand");
 }, function (e, t, i) {
@@ -489049,7 +489133,7 @@
       return "s_070_010_quest_finished_confirmed";
     };
     return TutorialFinishedDecoAndPublicOrderCommand;
-  }(i(480).TutorialBasicQuestFinisherActionCommand);
+  }(i(482).TutorialBasicQuestFinisherActionCommand);
   t.TutorialFinishedDecoAndPublicOrderCommand = a;
   o.classImplementsInterfaces(a, "ISimpleCommand");
 }, function (e, t, i) {
@@ -489069,7 +489153,7 @@
       return "030_080_quest_finished_confirmed";
     };
     return TutorialFinishedExpandCastleCommand;
-  }(i(480).TutorialBasicQuestFinisherActionCommand);
+  }(i(482).TutorialBasicQuestFinisherActionCommand);
   t.TutorialFinishedExpandCastleCommand = a;
   o.classImplementsInterfaces(a, "ISimpleCommand");
 }, function (e, t, i) {
@@ -489089,7 +489173,7 @@
       return "020_090_quest_finished_confirmed";
     };
     return TutorialFinishedUpgradeBuildingActionCommand;
-  }(i(480).TutorialBasicQuestFinisherActionCommand);
+  }(i(482).TutorialBasicQuestFinisherActionCommand);
   t.TutorialFinishedUpgradeBuildingActionCommand = a;
   o.classImplementsInterfaces(a, "ISimpleCommand");
 }, function (e, t, i) {
@@ -489179,14 +489263,14 @@
     return TutorialOpenQuestbookCommand;
   }(i(254).TutorialBasicActionCommand);
   t.TutorialOpenQuestbookCommand = l;
-  var c = i(473);
+  var c = i(474);
   var u = i(1087);
   var d = i(1090);
   var p = i(1754);
-  var h = i(657);
-  var g = i(463);
+  var h = i(658);
+  var g = i(464);
   var C = i(302);
-  var _ = i(435);
+  var _ = i(436);
   var m = i(830);
   var f = i(330);
   var O = i(9);
@@ -489355,7 +489439,7 @@
   }(s.TutorialAbstractMilitaryCommand);
   t.TutorialRecruitUnitsCommand = r;
   var l = i(227);
-  var c = i(648);
+  var c = i(649);
   var u = i(847);
   var d = i(4);
   var p = i(161);
@@ -489519,7 +489603,7 @@
   t.TutorialUpgradeBuildingActionCommand = p;
   var h = i(143);
   var g = i(35);
-  var C = i(657);
+  var C = i(658);
   var _ = i(371);
   var m = i(679);
   var f = i(254);
@@ -489533,7 +489617,7 @@
   var n = i(0);
   var o = i(1);
   var a = i(54);
-  var s = i(5758);
+  var s = i(5760);
   var r = function (e) {
     function CastlePrivateResourceVillageData(t) {
       var i = e.call(this) || this;
@@ -489598,7 +489682,7 @@
   });
   var n = i(5);
   var o = i(6);
-  var a = i(438);
+  var a = i(439);
   var s = i(4);
   var r = i(168);
   var l = function () {
@@ -489699,8 +489783,8 @@
   var l = i(54);
   var c = i(4);
   var u = i(111);
-  var d = i(142);
-  var p = i(5760);
+  var d = i(138);
+  var p = i(5762);
   var h = i(32);
   var g = i(37);
   var C = function (e) {
@@ -489921,9 +490005,9 @@
   var o = i(1);
   var a = i(5);
   var s = i(6);
-  var r = i(5762);
-  var l = i(5763);
-  var c = i(5764);
+  var r = i(5764);
+  var l = i(5765);
+  var c = i(5766);
   var u = i(1959);
   var d = i(118);
   var p = i(52);
@@ -489934,12 +490018,12 @@
   var m = i(54);
   var f = i(382);
   var O = i(4);
-  var E = i(486);
+  var E = i(488);
   var y = i(203);
-  var b = i(5765);
+  var b = i(5767);
   var D = i(1807);
-  var I = i(5766);
-  var v = i(5774);
+  var I = i(5768);
+  var v = i(5776);
   var T = function (e) {
     function CastleEquipmentData() {
       var t = this;
@@ -490618,14 +490702,14 @@
   });
   var n = i(6);
   var o = i(22);
-  var a = i(5767);
-  var s = i(5768);
-  var r = i(5769);
-  var l = i(5770);
-  var c = i(497);
-  var u = i(5771);
-  var d = i(5772);
-  var p = i(5773);
+  var a = i(5769);
+  var s = i(5770);
+  var r = i(5771);
+  var l = i(5772);
+  var c = i(499);
+  var u = i(5773);
+  var d = i(5774);
+  var p = i(5775);
   var h = function () {
     function RelicEquipmentXml() {
       this._relicEffects = new Map();
@@ -491164,11 +491248,11 @@
   var n = i(6);
   var o = i(22);
   var a = i(4);
-  var s = i(5775);
-  var r = i(5776);
-  var l = i(5777);
-  var c = i(5778);
-  var u = i(5779);
+  var s = i(5777);
+  var r = i(5778);
+  var l = i(5779);
+  var c = i(5780);
+  var u = i(5781);
   var d = function () {
     function EquipmentXml() {
       this._equipmentEffects = new Map();
@@ -491528,7 +491612,7 @@
   var n = i(2);
   var o = i(3);
   var a = i(6);
-  var s = i(563);
+  var s = i(564);
   var r = function () {
     function XmlEquipmentSetVO(e, t) {
       this._id = 0;
@@ -491734,20 +491818,20 @@
   var o = i(2);
   var a = i(5);
   var s = i(6);
-  var r = i(5781);
-  var l = i(5782);
-  var c = i(5783);
-  var u = i(5784);
+  var r = i(5783);
+  var l = i(5784);
+  var c = i(5785);
+  var u = i(5786);
   var d = i(235);
   var p = i(15);
   var h = i(72);
   var g = i(382);
   var C = i(4);
-  var _ = i(611);
+  var _ = i(612);
   var m = i(1321);
   var f = i(732);
-  var O = i(5785);
-  var E = i(5786);
+  var O = i(5787);
+  var E = i(5788);
   var y = function (e) {
     function CastleGemData() {
       var t = e.call(this) || this;
@@ -492421,7 +492505,7 @@
   var s = i(1138);
   var r = i(15);
   var l = i(54);
-  var c = i(5788);
+  var c = i(5790);
   var u = function (e) {
     function CastleLostAndFoundData() {
       var t = this;
@@ -492550,16 +492634,16 @@
   var a = i(2);
   var s = i(1);
   var r = i(6);
-  var l = i(5790);
+  var l = i(5792);
   var c = i(22);
   var u = i(1043);
   var d = i(157);
   var p = i(30);
   var h = i(54);
   var g = i(4);
-  var C = i(653);
-  var _ = i(5791);
-  var m = i(5792);
+  var C = i(654);
+  var _ = i(5793);
+  var m = i(5794);
   var f = function (e) {
     function OfficersSchoolData(t) {
       var i = this;
@@ -492962,18 +493046,18 @@
   var u = i(30);
   var d = i(15);
   var p = i(54);
-  var h = i(5794);
-  var g = i(5795);
-  var C = i(5796);
-  var _ = i(5797);
-  var m = i(5798);
-  var f = i(5799);
-  var O = i(5800);
+  var h = i(5796);
+  var g = i(5797);
+  var C = i(5798);
+  var _ = i(5799);
+  var m = i(5800);
+  var f = i(5801);
+  var O = i(5802);
   var E = i(1169);
   var y = i(685);
-  var b = i(5801);
+  var b = i(5803);
   var D = i(970);
-  var I = i(5802);
+  var I = i(5804);
   var v = function (e) {
     function CastleAllianceBattleGroundData(t) {
       var i = e.call(this) || this;
@@ -493665,7 +493749,7 @@
   var o = i(1);
   var a = i(53);
   var s = i(54);
-  var r = i(5804);
+  var r = i(5806);
   var l = function (e) {
     function LandmarkData(t) {
       var i = e.call(this) || this;
@@ -493800,7 +493884,7 @@
   var o = i(5);
   var a = i(6);
   var s = i(49);
-  var r = i(477);
+  var r = i(479);
   var l = i(22);
   var c = function (e) {
     function SaleDaysLuckyWheelData(t) {
@@ -493875,7 +493959,7 @@
   var s = i(37);
   var r = i(54);
   var l = i(4);
-  var c = i(5808);
+  var c = i(5810);
   var u = function (e) {
     function CastleFortuneTellerData(t) {
       var i = e.call(this) || this;
@@ -494058,7 +494142,7 @@
   Object.defineProperty(t, "__esModule", {
     value: true
   });
-  var n = i(5812);
+  var n = i(5814);
   var o = function () {
     function CastleNewsletterData(e) {
       this.parseXML(e);
@@ -494123,7 +494207,7 @@
   });
   var n = i(0);
   var o = i(72);
-  var a = i(5814);
+  var a = i(5816);
   var s = i(22);
   var r = function (e) {
     function DynamicTopXxmlData(t) {
@@ -494217,11 +494301,11 @@
   var n = i(0);
   var o = i(1);
   var a = i(54);
-  var s = i(5816);
-  var r = i(5817);
-  var l = i(5818);
+  var s = i(5818);
+  var r = i(5819);
+  var l = i(5820);
   var c = i(1102);
-  var u = i(5819);
+  var u = i(5821);
   var d = function (e) {
     function CastleEventDifficultyScalingData(t) {
       var i = e.call(this) || this;
@@ -494754,7 +494838,7 @@
   });
   var n = i(0);
   var o = i(72);
-  var a = i(5821);
+  var a = i(5823);
   var s = i(30);
   var r = i(28);
   var l = i(37);
@@ -494981,9 +495065,9 @@
   var s = i(1);
   var r = i(1);
   var l = i(1);
-  var c = i(5829);
-  var u = i(5830);
-  var d = i(5831);
+  var c = i(5831);
+  var u = i(5832);
+  var d = i(5833);
   var p = function (e) {
     function CastleTextFieldFactory() {
       return e !== null && e.apply(this, arguments) || this;
@@ -495687,4 +495771,4 @@
     return ModernStartscreenComponent;
   }(l.CastleStartscreenComponent);
   t.ModernStartscreenComponent = d;
-}]); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/Game.bundle.09edc8a88c1230439f8d.js.map
+}]); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/Game.bundle.f4b58f3197f92308bb43.js.map

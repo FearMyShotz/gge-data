@@ -1552,5 +1552,11 @@
     "Name": "SweetTreat",
     "JSONKey": "SWT",
     "assetName": "SweetTreat"
+  },
+  {
+    "currencyID": "16",
+    "Name": "MerchantsKey",
+    "JSONKey": "MK",
+    "assetName": "MerchantsKey"
   }
 ]

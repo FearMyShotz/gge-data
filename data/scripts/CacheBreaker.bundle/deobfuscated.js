@@ -854,7 +854,7 @@
   854: function (e) {
     e.exports = {
       name: "@goodgamestudios/empire-createjs-assets",
-      version: "1.2.1147",
+      version: "1.2.1194",
       main: "generated/index.js",
       types: "generated/index.d.ts",
       description: "CreateJS Assets for Empire HTML5",
@@ -962,7 +962,7 @@
   855: function (e) {
     e.exports = {
       name: "TranspilationEmpire",
-      version: "1.144.30",
+      version: "1.146.18",
       description: "Transpiled version of the Flash game",
       main: "index.js",
       repository: "git@source.services.ggs-net.com:Foundation-HTML5/TranspilationEmpire.git",
@@ -1084,7 +1084,7 @@
       dependencies: {
         "@goodgamestudios/core": "^6.12.6",
         "@goodgamestudios/empire-createjs-assets": "^1.2.298",
-        "@goodgamestudios/empire-shared-constants": "6.0.1411",
+        "@goodgamestudios/empire-shared-constants": "6.0.1471",
         "@goodgamestudios/message-handler": "1.3.1",
         axios: "^0.21.1",
         "bugsnag-js": "^4.7.2",
@@ -1096,4 +1096,4 @@
       }
     };
   }
-}); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/CacheBreaker.bundle.5b5f2cc136b540db183f.js.map
+}); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/CacheBreaker.bundle.1ee3cf6cf62d36e25577.js.map

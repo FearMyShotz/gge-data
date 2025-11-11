@@ -1470,8 +1470,8 @@ var ggs_lib = function (e) {
       var F = [];
       var U = {};
       var G = /(?:(-|-=|\+=)?\d*\.?\d*(?:e[\-+]?\d+)?)[0-9]/gi;
-      var w = /[\+-]=-?[\.\d]/;
-      function k(e) {
+      var k = /[\+-]=-?[\.\d]/;
+      function w(e) {
         var t;
         for (var n = this._firstPT; n;) {
           t = n.blob ? e === 1 && this.end != null ? this.end : e ? this.join("") : this.start : n.c * e + n.s;
@@ -1556,8 +1556,8 @@ var ggs_lib = function (e) {
         if (m += t.substr(d)) {
           _.push(m);
         }
-        _.setRatio = k;
-        if (w.test(t)) {
+        _.setRatio = w;
+        if (k.test(t)) {
           _.end = null;
         }
         return _;
@@ -2374,7 +2374,7 @@ var ggs_lib = function (e) {
       ne.API = 2;
       o._firstPT = null;
       o._addTween = W;
-      o.setRatio = k;
+      o.setRatio = w;
       o._kill = function (e) {
         var t;
         var n = this._overwriteProps;
@@ -2662,14 +2662,14 @@ var ggs_lib = function (e) {
   t.StageScaleMode = U.StageScaleMode;
   var G = n(225);
   t.Transform = G.Transform;
-  var w = n(88);
-  t.ColorTransform = w.ColorTransform;
-  var k = n(136);
-  t.BG_STAGE = k.BG_STAGE;
-  t.GAME_STAGE = k.GAME_STAGE;
-  t.TUTORIAL_STAGE = k.TUTORIAL_STAGE;
-  t.UI_STAGE = k.UI_STAGE;
-  t.STATIC_STAGE = k.STATIC_STAGE;
+  var k = n(88);
+  t.ColorTransform = k.ColorTransform;
+  var w = n(136);
+  t.BG_STAGE = w.BG_STAGE;
+  t.GAME_STAGE = w.GAME_STAGE;
+  t.TUTORIAL_STAGE = w.TUTORIAL_STAGE;
+  t.UI_STAGE = w.UI_STAGE;
+  t.STATIC_STAGE = w.STATIC_STAGE;
   var x = n(577);
   t.FrameLabel = x.FrameLabel;
   var W = n(578);
@@ -6014,10 +6014,10 @@ var ggs_lib = function (e) {
   t.BasicExtensionResponseCommand = U.BasicExtensionResponseCommand;
   var G = n(366);
   t.BasicHandleIdentityManagementErrorCommand = G.BasicHandleIdentityManagementErrorCommand;
-  var w = n(370);
-  t.BasicIdentityManagementCommand = w.BasicIdentityManagementCommand;
-  var k = n(790);
-  t.BasicInitLoggerCommand = k.BasicInitLoggerCommand;
+  var k = n(370);
+  t.BasicIdentityManagementCommand = k.BasicIdentityManagementCommand;
+  var w = n(790);
+  t.BasicInitLoggerCommand = w.BasicInitLoggerCommand;
   var x = n(791);
   t.BasicInitServerCommands = x.BasicInitServerCommands;
   var W = n(374);
@@ -6122,10 +6122,10 @@ var ggs_lib = function (e) {
   t.BasicTrackingCommand = Ue.BasicTrackingCommand;
   var Ge = n(423);
   t.BasicPaymentShopClickTrackingVO = Ge.BasicPaymentShopClickTrackingVO;
-  var we = n(824);
-  t.BasicProfilingTrackingCommandVO = we.BasicProfilingTrackingCommandVO;
-  var ke = n(155);
-  t.ConnectionTrackingCommandVO = ke.ConnectionTrackingCommandVO;
+  var ke = n(824);
+  t.BasicProfilingTrackingCommandVO = ke.BasicProfilingTrackingCommandVO;
+  var we = n(155);
+  t.ConnectionTrackingCommandVO = we.ConnectionTrackingCommandVO;
   var xe = n(825);
   t.FacebookConnectionTrackingCommandVO = xe.FacebookConnectionTrackingCommandVO;
   var We = n(826);
@@ -6230,10 +6230,10 @@ var ggs_lib = function (e) {
   t.LiveEnvironment = Ut.LiveEnvironment;
   var Gt = n(840);
   t.LiveTestEnvironment = Gt.LiveTestEnvironment;
-  var wt = n(841);
-  t.LocaTestEnvironment = wt.LocaTestEnvironment;
-  var kt = n(842);
-  t.LocalHostTestEnvironment = kt.LocalHostTestEnvironment;
+  var kt = n(841);
+  t.LocaTestEnvironment = kt.LocaTestEnvironment;
+  var wt = n(842);
+  t.LocalHostTestEnvironment = wt.LocalHostTestEnvironment;
   var xt = n(843);
   t.PreClientEnvironment = xt.PreClientEnvironment;
   var Wt = n(844);
@@ -6336,10 +6336,10 @@ var ggs_lib = function (e) {
   t.JavascriptCallSetForumHashVO = Un.JavascriptCallSetForumHashVO;
   var Gn = n(854);
   t.Siren24ViewUtil = Gn.Siren24ViewUtil;
-  var wn = n(439);
-  t.BasicSocialData = wn.BasicSocialData;
-  var kn = n(440);
-  t.JavascriptCallOnSetSessionParametersFactory = kn.JavascriptCallOnSetSessionParametersFactory;
+  var kn = n(439);
+  t.BasicSocialData = kn.BasicSocialData;
+  var wn = n(440);
+  t.JavascriptCallOnSetSessionParametersFactory = wn.JavascriptCallOnSetSessionParametersFactory;
   var xn = n(441);
   t.JavascriptCallSetSessionParametersVO = xn.JavascriptCallSetSessionParametersVO;
   var Wn = n(855);
@@ -6444,10 +6444,10 @@ var ggs_lib = function (e) {
   t.BasicEnvironmentGlobals = Ui.BasicEnvironmentGlobals;
   var Gi = n(78);
   t.commentedOut = Gi.commentedOut;
-  var wi = n(78);
-  t.replacedWith = wi.replacedWith;
   var ki = n(78);
-  t.exportToWindow = ki.exportToWindow;
+  t.replacedWith = ki.replacedWith;
+  var wi = n(78);
+  t.exportToWindow = wi.exportToWindow;
   var xi = n(161);
   t.BranchesModel = xi.BranchesModel;
   var Wi = n(483);
@@ -6554,10 +6554,10 @@ var ggs_lib = function (e) {
   t.AbstractLogObject = Ua.AbstractLogObject;
   var Ga = n(886);
   t.ColorMatrix = Ga.ColorMatrix;
-  var wa = n(189);
-  t.MovieClipHelper = wa.MovieClipHelper;
-  var ka = n(887);
-  t.TiledBitmap = ka.TiledBitmap;
+  var ka = n(189);
+  t.MovieClipHelper = ka.MovieClipHelper;
+  var wa = n(887);
+  t.TiledBitmap = wa.TiledBitmap;
   var xa = n(888);
   t.Input = xa.Input;
   var Wa = n(489);
@@ -6662,10 +6662,10 @@ var ggs_lib = function (e) {
   t.OfferDescriptionVisuals = Us.OfferDescriptionVisuals;
   var Gs = n(465);
   t.BasicOfferRewardFactory = Gs.BasicOfferRewardFactory;
-  var ws = n(464);
-  t.BasicOfferDescriptionVisualFactory = ws.BasicOfferDescriptionVisualFactory;
-  var ks = n(916);
-  t.OfferDescriptionVisualFailedDialog = ks.OfferDescriptionVisualFailedDialog;
+  var ks = n(464);
+  t.BasicOfferDescriptionVisualFactory = ks.BasicOfferDescriptionVisualFactory;
+  var ws = n(916);
+  t.OfferDescriptionVisualFailedDialog = ws.OfferDescriptionVisualFailedDialog;
   var xs = n(917);
   t.OfferDescriptionVisualFinishDialog = xs.OfferDescriptionVisualFinishDialog;
   var Ws = n(918);
@@ -6772,10 +6772,10 @@ var ggs_lib = function (e) {
   t.NoneValueSignal = Ur.NoneValueSignal;
   var Gr = n(935);
   t.NumberSignal = Gr.NumberSignal;
-  var wr = n(199);
-  t.ObjectSignal = wr.ObjectSignal;
-  var kr = n(936);
-  t.PointSignal = kr.PointSignal;
+  var kr = n(199);
+  t.ObjectSignal = kr.ObjectSignal;
+  var wr = n(936);
+  t.PointSignal = wr.PointSignal;
   var xr = n(937);
   t.StringSignal = xr.StringSignal;
   var Wr = n(452);
@@ -6878,10 +6878,10 @@ var ggs_lib = function (e) {
   t.FacebookUserDataTrackingEvent = Uo.FacebookUserDataTrackingEvent;
   var Go = n(949);
   t.FirstLoaderEvent = Go.FirstLoaderEvent;
-  var wo = n(295);
-  t.GamePaymentShopClickEvent = wo.GamePaymentShopClickEvent;
-  var ko = n(950);
-  t.GenericGameStateEvent = ko.GenericGameStateEvent;
+  var ko = n(295);
+  t.GamePaymentShopClickEvent = ko.GamePaymentShopClickEvent;
+  var wo = n(950);
+  t.GenericGameStateEvent = wo.GenericGameStateEvent;
   var xo = n(289);
   t.ImpressionTrackingEvent = xo.ImpressionTrackingEvent;
   var Wo = n(298);
@@ -6986,10 +6986,10 @@ var ggs_lib = function (e) {
   t.BasicTextfieldValueContainer = Ul.BasicTextfieldValueContainer;
   var Gl = n(506);
   t.AValueWrapper = Gl.AValueWrapper;
-  var wl = n(973);
-  t.StrictStepWrapper = wl.StrictStepWrapper;
-  var kl = n(974);
-  t.MathUtils = kl.MathUtils;
+  var kl = n(973);
+  t.StrictStepWrapper = kl.StrictStepWrapper;
+  var wl = n(974);
+  t.MathUtils = wl.MathUtils;
   var xl = n(975);
   t.LogMeister = xl.LogMeister;
   t.ConsoleConnector = xl.ConsoleConnector;
@@ -7919,10 +7919,10 @@ var ggs_lib = function (e) {
   t.Connection = U;
   var G = n(686);
   t.MvTestConversion = G;
-  var w = n(687);
-  t.ForumRegistration = w;
-  var k = n(688);
-  t.ClientLoad = k;
+  var k = n(687);
+  t.ForumRegistration = k;
+  var w = n(688);
+  t.ClientLoad = w;
   var x = n(689);
   t.WorldAssignment = x;
   var W = n(690);
@@ -17193,19 +17193,19 @@ var ggs_lib = function (e) {
     var F = Math.PI / 180;
     var U = 180 / Math.PI;
     var G = {};
-    var w = {
+    var k = {
       style: {}
     };
-    var k = i._gsScope.document || {
+    var w = i._gsScope.document || {
       createElement: function () {
-        return w;
+        return k;
       }
     };
     function x(e, t) {
-      if (k.createElementNS) {
-        return k.createElementNS(t || "http://www.w3.org/1999/xhtml", e);
+      if (w.createElementNS) {
+        return w.createElementNS(t || "http://www.w3.org/1999/xhtml", e);
       } else {
-        return k.createElement(e);
+        return w.createElement(e);
       }
     }
     var W = x("div");
@@ -17257,7 +17257,7 @@ var ggs_lib = function (e) {
         return null;
       }
     }
-    var Q = (typeof window != "undefined" ? window : k.defaultView || {
+    var Q = (typeof window != "undefined" ? window : w.defaultView || {
       getComputedStyle: function () {}
     }).getComputedStyle;
     var $ = s.getStyle = function (e, t, n, i, a) {
@@ -17308,7 +17308,7 @@ var ggs_lib = function (e) {
           if (a !== "%" && _.appendChild && a.charAt(0) !== "v" && a !== "rem") {
             d[c ? "borderLeftWidth" : "borderTopWidth"] = n + a;
           } else {
-            _ = e.parentNode || k.body;
+            _ = e.parentNode || w.body;
             if ($(_, "display").indexOf("flex") !== -1) {
               d.position = "absolute";
             }
@@ -18153,7 +18153,7 @@ var ggs_lib = function (e) {
     var Ue = i._gsScope.SVGElement;
     function Ge(e, t, n) {
       var i;
-      var a = k.createElementNS("http://www.w3.org/2000/svg", e);
+      var a = w.createElementNS("http://www.w3.org/2000/svg", e);
       var s = /([a-z])([A-Z])/g;
       for (i in n) {
         a.setAttributeNS(null, i.replace(s, "$1-$2").toLowerCase(), n[i]);
@@ -18161,10 +18161,10 @@ var ggs_lib = function (e) {
       t.appendChild(a);
       return a;
     }
-    var we = k.documentElement || {};
+    var ke = w.documentElement || {};
     be = h || /Android/i.test(j) && !i._gsScope.chrome;
-    if (k.createElementNS && !be) {
-      Oe = Ge("svg", we);
+    if (w.createElementNS && !be) {
+      Oe = Ge("svg", ke);
       De = (Le = Ge("rect", Oe, {
         width: 100,
         height: 50,
@@ -18173,9 +18173,9 @@ var ggs_lib = function (e) {
       Le.style[Be] = "50% 50%";
       Le.style[Re] = "scaleX(0.5)";
       be = De === Le.getBoundingClientRect().width && (!d || !Me);
-      we.removeChild(Oe);
+      ke.removeChild(Oe);
     }
-    var ke = be;
+    var we = be;
     function xe(e, t, n, i, a, r) {
       var o;
       var l;
@@ -18249,7 +18249,7 @@ var ggs_lib = function (e) {
       var i = this.parentNode;
       var a = this.nextSibling;
       var s = this.style.cssText;
-      we.appendChild(n);
+      ke.appendChild(n);
       n.appendChild(this);
       this.style.display = "block";
       if (e) {
@@ -18266,7 +18266,7 @@ var ggs_lib = function (e) {
       } else {
         i.appendChild(this);
       }
-      we.removeChild(n);
+      ke.removeChild(n);
       this.style.cssText = s;
       return t;
     }
@@ -18302,7 +18302,7 @@ var ggs_lib = function (e) {
         }
         if (!e.parentNode) {
           r = 1;
-          we.appendChild(e);
+          ke.appendChild(e);
         }
         n = !(i = $(e, Pe, null, true)) || i === "none" || i === "matrix(1, 0, 0, 1, 0, 0)";
         if (s) {
@@ -18311,7 +18311,7 @@ var ggs_lib = function (e) {
           Ze(u, "display");
         }
         if (r) {
-          we.removeChild(e);
+          ke.removeChild(e);
         }
       }
       if (l.svg || e.getCTM && He(e)) {
@@ -18357,7 +18357,7 @@ var ggs_lib = function (e) {
       d.svg = !!e.getCTM && !!He(e);
       if (d.svg) {
         xe(e, $(e, Be, t, false, "50% 50%") + "", d, e.getAttribute("data-svg-origin"));
-        Ae = s.useSVGTransformAttr || ke;
+        Ae = s.useSVGTransformAttr || we;
       }
       if ((r = je(e)) !== Ve) {
         if (r.length === 16) {
@@ -18455,16 +18455,16 @@ var ggs_lib = function (e) {
             d.y -= d.yOrigin - (d.yOrigin * y - d.xOrigin * O);
           }
         } else if (!Me || a || !r.length || d.x !== r[4] || d.y !== r[5] || !d.rotationX && !d.rotationY) {
-          var w = r.length >= 6;
-          var k = w ? r[0] : 1;
+          var k = r.length >= 6;
+          var w = k ? r[0] : 1;
           var x = r[1] || 0;
           var W = r[2] || 0;
-          var H = w ? r[3] : 1;
+          var H = k ? r[3] : 1;
           d.x = r[4] || 0;
           d.y = r[5] || 0;
-          l = Math.sqrt(k * k + x * x);
+          l = Math.sqrt(w * w + x * x);
           u = Math.sqrt(H * H + W * W);
-          c = k || x ? Math.atan2(x, k) * U : d.rotation || 0;
+          c = w || x ? Math.atan2(x, w) * U : d.rotation || 0;
           _ = W || H ? Math.atan2(W, H) * U + c : d.skewX || 0;
           d.scaleX = l;
           d.scaleY = u;
@@ -18476,7 +18476,7 @@ var ggs_lib = function (e) {
             d.scaleZ = 1;
           }
           if (d.svg) {
-            d.x -= d.xOrigin - (d.xOrigin * k + d.yOrigin * W);
+            d.x -= d.xOrigin - (d.xOrigin * w + d.yOrigin * W);
             d.y -= d.yOrigin - (d.xOrigin * x + d.yOrigin * H);
           }
         }
@@ -18611,27 +18611,27 @@ var ggs_lib = function (e) {
       var M = I.svg;
       var U = I.perspective;
       var G = I.force3D;
-      var w = I.skewY;
-      var k = I.skewX;
-      if (w) {
-        k += w;
-        A += w;
+      var k = I.skewY;
+      var w = I.skewX;
+      if (k) {
+        w += k;
+        A += k;
       }
       if (((e === 1 || e === 0) && G === "auto" && (this.tween._totalTime === this.tween._totalDuration || !this.tween._totalTime) || !G) && !B && !U && !L && !O && N === 1 || Ae && M || !Me) {
-        if (A || k || M) {
+        if (A || w || M) {
           A *= F;
-          S = k * F;
+          S = w * F;
           y = 100000;
           n = Math.cos(A) * D;
           s = Math.sin(A) * D;
           i = Math.sin(A - S) * -b;
           r = Math.cos(A - S) * b;
           if (S && I.skewType === "simple") {
-            t = Math.tan(S - w * F);
+            t = Math.tan(S - k * F);
             i *= t = Math.sqrt(1 + t * t);
             r *= t;
-            if (w) {
-              t = Math.tan(w * F);
+            if (k) {
+              t = Math.tan(k * F);
               n *= t = Math.sqrt(1 + t * t);
               s *= t;
             }
@@ -18672,20 +18672,20 @@ var ggs_lib = function (e) {
             U = 0;
           }
         }
-        if (A || k) {
+        if (A || w) {
           A *= F;
           E = n = Math.cos(A);
           C = s = Math.sin(A);
-          if (k) {
-            A -= k * F;
+          if (w) {
+            A -= w * F;
             E = Math.cos(A);
             C = Math.sin(A);
             if (I.skewType === "simple") {
-              t = Math.tan((k - w) * F);
+              t = Math.tan((w - k) * F);
               E *= t = Math.sqrt(1 + t * t);
               C *= t;
               if (I.skewY) {
-                t = Math.tan(w * F);
+                t = Math.tan(k * F);
                 n *= t = Math.sqrt(1 + t * t);
                 s *= t;
               }
@@ -18828,7 +18828,7 @@ var ggs_lib = function (e) {
             d.width = $(e, "width");
             d.height = $(e, "height");
           }
-          k.body.appendChild(W);
+          w.body.appendChild(W);
           _ = qe(W, null, false);
           if (L.skewType === "simple") {
             _.scaleY *= Math.cos(_.skewX * F);
@@ -18852,7 +18852,7 @@ var ggs_lib = function (e) {
               _.y -= f - (C * T[1] + f * T[3]);
             }
           }
-          k.body.removeChild(W);
+          w.body.removeChild(W);
           _.perspective ||= L.perspective;
           if (A.xPercent != null) {
             _.xPercent = le(A.xPercent, L.xPercent);
@@ -49638,7 +49638,7 @@ var ggs_lib = function (e) {
       this.assets.CastleStartscreen3 = "interface/CastleStartscreen3/CastleStartscreen3--1693828816067";
       this.assets.CastleStartscreen2 = "interface/CastleStartscreen2/CastleStartscreen2--1679043072895";
       this.assets.CastleStartscreen_O = "interface/CastleStartscreen_O/CastleStartscreen_O--1651238657710";
-      this.assets.CastleInterfaceElements_Icons = "interface/CastleInterfaceElements_Icons/CastleInterfaceElements_Icons--1757681463482";
+      this.assets.CastleInterfaceElements_Icons = "interface/CastleInterfaceElements_Icons/CastleInterfaceElements_Icons--1762440370250";
       this.assets.CastleInterfaceElements_Shared = "interface/CastleInterfaceElements_Shared/CastleInterfaceElements_Shared--1710420450312";
       this.assets.CastleStartscreen = "interface/CastleStartscreen/CastleStartscreen--1645175515102";
       this.assets.KoreaTableCell = "interface/fonts/korea/KoreaTableCell/KoreaTableCell--1640007345013";
@@ -49675,6 +49675,86 @@ var ggs_lib = function (e) {
     };
     ItemVersions.prototype.fill = function () {
       this.assets.Deco_Building_springBonfire = "itemassets/Building/Deco/Deco_Building_springBonfire/Deco_Building_springBonfire--1616681902168";
+      this.assets.Icon_ARE_BossID_1 = "itemassets/Dialogs/Events/AllianceRaidEvent/Icons/Icon_ARE_BossID_1/Icon_ARE_BossID_1--1762443247150";
+      this.assets.RelicFarm_Building_BlackFridayGreenhouse = "itemassets/Building/RelicFarm/RelicFarm_Building_BlackFridayGreenhouse/RelicFarm_Building_BlackFridayGreenhouse--1762357294938";
+      this.assets.Outpost_Mapobject_Special_BlackFriday2025Cast = "itemassets/Worldmap/WorldmapObjects/Outposts/Outpost_Mapobject_Special_BlackFriday2025Cast/Outpost_Mapobject_Special_BlackFriday2025Cast--1762351668555";
+      this.assets.Skin_Mapmovement_BlackFriday2025Com_Eiland = "itemassets/Worldmap/WorldmapObjects/Movements/Skins/Skin_Mapmovement_BlackFriday2025Com_Eiland/Skin_Mapmovement_BlackFriday2025Com_Eiland--1762351668555";
+      this.assets.Skin_Mapmovement_BlackFriday2025Com_Common = "itemassets/Worldmap/WorldmapObjects/Movements/Skins/Skin_Mapmovement_BlackFriday2025Com_Common/Skin_Mapmovement_BlackFriday2025Com_Common--1762351668555";
+      this.assets.Metropol_Mapobject_Special_BlackFriday2025Cast = "itemassets/Worldmap/WorldmapObjects/Landmarks/Metropol_Mapobject_Special_BlackFriday2025Cast/Metropol_Mapobject_Special_BlackFriday2025Cast--1762351668555";
+      this.assets.Capital_Mapobject_Special_BlackFriday2025Cast = "itemassets/Worldmap/WorldmapObjects/Landmarks/Capital_Mapobject_Special_BlackFriday2025Cast/Capital_Mapobject_Special_BlackFriday2025Cast--1762351668555";
+      this.assets.Castle_Mapobject_Special_BlackFriday2025Cast = "itemassets/Worldmap/WorldmapObjects/Castles/Castle_Mapobject_Special_BlackFriday2025Cast/Castle_Mapobject_Special_BlackFriday2025Cast--1762351668555";
+      this.assets.Item_Unique_1384 = "itemassets/Equipment/Uniques/Item_Unique_1384/Item_Unique_1384--1762351668555";
+      this.assets.Item_Unique_1383 = "itemassets/Equipment/Uniques/Item_Unique_1383/Item_Unique_1383--1762351668555";
+      this.assets.ConstructionItem_BlackFridayWindmill = "itemassets/ConstructionItems/ConstructionItem_BlackFridayWindmill/ConstructionItem_BlackFridayWindmill--1762351668555";
+      this.assets.ConstructionItem_BlackFridayStonemason = "itemassets/ConstructionItems/ConstructionItem_BlackFridayStonemason/ConstructionItem_BlackFridayStonemason--1762351668555";
+      this.assets.ConstructionItem_BlackFridayQuarry = "itemassets/ConstructionItems/ConstructionItem_BlackFridayQuarry/ConstructionItem_BlackFridayQuarry--1762351668555";
+      this.assets.ConstructionItem_BlackFridayLegend = "itemassets/ConstructionItems/ConstructionItem_BlackFridayLegend/ConstructionItem_BlackFridayLegend--1762351668555";
+      this.assets.ConstructionItem_BlackFridayGreenhouse = "itemassets/ConstructionItems/ConstructionItem_BlackFridayGreenhouse/ConstructionItem_BlackFridayGreenhouse--1762351668555";
+      this.assets.ConstructionItem_BlackFridayEstate = "itemassets/ConstructionItems/ConstructionItem_BlackFridayEstate/ConstructionItem_BlackFridayEstate--1762351668555";
+      this.assets.ConstructionItem_BlackFridayDwelling = "itemassets/ConstructionItems/ConstructionItem_BlackFridayDwelling/ConstructionItem_BlackFridayDwelling--1762351668555";
+      this.assets.ConstructionItem_BlackFridayBarracks = "itemassets/ConstructionItems/ConstructionItem_BlackFridayBarracks/ConstructionItem_BlackFridayBarracks--1762351668555";
+      this.assets.ConstructionItem_BlackFridayBakery = "itemassets/ConstructionItems/ConstructionItem_BlackFridayBakery/ConstructionItem_BlackFridayBakery--1762351668555";
+      this.assets.Stonemason_Building_BlackFridayStonemason = "itemassets/Building/Stonemason/Stonemason_Building_BlackFridayStonemason/Stonemason_Building_BlackFridayStonemason--1762349667226";
+      this.assets.RelicFarmGreen_Building_BlackFridayGreenhouse = "itemassets/Building/RelicFarm/RelicFarmGreen_Building_BlackFridayGreenhouse/RelicFarmGreen_Building_BlackFridayGreenhouse--1762349667226";
+      this.assets.Quarry_Building_BlackFridayQuarry = "itemassets/Building/Quarry/Quarry_Building_BlackFridayQuarry/Quarry_Building_BlackFridayQuarry--1762349667226";
+      this.assets.Pdwelling_Building_BlackFridayDwelling = "itemassets/Building/Pdwelling/Pdwelling_Building_BlackFridayDwelling/Pdwelling_Building_BlackFridayDwelling--1762349667226";
+      this.assets.Mill_Building_BlackFridayWindmill = "itemassets/Building/Mill/Mill_Building_BlackFridayWindmill/Mill_Building_BlackFridayWindmill--1762349667226";
+      this.assets.LegendTemple_Building_BlackFridayLegend = "itemassets/Building/LegendTemple/LegendTemple_Building_BlackFridayLegend/LegendTemple_Building_BlackFridayLegend--1762349667226";
+      this.assets.LegendQuarry_Building_BlackFridayQuarry = "itemassets/Building/LegendQuarry/LegendQuarry_Building_BlackFridayQuarry/LegendQuarry_Building_BlackFridayQuarry--1762349667226";
+      this.assets.Estate_Building_BlackFridayEstate = "itemassets/Building/Estate/Estate_Building_BlackFridayEstate/Estate_Building_BlackFridayEstate--1762349667226";
+      this.assets.Dwelling_Building_BlackFridayDwelling = "itemassets/Building/Dwelling/Dwelling_Building_BlackFridayDwelling/Dwelling_Building_BlackFridayDwelling--1762349667226";
+      this.assets.Deco_Building_ExaltedRedSpringofelation = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedRedSpringofelation/Deco_Building_ExaltedRedSpringofelation--1762349667226";
+      this.assets.Deco_Building_ExaltedRedRoyalpleasurenook = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedRedRoyalpleasurenook/Deco_Building_ExaltedRedRoyalpleasurenook--1762349667226";
+      this.assets.Deco_Building_ExaltedPurpleSpringofelation = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedPurpleSpringofelation/Deco_Building_ExaltedPurpleSpringofelation--1762349667226";
+      this.assets.Deco_Building_ExaltedPurpleRoyalpleasurenook = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedPurpleRoyalpleasurenook/Deco_Building_ExaltedPurpleRoyalpleasurenook--1762349667226";
+      this.assets.Deco_Building_ExaltedGreenSpringofelation = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedGreenSpringofelation/Deco_Building_ExaltedGreenSpringofelation--1762349667226";
+      this.assets.Deco_Building_ExaltedGreenRoyalpleasurenook = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedGreenRoyalpleasurenook/Deco_Building_ExaltedGreenRoyalpleasurenook--1762349667226";
+      this.assets.Deco_Building_ExaltedRedShadowMemorialFountain = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedRedShadowMemorialFountain/Deco_Building_ExaltedRedShadowMemorialFountain--1762349667226";
+      this.assets.Deco_Building_ExaltedRedRubyGardenofAbundance = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedRedRubyGardenofAbundance/Deco_Building_ExaltedRedRubyGardenofAbundance--1762349667226";
+      this.assets.Deco_Building_ExaltedRedLightMemorialFountain = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedRedLightMemorialFountain/Deco_Building_ExaltedRedLightMemorialFountain--1762349667226";
+      this.assets.Deco_Building_ExaltedRedCeruleanGardenofAbundance = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedRedCeruleanGardenofAbundance/Deco_Building_ExaltedRedCeruleanGardenofAbundance--1762349667226";
+      this.assets.Deco_Building_ExaltedPurpleShadowMemorialFountain = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedPurpleShadowMemorialFountain/Deco_Building_ExaltedPurpleShadowMemorialFountain--1762349667226";
+      this.assets.Deco_Building_ExaltedPurpleRubyGardenofAbundance = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedPurpleRubyGardenofAbundance/Deco_Building_ExaltedPurpleRubyGardenofAbundance--1762349667226";
+      this.assets.Deco_Building_ExaltedPurpleLightMemorialFountain = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedPurpleLightMemorialFountain/Deco_Building_ExaltedPurpleLightMemorialFountain--1762349667226";
+      this.assets.Deco_Building_ExaltedPurpleCeruleanGardenofAbundance = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedPurpleCeruleanGardenofAbundance/Deco_Building_ExaltedPurpleCeruleanGardenofAbundance--1762349667226";
+      this.assets.Deco_Building_ExaltedGreenShadowMemorialFountain = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedGreenShadowMemorialFountain/Deco_Building_ExaltedGreenShadowMemorialFountain--1762349667226";
+      this.assets.Deco_Building_ExaltedGreenRubyGardenofAbundance = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedGreenRubyGardenofAbundance/Deco_Building_ExaltedGreenRubyGardenofAbundance--1762349667226";
+      this.assets.Deco_Building_ExaltedGreenLightMemorialFountain = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedGreenLightMemorialFountain/Deco_Building_ExaltedGreenLightMemorialFountain--1762349667226";
+      this.assets.Deco_Building_ExaltedGreenCeruleanGardenofAbundance = "itemassets/Building/Deco/EffectDecos/Blackfriday25/Deco_Building_ExaltedGreenCeruleanGardenofAbundance/Deco_Building_ExaltedGreenCeruleanGardenofAbundance--1762349667226";
+      this.assets.Barracks_Building_BlackFridayBarracks = "itemassets/Building/Barracks/Barracks_Building_BlackFridayBarracks/Barracks_Building_BlackFridayBarracks--1762349667226";
+      this.assets.Bakery_Building_BlackFridayBakery = "itemassets/Building/Bakery/Bakery_Building_BlackFridayBakery/Bakery_Building_BlackFridayBakery--1762349667226";
+      this.assets.Btn_BlackFridayGacha = "itemassets/StatusIcons/Btn_BlackFridayGacha/Btn_BlackFridayGacha--1762162559733";
+      this.assets.Collectable_Currency_MerchantsKey = "itemassets/Collectables/Collectable_Currency_MerchantsKey/Collectable_Currency_MerchantsKey--1762162559733";
+      this.assets.Rewards_Animation_BlackFridayGacha = "itemassets/Dialogs/SeasonGacha/BlackFridayGacha/Rewards_Animation_BlackFridayGacha/Rewards_Animation_BlackFridayGacha--1762160516108";
+      this.assets.GachaEventMain_Elements_BlackFridayGacha = "itemassets/Dialogs/SeasonGacha/BlackFridayGacha/GachaEventMain_Elements_BlackFridayGacha/GachaEventMain_Elements_BlackFridayGacha--1762160516108";
+      this.assets.GachaEventMain_Animation_Idle_BlackFridayGacha = "itemassets/Dialogs/SeasonGacha/BlackFridayGacha/GachaEventMain_Animation_Idle_BlackFridayGacha/GachaEventMain_Animation_Idle_BlackFridayGacha--1762160516108";
+      this.assets.GachaEventMain_Animation_Active_BlackFridayGacha = "itemassets/Dialogs/SeasonGacha/BlackFridayGacha/GachaEventMain_Animation_Active_BlackFridayGacha/GachaEventMain_Animation_Active_BlackFridayGacha--1762164594981";
+      this.assets.CastleMessageIconsBlackFridayGacha = "itemassets/Dialogs/SeasonGacha/BlackFridayGacha/CastleMessageIconsBlackFridayGacha/CastleMessageIconsBlackFridayGacha--1762355346408";
+      this.assets.ARE_EndTeaser_BossDefeated_1 = "itemassets/Dialogs/Events/AllianceRaidEvent/BossDefeatTeasers/ARE_EndTeaser_BossDefeated_1/ARE_EndTeaser_BossDefeated_1--1761648665408";
+      this.assets.ARE_EndTeaser_BossDefeated_1_Final = "itemassets/Dialogs/Events/AllianceRaidEvent/BossDefeatTeasers/ARE_EndTeaser_BossDefeated_1_Final/ARE_EndTeaser_BossDefeated_1_Final--1761648665408";
+      this.assets.AllianceRaidBossDefeat = "itemassets/Dialogs/Events/AllianceRaidEvent/AllianceRaidBossDefeat/AllianceRaidBossDefeat--1762444392170";
+      this.assets.Collectable_Currency_RiftCoin = "itemassets/Collectables/Collectable_Currency_RiftCoin/Collectable_Currency_RiftCoin--1761573944196";
+      this.assets.Collectable_Currency_RiftCoin_DropShadow = "itemassets/Collectables/Collectable_Currency_RiftCoin_DropShadow/Collectable_Currency_RiftCoin_DropShadow--1761573944196";
+      this.assets.AllianceRaidEventBG_Necromancer = "itemassets/Dialogs/Events/AllianceRaidEvent/Backgrounds/AllianceRaidEventBG_Necromancer/AllianceRaidEventBG_Necromancer--1761225865953";
+      this.assets.AllianceRaidEventBG_Generic = "itemassets/Dialogs/Events/AllianceRaidEvent/Backgrounds/AllianceRaidEventBG_Generic/AllianceRaidEventBG_Generic--1761207325228";
+      this.assets.Eventunit_Unit_ZombieMarksman = "itemassets/Units/Eventunit/Eventunit_Unit_ZombieMarksman/Eventunit_Unit_ZombieMarksman--1761118324685";
+      this.assets.Eventunit_Unit_ZombieGuardian = "itemassets/Units/Eventunit/Eventunit_Unit_ZombieGuardian/Eventunit_Unit_ZombieGuardian--1761118324685";
+      this.assets.Eventunit_Unit_ZombieDefender = "itemassets/Units/Eventunit/Eventunit_Unit_ZombieDefender/Eventunit_Unit_ZombieDefender--1761118324685";
+      this.assets.GeneralPortrait_130 = "itemassets/General/Portrait/GeneralPortrait_130/GeneralPortrait_130--1760969931499";
+      this.assets.GeneralPortrait_129 = "itemassets/General/Portrait/GeneralPortrait_129/GeneralPortrait_129--1760969931499";
+      this.assets.GeneralPortrait_128 = "itemassets/General/Portrait/GeneralPortrait_128/GeneralPortrait_128--1760969931499";
+      this.assets.GeneralIcon_130 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_130/GeneralIcon_130--1760969931499";
+      this.assets.GeneralIcon_129 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_129/GeneralIcon_129--1760969931499";
+      this.assets.GeneralIcon_128 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_128/GeneralIcon_128--1760969931499";
+      this.assets.AllianceRaidEventMainExt = "itemassets/Dialogs/Events/AllianceRaidEvent/AllianceRaidEventMainExt/AllianceRaidEventMainExt--1762433751688";
+      this.assets.DetailView_RaidBoss_1 = "itemassets/CastleDetailView/AllianceRaidBossEvent/DetailView_RaidBoss_1/DetailView_RaidBoss_1--1762424713017";
+      this.assets.PNG_Test_Building = "itemassets/Building/PNG_Test_Building/PNG_Test_Building--1760696405267";
+      this.assets.AttackScreen_OCT25 = "itemassets/Dialogs/AttackScreen_OCT25/AttackScreen_OCT25--1762423614906";
+      this.assets.LegendQuarry_Building_AnniversaryQuarry = "itemassets/Building/LegendQuarry/LegendQuarry_Building_AnniversaryQuarry/LegendQuarry_Building_AnniversaryQuarry--1760454275968";
+      this.assets.Deco_Building_ExaltedRedWellofMaddness = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedRedWellofMaddness/Deco_Building_ExaltedRedWellofMaddness--1760454275968";
+      this.assets.Deco_Building_ExaltedRedHutoftheInfernalShaman = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedRedHutoftheInfernalShaman/Deco_Building_ExaltedRedHutoftheInfernalShaman--1760454275968";
+      this.assets.Deco_Building_ExaltedGreenWellofMaddness = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedGreenWellofMaddness/Deco_Building_ExaltedGreenWellofMaddness--1760454275968";
+      this.assets.Deco_Building_ExaltedGreenHutoftheInfernalShaman = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedGreenHutoftheInfernalShaman/Deco_Building_ExaltedGreenHutoftheInfernalShaman--1760454275968";
       this.assets.Eventunit_Unit_Halloween2025TroopRangedOff = "itemassets/Units/Eventunit/Eventunit_Unit_Halloween2025TroopRangedOff/Eventunit_Unit_Halloween2025TroopRangedOff--1760000576076";
       this.assets.Eventunit_Unit_Halloween2025TroopMeleeOff = "itemassets/Units/Eventunit/Eventunit_Unit_Halloween2025TroopMeleeOff/Eventunit_Unit_Halloween2025TroopMeleeOff--1760000576076";
       this.assets.Deco_Building_ExaltedRedSpookyCrypt = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedRedSpookyCrypt/Deco_Building_ExaltedRedSpookyCrypt--1759998442429";
@@ -49903,7 +49983,7 @@ var ggs_lib = function (e) {
       this.assets.Collectable_Currency_AshiraToken = "itemassets/Collectables/Generals/Collectable_Currency_AshiraToken/Collectable_Currency_AshiraToken--1749647692663";
       this.assets.Collectable_Currency_AshiraToken_DropShadow = "itemassets/Collectables/Generals/Collectable_Currency_AshiraToken_DropShadow/Collectable_Currency_AshiraToken_DropShadow--1749647692663";
       this.assets.ConstructionItem_RelicBeefCapacityIncrease = "itemassets/ConstructionItems/ConstructionItem_RelicBeefCapacityIncrease/ConstructionItem_RelicBeefCapacityIncrease--1749541490891";
-      this.assets.AllianceMobilizationEventQuestInfoExt = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceMobilizationEventQuestInfoExt/AllianceMobilizationEventQuestInfoExt--1758036876291";
+      this.assets.AllianceMobilizationEventQuestInfoExt = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceMobilizationEventQuestInfoExt/AllianceMobilizationEventQuestInfoExt--1762503734326";
       this.assets.AllianceMobilizationEventMainExt = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceMobilizationEventMainExt/AllianceMobilizationEventMainExt--1757928933010";
       this.assets.Collectable_Currency_ValentaToken = "itemassets/Collectables/Generals/Collectable_Currency_ValentaToken/Collectable_Currency_ValentaToken--1748940447893";
       this.assets.Collectable_Currency_ValentaToken_DropShadow = "itemassets/Collectables/Generals/Collectable_Currency_ValentaToken_DropShadow/Collectable_Currency_ValentaToken_DropShadow--1748940447893";
@@ -50406,7 +50486,7 @@ var ggs_lib = function (e) {
       this.assets.Deco_Building_AnniversaryDecoWithEffect = "itemassets/Building/Deco/EffectDecos/Deco_Building_AnniversaryDecoWithEffect/Deco_Building_AnniversaryDecoWithEffect--1710926152410";
       this.assets.CastleShoppingCartPrimeDay_March2024 = "itemassets/Dialogs/Events/PaymentReward/CastleShoppingCartPrimeDay_March2024/CastleShoppingCartPrimeDay_March2024--1711008250430";
       this.assets.CastleEquipment_Generals2 = "itemassets/Dialogs/Equipment/CastleEquipment_Generals2/CastleEquipment_Generals2--1721639883605";
-      this.assets.Effect_Source_Icons = "itemassets/Effects/Effect_Source_Icons/Effect_Source_Icons--1751289290733";
+      this.assets.Effect_Source_Icons = "itemassets/Effects/Effect_Source_Icons/Effect_Source_Icons--1762331275942";
       this.assets.Skin_Mapmovement_EasterAppearence_Eiland = "itemassets/Worldmap/WorldmapObjects/Movements/Skins/Skin_Mapmovement_EasterAppearence_Eiland/Skin_Mapmovement_EasterAppearence_Eiland--1709739178772";
       this.assets.Skin_Mapmovement_EasterAppearence_Common = "itemassets/Worldmap/WorldmapObjects/Movements/Skins/Skin_Mapmovement_EasterAppearence_Common/Skin_Mapmovement_EasterAppearence_Common--1709739178772";
       this.assets.Item_Unique_990 = "itemassets/Equipment/Uniques/Item_Unique_990/Item_Unique_990--1709739178772";
@@ -55857,7 +55937,7 @@ var ggs_lib = function (e) {
       this.assets.Item_Weapon04_LV2 = "itemassets/Equipment/Weapons/Item_Weapon04_LV2/Item_Weapon04_LV2--1573584429307";
       this.assets.Item_Weapon04_LV3 = "itemassets/Equipment/Weapons/Item_Weapon04_LV3/Item_Weapon04_LV3--1573584429307";
       this.assets.Item_Weapon04_LV4 = "itemassets/Equipment/Weapons/Item_Weapon04_LV4/Item_Weapon04_LV4--1573584429307";
-      this.assets.EventIcons = "itemassets/EventIcons/EventIcons--1757321669132";
+      this.assets.EventIcons = "itemassets/EventIcons/EventIcons--1761820580975";
       this.assets.Event2TreasureMap = "itemassets/EventLibs/Event2TreasureMap/Event2TreasureMap--1573584429307";
       this.assets.Event2TreasuremapFrame = "itemassets/EventLibs/Event2TreasuremapFrame/Event2TreasuremapFrame--1573584429307";
       this.assets.Event3Lib = "itemassets/EventLibs/Event3Lib/Event3Lib--1573584429307";
@@ -61479,12 +61559,12 @@ var ggs_lib = function (e) {
   var U = n(16);
   var G = d.getLogger(U.TEXT_FIELDS_LOGGER);
   R.insertInputFieldElementCSS();
-  var w;
-  var k = 0;
+  var k;
+  var w = 0;
   document.addEventListener("copy", function (e) {
     var t = e;
-    if (w && document.activeElement === document.body && t.clipboardData) {
-      t.clipboardData.setData("text/plain", w);
+    if (k && document.activeElement === document.body && t.clipboardData) {
+      t.clipboardData.setData("text/plain", k);
       t.preventDefault();
     }
   });
@@ -61595,7 +61675,7 @@ var ggs_lib = function (e) {
           t._htmlTextFieldElement.blur();
         }
         if (t._selectionBeginIndex !== undefined) {
-          w = undefined;
+          k = undefined;
           t._selectionBeginIndex = undefined;
           t._selectionEndIndex = undefined;
           t.invalidate("stage mouse down, no more selection", true);
@@ -62324,7 +62404,7 @@ var ggs_lib = function (e) {
         }
         this._htmlTextFieldElement = t;
         t.className = R.HTML_TEXTFIELD_CLASS;
-        t.id = this.name + "_" + ++k;
+        t.id = this.name + "_" + ++w;
         t.style.textAlign = this.textFormat ? this.textFormat.align : "left";
         t.maxLength = this._maxChars;
         t.value = this._textValue.text;
@@ -62892,9 +62972,9 @@ var ggs_lib = function (e) {
           return characters(e.text);
         });
         var t = C(e);
-        w = t.slice(this._selectionBeginIndex, this._selectionEndIndex).join("");
+        k = t.slice(this._selectionBeginIndex, this._selectionEndIndex).join("");
       } else {
-        w = undefined;
+        k = undefined;
       }
     };
     TextField.prototype.caretCharacterIndexAtElementPosition = function (e) {
@@ -63378,12 +63458,12 @@ var ggs_lib = function (e) {
     var F = M && typeof n == "object" && n && !n.nodeType && n;
     var U = F && F.exports === M;
     var G = U && R.process;
-    var w = function () {
+    var k = function () {
       try {
         return G && G.binding && G.binding("util");
       } catch (e) {}
     }();
-    var k = w && w.isTypedArray;
+    var w = k && k.isTypedArray;
     function arraySome(e, t) {
       for (var n = -1, i = e == null ? 0 : e.length; ++n < i;) {
         if (t(e[n], n, e)) {
@@ -64004,11 +64084,11 @@ var ggs_lib = function (e) {
     function isObjectLike(e) {
       return e != null && typeof e == "object";
     }
-    var Ie = k ? function baseUnary(e) {
+    var Ie = w ? function baseUnary(e) {
       return function (t) {
         return e(t);
       };
-    }(k) : function baseIsTypedArray(e) {
+    }(w) : function baseIsTypedArray(e) {
       return isObjectLike(e) && isLength(e.length) && !!N[baseGetTag(e)];
     };
     function keys(e) {
@@ -64428,15 +64508,15 @@ var ggs_lib = function (e) {
       }
     }
     var G = Math.max.apply(Math, y.map(lineTextWidth));
-    var w = (c = typeof c == "number" ? c : G) + s.TEXT_GUTTER_WIDTH * 2;
-    var k = y.map(function (e, t) {
+    var k = (c = typeof c == "number" ? c : G) + s.TEXT_GUTTER_WIDTH * 2;
+    var w = y.map(function (e, t) {
       var n;
       if (v.align === a.TextFormatAlign.CENTER) {
         var i = lineTextWidth(e);
-        n = (w - i) / 2;
+        n = (k - i) / 2;
       } else if (v.align === a.TextFormatAlign.RIGHT) {
         i = lineTextWidth(e);
-        n = w - i - s.TEXT_GUTTER_WIDTH;
+        n = k - i - s.TEXT_GUTTER_WIDTH;
       } else {
         n = s.TEXT_GUTTER_WIDTH;
       }
@@ -64448,7 +64528,7 @@ var ggs_lib = function (e) {
       });
       return r;
     });
-    var x = k.map(function (e) {
+    var x = w.map(function (e) {
       return e.map(function (e) {
         if (e.type === "plain") {
           return e.text;
@@ -64457,7 +64537,7 @@ var ggs_lib = function (e) {
         }
       }).join("");
     });
-    var W = Math.max.apply(Math, k.map(function (e) {
+    var W = Math.max.apply(Math, w.map(function (e) {
       return e.reduce(function (e, t) {
         if (t.type === "plain") {
           return e + t.width;
@@ -64486,7 +64566,7 @@ var ggs_lib = function (e) {
       textWithGutterHeight: V + s.TEXT_GUTTER_WIDTH * 2
     };
     return {
-      drawingTokens: u(k).reduce(function (e, t) {
+      drawingTokens: u(w).reduce(function (e, t) {
         var n = e[e.length - 1];
         if (n && n.type === "plain" && t.type === "plain") {
           e[e.length - 1] = {
@@ -69230,19 +69310,19 @@ var ggs_lib = function (e) {
       var M = n.getUnitTypeCount() * 2;
       var F = new Ae(M);
       var U = 0;
-      for (var G = n.getSoldierMeleeDefenseOrder(), w = 0; w < G.length; w++) {
-        var k = G[w];
-        var x = n.getItemAmount(k);
+      for (var G = n.getSoldierMeleeDefenseOrder(), k = 0; k < G.length; k++) {
+        var w = G[k];
+        var x = n.getItemAmount(w);
         var W = d[0] + d[1] + d[2];
         var H = Math.min(x, W);
         if (W > 0 && H > 0) {
           var V = H - (K = Math.round(H * 1 * d[DefenseConst.SIDE_LEFT] / W) | 0) - (Y = Math.round(H * 1 * d[DefenseConst.SIDE_RIGHT] / W - 0.0001) | 0);
-          n.removeItem(k, H);
-          F.leftSide[U] = k;
+          n.removeItem(w, H);
+          F.leftSide[U] = w;
           F.leftSide[U + 1] = K;
-          F.middleSide[U] = k;
+          F.middleSide[U] = w;
           F.middleSide[U + 1] = V;
-          F.rightSide[U] = k;
+          F.rightSide[U] = w;
           F.rightSide[U + 1] = Y;
           U += 2;
           d[DefenseConst.SIDE_LEFT] -= K;
@@ -69251,20 +69331,20 @@ var ggs_lib = function (e) {
         }
       }
       for (var j = n.getSoldierRangedDefenseOrder(), q = 0; q < j.length; q++) {
-        k = j[q];
-        x = n.getItemAmount(k);
+        w = j[q];
+        x = n.getItemAmount(w);
         W = m[0] + m[1] + m[2];
         H = Math.min(x, W);
         if (W > 0 && H > 0) {
           var K;
           var Y;
           V = H - (K = Math.round(H * 1 * m[DefenseConst.SIDE_LEFT] / W) | 0) - (Y = Math.round(H * 1 * m[DefenseConst.SIDE_RIGHT] / W - 0.0001) | 0);
-          n.removeItem(k, H);
-          F.leftSide[U] = k;
+          n.removeItem(w, H);
+          F.leftSide[U] = w;
           F.leftSide[U + 1] = K;
-          F.middleSide[U] = k;
+          F.middleSide[U] = w;
           F.middleSide[U + 1] = V;
-          F.rightSide[U] = k;
+          F.rightSide[U] = w;
           F.rightSide[U + 1] = Y;
           U += 2;
           m[DefenseConst.SIDE_LEFT] -= K;
@@ -70063,6 +70143,7 @@ var ggs_lib = function (e) {
   P.EVENTTYPE_SUMMER_GACHA = 130;
   P.EVENTTYPE_ANNIVERSARY_GACHA = 131;
   P.EVENTTYPE_HALLOWEEN_GACHA = 132;
+  P.EVENTTYPE_BLACK_FRIDAY_GACHA = 134;
   P.EVENTTYPE_ISLAND_KINGDOM = 102;
   P.EVENTTYPE_RED_ALIEN_INVASION_ALLIANCE = 103;
   P.EVENTTYPE_PRIME_SALES_FUSION_RECHARGE = 104;
@@ -70496,7 +70577,7 @@ var ggs_lib = function (e) {
   G.NORMAL_GEM_STORAGE = 480;
   t.GemConst = G;
   G.__class = "GemConst";
-  var w = function () {
+  var k = function () {
     function GeneralConst() {}
     GeneralConst.getMaxLevelForStarTier = function (e) {
       return Math.min(100, (e + 1) * 10);
@@ -70539,24 +70620,24 @@ var ggs_lib = function (e) {
     };
     return GeneralConst;
   }();
-  w.SKILL_RESET_C2_COST = 2500;
-  w.MAXIMUM_DAILY_ATTACKS_FOR_XP_GAIN = 20;
-  w.BASE_XP_ATTACK = 100;
-  w.BASE_XP_DEFENSE = 100;
-  w.FIRST_ATTACK_BONUS_XP = 500;
-  w.UNITS_KILLED_XP_CAP = 500;
-  w.GENERALS_STARTER_QUEST_SERIES_ID = 10000;
-  w.GENERAL_HORATIO_ID = 104;
-  w.NPC_GENERAL_ID = 106;
-  t.GeneralConst = w;
-  w.__class = "GeneralConst";
-  var k = function () {
+  k.SKILL_RESET_C2_COST = 2500;
+  k.MAXIMUM_DAILY_ATTACKS_FOR_XP_GAIN = 20;
+  k.BASE_XP_ATTACK = 100;
+  k.BASE_XP_DEFENSE = 100;
+  k.FIRST_ATTACK_BONUS_XP = 500;
+  k.UNITS_KILLED_XP_CAP = 500;
+  k.GENERALS_STARTER_QUEST_SERIES_ID = 10000;
+  k.GENERAL_HORATIO_ID = 104;
+  k.NPC_GENERAL_ID = 106;
+  t.GeneralConst = k;
+  k.__class = "GeneralConst";
+  var w = function () {
     return function GiftConst() {};
   }();
-  k.DEFAULT_SKIN = 0;
-  k.CHRISTMAS_SKIN = 1;
-  t.GiftConst = k;
-  k.__class = "GiftConst";
+  w.DEFAULT_SKIN = 0;
+  w.CHRISTMAS_SKIN = 1;
+  t.GiftConst = w;
+  w.__class = "GiftConst";
   var x = function () {
     return function GlobalPrimeTimeConst() {};
   }();
@@ -70743,6 +70824,7 @@ var ggs_lib = function (e) {
   j.ALLIANCE_MOBILISATION_EVENT = 84;
   j.ANNIVERSARY_GACHA_EVENT = 85;
   j.HALLOWEEN_GACHA_EVENT = 86;
+  j.BLACK_FRIDAY_GACHA_EVENT = 87;
   j.INVALID_HIGHSCORE_LIST_ID = -1;
   j.INVALID_RANK = 0;
   j.NO_ENTRIES = 0;
@@ -72638,7 +72720,7 @@ var ggs_lib = function (e) {
   Ge.BATCH_OPENING_SPIN_CAP = 100;
   t.TombolaConst = Ge;
   Ge.__class = "TombolaConst";
-  var we = function () {
+  var ke = function () {
     function TrackingConst() {}
     TrackingConst.wasAutofieldUsed = function (e) {
       return (e & TrackingConst.TRACKING_AUTOFILL_USED) != 0;
@@ -72654,22 +72736,22 @@ var ggs_lib = function (e) {
     };
     return TrackingConst;
   }();
-  we.TRACKING_ID_MOVEMENTS = 901;
-  we.TRACKING_AUTOFILL_USED = 1;
-  we.TRACKING_AUTOFILL_TOOLS_BEFORE = 2;
-  we.TRACKING_AUTOFILL_SOLDIERS_BEFORE = 4;
-  we.TRACKING_AUTOFILL_MODIFIED = 8;
-  t.TrackingConst = we;
-  we.__class = "TrackingConst";
-  var ke = function () {
+  ke.TRACKING_ID_MOVEMENTS = 901;
+  ke.TRACKING_AUTOFILL_USED = 1;
+  ke.TRACKING_AUTOFILL_TOOLS_BEFORE = 2;
+  ke.TRACKING_AUTOFILL_SOLDIERS_BEFORE = 4;
+  ke.TRACKING_AUTOFILL_MODIFIED = 8;
+  t.TrackingConst = ke;
+  ke.__class = "TrackingConst";
+  var we = function () {
     function TrainingConst() {}
     TrainingConst.calculateProlongationDuration = function (e) {
       return e / 2 | 0;
     };
     return TrainingConst;
   }();
-  t.TrainingConst = ke;
-  ke.__class = "TrainingConst";
+  t.TrainingConst = we;
+  we.__class = "TrainingConst";
   var xe = function () {
     function TravelConst() {}
     TravelConst.BASIC_FIELD_TRAVEL_TIME_$LI$ = function () {
@@ -107377,12 +107459,12 @@ var ggs_lib = function (e) {
               value: "#",
               description: "\"#\""
             };
-            function w() {
+            function k() {
               return {
                 type: "octothorpe"
               };
             }
-            function k(e) {
+            function w(e) {
               return {
                 type: "string",
                 val: e.join("")
@@ -108009,7 +108091,7 @@ var ggs_lib = function (e) {
                 }
               }
               if (t !== i) {
-                t = w();
+                t = k();
               }
               return t;
             }
@@ -108032,7 +108114,7 @@ var ggs_lib = function (e) {
                 e = o;
               }
               if (e !== i) {
-                e = k(e);
+                e = w(e);
               }
               return e;
             }
@@ -109173,14 +109255,14 @@ var ggs_lib = function (e) {
         return n.join("");
       }).join(";");
     }
-    function w(e, t) {
+    function k(e, t) {
       function n() {
         return t;
       }
       n.dataCacheKey = e;
       return n;
     }
-    var k = function () {
+    var w = function () {
       function definePrivateProperty(e, t, n) {
         Object.defineProperty(e, t, {
           value: n
@@ -109260,7 +109342,7 @@ var ggs_lib = function (e) {
       return e;
     }();
     function x(e, t) {
-      e = e instanceof k ? e.clone() : new Date(e.getTime());
+      e = e instanceof w ? e.clone() : new Date(e.getTime());
       switch (t) {
         case "year":
           e.setMonth(0);
@@ -109435,7 +109517,7 @@ var ggs_lib = function (e) {
             s.numberFormatters[e] = h("", e);
           }
           if (n) {
-            s.timeZoneData = w("iana/" + n, {
+            s.timeZoneData = k("iana/" + n, {
               offsets: t.get(["globalize-iana/zoneData", n, "offsets"]),
               untils: t.get(["globalize-iana/zoneData", n, "untils"]),
               isdsts: t.get(["globalize-iana/zoneData", n, "isdsts"])
@@ -109634,7 +109716,7 @@ var ggs_lib = function (e) {
             var i = [];
             var a = n.timeSeparator;
             if (n.timeZoneData) {
-              e = new k(e, n.timeZoneData());
+              e = new w(e, n.timeZoneData());
             }
             n.pattern.replace(L, function (s) {
               var r;
@@ -110035,7 +110117,7 @@ var ggs_lib = function (e) {
             preferredTimeData: e.supplemental.timeData.preferred()
           };
           if (t) {
-            n.timeZoneData = w("iana/" + t, {
+            n.timeZoneData = k("iana/" + t, {
               offsets: e.get(["globalize-iana/zoneData", t, "offsets"]),
               untils: e.get(["globalize-iana/zoneData", t, "untils"]),
               isdsts: e.get(["globalize-iana/zoneData", t, "isdsts"])
@@ -110066,7 +110148,7 @@ var ggs_lib = function (e) {
             var m = new Date();
             var h = [];
             if (n.timeZoneData) {
-              m = new k(m, n.timeZoneData());
+              m = new w(m, n.timeZoneData());
             }
             if (!t.length) {
               return null;
@@ -110251,7 +110333,7 @@ var ggs_lib = function (e) {
               m.setMinutes(m.getMinutes() + _ - m.getTimezoneOffset());
             }
             h = Math.max.apply(null, h);
-            if ((m = x(m, ["year", "month", "day", "hour", "minute", "second", "milliseconds"][h])) instanceof k) {
+            if ((m = x(m, ["year", "month", "day", "hour", "minute", "second", "milliseconds"][h])) instanceof w) {
               m = m.toDate();
             }
             return m;
@@ -111135,10 +111217,10 @@ var ggs_lib = function (e) {
     var F = /^0b[01]+$/i;
     var U = /^\[object .+?Constructor\]$/;
     var G = /^0o[0-7]+$/i;
-    var w = /^(?:0|[1-9]\d*)$/;
-    var k = {};
-    k["[object Float32Array]"] = k["[object Float64Array]"] = k["[object Int8Array]"] = k["[object Int16Array]"] = k["[object Int32Array]"] = k["[object Uint8Array]"] = k["[object Uint8ClampedArray]"] = k["[object Uint16Array]"] = k["[object Uint32Array]"] = true;
-    k[d] = k[m] = k[O] = k[h] = k[L] = k[p] = k[g] = k[E] = k[f] = k[T] = k[S] = k[y] = k[I] = k[v] = k["[object WeakMap]"] = false;
+    var k = /^(?:0|[1-9]\d*)$/;
+    var w = {};
+    w["[object Float32Array]"] = w["[object Float64Array]"] = w["[object Int8Array]"] = w["[object Int16Array]"] = w["[object Int32Array]"] = w["[object Uint8Array]"] = w["[object Uint8ClampedArray]"] = w["[object Uint16Array]"] = w["[object Uint32Array]"] = true;
+    w[d] = w[m] = w[O] = w[h] = w[L] = w[p] = w[g] = w[E] = w[f] = w[T] = w[S] = w[y] = w[I] = w[v] = w["[object WeakMap]"] = false;
     var x = parseInt;
     var W = typeof e == "object" && e && e.Object === Object && e;
     var H = typeof self == "object" && self && self.Object === Object && self;
@@ -111759,7 +111841,7 @@ var ggs_lib = function (e) {
       return ie.call(e);
     };
     function isIndex(e, t) {
-      return !!(t = t == null ? u : t) && (typeof e == "number" || w.test(e)) && e > -1 && e % 1 == 0 && e < t;
+      return !!(t = t == null ? u : t) && (typeof e == "number" || k.test(e)) && e > -1 && e % 1 == 0 && e < t;
     }
     function isKey(e, t) {
       if (De(e)) {
@@ -111998,7 +112080,7 @@ var ggs_lib = function (e) {
         return e(t);
       };
     }(z) : function baseIsTypedArray(e) {
-      return isObjectLike(e) && isLength(e.length) && !!k[ie.call(e)];
+      return isObjectLike(e) && isLength(e.length) && !!w[ie.call(e)];
     };
     function keys(e) {
       if (isArrayLike(e)) {
@@ -112340,8 +112422,8 @@ var ggs_lib = function (e) {
   var F = n(389);
   var U = n(390);
   var G = n(391);
-  var w = n(392);
-  var k = n(393);
+  var k = n(392);
+  var w = n(393);
   var x = n(394);
   var W = n(395);
   var H = n(397);
@@ -112444,11 +112526,11 @@ var ggs_lib = function (e) {
       h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_PROFILING, x.BasicProfilingTrackingCommand);
       h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_WORLD_ASSIGNMENT, H.BasicWorldAssignmentTrackingCommand, null, true);
       h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_CONNECTION_TRACKING_EVENT, M.BasicConnectionTrackingCommand);
-      h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_GAME_PAYMENT_SHOP_CLICK_EVENT, k.BasicPaymentShopClickTrackingCommand);
+      h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_GAME_PAYMENT_SHOP_CLICK_EVENT, w.BasicPaymentShopClickTrackingCommand);
       h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_DESKTOP_DEVICE_INFORMATION_EVENT, F.BasicDesktopDeviceInformationTrackingCommand);
       h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_BROWSER_STATE_EVENT, Ce.BrowserStateFullscreenTrackingCommand);
       h.CommandController.instance.registerCommand(C.BasicController.COMMAND_VERIFY_TRACKING, W.BasicVerifyTrackingCommand);
-      h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_INVITATION, w.BasicInvitationTrackingCommand);
+      h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_INVITATION, k.BasicInvitationTrackingCommand);
       h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_FACEBOOK_CONNECTION, U.BasicFacebookConnectionTrackingCommand);
       h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_FACEBOOK_USERDATA, G.BasicFacebookUserDataTrackingCommand);
       h.CommandController.instance.registerCommand(C.BasicController.COMMAND_TRACK_FACEBOOK_EMAIL, fe.BasicFacebookUserEmailTrackingCommand);
@@ -127399,19 +127481,19 @@ var ggs_lib = function (e) {
     var G = function fingerprint() {
       return U;
     };
-    var w = 0;
-    var k = 4;
+    var k = 0;
+    var w = 4;
     var x = 36;
-    var W = Math.pow(x, k);
+    var W = Math.pow(x, w);
     function randomBlock() {
-      return R((Math.random() * W << 0).toString(x), k);
+      return R((Math.random() * W << 0).toString(x), w);
     }
     function cuid() {
       var e = new Date().getTime().toString(x);
       var t = R(function safeCounter() {
-        w = w < W ? w : 0;
-        return ++w - 1;
-      }().toString(x), k);
+        k = k < W ? k : 0;
+        return ++k - 1;
+      }().toString(x), w);
       var n = G();
       var i = randomBlock() + randomBlock();
       return "c" + e + t + n + i;
@@ -128120,13 +128202,13 @@ var ggs_lib = function (e) {
     var Fe = "request";
     var Ue = "BS~~U";
     var Ge = "BS~~M";
-    var we = a.includes;
-    var ke = undefined;
+    var ke = a.includes;
+    var we = undefined;
     function xe() {
-      return [ke.config.endpoints.notify, ke.config.endpoints.sessions];
+      return [we.config.endpoints.notify, we.config.endpoints.sessions];
     }
     Me.init = function (e) {
-      ke = e;
+      we = e;
       We();
       He();
     };
@@ -128157,21 +128239,21 @@ var ggs_lib = function (e) {
       }
     }
     function handleXHRLoad() {
-      if (!we(xe(), this[Ue])) {
+      if (!ke(xe(), this[Ue])) {
         var e = {
           status: this.status,
           request: this[Ge] + " " + this[Ue]
         };
         if (this.status >= 400) {
-          ke.leaveBreadcrumb("XMLHttpRequest failed", e, Fe);
+          we.leaveBreadcrumb("XMLHttpRequest failed", e, Fe);
         } else {
-          ke.leaveBreadcrumb("XMLHttpRequest succeeded", e, Fe);
+          we.leaveBreadcrumb("XMLHttpRequest succeeded", e, Fe);
         }
       }
     }
     function handleXHRError() {
-      if (!we(xe(), this[Ue])) {
-        ke.leaveBreadcrumb("XMLHttpRequest error", {
+      if (!ke(xe(), this[Ue])) {
+        we.leaveBreadcrumb("XMLHttpRequest error", {
           request: this[Ge] + " " + this[Ue]
         }, Fe);
       }
@@ -128207,13 +128289,13 @@ var ggs_lib = function (e) {
         request: t + " " + n
       };
       if (e.status >= 400) {
-        ke.leaveBreadcrumb("fetch() failed", i, Fe);
+        we.leaveBreadcrumb("fetch() failed", i, Fe);
       } else {
-        ke.leaveBreadcrumb("fetch() succeeded", i, Fe);
+        we.leaveBreadcrumb("fetch() succeeded", i, Fe);
       }
     }
     function je(e, t) {
-      ke.leaveBreadcrumb("fetch() error", {
+      we.leaveBreadcrumb("fetch() error", {
         request: e + " " + t
       }, Fe);
     }
@@ -130481,7 +130563,7 @@ var ggs_lib = function (e) {
     var F = true;
     var U = false;
     var G = t;
-    var w = n.keepCase ? function (e) {
+    var k = n.keepCase ? function (e) {
       return e;
     } : m.camelCase;
     function illegal(e, t, n) {
@@ -130663,7 +130745,7 @@ var ggs_lib = function (e) {
                         throw illegal(i, "name");
                       }
                       B("=");
-                      var a = new o(w(i), parseId(N()), t, n);
+                      var a = new o(k(i), parseId(N()), t, n);
                       ifBlock(a, function parseMapField_block(e) {
                         if (e !== "option") {
                           throw illegal(e);
@@ -130686,7 +130768,7 @@ var ggs_lib = function (e) {
                       if (!S.test(t = N())) {
                         throw illegal(t, "name");
                       }
-                      var n = new l(w(t));
+                      var n = new l(k(t));
                       ifBlock(n, function parseOneOf_block(e) {
                         if (e === "option") {
                           parseOption(n, e);
@@ -130868,7 +130950,7 @@ var ggs_lib = function (e) {
         if (!S.test(a)) {
           throw illegal(a, "name");
         }
-        a = w(a);
+        a = k(a);
         B("=");
         var o = new r(a, parseId(N()), i, t, n);
         ifBlock(o, function parseField_block(e) {
@@ -131223,4 +131305,4 @@ var ggs_lib = function (e) {
     return common[e] || null;
   };
 }]);
-//# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/dll/ggs.dll.0222e723f16a19ea56c0.js.map
+//# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/dll/ggs.dll.179c80f355fe2e5cb2c7.js.map

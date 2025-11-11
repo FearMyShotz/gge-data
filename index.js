@@ -6,6 +6,7 @@ import { JSDOM } from 'jsdom'
 import prettier from 'prettier'
 import { exec } from 'child_process'
 
+const ASSET_DOWNLOAD_TIMEOUT_MS = 20000;
 const defaultDomain = 'empire-html5.goodgamestudios.com'
 const networks = [1, 5, 11, 26, 34, 39, 64, 65, 68]
 const languageAPI = 'https://translations-api-test.public.ggs-ep.com/12/en/'
@@ -33,15 +34,47 @@ async function ensureDirectoryRemoved(dir) {
   try {
     await fs.rm(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 })
   } catch (err) {
-    console.warn(`⚠️  Primäres Löschen von ${dir} fehlgeschlagen (${err.code || err.message}). Versuche Fallback...`)
+    console.warn(`⚠️  Primary deletion of ${dir} failed (${err.code || err.message}). Trying fallback...`)
     try {
       if (isWindows) {
-        const escaped = dir.replace(/'/g, "''")
-        const psCommand = `powershell -NoLogo -NoProfile -Command "Remove-Item -LiteralPath '${escaped}' -Recurse -Force -ErrorAction Stop"`
-        await runShellCommand(psCommand)
+        // Use execFile for safer argument passing
+        await new Promise((resolve, reject) => {
+          exec(
+            'powershell',
+            [
+              '-NoLogo',
+              '-NoProfile',
+              '-Command',
+              'Remove-Item',
+              '-LiteralPath',
+              dir,
+              '-Recurse',
+              '-Force',
+              '-ErrorAction',
+              'Stop'
+            ],
+            (err, stdout, stderr) => {
+              if (err) {
+                const error = new Error(stderr || err.message)
+                error.cause = err
+                return reject(error)
+              }
+              resolve()
+            }
+          )
+        })
       } else {
-        const shCommand = `rm -rf "${dir.replace(/"/g, '\\"')}"`
-        await runShellCommand(shCommand)
+        // Use execFile for safer argument handling
+        await new Promise((resolve, reject) => {
+          exec('rm', ['-rf', dir], (err, stdout, stderr) => {
+            if (err) {
+              const error = new Error(stderr || err.message)
+              error.cause = err
+              return reject(error)
+            }
+            resolve()
+          })
+        })
       }
     } catch (fallbackErr) {
       throw new Error(
@@ -312,6 +345,9 @@ async function decompileScripts(scripts) {
   }
 }
 
+const dotNotationRegexSrc = /this\.assets\.([A-Za-z0-9_]+)\s*=\s*['"]([^'"]+)['"]/g
+const bracketNotationRegexSrc = /this\.assets\[['"]([^'"]+)['"]\]\s*=\s*['"]([^'"]+)['"]/g
+
 async function downloadItemAssets() {
   const candidateSources = [
     path.join('data', 'scripts', 'ggs.dll', 'deobfuscated.js'),
@@ -346,20 +382,21 @@ async function downloadItemAssets() {
   }
 
   console.log(`ℹ️  Verwende ItemVersions-Quelle: ${sourcePath}`)
-  const dotNotationRegex = /this\.assets\.([A-Za-z0-9_]+)\s*=\s*['"]([^'"]+)['"]/g
-  const bracketNotationRegex = /this\.assets\[['"]([^'"]+)['"]\]\s*=\s*['"]([^'"]+)['"]/g
 
   const assets = new Map()
-
   const parseContent = content => {
-    dotNotationRegex.lastIndex = 0
-    bracketNotationRegex.lastIndex = 0
-    let localMatch
-    while ((localMatch = dotNotationRegex.exec(content)) !== null) {
+    // Create new regex instances for each call to avoid global state issues
+    const dotNotationRegex = new RegExp(dotNotationRegexSrc, 'g');
+    const bracketNotationRegex = new RegExp(bracketNotationRegexSrc, 'g');
+    let localMatch = dotNotationRegex.exec(content)
+    while (localMatch !== null) {
       assets.set(localMatch[1], localMatch[2])
+      localMatch = dotNotationRegex.exec(content)
     }
-    while ((localMatch = bracketNotationRegex.exec(content)) !== null) {
+    localMatch = bracketNotationRegex.exec(content)
+    while (localMatch !== null) {
       assets.set(localMatch[1], localMatch[2])
+      localMatch = bracketNotationRegex.exec(content)
     }
   }
   parseContent(source)
@@ -427,25 +464,46 @@ async function downloadItemAssets() {
       return
     }
 
+    if (!assetPath) {
+      console.warn(`⚠️  Überspringe Asset mit leerem Pfad für ${key}: ${assetPath}`)
+      skipped += 1
+      processed += 1
+      return
+    }
+
+    // Normalize and validate assetPath to prevent directory traversal
+    const normalizedAssetPath = path.normalize(assetPath);
+    const imagesRootAbs = path.resolve(imagesRoot);
+    const resolvedAssetPath = path.resolve(imagesRoot, normalizedAssetPath);
+
+    if (!resolvedAssetPath.startsWith(imagesRootAbs + path.sep)) {
+      console.warn(`⚠️  Überspringe verdächtigen Asset-Pfad für ${key}: ${assetPath}`)
+      skipped += 1
+      processed += 1
+      return
+    }
+
     const remoteFile = `${assetPath}.png`
     const segments = assetPath.split('/').filter(Boolean)
-    const fileSegment = segments.pop()
+    
+    // Extract the full filename with version (last part of the path)
+    const fullFilename = segments.pop()
 
-    if (!fileSegment) {
+    if (!fullFilename) {
       console.warn(`⚠️  Überspringe Asset ohne Dateisegment ${key}: ${assetPath}`)
       skipped += 1
       processed += 1
       return
     }
 
-    // Drop the last folder (which typically repeats the filename) to keep shared category folders
+    // Drop the last folder (which typically is the asset name without version) to keep shared category folders
     if (segments.length > 0) {
       segments.pop()
     }
 
     const relativeDir = segments.length > 0 ? path.join(...segments) : ''
     const targetDir = relativeDir ? path.join(imagesRoot, relativeDir) : imagesRoot
-    const targetPath = path.join(targetDir, `${fileSegment}.png`)
+    const targetPath = path.join(targetDir, `${fullFilename}.png`)
 
     const exists = await fs
       .stat(targetPath)
@@ -460,12 +518,12 @@ async function downloadItemAssets() {
 
     await mkdir(targetDir)
 
-  const url = `https://${defaultDomain}/default/assets/${remoteFile}`
+    const url = `https://${defaultDomain}/default/assets/${remoteFile}`
 
     try {
       const response = await axios.get(url, {
         responseType: 'arraybuffer',
-        timeout: 20000
+        timeout: ASSET_DOWNLOAD_TIMEOUT_MS
       })
       await fs.writeFile(targetPath, response.data)
       downloaded += 1

@@ -13603,7 +13603,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "2500",
     "disassemblingTombolaID": "1"
   },
@@ -13617,7 +13617,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "5000",
     "disassemblingTombolaID": "2"
   },
@@ -13631,7 +13631,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "7500",
     "disassemblingTombolaID": "3"
   },
@@ -13645,7 +13645,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "10000",
     "disassemblingTombolaID": "4"
   },
@@ -13659,7 +13659,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&1750"
   },
@@ -13673,7 +13673,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&2000"
   },
@@ -13687,7 +13687,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&2250"
   },
@@ -13701,7 +13701,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&2500"
   },
@@ -13715,7 +13715,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "10",
     "disassemblingTombolaID": "1"
   },
@@ -13729,7 +13729,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "15",
     "disassemblingTombolaID": "2"
   },
@@ -13743,7 +13743,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "20",
     "disassemblingTombolaID": "3"
   },
@@ -13757,7 +13757,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "25",
     "disassemblingTombolaID": "4"
   },
@@ -13771,7 +13771,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "meadStorage": "3000",
     "disassemblingTombolaID": "1"
   },
@@ -13785,7 +13785,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "meadStorage": "4000",
     "disassemblingTombolaID": "2"
   },
@@ -13799,7 +13799,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "meadStorage": "5000",
     "disassemblingTombolaID": "3"
   },
@@ -13813,7 +13813,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "meadStorage": "6000",
     "disassemblingTombolaID": "4"
   },
@@ -13827,7 +13827,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "2500",
     "disassemblingTombolaID": "1"
   },
@@ -13841,7 +13841,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "5000",
     "disassemblingTombolaID": "2"
   },
@@ -13855,7 +13855,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "7500",
     "disassemblingTombolaID": "3"
   },
@@ -13869,7 +13869,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "10000",
     "disassemblingTombolaID": "4"
   },
@@ -13883,7 +13883,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&1750"
   },
@@ -13897,7 +13897,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&2000"
   },
@@ -13911,7 +13911,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&2250"
   },
@@ -13925,7 +13925,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&2500"
   },
@@ -13939,7 +13939,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "298&625"
   },
@@ -13953,7 +13953,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "298&750"
   },
@@ -13967,7 +13967,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "298&875"
   },
@@ -13981,7 +13981,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "298&1000"
   },
@@ -13995,7 +13995,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "298&625"
   },
@@ -14009,7 +14009,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "298&750"
   },
@@ -14023,7 +14023,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "298&875"
   },
@@ -14037,7 +14037,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "298&1000"
   },
@@ -14051,7 +14051,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "3000",
     "disassemblingTombolaID": "1"
   },
@@ -14065,7 +14065,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "4000",
     "disassemblingTombolaID": "2"
   },
@@ -14079,7 +14079,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "5000",
     "disassemblingTombolaID": "3"
   },
@@ -14093,7 +14093,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "6000",
     "disassemblingTombolaID": "4"
   },
@@ -14107,7 +14107,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "10",
     "disassemblingTombolaID": "1"
   },
@@ -14121,7 +14121,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "15",
     "disassemblingTombolaID": "2"
   },
@@ -14135,7 +14135,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "20",
     "disassemblingTombolaID": "3"
   },
@@ -14149,7 +14149,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "25",
     "disassemblingTombolaID": "4"
   },
@@ -14163,7 +14163,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "2500",
     "disassemblingTombolaID": "1"
   },
@@ -14177,7 +14177,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "5000",
     "disassemblingTombolaID": "2"
   },
@@ -14191,7 +14191,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "7500",
     "disassemblingTombolaID": "3"
   },
@@ -14205,7 +14205,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "10000",
     "disassemblingTombolaID": "4"
   },
@@ -14219,7 +14219,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&1750"
   },
@@ -14233,7 +14233,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&2000"
   },
@@ -14247,7 +14247,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&2250"
   },
@@ -14261,7 +14261,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&2500"
   },
@@ -14275,7 +14275,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "298&625"
   },
@@ -14289,7 +14289,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "298&750"
   },
@@ -14303,7 +14303,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "298&875"
   },
@@ -14317,7 +14317,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "298&1000"
   },
@@ -14331,7 +14331,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "613&10"
   },
@@ -14345,7 +14345,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "613&20"
   },
@@ -14359,7 +14359,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "613&30"
   },
@@ -14373,7 +14373,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "613&40"
   },
@@ -14387,7 +14387,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "420&100"
   },
@@ -14401,7 +14401,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "420&150"
   },
@@ -14415,7 +14415,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "420&200"
   },
@@ -14429,7 +14429,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -14443,7 +14443,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "hospitalCapacity": "75",
     "disassemblingTombolaID": "1"
   },
@@ -14457,7 +14457,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "hospitalCapacity": "100",
     "disassemblingTombolaID": "2"
   },
@@ -14471,7 +14471,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "hospitalCapacity": "125",
     "disassemblingTombolaID": "3"
   },
@@ -14485,7 +14485,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "hospitalCapacity": "150",
     "disassemblingTombolaID": "4"
   },
@@ -14499,7 +14499,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "stackSize": "2",
     "disassemblingTombolaID": "1"
   },
@@ -14513,7 +14513,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "stackSize": "4",
     "disassemblingTombolaID": "2"
   },
@@ -14527,7 +14527,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "stackSize": "6",
     "disassemblingTombolaID": "3"
   },
@@ -14541,7 +14541,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "stackSize": "8",
     "disassemblingTombolaID": "4"
   },
@@ -14555,7 +14555,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "503&15"
   },
@@ -14569,7 +14569,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "503&30"
   },
@@ -14583,7 +14583,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "503&45"
   },
@@ -14597,7 +14597,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&60"
   },
@@ -14611,7 +14611,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "504&15"
   },
@@ -14625,7 +14625,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "504&30"
   },
@@ -14639,7 +14639,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "504&45"
   },
@@ -14653,7 +14653,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&60"
   },
@@ -14667,7 +14667,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitCostReduction": "5",
     "disassemblingTombolaID": "1"
   },
@@ -14681,7 +14681,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitCostReduction": "15",
     "disassemblingTombolaID": "2"
   },
@@ -14695,7 +14695,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitCostReduction": "25",
     "disassemblingTombolaID": "3"
   },
@@ -14709,7 +14709,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitCostReduction": "35",
     "disassemblingTombolaID": "4"
   },
@@ -14723,7 +14723,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "4",
     "disassemblingTombolaID": "1"
   },
@@ -14737,7 +14737,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "6",
     "disassemblingTombolaID": "2"
   },
@@ -14751,7 +14751,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "8",
     "disassemblingTombolaID": "3"
   },
@@ -14765,7 +14765,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "10",
     "disassemblingTombolaID": "4"
   },
@@ -14779,7 +14779,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "healSpeed": "25",
     "disassemblingTombolaID": "1"
   },
@@ -14793,7 +14793,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "healSpeed": "50",
     "disassemblingTombolaID": "2"
   },
@@ -14807,7 +14807,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "healSpeed": "75",
     "disassemblingTombolaID": "3"
   },
@@ -14821,7 +14821,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "healSpeed": "100",
     "disassemblingTombolaID": "4"
   },
@@ -14835,7 +14835,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "614&10"
   },
@@ -14849,7 +14849,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "614&20"
   },
@@ -14863,7 +14863,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "614&30"
   },
@@ -14877,7 +14877,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&40"
   },
@@ -14891,7 +14891,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&15"
   },
@@ -14905,7 +14905,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "129600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "66&30"
   },
@@ -14919,7 +14919,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&45"
   },
@@ -14933,7 +14933,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&60"
   },
@@ -14947,7 +14947,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&1400"
   },
@@ -14961,7 +14961,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&1600"
   },
@@ -14975,7 +14975,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&1800"
   },
@@ -14989,7 +14989,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&2000"
   },
@@ -15003,7 +15003,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "2000",
     "disassemblingTombolaID": "1"
   },
@@ -15017,7 +15017,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "4000",
     "disassemblingTombolaID": "2"
   },
@@ -15031,7 +15031,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "6000",
     "disassemblingTombolaID": "3"
   },
@@ -15045,7 +15045,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "8000",
     "disassemblingTombolaID": "4"
   },
@@ -15059,7 +15059,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "614&8"
   },
@@ -15073,7 +15073,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "614&16"
   },
@@ -15087,7 +15087,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "614&24"
   },
@@ -15101,7 +15101,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&32"
   },
@@ -15115,7 +15115,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&12"
   },
@@ -15129,7 +15129,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "66&24"
   },
@@ -15143,7 +15143,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&36"
   },
@@ -15157,7 +15157,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -15171,7 +15171,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&1750"
   },
@@ -15185,7 +15185,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&2000"
   },
@@ -15199,7 +15199,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "1814400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&2250"
   },
@@ -15213,7 +15213,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&2500"
   },
@@ -15227,7 +15227,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "503&12"
   },
@@ -15241,7 +15241,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "503&24"
   },
@@ -15255,7 +15255,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "503&36"
   },
@@ -15269,7 +15269,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&48"
   },
@@ -15283,7 +15283,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "504&12"
   },
@@ -15297,7 +15297,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "504&24"
   },
@@ -15311,7 +15311,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "504&36"
   },
@@ -15325,7 +15325,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&48"
   },
@@ -15339,7 +15339,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "518400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&1750"
   },
@@ -15353,7 +15353,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "777600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&2000"
   },
@@ -15367,7 +15367,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "1036800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&2250"
   },
@@ -15381,7 +15381,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1296000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&2500"
   },
@@ -15395,7 +15395,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "518400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&2625"
   },
@@ -15409,7 +15409,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "777600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&3000"
   },
@@ -15423,7 +15423,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "1036800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&3375"
   },
@@ -15437,7 +15437,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1296000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&3750"
   },
@@ -15451,7 +15451,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&12"
   },
@@ -15465,7 +15465,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "66&24"
   },
@@ -15479,7 +15479,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&36"
   },
@@ -15493,7 +15493,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -15507,7 +15507,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "504&12"
   },
@@ -15521,7 +15521,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "504&24"
   },
@@ -15535,7 +15535,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "504&36"
   },
@@ -15549,7 +15549,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&48"
   },
@@ -15563,7 +15563,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&12"
   },
@@ -15577,7 +15577,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "66&24"
   },
@@ -15591,7 +15591,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&36"
   },
@@ -15605,7 +15605,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -15619,7 +15619,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "504&12"
   },
@@ -15633,7 +15633,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "504&24"
   },
@@ -15647,7 +15647,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "504&36"
   },
@@ -15661,7 +15661,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&48"
   },
@@ -15688,7 +15688,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "339&30"
   },
@@ -15702,7 +15702,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "339&40"
   },
@@ -15716,7 +15716,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "339&50"
   },
@@ -15730,7 +15730,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "339&60"
   },
@@ -15744,7 +15744,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "meadStorage": "140000"
   },
@@ -15758,7 +15758,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "meadStorage": "160000"
   },
@@ -15772,7 +15772,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "meadStorage": "180000"
   },
@@ -15786,7 +15786,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "meadStorage": "200000"
   },
@@ -15800,7 +15800,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&1500"
   },
@@ -15814,7 +15814,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&2000"
   },
@@ -15828,7 +15828,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&2500"
   },
@@ -15842,7 +15842,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&3000"
   },
@@ -15856,7 +15856,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "613&30"
   },
@@ -15870,7 +15870,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "613&40"
   },
@@ -15884,7 +15884,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "613&50"
   },
@@ -15898,7 +15898,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "613&60"
   },
@@ -15912,7 +15912,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "unitWallCount": "175"
   },
@@ -15926,7 +15926,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "unitWallCount": "225"
   },
@@ -15940,7 +15940,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "unitWallCount": "275"
   },
@@ -15954,7 +15954,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "unitWallCount": "325"
   },
@@ -15968,7 +15968,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "504&36"
   },
@@ -15982,7 +15982,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "504&48"
   },
@@ -15996,7 +15996,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "504&60"
   },
@@ -16010,7 +16010,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&72"
   },
@@ -16024,7 +16024,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&50"
   },
@@ -16038,7 +16038,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "66&60"
   },
@@ -16052,7 +16052,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&70"
   },
@@ -16066,7 +16066,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&80"
   },
@@ -16080,7 +16080,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "340&30"
   },
@@ -16094,7 +16094,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "340&40"
   },
@@ -16108,7 +16108,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "340&50"
   },
@@ -16122,7 +16122,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "340&60"
   },
@@ -16136,7 +16136,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "503&50"
   },
@@ -16150,7 +16150,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "503&60"
   },
@@ -16164,7 +16164,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "503&70"
   },
@@ -16178,7 +16178,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&80"
   },
@@ -16192,7 +16192,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "501&36"
   },
@@ -16206,7 +16206,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "501&48"
   },
@@ -16220,7 +16220,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "501&60"
   },
@@ -16234,7 +16234,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&72"
   },
@@ -16248,7 +16248,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "foodStorage": "70000"
   },
@@ -16262,7 +16262,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "foodStorage": "100000"
   },
@@ -16276,7 +16276,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "foodStorage": "130000"
   },
@@ -16290,7 +16290,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "foodStorage": "160000"
   },
@@ -16304,7 +16304,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "unboostedFoodProduction": "10000"
   },
@@ -16318,7 +16318,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "unboostedFoodProduction": "15000"
   },
@@ -16332,7 +16332,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "unboostedFoodProduction": "20000"
   },
@@ -16346,7 +16346,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "unboostedFoodProduction": "25000"
   },
@@ -16360,7 +16360,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "614&30"
   },
@@ -16374,7 +16374,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "614&40"
   },
@@ -16388,7 +16388,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "614&50"
   },
@@ -16402,7 +16402,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&60"
   },
@@ -16416,7 +16416,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "339&15"
   },
@@ -16430,7 +16430,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "339&25"
   },
@@ -16444,7 +16444,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "339&35"
   },
@@ -16458,7 +16458,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "339&45"
   },
@@ -16472,7 +16472,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "meadStorage": "110000"
   },
@@ -16486,7 +16486,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "meadStorage": "130000"
   },
@@ -16500,7 +16500,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "meadStorage": "150000"
   },
@@ -16514,7 +16514,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "meadStorage": "170000"
   },
@@ -16528,7 +16528,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&750"
   },
@@ -16542,7 +16542,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&1250"
   },
@@ -16556,7 +16556,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&1750"
   },
@@ -16570,7 +16570,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&2250"
   },
@@ -16584,7 +16584,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "613&15"
   },
@@ -16598,7 +16598,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "613&25"
   },
@@ -16612,7 +16612,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "613&35"
   },
@@ -16626,7 +16626,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "613&45"
   },
@@ -16640,7 +16640,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "unitWallCount": "100"
   },
@@ -16654,7 +16654,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "unitWallCount": "150"
   },
@@ -16668,7 +16668,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "unitWallCount": "200"
   },
@@ -16682,7 +16682,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "unitWallCount": "250"
   },
@@ -16696,7 +16696,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "504&18"
   },
@@ -16710,7 +16710,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "504&30"
   },
@@ -16724,7 +16724,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "504&42"
   },
@@ -16738,7 +16738,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&54"
   },
@@ -16752,7 +16752,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&35"
   },
@@ -16766,7 +16766,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "66&45"
   },
@@ -16780,7 +16780,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&55"
   },
@@ -16794,7 +16794,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&65"
   },
@@ -16808,7 +16808,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "340&15"
   },
@@ -16822,7 +16822,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "340&25"
   },
@@ -16836,7 +16836,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "340&35"
   },
@@ -16850,7 +16850,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "340&45"
   },
@@ -16864,7 +16864,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "503&35"
   },
@@ -16878,7 +16878,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "503&45"
   },
@@ -16892,7 +16892,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "503&55"
   },
@@ -16906,7 +16906,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&65"
   },
@@ -16920,7 +16920,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "501&18"
   },
@@ -16934,7 +16934,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "501&30"
   },
@@ -16948,7 +16948,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "501&42"
   },
@@ -16962,7 +16962,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&54"
   },
@@ -16976,7 +16976,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "foodStorage": "25000"
   },
@@ -16990,7 +16990,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "foodStorage": "55000"
   },
@@ -17004,7 +17004,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "foodStorage": "85000"
   },
@@ -17018,7 +17018,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "foodStorage": "115000"
   },
@@ -17032,7 +17032,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "unboostedFoodProduction": "2500"
   },
@@ -17046,7 +17046,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "unboostedFoodProduction": "7500"
   },
@@ -17060,7 +17060,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "unboostedFoodProduction": "12500"
   },
@@ -17074,7 +17074,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "unboostedFoodProduction": "17500"
   },
@@ -17088,7 +17088,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "614&15"
   },
@@ -17102,7 +17102,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "614&25"
   },
@@ -17116,7 +17116,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "614&35"
   },
@@ -17130,7 +17130,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&45"
   },
@@ -17144,7 +17144,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "614&8"
   },
@@ -17158,7 +17158,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "614&16"
   },
@@ -17172,7 +17172,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "614&24"
   },
@@ -17186,7 +17186,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&32"
   },
@@ -17200,7 +17200,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&12"
   },
@@ -17214,7 +17214,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "66&24"
   },
@@ -17228,7 +17228,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&36"
   },
@@ -17242,7 +17242,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -17256,7 +17256,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "75",
     "disassemblingTombolaID": "4"
   },
@@ -17270,7 +17270,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "40",
     "disassemblingTombolaID": "4"
   },
@@ -17284,7 +17284,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "feastCostsReduction": "30",
     "disassemblingTombolaID": "4"
   },
@@ -17298,7 +17298,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&12"
   },
@@ -17312,7 +17312,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "66&24"
   },
@@ -17326,7 +17326,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&36"
   },
@@ -17340,7 +17340,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -17354,7 +17354,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "decoPoints": "250",
     "disassemblingTombolaID": "4"
   },
@@ -17368,7 +17368,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "1000",
     "disassemblingTombolaID": "4"
   },
@@ -17382,7 +17382,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "2500",
     "disassemblingTombolaID": "4"
   },
@@ -17396,7 +17396,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "5000",
     "disassemblingTombolaID": "4"
   },
@@ -17410,7 +17410,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "10000",
     "disassemblingTombolaID": "4"
   },
@@ -17424,7 +17424,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -17438,7 +17438,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "15000",
     "disassemblingTombolaID": "4"
   },
@@ -17452,7 +17452,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "30000",
     "disassemblingTombolaID": "4"
   },
@@ -17466,7 +17466,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "60000",
     "disassemblingTombolaID": "4"
   },
@@ -17480,7 +17480,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "6",
     "disassemblingTombolaID": "4"
   },
@@ -17494,7 +17494,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&24"
   },
@@ -17508,7 +17508,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "5000",
     "disassemblingTombolaID": "4"
   },
@@ -17522,7 +17522,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "10000",
     "disassemblingTombolaID": "4"
   },
@@ -17536,7 +17536,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "15000",
     "disassemblingTombolaID": "4"
   },
@@ -17550,7 +17550,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "decoPoints": "250",
     "disassemblingTombolaID": "1"
   },
@@ -17564,7 +17564,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "1000",
     "disassemblingTombolaID": "1"
   },
@@ -17578,7 +17578,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "2500",
     "disassemblingTombolaID": "2"
   },
@@ -17592,7 +17592,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "5000",
     "disassemblingTombolaID": "3"
   },
@@ -17606,7 +17606,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "10000",
     "disassemblingTombolaID": "4"
   },
@@ -17620,7 +17620,7 @@
     "rarenessID": "0",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "marketCarriages": "250",
     "disassemblingTombolaID": "2"
   },
@@ -17634,7 +17634,7 @@
     "rarenessID": "0",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "marketCarriages": "500",
     "disassemblingTombolaID": "3"
   },
@@ -17648,7 +17648,7 @@
     "rarenessID": "0",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "marketCarriages": "1000",
     "disassemblingTombolaID": "4"
   },
@@ -17662,7 +17662,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "614&8"
   },
@@ -17676,7 +17676,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "614&16"
   },
@@ -17690,7 +17690,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&32"
   },
@@ -17704,7 +17704,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "504&12"
   },
@@ -17718,7 +17718,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "504&24"
   },
@@ -17732,7 +17732,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "504&36"
   },
@@ -17746,7 +17746,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&48"
   },
@@ -17760,7 +17760,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "1000",
     "disassemblingTombolaID": "1"
   },
@@ -17774,7 +17774,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "1000",
     "disassemblingTombolaID": "2"
   },
@@ -17788,7 +17788,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "1814400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "1000",
     "disassemblingTombolaID": "3"
   },
@@ -17802,7 +17802,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "1000",
     "disassemblingTombolaID": "4"
   },
@@ -17816,7 +17816,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "10000",
     "disassemblingTombolaID": "1"
   },
@@ -17830,7 +17830,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "10000",
     "disassemblingTombolaID": "2"
   },
@@ -17844,7 +17844,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "1814400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "10000",
     "disassemblingTombolaID": "3"
   },
@@ -17858,7 +17858,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "10000",
     "disassemblingTombolaID": "4"
   },
@@ -17872,7 +17872,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&2000"
   },
@@ -17886,7 +17886,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&2000"
   },
@@ -17900,7 +17900,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "1814400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&2000"
   },
@@ -17914,7 +17914,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&2000"
   },
@@ -17928,7 +17928,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&24"
   },
@@ -17970,7 +17970,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "420&100"
   },
@@ -17984,7 +17984,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "1814400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "420&200"
   },
@@ -17998,7 +17998,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "420&250"
   },
@@ -18012,7 +18012,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "meadStorage": "110000"
   },
@@ -18026,7 +18026,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "meadStorage": "130000"
   },
@@ -18040,7 +18040,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "meadStorage": "150000"
   },
@@ -18054,7 +18054,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "meadStorage": "170000"
   },
@@ -18068,7 +18068,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "healSpeed": "100",
     "disassemblingTombolaID": "4"
   },
@@ -18082,7 +18082,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "hospitalCapacity": "150",
     "disassemblingTombolaID": "4"
   },
@@ -18096,7 +18096,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "613&40"
   },
@@ -18110,7 +18110,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&60"
   },
@@ -18124,7 +18124,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&60"
   },
@@ -18138,7 +18138,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&40"
   },
@@ -18152,7 +18152,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -18166,7 +18166,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&60"
   },
@@ -18235,7 +18235,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&24"
   },
@@ -18249,7 +18249,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -18263,7 +18263,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&24"
   },
@@ -18277,7 +18277,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&12"
   },
@@ -18291,7 +18291,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "11&40"
   },
@@ -18305,7 +18305,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&35"
   },
@@ -18319,7 +18319,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "66&45"
   },
@@ -18333,7 +18333,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&55"
   },
@@ -18347,7 +18347,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&65"
   },
@@ -18361,7 +18361,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "503&35"
   },
@@ -18375,7 +18375,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "503&45"
   },
@@ -18389,7 +18389,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "503&55"
   },
@@ -18403,7 +18403,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&65"
   },
@@ -18430,7 +18430,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "340&45"
   },
@@ -18444,7 +18444,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "340&55"
   },
@@ -18458,7 +18458,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "340&65"
   },
@@ -18472,7 +18472,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "340&75"
   },
@@ -18486,7 +18486,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "339&45"
   },
@@ -18500,7 +18500,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "339&55"
   },
@@ -18514,7 +18514,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "339&65"
   },
@@ -18528,7 +18528,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "339&75"
   },
@@ -18542,7 +18542,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "foodStorage": "34500"
   },
@@ -18556,7 +18556,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "foodStorage": "43500"
   },
@@ -18570,7 +18570,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "foodStorage": "52500"
   },
@@ -18584,7 +18584,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "foodStorage": "61500"
   },
@@ -18598,7 +18598,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "meadStorage": "170000"
   },
@@ -18612,7 +18612,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "meadStorage": "190000"
   },
@@ -18626,7 +18626,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "meadStorage": "210000"
   },
@@ -18640,7 +18640,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "meadStorage": "230000"
   },
@@ -18654,7 +18654,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&6750"
   },
@@ -18668,7 +18668,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "296&8250"
   },
@@ -18682,7 +18682,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "296&9750"
   },
@@ -18696,7 +18696,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&11250"
   },
@@ -18710,7 +18710,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "unitWallCount": "250"
   },
@@ -18724,7 +18724,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "unitWallCount": "300"
   },
@@ -18738,7 +18738,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "unitWallCount": "350"
   },
@@ -18752,7 +18752,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "unitWallCount": "400"
   },
@@ -18766,7 +18766,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "unboostedFoodProduction": "17500"
   },
@@ -18780,7 +18780,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "unboostedFoodProduction": "22500"
   },
@@ -18794,7 +18794,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "unboostedFoodProduction": "27500"
   },
@@ -18808,7 +18808,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "unboostedFoodProduction": "32500"
   },
@@ -18822,7 +18822,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "614&45"
   },
@@ -18836,7 +18836,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "614&55"
   },
@@ -18850,7 +18850,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "614&65"
   },
@@ -18864,7 +18864,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&75"
   },
@@ -18878,7 +18878,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "613&45"
   },
@@ -18892,7 +18892,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "613&55"
   },
@@ -18906,7 +18906,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "613&65"
   },
@@ -18920,7 +18920,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "613&75"
   },
@@ -18934,7 +18934,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "504&54"
   },
@@ -18948,7 +18948,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "504&66"
   },
@@ -18962,7 +18962,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "504&78"
   },
@@ -18976,7 +18976,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&90"
   },
@@ -18990,7 +18990,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "501&54"
   },
@@ -19004,7 +19004,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "501&66"
   },
@@ -19018,7 +19018,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "501&78"
   },
@@ -19032,7 +19032,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&90"
   },
@@ -19046,7 +19046,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "66&65"
   },
@@ -19060,7 +19060,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "66&75"
   },
@@ -19074,7 +19074,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&85"
   },
@@ -19088,7 +19088,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&95"
   },
@@ -19102,7 +19102,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "503&65"
   },
@@ -19116,7 +19116,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "503&75"
   },
@@ -19130,7 +19130,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "503&85"
   },
@@ -19144,7 +19144,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&95"
   },
@@ -19158,7 +19158,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "5000",
     "disassemblingTombolaID": "4"
   },
@@ -19172,7 +19172,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "7500",
     "disassemblingTombolaID": "4"
   },
@@ -19186,7 +19186,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "10000",
     "disassemblingTombolaID": "4"
   },
@@ -19200,7 +19200,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "unboostedFoodProduction": "15000",
     "disassemblingTombolaID": "4"
   },
@@ -19214,7 +19214,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "401&10"
   },
@@ -19228,7 +19228,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "401&20"
   },
@@ -19242,7 +19242,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "401&30"
   },
@@ -19256,7 +19256,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "401&40"
   },
@@ -19270,7 +19270,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "402&10"
   },
@@ -19284,7 +19284,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "402&20"
   },
@@ -19298,7 +19298,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "402&30"
   },
@@ -19312,7 +19312,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "402&40"
   },
@@ -19326,7 +19326,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "403&10"
   },
@@ -19340,7 +19340,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "403&20"
   },
@@ -19354,7 +19354,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "403&30"
   },
@@ -19368,7 +19368,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "403&40"
   },
@@ -19382,7 +19382,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "404&10"
   },
@@ -19396,7 +19396,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "404&20"
   },
@@ -19410,7 +19410,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "404&30"
   },
@@ -19424,7 +19424,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "404&40"
   },
@@ -19466,7 +19466,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&150"
   },
@@ -19480,7 +19480,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&200"
   },
@@ -19494,7 +19494,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -19508,7 +19508,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&24"
   },
@@ -19522,7 +19522,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&36"
   },
@@ -19536,7 +19536,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -19564,7 +19564,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "400",
     "disassemblingTombolaID": "4"
   },
@@ -19578,7 +19578,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -19592,7 +19592,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&48"
   },
@@ -19606,7 +19606,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&24"
   },
@@ -19620,7 +19620,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&12"
   },
@@ -19634,7 +19634,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&36"
   },
@@ -19648,7 +19648,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&24"
   },
@@ -19662,7 +19662,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&12"
   },
@@ -19704,7 +19704,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&300"
   },
@@ -19718,7 +19718,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -19732,7 +19732,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&200"
   },
@@ -19746,7 +19746,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&60"
   },
@@ -19760,7 +19760,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&48"
   },
@@ -19774,7 +19774,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&36"
   },
@@ -19788,7 +19788,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -19802,7 +19802,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "216000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "hospitalCapacity": "150",
     "disassemblingTombolaID": "4"
   },
@@ -19816,7 +19816,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&60"
   },
@@ -19830,7 +19830,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "400",
     "disassemblingTombolaID": "4"
   },
@@ -19844,7 +19844,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -19858,7 +19858,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&48"
   },
@@ -19872,7 +19872,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&36"
   },
@@ -19886,7 +19886,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&24"
   },
@@ -19900,9 +19900,9 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
-    "disassemblingTombolaID": "4",
-    "effects": "420&300"
+    "constructionItemEffectGroupID": "28",
+    "unitWallCount": "300",
+    "disassemblingTombolaID": "4"
   },
   {
     "constructionItemID": "30741",
@@ -19914,9 +19914,9 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
-    "disassemblingTombolaID": "4",
-    "effects": "420&250"
+    "constructionItemEffectGroupID": "28",
+    "unitWallCount": "250",
+    "disassemblingTombolaID": "4"
   },
   {
     "constructionItemID": "30742",
@@ -19928,9 +19928,9 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
-    "disassemblingTombolaID": "4",
-    "effects": "420&200"
+    "constructionItemEffectGroupID": "28",
+    "unitWallCount": "200",
+    "disassemblingTombolaID": "4"
   },
   {
     "constructionItemID": "30743",
@@ -19942,7 +19942,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&400"
   },
@@ -19956,7 +19956,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1000"
   },
@@ -19970,7 +19970,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&12000"
   },
@@ -19984,7 +19984,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&12000"
   },
@@ -19998,7 +19998,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&12000"
   },
@@ -20012,7 +20012,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "705&2"
   },
@@ -20026,7 +20026,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "701&10"
   },
@@ -20040,7 +20040,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1000"
   },
@@ -20054,7 +20054,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "21600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "500",
     "disassemblingTombolaID": "4"
   },
@@ -20068,7 +20068,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "21600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "750",
     "disassemblingTombolaID": "4"
   },
@@ -20110,7 +20110,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -20124,7 +20124,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&36"
   },
@@ -20138,7 +20138,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&24"
   },
@@ -20152,7 +20152,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&15000"
   },
@@ -20166,7 +20166,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&13500"
   },
@@ -20180,7 +20180,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&12000"
   },
@@ -20194,7 +20194,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "150",
     "disassemblingTombolaID": "4"
   },
@@ -20208,7 +20208,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "100",
     "disassemblingTombolaID": "4"
   },
@@ -20222,7 +20222,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "400",
     "disassemblingTombolaID": "4"
   },
@@ -20236,7 +20236,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -20250,7 +20250,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "100",
     "disassemblingTombolaID": "4"
   },
@@ -20264,7 +20264,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&1200"
   },
@@ -20278,7 +20278,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&1100"
   },
@@ -20292,7 +20292,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&1000"
   },
@@ -20306,7 +20306,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1000"
   },
@@ -20320,7 +20320,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&900"
   },
@@ -20334,7 +20334,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&800"
   },
@@ -20390,7 +20390,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&12000"
   },
@@ -20404,7 +20404,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&10000"
   },
@@ -20418,7 +20418,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&8000"
   },
@@ -20432,7 +20432,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1000"
   },
@@ -20446,7 +20446,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&900"
   },
@@ -20460,7 +20460,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&800"
   },
@@ -20502,7 +20502,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&12000"
   },
@@ -20516,7 +20516,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&10000"
   },
@@ -20530,7 +20530,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&8000"
   },
@@ -20544,7 +20544,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "200",
     "disassemblingTombolaID": "4"
   },
@@ -20558,7 +20558,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "200",
     "disassemblingTombolaID": "4"
   },
@@ -20572,7 +20572,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "518400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "200",
     "disassemblingTombolaID": "4"
   },
@@ -20586,7 +20586,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "200",
     "disassemblingTombolaID": "4"
   },
@@ -20600,7 +20600,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "250",
     "disassemblingTombolaID": "4"
   },
@@ -20614,7 +20614,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "250",
     "disassemblingTombolaID": "4"
   },
@@ -20628,7 +20628,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "518400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "250",
     "disassemblingTombolaID": "4"
   },
@@ -20642,7 +20642,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "250",
     "disassemblingTombolaID": "4"
   },
@@ -20656,7 +20656,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -20670,7 +20670,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "432000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -20684,7 +20684,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "518400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -20698,7 +20698,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -20712,7 +20712,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "691200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&7500"
   },
@@ -20726,7 +20726,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "864000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&7500"
   },
@@ -20740,7 +20740,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1036800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&7500"
   },
@@ -20754,7 +20754,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&7500"
   },
@@ -20768,7 +20768,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "691200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&10000"
   },
@@ -20782,7 +20782,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "864000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&10000"
   },
@@ -20796,7 +20796,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1036800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&10000"
   },
@@ -20810,7 +20810,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&10000"
   },
@@ -20824,7 +20824,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "691200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&15000"
   },
@@ -20838,7 +20838,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "864000",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&15000"
   },
@@ -20852,7 +20852,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1036800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&15000"
   },
@@ -20866,7 +20866,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&15000"
   },
@@ -20880,7 +20880,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&8"
   },
@@ -20894,7 +20894,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&8"
   },
@@ -20908,7 +20908,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&8"
   },
@@ -20922,7 +20922,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&10"
   },
@@ -20936,7 +20936,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&10"
   },
@@ -20950,7 +20950,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&10"
   },
@@ -20964,7 +20964,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&12"
   },
@@ -20978,7 +20978,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&12"
   },
@@ -20992,7 +20992,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&12"
   },
@@ -21006,7 +21006,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&8"
   },
@@ -21020,7 +21020,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&8"
   },
@@ -21034,7 +21034,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&8"
   },
@@ -21048,7 +21048,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&10"
   },
@@ -21062,7 +21062,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&10"
   },
@@ -21076,7 +21076,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&10"
   },
@@ -21090,7 +21090,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&12"
   },
@@ -21104,7 +21104,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&12"
   },
@@ -21118,7 +21118,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&12"
   },
@@ -21160,7 +21160,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&48"
   },
@@ -21174,7 +21174,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&36"
   },
@@ -21188,7 +21188,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&24"
   },
@@ -21202,7 +21202,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -21216,7 +21216,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&36"
   },
@@ -21230,7 +21230,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&24"
   },
@@ -21244,7 +21244,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "400",
     "disassemblingTombolaID": "4"
   },
@@ -21258,7 +21258,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -21272,7 +21272,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&48"
   },
@@ -21286,7 +21286,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&36"
   },
@@ -21300,7 +21300,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&24"
   },
@@ -21314,7 +21314,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1000"
   },
@@ -21328,7 +21328,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&900"
   },
@@ -21342,7 +21342,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&800"
   },
@@ -21384,7 +21384,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&48"
   },
@@ -21398,7 +21398,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&36"
   },
@@ -21412,7 +21412,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&24"
   },
@@ -21426,7 +21426,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -21440,7 +21440,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&36"
   },
@@ -21454,7 +21454,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&24"
   },
@@ -21468,7 +21468,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "400",
     "disassemblingTombolaID": "4"
   },
@@ -21482,7 +21482,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -21496,7 +21496,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -21510,7 +21510,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&36"
   },
@@ -21524,7 +21524,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&24"
   },
@@ -21538,7 +21538,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&300"
   },
@@ -21552,7 +21552,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -21566,7 +21566,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&200"
   },
@@ -21608,7 +21608,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1200"
   },
@@ -21622,7 +21622,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1000"
   },
@@ -21636,7 +21636,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&800"
   },
@@ -21650,7 +21650,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -21664,7 +21664,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&200"
   },
@@ -21678,7 +21678,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&150"
   },
@@ -21692,7 +21692,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&10000"
   },
@@ -21706,7 +21706,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&12500"
   },
@@ -21720,7 +21720,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "296&15000"
   },
@@ -21734,7 +21734,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "400",
     "disassemblingTombolaID": "4"
   },
@@ -21748,7 +21748,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -21762,7 +21762,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&48"
   },
@@ -21776,7 +21776,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&36"
   },
@@ -21790,7 +21790,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&24"
   },
@@ -21804,7 +21804,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -21818,7 +21818,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&36"
   },
@@ -21832,7 +21832,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&24"
   },
@@ -21846,7 +21846,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "298&10000"
   },
@@ -21860,7 +21860,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "298&11000"
   },
@@ -21874,7 +21874,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "298&13000"
   },
@@ -21888,7 +21888,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "298&14000"
   },
@@ -21902,7 +21902,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "298&15000"
   },
@@ -21916,7 +21916,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "Meadreduction": "5",
     "disassemblingTombolaID": "4"
   },
@@ -21930,7 +21930,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "Meadreduction": "10",
     "disassemblingTombolaID": "4"
   },
@@ -21944,7 +21944,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "Meadreduction": "15",
     "disassemblingTombolaID": "4"
   },
@@ -21958,7 +21958,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "Meadreduction": "20",
     "disassemblingTombolaID": "4"
   },
@@ -21972,7 +21972,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "Meadreduction": "25",
     "disassemblingTombolaID": "4"
   },
@@ -21986,7 +21986,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&25"
   },
@@ -22000,7 +22000,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&25"
   },
@@ -22014,7 +22014,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -22028,7 +22028,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -22042,7 +22042,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -22056,7 +22056,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&25"
   },
@@ -22070,7 +22070,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -22084,7 +22084,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -22098,7 +22098,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "3628800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&25"
   },
@@ -22140,7 +22140,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1400"
   },
@@ -22154,7 +22154,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1200"
   },
@@ -22168,7 +22168,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1000"
   },
@@ -22182,7 +22182,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&48"
   },
@@ -22196,7 +22196,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&36"
   },
@@ -22210,7 +22210,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "501&24"
   },
@@ -25344,7 +25344,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "400",
     "disassemblingTombolaID": "4"
   },
@@ -25358,7 +25358,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -25372,7 +25372,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&48"
   },
@@ -25386,7 +25386,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&36"
   },
@@ -25400,7 +25400,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&24"
   },
@@ -25414,7 +25414,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&48"
   },
@@ -25428,7 +25428,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&36"
   },
@@ -25442,7 +25442,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&24"
   },
@@ -25484,7 +25484,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1400"
   },
@@ -25498,7 +25498,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1200"
   },
@@ -25512,7 +25512,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1000"
   },
@@ -25526,7 +25526,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -25540,7 +25540,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&200"
   },
@@ -25554,7 +25554,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&150"
   },
@@ -25568,7 +25568,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&25"
   },
@@ -25582,7 +25582,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&20"
   },
@@ -25596,7 +25596,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1400"
   },
@@ -25610,7 +25610,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1200"
   },
@@ -25624,7 +25624,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1000"
   },
@@ -25638,7 +25638,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "400",
     "disassemblingTombolaID": "4"
   },
@@ -25652,7 +25652,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "300",
     "disassemblingTombolaID": "4"
   },
@@ -25666,7 +25666,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "recruitSpeedBoost": "200",
     "disassemblingTombolaID": "4"
   },
@@ -25680,7 +25680,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "43200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "363&30"
   },
@@ -25694,7 +25694,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "363&30"
   },
@@ -25708,7 +25708,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "363&40"
   },
@@ -25722,7 +25722,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "363&50"
   },
@@ -25736,7 +25736,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "43200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "343&30"
   },
@@ -25750,7 +25750,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "343&30"
   },
@@ -25764,7 +25764,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "343&40"
   },
@@ -25778,7 +25778,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "343&50"
   },
@@ -25792,7 +25792,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "43200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "368&15"
   },
@@ -25806,7 +25806,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "368&15"
   },
@@ -25820,7 +25820,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "368&20"
   },
@@ -25834,7 +25834,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "368&30"
   },
@@ -25848,7 +25848,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "43200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "369&15"
   },
@@ -25862,7 +25862,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "369&15"
   },
@@ -25876,7 +25876,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "369&20"
   },
@@ -25890,7 +25890,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "369&30"
   },
@@ -25904,7 +25904,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "43200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "unitWallCount": "500"
   },
@@ -25918,7 +25918,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "unitWallCount": "500"
   },
@@ -25932,7 +25932,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "unitWallCount": "1000"
   },
@@ -25946,7 +25946,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "unitWallCount": "1500"
   },
@@ -25960,7 +25960,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "43200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "370&20"
   },
@@ -25974,7 +25974,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "370&20"
   },
@@ -25988,7 +25988,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "370&25"
   },
@@ -26002,7 +26002,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "370&30"
   },
@@ -26016,7 +26016,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "43200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "371&20000"
   },
@@ -26030,7 +26030,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "2",
     "effects": "371&20000"
   },
@@ -26044,7 +26044,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "371&25000"
   },
@@ -26058,7 +26058,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "371&25000"
   },
@@ -26100,7 +26100,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&14000"
   },
@@ -26114,7 +26114,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&12000"
   },
@@ -26128,7 +26128,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "702&10000"
   },
@@ -26142,7 +26142,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1400"
   },
@@ -26156,7 +26156,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1200"
   },
@@ -26170,7 +26170,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1000"
   },
@@ -26198,7 +26198,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&25"
   },
@@ -26212,7 +26212,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&20"
   },
@@ -26240,7 +26240,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "unitWallCount": "250"
   },
@@ -26254,7 +26254,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "unitWallCount": "200"
   },
@@ -26282,7 +26282,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&30"
   },
@@ -26296,7 +26296,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&25"
   },
@@ -26310,7 +26310,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4"
   },
   {
@@ -26323,7 +26323,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4"
   },
   {
@@ -26350,7 +26350,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&30"
   },
@@ -26364,7 +26364,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&25"
   },
@@ -26392,7 +26392,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&30"
   },
@@ -26406,7 +26406,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&25"
   },
@@ -26434,7 +26434,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&30"
   },
@@ -26448,7 +26448,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&25"
   },
@@ -26519,7 +26519,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "1",
-    "constructionItemEffectGroupID": "58",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "1",
     "effects": "376&69"
   },
@@ -26533,7 +26533,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&35"
   },
@@ -26547,7 +26547,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&45"
   },
@@ -26561,7 +26561,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&55"
   },
@@ -26575,7 +26575,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&65"
   },
@@ -26589,7 +26589,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&35"
   },
@@ -26603,7 +26603,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&45"
   },
@@ -26617,7 +26617,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&55"
   },
@@ -26631,7 +26631,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "1209600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&65"
   },
@@ -26659,7 +26659,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&30"
   },
@@ -26673,7 +26673,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&25"
   },
@@ -26701,7 +26701,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&30"
   },
@@ -26715,7 +26715,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&25"
   },
@@ -26743,7 +26743,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&30"
   },
@@ -26757,7 +26757,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&25"
   },
@@ -27368,7 +27368,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "372&250"
   },
@@ -27381,7 +27381,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "372&500"
   },
@@ -27394,7 +27394,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "372&750"
   },
@@ -27407,7 +27407,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "372&1250"
   },
@@ -27420,7 +27420,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "55",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "372&250"
   },
@@ -27433,7 +27433,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "55",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "372&500"
   },
@@ -27446,7 +27446,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "55",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "372&750"
   },
@@ -27459,7 +27459,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "55",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "372&1250"
   },
@@ -27472,7 +27472,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "374&2500"
   },
@@ -27485,7 +27485,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "374&5000"
   },
@@ -27498,7 +27498,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "374&7500"
   },
@@ -27511,7 +27511,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "374&10000"
   },
@@ -27524,7 +27524,7 @@
     "rarenessID": "1",
     "slotTypeID": "0",
     "duration": "86400",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "374&2500"
   },
@@ -27537,7 +27537,7 @@
     "rarenessID": "2",
     "slotTypeID": "0",
     "duration": "172800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "374&5000"
   },
@@ -27550,7 +27550,7 @@
     "rarenessID": "3",
     "slotTypeID": "0",
     "duration": "259200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "374&7500"
   },
@@ -27563,7 +27563,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "374&10000"
   },
@@ -27577,7 +27577,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "259&50"
   },
@@ -27591,7 +27591,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "ReduceResearchResourceCosts": "15"
   },
@@ -27605,7 +27605,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "recruitSpeedBoost": "1250"
   },
@@ -27619,7 +27619,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "unboostedFoodProduction": "10000"
   },
@@ -27633,7 +27633,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "202&30"
   },
@@ -27647,7 +27647,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "168",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "259&1000,114&10000,374&100000"
   },
@@ -27661,7 +27661,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&70"
   },
@@ -27675,7 +27675,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&45"
   },
@@ -27689,7 +27689,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "ReduceResearchResourceCosts": "15"
   },
@@ -27703,7 +27703,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "373&1+50,114&20"
   },
@@ -27717,7 +27717,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "373&2+50,114&20"
   },
@@ -27731,7 +27731,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "80&500,114&10"
   },
@@ -27759,7 +27759,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&250"
   },
@@ -27773,7 +27773,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "420&200"
   },
@@ -27801,7 +27801,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&30"
   },
@@ -27815,7 +27815,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&25"
   },
@@ -27843,7 +27843,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1500"
   },
@@ -27857,7 +27857,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "700&1500"
   },
@@ -27871,7 +27871,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "373&3+50,114&20"
   },
@@ -27885,7 +27885,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "373&4+50,114&20"
   },
@@ -27899,7 +27899,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "80&500,114&10"
   },
@@ -27913,7 +27913,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&70"
   },
@@ -27927,7 +27927,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&45"
   },
@@ -27941,7 +27941,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "ReduceResearchResourceCosts": "15"
   },
@@ -27955,7 +27955,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&70"
   },
@@ -27969,7 +27969,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&85"
   },
@@ -27983,7 +27983,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "604800",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "ReduceResearchResourceCosts": "20"
   },
@@ -28166,7 +28166,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "504&25"
   },
@@ -28180,7 +28180,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "613&25"
   },
@@ -28194,7 +28194,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "614&25"
   },
@@ -28208,7 +28208,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "66&25"
   },
@@ -28222,7 +28222,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&25"
   },
@@ -28236,7 +28236,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "foodStorage": "50000",
     "disassemblingTombolaID": "4",
     "unboostedFoodProduction": "7500"
@@ -28251,7 +28251,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "meadStorage": "50000",
     "disassemblingTombolaID": "4",
     "effects": "296&25000"
@@ -28266,7 +28266,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "honeyStorage": "50000",
     "disassemblingTombolaID": "4",
     "effects": "298&5000"
@@ -28281,7 +28281,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "80&350,114&10"
   },
@@ -28295,7 +28295,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "unboostedFoodProduction": "3500"
   },
@@ -28309,7 +28309,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "Coalproduction": "250"
   },
@@ -28323,7 +28323,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "coalStorage": "250000"
   },
@@ -28337,7 +28337,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "Ironproduction": "250"
   },
@@ -28351,7 +28351,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "Oilproduction": "250"
   },
@@ -28365,7 +28365,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "oilStorage": "250000"
   },
@@ -28379,7 +28379,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "ironStorage": "250000"
   },
@@ -28393,7 +28393,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "Glassproduction": "250"
   },
@@ -28407,7 +28407,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "glassStorage": "250000"
   },
@@ -28421,7 +28421,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "66&25"
   },
@@ -28435,7 +28435,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "345600",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "3",
     "effects": "503&25"
   },
@@ -28449,7 +28449,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&80000,298&8000"
   },
@@ -28463,7 +28463,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&80000,298&8000"
   },
@@ -28477,7 +28477,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&80000,298&8000"
   },
@@ -28491,7 +28491,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&80000,298&8000"
   },
@@ -29593,7 +29593,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&80000,298&8000"
   },
@@ -29607,7 +29607,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&80000,298&8000"
   },
@@ -29621,7 +29621,7 @@
     "rarenessID": "4",
     "slotTypeID": "0",
     "duration": "2419200",
-    "constructionItemEffectGroupID": "51",
+    "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "296&80000,298&8000"
   },
@@ -30296,5 +30296,285 @@
     "constructionItemEffectGroupID": "28",
     "disassemblingTombolaID": "4",
     "effects": "503&25"
+  },
+  {
+    "constructionItemID": "1036",
+    "comment1": "Single/Event",
+    "comment2": "Permanent",
+    "name": "BlackFridayDwelling",
+    "constructionItemGroupID": "18",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "decoPoints": "150",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1037",
+    "comment1": "Single/Event",
+    "comment2": "Permanent",
+    "name": "BlackFridayGreenhouse",
+    "constructionItemGroupID": "275",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "decoPoints": "150",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1038",
+    "comment1": "Single/Event",
+    "comment2": "Permanent",
+    "name": "BlackFridayLegend",
+    "constructionItemGroupID": "60",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "decoPoints": "150",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1039",
+    "comment1": "Single/Event",
+    "comment2": "Permanent",
+    "name": "BlackFridayBarracks",
+    "constructionItemGroupID": "236",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "decoPoints": "150",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1040",
+    "comment1": "Single/Event",
+    "comment2": "Permanent",
+    "name": "BlackFridayEstate",
+    "constructionItemGroupID": "2019",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "decoPoints": "150",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1041",
+    "comment1": "Single/Event",
+    "comment2": "Permanent",
+    "name": "BlackFridayBakery",
+    "constructionItemGroupID": "235",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "decoPoints": "150",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1042",
+    "comment1": "Single/Event",
+    "comment2": "Permanent",
+    "name": "BlackFridayStonemason",
+    "constructionItemGroupID": "2013",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "decoPoints": "150",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1043",
+    "comment1": "Single/Event",
+    "comment2": "Permanent",
+    "name": "BlackFridayWindmill",
+    "constructionItemGroupID": "291",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "decoPoints": "150",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1044",
+    "comment1": "Single/Event",
+    "comment2": "Permanent",
+    "name": "BlackFridayQuarry",
+    "constructionItemGroupID": "61",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "decoPoints": "150",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1045",
+    "comment1": "Single/Event",
+    "comment2": "Permanent",
+    "name": "blackLeagueKeep",
+    "constructionItemGroupID": "301",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "constructionItemEffectGroupID": "28",
+    "decoPoints": "150",
+    "removalCostC1": "7200",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1046",
+    "comment1": "Single/Event",
+    "comment2": "Temporary",
+    "name": "BlackFridayGreenhouse",
+    "constructionItemGroupID": "275",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "345600",
+    "constructionItemEffectGroupID": "28",
+    "disassemblingTombolaID": "4",
+    "effects": "80&35"
+  },
+  {
+    "constructionItemID": "1047",
+    "comment1": "Single/Event",
+    "comment2": "Temporary",
+    "name": "BlackFridayGreenhouse",
+    "constructionItemGroupID": "275",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "345600",
+    "constructionItemEffectGroupID": "28",
+    "unboostedFoodProduction": "7500",
+    "disassemblingTombolaID": "4"
+  },
+  {
+    "constructionItemID": "1048",
+    "comment1": "Single/Event",
+    "comment2": "Temporary",
+    "name": "BlackFridayGreenhouse",
+    "constructionItemGroupID": "275",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "345600",
+    "constructionItemEffectGroupID": "28",
+    "disassemblingTombolaID": "4",
+    "effects": "296&25000"
+  },
+  {
+    "constructionItemID": "1049",
+    "comment1": "Single/Event",
+    "comment2": "Temporary",
+    "name": "BlackFridayGreenhouse",
+    "constructionItemGroupID": "275",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "345600",
+    "constructionItemEffectGroupID": "28",
+    "disassemblingTombolaID": "4",
+    "effects": "298&5000"
+  },
+  {
+    "constructionItemID": "1050",
+    "comment1": "Single/Event",
+    "comment2": "Temporary",
+    "name": "BlackFridayDwelling",
+    "constructionItemGroupID": "18",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "345600",
+    "constructionItemEffectGroupID": "28",
+    "disassemblingTombolaID": "4",
+    "effects": "613&25"
+  },
+  {
+    "constructionItemID": "1051",
+    "comment1": "Single/Event",
+    "comment2": "Temporary",
+    "name": "BlackFridayDwelling",
+    "constructionItemGroupID": "18",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "345600",
+    "constructionItemEffectGroupID": "28",
+    "disassemblingTombolaID": "4",
+    "effects": "614&25"
+  },
+  {
+    "constructionItemID": "1052",
+    "comment1": "Single/Event",
+    "comment2": "Temporary",
+    "name": "BlackFridayDwelling",
+    "constructionItemGroupID": "18",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "345600",
+    "constructionItemEffectGroupID": "28",
+    "disassemblingTombolaID": "4",
+    "effects": "66&25"
+  },
+  {
+    "constructionItemID": "1053",
+    "comment1": "Single/Event",
+    "comment2": "Temporary",
+    "name": "BlackFridayDwelling",
+    "constructionItemGroupID": "18",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "345600",
+    "constructionItemEffectGroupID": "28",
+    "disassemblingTombolaID": "4",
+    "effects": "503&25"
+  },
+  {
+    "constructionItemID": "1054",
+    "comment1": "Single/Event",
+    "comment2": "Temporary",
+    "name": "BlackFridayEstate",
+    "constructionItemGroupID": "2019",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "345600",
+    "constructionItemEffectGroupID": "28",
+    "disassemblingTombolaID": "4",
+    "effects": "503&70"
+  },
+  {
+    "constructionItemID": "1055",
+    "comment1": "Single/Event",
+    "comment2": "Temporary",
+    "name": "BlackFridayBakery",
+    "constructionItemGroupID": "235",
+    "level": "4",
+    "rarenessID": "4",
+    "slotTypeID": "0",
+    "duration": "345600",
+    "constructionItemEffectGroupID": "28",
+    "disassemblingTombolaID": "4",
+    "effects": "504&45"
   }
 ]
