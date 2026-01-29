@@ -708,5 +708,11 @@
     "type": "Dungeonbaron",
     "wearerID": "1",
     "effects": "7&16,8&15,10&20,11&19"
+  },
+  {
+    "lordID": "-400",
+    "Comment1": "ARE Necromancer Boss",
+    "type": "Dungeonbaron",
+    "wearerID": "1"
   }
 ]

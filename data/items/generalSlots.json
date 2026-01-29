@@ -280,6 +280,38 @@
     "abilityGroupIDs": "1002,1016"
   },
   {
+    "slotID": "101241",
+    "abilityGroupIDs": "1025,1030"
+  },
+  {
+    "slotID": "101242",
+    "abilityGroupIDs": "1001,1023"
+  },
+  {
+    "slotID": "101243",
+    "abilityGroupIDs": "1002,1022"
+  },
+  {
+    "slotID": "101244",
+    "abilityGroupIDs": "1021,1003"
+  },
+  {
+    "slotID": "101246",
+    "abilityGroupIDs": "1025,1030"
+  },
+  {
+    "slotID": "101247",
+    "abilityGroupIDs": "1001,1023"
+  },
+  {
+    "slotID": "101248",
+    "abilityGroupIDs": "1002,1022"
+  },
+  {
+    "slotID": "101249",
+    "abilityGroupIDs": "1021,1003"
+  },
+  {
     "slotID": "101251",
     "abilityGroupIDs": "1020,1038"
   },

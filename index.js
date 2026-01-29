@@ -229,14 +229,26 @@ async function fetchLanguages() {
 }
 
 async function fetchGameClientScripts() {
-  const url = `https://sheltered-everglades-24913.fly.dev/https://${defaultDomain}/default/index.html?inGameShop=1&allowFullScreen=true`
-  
+  const proxyUrl = `https://cors-anywhere.com/https://${defaultDomain}/default/index.html?inGameShop=1&allowFullScreen=true`
+  const directUrl = `https://${defaultDomain}/default/index.html?inGameShop=1&allowFullScreen=true`
+  const requestConfig = {
+    headers: {
+      Origin: `https://${defaultDomain}`,
+      'X-Requested-With': 'XMLHttpRequest'
+    }
+  }
+
   let html
   try {
-    html = (await axios.get(url)).data
+    html = (await axios.get(proxyUrl, requestConfig)).data
   } catch (err) {
-    console.error(`❌ Fehler beim Abrufen der HTML-Seite:`, err.message)
-    return null
+    console.warn(`⚠️  Proxy-Request fehlgeschlagen: ${err.response?.status || err.message}`)
+    try {
+      html = (await axios.get(directUrl, requestConfig)).data
+    } catch (err2) {
+      console.error(`❌ Fehler beim Abrufen der HTML-Seite: ${err2.response?.status || err2.message}`)
+      return null
+    }
   }
 
   const dom = new JSDOM(html)
@@ -608,11 +620,12 @@ async function updateVersionHistory(scripts) {
   await saveVersionHistory(history)
 }
 
-async function saveVersions(itemsVersion, languageVersions, scriptsVersion) {
+async function saveVersions(itemsVersion, languageVersions, scriptsVersion, buildNumberGame) {
   const out = {
     items: itemsVersion,
     languages: languageVersions,
-    scripts: scriptsVersion
+    scripts: scriptsVersion,
+    buildNumber: buildNumberGame
   }
 
   await fs.writeFile(
@@ -622,8 +635,70 @@ async function saveVersions(itemsVersion, languageVersions, scriptsVersion) {
   console.log(`✅ Versionsinfo gespeichert: data/versions.json`)
 }
 
+async function extractBuildNumberGameFromCacheBreaker(scripts) {
+  if (!scripts || Object.keys(scripts).length === 0) {
+    return null
+  }
+
+  let cacheBreakerEntry = null
+
+  for (const [id, info] of Object.entries(scripts)) {
+    if (id.toLowerCase() === 'cachebreaker' || info.filename.includes('CacheBreaker')) {
+      cacheBreakerEntry = { id, info }
+      break
+    }
+  }
+
+  if (!cacheBreakerEntry) {
+    console.warn('⚠️  Keine CacheBreaker-Bundle-Information gefunden')
+    return null
+  }
+
+  const versionDir = path.join('data', 'scripts', 'versions', cacheBreakerEntry.id)
+  const bundlePath = path.join(
+    versionDir,
+    cacheBreakerEntry.info.versionFilename || cacheBreakerEntry.info.filename
+  )
+
+  const exists = await fs
+    .stat(bundlePath)
+    .then(stat => stat.isFile())
+    .catch(() => false)
+
+  if (!exists) {
+    console.warn(`⚠️  CacheBreaker-Bundle nicht gefunden: ${bundlePath}`)
+    return null
+  }
+
+  const content = await fs.readFile(bundlePath, 'utf8')
+  const versionMatch = content.match(
+    /name:\s*'TranspilationEmpire'[^]*?version:\s*'([0-9.]+)'/
+  )
+
+  if (!versionMatch || !versionMatch[1]) {
+    console.warn('⚠️  Keine TranspilationEmpire-Version im CacheBreaker-Bundle gefunden')
+    return null
+  }
+
+  const parts = versionMatch[1].split('.')
+  const major = parts[0]
+  const minorRaw = parts[1] || ''
+  const patchRaw = (parts[2] || '').split('-')[0]
+
+  if (!major) {
+    console.warn('⚠️  Ungültige Versionsstruktur im CacheBreaker-Bundle')
+    return null
+  }
+
+  const minor = minorRaw.padStart(3, '0')
+  const patch = patchRaw.padStart(3, '0')
+  const buildNumberGame = `${major}${minor}${patch}`
+
+  return { version: versionMatch[1], buildNumberGame }
+}
+
 async function main() {
-  await fetchNetworks()
+  // await fetchNetworks()
 
   const itemsVersion = await fetchItems()
   const languageVersions = await fetchLanguages()
@@ -631,12 +706,19 @@ async function main() {
   const scripts = await fetchGameClientScripts()
   await decompileScripts(scripts)
   await updateVersionHistory(scripts)
-  await downloadItemAssets()
+
+  // await downloadItemAssets()
   
   const scriptsVersion = scripts ? new Date().toISOString() : null
+  const buildNumberInfo = await extractBuildNumberGameFromCacheBreaker(scripts)
 
-  if (itemsVersion && languageVersions) {
-    await saveVersions(itemsVersion, languageVersions, scriptsVersion)
+  if (itemsVersion && languageVersions && scriptsVersion) {
+    await saveVersions(
+      itemsVersion,
+      languageVersions,
+      scriptsVersion,
+      buildNumberInfo ? buildNumberInfo.buildNumberGame : null
+    )
   }
 }
 

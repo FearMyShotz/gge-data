@@ -1218,5 +1218,82 @@
     "sortCategory": "1",
     "sortGroup": "16",
     "name": "xpBoost"
+  },
+  {
+    "effectTypeID": "197",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "32",
+    "name": "infectionRateBaseBonus"
+  },
+  {
+    "effectTypeID": "198",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "33",
+    "name": "infectionRateMeleeBonus"
+  },
+  {
+    "effectTypeID": "199",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "34",
+    "name": "infectionRateRangeBonus"
+  },
+  {
+    "effectTypeID": "200",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "35",
+    "name": "infectionRateWallBonus"
+  },
+  {
+    "effectTypeID": "201",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "36",
+    "name": "infectionRateCourtyardBonus"
+  },
+  {
+    "effectTypeID": "202",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "37",
+    "name": "infectionRateBaseMalus"
+  },
+  {
+    "effectTypeID": "203",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "38",
+    "name": "infectionRateMeleeMalus"
+  },
+  {
+    "effectTypeID": "204",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "39",
+    "name": "infectionRateRangeMalus"
+  },
+  {
+    "effectTypeID": "205",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "40",
+    "name": "infectionRateWallMalus"
+  },
+  {
+    "effectTypeID": "206",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "41",
+    "name": "infectionRateCourtyardMalus"
+  },
+  {
+    "effectTypeID": "207",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "42",
+    "name": "raidBossWallRegeneration"
   }
 ]

@@ -49638,7 +49638,7 @@ var ggs_lib = function (e) {
       this.assets.CastleStartscreen3 = "interface/CastleStartscreen3/CastleStartscreen3--1693828816067";
       this.assets.CastleStartscreen2 = "interface/CastleStartscreen2/CastleStartscreen2--1679043072895";
       this.assets.CastleStartscreen_O = "interface/CastleStartscreen_O/CastleStartscreen_O--1651238657710";
-      this.assets.CastleInterfaceElements_Icons = "interface/CastleInterfaceElements_Icons/CastleInterfaceElements_Icons--1762440370250";
+      this.assets.CastleInterfaceElements_Icons = "interface/CastleInterfaceElements_Icons/CastleInterfaceElements_Icons--1767688064467";
       this.assets.CastleInterfaceElements_Shared = "interface/CastleInterfaceElements_Shared/CastleInterfaceElements_Shared--1710420450312";
       this.assets.CastleStartscreen = "interface/CastleStartscreen/CastleStartscreen--1645175515102";
       this.assets.KoreaTableCell = "interface/fonts/korea/KoreaTableCell/KoreaTableCell--1640007345013";
@@ -49675,6 +49675,92 @@ var ggs_lib = function (e) {
     };
     ItemVersions.prototype.fill = function () {
       this.assets.Deco_Building_springBonfire = "itemassets/Building/Deco/Deco_Building_springBonfire/Deco_Building_springBonfire--1616681902168";
+      this.assets.AllianceMobilizationEventMainExt_Jan26 = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceMobilizationEventMainExt_Jan26/AllianceMobilizationEventMainExt_Jan26--1768489297723";
+      this.assets.AllianceQuestTeaser_StormIslands = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceQuestTeaser/AllianceQuestTeaser_StormIslands/AllianceQuestTeaser_StormIslands--1768229156480";
+      this.assets.AllianceQuestTeaser_SamuraiInvasion = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceQuestTeaser/AllianceQuestTeaser_SamuraiInvasion/AllianceQuestTeaser_SamuraiInvasion--1768229156480";
+      this.assets.AllianceQuestTeaser_NomadInvasion = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceQuestTeaser/AllianceQuestTeaser_NomadInvasion/AllianceQuestTeaser_NomadInvasion--1768229156480";
+      this.assets.AllianceQuestTeaser_BloodcrowInvasion = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceQuestTeaser/AllianceQuestTeaser_BloodcrowInvasion/AllianceQuestTeaser_BloodcrowInvasion--1768229156480";
+      this.assets.AllianceQuestTeaser_BerimondKingdom = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceQuestTeaser/AllianceQuestTeaser_BerimondKingdom/AllianceQuestTeaser_BerimondKingdom--1768229156480";
+      this.assets.AllianceQuestTeaser_AlienInvasion = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceQuestTeaser/AllianceQuestTeaser_AlienInvasion/AllianceQuestTeaser_AlienInvasion--1768229156480";
+      this.assets.CastleMessageIconsDivisionPromotionDemotion = "itemassets/Dialogs/Messages/MessageIcons/CastleMessageIconsDivisionPromotionDemotion/CastleMessageIconsDivisionPromotionDemotion--1767688064467";
+      this.assets.AllianceMobilizationDivisionChangeExt = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceMobilizationDivisionChangeExt/AllianceMobilizationDivisionChangeExt--1768323531309";
+      this.assets.AllianceMobilizationEventQuestInfoExt_Dec25 = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceMobilizationEventQuestInfoExt_Dec25/AllianceMobilizationEventQuestInfoExt_Dec25--1768229156480";
+      this.assets.StartscreenNewServerBanner = "itemassets/StartScreen/StartscreenNewServerBanner/StartscreenNewServerBanner--1764929109275";
+      this.assets.Deco_Building_ExaltedRedCaveoftheWinterFox = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedRedCaveoftheWinterFox/Deco_Building_ExaltedRedCaveoftheWinterFox--1764755711012";
+      this.assets.Deco_Building_ExaltedPurpleCaveoftheWinterFox = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedPurpleCaveoftheWinterFox/Deco_Building_ExaltedPurpleCaveoftheWinterFox--1764677190527";
+      this.assets.EventEndTeaser_134 = "itemassets/Dialogs/DistrictGatcha/EventEndTeaser/EventEndTeaser_134/EventEndTeaser_134--1764247373153";
+      this.assets.Outpost_Mapobject_Special_Xmas2025Cast = "itemassets/Worldmap/WorldmapObjects/Outposts/Outpost_Mapobject_Special_Xmas2025Cast/Outpost_Mapobject_Special_Xmas2025Cast--1763740824505";
+      this.assets.Skin_Mapmovement_Xmas2025Com_Eiland = "itemassets/Worldmap/WorldmapObjects/Movements/Skins/Skin_Mapmovement_Xmas2025Com_Eiland/Skin_Mapmovement_Xmas2025Com_Eiland--1763740824505";
+      this.assets.Skin_Mapmovement_Xmas2025Com_Common = "itemassets/Worldmap/WorldmapObjects/Movements/Skins/Skin_Mapmovement_Xmas2025Com_Common/Skin_Mapmovement_Xmas2025Com_Common--1763740824505";
+      this.assets.Metropol_Mapobject_Special_Xmas2025Cast = "itemassets/Worldmap/WorldmapObjects/Landmarks/Metropol_Mapobject_Special_Xmas2025Cast/Metropol_Mapobject_Special_Xmas2025Cast--1763740824505";
+      this.assets.Capital_Mapobject_Special_Xmas2025Cast = "itemassets/Worldmap/WorldmapObjects/Landmarks/Capital_Mapobject_Special_Xmas2025Cast/Capital_Mapobject_Special_Xmas2025Cast--1763740824505";
+      this.assets.Castle_Mapobject_Special_Xmas2025Cast = "itemassets/Worldmap/WorldmapObjects/Castles/Castle_Mapobject_Special_Xmas2025Cast/Castle_Mapobject_Special_Xmas2025Cast--1763740824505";
+      this.assets.Item_Unique_1389 = "itemassets/Equipment/Uniques/Item_Unique_1389/Item_Unique_1389--1763740824505";
+      this.assets.Item_Unique_1388 = "itemassets/Equipment/Uniques/Item_Unique_1388/Item_Unique_1388--1763740824505";
+      this.assets.Deco_Building_ExaltedRedTamingofthewild = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedRedTamingofthewild/Deco_Building_ExaltedRedTamingofthewild--1763740824505";
+      this.assets.Deco_Building_ExaltedRedGreenCaveoftheWinterFox = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedRedGreenCaveoftheWinterFox/Deco_Building_ExaltedRedGreenCaveoftheWinterFox--1763740824505";
+      this.assets.Deco_Building_ExaltedRedFrozentarantulaspring = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedRedFrozentarantulaspring/Deco_Building_ExaltedRedFrozentarantulaspring--1763740824505";
+      this.assets.Deco_Building_ExaltedRedChristmasPyramidWatermillPowered = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedRedChristmasPyramidWatermillPowered/Deco_Building_ExaltedRedChristmasPyramidWatermillPowered--1763740824505";
+      this.assets.Deco_Building_ExaltedRedChristmasPyramidCandlePowered = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedRedChristmasPyramidCandlePowered/Deco_Building_ExaltedRedChristmasPyramidCandlePowered--1763740824505";
+      this.assets.Deco_Building_ExaltedRedCaveoftheWinterPolarBear = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedRedCaveoftheWinterPolarBear/Deco_Building_ExaltedRedCaveoftheWinterPolarBear--1763740824505";
+      this.assets.Deco_Building_ExaltedPurpleTamingofthewild = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedPurpleTamingofthewild/Deco_Building_ExaltedPurpleTamingofthewild--1763740824505";
+      this.assets.Deco_Building_ExaltedPurpleGreenCaveoftheWinterFox = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedPurpleGreenCaveoftheWinterFox/Deco_Building_ExaltedPurpleGreenCaveoftheWinterFox--1763740824505";
+      this.assets.Deco_Building_ExaltedPurpleFrozentarantulaspring = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedPurpleFrozentarantulaspring/Deco_Building_ExaltedPurpleFrozentarantulaspring--1763740824505";
+      this.assets.Deco_Building_ExaltedPurpleChristmasPyramidWatermillPowered = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedPurpleChristmasPyramidWatermillPowered/Deco_Building_ExaltedPurpleChristmasPyramidWatermillPowered--1763740824505";
+      this.assets.Deco_Building_ExaltedPurpleChristmasPyramidCandlePowered = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedPurpleChristmasPyramidCandlePowered/Deco_Building_ExaltedPurpleChristmasPyramidCandlePowered--1763740824505";
+      this.assets.Deco_Building_ExaltedPurpleCaveoftheWinterPolarBear = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedPurpleCaveoftheWinterPolarBear/Deco_Building_ExaltedPurpleCaveoftheWinterPolarBear--1763740824505";
+      this.assets.Deco_Building_ExaltedGreenTamingofthewild = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedGreenTamingofthewild/Deco_Building_ExaltedGreenTamingofthewild--1763740824505";
+      this.assets.Deco_Building_ExaltedGreenFrozentarantulaspring = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedGreenFrozentarantulaspring/Deco_Building_ExaltedGreenFrozentarantulaspring--1763740824505";
+      this.assets.Deco_Building_ExaltedGreenChristmasPyramidWatermillPowered = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedGreenChristmasPyramidWatermillPowered/Deco_Building_ExaltedGreenChristmasPyramidWatermillPowered--1763740824505";
+      this.assets.Deco_Building_ExaltedGreenChristmasPyramidCandlePowered = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedGreenChristmasPyramidCandlePowered/Deco_Building_ExaltedGreenChristmasPyramidCandlePowered--1763740824505";
+      this.assets.Deco_Building_ExaltedGreenCaveoftheWinterPolarBear = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedGreenCaveoftheWinterPolarBear/Deco_Building_ExaltedGreenCaveoftheWinterPolarBear--1763740824505";
+      this.assets.Deco_Building_ExaltedGreenCaveoftheWinterFox = "itemassets/Building/Deco/EffectDecos/Xmas2025/Deco_Building_ExaltedGreenCaveoftheWinterFox/Deco_Building_ExaltedGreenCaveoftheWinterFox--1763740824505";
+      this.assets.Collectable_Currency_LegendaryRiftCoin = "itemassets/Collectables/Collectable_Currency_LegendaryRiftCoin/Collectable_Currency_LegendaryRiftCoin--1763641990065";
+      this.assets.Collectable_Currency_LegendaryRiftCoin_DropShadow = "itemassets/Collectables/Collectable_Currency_LegendaryRiftCoin_DropShadow/Collectable_Currency_LegendaryRiftCoin_DropShadow--1763641990065";
+      this.assets.AllianceRaidEventBG_Victory_Necromancer = "itemassets/Dialogs/Events/AllianceRaidEvent/Backgrounds/AllianceRaidEventBG_Victory_Necromancer/AllianceRaidEventBG_Victory_Necromancer--1763118055570";
+      this.assets.Hero_Unique_1379 = "itemassets/Equipment/Heroes/Hero_Unique_1379/Hero_Unique_1379--1763027867476";
+      this.assets.Hero_Unique_1374 = "itemassets/Equipment/Heroes/Hero_Unique_1374/Hero_Unique_1374--1763027867476";
+      this.assets.Hero_Unique_1369 = "itemassets/Equipment/Heroes/Hero_Unique_1369/Hero_Unique_1369--1763027867476";
+      this.assets.Animation_AREBoxSilver = "itemassets/Dialogs/RewardHub/MysteryBox/Animation_AREBoxSilver/Animation_AREBoxSilver--1763026142425";
+      this.assets.Animation_AREBoxGold = "itemassets/Dialogs/RewardHub/MysteryBox/Animation_AREBoxGold/Animation_AREBoxGold--1763026142425";
+      this.assets.Animation_AREBoxBronze = "itemassets/Dialogs/RewardHub/MysteryBox/Animation_AREBoxBronze/Animation_AREBoxBronze--1763026142425";
+      this.assets.Collectable_AREBoxSilver = "itemassets/Collectables/MysteryBoxes/Collectable_AREBoxSilver/Collectable_AREBoxSilver--1763026142425";
+      this.assets.Collectable_AREBoxGold = "itemassets/Collectables/MysteryBoxes/Collectable_AREBoxGold/Collectable_AREBoxGold--1763026142425";
+      this.assets.Collectable_AREBoxBronze = "itemassets/Collectables/MysteryBoxes/Collectable_AREBoxBronze/Collectable_AREBoxBronze--1763026142425";
+      this.assets.Eventtool_Unit_AREInfectionRateBoostWeak = "itemassets/Units/Eventtool/Eventtool_Unit_AREInfectionRateBoostWeak/Eventtool_Unit_AREInfectionRateBoostWeak--1763046074679";
+      this.assets.Eventtool_Unit_AREInfectionRateBoostPremium = "itemassets/Units/Eventtool/Eventtool_Unit_AREInfectionRateBoostPremium/Eventtool_Unit_AREInfectionRateBoostPremium--1763046074679";
+      this.assets.Eventtool_Unit_AREInfectionRateBoostNormal = "itemassets/Units/Eventtool/Eventtool_Unit_AREInfectionRateBoostNormal/Eventtool_Unit_AREInfectionRateBoostNormal--1763046074679";
+      this.assets.Eventtool_Unit_AREWallDebuffPremium = "itemassets/Units/Eventtool/Eventtool_Unit_AREWallDebuffPremium/Eventtool_Unit_AREWallDebuffPremium--1762857156746";
+      this.assets.Eventtool_Unit_AREWallDebuffNormal = "itemassets/Units/Eventtool/Eventtool_Unit_AREWallDebuffNormal/Eventtool_Unit_AREWallDebuffNormal--1762857156746";
+      this.assets.Eventtool_Unit_AREGateDebuffPremium = "itemassets/Units/Eventtool/Eventtool_Unit_AREGateDebuffPremium/Eventtool_Unit_AREGateDebuffPremium--1762857156746";
+      this.assets.Eventtool_Unit_AREGateDebuffNormal = "itemassets/Units/Eventtool/Eventtool_Unit_AREGateDebuffNormal/Eventtool_Unit_AREGateDebuffNormal--1762857156746";
+      this.assets.Item_Unique_1379 = "itemassets/Equipment/Uniques/Item_Unique_1379/Item_Unique_1379--1762857156746";
+      this.assets.Item_Unique_1378 = "itemassets/Equipment/Uniques/Item_Unique_1378/Item_Unique_1378--1762857156746";
+      this.assets.Item_Unique_1377 = "itemassets/Equipment/Uniques/Item_Unique_1377/Item_Unique_1377--1762857156746";
+      this.assets.Item_Unique_1376 = "itemassets/Equipment/Uniques/Item_Unique_1376/Item_Unique_1376--1762857156746";
+      this.assets.Item_Unique_1375 = "itemassets/Equipment/Uniques/Item_Unique_1375/Item_Unique_1375--1762857156746";
+      this.assets.Item_Unique_1374 = "itemassets/Equipment/Uniques/Item_Unique_1374/Item_Unique_1374--1762857156746";
+      this.assets.Item_Unique_1373 = "itemassets/Equipment/Uniques/Item_Unique_1373/Item_Unique_1373--1762857156746";
+      this.assets.Item_Unique_1372 = "itemassets/Equipment/Uniques/Item_Unique_1372/Item_Unique_1372--1762857156746";
+      this.assets.Item_Unique_1371 = "itemassets/Equipment/Uniques/Item_Unique_1371/Item_Unique_1371--1762857156746";
+      this.assets.Item_Unique_1370 = "itemassets/Equipment/Uniques/Item_Unique_1370/Item_Unique_1370--1762857156746";
+      this.assets.Item_Unique_1369 = "itemassets/Equipment/Uniques/Item_Unique_1369/Item_Unique_1369--1762857156746";
+      this.assets.Item_Unique_1368 = "itemassets/Equipment/Uniques/Item_Unique_1368/Item_Unique_1368--1762857156746";
+      this.assets.Item_Unique_1367 = "itemassets/Equipment/Uniques/Item_Unique_1367/Item_Unique_1367--1762857156746";
+      this.assets.Item_Unique_1366 = "itemassets/Equipment/Uniques/Item_Unique_1366/Item_Unique_1366--1762857156746";
+      this.assets.Item_Unique_1365 = "itemassets/Equipment/Uniques/Item_Unique_1365/Item_Unique_1365--1762857156746";
+      this.assets.Item_Gem_Unique_461 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_461/Item_Gem_Unique_461--1762857156746";
+      this.assets.Item_Gem_Unique_460 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_460/Item_Gem_Unique_460--1762857156746";
+      this.assets.Item_Gem_Unique_459 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_459/Item_Gem_Unique_459--1762857156746";
+      this.assets.Item_Gem_Unique_458 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_458/Item_Gem_Unique_458--1762857156746";
+      this.assets.Item_Gem_Unique_457 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_457/Item_Gem_Unique_457--1762857156746";
+      this.assets.Item_Gem_Unique_456 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_456/Item_Gem_Unique_456--1762857156746";
+      this.assets.Item_Gem_Unique_455 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_455/Item_Gem_Unique_455--1762857156746";
+      this.assets.Item_Gem_Unique_454 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_454/Item_Gem_Unique_454--1762857156746";
+      this.assets.Item_Gem_Unique_453 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_453/Item_Gem_Unique_453--1762857156746";
+      this.assets.Item_Gem_Unique_452 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_452/Item_Gem_Unique_452--1762857156746";
+      this.assets.Item_Gem_Unique_451 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_451/Item_Gem_Unique_451--1762857156746";
+      this.assets.Item_Gem_Unique_450 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_450/Item_Gem_Unique_450--1762857156746";
       this.assets.Icon_ARE_BossID_1 = "itemassets/Dialogs/Events/AllianceRaidEvent/Icons/Icon_ARE_BossID_1/Icon_ARE_BossID_1--1762443247150";
       this.assets.RelicFarm_Building_BlackFridayGreenhouse = "itemassets/Building/RelicFarm/RelicFarm_Building_BlackFridayGreenhouse/RelicFarm_Building_BlackFridayGreenhouse--1762357294938";
       this.assets.Outpost_Mapobject_Special_BlackFriday2025Cast = "itemassets/Worldmap/WorldmapObjects/Outposts/Outpost_Mapobject_Special_BlackFriday2025Cast/Outpost_Mapobject_Special_BlackFriday2025Cast--1762351668555";
@@ -49746,8 +49832,8 @@ var ggs_lib = function (e) {
       this.assets.GeneralIcon_130 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_130/GeneralIcon_130--1760969931499";
       this.assets.GeneralIcon_129 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_129/GeneralIcon_129--1760969931499";
       this.assets.GeneralIcon_128 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_128/GeneralIcon_128--1760969931499";
-      this.assets.AllianceRaidEventMainExt = "itemassets/Dialogs/Events/AllianceRaidEvent/AllianceRaidEventMainExt/AllianceRaidEventMainExt--1762433751688";
-      this.assets.DetailView_RaidBoss_1 = "itemassets/CastleDetailView/AllianceRaidBossEvent/DetailView_RaidBoss_1/DetailView_RaidBoss_1--1762424713017";
+      this.assets.AllianceRaidEventMainExt = "itemassets/Dialogs/Events/AllianceRaidEvent/AllianceRaidEventMainExt/AllianceRaidEventMainExt--1764758699015";
+      this.assets.DetailView_RaidBoss_1 = "itemassets/CastleDetailView/AllianceRaidBossEvent/DetailView_RaidBoss_1/DetailView_RaidBoss_1--1762857156746";
       this.assets.PNG_Test_Building = "itemassets/Building/PNG_Test_Building/PNG_Test_Building--1760696405267";
       this.assets.AttackScreen_OCT25 = "itemassets/Dialogs/AttackScreen_OCT25/AttackScreen_OCT25--1762423614906";
       this.assets.LegendQuarry_Building_AnniversaryQuarry = "itemassets/Building/LegendQuarry/LegendQuarry_Building_AnniversaryQuarry/LegendQuarry_Building_AnniversaryQuarry--1760454275968";
@@ -49787,7 +49873,7 @@ var ggs_lib = function (e) {
       this.assets.Estate_Building_PremiumHalloweenEstate = "itemassets/Building/Estate/Estate_Building_PremiumHalloweenEstate/Estate_Building_PremiumHalloweenEstate--1759930743037";
       this.assets.Bakery_Building_PremiumHalloweenBakery = "itemassets/Building/Bakery/Bakery_Building_PremiumHalloweenBakery/Bakery_Building_PremiumHalloweenBakery--1759930743037";
       this.assets.AllianceRaidEventEnd_NoRewards = "itemassets/Dialogs/Events/AllianceRaidEvent/AllianceRaidEventEnd_NoRewards/AllianceRaidEventEnd_NoRewards--1759915990265";
-      this.assets.ARE_Portal_Mapobject = "itemassets/Worldmap/WorldmapObjects/Events/ARE_Portal_Mapobject/ARE_Portal_Mapobject--1759397396690";
+      this.assets.ARE_Portal_Mapobject = "itemassets/Worldmap/WorldmapObjects/Events/ARE_Portal_Mapobject/ARE_Portal_Mapobject--1762526333111";
       this.assets.CastleMessageIconsAllianceRaid = "itemassets/Dialogs/Messages/MessageIcons/CastleMessageIconsAllianceRaid/CastleMessageIconsAllianceRaid--1758627650671";
       this.assets.AllianceRaidEventStart = "itemassets/Dialogs/Events/AllianceRaidEvent/AllianceRaidEventStart/AllianceRaidEventStart--1759833370122";
       this.assets.Event_Building_AllianceRaidbossEvent = "itemassets/Building/Event/Event_Building_AllianceRaidbossEvent/Event_Building_AllianceRaidbossEvent--1758627650671";
@@ -49984,7 +50070,7 @@ var ggs_lib = function (e) {
       this.assets.Collectable_Currency_AshiraToken_DropShadow = "itemassets/Collectables/Generals/Collectable_Currency_AshiraToken_DropShadow/Collectable_Currency_AshiraToken_DropShadow--1749647692663";
       this.assets.ConstructionItem_RelicBeefCapacityIncrease = "itemassets/ConstructionItems/ConstructionItem_RelicBeefCapacityIncrease/ConstructionItem_RelicBeefCapacityIncrease--1749541490891";
       this.assets.AllianceMobilizationEventQuestInfoExt = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceMobilizationEventQuestInfoExt/AllianceMobilizationEventQuestInfoExt--1762503734326";
-      this.assets.AllianceMobilizationEventMainExt = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceMobilizationEventMainExt/AllianceMobilizationEventMainExt--1757928933010";
+      this.assets.AllianceMobilizationEventMainExt = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceMobilizationEventMainExt/AllianceMobilizationEventMainExt--1768229156480";
       this.assets.Collectable_Currency_ValentaToken = "itemassets/Collectables/Generals/Collectable_Currency_ValentaToken/Collectable_Currency_ValentaToken--1748940447893";
       this.assets.Collectable_Currency_ValentaToken_DropShadow = "itemassets/Collectables/Generals/Collectable_Currency_ValentaToken_DropShadow/Collectable_Currency_ValentaToken_DropShadow--1748940447893";
       this.assets.Deco_Building_ExaltedPurplePirateWaterSlide = "itemassets/Building/Deco/EffectDecos/Deco_Building_ExaltedPurplePirateWaterSlide/Deco_Building_ExaltedPurplePirateWaterSlide--1748852670531";
@@ -65988,6 +66074,12 @@ var ggs_lib = function (e) {
       }
       return CombatConst.FLANKBONUS;
     };
+    CombatConst.FLANKBONUS_RAID_$LI$ = function () {
+      if (CombatConst.FLANKBONUS_RAID == null) {
+        CombatConst.FLANKBONUS_RAID = [0, 0.4, 1, 1.6];
+      }
+      return CombatConst.FLANKBONUS_RAID;
+    };
     CombatConst.WALL_WOD_IDS_VILLAGES_$LI$ = function () {
       if (CombatConst.WALL_WOD_IDS_VILLAGES == null) {
         CombatConst.WALL_WOD_IDS_VILLAGES = [503, 504, 505];
@@ -66007,17 +66099,23 @@ var ggs_lib = function (e) {
       return CombatConst.NPC_ATTACK_DEFAULT_SOLDIER_IDS;
     };
     CombatConst.getFlankBonus = function (e, t, n) {
-      var i = 0;
+      return CombatConst.getFlankBonusHelper(e, t, n, CombatConst.FLANKBONUS_$LI$());
+    };
+    CombatConst.getRaidFlankBonus = function (e, t, n) {
+      return CombatConst.getFlankBonusHelper(e, t, n, CombatConst.FLANKBONUS_RAID_$LI$());
+    };
+    CombatConst.getFlankBonusHelper = function (e, t, n, i) {
+      var a = 0;
       if (e) {
-        i++;
+        a++;
       }
       if (t) {
-        i++;
+        a++;
       }
       if (n) {
-        i++;
+        a++;
       }
-      return CombatConst.FLANKBONUS_$LI$()[i];
+      return i[a];
     };
     CombatConst.getAmountSoldiers = function (e, t, n, i) {
       if (e === 1) {
@@ -67750,6 +67848,12 @@ var ggs_lib = function (e) {
   g.EFFECT_SOURCE_HIGH_LEVEL_HOL = "HLH";
   g.EFFECT_SOURCE_TOOLS = "TLS";
   g.EFFECT_SOURCE_SOLDIER = "SR";
+  g.EFFECT_SOURCE_RAID_BOSS_STAGE_DEFENDER = "RBSD";
+  g.EFFECT_SOURCE_RAID_BOSS_STAGE_ATTACKER = "RBSA";
+  g.EFFECT_SOURCE_RAID_BOSS_BATTLE_DEFENDER = "RBBD";
+  g.EFFECT_SOURCE_RAID_BOSS_BATTLE_ATTACKER = "RBBA";
+  g.EFFECT_SOURCE_RAID_BOSS_POST_BATTLE_DEFENDER = "RBPBD";
+  g.EFFECT_SOURCE_RAID_BOSS_POST_BATTLE_ATTACKER = "RBPBA";
   g.DATA = "DATA";
   g.DISABLE_HELPSHIFT_CHAT = "DHSC";
   g.LEADERBOARD_TYPE = "LT";
@@ -67767,6 +67871,13 @@ var ggs_lib = function (e) {
   g.DIVISION_ID = "DI";
   g.SUBDIVISION_ID = "SDI";
   g.DIVISION_ROUND_ID = "DRI";
+  g.DIVISION_CHANGE_MESSAGE_EVENT_ID = "E";
+  g.DIVISION_CHANGE_MESSAGE_FOR_ALLIANCE = "A";
+  g.DIVISION_CHANGE_MESSAGE_START_DIVISION = "SD";
+  g.DIVISION_CHANGE_MESSAGE_END_DIVISION = "ED";
+  g.DIVISION_CHANGE_MESSAGE_RANK = "R";
+  g.DIVISION_CHANGE_MESSAGE_POINTS = "P";
+  g.DIVISION_CHANGE_MESSAGE_POINTS_TO_THRESHOLD = "PT";
   g.ADVISOR_ATTACK_CURRENCY_ID = "ACI";
   g.ADVISOR_ATTACK_IS_FREE = "AAF";
   g.ADVISOR_ATTACK_IS_ACTIVATED = "AAA";
@@ -67797,6 +67908,18 @@ var ggs_lib = function (e) {
   g.ALLIANCE_QUEST_STATUS = "AQS";
   g.ALLIANCE_PARTICIPANT_COUNT = "APC";
   g.ALLIANCE_QUEST_PLAYER_CONTRIBUTIONS = "AQPC";
+  g.RAID_BOSS_IDS = "RBIDS";
+  g.PORTAL_BOSS_ID = "BID";
+  g.PORTAL_BOSS_CREATION_TIME = "CT";
+  g.LEVEL_ID = "BLID";
+  g.WALL_INFO = "WI";
+  g.PERCENT_LEFT = "PL";
+  g.REGEN_TIME = "RT";
+  g.HEALTH = "HP";
+  g.BOSS_STAGE = "BS";
+  g.BOSS_STATUS = "BSE";
+  g.BOSS_LEVEL_PLAYER_POINTS = "BLPP";
+  g.REVIVE_UNIT_PERCENTAGE = "RUP";
   t.CommKeys = g;
   g.__class = "CommKeys";
   var E = function () {
@@ -68741,10 +68864,13 @@ var ggs_lib = function (e) {
   C.SET_ALLIANCE_EMBLEM_EVENT = "sae";
   C.START_ALLIANCE_QUEST = "saq";
   C.COMPLETE_ALLIANCE_QUEST = "caq";
+  C.CANCEL_ALLIANCE_QUEST = "caaq";
   C.REROLL_ALLIANCE_QUEST = "raq";
   C.ALLIANCE_QUEST_STATUS = "aqs";
   C.ALLIANCE_QUEST_PLAYER_CONTRIBUTION_EVENT = "aqpc";
   C.SKIP_COOLDOWN_ALLIANCE_QUEST = "scq";
+  C.BOSS_STATUS_EVENT = "bse";
+  C.BOSS_BROADCAST_STATUS_EVENT = "bbs";
   t.ConstantsSmartFox = C;
   C.__class = "ConstantsSmartFox";
   var f = function () {
@@ -69519,8 +69645,6 @@ var ggs_lib = function (e) {
     };
     return DungeonConst;
   }();
-  D.FACTOR_VICTORY_LEVEL = 1.9;
-  D.POWER_VICTORY_LEVEL = 0.555;
   D.DUNGEON_PLAYER_ID = -202;
   D.DUNGEON_PLAYER_NAME_COUNT = 13;
   D.KINGDOM_DUNGEON_PLAYER_ID = -220;
@@ -69544,6 +69668,7 @@ var ggs_lib = function (e) {
   D.BASIC_COLLECTOR_PLAYER_ID = -1100;
   D.BASIC_ALLIANCE_BATTLE_GROUND_RESOURCE_TOWER_PLAYER_ID = -1200;
   D.BASIC_WOLF_KING_PLAYER_ID = -1201;
+  D.BASIC_ARE_PORTAL_PLAYER_ID = -1202;
   D.DUNGEON_SKIN_ROBBER_BARON_KING = 1;
   D.DUNGEON_SKIN_COW = 2;
   D.DUNGEON_SKIN_ST_PATRICKS_DAY = 3;
@@ -69555,6 +69680,9 @@ var ggs_lib = function (e) {
   D.DUNGEON_DELETION_DESERT_FACTOR = 3.5;
   D.DUNGEON_DELETION_VULCAN_FACTOR = 4;
   D.NO_LOW_LEVEL_DUNGEON_ATTACK = false;
+  D.RAID_BOSS_DEFENDER_LEVEL = 120;
+  D.FACTOR_VICTORY_LEVEL = 1.9;
+  D.POWER_VICTORY_LEVEL = 0.555;
   D.INVALID = -1;
   t.DungeonConst = D;
   D.__class = "DungeonConst";
@@ -70143,6 +70271,7 @@ var ggs_lib = function (e) {
   P.EVENTTYPE_SUMMER_GACHA = 130;
   P.EVENTTYPE_ANNIVERSARY_GACHA = 131;
   P.EVENTTYPE_HALLOWEEN_GACHA = 132;
+  P.EVENTTYPE_ALLIANCE_RAID = 133;
   P.EVENTTYPE_BLACK_FRIDAY_GACHA = 134;
   P.EVENTTYPE_ISLAND_KINGDOM = 102;
   P.EVENTTYPE_RED_ALIEN_INVASION_ALLIANCE = 103;
@@ -71031,6 +71160,7 @@ var ggs_lib = function (e) {
   X.AUTOSCALING_KHAN_TAUNT_COMMANDER_ID = -215;
   X.AUTOSCALING_WOLF_KING_TAUNT_COMMANDER_ID = -213;
   X.AUTOSCALING_DAIMIO_COMMANDER_ID = -216;
+  X.RAID_BOSS_BARON_ID = -400;
   t.LordConst = X;
   X.__class = "LordConst";
   var Q = function () {
@@ -71169,6 +71299,7 @@ var ggs_lib = function (e) {
   te.MESSAGE_TYPE_ATTACK_COUNT_THRESHOLD = 105;
   te.MESSAGE_TYPE_THANKY_YOU_PACKAGE = 117;
   te.MESSAGE_TYPE_DOWNTIME_STATUS = 118;
+  te.MESSAGE_TYPE_DIVISION_CHANGE = 119;
   te.MESSAGE_TYPE_ATTACK_ADVISOR_FAILURE = 120;
   te.MESSAGE_TYPE_ATTACK_ADVISOR_SUMMARY = 121;
   te.MESSAGE_TYPE_HIGHSCORE_BONUS = 122;
@@ -71991,6 +72122,9 @@ var ggs_lib = function (e) {
   ue.ALLIANCE_MOBILIZATION_END_WITHOUT_REWARD_ALLIANCE = 287;
   ue.ALLIANCE_MOBILIZATION_ALLIANCE_REWARDS_UNLOCKED = 288;
   ue.ALLIANCE_MOBILIZATION_END_GENERIC = 289;
+  ue.ALLIANCE_RAID_END_GENERIC = 290;
+  ue.ALLIANCE_RAID_THRESHOLD_REWARD = 291;
+  ue.ALLIANCE_RAID_BOSS_LEVEL_DEFEAT = 292;
   t.PopupConst = ue;
   ue.__class = "PopupConst";
   var ce = function () {
@@ -72561,6 +72695,7 @@ var ggs_lib = function (e) {
   be.AQUAMARINE_PVP = 18;
   be.AQUAMARINE_SPENT = 19;
   be.AQUAMARINE_LOST_PVP = 20;
+  be.AQUAMARINE_FIRST_POINTS_TIMESTAMP = 21;
   t.StatisticsConst = be;
   be.__class = "StatisticsConst";
   var Ne = function () {
@@ -72938,6 +73073,7 @@ var ggs_lib = function (e) {
   xe.ALLIANCE_BATTLE_GROUND_TOWER_DISTANCE = 25;
   xe.WOLFKING_TRAVEL_DISTANCE = 1;
   xe.WOLFKING_TAUNT_TRAVEL_DISTANCE = 0.5;
+  xe.ALLIANCE_RAID_PORTAL_TRAVEL_DISTANCE = 50;
   xe.MAX_TOOL_SLOTS = 9;
   xe.MAX_TOOLS_PER_SLOT = 99999;
   xe.TESTSERVER_DEFENSE_WAIT_DIVISOR = 4;
@@ -74737,6 +74873,7 @@ var ggs_lib = function (e) {
   Ye.ALLIANCE_QUEST = "allianceQuest";
   Ye.ALLIANCE_QUEST_ID = "allianceQuestID";
   Ye.COMMENT_2 = "comment2";
+  Ye.CANCEL_COST_C2 = "cancelCostC2";
   Ye.DIVISION_ROUND = "divisionRound";
   Ye.DIVISION_ROUND_ID = "divisionRoundID";
   Ye.DIVISION_ROUND_DIVISIONS = "divisions";
@@ -74747,6 +74884,32 @@ var ggs_lib = function (e) {
   Ye.DIVISION_ROUND_SOURCE_DIVISION_ROUND_ID = "sourceDivisionRoundID";
   Ye.DIVISION_ROUND_TARGET_DIVISION_ROUND_ID = "targetDivisionRoundID";
   Ye.DIVISION_ROUND_TEST_ONLY = "testOnly";
+  Ye.PREMIUM = "Premium";
+  Ye.RAID_BOSS = "raidBoss";
+  Ye.RAID_BOSS_ID = "raidBossID";
+  Ye.RAID_BOSS_LEVEL = "raidBossLevel";
+  Ye.RAID_BOSS_LEVEL_ID = "raidBossLevelID";
+  Ye.RAID_BOSS_LEVEL_LEVEL = "level";
+  Ye.RAID_BOSS_LEVEL_WALL_REGENERATION_TIME = "wallRegenerationTime";
+  Ye.RAID_BOSS_LEVEL_COURTYARD_RESERVE_UNITS = "courtyardReserveUnits";
+  Ye.RAID_BOSS_LEVEL_COURTYARD_SIZE = "courtyardSize";
+  Ye.RAID_BOSS_LEVEL_COURTYARD_MELEE_PERCENT = "courtyardMeleePercent";
+  Ye.RAID_BOSS_LEVEL_MIN_POINTS_FOR_BOSS_REWARDS = "minPointsForBossRewards";
+  Ye.RAID_BOSS_STAGE = "raidBossStage";
+  Ye.RAID_BOSS_STAGE_ID = "raidBossStageID";
+  Ye.RAID_BOSS_STAGE_HEALTH = "health";
+  Ye.RAID_BOSS_STAGE_DEFENDER_STAGE_EFFECTS = "defenderStageEffects";
+  Ye.RAID_BOSS_STAGE_ATTACKER_STAGE_EFFECTS = "attackerStageEffects";
+  Ye.RAID_BOSS_STAGE_DEFENDER_BATTLE_EFFECTS = "defenderBattleEffects";
+  Ye.RAID_BOSS_STAGE_ATTACKER_BATTLE_EFFECTS = "attackerBattleEffects";
+  Ye.RAID_BOSS_STAGE_DEFENDER_POST_BATTLE_EFFECTS = "defenderPostBattleEffects";
+  Ye.RAID_BOSS_STAGE_ATTACKER_POST_BATTLE_EFFECTS = "attackerPostBattleEffects";
+  Ye.RAID_BOSS_STAGE_LEFT_WALL_UNITS = "leftWallUnits";
+  Ye.RAID_BOSS_STAGE_FRONT_WALL_UNITS = "frontWallUnits";
+  Ye.RAID_BOSS_STAGE_RIGHT_WALL_UNITS = "rightWallUnits";
+  Ye.RAID_BOSS_STAGE_COURTYARD_POINT_FACTOR = "courtyardPointFactor";
+  Ye.RAID_BOSS_STAGE_WALL_POINT_FACTOR = "wallPointFactor";
+  Ye.RAID_BOSS_STAGE_HIGHLIGHTED_EFFECT_IDS = "HighlightEffectIcon";
   t.WODConst = Ye;
   Ye.__class = "WODConst";
   var ze = function () {
@@ -75103,6 +75266,7 @@ var ggs_lib = function (e) {
   Je.AREA_TYPE_ALLIANCE_BATTLE_GROUND_RESOURCE_TOWER = 40;
   Je.AREA_TYPE_ALLIANCE_BATTLE_GROUND_TOWER = 41;
   Je.AREA_TYPE_WOLF_KING = 42;
+  Je.AREA_TYPE_ARE_PORTAL = 43;
   Je.AREA_TYPE_NO_OUTPOST = 99;
   Je.VILLAGE_TYPE_WOOD = 0;
   Je.VILLAGE_TYPE_STONE = 1;
@@ -75130,6 +75294,7 @@ var ggs_lib = function (e) {
   Je.BLUE_FACTION_INVASION_CAMPS_PER_SECTOR = 5;
   Je.DAIMYO_CASTLES_PER_SECTOR = 2;
   Je.DAIMYO_TOWNSHIPS_PER_SECTOR = 2;
+  Je.ARE_PORTALS_PER_SECTOR = 1;
   Je.ALLIANCE_NOMAD_CAMPS_PER_SECTOR = 1;
   Je.ALLIANCE_SAMURAI_CAMPS_PER_SECTOR = 0;
   Je.BLUE_ALLIANCE_FACTION_INVASION_CAMPS_PER_SECTOR = 0;
@@ -75398,6 +75563,7 @@ var ggs_lib = function (e) {
   p.NPC_ATTACK_DEFAULT_SOLDIER_IDS_$LI$();
   p.GATE_WOD_IDS_VILLAGES_$LI$();
   p.WALL_WOD_IDS_VILLAGES_$LI$();
+  p.FLANKBONUS_RAID_$LI$();
   p.FLANKBONUS_$LI$();
   p.WAVE_UNLOCK_LEVEL_$LI$();
   p.ITEMS_FINALWAVE_UNITS_$LI$();
@@ -131305,4 +131471,4 @@ var ggs_lib = function (e) {
     return common[e] || null;
   };
 }]);
-//# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/dll/ggs.dll.179c80f355fe2e5cb2c7.js.map
+//# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/dll/ggs.dll.01dea9bb7b3c4f6998d9.js.map

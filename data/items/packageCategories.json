@@ -109,6 +109,14 @@
     "name": "Ruby"
   },
   {
+    "categoryID": "120",
+    "name": "RiftCoin"
+  },
+  {
+    "categoryID": "121",
+    "name": "LegendaryRiftCoin"
+  },
+  {
     "categoryID": "999",
     "name": "Overall"
   }

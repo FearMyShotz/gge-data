@@ -20,7 +20,7 @@
     "comment2": "The Battle for Berimond",
     "kIDs": "0,1,2,3,10",
     "eventType": "Faction",
-    "minLevel": 40,
+    "minLevel": 15,
     "maxLevel": "99",
     "sortOrder": "800"
   },
@@ -93,7 +93,8 @@
     "comment2": "Herald of the War of the Realms",
     "kIDs": "0",
     "eventType": "AlienInvasion",
-    "minLevel": 20,
+    "eventExtensionUnlock": "70",
+    "minLevel": 70,
     "maxLevel": "99",
     "sortOrder": "100"
   },
@@ -103,7 +104,8 @@
     "comment2": "Herald of the Alliance War of the Realms",
     "kIDs": "0",
     "eventType": "AllianceAlienInvasion",
-    "minLevel": 20,
+    "eventExtensionUnlock": "70",
+    "minLevel": 70,
     "maxLevel": "99",
     "sortOrder": "200"
   },
@@ -113,7 +115,8 @@
     "comment2": "Herald of the Alliance War of the Realms",
     "kIDs": "0",
     "eventType": "RedAllianceAlienInvasion",
-    "minLevel": 40,
+    "eventExtensionUnlock": "70",
+    "minLevel": 70,
     "maxLevel": "99",
     "sortOrder": "200"
   },
@@ -123,7 +126,7 @@
     "comment2": "Berimond Invasion",
     "kIDs": "0",
     "eventType": "FactionInvasion",
-    "minLevel": 50,
+    "minLevel": 15,
     "maxLevel": "99",
     "sortOrder": "900"
   },
@@ -223,7 +226,7 @@
     "mapID": "21,25,22,23,24,27,28",
     "eventType": "Merchant",
     "packageIDs": "60+61+62+63+64+65+66+67+68+69+70+71+72+73+74+75+76+77+78+79+80+81+82+83+84+91+58+92+93+94+262+263+264",
-    "minLevel": 40,
+    "minLevel": 15,
     "maxLevel": "99",
     "sortOrder": "1700"
   },
@@ -319,7 +322,7 @@
     "areaTypes": "15",
     "eventType": "FactionArmorer",
     "packageIDs": "385+386+387+388+389+390+391",
-    "minLevel": 40,
+    "minLevel": 15,
     "maxLevel": "99",
     "sortOrder": "1000"
   },
@@ -341,7 +344,7 @@
     "areaTypes": "1,4",
     "eventType": "FactionHunter",
     "packageIDs": "1087+1088+480+481+1614+1615+1616+1617+1618",
-    "minLevel": 50,
+    "minLevel": 15,
     "maxLevel": "99",
     "sortOrder": "1100"
   },
@@ -1227,6 +1230,17 @@
     "minLevel": 10,
     "maxLevel": "1020",
     "sortOrder": "2500"
+  },
+  {
+    "eventID": "133",
+    "comment1": "Alliance Raidboss Event",
+    "comment2": "ARE",
+    "kIDs": "0",
+    "areaTypes": "1",
+    "eventType": "AllianceRaidbossEvent",
+    "crossplayMinLevel": "70",
+    "minLevel": 70,
+    "maxLevel": "1020"
   },
   {
     "eventID": "132",

@@ -1654,5 +1654,106 @@
     "equipmentEffectID": "47",
     "wearerID": "1",
     "effectID": "376"
+  },
+  {
+    "equipmentEffectID": "154",
+    "wearerID": "2",
+    "effectID": "447"
+  },
+  {
+    "equipmentEffectID": "155",
+    "wearerID": "2",
+    "effectID": "448"
+  },
+  {
+    "equipmentEffectID": "156",
+    "wearerID": "2",
+    "effectID": "449"
+  },
+  {
+    "equipmentEffectID": "157",
+    "wearerID": "2",
+    "enchantmentPrimaryBonus": "1.5",
+    "enchantmentSecondaryBonus": "1.5",
+    "effectID": "450"
+  },
+  {
+    "equipmentEffectID": "158",
+    "wearerID": "2",
+    "enchantmentPrimaryBonus": "1.5",
+    "enchantmentSecondaryBonus": "1.5",
+    "effectID": "451"
+  },
+  {
+    "equipmentEffectID": "159",
+    "wearerID": "2",
+    "enchantmentPrimaryBonus": "1.5",
+    "enchantmentSecondaryBonus": "1.5",
+    "effectID": "452"
+  },
+  {
+    "equipmentEffectID": "160",
+    "wearerID": "2",
+    "enchantmentPrimaryBonus": "0.5",
+    "enchantmentSecondaryBonus": "0.5",
+    "effectID": "453"
+  },
+  {
+    "equipmentEffectID": "161",
+    "wearerID": "2",
+    "enchantmentPrimaryBonus": "1.5",
+    "enchantmentSecondaryBonus": "1.5",
+    "effectID": "454"
+  },
+  {
+    "equipmentEffectID": "162",
+    "wearerID": "2",
+    "effectID": "455"
+  },
+  {
+    "equipmentEffectID": "163",
+    "wearerID": "2",
+    "enchantmentPrimaryBonus": "1.5",
+    "enchantmentSecondaryBonus": "1.5",
+    "effectID": "456"
+  },
+  {
+    "equipmentEffectID": "164",
+    "wearerID": "2",
+    "effectID": "457"
+  },
+  {
+    "equipmentEffectID": "165",
+    "wearerID": "2",
+    "enchantmentPrimaryBonus": "0.5",
+    "enchantmentSecondaryBonus": "0.5",
+    "effectID": "458"
+  },
+  {
+    "equipmentEffectID": "166",
+    "wearerID": "2",
+    "enchantmentPrimaryBonus": "1.5",
+    "enchantmentSecondaryBonus": "1.5",
+    "effectID": "459"
+  },
+  {
+    "equipmentEffectID": "167",
+    "wearerID": "2",
+    "effectID": "442"
+  },
+  {
+    "equipmentEffectID": "168",
+    "wearerID": "2",
+    "effectID": "440"
+  },
+  {
+    "equipmentEffectID": "169",
+    "wearerID": "2",
+    "effectID": "441"
+  },
+  {
+    "equipmentEffectID": "170",
+    "wearerID": "2",
+    "effectID": "443"
   }
 ]

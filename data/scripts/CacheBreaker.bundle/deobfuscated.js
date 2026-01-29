@@ -71,7 +71,7 @@
     return Object.prototype.hasOwnProperty.call(e, t);
   };
   __webpack_require__.p = "";
-  __webpack_require__(__webpack_require__.s = 1990);
+  __webpack_require__(__webpack_require__.s = 1999);
 })({
   0: function (e, t, n) {
     e.exports = n(126)(0);
@@ -85,7 +85,7 @@
   126: function (e, t) {
     e.exports = ggs_lib;
   },
-  1990: function (e, t, n) {
+  1999: function (e, t, n) {
     'use strict';
 
     Object.defineProperty(t, "__esModule", {
@@ -93,11 +93,11 @@
     });
     var o = n(0);
     var r = n(2);
-    var s = n(1991);
-    var i = n(1992);
-    var a = n(1993);
-    var l = n(309);
-    var c = n(337);
+    var s = n(2000);
+    var i = n(2001);
+    var a = n(2002);
+    var l = n(311);
+    var c = n(339);
     a.wrapper(l.appVersion);
     var p = function (e) {
       function CastleCacheBreakerSwf() {
@@ -154,7 +154,10 @@
     }
     new p();
   },
-  1991: function (e, t, n) {
+  2: function (e, t, n) {
+    e.exports = n(126)(29);
+  },
+  2000: function (e, t, n) {
     'use strict';
 
     Object.defineProperty(t, "__esModule", {
@@ -166,7 +169,7 @@
     var i = n(2);
     var a = n(2);
     var l = n(1);
-    var c = n(309);
+    var c = n(311);
     var p = function (e) {
       function CastleEnvironmentGlobals() {
         var t = e.call(this) || this;
@@ -572,7 +575,7 @@
     t.CastleEnvironmentGlobals = p;
     l.classImplementsInterfaces(p, "IEnvironmentGlobals");
   },
-  1992: function (e, t, n) {
+  2001: function (e, t, n) {
     'use strict';
 
     Object.defineProperty(t, "__esModule", {
@@ -613,7 +616,7 @@
     t.RelativePathEnvironment = a;
     i.classImplementsInterfaces(a, "IBaseEnvironmentPatterns", "IEnvironment", "IBaseEnvironment", "IDetectableEnvironment");
   },
-  1993: function (e, t, n) {
+  2002: function (e, t, n) {
     'use strict';
 
     Object.defineProperty(t, "__esModule", {
@@ -622,7 +625,7 @@
     var o = n(2);
     var r = n(2);
     var s = n(2);
-    var i = n(1994);
+    var i = n(2003);
     var a = false;
     function l(e) {
       if (e === "production") {
@@ -714,13 +717,10 @@
       window.messageHandler.register();
     };
   },
-  1994: function (e, t, n) {
+  2003: function (e, t, n) {
     e.exports = n(126)(987);
   },
-  2: function (e, t, n) {
-    e.exports = n(126)(29);
-  },
-  309: function (e, t, n) {
+  311: function (e, t, n) {
     'use strict';
 
     Object.defineProperty(t, "__esModule", {
@@ -730,8 +730,8 @@
     var r = n(2);
     var s = n(1);
     var i = n(116);
-    var a = n(854).version;
-    t.appVersion = n(855).version;
+    var a = n(858).version;
+    t.appVersion = n(859).version;
     var l = function (e) {
       var t = e.split(".");
       var n = t[0];
@@ -795,7 +795,7 @@
     t.CastleVersionInformation = p;
     s.classImplementsInterfaces(p, "IVersionInformation");
   },
-  337: function (e, t, n) {
+  339: function (e, t, n) {
     'use strict';
 
     Object.defineProperty(t, "__esModule", {
@@ -851,10 +851,10 @@
     }();
     t.StartscreenHelper = i;
   },
-  854: function (e) {
+  858: function (e) {
     e.exports = {
       name: "@goodgamestudios/empire-createjs-assets",
-      version: "1.2.1194",
+      version: "1.2.1222",
       main: "generated/index.js",
       types: "generated/index.d.ts",
       description: "CreateJS Assets for Empire HTML5",
@@ -955,14 +955,15 @@
       },
       resolutions: {
         vinyl: "^2.2.1",
+        sax: "1.2.4",
         psl: "1.10.0"
       }
     };
   },
-  855: function (e) {
+  859: function (e) {
     e.exports = {
       name: "TranspilationEmpire",
-      version: "1.146.18",
+      version: "1.150.9",
       description: "Transpiled version of the Flash game",
       main: "index.js",
       repository: "git@source.services.ggs-net.com:Foundation-HTML5/TranspilationEmpire.git",
@@ -1084,7 +1085,7 @@
       dependencies: {
         "@goodgamestudios/core": "^6.12.6",
         "@goodgamestudios/empire-createjs-assets": "^1.2.298",
-        "@goodgamestudios/empire-shared-constants": "6.0.1471",
+        "@goodgamestudios/empire-shared-constants": "6.1057.5",
         "@goodgamestudios/message-handler": "1.3.1",
         axios: "^0.21.1",
         "bugsnag-js": "^4.7.2",
@@ -1096,4 +1097,4 @@
       }
     };
   }
-}); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/CacheBreaker.bundle.1ee3cf6cf62d36e25577.js.map
+}); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/CacheBreaker.bundle.705e45c231589fe8e4ba.js.map

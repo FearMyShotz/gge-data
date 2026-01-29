@@ -9,7 +9,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "50"
+    "rewardPoints": "50",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "2",
@@ -21,7 +22,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "60"
+    "rewardPoints": "60",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "3",
@@ -33,7 +35,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "60"
+    "rewardPoints": "60",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "4",
@@ -45,7 +48,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "60"
+    "rewardPoints": "60",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "5",
@@ -57,7 +61,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "60"
+    "rewardPoints": "60",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "6",
@@ -69,7 +74,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "70"
+    "rewardPoints": "70",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "7",
@@ -81,7 +87,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "80"
+    "rewardPoints": "80",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "8",
@@ -92,7 +99,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "10800",
-    "rewardPoints": "90"
+    "rewardPoints": "90",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "9",
@@ -103,7 +111,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "10800",
-    "rewardPoints": "90"
+    "rewardPoints": "90",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "10",
@@ -114,7 +123,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "10800",
-    "rewardPoints": "90"
+    "rewardPoints": "90",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "11",
@@ -125,7 +135,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "10800",
-    "rewardPoints": "90"
+    "rewardPoints": "90",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "12",
@@ -136,7 +147,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "10800",
-    "rewardPoints": "95"
+    "rewardPoints": "95",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "13",
@@ -148,7 +160,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "10800",
-    "rewardPoints": "100"
+    "rewardPoints": "100",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "14",
@@ -160,7 +173,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "10800",
-    "rewardPoints": "100"
+    "rewardPoints": "100",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "15",
@@ -172,7 +186,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "110"
+    "rewardPoints": "110",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "16",
@@ -184,7 +199,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "110"
+    "rewardPoints": "110",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "17",
@@ -196,7 +212,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "110"
+    "rewardPoints": "110",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "18",
@@ -208,7 +225,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "110"
+    "rewardPoints": "110",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "19",
@@ -220,7 +238,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "10800",
-    "rewardPoints": "120"
+    "rewardPoints": "120",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "20",
@@ -232,7 +251,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "10800",
-    "rewardPoints": "130"
+    "rewardPoints": "130",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "21",
@@ -244,7 +264,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "140"
+    "rewardPoints": "140",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "22",
@@ -255,7 +276,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "10800",
-    "rewardPoints": "150"
+    "rewardPoints": "150",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "23",
@@ -267,7 +289,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "160"
+    "rewardPoints": "160",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "24",
@@ -278,7 +301,8 @@
     "questType": "obtainUnits",
     "chance": "1",
     "duration": "86400",
-    "rewardPoints": "180"
+    "rewardPoints": "180",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "25",
@@ -289,7 +313,8 @@
     "questType": "obtainUnits",
     "chance": "1",
     "duration": "86400",
-    "rewardPoints": "180"
+    "rewardPoints": "180",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "26",
@@ -300,7 +325,8 @@
     "questType": "obtainUnits",
     "chance": "1",
     "duration": "86400",
-    "rewardPoints": "180"
+    "rewardPoints": "180",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "27",
@@ -311,7 +337,8 @@
     "questType": "obtainUnits",
     "chance": "1",
     "duration": "86400",
-    "rewardPoints": "180"
+    "rewardPoints": "180",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "28",
@@ -322,7 +349,8 @@
     "questType": "obtainCurrenciesOrResources",
     "chance": "1",
     "duration": "86400",
-    "rewardPoints": "200"
+    "rewardPoints": "200",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "29",
@@ -334,7 +362,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "250"
+    "rewardPoints": "250",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "30",
@@ -346,7 +375,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "260"
+    "rewardPoints": "260",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "31",
@@ -358,7 +388,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "260"
+    "rewardPoints": "260",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "32",
@@ -370,7 +401,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "260"
+    "rewardPoints": "260",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "33",
@@ -382,7 +414,8 @@
     "questType": "defeatTarget",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "260"
+    "rewardPoints": "260",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "34",
@@ -394,7 +427,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "270"
+    "rewardPoints": "270",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "35",
@@ -406,7 +440,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "280"
+    "rewardPoints": "280",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "36",
@@ -418,7 +453,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "290"
+    "rewardPoints": "290",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "37",
@@ -430,7 +466,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "300"
+    "rewardPoints": "300",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "38",
@@ -442,7 +479,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "300"
+    "rewardPoints": "300",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "39",
@@ -454,7 +492,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "300"
+    "rewardPoints": "300",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "40",
@@ -466,7 +505,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "310"
+    "rewardPoints": "310",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "41",
@@ -478,7 +518,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "320"
+    "rewardPoints": "320",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "42",
@@ -490,7 +531,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "330"
+    "rewardPoints": "330",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "43",
@@ -502,7 +544,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "330"
+    "rewardPoints": "330",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "44",
@@ -514,7 +557,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "340"
+    "rewardPoints": "340",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "45",
@@ -526,7 +570,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "43200",
-    "rewardPoints": "350"
+    "rewardPoints": "350",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "46",
@@ -538,7 +583,8 @@
     "questType": "obtainCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "400"
+    "rewardPoints": "400",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "47",
@@ -550,7 +596,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "410"
+    "rewardPoints": "410",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "48",
@@ -562,7 +609,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "420"
+    "rewardPoints": "420",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "49",
@@ -573,7 +621,8 @@
     "questType": "obtainUnits",
     "chance": "1",
     "duration": "86400",
-    "rewardPoints": "430"
+    "rewardPoints": "430",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "50",
@@ -584,7 +633,8 @@
     "questType": "obtainUnits",
     "chance": "1",
     "duration": "86400",
-    "rewardPoints": "430"
+    "rewardPoints": "430",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "51",
@@ -595,7 +645,8 @@
     "questType": "obtainUnits",
     "chance": "1",
     "duration": "86400",
-    "rewardPoints": "430"
+    "rewardPoints": "430",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "52",
@@ -606,7 +657,8 @@
     "questType": "obtainUnits",
     "chance": "1",
     "duration": "86400",
-    "rewardPoints": "430"
+    "rewardPoints": "430",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "53",
@@ -618,7 +670,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "440"
+    "rewardPoints": "440",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "54",
@@ -630,7 +683,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "440"
+    "rewardPoints": "440",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "55",
@@ -642,7 +696,8 @@
     "questType": "spendCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "440"
+    "rewardPoints": "440",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "56",
@@ -654,7 +709,8 @@
     "questType": "obtainCurrenciesOrResources",
     "chance": "1",
     "duration": "900",
-    "rewardPoints": "450"
+    "rewardPoints": "450",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "57",
@@ -665,7 +721,8 @@
     "questType": "obtainCurrenciesOrResources",
     "chance": "1",
     "duration": "900",
-    "rewardPoints": "450"
+    "rewardPoints": "450",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "58",
@@ -677,7 +734,8 @@
     "questType": "obtainCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "450"
+    "rewardPoints": "450",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "59",
@@ -688,7 +746,8 @@
     "questType": "obtainCurrenciesOrResources",
     "chance": "1",
     "duration": "900",
-    "rewardPoints": "500"
+    "rewardPoints": "500",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "60",
@@ -700,7 +759,8 @@
     "questType": "obtainCurrenciesOrResources",
     "chance": "1",
     "duration": "3600",
-    "rewardPoints": "500"
+    "rewardPoints": "500",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "61",
@@ -711,7 +771,8 @@
     "questType": "obtainCurrenciesOrResources",
     "chance": "2",
     "duration": "900",
-    "rewardPoints": "550"
+    "rewardPoints": "550",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "62",
@@ -722,7 +783,8 @@
     "questType": "obtainUnits",
     "chance": "2",
     "duration": "86400",
-    "rewardPoints": "550"
+    "rewardPoints": "550",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "63",
@@ -733,7 +795,8 @@
     "questType": "obtainUnits",
     "chance": "2",
     "duration": "86400",
-    "rewardPoints": "550"
+    "rewardPoints": "550",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "64",
@@ -744,7 +807,8 @@
     "questType": "obtainUnits",
     "chance": "2",
     "duration": "86400",
-    "rewardPoints": "550"
+    "rewardPoints": "550",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "65",
@@ -755,7 +819,8 @@
     "questType": "obtainUnits",
     "chance": "2",
     "duration": "86400",
-    "rewardPoints": "550"
+    "rewardPoints": "550",
+    "cancelCostC2": "199"
   },
   {
     "allianceQuestID": "66",
@@ -767,6 +832,33 @@
     "questType": "obtainCurrenciesOrResources",
     "chance": "2",
     "duration": "3600",
-    "rewardPoints": "550"
+    "rewardPoints": "550",
+    "cancelCostC2": "199"
+  },
+  {
+    "allianceQuestID": "67",
+    "comment1": "AME",
+    "comment2": "gold tier",
+    "comment3": "KaelrithToken",
+    "comment4": "spendCurrency+5+6012",
+    "questID": "3666",
+    "questType": "spendCurrenciesOrResources",
+    "chance": "1",
+    "duration": "3600",
+    "rewardPoints": "440",
+    "cancelCostC2": "199"
+  },
+  {
+    "allianceQuestID": "68",
+    "comment1": "AME",
+    "comment2": "gold tier",
+    "comment3": "BarinToken",
+    "comment4": "spendCurrency+5+6013",
+    "questID": "3667",
+    "questType": "spendCurrenciesOrResources",
+    "chance": "1",
+    "duration": "3600",
+    "rewardPoints": "440",
+    "cancelCostC2": "199"
   }
 ]
