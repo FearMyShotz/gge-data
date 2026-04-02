@@ -838,5 +838,145 @@
     "donationTypeID": "2",
     "minPoints": "80800",
     "rewardID": "8597"
+  },
+  {
+    "donationRewardID": "121",
+    "rewardSetID": "7",
+    "donationTypeID": "1",
+    "minPoints": "25",
+    "rewardID": "8578"
+  },
+  {
+    "donationRewardID": "122",
+    "rewardSetID": "7",
+    "donationTypeID": "1",
+    "minPoints": "70",
+    "rewardID": "8579"
+  },
+  {
+    "donationRewardID": "123",
+    "rewardSetID": "7",
+    "donationTypeID": "1",
+    "minPoints": "125",
+    "rewardID": "8580"
+  },
+  {
+    "donationRewardID": "124",
+    "rewardSetID": "7",
+    "donationTypeID": "1",
+    "minPoints": "215",
+    "rewardID": "8581"
+  },
+  {
+    "donationRewardID": "125",
+    "rewardSetID": "7",
+    "donationTypeID": "1",
+    "minPoints": "365",
+    "rewardID": "8582"
+  },
+  {
+    "donationRewardID": "126",
+    "rewardSetID": "7",
+    "donationTypeID": "1",
+    "minPoints": "550",
+    "rewardID": "8583"
+  },
+  {
+    "donationRewardID": "127",
+    "rewardSetID": "7",
+    "donationTypeID": "1",
+    "minPoints": "800",
+    "rewardID": "8584"
+  },
+  {
+    "donationRewardID": "128",
+    "rewardSetID": "7",
+    "donationTypeID": "1",
+    "minPoints": "1160",
+    "rewardID": "8585"
+  },
+  {
+    "donationRewardID": "129",
+    "rewardSetID": "7",
+    "donationTypeID": "1",
+    "minPoints": "2175",
+    "rewardID": "8586"
+  },
+  {
+    "donationRewardID": "130",
+    "rewardSetID": "7",
+    "donationTypeID": "1",
+    "minPoints": "3995",
+    "rewardID": "8587"
+  },
+  {
+    "donationRewardID": "131",
+    "rewardSetID": "7",
+    "donationTypeID": "2",
+    "minPoints": "315",
+    "rewardID": "8588"
+  },
+  {
+    "donationRewardID": "132",
+    "rewardSetID": "7",
+    "donationTypeID": "2",
+    "minPoints": "1235",
+    "rewardID": "8589"
+  },
+  {
+    "donationRewardID": "133",
+    "rewardSetID": "7",
+    "donationTypeID": "2",
+    "minPoints": "3290",
+    "rewardID": "8590"
+  },
+  {
+    "donationRewardID": "134",
+    "rewardSetID": "7",
+    "donationTypeID": "2",
+    "minPoints": "6940",
+    "rewardID": "8591"
+  },
+  {
+    "donationRewardID": "135",
+    "rewardSetID": "7",
+    "donationTypeID": "2",
+    "minPoints": "12285",
+    "rewardID": "8592"
+  },
+  {
+    "donationRewardID": "136",
+    "rewardSetID": "7",
+    "donationTypeID": "2",
+    "minPoints": "19030",
+    "rewardID": "8593"
+  },
+  {
+    "donationRewardID": "137",
+    "rewardSetID": "7",
+    "donationTypeID": "2",
+    "minPoints": "28435",
+    "rewardID": "8594"
+  },
+  {
+    "donationRewardID": "138",
+    "rewardSetID": "7",
+    "donationTypeID": "2",
+    "minPoints": "41955",
+    "rewardID": "8595"
+  },
+  {
+    "donationRewardID": "139",
+    "rewardSetID": "7",
+    "donationTypeID": "2",
+    "minPoints": "56760",
+    "rewardID": "8596"
+  },
+  {
+    "donationRewardID": "140",
+    "rewardSetID": "7",
+    "donationTypeID": "2",
+    "minPoints": "82250",
+    "rewardID": "8597"
   }
 ]

@@ -714,5 +714,11 @@
     "Comment1": "ARE Necromancer Boss",
     "type": "Dungeonbaron",
     "wearerID": "1"
+  },
+  {
+    "lordID": "-401",
+    "Comment1": "ARE Fungal Swarm Boss",
+    "type": "Dungeonbaron",
+    "wearerID": "1"
   }
 ]

@@ -1295,5 +1295,54 @@
     "sortCategory": "6",
     "sortGroup": "42",
     "name": "raidBossWallRegeneration"
+  },
+  {
+    "effectTypeID": "208",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "47",
+    "name": "reserveUnitKill"
+  },
+  {
+    "effectTypeID": "209",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "43",
+    "name": "raidBossWallRegenerationDelayLeft"
+  },
+  {
+    "effectTypeID": "210",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "44",
+    "name": "raidBossWallRegenerationDelayFront"
+  },
+  {
+    "effectTypeID": "211",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "45",
+    "name": "raidBossWallRegenerationDelayRight"
+  },
+  {
+    "effectTypeID": "212",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "46",
+    "name": "raidBossWallRegenerationDelayAll"
+  },
+  {
+    "effectTypeID": "213",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "46",
+    "name": "spawnReserveUnit"
+  },
+  {
+    "effectTypeID": "214",
+    "combatType": "3",
+    "sortCategory": "6",
+    "sortGroup": "46",
+    "name": "mutateReserveUnit"
   }
 ]

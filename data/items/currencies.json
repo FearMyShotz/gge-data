@@ -1582,5 +1582,11 @@
     "Name": "LegendaryRiftCoin",
     "JSONKey": "LRC",
     "assetName": "LegendaryRiftCoin"
+  },
+  {
+    "currencyID": "87",
+    "Name": "CarnivalMask",
+    "JSONKey": "CMK",
+    "assetName": "CarnivalMask"
   }
 ]

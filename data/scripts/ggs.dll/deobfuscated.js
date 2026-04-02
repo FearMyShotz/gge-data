@@ -608,10 +608,10 @@ var ggs_lib = function (e) {
       return _;
     });
     n.d(t, "Power0", function () {
-      return d;
+      return m;
     });
     n.d(t, "Power1", function () {
-      return m;
+      return d;
     });
     n.d(t, "Power2", function () {
       return h;
@@ -654,7 +654,7 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      function d(e) {
+      function m(e) {
         var t;
         var n = e.split(".");
         var i = a;
@@ -663,7 +663,7 @@ var ggs_lib = function (e) {
         }
         return i;
       }
-      var m = d("com.greensock");
+      var d = m("com.greensock");
       function h(e) {
         var t;
         var n = [];
@@ -689,9 +689,9 @@ var ggs_lib = function (e) {
           var u;
           var c;
           var _;
-          for (var m = t.length, h = m; --m > -1;) {
-            if ((l = E[t[m]] || new C(t[m], [])).gsClass) {
-              r[m] = l.gsClass;
+          for (var d = t.length, h = d; --d > -1;) {
+            if ((l = E[t[d]] || new C(t[d], [])).gsClass) {
+              r[d] = l.gsClass;
               h--;
             } else if (o) {
               l.sc.push(this);
@@ -699,13 +699,13 @@ var ggs_lib = function (e) {
           }
           if (h === 0 && i) {
             c = (u = ("com.greensock." + e).split(".")).pop();
-            _ = d(u.join("."))[c] = this.gsClass = i.apply(i, r);
+            _ = m(u.join("."))[c] = this.gsClass = i.apply(i, r);
             if (s) {
               a[c] = n[c] = _;
             }
-            m = 0;
-            for (; m < this.sc.length; m++) {
-              this.sc[m].check();
+            d = 0;
+            for (; d < this.sc.length; d++) {
+              this.sc[d].check();
             }
           }
         };
@@ -714,7 +714,7 @@ var ggs_lib = function (e) {
       var f = e._gsDefine = function (e, t, n, i) {
         return new C(e, t, n, i);
       };
-      var T = m._class = function (e, t, n) {
+      var T = d._class = function (e, t, n) {
         t = t || function () {};
         f(e, [], function () {
           return t;
@@ -738,7 +738,7 @@ var ggs_lib = function (e) {
         var l = t.split(",");
         for (var u = l.length, c = (n || "easeIn,easeOut,easeInOut").split(","); --u > -1;) {
           s = l[u];
-          a = i ? T("easing." + s, null, true) : m.easing[s] || {};
+          a = i ? T("easing." + s, null, true) : d.easing[s] || {};
           r = c.length;
           while (--r > -1) {
             o = c[r];
@@ -781,8 +781,8 @@ var ggs_lib = function (e) {
         v(new y(null, null, 2, r), o, "easeIn" + (r === 0 ? ",easeNone" : ""));
         v(new y(null, null, 3, r), o, "easeInOut");
       }
-      I.linear = m.easing.Linear.easeIn;
-      I.swing = m.easing.Quad.easeInOut;
+      I.linear = d.easing.Linear.easeIn;
+      I.swing = d.easing.Quad.easeInOut;
       var A = T("events.EventDispatcher", function (e) {
         this._listeners = {};
         this._eventTarget = e || this;
@@ -868,14 +868,14 @@ var ggs_lib = function (e) {
         var o;
         var c = this;
         var _ = D();
-        var d = t !== false && !!O && "auto";
-        var m = 500;
+        var m = t !== false && !!O && "auto";
+        var d = 500;
         var h = 33;
         function g(e) {
           var t;
           var i;
           var l = D() - b;
-          if (l > m) {
+          if (l > d) {
             _ += l - h;
           }
           b += l;
@@ -900,14 +900,14 @@ var ggs_lib = function (e) {
         };
         c.lagSmoothing = function (e, t) {
           if (!arguments.length) {
-            return m < 10000000000;
+            return d < 10000000000;
           }
-          m = e || 10000000000;
-          h = Math.min(t, m, 0);
+          d = e || 10000000000;
+          h = Math.min(t, d, 0);
         };
         c.sleep = function () {
           if (s != null) {
-            if (d && L) {
+            if (m && L) {
               L(s);
             } else {
               clearTimeout(s);
@@ -925,9 +925,9 @@ var ggs_lib = function (e) {
           } else if (e) {
             _ += -b + (b = D());
           } else if (c.frame > 10) {
-            b = D() - m + 5;
+            b = D() - d + 5;
           }
-          a = n === 0 ? p : d && O ? O : function (e) {
+          a = n === 0 ? p : m && O ? O : function (e) {
             return setTimeout(e, (o - c.time) * 1000 + 1 | 0);
           };
           if (c === l) {
@@ -945,20 +945,20 @@ var ggs_lib = function (e) {
         };
         c.useRAF = function (e) {
           if (!arguments.length) {
-            return d;
+            return m;
           }
           c.sleep();
-          d = e;
+          m = e;
           c.fps(n);
         };
         c.fps(e);
         setTimeout(function () {
-          if (d === "auto" && c.frame < 5 && (i || {}).visibilityState !== "hidden") {
+          if (m === "auto" && c.frame < 5 && (i || {}).visibilityState !== "hidden") {
             c.useRAF(false);
           }
         }, 1500);
       });
-      (o = m.Ticker.prototype = new m.events.EventDispatcher()).constructor = m.Ticker;
+      (o = d.Ticker.prototype = new d.events.EventDispatcher()).constructor = d.Ticker;
       var N = T("core.Animation", function (e, t) {
         this.vars = t = t || {};
         this._duration = this._totalDuration = e || 0;
@@ -978,7 +978,7 @@ var ggs_lib = function (e) {
           }
         }
       });
-      l = N.ticker = new m.Ticker();
+      l = N.ticker = new d.Ticker();
       (o = N.prototype)._dirty = o._gc = o._initted = o._paused = false;
       o._totalTime = o._time = 0;
       o._rawPrevTime = -1;
@@ -1501,8 +1501,8 @@ var ggs_lib = function (e) {
         var u;
         var c;
         var _ = [];
-        var d = 0;
-        var m = "";
+        var m = 0;
+        var d = "";
         var h = 0;
         _.start = e;
         _.end = t;
@@ -1525,19 +1525,19 @@ var ggs_lib = function (e) {
         o = 0;
         for (; o < l; o++) {
           c = s[o];
-          m += (u = t.substr(d, t.indexOf(c, d) - d)) || !o ? u : ",";
-          d += u.length;
+          d += (u = t.substr(m, t.indexOf(c, m) - m)) || !o ? u : ",";
+          m += u.length;
           if (h) {
             h = (h + 1) % 5;
           } else if (u.substr(-5) === "rgba(") {
             h = 1;
           }
           if (c === a[o] || a.length <= o) {
-            m += c;
+            d += c;
           } else {
-            if (m) {
-              _.push(m);
-              m = "";
+            if (d) {
+              _.push(d);
+              d = "";
             }
             r = parseFloat(a[o]);
             _.push(r);
@@ -1551,10 +1551,10 @@ var ggs_lib = function (e) {
               m: h && h < 4 ? Math.round : 0
             };
           }
-          d += c.length;
+          m += c.length;
         }
-        if (m += t.substr(d)) {
-          _.push(m);
+        if (d += t.substr(m)) {
+          _.push(d);
         }
         _.setRatio = w;
         if (k.test(t)) {
@@ -1569,8 +1569,8 @@ var ggs_lib = function (e) {
         var u = typeof e[t];
         var c = u !== "function" ? "" : t.indexOf("set") || typeof e["get" + t.substr(3)] != "function" ? t : "get" + t.substr(3);
         var _ = n !== "get" ? n : c ? r ? e[c](r) : e[c]() : e[t];
-        var d = typeof i == "string" && i.charAt(1) === "=";
-        var m = {
+        var m = typeof i == "string" && i.charAt(1) === "=";
+        var d = {
           t: e,
           p: t,
           s: _,
@@ -1579,13 +1579,13 @@ var ggs_lib = function (e) {
           n: a || t,
           m: s ? typeof s == "function" ? s : Math.round : 0,
           pr: 0,
-          c: d ? parseInt(i.charAt(0) + "1", 10) * parseFloat(i.substr(2)) : parseFloat(i) - _ || 0
+          c: m ? parseInt(i.charAt(0) + "1", 10) * parseFloat(i.substr(2)) : parseFloat(i) - _ || 0
         };
-        if (typeof _ != "number" || typeof i != "number" && !d) {
-          if (r || isNaN(_) || !d && isNaN(i) || typeof _ == "boolean" || typeof i == "boolean") {
-            m.fp = r;
-            m = {
-              t: x(_, d ? parseFloat(m.s) + m.c + (m.s + "").replace(/[0-9\-\.]/g, "") : i, o || B.defaultStringFilter, m),
+        if (typeof _ != "number" || typeof i != "number" && !m) {
+          if (r || isNaN(_) || !m && isNaN(i) || typeof _ == "boolean" || typeof i == "boolean") {
+            d.fp = r;
+            d = {
+              t: x(_, m ? parseFloat(d.s) + d.c + (d.s + "").replace(/[0-9\-\.]/g, "") : i, o || B.defaultStringFilter, d),
               p: "setRatio",
               s: 0,
               c: 1,
@@ -1596,18 +1596,18 @@ var ggs_lib = function (e) {
               m: 0
             };
           } else {
-            m.s = parseFloat(_);
-            if (!d) {
-              m.c = parseFloat(i) - m.s || 0;
+            d.s = parseFloat(_);
+            if (!m) {
+              d.c = parseFloat(i) - d.s || 0;
             }
           }
         }
-        if (m.c) {
-          if (m._next = this._firstPT) {
-            m._next._prev = m;
+        if (d.c) {
+          if (d._next = this._firstPT) {
+            d._next._prev = d;
           }
-          this._firstPT = m;
-          return m;
+          this._firstPT = d;
+          return d;
         }
       }
       var H = B._internals = {
@@ -1775,23 +1775,23 @@ var ggs_lib = function (e) {
         var u;
         var c = t._startTime + 1e-10;
         var _ = [];
-        var d = 0;
-        var m = t._duration === 0;
+        var m = 0;
+        var d = t._duration === 0;
         for (s = a.length; --s > -1;) {
           if ((o = a[s]) !== t && !o._gc && !o._paused) {
             if (o._timeline !== t._timeline) {
-              u = u || te(t, 0, m);
-              if (te(o, u, m) === 0) {
-                _[d++] = o;
+              u = u || te(t, 0, d);
+              if (te(o, u, d) === 0) {
+                _[m++] = o;
               }
             } else if (o._startTime <= c && o._startTime + o.totalDuration() / o._timeScale > c) {
-              if (!m && !!o._initted || !(c - o._startTime <= 2e-10)) {
-                _[d++] = o;
+              if (!d && !!o._initted || !(c - o._startTime <= 2e-10)) {
+                _[m++] = o;
               }
             }
           }
         }
-        for (s = d; --s > -1;) {
+        for (s = m; --s > -1;) {
           l = (o = _[s])._firstPT;
           if (i === 2 && o._kill(n, e, t)) {
             r = true;
@@ -2062,20 +2062,20 @@ var ggs_lib = function (e) {
           if (this._easeType) {
             var c = e / l;
             var _ = this._easeType;
-            var d = this._easePower;
+            var m = this._easePower;
             if (_ === 1 || _ === 3 && c >= 0.5) {
               c = 1 - c;
             }
             if (_ === 3) {
               c *= 2;
             }
-            if (d === 1) {
+            if (m === 1) {
               c *= c;
-            } else if (d === 2) {
+            } else if (m === 2) {
               c *= c * c;
-            } else if (d === 3) {
+            } else if (m === 3) {
               c *= c * c * c;
-            } else if (d === 4) {
+            } else if (m === 4) {
               c *= c * c * c * c;
             }
             this.ratio = _ === 1 ? 1 - c : _ === 2 ? c : e / l < 0.5 ? c / 2 : 1 - c / 2;
@@ -2182,8 +2182,8 @@ var ggs_lib = function (e) {
         var u;
         var c;
         var _;
-        var d = n && this._time && n._startTime === this._startTime && this._timeline === n._timeline;
-        var m = this._firstPT;
+        var m = n && this._time && n._startTime === this._startTime && this._timeline === n._timeline;
+        var d = this._firstPT;
         if ((g(t) || M(t)) && typeof t[0] != "number") {
           for (i = t.length; --i > -1;) {
             if (this._kill(e, t[i], n)) {
@@ -2223,7 +2223,7 @@ var ggs_lib = function (e) {
             }
             for (s in u) {
               if (r = o[s]) {
-                if (d) {
+                if (m) {
                   if (r.f) {
                     r.t[r.p](r.s);
                   } else {
@@ -2251,7 +2251,7 @@ var ggs_lib = function (e) {
                 a[s] = 1;
               }
             }
-            if (!this._firstPT && this._initted && m) {
+            if (!this._firstPT && this._initted && d) {
               this._enabled(false, false);
             }
           }
@@ -2512,8 +2512,8 @@ var ggs_lib = function (e) {
     var u = o.core.Animation;
     var c = r.Ease;
     var _ = r.Linear;
-    var d = _;
-    var m = r.Power1;
+    var m = _;
+    var d = r.Power1;
     var h = r.Power2;
     var p = r.Power3;
     var g = r.Power4;
@@ -2609,10 +2609,10 @@ var ggs_lib = function (e) {
   n(556);
   var _ = n(557);
   t.Timer = _.Timer;
-  var d = n(137);
-  t.RuntimeType = d.RuntimeType;
   var m = n(137);
-  t.OperatingSystemType = m.OperatingSystemType;
+  t.RuntimeType = m.RuntimeType;
+  var d = n(137);
+  t.OperatingSystemType = d.OperatingSystemType;
   var h = n(137);
   t.Capabilities = h.Capabilities;
   var p = n(228);
@@ -2722,10 +2722,10 @@ var ggs_lib = function (e) {
   t.StyleSheet = ce.StyleSheet;
   var _e = n(589);
   t.Font = _e.Font;
-  var de = n(590);
-  t.TextSnapshot = de.TextSnapshot;
-  var me = n(234);
-  t.TextLineMetrics = me.TextLineMetrics;
+  var me = n(590);
+  t.TextSnapshot = me.TextSnapshot;
+  var de = n(234);
+  t.TextLineMetrics = de.TextLineMetrics;
   var he = n(591);
   t.Sound = he.Sound;
   var pe = n(237);
@@ -3061,8 +3061,8 @@ var ggs_lib = function (e) {
   var u = n(114);
   var c = n(117);
   var _ = n(4);
-  var d = n(156);
-  var m = n(25);
+  var m = n(156);
+  var d = n(25);
   var h = n(2);
   var p = n(29);
   var g = n(56);
@@ -3101,7 +3101,7 @@ var ggs_lib = function (e) {
     };
     BasicController.prototype.onLogOut = function () {
       f.debug("onLogOut()");
-      d.ConnectionTrackingUtil.instance.dispose();
+      m.ConnectionTrackingUtil.instance.dispose();
       if (this.soundController) {
         this.soundController.stopMusic();
         this.soundController.stopAllLoopedSoundEffects();
@@ -3221,7 +3221,7 @@ var ggs_lib = function (e) {
     };
     Object.defineProperty(BasicController.prototype, "layoutManager", {
       get: function () {
-        return m.BasicLayoutManager.getInstance();
+        return d.BasicLayoutManager.getInstance();
       },
       enumerable: true,
       configurable: true
@@ -3410,10 +3410,10 @@ var ggs_lib = function (e) {
     return _;
   });
   n.d(t, "Sine", function () {
-    return d;
+    return m;
   });
   n.d(t, "ExpoScaleEase", function () {
-    return m;
+    return d;
   });
   var i = n(1);
   n.d(t, "Linear", function () {
@@ -3463,7 +3463,7 @@ var ggs_lib = function (e) {
       return n;
     }
     var _ = i.Ease.register || function () {};
-    function d(e, t, n, i, a) {
+    function m(e, t, n, i, a) {
       var s = u("easing." + e, {
         easeOut: new t(),
         easeIn: new n(),
@@ -3472,7 +3472,7 @@ var ggs_lib = function (e) {
       _(s, e);
       return s;
     }
-    function m(e, t, n) {
+    function d(e, t, n) {
       this.t = e;
       this.v = t;
       if (n) {
@@ -3495,7 +3495,7 @@ var ggs_lib = function (e) {
       };
       return n;
     }
-    var p = d("Back", h("BackOut", function (e) {
+    var p = m("Back", h("BackOut", function (e) {
       return (e -= 1) * e * ((this._p1 + 1) * e + this._p1) + 1;
     }), h("BackIn", function (e) {
       return e * e * ((this._p1 + 1) * e - this._p1);
@@ -3592,13 +3592,13 @@ var ggs_lib = function (e) {
       var u = [];
       var c = 0;
       var _ = (e.points || 20) | 0;
-      for (var d = _, h = e.randomize !== false, p = e.clamp === true, g = e.template instanceof i.Ease ? e.template : null, E = typeof e.strength == "number" ? e.strength * 0.4 : 0.4; --d > -1;) {
-        t = h ? Math.random() : 1 / _ * d;
+      for (var m = _, h = e.randomize !== false, p = e.clamp === true, g = e.template instanceof i.Ease ? e.template : null, E = typeof e.strength == "number" ? e.strength * 0.4 : 0.4; --m > -1;) {
+        t = h ? Math.random() : 1 / _ * m;
         n = g ? g.getRatio(t) : t;
         a = l === "none" ? E : l === "out" ? (s = 1 - t) * s * E : l === "in" ? t * t * E : t < 0.5 ? (s = t * 2) * s * 0.5 * E : (s = (1 - t) * 2) * s * 0.5 * E;
         if (h) {
           n += Math.random() * a - a * 0.5;
-        } else if (d % 2) {
+        } else if (m % 2) {
           n += a * 0.5;
         } else {
           n -= a * 0.5;
@@ -3618,13 +3618,13 @@ var ggs_lib = function (e) {
       u.sort(function (e, t) {
         return e.x - t.x;
       });
-      o = new m(1, 1, null);
-      d = _;
-      while (--d > -1) {
-        r = u[d];
-        o = new m(r.x, r.y, o);
+      o = new d(1, 1, null);
+      m = _;
+      while (--m > -1) {
+        r = u[m];
+        o = new d(r.x, r.y, o);
       }
-      this._prev = new m(0, 0, o.t !== 0 ? o : o.next);
+      this._prev = new d(0, 0, o.t !== 0 ? o : o.next);
     }, true)).prototype = new i.Ease()).constructor = n;
     E.getRatio = function (e) {
       var t = this._prev;
@@ -3645,7 +3645,7 @@ var ggs_lib = function (e) {
       return new n(e);
     };
     n.ease = new n();
-    d("Bounce", c("BounceOut", function (e) {
+    m("Bounce", c("BounceOut", function (e) {
       if (e < 1 / 2.75) {
         return e * 7.5625 * e;
       } else if (e < 2 / 2.75) {
@@ -3678,7 +3678,7 @@ var ggs_lib = function (e) {
         return e * 0.5 + 0.5;
       }
     }));
-    d("Circ", c("CircOut", function (e) {
+    m("Circ", c("CircOut", function (e) {
       return Math.sqrt(1 - (e -= 1) * e);
     }), c("CircIn", function (e) {
       return -(Math.sqrt(1 - e * e) - 1);
@@ -3689,7 +3689,7 @@ var ggs_lib = function (e) {
         return (Math.sqrt(1 - (e -= 2) * e) + 1) * 0.5;
       }
     }));
-    d("Elastic", (a = function (e, t, n) {
+    m("Elastic", (a = function (e, t, n) {
       var a = u("easing." + e, function (e, t) {
         this._p1 = e >= 1 ? e : 1;
         this._p2 = (t || n) / (e < 1 ? e : 1);
@@ -3714,7 +3714,7 @@ var ggs_lib = function (e) {
         return this._p1 * Math.pow(2, (e -= 1) * -10) * Math.sin((e - this._p3) * this._p2) * 0.5 + 1;
       }
     }, 0.45));
-    d("Expo", c("ExpoOut", function (e) {
+    m("Expo", c("ExpoOut", function (e) {
       return 1 - Math.pow(2, e * -10);
     }), c("ExpoIn", function (e) {
       return Math.pow(2, (e - 1) * 10) - 0.001;
@@ -3725,7 +3725,7 @@ var ggs_lib = function (e) {
         return (2 - Math.pow(2, (e - 1) * -10)) * 0.5;
       }
     }));
-    d("Sine", c("SineOut", function (e) {
+    m("Sine", c("SineOut", function (e) {
       return Math.sin(e * l);
     }), c("SineIn", function (e) {
       return 1 - Math.cos(e * l);
@@ -3750,8 +3750,8 @@ var ggs_lib = function (e) {
   var u = i.globals.SteppedEase;
   var c = i.globals.Circ;
   var _ = i.globals.Expo;
-  var d = i.globals.Sine;
-  var m = i.globals.ExpoScaleEase;
+  var m = i.globals.Sine;
+  var d = i.globals.ExpoScaleEase;
 }, function (e, t, n) {
   'use strict';
 
@@ -4130,8 +4130,8 @@ var ggs_lib = function (e) {
   var u = n(292);
   var c = n(294);
   var _ = n(295);
-  var d = n(296);
-  var m = n(297);
+  var m = n(296);
+  var d = n(297);
   var h = n(298);
   var p = n(299);
   var g = n(300);
@@ -4180,9 +4180,9 @@ var ggs_lib = function (e) {
       this._currentCache.set(i.TrackingEventIds.WORLD_ASSIGNMENT, new u.WorldAssignmentTrackingEvent(n));
       this._currentCache.set(i.TrackingEventIds.PROFILING, new c.ProfilingTrackingEvent(n));
       this._currentCache.set(i.TrackingEventIds.GAME_PAYMENT_SHOP_CLICK, new _.GamePaymentShopClickEvent(n));
-      this._currentCache.set(i.TrackingEventIds.DESKTOP_DEVICE_INFORMATION, new d.DesktopDeviceInformationTrackingEvent(n));
+      this._currentCache.set(i.TrackingEventIds.DESKTOP_DEVICE_INFORMATION, new m.DesktopDeviceInformationTrackingEvent(n));
       this._currentCache.set(i.TrackingEventIds.BROWSER_STATE, new N.BrowserStateFullscreenTrackingEvent(n));
-      this._currentCache.set(i.TrackingEventIds.SHOP_CHECKOUT, new m.ShopCheckoutTrackingEvent(n));
+      this._currentCache.set(i.TrackingEventIds.SHOP_CHECKOUT, new d.ShopCheckoutTrackingEvent(n));
       this._currentCache.set(i.TrackingEventIds.IN_GAME_PERFORMANCE, new h.InGamePerformanceEvent(n));
       this._currentCache.set(i.TrackingEventIds.INVITATION, new p.InvitationTrackingEvent(n));
       this._currentCache.set(i.TrackingEventIds.FACEBOOK_CONNECTION, new g.FacebookConnectionTrackingEvent(n));
@@ -4318,10 +4318,10 @@ var ggs_lib = function (e) {
   t.LanguageVO = c.LanguageVO;
   var _ = n(733);
   t.LocalizedDateTimeVO = _.LocalizedDateTimeVO;
-  var d = n(734);
-  t.LocalizedNumberVO = d.LocalizedNumberVO;
-  var m = n(735);
-  t.LocalizedTextVO = m.LocalizedTextVO;
+  var m = n(734);
+  t.LocalizedNumberVO = m.LocalizedNumberVO;
+  var d = n(735);
+  t.LocalizedTextVO = d.LocalizedTextVO;
   var h = n(319);
   t.LocalizedTimeFormatVO = h.LocalizedTimeFormatVO;
   var p = n(736);
@@ -4447,10 +4447,10 @@ var ggs_lib = function (e) {
   t.OnceSignal = c.OnceSignal;
   var _ = n(270);
   t.PrioritySignal = _.PrioritySignal;
-  var d = n(711);
-  t.Promise = d.Promise;
-  var m = n(271);
-  t.Signal = m.Signal;
+  var m = n(711);
+  t.Promise = m.Promise;
+  var d = n(271);
+  t.Signal = d.Signal;
   var h = n(116);
   t.Slot = h.Slot;
   var p = n(272);
@@ -4694,8 +4694,8 @@ var ggs_lib = function (e) {
   var u = n(325);
   var c = n(18);
   var _ = n(3);
-  var d = createjs.StageQuality;
-  var m = createjs.Event;
+  var m = createjs.StageQuality;
+  var d = createjs.Event;
   var h = createjs.MouseEvent;
   var p = createjs.Container;
   var g = n(2).getLogger("BasicLayoutManager");
@@ -4731,8 +4731,8 @@ var ggs_lib = function (e) {
       }
     };
     BasicLayoutManager.prototype.initialize = function (e) {
-      this.addEventListener(m.ADDED_TO_STAGE, this.bindFunction(this.onAddedToStage));
-      this.addEventListener(m.ENTER_FRAME, this.bindFunction(this.onEnterFrame));
+      this.addEventListener(d.ADDED_TO_STAGE, this.bindFunction(this.onAddedToStage));
+      this.addEventListener(d.ENTER_FRAME, this.bindFunction(this.onEnterFrame));
       while (this.numChildren > 0) {
         this.removeChildAt(0);
       }
@@ -4811,20 +4811,20 @@ var ggs_lib = function (e) {
     };
     BasicLayoutManager.prototype.onAddedToStage = function (e) {
       g.debug("basicLayoutManager.onAddedToStage");
-      this.removeEventListener(m.ADDED_TO_STAGE, this.bindFunction(this.onAddedToStage));
+      this.removeEventListener(d.ADDED_TO_STAGE, this.bindFunction(this.onAddedToStage));
       this.addEventListener(h.MOUSE_UP, this.bindFunction(this.onMouseUp));
     };
     BasicLayoutManager.prototype.changeQualityLevel = function (e) {
       switch (e) {
         default:
         case BasicLayoutManager.QUALITY_HIGH:
-          BasicLayoutManager.layoutManager.stage.quality = d.BEST;
+          BasicLayoutManager.layoutManager.stage.quality = m.BEST;
           break;
         case BasicLayoutManager.QUALITY_MEDIUM:
-          BasicLayoutManager.layoutManager.stage.quality = d.MEDIUM;
+          BasicLayoutManager.layoutManager.stage.quality = m.MEDIUM;
           break;
         case BasicLayoutManager.QUALITY_LOW:
-          BasicLayoutManager.layoutManager.stage.quality = d.LOW;
+          BasicLayoutManager.layoutManager.stage.quality = m.LOW;
       }
     };
     BasicLayoutManager.prototype.getScreen = function (e) {
@@ -5962,10 +5962,10 @@ var ggs_lib = function (e) {
   t.ABTest = c.ABTest;
   var _ = n(418);
   t.ABTestController = _.ABTestController;
-  var d = n(179);
-  t.ABTestData = d.ABTestData;
-  var m = n(173);
-  t.ConfigFilesVersionsModel = m.ConfigFilesVersionsModel;
+  var m = n(179);
+  t.ABTestData = m.ABTestData;
+  var d = n(173);
+  t.ConfigFilesVersionsModel = d.ConfigFilesVersionsModel;
   var h = n(778);
   t.XMLInterfaceObjectFactory = h.XMLInterfaceObjectFactory;
   var p = n(779);
@@ -6070,10 +6070,10 @@ var ggs_lib = function (e) {
   t.BasicSocialLoginCommand = ce.BasicSocialLoginCommand;
   var _e = n(815);
   t.BasicTestCaseInfoCommand = _e.BasicTestCaseInfoCommand;
-  var de = n(382);
-  t.BasicTrackRegistrationDataCommand = de.BasicTrackRegistrationDataCommand;
-  var me = n(816);
-  t.BasicVerifyPlayerMailCommand = me.BasicVerifyPlayerMailCommand;
+  var me = n(382);
+  t.BasicTrackRegistrationDataCommand = me.BasicTrackRegistrationDataCommand;
+  var de = n(816);
+  t.BasicVerifyPlayerMailCommand = de.BasicVerifyPlayerMailCommand;
   var he = n(383);
   t.ChooseLoginMethodCommand = he.ChooseLoginMethodCommand;
   var pe = n(384);
@@ -6178,10 +6178,10 @@ var ggs_lib = function (e) {
   t.TCICommand = ct.TCICommand;
   var _t = n(446);
   t.VCKCommand = _t.VCKCommand;
-  var dt = n(445);
-  t.VPMCommand = dt.VPMCommand;
-  var mt = n(68);
-  t.BasicErrorConstants = mt.BasicErrorConstants;
+  var mt = n(445);
+  t.VPMCommand = mt.VPMCommand;
+  var dt = n(68);
+  t.BasicErrorConstants = dt.BasicErrorConstants;
   var ht = n(450);
   t.BasicC2SRegisterUserVO = ht.BasicC2SRegisterUserVO;
   var pt = n(832);
@@ -6284,10 +6284,10 @@ var ggs_lib = function (e) {
   t.TestCaseInfoEvent = cn.TestCaseInfoEvent;
   var _n = n(400);
   t.BasicFacebookConnectCommand = _n.BasicFacebookConnectCommand;
-  var dn = n(401);
-  t.BasicInitializeFacebookConnectCommand = dn.BasicInitializeFacebookConnectCommand;
-  var mn = n(178);
-  t.FacebookSettings = mn.FacebookSettings;
+  var mn = n(401);
+  t.BasicInitializeFacebookConnectCommand = mn.BasicInitializeFacebookConnectCommand;
+  var dn = n(178);
+  t.FacebookSettings = dn.FacebookSettings;
   var hn = n(405);
   t.GoodgameLoader = hn.GoodgameLoader;
   var pn = n(406);
@@ -6392,10 +6392,10 @@ var ggs_lib = function (e) {
   t.BasicToolTipManager = ci.BasicToolTipManager;
   var _i = n(40);
   t.CommonDialogNames = _i.CommonDialogNames;
-  var di = n(100);
-  t.FlashUIComponent = di.FlashUIComponent;
-  var mi = n(268);
-  t.Stats = mi.Stats;
+  var mi = n(100);
+  t.FlashUIComponent = mi.FlashUIComponent;
+  var di = n(268);
+  t.Stats = di.Stats;
   var hi = n(478);
   t.CountryPickerButton = hi.CountryPickerButton;
   var pi = n(864);
@@ -6502,10 +6502,10 @@ var ggs_lib = function (e) {
   t.IncentiveVO = ca.IncentiveVO;
   var _a = n(880);
   t.AbstractCamera = _a.AbstractCamera;
-  var da = n(487);
-  t.CameraTargetPoint = da.CameraTargetPoint;
-  var ma = n(336);
-  t.PathFactory = ma.PathFactory;
+  var ma = n(487);
+  t.CameraTargetPoint = ma.CameraTargetPoint;
+  var da = n(336);
+  t.PathFactory = da.PathFactory;
   var ha = n(458);
   t.BaseEnvironmentPatterns = ha.BaseEnvironmentPatterns;
   var pa = n(23);
@@ -6610,10 +6610,10 @@ var ggs_lib = function (e) {
   t.PolicyPingTest = cs.PolicyPingTest;
   var _s = n(901);
   t.ObserverManager = _s.ObserverManager;
-  var ds = n(490);
-  t.IndexedPriorityQueue = ds.IndexedPriorityQueue;
-  var ms = n(128);
-  t.IntPoint = ms.IntPoint;
+  var ms = n(490);
+  t.IndexedPriorityQueue = ms.IndexedPriorityQueue;
+  var ds = n(128);
+  t.IntPoint = ds.IntPoint;
   var hs = n(902);
   t.IntRectangle = hs.IntRectangle;
   var ps = n(903);
@@ -6720,10 +6720,10 @@ var ggs_lib = function (e) {
   t.GoodgameBitmapEngine = cr.GoodgameBitmapEngine;
   var _r = n(198);
   t.ClipLayerInfo = _r.ClipLayerInfo;
-  var dr = n(193);
-  t.LayerInfo = dr.LayerInfo;
-  var mr = n(194);
-  t.ClipCacheController = mr.ClipCacheController;
+  var mr = n(193);
+  t.LayerInfo = mr.LayerInfo;
+  var dr = n(194);
+  t.ClipCacheController = dr.ClipCacheController;
   var hr = n(126);
   t.AbstractDisplayObjectClip = hr.AbstractDisplayObjectClip;
   var pr = n(190);
@@ -6934,10 +6934,10 @@ var ggs_lib = function (e) {
   t.ItemList = cl.ItemList;
   var _l = n(960);
   t.ItemScrollList = _l.ItemScrollList;
-  var dl = n(961);
-  t.ScrollItem = dl.ScrollItem;
-  var ml = n(129);
-  t.ScrollItemEvent = ml.ScrollItemEvent;
+  var ml = n(961);
+  t.ScrollItem = ml.ScrollItem;
+  var dl = n(129);
+  t.ScrollItemEvent = dl.ScrollItemEvent;
   var hl = n(962);
   t.ScrollItemVO = hl.ScrollItemVO;
   var pl = n(963);
@@ -7175,18 +7175,18 @@ var ggs_lib = function (e) {
       delete e.cycle;
     }
     var _ = n.pauseCallback = function () {};
-    function d(e) {
+    function m(e) {
       var t;
       var n = [];
       var i = e.length;
       for (t = 0; t !== i; n.push(e[t++]));
       return n;
     }
-    var m = e.prototype = new i.SimpleTimeline();
+    var d = e.prototype = new i.SimpleTimeline();
     e.version = "2.0.2";
-    m.constructor = e;
-    m.kill()._gc = m._forcingPlayhead = m._hasPause = false;
-    m.to = function (e, t, n, a) {
+    d.constructor = e;
+    d.kill()._gc = d._forcingPlayhead = d._hasPause = false;
+    d.to = function (e, t, n, a) {
       var s = n.repeat && l.TweenMax || i.default;
       if (t) {
         return this.add(new s(e, t, n), a);
@@ -7194,10 +7194,10 @@ var ggs_lib = function (e) {
         return this.set(e, n, a);
       }
     };
-    m.from = function (e, t, n, a) {
+    d.from = function (e, t, n, a) {
       return this.add((n.repeat && l.TweenMax || i.default).from(e, t, n), a);
     };
-    m.fromTo = function (e, t, n, a, s) {
+    d.fromTo = function (e, t, n, a, s) {
       var r = a.repeat && l.TweenMax || i.default;
       if (t) {
         return this.add(r.fromTo(e, t, n, a), s);
@@ -7205,13 +7205,13 @@ var ggs_lib = function (e) {
         return this.set(e, a, s);
       }
     };
-    m.staggerTo = function (t, n, s, r, o, l, _, m) {
+    d.staggerTo = function (t, n, s, r, o, l, _, d) {
       var h;
       var p;
       var g = new e({
         onComplete: l,
         onCompleteParams: _,
-        callbackScope: m,
+        callbackScope: d,
         smoothChildTiming: this.smoothChildTiming
       });
       var E = s.cycle;
@@ -7219,10 +7219,10 @@ var ggs_lib = function (e) {
         t = i.default.selector(t) || t;
       }
       if (a(t = t || [])) {
-        t = d(t);
+        t = m(t);
       }
       if ((r = r || 0) < 0) {
-        (t = d(t)).reverse();
+        (t = m(t)).reverse();
         r *= -1;
       }
       p = 0;
@@ -7244,20 +7244,20 @@ var ggs_lib = function (e) {
       }
       return this.add(g, o);
     };
-    m.staggerFrom = function (e, t, n, i, a, s, r, o) {
+    d.staggerFrom = function (e, t, n, i, a, s, r, o) {
       n.immediateRender = n.immediateRender != 0;
       n.runBackwards = true;
       return this.staggerTo(e, t, n, i, a, s, r, o);
     };
-    m.staggerFromTo = function (e, t, n, i, a, s, r, o, l) {
+    d.staggerFromTo = function (e, t, n, i, a, s, r, o, l) {
       i.startAt = n;
       i.immediateRender = i.immediateRender != 0 && n.immediateRender != 0;
       return this.staggerTo(e, t, i, a, s, r, o, l);
     };
-    m.call = function (e, t, n, a) {
+    d.call = function (e, t, n, a) {
       return this.add(i.default.delayedCall(0, e, t, n), a);
     };
-    m.set = function (e, t, n) {
+    d.set = function (e, t, n) {
       n = this._parseTimeOrLabel(n, 0, true);
       if (t.immediateRender == null) {
         t.immediateRender = n === this._time && !this._paused;
@@ -7297,13 +7297,13 @@ var ggs_lib = function (e) {
       }
       return l;
     };
-    m.add = function (t, n, a, r) {
+    d.add = function (t, n, a, r) {
       var o;
       var l;
       var u;
       var c;
       var _;
-      var d;
+      var m;
       if (typeof n != "number") {
         n = this._parseTimeOrLabel(n, 0, true, t);
       }
@@ -7348,8 +7348,8 @@ var ggs_lib = function (e) {
         }
       }
       if ((this._gc || this._time === this._duration) && !this._paused && this._duration < this.duration()) {
-        for (d = (_ = this).rawTime() > t._startTime; _._timeline;) {
-          if (d && _._timeline.smoothChildTiming) {
+        for (m = (_ = this).rawTime() > t._startTime; _._timeline;) {
+          if (m && _._timeline.smoothChildTiming) {
             _.totalTime(_._totalTime, true);
           } else if (_._gc) {
             _._enabled(true, false);
@@ -7359,7 +7359,7 @@ var ggs_lib = function (e) {
       }
       return this;
     };
-    m.remove = function (e) {
+    d.remove = function (e) {
       if (e instanceof i.Animation) {
         this._remove(e, false);
         var t = e._timeline = e.vars.useFrames ? i.Animation._rootFramesTimeline : i.Animation._rootTimeline;
@@ -7378,7 +7378,7 @@ var ggs_lib = function (e) {
         return this.kill(null, e);
       }
     };
-    m._remove = function (e, t) {
+    d._remove = function (e, t) {
       i.SimpleTimeline.prototype._remove.call(this, e, t);
       if (this._last) {
         if (this._time > this.duration()) {
@@ -7390,34 +7390,34 @@ var ggs_lib = function (e) {
       }
       return this;
     };
-    m.append = function (e, t) {
+    d.append = function (e, t) {
       return this.add(e, this._parseTimeOrLabel(null, t, true, e));
     };
-    m.insert = m.insertMultiple = function (e, t, n, i) {
+    d.insert = d.insertMultiple = function (e, t, n, i) {
       return this.add(e, t || 0, n, i);
     };
-    m.appendMultiple = function (e, t, n, i) {
+    d.appendMultiple = function (e, t, n, i) {
       return this.add(e, this._parseTimeOrLabel(null, t, true, e), n, i);
     };
-    m.addLabel = function (e, t) {
+    d.addLabel = function (e, t) {
       this._labels[e] = this._parseTimeOrLabel(t);
       return this;
     };
-    m.addPause = function (e, t, n, a) {
+    d.addPause = function (e, t, n, a) {
       var s = i.default.delayedCall(0, _, n, a || this);
       s.vars.onComplete = s.vars.onReverseComplete = t;
       s.data = "isPause";
       this._hasPause = true;
       return this.add(s, e);
     };
-    m.removeLabel = function (e) {
+    d.removeLabel = function (e) {
       delete this._labels[e];
       return this;
     };
-    m.getLabelTime = function (e) {
+    d.getLabelTime = function (e) {
       return this._labels[e] ?? -1;
     };
-    m._parseTimeOrLabel = function (e, t, n, a) {
+    d._parseTimeOrLabel = function (e, t, n, a) {
       var r;
       var o;
       if (a instanceof i.Animation && a.timeline === this) {
@@ -7455,19 +7455,19 @@ var ggs_lib = function (e) {
       }
       return Number(e) + t;
     };
-    m.seek = function (e, t) {
+    d.seek = function (e, t) {
       return this.totalTime(typeof e == "number" ? e : this._parseTimeOrLabel(e), t !== false);
     };
-    m.stop = function () {
+    d.stop = function () {
       return this.paused(true);
     };
-    m.gotoAndPlay = function (e, t) {
+    d.gotoAndPlay = function (e, t) {
       return this.play(e, t);
     };
-    m.gotoAndStop = function (e, t) {
+    d.gotoAndStop = function (e, t) {
       return this.pause(e, t);
     };
-    m.render = function (e, t, n) {
+    d.render = function (e, t, n) {
       if (this._gc) {
         this._enabled(true, false);
       }
@@ -7478,16 +7478,16 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var d = this._time;
-      var m = this._dirty ? this.totalDuration() : this._totalDuration;
+      var m = this._time;
+      var d = this._dirty ? this.totalDuration() : this._totalDuration;
       var h = this._startTime;
       var p = this._timeScale;
       var g = this._paused;
-      if (d !== this._time) {
-        e += this._time - d;
+      if (m !== this._time) {
+        e += this._time - m;
       }
-      if (e >= m - 1e-7 && e >= 0) {
-        this._totalTime = this._time = m;
+      if (e >= d - 1e-7 && e >= 0) {
+        this._totalTime = this._time = d;
         if (!this._reversed && !this._hasPausedChild()) {
           a = true;
           l = "onComplete";
@@ -7500,10 +7500,10 @@ var ggs_lib = function (e) {
           }
         }
         this._rawPrevTime = this._duration || !t || e || this._rawPrevTime === e ? e : 1e-10;
-        e = m + 0.0001;
+        e = d + 0.0001;
       } else if (e < 1e-7) {
         this._totalTime = this._time = 0;
-        if (d !== 0 || this._duration === 0 && this._rawPrevTime !== 1e-10 && (this._rawPrevTime > 0 || e < 0 && this._rawPrevTime >= 0)) {
+        if (m !== 0 || this._duration === 0 && this._rawPrevTime !== 1e-10 && (this._rawPrevTime > 0 || e < 0 && this._rawPrevTime >= 0)) {
           l = "onReverseComplete";
           a = this._reversed;
         }
@@ -7533,7 +7533,7 @@ var ggs_lib = function (e) {
         }
       } else {
         if (this._hasPause && !this._forcingPlayhead && !t) {
-          if (e >= d) {
+          if (e >= m) {
             for (i = this._first; i && i._startTime <= e && !c;) {
               if (!i._duration && i.data === "isPause" && !i.ratio && (i._startTime !== 0 || this._rawPrevTime !== 0)) {
                 c = i;
@@ -7557,19 +7557,19 @@ var ggs_lib = function (e) {
         }
         this._totalTime = this._time = this._rawPrevTime = e;
       }
-      if (this._time !== d && this._first || n || u || c) {
+      if (this._time !== m && this._first || n || u || c) {
         this._initted ||= true;
         if (!this._active) {
-          if (!this._paused && this._time !== d && e > 0) {
+          if (!this._paused && this._time !== m && e > 0) {
             this._active = true;
           }
         }
-        if (d === 0 && this.vars.onStart) {
+        if (m === 0 && this.vars.onStart) {
           if ((this._time !== 0 || !this._duration) && !t) {
             this._callback("onStart");
           }
         }
-        if ((_ = this._time) >= d) {
+        if ((_ = this._time) >= m) {
           for (i = this._first; i && (s = i._next, _ === this._time && (!this._paused || g));) {
             if (i._active || i._startTime <= _ && !i._paused && !i._gc) {
               if (c === i) {
@@ -7585,7 +7585,7 @@ var ggs_lib = function (e) {
           }
         } else {
           for (i = this._last; i && (s = i._prev, _ === this._time && (!this._paused || g));) {
-            if (i._active || i._startTime <= d && !i._paused && !i._gc) {
+            if (i._active || i._startTime <= m && !i._paused && !i._gc) {
               if (c === i) {
                 for (c = i._prev; c && c.endTime() > this._time;) {
                   c.render(c._reversed ? c.totalDuration() - (e - c._startTime) * c._timeScale : (e - c._startTime) * c._timeScale, t, n);
@@ -7613,7 +7613,7 @@ var ggs_lib = function (e) {
         }
         if (l) {
           if (!this._gc && (h === this._startTime || p !== this._timeScale)) {
-            if (this._time === 0 || m >= this.totalDuration()) {
+            if (this._time === 0 || d >= this.totalDuration()) {
               if (a) {
                 if (r.length) {
                   o();
@@ -7631,7 +7631,7 @@ var ggs_lib = function (e) {
         }
       }
     };
-    m._hasPausedChild = function () {
+    d._hasPausedChild = function () {
       for (var t = this._first; t;) {
         if (t._paused || t instanceof e && t._hasPausedChild()) {
           return true;
@@ -7640,7 +7640,7 @@ var ggs_lib = function (e) {
       }
       return false;
     };
-    m.getChildren = function (e, t, n, a) {
+    d.getChildren = function (e, t, n, a) {
       a = a || -9999999999;
       var s = [];
       for (var r = this._first, o = 0; r;) {
@@ -7662,7 +7662,7 @@ var ggs_lib = function (e) {
       }
       return s;
     };
-    m.getTweensOf = function (e, t) {
+    d.getTweensOf = function (e, t) {
       var n;
       var a;
       var s = this._gc;
@@ -7682,10 +7682,10 @@ var ggs_lib = function (e) {
       }
       return r;
     };
-    m.recent = function () {
+    d.recent = function () {
       return this._recent;
     };
-    m._contains = function (e) {
+    d._contains = function (e) {
       for (var t = e.timeline; t;) {
         if (t === this) {
           return true;
@@ -7694,7 +7694,7 @@ var ggs_lib = function (e) {
       }
       return false;
     };
-    m.shiftChildren = function (e, t, n) {
+    d.shiftChildren = function (e, t, n) {
       n = n || 0;
       var i;
       for (var a = this._first, s = this._labels; a;) {
@@ -7712,7 +7712,7 @@ var ggs_lib = function (e) {
       }
       return this._uncache(true);
     };
-    m._kill = function (e, t) {
+    d._kill = function (e, t) {
       if (!e && !t) {
         return this._enabled(false, false);
       }
@@ -7724,7 +7724,7 @@ var ggs_lib = function (e) {
       }
       return a;
     };
-    m.clear = function (e) {
+    d.clear = function (e) {
       var t = this.getChildren(false, true, true);
       var n = t.length;
       for (this._time = this._totalTime = 0; --n > -1;) {
@@ -7735,14 +7735,14 @@ var ggs_lib = function (e) {
       }
       return this._uncache(true);
     };
-    m.invalidate = function () {
+    d.invalidate = function () {
       for (var e = this._first; e;) {
         e.invalidate();
         e = e._next;
       }
       return i.Animation.prototype.invalidate.call(this);
     };
-    m._enabled = function (e, t) {
+    d._enabled = function (e, t) {
       if (e === this._gc) {
         for (var n = this._first; n;) {
           n._enabled(e, true);
@@ -7751,13 +7751,13 @@ var ggs_lib = function (e) {
       }
       return i.SimpleTimeline.prototype._enabled.call(this, e, t);
     };
-    m.totalTime = function (e, t, n) {
+    d.totalTime = function (e, t, n) {
       this._forcingPlayhead = true;
       var a = i.Animation.prototype.totalTime.apply(this, arguments);
       this._forcingPlayhead = false;
       return a;
     };
-    m.duration = function (e) {
+    d.duration = function (e) {
       if (arguments.length) {
         if (this.duration() !== 0 && e !== 0) {
           this.timeScale(this._duration / e);
@@ -7770,7 +7770,7 @@ var ggs_lib = function (e) {
         return this._duration;
       }
     };
-    m.totalDuration = function (e) {
+    d.totalDuration = function (e) {
       if (!arguments.length) {
         if (this._dirty) {
           var t;
@@ -7814,7 +7814,7 @@ var ggs_lib = function (e) {
         return this;
       }
     };
-    m.paused = function (e) {
+    d.paused = function (e) {
       if (!e) {
         for (var t = this._first, n = this._time; t;) {
           if (t._startTime === n && t.data === "isPause") {
@@ -7825,13 +7825,13 @@ var ggs_lib = function (e) {
       }
       return i.Animation.prototype.paused.apply(this, arguments);
     };
-    m.usesFrames = function () {
+    d.usesFrames = function () {
       for (var e = this._timeline; e._timeline;) {
         e = e._timeline;
       }
       return e === i.Animation._rootFramesTimeline;
     };
-    m.rawTime = function (e) {
+    d.rawTime = function (e) {
       if (e && (this._paused || this._repeat && this.time() > 0 && this.totalProgress() < 1)) {
         return this._totalTime % (this._duration + this._repeatDelay);
       } else if (this._paused) {
@@ -7867,10 +7867,10 @@ var ggs_lib = function (e) {
   t.AreaRelocate = c;
   var _ = n(660);
   t.BattleMeta = _;
-  var d = n(661);
-  t.BattleShadow = d;
-  var m = n(662);
-  t.ColossusDepositEvent = m;
+  var m = n(661);
+  t.BattleShadow = m;
+  var d = n(662);
+  t.ColossusDepositEvent = d;
   var h = n(663);
   t.CraftingEquipment = h;
   var p = n(664);
@@ -8411,10 +8411,10 @@ var ggs_lib = function (e) {
         value: e
       });
     }
-    function d(e, n) {
+    function m(e, n) {
       _(e, n, typeof e == "string" || t(e), "String or Array");
     }
-    function m(e, t) {
+    function d(e, t) {
       var n;
       _(e, t, e === undefined || (n = e) !== null && "" + n == "[object Object]", "Plain Object");
     }
@@ -8473,7 +8473,7 @@ var ggs_lib = function (e) {
         s = g(n[i]);
         a = 0;
         for (; a < s.length; a++) {
-          m(s[a], "json");
+          d(s[a], "json");
           t = E(t, s[a]);
           p(e, s[a]);
         }
@@ -8496,8 +8496,8 @@ var ggs_lib = function (e) {
     T._resourceGet = h;
     T._validatePresence = c;
     T._validateType = _;
-    T._validateTypePath = d;
-    T._validateTypePlainObject = m;
+    T._validateTypePath = m;
+    T._validateTypePlainObject = d;
     T._availableBundleMap = {};
     T._availableBundleMapQueue = [];
     T._resolved = {};
@@ -8511,8 +8511,8 @@ var ggs_lib = function (e) {
       var i;
       var l;
       var u;
-      var d;
       var m;
+      var d;
       var h;
       var p;
       var g;
@@ -8520,18 +8520,18 @@ var ggs_lib = function (e) {
       var C = "";
       c(e, "locale");
       _(g = e, "locale", typeof g == "string", "a string");
-      if ((d = r(e)).length === 5) {
-        C = E + "u" + E + (h = d.pop());
-        if (!d[3]) {
-          d.pop();
+      if ((m = r(e)).length === 5) {
+        C = E + "u" + E + (h = m.pop());
+        if (!m[3]) {
+          m.pop();
         }
       }
-      p = d[3];
-      n = (i = a(T, this, d, {
+      p = m[3];
+      n = (i = a(T, this, m, {
         force: true
-      }) || d)[0];
+      }) || m)[0];
       u = i[1];
-      m = i[2];
+      d = i[2];
       l = s(T, this, i).join(E);
       this.attributes = t = {
         bundle: function (e, t, n) {
@@ -8542,9 +8542,9 @@ var ggs_lib = function (e) {
               var u;
               var c;
               var _;
-              var d;
-              d = r(n);
-              if ((c = a(e, t, d)) === undefined) {
+              var m;
+              m = r(n);
+              if ((c = a(e, t, m)) === undefined) {
                 l.splice(o, 1);
                 throw new Error("Could not find likelySubtags for " + n);
               }
@@ -8561,8 +8561,8 @@ var ggs_lib = function (e) {
         maxLanguageId: i.join(E) + C,
         language: n,
         script: u,
-        territory: m,
-        region: m,
+        territory: d,
+        region: d,
         variant: p
       };
       if (h) {
@@ -8578,12 +8578,12 @@ var ggs_lib = function (e) {
     };
     T.prototype.get = function (e) {
       c(e, "path");
-      d(e, "path");
+      m(e, "path");
       return f(T, e, this.attributes);
     };
     T.prototype.main = function (e) {
       c(e, "path");
-      d(e, "path");
+      m(e, "path");
       u("E_MISSING_BUNDLE", this.attributes.bundle !== null, {
         locale: this.locale
       });
@@ -9508,7 +9508,7 @@ var ggs_lib = function (e) {
   var u = createjs.Event;
   var c = createjs.TimerEvent;
   var _ = createjs.GlowFilter;
-  var d = function (e) {
+  var m = function (e) {
     function BasicButton(t = null, n = false) {
       var i = e.call(this) || this;
       i._minWidth = 100;
@@ -9739,7 +9739,7 @@ var ggs_lib = function (e) {
     BasicButton.COLOR_MATRIX_FILTER = BasicButton.createColorMatrixFilter();
     return BasicButton;
   }(l);
-  t.BasicButton = d;
+  t.BasicButton = m;
 }, function (e, t, n) {
   'use strict';
 
@@ -9764,10 +9764,10 @@ var ggs_lib = function (e) {
   t.NetworkProperties = c.NetworkProperties;
   var _ = n(253);
   t.Branch = _.Branch;
-  var d = n(255);
-  t.CDN = d.CDN;
-  var m = n(249);
-  t.CountryCodes = m.CountryCodes;
+  var m = n(255);
+  t.CDN = m.CDN;
+  var d = n(249);
+  t.CountryCodes = d.CountryCodes;
   var h = n(149);
   t.CountryDetectionConstants = h.CountryDetectionConstants;
   var p = n(254);
@@ -9791,8 +9791,8 @@ var ggs_lib = function (e) {
   var u = n(15);
   var c = n(17);
   var _ = n(38);
-  var d = n(335);
-  var m = a.getLogger("Tracking.ClientFunnelTrackingController");
+  var m = n(335);
+  var d = a.getLogger("Tracking.ClientFunnelTrackingController");
   var h = function () {
     function ClientFunnelTrackingController(e) {
       this.env = e;
@@ -9825,7 +9825,7 @@ var ggs_lib = function (e) {
     };
     Object.defineProperty(ClientFunnelTrackingController.prototype, "stage", {
       set: function (e) {
-        this._playTimeController ||= new d.ClientFunnelPlayTimeController(e, this.trackState);
+        this._playTimeController ||= new m.ClientFunnelPlayTimeController(e, this.trackState);
       },
       enumerable: true,
       configurable: true
@@ -9839,7 +9839,7 @@ var ggs_lib = function (e) {
       try {
         var t = i.castAs(c.TrackingCache.getInstance().getEvent(u.TrackingEventIds.CLIENT_FUNNEL), "ClientFunnelTrackingEvent");
         if (!t) {
-          m.warn("ClientFunnelTrackingevent couldn't be found (TODO HTML5)");
+          d.warn("ClientFunnelTrackingevent couldn't be found (TODO HTML5)");
           return;
         }
         if (_.ClientFunnelGameStates.FIRST_SESSION_ONLY.indexOf(e) > -1 && t.session_count === 1) {
@@ -9847,12 +9847,12 @@ var ggs_lib = function (e) {
         }
         t.gamestate_name = e;
         c.TrackingCache.getInstance().sendEvent(u.TrackingEventIds.CLIENT_FUNNEL);
-        m.debug("CLIENT FUNNEL TRACKING STEP: " + e);
+        d.debug("CLIENT FUNNEL TRACKING STEP: " + e);
         if (e === _.ClientFunnelGameStates.GAME_PLAYABLE) {
           this._playTimeController.start();
         }
       } catch (t) {
-        m.error("ClientFunnelTrackingController.trackState: Error tracking event \"" + e + "\"");
+        d.error("ClientFunnelTrackingController.trackState: Error tracking event \"" + e + "\"");
       }
     };
     return ClientFunnelTrackingController;
@@ -9956,10 +9956,10 @@ var ggs_lib = function (e) {
     function _(t, n) {
       c(t, n, t === undefined || typeof t == "string" || t instanceof e, "String or Cldr instance");
     }
-    function d(e) {
+    function m(e) {
       return e !== null && "" + e == "[object Object]";
     }
-    function m(t) {
+    function d(t) {
       if (t instanceof e) {
         return t;
       } else {
@@ -9976,7 +9976,7 @@ var ggs_lib = function (e) {
       }
       u(e, "locale");
       _(e, "locale");
-      this.cldr = m(e);
+      this.cldr = d(e);
       validateLikelySubtags(this.cldr);
     }
     Globalize.load = function () {
@@ -9985,7 +9985,7 @@ var ggs_lib = function (e) {
     Globalize.locale = function (e) {
       _(e, "locale");
       if (arguments.length) {
-        this.cldr = m(e);
+        this.cldr = d(e);
         validateLikelySubtags(this.cldr);
       }
       return this.cldr;
@@ -10007,7 +10007,7 @@ var ggs_lib = function (e) {
         return e.value !== "";
       });
     };
-    Globalize._isPlainObject = d;
+    Globalize._isPlainObject = m;
     Globalize._objectExtend = n;
     Globalize._partsJoin = function (e) {
       return e.map(function (e) {
@@ -10082,7 +10082,7 @@ var ggs_lib = function (e) {
       });
     };
     Globalize._validateParameterTypePlainObject = function (e, t) {
-      c(e, t, e === undefined || d(e), "Plain Object");
+      c(e, t, e === undefined || m(e), "Plain Object");
     };
     Globalize._validateParameterType = c;
     return Globalize;
@@ -11514,36 +11514,36 @@ var ggs_lib = function (e) {
       if (this.isLoaded(a)) {
         u++;
       } else {
-        var d = this.add(a, {
+        var m = this.add(a, {
           id: t.id,
           type: createjs.AbstractLoader.SPRITESHEET,
           priority: t.priority || 1
         });
-        d.addEventListener(r.COMPLETE, c.bind(this, t.id));
-        d.addEventListener(r.COMPLETE, function (e) {
-          d.removeAllEventListeners();
+        m.addEventListener(r.COMPLETE, c.bind(this, t.id));
+        m.addEventListener(r.COMPLETE, function (e) {
+          m.removeAllEventListeners();
         });
-        d.addEventListener("error", function (e) {
+        m.addEventListener("error", function (e) {
           s.onLoadingErrorOccured();
           setTimeout(function () {
             if (s.errorTryCount < 3) {
               l.warn("A Spritesheet loading error occured, but we will try again.");
-              d.load();
+              m.load();
             } else {
               s.dispatchEvent(e);
-              d.removeAllEventListeners();
+              m.removeAllEventListeners();
             }
           }, 1);
         });
-        d.addEventListener("fileerror", function (e) {
+        m.addEventListener("fileerror", function (e) {
           s.onLoadingErrorOccured();
           setTimeout(function () {
             if (s.errorTryCount < 3) {
               l.warn("A Spritesheet loading error occured, but we will try again.");
-              d.load();
+              m.load();
             } else {
               s.dispatchEvent(e);
-              d.removeAllEventListeners();
+              m.removeAllEventListeners();
             }
           }, 1);
         });
@@ -12446,7 +12446,7 @@ var ggs_lib = function (e) {
   var u = n(29);
   var c = createjs.Event;
   var _ = l.getLogger(u.TEXT_FIELDS_LOGGER + ".GoodgameTextFieldManager");
-  var d = function () {
+  var m = function () {
     function GoodgameTextFieldManager() {
       this._minimumAutoFitFontSize = 8;
       this._maximumAutoFitFontSize = 20;
@@ -12703,7 +12703,7 @@ var ggs_lib = function (e) {
     GoodgameTextFieldManager.NAME = "GoodgameTextFieldManager";
     return GoodgameTextFieldManager;
   }();
-  t.GoodgameTextFieldManager = d;
+  t.GoodgameTextFieldManager = m;
 }, function (e, t, n) {
   'use strict';
 
@@ -14027,9 +14027,9 @@ var ggs_lib = function (e) {
         var u;
         var c = e[a];
         var _ = null;
-        var d = c > 239 ? 4 : c > 223 ? 3 : c > 191 ? 2 : 1;
-        if (a + d <= n) {
-          switch (d) {
+        var m = c > 239 ? 4 : c > 223 ? 3 : c > 191 ? 2 : 1;
+        if (a + m <= n) {
+          switch (m) {
             case 1:
               if (c < 128) {
                 _ = c;
@@ -14058,14 +14058,14 @@ var ggs_lib = function (e) {
         }
         if (_ === null) {
           _ = 65533;
-          d = 1;
+          m = 1;
         } else if (_ > 65535) {
           _ -= 65536;
           i.push(_ >>> 10 & 1023 | 55296);
           _ = _ & 1023 | 56320;
         }
         i.push(_);
-        a += d;
+        a += m;
       }
       return function decodeCodePointsArray(e) {
         var t = e.length;
@@ -15255,18 +15255,18 @@ var ggs_lib = function (e) {
     var u = t._validateDefaultLocale;
     var c = t._validateParameterPresence;
     var _ = t._validateParameterRange;
-    var d = t._validateParameterType;
-    var m = t._validateParameterTypePlainObject;
+    var m = t._validateParameterType;
+    var d = t._validateParameterTypePlainObject;
     function h(e) {
       return n("E_UNSUPPORTED", "Unsupported {feature}.", {
         feature: e
       });
     }
     function p(e, t) {
-      d(e, t, e === undefined || typeof e == "number", "Number");
+      m(e, t, e === undefined || typeof e == "number", "Number");
     }
     function g(e, t) {
-      d(e, t, e === undefined || typeof e == "string", "a string");
+      m(e, t, e === undefined || typeof e == "string", "a string");
     }
     function E(e) {
       var t = e.attributes["u-nu"];
@@ -15306,8 +15306,8 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var d;
       var m;
+      var d;
       var p;
       var g;
       var E;
@@ -15316,7 +15316,7 @@ var ggs_lib = function (e) {
       if (!(e = e.match(f))) {
         throw new Error("Invalid pattern: " + e);
       }
-      d = e[1];
+      m = e[1];
       _ = e[4];
       a = e[5];
       C = e[9];
@@ -15361,12 +15361,12 @@ var ggs_lib = function (e) {
       }
       if ((t = a.lastIndexOf(",")) !== -1) {
         n = a.split(".")[0];
-        m = n.length - t - 1;
+        d = n.length - t - 1;
         if ((n = a.lastIndexOf(",", t - 1)) !== -1) {
           E = t - 1 - n;
         }
       }
-      return [d, _, u, l, r, c, o, p, m, E, T];
+      return [m, _, u, l, r, c, o, p, d, E, T];
     }
     function S(e, t) {
       return t.main(["numbers/symbols-numberSystem-" + E(t), e]);
@@ -15529,7 +15529,7 @@ var ggs_lib = function (e) {
       var t;
       var n;
       var a;
-      m(e, "options");
+      d(e, "options");
       t = [e = e || {}];
       a = function (e) {
         return function numberFormatter(t) {
@@ -15544,9 +15544,9 @@ var ggs_lib = function (e) {
       var n;
       var i;
       var s;
-      var d;
+      var m;
       var g;
-      m(e, "options");
+      d(e, "options");
       e = e || {};
       n = this.cldr;
       t = [e];
@@ -15554,7 +15554,7 @@ var ggs_lib = function (e) {
       n.on("get", l);
       try {
         s = e.raw ? e.raw : R(e.style || "decimal", n);
-        i = [d = v(s, n, e)];
+        i = [m = v(s, n, e)];
       } finally {
         n.off("get", l);
       }
@@ -15575,7 +15575,7 @@ var ggs_lib = function (e) {
           _(a, "minimumSignificantDigits", 1, 21);
           _(s, "maximumSignificantDigits", a, 21);
         }
-      })(d);
+      })(m);
       if (e.compact) {
         i.push(this.pluralGenerator());
       }
@@ -15591,8 +15591,8 @@ var ggs_lib = function (e) {
             var u;
             var c;
             var _;
-            var d;
             var m;
+            var d;
             var p;
             var g;
             var E;
@@ -15612,21 +15612,21 @@ var ggs_lib = function (e) {
             _ = t[2];
             c = t[3];
             l = t[4];
-            d = t[5];
+            m = t[5];
             u = t[6];
             T = t[7];
             E = t[8];
             S = t[9];
             f = t[15];
             r = t[16];
-            m = t[17];
+            d = t[17];
             A = t[18];
             p = t[19];
             s = t[20];
             if (isNaN(e)) {
               return [{
                 type: "nan",
-                value: m
+                value: d
               }];
             } else {
               if (e < 0) {
@@ -15686,7 +15686,7 @@ var ggs_lib = function (e) {
                     e /= Math.pow(10, b);
                   }
                 }
-                e = isNaN(d * u) ? function (e, t, n, i, a, s) {
+                e = isNaN(m * u) ? function (e, t, n, i, a, s) {
                   e = i ? a(e, s || {
                     exponent: -i
                   }) : a(e);
@@ -15722,7 +15722,7 @@ var ggs_lib = function (e) {
                     e = e.join(".");
                   }
                   return e;
-                }(e, d, u, f);
+                }(e, m, u, f);
                 if (s && O) {
                   M = n ? n(+e) : "other";
                   O = s[R][M] || O;
@@ -15781,7 +15781,7 @@ var ggs_lib = function (e) {
       var n;
       var i;
       var a;
-      m(e, "options");
+      d(e, "options");
       e = e || {};
       n = this.cldr;
       t = [e];
@@ -15801,8 +15801,8 @@ var ggs_lib = function (e) {
         var u;
         var c;
         var _;
-        var d;
         var m;
+        var d;
         var h;
         var p;
         var g;
@@ -15816,8 +15816,8 @@ var ggs_lib = function (e) {
         var L = v(e, t, n);
         f = D(L[0]);
         _ = L[4];
-        m = L[5];
-        d = L[6];
+        d = L[5];
+        m = L[6];
         T = L[8];
         I = L[9];
         A = D(L[10]);
@@ -15867,7 +15867,7 @@ var ggs_lib = function (e) {
         if (T) {
           C = "(" + (i = I ? r + "{1," + I + "}((" + o + r + "{" + I + "})*(" + o + r + "{" + T + "}))" : r + "{1," + T + "}(" + o + r + "{" + T + "})+") + "|" + C + ")";
         }
-        if (!isNaN(m * d) || !!_) {
+        if (!isNaN(d * m) || !!_) {
           C = "(" + (C = C + "(" + (i = a + r + "+") + "|" + a + ")?|(" + C + ")?" + i) + ")";
         }
         return [c, u, {
@@ -16714,8 +16714,8 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var d;
-      var m = this._time;
+      var m;
+      var d = this._time;
       var h = this._dirty ? this.totalDuration() : this._totalDuration;
       var p = this._duration;
       var g = this._totalTime;
@@ -16724,8 +16724,8 @@ var ggs_lib = function (e) {
       var f = this._rawPrevTime;
       var T = this._paused;
       var S = this._cycle;
-      if (m !== this._time) {
-        e += this._time - m;
+      if (d !== this._time) {
+        e += this._time - d;
       }
       if (e >= h - 1e-7 && e >= 0) {
         if (!this._locked) {
@@ -16755,7 +16755,7 @@ var ggs_lib = function (e) {
           this._totalTime = this._cycle = 0;
         }
         this._time = 0;
-        if (m !== 0 || p === 0 && f !== 1e-10 && (f > 0 || e < 0 && f >= 0) && !this._locked) {
+        if (d !== 0 || p === 0 && f !== 1e-10 && (f > 0 || e < 0 && f >= 0) && !this._locked) {
           l = "onReverseComplete";
           r = this._reversed;
         }
@@ -16811,7 +16811,7 @@ var ggs_lib = function (e) {
           }
         }
         if (this._hasPause && !this._forcingPlayhead && !t) {
-          if ((e = this._time) >= m || this._repeat && S !== this._cycle) {
+          if ((e = this._time) >= d || this._repeat && S !== this._cycle) {
             for (a = this._first; a && a._startTime <= e && !_;) {
               if (!a._duration && a.data === "isPause" && !a.ratio && (a._startTime !== 0 || this._rawPrevTime !== 0)) {
                 _ = a;
@@ -16847,12 +16847,12 @@ var ggs_lib = function (e) {
         } else {
           this._totalTime += p;
         }
-        this._time = m;
+        this._time = d;
         this._rawPrevTime = p === 0 ? f - 0.0001 : f;
         this._cycle = S;
         this._locked = true;
-        m = y ? 0 : p;
-        this.render(m, t, p === 0);
+        d = y ? 0 : p;
+        this.render(d, t, p === 0);
         if (!t && !this._gc) {
           if (this.vars.onRepeat) {
             this._cycle = A;
@@ -16860,14 +16860,14 @@ var ggs_lib = function (e) {
             this._callback("onRepeat");
           }
         }
-        if (m !== this._time) {
+        if (d !== this._time) {
           return;
         }
         if (I) {
           this._cycle = S;
           this._locked = true;
-          m = y ? p + 0.0001 : -0.0001;
-          this.render(m, true, false);
+          d = y ? p + 0.0001 : -0.0001;
+          this.render(d, true, false);
         }
         this._locked = false;
         if (this._paused && !T) {
@@ -16878,7 +16878,7 @@ var ggs_lib = function (e) {
         this._cycle = A;
         this._rawPrevTime = O;
       }
-      if (this._time !== m && this._first || i || u || _) {
+      if (this._time !== d && this._first || i || u || _) {
         this._initted ||= true;
         if (!this._active) {
           if (!this._paused && this._totalTime !== g && e > 0) {
@@ -16890,8 +16890,8 @@ var ggs_lib = function (e) {
             this._callback("onStart");
           }
         }
-        if ((d = this._time) >= m) {
-          for (a = this._first; a && (o = a._next, d === this._time && (!this._paused || T));) {
+        if ((m = this._time) >= d) {
+          for (a = this._first; a && (o = a._next, m === this._time && (!this._paused || T));) {
             if (a._active || a._startTime <= this._time && !a._paused && !a._gc) {
               if (_ === a) {
                 this.pause();
@@ -16905,8 +16905,8 @@ var ggs_lib = function (e) {
             a = o;
           }
         } else {
-          for (a = this._last; a && (o = a._prev, d === this._time && (!this._paused || T));) {
-            if (a._active || a._startTime <= m && !a._paused && !a._gc) {
+          for (a = this._last; a && (o = a._prev, m === this._time && (!this._paused || T));) {
+            if (a._active || a._startTime <= d && !a._paused && !a._gc) {
               if (_ === a) {
                 for (_ = a._prev; _ && _.endTime() > this._time;) {
                   _.render(_._reversed ? _.totalDuration() - (e - _._startTime) * _._timeScale : (e - _._startTime) * _._timeScale, t, i);
@@ -17165,8 +17165,8 @@ var ggs_lib = function (e) {
     var u;
     var c;
     var _;
-    var d;
     var m;
+    var d;
     var h;
     var p;
     var g;
@@ -17218,8 +17218,8 @@ var ggs_lib = function (e) {
       var e = j.indexOf("Android");
       var t = x("a");
       _ = j.indexOf("Safari") !== -1 && j.indexOf("Chrome") === -1 && (e === -1 || parseFloat(j.substr(e + 8, 2)) > 3);
-      m = _ && parseFloat(j.substr(j.indexOf("Version/") + 8, 2)) < 6;
-      d = j.indexOf("Firefox") !== -1;
+      d = _ && parseFloat(j.substr(j.indexOf("Version/") + 8, 2)) < 6;
+      m = j.indexOf("Firefox") !== -1;
       if (/MSIE ([0-9]{1,}[\.0-9]{0,})/.exec(j) || /Trident\/.*rv:([0-9]{1,}[\.0-9]{0,})/.exec(j)) {
         h = parseFloat(RegExp.$1);
       }
@@ -17291,10 +17291,10 @@ var ggs_lib = function (e) {
       var u;
       var c = N.test(t);
       var _ = e;
-      var d = W.style;
-      var m = n < 0;
+      var m = W.style;
+      var d = n < 0;
       var h = n === 1;
-      if (m) {
+      if (d) {
         n = -n;
       }
       if (h) {
@@ -17304,20 +17304,20 @@ var ggs_lib = function (e) {
         if (a === "%" && t.indexOf("border") !== -1) {
           o = n / 100 * (c ? e.clientWidth : e.clientHeight);
         } else {
-          d.cssText = "border:0 solid red;position:" + $(e, "position") + ";line-height:0;";
+          m.cssText = "border:0 solid red;position:" + $(e, "position") + ";line-height:0;";
           if (a !== "%" && _.appendChild && a.charAt(0) !== "v" && a !== "rem") {
-            d[c ? "borderLeftWidth" : "borderTopWidth"] = n + a;
+            m[c ? "borderLeftWidth" : "borderTopWidth"] = n + a;
           } else {
             _ = e.parentNode || w.body;
             if ($(_, "display").indexOf("flex") !== -1) {
-              d.position = "absolute";
+              m.position = "absolute";
             }
             l = _._gsCache;
             u = i.default.ticker.frame;
             if (l && c && l.time === u) {
               return l.width * n / 100;
             }
-            d[c ? "width" : "height"] = n + a;
+            m[c ? "width" : "height"] = n + a;
           }
           _.appendChild(W);
           o = parseFloat(W[c ? "offsetWidth" : "offsetHeight"]);
@@ -17339,7 +17339,7 @@ var ggs_lib = function (e) {
       if (h) {
         o /= 100;
       }
-      if (m) {
+      if (d) {
         return -o;
       } else {
         return o;
@@ -17577,7 +17577,7 @@ var ggs_lib = function (e) {
     function _e(e, t, n) {
       return ((e = e < 0 ? e + 1 : e > 1 ? e - 1 : e) * 6 < 1 ? t + (n - t) * e * 6 : e < 0.5 ? n : e * 3 < 2 ? t + (n - t) * (2 / 3 - e) * 6 : t) * 255 + 0.5 | 0;
     }
-    var de = s.parseColor = function (e, t) {
+    var me = s.parseColor = function (e, t) {
       var n;
       var i;
       var a;
@@ -17588,7 +17588,7 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var d;
+      var m;
       if (e) {
         if (typeof e == "number") {
           n = [e >> 16, e >> 8 & 255, e & 255];
@@ -17604,7 +17604,7 @@ var ggs_lib = function (e) {
             }
             n = [(e = parseInt(e.substr(1), 16)) >> 16, e >> 8 & 255, e & 255];
           } else if (e.substr(0, 3) === "hsl") {
-            n = d = e.match(E);
+            n = m = e.match(E);
             if (t) {
               if (e.indexOf("=") !== -1) {
                 return e.match(C);
@@ -17633,7 +17633,7 @@ var ggs_lib = function (e) {
       } else {
         n = ce.black;
       }
-      if (t && !d) {
+      if (t && !m) {
         i = n[0] / 255;
         a = n[1] / 255;
         s = n[2] / 255;
@@ -17652,7 +17652,7 @@ var ggs_lib = function (e) {
       }
       return n;
     };
-    function me(e, t) {
+    function de(e, t) {
       var n;
       var i;
       var a;
@@ -17665,7 +17665,7 @@ var ggs_lib = function (e) {
       for (n = 0; n < s.length; n++) {
         i = s[n];
         r += (a = e.substr(r, e.indexOf(i, r) - r)).length + i.length;
-        if ((i = de(i, t)).length === 3) {
+        if ((i = me(i, t)).length === 3) {
           i.push(1);
         }
         o += a + (t ? "hsla(" + i[0] + "," + i[1] + "%," + i[2] + "%," + i[3] : "rgba(" + i.join(",")) + ")";
@@ -17682,8 +17682,8 @@ var ggs_lib = function (e) {
       var n = e[0] + " " + e[1];
       if (he.test(n)) {
         t = n.indexOf("hsl(") !== -1 || n.indexOf("hsla(") !== -1;
-        e[0] = me(e[0], t);
-        e[1] = me(e[1], t);
+        e[0] = de(e[0], t);
+        e[1] = de(e[1], t);
       }
       he.lastIndex = 0;
     };
@@ -17705,45 +17705,45 @@ var ggs_lib = function (e) {
       if (c) {
         return a = t ? function (e) {
           var t;
-          var d;
           var m;
+          var d;
           var h;
           if (typeof e == "number") {
             e += _;
           } else if (i && B.test(e)) {
             h = e.replace(B, "|").split("|");
-            m = 0;
-            for (; m < h.length; m++) {
-              h[m] = a(h[m]);
+            d = 0;
+            for (; d < h.length; d++) {
+              h[d] = a(h[d]);
             }
             return h.join(",");
           }
           t = (e.match(he) || [s])[0];
-          m = (d = e.split(t).join("").match(f) || []).length;
-          if (c > m--) {
-            while (++m < c) {
-              d[m] = n ? d[(m - 1) / 2 | 0] : r[m];
+          d = (m = e.split(t).join("").match(f) || []).length;
+          if (c > d--) {
+            while (++d < c) {
+              m[d] = n ? m[(d - 1) / 2 | 0] : r[d];
             }
           }
-          return o + d.join(u) + u + t + l + (e.indexOf("inset") !== -1 ? " inset" : "");
+          return o + m.join(u) + u + t + l + (e.indexOf("inset") !== -1 ? " inset" : "");
         } : function (e) {
           var t;
           var s;
-          var d;
+          var m;
           if (typeof e == "number") {
             e += _;
           } else if (i && B.test(e)) {
             s = e.replace(B, "|").split("|");
-            d = 0;
-            for (; d < s.length; d++) {
-              s[d] = a(s[d]);
+            m = 0;
+            for (; m < s.length; m++) {
+              s[m] = a(s[m]);
             }
             return s.join(",");
           }
-          d = (t = e.match(f) || []).length;
-          if (c > d--) {
-            while (++d < c) {
-              t[d] = n ? t[(d - 1) / 2 | 0] : r[d];
+          m = (t = e.match(f) || []).length;
+          if (c > m--) {
+            while (++m < c) {
+              t[m] = n ? t[(m - 1) / 2 | 0] : r[m];
             }
           }
           return o + t.join(u) + l;
@@ -17826,8 +17826,8 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _ = i;
-      var d = {};
       var m = {};
+      var d = {};
       var h = n._transform;
       var p = G;
       n._transform = null;
@@ -17844,11 +17844,11 @@ var ggs_lib = function (e) {
         }
       }
       while (i && i !== _) {
-        if (i.type <= 1 && (m[o = i.p] = i.s + i.c, d[o] = i.s, s || (u = new Ee(i, "s", o, u, i.r), i.c = 0), i.type === 1)) {
+        if (i.type <= 1 && (d[o = i.p] = i.s + i.c, m[o] = i.s, s || (u = new Ee(i, "s", o, u, i.r), i.c = 0), i.type === 1)) {
           for (r = i.l; --r > 0;) {
             l = "xn" + r;
-            m[o = i.p + "_" + l] = i.data[l];
-            d[o] = i[l];
+            d[o = i.p + "_" + l] = i.data[l];
+            m[o] = i[l];
             if (!s) {
               u = new Ee(i, l, o, u, i.rxp[l]);
             }
@@ -17857,13 +17857,13 @@ var ggs_lib = function (e) {
         i = i._next;
       }
       return {
-        proxy: d,
-        end: m,
+        proxy: m,
+        end: d,
         firstMPT: u,
         pt: c
       };
     };
-    var Ce = V.CSSPropTween = function (t, n, i, s, r, o, l, u, c, _, d) {
+    var Ce = V.CSSPropTween = function (t, n, i, s, r, o, l, u, c, _, m) {
       this.t = t;
       this.p = n;
       this.s = i;
@@ -17879,7 +17879,7 @@ var ggs_lib = function (e) {
         e = true;
       }
       this.b = _ === undefined ? i : _;
-      this.e = d === undefined ? i + s : d;
+      this.e = m === undefined ? i + s : m;
       if (r) {
         this._next = r;
         r._prev = this;
@@ -17904,8 +17904,8 @@ var ggs_lib = function (e) {
         n = i[0];
         i = i[1];
       }
-      var d;
       var m;
+      var d;
       var h;
       var f;
       var T;
@@ -17937,21 +17937,21 @@ var ggs_lib = function (e) {
       o.plugin = c;
       o.setRatio = _;
       he.lastIndex = 0;
-      d = 0;
-      for (; d < R; d++) {
-        f = b[d];
-        T = N[d] + "";
+      m = 0;
+      for (; m < R; m++) {
+        f = b[m];
+        T = N[m] + "";
         if ((I = parseFloat(f)) || I === 0) {
           o.appendXtra("", I, oe(T, I), T.replace(C, ""), !!P && T.indexOf("px") !== -1 && Math.round, true);
         } else if (a && he.test(f)) {
           L = ")" + ((L = T.indexOf(")") + 1) ? T.substr(L) : "");
           D = T.indexOf("hsl") !== -1 && q;
           A = T;
-          f = de(f, D);
-          T = de(T, D);
+          f = me(f, D);
+          T = me(T, D);
           if ((v = f.length + T.length > 6) && !q && T[3] === 0) {
             o["xs" + o.l] += o.l ? " transparent" : "transparent";
-            o.e = o.e.split(N[d]).join("transparent");
+            o.e = o.e.split(N[m]).join("transparent");
           } else {
             if (!q) {
               v = false;
@@ -17972,11 +17972,11 @@ var ggs_lib = function (e) {
             return o;
           }
           h = 0;
-          m = 0;
-          for (; m < S.length; m++) {
-            O = S[m];
+          d = 0;
+          for (; d < S.length; d++) {
+            O = S[d];
             A = f.indexOf(O, h);
-            o.appendXtra(f.substr(h, A - h), Number(O), oe(y[m], O), "", !!P && f.substr(A + O.length, 2) === "px" && Math.round, m === 0);
+            o.appendXtra(f.substr(h, A - h), Number(O), oe(y[d], O), "", !!P && f.substr(A + O.length, 2) === "px" && Math.round, d === 0);
             h = A + O.length;
           }
           o["xs" + o.l] += f.substr(h);
@@ -17986,11 +17986,11 @@ var ggs_lib = function (e) {
       }
       if (i.indexOf("=") !== -1 && o.data) {
         L = o.xs0 + o.data.s;
-        d = 1;
-        for (; d < o.l; d++) {
-          L += o["xs" + d] + o.data["xn" + d];
+        m = 1;
+        for (; m < o.l; m++) {
+          L += o["xs" + m] + o.data["xn" + m];
         }
-        o.e = L + o["xs" + d];
+        o.e = L + o["xs" + m];
       }
       if (!o.l) {
         o.type = -1;
@@ -18092,12 +18092,12 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var d = this.keyword;
+      var m = this.keyword;
       if (this.multi) {
         if (B.test(n) || B.test(t)) {
           o = t.replace(B, "|").split("|");
           l = n.replace(B, "|").split("|");
-        } else if (d) {
+        } else if (m) {
           o = [t];
           l = [n];
         }
@@ -18108,11 +18108,11 @@ var ggs_lib = function (e) {
         for (; r < u; r++) {
           t = o[r] = o[r] || this.dflt;
           n = l[r] = l[r] || this.dflt;
-          if (d && (c = t.indexOf(d)) !== (_ = n.indexOf(d))) {
+          if (m && (c = t.indexOf(m)) !== (_ = n.indexOf(m))) {
             if (_ === -1) {
-              o[r] = o[r].split(d).join("");
+              o[r] = o[r].split(m).join("");
             } else if (c === -1) {
-              o[r] += " " + d;
+              o[r] += " " + m;
             }
           }
         }
@@ -18172,7 +18172,7 @@ var ggs_lib = function (e) {
       })).getBoundingClientRect().width;
       Le.style[Be] = "50% 50%";
       Le.style[Re] = "scaleX(0.5)";
-      be = De === Le.getBoundingClientRect().width && (!d || !Me);
+      be = De === Le.getBoundingClientRect().width && (!m || !Me);
       ke.removeChild(Oe);
     }
     var we = be;
@@ -18182,8 +18182,8 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var d;
       var m;
+      var d;
       var h;
       var p;
       var g;
@@ -18198,28 +18198,28 @@ var ggs_lib = function (e) {
         T = S.yOrigin;
       }
       if (!i || (o = i.split(" ")).length < 2) {
-        if ((m = e.getBBox()).x === 0 && m.y === 0 && m.width + m.height === 0) {
-          m = {
+        if ((d = e.getBBox()).x === 0 && d.y === 0 && d.width + d.height === 0) {
+          d = {
             x: parseFloat(e.hasAttribute("x") ? e.getAttribute("x") : e.hasAttribute("cx") ? e.getAttribute("cx") : 0) || 0,
             y: parseFloat(e.hasAttribute("y") ? e.getAttribute("y") : e.hasAttribute("cy") ? e.getAttribute("cy") : 0) || 0,
             width: 0,
             height: 0
           };
         }
-        o = [((t = re(t).split(" "))[0].indexOf("%") !== -1 ? parseFloat(t[0]) / 100 * m.width : parseFloat(t[0])) + m.x, (t[1].indexOf("%") !== -1 ? parseFloat(t[1]) / 100 * m.height : parseFloat(t[1])) + m.y];
+        o = [((t = re(t).split(" "))[0].indexOf("%") !== -1 ? parseFloat(t[0]) / 100 * d.width : parseFloat(t[0])) + d.x, (t[1].indexOf("%") !== -1 ? parseFloat(t[1]) / 100 * d.height : parseFloat(t[1])) + d.y];
       }
       n.xOrigin = c = parseFloat(o[0]);
       n.yOrigin = _ = parseFloat(o[1]);
       if (i && y !== Ve) {
-        d = y[0];
-        m = y[1];
+        m = y[0];
+        d = y[1];
         h = y[2];
         p = y[3];
         g = y[4];
         E = y[5];
-        if (C = d * p - m * h) {
+        if (C = m * p - d * h) {
           l = c * (p / C) + _ * (-h / C) + (h * E - p * g) / C;
-          u = c * (-m / C) + _ * (d / C) - (d * E - m * g) / C;
+          u = c * (-d / C) + _ * (m / C) - (m * E - d * g) / C;
           c = n.xOrigin = o[0] = l;
           _ = n.yOrigin = o[1] = u;
         }
@@ -18350,13 +18350,13 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var d = n && e._gsTransform || new Fe();
-      var m = d.scaleX < 0;
-      var h = Me && (parseFloat($(e, Be, t, false, "0 0 0").split(" ")[2]) || d.zOrigin) || 0;
+      var m = n && e._gsTransform || new Fe();
+      var d = m.scaleX < 0;
+      var h = Me && (parseFloat($(e, Be, t, false, "0 0 0").split(" ")[2]) || m.zOrigin) || 0;
       var p = parseFloat(s.defaultTransformPerspective) || 0;
-      d.svg = !!e.getCTM && !!He(e);
-      if (d.svg) {
-        xe(e, $(e, Be, t, false, "50% 50%") + "", d, e.getAttribute("data-svg-origin"));
+      m.svg = !!e.getCTM && !!He(e);
+      if (m.svg) {
+        xe(e, $(e, Be, t, false, "50% 50%") + "", m, e.getAttribute("data-svg-origin"));
         Ae = s.useSVGTransformAttr || we;
       }
       if ((r = je(e)) !== Ve) {
@@ -18382,12 +18382,12 @@ var ggs_lib = function (e) {
           var M = r[14];
           var F = r[11];
           var G = Math.atan2(L, R);
-          if (d.zOrigin) {
-            P = b * (M = -d.zOrigin) - r[12];
+          if (m.zOrigin) {
+            P = b * (M = -m.zOrigin) - r[12];
             B = N * M - r[13];
-            M = R * M + d.zOrigin - r[14];
+            M = R * M + m.zOrigin - r[14];
           }
-          d.rotationX = G * U;
+          m.rotationX = G * U;
           if (G) {
             g = A * (f = Math.cos(-G)) + b * (T = Math.sin(-G));
             E = O * f + N * T;
@@ -18401,7 +18401,7 @@ var ggs_lib = function (e) {
             L = C;
           }
           G = Math.atan2(-I, R);
-          d.rotationY = G * U;
+          m.rotationY = G * U;
           if (G) {
             E = y * (f = Math.cos(-G)) - N * (T = Math.sin(-G));
             C = I * f - R * T;
@@ -18413,7 +18413,7 @@ var ggs_lib = function (e) {
             I = C;
           }
           G = Math.atan2(y, S);
-          d.rotation = G * U;
+          m.rotation = G * U;
           if (G) {
             g = S * (f = Math.cos(G)) + y * (T = Math.sin(G));
             E = A * f + O * T;
@@ -18425,81 +18425,81 @@ var ggs_lib = function (e) {
             A = E;
             b = C;
           }
-          if (d.rotationX && Math.abs(d.rotationX) + Math.abs(d.rotation) > 359.9) {
-            d.rotationX = d.rotation = 0;
-            d.rotationY = 180 - d.rotationY;
+          if (m.rotationX && Math.abs(m.rotationX) + Math.abs(m.rotation) > 359.9) {
+            m.rotationX = m.rotation = 0;
+            m.rotationY = 180 - m.rotationY;
           }
           G = Math.atan2(A, O);
-          d.scaleX = (Math.sqrt(S * S + y * y + I * I) * 100000 + 0.5 | 0) / 100000;
-          d.scaleY = (Math.sqrt(O * O + L * L) * 100000 + 0.5 | 0) / 100000;
-          d.scaleZ = (Math.sqrt(b * b + N * N + R * R) * 100000 + 0.5 | 0) / 100000;
-          S /= d.scaleX;
-          A /= d.scaleY;
-          y /= d.scaleX;
-          O /= d.scaleY;
+          m.scaleX = (Math.sqrt(S * S + y * y + I * I) * 100000 + 0.5 | 0) / 100000;
+          m.scaleY = (Math.sqrt(O * O + L * L) * 100000 + 0.5 | 0) / 100000;
+          m.scaleZ = (Math.sqrt(b * b + N * N + R * R) * 100000 + 0.5 | 0) / 100000;
+          S /= m.scaleX;
+          A /= m.scaleY;
+          y /= m.scaleX;
+          O /= m.scaleY;
           if (Math.abs(G) > 0.00002) {
-            d.skewX = G * U;
+            m.skewX = G * U;
             A = 0;
-            if (d.skewType !== "simple") {
-              d.scaleY *= 1 / Math.cos(G);
+            if (m.skewType !== "simple") {
+              m.scaleY *= 1 / Math.cos(G);
             }
           } else {
-            d.skewX = 0;
+            m.skewX = 0;
           }
-          d.perspective = F ? 1 / (F < 0 ? -F : F) : 0;
-          d.x = P;
-          d.y = B;
-          d.z = M;
-          if (d.svg) {
-            d.x -= d.xOrigin - (d.xOrigin * S - d.yOrigin * A);
-            d.y -= d.yOrigin - (d.yOrigin * y - d.xOrigin * O);
+          m.perspective = F ? 1 / (F < 0 ? -F : F) : 0;
+          m.x = P;
+          m.y = B;
+          m.z = M;
+          if (m.svg) {
+            m.x -= m.xOrigin - (m.xOrigin * S - m.yOrigin * A);
+            m.y -= m.yOrigin - (m.yOrigin * y - m.xOrigin * O);
           }
-        } else if (!Me || a || !r.length || d.x !== r[4] || d.y !== r[5] || !d.rotationX && !d.rotationY) {
+        } else if (!Me || a || !r.length || m.x !== r[4] || m.y !== r[5] || !m.rotationX && !m.rotationY) {
           var k = r.length >= 6;
           var w = k ? r[0] : 1;
           var x = r[1] || 0;
           var W = r[2] || 0;
           var H = k ? r[3] : 1;
-          d.x = r[4] || 0;
-          d.y = r[5] || 0;
+          m.x = r[4] || 0;
+          m.y = r[5] || 0;
           l = Math.sqrt(w * w + x * x);
           u = Math.sqrt(H * H + W * W);
-          c = w || x ? Math.atan2(x, w) * U : d.rotation || 0;
-          _ = W || H ? Math.atan2(W, H) * U + c : d.skewX || 0;
-          d.scaleX = l;
-          d.scaleY = u;
-          d.rotation = c;
-          d.skewX = _;
+          c = w || x ? Math.atan2(x, w) * U : m.rotation || 0;
+          _ = W || H ? Math.atan2(W, H) * U + c : m.skewX || 0;
+          m.scaleX = l;
+          m.scaleY = u;
+          m.rotation = c;
+          m.skewX = _;
           if (Me) {
-            d.rotationX = d.rotationY = d.z = 0;
-            d.perspective = p;
-            d.scaleZ = 1;
+            m.rotationX = m.rotationY = m.z = 0;
+            m.perspective = p;
+            m.scaleZ = 1;
           }
-          if (d.svg) {
-            d.x -= d.xOrigin - (d.xOrigin * w + d.yOrigin * W);
-            d.y -= d.yOrigin - (d.xOrigin * x + d.yOrigin * H);
+          if (m.svg) {
+            m.x -= m.xOrigin - (m.xOrigin * w + m.yOrigin * W);
+            m.y -= m.yOrigin - (m.xOrigin * x + m.yOrigin * H);
           }
         }
-        if (Math.abs(d.skewX) > 90 && Math.abs(d.skewX) < 270) {
-          if (m) {
-            d.scaleX *= -1;
-            d.skewX += d.rotation <= 0 ? 180 : -180;
-            d.rotation += d.rotation <= 0 ? 180 : -180;
+        if (Math.abs(m.skewX) > 90 && Math.abs(m.skewX) < 270) {
+          if (d) {
+            m.scaleX *= -1;
+            m.skewX += m.rotation <= 0 ? 180 : -180;
+            m.rotation += m.rotation <= 0 ? 180 : -180;
           } else {
-            d.scaleY *= -1;
-            d.skewX += d.skewX <= 0 ? 180 : -180;
+            m.scaleY *= -1;
+            m.skewX += m.skewX <= 0 ? 180 : -180;
           }
         }
-        d.zOrigin = h;
-        for (o in d) {
-          if (d[o] < 0.00002 && d[o] > -0.00002) {
-            d[o] = 0;
+        m.zOrigin = h;
+        for (o in m) {
+          if (m[o] < 0.00002 && m[o] > -0.00002) {
+            m[o] = 0;
           }
         }
       }
       if (n) {
-        e._gsTransform = d;
-        if (d.svg) {
+        e._gsTransform = m;
+        if (m.svg) {
           if (Ae && e.style[Re]) {
             i.default.delayedCall(0.001, function () {
               Ze(e.style, Re);
@@ -18511,7 +18511,7 @@ var ggs_lib = function (e) {
           }
         }
       }
-      return d;
+      return m;
     };
     function Ke(e) {
       var t;
@@ -18531,8 +18531,8 @@ var ggs_lib = function (e) {
         l = -n;
         t = _.filter;
         c.filter = "";
-        var d;
         var m;
+        var d;
         var p = this.t.offsetWidth;
         var g = this.t.offsetHeight;
         var E = _.position !== "absolute";
@@ -18540,10 +18540,10 @@ var ggs_lib = function (e) {
         var f = i.x + p * i.xPercent / 100;
         var T = i.y + g * i.yPercent / 100;
         if (i.ox != null) {
-          f += (d = (i.oxp ? p * i.ox * 0.01 : i.ox) - p / 2) - (d * r + (m = (i.oyp ? g * i.oy * 0.01 : i.oy) - g / 2) * o);
-          T += m - (d * l + m * u);
+          f += (m = (i.oxp ? p * i.ox * 0.01 : i.ox) - p / 2) - (m * r + (d = (i.oyp ? g * i.oy * 0.01 : i.oy) - g / 2) * o);
+          T += d - (m * l + d * u);
         }
-        C += E ? ", Dx=" + ((d = p / 2) - (d * r + (m = g / 2) * o) + f) + ", Dy=" + (m - (d * l + m * u) + T) + ")" : ", sizingMethod='auto expand')";
+        C += E ? ", Dx=" + ((m = p / 2) - (m * r + (d = g / 2) * o) + f) + ", Dy=" + (d - (m * l + d * u) + T) + ")" : ", sizingMethod='auto expand')";
         if (t.indexOf("DXImageTransform.Microsoft.Matrix(") !== -1) {
           c.filter = t.replace(P, C);
         } else {
@@ -18563,13 +18563,13 @@ var ggs_lib = function (e) {
           var v;
           var A;
           var O = h < 8 ? 1 : -1;
-          d = i.ieOffsetX || 0;
-          m = i.ieOffsetY || 0;
+          m = i.ieOffsetX || 0;
+          d = i.ieOffsetY || 0;
           i.ieOffsetX = Math.round((p - ((r < 0 ? -r : r) * p + (o < 0 ? -o : o) * g)) / 2 + f);
           i.ieOffsetY = Math.round((g - ((u < 0 ? -u : u) * g + (l < 0 ? -l : l) * p)) / 2 + T);
           Se = 0;
           for (; Se < 4; Se++) {
-            A = (n = (I = _[v = ae[Se]]).indexOf("px") !== -1 ? parseFloat(I) : J(this.t, v, parseFloat(I), I.replace(S, "")) || 0) !== i[v] ? Se < 2 ? -i.ieOffsetX : -i.ieOffsetY : Se < 2 ? d - i.ieOffsetX : m - i.ieOffsetY;
+            A = (n = (I = _[v = ae[Se]]).indexOf("px") !== -1 ? parseFloat(I) : J(this.t, v, parseFloat(I), I.replace(S, "")) || 0) !== i[v] ? Se < 2 ? -i.ieOffsetX : -i.ieOffsetY : Se < 2 ? m - i.ieOffsetX : d - i.ieOffsetY;
             c[v] = (i[v] = Math.round(n - A * (Se === 0 || Se === 2 ? 1 : O))) + "px";
           }
         }
@@ -18587,7 +18587,7 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var m;
+      var d;
       var h;
       var p;
       var g;
@@ -18661,7 +18661,7 @@ var ggs_lib = function (e) {
           v[Re] = (I.xPercent || I.yPercent ? "translate(" + I.xPercent + "%," + I.yPercent + "%) matrix(" : "matrix(") + D + ",0,0," + b + "," + R + "," + P + ")";
         }
       } else {
-        if (d) {
+        if (m) {
           if (D < (g = 0.0001) && D > -g) {
             D = N = 0.00002;
           }
@@ -18702,7 +18702,7 @@ var ggs_lib = function (e) {
           i = s = 0;
         }
         c = 1;
-        a = o = l = u = _ = m = 0;
+        a = o = l = u = _ = d = 0;
         h = U ? -1 / U : 0;
         p = I.zOrigin;
         g = 0.000001;
@@ -18723,7 +18723,7 @@ var ggs_lib = function (e) {
           t = i * (E = Math.cos(A)) + a * (C = Math.sin(A));
           f = r * E + o * C;
           u = c * C;
-          m = h * C;
+          d = h * C;
           a = i * -C + a * E;
           o = r * -C + o * E;
           c *= E;
@@ -18741,7 +18741,7 @@ var ggs_lib = function (e) {
           i *= b;
           r *= b;
           u *= b;
-          m *= b;
+          d *= b;
         }
         if (D !== 1) {
           n *= D;
@@ -18773,7 +18773,7 @@ var ggs_lib = function (e) {
         T += (n < g && n > -g ? "0" : n) + "," + (s < g && s > -g ? "0" : s) + "," + (l < g && l > -g ? "0" : l);
         T += "," + (_ < g && _ > -g ? "0" : _) + "," + (i < g && i > -g ? "0" : i) + "," + (r < g && r > -g ? "0" : r);
         if (O || L || N !== 1) {
-          T += "," + (u < g && u > -g ? "0" : u) + "," + (m < g && m > -g ? "0" : m) + "," + (a < g && a > -g ? "0" : a);
+          T += "," + (u < g && u > -g ? "0" : u) + "," + (d < g && d > -g ? "0" : d) + "," + (a < g && a > -g ? "0" : a);
           T += "," + (o < g && o > -g ? "0" : o) + "," + (c < g && c > -g ? "0" : c) + "," + (h < g && h > -g ? "0" : h) + ",";
         } else {
           T += ",0,0,0,0,1,0,";
@@ -18800,8 +18800,8 @@ var ggs_lib = function (e) {
           l.scale = c(g, e);
         }
         var _;
-        var d;
         var m;
+        var d;
         var h;
         var E;
         var C;
@@ -18821,12 +18821,12 @@ var ggs_lib = function (e) {
           A.rotation = A.rotationZ;
         }
         if (D && typeof D == "string" && Re) {
-          (d = W.style)[Re] = D;
-          d.display = "block";
-          d.position = "absolute";
+          (m = W.style)[Re] = D;
+          m.display = "block";
+          m.position = "absolute";
           if (D.indexOf("%") !== -1) {
-            d.width = $(e, "width");
-            d.height = $(e, "height");
+            m.width = $(e, "width");
+            m.height = $(e, "height");
           }
           w.body.appendChild(W);
           _ = qe(W, null, false);
@@ -18874,8 +18874,8 @@ var ggs_lib = function (e) {
           };
           if ((E = A.directionalRotation) != null) {
             if (typeof E == "object") {
-              for (d in E) {
-                A[d] = E[d];
+              for (m in E) {
+                A[m] = E[m];
               }
             } else {
               A.rotation = E;
@@ -18901,7 +18901,7 @@ var ggs_lib = function (e) {
           L.force3D = A.force3D;
           h = true;
         }
-        if (!(m = L.force3D || L.z || L.rotationX || L.rotationY || _.z || _.rotationX || _.rotationY || _.perspective) && A.scale != null) {
+        if (!(d = L.force3D || L.z || L.rotationX || L.rotationY || _.z || _.rotationX || _.rotationY || _.perspective) && A.scale != null) {
           _.scaleZ = 1;
         }
         while (--v > -1) {
@@ -18929,7 +18929,7 @@ var ggs_lib = function (e) {
           }
           D = "0px 0px";
         }
-        if (D || Me && m && L.zOrigin) {
+        if (D || Me && d && L.zOrigin) {
           if (Re) {
             h = true;
             S = Be;
@@ -18937,11 +18937,11 @@ var ggs_lib = function (e) {
             (r = new Ce(I, S, 0, 0, r, -1, "transformOrigin")).b = I[S];
             r.plugin = o;
             if (Me) {
-              d = L.zOrigin;
+              m = L.zOrigin;
               D = D.split(" ");
-              L.zOrigin = (D.length > 2 && (d === 0 || D[2] !== "0px") ? parseFloat(D[2]) : d) || 0;
+              L.zOrigin = (D.length > 2 && (m === 0 || D[2] !== "0px") ? parseFloat(D[2]) : m) || 0;
               r.xs0 = r.e = D[0] + " " + (D[1] || "50%") + " 0px";
-              (r = new Ce(L, "zOrigin", 0, 0, r, -1, r.n)).b = d;
+              (r = new Ce(L, "zOrigin", 0, 0, r, -1, r.n)).b = m;
               r.xs0 = r.e = L.zOrigin;
             } else {
               r.xs0 = r.e = D;
@@ -18951,7 +18951,7 @@ var ggs_lib = function (e) {
           }
         }
         if (h) {
-          a._transformType = L.svg && Ae || !m && this._transformType !== 3 ? 2 : 3;
+          a._transformType = L.svg && Ae || !d && this._transformType !== 3 ? 2 : 3;
         }
         if (u) {
           l[i] = u;
@@ -18978,8 +18978,8 @@ var ggs_lib = function (e) {
         var u;
         var c;
         var _;
-        var d;
         var m;
+        var d;
         var h;
         var p;
         var g;
@@ -19000,21 +19000,21 @@ var ggs_lib = function (e) {
           if (this.p.indexOf("border")) {
             v[u] = X(v[u]);
           }
-          if ((d = _ = $(e, v[u], n, false, "0px")).indexOf(" ") !== -1) {
-            d = (_ = d.split(" "))[0];
+          if ((m = _ = $(e, v[u], n, false, "0px")).indexOf(" ") !== -1) {
+            m = (_ = m.split(" "))[0];
             _ = _[1];
           }
-          m = c = l[u];
-          h = parseFloat(d);
-          f = d.substr((h + "").length);
-          if (T = m.charAt(1) === "=") {
-            p = parseInt(m.charAt(0) + "1", 10);
-            m = m.substr(2);
-            p *= parseFloat(m);
-            C = m.substr((p + "").length - (p < 0 ? 1 : 0)) || "";
+          d = c = l[u];
+          h = parseFloat(m);
+          f = m.substr((h + "").length);
+          if (T = d.charAt(1) === "=") {
+            p = parseInt(d.charAt(0) + "1", 10);
+            d = d.substr(2);
+            p *= parseFloat(d);
+            C = d.substr((p + "").length - (p < 0 ? 1 : 0)) || "";
           } else {
-            p = parseFloat(m);
-            C = m.substr((p + "").length);
+            p = parseFloat(d);
+            C = d.substr((p + "").length);
           }
           if (C === "") {
             C = t[a] || f;
@@ -19023,21 +19023,21 @@ var ggs_lib = function (e) {
             S = J(e, "borderLeft", h, f);
             y = J(e, "borderTop", h, f);
             if (C === "%") {
-              d = S / g * 100 + "%";
+              m = S / g * 100 + "%";
               _ = y / E * 100 + "%";
             } else if (C === "em") {
-              d = S / (I = J(e, "borderLeft", 1, "em")) + "em";
+              m = S / (I = J(e, "borderLeft", 1, "em")) + "em";
               _ = y / I + "em";
             } else {
-              d = S + "px";
+              m = S + "px";
               _ = y + "px";
             }
             if (T) {
-              m = parseFloat(d) + p + C;
+              d = parseFloat(m) + p + C;
               c = parseFloat(_) + p + C;
             }
           }
-          r = Te(A, v[u], d + " " + _, m + " " + c, false, "0px", r);
+          r = Te(A, v[u], m + " " + _, d + " " + c, false, "0px", r);
         }
         return r;
       },
@@ -19060,15 +19060,15 @@ var ggs_lib = function (e) {
         var u;
         var c;
         var _;
-        var d;
-        var m = "background-position";
+        var m;
+        var d = "background-position";
         var p = n || Q(e, null);
-        var g = this.format((p ? h ? p.getPropertyValue(m + "-x") + " " + p.getPropertyValue(m + "-y") : p.getPropertyValue(m) : e.currentStyle.backgroundPositionX + " " + e.currentStyle.backgroundPositionY) || "0 0");
+        var g = this.format((p ? h ? p.getPropertyValue(d + "-x") + " " + p.getPropertyValue(d + "-y") : p.getPropertyValue(d) : e.currentStyle.backgroundPositionX + " " + e.currentStyle.backgroundPositionY) || "0 0");
         var E = this.format(t);
-        if (g.indexOf("%") !== -1 != (E.indexOf("%") !== -1) && E.split(",").length < 2 && (d = $(e, "backgroundImage").replace(D, "")) && d !== "none") {
+        if (g.indexOf("%") !== -1 != (E.indexOf("%") !== -1) && E.split(",").length < 2 && (m = $(e, "backgroundImage").replace(D, "")) && m !== "none") {
           o = g.split(" ");
           l = E.split(" ");
-          H.setAttribute("src", d);
+          H.setAttribute("src", m);
           u = 2;
           while (--u > -1) {
             if ((c = (g = o[u]).indexOf("%") !== -1) !== (l[u].indexOf("%") !== -1)) {
@@ -19265,8 +19265,8 @@ var ggs_lib = function (e) {
         var u;
         var c;
         var _;
-        var d;
         var m;
+        var d;
         var h = t.getAttribute("class") || "";
         var p = t.style.cssText;
         (r = s._classNamePT = new Ce(t, a, 0, 0, r, 2)).setRatio = Xe;
@@ -19275,18 +19275,18 @@ var ggs_lib = function (e) {
         r.b = h;
         c = te(t, n);
         if (_ = t._gsClassPT) {
-          d = {};
-          m = _.data;
-          while (m) {
-            d[m.p] = 1;
-            m = m._next;
+          m = {};
+          d = _.data;
+          while (d) {
+            m[d.p] = 1;
+            d = d._next;
           }
           _.setRatio(1);
         }
         t._gsClassPT = r;
         r.e = i.charAt(1) !== "=" ? i : h.replace(new RegExp("(?:\\s|^)" + i.substr(2) + "(?![\\w-])"), "") + (i.charAt(0) === "+" ? " " + i.substr(2) : "");
         t.setAttribute("class", r.e);
-        u = ne(t, c, te(t), l, d);
+        u = ne(t, c, te(t), l, m);
         t.setAttribute("class", h);
         r.data = u.firstMPT;
         t.style.cssText = p;
@@ -19346,14 +19346,14 @@ var ggs_lib = function (e) {
       ve(l[Se]);
     }
     (l = s.prototype)._firstPT = l._lastParsedTransform = l._transform = null;
-    l._onInitTween = function (i, r, l, d) {
+    l._onInitTween = function (i, r, l, m) {
       if (!i.nodeType) {
         return false;
       }
       this._target = p = i;
       this._tween = l;
       this._vars = r;
-      g = d;
+      g = m;
       u = r.autoRound;
       e = false;
       t = r.suffixMap || s.suffixMap;
@@ -19400,7 +19400,7 @@ var ggs_lib = function (e) {
                 this._addLazySet(O, "zIndex", 0);
               }
             }
-            if (m) {
+            if (d) {
               this._addLazySet(O, "WebkitBackfaceVisibility", this._vars.WebkitBackfaceVisibility || (A ? "visible" : "hidden"));
             }
           }
@@ -19447,36 +19447,36 @@ var ggs_lib = function (e) {
       var l;
       var c;
       var _;
-      var d;
       var m;
+      var d;
       var h;
       var E;
       var C;
       var f;
       var T = e.style;
       for (r in i) {
-        if (typeof (m = i[r]) == "function") {
-          m = m(g, p);
+        if (typeof (d = i[r]) == "function") {
+          d = d(g, p);
         }
         if (l = o[r]) {
-          a = l.parse(e, m, r, this, a, s, i);
+          a = l.parse(e, d, r, this, a, s, i);
         } else {
           if (r.substr(0, 2) === "--") {
-            this._tween._propLookup[r] = this._addTween.call(this._tween, e.style, "setProperty", Q(e).getPropertyValue(r) + "", m + "", r, false, r);
+            this._tween._propLookup[r] = this._addTween.call(this._tween, e.style, "setProperty", Q(e).getPropertyValue(r) + "", d + "", r, false, r);
             continue;
           }
-          d = $(e, r, n) + "";
-          C = typeof m == "string";
-          if (r === "color" || r === "fill" || r === "stroke" || r.indexOf("Color") !== -1 || C && A.test(m)) {
+          m = $(e, r, n) + "";
+          C = typeof d == "string";
+          if (r === "color" || r === "fill" || r === "stroke" || r.indexOf("Color") !== -1 || C && A.test(d)) {
             if (!C) {
-              m = ((m = de(m)).length > 3 ? "rgba(" : "rgb(") + m.join(",") + ")";
+              d = ((d = me(d)).length > 3 ? "rgba(" : "rgb(") + d.join(",") + ")";
             }
-            a = Te(T, r, d, m, true, "transparent", a, 0, s);
-          } else if (C && M.test(m)) {
-            a = Te(T, r, d, m, true, null, a, 0, s);
+            a = Te(T, r, m, d, true, "transparent", a, 0, s);
+          } else if (C && M.test(d)) {
+            a = Te(T, r, m, d, true, null, a, 0, s);
           } else {
-            h = (c = parseFloat(d)) || c === 0 ? d.substr((c + "").length) : "";
-            if (d === "" || d === "auto") {
+            h = (c = parseFloat(m)) || c === 0 ? m.substr((c + "").length) : "";
+            if (m === "" || m === "auto") {
               if (r === "width" || r === "height") {
                 c = se(e, r, n);
                 h = "px";
@@ -19488,19 +19488,19 @@ var ggs_lib = function (e) {
                 h = "";
               }
             }
-            if (f = C && m.charAt(1) === "=") {
-              _ = parseInt(m.charAt(0) + "1", 10);
-              m = m.substr(2);
-              _ *= parseFloat(m);
-              E = m.replace(S, "");
+            if (f = C && d.charAt(1) === "=") {
+              _ = parseInt(d.charAt(0) + "1", 10);
+              d = d.substr(2);
+              _ *= parseFloat(d);
+              E = d.replace(S, "");
             } else {
-              _ = parseFloat(m);
-              E = C ? m.replace(S, "") : "";
+              _ = parseFloat(d);
+              E = C ? d.replace(S, "") : "";
             }
             if (E === "") {
               E = r in t ? t[r] : h;
             }
-            m = _ || _ === 0 ? (f ? _ + c : _) + E : i[r];
+            d = _ || _ === 0 ? (f ? _ + c : _) + E : i[r];
             if (h !== E) {
               if (E !== "" || r === "lineHeight") {
                 if ((_ || _ === 0) && c) {
@@ -19508,7 +19508,7 @@ var ggs_lib = function (e) {
                   if (E === "%") {
                     c /= J(e, r, 100, "%") / 100;
                     if (i.strictUnits !== true) {
-                      d = c + "%";
+                      m = c + "%";
                     }
                   } else if (E === "em" || E === "rem" || E === "vw" || E === "vh") {
                     c /= J(e, r, 1, E);
@@ -19517,7 +19517,7 @@ var ggs_lib = function (e) {
                     E = "px";
                   }
                   if (f && (_ || _ === 0)) {
-                    m = _ + c + E;
+                    d = _ + c + E;
                   }
                 }
               }
@@ -19526,13 +19526,13 @@ var ggs_lib = function (e) {
               _ += c;
             }
             if (!c && c !== 0 || !_ && _ !== 0) {
-              if (T[r] !== undefined && (m || m + "" != "NaN" && m != null)) {
-                (a = new Ce(T, r, _ || c || 0, 0, a, -1, r, false, 0, d, m)).xs0 = m !== "none" || r !== "display" && r.indexOf("Style") === -1 ? m : d;
+              if (T[r] !== undefined && (d || d + "" != "NaN" && d != null)) {
+                (a = new Ce(T, r, _ || c || 0, 0, a, -1, r, false, 0, m, d)).xs0 = d !== "none" || r !== "display" && r.indexOf("Style") === -1 ? d : m;
               } else {
                 Y("invalid " + r + " tween value: " + i[r]);
               }
             } else {
-              (a = new Ce(T, r, c, _ - c, a, 0, r, u !== false && (E === "px" || r === "zIndex"), 0, d, m)).xs0 = E;
+              (a = new Ce(T, r, c, _ - c, a, 0, r, u !== false && (E === "px" || r === "zIndex"), 0, m, d)).xs0 = E;
             }
           }
         }
@@ -19737,20 +19737,20 @@ var ggs_lib = function (e) {
       var u = [l];
       var c = [];
       var _ = [];
-      var d = [];
-      var m = i.default._internals.reservedProps;
+      var m = [];
+      var d = i.default._internals.reservedProps;
       e = l._targets || l.target;
-      Je(e, c, d);
+      Je(e, c, m);
       l.render(t, true, true);
       Je(e, _);
       l.render(0, true, true);
       l._enabled(true);
-      a = d.length;
+      a = m.length;
       while (--a > -1) {
-        if ((s = ne(d[a], c[a], _[a])).firstMPT) {
+        if ((s = ne(m[a], c[a], _[a])).firstMPT) {
           s = s.difs;
           for (r in n) {
-            if (m[r]) {
+            if (d[r]) {
               s[r] = n[r];
             }
           }
@@ -19758,7 +19758,7 @@ var ggs_lib = function (e) {
           for (r in s) {
             o[r] = c[a][r];
           }
-          u.push(i.default.fromTo(d[a], t, o, s));
+          u.push(i.default.fromTo(m[a], t, o, s));
         }
       }
       return u;
@@ -19853,23 +19853,23 @@ var ggs_lib = function (e) {
     var u = (t + n) / 2;
     var c = (n + i) / 2;
     var _ = (l + u) / 2;
-    var d = (u + c) / 2;
-    var m = (d - _) / 8;
+    var m = (u + c) / 2;
+    var d = (m - _) / 8;
     a.b = l + (e - l) / 4;
-    s.b = _ + m;
+    s.b = _ + d;
     a.c = s.a = (a.b + s.b) / 2;
-    s.c = r.a = (_ + d) / 2;
-    r.b = d - m;
+    s.c = r.a = (_ + m) / 2;
+    r.b = m - d;
     o.b = c + (i - c) / 4;
     r.c = o.a = (r.b + o.b) / 2;
     return [a, s, r, o];
   }
-  function d(e, t, n, i, a) {
+  function m(e, t, n, i, a) {
     var l;
     var u;
     var c;
-    var d;
     var m;
+    var d;
     var h;
     var p;
     var g;
@@ -19882,23 +19882,23 @@ var ggs_lib = function (e) {
     var I = 0;
     var v = e[0].a;
     for (l = 0; l < y; l++) {
-      u = (m = e[I]).a;
-      c = m.d;
-      d = e[I + 1].d;
+      u = (d = e[I]).a;
+      c = d.d;
+      m = e[I + 1].d;
       if (a) {
         f = s[l];
         S = ((T = r[l]) + f) * t * 0.25 / (i ? 0.5 : o[l] || 0.5);
-        g = c - ((h = c - (c - u) * (i ? t * 0.5 : f !== 0 ? S / f : 0)) + (((p = c + (d - c) * (i ? t * 0.5 : T !== 0 ? S / T : 0)) - h) * (f * 3 / (f + T) + 0.5) / 4 || 0));
+        g = c - ((h = c - (c - u) * (i ? t * 0.5 : f !== 0 ? S / f : 0)) + (((p = c + (m - c) * (i ? t * 0.5 : T !== 0 ? S / T : 0)) - h) * (f * 3 / (f + T) + 0.5) / 4 || 0));
       } else {
-        g = c - ((h = c - (c - u) * t * 0.5) + (p = c + (d - c) * t * 0.5)) / 2;
+        g = c - ((h = c - (c - u) * t * 0.5) + (p = c + (m - c) * t * 0.5)) / 2;
       }
       h += g;
       p += g;
-      m.c = E = h;
-      m.b = l !== 0 ? v : v = m.a + (m.c - m.a) * 0.6;
-      m.da = c - u;
-      m.ca = E - u;
-      m.ba = v - u;
+      d.c = E = h;
+      d.b = l !== 0 ? v : v = d.a + (d.c - d.a) * 0.6;
+      d.da = c - u;
+      d.ca = E - u;
+      d.ba = v - u;
       if (n) {
         C = _(u, v, E, c);
         e.splice(I, 1, C[0], C[1], C[2], C[3]);
@@ -19908,47 +19908,47 @@ var ggs_lib = function (e) {
       }
       v = p;
     }
-    (m = e[I]).b = v;
-    m.c = v + (m.d - v) * 0.4;
-    m.da = m.d - m.a;
-    m.ca = m.c - m.a;
-    m.ba = v - m.a;
+    (d = e[I]).b = v;
+    d.c = v + (d.d - v) * 0.4;
+    d.da = d.d - d.a;
+    d.ca = d.c - d.a;
+    d.ba = v - d.a;
     if (n) {
-      C = _(m.a, v, m.c, m.d);
+      C = _(d.a, v, d.c, d.d);
       e.splice(I, 1, C[0], C[1], C[2], C[3]);
     }
   }
-  function m(e, t, n, i) {
+  function d(e, t, n, i) {
     var a;
     var o;
     var l;
     var u;
     var _;
-    var d;
-    var m = [];
+    var m;
+    var d = [];
     if (i) {
       for (o = (e = [i].concat(e)).length; --o > -1;) {
-        if (typeof (d = e[o][t]) == "string" && d.charAt(1) === "=") {
-          e[o][t] = i[t] + Number(d.charAt(0) + d.substr(2));
+        if (typeof (m = e[o][t]) == "string" && m.charAt(1) === "=") {
+          e[o][t] = i[t] + Number(m.charAt(0) + m.substr(2));
         }
       }
     }
     if ((a = e.length - 2) < 0) {
-      m[0] = new c(e[0][t], 0, 0, e[0][t]);
-      return m;
+      d[0] = new c(e[0][t], 0, 0, e[0][t]);
+      return d;
     }
     for (o = 0; o < a; o++) {
       l = e[o][t];
       u = e[o + 1][t];
-      m[o] = new c(l, 0, 0, u);
+      d[o] = new c(l, 0, 0, u);
       if (n) {
         _ = e[o + 2][t];
         s[o] = (s[o] || 0) + (u - l) * (u - l);
         r[o] = (r[o] || 0) + (_ - u) * (_ - u);
       }
     }
-    m[o] = new c(e[o][t], 0, 0, e[o + 1][t]);
-    return m;
+    d[o] = new c(e[o][t], 0, 0, e[o + 1][t]);
+    return d;
   }
   function h(e, t, n, i, a, u) {
     var c;
@@ -19994,7 +19994,7 @@ var ggs_lib = function (e) {
     while (--c > -1) {
       _ = S[c];
       l[_] = a.indexOf("," + _ + ",") !== -1;
-      T[_] = m(e, _, l[_], u);
+      T[_] = d(e, _, l[_], u);
     }
     for (c = s.length; --c > -1;) {
       s[c] = Math.sqrt(s[c]);
@@ -20019,7 +20019,7 @@ var ggs_lib = function (e) {
     p = n ? 4 : 1;
     while (--c > -1) {
       h = T[_ = S[c]];
-      d(h, t, n, i, l[_]);
+      m(h, t, n, i, l[_]);
       if (C) {
         h.splice(0, p);
         h.splice(h.length - p, p);
@@ -20037,19 +20037,19 @@ var ggs_lib = function (e) {
     var u;
     var c;
     var _;
-    var d;
     var m;
+    var d;
     var h = 1 / n;
     for (var p = e.length; --p > -1;) {
-      s = (d = e[p]).a;
-      r = d.d - s;
-      o = d.c - s;
-      l = d.b - s;
+      s = (m = e[p]).a;
+      r = m.d - s;
+      o = m.c - s;
+      l = m.b - s;
       i = a = 0;
       c = 1;
       for (; c <= n; c++) {
         i = a - (a = ((u = h * c) * u * r + (_ = 1 - u) * 3 * (u * o + _ * l)) * u);
-        t[m = p * n + c - 1] = (t[m] || 0) + i * i;
+        t[d = p * n + c - 1] = (t[d] || 0) + i * i;
       }
     }
   }
@@ -20078,8 +20078,8 @@ var ggs_lib = function (e) {
       var l = t.values || [];
       var u = {};
       var _ = l[0];
-      var d = t.autoRotate || n.vars.orientToBezier;
-      this._autoRotate = d ? d instanceof Array ? d : [["x", "y", "rotation", d === true ? 0 : Number(d) || 0]] : null;
+      var m = t.autoRotate || n.vars.orientToBezier;
+      this._autoRotate = m ? m instanceof Array ? m : [["x", "y", "rotation", m === true ? 0 : Number(m) || 0]] : null;
       for (i in _) {
         this._props.push(i);
       }
@@ -20103,8 +20103,8 @@ var ggs_lib = function (e) {
         var l;
         var u;
         var _;
-        var d;
         var m;
+        var d;
         var h;
         var p = {};
         var g = (t = t || "soft") === "cubic" ? 3 : 2;
@@ -20116,38 +20116,38 @@ var ggs_lib = function (e) {
         if (e == null || e.length < g + 1) {
           throw "invalid Bezier data";
         }
-        for (d in e[0]) {
-          C.push(d);
+        for (m in e[0]) {
+          C.push(m);
         }
         for (l = C.length; --l > -1;) {
-          p[d = C[l]] = o = [];
-          m = 0;
+          p[m = C[l]] = o = [];
+          d = 0;
           _ = e.length;
           u = 0;
           for (; u < _; u++) {
-            i = n == null ? e[u][d] : typeof (h = e[u][d]) == "string" && h.charAt(1) === "=" ? n[d] + Number(h.charAt(0) + h.substr(2)) : Number(h);
+            i = n == null ? e[u][m] : typeof (h = e[u][m]) == "string" && h.charAt(1) === "=" ? n[m] + Number(h.charAt(0) + h.substr(2)) : Number(h);
             if (E && u > 1 && u < _ - 1) {
-              o[m++] = (i + o[m - 2]) / 2;
+              o[d++] = (i + o[d - 2]) / 2;
             }
-            o[m++] = i;
+            o[d++] = i;
           }
-          _ = m - g + 1;
-          m = 0;
+          _ = d - g + 1;
+          d = 0;
           u = 0;
           for (; u < _; u += g) {
             i = o[u];
             a = o[u + 1];
             s = o[u + 2];
             r = g === 2 ? 0 : o[u + 3];
-            o[m++] = h = g === 3 ? new c(i, a, s, r) : new c(i, (a * 2 + i) / 3, (a * 2 + s) / 3, s);
+            o[d++] = h = g === 3 ? new c(i, a, s, r) : new c(i, (a * 2 + i) / 3, (a * 2 + s) / 3, s);
           }
-          o.length = m;
+          o.length = d;
         }
         return p;
       }(l, t.type, u);
       this._segCount = this._beziers[i].length;
       if (this._timeRes) {
-        var m = function (e, t) {
+        var d = function (e, t) {
           var n;
           var i;
           var a;
@@ -20158,7 +20158,7 @@ var ggs_lib = function (e) {
           var u = 0;
           var c = (t = t >> 0 || 6) - 1;
           var _ = [];
-          var d = [];
+          var m = [];
           for (n in e) {
             p(e[n], r, t);
           }
@@ -20166,13 +20166,13 @@ var ggs_lib = function (e) {
           i = 0;
           for (; i < a; i++) {
             l += Math.sqrt(r[i]);
-            d[s = i % t] = l;
+            m[s = i % t] = l;
             if (s === c) {
               u += l;
-              _[s = i / t >> 0] = d;
+              _[s = i / t >> 0] = m;
               o[s] = u;
               l = 0;
-              d = [];
+              m = [];
             }
           }
           return {
@@ -20181,27 +20181,27 @@ var ggs_lib = function (e) {
             segments: _
           };
         }(this._beziers, this._timeRes);
-        this._length = m.length;
-        this._lengths = m.lengths;
-        this._segments = m.segments;
+        this._length = d.length;
+        this._lengths = d.lengths;
+        this._segments = d.segments;
         this._l1 = this._li = this._s1 = this._si = 0;
         this._l2 = this._lengths[0];
         this._curSeg = this._segments[0];
         this._s2 = this._curSeg[0];
         this._prec = 1 / this._curSeg.length;
       }
-      if (d = this._autoRotate) {
+      if (m = this._autoRotate) {
         this._initialRotations = [];
-        if (!(d[0] instanceof Array)) {
-          this._autoRotate = d = [d];
+        if (!(m[0] instanceof Array)) {
+          this._autoRotate = m = [m];
         }
-        s = d.length;
+        s = m.length;
         while (--s > -1) {
           for (r = 0; r < 3; r++) {
-            i = d[s][r];
+            i = m[s][r];
             this._func[i] = typeof e[i] == "function" && e[i.indexOf("set") || typeof e["get" + i.substr(3)] != "function" ? i : "get" + i.substr(3)];
           }
-          i = d[s][2];
+          i = m[s][2];
           this._initialRotations[s] = (this._func[i] ? this._func[i].call(this._target) : this._target[i]) || 0;
           this._overwriteProps.push(i);
         }
@@ -20220,8 +20220,8 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var d = this._segCount;
-      var m = this._func;
+      var m = this._segCount;
+      var d = this._func;
       var h = this._target;
       var p = e !== this._startRatio;
       if (this._timeRes) {
@@ -20229,8 +20229,8 @@ var ggs_lib = function (e) {
         _ = this._curSeg;
         e *= this._length;
         i = this._li;
-        if (e > this._l2 && i < d - 1) {
-          for (u = d - 1; i < u && (this._l2 = c[++i]) <= e;);
+        if (e > this._l2 && i < m - 1) {
+          for (u = m - 1; i < u && (this._l2 = c[++i]) <= e;);
           this._l1 = c[i - 1];
           this._li = i;
           this._curSeg = _ = this._segments[i];
@@ -20267,7 +20267,7 @@ var ggs_lib = function (e) {
         }
         o = (i + (e - this._s1) / (this._s2 - this._s1)) * this._prec || 0;
       } else {
-        o = (e - (t = e < 0 ? 0 : e >= 1 ? d - 1 : d * e >> 0) * (1 / d)) * d;
+        o = (e - (t = e < 0 ? 0 : e >= 1 ? m - 1 : m * e >> 0) * (1 / m)) * m;
       }
       n = 1 - o;
       i = this._props.length;
@@ -20277,7 +20277,7 @@ var ggs_lib = function (e) {
         if (this._mod[s]) {
           l = this._mod[s](l, h);
         }
-        if (m[s]) {
+        if (d[s]) {
           h[s](l);
         } else {
           h[s] = l;
@@ -20311,7 +20311,7 @@ var ggs_lib = function (e) {
             if (this._mod[s]) {
               l = this._mod[s](l, h);
             }
-            if (m[s]) {
+            if (d[s]) {
               h[s](l);
             } else {
               h[s] = l;
@@ -20357,15 +20357,15 @@ var ggs_lib = function (e) {
           var u;
           var c;
           var _;
-          var d = t.values;
-          var m = d.length - 1;
+          var m = t.values;
+          var d = m.length - 1;
           var h = [];
           var p = {};
-          if (m < 0) {
+          if (d < 0) {
             return o;
           }
-          for (u = 0; u <= m; u++) {
-            _ = n(e, d[u], r, o, l, m !== u);
+          for (u = 0; u <= d; u++) {
+            _ = n(e, m[u], r, o, l, d !== u);
             h[u] = _.end;
           }
           for (c in t) {
@@ -20828,9 +20828,9 @@ var ggs_lib = function (e) {
   var u = n(4);
   var c = n(12);
   var _ = n(31);
-  var d = n(3);
+  var m = n(3);
   n(2).getLogger("BasicContextMenuController");
-  var m = createjs.Event;
+  var d = createjs.Event;
   var h = n(78);
   var p = n(11);
   var g = function () {
@@ -20881,13 +20881,13 @@ var ggs_lib = function (e) {
     };
     BasicContextMenuController.prototype.onXmlVersionSelected = function (e) {};
     BasicContextMenuController.prototype.onGgsLinkSelected = function (e) {
-      r.BrowserUtil.executeNavigateToURL(new d.URLRequest(p.BasicConstants.DOMAIN_PROTOCOL + "://www.goodgamestudios.com"), "_blank");
+      r.BrowserUtil.executeNavigateToURL(new m.URLRequest(p.BasicConstants.DOMAIN_PROTOCOL + "://www.goodgamestudios.com"), "_blank");
     };
     BasicContextMenuController.prototype.onBlogSelected = function (e) {
-      r.BrowserUtil.executeNavigateToURL(new d.URLRequest(p.BasicConstants.DOMAIN_PROTOCOL + "://blog.goodgamestudios.com/"), "_blank");
+      r.BrowserUtil.executeNavigateToURL(new m.URLRequest(p.BasicConstants.DOMAIN_PROTOCOL + "://blog.goodgamestudios.com/"), "_blank");
     };
     BasicContextMenuController.prototype.onFacebookSelected = function (e) {
-      r.BrowserUtil.executeNavigateToURL(new d.URLRequest(p.BasicConstants.DOMAIN_PROTOCOL + "://www.facebook.com/GoodgameStudios"), "_blank");
+      r.BrowserUtil.executeNavigateToURL(new m.URLRequest(p.BasicConstants.DOMAIN_PROTOCOL + "://www.facebook.com/GoodgameStudios"), "_blank");
     };
     BasicContextMenuController.prototype.onForumSelected = function (e) {
       c.CommandController.instance.executeCommand(l.BasicController.COMMAND_OPEN_FORUM);
@@ -20921,7 +20921,7 @@ var ggs_lib = function (e) {
     i.__decorate([h.commentedOut(), i.__metadata("design:type", Function), i.__metadata("design:paramtypes", [String]), i.__metadata("design:returntype", undefined)], BasicContextMenuController.prototype, "enableContextMenuItem", null);
     i.__decorate([h.commentedOut(), i.__metadata("design:type", Function), i.__metadata("design:paramtypes", [String]), i.__metadata("design:returntype", undefined)], BasicContextMenuController.prototype, "disableContextMenuItem", null);
     i.__decorate([h.commentedOut(), i.__metadata("design:type", Function), i.__metadata("design:paramtypes", []), i.__metadata("design:returntype", undefined)], BasicContextMenuController.prototype, "refreshVersionInfo", null);
-    i.__decorate([h.commentedOut(), i.__metadata("design:type", Function), i.__metadata("design:paramtypes", [m]), i.__metadata("design:returntype", undefined)], BasicContextMenuController.prototype, "onXmlVersionSelected", null);
+    i.__decorate([h.commentedOut(), i.__metadata("design:type", Function), i.__metadata("design:paramtypes", [d]), i.__metadata("design:returntype", undefined)], BasicContextMenuController.prototype, "onXmlVersionSelected", null);
     return BasicContextMenuController;
   }();
   t.BasicContextMenuController = g;
@@ -21688,7 +21688,7 @@ var ggs_lib = function (e) {
     performance.clearMeasures(e);
     return t;
   };
-  var d = function () {
+  var m = function () {
     function PerformanceMonitoringService() {
       this._isInitialized = false;
       this._isPaused = false;
@@ -21791,7 +21791,7 @@ var ggs_lib = function (e) {
     };
     return PerformanceMonitoringService;
   }();
-  t.PerformanceMonitoringService = d;
+  t.PerformanceMonitoringService = m;
 }, function (e, t, n) {
   'use strict';
 
@@ -21807,13 +21807,13 @@ var ggs_lib = function (e) {
   var u = n(3);
   var c = n(20);
   var _ = n(29);
-  var d = n(2);
-  var m = n(412);
+  var m = n(2);
+  var d = n(412);
   var h = n(413);
   var p = n(315);
   var g = createjs.EventDispatcher;
   var E = createjs.TimerEvent;
-  var C = d.getLogger(_.SMARTFOX_CLIENT);
+  var C = m.getLogger(_.SMARTFOX_CLIENT);
   var f = "<msg t='sys'>";
   var T = function (e) {
     function BasicSmartfoxClient() {
@@ -21949,7 +21949,7 @@ var ggs_lib = function (e) {
       var i = this.decompressInt(e[3]);
       var a = this.decompressInt(e[4]);
       var s = e[5];
-      this.roomList[t] = new m.Room(t, s, i, 0, (a >> 1 & 1) == 1, (a >> 2 & 1) == 1, (a >> 0 & 1) == 1, (a >> 3 & 1) == 1, n, 0);
+      this.roomList[t] = new d.Room(t, s, i, 0, (a >> 1 & 1) == 1, (a >> 2 & 1) == 1, (a >> 0 & 1) == 1, (a >> 3 & 1) == 1, n, 0);
       C.debug("Rooms: ", this.roomList);
     };
     BasicSmartfoxClient.prototype.decompressInt = function (e) {
@@ -22534,8 +22534,8 @@ var ggs_lib = function (e) {
   var u = createjs.MovieClip;
   var c = createjs.Event;
   var _ = createjs.Rectangle;
-  var d = createjs.Container;
-  var m = function (e) {
+  var m = createjs.Container;
+  var d = function (e) {
     function AbstractDisplayObjectClip() {
       var t = e.call(this) || this;
       t._clipBounds = new _();
@@ -22664,7 +22664,7 @@ var ggs_lib = function (e) {
           e.gotoAndStop(1);
         }
         this.addToClipBounds(e.getBounds(null));
-      } else if (e instanceof d) {
+      } else if (e instanceof m) {
         this.addToClipBounds(e.getBounds());
       }
       if (this._clipSizeComponent) {
@@ -22731,11 +22731,11 @@ var ggs_lib = function (e) {
       }
       e.prototype.dispose.call(this);
     };
-    AbstractDisplayObjectClip.containerRegPointFinder = new d();
+    AbstractDisplayObjectClip.containerRegPointFinder = new m();
     AbstractDisplayObjectClip.regPointFinder = new _();
     return AbstractDisplayObjectClip;
   }(a.AbstractGoodgameClip);
-  t.AbstractDisplayObjectClip = m;
+  t.AbstractDisplayObjectClip = d;
 }, function (e, t, n) {
   'use strict';
 
@@ -23016,12 +23016,12 @@ var ggs_lib = function (e) {
     o.WARN = _(5, "WARN");
     o.ERROR = _(8, "ERROR");
     o.OFF = _(99, "OFF");
-    function d(e) {
+    function m(e) {
       this.context = e;
       this.setLevel(e.filterLevel);
       this.log = this.info;
     }
-    d.prototype = {
+    m.prototype = {
       setLevel: function (e) {
         if (e && "value" in e) {
           this.context.filterLevel = e;
@@ -23067,19 +23067,19 @@ var ggs_lib = function (e) {
         }
       }
     };
-    var m;
-    var h = new d({
+    var d;
+    var h = new m({
       filterLevel: o.OFF
     });
-    (m = o).enabledFor = u(h, h.enabledFor);
-    m.trace = u(h, h.trace);
-    m.debug = u(h, h.debug);
-    m.time = u(h, h.time);
-    m.timeEnd = u(h, h.timeEnd);
-    m.info = u(h, h.info);
-    m.warn = u(h, h.warn);
-    m.error = u(h, h.error);
-    m.log = m.info;
+    (d = o).enabledFor = u(h, h.enabledFor);
+    d.trace = u(h, h.trace);
+    d.debug = u(h, h.debug);
+    d.time = u(h, h.time);
+    d.timeEnd = u(h, h.timeEnd);
+    d.info = u(h, h.info);
+    d.warn = u(h, h.warn);
+    d.error = u(h, h.error);
+    d.log = d.info;
     o.setHandler = function (e) {
       r = e;
     };
@@ -23095,7 +23095,7 @@ var ggs_lib = function (e) {
       return h.getLevel();
     };
     o.get = function (e) {
-      return l[e] ||= new d(c({
+      return l[e] ||= new m(c({
         name: e
       }, h.context));
     };
@@ -23384,10 +23384,10 @@ var ggs_lib = function (e) {
       var u;
       var c = "";
       var _ = false;
-      var d = ["{", "}"];
+      var m = ["{", "}"];
       if (isArray(n)) {
         _ = true;
-        d = ["[", "]"];
+        m = ["[", "]"];
       }
       if (isFunction(n)) {
         c = " [Function" + (n.name ? ": " + n.name : "") + "]";
@@ -23440,10 +23440,10 @@ var ggs_lib = function (e) {
               return n[0] + (t === "" ? "" : t + "\n ") + " " + e.join(",\n  ") + " " + n[1];
             }
             return n[0] + t + " " + e.join(", ") + " " + n[1];
-          }(u, c, d);
+          }(u, c, m);
         }
       } else {
-        return d[0] + c + d[1];
+        return m[0] + c + m[1];
       }
     }
     function formatError(e) {
@@ -23671,13 +23671,13 @@ var ggs_lib = function (e) {
   t.BG_STAGE = "bgStage";
   t.STATIC_STAGE = "staticStage";
   t.TUTORIAL_STAGE = "tutorialStage";
-  t.objectsUnderPoint = function objectsUnderPoint(e, n, r, o, l, u, c, _, d) {
+  t.objectsUnderPoint = function objectsUnderPoint(e, n, r, o, l, u, c, _, m) {
     _ = _ || 0;
-    d = d || Date.now();
-    var m = 1;
+    m = m || Date.now();
+    var d = 1;
     var h = 1;
     if (e.stage) {
-      m = 1 / e.stage.scaleX;
+      d = 1 / e.stage.scaleX;
       h = 1 / e.stage.scaleY;
     }
     if (!_ && !e._testMask(e, r, o)) {
@@ -23692,12 +23692,12 @@ var ggs_lib = function (e) {
         if (!C && E instanceof createjs.Container) {
           var f = undefined;
           if (_ > 0) {
-            var T = E.getHitTestBounds(d, e.stage);
+            var T = E.getHitTestBounds(m, e.stage);
             if (r >= T.x && r <= T.right && o >= T.y && o <= T.y + T.height) {
-              f = E.__getObjectsUnderPoint(r, o, l, u, c, _ + 1, d);
+              f = E.__getObjectsUnderPoint(r, o, l, u, c, _ + 1, m);
             }
           } else {
-            f = E.__getObjectsUnderPoint(r, o, l, u, c, _ + 1, d);
+            f = E.__getObjectsUnderPoint(r, o, l, u, c, _ + 1, m);
           }
           if (!l && f) {
             if (u && !e.mouseChildren) {
@@ -23725,8 +23725,8 @@ var ggs_lib = function (e) {
             v.appendMatrix(C.getMatrix(C._props.matrix));
             I.alpha = C.alpha;
           }
-          v.scale(m, h);
-          v.tx = v.tx * m;
+          v.scale(d, h);
+          v.tx = v.tx * d;
           v.ty = v.ty * h;
           if (Math.abs(v.b) < 0.01 && Math.abs(v.c) < 0.01) {
             var A = C || E;
@@ -24024,7 +24024,7 @@ var ggs_lib = function (e) {
   var r = n(16);
   var o = a.getLogger(r.TEXT_FIELDS_LOGGER + ".TextFormat");
   var l = function () {
-    function TextFormat(e = TextFormat.DEFAULT_SYSTEM_FONT, t = 12, n = "#000000", a = false, s = false, r = false, o = "", l = "", u = i.TextFormatAlign.LEFT, c = 0, _ = 0, d = 0, m = 0, h = null) {
+    function TextFormat(e = TextFormat.DEFAULT_SYSTEM_FONT, t = 12, n = "#000000", a = false, s = false, r = false, o = "", l = "", u = i.TextFormatAlign.LEFT, c = 0, _ = 0, m = 0, d = 0, h = null) {
       this.font = e;
       this.size = t;
       this.color = n;
@@ -24036,8 +24036,8 @@ var ggs_lib = function (e) {
       this.align = u;
       this.leftMargin = c;
       this.rightMargin = _;
-      this.indent = d;
-      this.leading = m;
+      this.indent = m;
+      this.leading = d;
       this.link = h;
       this.blockIndent = 0;
       this.bullet = false;
@@ -24467,7 +24467,7 @@ var ggs_lib = function (e) {
     var _ = function onerror(t) {
       n.call(e, t);
     };
-    var d = function onclose() {
+    var m = function onclose() {
       var t;
       if (a && !u) {
         if (!e._readableState || !e._readableState.ended) {
@@ -24483,18 +24483,18 @@ var ggs_lib = function (e) {
         return undefined;
       }
     };
-    var m = function onrequest() {
+    var d = function onrequest() {
       e.req.on("finish", l);
     };
     if (function isRequest(e) {
       return e.setHeader && typeof e.abort == "function";
     }(e)) {
       e.on("complete", l);
-      e.on("abort", d);
+      e.on("abort", m);
       if (e.req) {
-        m();
+        d();
       } else {
-        e.on("request", m);
+        e.on("request", d);
       }
     } else if (s && !e._writableState) {
       e.on("end", r);
@@ -24505,11 +24505,11 @@ var ggs_lib = function (e) {
     if (t.error !== false) {
       e.on("error", _);
     }
-    e.on("close", d);
+    e.on("close", m);
     return function () {
       e.removeListener("complete", l);
-      e.removeListener("abort", d);
-      e.removeListener("request", m);
+      e.removeListener("abort", m);
+      e.removeListener("request", d);
       if (e.req) {
         e.req.removeListener("finish", l);
       }
@@ -24518,7 +24518,7 @@ var ggs_lib = function (e) {
       e.removeListener("finish", l);
       e.removeListener("end", c);
       e.removeListener("error", _);
-      e.removeListener("close", d);
+      e.removeListener("close", m);
     };
   };
 }, function (e, t, n) {
@@ -24950,8 +24950,8 @@ var ggs_lib = function (e) {
       var t;
       var c;
       var _;
-      var d;
       var m;
+      var d;
       var h;
       var p;
       l(e, "options");
@@ -24971,18 +24971,18 @@ var ggs_lib = function (e) {
       }
       n.rules = {};
       n.rules[h] = c.supplemental("plurals-type-" + h);
-      m = function (e) {
+      d = function (e) {
         return function pluralGenerator(t) {
           r(t, "value");
           u(t, "value");
           return e(t);
         };
-      }(d = new n(c.attributes.language, {
+      }(m = new n(c.attributes.language, {
         ordinals: _,
         cardinals: !_
       }));
-      i(t, c, m, [d]);
-      return m;
+      i(t, c, d, [m]);
+      return d;
     };
     return t;
   }) == "function" ? i.apply(t, a) : i) !== undefined) {
@@ -25587,8 +25587,8 @@ var ggs_lib = function (e) {
   var u = n(344);
   var c = n(345);
   var _ = n(346);
-  var d = n(168);
-  var m = n(347);
+  var m = n(168);
+  var d = n(347);
   var h = n(348);
   var p = n(349);
   var g = n(350);
@@ -25656,7 +25656,7 @@ var ggs_lib = function (e) {
     Object.defineProperty(GoodgameTextField.prototype, "keyDown", {
       get: function () {
         if (!this._keyDownSignal) {
-          this._keyDownSignal = new m.KeyDownSignal();
+          this._keyDownSignal = new d.KeyDownSignal();
           this._keyDownSignal.removed = this.bindFunction(this.onSignalRemoved);
           this._keyDownSignal.added = this.bindFunction(this.onSignalAdded);
         }
@@ -25728,7 +25728,7 @@ var ggs_lib = function (e) {
     Object.defineProperty(GoodgameTextField.prototype, "htmlLinkClick", {
       get: function () {
         if (!this._htmlLinkClickSignal) {
-          this._htmlLinkClickSignal = new d.HTMLLinkClickSignal();
+          this._htmlLinkClickSignal = new m.HTMLLinkClickSignal();
           this._htmlLinkClickSignal.removed = this.bindFunction(this.onSignalRemoved);
           this._htmlLinkClickSignal.added = this.bindFunction(this.onSignalAdded);
         }
@@ -26629,11 +26629,11 @@ var ggs_lib = function (e) {
     }
     i.__extends(BasicLanguageFontManager, e);
     BasicLanguageFontManager.getInstance = function () {
-      return d;
+      return m;
     };
     BasicLanguageFontManager.prototype.loadFontsByLanguage = function () {
       var e = this;
-      var t = window.ggs.fontConfigResolver ? window.ggs.fontConfigResolver() : m();
+      var t = window.ggs.fontConfigResolver ? window.ggs.fontConfigResolver() : d();
       c.warn("will load custom webfonts ", t);
       this._fontsLoaded = false;
       this.onlyKeepOneCCSActive = l.currentBrowserInfo.isFireFox;
@@ -26677,8 +26677,8 @@ var ggs_lib = function (e) {
     return BasicLanguageFontManager;
   }(u);
   t.BasicLanguageFontManager = _;
-  var d = new _();
-  function m() {
+  var m = new _();
+  function d() {
     return {
       urls: ["./css/" + window.ggs.worldAssignment.facade.currentCountry.ggsLanguageCode + ".css"],
       families: ["_BodyFont", "_HeaderFont"]
@@ -26912,11 +26912,11 @@ var ggs_lib = function (e) {
         for (var i = 0, a = JSON.parse(n[1]); i < a.length; i++) {
           var r = a[i];
           var _ = r.type;
-          var d = r.tid;
+          var m = r.tid;
           if (CMTCommand.TEASER_TYPE_TEXT_ID[_] != null) {
-            var m = u.Localize.text(CMTCommand.TEASER_TYPE_TEXT_ID[_], [o.BasicModel.userData.userName]);
-            var h = u.Localize.text("cm_teaser" + d + "_copy", [u.Localize.text("gametitle")]);
-            l.CommandController.instance.executeCommand(s.BasicController.COMMAND_SHOW_COMA_TEASER, [_, d, m, h]);
+            var d = u.Localize.text(CMTCommand.TEASER_TYPE_TEXT_ID[_], [o.BasicModel.userData.userName]);
+            var h = u.Localize.text("cm_teaser" + m + "_copy", [u.Localize.text("gametitle")]);
+            l.CommandController.instance.executeCommand(s.BasicController.COMMAND_SHOW_COMA_TEASER, [_, m, d, h]);
           } else {
             c.warn("CMTCommand - unknown teaser type: " + _);
           }
@@ -27457,8 +27457,8 @@ var ggs_lib = function (e) {
   var u = n(3);
   var c = n(2);
   var _ = n(126);
-  var d = c.getLogger("MovieClipHelper");
-  var m = function () {
+  var m = c.getLogger("MovieClipHelper");
+  var d = function () {
     function MovieClipHelper() {}
     MovieClipHelper.stopAllMovies = function (e) {
       if (e) {
@@ -27582,7 +27582,7 @@ var ggs_lib = function (e) {
           i = 1;
         }
       } else {
-        d.error("MovieClipHelper.secureGoto: goto frame by label not implemented.");
+        m.error("MovieClipHelper.secureGoto: goto frame by label not implemented.");
       }
       if (n) {
         e.gotoAndPlay(i);
@@ -27642,7 +27642,7 @@ var ggs_lib = function (e) {
     };
     return MovieClipHelper;
   }();
-  t.MovieClipHelper = m;
+  t.MovieClipHelper = d;
 }, function (e, t, n) {
   'use strict';
 
@@ -27907,24 +27907,24 @@ var ggs_lib = function (e) {
             return a;
           }
           if (_ instanceof s && _.totalFrames === 1 && _.children.length === 1 && _.children[0] instanceof i && !_.filters && !_.mask && _.scaleX === 1 && _.scaleY === 1 && !_.skewX && !_.skewY && !_.rotation) {
-            var d = _.children[0].clone();
-            d.x += _.x;
-            d.y += _.y;
-            a.push(d);
+            var m = _.children[0].clone();
+            m.x += _.x;
+            m.y += _.y;
+            a.push(m);
             return a;
           }
         }
-        var m = true;
+        var d = true;
         for (var h = 1; h < e.totalFrames + 1; h++) {
           e.gotoAndStop(h);
-          if (m && e.children.length === 1 && e.children[0] instanceof i) {
+          if (d && e.children.length === 1 && e.children[0] instanceof i) {
             a.push(e.children[0].clone());
           } else {
-            m = false;
+            d = false;
           }
           r.push(n.call(t, e));
         }
-        if (m) {
+        if (d) {
           r.forEach(function (e) {
             return e.dispose();
           });
@@ -28212,8 +28212,8 @@ var ggs_lib = function (e) {
   var u = createjs.Point;
   var c = createjs.Rectangle;
   var _ = n(3);
-  var d = n(191);
-  var m = n(67);
+  var m = n(191);
+  var d = n(67);
   var h = function (e) {
     function ExternalTexturePackerClipSource() {
       return e.call(this) || this;
@@ -28263,7 +28263,7 @@ var ggs_lib = function (e) {
       }
       if (e instanceof l) {
         e.target.removeEventListener(l.COMPLETE, this.bindFunction(this.onLoaded));
-        m.BulkLoader.loadedList.set(e.currentTarget.getItem().src, e.currentTarget);
+        d.BulkLoader.loadedList.set(e.currentTarget.getItem().src, e.currentTarget);
         t = e.result;
         n = JSON.parse(e.rawResult);
         e.currentTarget._rawResult = n;
@@ -28367,7 +28367,7 @@ var ggs_lib = function (e) {
         var r = this.animData[s];
         a.push(this.renderSingleTile(e, r));
       }
-      d.ClipSourceOptimizer.flattenedImagesToBitmaps(a, i).forEach(function (e) {
+      m.ClipSourceOptimizer.flattenedImagesToBitmaps(a, i).forEach(function (e) {
         t._framesStrip.addFrame(e);
       });
       return this._framesStrip;
@@ -28493,8 +28493,8 @@ var ggs_lib = function (e) {
   var u = createjs.Bitmap;
   var c = createjs.BitmapData;
   var _ = createjs.Container;
-  var d = createjs.MovieClip;
-  var m = createjs.Rectangle;
+  var m = createjs.MovieClip;
+  var d = createjs.Rectangle;
   var h = function (e) {
     function DisplayObjectClipSource() {
       var t = e !== null && e.apply(this, arguments) || this;
@@ -28529,7 +28529,7 @@ var ggs_lib = function (e) {
       if (e instanceof o.DisplayObjectClipContainer) {
         this._layerInfo = new a.ClipLayerInfo(e);
       }
-      if (e instanceof d) {
+      if (e instanceof m) {
         return this.convertMovieClip(e);
       }
       if (e instanceof _) {
@@ -28588,7 +28588,7 @@ var ggs_lib = function (e) {
       return this._framesStrip;
     };
     DisplayObjectClipSource.containerRegPointFinder = new _();
-    DisplayObjectClipSource.regPointFinder = new m();
+    DisplayObjectClipSource.regPointFinder = new d();
     return DisplayObjectClipSource;
   }(s.AbstractClipSource);
   t.DisplayObjectClipSource = h;
@@ -28710,10 +28710,10 @@ var ggs_lib = function (e) {
 
   n.r(t);
   n.d(t, "TweenMax", function () {
-    return m;
+    return d;
   });
   n.d(t, "default", function () {
-    return m;
+    return d;
   });
   var i = n(1);
   n.d(t, "TweenLite", function () {
@@ -28772,36 +28772,36 @@ var ggs_lib = function (e) {
   n.d(t, "BezierPlugin", function () {
     return _.default;
   });
-  var d = n(10);
+  var m = n(10);
   n.d(t, "Back", function () {
-    return d.Back;
+    return m.Back;
   });
   n.d(t, "Elastic", function () {
-    return d.Elastic;
+    return m.Elastic;
   });
   n.d(t, "Bounce", function () {
-    return d.Bounce;
+    return m.Bounce;
   });
   n.d(t, "RoughEase", function () {
-    return d.RoughEase;
+    return m.RoughEase;
   });
   n.d(t, "SlowMo", function () {
-    return d.SlowMo;
+    return m.SlowMo;
   });
   n.d(t, "SteppedEase", function () {
-    return d.SteppedEase;
+    return m.SteppedEase;
   });
   n.d(t, "Circ", function () {
-    return d.Circ;
+    return m.Circ;
   });
   n.d(t, "Expo", function () {
-    return d.Expo;
+    return m.Expo;
   });
   n.d(t, "Sine", function () {
-    return d.Sine;
+    return m.Sine;
   });
   n.d(t, "ExpoScaleEase", function () {
-    return d.ExpoScaleEase;
+    return m.ExpoScaleEase;
   });
   /*!
    * VERSION: 2.0.2
@@ -28814,8 +28814,8 @@ var ggs_lib = function (e) {
    *
    * @author: Jack Doyle, jack@greensock.com
    **/
-  var m = a.default;
-  m._autoActivated = [u.default, c.default, s.default, r.default, _.default, o.default, l.default, d.Back, d.Elastic, d.Bounce, d.RoughEase, d.SlowMo, d.SteppedEase, d.Circ, d.Expo, d.Sine, d.ExpoScaleEase];
+  var d = a.default;
+  d._autoActivated = [u.default, c.default, s.default, r.default, _.default, o.default, l.default, m.Back, m.Elastic, m.Bounce, m.RoughEase, m.SlowMo, m.SteppedEase, m.Circ, m.Expo, m.Sine, m.ExpoScaleEase];
 }, function (e, t, n) {
   'use strict';
 
@@ -29260,8 +29260,8 @@ var ggs_lib = function (e) {
   var u = n(208);
   var c = n(203);
   var _ = n(202);
-  var d = n(27);
-  var m = n(511);
+  var m = n(27);
+  var d = n(511);
   var h = n(512);
   var p = n(513);
   var g = n(514);
@@ -29305,12 +29305,12 @@ var ggs_lib = function (e) {
     },
     fieldsArray: {
       get: function () {
-        return this._fieldsArray ||= d.toArray(this.fields);
+        return this._fieldsArray ||= m.toArray(this.fields);
       }
     },
     oneofsArray: {
       get: function () {
-        return this._oneofsArray ||= d.toArray(this.oneofs);
+        return this._oneofsArray ||= m.toArray(this.oneofs);
       }
     },
     ctor: {
@@ -29321,10 +29321,10 @@ var ggs_lib = function (e) {
         var t = e.prototype;
         if (!(t instanceof u)) {
           (e.prototype = new u()).constructor = e;
-          d.merge(e.prototype, t);
+          m.merge(e.prototype, t);
         }
         e.$type = e.prototype.$type = this;
-        d.merge(e, u, true);
+        m.merge(e, u, true);
         this._ctor = e;
         for (var n = 0; n < this.fieldsArray.length; ++n) {
           this._fieldsArray[n].resolve();
@@ -29332,8 +29332,8 @@ var ggs_lib = function (e) {
         var i = {};
         for (n = 0; n < this.oneofsArray.length; ++n) {
           i[this._oneofsArray[n].resolve().name] = {
-            get: d.oneOfGetter(this._oneofsArray[n].oneof),
-            set: d.oneOfSetter(this._oneofsArray[n].oneof)
+            get: m.oneOfGetter(this._oneofsArray[n].oneof),
+            set: m.oneOfSetter(this._oneofsArray[n].oneof)
           };
         }
         if (n) {
@@ -29344,12 +29344,12 @@ var ggs_lib = function (e) {
   });
   Type.generateConstructor = function generateConstructor(e) {
     var t;
-    var n = d.codegen(["p"], e.name);
+    var n = m.codegen(["p"], e.name);
     for (var i = 0; i < e.fieldsArray.length; ++i) {
       if ((t = e._fieldsArray[i]).map) {
-        n("this%s={}", d.safeProp(t.name));
+        n("this%s={}", m.safeProp(t.name));
       } else if (t.repeated) {
-        n("this%s=[]", d.safeProp(t.name));
+        n("this%s=[]", m.safeProp(t.name));
       }
     }
     return n("if(p)for(var ks=Object.keys(p),i=0;i<ks.length;++i)if(p[ks[i]]!=null)")("this[ks[i]]=p[ks[i]]");
@@ -29393,7 +29393,7 @@ var ggs_lib = function (e) {
   Type.prototype.toJSON = function toJSON(e) {
     var t = i.prototype.toJSON.call(this, e);
     var n = !!e && Boolean(e.keepComments);
-    return d.toObject(["options", t && t.options || undefined, "oneofs", i.arrayToJSON(this.oneofsArray, e), "fields", i.arrayToJSON(this.fieldsArray.filter(function (e) {
+    return m.toObject(["options", t && t.options || undefined, "oneofs", i.arrayToJSON(this.oneofsArray, e), "fields", i.arrayToJSON(this.fieldsArray.filter(function (e) {
       return !e.declaringField;
     }), e) || {}, "extensions", this.extensions && this.extensions.length ? this.extensions : undefined, "reserved", this.reserved && this.reserved.length ? this.reserved : undefined, "group", this.group || undefined, "nested", t && t.nested || undefined, "comment", n ? this.comment : undefined]);
   };
@@ -29477,27 +29477,27 @@ var ggs_lib = function (e) {
     for (var n = 0; n < this.fieldsArray.length; ++n) {
       t.push(this._fieldsArray[n].resolve().resolvedType);
     }
-    this.encode = m(this)({
+    this.encode = d(this)({
       Writer: _,
       types: t,
-      util: d
+      util: m
     });
     this.decode = h(this)({
       Reader: c,
       types: t,
-      util: d
+      util: m
     });
     this.verify = p(this)({
       types: t,
-      util: d
+      util: m
     });
     this.fromObject = g.fromObject(this)({
       types: t,
-      util: d
+      util: m
     });
     this.toObject = g.toObject(this)({
       types: t,
-      util: d
+      util: m
     });
     var i = E[e];
     if (i) {
@@ -29535,7 +29535,7 @@ var ggs_lib = function (e) {
   };
   Type.d = function decorateType(e) {
     return function typeDecorator(t) {
-      d.decorateType(t, e);
+      m.decorateType(t, e);
     };
   };
 }, function (e, t, n) {
@@ -30306,7 +30306,7 @@ var ggs_lib = function (e) {
           };
           var c = Object.getPrototypeOf(Function);
           var _ = typeof e == "object" && e.env && e.env.REFLECT_METADATA_USE_MAP_POLYFILL === "true";
-          var d = _ || typeof Map != "function" || typeof Map.prototype.entries != "function" ? function CreateMapPolyfill() {
+          var m = _ || typeof Map != "function" || typeof Map.prototype.entries != "function" ? function CreateMapPolyfill() {
             var e = {};
             var t = [];
             var n = function () {
@@ -30455,10 +30455,10 @@ var ggs_lib = function (e) {
               return [e, t];
             }
           }() : Map;
-          var m = _ || typeof Set != "function" || typeof Set.prototype.entries != "function" ? function CreateSetPolyfill() {
+          var d = _ || typeof Set != "function" || typeof Set.prototype.entries != "function" ? function CreateSetPolyfill() {
             return function () {
               function Set() {
-                this._map = new d();
+                this._map = new m();
               }
               Object.defineProperty(Set.prototype, "size", {
                 get: function () {
@@ -30592,7 +30592,7 @@ var ggs_lib = function (e) {
               if (!n) {
                 return;
               }
-              i = new d();
+              i = new m();
               h.set(e, i);
             }
             var a = i.get(t);
@@ -30600,7 +30600,7 @@ var ggs_lib = function (e) {
               if (!n) {
                 return;
               }
-              a = new d();
+              a = new m();
               i.set(t, a);
             }
             return a;
@@ -30977,7 +30977,7 @@ var ggs_lib = function (e) {
               if (n.length <= 0) {
                 return a;
               }
-              var s = new m();
+              var s = new d();
               var r = [];
               for (var o = 0, l = n; o < l.length; o++) {
                 var u = l[o];
@@ -30987,8 +30987,8 @@ var ggs_lib = function (e) {
                   r.push(u);
                 }
               }
-              for (var _ = 0, d = a; _ < d.length; _++) {
-                var u = d[_];
+              for (var _ = 0, m = a; _ < m.length; _++) {
+                var u = m[_];
                 var c = s.has(u);
                 if (!c) {
                   s.add(u);
@@ -31490,14 +31490,14 @@ var ggs_lib = function (e) {
               if (typeof (_ = u[c]) != "function") {
                 continue;
               }
-              var d = _.name;
-              if (i.hasOwnProperty(d)) {
-                if (!a.hasOwnProperty(d)) {
-                  a[d] = 0;
+              var m = _.name;
+              if (i.hasOwnProperty(m)) {
+                if (!a.hasOwnProperty(m)) {
+                  a[m] = 0;
                 }
-                a[d]++;
+                a[m]++;
               }
-              i[d] = _;
+              i[m] = _;
             } else {
               if (!isValidModuleName(c) || typeof u[c] != "function") {
                 continue;
@@ -31531,13 +31531,13 @@ var ggs_lib = function (e) {
     var u = o || l || Function("return this")();
     var c;
     var _ = Array.prototype;
-    var d = Function.prototype;
-    var m = Object.prototype;
+    var m = Function.prototype;
+    var d = Object.prototype;
     var h = u["__core-js_shared__"];
     var p = (c = /[^.]+$/.exec(h && h.keys && h.keys.IE_PROTO || "")) ? "Symbol(src)_1." + c : "";
-    var g = d.toString;
-    var E = m.hasOwnProperty;
-    var C = m.toString;
+    var g = m.toString;
+    var E = d.hasOwnProperty;
+    var C = d.toString;
     var f = RegExp("^" + g.call(E).replace(/[\\^$.*+?()[\]{}|]/g, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$");
     var T = _.splice;
     var S = getNative(u, "Map");
@@ -32555,9 +32555,9 @@ var ggs_lib = function (e) {
     var u = Object.prototype;
     var c = u.hasOwnProperty;
     var _ = u.toString;
-    var d = l.Symbol;
-    var m = u.propertyIsEnumerable;
-    var h = d ? d.isConcatSpreadable : undefined;
+    var m = l.Symbol;
+    var d = u.propertyIsEnumerable;
+    var h = m ? m.isConcatSpreadable : undefined;
     function isFlattenable(e) {
       return p(e) || function isArguments(e) {
         return function isArrayLikeObject(e) {
@@ -32574,7 +32574,7 @@ var ggs_lib = function (e) {
               return t == a || t == s;
             }(e);
           }(e);
-        }(e) && c.call(e, "callee") && (!m.call(e, "callee") || _.call(e) == i);
+        }(e) && c.call(e, "callee") && (!d.call(e, "callee") || _.call(e) == i);
       }(e) || !!h && !!e && !!e[h];
     }
     var p = Array.isArray;
@@ -34328,8 +34328,8 @@ var ggs_lib = function (e) {
     var c = n(718);
     u = c && c.debuglog ? c.debuglog("stream") : function debug() {};
     var _;
-    var d;
     var m;
+    var d;
     var h = n(719);
     var p = n(278);
     var g = n(279).getHighWaterMark;
@@ -35035,10 +35035,10 @@ var ggs_lib = function (e) {
     };
     if (typeof Symbol == "function") {
       Readable.prototype[Symbol.asyncIterator] = function () {
-        if (d === undefined) {
-          d = n(723);
+        if (m === undefined) {
+          m = n(723);
         }
-        return d(this);
+        return m(this);
       };
     }
     Object.defineProperty(Readable.prototype, "readableHighWaterMark", {
@@ -35073,10 +35073,10 @@ var ggs_lib = function (e) {
     });
     if (typeof Symbol == "function") {
       Readable.from = function (e, t) {
-        if (m === undefined) {
-          m = n(724);
+        if (d === undefined) {
+          d = n(724);
         }
-        return m(Readable, e, t);
+        return d(Readable, e, t);
       };
     }
   }).call(this, n(24), n(47));
@@ -35446,15 +35446,15 @@ var ggs_lib = function (e) {
     var u;
     var c = n(278);
     var _ = n(279).getHighWaterMark;
-    var d = n(75).codes;
-    var m = d.ERR_INVALID_ARG_TYPE;
-    var h = d.ERR_METHOD_NOT_IMPLEMENTED;
-    var p = d.ERR_MULTIPLE_CALLBACK;
-    var g = d.ERR_STREAM_CANNOT_PIPE;
-    var E = d.ERR_STREAM_DESTROYED;
-    var C = d.ERR_STREAM_NULL_VALUES;
-    var f = d.ERR_STREAM_WRITE_AFTER_END;
-    var T = d.ERR_UNKNOWN_ENCODING;
+    var m = n(75).codes;
+    var d = m.ERR_INVALID_ARG_TYPE;
+    var h = m.ERR_METHOD_NOT_IMPLEMENTED;
+    var p = m.ERR_MULTIPLE_CALLBACK;
+    var g = m.ERR_STREAM_CANNOT_PIPE;
+    var E = m.ERR_STREAM_DESTROYED;
+    var C = m.ERR_STREAM_NULL_VALUES;
+    var f = m.ERR_STREAM_WRITE_AFTER_END;
+    var T = m.ERR_UNKNOWN_ENCODING;
     var S = c.errorOrDestroy;
     function nop() {}
     function WritableState(e, t, s) {
@@ -35735,7 +35735,7 @@ var ggs_lib = function (e) {
         if (n === null) {
           s = new C();
         } else if (typeof n != "string" && !t.objectMode) {
-          s = new m("chunk", ["string", "Buffer"], n);
+          s = new d("chunk", ["string", "Buffer"], n);
         }
         return !s || (S(e, s), i.nextTick(a, s), false);
       }(this, a, e, n)) {
@@ -37374,8 +37374,8 @@ var ggs_lib = function (e) {
   var u = n(4);
   var c = n(3);
   var _ = n(2);
-  var d = createjs.TimerEvent;
-  var m = _.getLogger("CoreJS.PaymentHashRefresher");
+  var m = createjs.TimerEvent;
+  var d = _.getLogger("CoreJS.PaymentHashRefresher");
   var h = function () {
     function PaymentHashRefresher() {
       this.PAYMENT_HASH_EXPIRATION_TIME = 900000;
@@ -37403,16 +37403,16 @@ var ggs_lib = function (e) {
     };
     PaymentHashRefresher.prototype.resetAndStartExpirationTimer = function () {
       if (this.env.useShortPaymentHashValidity && this.isRunning) {
-        this.hashExpirationTimer.removeEventListener(d.TIMER_COMPLETE, this.bindFunction(this.onHashExpired));
-        this.hashExpirationTimer.addEventListener(d.TIMER_COMPLETE, this.bindFunction(this.onHashExpired));
+        this.hashExpirationTimer.removeEventListener(m.TIMER_COMPLETE, this.bindFunction(this.onHashExpired));
+        this.hashExpirationTimer.addEventListener(m.TIMER_COMPLETE, this.bindFunction(this.onHashExpired));
         this.hashExpirationTimer.reset();
         this.hashExpirationTimer.start();
       }
     };
     PaymentHashRefresher.prototype.requestNewHash = function () {
       this.isWaitingForResponse = true;
-      this.requestTimeoutTimer.removeEventListener(d.TIMER_COMPLETE, this.bindFunction(this.onResponseTimeout));
-      this.requestTimeoutTimer.addEventListener(d.TIMER_COMPLETE, this.bindFunction(this.onResponseTimeout));
+      this.requestTimeoutTimer.removeEventListener(m.TIMER_COMPLETE, this.bindFunction(this.onResponseTimeout));
+      this.requestTimeoutTimer.addEventListener(m.TIMER_COMPLETE, this.bindFunction(this.onResponseTimeout));
       this.requestTimeoutTimer.reset();
       this.requestTimeoutTimer.start();
       u.BasicModel.smartfoxClient.sendMessage(a.BasicSmartfoxConstants.C2S_NEW_CASH_HASH, []);
@@ -37424,7 +37424,7 @@ var ggs_lib = function (e) {
     };
     PaymentHashRefresher.prototype.onResponseTimeout = function (e) {
       if (this.isWaitingForResponse) {
-        m.info("response timeout, requesting again…");
+        d.info("response timeout, requesting again…");
         this.requestNewHash();
       }
     };
@@ -39096,8 +39096,8 @@ var ggs_lib = function (e) {
     var u = r * 3;
     var c = r * 2;
     var _ = r * 3;
-    var d = r * 15;
-    var m = r * 74;
+    var m = r * 15;
+    var d = r * 74;
     var h = r * 30;
     var p = document.createElement("canvas");
     p.width = o;
@@ -39110,10 +39110,10 @@ var ggs_lib = function (e) {
     g.fillRect(0, 0, o, l);
     g.fillStyle = t;
     g.fillText(e, u, c);
-    g.fillRect(_, d, m, h);
+    g.fillRect(_, m, d, h);
     g.fillStyle = n;
     g.globalAlpha = 0.9;
-    g.fillRect(_, d, m, h);
+    g.fillRect(_, m, d, h);
     return {
       dom: p,
       update: function (l, E) {
@@ -39121,14 +39121,14 @@ var ggs_lib = function (e) {
         a = Math.max(a, l);
         g.fillStyle = n;
         g.globalAlpha = 1;
-        g.fillRect(0, 0, o, d);
+        g.fillRect(0, 0, o, m);
         g.fillStyle = t;
         g.fillText(s(l) + " " + e + " (" + s(i) + "-" + s(a) + ")", u, c);
-        g.drawImage(p, _ + r, d, m - r, h, _, d, m - r, h);
-        g.fillRect(_ + m - r, d, r, h);
+        g.drawImage(p, _ + r, m, d - r, h, _, m, d - r, h);
+        g.fillRect(_ + d - r, m, r, h);
         g.fillStyle = n;
         g.globalAlpha = 0.9;
-        g.fillRect(_ + m - r, d, r, s((1 - l / E) * h));
+        g.fillRect(_ + d - r, m, r, s((1 - l / E) * h));
       }
     };
   };
@@ -39978,10 +39978,10 @@ var ggs_lib = function (e) {
   var u = createjs.Event;
   var c = createjs.FocusEvent;
   var _ = createjs.MouseEvent;
-  var d = createjs.TextEvent;
-  var m = n(2);
+  var m = createjs.TextEvent;
+  var d = n(2);
   var h = n(29);
-  var p = m.getLogger(h.TEXT_FIELDS_LOGGER + ".GGSTextFieldDefaultStrategy");
+  var p = d.getLogger(h.TEXT_FIELDS_LOGGER + ".GGSTextFieldDefaultStrategy");
   var g = function () {
     function GGSTextFieldDefaultStrategy(e) {
       this._textField = e;
@@ -40149,7 +40149,7 @@ var ggs_lib = function (e) {
       this._textField.originalTextField.removeEventListener(c.FOCUS_OUT, this.bindFunction(this.onFocusOutEvent));
       this._textField.originalTextField.removeEventListener(c.FOCUS_IN, this.bindFunction(this.onFocusInEvent));
       this._textField.originalTextField.removeEventListener(u.CHANGE, this.bindFunction(this.onChangeEvent));
-      this._textField.originalTextField.removeEventListener(d.LINK, this.bindFunction(this.onTextEventLinkEvent));
+      this._textField.originalTextField.removeEventListener(m.LINK, this.bindFunction(this.onTextEventLinkEvent));
       this._textField.originalTextField.removeEventListener(u.REMOVED_FROM_STAGE, this.bindFunction(this.onRemovedFromStageEvent));
       this._textField = null;
       this._currentFontConfig = null;
@@ -40215,7 +40215,7 @@ var ggs_lib = function (e) {
           this._textField.originalTextField.addEventListener(_.MOUSE_OUT, this.bindFunction(this.onMouseOutEvent));
           break;
         case r.HTMLLinkClickSignal.HTML_LINK_CLICK:
-          this._textField.originalTextField.addEventListener(d.LINK, this.bindFunction(this.onTextEventLinkEvent));
+          this._textField.originalTextField.addEventListener(m.LINK, this.bindFunction(this.onTextEventLinkEvent));
           break;
         case u.CHANGE:
           this._textField.originalTextField.addEventListener(u.CHANGE, this.bindFunction(this.onChangeEvent));
@@ -40254,7 +40254,7 @@ var ggs_lib = function (e) {
           this._textField.originalTextField.removeEventListener(_.MOUSE_OUT, this.bindFunction(this.onMouseOutEvent));
           break;
         case r.HTMLLinkClickSignal.HTML_LINK_CLICK:
-          this._textField.originalTextField.removeEventListener(d.LINK, this.bindFunction(this.onTextEventLinkEvent));
+          this._textField.originalTextField.removeEventListener(m.LINK, this.bindFunction(this.onTextEventLinkEvent));
           break;
         case u.CHANGE:
           this._textField.originalTextField.removeEventListener(u.CHANGE, this.bindFunction(this.onChangeEvent));
@@ -40767,8 +40767,8 @@ var ggs_lib = function (e) {
   var u = n(365);
   var c = n(160);
   var _ = n(102);
-  var d = n(4);
-  var m = n(174);
+  var m = n(4);
+  var d = n(174);
   var h = n(25);
   var p = n(173);
   var g = n(29);
@@ -40780,24 +40780,24 @@ var ggs_lib = function (e) {
     i.__extends(BasicChangeLanguageCommand, e);
     BasicChangeLanguageCommand.prototype.execute = function (e = null) {
       E.debug(": load language XML", e);
-      if (d.BasicModel.languageData.hasEventListener(_.LanguageDataEvent.XML_LOAD_COMPLETE)) {
-        d.BasicModel.languageData.removeEventListener(_.LanguageDataEvent.XML_LOAD_COMPLETE, this.bindFunction(this.onLanguageXMLComplete));
+      if (m.BasicModel.languageData.hasEventListener(_.LanguageDataEvent.XML_LOAD_COMPLETE)) {
+        m.BasicModel.languageData.removeEventListener(_.LanguageDataEvent.XML_LOAD_COMPLETE, this.bindFunction(this.onLanguageXMLComplete));
       }
-      d.BasicModel.languageData.languageXMLLoaded = false;
-      d.BasicModel.languageData.addEventListener(_.LanguageDataEvent.XML_LOAD_COMPLETE, this.bindFunction(this.onLanguageXMLComplete));
+      m.BasicModel.languageData.languageXMLLoaded = false;
+      m.BasicModel.languageData.addEventListener(_.LanguageDataEvent.XML_LOAD_COMPLETE, this.bindFunction(this.onLanguageXMLComplete));
       this.env.currentCountryLanguageCode = a.GGSCountryController.instance.currentCountry.ggsLanguageCode;
       this.env.currentCountryLanguageVersion = p.ConfigFilesVersionsModel.instance.languageVersion(this.env.currentCountryLanguageCode);
-      d.BasicModel.languageData.loadLanguage(undefined, this.env.currentCountryLanguageCode);
+      m.BasicModel.languageData.loadLanguage(undefined, this.env.currentCountryLanguageCode);
     };
     BasicChangeLanguageCommand.prototype.onLanguageXMLComplete = function (e) {
-      d.BasicModel.languageData.removeEventListener(_.LanguageDataEvent.XML_LOAD_COMPLETE, this.bindFunction(this.onLanguageXMLComplete));
-      var t = m.BasicLanguageFontManager.getInstance();
+      m.BasicModel.languageData.removeEventListener(_.LanguageDataEvent.XML_LOAD_COMPLETE, this.bindFunction(this.onLanguageXMLComplete));
+      var t = d.BasicLanguageFontManager.getInstance();
       t.addEventListener(_.LanguageDataEvent.FONT_LOAD_COMPLETE, this.bindFunction(this.onFontLoadComplete));
       E.debug(": onLanguageXMLComplete() -> Load font SWF");
       t.loadFontsByLanguage();
     };
     BasicChangeLanguageCommand.prototype.onFontLoadComplete = function (e) {
-      m.BasicLanguageFontManager.getInstance().removeEventListener(_.LanguageDataEvent.FONT_LOAD_COMPLETE, this.bindFunction(this.onFontLoadComplete));
+      d.BasicLanguageFontManager.getInstance().removeEventListener(_.LanguageDataEvent.FONT_LOAD_COMPLETE, this.bindFunction(this.onFontLoadComplete));
       E.debug(": onFontLoadComplete()");
       s.GoodgameTextFieldManager.getInstance().updateTextInAllTextFields();
       l.BasicController.getInstance().dispatchEvent(new c.IdleScreenEvent(c.IdleScreenEvent.HIDE));
@@ -40846,8 +40846,8 @@ var ggs_lib = function (e) {
   var u = n(65);
   var c = n(18);
   var _ = n(30);
-  var d = n(35);
-  var m = function (e) {
+  var m = n(35);
+  var d = function (e) {
     function BasicHandleIdentityManagementErrorCommand(t = false) {
       return e.call(this, t) || this;
     }
@@ -40869,7 +40869,7 @@ var ggs_lib = function (e) {
           r.BasicDialogHandler.getInstance().registerDialogs(o.CommonDialogNames.KoreaMissingIdCheckDialog_NAME, new l.BasicMissingIDCheckDialogProperties(c.Localize.text("generic_alert_watchout"), i));
           return;
         default:
-          d.warn("execute() -> Invalid errorCode: " + n, e);
+          m.warn("execute() -> Invalid errorCode: " + n, e);
           t = s.IdentityManagementConstants.TEXT_ID_SERVER_MISSING_KOREA_ID_CHECK_DATA;
       }
       var a = c.Localize.text(t);
@@ -40878,7 +40878,7 @@ var ggs_lib = function (e) {
     BasicHandleIdentityManagementErrorCommand.NAME = "BasicHandleIdentityManagementErrorCommand";
     return BasicHandleIdentityManagementErrorCommand;
   }(a.SimpleCommand);
-  t.BasicHandleIdentityManagementErrorCommand = m;
+  t.BasicHandleIdentityManagementErrorCommand = d;
 }, function (e, t, n) {
   'use strict';
 
@@ -40999,8 +40999,8 @@ var ggs_lib = function (e) {
   var u = n(4);
   var c = n(12);
   var _ = n(2);
-  var d = n(3);
-  var m = _.getLogger("CoreJS.BasicIdentityManagementData");
+  var m = n(3);
+  var d = _.getLogger("CoreJS.BasicIdentityManagementData");
   var h = function () {
     function BasicIdentityManagementData() {
       this.showStuff = false;
@@ -41009,8 +41009,8 @@ var ggs_lib = function (e) {
       this.initializeLicenseRefresher();
     };
     BasicIdentityManagementData.prototype.authenticateViaJS = function () {
-      d.ExternalInterface.addCallback("triggerLogin", this.bindFunction(this.triggerLogin));
-      d.ExternalInterface.addCallback("setIDCheckData", this.bindFunction(this.setIdCheckData));
+      m.ExternalInterface.addCallback("triggerLogin", this.bindFunction(this.triggerLogin));
+      m.ExternalInterface.addCallback("setIDCheckData", this.bindFunction(this.setIdCheckData));
       var e = u.BasicModel.userData.playerID;
       var t = u.BasicModel.instanceProxy.selectedInstanceVO.instanceId;
       var n = i.EnvGlobalsHandler.globals.networkId;
@@ -41018,18 +41018,18 @@ var ggs_lib = function (e) {
       this.startAgeCheck(e, t, n, a);
     };
     BasicIdentityManagementData.prototype.unregisterJSCallbacks = function () {
-      d.ExternalInterface.addCallback("triggerLogin", function () {
-        m.debug(" triggerLogin callback was removed. ignoring event");
+      m.ExternalInterface.addCallback("triggerLogin", function () {
+        d.debug(" triggerLogin callback was removed. ignoring event");
       });
-      d.ExternalInterface.addCallback("setIDCheckData", function () {
-        m.debug("setIDCheckData callback was removed.  ignoring event ");
+      m.ExternalInterface.addCallback("setIDCheckData", function () {
+        d.debug("setIDCheckData callback was removed.  ignoring event ");
       });
     };
     BasicIdentityManagementData.prototype.startAgeCheck = function (e, t, n, i, a = null) {
       if (a) {
-        d.ExternalInterface.call("ggsOpenSirenAuthentification", e, t, n, i, a);
+        m.ExternalInterface.call("ggsOpenSirenAuthentification", e, t, n, i, a);
       } else {
-        d.ExternalInterface.call("ggsOpenSirenAuthentification", e, t, n, i);
+        m.ExternalInterface.call("ggsOpenSirenAuthentification", e, t, n, i);
       }
     };
     BasicIdentityManagementData.prototype.triggerLogin = function () {
@@ -41043,7 +41043,7 @@ var ggs_lib = function (e) {
         try {
           n = JSON.parse(t);
         } catch (e) {
-          m.warn("[BasicIdentityManagementData] JSON decoding error occured!");
+          d.warn("[BasicIdentityManagementData] JSON decoding error occured!");
           c.CommandController.instance.executeCommand(s.BasicController.COMMAND_HANDLE_IDENTITY_MANAGEMENT_ERROR, a.IdentityManagementConstants.ERROR_VERIFICATION_FAILED);
           return;
         }
@@ -41081,7 +41081,7 @@ var ggs_lib = function (e) {
       if (this._licenseRefresher) {
         this._licenseRefresher.startRefreshing();
       } else {
-        m.warn("licenseRefresher is null");
+        d.warn("licenseRefresher is null");
       }
     };
     BasicIdentityManagementData.prototype.resetLicenseTimer = function () {
@@ -41092,7 +41092,7 @@ var ggs_lib = function (e) {
       if (this._licenseRefresher) {
         this._licenseRefresher.stopRefreshing();
       } else {
-        m.warn("licenseRefresher is null");
+        d.warn("licenseRefresher is null");
       }
     };
     BasicIdentityManagementData.prototype.dispose = function () {
@@ -41265,8 +41265,8 @@ var ggs_lib = function (e) {
   var u = n(4);
   var c = n(12);
   var _ = n(6);
-  var d = n(78);
-  var m = n(56);
+  var m = n(78);
+  var d = n(56);
   var h = n(38);
   var p = function (e) {
     function BasicReloadNetworkCommand() {
@@ -41278,11 +41278,11 @@ var ggs_lib = function (e) {
       this.reloadInstances();
     };
     BasicReloadNetworkCommand.prototype.reloadNetworkXML = function () {
-      m.ClientFunnelTrackingController.getInstance().trackState(h.ClientFunnelGameStates.NETWORK_XML_START);
+      d.ClientFunnelTrackingController.getInstance().trackState(h.ClientFunnelGameStates.NETWORK_XML_START);
       u.BasicModel.basicLoaderData.appLoader.addXMLLoader(r.BasicConstants.NETWORK_INFO_LOADER, l.PathProvider.instance.networkConfigURL, "", this.onReloadNetworkXML, true);
     };
     BasicReloadNetworkCommand.prototype.onReloadNetworkXML = function () {
-      m.ClientFunnelTrackingController.getInstance().trackState(h.ClientFunnelGameStates.NETWORK_XML_END);
+      d.ClientFunnelTrackingController.getInstance().trackState(h.ClientFunnelGameStates.NETWORK_XML_END);
       var e = u.BasicModel.basicLoaderData.appLoader.getLoaderData(r.BasicConstants.NETWORK_INFO_LOADER);
       this.env.defaultInstanceId = parseInt(e.general.defaultinstance.text());
       this.env.allowedfullscreen = e.general.allowedfullscreen == "true";
@@ -41310,7 +41310,7 @@ var ggs_lib = function (e) {
       enumerable: true,
       configurable: true
     });
-    i.__decorate([d.commentedOut("HTML-2006", "TODO HTML5  trying to remove all worldassignemnt stuff when / why are we reloading instances"), i.__metadata("design:type", Function), i.__metadata("design:paramtypes", []), i.__metadata("design:returntype", undefined)], BasicReloadNetworkCommand.prototype, "reloadInstances", null);
+    i.__decorate([m.commentedOut("HTML-2006", "TODO HTML5  trying to remove all worldassignemnt stuff when / why are we reloading instances"), i.__metadata("design:type", Function), i.__metadata("design:paramtypes", []), i.__metadata("design:returntype", undefined)], BasicReloadNetworkCommand.prototype, "reloadInstances", null);
     return BasicReloadNetworkCommand;
   }(_.SimpleCommand);
   t.BasicReloadNetworkCommand = p;
@@ -42213,7 +42213,7 @@ var ggs_lib = function (e) {
   var u = o.getLogger("BasicLanguageData");
   var c = createjs.EventDispatcher;
   var _ = n(5);
-  var d = function (e) {
+  var m = function (e) {
     function BasicLanguageData(t, n, i) {
       var a = e.call(this) || this;
       a.versionInformation = t;
@@ -42305,7 +42305,7 @@ var ggs_lib = function (e) {
     BasicLanguageData.GAME_LANGUAGE_DICTIONARY = "gameLanguageDict";
     return BasicLanguageData;
   }(c);
-  t.BasicLanguageData = d;
+  t.BasicLanguageData = m;
 }, function (e, t, n) {
   'use strict';
 
@@ -42469,7 +42469,7 @@ var ggs_lib = function (e) {
   var u = createjs.ProgressEvent;
   var c = createjs.SecurityErrorEvent;
   var _ = n(20);
-  var d = function () {
+  var m = function () {
     function GoodgameLoader(e, t = true) {
       this._isLoading = false;
       this._loadingError = new _.Signal();
@@ -42517,11 +42517,11 @@ var ggs_lib = function (e) {
       enumerable: true,
       configurable: true
     });
-    GoodgameLoader.prototype.addCookieSaverLoader = function (e, t = "", n = null, a = null, _ = null, d = false, m = false) {
-      if (this._loaderMap.get(e) && d != 1) {
+    GoodgameLoader.prototype.addCookieSaverLoader = function (e, t = "", n = null, a = null, _ = null, m = false, d = false) {
+      if (this._loaderMap.get(e) && m != 1) {
         return this._loaderMap.get(e);
       }
-      if (this._loaderMap.get(e) && d == 1) {
+      if (this._loaderMap.get(e) && m == 1) {
         var h = this._loaderMap.get(e);
         var p = h.loaderInstance;
         p.contentLoaderInfo.removeEventListener(l.IO_ERROR, h.bindFunction(h.handleLoaderIOError));
@@ -42564,16 +42564,16 @@ var ggs_lib = function (e) {
         c.src = t;
         c.type = n;
         var _ = new createjs.LoadQueue();
-        var d = new i.LoaderObject(_, e, u, a);
-        d.loaderObjectFinished.add(this.bindFunction(this.queueElementHasFinished));
-        d.loadingProgressStarted.add(this.bindFunction(this.queueElementNowLoading));
-        d.loadingError.add(this.loadingError.bindFunction(this.loadingError.dispatch));
-        _.addEventListener("complete", d.bindFunction(d.onComplete));
-        _.addEventListener("progress", d.bindFunction(d.onLoadProgress));
-        _.addEventListener("error", d.bindFunction(d.handleLoaderIOError));
+        var m = new i.LoaderObject(_, e, u, a);
+        m.loaderObjectFinished.add(this.bindFunction(this.queueElementHasFinished));
+        m.loadingProgressStarted.add(this.bindFunction(this.queueElementNowLoading));
+        m.loadingError.add(this.loadingError.bindFunction(this.loadingError.dispatch));
+        _.addEventListener("complete", m.bindFunction(m.onComplete));
+        _.addEventListener("progress", m.bindFunction(m.onLoadProgress));
+        _.addEventListener("error", m.bindFunction(m.handleLoaderIOError));
         _.loadFile(c, true);
-        this._loaderMap.set(e, d);
-        this._queue.push(d);
+        this._loaderMap.set(e, m);
+        this._queue.push(m);
         this.startLoading();
       }
     };
@@ -42765,7 +42765,7 @@ var ggs_lib = function (e) {
     };
     return GoodgameLoader;
   }();
-  t.GoodgameLoader = d;
+  t.GoodgameLoader = m;
 }, function (e, t, n) {
   'use strict';
 
@@ -43284,8 +43284,8 @@ var ggs_lib = function (e) {
   var u = n(48);
   var c = n(17);
   var _ = n(15);
-  var d = n(3);
-  var m = createjs.Event;
+  var m = n(3);
+  var d = createjs.Event;
   var h = createjs.IOErrorEvent;
   var p = createjs.SecurityErrorEvent;
   var g = n(20);
@@ -43377,7 +43377,7 @@ var ggs_lib = function (e) {
       this._testData.instanceID = t;
       this._testData.referrer = n;
       this._testData.save();
-      new d.URLRequest(a.PathProvider.instance.abTestTrackURL);
+      new m.URLRequest(a.PathProvider.instance.abTestTrackURL);
     };
     ABTest.prototype.onConversionIOError = function (e) {
       u.fatal("error while connecting to ab-testing interface for sending conversion");
@@ -43393,10 +43393,10 @@ var ggs_lib = function (e) {
     };
     ABTest.prototype.disposeLoader = function () {
       if (this.loader) {
-        this.loader.removeEventListener(m.COMPLETE, this.bindFunction(this.onDisplayEventComplete));
+        this.loader.removeEventListener(d.COMPLETE, this.bindFunction(this.onDisplayEventComplete));
         this.loader.removeEventListener(h.IO_ERROR, this.bindFunction(this.onDisplayRequestIOError));
         this.loader.removeEventListener(p.SECURITY_ERROR, this.bindFunction(this.onDisplayRequestIOErrorSecurityError));
-        this.loader.removeEventListener(m.COMPLETE, this.bindFunction(this.onConversionEventComplete));
+        this.loader.removeEventListener(d.COMPLETE, this.bindFunction(this.onConversionEventComplete));
         this.loader.removeEventListener(h.IO_ERROR, this.bindFunction(this.onConversionIOError));
         this.loader.close();
         this.loader = null;
@@ -43450,15 +43450,15 @@ var ggs_lib = function (e) {
     ABTestController.prototype.initialize = function (e, t, n, i, s, r, l) {
       for (var u = 0, c = e.children(); u < c.length; u++) {
         var _ = c[u];
-        var d = new a.ABTestData();
-        d._testID = Number(_.attribute("id"));
-        d.gameID = t;
-        d.instanceID = n;
-        d.networkID = i;
-        d.accountID = s;
-        d.playerID = r;
-        d.referrer = l;
-        this.enabledTests.push(new o.ABTest(d));
+        var m = new a.ABTestData();
+        m._testID = Number(_.attribute("id"));
+        m.gameID = t;
+        m.instanceID = n;
+        m.networkID = i;
+        m.accountID = s;
+        m.playerID = r;
+        m.referrer = l;
+        this.enabledTests.push(new o.ABTest(m));
       }
     };
     ABTestController.prototype.getTest = function (e) {
@@ -44024,8 +44024,8 @@ var ggs_lib = function (e) {
   var u = n(25);
   var c = n(40);
   var _ = n(65);
-  var d = n(12);
-  var m = n(18);
+  var m = n(12);
+  var d = n(18);
   var h = function (e) {
     function CPSCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -44043,12 +44043,12 @@ var ggs_lib = function (e) {
         case s.IdentityManagementConstants.ERROR_SHUT_DOWN_ALERT:
           this._shutDownControlTimer = new l.ShutDownControlTimer(s.IdentityManagementConstants.SHUTDOWN_CONTROL_TIMER);
           this._shutDownControlTimer.startCountDown();
-          this.layoutManager.showDialog(c.CommonDialogNames.StandardOkDialog_NAME, new _.BasicStandardOkDialogProperties(m.Localize.text("generic_alert_warning"), m.Localize.text("generic_alert_korea_logoutCountdown", [this._shutDownControlTimer.showTimerCountdown, m.Localize.text])));
+          this.layoutManager.showDialog(c.CommonDialogNames.StandardOkDialog_NAME, new _.BasicStandardOkDialogProperties(d.Localize.text("generic_alert_warning"), d.Localize.text("generic_alert_korea_logoutCountdown", [this._shutDownControlTimer.showTimerCountdown, d.Localize.text])));
           break;
         case s.IdentityManagementConstants.ERROR_UNDERAGE_LOGOUT:
           this.env.underAgeConnectionLost = true;
           this._shutDownControlTimer.stopShutDownTimer();
-          d.CommandController.instance.executeCommand(r.BasicController.COMMAND_LOGOUT);
+          m.CommandController.instance.executeCommand(r.BasicController.COMMAND_LOGOUT);
       }
       return e.prototype.executeCommand.call(this, t, n);
     };
@@ -44521,8 +44521,8 @@ var ggs_lib = function (e) {
   var u = n(4);
   var c = n(439);
   var _ = n(12);
-  var d = n(31);
-  var m = n(418);
+  var m = n(31);
+  var d = n(418);
   var h = n(37);
   var p = function (e) {
     function SPLCommand() {
@@ -44547,7 +44547,7 @@ var ggs_lib = function (e) {
         if (e == o.BasicErrorConstants.ALL_OK) {
           u.BasicModel.sessionData.loggedIn = true;
           if (this.env.suk == "") {
-            u.BasicModel.localData.saveCountryData(d.GGSCountryController.instance.currentCountry.ggsCountryCode);
+            u.BasicModel.localData.saveCountryData(m.GGSCountryController.instance.currentCountry.ggsCountryCode);
           }
         }
         this.handleGameSpecificErrors(e, t);
@@ -44563,7 +44563,7 @@ var ggs_lib = function (e) {
         h.info("Retry " + u.BasicModel.socialData.socialLoginReloginCount + ", try to execute social login again.");
         _.CommandController.instance.executeCommand(s.BasicController.COMMAND_SOCIAL_LOGIN);
       } else {
-        m.fatal("Can't execute social login after " + c.BasicSocialData.LOGIN_RELOGIN_COUNT_MAX_TRIES + " tries!");
+        d.fatal("Can't execute social login after " + c.BasicSocialData.LOGIN_RELOGIN_COUNT_MAX_TRIES + " tries!");
         this.handleGameSpecificErrors(SPLCommand.LOGIN_KEYS_INVALID, []);
       }
       u.BasicModel.socialData.socialLoginReloginCount++;
@@ -44588,8 +44588,8 @@ var ggs_lib = function (e) {
   var u = n(184);
   var c = n(4);
   var _ = n(2);
-  var d = n(3);
-  var m = _.getLogger("CoreJS.BasicSocialData");
+  var m = n(3);
+  var d = _.getLogger("CoreJS.BasicSocialData");
   var h = function () {
     function BasicSocialData() {
       this._displayNameExistingPlayer = "";
@@ -44610,10 +44610,10 @@ var ggs_lib = function (e) {
       switch (e) {
         case BasicSocialData.INVITE:
         case BasicSocialData.RELOAD:
-          d.ExternalInterface.call(e);
+          m.ExternalInterface.call(e);
           break;
         case BasicSocialData.EXTERNAL_TRIGGER_ERROR:
-          d.ExternalInterface.call(e, t[0], t[1]);
+          m.ExternalInterface.call(e, t[0], t[1]);
       }
     };
     Object.defineProperty(BasicSocialData.prototype, "env", {
@@ -44637,12 +44637,12 @@ var ggs_lib = function (e) {
       configurable: true
     });
     BasicSocialData.prototype.requestLoginKeys = function () {
-      m.info("Request new login keys from PHP");
-      d.ExternalInterface.addCallback(o.FlashCallbackFunctionName.SET_LOGIN_KEYS, this.onSetLoginKeys);
-      d.ExternalInterface.call(l.JavascriptFunctionName.REQUEST_LOGIN_KEYS);
+      d.info("Request new login keys from PHP");
+      m.ExternalInterface.addCallback(o.FlashCallbackFunctionName.SET_LOGIN_KEYS, this.onSetLoginKeys);
+      m.ExternalInterface.call(l.JavascriptFunctionName.REQUEST_LOGIN_KEYS);
     };
     BasicSocialData.prototype.onSetLoginKeys = function (e, t) {
-      m.info("Login keys refreshed, sig: " + e + ", suk: " + t);
+      d.info("Login keys refreshed, sig: " + e + ", suk: " + t);
       this._signatureKey = e;
       this._supportKey = t;
       this.env.sig = this._signatureKey;
@@ -44706,7 +44706,7 @@ var ggs_lib = function (e) {
   var a = function () {
     return function JavascriptCallSetSessionParametersVO(e, t, n, a, s, r, o, l, u, c, _) {
       this.functionName = i.JavascriptFunctionName.SET_SESSION_PARAMETERS;
-      var d = {
+      var m = {
         gameId: e,
         networkId: t,
         instanceId: n,
@@ -44719,7 +44719,7 @@ var ggs_lib = function (e) {
         versionClient: c,
         versionServer: _
       };
-      this.parameters = [d];
+      this.parameters = [m];
     };
   }();
   t.JavascriptCallSetSessionParametersVO = a;
@@ -44844,8 +44844,8 @@ var ggs_lib = function (e) {
   var u = n(68);
   var c = n(4);
   var _ = n(8);
-  var d = n(183);
-  var m = function (e) {
+  var m = n(183);
+  var d = function (e) {
     function VCKCommand() {
       return e !== null && e.apply(this, arguments) || this;
     }
@@ -44869,7 +44869,7 @@ var ggs_lib = function (e) {
         this.handleVersionToHigh();
         this.logError(e);
       } else {
-        r.CommandController.instance.executeCommand(_.BasicController.COMMAND_HANDLE_SERVER_ERROR, new d.ServerErrorVO(e, t, this.cmdId));
+        r.CommandController.instance.executeCommand(_.BasicController.COMMAND_HANDLE_SERVER_ERROR, new m.ServerErrorVO(e, t, this.cmdId));
         this.logError(e);
       }
       return false;
@@ -44890,7 +44890,7 @@ var ggs_lib = function (e) {
     VCKCommand.VERSION_TOO_HIGH = 2;
     return VCKCommand;
   }(l.BasicCommand);
-  t.VCKCommand = m;
+  t.VCKCommand = d;
 }, function (e, t, n) {
   'use strict';
 
@@ -48573,24 +48573,24 @@ var ggs_lib = function (e) {
       }
       n("}");
     }
-    var d = false;
+    var m = false;
     for (l = 0; l < t.length; ++l) {
       u = t[l];
-      var m = e._fieldsArray.indexOf(u);
+      var d = e._fieldsArray.indexOf(u);
       c = s.safeProp(u.name);
       if (u.map) {
-        if (!d) {
-          d = true;
+        if (!m) {
+          m = true;
           n("var ks2");
         }
         n("if(m%s&&(ks2=Object.keys(m%s)).length){", c, c)("d%s={}", c)("for(var j=0;j<ks2.length;++j){");
-        genValuePartial_toObject(n, u, m, c + "[ks2[j]]")("}");
+        genValuePartial_toObject(n, u, d, c + "[ks2[j]]")("}");
       } else if (u.repeated) {
         n("if(m%s&&m%s.length){", c, c)("d%s=[]", c)("for(var j=0;j<m%s.length;++j){", c);
-        genValuePartial_toObject(n, u, m, c + "[j]")("}");
+        genValuePartial_toObject(n, u, d, c + "[j]")("}");
       } else {
         n("if(m%s!=null&&m.hasOwnProperty(%j)){", c, u.name);
-        genValuePartial_toObject(n, u, m, c);
+        genValuePartial_toObject(n, u, d, c);
         if (u.partOf) {
           n("if(o.oneofs)")("d%s=%j", s.safeProp(u.partOf.name), u.name);
         }
@@ -48667,8 +48667,8 @@ var ggs_lib = function (e) {
     var n = 0;
     var c = (e = e.toString()).length;
     var _ = 1;
-    var d = null;
     var m = null;
+    var d = null;
     var h = 0;
     var p = false;
     var g = [];
@@ -48680,7 +48680,7 @@ var ggs_lib = function (e) {
       return e.charAt(t);
     }
     function setComment(n, i) {
-      d = e.charAt(n++);
+      m = e.charAt(n++);
       h = _;
       p = false;
       var a;
@@ -48694,7 +48694,7 @@ var ggs_lib = function (e) {
       for (var u = e.substring(n, i).split(l), c = 0; c < u.length; ++c) {
         u[c] = u[c].replace(t ? o : r, "").trim();
       }
-      m = u.join("\n").trim();
+      d = u.join("\n").trim();
     }
     function isDoubleSlashCommentLine(t) {
       var n = findEndOfLine(t);
@@ -48728,8 +48728,8 @@ var ggs_lib = function (e) {
       var r;
       var o;
       var l;
-      var d;
       var m;
+      var d;
       do {
         if (n === c) {
           return null;
@@ -48748,10 +48748,10 @@ var ggs_lib = function (e) {
           }
           if (charAt(n) === "/") {
             if (t) {
-              d = n;
-              m = false;
+              m = n;
+              d = false;
               if (isDoubleSlashCommentLine(n)) {
-                m = true;
+                d = true;
                 do {
                   if ((n = findEndOfLine(n)) === c) {
                     break;
@@ -48761,20 +48761,20 @@ var ggs_lib = function (e) {
               } else {
                 n = Math.min(c, findEndOfLine(n) + 1);
               }
-              if (m) {
-                setComment(d, n);
+              if (d) {
+                setComment(m, n);
               }
               _++;
               r = true;
             } else {
-              for (m = charAt(d = n + 1) === "/"; charAt(++n) !== "\n";) {
+              for (d = charAt(m = n + 1) === "/"; charAt(++n) !== "\n";) {
                 if (n === c) {
                   return null;
                 }
               }
               ++n;
-              if (m) {
-                setComment(d, n - 1);
+              if (d) {
+                setComment(m, n - 1);
               }
               ++_;
               r = true;
@@ -48783,8 +48783,8 @@ var ggs_lib = function (e) {
             if ((l = charAt(n)) !== "*") {
               return "/";
             }
-            d = n + 1;
-            m = t || charAt(d) === "*";
+            m = n + 1;
+            d = t || charAt(m) === "*";
             do {
               if (l === "\n") {
                 ++_;
@@ -48796,8 +48796,8 @@ var ggs_lib = function (e) {
               l = charAt(n);
             } while (o !== "*" || l !== "/");
             ++n;
-            if (m) {
-              setComment(d, n - 2);
+            if (d) {
+              setComment(m, n - 2);
             }
             r = true;
           }
@@ -48847,15 +48847,15 @@ var ggs_lib = function (e) {
       cmnt: function cmnt(e) {
         var n = null;
         if (e === undefined) {
-          if (h === _ - 1 && (t || d === "*" || p)) {
-            n = m;
+          if (h === _ - 1 && (t || m === "*" || p)) {
+            n = d;
           }
         } else {
           if (h < e) {
             peek();
           }
-          if (h === e && !p && (!!t || d === "/")) {
-            n = m;
+          if (h === e && !p && (!!t || m === "/")) {
+            n = d;
           }
         }
         return n;
@@ -49031,8 +49031,8 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var d;
       var m;
+      var d;
       var h = this._dirty ? this.totalDuration() : this._totalDuration;
       var p = this._time;
       var g = this._totalTime;
@@ -49064,7 +49064,7 @@ var ggs_lib = function (e) {
               r = "onReverseComplete";
             }
           }
-          this._rawPrevTime = d = !t || e || f === e ? e : 1e-10;
+          this._rawPrevTime = m = !t || e || f === e ? e : 1e-10;
         }
       } else if (e < 1e-7) {
         this._totalTime = this._time = this._cycle = 0;
@@ -49079,7 +49079,7 @@ var ggs_lib = function (e) {
             if (f >= 0) {
               n = true;
             }
-            this._rawPrevTime = d = !t || e || f === e ? e : 1e-10;
+            this._rawPrevTime = m = !t || e || f === e ? e : 1e-10;
           }
         }
         if (!this._initted) {
@@ -49096,16 +49096,16 @@ var ggs_lib = function (e) {
           this._time = this._totalTime - this._cycle * l;
           if (this._yoyo && (this._cycle & 1) != 0) {
             this._time = C - this._time;
-            if (m = this._yoyoEase || this.vars.yoyoEase) {
+            if (d = this._yoyoEase || this.vars.yoyoEase) {
               if (!this._yoyoEase) {
-                if (m !== true || this._initted) {
-                  this._yoyoEase = m = m === true ? this._ease : m instanceof i.Ease ? m : i.Ease.map[m];
+                if (d !== true || this._initted) {
+                  this._yoyoEase = d = d === true ? this._ease : d instanceof i.Ease ? d : i.Ease.map[d];
                 } else {
-                  m = this.vars.ease;
-                  this._yoyoEase = m = m ? m instanceof i.Ease ? m : typeof m == "function" ? new i.Ease(m, this.vars.easeParams) : i.Ease.map[m] || i.default.defaultEase : i.default.defaultEase;
+                  d = this.vars.ease;
+                  this._yoyoEase = d = d ? d instanceof i.Ease ? d : typeof d == "function" ? new i.Ease(d, this.vars.easeParams) : i.Ease.map[d] || i.default.defaultEase : i.default.defaultEase;
                 }
               }
-              this.ratio = m ? 1 - m.getRatio((C - this._time) / C) : 0;
+              this.ratio = d ? 1 - d.getRatio((C - this._time) / C) : 0;
             }
           }
           if (this._time > C) {
@@ -49114,7 +49114,7 @@ var ggs_lib = function (e) {
             this._time = 0;
           }
         }
-        if (this._easeType && !m) {
+        if (this._easeType && !d) {
           u = this._time / C;
           c = this._easeType;
           _ = this._easePower;
@@ -49142,7 +49142,7 @@ var ggs_lib = function (e) {
           } else {
             this.ratio = 1 - u / 2;
           }
-        } else if (!m) {
+        } else if (!d) {
           this.ratio = this._ease.getRatio(this._time / C);
         }
       }
@@ -49161,8 +49161,8 @@ var ggs_lib = function (e) {
             this._lazy = [e, t];
             return;
           }
-          if (!this._time || s || m) {
-            if (s && this._ease._calcEnd && !m) {
+          if (!this._time || s || d) {
+            if (s && this._ease._calcEnd && !d) {
               this.ratio = this._ease.getRatio(this._time === 0 ? 0 : 1);
             }
           } else {
@@ -49234,7 +49234,7 @@ var ggs_lib = function (e) {
             if (!t && this.vars[r]) {
               this._callback(r);
             }
-            if (C === 0 && this._rawPrevTime === 1e-10 && d !== 1e-10) {
+            if (C === 0 && this._rawPrevTime === 1e-10 && m !== 1e-10) {
               this._rawPrevTime = 0;
             }
           }
@@ -49258,7 +49258,7 @@ var ggs_lib = function (e) {
       a.immediateRender = a.immediateRender != 0 && i.immediateRender != 0;
       return new n(e, t, a);
     };
-    n.staggerTo = n.allTo = function (a, o, u, c, _, d, m) {
+    n.staggerTo = n.allTo = function (a, o, u, c, _, m, d) {
       c = c || 0;
       var h;
       var p;
@@ -49270,7 +49270,7 @@ var ggs_lib = function (e) {
         if (u.onComplete) {
           u.onComplete.apply(u.onCompleteScope || this, arguments);
         }
-        _.apply(m || u.callbackScope || this, d || l);
+        _.apply(d || u.callbackScope || this, m || l);
       }
       var S = u.cycle;
       var y = u.startAt && u.startAt.cycle;
@@ -49394,8 +49394,8 @@ var ggs_lib = function (e) {
         var u;
         var c;
         var _;
-        var d;
-        var m = a.tweenLookup;
+        var m;
+        var d = a.tweenLookup;
         if (typeof t == "string") {
           t = i.default.selector(t) || t;
         }
@@ -49408,17 +49408,17 @@ var ggs_lib = function (e) {
           }
         } else {
           l = [];
-          for (c in m) {
-            for (u = m[c].target.parentNode; u;) {
+          for (c in d) {
+            for (u = d[c].target.parentNode; u;) {
               if (u === t) {
-                l = l.concat(m[c].tweens);
+                l = l.concat(d[c].tweens);
               }
               u = u.parentNode;
             }
           }
-          d = l.length;
+          m = l.length;
           _ = 0;
-          for (; _ < d; _++) {
+          for (; _ < m; _++) {
             if (o) {
               l[_].totalTime(l[_].totalDuration());
             }
@@ -49578,12 +49578,12 @@ var ggs_lib = function (e) {
   var _ = n(211);
   t.ButtonColorMatrix = _.ButtonColorMatrix;
   window.ButtonColorMatrix = _.ButtonColorMatrix;
-  var d = n(244);
-  t.CheckBoxButton = d.CheckBoxButton;
-  window.CheckBoxButton = d.CheckBoxButton;
-  var m = n(613);
-  t.HeroTwoStateButton = m.HeroTwoStateButton;
-  window.HeroTwoStateButton = m.HeroTwoStateButton;
+  var m = n(244);
+  t.CheckBoxButton = m.CheckBoxButton;
+  window.CheckBoxButton = m.CheckBoxButton;
+  var d = n(613);
+  t.HeroTwoStateButton = d.HeroTwoStateButton;
+  window.HeroTwoStateButton = d.HeroTwoStateButton;
   var h = n(614);
   t.Icon_PlaqueCR = h.Icon_PlaqueCR;
   window.Icon_PlaqueCR = h.Icon_PlaqueCR;
@@ -49638,7 +49638,7 @@ var ggs_lib = function (e) {
       this.assets.CastleStartscreen3 = "interface/CastleStartscreen3/CastleStartscreen3--1693828816067";
       this.assets.CastleStartscreen2 = "interface/CastleStartscreen2/CastleStartscreen2--1679043072895";
       this.assets.CastleStartscreen_O = "interface/CastleStartscreen_O/CastleStartscreen_O--1651238657710";
-      this.assets.CastleInterfaceElements_Icons = "interface/CastleInterfaceElements_Icons/CastleInterfaceElements_Icons--1767688064467";
+      this.assets.CastleInterfaceElements_Icons = "interface/CastleInterfaceElements_Icons/CastleInterfaceElements_Icons--1770040338308";
       this.assets.CastleInterfaceElements_Shared = "interface/CastleInterfaceElements_Shared/CastleInterfaceElements_Shared--1710420450312";
       this.assets.CastleStartscreen = "interface/CastleStartscreen/CastleStartscreen--1645175515102";
       this.assets.KoreaTableCell = "interface/fonts/korea/KoreaTableCell/KoreaTableCell--1640007345013";
@@ -49675,6 +49675,120 @@ var ggs_lib = function (e) {
     };
     ItemVersions.prototype.fill = function () {
       this.assets.Deco_Building_springBonfire = "itemassets/Building/Deco/Deco_Building_springBonfire/Deco_Building_springBonfire--1616681902168";
+      this.assets.CastlePremiumMarketplaceExternal_Feb2026 = "itemassets/Dialogs/PremiumMarketplace/CastlePremiumMarketplaceExternal_Feb2026/CastlePremiumMarketplaceExternal_Feb2026--1770649101660";
+      this.assets.Icon_ARE_BossID_2 = "itemassets/Dialogs/Events/AllianceRaidEvent/Icons/Icon_ARE_BossID_2/Icon_ARE_BossID_2--1770640913126";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseRightWeak = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseRightWeak/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseRightWeak--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseRightStrong = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseRightStrong/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseRightStrong--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseRightNormal = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseRightNormal/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseRightNormal--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseLeftWeak = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseLeftWeak/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseLeftWeak--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseLeftStrong = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseLeftStrong/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseLeftStrong--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseLeftNormal = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseLeftNormal/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseLeftNormal--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseFrontWeak = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseFrontWeak/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseFrontWeak--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseFrontStrong = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseFrontStrong/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseFrontStrong--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseFrontNormal = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseFrontNormal/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseFrontNormal--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseAllWeak = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseAllWeak/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseAllWeak--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseAllStrong = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseAllStrong/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseAllStrong--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmWallDelayIncreaseAllNormal = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseAllNormal/Eventtool_Unit_AREFungalSwarmWallDelayIncreaseAllNormal--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmSpokeKillingToolRangedWeak = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmSpokeKillingToolRangedWeak/Eventtool_Unit_AREFungalSwarmSpokeKillingToolRangedWeak--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmSpokeKillingToolRangedStrong = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmSpokeKillingToolRangedStrong/Eventtool_Unit_AREFungalSwarmSpokeKillingToolRangedStrong--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmSpokeKillingToolRangedMedium = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmSpokeKillingToolRangedMedium/Eventtool_Unit_AREFungalSwarmSpokeKillingToolRangedMedium--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmSpokeKillingToolMeleeWeak = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmSpokeKillingToolMeleeWeak/Eventtool_Unit_AREFungalSwarmSpokeKillingToolMeleeWeak--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmSpokeKillingToolMeleeStrong = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmSpokeKillingToolMeleeStrong/Eventtool_Unit_AREFungalSwarmSpokeKillingToolMeleeStrong--1770635526190";
+      this.assets.Eventtool_Unit_AREFungalSwarmSpokeKillingToolMeleeMedium = "itemassets/Units/Eventtool/Eventtool_Unit_AREFungalSwarmSpokeKillingToolMeleeMedium/Eventtool_Unit_AREFungalSwarmSpokeKillingToolMeleeMedium--1770635526190";
+      this.assets.Item_Unique_1459 = "itemassets/Equipment/Uniques/Item_Unique_1459/Item_Unique_1459--1770306950688";
+      this.assets.Item_Unique_1458 = "itemassets/Equipment/Uniques/Item_Unique_1458/Item_Unique_1458--1770306950688";
+      this.assets.Item_Unique_1457 = "itemassets/Equipment/Uniques/Item_Unique_1457/Item_Unique_1457--1770306950688";
+      this.assets.Item_Unique_1456 = "itemassets/Equipment/Uniques/Item_Unique_1456/Item_Unique_1456--1770306950688";
+      this.assets.Item_Unique_1455 = "itemassets/Equipment/Uniques/Item_Unique_1455/Item_Unique_1455--1770306950688";
+      this.assets.Item_Unique_1454 = "itemassets/Equipment/Uniques/Item_Unique_1454/Item_Unique_1454--1770306950688";
+      this.assets.Item_Unique_1453 = "itemassets/Equipment/Uniques/Item_Unique_1453/Item_Unique_1453--1770306950688";
+      this.assets.Item_Unique_1452 = "itemassets/Equipment/Uniques/Item_Unique_1452/Item_Unique_1452--1770306950688";
+      this.assets.Item_Unique_1451 = "itemassets/Equipment/Uniques/Item_Unique_1451/Item_Unique_1451--1770306950688";
+      this.assets.Item_Unique_1450 = "itemassets/Equipment/Uniques/Item_Unique_1450/Item_Unique_1450--1770306950688";
+      this.assets.Item_Unique_1449 = "itemassets/Equipment/Uniques/Item_Unique_1449/Item_Unique_1449--1770306950688";
+      this.assets.Item_Unique_1448 = "itemassets/Equipment/Uniques/Item_Unique_1448/Item_Unique_1448--1770306950688";
+      this.assets.Item_Unique_1447 = "itemassets/Equipment/Uniques/Item_Unique_1447/Item_Unique_1447--1770306950688";
+      this.assets.Item_Unique_1446 = "itemassets/Equipment/Uniques/Item_Unique_1446/Item_Unique_1446--1770306950688";
+      this.assets.Item_Unique_1445 = "itemassets/Equipment/Uniques/Item_Unique_1445/Item_Unique_1445--1770306950688";
+      this.assets.Item_Gem_Unique_489 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_489/Item_Gem_Unique_489--1770306950688";
+      this.assets.Item_Gem_Unique_488 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_488/Item_Gem_Unique_488--1770306950688";
+      this.assets.Item_Gem_Unique_487 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_487/Item_Gem_Unique_487--1770306950688";
+      this.assets.Item_Gem_Unique_486 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_486/Item_Gem_Unique_486--1770306950688";
+      this.assets.Item_Gem_Unique_485 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_485/Item_Gem_Unique_485--1770306950688";
+      this.assets.Item_Gem_Unique_484 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_484/Item_Gem_Unique_484--1770306950688";
+      this.assets.Item_Gem_Unique_483 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_483/Item_Gem_Unique_483--1770306950688";
+      this.assets.Item_Gem_Unique_482 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_482/Item_Gem_Unique_482--1770306950688";
+      this.assets.Item_Gem_Unique_481 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_481/Item_Gem_Unique_481--1770306950688";
+      this.assets.Item_Gem_Unique_480 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_480/Item_Gem_Unique_480--1770306950688";
+      this.assets.Item_Gem_Unique_479 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_479/Item_Gem_Unique_479--1770306950688";
+      this.assets.Item_Gem_Unique_478 = "itemassets/Equipment/UniqueGems/Item_Gem_Unique_478/Item_Gem_Unique_478--1770306950688";
+      this.assets.Hero_Unique_1459 = "itemassets/Equipment/Heroes/Hero_Unique_1459/Hero_Unique_1459--1770306950688";
+      this.assets.Hero_Unique_1454 = "itemassets/Equipment/Heroes/Hero_Unique_1454/Hero_Unique_1454--1770306950688";
+      this.assets.Hero_Unique_1449 = "itemassets/Equipment/Heroes/Hero_Unique_1449/Hero_Unique_1449--1770306950688";
+      this.assets.DetailView_RaidBoss_2 = "itemassets/CastleDetailView/AllianceRaidBossEvent/DetailView_RaidBoss_2/DetailView_RaidBoss_2--1770300088084";
+      this.assets.AllianceRaidEventMainExt_Feb26 = "itemassets/Dialogs/Events/AllianceRaidEvent/AllianceRaidEventMainExt_Feb26/AllianceRaidEventMainExt_Feb26--1770222464629";
+      this.assets.AllianceRaidEventBG_FungalSwarm = "itemassets/Dialogs/Events/AllianceRaidEvent/Backgrounds/AllianceRaidEventBG_FungalSwarm/AllianceRaidEventBG_FungalSwarm--1770300088084";
+      this.assets.GeneralPortrait_133 = "itemassets/General/Portrait/GeneralPortrait_133/GeneralPortrait_133--1770040338308";
+      this.assets.GeneralPortrait_132 = "itemassets/General/Portrait/GeneralPortrait_132/GeneralPortrait_132--1770040338308";
+      this.assets.GeneralPortrait_131 = "itemassets/General/Portrait/GeneralPortrait_131/GeneralPortrait_131--1770040338308";
+      this.assets.GeneralIcon_133 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_133/GeneralIcon_133--1770040338308";
+      this.assets.GeneralIcon_132 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_132/GeneralIcon_132--1770040338308";
+      this.assets.GeneralIcon_131 = "itemassets/Dialogs/Generals/GeneralIcons/GeneralIcon_131/GeneralIcon_131--1770040338308";
+      this.assets.ARE_EndTeaser_BossDefeated_2 = "itemassets/Dialogs/Events/AllianceRaidEvent/BossDefeatTeasers/ARE_EndTeaser_BossDefeated_2/ARE_EndTeaser_BossDefeated_2--1770040338308";
+      this.assets.ARE_EndTeaser_BossDefeated_2_Final = "itemassets/Dialogs/Events/AllianceRaidEvent/BossDefeatTeasers/ARE_EndTeaser_BossDefeated_2_Final/ARE_EndTeaser_BossDefeated_2_Final--1770040338308";
+      this.assets.AttackScreen_FEB2026 = "itemassets/Dialogs/AttackScreen_FEB2026/AttackScreen_FEB2026--1770040338308";
+      this.assets.Eventunit_Unit_FungalStrongRanged = "itemassets/Units/Eventunit/Eventunit_Unit_FungalStrongRanged/Eventunit_Unit_FungalStrongRanged--1769771377029";
+      this.assets.Eventunit_Unit_FungalStrongMelee = "itemassets/Units/Eventunit/Eventunit_Unit_FungalStrongMelee/Eventunit_Unit_FungalStrongMelee--1769771377029";
+      this.assets.Eventunit_Unit_FungalSporeRanged = "itemassets/Units/Eventunit/Eventunit_Unit_FungalSporeRanged/Eventunit_Unit_FungalSporeRanged--1769771377029";
+      this.assets.Eventunit_Unit_FungalSporeMelee = "itemassets/Units/Eventunit/Eventunit_Unit_FungalSporeMelee/Eventunit_Unit_FungalSporeMelee--1769771377029";
+      this.assets.Eventunit_Unit_FungalNormalRanged = "itemassets/Units/Eventunit/Eventunit_Unit_FungalNormalRanged/Eventunit_Unit_FungalNormalRanged--1769771377029";
+      this.assets.Eventunit_Unit_FungalNormalMelee = "itemassets/Units/Eventunit/Eventunit_Unit_FungalNormalMelee/Eventunit_Unit_FungalNormalMelee--1769771377029";
+      this.assets.Outpost_Mapobject_Special_CarnivalMaskCast = "itemassets/Worldmap/WorldmapObjects/Outposts/Outpost_Mapobject_Special_CarnivalMaskCast/Outpost_Mapobject_Special_CarnivalMaskCast--1769425845517";
+      this.assets.Skin_Mapmovement_CarnivalMaskComm_Eiland = "itemassets/Worldmap/WorldmapObjects/Movements/Skins/Skin_Mapmovement_CarnivalMaskComm_Eiland/Skin_Mapmovement_CarnivalMaskComm_Eiland--1769425845517";
+      this.assets.Skin_Mapmovement_CarnivalMaskComm_Common = "itemassets/Worldmap/WorldmapObjects/Movements/Skins/Skin_Mapmovement_CarnivalMaskComm_Common/Skin_Mapmovement_CarnivalMaskComm_Common--1769425845517";
+      this.assets.Metropol_Mapobject_Special_CarnivalMaskCast = "itemassets/Worldmap/WorldmapObjects/Landmarks/Metropol_Mapobject_Special_CarnivalMaskCast/Metropol_Mapobject_Special_CarnivalMaskCast--1769425845517";
+      this.assets.Capital_Mapobject_Special_CarnivalMaskCast = "itemassets/Worldmap/WorldmapObjects/Landmarks/Capital_Mapobject_Special_CarnivalMaskCast/Capital_Mapobject_Special_CarnivalMaskCast--1769425845517";
+      this.assets.Castle_Mapobject_Special_CarnivalMaskCast = "itemassets/Worldmap/WorldmapObjects/Castles/Castle_Mapobject_Special_CarnivalMaskCast/Castle_Mapobject_Special_CarnivalMaskCast--1769425845517";
+      this.assets.Item_Unique_1381 = "itemassets/Equipment/Uniques/Item_Unique_1381/Item_Unique_1381--1769425845517";
+      this.assets.Item_Unique_1380 = "itemassets/Equipment/Uniques/Item_Unique_1380/Item_Unique_1380--1769425845517";
+      this.assets.ConstructionItem_PremiumCarnivalKeep = "itemassets/ConstructionItems/ConstructionItem_PremiumCarnivalKeep/ConstructionItem_PremiumCarnivalKeep--1769425845517";
+      this.assets.ConstructionItem_PremiumCarnivalHoneyGardens = "itemassets/ConstructionItems/ConstructionItem_PremiumCarnivalHoneyGardens/ConstructionItem_PremiumCarnivalHoneyGardens--1769425845517";
+      this.assets.ConstructionItem_PremiumCarnivalHallofLegends = "itemassets/ConstructionItems/ConstructionItem_PremiumCarnivalHallofLegends/ConstructionItem_PremiumCarnivalHallofLegends--1769425845517";
+      this.assets.ConstructionItem_PremiumCarnivalGranary = "itemassets/ConstructionItems/ConstructionItem_PremiumCarnivalGranary/ConstructionItem_PremiumCarnivalGranary--1769425845517";
+      this.assets.ConstructionItem_PremiumCarnivalDwelling = "itemassets/ConstructionItems/ConstructionItem_PremiumCarnivalDwelling/ConstructionItem_PremiumCarnivalDwelling--1769425845517";
+      this.assets.ConstructionItem_PremiumCarnivalBarrelWorkshop = "itemassets/ConstructionItems/ConstructionItem_PremiumCarnivalBarrelWorkshop/ConstructionItem_PremiumCarnivalBarrelWorkshop--1769425845517";
+      this.assets.ConstructionItem_CarnivalKeep = "itemassets/ConstructionItems/ConstructionItem_CarnivalKeep/ConstructionItem_CarnivalKeep--1769425845517";
+      this.assets.ConstructionItem_CarnivalHallofLegends = "itemassets/ConstructionItems/ConstructionItem_CarnivalHallofLegends/ConstructionItem_CarnivalHallofLegends--1769425845517";
+      this.assets.ConstructionItem_CarnivalGranary = "itemassets/ConstructionItems/ConstructionItem_CarnivalGranary/ConstructionItem_CarnivalGranary--1769425845517";
+      this.assets.ConstructionItem_CarnivalDwelling = "itemassets/ConstructionItems/ConstructionItem_CarnivalDwelling/ConstructionItem_CarnivalDwelling--1769425845517";
+      this.assets.Pdwelling_Building_PremiumCarnivalDwelling = "itemassets/Building/Pdwelling/Pdwelling_Building_PremiumCarnivalDwelling/Pdwelling_Building_PremiumCarnivalDwelling--1769425845517";
+      this.assets.Pdwelling_Building_CarnivalDwelling = "itemassets/Building/Pdwelling/Pdwelling_Building_CarnivalDwelling/Pdwelling_Building_CarnivalDwelling--1769425845517";
+      this.assets.LegendTemple_Building_PremiumCarnivalHallofLegends = "itemassets/Building/LegendTemple/LegendTemple_Building_PremiumCarnivalHallofLegends/LegendTemple_Building_PremiumCarnivalHallofLegends--1769425845517";
+      this.assets.LegendTemple_Building_CarnivalHallofLegends = "itemassets/Building/LegendTemple/LegendTemple_Building_CarnivalHallofLegends/LegendTemple_Building_CarnivalHallofLegends--1769425845517";
+      this.assets.LegendFarm_Building_PremiumCarnivalGranary = "itemassets/Building/LegendFarm/LegendFarm_Building_PremiumCarnivalGranary/LegendFarm_Building_PremiumCarnivalGranary--1769425845517";
+      this.assets.LegendFarm_Building_CarnivalGranary = "itemassets/Building/LegendFarm/LegendFarm_Building_CarnivalGranary/LegendFarm_Building_CarnivalGranary--1769425845517";
+      this.assets.Keep_Building_PremiumCarnivalKeep = "itemassets/Building/Keep/Keep_Building_PremiumCarnivalKeep/Keep_Building_PremiumCarnivalKeep--1769425845517";
+      this.assets.Keep_Building_CarnivalKeep = "itemassets/Building/Keep/Keep_Building_CarnivalKeep/Keep_Building_CarnivalKeep--1769425845517";
+      this.assets.HoneyGardens_Building_PremiumCarnivalHoneyGardens = "itemassets/Building/HoneyGardens/HoneyGardens_Building_PremiumCarnivalHoneyGardens/HoneyGardens_Building_PremiumCarnivalHoneyGardens--1769425845517";
+      this.assets.Farm_Building_PremiumCarnivalGranary = "itemassets/Building/Farm/Farm_Building_PremiumCarnivalGranary/Farm_Building_PremiumCarnivalGranary--1769425845517";
+      this.assets.Farm_Building_CarnivalGranary = "itemassets/Building/Farm/Farm_Building_CarnivalGranary/Farm_Building_CarnivalGranary--1769425845517";
+      this.assets.Dwelling_Building_PremiumCarnivalDwelling = "itemassets/Building/Dwelling/Dwelling_Building_PremiumCarnivalDwelling/Dwelling_Building_PremiumCarnivalDwelling--1769425845517";
+      this.assets.Dwelling_Building_CarnivalDwelling = "itemassets/Building/Dwelling/Dwelling_Building_CarnivalDwelling/Dwelling_Building_CarnivalDwelling--1769425845517";
+      this.assets.Deco_Building_ExaltedRedCarnivalCanal = "itemassets/Building/Deco/EffectDecos/Carnival2026/Deco_Building_ExaltedRedCarnivalCanal/Deco_Building_ExaltedRedCarnivalCanal--1769425845517";
+      this.assets.Deco_Building_ExaltedPurpleCarnivalCanal = "itemassets/Building/Deco/EffectDecos/Carnival2026/Deco_Building_ExaltedPurpleCarnivalCanal/Deco_Building_ExaltedPurpleCarnivalCanal--1769425845517";
+      this.assets.Deco_Building_ExaltedGreenJestersMask = "itemassets/Building/Deco/EffectDecos/Carnival2026/Deco_Building_ExaltedGreenJestersMask/Deco_Building_ExaltedGreenJestersMask--1769425845517";
+      this.assets.Deco_Building_ExaltedGreenCarnivalCanal = "itemassets/Building/Deco/EffectDecos/Carnival2026/Deco_Building_ExaltedGreenCarnivalCanal/Deco_Building_ExaltedGreenCarnivalCanal--1769425845517";
+      this.assets.BarrelWorkshop_Building_PremiumCarnivalBarrelWorkshop = "itemassets/Building/BarrelWorkshop/BarrelWorkshop_Building_PremiumCarnivalBarrelWorkshop/BarrelWorkshop_Building_PremiumCarnivalBarrelWorkshop--1770043600591";
+      this.assets.GachaEventMain_Animation_Idle_CarnivalGacha = "itemassets/Dialogs/SeasonGacha/CarnivalGacha/GachaEventMain_Animation_Idle_CarnivalGacha/GachaEventMain_Animation_Idle_CarnivalGacha--1769438021105";
+      this.assets.GachaEventMain_Animation_Active_CarnivalGacha = "itemassets/Dialogs/SeasonGacha/CarnivalGacha/GachaEventMain_Animation_Active_CarnivalGacha/GachaEventMain_Animation_Active_CarnivalGacha--1769512283308";
+      this.assets.Btn_CarnivalGacha = "itemassets/StatusIcons/Btn_CarnivalGacha/Btn_CarnivalGacha--1769096188955";
+      this.assets.Rewards_Animation_CarnivalGacha = "itemassets/Dialogs/SeasonGacha/CarnivalGacha/Rewards_Animation_CarnivalGacha/Rewards_Animation_CarnivalGacha--1769096188955";
+      this.assets.GachaEventMain_Elements_CarnivalGacha = "itemassets/Dialogs/SeasonGacha/CarnivalGacha/GachaEventMain_Elements_CarnivalGacha/GachaEventMain_Elements_CarnivalGacha--1769096188955";
+      this.assets.CastleMessageIconsCarnivalGacha = "itemassets/Dialogs/SeasonGacha/CarnivalGacha/CastleMessageIconsCarnivalGacha/CastleMessageIconsCarnivalGacha--1769096188955";
+      this.assets.EventStarterAnnouncementTeaser_135 = "itemassets/Dialogs/EventAnnouncement/TeaserImages/EventStarterAnnouncementTeaser_135/EventStarterAnnouncementTeaser_135--1769096188955";
+      this.assets.EventEndTeaser_135 = "itemassets/Dialogs/DistrictGatcha/EventEndTeaser/EventEndTeaser_135/EventEndTeaser_135--1769096188955";
+      this.assets.Collectable_Currency_CarnivalMask = "itemassets/Collectables/Collectable_Currency_CarnivalMask/Collectable_Currency_CarnivalMask--1769096188955";
+      this.assets.Collectable_Currency_CarnivalMask_DropShadow = "itemassets/Collectables/Collectable_Currency_CarnivalMask_DropShadow/Collectable_Currency_CarnivalMask_DropShadow--1769096188955";
       this.assets.AllianceMobilizationEventMainExt_Jan26 = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceMobilizationEventMainExt_Jan26/AllianceMobilizationEventMainExt_Jan26--1768489297723";
       this.assets.AllianceQuestTeaser_StormIslands = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceQuestTeaser/AllianceQuestTeaser_StormIslands/AllianceQuestTeaser_StormIslands--1768229156480";
       this.assets.AllianceQuestTeaser_SamuraiInvasion = "itemassets/Dialogs/Events/AllianceMobilizationEvent/AllianceQuestTeaser/AllianceQuestTeaser_SamuraiInvasion/AllianceQuestTeaser_SamuraiInvasion--1768229156480";
@@ -50332,8 +50446,8 @@ var ggs_lib = function (e) {
       this.assets.Collectable_Currency_FrozenCarrot = "itemassets/Collectables/Collectable_Currency_FrozenCarrot/Collectable_Currency_FrozenCarrot--1732621862506";
       this.assets.SeasonGachaMain = "itemassets/Dialogs/SeasonGacha/SeasonGachaMain/SeasonGachaMain--1733761584900";
       this.assets.GachaEventMain_Elements_ChristmasGacha = "itemassets/Dialogs/SeasonGacha/ChristmasGacha/GachaEventMain_Elements_ChristmasGacha/GachaEventMain_Elements_ChristmasGacha--1732534090506";
-      this.assets.GachaEventMain_Animation_Idle_ChristmasGacha = "itemassets/Dialogs/SeasonGacha/ChristmasGacha/GachaEventMain_Animation_Idle_ChristmasGacha/GachaEventMain_Animation_Idle_ChristmasGacha--1732703133168";
-      this.assets.GachaEventMain_Animation_Active_ChristmasGacha = "itemassets/Dialogs/SeasonGacha/ChristmasGacha/GachaEventMain_Animation_Active_ChristmasGacha/GachaEventMain_Animation_Active_ChristmasGacha--1733912646800";
+      this.assets.GachaEventMain_Animation_Idle_ChristmasGacha = "itemassets/Dialogs/SeasonGacha/ChristmasGacha/GachaEventMain_Animation_Idle_ChristmasGacha/GachaEventMain_Animation_Idle_ChristmasGacha--1769184883722";
+      this.assets.GachaEventMain_Animation_Active_ChristmasGacha = "itemassets/Dialogs/SeasonGacha/ChristmasGacha/GachaEventMain_Animation_Active_ChristmasGacha/GachaEventMain_Animation_Active_ChristmasGacha--1769184883722";
       this.assets.EventStarterAnnouncementTeaser_127 = "itemassets/Dialogs/EventAnnouncement/TeaserImages/EventStarterAnnouncementTeaser_127/EventStarterAnnouncementTeaser_127--1732534090506";
       this.assets.EventEndTeaser_127 = "itemassets/Dialogs/DistrictGatcha/EventEndTeaser/EventEndTeaser_127/EventEndTeaser_127--1732534090506";
       this.assets.EventEndTeaser_126 = "itemassets/Dialogs/DistrictGatcha/EventEndTeaser/EventEndTeaser_126/EventEndTeaser_126--1732534090506";
@@ -57840,17 +57954,17 @@ var ggs_lib = function (e) {
               var u = l.getContext("2d");
               var c = new r(u);
               var _ = "bpg-" + e.sourceSize.w + "-" + e.sourceSize.h;
-              var d = performance.now();
+              var m = performance.now();
               c._onload({
                 response: i
               });
               l.width = c.imageData.width;
               l.height = c.imageData.height;
               u.putImageData(c.imageData, 0, 0);
-              var m = performance.now() - d;
+              var d = performance.now() - m;
               window.bpgTotal = window.bpgTotal || 0;
-              window.bpgTotal += m;
-              s.info(_, "single " + m + "ms", "total " + window.bpgTotal / 1000 + "s");
+              window.bpgTotal += d;
+              s.info(_, "single " + d + "ms", "total " + window.bpgTotal / 1000 + "s");
               i = l;
             }
           }
@@ -57928,8 +58042,8 @@ var ggs_lib = function (e) {
           } else {
             c.speed = _.speed;
             c.next = _.next;
-            var d = _.frames;
-            a = c.frames = typeof d == "number" ? [d] : d.slice(0);
+            var m = _.frames;
+            a = c.frames = typeof m == "number" ? [m] : m.slice(0);
           }
           if (c.next === true || c.next === undefined) {
             c.next = u;
@@ -58137,19 +58251,19 @@ var ggs_lib = function (e) {
     var a = [2, 2, 4, 6, 0];
     for (var s = 0, r = e.length, o = [], l = 0, u = 0, c = createjs.Graphics.BASE_64; s < r;) {
       var _ = e.charAt(s);
-      var d = c[_];
-      var m = d >> 3;
-      var h = i[m];
-      if (!h || d & 3) {
+      var m = c[_];
+      var d = m >> 3;
+      var h = i[d];
+      if (!h || m & 3) {
         throw "bad path data (@" + s + "): " + _;
       }
-      var p = a[m];
-      if (!m) {
+      var p = a[d];
+      if (!d) {
         l = u = 0;
       }
       o.length = 0;
       s++;
-      var g = 2 + (d >> 2 & 1);
+      var g = 2 + (m >> 2 & 1);
       for (var E = 0; E < p; E++) {
         var C = c[e.charAt(s)];
         var f = C >> 5 ? -1 : 1;
@@ -58200,14 +58314,14 @@ var ggs_lib = function (e) {
     if (s) {
       var _ = s != null ? s.clone() : new createjs.Matrix2D();
       if (e === "radial") {
-        var d = s.transformPoint(1638.4, 0);
-        this.beginRadialGradientFill(c, a, _.tx, _.ty, 0, _.tx, _.ty, (d.x - _.tx) / 2);
+        var m = s.transformPoint(1638.4, 0);
+        this.beginRadialGradientFill(c, a, _.tx, _.ty, 0, _.tx, _.ty, (m.x - _.tx) / 2);
       } else {
         _.tx -= s.a * 1638.4 / 2;
         _.ty -= s.d * 1638.4 / 2;
-        var m = _.transformPoint(0, 0);
+        var d = _.transformPoint(0, 0);
         var h = _.transformPoint(1638.4, 0);
-        this.beginLinearGradientFill(c, a, m.x, m.y, h.x, h.y);
+        this.beginLinearGradientFill(c, a, d.x, d.y, h.x, h.y);
       }
     }
   };
@@ -59320,8 +59434,8 @@ var ggs_lib = function (e) {
   var u = createjs.Stage;
   var c = createjs.Container;
   var _ = createjs.Shape;
-  var d = n(16);
-  i.getLogger(d.CREATEJS_UTILITIES_LOGGER);
+  var m = n(16);
+  i.getLogger(m.CREATEJS_UTILITIES_LOGGER);
   Object.defineProperty(r.prototype, "transform", {
     get: function () {
       this._transform ||= new a.Transform(this);
@@ -59348,26 +59462,26 @@ var ggs_lib = function (e) {
     var c = new o();
     for (var _ = 0; _ < 4; _++) {
       this.localToLocal(n[_], i[_], t, c);
-      var d = c.x;
-      var m = c.y;
-      if (d < a) {
-        a = d;
+      var m = c.x;
+      var d = c.y;
+      if (m < a) {
+        a = m;
       }
-      if (d > l) {
-        l = d;
+      if (m > l) {
+        l = m;
       }
-      if (m < r) {
-        r = m;
+      if (d < r) {
+        r = d;
       }
-      if (m > u) {
-        u = m;
+      if (d > u) {
+        u = d;
       }
     }
     return new s(a, r, l - a, u - r);
   };
-  var m = r.prototype.getBounds;
+  var d = r.prototype.getBounds;
   r.prototype.getBounds = function (e) {
-    var t = m.apply(this);
+    var t = d.apply(this);
     if (t) {
       if (e && e !== this) {
         return this.transformRect(t, e);
@@ -59947,10 +60061,10 @@ var ggs_lib = function (e) {
           var _ = window.restrictedInteractiveArea;
           if (_) {
             if (Array.isArray(_) && _.length) {
-              for (var d = _.length - 1; d >= 0; d--) {
-                var m = _[d];
-                if (m) {
-                  var h = m instanceof createjs.Container ? m : m.parent;
+              for (var m = _.length - 1; m >= 0; m--) {
+                var d = _[m];
+                if (d) {
+                  var h = d instanceof createjs.Container ? d : d.parent;
                   if (h && (u = this._getObjectsUnderPoint.call(h, this.mouseX, this.mouseY, null, true, null, 8))) {
                     break;
                   }
@@ -60136,21 +60250,21 @@ var ggs_lib = function (e) {
       var u = o + i.height;
       var c = 0;
       var _ = 0;
-      var d = n.width;
-      var m = n.height;
+      var m = n.width;
+      var d = n.height;
       if (s < 0) {
         c -= s;
         s = 0;
       }
-      if (l > d) {
-        l = d;
+      if (l > m) {
+        l = m;
       }
       if (o < 0) {
         _ -= o;
         o = 0;
       }
-      if (u > m) {
-        u = m;
+      if (u > d) {
+        u = d;
       }
       e.drawImage(n, s, o, l - s, u - o, c, _, l - s, u - o);
     } else {
@@ -61618,8 +61732,8 @@ var ggs_lib = function (e) {
   var u = n(234);
   var c = n(88);
   var _ = n(61);
-  var d = n(2);
-  var m = n(240);
+  var m = n(2);
+  var d = n(240);
   var h = n(600);
   var p = n(601);
   var g = n(602);
@@ -61643,7 +61757,7 @@ var ggs_lib = function (e) {
   var M = createjs.DropShadowFilter;
   var F = n(229);
   var U = n(16);
-  var G = d.getLogger(U.TEXT_FIELDS_LOGGER);
+  var G = m.getLogger(U.TEXT_FIELDS_LOGGER);
   R.insertInputFieldElementCSS();
   var k;
   var w = 0;
@@ -62257,7 +62371,7 @@ var ggs_lib = function (e) {
       };
       var u = this.latestLayout.metrics;
       try {
-        m.applyFormat(e, l.currentFormat, TextField.FontRestriction);
+        d.applyFormat(e, l.currentFormat, TextField.FontRestriction);
       } catch (e) {}
       var c = this.latestLayout.drawingTokens.reduce(function (t, n) {
         switch (n.type) {
@@ -62308,7 +62422,7 @@ var ggs_lib = function (e) {
                 currentFormat: l
               });
             }(t, n.linkId, a._hoveredLinkIndex, n.isAnchorLink);
-            m.applyFormat(e, t.currentFormat, TextField.FontRestriction);
+            d.applyFormat(e, t.currentFormat, TextField.FontRestriction);
             return t;
           case "plain":
             var s = n.width;
@@ -62365,11 +62479,11 @@ var ggs_lib = function (e) {
               var c;
               if (t.selection && (c = characters(n), t.printedCharacters < t.selection.end && t.printedCharacters + c.length > t.selection.start)) {
                 var _ = e.fillStyle;
-                var d = Math.max(0, t.selection.start - t.printedCharacters);
-                var m = t.selection.end - t.selection.start;
-                var h = t.selection.start - t.printedCharacters + m;
-                var p = c.slice(0, d).join("");
-                var g = c.slice(d, h).join("");
+                var m = Math.max(0, t.selection.start - t.printedCharacters);
+                var d = t.selection.end - t.selection.start;
+                var h = t.selection.start - t.printedCharacters + d;
+                var p = c.slice(0, m).join("");
+                var g = c.slice(m, h).join("");
                 var C = e.measureText(p).width;
                 var f = e.measureText(g).width;
                 e.fillStyle = "lightblue";
@@ -62403,7 +62517,7 @@ var ggs_lib = function (e) {
               }
               throw new Error("Closing link tag found, but no opening tag");
             }(t);
-            m.applyFormat(e, t.currentFormat, TextField.FontRestriction);
+            d.applyFormat(e, t.currentFormat, TextField.FontRestriction);
             return t;
           case "switch-to-format":
             t = function applyFormatToState(e, t) {
@@ -62411,7 +62525,7 @@ var ggs_lib = function (e) {
                 currentFormat: t
               });
             }(t, n.format);
-            m.applyFormat(e, t.currentFormat, TextField.FontRestriction);
+            d.applyFormat(e, t.currentFormat, TextField.FontRestriction);
             return t;
           default:
             return t;
@@ -62881,7 +62995,7 @@ var ggs_lib = function (e) {
     TextField.prototype.getLineMetrics = function (e) {
       var t = this.latestLayout.metrics.drawnLines[e];
       var n = S._workingContext;
-      m.applyFormat(n, this.textFormat, TextField.FontRestriction);
+      d.applyFormat(n, this.textFormat, TextField.FontRestriction);
       return new u.TextLineMetrics(this.x, n.measureText(t).width, this.latestLayout.metrics.lineHeight);
     };
     TextField.prototype.getMetrics = function () {
@@ -63085,8 +63199,8 @@ var ggs_lib = function (e) {
         switch (_.type) {
           case "plain":
             if (e.x >= n && e.x <= n + _.width && e.y >= a && e.y <= a + t.metrics.lineHeight) {
-              var d = S._workingContext;
-              m.applyFormat(d, o, TextField.FontRestriction);
+              var m = S._workingContext;
+              d.applyFormat(m, o, TextField.FontRestriction);
               var h = "";
               var p = n;
               var g = n;
@@ -63096,7 +63210,7 @@ var ggs_lib = function (e) {
                 var y = T[0];
                 p = g;
                 h += T[1];
-                if ((g = n + d.measureText(h).width) > e.x) {
+                if ((g = n + m.measureText(h).width) > e.x) {
                   if (e.x - p > g - e.x) {
                     return s + y + 1;
                   } else {
@@ -63187,7 +63301,7 @@ var ggs_lib = function (e) {
         this._htmlTextFieldElement.style.color = this.textColor;
         this._htmlTextFieldElement.style.margin = "0";
         this._htmlTextFieldElement.style.padding = "0";
-        this._htmlTextFieldElement.style.fontFamily = m.getFontFamily(this.textFormat, TextField.FontRestriction);
+        this._htmlTextFieldElement.style.fontFamily = d.getFontFamily(this.textFormat, TextField.FontRestriction);
         this._htmlTextFieldElement.style.fontSize = s + "px";
         this._htmlTextFieldElement.style.lineHeight = o + "px";
         this._htmlTextFieldElement.focus();
@@ -63359,12 +63473,12 @@ var ggs_lib = function (e) {
           }
         } else {
           for (var l = /(\w+)(?:=((?:"[^"]*")|(?:'[^']*')|(?:\S+)))?/g, u = s.slice(1, -1), c = undefined, _ = []; c = l.exec(u);) {
-            var d = c[1];
-            var m = c[2];
-            if (!!m && (m[0] === "'" || m[0] === "\"")) {
-              m = m.slice(1, -1);
+            var m = c[1];
+            var d = c[2];
+            if (!!d && (d[0] === "'" || d[0] === "\"")) {
+              d = d.slice(1, -1);
             }
-            _.push([d, m]);
+            _.push([m, d]);
           }
           var h = _.length > 0 ? _[0][0] : "";
           switch (h) {
@@ -63467,8 +63581,8 @@ var ggs_lib = function (e) {
     });
     var c = Object.prototype.toString;
     var _ = l.Symbol;
-    var d = _ ? _.prototype : undefined;
-    var m = d ? d.toString : undefined;
+    var m = _ ? _.prototype : undefined;
+    var d = m ? m.toString : undefined;
     function baseToString(e) {
       if (typeof e == "string") {
         return e;
@@ -63478,8 +63592,8 @@ var ggs_lib = function (e) {
           return !!e && typeof e == "object";
         }(e) && c.call(e) == i;
       }(e)) {
-        if (m) {
-          return m.call(e);
+        if (d) {
+          return d.call(e);
         } else {
           return "";
         }
@@ -63516,8 +63630,8 @@ var ggs_lib = function (e) {
     var u = "[object Array]";
     var c = "[object AsyncFunction]";
     var _ = "[object Boolean]";
-    var d = "[object Date]";
-    var m = "[object Error]";
+    var m = "[object Date]";
+    var d = "[object Error]";
     var h = "[object Function]";
     var p = "[object GeneratorFunction]";
     var g = "[object Map]";
@@ -63536,7 +63650,7 @@ var ggs_lib = function (e) {
     var b = /^(?:0|[1-9]\d*)$/;
     var N = {};
     N["[object Float32Array]"] = N["[object Float64Array]"] = N["[object Int8Array]"] = N["[object Int16Array]"] = N["[object Int32Array]"] = N["[object Uint8Array]"] = N["[object Uint8ClampedArray]"] = N["[object Uint16Array]"] = N["[object Uint32Array]"] = true;
-    N[l] = N[u] = N[O] = N[_] = N[L] = N[d] = N[m] = N[h] = N[g] = N[E] = N[f] = N[S] = N[y] = N[I] = N["[object WeakMap]"] = false;
+    N[l] = N[u] = N[O] = N[_] = N[L] = N[m] = N[d] = N[h] = N[g] = N[E] = N[f] = N[S] = N[y] = N[I] = N["[object WeakMap]"] = false;
     var R = typeof e == "object" && e && e.Object === Object && e;
     var P = typeof self == "object" && self && self.Object === Object && self;
     var B = R || P || Function("return this")();
@@ -63604,8 +63718,8 @@ var ggs_lib = function (e) {
     var ue = getNative(B, "WeakMap");
     var ce = getNative(Object, "create");
     var _e = toSource(se);
-    var de = toSource(re);
-    var me = toSource(oe);
+    var me = toSource(re);
+    var de = toSource(oe);
     var he = toSource(le);
     var pe = toSource(ue);
     var ge = Q ? Q.prototype : undefined;
@@ -63739,10 +63853,10 @@ var ggs_lib = function (e) {
                 case O:
                   return e.byteLength == t.byteLength && !!o(new $(e), new $(t));
                 case _:
-                case d:
+                case m:
                 case E:
                   return eq(+e, +t);
-                case m:
+                case d:
                   return e.name == t.name && e.message == t.message;
                 case S:
                 case I:
@@ -63796,31 +63910,31 @@ var ggs_lib = function (e) {
             return false;
           }
           for (var _ = u; _--;) {
-            var d = l[_];
-            if (!(o ? d in t : K.call(t, d))) {
+            var m = l[_];
+            if (!(o ? m in t : K.call(t, m))) {
               return false;
             }
           }
-          var m = r.get(e);
-          if (m && r.get(t)) {
-            return m == t;
+          var d = r.get(e);
+          if (d && r.get(t)) {
+            return d == t;
           }
           var h = true;
           r.set(e, t);
           r.set(t, e);
           var p = o;
           for (; ++_ < u;) {
-            d = l[_];
-            var g = e[d];
-            var E = t[d];
+            m = l[_];
+            var g = e[m];
+            var E = t[m];
             if (i) {
-              var C = o ? i(E, g, d, t, e, r) : i(g, E, d, e, t, r);
+              var C = o ? i(E, g, m, t, e, r) : i(g, E, m, e, t, r);
             }
             if (!(C === undefined ? g === E || a(g, E, n, i, r) : C)) {
               h = false;
               break;
             }
-            p ||= d == "constructor";
+            p ||= m == "constructor";
           }
           if (h && !p) {
             var f = e.constructor;
@@ -63867,22 +63981,22 @@ var ggs_lib = function (e) {
       if (_ && o.get(t)) {
         return _ == t;
       }
-      var d = -1;
-      var m = true;
+      var m = -1;
+      var d = true;
       var h = n & r ? new SetCache() : undefined;
       o.set(e, t);
       o.set(t, e);
-      while (++d < u) {
-        var p = e[d];
-        var g = t[d];
+      while (++m < u) {
+        var p = e[m];
+        var g = t[m];
         if (i) {
-          var E = l ? i(g, p, d, t, e, o) : i(p, g, d, e, t, o);
+          var E = l ? i(g, p, m, t, e, o) : i(p, g, m, e, t, o);
         }
         if (E !== undefined) {
           if (E) {
             continue;
           }
-          m = false;
+          d = false;
           break;
         }
         if (h) {
@@ -63893,17 +64007,17 @@ var ggs_lib = function (e) {
             }
             var s;
           })) {
-            m = false;
+            d = false;
             break;
           }
         } else if (p !== g && !a(p, g, n, i, o)) {
-          m = false;
+          d = false;
           break;
         }
       }
       o.delete(e);
       o.delete(t);
-      return m;
+      return d;
     }
     function getAllKeys(e) {
       return function baseGetAllKeys(e, t, n) {
@@ -64131,9 +64245,9 @@ var ggs_lib = function (e) {
           switch (i) {
             case _e:
               return L;
-            case de:
-              return g;
             case me:
+              return g;
+            case de:
               return "[object Promise]";
             case he:
               return y;
@@ -64422,34 +64536,34 @@ var ggs_lib = function (e) {
     }
     var c;
     var _;
-    var d;
     var m;
+    var d;
     var h = s.layOutTokens(e, r, n, l, o, t.multiline, t.wordWrap, u, t.firstVisibleLineIndex, t.verticalAlign);
     var p = h.metrics;
     var g = t.wordWrap ? t.width : p.textWithGutterWidth;
     var E = p.textWithGutterHeight;
     if (t.autoSize === a.TextFieldAutoSize.NONE || t.autoSize === undefined || t.wordWrap) {
-      d = t.x;
-      m = t.y;
+      m = t.x;
+      d = t.y;
       c = t.width;
       _ = t.autoSize === a.TextFieldAutoSize.NONE ? t.height : E;
     } else {
       switch (t.autoSize) {
         case a.TextFieldAutoSize.LEFT:
-          d = t.x;
-          m = t.y;
+          m = t.x;
+          d = t.y;
           c = g;
           _ = E;
           break;
         case a.TextFieldAutoSize.RIGHT:
-          d = t.previousX + t.previousWidth - g;
-          m = t.y;
+          m = t.previousX + t.previousWidth - g;
+          d = t.y;
           c = g;
           _ = E;
           break;
         case a.TextFieldAutoSize.CENTER:
-          d = t.previousX + t.previousWidth / 2 - g / 2;
-          m = t.y;
+          m = t.previousX + t.previousWidth / 2 - g / 2;
+          d = t.y;
           c = g;
           _ = E;
           break;
@@ -64461,8 +64575,8 @@ var ggs_lib = function (e) {
       autoSizeBehavior: t.autoSize,
       bounds: new createjs.Rectangle(0, 0, c, _),
       position: {
-        x: d,
-        y: m
+        x: m,
+        y: d
       },
       size: {
         width: c,
@@ -64494,9 +64608,9 @@ var ggs_lib = function (e) {
       }
     }, 0);
   }
-  t.layOutTokens = function layOutTokens(e, t, n, c, _, d, m, h, p, g) {
+  t.layOutTokens = function layOutTokens(e, t, n, c, _, m, d, h, p, g) {
     var E = (n.size || 12) - 1;
-    var C = d && n.leading || 0;
+    var C = m && n.leading || 0;
     var f = Math.round((E + 1) * 1.2 + C);
     var T = -(Math.max(p, 1) - 1) * f;
     var S = [];
@@ -64525,7 +64639,7 @@ var ggs_lib = function (e) {
           r.applyFormat(e, v, _);
           var b = D.text;
           var N = e.measureText(b).width;
-          if (m && typeof c == "number" && I + N > c) {
+          if (d && typeof c == "number" && I + N > c) {
             var R = b.split(/([ \t\n\x0B\f\r-])/);
             R = R.filter(function (e) {
               return e != "";
@@ -64730,9 +64844,9 @@ var ggs_lib = function (e) {
     var u = "(?:\\ud83c[\\udde6-\\uddff]){2}";
     var c = "[\\ud800-\\udbff][\\udc00-\\udfff]";
     var _ = "(?:" + r + "|" + o + ")?";
-    var d = "[\\ufe0e\\ufe0f]?" + _ + ("(?:\\u200d(?:" + [l, u, c].join("|") + ")[\\ufe0e\\ufe0f]?" + _ + ")*");
-    var m = "(?:" + [l + r + "?", r, u, c, s].join("|") + ")";
-    var h = RegExp(o + "(?=" + o + ")|" + m + d, "g");
+    var m = "[\\ufe0e\\ufe0f]?" + _ + ("(?:\\u200d(?:" + [l, u, c].join("|") + ")[\\ufe0e\\ufe0f]?" + _ + ")*");
+    var d = "(?:" + [l + r + "?", r, u, c, s].join("|") + ")";
+    var h = RegExp(o + "(?=" + o + ")|" + d + m, "g");
     var p = RegExp("[\\u200d\\ud800-\\udfff\\u0300-\\u036f\\ufe20-\\ufe23\\u20d0-\\u20f0\\ufe0e\\ufe0f]");
     var g = typeof t == "object" && t && t.Object === Object && t;
     var E = typeof self == "object" && self && self.Object === Object && self;
@@ -64854,9 +64968,9 @@ var ggs_lib = function (e) {
     var u = "(?:\\ud83c[\\udde6-\\uddff]){2}";
     var c = "[\\ud800-\\udbff][\\udc00-\\udfff]";
     var _ = "(?:" + r + "|" + o + ")?";
-    var d = "[\\ufe0e\\ufe0f]?" + _ + ("(?:\\u200d(?:" + [l, u, c].join("|") + ")[\\ufe0e\\ufe0f]?" + _ + ")*");
-    var m = "(?:" + [l + r + "?", r, u, c, s].join("|") + ")";
-    var h = RegExp(o + "(?=" + o + ")|" + m + d, "g");
+    var m = "[\\ufe0e\\ufe0f]?" + _ + ("(?:\\u200d(?:" + [l, u, c].join("|") + ")[\\ufe0e\\ufe0f]?" + _ + ")*");
+    var d = "(?:" + [l + r + "?", r, u, c, s].join("|") + ")";
+    var h = RegExp(o + "(?=" + o + ")|" + d + m, "g");
     var p = RegExp("[\\u200d\\ud800-\\udfff\\u0300-\\u036f\\ufe20-\\ufe23\\u20d0-\\u20f0\\ufe0e\\ufe0f]");
     var g = typeof t == "object" && t && t.Object === Object && t;
     var E = typeof self == "object" && self && self.Object === Object && self;
@@ -65837,7 +65951,7 @@ var ggs_lib = function (e) {
   _.AUTO_SKIP_TYPE_C2 = 2;
   t.AutoSkipCooldownConst = _;
   _.__class = "AutoSkipCooldownConst";
-  var d = function () {
+  var m = function () {
     function BeggingKnightsConst() {}
     BeggingKnightsConst.calculateRequirement = function (e, t) {
       return Math.max(1, Math.round(e * t));
@@ -65848,9 +65962,9 @@ var ggs_lib = function (e) {
     };
     return BeggingKnightsConst;
   }();
-  t.BeggingKnightsConst = d;
-  d.__class = "BeggingKnightsConst";
-  var m = function () {
+  t.BeggingKnightsConst = m;
+  m.__class = "BeggingKnightsConst";
+  var d = function () {
     function BoosterConst() {}
     BoosterConst.REMINDER_LEAD_TIME_SECONDS_$LI$ = function () {
       if (BoosterConst.REMINDER_LEAD_TIME_SECONDS == null) {
@@ -65890,47 +66004,47 @@ var ggs_lib = function (e) {
     };
     return BoosterConst;
   }();
-  m.OVERSEER_WOOD = 0;
-  m.OVERSEER_STONE = 1;
-  m.OVERSEER_FOOD = 2;
-  m.OVERSEER_HONEY = 3;
-  m.OVERSEER_MEAD = 4;
-  m.OVERSEER_BEEF = 5;
-  m.MARAUDER = 6;
-  m.TAX = 8;
-  m.INSTRUCTOR = 10;
-  m.CARAVAN_OVERLOADER = 11;
-  m.BUILDING_SKIP_DISCOUNT = 16;
-  m.GLORY_BOOST_ID = 17;
-  m.PERSONAL_GLORY_BOOST_ID = 18;
-  m.RETURNING_SPEED = 19;
-  m.KHAN_BOOST_ID = 20;
-  m.XP_BOOSTER_ID = 21;
-  m.SAMURA_TOKEN_BOOST_ID = 22;
-  m.LONGTERM_POINT_EVENT_BOOST_ID = 23;
-  m.GALLANTRY_POINTS_BOOST_ID = 24;
-  m.XP_BUILDING_BOOSTER_ID = 25;
-  m.ALLIANCE_COIN_BOOST_ID = 26;
-  m.RAGE_POINT_BOOST_ID = 27;
-  m.KHAN_MEDAL_BOOST_ID = 28;
-  m.REPUTATION_POINT_BOOST_ID = 29;
-  m.MIN_REBUY_FOR_DISCOUNT = 1;
-  m.DISCOUNT_FACTOR = 0.1;
-  m.REBUY_TRACKING = " rebuy";
-  m.TAX_BRIBE_COSTS_C2 = 750;
-  m.TAX_BRIBE_BOOST = 0.2;
-  m.INSTRUCTOR_CUSTOM_ID = "instructor";
-  m.INSTRUCTOR_BOOST = 0.8;
-  m.INSTRUCTOR_COST_C2 = 990;
-  m.MARAUDER_COST_C2 = 990;
-  m.MARAUDER_BOOST = 0.9;
-  m.OVERSEER_COST_C2 = 625;
-  m.OVERSEER_BOOST = 25;
-  m.OVERSEER_BEEF_COST_C2 = 4900;
-  m.OVERSEER_BEEF_BOOST = 125;
-  m.PERMANENT_BOOSTER_DURATION = 2147483647;
-  t.BoosterConst = m;
-  m.__class = "BoosterConst";
+  d.OVERSEER_WOOD = 0;
+  d.OVERSEER_STONE = 1;
+  d.OVERSEER_FOOD = 2;
+  d.OVERSEER_HONEY = 3;
+  d.OVERSEER_MEAD = 4;
+  d.OVERSEER_BEEF = 5;
+  d.MARAUDER = 6;
+  d.TAX = 8;
+  d.INSTRUCTOR = 10;
+  d.CARAVAN_OVERLOADER = 11;
+  d.BUILDING_SKIP_DISCOUNT = 16;
+  d.GLORY_BOOST_ID = 17;
+  d.PERSONAL_GLORY_BOOST_ID = 18;
+  d.RETURNING_SPEED = 19;
+  d.KHAN_BOOST_ID = 20;
+  d.XP_BOOSTER_ID = 21;
+  d.SAMURA_TOKEN_BOOST_ID = 22;
+  d.LONGTERM_POINT_EVENT_BOOST_ID = 23;
+  d.GALLANTRY_POINTS_BOOST_ID = 24;
+  d.XP_BUILDING_BOOSTER_ID = 25;
+  d.ALLIANCE_COIN_BOOST_ID = 26;
+  d.RAGE_POINT_BOOST_ID = 27;
+  d.KHAN_MEDAL_BOOST_ID = 28;
+  d.REPUTATION_POINT_BOOST_ID = 29;
+  d.MIN_REBUY_FOR_DISCOUNT = 1;
+  d.DISCOUNT_FACTOR = 0.1;
+  d.REBUY_TRACKING = " rebuy";
+  d.TAX_BRIBE_COSTS_C2 = 750;
+  d.TAX_BRIBE_BOOST = 0.2;
+  d.INSTRUCTOR_CUSTOM_ID = "instructor";
+  d.INSTRUCTOR_BOOST = 0.8;
+  d.INSTRUCTOR_COST_C2 = 990;
+  d.MARAUDER_COST_C2 = 990;
+  d.MARAUDER_BOOST = 0.9;
+  d.OVERSEER_COST_C2 = 625;
+  d.OVERSEER_BOOST = 25;
+  d.OVERSEER_BEEF_COST_C2 = 4900;
+  d.OVERSEER_BEEF_BOOST = 125;
+  d.PERMANENT_BOOSTER_DURATION = 2147483647;
+  t.BoosterConst = d;
+  d.__class = "BoosterConst";
   var h = function () {
     function ColossusConst() {}
     ColossusConst.calcResourcePointsForResources = function (e, t) {
@@ -69375,8 +69489,8 @@ var ggs_lib = function (e) {
       var u = DefenseConst.getSideUnitCount(l, i);
       var c = n.getMeleeCount();
       var _ = n.getRangedCount();
-      var d = new Array(3);
       var m = new Array(3);
+      var d = new Array(3);
       var h = new Array(3);
       var p = new Array(3);
       var g = 0;
@@ -69401,36 +69515,36 @@ var ggs_lib = function (e) {
         }
       }
       for (var S = 0; S < 3; S++) {
-        d[S] = h[S] | 0;
-        m[S] = p[S] | 0;
+        m[S] = h[S] | 0;
+        d[S] = p[S] | 0;
       }
       var y = new Array(3);
       for (var I = 0; I < 3; I++) {
-        y[I] = h[I] - d[I];
+        y[I] = h[I] - m[I];
       }
       var v = new Array(3);
       for (var A = 0; A < 3; A++) {
-        v[A] = p[A] - m[A];
+        v[A] = p[A] - d[A];
       }
       var O = y[0] + y[1] + y[2] + 0.5 | 0;
       var L = v[0] + v[1] + v[2] + 0.49999 | 0;
       var D = new Array(3);
       for (var b = 0; b < 3; b++) {
-        D[b] = d[b] + m[b] === u[b];
+        D[b] = m[b] + d[b] === u[b];
       }
       for (var N, R = DefenseConst.getIndicesOfMaxToMinSorting(y), P = 0; P < 3 && (N = R[P], !(O <= 0)); P++) {
         if (!D[N]) {
-          d[N]++;
+          m[N]++;
           O--;
-          D[N] = d[N] + m[N] === u[N];
+          D[N] = m[N] + d[N] === u[N];
         }
       }
       R = DefenseConst.getIndicesOfMaxToMinSorting(v);
       for (var B = 0; B < 3 && (N = R[B], !(L <= 0)); B++) {
         if (!D[N]) {
-          m[N]++;
+          d[N]++;
           L--;
-          D[N] = d[N] + m[N] === u[N];
+          D[N] = m[N] + d[N] === u[N];
         }
       }
       var M = n.getUnitTypeCount() * 2;
@@ -69439,32 +69553,10 @@ var ggs_lib = function (e) {
       for (var G = n.getSoldierMeleeDefenseOrder(), k = 0; k < G.length; k++) {
         var w = G[k];
         var x = n.getItemAmount(w);
-        var W = d[0] + d[1] + d[2];
+        var W = m[0] + m[1] + m[2];
         var H = Math.min(x, W);
         if (W > 0 && H > 0) {
-          var V = H - (K = Math.round(H * 1 * d[DefenseConst.SIDE_LEFT] / W) | 0) - (Y = Math.round(H * 1 * d[DefenseConst.SIDE_RIGHT] / W - 0.0001) | 0);
-          n.removeItem(w, H);
-          F.leftSide[U] = w;
-          F.leftSide[U + 1] = K;
-          F.middleSide[U] = w;
-          F.middleSide[U + 1] = V;
-          F.rightSide[U] = w;
-          F.rightSide[U + 1] = Y;
-          U += 2;
-          d[DefenseConst.SIDE_LEFT] -= K;
-          d[DefenseConst.SIDE_MIDDLE] -= V;
-          d[DefenseConst.SIDE_RIGHT] -= Y;
-        }
-      }
-      for (var j = n.getSoldierRangedDefenseOrder(), q = 0; q < j.length; q++) {
-        w = j[q];
-        x = n.getItemAmount(w);
-        W = m[0] + m[1] + m[2];
-        H = Math.min(x, W);
-        if (W > 0 && H > 0) {
-          var K;
-          var Y;
-          V = H - (K = Math.round(H * 1 * m[DefenseConst.SIDE_LEFT] / W) | 0) - (Y = Math.round(H * 1 * m[DefenseConst.SIDE_RIGHT] / W - 0.0001) | 0);
+          var V = H - (K = Math.round(H * 1 * m[DefenseConst.SIDE_LEFT] / W) | 0) - (Y = Math.round(H * 1 * m[DefenseConst.SIDE_RIGHT] / W - 0.0001) | 0);
           n.removeItem(w, H);
           F.leftSide[U] = w;
           F.leftSide[U + 1] = K;
@@ -69476,6 +69568,28 @@ var ggs_lib = function (e) {
           m[DefenseConst.SIDE_LEFT] -= K;
           m[DefenseConst.SIDE_MIDDLE] -= V;
           m[DefenseConst.SIDE_RIGHT] -= Y;
+        }
+      }
+      for (var j = n.getSoldierRangedDefenseOrder(), q = 0; q < j.length; q++) {
+        w = j[q];
+        x = n.getItemAmount(w);
+        W = d[0] + d[1] + d[2];
+        H = Math.min(x, W);
+        if (W > 0 && H > 0) {
+          var K;
+          var Y;
+          V = H - (K = Math.round(H * 1 * d[DefenseConst.SIDE_LEFT] / W) | 0) - (Y = Math.round(H * 1 * d[DefenseConst.SIDE_RIGHT] / W - 0.0001) | 0);
+          n.removeItem(w, H);
+          F.leftSide[U] = w;
+          F.leftSide[U + 1] = K;
+          F.middleSide[U] = w;
+          F.middleSide[U + 1] = V;
+          F.rightSide[U] = w;
+          F.rightSide[U + 1] = Y;
+          U += 2;
+          d[DefenseConst.SIDE_LEFT] -= K;
+          d[DefenseConst.SIDE_MIDDLE] -= V;
+          d[DefenseConst.SIDE_RIGHT] -= Y;
         }
       }
       for (var z = U; z < M; z++) {
@@ -72185,7 +72299,7 @@ var ggs_lib = function (e) {
   _e.DAILY_MAIL_8 = 12;
   t.PrivateOfferHelpTextMessageConst = _e;
   _e.__class = "PrivateOfferHelpTextMessageConst";
-  var de = function () {
+  var me = function () {
     function PrivatePrimeTimeConst() {}
     PrivatePrimeTimeConst.DEFAULT_SKIN_ID_$LI$ = function () {
       if (PrivatePrimeTimeConst.DEFAULT_SKIN_ID == null) {
@@ -72213,19 +72327,19 @@ var ggs_lib = function (e) {
     };
     return PrivatePrimeTimeConst;
   }();
-  de.USE_NOVELITY_ALGORITHM_SKIN_ID = 1;
-  de.START_SKIN_ID = 10;
-  t.PrivatePrimeTimeConst = de;
-  de.__class = "PrivatePrimeTimeConst";
-  var me = function () {
+  me.USE_NOVELITY_ALGORITHM_SKIN_ID = 1;
+  me.START_SKIN_ID = 10;
+  t.PrivatePrimeTimeConst = me;
+  me.__class = "PrivatePrimeTimeConst";
+  var de = function () {
     return function ProductionPackageConst() {};
   }();
-  me.MIN_RECRUITMENT_TIME_PER_UNIT = 15;
-  me.MIN_RECRUITMENT_TIME_PER_UNIT_IN_FACTION_KINGDOM = 10;
-  me.PRODUCTION_SLOT_SIZE = 5;
-  me.MAX_AMOUNT_OF_BOOST_APPLICATIONS_PER_PACKAGE = 3;
-  t.ProductionPackageConst = me;
-  me.__class = "ProductionPackageConst";
+  de.MIN_RECRUITMENT_TIME_PER_UNIT = 15;
+  de.MIN_RECRUITMENT_TIME_PER_UNIT_IN_FACTION_KINGDOM = 10;
+  de.PRODUCTION_SLOT_SIZE = 5;
+  de.MAX_AMOUNT_OF_BOOST_APPLICATIONS_PER_PACKAGE = 3;
+  t.ProductionPackageConst = de;
+  de.__class = "ProductionPackageConst";
   var he = function () {
     function PushConstants() {}
     PushConstants.PUSHCATEGORY_CONSTRUCTION_$LI$ = function () {
@@ -72774,7 +72888,7 @@ var ggs_lib = function (e) {
     TaxConst.applyCollectionBoosts = function (e, t, n, i) {
       var a = 1;
       if (t) {
-        a += m.TAX_BRIBE_BOOST;
+        a += d.TAX_BRIBE_BOOST;
       }
       e *= a += i / 100;
       e *= n;
@@ -73010,13 +73124,13 @@ var ggs_lib = function (e) {
       var u = i - t;
       var c = a - n;
       var _ = o * o + l * l;
-      var d = (o * 2 * u + l * 2 * c) / _;
-      var m = d * d / 4 - (u * u + c * c - e * e) / _;
-      if (m < 0) {
+      var m = (o * 2 * u + l * 2 * c) / _;
+      var d = m * m / 4 - (u * u + c * c - e * e) / _;
+      if (d < 0) {
         return NaN;
       }
-      var h = -d / 2 - Math.sqrt(m);
-      var p = -d / 2 + Math.sqrt(m);
+      var h = -m / 2 - Math.sqrt(d);
+      var p = -m / 2 + Math.sqrt(d);
       if (h < 0 && p < 0) {
         return NaN;
       }
@@ -75554,12 +75668,12 @@ var ggs_lib = function (e) {
   s.MIN_MEMBERSHIP_FOR_DONATE_$LI$();
   s.MIN_XP_$LI$();
   s.ALLIANCE_HELP_REPAIR_COOLDOWN_$LI$();
-  m.PRIME_SALE_BOOSTER_IDS_$LI$();
-  m.OVERSEER_DURATION_$LI$();
-  m.MARAUDER_DURATION_$LI$();
-  m.INSTRUCTOR_DURATION_$LI$();
-  m.TAX_BRIBE_DURATION_$LI$();
-  m.REMINDER_LEAD_TIME_SECONDS_$LI$();
+  d.PRIME_SALE_BOOSTER_IDS_$LI$();
+  d.OVERSEER_DURATION_$LI$();
+  d.MARAUDER_DURATION_$LI$();
+  d.INSTRUCTOR_DURATION_$LI$();
+  d.TAX_BRIBE_DURATION_$LI$();
+  d.REMINDER_LEAD_TIME_SECONDS_$LI$();
   p.NPC_ATTACK_DEFAULT_SOLDIER_IDS_$LI$();
   p.GATE_WOD_IDS_VILLAGES_$LI$();
   p.WALL_WOD_IDS_VILLAGES_$LI$();
@@ -75711,10 +75825,10 @@ var ggs_lib = function (e) {
   ce.FACTOR_BRIBE_TAX_C2_$LI$();
   ce.FACTOR_C2_$LI$();
   ce.FACTOR_C1_$LI$();
-  de.SKIN_LIST_$LI$();
-  de.BRICK_SKIN_ID_$LI$();
-  de.GOLD_SKIN_ID_$LI$();
-  de.DEFAULT_SKIN_ID_$LI$();
+  me.SKIN_LIST_$LI$();
+  me.BRICK_SKIN_ID_$LI$();
+  me.GOLD_SKIN_ID_$LI$();
+  me.DEFAULT_SKIN_ID_$LI$();
   he.PUSHCATEGORY_FORWARDED_MESSAGES_$LI$();
   he.PUSHCATEGORY_ALLIANCE_ATTACK_$LI$();
   he.PUSHCATEGORY_INGAME_EVENTS_$LI$();
@@ -76218,8 +76332,8 @@ var ggs_lib = function (e) {
   var u = n(11);
   var c = n(163);
   var _ = n(43);
-  var d = n(4);
-  var m = n(770);
+  var m = n(4);
+  var d = n(770);
   var h = n(337);
   var p = n(118);
   var g = n(5);
@@ -76255,7 +76369,7 @@ var ggs_lib = function (e) {
     };
     BasicCacheBreakerSwf.prototype.checkFirstVisit = function () {
       if (!this.env.isLocal) {
-        this.env.isFirstVisit = d.BasicModel.networkCookie.isEmpty();
+        this.env.isFirstVisit = m.BasicModel.networkCookie.isEmpty();
       }
     };
     BasicCacheBreakerSwf.prototype.loadURLVariables = function () {
@@ -76383,7 +76497,7 @@ var ggs_lib = function (e) {
           e.env.accountCookie.newSession();
           e._accountCookieInizialized = true;
           if (e._networkCookieInitialized) {
-            e.env.accountCookie.updateSessionWithNewData(e.env.buildNumberGame, d.BasicModel.networkCookie.clientVersion);
+            e.env.accountCookie.updateSessionWithNewData(e.env.buildNumberGame, m.BasicModel.networkCookie.clientVersion);
           }
           e.env.isFirstVisitOfGGS = e.env.accountCookie.isNewAccount;
           if (e.env.accountCookie.cdn !== y.CDN.None) {
@@ -76397,11 +76511,11 @@ var ggs_lib = function (e) {
       var e = this;
       return new Promise(function (t) {
         v.info("loadNetworkCookie");
-        d.BasicModel.networkCookie.initialize().then(function (n) {
+        m.BasicModel.networkCookie.initialize().then(function (n) {
           v.info("NetworkCookie loaded");
           e._networkCookieInitialized = true;
           if (e._accountCookieInizialized) {
-            e.env.accountCookie.updateSessionWithNewData(e.env.buildNumberGame, d.BasicModel.networkCookie.clientVersion);
+            e.env.accountCookie.updateSessionWithNewData(e.env.buildNumberGame, m.BasicModel.networkCookie.clientVersion);
           }
           t();
         });
@@ -76429,17 +76543,17 @@ var ggs_lib = function (e) {
           var n;
           T.ExternalInterface.call("ggsRemoveAutologinData");
           if ((n = t) && n.instanceId != null && n.playerId != null && n.country != null && n.gameId != null && (n.username != null && n.loginToken != null || n.facebookUID != null)) {
-            d.BasicModel.networkCookie.instanceId = t.instanceId;
-            d.BasicModel.networkCookie.playerId = t.playerId;
-            d.BasicModel.networkCookie.country = t.country;
+            m.BasicModel.networkCookie.instanceId = t.instanceId;
+            m.BasicModel.networkCookie.playerId = t.playerId;
+            m.BasicModel.networkCookie.country = t.country;
             if (t.username != null && t.loginToken != null) {
               if (t.email != null) {
-                d.BasicModel.networkCookie.email = t.email;
+                m.BasicModel.networkCookie.email = t.email;
               }
-              d.BasicModel.networkCookie.saveLoginData(t.username, t.loginToken);
+              m.BasicModel.networkCookie.saveLoginData(t.username, t.loginToken);
             } else {
-              d.BasicModel.networkCookie.facebookUID = t.facebookUID;
-              d.BasicModel.networkCookie.facebookAccessToken = t.facebookAccessToken || "";
+              m.BasicModel.networkCookie.facebookUID = t.facebookUID;
+              m.BasicModel.networkCookie.facebookAccessToken = t.facebookAccessToken || "";
             }
             e("found cookies on integration page");
           } else {
@@ -76496,22 +76610,22 @@ var ggs_lib = function (e) {
       e.zoneCapacityUrl = _.PathProvider.instance.zoneCapacitiesConfigURL;
       e.browserLanguage = T.Capabilities.language;
       e.timezoneOffset = l.TimezoneUtil.getUTCTimezoneWithoutDST();
-      e.countryCodeFromNetworkCookie = d.BasicModel.networkCookie.country;
+      e.countryCodeFromNetworkCookie = m.BasicModel.networkCookie.country;
       e.countryCodeFromQueryString = this.env.urlVariables.country;
       e.isHydraLogin = !!this.env.suk;
       e.fakeGeoIpResponse = null;
       e.alsoDetectUnavailableCountries = false;
       e.presetInstanceId = this.env.urlVariables.presetInstanceId;
-      e.instanceIdFromNetworkCookie = d.BasicModel.networkCookie.instanceId;
-      e.zoneIdFromNetworkCookie = parseFloat(d.BasicModel.networkCookie.zoneId);
+      e.instanceIdFromNetworkCookie = m.BasicModel.networkCookie.instanceId;
+      e.zoneIdFromNetworkCookie = parseFloat(m.BasicModel.networkCookie.zoneId);
       e.zoneIdFromFriendInviteCode = this.env.urlVariables.friendInviteZoneId;
       e.countryCodeFromFriendInviteCode = this.env.urlVariables.friendInviteInviterCountryCode;
       return e;
     };
     BasicCacheBreakerSwf.prototype.onWorldAssignmentComplete = function (e) {
       v.info("world assignment complete");
-      d.BasicModel.networkCookie.instanceId = e.instanceId;
-      d.BasicModel.networkCookie.zoneId = e.zoneId.toString();
+      m.BasicModel.networkCookie.instanceId = e.instanceId;
+      m.BasicModel.networkCookie.zoneId = e.zoneId.toString();
       this.env.allowedfullscreen = this._worldAssignment.facade.networkSettings.allowedFullScreen;
       this.env.defaultInstanceId = this._worldAssignment.facade.networkSettings.defaultInstanceId;
       this.env.earnCredits = this._worldAssignment.facade.networkSettings.earnCredits;
@@ -76526,7 +76640,7 @@ var ggs_lib = function (e) {
       this.env.useexternallinks = this._worldAssignment.facade.networkSettings.useExternalLinks;
       this.env.loginIsKeyBased = this._worldAssignment.facade.networkSettings.useKeyBasedLogin;
       this.env.usePayment = this._worldAssignment.facade.networkSettings.usePayment;
-      d.BasicModel.networkCookie.clientVersion = this.env.buildNumberGame;
+      m.BasicModel.networkCookie.clientVersion = this.env.buildNumberGame;
       v.debug("build number  " + this.env.buildNumberGame + " /  " + this.env.versionInformation.buildNumberGame);
       v.debug("semver  " + this.env.gamePackageVersion + " / " + this.env.versionInformation.versionNumberGame);
       this.loadGame();
@@ -76539,7 +76653,7 @@ var ggs_lib = function (e) {
     };
     BasicCacheBreakerSwf.prototype.loadGame = function () {
       v.info("LOAD Game.bundle.js");
-      m.executeImpressionTrackingEvent(this.env);
+      d.executeImpressionTrackingEvent(this.env);
       var e = document.createElement("script");
       var t = document.getElementById("Game");
       if (t) {
@@ -76603,8 +76717,8 @@ var ggs_lib = function (e) {
   var u = n(148);
   var c = n(627);
   var _ = n(112);
-  var d = n(252);
-  var m = n(70);
+  var m = n(252);
+  var d = n(70);
   var h = n(71);
   var p = n(2);
   var g = n(629);
@@ -76619,7 +76733,7 @@ var ggs_lib = function (e) {
         o.Context.instance.set(new s.NetworkInstancesManager());
         o.Context.instance.set(new u.BranchesManager());
         o.Context.instance.set(new c.BranchesController());
-        o.Context.instance.set(new d.ZoneCapacityManager());
+        o.Context.instance.set(new m.ZoneCapacityManager());
         o.Context.instance.set(new l.ZoneCapacitiesController());
         this._initialized = true;
       } else {
@@ -76636,7 +76750,7 @@ var ggs_lib = function (e) {
             case 0:
               if (!this._initialized) {
                 E.error("WorldAssignment not initialized. Call 'initialize' before starting world assignment process.");
-                throw new m.WorldAssignmentError(h.WorldAssignmentErrorCodes.WORLD_ASSIGNMENT_FAILED_TO_INITIALIZE, "WorldAssignment is not initialized.");
+                throw new d.WorldAssignmentError(h.WorldAssignmentErrorCodes.WORLD_ASSIGNMENT_FAILED_TO_INITIALIZE, "WorldAssignment is not initialized.");
               }
               return [4, g.loadCountryConfig(e)];
             case 1:
@@ -76774,12 +76888,12 @@ var ggs_lib = function (e) {
   var u = n(2);
   var c = n(91);
   var _ = n(70);
-  var d = n(71);
-  var m = u.getLogger("WorldAssignment.NetworkInstancesController");
+  var m = n(71);
+  var d = u.getLogger("WorldAssignment.NetworkInstancesController");
   t.loadNetworkInstances = function (e) {
     return a.__awaiter(i, undefined, undefined, function () {
       return a.__generator(this, function (t) {
-        m.debug("loadNetworkInstances: load network.xml");
+        d.debug("loadNetworkInstances: load network.xml");
         if (e) {
           e(c.WorldAssignmentTrackingConstants.NETWORK_XML_START);
         }
@@ -76792,10 +76906,10 @@ var ggs_lib = function (e) {
           var a = n.instances;
           o.Context.instance.set(i);
           o.Context.instance.get(l.NetworkInstancesManager).initializeInstances(a);
-          m.debug("loadNetworkInstances Completed");
+          d.debug("loadNetworkInstances Completed");
           return a;
         }).catch(function () {
-          throw new _.WorldAssignmentError(d.WorldAssignmentErrorCodes.NETWORK_FAILED_TO_LOAD, "Failed to load network.xml from " + o.Context.instance.globals.networkConfigUrl);
+          throw new _.WorldAssignmentError(m.WorldAssignmentErrorCodes.NETWORK_FAILED_TO_LOAD, "Failed to load network.xml from " + o.Context.instance.globals.networkConfigUrl);
         })];
       });
     });
@@ -76881,7 +76995,7 @@ var ggs_lib = function (e) {
     i.instanceId = n ? +n.textContent : 0;
     var a = (t = e.querySelector("countries")) ? _(t.textContent) : [];
     if (a) {
-      i.countries = d(a);
+      i.countries = m(a);
     }
     return i;
   }
@@ -76930,7 +77044,7 @@ var ggs_lib = function (e) {
     }
     return t;
   }
-  function d(e) {
+  function m(e) {
     var t = [];
     if (!e) {
       l.debug("NetworkXMLParser.createCountries: ggsCountryCodes is empty");
@@ -76958,7 +77072,7 @@ var ggs_lib = function (e) {
   var u = n(91);
   var c = n(71);
   var _ = n(70);
-  var d = function () {
+  var m = function () {
     function ZoneCapacitiesController() {
       var e = this;
       this.onZoneCapacityLoadingComplete = function (t) {
@@ -77013,7 +77127,7 @@ var ggs_lib = function (e) {
     };
     return ZoneCapacitiesController;
   }();
-  t.ZoneCapacitiesController = d;
+  t.ZoneCapacitiesController = m;
 }, function (e, t, n) {
   'use strict';
 
@@ -77069,8 +77183,8 @@ var ggs_lib = function (e) {
   var u = n(2);
   var c = n(91);
   var _ = n(70);
-  var d = n(71);
-  var m = u.getLogger("WorldAssignment.BranchesController");
+  var m = n(71);
+  var d = u.getLogger("WorldAssignment.BranchesController");
   var h = function () {
     function BranchesController() {
       var e = this;
@@ -77079,15 +77193,15 @@ var ggs_lib = function (e) {
           var e;
           var t;
           return i.__generator(this, function (n) {
-            m.debug("initializeBranch");
+            d.debug("initializeBranch");
             e = l.Context.instance.globals.zoneIdFromNetworkCookie > 0 ? l.Context.instance.globals.zoneIdFromNetworkCookie.toString() : l.Context.instance.get(s.NetworkInstancesManager).selectedNetworkInstance.zoneId.toString();
-            m.debug("zoneId:", e);
+            d.debug("zoneId:", e);
             if (!(t = this.manager.getBranchByZoneId(e))) {
-              m.debug("could not find branch for zone id  " + e + " will fallback to default ");
+              d.debug("could not find branch for zone id  " + e + " will fallback to default ");
               t = this.manager.getBranchByBranchId("default");
             }
             if (!t) {
-              throw new _.WorldAssignmentError(d.WorldAssignmentErrorCodes.BRANCHES_FAILED_TO_INITIALIZE, "BranchesController.initializeBranch: branch initialization failed");
+              throw new _.WorldAssignmentError(m.WorldAssignmentErrorCodes.BRANCHES_FAILED_TO_INITIALIZE, "BranchesController.initializeBranch: branch initialization failed");
             }
             this.manager.currentBranch = t;
             return [2];
@@ -77109,7 +77223,7 @@ var ggs_lib = function (e) {
       return i.__awaiter(this, undefined, undefined, function () {
         var t = this;
         return i.__generator(this, function (n) {
-          m.debug("loadBranches");
+          d.debug("loadBranches");
           if (e) {
             e(c.WorldAssignmentTrackingConstants.BRANCH_XML_START);
           }
@@ -77119,7 +77233,7 @@ var ggs_lib = function (e) {
             }
             t.manager.branches = o.BranchesXMLParser.parse(n);
           }).catch(function () {
-            throw new _.WorldAssignmentError(d.WorldAssignmentErrorCodes.BRANCHES_FAILED_TO_LOAD, "Failed to load branches.xml from " + l.Context.instance.globals.branchesConfigUrl);
+            throw new _.WorldAssignmentError(m.WorldAssignmentErrorCodes.BRANCHES_FAILED_TO_LOAD, "Failed to load branches.xml from " + l.Context.instance.globals.branchesConfigUrl);
           })];
         });
       });
@@ -77188,8 +77302,8 @@ var ggs_lib = function (e) {
   var u = n(2);
   var c = n(91);
   var _ = n(70);
-  var d = n(71);
-  var m = n(631);
+  var m = n(71);
+  var d = n(631);
   var h = n(632);
   var p = n(634);
   var g = n(635);
@@ -77208,7 +77322,7 @@ var ggs_lib = function (e) {
           var n = p.parseCountries(t);
           o.Context.instance.get(r.CountriesManager).initCountries(n);
         }).catch(function () {
-          throw new _.WorldAssignmentError(d.WorldAssignmentErrorCodes.COUNTRY_FAILED_TO_LOAD, "Failed to load country.xml from " + o.Context.instance.globals.countriesConfigUrl);
+          throw new _.WorldAssignmentError(m.WorldAssignmentErrorCodes.COUNTRY_FAILED_TO_LOAD, "Failed to load country.xml from " + o.Context.instance.globals.countriesConfigUrl);
         })];
       });
     });
@@ -77227,7 +77341,7 @@ var ggs_lib = function (e) {
             E.debug("detectCountry: START");
             e = o.Context.instance.globals;
             t = o.Context.instance.get(r.CountriesManager);
-            n = new l.CountryDetectionVO(e.browserLanguage, e.timezoneOffset, e.countryCodeFromNetworkCookie, e.countryCodeFromQueryString, m.getCountryCodeByPresetInstance(e.presetInstanceId), m.getCountryCodeByFriendInvite(e.zoneIdFromFriendInviteCode, e.countryCodeFromFriendInviteCode), m.getCountryCodeByDefaultInstance(o.Context.instance.networkSettings.defaultInstanceId), e.fakeGeoIpResponse, e.alsoDetectUnavailableCountries);
+            n = new l.CountryDetectionVO(e.browserLanguage, e.timezoneOffset, e.countryCodeFromNetworkCookie, e.countryCodeFromQueryString, d.getCountryCodeByPresetInstance(e.presetInstanceId), d.getCountryCodeByFriendInvite(e.zoneIdFromFriendInviteCode, e.countryCodeFromFriendInviteCode), d.getCountryCodeByDefaultInstance(o.Context.instance.networkSettings.defaultInstanceId), e.fakeGeoIpResponse, e.alsoDetectUnavailableCountries);
             return [4, h.runCountryDetection(n, t)];
           case 1:
             i = a.sent();
@@ -77338,7 +77452,7 @@ var ggs_lib = function (e) {
   var u = n(633);
   var c = n(147);
   var _ = n(149);
-  var d = r.getLogger("WorldAssignment.CountryDetector");
+  var m = r.getLogger("WorldAssignment.CountryDetector");
   t.runCountryDetection = function (e, t) {
     return a.__awaiter(i, undefined, undefined, function () {
       var n;
@@ -77350,7 +77464,7 @@ var ggs_lib = function (e) {
       return a.__generator(this, function (a) {
         switch (a.label) {
           case 0:
-            d.debug("CountryDetector.run { " + e.toString() + " }");
+            m.debug("CountryDetector.run { " + e.toString() + " }");
             a.label = 1;
           case 1:
             a.trys.push([1, 4,, 5]);
@@ -77391,7 +77505,7 @@ var ggs_lib = function (e) {
               h = new l.Service(o.Context.instance.globals.geoIPUrl);
               i = s.CountryDetectorFactors.FACTOR_BY_GEOIP;
               return [4, h.load().then(function (e) {
-                return m(e);
+                return d(e);
               }).then(function (n) {
                 return t.getCountryByGeoIpCode(n, e.alsoDetectUnavailableCountries);
               })];
@@ -77403,14 +77517,14 @@ var ggs_lib = function (e) {
             return [3, 5];
           case 4:
             p = a.sent();
-            d.error("Error while detecting country", p);
+            m.error("Error while detecting country", p);
             return [3, 5];
           case 5:
             if (!n) {
               n = t.defaultCountry;
               i = s.CountryDetectorFactors.FACTOR_BY_FALLBACK;
             }
-            d.debug("Country was detected by " + s.CountryDetectorFactors[i] + ":  " + n);
+            m.debug("Country was detected by " + s.CountryDetectorFactors[i] + ":  " + n);
             return [2, {
               country: n,
               factor: i
@@ -77419,17 +77533,17 @@ var ggs_lib = function (e) {
       });
     });
   };
-  function m(e) {
+  function d(e) {
     return a.__awaiter(i, undefined, undefined, function () {
       var t;
       var n;
       var i;
       return a.__generator(this, function (a) {
-        d.debug("onGeoIPReceived");
+        m.debug("onGeoIPReceived");
         t = u.GeoIPUtils.hexStringToBytes(e);
         n = u.GeoIPUtils.bytesToAsciiString(t);
         i = window.atob(n);
-        d.debug("onGeoIPReceived  countryCode", i);
+        m.debug("onGeoIPReceived  countryCode", i);
         return [2, i];
       });
     });
@@ -77496,10 +77610,10 @@ var ggs_lib = function (e) {
     var u = (t = e.querySelector("geoIpCodes")) ? t.textContent : "";
     var c = (t = e.querySelector("flashCode")) ? t.textContent : "";
     var _ = (t = e.querySelector("timezoneStart")) ? t.textContent : "";
-    var d = (t = e.querySelector("timezoneEnd")) ? t.textContent : "";
-    var m = (t = e.querySelector("np")) ? t.textContent : "";
+    var m = (t = e.querySelector("timezoneEnd")) ? t.textContent : "";
+    var d = (t = e.querySelector("np")) ? t.textContent : "";
     var h = !!(n = e.attributes.getNamedItem("default")) && n.textContent === "1";
-    return new a.Country(i, s, o(r), o(u), o(c), parseFloat(_), parseFloat(d), l(m), h);
+    return new a.Country(i, s, o(r), o(u), o(c), parseFloat(_), parseFloat(m), l(d), h);
   }
   function o(e) {
     var t = [];
@@ -82647,22 +82761,22 @@ var ggs_lib = function (e) {
     var u = l >> 1;
     var c = -7;
     var _ = n ? a - 1 : 0;
-    var d = n ? -1 : 1;
-    var m = e[t + _];
-    _ += d;
-    s = m & (1 << -c) - 1;
-    m >>= -c;
+    var m = n ? -1 : 1;
+    var d = e[t + _];
+    _ += m;
+    s = d & (1 << -c) - 1;
+    d >>= -c;
     c += o;
     for (; c > 0; c -= 8) {
       s = s * 256 + e[t + _];
-      _ += d;
+      _ += m;
     }
     r = s & (1 << -c) - 1;
     s >>= -c;
     c += i;
     for (; c > 0; c -= 8) {
       r = r * 256 + e[t + _];
-      _ += d;
+      _ += m;
     }
     if (s === 0) {
       s = 1 - u;
@@ -82671,13 +82785,13 @@ var ggs_lib = function (e) {
         if (r) {
           return NaN;
         } else {
-          return (m ? -1 : 1) * Infinity;
+          return (d ? -1 : 1) * Infinity;
         }
       }
       r += Math.pow(2, i);
       s -= u;
     }
-    return (m ? -1 : 1) * r * Math.pow(2, s - i);
+    return (d ? -1 : 1) * r * Math.pow(2, s - i);
   };
   t.write = function (e, t, n, i, a, s) {
     var r;
@@ -82686,8 +82800,8 @@ var ggs_lib = function (e) {
     var u = s * 8 - a - 1;
     var c = (1 << u) - 1;
     var _ = c >> 1;
-    var d = a === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0;
-    var m = i ? 0 : s - 1;
+    var m = a === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0;
+    var d = i ? 0 : s - 1;
     var h = i ? 1 : -1;
     var p = t < 0 || t === 0 && 1 / t < 0 ? 1 : 0;
     t = Math.abs(t);
@@ -82700,7 +82814,7 @@ var ggs_lib = function (e) {
         r--;
         l *= 2;
       }
-      if ((t += r + _ >= 1 ? d / l : d * Math.pow(2, 1 - _)) * l >= 2) {
+      if ((t += r + _ >= 1 ? m / l : m * Math.pow(2, 1 - _)) * l >= 2) {
         r++;
         l /= 2;
       }
@@ -82716,18 +82830,18 @@ var ggs_lib = function (e) {
       }
     }
     for (; a >= 8; a -= 8) {
-      e[n + m] = o & 255;
-      m += h;
+      e[n + d] = o & 255;
+      d += h;
       o /= 256;
     }
     r = r << a | o;
     u += a;
     for (; u > 0; u -= 8) {
-      e[n + m] = r & 255;
-      m += h;
+      e[n + d] = r & 255;
+      d += h;
       r /= 256;
     }
-    e[n + m - h] |= p * 128;
+    e[n + d - h] |= p * 128;
   };
 }, function (e, t) {
   var n = {}.toString;
@@ -83122,8 +83236,8 @@ var ggs_lib = function (e) {
         }
       }
     }
-    var d = Object.getPrototypeOf(function () {});
-    var m = Object.setPrototypeOf((_defineProperty(i = {
+    var m = Object.getPrototypeOf(function () {});
+    var d = Object.setPrototypeOf((_defineProperty(i = {
       get stream() {
         return this[_];
       },
@@ -83184,10 +83298,10 @@ var ggs_lib = function (e) {
           }
         });
       });
-    }), i), d);
+    }), i), m);
     e.exports = function createReadableStreamAsyncIterator(e) {
       var n;
-      var i = Object.create(m, (_defineProperty(n = {}, _, {
+      var i = Object.create(d, (_defineProperty(n = {}, _, {
         value: e,
         writable: true
       }), _defineProperty(n, s, {
@@ -83476,12 +83590,12 @@ var ggs_lib = function (e) {
         var u = Object.keys(n);
         var c = u.length;
         var _ = u.filter(isAttribute);
-        var d = _.length;
-        var m = e.i;
+        var m = _.length;
+        var d = e.i;
         var h = e.l;
-        var p = r && m;
+        var p = r && d;
         if (r) {
-          if (m && e.r) {
+          if (d && e.r) {
             e.r += i + h;
           }
           e.r += "<" + t;
@@ -83519,7 +83633,7 @@ var ggs_lib = function (e) {
               }
             })(e, t.substr(1), n[t]);
           });
-          var g = o || d && c === d;
+          var g = o || m && c === m;
           if (g) {
             var E = t[0];
             if (E !== "!" && E !== "?") {
@@ -84043,10 +84157,10 @@ var ggs_lib = function (e) {
   var u = n(748);
   var c = n(2);
   var _ = n(749);
-  var d = c.getLogger("LocalizationJS.GlobalizeTextProcessor");
-  var m = n(750);
+  var m = c.getLogger("LocalizationJS.GlobalizeTextProcessor");
+  var d = n(750);
   function h() {}
-  m.pluralGenerator = m.prototype.pluralGenerator = function (e) {
+  d.pluralGenerator = d.prototype.pluralGenerator = function (e) {
     return h;
   };
   var p = function () {
@@ -84069,8 +84183,8 @@ var ggs_lib = function (e) {
     GlobalizeTextProcessor.prototype.initialize = function (e, t, n) {
       this._initialized = true;
       this.languageVO = e;
-      m.load(n || o.CLDRJSONData);
-      m.locale(this._languageVO.locale);
+      d.load(n || o.CLDRJSONData);
+      d.locale(this._languageVO.locale);
       if (!this.loadedLocales.has(this._languageVO.locale)) {
         this.loadedLocales.add(this._languageVO.locale);
       }
@@ -84078,7 +84192,7 @@ var ggs_lib = function (e) {
       if (t != null) {
         this.setTexts(t);
       } else {
-        d.warn("the json translations file is empty");
+        m.warn("the json translations file is empty");
       }
       this.clearCaches();
     };
@@ -84105,7 +84219,7 @@ var ggs_lib = function (e) {
       this.clearCaches();
       return new Promise(function (n, i) {
         if (t.loadedLocales.has(e)) {
-          m.locale(e);
+          d.locale(e);
           n();
         } else {
           t.downloadCLDRAsync(e).then(n).catch(i);
@@ -84120,11 +84234,11 @@ var ggs_lib = function (e) {
       }
     };
     GlobalizeTextProcessor.prototype.getLocale = function () {
-      d.debug("this.languageVO.locale ", this._languageVO.locale, "  Globalize.locale ", m.locale().locale);
+      m.debug("this.languageVO.locale ", this._languageVO.locale, "  Globalize.locale ", d.locale().locale);
       return this._languageVO.locale;
     };
     GlobalizeTextProcessor.prototype.getTimeZone = function () {
-      d.warn("getTimeZone: not implemented");
+      m.warn("getTimeZone: not implemented");
       return "";
     };
     GlobalizeTextProcessor.prototype.objectToLowerCase = function (e) {
@@ -84146,7 +84260,7 @@ var ggs_lib = function (e) {
       var i = {
         [this._languageVO.locale]: n
       };
-      m.loadMessages(i);
+      d.loadMessages(i);
     };
     GlobalizeTextProcessor.prototype.setData = function (e) {};
     GlobalizeTextProcessor.prototype.hasText = function (e) {
@@ -84154,7 +84268,7 @@ var ggs_lib = function (e) {
         return false;
       }
       var t = this._isCaseSensitive ? e : e.toLowerCase();
-      return !!m.cldr.get(["globalize-messages/" + this._languageVO.locale, t]);
+      return !!d.cldr.get(["globalize-messages/" + this._languageVO.locale, t]);
     };
     GlobalizeTextProcessor.prototype.getText = function (e, n = null) {
       if (typeof e != "string") {
@@ -84163,7 +84277,7 @@ var ggs_lib = function (e) {
       var i = this._isCaseSensitive ? e : e.toLowerCase();
       var a = this.cachedTranslations.get(i);
       if (!a) {
-        if (a = m.cldr.get(["globalize-messages/" + this._languageVO.locale, i]) || "") {
+        if (a = d.cldr.get(["globalize-messages/" + this._languageVO.locale, i]) || "") {
           this.cachedTranslations.put(i, a);
         }
       }
@@ -84236,7 +84350,7 @@ var ggs_lib = function (e) {
         u = this._languageVO.fractionalDigits;
       }
       var c = this._languageVO.trailingZeros ? u : 0;
-      this._numberFormatter = m.numberFormatter({
+      this._numberFormatter = d.numberFormatter({
         maximumFractionDigits: u,
         minimumFractionDigits: c,
         useGrouping: a
@@ -84256,7 +84370,7 @@ var ggs_lib = function (e) {
     GlobalizeTextProcessor.prototype.updateCurrencyFormatter = function (e, t) {
       if (e !== this._currencyCode || t !== this._currencySymbol) {
         var n = !/^[A-Z]{3}$/.test(t);
-        this._currencyFormatter = m.currencyFormatter(e, {
+        this._currencyFormatter = d.currencyFormatter(e, {
           style: n ? "symbol" : "code",
           minimumFractionDigits: 0,
           maximumFractionDigits: 2
@@ -84272,17 +84386,17 @@ var ggs_lib = function (e) {
       }
       var i = "";
       if (t !== r.DateTimeStyle.NONE) {
-        i = m.formatDate(e, {
+        i = d.formatDate(e, {
           date: this.dateTimeStyleMapping(t)
         });
       }
       if (n !== r.DateTimeStyle.NONE) {
         if (i.length > 0) {
-          i = i + " " + m.formatDate(e, {
+          i = i + " " + d.formatDate(e, {
             time: this.timeStyleMapping(n)
           });
         } else {
-          i += m.formatDate(e, {
+          i += d.formatDate(e, {
             time: this.timeStyleMapping(n)
           });
         }
@@ -84301,8 +84415,8 @@ var ggs_lib = function (e) {
       var n = this._cldrURL + "/" + e + ".json";
       return new Promise(function (i, a) {
         new l.URLLoaderService(n).load().then(JSON.parse).then(function (n) {
-          m.load(n);
-          m.locale(e);
+          d.load(n);
+          d.locale(e);
           t.loadedLocales.add(e);
           i();
         }).catch(a);
@@ -84351,12 +84465,12 @@ var ggs_lib = function (e) {
       this.cachedTranslations.clear();
     };
     GlobalizeTextProcessor.prototype.changeNumberFormatters = function () {
-      this._integerFormatter = m.numberFormatter({
+      this._integerFormatter = d.numberFormatter({
         maximumFractionDigits: 0,
         minimumFractionDigits: 0,
         useGrouping: true
       });
-      this._decimalFormatter = m.numberFormatter({
+      this._decimalFormatter = d.numberFormatter({
         maximumFractionDigits: 2,
         minimumFractionDigits: 2,
         useGrouping: false
@@ -107518,12 +107632,12 @@ var ggs_lib = function (e) {
             };
             var c = null;
             var _ = ",";
-            var d = {
+            var m = {
               type: "literal",
               value: ",",
               description: "\",\""
             };
-            var m = "}";
+            var d = "}";
             var h = {
               type: "literal",
               value: "}",
@@ -107713,12 +107827,12 @@ var ggs_lib = function (e) {
               return String.fromCharCode(parseInt("0x" + e + t + n + i));
             }
             var _e = /^[0-9]/;
-            var de = {
+            var me = {
               type: "class",
               value: "[0-9]",
               description: "[0-9]"
             };
-            function me(e) {
+            function de(e) {
               return parseInt(e.join(""), 10);
             }
             var he = /^[0-9a-fA-F]/;
@@ -107895,7 +108009,7 @@ var ggs_lib = function (e) {
                 } else {
                   r = i;
                   if (Ae === 0) {
-                    peg$fail(d);
+                    peg$fail(m);
                   }
                 }
                 if (r !== i && (g = peg$parseelementFormat()) !== i) {
@@ -107909,7 +108023,7 @@ var ggs_lib = function (e) {
                 }
                 if (s !== i && (r = peg$parse_()) !== i) {
                   if (e.charCodeAt(Te) === 125) {
-                    g = m;
+                    g = d;
                     Te++;
                   } else {
                     g = i;
@@ -107959,7 +108073,7 @@ var ggs_lib = function (e) {
                   } else {
                     r = i;
                     if (Ae === 0) {
-                      peg$fail(d);
+                      peg$fail(m);
                     }
                   }
                   if (r !== i && peg$parse_() !== i && (l = peg$parsepluralFormatPattern()) !== i && peg$parse_() !== i) {
@@ -107977,7 +108091,7 @@ var ggs_lib = function (e) {
                 Te = t;
                 t = o;
               }
-              if (t === i && (t = Te, (n = peg$parse_()) !== i ? (e.substr(Te, 13) === f ? (a = f, Te += 13) : (a = i, Ae === 0 && peg$fail(T)), a !== i && (s = peg$parse_()) !== i ? (e.charCodeAt(Te) === 44 ? (r = _, Te++) : (r = i, Ae === 0 && peg$fail(d)), r !== i && peg$parse_() !== i && (l = peg$parsepluralFormatPattern()) !== i && peg$parse_() !== i ? (n = C(a, l), t = n) : (Te = t, t = o)) : (Te = t, t = o)) : (Te = t, t = o), t === i && (t = Te, (n = peg$parse_()) !== i ? (e.substr(Te, 6) === S ? (a = S, Te += 6) : (a = i, Ae === 0 && peg$fail(y)), a !== i && (s = peg$parse_()) !== i ? (e.charCodeAt(Te) === 44 ? (r = _, Te++) : (r = i, Ae === 0 && peg$fail(d)), r !== i && peg$parse_() !== i && (l = function peg$parseselectFormatPattern() {
+              if (t === i && (t = Te, (n = peg$parse_()) !== i ? (e.substr(Te, 13) === f ? (a = f, Te += 13) : (a = i, Ae === 0 && peg$fail(T)), a !== i && (s = peg$parse_()) !== i ? (e.charCodeAt(Te) === 44 ? (r = _, Te++) : (r = i, Ae === 0 && peg$fail(m)), r !== i && peg$parse_() !== i && (l = peg$parsepluralFormatPattern()) !== i && peg$parse_() !== i ? (n = C(a, l), t = n) : (Te = t, t = o)) : (Te = t, t = o)) : (Te = t, t = o), t === i && (t = Te, (n = peg$parse_()) !== i ? (e.substr(Te, 6) === S ? (a = S, Te += 6) : (a = i, Ae === 0 && peg$fail(y)), a !== i && (s = peg$parse_()) !== i ? (e.charCodeAt(Te) === 44 ? (r = _, Te++) : (r = i, Ae === 0 && peg$fail(m)), r !== i && peg$parse_() !== i && (l = function peg$parseselectFormatPattern() {
                 var e;
                 var t;
                 Te;
@@ -108145,7 +108259,7 @@ var ggs_lib = function (e) {
                 }
                 if (s !== i && peg$parse_() !== i && (r = peg$parsemessageFormatPattern()) !== i && peg$parse_() !== i) {
                   if (e.charCodeAt(Te) === 125) {
-                    c = m;
+                    c = d;
                     Te++;
                   } else {
                     c = i;
@@ -108190,7 +108304,7 @@ var ggs_lib = function (e) {
                 }
                 if (s !== i && peg$parse_() !== i && (r = peg$parsemessageFormatPattern()) !== i && peg$parse_() !== i) {
                   if (e.charCodeAt(Te) === 125) {
-                    c = m;
+                    c = d;
                     Te++;
                   } else {
                     c = i;
@@ -108228,7 +108342,7 @@ var ggs_lib = function (e) {
                 } else {
                   a = i;
                   if (Ae === 0) {
-                    peg$fail(d);
+                    peg$fail(m);
                   }
                 }
                 if (a !== i && peg$parse_() !== i && (s = peg$parseid()) !== i && peg$parse_() !== i) {
@@ -108492,7 +108606,7 @@ var ggs_lib = function (e) {
               } else {
                 n = i;
                 if (Ae === 0) {
-                  peg$fail(de);
+                  peg$fail(me);
                 }
               }
               if (n !== i) {
@@ -108504,7 +108618,7 @@ var ggs_lib = function (e) {
                   } else {
                     n = i;
                     if (Ae === 0) {
-                      peg$fail(de);
+                      peg$fail(me);
                     }
                   }
                 }
@@ -108512,7 +108626,7 @@ var ggs_lib = function (e) {
                 t = o;
               }
               if (t !== i) {
-                t = me(t);
+                t = de(t);
               }
               return t;
             }
@@ -108806,10 +108920,10 @@ var ggs_lib = function (e) {
       };
       return MessageFormat;
     }();
-    function d() {
+    function m() {
       return a("E_MISSING_PLURAL_MODULE", "Plural module not loaded.");
     }
-    var m = [].slice;
+    var d = [].slice;
     t.loadMessages = function (t) {
       var n;
       var i = {
@@ -108831,7 +108945,7 @@ var ggs_lib = function (e) {
       var _;
       var h;
       var p;
-      var g = m.call(arguments, 0);
+      var g = d.call(arguments, 0);
       u(e, "path");
       c(e, "path", typeof e == "string" || Array.isArray(e), "a String nor an Array");
       e = i(e);
@@ -108858,7 +108972,7 @@ var ggs_lib = function (e) {
           path: e
         });
       })(e, _);
-      h = this.plural !== undefined ? this.pluralGenerator() : d;
+      h = this.plural !== undefined ? this.pluralGenerator() : m;
       p = function (e) {
         return function messageFormatter(t) {
           var n;
@@ -108898,7 +109012,7 @@ var ggs_lib = function (e) {
       return p;
     };
     t.formatMessage = t.prototype.formatMessage = function (e) {
-      return this.messageFormatter(e).apply({}, m.call(arguments, 1));
+      return this.messageFormatter(e).apply({}, d.call(arguments, 1));
     };
     return t;
   }) == "function" ? i.apply(t, a) : i) !== undefined) {
@@ -108931,8 +109045,8 @@ var ggs_lib = function (e) {
     var u = t._runtimeBind;
     var c = t._stringPad;
     var _ = t._validateCldr;
-    var d = t._validateDefaultLocale;
-    var m = t._validateParameterPresence;
+    var m = t._validateDefaultLocale;
+    var d = t._validateParameterPresence;
     var h = t._validateParameterType;
     var p = t._validateParameterTypeNumber;
     var g = t._validateParameterTypePlainObject;
@@ -109008,7 +109122,7 @@ var ggs_lib = function (e) {
     function v(e, t, n) {
       if (t && n) {
         return function currencyToPartsFormatter(i) {
-          m(i, "value");
+          d(i, "value");
           p(i, "value");
           return function (e, t, n) {
             var i;
@@ -109056,7 +109170,7 @@ var ggs_lib = function (e) {
       var n;
       var i;
       var a;
-      m(e, "currency");
+      d(e, "currency");
       C(e, "currency");
       g(t, "options");
       n = [e, t = t || {}];
@@ -109076,13 +109190,13 @@ var ggs_lib = function (e) {
       var c;
       var _;
       var h;
-      m(e, "currency");
+      d(e, "currency");
       C(e, "currency");
       g(t, "options");
       a = this.cldr;
       i = [e, t = t || {}];
       h = t.style || "symbol";
-      d(a);
+      m(a);
       a.on("get", validateRequiredCldr);
       try {
         c = {
@@ -109129,12 +109243,12 @@ var ggs_lib = function (e) {
     };
     t.currencyParser = t.prototype.currencyParser = function () {};
     t.formatCurrency = t.prototype.formatCurrency = function (e, t, n) {
-      m(e, "value");
+      d(e, "value");
       p(e, "value");
       return this.currencyFormatter(t, n)(e);
     };
     t.formatCurrencyToParts = t.prototype.formatCurrencyToParts = function (e, t, n) {
-      m(e, "value");
+      d(e, "value");
       p(e, "value");
       return this.currencyToPartsFormatter(t, n)(e);
     };
@@ -109163,8 +109277,8 @@ var ggs_lib = function (e) {
     var u = t._partsJoin;
     var c = t._partsPush;
     var _ = t._regexpEscape;
-    var d = t._removeLiteralQuotes;
-    var m = t._runtimeBind;
+    var m = t._removeLiteralQuotes;
+    var d = t._runtimeBind;
     var h = t._stringPad;
     var p = t._validate;
     var g = t._validateCldr;
@@ -109642,7 +109756,7 @@ var ggs_lib = function (e) {
           return u(e(t));
         };
       }(n = this.dateToPartsFormatter(e));
-      m(t, this.cldr, i, [n]);
+      d(t, this.cldr, i, [n]);
       return i;
     };
     t.dateToPartsFormatter = t.prototype.dateToPartsFormatter = function (e) {
@@ -109694,21 +109808,21 @@ var ggs_lib = function (e) {
             var u;
             var c;
             var _;
-            var d;
             var m;
+            var d;
             var h;
             u = o.charAt(0);
-            m = o.length;
+            d = o.length;
             if (u === "j") {
               s.preferredTime = u = t.supplemental.timeData.preferred();
             }
-            if (u === "Z" && m === 4) {
+            if (u === "Z" && d === 4) {
               u = "O";
-              m = 4;
+              d = 4;
             }
             if (u === "z") {
-              h = F(m, "standard", n, t);
-              c = F(m, "daylight", n, t);
+              h = F(d, "standard", n, t);
+              c = F(d, "daylight", n, t);
               if (h) {
                 s.standardTzName = h;
               }
@@ -109717,20 +109831,20 @@ var ggs_lib = function (e) {
               }
               if (!h || !c) {
                 u = "O";
-                if (m < 4) {
-                  m = 1;
+                if (d < 4) {
+                  d = 1;
                 }
               }
             }
             if (u === "v") {
-              if (!(d = F(m, "generic", n, t))) {
+              if (!(m = F(d, "generic", n, t))) {
                 u = "V";
-                m = 4;
+                d = 4;
               }
             }
             switch (u) {
               case "G":
-                s.eras = t.main(["dates/calendars/gregorian/eras", m <= 3 ? "eraAbbr" : m === 4 ? "eraNames" : "eraNarrow"]);
+                s.eras = t.main(["dates/calendars/gregorian/eras", d <= 3 ? "eraAbbr" : d === 4 ? "eraNames" : "eraNarrow"]);
                 break;
               case "y":
                 _ = true;
@@ -109747,20 +109861,20 @@ var ggs_lib = function (e) {
                 });
               case "Q":
               case "q":
-                if (m > 2) {
+                if (d > 2) {
                   s.quarters ||= {};
                   s.quarters[u] ||= {};
-                  s.quarters[u][m] = t.main(["dates/calendars/gregorian/quarters", u === "Q" ? "format" : "stand-alone", r[m - 3]]);
+                  s.quarters[u][d] = t.main(["dates/calendars/gregorian/quarters", u === "Q" ? "format" : "stand-alone", r[d - 3]]);
                 } else {
                   _ = true;
                 }
                 break;
               case "M":
               case "L":
-                if (m > 2) {
+                if (d > 2) {
                   s.months ||= {};
                   s.months[u] ||= {};
-                  s.months[u][m] = t.main(["dates/calendars/gregorian/months", u === "M" ? "format" : "stand-alone", r[m - 3]]);
+                  s.months[u][d] = t.main(["dates/calendars/gregorian/months", u === "M" ? "format" : "stand-alone", r[d - 3]]);
                 } else {
                   _ = true;
                 }
@@ -109782,7 +109896,7 @@ var ggs_lib = function (e) {
                 });
               case "e":
               case "c":
-                if (m <= 2) {
+                if (d <= 2) {
                   s.firstDay = M(t);
                   _ = true;
                   break;
@@ -109790,7 +109904,7 @@ var ggs_lib = function (e) {
               case "E":
                 s.days ||= {};
                 s.days[u] ||= {};
-                s.days[u][m] = m === 6 ? t.main(["dates/calendars/gregorian/days", u === "c" ? "stand-alone" : "format", "short"]) || t.main(["dates/calendars/gregorian/days", u === "c" ? "stand-alone" : "format", "abbreviated"]) : t.main(["dates/calendars/gregorian/days", u === "c" ? "stand-alone" : "format", r[m < 3 ? 0 : m - 3]]);
+                s.days[u][d] = d === 6 ? t.main(["dates/calendars/gregorian/days", u === "c" ? "stand-alone" : "format", "short"]) || t.main(["dates/calendars/gregorian/days", u === "c" ? "stand-alone" : "format", "abbreviated"]) : t.main(["dates/calendars/gregorian/days", u === "c" ? "stand-alone" : "format", r[d < 3 ? 0 : d - 3]]);
                 break;
               case "a":
                 s.dayPeriods = {
@@ -109809,31 +109923,31 @@ var ggs_lib = function (e) {
                 _ = true;
                 break;
               case "v":
-                if (m !== 1 && m !== 4) {
+                if (d !== 1 && d !== 4) {
                   throw i({
                     feature: "timezone pattern `" + e + "`"
                   });
                 }
-                s.genericTzName = d;
+                s.genericTzName = m;
                 break;
               case "V":
-                if (m === 1) {
+                if (d === 1) {
                   throw i({
                     feature: "timezone pattern `" + e + "`"
                   });
                 }
                 if (n) {
-                  if (m === 2) {
+                  if (d === 2) {
                     s.timeZoneName = n;
                     break;
                   }
                   var p;
                   var g = t.main(["dates/timeZoneNames/zone", n, "exemplarCity"]);
-                  if (m === 3) {
+                  if (d === 3) {
                     g ||= t.main(["dates/timeZoneNames/zone/Etc/Unknown/exemplarCity"]);
                     p = g;
                   }
-                  if (g && m === 4) {
+                  if (g && d === 4) {
                     p = a(t.main("dates/timeZoneNames/regionFormat"), [g]);
                   }
                   if (p) {
@@ -109842,13 +109956,13 @@ var ggs_lib = function (e) {
                   }
                 }
                 if (o === "v") {
-                  m = 1;
+                  d = 1;
                 }
               case "O":
                 s.gmtFormat = t.main("dates/timeZoneNames/gmtFormat");
                 s.gmtZeroFormat = t.main("dates/timeZoneNames/gmtZeroFormat");
                 l = t.main("dates/timeZoneNames/hourFormat");
-                s.hourFormat = m < 4 ? [U(l), G(l, "H")] : G(l, "HH");
+                s.hourFormat = d < 4 ? [U(l), G(l, "H")] : G(l, "HH");
               case "Z":
               case "X":
               case "x":
@@ -109856,7 +109970,7 @@ var ggs_lib = function (e) {
                 setNumberFormatterPattern(2);
             }
             if (_) {
-              setNumberFormatterPattern(m);
+              setNumberFormatterPattern(d);
             }
           });
           return s;
@@ -110051,7 +110165,7 @@ var ggs_lib = function (e) {
                   l = a;
                   break;
                 case "'":
-                  l = d(s);
+                  l = m(s);
                   break;
                 default:
                   l = s;
@@ -110066,7 +110180,7 @@ var ggs_lib = function (e) {
           }(n, e, t);
         };
       }(s, u);
-      m(t, n, _, [s, u]);
+      d(t, n, _, [s, u]);
       return _;
     };
     t.dateParser = t.prototype.dateParser = function (e) {
@@ -110099,8 +110213,8 @@ var ggs_lib = function (e) {
           var c = {
             pattern: r(e)
           };
-          var d = l("timeSeparator", t);
-          var m = ["abbreviated", "wide", "narrow"];
+          var m = l("timeSeparator", t);
+          var d = ["abbreviated", "wide", "narrow"];
           function hourFormatRe(e, t, n, i) {
             var a;
             n ||= "\\d";
@@ -110198,13 +110312,13 @@ var ggs_lib = function (e) {
               case "Q":
               case "q":
                 if (g > 2) {
-                  t.main(["dates/calendars/gregorian/quarters", l === "Q" ? "format" : "stand-alone", m[g - 3]]);
+                  t.main(["dates/calendars/gregorian/quarters", l === "Q" ? "format" : "stand-alone", d[g - 3]]);
                 }
                 break;
               case "M":
               case "L":
                 if (g > 2) {
-                  t.main(["dates/calendars/gregorian/months", l === "M" ? "format" : "stand-alone", m[g - 3]]);
+                  t.main(["dates/calendars/gregorian/months", l === "M" ? "format" : "stand-alone", d[g - 3]]);
                 }
                 break;
               case "g":
@@ -110222,7 +110336,7 @@ var ggs_lib = function (e) {
                     t.main(["dates/calendars/gregorian/days", [l === "c" ? "stand-alone" : "format"], "abbreviated"]);
                   }
                 } else {
-                  t.main(["dates/calendars/gregorian/days", [l === "c" ? "stand-alone" : "format"], m[g < 3 ? 0 : g - 3]]);
+                  t.main(["dates/calendars/gregorian/days", [l === "c" ? "stand-alone" : "format"], d[g < 3 ? 0 : g - 3]]);
                 }
                 break;
               case "a":
@@ -110266,7 +110380,7 @@ var ggs_lib = function (e) {
                 c["timeZoneNames/gmtZeroFormatRe"] = new RegExp("^" + _(c["timeZoneNames/gmtZeroFormat"]));
                 o = c["timeZoneNames/hourFormat"];
                 c["timeZoneNames/hourFormat"] = (g < 4 ? [G(o, "H"), U(o)] : [G(o, "HH")]).map(function (e) {
-                  return hourFormatRe(e, p, u, d);
+                  return hourFormatRe(e, p, u, m);
                 });
               case "X":
               case "x":
@@ -110310,18 +110424,18 @@ var ggs_lib = function (e) {
             var u;
             var c;
             var _;
-            var d;
-            var m = new Date();
+            var m;
+            var d = new Date();
             var h = [];
             if (n.timeZoneData) {
-              m = new w(m, n.timeZoneData());
+              d = new w(d, n.timeZoneData());
             }
             if (!t.length) {
               return null;
             }
             if (!t.every(function (e) {
               var t;
-              var d;
+              var m;
               var p;
               if (e.type === "literal") {
                 return true;
@@ -110337,16 +110451,16 @@ var ggs_lib = function (e) {
                   l = +e.value;
                   break;
                 case "y":
-                  d = e.value;
+                  m = e.value;
                   if (p === 2) {
-                    if (W(d, 0, 99)) {
+                    if (W(m, 0, 99)) {
                       return false;
                     }
-                    if ((d += Math.floor(m.getFullYear() / 100) * 100) > m.getFullYear() + 20) {
-                      d -= 100;
+                    if ((m += Math.floor(d.getFullYear() / 100) * 100) > d.getFullYear() + 20) {
+                      m -= 100;
                     }
                   }
-                  m.setFullYear(d);
+                  d.setFullYear(m);
                   h.push(0);
                   break;
                 case "Y":
@@ -110358,11 +110472,11 @@ var ggs_lib = function (e) {
                   break;
                 case "M":
                 case "L":
-                  d = p <= 2 ? e.value : +e.value;
-                  if (W(d, 1, 12)) {
+                  m = p <= 2 ? e.value : +e.value;
+                  if (W(m, 1, 12)) {
                     return false;
                   }
-                  o = d;
+                  o = m;
                   h.push(1);
                   break;
                 case "w":
@@ -110386,64 +110500,64 @@ var ggs_lib = function (e) {
                   a = e.value;
                   break;
                 case "h":
-                  d = e.value;
-                  if (W(d, 1, 12)) {
+                  m = e.value;
+                  if (W(m, 1, 12)) {
                     return false;
                   }
                   u = c = true;
-                  m.setHours(d === 12 ? 0 : d);
+                  d.setHours(m === 12 ? 0 : m);
                   h.push(3);
                   break;
                 case "K":
-                  d = e.value;
-                  if (W(d, 0, 11)) {
+                  m = e.value;
+                  if (W(m, 0, 11)) {
                     return false;
                   }
                   u = c = true;
-                  m.setHours(d);
+                  d.setHours(m);
                   h.push(3);
                   break;
                 case "k":
-                  d = e.value;
-                  if (W(d, 1, 24)) {
+                  m = e.value;
+                  if (W(m, 1, 24)) {
                     return false;
                   }
                   u = true;
-                  m.setHours(d === 24 ? 0 : d);
+                  d.setHours(m === 24 ? 0 : m);
                   h.push(3);
                   break;
                 case "H":
-                  d = e.value;
-                  if (W(d, 0, 23)) {
+                  m = e.value;
+                  if (W(m, 0, 23)) {
                     return false;
                   }
                   u = true;
-                  m.setHours(d);
+                  d.setHours(m);
                   h.push(3);
                   break;
                 case "m":
-                  d = e.value;
-                  if (W(d, 0, 59)) {
+                  m = e.value;
+                  if (W(m, 0, 59)) {
                     return false;
                   }
-                  m.setMinutes(d);
+                  d.setMinutes(m);
                   h.push(4);
                   break;
                 case "s":
-                  d = e.value;
-                  if (W(d, 0, 59)) {
+                  m = e.value;
+                  if (W(m, 0, 59)) {
                     return false;
                   }
-                  m.setSeconds(d);
+                  d.setSeconds(m);
                   h.push(5);
                   break;
                 case "A":
-                  m.setHours(0);
-                  m.setMinutes(0);
-                  m.setSeconds(0);
+                  d.setHours(0);
+                  d.setMinutes(0);
+                  d.setSeconds(0);
                 case "S":
-                  d = Math.round(e.value * Math.pow(10, 3 - p));
-                  m.setMilliseconds(d);
+                  m = Math.round(e.value * Math.pow(10, 3 - p));
+                  d.setMilliseconds(m);
                   h.push(6);
                   break;
                 case "z":
@@ -110465,7 +110579,7 @@ var ggs_lib = function (e) {
               return null;
             }
             if (l === 0) {
-              m.setFullYear(m.getFullYear() * -1 + 1);
+              d.setFullYear(d.getFullYear() * -1 + 1);
             }
             if (o !== undefined) {
               (function (e, t) {
@@ -110476,33 +110590,33 @@ var ggs_lib = function (e) {
                   var n = new Date(e.getFullYear(), e.getMonth() + 1, 0).getDate();
                   e.setDate(t < 1 ? 1 : t < n ? t : n);
                 })(e, n);
-              })(m, o - 1);
+              })(d, o - 1);
             }
             if (s !== undefined) {
               if (W(s, 1, function (e) {
                 return new Date(e.getFullYear(), e.getMonth() + 1, 0).getDate();
-              }(m))) {
+              }(d))) {
                 return null;
               }
-              m.setDate(s);
+              d.setDate(s);
             } else if (r !== undefined) {
-              if (W(r, 1, (d = m.getFullYear(), new Date(d, 1, 29).getMonth() === 1 ? 366 : 365))) {
+              if (W(r, 1, (m = d.getFullYear(), new Date(m, 1, 29).getMonth() === 1 ? 366 : 365))) {
                 return null;
               }
-              m.setMonth(0);
-              m.setDate(r);
+              d.setMonth(0);
+              d.setDate(r);
             }
             if (c && a === "pm") {
-              m.setHours(m.getHours() + 12);
+              d.setHours(d.getHours() + 12);
             }
             if (_ !== undefined) {
-              m.setMinutes(m.getMinutes() + _ - m.getTimezoneOffset());
+              d.setMinutes(d.getMinutes() + _ - d.getTimezoneOffset());
             }
             h = Math.max.apply(null, h);
-            if ((m = x(m, ["year", "month", "day", "hour", "minute", "second", "milliseconds"][h])) instanceof w) {
-              m = m.toDate();
+            if ((d = x(d, ["year", "month", "day", "hour", "minute", "second", "milliseconds"][h])) instanceof w) {
+              d = d.toDate();
             }
-            return m;
+            return d;
           }(0, function (e, t, n) {
             var i;
             var a;
@@ -110515,7 +110629,7 @@ var ggs_lib = function (e) {
               var l;
               var u;
               var c;
-              var m = {};
+              var d = {};
               function hourFormatParse(t, n) {
                 var i;
                 var a;
@@ -110523,7 +110637,7 @@ var ggs_lib = function (e) {
                 n = n || function (e) {
                   return +e;
                 };
-                return !!s && (a = s[1], s.length < 6 ? (i = a ? 1 : 3, m.value = n(s[i]) * 60) : s.length < 10 ? (i = a ? [1, 3] : [5, 7], m.value = n(s[i[0]]) * 60 + n(s[i[1]])) : (i = a ? [1, 3, 5] : [7, 9, 11], m.value = n(s[i[0]]) * 60 + n(s[i[1]]) + n(s[i[2]]) / 60), a && (m.value *= -1), true);
+                return !!s && (a = s[1], s.length < 6 ? (i = a ? 1 : 3, d.value = n(s[i]) * 60) : s.length < 10 ? (i = a ? [1, 3] : [5, 7], d.value = n(s[i[0]]) * 60 + n(s[i[1]])) : (i = a ? [1, 3, 5] : [7, 9, 11], d.value = n(s[i[0]]) * 60 + n(s[i[1]]) + n(s[i[2]]) / 60), a && (d.value *= -1), true);
               }
               function oneDigitIfLengthOne() {
                 if (l === 1) {
@@ -110548,7 +110662,7 @@ var ggs_lib = function (e) {
                 if (i) {
                   i.some(function (t) {
                     if (t[1].test(e)) {
-                      m.value = t[0];
+                      d.value = t[0];
                       c = t[1];
                       return true;
                     }
@@ -110558,7 +110672,7 @@ var ggs_lib = function (e) {
                   return null;
                 }
               }
-              m.type = a;
+              d.type = a;
               r = a.charAt(0);
               l = a.length;
               if (r === "Z") {
@@ -110574,12 +110688,12 @@ var ggs_lib = function (e) {
                 }
               }
               if (r === "z" && n.standardOrDaylightTzName) {
-                m.value = null;
+                d.value = null;
                 c = n.standardOrDaylightTzName;
               }
               if (r === "v") {
                 if (n.genericTzName) {
-                  m.value = null;
+                  d.value = null;
                   c = n.genericTzName;
                 } else {
                   r = "V";
@@ -110587,7 +110701,7 @@ var ggs_lib = function (e) {
                 }
               }
               if (r === "V" && n.timeZoneName) {
-                m.value = l === 2 ? n.timeZoneName : null;
+                d.value = l === 2 ? n.timeZoneName : null;
                 c = n.timeZoneNameRe;
               }
               switch (r) {
@@ -110680,7 +110794,7 @@ var ggs_lib = function (e) {
                   }
                 case "O":
                   if (e === n["timeZoneNames/gmtZeroFormat"]) {
-                    m.value = 0;
+                    d.value = 0;
                     c = n["timeZoneNames/gmtZeroFormatRe"];
                   } else if (!n["timeZoneNames/hourFormat"].some(function (e) {
                     if (hourFormatParse(e, t)) {
@@ -110693,7 +110807,7 @@ var ggs_lib = function (e) {
                   break;
                 case "X":
                   if (e === "Z") {
-                    m.value = 0;
+                    d.value = 0;
                     c = /^Z/;
                     break;
                   }
@@ -110708,20 +110822,20 @@ var ggs_lib = function (e) {
                   }
                   break;
                 case "'":
-                  m.type = "literal";
-                  c = new RegExp("^" + _(d(a)));
+                  d.type = "literal";
+                  c = new RegExp("^" + _(m(a)));
                   break;
                 default:
-                  m.type = "literal";
+                  d.type = "literal";
                   c = new RegExp("^" + _(a));
               }
               return !!c && !(e = e.replace(c, function (e) {
-                m.lexeme = e;
+                d.lexeme = e;
                 if (u) {
-                  m.value = t(e);
+                  d.value = t(e);
                 }
                 return "";
-              }), !m.lexeme || u && isNaN(m.value) || (s.push(m), 0));
+              }), !d.lexeme || u && isNaN(d.value) || (s.push(d), 0));
             });
             if (e !== "") {
               a = false;
@@ -110736,7 +110850,7 @@ var ggs_lib = function (e) {
       }(u = this.numberParser({
         raw: "0"
       }), c, f);
-      m(t, n, p, [u, c, f]);
+      d(t, n, p, [u, c, f]);
       return p;
     };
     t.formatDate = t.prototype.formatDate = function (e, t) {
@@ -110784,8 +110898,8 @@ var ggs_lib = function (e) {
       var u;
       var c;
       var _;
-      var d;
       var m;
+      var d;
       var h;
       r(e, "unit");
       o(e, "unit");
@@ -110794,7 +110908,7 @@ var ggs_lib = function (e) {
       s(c);
       c.on("get", a);
       try {
-        m = function (e, t, n) {
+        d = function (e, t, n) {
           var i;
           var a;
           var s;
@@ -110827,8 +110941,8 @@ var ggs_lib = function (e) {
             return r || (s = e <= 0 ? a["relativeTime-type-past"] : a["relativeTime-type-future"], e = Math.abs(e), r = s["relativeTimePattern-count-" + i(e)], n(r, [t(e)]));
           }(a, e, t, i);
         };
-      }(_ = this.numberFormatter(t), d = this.pluralGenerator(), m);
-      i(u, c, h, [_, d, m]);
+      }(_ = this.numberFormatter(t), m = this.pluralGenerator(), d);
+      i(u, c, h, [_, m, d]);
       return h;
     };
     return t;
@@ -110884,13 +110998,13 @@ var ggs_lib = function (e) {
       var l;
       var u;
       var _;
-      var d;
       var m;
+      var d;
       a(e, "unit");
       o(e, "unit");
       s(t, "options");
       l = [e, t = t || {}];
-      m = function (e, t, n) {
+      d = function (e, t, n) {
         var i;
         var a;
         i = n.main(["units", t, "per/compoundUnitPattern"]);
@@ -110900,7 +111014,7 @@ var ggs_lib = function (e) {
           unitProperties: a
         };
       }(e, t.form || "long", this.cldr);
-      d = function (e, t, i) {
+      m = function (e, t, i) {
         return function unitFormatter(s) {
           a(s, "value");
           r(s, "value");
@@ -110912,27 +111026,27 @@ var ggs_lib = function (e) {
             var u;
             var c;
             var _;
-            var d;
-            var m = a.compoundUnitPattern;
+            var m;
+            var d = a.compoundUnitPattern;
             a = a.unitProperties;
             o = t(e);
             _ = i(e);
             if (a instanceof Array) {
               r = a[0];
               u = a[1];
-              d = u.hasOwnProperty("one") ? "one" : "other";
+              m = u.hasOwnProperty("one") ? "one" : "other";
               s = n(r[_], [o]);
-              l = n(u[d], [""]).trim();
-              return n(m, [s, l]);
+              l = n(u[m], [""]).trim();
+              return n(d, [s, l]);
             } else {
               c = a[_];
               return n(c, [o]);
             }
           }(s, e, t, i);
         };
-      }(u = t.numberFormatter || this.numberFormatter(), _ = this.pluralGenerator(), m);
-      i(l, this.cldr, d, [u, _, m]);
-      return d;
+      }(u = t.numberFormatter || this.numberFormatter(), _ = this.pluralGenerator(), d);
+      i(l, this.cldr, m, [u, _, d]);
+      return m;
     };
     return t;
   }) == "function" ? i.apply(t, a) : i) !== undefined) {
@@ -111284,15 +111398,15 @@ var ggs_lib = function (e) {
       var u = new i.Time(isNaN(e) ? 0 : e, a.TimeType.SECONDS, a.TimeType.DAYS);
       var c = t === 0 || t > l.length ? l.length - 1 : t - 1;
       var _ = a.TimeType.values.indexOf(a.TimeType.DAYS) - a.TimeType.values.indexOf(u.major);
-      var d = u.toVector();
-      var m = l[c][_];
-      var h = this._processor.text(m);
+      var m = u.toVector();
+      var d = l[c][_];
+      var h = this._processor.text(d);
       return o.DurationFormatUtils.replacePlaceholders(h, function (e, t) {
         var i = r._inlineDurationFormat.parse(t);
         i.fill = i.fill || (n ? "0" : null) || "";
         i.width = String(i.width || (n ? 2 + (i.precision ? Number(i.precision) + 1 : 0) : 0));
         var a = o.DurationFormatUtils.timeTypeNames.indexOf(e);
-        return i.apply(r._processor.text, d, a);
+        return i.apply(r._processor.text, m, a);
       });
     };
     DynamicDurationFormat.DEFAULT_TEMPLATES = new s.LocalizedTimeFormatVO("generic_time_t1_d", "generic_time_t1_h", "generic_time_t1_m", "generic_time_t1_s", "generic_time_t2_d", "generic_time_t2_h", "generic_time_t2_m", "generic_time_t3_d", "generic_time_t3_h", "generic_time_t4_d");
@@ -111357,8 +111471,8 @@ var ggs_lib = function (e) {
     var u = 9007199254740991;
     var c = 1.7976931348623157e+308;
     var _ = NaN;
-    var d = "[object Arguments]";
-    var m = "[object Array]";
+    var m = "[object Arguments]";
+    var d = "[object Array]";
     var h = "[object Boolean]";
     var p = "[object Date]";
     var g = "[object Error]";
@@ -111386,7 +111500,7 @@ var ggs_lib = function (e) {
     var k = /^(?:0|[1-9]\d*)$/;
     var w = {};
     w["[object Float32Array]"] = w["[object Float64Array]"] = w["[object Int8Array]"] = w["[object Int16Array]"] = w["[object Int32Array]"] = w["[object Uint8Array]"] = w["[object Uint8ClampedArray]"] = w["[object Uint16Array]"] = w["[object Uint32Array]"] = true;
-    w[d] = w[m] = w[O] = w[h] = w[L] = w[p] = w[g] = w[E] = w[f] = w[T] = w[S] = w[y] = w[I] = w[v] = w["[object WeakMap]"] = false;
+    w[m] = w[d] = w[O] = w[h] = w[L] = w[p] = w[g] = w[E] = w[f] = w[T] = w[S] = w[y] = w[I] = w[v] = w["[object WeakMap]"] = false;
     var x = parseInt;
     var W = typeof e == "object" && e && e.Object === Object && e;
     var H = typeof self == "object" && self && self.Object === Object && self;
@@ -111454,14 +111568,14 @@ var ggs_lib = function (e) {
     }(Object.keys, Object);
     var ce = Math.max;
     var _e = getNative(V, "DataView");
-    var de = getNative(V, "Map");
-    var me = getNative(V, "Promise");
+    var me = getNative(V, "Map");
+    var de = getNative(V, "Promise");
     var he = getNative(V, "Set");
     var pe = getNative(V, "WeakMap");
     var ge = getNative(Object, "create");
     var Ee = toSource(_e);
-    var Ce = toSource(de);
-    var fe = toSource(me);
+    var Ce = toSource(me);
+    var fe = toSource(de);
     var Te = toSource(he);
     var Se = toSource(pe);
     var ye = se ? se.prototype : undefined;
@@ -111542,13 +111656,13 @@ var ggs_lib = function (e) {
       return e === t || (e == null || t == null || !isObject(e) && !isObjectLike(t) ? e != e && t != t : function baseIsEqualDeep(e, t, n, i, a, s) {
         var l = De(e);
         var u = De(t);
-        var c = m;
-        var _ = m;
+        var c = d;
+        var _ = d;
         if (!l) {
-          c = (c = Ae(e)) == d ? S : c;
+          c = (c = Ae(e)) == m ? S : c;
         }
         if (!u) {
-          _ = (_ = Ae(t)) == d ? S : _;
+          _ = (_ = Ae(t)) == m ? S : _;
         }
         var E = c == S && !isHostObject(e);
         var C = _ == S && !isHostObject(t);
@@ -111591,9 +111705,9 @@ var ggs_lib = function (e) {
                   }
                   s |= r;
                   l.set(e, t);
-                  var d = equalArrays(u(e), u(t), i, a, s, l);
+                  var m = equalArrays(u(e), u(t), i, a, s, l);
                   l.delete(e);
-                  return d;
+                  return m;
                 case A:
                   if (Ie) {
                     return Ie.call(e) == Ie.call(t);
@@ -111626,31 +111740,31 @@ var ggs_lib = function (e) {
             return false;
           }
           for (var _ = u; _--;) {
-            var d = l[_];
-            if (!(r ? d in t : ne.call(t, d))) {
+            var m = l[_];
+            if (!(r ? m in t : ne.call(t, m))) {
               return false;
             }
           }
-          var m = s.get(e);
-          if (m && s.get(t)) {
-            return m == t;
+          var d = s.get(e);
+          if (d && s.get(t)) {
+            return d == t;
           }
           var h = true;
           s.set(e, t);
           s.set(t, e);
           var p = r;
           for (; ++_ < u;) {
-            d = l[_];
-            var g = e[d];
-            var E = t[d];
+            m = l[_];
+            var g = e[m];
+            var E = t[m];
             if (i) {
-              var C = r ? i(E, g, d, t, e, s) : i(g, E, d, e, t, s);
+              var C = r ? i(E, g, m, t, e, s) : i(g, E, m, e, t, s);
             }
             if (!(C === undefined ? g === E || n(g, E, i, a, s) : C)) {
               h = false;
               break;
             }
-            p ||= d == "constructor";
+            p ||= m == "constructor";
           }
           if (h && !p) {
             var f = e.constructor;
@@ -111746,17 +111860,17 @@ var ggs_lib = function (e) {
                 while (++a < s) {
                   var c = (u = n[a])[0];
                   var _ = e[c];
-                  var d = u[1];
+                  var m = u[1];
                   if (l && u[2]) {
                     if (_ === undefined && !(c in e)) {
                       return false;
                     }
                   } else {
-                    var m = new Stack();
+                    var d = new Stack();
                     if (i) {
-                      var h = i(_, d, c, e, t, m);
+                      var h = i(_, m, c, e, t, d);
                     }
-                    if (!(h === undefined ? baseIsEqual(d, _, i, r | o, m) : h)) {
+                    if (!(h === undefined ? baseIsEqual(m, _, i, r | o, d) : h)) {
                       return false;
                     }
                   }
@@ -111822,22 +111936,22 @@ var ggs_lib = function (e) {
       if (_ && s.get(t)) {
         return _ == t;
       }
-      var d = -1;
-      var m = true;
+      var m = -1;
+      var d = true;
       var h = a & r ? new SetCache() : undefined;
       s.set(e, t);
       s.set(t, e);
-      while (++d < u) {
-        var p = e[d];
-        var g = t[d];
+      while (++m < u) {
+        var p = e[m];
+        var g = t[m];
         if (i) {
-          var E = l ? i(g, p, d, t, e, s) : i(p, g, d, e, t, s);
+          var E = l ? i(g, p, m, t, e, s) : i(p, g, m, e, t, s);
         }
         if (E !== undefined) {
           if (E) {
             continue;
           }
-          m = false;
+          d = false;
           break;
         }
         if (h) {
@@ -111846,17 +111960,17 @@ var ggs_lib = function (e) {
               return h.add(t);
             }
           })) {
-            m = false;
+            d = false;
             break;
           }
         } else if (p !== g && !n(p, g, i, a, s)) {
-          m = false;
+          d = false;
           break;
         }
       }
       s.delete(e);
       s.delete(t);
-      return m;
+      return d;
     }
     function getMapData(e, t) {
       var n = e.__data__;
@@ -111954,7 +112068,7 @@ var ggs_lib = function (e) {
     MapCache.prototype.clear = function mapCacheClear() {
       this.__data__ = {
         hash: new Hash(),
-        map: new (de || ListCache)(),
+        map: new (me || ListCache)(),
         string: new Hash()
       };
     };
@@ -111994,7 +112108,7 @@ var ggs_lib = function (e) {
       var n = this.__data__;
       if (n instanceof ListCache) {
         var a = n.__data__;
-        if (!de || a.length < i - 1) {
+        if (!me || a.length < i - 1) {
           a.push([e, t]);
           return this;
         }
@@ -112024,7 +112138,7 @@ var ggs_lib = function (e) {
         return n != null && n[e] === t && (t !== undefined || e in Object(n));
       };
     }
-    if (_e && Ae(new _e(new ArrayBuffer(1))) != L || de && Ae(new de()) != f || me && Ae(me.resolve()) != "[object Promise]" || he && Ae(new he()) != I || pe && Ae(new pe()) != "[object WeakMap]") {
+    if (_e && Ae(new _e(new ArrayBuffer(1))) != L || me && Ae(new me()) != f || de && Ae(de.resolve()) != "[object Promise]" || he && Ae(new he()) != I || pe && Ae(new pe()) != "[object WeakMap]") {
       Ae = function (e) {
         var t = ie.call(e);
         var n = t == S ? e.constructor : undefined;
@@ -112217,7 +112331,7 @@ var ggs_lib = function (e) {
     function isArguments(e) {
       return function isArrayLikeObject(e) {
         return isObjectLike(e) && isArrayLike(e);
-      }(e) && ne.call(e, "callee") && (!oe.call(e, "callee") || ie.call(e) == d);
+      }(e) && ne.call(e, "callee") && (!oe.call(e, "callee") || ie.call(e) == m);
     }
     memoize.Cache = MapCache;
     var De = Array.isArray;
@@ -112562,8 +112676,8 @@ var ggs_lib = function (e) {
   var u = n(115);
   var c = n(17);
   var _ = n(170);
-  var d = n(120);
-  var m = n(23);
+  var m = n(120);
+  var d = n(23);
   var h = n(12);
   var p = n(171);
   var g = n(173);
@@ -112619,10 +112733,10 @@ var ggs_lib = function (e) {
   t.GoodgamePartners = ce.GoodgamePartners;
   var _e = n(23);
   t.ExternalLog = _e.ExternalLog;
-  var de = n(169);
-  t.CookieLogLOFactory = de.CookieLogLOFactory;
-  var me = n(31);
-  t.GGSCountryController = me.GGSCountryController;
+  var me = n(169);
+  t.CookieLogLOFactory = me.CookieLogLOFactory;
+  var de = n(31);
+  t.GGSCountryController = de.GGSCountryController;
   var he = n(111);
   t.CampaignVarsVO = he.CampaignVarsVO;
   var pe = n(67);
@@ -112642,7 +112756,7 @@ var ggs_lib = function (e) {
       Z.BasicModel.instanceProxy.setWorldAssignementFacade(n.worldAssignemnt.facade);
       Se.debug(n.worldAssignemnt);
       n.onAddedToStage();
-      d.PerformanceMonitoringService.getInstance().init(_.PerformanceMonitoringEnvTypeEnum.Web, n);
+      m.PerformanceMonitoringService.getInstance().init(_.PerformanceMonitoringEnvTypeEnum.Web, n);
       return n;
     }
     i.__extends(BasicFrameOne, e);
@@ -112676,7 +112790,7 @@ var ggs_lib = function (e) {
       });
     };
     BasicFrameOne.prototype.onFlushFailedAfterPending = function () {
-      m.ExternalLog.logger.log(new l.CookieLogLOFactory(l.CookieLogLOFactory.COOKIE_PENDING_FAILED));
+      d.ExternalLog.logger.log(new l.CookieLogLOFactory(l.CookieLogLOFactory.COOKIE_PENDING_FAILED));
     };
     BasicFrameOne.prototype.registerCommands = function () {
       h.CommandController.instance.registerCommand(C.BasicController.COMMAND_CONNECT_CLIENT, ie.BasicConnectClientCommand);
@@ -113411,24 +113525,24 @@ var ggs_lib = function (e) {
             for (o = 0; o < n.length; o++) {
               var u = n[o];
               var _ = r[u.c];
-              var d = t.a;
-              var m = u;
-              if (d.g) {
-                w(d.f, [d.a.c("wf", m.c, J(m).toString(), "loading")]);
+              var m = t.a;
+              var d = u;
+              if (m.g) {
+                w(m.f, [m.a.c("wf", d.c, J(d).toString(), "loading")]);
               }
-              K(d, "fontloading", m);
-              d = null;
+              K(m, "fontloading", d);
+              m = null;
               if (c === null) {
                 if (window.FontFace) {
-                  m = /Gecko.*Firefox\/(\d+)/.exec(window.navigator.userAgent);
+                  d = /Gecko.*Firefox\/(\d+)/.exec(window.navigator.userAgent);
                   var h = /OS X.*Version\/10\..*Safari/.exec(window.navigator.userAgent) && /Apple/.exec(window.navigator.vendor);
-                  c = m ? parseInt(m[1], 10) > 42 : !h;
+                  c = d ? parseInt(d[1], 10) > 42 : !h;
                 } else {
                   c = false;
                 }
               }
-              d = c ? new P(p(t.g, t), p(t.h, t), t.c, u, t.s, _) : new Q(p(t.g, t), p(t.h, t), t.c, u, t.s, e, _);
-              l.push(d);
+              m = c ? new P(p(t.g, t), p(t.h, t), t.c, u, t.s, _) : new Q(p(t.g, t), p(t.h, t), t.c, u, t.s, e, _);
+              l.push(m);
             }
             for (o = 0; o < l.length; o++) {
               l[o].start();
@@ -113917,8 +114031,8 @@ var ggs_lib = function (e) {
   var u = n(20);
   var c = n(30);
   var _ = n(56);
-  var d = createjs.Ticker;
-  var m = createjs.Container;
+  var m = createjs.Ticker;
+  var d = createjs.Container;
   var h = n(11);
   var p = function (e) {
     function BasicGame(t) {
@@ -113969,11 +114083,11 @@ var ggs_lib = function (e) {
       }
     };
     BasicGame.prototype.initializeTicker = function () {
-      d.framerate = h.BasicConstants.TARGET_FRAMERATE;
-      d.addEventListener("tick", this.onTick.bind(this));
+      m.framerate = h.BasicConstants.TARGET_FRAMERATE;
+      m.addEventListener("tick", this.onTick.bind(this));
     };
     BasicGame.prototype.onTick = function (e) {
-      if (!d.paused) {
+      if (!m.paused) {
         this.stage.update();
       }
     };
@@ -113988,7 +114102,7 @@ var ggs_lib = function (e) {
       configurable: true
     });
     return BasicGame;
-  }(m);
+  }(d);
   t.BasicGame = p;
 }, function (e, t, n) {
   'use strict';
@@ -114148,8 +114262,8 @@ var ggs_lib = function (e) {
   var u = n(43);
   var c = n(420);
   var _ = n(3);
-  var d = n(3);
-  var m = createjs.Event;
+  var m = n(3);
+  var d = createjs.Event;
   var h = createjs.EventDispatcher;
   var p = createjs.IOErrorEvent;
   var g = createjs.ProgressEvent;
@@ -114157,9 +114271,9 @@ var ggs_lib = function (e) {
   var C = function (e) {
     function BasicSoundController() {
       var t = e.call(this) || this;
-      t._globalSoundTransform = new d.SoundTransform();
-      t._effectsTransform = new d.SoundTransform();
-      t._musicTransform = new d.SoundTransform();
+      t._globalSoundTransform = new m.SoundTransform();
+      t._effectsTransform = new m.SoundTransform();
+      t._musicTransform = new m.SoundTransform();
       t._isMuted = false;
       t._isEffectsMuted = false;
       t._isMusicMuted = true;
@@ -114182,7 +114296,7 @@ var ggs_lib = function (e) {
         return n.play(0, t);
       }
       if (createjs.Sound.loadComplete(e)) {
-        var i = new d.Sound(new _.URLRequest(e));
+        var i = new m.Sound(new _.URLRequest(e));
         this.loadedSongs.set(e, i);
         return i.play(0, t);
       }
@@ -114238,7 +114352,7 @@ var ggs_lib = function (e) {
     BasicSoundController.prototype.stopMusic = function () {
       if (this._currentSongChannel != null) {
         this._currentSongChannel.stop();
-        this._currentSongChannel.removeEventListener(m.SOUND_COMPLETE, this.bindFunction(this.onCurrentSongReachedEnd));
+        this._currentSongChannel.removeEventListener(d.SOUND_COMPLETE, this.bindFunction(this.onCurrentSongReachedEnd));
       }
       this._currentSongString = "";
       this._currentSong = null;
@@ -114250,7 +114364,7 @@ var ggs_lib = function (e) {
     BasicSoundController.prototype.preLoadMusic = function (e) {
       if (!this.loadedSongs.get(e)) {
         var t = new _.URLRequest(u.PathProvider.instance.getSoundURL(e));
-        new d.Sound(t).addEventListener(p.IO_ERROR, this.bindFunction(this.onStreamError));
+        new m.Sound(t).addEventListener(p.IO_ERROR, this.bindFunction(this.onStreamError));
       }
     };
     BasicSoundController.prototype.onStreamError = function (e) {
@@ -114263,7 +114377,7 @@ var ggs_lib = function (e) {
         }
         this._currentSongChannel = e.play(0, t, this._musicTransform);
         if (this._currentSongChannel != null) {
-          this._currentSongChannel.addEventListener(m.SOUND_COMPLETE, this.bindFunction(this.onCurrentSongReachedEnd));
+          this._currentSongChannel.addEventListener(d.SOUND_COMPLETE, this.bindFunction(this.onCurrentSongReachedEnd));
           this._currentSong = e;
         }
       }
@@ -114272,8 +114386,8 @@ var ggs_lib = function (e) {
       this.dispatchEvent(new c.BasicSoundEvent(c.BasicSoundEvent.SONG_PLAYED_COMPLETE));
     };
     BasicSoundController.prototype.loadMusicFile = function (e) {
-      var t = new d.Sound();
-      t.addEventListener(m.COMPLETE, this.bindFunction(this.onMusicFileLoadComplete));
+      var t = new m.Sound();
+      t.addEventListener(d.COMPLETE, this.bindFunction(this.onMusicFileLoadComplete));
       t.addEventListener(g.PROGRESS, this.bindFunction(this.onMusicFileLoadProgress));
       t.addEventListener(p.IO_ERROR, this.bindFunction(this.onMusicFileLoadIOError));
       t.addEventListener(E.SECURITY_ERROR, this.bindFunction(this.onMusicFileLoadSecurityError));
@@ -114282,20 +114396,20 @@ var ggs_lib = function (e) {
     };
     BasicSoundController.prototype.onMusicFileLoadIOError = function (e) {
       o.ExternalLog.logger.log(new r.IOErrorLOFactory(r.IOErrorLOFactory.GENERAL_LOADER_IO_ERROR, e.text, e.target.url));
-      e.target.removeEventListener(m.COMPLETE, this.bindFunction(this.onMusicFileLoadComplete));
+      e.target.removeEventListener(d.COMPLETE, this.bindFunction(this.onMusicFileLoadComplete));
       e.target.removeEventListener(g.PROGRESS, this.bindFunction(this.onMusicFileLoadProgress));
       e.target.removeEventListener(p.IO_ERROR, this.bindFunction(this.onMusicFileLoadIOError));
       e.target.removeEventListener(E.SECURITY_ERROR, this.bindFunction(this.onMusicFileLoadSecurityError));
     };
     BasicSoundController.prototype.onMusicFileLoadSecurityError = function (e) {
       o.ExternalLog.logger.log(new s.SecurityErrorLOFactory(s.SecurityErrorLOFactory.GENERAL_LOADER_SECURITY_ERROR, e.text, e.target.url));
-      e.target.removeEventListener(m.COMPLETE, this.bindFunction(this.onMusicFileLoadComplete));
+      e.target.removeEventListener(d.COMPLETE, this.bindFunction(this.onMusicFileLoadComplete));
       e.target.removeEventListener(g.PROGRESS, this.bindFunction(this.onMusicFileLoadProgress));
       e.target.removeEventListener(p.IO_ERROR, this.bindFunction(this.onMusicFileLoadIOError));
       e.target.removeEventListener(E.SECURITY_ERROR, this.bindFunction(this.onMusicFileLoadSecurityError));
     };
     BasicSoundController.prototype.onMusicFileLoadComplete = function (e) {
-      e.target.removeEventListener(m.COMPLETE, this.bindFunction(this.onMusicFileLoadComplete));
+      e.target.removeEventListener(d.COMPLETE, this.bindFunction(this.onMusicFileLoadComplete));
       e.target.removeEventListener(g.PROGRESS, this.bindFunction(this.onMusicFileLoadProgress));
       e.target.removeEventListener(p.IO_ERROR, this.bindFunction(this.onMusicFileLoadIOError));
       e.target.removeEventListener(E.SECURITY_ERROR, this.bindFunction(this.onMusicFileLoadSecurityError));
@@ -114506,8 +114620,8 @@ var ggs_lib = function (e) {
   var u = n(424);
   var c = n(43);
   var _ = n(4);
-  var d = n(25);
-  var m = n(3);
+  var m = n(25);
+  var d = n(3);
   var h = n(60);
   var p = n(6);
   var g = n(2).getLogger("CoreJS.BasicAddExtraCurrencyCommand");
@@ -114540,7 +114654,7 @@ var ggs_lib = function (e) {
         if (this.env.requestPayByJS) {
           this.onOpenPaymentByJS();
         } else {
-          var a = new m.URLRequest(c.PathProvider.instance.shopURL + this.paymentHash);
+          var a = new d.URLRequest(c.PathProvider.instance.shopURL + this.paymentHash);
           var r = {
             sid: this.sessionId
           };
@@ -114553,7 +114667,7 @@ var ggs_lib = function (e) {
       }
     };
     BasicAddExtraCurrencyCommand.prototype.onOpenPaymentByJS = function () {
-      m.ExternalInterface.call("requestPayment");
+      d.ExternalInterface.call("requestPayment");
     };
     BasicAddExtraCurrencyCommand.prototype.onOpenPayment = function (e) {
       a.BrowserUtil.openWindow(e);
@@ -114568,7 +114682,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicAddExtraCurrencyCommand.prototype, "layoutManager", {
       get: function () {
-        return d.BasicLayoutManager.getInstance();
+        return m.BasicLayoutManager.getInstance();
       },
       enumerable: true,
       configurable: true
@@ -114641,8 +114755,8 @@ var ggs_lib = function (e) {
   var u = n(4);
   var c = n(165);
   var _ = n(3);
-  var d = n(11);
-  var m = n(38);
+  var m = n(11);
+  var d = n(38);
   var h = n(56);
   var p = n(43);
   var g = n(2).getLogger("Connection.BasicCheckMaintenanceCommand");
@@ -114651,7 +114765,7 @@ var ggs_lib = function (e) {
       var t = e !== null && e.apply(this, arguments) || this;
       t.MAINTENANCE_TIMER_DELAY = 60;
       t.GGS_UTC_LOAD_TRIGGER_OFFSET_IN_SECONDS = 900;
-      t.UTC_REQUEST_URL = d.BasicConstants.DOMAIN_PROTOCOL + "://time.goodgamestudios.com";
+      t.UTC_REQUEST_URL = m.BasicConstants.DOMAIN_PROTOCOL + "://time.goodgamestudios.com";
       return t;
     }
     i.__extends(BasicCheckMaintenanceCommand, e);
@@ -114699,7 +114813,7 @@ var ggs_lib = function (e) {
         g.debug(i + " will be in maintenance until " + o);
         var l;
         var c = Date.now() / 1000;
-        function d(e) {
+        function m(e) {
           if (e <= 0) {
             g.debug("Mainteance is over!");
             t.setMaintenance(false);
@@ -114721,14 +114835,14 @@ var ggs_lib = function (e) {
               l = Number(e);
               g.debug("clientUTC " + c + "  -  server UTC " + l);
               t.maintenanceTimeInSeconds = r - l;
-              d(t.maintenanceTimeInSeconds);
+              m(t.maintenanceTimeInSeconds);
             }).catch(function (e) {
               g.warn("IOError (" + e.message + ") while loading UTC - will prodeed without Maintenance behaviour");
               s.ExternalLog.logger.log(new a.IOErrorLOFactory(a.IOErrorLOFactory.GENERAL_LOADER_IO_ERROR, e.message, t.UTC_REQUEST_URL));
               t.clearMaintenance();
             });
           } else {
-            d(this.maintenanceTimeInSeconds);
+            m(this.maintenanceTimeInSeconds);
           }
         } else {
           g.warn("according to maintenance file our zone is under maintenance - but according to client UTC maintenance time is already over");
@@ -114747,7 +114861,7 @@ var ggs_lib = function (e) {
         } else {
           this.executeNWMaintenance();
         }
-        h.ClientFunnelTrackingController.getInstance().trackState(m.ClientFunnelGameStates.MAINTENANCE_SCREEN);
+        h.ClientFunnelTrackingController.getInstance().trackState(d.ClientFunnelGameStates.MAINTENANCE_SCREEN);
       } else if (this.env.maintenanceMode) {
         this.clearMaintenance();
       } else {
@@ -114800,10 +114914,10 @@ var ggs_lib = function (e) {
   var u = n(8);
   var c = n(4);
   var _ = n(117);
-  var d = n(121);
-  var m = n(2);
+  var m = n(121);
+  var d = n(2);
   var h = n(161);
-  var p = m.getLogger("BasicConnectToInstanceVOCommand");
+  var p = d.getLogger("BasicConnectToInstanceVOCommand");
   var g = function (e) {
     function BasicConnectToInstanceVOCommand() {
       return e !== null && e.apply(this, arguments) || this;
@@ -114824,7 +114938,7 @@ var ggs_lib = function (e) {
           c.BasicModel.smartfoxClient.removeEventListener(_.SmartfoxEvent.CONNECT_SUCCESS, this.bindFunction(this.onConnectionEstablished));
           c.BasicModel.smartfoxClient.addEventListener(_.SmartfoxEvent.CONNECT_SUCCESS, this.bindFunction(this.onConnectionEstablished));
         } else {
-          c.BasicModel.smartfoxClient = new d.BasicSmartfoxClient();
+          c.BasicModel.smartfoxClient = new m.BasicSmartfoxClient();
         }
         var t = window.ggs.worldAssignment;
         if (e.instanceId != t.facade.selectedNetworkInstance.instanceId) {
@@ -115007,8 +115121,8 @@ var ggs_lib = function (e) {
   var u = n(426);
   var c = n(427);
   var _ = n(428);
-  var d = n(430);
-  var m = n(431);
+  var m = n(430);
+  var d = n(431);
   var h = n(432);
   var p = n(433);
   var g = n(434);
@@ -115036,12 +115150,12 @@ var ggs_lib = function (e) {
       t.set(r.BasicSmartfoxConstants.S2C_COMA_TEASER, new o.CMTCommand());
       t.set(r.BasicSmartfoxConstants.S2C_SERVER_INFO_EVENT, new p.NFOCommand());
       t.set(r.BasicSmartfoxConstants.S2C_VERIFY_PLAYER_MAIL_EVENT, new S.VPMCommand());
-      t.set(r.BasicSmartfoxConstants.S2C_LOST_PASSWORD_EVENT, new m.LPPCommand());
+      t.set(r.BasicSmartfoxConstants.S2C_LOST_PASSWORD_EVENT, new d.LPPCommand());
       t.set(r.BasicSmartfoxConstants.S2C_CHILD_PROTECTION_AUTO_SHUTDOWN_EVENT, new l.CPSCommand());
       t.set(r.BasicSmartfoxConstants.S2C_SOCIAL_PLAYER_EXISTS, new C.SPECommand());
       t.set(r.BasicSmartfoxConstants.S2C_NEW_LOGIN_SOCIAL, new f.SPLCommand());
       t.set(r.BasicSmartfoxConstants.S2C_TEST_CASE_INFO, new T.TCICommand());
-      t.set(r.BasicSmartfoxConstants.S2C_GET_PLAYER_INFO, new d.GPICommand());
+      t.set(r.BasicSmartfoxConstants.S2C_GET_PLAYER_INFO, new m.GPICommand());
       t.set(r.BasicSmartfoxConstants.S2C_GENERATE_INVITE_CODE, new _.GICCommand());
       t.set(r.BasicSmartfoxConstants.S2C_SET_INVITE_CODE, new g.SICCommand());
       t.set(r.BasicSmartfoxConstants.S2C_VERSION_CHECK, new y.VCKCommand());
@@ -115332,7 +115446,7 @@ var ggs_lib = function (e) {
   var u = n(6);
   var c = n(56);
   var _ = n(2).getLogger("BasicJoinedRoomCommand");
-  var d = function (e) {
+  var m = function (e) {
     function BasicJoinedRoomCommand() {
       return e !== null && e.apply(this, arguments) || this;
     }
@@ -115348,7 +115462,7 @@ var ggs_lib = function (e) {
     };
     return BasicJoinedRoomCommand;
   }(u.SimpleCommand);
-  t.BasicJoinedRoomCommand = d;
+  t.BasicJoinedRoomCommand = m;
 }, function (e, t, n) {
   'use strict';
 
@@ -115431,8 +115545,8 @@ var ggs_lib = function (e) {
   var u = n(25);
   var c = n(12);
   var _ = n(6);
-  var d = n(3);
-  var m = function (e) {
+  var m = n(3);
+  var d = function (e) {
     function BasicLogoutCommand() {
       return e !== null && e.apply(this, arguments) || this;
     }
@@ -115443,7 +115557,7 @@ var ggs_lib = function (e) {
       l.BasicModel.sessionData.resetLoggedinTimer();
       l.BasicModel.smartfoxClient.logout();
       u.BasicLayoutManager.getInstance().revertFullscreen();
-      d.ExternalInterface.call(o.JavascriptFunctionName.ON_LOGOUT);
+      m.ExternalInterface.call(o.JavascriptFunctionName.ON_LOGOUT);
       if (s.EnvGlobalsHandler.globals.isSSO) {
         c.CommandController.instance.executeCommand(r.BasicController.REQUEST_SOCIAL_LOGIN_KEYS);
       }
@@ -115455,7 +115569,7 @@ var ggs_lib = function (e) {
     BasicLogoutCommand.DELETE_LOGIN_DATA_ON_LOGOUT = true;
     return BasicLogoutCommand;
   }(_.SimpleCommand);
-  t.BasicLogoutCommand = m;
+  t.BasicLogoutCommand = d;
 }, function (e, t, n) {
   'use strict';
 
@@ -115517,7 +115631,7 @@ var ggs_lib = function (e) {
   var u = n(448);
   var c = n(6);
   var _ = n(18);
-  var d = function (e) {
+  var m = function (e) {
     function BasicOnClickMoreCurrencyCommand() {
       return e !== null && e.apply(this, arguments) || this;
     }
@@ -115551,7 +115665,7 @@ var ggs_lib = function (e) {
     });
     return BasicOnClickMoreCurrencyCommand;
   }(c.SimpleCommand);
-  t.BasicOnClickMoreCurrencyCommand = d;
+  t.BasicOnClickMoreCurrencyCommand = m;
 }, function (e, t, n) {
   'use strict';
 
@@ -115604,8 +115718,8 @@ var ggs_lib = function (e) {
   var u = n(449);
   var c = n(12);
   var _ = n(6);
-  var d = n(18);
-  var m = function (e) {
+  var m = n(18);
+  var d = function (e) {
     function BasicPrepareReconnectCommand() {
       return e !== null && e.apply(this, arguments) || this;
     }
@@ -115618,9 +115732,9 @@ var ggs_lib = function (e) {
       if (this.layoutManager.currentState != o.BasicLayoutManager.STATE_LOGIN && this.layoutManager.currentState != o.BasicLayoutManager.STATE_CONNECT) {
         c.CommandController.instance.executeCommand(s.BasicController.COMMAND_DESTROY_GAME);
         this.layoutManager.state = o.BasicLayoutManager.STATE_CONNECT;
-        this.layoutManager.showDialog(l.CommonDialogNames.ReconnectDialog_NAME, new u.BasicReconnectDialogProperties(d.Localize.text("generic_alert_information"), d.Localize.text("generic_alert_connection_lost_copy"), function () {
+        this.layoutManager.showDialog(l.CommonDialogNames.ReconnectDialog_NAME, new u.BasicReconnectDialogProperties(m.Localize.text("generic_alert_information"), m.Localize.text("generic_alert_connection_lost_copy"), function () {
           return t.onReconnect();
-        }, d.Localize.text("generic_btn_reconnect")));
+        }, m.Localize.text("generic_btn_reconnect")));
       }
     };
     BasicPrepareReconnectCommand.prototype.onReconnect = function () {
@@ -115640,7 +115754,7 @@ var ggs_lib = function (e) {
     });
     return BasicPrepareReconnectCommand;
   }(_.SimpleCommand);
-  t.BasicPrepareReconnectCommand = m;
+  t.BasicPrepareReconnectCommand = d;
 }, function (e, t, n) {
   'use strict';
 
@@ -115724,7 +115838,7 @@ var ggs_lib = function (e) {
   var u = n(6);
   var c = n(44);
   var _ = n(31);
-  var d = function (e) {
+  var m = function (e) {
     function BasicRegisterUserCommand() {
       return e !== null && e.apply(this, arguments) || this;
     }
@@ -115794,7 +115908,7 @@ var ggs_lib = function (e) {
     });
     return BasicRegisterUserCommand;
   }(u.SimpleCommand);
-  t.BasicRegisterUserCommand = d;
+  t.BasicRegisterUserCommand = m;
 }, function (e, t, n) {
   'use strict';
 
@@ -116833,8 +116947,8 @@ var ggs_lib = function (e) {
   var u = n(464);
   var c = n(465);
   var _ = n(466);
-  var d = n(469);
-  var m = n(473);
+  var m = n(469);
+  var d = n(473);
   var h = n(460);
   var p = n(12);
   var g = n(37);
@@ -116848,8 +116962,8 @@ var ggs_lib = function (e) {
     }
     i.__extends(BasicPrivateOfferData, e);
     BasicPrivateOfferData.prototype.initOfferFactory = function () {
-      this._offerFactory = new m.BasicPrivateOfferVOFactory(this);
-      this._offerDescriptionFactory = new d.BasicOfferDescriptionFactory(this);
+      this._offerFactory = new d.BasicPrivateOfferVOFactory(this);
+      this._offerDescriptionFactory = new m.BasicOfferDescriptionFactory(this);
       this._offerQuestConditionFactory = new _.BasicOfferQuestConditionFactory(this);
       this._offerRewardFactory = new c.BasicOfferRewardFactory(this);
       this._offerDescriptionVisualFactory = new u.BasicOfferDescriptionVisualFactory(this);
@@ -117331,8 +117445,8 @@ var ggs_lib = function (e) {
   var u = n(5);
   var c = n(11);
   var _ = n(4);
-  var d = n(18);
-  var m = n(3);
+  var m = n(18);
+  var d = n(3);
   var h = createjs.MovieClip;
   var p = createjs.TimerEvent;
   var g = function (e) {
@@ -117420,10 +117534,10 @@ var ggs_lib = function (e) {
       this.progressText = this.getRandomLoadingText();
       this.updateLoadingProgress(0);
       this.progressStartTime = Date.now();
-      this.progressTimer ||= new m.Timer(20);
+      this.progressTimer ||= new d.Timer(20);
       this.progressTimer.addEventListener(p.TIMER, this.bindFunction(this.onProgressTimer));
       this.progressTimer.start();
-      this.loadingTextUpdateTimer ||= new m.Timer(c.BasicConstants.AUTOMATIC_LOADING_BAR_UPDATE_TIME);
+      this.loadingTextUpdateTimer ||= new d.Timer(c.BasicConstants.AUTOMATIC_LOADING_BAR_UPDATE_TIME);
       this.loadingTextUpdateTimer.addEventListener(p.TIMER, this.bindFunction(this.updateRandomLoadingText));
       this.loadingTextUpdateTimer.start();
     };
@@ -117449,7 +117563,7 @@ var ggs_lib = function (e) {
       var e = this.loadingTextIdPrefix + this.randomLoadingTextCount;
       this.randomLoadingTextCount++;
       if (_.BasicModel.languageData.languageXMLLoaded) {
-        return d.Localize.text(e);
+        return m.Localize.text(e);
       } else {
         return "";
       }
@@ -117457,7 +117571,7 @@ var ggs_lib = function (e) {
     BasicBackgroundComponent.prototype.updateLoadingText = function (e) {
       switch (e) {
         case c.BasicConstants.ITEM_XML_LOADER:
-          this.progressText = d.Localize.text("loading_text_itemXML");
+          this.progressText = m.Localize.text("loading_text_itemXML");
           break;
         default:
           this.progressText = this.getRandomLoadingText();
@@ -117821,7 +117935,7 @@ var ggs_lib = function (e) {
   var u = createjs.Container;
   var c = n(44);
   var _ = n(2).getLogger("CountrySelectComponent");
-  var d = function (e) {
+  var m = function (e) {
     function CountrySelectComponent(t, n, i, a, s = null) {
       var r = e.call(this) || this;
       r.DEFAULT_COUNTRYS_PER_LINE = 2;
@@ -118003,7 +118117,7 @@ var ggs_lib = function (e) {
     });
     return CountrySelectComponent;
   }(o);
-  t.CountrySelectComponent = d;
+  t.CountrySelectComponent = m;
 }, function (e, t, n) {
   'use strict';
 
@@ -118348,8 +118462,8 @@ var ggs_lib = function (e) {
   var u = n(475);
   var c = n(171);
   var _ = n(55);
-  var d = n(11);
-  var m = n(5);
+  var m = n(11);
+  var d = n(5);
   var h = n(2);
   var p = n(192);
   t.AccountCookie = p.AccountCookie;
@@ -118431,7 +118545,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "pln", {
       get: function () {
-        this._pln ||= l.paramToString(this.urlVariables.urlParams.get(d.BasicConstants.PLN_PARAMETER));
+        this._pln ||= l.paramToString(this.urlVariables.urlParams.get(m.BasicConstants.PLN_PARAMETER));
         return this._pln;
       },
       enumerable: true,
@@ -118439,7 +118553,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "sig", {
       get: function () {
-        this._sig ||= l.paramToString(this.urlVariables.urlParams.get(d.BasicConstants.SIG_PARAMETER));
+        this._sig ||= l.paramToString(this.urlVariables.urlParams.get(m.BasicConstants.SIG_PARAMETER));
         return this._sig;
       },
       enumerable: true,
@@ -118447,7 +118561,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "suk", {
       get: function () {
-        this._suk ||= l.paramToString(this.urlVariables.urlParams.get(d.BasicConstants.SUK_PARAMETER));
+        this._suk ||= l.paramToString(this.urlVariables.urlParams.get(m.BasicConstants.SUK_PARAMETER));
         return this._suk;
       },
       enumerable: true,
@@ -118495,14 +118609,14 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "urlAGB", {
       get: function () {
-        return d.BasicConstants.uniqueAgbLink(this._currentCountryLanguageCode);
+        return m.BasicConstants.uniqueAgbLink(this._currentCountryLanguageCode);
       },
       enumerable: true,
       configurable: true
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "urlPolicy", {
       get: function () {
-        return d.BasicConstants.uniquePolicyLink(this._currentCountryLanguageCode);
+        return m.BasicConstants.uniquePolicyLink(this._currentCountryLanguageCode);
       },
       enumerable: true,
       configurable: true
@@ -119134,7 +119248,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "distributorId", {
       get: function () {
-        this._distributorId ||= l.paramToString(this.urlVariables.urlParams.get(d.BasicConstants.DISTRIBUTOR_ID_PARAMETER), "0");
+        this._distributorId ||= l.paramToString(this.urlVariables.urlParams.get(m.BasicConstants.DISTRIBUTOR_ID_PARAMETER), "0");
         return this._distributorId;
       },
       enumerable: true,
@@ -119142,7 +119256,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "accessKey", {
       get: function () {
-        this._accessKey ||= l.paramToString(this.urlVariables.urlParams.get(d.BasicConstants.KEY_PARAMETER), "");
+        this._accessKey ||= l.paramToString(this.urlVariables.urlParams.get(m.BasicConstants.KEY_PARAMETER), "");
         return this._accessKey;
       },
       enumerable: true,
@@ -119150,7 +119264,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "gender", {
       get: function () {
-        this._gender ||= l.paramToString(this.urlVariables.urlParams.get(d.BasicConstants.GENDER_PARAMETER), "");
+        this._gender ||= l.paramToString(this.urlVariables.urlParams.get(m.BasicConstants.GENDER_PARAMETER), "");
         return this._gender;
       },
       enumerable: true,
@@ -119158,7 +119272,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "displayName", {
       get: function () {
-        this._displayName ||= l.paramToString(this.urlVariables.urlParams.get(d.BasicConstants.DISPLAY_NAME_PARAMETER), "");
+        this._displayName ||= l.paramToString(this.urlVariables.urlParams.get(m.BasicConstants.DISPLAY_NAME_PARAMETER), "");
         return this._displayName;
       },
       enumerable: true,
@@ -119169,9 +119283,9 @@ var ggs_lib = function (e) {
         if (!this._baseURL) {
           var e = window.location.href;
           var t = e.indexOf("[[IMPORT]]");
-          this._baseURL = t != -1 ? d.BasicConstants.DOMAIN_PROTOCOL + "://" + e.slice(t + "[[IMPORT]]".length, e.lastIndexOf("/")) : e.slice(0, e.lastIndexOf("/"));
+          this._baseURL = t != -1 ? m.BasicConstants.DOMAIN_PROTOCOL + "://" + e.slice(t + "[[IMPORT]]".length, e.lastIndexOf("/")) : e.slice(0, e.lastIndexOf("/"));
           if (this._baseURL.indexOf("http") == 0 && this._baseURL.indexOf("https") < 0) {
-            this._baseURL = d.BasicConstants.DOMAIN_PROTOCOL + this._baseURL.substring(4);
+            this._baseURL = m.BasicConstants.DOMAIN_PROTOCOL + this._baseURL.substring(4);
           }
         }
         return this._baseURL;
@@ -119246,7 +119360,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "internalServerDomain", {
       get: function () {
-        return d.BasicConstants.DOMAIN_INTERNAL_DNS;
+        return m.BasicConstants.DOMAIN_INTERNAL_DNS;
       },
       enumerable: true,
       configurable: true
@@ -119393,7 +119507,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "accountCookie", {
       get: function () {
-        this._accountCookie ||= new s.AccountCookie(m.EnvGlobalsHandler.globals.jsVariables.journeyHash);
+        this._accountCookie ||= new s.AccountCookie(d.EnvGlobalsHandler.globals.jsVariables.journeyHash);
         return this._accountCookie;
       },
       enumerable: true,
@@ -119607,7 +119721,7 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "isGGSEnvironment", {
       get: function () {
-        return this.href.indexOf(d.BasicConstants.GGS_DOMAIN) !== -1;
+        return this.href.indexOf(m.BasicConstants.GGS_DOMAIN) !== -1;
       },
       enumerable: true,
       configurable: true
@@ -119624,10 +119738,10 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "platformId", {
       get: function () {
-        if (this.urlVariables.nativeStore == d.BasicConstants.NATIVE_STORE_MICROSOFT) {
-          return d.BasicConstants.PLATFORM_ID_MS;
+        if (this.urlVariables.nativeStore == m.BasicConstants.NATIVE_STORE_MICROSOFT) {
+          return m.BasicConstants.PLATFORM_ID_MS;
         } else {
-          return d.BasicConstants.PLATFORM_ID_WEB;
+          return m.BasicConstants.PLATFORM_ID_WEB;
         }
       },
       enumerable: true,
@@ -119635,16 +119749,16 @@ var ggs_lib = function (e) {
     });
     Object.defineProperty(BasicEnvironmentGlobals.prototype, "storeId", {
       get: function () {
-        if (this.urlVariables.nativeStore == d.BasicConstants.NATIVE_STORE_MICROSOFT) {
-          return d.BasicConstants.STORE_ID_MS;
+        if (this.urlVariables.nativeStore == m.BasicConstants.NATIVE_STORE_MICROSOFT) {
+          return m.BasicConstants.STORE_ID_MS;
         } else {
-          return d.BasicConstants.STORE_ID_WEB;
+          return m.BasicConstants.STORE_ID_WEB;
         }
       },
       enumerable: true,
       configurable: true
     });
-    BasicEnvironmentGlobals.URL_PROTOCOL = d.BasicConstants.DOMAIN_PROTOCOL + "://";
+    BasicEnvironmentGlobals.URL_PROTOCOL = m.BasicConstants.DOMAIN_PROTOCOL + "://";
     BasicEnvironmentGlobals.REF_COOLE_SPIELE = "coolespiele.com";
     return BasicEnvironmentGlobals;
   }();
@@ -119705,22 +119819,22 @@ var ggs_lib = function (e) {
     }
     return new Promise(function (o, u) {
       var _;
-      var d;
-      var m = r.isNullOrUndefined(n.getPath(e)) == 0;
-      var h = !m && r.isNullOrUndefined(i.getPath(e)) == 0;
-      if (m) {
+      var m;
+      var d = r.isNullOrUndefined(n.getPath(e)) == 0;
+      var h = !d && r.isNullOrUndefined(i.getPath(e)) == 0;
+      if (d) {
         _ = l.BasicModel.basicLoaderData.loadVersionedInterfaceAsset;
-        d = "interface";
+        m = "interface";
       } else if (h) {
         _ = l.BasicModel.basicLoaderData.loadVersionedItemAsset;
-        d = "item";
+        m = "item";
       }
       if (!_) {
         c.warn("Could not find Version for Interface/Item: " + e + " (skipping)");
         o("Warning from promise: " + e);
         return;
       }
-      c.debug("loadAsset - " + e + ", type - " + d + ",with prio - " + t);
+      c.debug("loadAsset - " + e + ", type - " + m + ",with prio - " + t);
       var p = _.apply(l.BasicModel.basicLoaderData, [e, t]);
       if (p.isLoaded) {
         c.debug(e + " was loaded already!");
@@ -119863,8 +119977,8 @@ var ggs_lib = function (e) {
         var c = new s(l.y, -l.x);
         c.normalize(o.shaftThickness / 2);
         var _ = t.add(c);
-        var d = t.subtract(c);
-        var m = n.add(c);
+        var m = t.subtract(c);
+        var d = n.add(c);
         var h = n.subtract(c);
         var p = l.clone();
         p.normalize(p.length - o.headLength);
@@ -119874,8 +119988,8 @@ var ggs_lib = function (e) {
         var E = p.add(g);
         var C = p.subtract(g);
         var f = s.interpolate(n, p, o.shaftPosition);
-        var T = a.GeomUtil.getLineIntersection(_, m, f, E);
-        var S = a.GeomUtil.getLineIntersection(d, h, f, C);
+        var T = a.GeomUtil.getLineIntersection(_, d, f, E);
+        var S = a.GeomUtil.getLineIntersection(m, h, f, C);
         var y = s.interpolate(n, p, o.edgeControlPosition);
         var I = c.clone();
         I.normalize(u * o.edgeControlSize);
@@ -119887,7 +120001,7 @@ var ggs_lib = function (e) {
         e.curveTo(v.x, v.y, n.x, n.y);
         e.curveTo(A.x, A.y, C.x, C.y);
         e.lineTo(S.x, S.y);
-        e.lineTo(d.x, d.y);
+        e.lineTo(m.x, m.y);
         e.lineTo(_.x, _.y);
       }
     };
@@ -119900,8 +120014,8 @@ var ggs_lib = function (e) {
         var c = new s(l.y, -l.x);
         c.normalize(o.shaftThickness / 2);
         var _ = t.add(c);
-        var d = t.subtract(c);
-        var m = n.add(c);
+        var m = t.subtract(c);
+        var d = n.add(c);
         var h = n.subtract(c);
         var p = l.clone();
         p.normalize(p.length - o.headLength);
@@ -119911,10 +120025,10 @@ var ggs_lib = function (e) {
         var E = p.add(g);
         var C = p.subtract(g);
         var f = s.interpolate(n, p, o.shaftPosition);
-        var T = a.GeomUtil.getLineIntersection(_, m, f, E);
-        var S = a.GeomUtil.getLineIntersection(d, h, f, C);
+        var T = a.GeomUtil.getLineIntersection(_, d, f, E);
+        var S = a.GeomUtil.getLineIntersection(m, h, f, C);
         var y = GraphicsUtil.getCurveControlPoint(_, T);
-        var I = GraphicsUtil.getCurveControlPoint(d, S);
+        var I = GraphicsUtil.getCurveControlPoint(m, S);
         var v = s.interpolate(n, p, o.edgeControlPosition);
         var A = c.clone();
         A.normalize(u * o.edgeControlSize);
@@ -119926,9 +120040,9 @@ var ggs_lib = function (e) {
         e.curveTo(O.x, O.y, n.x, n.y);
         e.curveTo(L.x, L.y, C.x, C.y);
         e.lineTo(S.x, S.y);
-        e.curveTo(I.x, I.y, d.x, d.y);
+        e.curveTo(I.x, I.y, m.x, m.y);
         e.lineTo(_.x, _.y);
-        var D = [_, T, E, n,, C, S, d];
+        var D = [_, T, E, n,, C, S, m];
         return GraphicsUtil.getBoundsByPoints(D);
       }
     };
@@ -119954,8 +120068,8 @@ var ggs_lib = function (e) {
       var c = (o = new s(o.y, -o.x)).clone();
       c.normalize(r.shaftControlSize * l);
       var _ = s.interpolate(t, u, r.shaftControlPosition);
-      var d = _.add(c);
-      var m = _.subtract(c);
+      var m = _.add(c);
+      var d = _.subtract(c);
       o.normalize(l);
       var h = t.add(o);
       var p = t.subtract(o);
@@ -119964,8 +120078,8 @@ var ggs_lib = function (e) {
       var E = g.add(o);
       var C = g.subtract(o);
       e.moveTo(h.x, h.y);
-      e.curveTo(d.x, d.y, u.x, u.y);
-      e.curveTo(m.x, m.y, p.x, p.y);
+      e.curveTo(m.x, m.y, u.x, u.y);
+      e.curveTo(d.x, d.y, p.x, p.y);
       e.curveTo(C.x, C.y, n.x, n.y);
       e.curveTo(E.x, E.y, h.x, h.y);
     };
@@ -120051,8 +120165,8 @@ var ggs_lib = function (e) {
       this._layerInfos = [];
       for (var u = 0, c = t.fx; u < c.length; u++) {
         var _ = c[u];
-        var d = new i.LayerInfo(_.x, _.y, _.scale, _.index, _.name, _.rotation);
-        this._layerInfos.push(d);
+        var m = new i.LayerInfo(_.x, _.y, _.scale, _.index, _.name, _.rotation);
+        this._layerInfos.push(m);
       }
       this._isFilled = true;
     };
@@ -122216,9 +122330,9 @@ var ggs_lib = function (e) {
             this._nodeGoal = o;
             e = true;
           } else {
-            for (var l = this._graph.getNodeNeighbors(o), u = this._graph.getConnectionCosts(o), c = 0, _ = 0, d = 0; d < l.length; d++) {
-              if (t[c = l[d]] != Pathfinder.NODE_CLOSED) {
-                _ = u != null ? n[o] + u[d] : n[o] + this._graph.traverseCostStandard;
+            for (var l = this._graph.getNodeNeighbors(o), u = this._graph.getConnectionCosts(o), c = 0, _ = 0, m = 0; m < l.length; m++) {
+              if (t[c = l[m]] != Pathfinder.NODE_CLOSED) {
+                _ = u != null ? n[o] + u[m] : n[o] + this._graph.traverseCostStandard;
                 if (t[c] == Pathfinder.NODE_NEW) {
                   n[c] = _;
                   i[c] = this._heuristic.calculate(this._graph, this._graph.getNodeX(c), this._graph.getNodeY(c));
@@ -123428,29 +123542,29 @@ var ggs_lib = function (e) {
   var u = createjs.Event;
   var c = createjs.MovieClip;
   var _ = function (e) {
-    function GoodgameDisplayObjectClipExternal(t, n, i = null, a = 24, r = true, l = null, u = false, c = 1, _ = false, d = false) {
-      var m = e.call(this) || this;
-      m._isLoaded = false;
-      m._bitmapClone = [];
-      m._clipLoaded = new o.PrioritySignal(GoodgameDisplayObjectClipExternal);
-      m.animationManager = s.GoodgameBitmapEngine.instance.animationManager;
-      m.sourceClassName = t;
-      m.sourcePath = n;
-      m.clipColor = i;
-      m.targetFps = a;
-      m.priority = c;
-      m._running = r;
-      m.hasSubLayer = u;
-      m._delayLoadingUntilFree = d;
-      m.animationColorChange = _;
-      m._startFrame = 1;
-      m.placeholderClass = l;
-      if (m._delayLoadingUntilFree) {
-        m.delayLoading();
+    function GoodgameDisplayObjectClipExternal(t, n, i = null, a = 24, r = true, l = null, u = false, c = 1, _ = false, m = false) {
+      var d = e.call(this) || this;
+      d._isLoaded = false;
+      d._bitmapClone = [];
+      d._clipLoaded = new o.PrioritySignal(GoodgameDisplayObjectClipExternal);
+      d.animationManager = s.GoodgameBitmapEngine.instance.animationManager;
+      d.sourceClassName = t;
+      d.sourcePath = n;
+      d.clipColor = i;
+      d.targetFps = a;
+      d.priority = c;
+      d._running = r;
+      d.hasSubLayer = u;
+      d._delayLoadingUntilFree = m;
+      d.animationColorChange = _;
+      d._startFrame = 1;
+      d.placeholderClass = l;
+      if (d._delayLoadingUntilFree) {
+        d.delayLoading();
       } else {
-        m.initLoading();
+        d.initLoading();
       }
-      return m;
+      return d;
     }
     i.__extends(GoodgameDisplayObjectClipExternal, e);
     Object.defineProperty(GoodgameDisplayObjectClipExternal.prototype, "isLoaded", {
@@ -124561,17 +124675,17 @@ var ggs_lib = function (e) {
       var u;
       var c = e * 1000;
       var _ = a.int(c / 1000);
-      var d = a.int(_ / 60);
-      var m = a.int(d / 60);
-      var h = a.int(m / 24);
+      var m = a.int(_ / 60);
+      var d = a.int(m / 60);
+      var h = a.int(d / 24);
       var p = a.int(h / 30);
       var g = "";
       var E = "";
       c -= _ * 1000;
-      _ -= d * 60;
-      d -= m * 60;
+      _ -= m * 60;
+      m -= d * 60;
       if (t != TimeStringHelper.ONE_TIME_HOURS_FORMAT) {
-        m -= h * 24;
+        d -= h * 24;
         h -= p * 30;
       }
       if (t != TimeStringHelper.ONE_TIME_HOURS_FORMAT && p > 0) {
@@ -124590,7 +124704,7 @@ var ggs_lib = function (e) {
         }
         g += h + " " + n(E);
         if (t == TimeStringHelper.ONE_TIME_FORMAT_ADVANCED) {
-          return (u = i.MathBase.round(m / 24, 1) + h) + " " + n(E = TimeStringHelper.multiOrShortTimeString("generic_day", u, r));
+          return (u = i.MathBase.round(d / 24, 1) + h) + " " + n(E = TimeStringHelper.multiOrShortTimeString("generic_day", u, r));
         }
         if (t == TimeStringHelper.ONE_TIME_FORMAT) {
           return g;
@@ -124599,31 +124713,31 @@ var ggs_lib = function (e) {
           return g;
         }
       }
-      if (m > 0) {
+      if (d > 0) {
         if (o && h > 0) {
-          var C = i.MathBase.floor(d / 60, 1);
+          var C = i.MathBase.floor(m / 60, 1);
           if (C >= 1) {
-            m++;
+            d++;
           } else if (C > 0) {
-            return g + " " + m + n("generic_comma") + C.toString().substr(C.toString().indexOf(".") + 1) + " " + n("generic_hours");
+            return g + " " + d + n("generic_comma") + C.toString().substr(C.toString().indexOf(".") + 1) + " " + n("generic_hours");
           }
         }
-        E = TimeStringHelper.multiOrShortTimeString("generic_hour", m, r);
-        if (g.length > 0) {
-          g += s ? "\n" : " ";
-        }
-        g += m + " " + n(E);
-        if (t.indexOf("onetime") >= 0 || t == TimeStringHelper.TWO_TIME_FORMAT && h > 0) {
-          return g;
-        }
-      }
-      if (d > 0) {
-        E = TimeStringHelper.multiOrShortTimeString("generic_minute", d, r);
+        E = TimeStringHelper.multiOrShortTimeString("generic_hour", d, r);
         if (g.length > 0) {
           g += s ? "\n" : " ";
         }
         g += d + " " + n(E);
-        if (t.indexOf("onetime") >= 0 || t == TimeStringHelper.TWO_TIME_FORMAT && (m > 0 || h > 0)) {
+        if (t.indexOf("onetime") >= 0 || t == TimeStringHelper.TWO_TIME_FORMAT && h > 0) {
+          return g;
+        }
+      }
+      if (m > 0) {
+        E = TimeStringHelper.multiOrShortTimeString("generic_minute", m, r);
+        if (g.length > 0) {
+          g += s ? "\n" : " ";
+        }
+        g += m + " " + n(E);
+        if (t.indexOf("onetime") >= 0 || t == TimeStringHelper.TWO_TIME_FORMAT && (d > 0 || h > 0)) {
           return g;
         }
       } else if (t == TimeStringHelper.TWO_TIME_FORMAT && g != "") {
@@ -124674,26 +124788,26 @@ var ggs_lib = function (e) {
       var u = a.int(l / 60);
       var c = a.int(u / 24);
       var _ = a.int(c / 30);
-      var d = _;
-      var m = a.int(c - _ * 30);
+      var m = _;
+      var d = a.int(c - _ * 30);
       var h = a.int(u - c * 24);
       var p = a.int(l - u * 60);
       var g = a.int(o - l * 60);
-      if (d > 0) {
-        if ((s = i.MathBase.ceil(m / 30, 1)) >= 1) {
-          d++;
-        } else if (s > 0) {
-          return d + t("generic_comma") + s.toString().substr(s.toString().indexOf(".") + 1) + " " + t("generic_months");
-        }
-        return d + " " + t(TimeStringHelper.multiOrShortTimeString("generic_month", d, false));
-      }
       if (m > 0) {
-        if ((s = i.MathBase.ceil(h / 24, 1)) >= 1) {
+        if ((s = i.MathBase.ceil(d / 30, 1)) >= 1) {
           m++;
         } else if (s > 0) {
-          return m + t("generic_comma") + s.toString().substr(s.toString().indexOf(".") + 1) + " " + t("generic_days");
+          return m + t("generic_comma") + s.toString().substr(s.toString().indexOf(".") + 1) + " " + t("generic_months");
         }
-        return m + " " + t(TimeStringHelper.multiOrShortTimeString("generic_day", m, false));
+        return m + " " + t(TimeStringHelper.multiOrShortTimeString("generic_month", m, false));
+      }
+      if (d > 0) {
+        if ((s = i.MathBase.ceil(h / 24, 1)) >= 1) {
+          d++;
+        } else if (s > 0) {
+          return d + t("generic_comma") + s.toString().substr(s.toString().indexOf(".") + 1) + " " + t("generic_days");
+        }
+        return d + " " + t(TimeStringHelper.multiOrShortTimeString("generic_day", d, false));
       }
       if (n == TimeStringHelper.HOURS_MINUTES_SECONDS_FORMAT) {
         return TimeStringHelper.getShortTimeString(r, TimeStringHelper.HOURS_MINUTES_SECONDS_FORMAT);
@@ -126993,8 +127107,8 @@ var ggs_lib = function (e) {
     var u = {};
     var c = a.filter;
     var _ = a.reduce;
-    var d = a.keys;
-    var m = a.isArray;
+    var m = a.keys;
+    var d = a.isArray;
     var h = a.includes;
     var p = o.positiveIntIfDefined;
     var g = o.stringWithLength;
@@ -127030,7 +127144,7 @@ var ggs_lib = function (e) {
         },
         message: "should be a function or array of functions",
         validate: function (e) {
-          return typeof e == "function" || m(e) && c(e, function (e) {
+          return typeof e == "function" || d(e) && c(e, function (e) {
             return typeof e == "function";
           }).length === e.length;
         }
@@ -127044,7 +127158,7 @@ var ggs_lib = function (e) {
         },
         message: "should be an object containing endpoint URLs { notify, sessions }. sessions is optional if autoCaptureSessions=false",
         validate: function (e, t) {
-          return e && typeof e == "object" && g(e.notify) && (t.autoCaptureSessions === false || g(e.sessions)) && c(d(e), function (e) {
+          return e && typeof e == "object" && g(e.notify) && (t.autoCaptureSessions === false || g(e.sessions)) && c(m(e), function (e) {
             return !h(["notify", "sessions"], e);
           }).length === 0;
         }
@@ -127064,7 +127178,7 @@ var ggs_lib = function (e) {
         },
         message: "should be an array of strings",
         validate: function (e) {
-          return e === null || m(e) && c(e, function (e) {
+          return e === null || d(e) && c(e, function (e) {
             return typeof e == "string";
           }).length === e.length;
         }
@@ -127128,7 +127242,7 @@ var ggs_lib = function (e) {
       if (!e || !t) {
         throw new Error("opts and schema objects are required");
       }
-      return _(d(t), function (n, i) {
+      return _(m(t), function (n, i) {
         n[i] = e[i] !== undefined ? e[i] : t[i].defaultValue(e[i], e);
         return n;
       }, {});
@@ -127137,7 +127251,7 @@ var ggs_lib = function (e) {
       if (!e || !t) {
         throw new Error("opts and schema objects are required");
       }
-      var n = _(d(t), function (n, i) {
+      var n = _(m(t), function (n, i) {
         if (t[i].validate(e[i], e)) {
           return n;
         } else {
@@ -128045,12 +128159,12 @@ var ggs_lib = function (e) {
       });
       return e;
     }
-    var de = {};
-    var me = a.map;
+    var me = {};
+    var de = a.map;
     var he = a.reduce;
     var pe = a.filter;
-    de.init = function (e) {
-      me(ge, function (t) {
+    me.init = function (e) {
+      de(ge, function (t) {
         var n = console[t];
         console[t] = function () {
           for (var i = arguments.length, a = Array(i), s = 0; s < i; s++) {
@@ -128075,7 +128189,7 @@ var ggs_lib = function (e) {
         };
       });
     };
-    de.configSchema = {
+    me.configSchema = {
       consoleBreadcrumbsEnabled: {
         defaultValue: function () {},
         validate: function (e) {
@@ -128703,17 +128817,17 @@ var ggs_lib = function (e) {
         var n = 0;
         return function visit(e, i) {
           function edgesExceeded() {
-            return i > dt && n > _t;
+            return i > mt && n > _t;
           }
           n++;
           if (i === undefined) {
             i = 0;
           }
           if (i > ct) {
-            return mt;
+            return dt;
           }
           if (edgesExceeded()) {
-            return mt;
+            return dt;
           }
           if (e === null || typeof e != "object") {
             return e;
@@ -128745,7 +128859,7 @@ var ggs_lib = function (e) {
             var s = [];
             for (var r = 0, o = e.length; r < o; r++) {
               if (edgesExceeded()) {
-                s.push(mt);
+                s.push(dt);
                 break;
               }
               s.push(visit(e[r], i + 1));
@@ -128758,7 +128872,7 @@ var ggs_lib = function (e) {
             for (var u in e) {
               if (Object.prototype.hasOwnProperty.call(e, u)) {
                 if (edgesExceeded()) {
-                  l[u] = mt;
+                  l[u] = dt;
                   break;
                 }
                 l[u] = visit(safelyGetProp(e, u), i + 1);
@@ -128772,8 +128886,8 @@ var ggs_lib = function (e) {
     }
     var ct = 20;
     var _t = 25000;
-    var dt = 8;
-    var mt = "...";
+    var mt = 8;
+    var dt = "...";
     function throwsMessage(e) {
       return "[Throws: " + (e ? e.message : "?") + "]";
     }
@@ -128893,7 +129007,7 @@ var ggs_lib = function (e) {
     var It = a.map;
     var vt = a.reduce;
     var At = yt({}, u.schema, ce);
-    var Ot = [ot, it, Te, Ee, Ke, re, de, Me, Ne, Oe, Se, Qe, be, Je];
+    var Ot = [ot, it, Te, Ee, Ke, re, me, Me, Ne, Oe, Se, Qe, be, Je];
     St = function (e, t = []) {
       if (typeof e == "string") {
         e = {
@@ -128954,7 +129068,7 @@ var ggs_lib = function (e) {
         a.use(Me);
       }
       if (Lt(a.config, "consoleBreadcrumbsEnabled", false)) {
-        a.use(de);
+        a.use(me);
       }
       It(t, function (e) {
         return a.use(e);
@@ -129654,36 +129768,36 @@ var ggs_lib = function (e) {
   n.d(t, "BezierPlugin", function () {
     return _.default;
   });
-  var d = n(10);
+  var m = n(10);
   n.d(t, "Back", function () {
-    return d.Back;
+    return m.Back;
   });
   n.d(t, "Elastic", function () {
-    return d.Elastic;
+    return m.Elastic;
   });
   n.d(t, "Bounce", function () {
-    return d.Bounce;
+    return m.Bounce;
   });
   n.d(t, "RoughEase", function () {
-    return d.RoughEase;
+    return m.RoughEase;
   });
   n.d(t, "SlowMo", function () {
-    return d.SlowMo;
+    return m.SlowMo;
   });
   n.d(t, "SteppedEase", function () {
-    return d.SteppedEase;
+    return m.SteppedEase;
   });
   n.d(t, "Circ", function () {
-    return d.Circ;
+    return m.Circ;
   });
   n.d(t, "Expo", function () {
-    return d.Expo;
+    return m.Expo;
   });
   n.d(t, "Sine", function () {
-    return d.Sine;
+    return m.Sine;
   });
   n.d(t, "ExpoScaleEase", function () {
-    return d.ExpoScaleEase;
+    return m.ExpoScaleEase;
   });
 }, function (e, t) {
   e.exports = function (e) {
@@ -130697,8 +130811,8 @@ var ggs_lib = function (e) {
   var u = n(46);
   var c = n(206);
   var _ = n(207);
-  var d = n(87);
-  var m = n(27);
+  var m = n(87);
+  var d = n(27);
   var h = /^[1-9][0-9]*$/;
   var p = /^-?[1-9][0-9]*$/;
   var g = /^0[x][0-9a-fA-F]+$/;
@@ -130731,7 +130845,7 @@ var ggs_lib = function (e) {
     var G = t;
     var k = n.keepCase ? function (e) {
       return e;
-    } : m.camelCase;
+    } : d.camelCase;
     function illegal(e, t, n) {
       var i = parse.filename;
       if (!n) {
@@ -130897,7 +131011,7 @@ var ggs_lib = function (e) {
                     (function parseMapField(e) {
                       B("<");
                       var t = N();
-                      if (d.mapKey[t] === undefined) {
+                      if (m.mapKey[t] === undefined) {
                         throw illegal(t, "type");
                       }
                       B(",");
@@ -131129,7 +131243,7 @@ var ggs_lib = function (e) {
           parseInlineOptions(o);
         });
         e.add(o);
-        if (!U && !!o.repeated && (d.packed[i] !== undefined || d.basic[i] === undefined)) {
+        if (!U && !!o.repeated && (m.packed[i] !== undefined || m.basic[i] === undefined)) {
           o.setOption("packed", false, true);
         }
       } else {
@@ -131138,9 +131252,9 @@ var ggs_lib = function (e) {
           if (!S.test(n)) {
             throw illegal(n, "name");
           }
-          var i = m.lcFirst(n);
+          var i = d.lcFirst(n);
           if (n === i) {
-            n = m.ucFirst(n);
+            n = d.ucFirst(n);
           }
           B("=");
           var a = parseId(N());
@@ -131471,4 +131585,4 @@ var ggs_lib = function (e) {
     return common[e] || null;
   };
 }]);
-//# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/dll/ggs.dll.01dea9bb7b3c4f6998d9.js.map
+//# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/dll/ggs.dll.11be5be55fee5bcee223.js.map

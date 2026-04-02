@@ -28773,7 +28773,8 @@
     "addLegendaryToken": "6",
     "addLegendaryMaterial": "26",
     "addImperialDucat": "1",
-    "addPlaster": "21"
+    "addPlaster": "21",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50673",
@@ -28783,7 +28784,8 @@
     "addLegendaryToken": "10",
     "addLegendaryMaterial": "38",
     "addImperialDucat": "1",
-    "addPlaster": "19"
+    "addPlaster": "19",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50674",
@@ -28793,7 +28795,8 @@
     "addLegendaryToken": "13",
     "addLegendaryMaterial": "50",
     "addImperialDucat": "1",
-    "addPlaster": "17"
+    "addPlaster": "17",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50675",
@@ -28803,7 +28806,8 @@
     "addLegendaryToken": "16",
     "addLegendaryMaterial": "63",
     "addImperialDucat": "2",
-    "addPlaster": "16"
+    "addPlaster": "16",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50676",
@@ -28813,7 +28817,8 @@
     "addLegendaryToken": "19",
     "addLegendaryMaterial": "76",
     "addImperialDucat": "2",
-    "addPlaster": "12"
+    "addPlaster": "12",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50677",
@@ -28823,7 +28828,8 @@
     "addLegendaryToken": "22",
     "addLegendaryMaterial": "89",
     "addImperialDucat": "2",
-    "addPlaster": "10"
+    "addPlaster": "10",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50678",
@@ -28833,7 +28839,8 @@
     "addLegendaryToken": "25",
     "addLegendaryMaterial": "102",
     "addImperialDucat": "2",
-    "addPlaster": "8"
+    "addPlaster": "8",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50679",
@@ -28843,7 +28850,8 @@
     "addLegendaryToken": "29",
     "addLegendaryMaterial": "114",
     "addImperialDucat": "3",
-    "addPlaster": "6"
+    "addPlaster": "6",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50680",
@@ -28853,7 +28861,8 @@
     "addLegendaryToken": "32",
     "addLegendaryMaterial": "127",
     "addImperialDucat": "3",
-    "addPlaster": "4"
+    "addPlaster": "4",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50681",
@@ -28870,7 +28879,8 @@
     "addLegendaryToken": "6",
     "addLegendaryMaterial": "26",
     "addImperialDucat": "1",
-    "addPlaster": "46"
+    "addPlaster": "46",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50683",
@@ -28880,7 +28890,8 @@
     "addLegendaryToken": "13",
     "addLegendaryMaterial": "50",
     "addImperialDucat": "1",
-    "addPlaster": "42"
+    "addPlaster": "42",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50684",
@@ -28890,7 +28901,8 @@
     "addLegendaryToken": "19",
     "addLegendaryMaterial": "76",
     "addImperialDucat": "2",
-    "addPlaster": "38"
+    "addPlaster": "38",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50685",
@@ -28900,7 +28912,8 @@
     "addLegendaryToken": "25",
     "addLegendaryMaterial": "102",
     "addImperialDucat": "2",
-    "addPlaster": "33"
+    "addPlaster": "33",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50686",
@@ -28910,7 +28923,8 @@
     "addLegendaryToken": "32",
     "addLegendaryMaterial": "127",
     "addImperialDucat": "3",
-    "addPlaster": "32"
+    "addPlaster": "32",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50687",
@@ -28920,7 +28934,8 @@
     "addLegendaryToken": "38",
     "addLegendaryMaterial": "152",
     "addImperialDucat": "4",
-    "addPlaster": "25"
+    "addPlaster": "25",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50688",
@@ -28930,7 +28945,8 @@
     "addLegendaryToken": "44",
     "addLegendaryMaterial": "178",
     "addImperialDucat": "4",
-    "addPlaster": "21"
+    "addPlaster": "21",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50689",
@@ -28940,7 +28956,8 @@
     "addLegendaryToken": "51",
     "addLegendaryMaterial": "203",
     "addImperialDucat": "5",
-    "addPlaster": "16"
+    "addPlaster": "16",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50690",
@@ -28950,7 +28967,8 @@
     "addLegendaryToken": "57",
     "addLegendaryMaterial": "229",
     "addImperialDucat": "6",
-    "addPlaster": "12"
+    "addPlaster": "12",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50691",
@@ -28960,7 +28978,8 @@
     "addLegendaryToken": "63",
     "addLegendaryMaterial": "254",
     "addImperialDucat": "6",
-    "addPlaster": "8"
+    "addPlaster": "8",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50692",
@@ -28977,7 +28996,8 @@
     "addLegendaryToken": "10",
     "addLegendaryMaterial": "38",
     "addImperialDucat": "1",
-    "addPlaster": "69"
+    "addPlaster": "69",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50694",
@@ -28987,7 +29007,8 @@
     "addLegendaryToken": "19",
     "addLegendaryMaterial": "76",
     "addImperialDucat": "2",
-    "addPlaster": "63"
+    "addPlaster": "63",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50695",
@@ -28997,7 +29018,8 @@
     "addLegendaryToken": "29",
     "addLegendaryMaterial": "114",
     "addImperialDucat": "3",
-    "addPlaster": "57"
+    "addPlaster": "57",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50696",
@@ -29007,7 +29029,8 @@
     "addLegendaryToken": "38",
     "addLegendaryMaterial": "152",
     "addImperialDucat": "4",
-    "addPlaster": "50"
+    "addPlaster": "50",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50697",
@@ -29017,7 +29040,8 @@
     "addLegendaryToken": "48",
     "addLegendaryMaterial": "190",
     "addImperialDucat": "5",
-    "addPlaster": "48"
+    "addPlaster": "48",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50698",
@@ -29027,7 +29051,8 @@
     "addLegendaryToken": "57",
     "addLegendaryMaterial": "229",
     "addImperialDucat": "6",
-    "addPlaster": "37"
+    "addPlaster": "37",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50699",
@@ -29037,7 +29062,8 @@
     "addLegendaryToken": "67",
     "addLegendaryMaterial": "266",
     "addImperialDucat": "6",
-    "addPlaster": "31"
+    "addPlaster": "31",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50700",
@@ -29047,7 +29073,8 @@
     "addLegendaryToken": "76",
     "addLegendaryMaterial": "305",
     "addImperialDucat": "7",
-    "addPlaster": "25"
+    "addPlaster": "25",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50701",
@@ -29057,7 +29084,8 @@
     "addLegendaryToken": "86",
     "addLegendaryMaterial": "343",
     "addImperialDucat": "8",
-    "addPlaster": "18"
+    "addPlaster": "18",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50702",
@@ -29067,7 +29095,8 @@
     "addLegendaryToken": "95",
     "addLegendaryMaterial": "381",
     "addImperialDucat": "9",
-    "addPlaster": "12"
+    "addPlaster": "12",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50703",
@@ -29084,7 +29113,8 @@
     "addLegendaryToken": "13",
     "addLegendaryMaterial": "50",
     "addImperialDucat": "1",
-    "addPlaster": "92"
+    "addPlaster": "92",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50705",
@@ -29094,7 +29124,8 @@
     "addLegendaryToken": "25",
     "addLegendaryMaterial": "102",
     "addImperialDucat": "2",
-    "addPlaster": "84"
+    "addPlaster": "84",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50706",
@@ -29104,7 +29135,8 @@
     "addLegendaryToken": "38",
     "addLegendaryMaterial": "152",
     "addImperialDucat": "4",
-    "addPlaster": "75"
+    "addPlaster": "75",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50707",
@@ -29114,7 +29146,8 @@
     "addLegendaryToken": "51",
     "addLegendaryMaterial": "203",
     "addImperialDucat": "5",
-    "addPlaster": "67"
+    "addPlaster": "67",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50708",
@@ -29124,7 +29157,8 @@
     "addLegendaryToken": "63",
     "addLegendaryMaterial": "254",
     "addImperialDucat": "6",
-    "addPlaster": "64"
+    "addPlaster": "64",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50709",
@@ -29134,7 +29168,8 @@
     "addLegendaryToken": "76",
     "addLegendaryMaterial": "305",
     "addImperialDucat": "7",
-    "addPlaster": "50"
+    "addPlaster": "50",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50710",
@@ -29144,7 +29179,8 @@
     "addLegendaryToken": "89",
     "addLegendaryMaterial": "355",
     "addImperialDucat": "9",
-    "addPlaster": "41"
+    "addPlaster": "41",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50711",
@@ -29154,7 +29190,8 @@
     "addLegendaryToken": "102",
     "addLegendaryMaterial": "406",
     "addImperialDucat": "10",
-    "addPlaster": "33"
+    "addPlaster": "33",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50712",
@@ -29164,7 +29201,8 @@
     "addLegendaryToken": "114",
     "addLegendaryMaterial": "457",
     "addImperialDucat": "11",
-    "addPlaster": "24"
+    "addPlaster": "24",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50713",
@@ -29174,7 +29212,8 @@
     "addLegendaryToken": "127",
     "addLegendaryMaterial": "508",
     "addImperialDucat": "12",
-    "addPlaster": "16"
+    "addPlaster": "16",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50714",
@@ -29191,7 +29230,8 @@
     "addLegendaryToken": "22",
     "addLegendaryMaterial": "89",
     "addImperialDucat": "2",
-    "addPlaster": "162"
+    "addPlaster": "162",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50716",
@@ -29201,7 +29241,8 @@
     "addLegendaryToken": "44",
     "addLegendaryMaterial": "178",
     "addImperialDucat": "4",
-    "addPlaster": "147"
+    "addPlaster": "147",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50717",
@@ -29211,7 +29252,8 @@
     "addLegendaryToken": "67",
     "addLegendaryMaterial": "266",
     "addImperialDucat": "6",
-    "addPlaster": "132"
+    "addPlaster": "132",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50718",
@@ -29221,7 +29263,8 @@
     "addLegendaryToken": "89",
     "addLegendaryMaterial": "355",
     "addImperialDucat": "9",
-    "addPlaster": "117"
+    "addPlaster": "117",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50719",
@@ -29231,7 +29274,8 @@
     "addLegendaryToken": "111",
     "addLegendaryMaterial": "445",
     "addImperialDucat": "11",
-    "addPlaster": "111"
+    "addPlaster": "111",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50720",
@@ -29241,7 +29285,8 @@
     "addLegendaryToken": "133",
     "addLegendaryMaterial": "534",
     "addImperialDucat": "13",
-    "addPlaster": "87"
+    "addPlaster": "87",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50721",
@@ -29251,7 +29296,8 @@
     "addLegendaryToken": "156",
     "addLegendaryMaterial": "622",
     "addImperialDucat": "15",
-    "addPlaster": "72"
+    "addPlaster": "72",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50722",
@@ -29261,7 +29307,8 @@
     "addLegendaryToken": "178",
     "addLegendaryMaterial": "711",
     "addImperialDucat": "17",
-    "addPlaster": "58"
+    "addPlaster": "58",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50723",
@@ -29271,7 +29318,8 @@
     "addLegendaryToken": "200",
     "addLegendaryMaterial": "800",
     "addImperialDucat": "19",
-    "addPlaster": "43"
+    "addPlaster": "43",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50724",
@@ -29281,7 +29329,8 @@
     "addLegendaryToken": "222",
     "addLegendaryMaterial": "889",
     "addImperialDucat": "22",
-    "addPlaster": "28"
+    "addPlaster": "28",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50725",
@@ -29298,7 +29347,8 @@
     "addLegendaryToken": "22",
     "addLegendaryMaterial": "89",
     "addImperialDucat": "2",
-    "addPlaster": "162"
+    "addPlaster": "162",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50727",
@@ -29308,7 +29358,8 @@
     "addLegendaryToken": "44",
     "addLegendaryMaterial": "178",
     "addImperialDucat": "4",
-    "addPlaster": "147"
+    "addPlaster": "147",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50728",
@@ -29318,7 +29369,8 @@
     "addLegendaryToken": "67",
     "addLegendaryMaterial": "266",
     "addImperialDucat": "6",
-    "addPlaster": "132"
+    "addPlaster": "132",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50729",
@@ -29328,7 +29380,8 @@
     "addLegendaryToken": "89",
     "addLegendaryMaterial": "355",
     "addImperialDucat": "9",
-    "addPlaster": "117"
+    "addPlaster": "117",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50730",
@@ -29338,7 +29391,8 @@
     "addLegendaryToken": "111",
     "addLegendaryMaterial": "445",
     "addImperialDucat": "11",
-    "addPlaster": "111"
+    "addPlaster": "111",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50731",
@@ -29348,7 +29402,8 @@
     "addLegendaryToken": "133",
     "addLegendaryMaterial": "534",
     "addImperialDucat": "13",
-    "addPlaster": "87"
+    "addPlaster": "87",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50732",
@@ -29358,7 +29413,8 @@
     "addLegendaryToken": "156",
     "addLegendaryMaterial": "622",
     "addImperialDucat": "15",
-    "addPlaster": "72"
+    "addPlaster": "72",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50733",
@@ -29368,7 +29424,8 @@
     "addLegendaryToken": "178",
     "addLegendaryMaterial": "711",
     "addImperialDucat": "17",
-    "addPlaster": "58"
+    "addPlaster": "58",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50734",
@@ -29378,7 +29435,8 @@
     "addLegendaryToken": "200",
     "addLegendaryMaterial": "800",
     "addImperialDucat": "19",
-    "addPlaster": "43"
+    "addPlaster": "43",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50735",
@@ -29388,7 +29446,8 @@
     "addLegendaryToken": "222",
     "addLegendaryMaterial": "889",
     "addImperialDucat": "22",
-    "addPlaster": "28"
+    "addPlaster": "28",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50736",
@@ -29405,7 +29464,8 @@
     "addLegendaryToken": "41",
     "addLegendaryMaterial": "165",
     "addImperialDucat": "4",
-    "addPlaster": "300"
+    "addPlaster": "300",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50738",
@@ -29415,7 +29475,8 @@
     "addLegendaryToken": "83",
     "addLegendaryMaterial": "330",
     "addImperialDucat": "8",
-    "addPlaster": "273"
+    "addPlaster": "273",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50739",
@@ -29425,7 +29486,8 @@
     "addLegendaryToken": "124",
     "addLegendaryMaterial": "495",
     "addImperialDucat": "12",
-    "addPlaster": "245"
+    "addPlaster": "245",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50740",
@@ -29435,7 +29497,8 @@
     "addLegendaryToken": "165",
     "addLegendaryMaterial": "660",
     "addImperialDucat": "16",
-    "addPlaster": "217"
+    "addPlaster": "217",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50741",
@@ -29445,7 +29508,8 @@
     "addLegendaryToken": "206",
     "addLegendaryMaterial": "826",
     "addImperialDucat": "20",
-    "addPlaster": "207"
+    "addPlaster": "207",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50742",
@@ -29455,7 +29519,8 @@
     "addLegendaryToken": "248",
     "addLegendaryMaterial": "990",
     "addImperialDucat": "24",
-    "addPlaster": "162"
+    "addPlaster": "162",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50743",
@@ -29465,7 +29530,8 @@
     "addLegendaryToken": "289",
     "addLegendaryMaterial": "1155",
     "addImperialDucat": "28",
-    "addPlaster": "135"
+    "addPlaster": "135",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50744",
@@ -29475,7 +29541,8 @@
     "addLegendaryToken": "330",
     "addLegendaryMaterial": "1321",
     "addImperialDucat": "32",
-    "addPlaster": "107"
+    "addPlaster": "107",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50745",
@@ -29485,7 +29552,8 @@
     "addLegendaryToken": "371",
     "addLegendaryMaterial": "1486",
     "addImperialDucat": "36",
-    "addPlaster": "79"
+    "addPlaster": "79",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50746",
@@ -29495,7 +29563,8 @@
     "addLegendaryToken": "413",
     "addLegendaryMaterial": "1650",
     "addImperialDucat": "40",
-    "addPlaster": "52"
+    "addPlaster": "52",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50747",
@@ -29512,7 +29581,8 @@
     "addLegendaryToken": "48",
     "addLegendaryMaterial": "190",
     "addImperialDucat": "5",
-    "addPlaster": "346"
+    "addPlaster": "346",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50749",
@@ -29522,7 +29592,8 @@
     "addLegendaryToken": "95",
     "addLegendaryMaterial": "381",
     "addImperialDucat": "9",
-    "addPlaster": "314"
+    "addPlaster": "314",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50750",
@@ -29532,7 +29603,8 @@
     "addLegendaryToken": "143",
     "addLegendaryMaterial": "571",
     "addImperialDucat": "14",
-    "addPlaster": "283"
+    "addPlaster": "283",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50751",
@@ -29542,7 +29614,8 @@
     "addLegendaryToken": "190",
     "addLegendaryMaterial": "762",
     "addImperialDucat": "18",
-    "addPlaster": "251"
+    "addPlaster": "251",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50752",
@@ -29552,7 +29625,8 @@
     "addLegendaryToken": "238",
     "addLegendaryMaterial": "952",
     "addImperialDucat": "23",
-    "addPlaster": "239"
+    "addPlaster": "239",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50753",
@@ -29562,7 +29636,8 @@
     "addLegendaryToken": "286",
     "addLegendaryMaterial": "1143",
     "addImperialDucat": "28",
-    "addPlaster": "187"
+    "addPlaster": "187",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50754",
@@ -29572,7 +29647,8 @@
     "addLegendaryToken": "333",
     "addLegendaryMaterial": "1334",
     "addImperialDucat": "32",
-    "addPlaster": "155"
+    "addPlaster": "155",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50755",
@@ -29582,7 +29658,8 @@
     "addLegendaryToken": "381",
     "addLegendaryMaterial": "1524",
     "addImperialDucat": "37",
-    "addPlaster": "123"
+    "addPlaster": "123",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50756",
@@ -29592,7 +29669,8 @@
     "addLegendaryToken": "429",
     "addLegendaryMaterial": "1714",
     "addImperialDucat": "42",
-    "addPlaster": "92"
+    "addPlaster": "92",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "50757",
@@ -29602,7 +29680,8 @@
     "addLegendaryToken": "476",
     "addLegendaryMaterial": "1905",
     "addImperialDucat": "46",
-    "addPlaster": "60"
+    "addPlaster": "60",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "8606",
@@ -32211,6 +32290,948 @@
     "comment2": "Exalted Red Christmas Pyramid Watermill Powered",
     "decoWodID": "4364",
     "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9530",
+    "comment1": "LowTier Lootbox - Fungal Swarm",
+    "comment2": "Armor",
+    "equipmentIDs": "1445"
+  },
+  {
+    "rewardID": "9531",
+    "comment1": "LowTier Lootbox - Fungal Swarm",
+    "comment2": "Weapon",
+    "equipmentIDs": "1446"
+  },
+  {
+    "rewardID": "9532",
+    "comment1": "LowTier Lootbox - Fungal Swarm",
+    "comment2": "Helmet",
+    "equipmentIDs": "1447"
+  },
+  {
+    "rewardID": "9533",
+    "comment1": "LowTier Lootbox - Fungal Swarm",
+    "comment2": "Artifact",
+    "equipmentIDs": "1448"
+  },
+  {
+    "rewardID": "9534",
+    "comment1": "LowTier Lootbox - Fungal Swarm",
+    "comment2": "Commander",
+    "equipmentIDs": "1449"
+  },
+  {
+    "rewardID": "9535",
+    "comment1": "LowTier Lootbox - Fungal Swarm",
+    "comment2": "Gem1",
+    "gemIDs": "478"
+  },
+  {
+    "rewardID": "9536",
+    "comment1": "LowTier Lootbox - Fungal Swarm",
+    "comment2": "Gem2",
+    "gemIDs": "479"
+  },
+  {
+    "rewardID": "9537",
+    "comment1": "LowTier Lootbox - Fungal Swarm",
+    "comment2": "Gem3",
+    "gemIDs": "480"
+  },
+  {
+    "rewardID": "9538",
+    "comment1": "LowTier Lootbox - Fungal Swarm",
+    "comment2": "Gem4",
+    "gemIDs": "481"
+  },
+  {
+    "rewardID": "9539",
+    "comment1": "MidTier Lootbox - Fungal Swarm",
+    "comment2": "Armor",
+    "equipmentIDs": "1450"
+  },
+  {
+    "rewardID": "9540",
+    "comment1": "MidTier Lootbox - Fungal Swarm",
+    "comment2": "Weapon",
+    "equipmentIDs": "1451"
+  },
+  {
+    "rewardID": "9541",
+    "comment1": "MidTier Lootbox - Fungal Swarm",
+    "comment2": "Helmet",
+    "equipmentIDs": "1452"
+  },
+  {
+    "rewardID": "9542",
+    "comment1": "MidTier Lootbox - Fungal Swarm",
+    "comment2": "Artifact",
+    "equipmentIDs": "1453"
+  },
+  {
+    "rewardID": "9543",
+    "comment1": "MidTier Lootbox - Fungal Swarm",
+    "comment2": "Commander",
+    "equipmentIDs": "1454"
+  },
+  {
+    "rewardID": "9544",
+    "comment1": "MidTier Lootbox - Fungal Swarm",
+    "comment2": "Gem1",
+    "gemIDs": "482"
+  },
+  {
+    "rewardID": "9545",
+    "comment1": "MidTier Lootbox - Fungal Swarm",
+    "comment2": "Gem2",
+    "gemIDs": "483"
+  },
+  {
+    "rewardID": "9546",
+    "comment1": "MidTier Lootbox - Fungal Swarm",
+    "comment2": "Gem3",
+    "gemIDs": "484"
+  },
+  {
+    "rewardID": "9547",
+    "comment1": "MidTier Lootbox - Fungal Swarm",
+    "comment2": "Gem4",
+    "gemIDs": "485"
+  },
+  {
+    "rewardID": "9548",
+    "comment1": "HighTier Lootbox - Fungal Swarm",
+    "comment2": "Armor",
+    "equipmentIDs": "1455"
+  },
+  {
+    "rewardID": "9549",
+    "comment1": "HighTier Lootbox - Fungal Swarm",
+    "comment2": "Weapon",
+    "equipmentIDs": "1456"
+  },
+  {
+    "rewardID": "9550",
+    "comment1": "HighTier Lootbox - Fungal Swarm",
+    "comment2": "Helmet",
+    "equipmentIDs": "1457"
+  },
+  {
+    "rewardID": "9551",
+    "comment1": "HighTier Lootbox - Fungal Swarm",
+    "comment2": "Artifact",
+    "equipmentIDs": "1458"
+  },
+  {
+    "rewardID": "9552",
+    "comment1": "HighTier Lootbox - Fungal Swarm",
+    "comment2": "Commander",
+    "equipmentIDs": "1459"
+  },
+  {
+    "rewardID": "9553",
+    "comment1": "HighTier Lootbox - Fungal Swarm",
+    "comment2": "Gem1",
+    "gemIDs": "486"
+  },
+  {
+    "rewardID": "9554",
+    "comment1": "HighTier Lootbox - Fungal Swarm",
+    "comment2": "Gem2",
+    "gemIDs": "487"
+  },
+  {
+    "rewardID": "9555",
+    "comment1": "HighTier Lootbox - Fungal Swarm",
+    "comment2": "Gem3",
+    "gemIDs": "488"
+  },
+  {
+    "rewardID": "9556",
+    "comment1": "HighTier Lootbox - Fungal Swarm",
+    "comment2": "Gem4",
+    "gemIDs": "489"
+  },
+  {
+    "rewardID": "9567",
+    "comment1": "This should be rank 1",
+    "comment2": "Premium Carnival DwellingPremium Carnival KeepTopX Gacha Commander",
+    "constructionItemIDs": "1083+7#1084",
+    "equipmentIDs": "1380"
+  },
+  {
+    "rewardID": "9568",
+    "comment1": "This should be rank 2",
+    "comment2": "TopX Gacha CommanderTopX Gacha Castellan",
+    "equipmentIDs": "1380"
+  },
+  {
+    "rewardID": "9569",
+    "comment1": "This should be rank 3",
+    "comment2": "Gacha Currency",
+    "equipmentIDs": "1381"
+  },
+  {
+    "rewardID": "9570",
+    "comment1": "This should be milestone 1",
+    "comment2": "Carnival Honey Gardens (Economy 2)",
+    "addCarnivalMask": "100"
+  },
+  {
+    "rewardID": "9571",
+    "comment1": "This should be milestone 2",
+    "comment2": "Gen XP15000",
+    "constructionItemIDs": "1090"
+  },
+  {
+    "rewardID": "9572",
+    "comment1": "This should be milestone 3",
+    "comment2": "Carnival Gondola (2639)",
+    "addGenXP15000": "10"
+  },
+  {
+    "rewardID": "9573",
+    "comment2": "Offering to Fat King",
+    "decoWodID": "2639",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9574",
+    "comment2": "Upgrade Tokens",
+    "addRelicFragment": "2000"
+  },
+  {
+    "rewardID": "9575",
+    "comment2": "Construction Tokens",
+    "addFatKingToken": "15"
+  },
+  {
+    "rewardID": "9576",
+    "comment2": "Gen XP1000",
+    "addLegendaryMaterial": "100"
+  },
+  {
+    "rewardID": "9577",
+    "comment2": "Offering to Knight",
+    "addLegendaryToken": "50"
+  },
+  {
+    "rewardID": "9578",
+    "comment2": "ARE Temp Commander",
+    "addGenXP1000": "10"
+  },
+  {
+    "rewardID": "9579",
+    "comment2": "Valenta Offerings",
+    "addKnightToken": "10"
+  },
+  {
+    "rewardID": "9580",
+    "comment2": "Offering to Princess",
+    "equipmentIDs": "1382"
+  },
+  {
+    "rewardID": "9581",
+    "comment2": "Hasan Offerings",
+    "addValentaToken": "5"
+  },
+  {
+    "rewardID": "9582",
+    "comment2": "Sasaki Offerings",
+    "addPrincessToken": "5"
+  },
+  {
+    "rewardID": "9583",
+    "comment2": "End of Spring 2024 Sales Deco (2974)",
+    "addHasanToken": "5"
+  },
+  {
+    "rewardID": "9586",
+    "comment2": "Exalted Purple Carnival Canal",
+    "addSasakiToken": "1"
+  },
+  {
+    "rewardID": "9587",
+    "comment2": "Carnival Barrel Workshop",
+    "decoWodID": "2974",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9588",
+    "comment2": "Carnival Honey Gardens",
+    "decoWodID": "4383",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9589",
+    "comment2": "Carnival Keep",
+    "constructionItemIDs": "1076"
+  },
+  {
+    "rewardID": "9590",
+    "comment2": "Carnival Hall of Legends",
+    "constructionItemIDs": "1077"
+  },
+  {
+    "rewardID": "9591",
+    "comment2": "Carnival Dwelling",
+    "constructionItemIDs": "1078"
+  },
+  {
+    "rewardID": "9592",
+    "comment2": "Carnival Granary",
+    "constructionItemIDs": "1079"
+  },
+  {
+    "rewardID": "9593",
+    "comment2": "Carnival Mask",
+    "constructionItemIDs": "1080"
+  },
+  {
+    "rewardID": "9594",
+    "comment2": "Flight of the Phoenix",
+    "constructionItemIDs": "1081"
+  },
+  {
+    "rewardID": "9595",
+    "comment2": "Phoenix Mask",
+    "equipmentIDs": "1410"
+  },
+  {
+    "rewardID": "9596",
+    "comment2": "Smuggler's Gondola",
+    "equipmentIDs": "712"
+  },
+  {
+    "rewardID": "9597",
+    "comment2": "Carnival Honey Gardens (Hybrid)",
+    "equipmentIDs": "713"
+  },
+  {
+    "rewardID": "9598",
+    "comment2": "Premium Carnival Honey Gardens",
+    "equipmentIDs": "970"
+  },
+  {
+    "rewardID": "9599",
+    "comment2": "Gen XP5000",
+    "constructionItemIDs": "1088"
+  },
+  {
+    "rewardID": "9600",
+    "comment2": "Tizi Offerings",
+    "constructionItemIDs": "1087"
+  },
+  {
+    "rewardID": "9601",
+    "comment2": "Diana Offerings",
+    "addGenXP5000": "10"
+  },
+  {
+    "rewardID": "9602",
+    "comment2": "Barin Offerings",
+    "addTiziToken": "2"
+  },
+  {
+    "rewardID": "9603",
+    "comment2": "Exalted Green Carnival Canal (1)",
+    "addDianaToken": "2"
+  },
+  {
+    "rewardID": "9604",
+    "comment2": "Premium Carnival Barrel Workshop",
+    "addBarinToken": "2"
+  },
+  {
+    "rewardID": "9605",
+    "comment2": "Gen XP10000",
+    "decoWodID": "4384",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9606",
+    "comment2": "Carnival Honey Gardens (Economy 1)",
+    "constructionItemIDs": "1082"
+  },
+  {
+    "rewardID": "9607",
+    "comment2": "Carnival Honey Gardens (Economy 2)",
+    "addGenXP10000": "10"
+  },
+  {
+    "rewardID": "9608",
+    "comment2": "Exalted Red Carnival Canal",
+    "constructionItemIDs": "1089"
+  },
+  {
+    "rewardID": "9609",
+    "comment2": "Kael Offerings",
+    "constructionItemIDs": "1090"
+  },
+  {
+    "rewardID": "9610",
+    "comment2": "Premium Carnival Hall of Legends",
+    "decoWodID": "4382",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9611",
+    "comment2": "Relic Shards",
+    "addKaelrithToken": "1"
+  },
+  {
+    "rewardID": "9612",
+    "comment2": "Gen XP12500",
+    "constructionItemIDs": "1085"
+  },
+  {
+    "rewardID": "9613",
+    "comment2": "Exalted Green Carnival Canal (2)",
+    "addRelicFragment": "4000"
+  },
+  {
+    "rewardID": "9614",
+    "comment2": "Exalted Green Carnival Canal (3)",
+    "addGenXP12500": "10"
+  },
+  {
+    "rewardID": "9615",
+    "comment2": "Exalted Green Jester's Mask",
+    "decoWodID": "4385",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9616",
+    "comment2": "Carnival Honey Gardens (Economy 3)",
+    "decoWodID": "4386",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9617",
+    "comment2": "Premium Carnival Granary",
+    "decoWodID": "4387",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9618",
+    "comment2": "Premium Carnival Keep",
+    "constructionItemIDs": "1091"
+  },
+  {
+    "rewardID": "9619",
+    "comment2": "Relic Shards",
+    "constructionItemIDs": "1086"
+  },
+  {
+    "rewardID": "9620",
+    "comment2": "Sceats",
+    "constructionItemIDs": "1084"
+  },
+  {
+    "rewardID": "9621",
+    "comment2": "Carnival Dwelling (Combat 4)",
+    "addRelicFragment": "6000"
+  },
+  {
+    "rewardID": "9622",
+    "comment2": "Carnival Dwelling (Combat 3)",
+    "addSceatToken": "150",
+    "ignoreCurrencySoftCap": "1"
+  },
+  {
+    "rewardID": "9623",
+    "comment2": "Carnival Dwelling (Combat 2)",
+    "constructionItemIDs": "1095"
+  },
+  {
+    "rewardID": "9624",
+    "comment2": "Carnival Dwelling (Combat 1)",
+    "constructionItemIDs": "1094"
+  },
+  {
+    "rewardID": "9625",
+    "comment2": "Gen XP15000",
+    "constructionItemIDs": "1093"
+  },
+  {
+    "rewardID": "9626",
+    "comment2": "Premium Carnival Dwelling",
+    "constructionItemIDs": "1092"
+  },
+  {
+    "rewardID": "9627",
+    "comment2": "Gen XP15000",
+    "addGenXP15000": "20"
+  },
+  {
+    "rewardID": "9628",
+    "comment2": "Premium Carnival Dwelling",
+    "constructionItemIDs": "1083"
+  },
+  {
+    "rewardID": "9636",
+    "comment2": "Gold PvP HeroTopX Gacha Commander",
+    "equipmentIDs": "1475#1421"
+  },
+  {
+    "rewardID": "9637",
+    "comment2": "Silver PvP HeroTopX Gacha Commander",
+    "equipmentIDs": "1470#1421"
+  },
+  {
+    "rewardID": "9638",
+    "comment2": "TopX Gacha Castellan",
+    "equipmentIDs": "1460"
+  },
+  {
+    "rewardID": "9639",
+    "comment2": "Gacha Currency",
+    "addHollowMoonEgg": "100"
+  },
+  {
+    "rewardID": "9640",
+    "comment2": "Broken Egg Storehouse (Economy 2)",
+    "constructionItemIDs": "1107"
+  },
+  {
+    "rewardID": "9641",
+    "comment2": "Gen XP15000",
+    "addGenXP15000": "10"
+  },
+  {
+    "rewardID": "9642",
+    "comment2": "Guardian of Plenty",
+    "decoWodID": "4409",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9643",
+    "comment2": "Relic Shards",
+    "addRelicFragment": "2000"
+  },
+  {
+    "rewardID": "9644",
+    "comment2": "Offering to Fat King",
+    "addFatKingToken": "15"
+  },
+  {
+    "rewardID": "9645",
+    "comment2": "Easter Troop Melee Off",
+    "units": "288+1500"
+  },
+  {
+    "rewardID": "9646",
+    "comment2": "Easter Troop Melee Def",
+    "units": "336+1500"
+  },
+  {
+    "rewardID": "9647",
+    "comment2": "Easter Troop Ranged Off",
+    "units": "299+1500"
+  },
+  {
+    "rewardID": "9648",
+    "comment2": "Easter Troop Ranged Def",
+    "units": "347+1500"
+  },
+  {
+    "rewardID": "9649",
+    "comment2": "Commander Gem 1 (Bronze)",
+    "gemIDs": "490"
+  },
+  {
+    "rewardID": "9650",
+    "comment2": "Commander Gem 2 (Bronze)",
+    "gemIDs": "491"
+  },
+  {
+    "rewardID": "9651",
+    "comment2": "Commander Gem 3 (Bronze)",
+    "gemIDs": "492"
+  },
+  {
+    "rewardID": "9652",
+    "comment2": "Commander Gem 4 (Bronze)",
+    "gemIDs": "493"
+  },
+  {
+    "rewardID": "9653",
+    "comment2": "Commander Helmet (Bronze)",
+    "equipmentIDs": "1461"
+  },
+  {
+    "rewardID": "9654",
+    "comment2": "Commander Armor (Bronze)",
+    "equipmentIDs": "1462"
+  },
+  {
+    "rewardID": "9655",
+    "comment2": "Commander Weapon (Bronze)",
+    "equipmentIDs": "1463"
+  },
+  {
+    "rewardID": "9656",
+    "comment2": "Commander Artifact (Bronze)",
+    "equipmentIDs": "1464"
+  },
+  {
+    "rewardID": "9657",
+    "comment2": "Commander Hero (Bronze)",
+    "equipmentIDs": "1465"
+  },
+  {
+    "rewardID": "9658",
+    "comment2": "Offering to Valenta",
+    "addValentaToken": "5"
+  },
+  {
+    "rewardID": "9659",
+    "comment2": "Offering to Hasan",
+    "addHasanToken": "5"
+  },
+  {
+    "rewardID": "9660",
+    "comment2": "Gen XP1000",
+    "addGenXP1000": "10"
+  },
+  {
+    "rewardID": "9661",
+    "comment2": "Offering to Knight",
+    "addKnightToken": "10"
+  },
+  {
+    "rewardID": "9662",
+    "comment2": "Offering to Princess",
+    "addPrincessToken": "5"
+  },
+  {
+    "rewardID": "9663",
+    "comment2": "Easter 2024 Sales Deco (2969)",
+    "decoWodID": "2969",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9664",
+    "comment2": "Exalted Purple Guardian of Plenty",
+    "decoWodID": "4404",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9665",
+    "comment2": "Easter Hall of Legends",
+    "constructionItemIDs": "1099"
+  },
+  {
+    "rewardID": "9666",
+    "comment2": "Easter Workshop defence",
+    "constructionItemIDs": "1100"
+  },
+  {
+    "rewardID": "9667",
+    "comment2": "Easter Workshop offence",
+    "constructionItemIDs": "1101"
+  },
+  {
+    "rewardID": "9668",
+    "comment2": "Easter Granary",
+    "constructionItemIDs": "1102"
+  },
+  {
+    "rewardID": "9669",
+    "comment2": "Easter Stone quarry",
+    "constructionItemIDs": "1103"
+  },
+  {
+    "rewardID": "9670",
+    "comment2": "Easter Woodcutter",
+    "constructionItemIDs": "1104"
+  },
+  {
+    "rewardID": "9671",
+    "comment2": "Baron - Imperial Tulip (1105)",
+    "equipmentIDs": "1105"
+  },
+  {
+    "rewardID": "9672",
+    "comment2": "Baron - Birdhouse (835)",
+    "equipmentIDs": "835"
+  },
+  {
+    "rewardID": "9673",
+    "comment2": "Commander - Sparrow's prince crest (1100)",
+    "equipmentIDs": "1100"
+  },
+  {
+    "rewardID": "9674",
+    "comment2": "Commander - EvergreenClover",
+    "equipmentIDs": "1476"
+  },
+  {
+    "rewardID": "9675",
+    "comment2": "Broken Egg Greenhouse (Hybrid 1)",
+    "constructionItemIDs": "1105"
+  },
+  {
+    "rewardID": "9676",
+    "comment2": "Purple Easter Deco 20x20 Low",
+    "decoWodID": "4402",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9677",
+    "comment2": "Relic Shards",
+    "addRelicFragment": "4000"
+  },
+  {
+    "rewardID": "9678",
+    "comment2": "Relic Shards",
+    "addRelicFragment": "6000"
+  },
+  {
+    "rewardID": "9679",
+    "comment2": "Gen XP5000",
+    "addGenXP5000": "10"
+  },
+  {
+    "rewardID": "9680",
+    "comment2": "Exalted Green Guardian of Plenty (1)",
+    "decoWodID": "4405",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9681",
+    "comment2": "Broken Egg Storehouse (Economy 1)",
+    "constructionItemIDs": "1106"
+  },
+  {
+    "rewardID": "9682",
+    "comment2": "Commander Gem 1 (Silver)",
+    "gemIDs": "494"
+  },
+  {
+    "rewardID": "9683",
+    "comment2": "Commander Gem 2 (Silver)",
+    "gemIDs": "495"
+  },
+  {
+    "rewardID": "9684",
+    "comment2": "Commander Gem 3 (Silver)",
+    "gemIDs": "496"
+  },
+  {
+    "rewardID": "9685",
+    "comment2": "Commander Gem 4 (Silver)",
+    "gemIDs": "497"
+  },
+  {
+    "rewardID": "9686",
+    "comment2": "Commander Helmet (Silver)",
+    "equipmentIDs": "1466"
+  },
+  {
+    "rewardID": "9687",
+    "comment2": "Commander Armor (Silver)",
+    "equipmentIDs": "1467"
+  },
+  {
+    "rewardID": "9688",
+    "comment2": "Commander Weapon (Silver)",
+    "equipmentIDs": "1468"
+  },
+  {
+    "rewardID": "9689",
+    "comment2": "Commander Artifact (Silver)",
+    "equipmentIDs": "1469"
+  },
+  {
+    "rewardID": "9690",
+    "comment2": "Green Easter Deco 20x20 Low",
+    "decoWodID": "4400",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9691",
+    "comment2": "Tizi Offerings",
+    "addTiziToken": "2"
+  },
+  {
+    "rewardID": "9692",
+    "comment2": "Diana Offerings",
+    "addDianaToken": "2"
+  },
+  {
+    "rewardID": "9693",
+    "comment2": "Barin Offerings",
+    "addBarinToken": "2"
+  },
+  {
+    "rewardID": "9694",
+    "comment2": "Gen XP10000",
+    "addGenXP10000": "10"
+  },
+  {
+    "rewardID": "9695",
+    "comment2": "Exalted Red Guardian of Plenty",
+    "decoWodID": "4403",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9696",
+    "comment2": "Broken Egg Storehouse (Economy 2)",
+    "constructionItemIDs": "1107"
+  },
+  {
+    "rewardID": "9697",
+    "comment2": "Broken Egg Storehouse (Economy 3)",
+    "constructionItemIDs": "1108"
+  },
+  {
+    "rewardID": "9698",
+    "comment2": "Red Easter Deco 20x20 Low",
+    "decoWodID": "4401",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9699",
+    "comment2": "Purple Easter Deco 20x20 High",
+    "decoWodID": "4399",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9700",
+    "comment2": "Gen XP12500",
+    "addGenXP12500": "10"
+  },
+  {
+    "rewardID": "9701",
+    "comment2": "Exalted Green Guardian of Plenty (2)",
+    "decoWodID": "4406",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9702",
+    "comment2": "Exalted Green Guardian of Plenty (3)",
+    "decoWodID": "4407",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9703",
+    "comment2": "Exalted Green Guardian of Nurture",
+    "decoWodID": "4408",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9704",
+    "comment2": "Green Easter Deco 20x20 High",
+    "decoWodID": "4397",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9705",
+    "comment2": "Broken Egg Dwelling (Combat 1)",
+    "constructionItemIDs": "1109"
+  },
+  {
+    "rewardID": "9706",
+    "comment2": "Broken Egg Dwelling (Combat 2)",
+    "constructionItemIDs": "1110"
+  },
+  {
+    "rewardID": "9707",
+    "comment2": "Broken Egg Dwelling (Combat 3)",
+    "constructionItemIDs": "1111"
+  },
+  {
+    "rewardID": "9708",
+    "comment2": "Broken Egg Dwelling (Combat 4)",
+    "constructionItemIDs": "1112"
+  },
+  {
+    "rewardID": "9709",
+    "comment2": "Sasaki Offerings",
+    "addSasakiToken": "2"
+  },
+  {
+    "rewardID": "9710",
+    "comment2": "Kael Offerings",
+    "addKaelrithToken": "1"
+  },
+  {
+    "rewardID": "9711",
+    "comment2": "Gen XP15000",
+    "addGenXP15000": "10"
+  },
+  {
+    "rewardID": "9712",
+    "comment2": "Commander Gem 1 (Gold)",
+    "gemIDs": "498"
+  },
+  {
+    "rewardID": "9713",
+    "comment2": "Commander Gem 2 (Gold)",
+    "gemIDs": "499"
+  },
+  {
+    "rewardID": "9714",
+    "comment2": "Commander Gem 3 (Gold)",
+    "gemIDs": "500"
+  },
+  {
+    "rewardID": "9715",
+    "comment2": "Commander Gem 4 (Gold)",
+    "gemIDs": "501"
+  },
+  {
+    "rewardID": "9716",
+    "comment2": "Commander Helmet (Gold)",
+    "equipmentIDs": "1471"
+  },
+  {
+    "rewardID": "9717",
+    "comment2": "Commander Armor (Gold)",
+    "equipmentIDs": "1472"
+  },
+  {
+    "rewardID": "9718",
+    "comment2": "Commander Weapon (Gold)",
+    "equipmentIDs": "1473"
+  },
+  {
+    "rewardID": "9719",
+    "comment2": "Commander Artifact (Gold)",
+    "equipmentIDs": "1474"
+  },
+  {
+    "rewardID": "9720",
+    "comment2": "Commander Hero (Silver)",
+    "equipmentIDs": "1470"
+  },
+  {
+    "rewardID": "9721",
+    "comment2": "Red Easter Deco 20x20 High",
+    "decoWodID": "4398",
+    "toDecoGlobalStorage": "1"
+  },
+  {
+    "rewardID": "9758",
+    "comment2": "Tizi Offerings",
+    "addTiziToken": "10"
+  },
+  {
+    "rewardID": "9759",
+    "comment2": "Diana Offerings",
+    "addDianaToken": "4"
+  },
+  {
+    "rewardID": "9760",
+    "comment2": "Barin Offerings",
+    "addBarinToken": "4"
+  },
+  {
+    "rewardID": "9761",
+    "comment2": "Gen XP15000",
+    "addGenXP15000": "20"
   },
   {
     "rewardID": "6251",
@@ -36394,7 +37415,8 @@
     "rewardID": "9039",
     "comment1": "Jackpot 1",
     "comment2": "Sceat Token",
-    "addSceatToken": "20"
+    "addSceatToken": "20",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9040",
@@ -36520,7 +37542,8 @@
     "rewardID": "9060",
     "comment1": "Jackpot 2",
     "comment2": "TCI Attack Unit Front Increase",
-    "addSceatToken": "30"
+    "addSceatToken": "30",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9061",
@@ -36646,7 +37669,8 @@
     "rewardID": "9081",
     "comment1": "Jackpot 3",
     "comment2": "TCI Attack Unit Front Increase",
-    "addSceatToken": "40"
+    "addSceatToken": "40",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9082",
@@ -36772,7 +37796,8 @@
     "rewardID": "9102",
     "comment1": "Jackpot 4",
     "comment2": "TCI Attack Unit Front Increase",
-    "addSceatToken": "50"
+    "addSceatToken": "50",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9103",
@@ -36898,7 +37923,8 @@
     "rewardID": "9123",
     "comment1": "Jackpot 5",
     "comment2": "TCI Attack Unit Front Increase",
-    "addSceatToken": "60"
+    "addSceatToken": "60",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9124",
@@ -37024,7 +38050,8 @@
     "rewardID": "9144",
     "comment1": "Jackpot 6",
     "comment2": "TCI Attack Unit Front Increase",
-    "addSceatToken": "70"
+    "addSceatToken": "70",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9145",
@@ -37150,7 +38177,8 @@
     "rewardID": "9165",
     "comment1": "Jackpot 7",
     "comment2": "TCI Attack Unit Front Increase",
-    "addSceatToken": "80"
+    "addSceatToken": "80",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9166",
@@ -37276,7 +38304,8 @@
     "rewardID": "9186",
     "comment1": "Jackpot 8",
     "comment2": "TCI Attack Unit Front Increase",
-    "addSceatToken": "90"
+    "addSceatToken": "90",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9187",
@@ -37402,7 +38431,8 @@
     "rewardID": "9207",
     "comment1": "Jackpot 9",
     "comment2": "TCI Attack Unit Front Increase",
-    "addSceatToken": "100"
+    "addSceatToken": "100",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9208",
@@ -110143,6 +111173,7 @@
     "comment1": "Berimond 70+ Reward 56",
     "comment2": "Berimond Kingdom",
     "addImperialDucat": "15",
+    "ignoreCurrencySoftCap": "1",
     "decoWodID": "2997",
     "toDecoGlobalStorage": "1"
   },
@@ -110195,21 +111226,24 @@
     "comment1": "Top X1",
     "comment2": "Berimond Kingdom",
     "addPlaster": "100",
-    "addImperialDucat": "25"
+    "addImperialDucat": "25",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9010",
     "comment1": "Top X2",
     "comment2": "Berimond Kingdom",
     "addPlaster": "200",
-    "addImperialDucat": "50"
+    "addImperialDucat": "50",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "9011",
     "comment1": "Top 1",
     "comment2": "Berimond Kingdom",
     "addPlaster": "1500",
-    "addImperialDucat": "75"
+    "addImperialDucat": "75",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "3423",
@@ -134229,7 +135263,8 @@
     "addLegendaryToken": "1500",
     "addLegendaryMaterial": "4500",
     "constructionItemIDs": "30423#30403#30493",
-    "addImperialDucat": "1300"
+    "addImperialDucat": "1300",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32388",
@@ -134240,7 +135275,8 @@
     "addLegendaryToken": "1400",
     "addLegendaryMaterial": "4200",
     "constructionItemIDs": "30423#30403#30493",
-    "addImperialDucat": "1000"
+    "addImperialDucat": "1000",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32389",
@@ -134251,7 +135287,8 @@
     "addLegendaryToken": "1350",
     "addLegendaryMaterial": "4050",
     "constructionItemIDs": "30423#30403#30493",
-    "addImperialDucat": "800"
+    "addImperialDucat": "800",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32390",
@@ -134262,7 +135299,8 @@
     "addLegendaryToken": "1300",
     "addLegendaryMaterial": "3900",
     "constructionItemIDs": "30423#30403#30493",
-    "addImperialDucat": "600"
+    "addImperialDucat": "600",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32391",
@@ -134273,7 +135311,8 @@
     "addLegendaryToken": "1200",
     "addLegendaryMaterial": "3600",
     "constructionItemIDs": "30423#30403#30493",
-    "addImperialDucat": "400"
+    "addImperialDucat": "400",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32392",
@@ -134284,7 +135323,8 @@
     "addLegendaryToken": "1000",
     "addLegendaryMaterial": "3000",
     "constructionItemIDs": "30422#30402#30492",
-    "addImperialDucat": "300"
+    "addImperialDucat": "300",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32393",
@@ -134295,7 +135335,8 @@
     "addLegendaryToken": "800",
     "addLegendaryMaterial": "2400",
     "constructionItemIDs": "30422#30402#30492",
-    "addImperialDucat": "200"
+    "addImperialDucat": "200",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32394",
@@ -134306,7 +135347,8 @@
     "addLegendaryToken": "600",
     "addLegendaryMaterial": "1800",
     "constructionItemIDs": "30422#30402#30492",
-    "addImperialDucat": "100"
+    "addImperialDucat": "100",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32395",
@@ -134317,7 +135359,8 @@
     "addLegendaryToken": "500",
     "addLegendaryMaterial": "1500",
     "constructionItemIDs": "30421#30401#30491",
-    "addImperialDucat": "50"
+    "addImperialDucat": "50",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32396",
@@ -134923,7 +135966,8 @@
     "rewardID": "32494",
     "comment1": "Rank 4",
     "comment2": "Season Pass Reward #2",
-    "addImperialDucat": "50"
+    "addImperialDucat": "50",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32495",
@@ -135019,7 +136063,8 @@
     "rewardID": "32510",
     "comment1": "Rank 8",
     "comment2": "Season Pass Reward #2",
-    "addImperialDucat": "50"
+    "addImperialDucat": "50",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32511",
@@ -135115,7 +136160,8 @@
     "rewardID": "32526",
     "comment1": "Rank 12",
     "comment2": "Season Pass Reward #2",
-    "addImperialDucat": "50"
+    "addImperialDucat": "50",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32527",
@@ -135211,7 +136257,8 @@
     "rewardID": "32542",
     "comment1": "Rank 16",
     "comment2": "Season Pass Reward #2",
-    "addImperialDucat": "50"
+    "addImperialDucat": "50",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32543",
@@ -135307,7 +136354,8 @@
     "rewardID": "32558",
     "comment1": "Rank 20",
     "comment2": "Season Pass Reward #2",
-    "addImperialDucat": "50"
+    "addImperialDucat": "50",
+    "ignoreCurrencySoftCap": "1"
   },
   {
     "rewardID": "32559",
@@ -138068,187 +139116,6 @@
     "comment2": "ExpansionChest",
     "aquamarine": "1500",
     "currency1": "1500"
-  },
-  {
-    "rewardID": "497",
-    "comment2": "inviteReward",
-    "currency2": "200"
-  },
-  {
-    "rewardID": "498",
-    "comment2": "inviteReward",
-    "currency2": "500"
-  },
-  {
-    "rewardID": "499",
-    "comment2": "inviteReward",
-    "wood": "2000",
-    "stone": "2000"
-  },
-  {
-    "rewardID": "500",
-    "comment2": "inviteReward",
-    "currency1": "9000"
-  },
-  {
-    "rewardID": "628",
-    "comment2": "inviteReward",
-    "units": "630+15#636+15",
-    "hiddenFood": "1440"
-  },
-  {
-    "rewardID": "629",
-    "comment2": "inviteReward",
-    "equipmentRarenessID": "4"
-  },
-  {
-    "rewardID": "630",
-    "comment2": "inviteReward",
-    "units": "649+50#650+50"
-  },
-  {
-    "rewardID": "631",
-    "comment2": "inviteReward",
-    "units": "648+50#651+50"
-  },
-  {
-    "rewardID": "632",
-    "comment2": "inviteReward",
-    "units": "655+25#656+25",
-    "hiddenFood": "2400"
-  },
-  {
-    "rewardID": "633",
-    "comment2": "inviteReward",
-    "addLuckyWheelTicket": "40"
-  },
-  {
-    "rewardID": "634",
-    "comment2": "inviteReward",
-    "decoWodID": "323",
-    "toDecoGlobalStorage": "1"
-  },
-  {
-    "rewardID": "635",
-    "comment2": "inviteReward",
-    "gemLevelIDs": "5"
-  },
-  {
-    "rewardID": "636",
-    "comment2": "inviteReward",
-    "units": "655+50#656+50",
-    "hiddenFood": "4800"
-  },
-  {
-    "rewardID": "637",
-    "comment2": "inviteReward",
-    "units": "77+200"
-  },
-  {
-    "rewardID": "638",
-    "comment2": "inviteReward",
-    "units": "753+100#754+100",
-    "hiddenFood": "14400"
-  },
-  {
-    "rewardID": "639",
-    "comment2": "inviteReward",
-    "equipmentIDs": "68"
-  },
-  {
-    "rewardID": "640",
-    "comment2": "inviteReward",
-    "units": "77+300"
-  },
-  {
-    "rewardID": "641",
-    "comment2": "inviteReward",
-    "units": "714+200#715+200",
-    "hiddenFood": "24000"
-  },
-  {
-    "rewardID": "642",
-    "comment2": "inviteReward",
-    "gemLevelIDs": "4"
-  },
-  {
-    "rewardID": "643",
-    "comment2": "inviteReward",
-    "addLuckyWheelTicket": "80"
-  },
-  {
-    "rewardID": "644",
-    "comment2": "inviteReward",
-    "gemLevelIDs": "6"
-  },
-  {
-    "rewardID": "645",
-    "comment2": "inviteReward",
-    "equipmentIDs": "67"
-  },
-  {
-    "rewardID": "646",
-    "comment2": "inviteReward",
-    "decoWodID": "97",
-    "toDecoGlobalStorage": "1"
-  },
-  {
-    "rewardID": "647",
-    "comment2": "inviteReward",
-    "units": "77+400"
-  },
-  {
-    "rewardID": "648",
-    "comment2": "inviteReward",
-    "units": "714+300#715+300",
-    "hiddenFood": "36000"
-  },
-  {
-    "rewardID": "649",
-    "comment2": "inviteReward",
-    "units": "714+400#715+400",
-    "hiddenFood": "48000"
-  },
-  {
-    "rewardID": "650",
-    "comment2": "inviteReward",
-    "decoWodID": "98",
-    "toDecoGlobalStorage": "1"
-  },
-  {
-    "rewardID": "651",
-    "comment2": "inviteReward",
-    "gemIDs": "226"
-  },
-  {
-    "rewardID": "652",
-    "comment2": "inviteReward",
-    "gemIDs": "236"
-  },
-  {
-    "rewardID": "653",
-    "comment2": "inviteReward",
-    "equipmentIDs": "66"
-  },
-  {
-    "rewardID": "654",
-    "comment2": "inviteReward",
-    "gemIDs": "246"
-  },
-  {
-    "rewardID": "655",
-    "comment2": "inviteReward",
-    "equipmentIDs": "65"
-  },
-  {
-    "rewardID": "1178",
-    "comment2": "inviteReward",
-    "unitSlot": "1"
-  },
-  {
-    "rewardID": "1180",
-    "comment2": "inviteReward PaymentReward",
-    "currency2": "1000"
   },
   {
     "rewardID": "678",
@@ -143924,8 +144791,88 @@
     "rewardID": "9411",
     "comment1": "Necromancer Defeat Reward 10",
     "comment2": "Lootbox T3 + Plaster",
-    "lootBox": "37+2",
+    "lootBox": "37+1",
     "addRiftCoin": "12000"
+  },
+  {
+    "rewardID": "9629",
+    "comment1": "Necromancer Defeat Reward 11",
+    "comment2": "Lootbox T3 + General Exp",
+    "lootBox": "37+1",
+    "addRiftCoin": "12000",
+    "addGenXP15000": "80"
+  },
+  {
+    "rewardID": "9738",
+    "comment1": "Necromancer Defeat Reward 12",
+    "comment2": "Lootbox T3 + General Exp",
+    "addRiftCoin": "12000",
+    "lootBox": "37+1",
+    "addGenXP15000": "80"
+  },
+  {
+    "rewardID": "9739",
+    "comment1": "Necromancer Defeat Reward 13",
+    "comment2": "Ducat + Plaster",
+    "addRiftCoin": "12000",
+    "addImperialDucat": "15",
+    "addPlaster": "500"
+  },
+  {
+    "rewardID": "9740",
+    "comment1": "Necromancer Defeat Reward 14",
+    "comment2": "Ducat + Plaster",
+    "addRiftCoin": "12000",
+    "addImperialDucat": "15",
+    "addPlaster": "500"
+  },
+  {
+    "rewardID": "9741",
+    "comment1": "Necromancer Defeat Reward 15",
+    "comment2": "Ducat + Plaster",
+    "addRiftCoin": "12000",
+    "addImperialDucat": "15",
+    "addPlaster": "500"
+  },
+  {
+    "rewardID": "9742",
+    "comment1": "Necromancer Defeat Reward 16",
+    "comment2": "Lootbox T3 + General Exp",
+    "addRiftCoin": "12000",
+    "lootBox": "37+1",
+    "addGenXP15000": "80"
+  },
+  {
+    "rewardID": "9743",
+    "comment1": "Necromancer Defeat Reward 17",
+    "comment2": "Ducat + Plaster",
+    "addRiftCoin": "12000",
+    "addImperialDucat": "15",
+    "addPlaster": "500"
+  },
+  {
+    "rewardID": "9744",
+    "comment1": "Necromancer Defeat Reward 18",
+    "comment2": "Ducat + Plaster",
+    "addRiftCoin": "12000",
+    "addImperialDucat": "15",
+    "addPlaster": "500"
+  },
+  {
+    "rewardID": "9745",
+    "comment1": "Necromancer Defeat Reward 19",
+    "comment2": "Ducat + Plaster",
+    "addRiftCoin": "12000",
+    "addImperialDucat": "15",
+    "addPlaster": "500"
+  },
+  {
+    "rewardID": "9746",
+    "comment1": "Necromancer Defeat Reward 20",
+    "comment2": "Lootbox T3 + General Exp",
+    "addRiftCoin": "12000",
+    "lootBox": "37+1",
+    "addGenXP15000": "80"
   },
   {
     "rewardID": "9412",
@@ -143943,9 +144890,9 @@
   {
     "rewardID": "9414",
     "comment1": "Necromancer Activity Reward 3",
-    "comment2": "WaveItem + Infection Tool T1",
+    "comment2": "WaveItem + Wall Delay All FS Weak",
     "equipmentIDs": "1063",
-    "units": "579+20"
+    "units": "967+5"
   },
   {
     "rewardID": "9415",
@@ -143956,8 +144903,9 @@
   {
     "rewardID": "9416",
     "comment1": "Necromancer Activity Reward 5",
-    "comment2": "Melee Strength CI",
-    "constructionItemIDs": "30403+2"
+    "comment2": "Melee Strength CI + Infection Rate Tool T1",
+    "constructionItemIDs": "30403+2",
+    "units": "579+4"
   },
   {
     "rewardID": "9417",
@@ -143969,8 +144917,9 @@
   {
     "rewardID": "9418",
     "comment1": "Necromancer Activity Reward 7",
-    "comment2": "Ranged Strength",
-    "constructionItemIDs": "30493+2"
+    "comment2": "Ranged Strength + Wall Delay All FS Mid",
+    "constructionItemIDs": "30493+2",
+    "units": "971+5"
   },
   {
     "rewardID": "9419",
@@ -143995,9 +144944,9 @@
   {
     "rewardID": "9422",
     "comment1": "Necromancer Activity Reward 11",
-    "comment2": "HoL Small Box + Premium Infection Tool",
+    "comment2": "HoL Small Box + Infection Tool T2",
     "lootBox": "33+3",
-    "units": "580+175"
+    "units": "580+35"
   },
   {
     "rewardID": "9423",
@@ -144268,6 +145217,717 @@
     "comment2": "Rift Coin + LM",
     "addRiftCoin": "100",
     "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9631",
+    "comment1": "Necromancer Activity Reward 51",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9632",
+    "comment1": "Necromancer Activity Reward 52",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9633",
+    "comment1": "Necromancer Activity Reward 53",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9634",
+    "comment1": "Necromancer Activity Reward 54",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9635",
+    "comment1": "Necromancer Activity Reward 55",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9557",
+    "comment1": "Fungal Swarm Defeat Reward 1",
+    "comment2": "Lootbox T1",
+    "lootBox": "41+1",
+    "units": "215+3000#216+3000",
+    "hiddenMead": "30000",
+    "ignoreResourceStorageCapacity": "1"
+  },
+  {
+    "rewardID": "9558",
+    "comment1": "Fungal Swarm Defeat Reward 2",
+    "comment2": "Lootbox T1",
+    "lootBox": "41+1",
+    "units": "215+15000#216+15000",
+    "hiddenMead": "150000",
+    "ignoreResourceStorageCapacity": "1"
+  },
+  {
+    "rewardID": "9559",
+    "comment1": "Fungal Swarm Defeat Reward 3",
+    "comment2": "Lootbox T1",
+    "lootBox": "41+1",
+    "addRiftCoin": "100",
+    "units": "215+17000#216+17000",
+    "hiddenMead": "170000",
+    "ignoreResourceStorageCapacity": "1"
+  },
+  {
+    "rewardID": "9560",
+    "comment1": "Fungal Swarm Defeat Reward 4",
+    "comment2": "Lootbox T2 + Rift Coin",
+    "lootBox": "41+1",
+    "addRiftCoin": "630",
+    "units": "215+25000#216+25000",
+    "hiddenMead": "250000",
+    "ignoreResourceStorageCapacity": "1"
+  },
+  {
+    "rewardID": "9561",
+    "comment1": "Fungal Swarm Defeat Reward 5",
+    "comment2": "Lootbox T2 + Ashira Offering",
+    "lootBox": "41+1",
+    "addRiftCoin": "1750",
+    "units": "215+50000#216+50000",
+    "addAshiraToken": "50",
+    "hiddenMead": "500000",
+    "ignoreResourceStorageCapacity": "1"
+  },
+  {
+    "rewardID": "9562",
+    "comment1": "Fungal Swarm Defeat Reward 6",
+    "comment2": "Lootbox T2 + General Exp",
+    "lootBox": "42+1",
+    "addRiftCoin": "2500",
+    "units": "215+62500#216+62500",
+    "addGenXP15000": "65",
+    "hiddenMead": "625000",
+    "ignoreResourceStorageCapacity": "1"
+  },
+  {
+    "rewardID": "9563",
+    "comment1": "Fungal Swarm Defeat Reward 7",
+    "comment2": "Lootbox T2 + Plaster",
+    "lootBox": "42+1",
+    "addRiftCoin": "3610",
+    "units": "215+75000#216+75000",
+    "addPlaster": "80",
+    "hiddenMead": "750000",
+    "ignoreResourceStorageCapacity": "1"
+  },
+  {
+    "rewardID": "9564",
+    "comment1": "Fungal Swarm Defeat Reward 8",
+    "comment2": "Lootbox T3 + Ashira Offering",
+    "lootBox": "42+1",
+    "addRiftCoin": "6200",
+    "addAshiraToken": "55"
+  },
+  {
+    "rewardID": "9565",
+    "comment1": "Fungal Swarm Defeat Reward 9",
+    "comment2": "Lootbox T3 + General Exp",
+    "lootBox": "43+1",
+    "addRiftCoin": "9000",
+    "addGenXP15000": "80"
+  },
+  {
+    "rewardID": "9566",
+    "comment1": "Fungal Swarm Defeat Reward 10",
+    "comment2": "Lootbox T3 + General Exp",
+    "lootBox": "43+1",
+    "addRiftCoin": "12000",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9630",
+    "comment1": "Fungal Swarm Defeat Reward 11",
+    "comment2": "Lootbox T3 + General Exp",
+    "lootBox": "43+1",
+    "addRiftCoin": "12000",
+    "addGenXP15000": "80",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9749",
+    "comment1": "Fungal Swarm Defeat Reward 12",
+    "comment2": "T3 Lootbox + Gen Exp",
+    "lootBox": "43+1",
+    "addRiftCoin": "12000",
+    "addGenXP15000": "80",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9750",
+    "comment1": "Fungal Swarm Defeat Reward 13",
+    "comment2": "Ducat + Plaster",
+    "addImperialDucat": "15",
+    "addRiftCoin": "12000",
+    "addPlaster": "500",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9751",
+    "comment1": "Fungal Swarm Defeat Reward 14",
+    "comment2": "Ducat + Plaster",
+    "addImperialDucat": "15",
+    "addRiftCoin": "12000",
+    "addPlaster": "500",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9752",
+    "comment1": "Fungal Swarm Defeat Reward 15",
+    "comment2": "T3 Lootbox + Gen Exp",
+    "lootBox": "43+1",
+    "addRiftCoin": "12000",
+    "addGenXP15000": "80",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9753",
+    "comment1": "Fungal Swarm Defeat Reward 16",
+    "comment2": "Ducat + Plaster",
+    "addImperialDucat": "15",
+    "addRiftCoin": "12000",
+    "addPlaster": "500",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9754",
+    "comment1": "Fungal Swarm Defeat Reward 17",
+    "comment2": "Ducat + Plaster",
+    "addImperialDucat": "15",
+    "addRiftCoin": "12000",
+    "addPlaster": "500",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9755",
+    "comment1": "Fungal Swarm Defeat Reward 18",
+    "comment2": "T3 Lootbox + Gen Exp",
+    "lootBox": "43+1",
+    "addRiftCoin": "12000",
+    "addGenXP15000": "80",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9756",
+    "comment1": "Fungal Swarm Defeat Reward 19",
+    "comment2": "Ducat + Plaster",
+    "addImperialDucat": "15",
+    "addRiftCoin": "12000",
+    "addPlaster": "500",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9757",
+    "comment1": "Fungal Swarm Defeat Reward 20",
+    "comment2": "T3 Lootbox + Gen Exp",
+    "lootBox": "43+1",
+    "addRiftCoin": "12000",
+    "addGenXP15000": "80",
+    "grantType": "2"
+  },
+  {
+    "rewardID": "9722",
+    "comment1": "RewardSet 2 - Activity Reward 1",
+    "comment2": "Basic Wall + Gate Tool T1",
+    "units": "568+170#570+60"
+  },
+  {
+    "rewardID": "9723",
+    "comment1": "RewardSet 2 - Activity Reward 2",
+    "comment2": "Lvl 10 Mead Units (Melee/Ranged)",
+    "units": "215+3000#216+3000",
+    "hiddenMead": "30000"
+  },
+  {
+    "rewardID": "9724",
+    "comment1": "RewardSet 2 - Activity Reward 3",
+    "comment2": "WaveItem + Wall Delay All FS Weak",
+    "equipmentIDs": "1063",
+    "units": "967+5"
+  },
+  {
+    "rewardID": "9725",
+    "comment1": "RewardSet 2 - Activity Reward 4",
+    "comment2": "Basic Wall + Gate Tool T2",
+    "units": "583+900#588+300"
+  },
+  {
+    "rewardID": "9726",
+    "comment1": "RewardSet 2 - Activity Reward 5",
+    "comment2": "Melee Strength CI + Infection Rate Tool T1",
+    "constructionItemIDs": "30403+2",
+    "units": "579+4"
+  },
+  {
+    "rewardID": "9727",
+    "comment1": "RewardSet 2 - Activity Reward 6",
+    "comment2": "Lvl 10 Mead Units (Melee/Ranged)",
+    "units": "215+6000#216+6000",
+    "hiddenMead": "60000"
+  },
+  {
+    "rewardID": "9728",
+    "comment1": "RewardSet 2 - Activity Reward 7",
+    "comment2": "Ranged Strength + Wall Delay All FS Mid",
+    "constructionItemIDs": "30493+2",
+    "units": "971+5"
+  },
+  {
+    "rewardID": "9729",
+    "comment1": "RewardSet 2 - Activity Reward 8",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9730",
+    "comment1": "RewardSet 2 - Activity Reward 9",
+    "comment2": "Courtyard Strength CI",
+    "constructionItemIDs": "30422+2"
+  },
+  {
+    "rewardID": "9731",
+    "comment1": "RewardSet 2 - Activity Reward 10",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9732",
+    "comment1": "RewardSet 2 - Activity Reward 11",
+    "comment2": "HoL Small Box + Infection Tool T2",
+    "lootBox": "33+3",
+    "units": "580+35"
+  },
+  {
+    "rewardID": "9733",
+    "comment1": "RewardSet 2 - Activity Reward 12",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9734",
+    "comment1": "RewardSet 2 - Activity Reward 13",
+    "comment2": "Sceat",
+    "addSceatToken": "600"
+  },
+  {
+    "rewardID": "9735",
+    "comment1": "RewardSet 2 - Activity Reward 14",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9736",
+    "comment1": "RewardSet 2 - Activity Reward 15",
+    "comment2": "Sceat",
+    "addSceatToken": "750"
+  },
+  {
+    "rewardID": "9737",
+    "comment1": "RewardSet 2 - Activity Reward 16",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "150",
+    "addLegendaryMaterial": "75"
+  },
+  {
+    "rewardID": "9762",
+    "comment1": "RewardSet 2 - Activity Reward 17",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "150",
+    "addLegendaryToken": "37"
+  },
+  {
+    "rewardID": "9763",
+    "comment1": "RewardSet 2 - Activity Reward 18",
+    "comment2": "Flank Amount C + Plaster",
+    "constructionItemIDs": "30560",
+    "addPlaster": "25"
+  },
+  {
+    "rewardID": "9764",
+    "comment1": "RewardSet 2 - Activity Reward 19",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "150",
+    "addLegendaryMaterial": "75"
+  },
+  {
+    "rewardID": "9765",
+    "comment1": "RewardSet 2 - Activity Reward 20",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "150",
+    "addLegendaryToken": "37"
+  },
+  {
+    "rewardID": "9766",
+    "comment1": "RewardSet 2 - Activity Reward 21",
+    "comment2": "Front Amount C + Plaster",
+    "constructionItemIDs": "30453",
+    "addPlaster": "25"
+  },
+  {
+    "rewardID": "9767",
+    "comment1": "RewardSet 2 - Activity Reward 22",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "150",
+    "addLegendaryMaterial": "75"
+  },
+  {
+    "rewardID": "9768",
+    "comment1": "RewardSet 2 - Activity Reward 23",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "150",
+    "addLegendaryToken": "37"
+  },
+  {
+    "rewardID": "9769",
+    "comment1": "RewardSet 2 - Activity Reward 24",
+    "comment2": "Ashira Offering + EXP Token",
+    "addAshiraToken": "20",
+    "addGenXP15000": "30"
+  },
+  {
+    "rewardID": "9770",
+    "comment1": "RewardSet 2 - Activity Reward 25",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "235",
+    "addLegendaryMaterial": "120"
+  },
+  {
+    "rewardID": "9771",
+    "comment1": "RewardSet 2 - Activity Reward 26",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "235",
+    "addLegendaryToken": "60"
+  },
+  {
+    "rewardID": "9772",
+    "comment1": "RewardSet 2 - Activity Reward 27",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "235",
+    "addLegendaryMaterial": "120"
+  },
+  {
+    "rewardID": "9773",
+    "comment1": "RewardSet 2 - Activity Reward 28",
+    "comment2": "Ashira Offering + Exp Rewards",
+    "addAshiraToken": "30",
+    "addGenXP15000": "35"
+  },
+  {
+    "rewardID": "9774",
+    "comment1": "RewardSet 2 - Activity Reward 29",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "235",
+    "addLegendaryToken": "60"
+  },
+  {
+    "rewardID": "9775",
+    "comment1": "RewardSet 2 - Activity Reward 30",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "235",
+    "addLegendaryMaterial": "120"
+  },
+  {
+    "rewardID": "9776",
+    "comment1": "RewardSet 2 - Activity Reward 31",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "235",
+    "addLegendaryToken": "60"
+  },
+  {
+    "rewardID": "9777",
+    "comment1": "RewardSet 2 - Activity Reward 32",
+    "comment2": "HoL Small Box + Sceat",
+    "lootBox": "33+4",
+    "addSceatToken": "1000"
+  },
+  {
+    "rewardID": "9778",
+    "comment1": "RewardSet 2 - Activity Reward 33",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "235",
+    "addLegendaryMaterial": "120"
+  },
+  {
+    "rewardID": "9779",
+    "comment1": "RewardSet 2 - Activity Reward 34",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "235",
+    "addLegendaryToken": "60"
+  },
+  {
+    "rewardID": "9780",
+    "comment1": "RewardSet 2 - Activity Reward 35",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "235",
+    "addLegendaryMaterial": "120"
+  },
+  {
+    "rewardID": "9781",
+    "comment1": "RewardSet 2 - Activity Reward 36",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "235",
+    "addLegendaryToken": "60"
+  },
+  {
+    "rewardID": "9782",
+    "comment1": "RewardSet 2 - Activity Reward 37",
+    "comment2": "HoL Large",
+    "lootBox": "34+1"
+  },
+  {
+    "rewardID": "9783",
+    "comment1": "RewardSet 2 - Activity Reward 38",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9784",
+    "comment1": "RewardSet 2 - Activity Reward 39",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9785",
+    "comment1": "RewardSet 2 - Activity Reward 40",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9786",
+    "comment1": "RewardSet 2 - Activity Reward 41",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9787",
+    "comment1": "RewardSet 2 - Activity Reward 42",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9788",
+    "comment1": "RewardSet 2 - Activity Reward 43",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9789",
+    "comment1": "RewardSet 2 - Activity Reward 44",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9790",
+    "comment1": "RewardSet 2 - Activity Reward 45",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9791",
+    "comment1": "RewardSet 2 - Activity Reward 46",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9792",
+    "comment1": "RewardSet 2 - Activity Reward 47",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9793",
+    "comment1": "RewardSet 2 - Activity Reward 48",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9794",
+    "comment1": "RewardSet 2 - Activity Reward 49",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9795",
+    "comment1": "RewardSet 2 - Activity Reward 50",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9796",
+    "comment1": "RewardSet 2 - Activity Reward 51",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9797",
+    "comment1": "RewardSet 2 - Activity Reward 52",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9798",
+    "comment1": "RewardSet 2 - Activity Reward 53",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9799",
+    "comment1": "RewardSet 2 - Activity Reward 54",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9800",
+    "comment1": "RewardSet 2 - Activity Reward 55",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9801",
+    "comment1": "RewardSet 2 - Activity Reward 56",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9802",
+    "comment1": "RewardSet 2 - Activity Reward 57",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9803",
+    "comment1": "RewardSet 2 - Activity Reward 58",
+    "comment2": "Rift Coin + Ducat",
+    "addRiftCoin": "100",
+    "addImperialDucat": "10"
+  },
+  {
+    "rewardID": "9804",
+    "comment1": "RewardSet 2 - Activity Reward 59",
+    "comment2": "Rift Coin + Plaster",
+    "addRiftCoin": "100",
+    "addPlaster": "250"
+  },
+  {
+    "rewardID": "9805",
+    "comment1": "RewardSet 2 - Activity Reward 60",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9806",
+    "comment1": "RewardSet 2 - Activity Reward 61",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9807",
+    "comment1": "RewardSet 2 - Activity Reward 62",
+    "comment2": "Rift Coin + Ducat",
+    "addRiftCoin": "100",
+    "addImperialDucat": "10"
+  },
+  {
+    "rewardID": "9808",
+    "comment1": "RewardSet 2 - Activity Reward 63",
+    "comment2": "Rift Coin + Plaster",
+    "addRiftCoin": "100",
+    "addPlaster": "250"
+  },
+  {
+    "rewardID": "9809",
+    "comment1": "RewardSet 2 - Activity Reward 64",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9810",
+    "comment1": "RewardSet 2 - Activity Reward 65",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9811",
+    "comment1": "RewardSet 2 - Activity Reward 66",
+    "comment2": "Rift Coin + Ducat",
+    "addRiftCoin": "100",
+    "addImperialDucat": "10"
+  },
+  {
+    "rewardID": "9812",
+    "comment1": "RewardSet 2 - Activity Reward 67",
+    "comment2": "Rift Coin + Plaster",
+    "addRiftCoin": "100",
+    "addPlaster": "250"
+  },
+  {
+    "rewardID": "9813",
+    "comment1": "RewardSet 2 - Activity Reward 68",
+    "comment2": "Rift Coin + LM",
+    "addRiftCoin": "100",
+    "addLegendaryMaterial": "50"
+  },
+  {
+    "rewardID": "9814",
+    "comment1": "RewardSet 2 - Activity Reward 69",
+    "comment2": "Rift Coin + LT",
+    "addRiftCoin": "100",
+    "addLegendaryToken": "25"
+  },
+  {
+    "rewardID": "9815",
+    "comment1": "RewardSet 2 - Activity Reward 70",
+    "comment2": "Rift Coin + Ducat",
+    "addRiftCoin": "100",
+    "addImperialDucat": "10"
+  },
+  {
+    "rewardID": "9816",
+    "comment1": "RewardSet 2 - Activity Reward 71",
+    "comment2": "Rift Coin + Plaster",
+    "addRiftCoin": "100",
+    "addPlaster": "250"
   },
   {
     "rewardID": "20001",

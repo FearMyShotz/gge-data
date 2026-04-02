@@ -4453,28 +4453,28 @@
     "effectID": "410",
     "name": "AttackBoostYardDecoCapped",
     "effectTypeID": "33",
-    "capID": "37",
+    "capID": "86",
     "sortOrder": "1.6.1"
   },
   {
     "effectID": "411",
     "name": "offensiveMeleeBonusDecoCapped",
     "effectTypeID": "23",
-    "capID": "38",
+    "capID": "86",
     "sortOrder": "1.2.1"
   },
   {
     "effectID": "412",
     "name": "offensiveRangeBonusDecoCapped",
     "effectTypeID": "24",
-    "capID": "39",
+    "capID": "86",
     "sortOrder": "1.3.1"
   },
   {
     "effectID": "413",
     "name": "recruitmentSpeedBoostAllCapped",
     "effectTypeID": "86",
-    "capID": "11500"
+    "capID": "11501"
   },
   {
     "effectID": "414",
@@ -4486,26 +4486,26 @@
     "effectID": "415",
     "name": "toolProductionSpeedBoostAllCapped",
     "effectTypeID": "117",
-    "capID": "41"
+    "capID": "85"
   },
   {
     "effectID": "360",
     "name": "decosUnboostedHoneyProductionCapped",
     "effectTypeID": "163",
-    "capID": "35",
+    "capID": "83",
     "sortOrder": "7.10.1"
   },
   {
     "effectID": "361",
     "name": "decosUnboostedFoodProductionBonusBaronEconomyCapped",
     "effectTypeID": "69",
-    "capID": "42"
+    "capID": "83"
   },
   {
     "effectID": "362",
     "name": "decoUnboostedMeadProductionCapped",
     "effectTypeID": "161",
-    "capID": "36",
+    "capID": "84",
     "sortOrder": "7.9.1"
   },
   {
@@ -4540,14 +4540,14 @@
     "effectID": "370",
     "name": "defenseBoostYardCapped",
     "effectTypeID": "32",
-    "capID": "47",
+    "capID": "88",
     "sortOrder": "1.9.1"
   },
   {
     "effectID": "371",
     "name": "defenseUnitAmountYardBonusCapped",
     "effectTypeID": "181",
-    "capID": "48",
+    "capID": "89",
     "sortOrder": "1.8.1"
   },
   {
@@ -4590,7 +4590,7 @@
     "effectID": "378",
     "name": "unboostedBeefProductionCapped",
     "effectTypeID": "190",
-    "capID": "49"
+    "capID": "90"
   },
   {
     "effectID": "379",
@@ -4647,7 +4647,7 @@
     "effectID": "387",
     "name": "defenseUnitAmountWallCapped",
     "effectTypeID": "12",
-    "capID": "58",
+    "capID": "87",
     "sortOrder": "1.9.1"
   },
   {
@@ -4937,35 +4937,40 @@
     "name": "infectionRateBaseMalus",
     "effectTypeID": "202",
     "capID": "99",
-    "areaTypeID": "43"
+    "areaTypeID": "43",
+    "raidBossID": "1"
   },
   {
     "effectID": "440",
     "name": "infectionRateMeleeMalus",
     "effectTypeID": "203",
     "capID": "99",
-    "areaTypeID": "43"
+    "areaTypeID": "43",
+    "raidBossID": "1"
   },
   {
     "effectID": "441",
     "name": "infectionRateRangeMalus",
     "effectTypeID": "204",
     "capID": "99",
-    "areaTypeID": "43"
+    "areaTypeID": "43",
+    "raidBossID": "1"
   },
   {
     "effectID": "442",
     "name": "infectionRateWallMalus",
     "effectTypeID": "205",
     "capID": "99",
-    "areaTypeID": "43"
+    "areaTypeID": "43",
+    "raidBossID": "1"
   },
   {
     "effectID": "443",
     "name": "infectionRateCourtyardMalus",
     "effectTypeID": "206",
     "capID": "99",
-    "areaTypeID": "43"
+    "areaTypeID": "43",
+    "raidBossID": "1"
   },
   {
     "effectID": "444",
@@ -5078,5 +5083,199 @@
     "effectTypeID": "34",
     "capID": "99",
     "areaTypeID": "43"
+  },
+  {
+    "effectID": "460",
+    "name": "raidBossWallRegenerationDelayLeft",
+    "effectTypeID": "209",
+    "capID": "99",
+    "areaTypeID": "43",
+    "raidBossID": "2"
+  },
+  {
+    "effectID": "461",
+    "name": "raidBossWallRegenerationDelayFront",
+    "effectTypeID": "210",
+    "capID": "99",
+    "areaTypeID": "43",
+    "raidBossID": "2"
+  },
+  {
+    "effectID": "462",
+    "name": "raidBossWallRegenerationDelayRight",
+    "effectTypeID": "211",
+    "capID": "99",
+    "areaTypeID": "43",
+    "raidBossID": "2"
+  },
+  {
+    "effectID": "463",
+    "name": "raidBossWallRegenerationDelayAll",
+    "effectTypeID": "212",
+    "capID": "99",
+    "areaTypeID": "43",
+    "raidBossID": "2"
+  },
+  {
+    "effectID": "464",
+    "name": "reserveUnitKill",
+    "effectTypeID": "208",
+    "capID": "99",
+    "areaTypeID": "43",
+    "raidBossID": "2"
+  },
+  {
+    "effectID": "465",
+    "name": "spawnReserveUnit",
+    "effectTypeID": "213",
+    "capID": "99",
+    "areaTypeID": "43"
+  },
+  {
+    "effectID": "466",
+    "name": "mutateReserveUnit",
+    "effectTypeID": "214",
+    "capID": "99",
+    "areaTypeID": "43"
+  },
+  {
+    "effectID": "467",
+    "name": "newPVPOffensiveMeleeBonus",
+    "effectTypeID": "23",
+    "capID": "2000",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "468",
+    "name": "newPVPOffensiveRangeBonus",
+    "effectTypeID": "24",
+    "capID": "2000",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "469",
+    "name": "newPVPWallReduction",
+    "effectTypeID": "19",
+    "capID": "2001",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "470",
+    "name": "newPVPGateReduction",
+    "effectTypeID": "20",
+    "capID": "2001",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "471",
+    "name": "newPVPMoatReduction",
+    "effectTypeID": "21",
+    "capID": "2002",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "472",
+    "name": "newPVPSpeedBonus",
+    "effectTypeID": "15",
+    "capID": "2003",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "473",
+    "name": "newPVPLootBonus",
+    "effectTypeID": "16",
+    "capID": "2004",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "474",
+    "name": "newPVPAttackUnitAmountFlank",
+    "effectTypeID": "28",
+    "capID": "2005",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "475",
+    "name": "newPVPAttackBoostYard",
+    "effectTypeID": "33",
+    "capID": "2006",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "476",
+    "name": "newPVPAttackUnitAmountFront",
+    "effectTypeID": "34",
+    "capID": "2005",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "477",
+    "name": "newPVPAttackBonus",
+    "effectTypeID": "36",
+    "capID": "2007",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "478",
+    "name": "newPVPAttackBoostFront",
+    "effectTypeID": "53",
+    "capID": "2007",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "479",
+    "name": "newPVPAttackBoostFlank",
+    "effectTypeID": "54",
+    "capID": "2007",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "480",
+    "name": "newPVPAttackSupportUnits",
+    "effectTypeID": "51",
+    "capID": "99",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "481",
+    "name": "newPVPStealthBonus",
+    "effectTypeID": "17",
+    "capID": "2009",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "482",
+    "name": "newPVPReturnTravelBoost",
+    "effectTypeID": "38",
+    "capID": "2010",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "483",
+    "name": "newPVPattackUnitAmountReinforcementBonus",
+    "effectTypeID": "179",
+    "capID": "2008",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "484",
+    "name": "newPVPAdditionalWaves",
+    "effectTypeID": "156",
+    "capID": "2011",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "485",
+    "name": "newPVPAttackBonusUnitMead",
+    "effectTypeID": "148",
+    "capID": "99",
+    "isPvPFight": "1"
+  },
+  {
+    "effectID": "486",
+    "name": "newPVPAttackBonusUnitBeef",
+    "effectTypeID": "148",
+    "capID": "99",
+    "isPvPFight": "1"
   }
 ]

@@ -915,5 +915,97 @@
   {
     "capID": "82",
     "maxTotalBonus": "100"
+  },
+  {
+    "capID": "83",
+    "maxTotalBonus": "55000"
+  },
+  {
+    "capID": "84",
+    "maxTotalBonus": "550000"
+  },
+  {
+    "capID": "11501",
+    "maxTotalBonus": "4500"
+  },
+  {
+    "capID": "85",
+    "maxTotalBonus": "450"
+  },
+  {
+    "capID": "86",
+    "maxTotalBonus": "120"
+  },
+  {
+    "capID": "87",
+    "maxTotalBonus": "160"
+  },
+  {
+    "capID": "88",
+    "maxTotalBonus": "130"
+  },
+  {
+    "capID": "89",
+    "maxTotalBonus": "175000"
+  },
+  {
+    "capID": "90",
+    "maxTotalBonus": "200000"
+  },
+  {
+    "capID": "2000",
+    "maxTotalBonus": "360"
+  },
+  {
+    "capID": "2001",
+    "maxTotalBonus": "420"
+  },
+  {
+    "capID": "2002",
+    "maxTotalBonus": "270"
+  },
+  {
+    "capID": "2003",
+    "maxTotalBonus": "100"
+  },
+  {
+    "capID": "2004",
+    "maxTotalBonus": "75"
+  },
+  {
+    "capID": "2005",
+    "maxTotalBonus": "195"
+  },
+  {
+    "capID": "2006",
+    "maxTotalBonus": "330"
+  },
+  {
+    "capID": "2007",
+    "maxTotalBonus": "30"
+  },
+  {
+    "capID": "2008",
+    "maxTotalBonus": "1500"
+  },
+  {
+    "capID": "2009",
+    "maxTotalBonus": "180"
+  },
+  {
+    "capID": "2010",
+    "maxTotalBonus": "38"
+  },
+  {
+    "capID": "2011",
+    "maxTotalBonus": "3"
+  },
+  {
+    "capID": "2012",
+    "maxTotalBonus": "350"
+  },
+  {
+    "capID": "2013",
+    "maxTotalBonus": "15"
   }
 ]

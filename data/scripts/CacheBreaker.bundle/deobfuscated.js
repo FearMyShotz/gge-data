@@ -813,33 +813,35 @@
         return !n && s;
       };
       StartscreenHelper.updateBackgroundAnimation = function (e = false) {
-        var t;
-        var n = document.getElementById("startScreenVideo");
-        var o = document.documentElement.clientWidth;
-        var r = document.documentElement.clientHeight;
-        if (o <= 1024 && r <= 900) {
-          t = "ModernStartscreenAnimation_small.mp4";
-          n.style.width = "1024px";
-          n.style.height = "900px";
-          n.style.left = "calc(50% - 512px)";
-        } else if (o <= 1366 && r <= 910) {
-          t = "ModernStartscreenAnimation_medium.mp4";
-          n.style.width = "1366px";
-          n.style.height = "910px";
-          n.style.left = "calc(50% - 683px)";
-        } else {
-          t = "ModernStartscreenAnimation_large.mp4";
-          n.style.width = "1920px";
-          n.style.height = "1080px";
-          n.style.left = "calc(50% - 960px)";
-        }
-        if (n.src.indexOf(t) == -1) {
-          n.src = t;
-        }
-        if (e) {
-          var s = n.play();
-          if (s && s.then) {
-            s.then(function () {}, function (e) {});
+        var t = document.getElementById("startScreenVideo");
+        if (t) {
+          var n;
+          var o = document.documentElement.clientWidth;
+          var r = document.documentElement.clientHeight;
+          if (o <= 1024 && r <= 900) {
+            n = "ModernStartscreenAnimation_small.mp4";
+            t.style.width = "1024px";
+            t.style.height = "900px";
+            t.style.left = "calc(50% - 512px)";
+          } else if (o <= 1366 && r <= 910) {
+            n = "ModernStartscreenAnimation_medium.mp4";
+            t.style.width = "1366px";
+            t.style.height = "910px";
+            t.style.left = "calc(50% - 683px)";
+          } else {
+            n = "ModernStartscreenAnimation_large.mp4";
+            t.style.width = "1920px";
+            t.style.height = "1080px";
+            t.style.left = "calc(50% - 960px)";
+          }
+          if (t.src.indexOf(n) == -1) {
+            t.src = n;
+          }
+          if (e) {
+            var s = t.play();
+            if (s && s.then) {
+              s.then(function () {}, function (e) {});
+            }
           }
         }
       };
@@ -854,7 +856,7 @@
   858: function (e) {
     e.exports = {
       name: "@goodgamestudios/empire-createjs-assets",
-      version: "1.2.1222",
+      version: "1.2.1244",
       main: "generated/index.js",
       types: "generated/index.d.ts",
       description: "CreateJS Assets for Empire HTML5",
@@ -963,7 +965,7 @@
   859: function (e) {
     e.exports = {
       name: "TranspilationEmpire",
-      version: "1.150.9",
+      version: "1.151.17",
       description: "Transpiled version of the Flash game",
       main: "index.js",
       repository: "git@source.services.ggs-net.com:Foundation-HTML5/TranspilationEmpire.git",
@@ -1097,4 +1099,4 @@
       }
     };
   }
-}); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/CacheBreaker.bundle.705e45c231589fe8e4ba.js.map
+}); //# sourceMappingURL=https://s3-eu-west-1.amazonaws.com/com.ggs-unicorns.sourcemaps/CacheBreaker.bundle.79ac801546f6000e663c.js.map

@@ -558,5 +558,21 @@
   {
     "skinID": "136",
     "name": "Xmas2025Com"
+  },
+  {
+    "skinID": "137",
+    "name": "CarnivalMaskComm"
+  },
+  {
+    "skinID": "138",
+    "name": "CarnivalMaskCast"
+  },
+  {
+    "skinID": "139",
+    "name": "ChocolateBunny"
+  },
+  {
+    "skinID": "140",
+    "name": "ChocolateEggSprout"
   }
 ]

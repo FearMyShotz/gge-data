@@ -93,5 +93,10 @@
     "id": "20",
     "categoryID": "120",
     "currencyID": "85"
+  },
+  {
+    "id": "22",
+    "categoryID": "122",
+    "resourceID": "1"
   }
 ]

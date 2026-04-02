@@ -29,69 +29,39 @@ async function runShellCommand(command) {
 
 async function ensureDirectoryRemoved(dir) {
   const stats = await fs.stat(dir).catch(() => null)
-  if (!stats || !stats.isDirectory()) return
+  if (!stats || !stats.isDirectory()) return;
 
-  try {
-    await fs.rm(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 })
-  } catch (err) {
-    console.warn(`⚠️  Primary deletion of ${dir} failed (${err.code || err.message}). Trying fallback...`)
-    try {
-      if (isWindows) {
-        // Use execFile for safer argument passing
-        await new Promise((resolve, reject) => {
-          exec(
-            'powershell',
-            [
-              '-NoLogo',
-              '-NoProfile',
-              '-Command',
-              'Remove-Item',
-              '-LiteralPath',
-              dir,
-              '-Recurse',
-              '-Force',
-              '-ErrorAction',
-              'Stop'
-            ],
-            (err, stdout, stderr) => {
-              if (err) {
-                const error = new Error(stderr || err.message)
-                error.cause = err
-                return reject(error)
-              }
-              resolve()
-            }
-          )
-        })
-      } else {
-        // Use execFile for safer argument handling
-        await new Promise((resolve, reject) => {
-          exec('rm', ['-rf', dir], (err, stdout, stderr) => {
-            if (err) {
-              const error = new Error(stderr || err.message)
-              error.cause = err
-              return reject(error)
-            }
-            resolve()
-          })
-        })
+  async function removeRecursive(target) {
+    const stat = await fs.stat(target).catch(() => null);
+    if (!stat) return;
+    if (stat.isDirectory()) {
+      const entries = await fs.readdir(target).catch(() => []);
+      for (const entry of entries) {
+        await removeRecursive(path.join(target, entry));
       }
-    } catch (fallbackErr) {
-      throw new Error(
-        `Kann Ordner ${dir} nicht löschen. ${fallbackErr.message}\nBitte Skript mit ausreichenden Berechtigungen ausführen oder Ordner manuell entfernen.`
-      )
+      try {
+        await fs.rmdir(target);
+      } catch (err) {
+        // Ignoriere Fehler, falls das Verzeichnis bereits entfernt wurde
+      }
+    } else {
+      // Versuche Schreibschutz zu entfernen (Windows), dann löschen
+      if (isWindows) {
+        try {
+          await fs.chmod(target, 0o666);
+        } catch (e) {}
+      }
+      await fs.unlink(target).catch(() => {});
     }
   }
 
-  const stillExists = await fs
-    .stat(dir)
-    .then(() => true)
-    .catch(() => false)
+  await removeRecursive(dir);
 
+  const stillExists = await fs.stat(dir).then(() => true).catch(() => false);
   if (stillExists) {
     throw new Error(
       `Ordner ${dir} existiert weiterhin nach Löschversuch. Bitte mit Administratorrechten ausführen oder manuell löschen.`
-    )
+    );
   }
 }
 
@@ -328,13 +298,7 @@ async function decompileScripts(scripts) {
 
     try {
       await ensureDirectoryRemoved(outputDir)
-      const existsAfterRemoval = await fs
-        .stat(outputDir)
-        .then(() => true)
-        .catch(() => false)
-      if (existsAfterRemoval) {
-        throw new Error(`Ordner ${outputDir} existiert weiterhin und kann nicht entfernt werden.`)
-      }
+      console.log(`✅ Ordner ${outputDir} entfernt`)
     } catch (err) {
       console.warn(`⚠️  Kann Ausgabeverzeichnis ${outputDir} nicht vorbereiten: ${err.message}`)
       throw err

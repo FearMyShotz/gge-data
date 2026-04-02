@@ -1755,5 +1755,115 @@
     "equipmentEffectID": "170",
     "wearerID": "2",
     "effectID": "443"
+  },
+  {
+    "equipmentEffectID": "171",
+    "wearerID": "2",
+    "effectID": "463"
+  },
+  {
+    "equipmentEffectID": "172",
+    "wearerID": "2",
+    "effectID": "464"
+  },
+  {
+    "equipmentEffectID": "173",
+    "wearerID": "2",
+    "effectID": "467"
+  },
+  {
+    "equipmentEffectID": "174",
+    "wearerID": "2",
+    "effectID": "468"
+  },
+  {
+    "equipmentEffectID": "175",
+    "wearerID": "2",
+    "effectID": "469"
+  },
+  {
+    "equipmentEffectID": "176",
+    "wearerID": "2",
+    "effectID": "470"
+  },
+  {
+    "equipmentEffectID": "177",
+    "wearerID": "2",
+    "effectID": "471"
+  },
+  {
+    "equipmentEffectID": "178",
+    "wearerID": "2",
+    "effectID": "472"
+  },
+  {
+    "equipmentEffectID": "179",
+    "wearerID": "2",
+    "effectID": "473"
+  },
+  {
+    "equipmentEffectID": "180",
+    "wearerID": "2",
+    "effectID": "474"
+  },
+  {
+    "equipmentEffectID": "181",
+    "wearerID": "2",
+    "effectID": "475"
+  },
+  {
+    "equipmentEffectID": "182",
+    "wearerID": "2",
+    "effectID": "476"
+  },
+  {
+    "equipmentEffectID": "193",
+    "wearerID": "2",
+    "effectID": "477"
+  },
+  {
+    "equipmentEffectID": "194",
+    "wearerID": "2",
+    "effectID": "478"
+  },
+  {
+    "equipmentEffectID": "195",
+    "wearerID": "2",
+    "effectID": "479"
+  },
+  {
+    "equipmentEffectID": "186",
+    "wearerID": "2",
+    "effectID": "480"
+  },
+  {
+    "equipmentEffectID": "187",
+    "wearerID": "2",
+    "effectID": "481"
+  },
+  {
+    "equipmentEffectID": "188",
+    "wearerID": "2",
+    "effectID": "482"
+  },
+  {
+    "equipmentEffectID": "189",
+    "wearerID": "2",
+    "effectID": "483"
+  },
+  {
+    "equipmentEffectID": "190",
+    "wearerID": "2",
+    "effectID": "484"
+  },
+  {
+    "equipmentEffectID": "191",
+    "wearerID": "2",
+    "effectID": "485"
+  },
+  {
+    "equipmentEffectID": "192",
+    "wearerID": "2",
+    "effectID": "486"
   }
 ]

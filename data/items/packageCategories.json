@@ -117,6 +117,10 @@
     "name": "LegendaryRiftCoin"
   },
   {
+    "categoryID": "122",
+    "name": "Coins"
+  },
+  {
     "categoryID": "999",
     "name": "Overall"
   }
